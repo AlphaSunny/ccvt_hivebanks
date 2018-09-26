@@ -737,3 +737,7 @@ h4.title{
         background-position: -100% 0;
     }
 }
+
+.accountNone {
+    display: none !important;
+}
