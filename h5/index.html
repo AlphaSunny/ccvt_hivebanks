@@ -45,11 +45,15 @@
         <!--<a class="page-scroll" href="#last">Contact</a>-->
         <!--</li>-->
         <!--</ul>-->
-        <ul class="nav navbar-nav navbar-right">
-        <li>
-        <a class="page-scroll" data-toggle="modal" title="A free Bootstrap video landing theme" href="#aboutModal">About</a>
-        </li>
-        </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="javascript:;" class="i18n caLogin font-weight-400" name="ca_enter">CA 通道</a></li>
+                    <li><a href="javascript:;" class="i18n baLogin font-weight-400" name="ba_enter">BA 通道</a></li>
+                    <li><a href="user/login.html" class="i18n usLogin" name="user">登录</a></li>
+                    <li><a href="user/register.html" class="i18n usLogin" name="user">注册</a></li>
+                    <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
@@ -309,12 +313,18 @@
         </div>
     </div>
 </div>
+<div class="scrollup">
+    <a href="#"><i class="iconfont icon-top"></i></a>
+</div>
 <!--scripts loaded here -->
-<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/language/jquery.i18n.properties.js"></script>
+<script src="assets/language/language.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.easing.min.js"></script>
+<script src="assets/js/waterpipe.js"></script>
+<script src="assets/js/layer/layer.js"></script>
 <script src="assets/js/cnt.js"></script>
-<script src="assets/js/wow.js"></script>
-<script src="assets/js/scripts.js"></script>
+<script src="user/js/common.js"></script>
+<script src="user/js/index.js"></script>
 </body>
 </html>
