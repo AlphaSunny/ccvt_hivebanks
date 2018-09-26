@@ -7,7 +7,7 @@ $(function () {
 
     //back index
     $('.toIndexBtn').click(function () {
-        window.location.href = '../index2.html?ba=ba';
+        window.location.href = '../index.html?ba=ba';
     });
 
 //get time
@@ -100,7 +100,7 @@ $(function () {
 //Logout to clear cookies
     $('.logout').click(function () {
         DelCookie('ba_token');
-        window.location.href = '../index2.html'
+        window.location.href = '../index.html'
     });
 
 // scroll Up
