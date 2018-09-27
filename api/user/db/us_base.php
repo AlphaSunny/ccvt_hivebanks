@@ -21,7 +21,7 @@ function ins_base_user_reg_base_info($data_base)
       return false;
 
     //2018年 10.1-10.7注册送500ccvt
-    $array = array('2018-10-01','2018-10-02','2018-10-03','2018-10-04','2018-10-05','2018-10-06','2018-10-07','2018-09-27');
+    $array = array('2018-10-01','2018-10-02','2018-10-03','2018-10-04','2018-10-05','2018-10-06','2018-10-07');
     $now = date('Y-m-d');
     if(in_array($now,$array)){
         send_to_us_ccvt($data_base['us_id']);
