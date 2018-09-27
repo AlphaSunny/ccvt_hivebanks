@@ -186,7 +186,7 @@ if ($rec) {
     unset($data_log_bind['log_id']);
 }
 $key = Config::TOKEN_KEY;
-$data_base['us_account'] = "hivebanks_" . $email;
+$data_base['us_account'] = "ccvt_" . $email;
 //$bind_email = ins_bind_user_reg_bind_log($data_log_bind);
 
 $url = Config::CONFORM_URL;

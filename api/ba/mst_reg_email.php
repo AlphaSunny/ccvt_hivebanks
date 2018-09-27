@@ -143,7 +143,7 @@ $data_base['base_amount'] = 0;
 $data_base['lock_amount'] = 0;
 $data_base['ba_level'] = 0;
 $data_base['security_level'] = 2;
-$data_base['ba_account'] = "hivebanks_" . $email;
+$data_base['ba_account'] = "ccvt_" . $email;
 $data_base['utime'] = time();
 $data_base['ctime'] = date("Y-m-d H:i:s");
 
