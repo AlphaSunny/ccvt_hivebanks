@@ -128,7 +128,7 @@ $data_base['lock_amount'] = 0;
 $data_base['ca_level'] = 0;
 $data_base['security_level'] = 2;
 $data_base['utime'] = time();
-$data_base['ca_account'] = "hivebanks_" . $email;
+$data_base['ca_account'] = "ccvt_" . $email;
 $data_base['ctime'] = date("Y-m-d H:i:s");
 
 $url = Config::CA_CONFORM_URL;
