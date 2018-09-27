@@ -17,7 +17,7 @@ $(function () {
     var ca_token = GetIndexCookie('ca_token');
 
     if (user_token || login_us) {
-        $('.create_btn, .usLogin').remove();
+        $('.usLogin, .usRegister').remove();
         $('.accountNone').removeClass('accountNone');
     }
     $('.baLogin').click(function () {
@@ -34,13 +34,13 @@ $(function () {
             window.location.href = 'ca/CaLogin.html';
         }
     });
-    $('.usLogin').click(function () {
-        if (user_token || login_us) {
-            window.location.href = 'user/account.html';
-        } else {
-            window.location.href = 'user/login.html';
-        }
-    });
+    // $('.usLogin').click(function () {
+    //     if (user_token || login_us) {
+    //         window.location.href = 'user/account.html';
+    //     } else {
+    //         window.location.href = 'user/login.html';
+    //     }
+    // });
 
     $('.toAccountBtn').click(function () {
         if (login_us || user_token) {
@@ -53,21 +53,40 @@ $(function () {
             window.location.href = 'ca/CaAccount.html';
         }
     });
-
-    var smokyBG = $('#smoky-bg').waterpipe({
-        gradientStart: '#51ff00',
-        gradientEnd: '#001eff',
-        smokeOpacity: 0.1,
-        smokeSize: 100,
-        numCircles: 1,
-        maxMaxRad: 'auto',
-        minMaxRad: 'auto',
-        minRadFactor: 0,
-        iterations: 8,
-        drawsPerFrame: 10,
-        lineWidth: 2,
-        speed: 10,
-        bgColorInner: "#111",
-        bgColorOuter: "#000"
-    });
 });
+
+//scroll
+(function ($) {
+    "use strict";
+
+    $('body').scrollspy({
+        target: '.navbar-fixed-top',
+        offset: 60
+    });
+
+    $('#topNav').affix({
+        offset: {
+            top: 200
+        }
+    });
+
+    new WOW().init();
+
+    $('a.page-scroll').bind('click', function (event) {
+        var $ele = $(this);
+        $('html, body').stop().animate({
+            scrollTop: ($($ele.attr('href')).offset().top - 60)
+        }, 1450, 'easeInOutExpo');
+        event.preventDefault();
+    });
+
+    $('.navbar-collapse ul li a').click(function () {
+        /* always close responsive nav after click */
+        $('.navbar-toggle:visible').click();
+    });
+
+    $('#galleryModal').on('show.bs.modal', function (e) {
+        $('#galleryImage').attr("src", $(e.relatedTarget).data("src"));
+    });
+
+})(jQuery);

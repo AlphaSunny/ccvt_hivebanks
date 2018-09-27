@@ -15,6 +15,11 @@ body {
     webkit-tap-highlight-color: #222;
 }
 
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus{
+    color: #fff;
+    background-color: #12587f;
+}
+
 hr {
     max-width: 80px;
     border-width: 3px;

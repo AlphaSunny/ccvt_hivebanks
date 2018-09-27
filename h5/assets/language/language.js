@@ -149,11 +149,18 @@ $(function () {
     execI18n();
 
     /*Set the language selection to the value in the cache by default*/
-    $("#language option[value=" + i18nLanguage + "]").prop("selected", true);
+    // $("#language option[value=" + i18nLanguage + "]").prop("selected", true);
+    var languageList = $(".toggleLanguage");
+    $.each(languageList, function (i, val) {
+       if(i18nLanguage == $(this).attr("title")){
+           $("#language").text($(this).text());
+       }
+    });
 
     /* Choose a language */
-    $("#language").on('change', function () {
-        var language = $(this).children('option:selected').val();
+    $(".toggleLanguage").on('click', function () {
+        var language = $(this).attr("title");
+        $("#language").text($(this).text());
         getCookie("userLanguage", language, {
             expires: 30,
             path: '/'

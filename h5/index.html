@@ -5,8 +5,9 @@
     <title>Ccvt official website</title>
     <meta id="i18n_pagename" content="index-common">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="This is a free Bootstrap landing page theme created for BootstrapZero. Feature video background and one page design."/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta name="description" content="This is a free Bootstrap landing page theme created for BootstrapZero. Feature video background and one page design."/>-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
     <meta name="generator" content="Codeply">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="assets/css/animate.min.css"/>
@@ -33,30 +34,39 @@
             </a>
         </div>
         <div class="navbar-collapse collapse" id="bs-navbar">
-        <!--<ul class="nav navbar-nav">-->
-        <!--<li>-->
-        <!--<a class="page-scroll" href="#one">Intro</a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<a class="page-scroll" href="#two">Highlights</a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<a class="page-scroll" href="#three">Gallery</a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<a class="page-scroll" href="#four">Features</a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<a class="page-scroll" href="#last">Contact</a>-->
-        <!--</li>-->
-        <!--</ul>-->
+            <!--<ul class="nav navbar-nav">-->
+            <!--<li>-->
+            <!--<a class="page-scroll" href="#one">Intro</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a class="page-scroll" href="#two">Highlights</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a class="page-scroll" href="#three">Gallery</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a class="page-scroll" href="#four">Features</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a class="page-scroll" href="#last">Contact</a>-->
+            <!--</li>-->
+            <!--</ul>-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span id="language">中文简体</span>
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:;" class="toggleLanguage" title="en">English</a></li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="zh-CN">中文简体</a></li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="ja">Japanese</a></li>
+                        </ul>
+                    </li>
                     <li><a href="javascript:;" class="i18n caLogin font-weight-400" name="ca_enter"></a></li>
                     <li><a href="javascript:;" class="i18n baLogin font-weight-400" name="ba_enter"></a></li>
-                    <li><a href="javascript:;" class="i18n baLogin font-weight-400" name="login"></a></li>
-                    <li><a href="javascript:;" class="i18n baLogin font-weight-400" name="register"></a></li>
-                    <!--<li><a href="user/login.html" class="i18n usLogin" name="user">User</a></li>-->
+                    <li><a href="user/login.html" class="i18n usLogin font-weight-400" name="login"></a></li>
+                    <li><a href="user/register.html" class="i18n usRegister font-weight-400" name="register"></a></li>
                     <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
                 </ul>
             </div>
@@ -67,12 +77,9 @@
     <div class="mask"></div>
     <div class="header-content">
         <div class="inner">
-            <h1 class="cursive wow fadeIn title">沟通创造价值</h1>
-            <!--<h4 class="wow fadeIn title">Communication creates value</h4>-->
-            <h4 class="wow fadeIn title">COMMUNICATION CREATES VALUE</h4>
+            <h1 class="cursive title i18n" name="communicationCreatesValue">沟通创造价值</h1>
+            <h4 class="title">COMMUNICATION CREATES VALUE</h4>
             <hr>
-            <!--<a href="#video-background" id="toggleVideo" data-toggle="collapse" class="btn btn-primary btn-xl">Toggle Video</a> &nbsp; -->
-            <!--<a href="#one" class="btn btn-primary btn-xl page-scroll">Get Started</a>-->
         </div>
     </div>
 </header>
@@ -80,13 +87,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
-                <h2 class="margin-top-0 text-primary wow fadeIn">基于区块链的价值传递
-                </h2>
+                <h2 class="margin-top-0 text-primary wow fadeIn i18n" name="blockValue">基于区块链的价值传递</h2>
                 <br>
-                <p class="text-faded wow fadeIn">
-                    CCVT是一种基于以太坊的erc20 token, 他的固定发行量为100亿，以递减的方式投放到各大社交平台，激励那些通过讨论来产生价值的人们。
-                </p>
-                <!--<a href="#three" class="btn btn-default btn-xl page-scroll">Learn More</a>-->
+                <p class="text-faded wow fadeIn i18n" name="ccvtText">CCVT是一种基于以太坊的erc20 token, 他的固定发行量为100亿，以递减的方式投放到各大社交平台，激励那些通过讨论来产生价值的人们。</p>
             </div>
         </div>
         <div class="row margin-top-5">
@@ -94,7 +97,7 @@
                 <div class="text-center svgBox wow slideInUp">
                     <div class="svgImgBox wow fadeInLeft"><img src="assets/img/001.svg" alt=""></div>
                     <div class="svgText wow fadeInLeft">
-                        <p>智能聊天机器人（AI）的实现，组织大家的聊天和分配相应的激励。</p>
+                        <p class="i18n" name="ccvtTextOne">智能聊天机器人（AI）的实现，组织大家的聊天和分配相应的激励。</p>
                     </div>
                 </div>
             </div>
@@ -102,7 +105,7 @@
                 <div class="text-center svgBox wow slideInUp">
                     <div class="svgImgBox wow fadeInLeft"><img src="assets/img/002.svg" alt=""></div>
                     <div class="svgText wow fadeInLeft">
-                        <p>CCVT在以太坊主链的发行，发行量100亿，按阶段投放。</p>
+                        <p class="i18n" name="ccvtTextTwo">CCVT在以太坊主链的发行，发行量100亿，按阶段投放。</p>
                     </div>
                 </div>
             </div>
@@ -110,7 +113,7 @@
                 <div class="text-center svgBox wow slideInDown">
                     <div class="svgImgBox wow fadeInLeft"><img src="assets/img/003.svg" alt=""></div>
                     <div class="svgText wow fadeInLeft">
-                        <p>CCVT hivebanks的建立是用户能够在hivebanks上实现token的存储和兑换。</p>
+                        <p class="i18n" name="ccvtTextThree">CCVT hivebanks的建立是用户能够在hivebanks上实现token的存储和兑换。</p>
                     </div>
                 </div>
             </div>
@@ -118,7 +121,7 @@
                 <div class="text-center svgBox wow slideInDown">
                     <div class="svgImgBox wow fadeInRight"><img src="assets/img/004.svg" alt=""></div>
                     <div class="svgText wow fadeInRight">
-                        <p>海外用户群的拓展，包括facebook和telegram，并在二级市场流通。</p>
+                        <p class="i18n" name="ccvtTextFour">海外用户群的拓展，包括facebook和telegram，并在二级市场流通。</p>
                     </div>
                 </div>
             </div>
@@ -139,8 +142,8 @@
             <div class="col-lg-6 col-md-6 col-sm-12 text-center">
                 <div class="row flex align-itmes-center space-between whyBox wow slideInLeft">
                     <div class="shyTextBox text-left">
-                        <h3>沟通</h3>
-                        <p class="font-size-14">21世记，社交平台高度发达，更多的人选择在社交平台上沟通，结交朋友，确无法在互联网上被价值肯定。</p>
+                        <h3 class="i18n" name="communication">沟通</h3>
+                        <p class="font-size-14 i18n" name="communicationText">21世记，社交平台高度发达，更多的人选择在社交平台上沟通，结交朋友，确无法在互联网上被价值肯定。</p>
                     </div>
                     <div class="whySvgIconBox">
                         <img src="assets/img/goutong.svg" alt="">
@@ -148,8 +151,8 @@
                 </div>
                 <div class="row flex align-itmes-center space-between whyBox wow slideInLeft">
                     <div class="shyTextBox text-left">
-                        <h3>想法</h3>
-                        <p class="font-size-14">在聊天中，大家不断创造出新的想法，这些想法便是价值的由来。</p>
+                        <h3 class="i18n" name="idea">想法</h3>
+                        <p class="font-size-14 i18n" name="ideaText">在聊天中，大家不断创造出新的想法，这些想法便是价值的由来。</p>
                     </div>
                     <div class="whySvgIconBox">
                         <img src="assets/img/xiangfa.svg" alt="">
@@ -157,8 +160,8 @@
                 </div>
                 <div class="row flex align-itmes-center space-between whyBox wow slideInLeft">
                     <div class="shyTextBox text-left">
-                        <h3>激励</h3>
-                        <p class="font-size-14">聊天中人们会获得群助手的奖励，并且获得认可者奖励的CCVT。</p>
+                        <h3 class="i18n" name="excitation">激励</h3>
+                        <p class="font-size-14 i18n"name="excitationText">聊天中人们会获得群助手的奖励，并且获得认可者奖励的CCVT。</p>
                     </div>
                     <div class="whySvgIconBox">
                         <img src="assets/img/jili.svg" alt="">
@@ -168,8 +171,8 @@
             <div class="col-lg-6 col-md-6 col-sm-12 text-center">
                 <div class="row flex align-itmes-center space-between whyBox wow slideInRight">
                     <div class="shyTextBox text-left">
-                        <h3>认可</h3>
-                        <p class="font-size-14">社交平台的存在加快了信息的传递，却无法进行价值的传递，让认可成了空头支票，因而越发需要一种价值被认可的方式。</p>
+                        <h3 class="i18n" name="recognition">认可</h3>
+                        <p class="font-size-14 i18n" name="recognitionText">社交平台的存在加快了信息的传递，却无法进行价值的传递，让认可成了空头支票，因而越发需要一种价值被认可的方式。</p>
                     </div>
                     <div class="whySvgIconBox">
                         <img src="assets/img/renke.svg" alt="">
@@ -177,8 +180,8 @@
                 </div>
                 <div class="row flex align-itmes-center space-between whyBox wow slideInRight">
                     <div class="shyTextBox text-left">
-                        <h3>价值</h3>
-                        <p class="font-size-14">价值的肯定来自于大家的认可，再被认可后如何得到相应的价值，CCVT的存在将作为一种价值媒介，使聊天真正创造出价值。</p>
+                        <h3 class="i18n" name="value">价值</h3>
+                        <p class="font-size-14 i18n" name="valueText">价值的肯定来自于大家的认可，再被认可后如何得到相应的价值，CCVT的存在将作为一种价值媒介，使聊天真正创造出价值。</p>
                     </div>
                     <div class="whySvgIconBox">
                         <img src="assets/img/jiazhi.svg" alt="">
@@ -186,8 +189,8 @@
                 </div>
                 <div class="row flex align-itmes-center space-between whyBox wow slideInRight">
                     <div class="shyTextBox text-left">
-                        <h3>吸纳</h3>
-                        <p class="font-size-14">
+                        <h3 class="i18n" name="absorb">吸纳</h3>
+                        <p class="font-size-14 i18n" name="absorbText">
                             21世记，社交平台高度发达，更多的人选择在社交平台上沟通，结交朋友，确无法在互联网上被价值肯定。在交流中，人们创造了价值，并收获到了CCVT形式的激励，更多的人愿意加入到其中，从而吸纳到新人。</p>
                     </div>
                     <div class="whySvgIconBox">
@@ -195,7 +198,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
@@ -203,7 +205,7 @@
 <aside class="bg-dark">
     <div class="container text-center">
         <div class="call-to-action">
-            <h2 class="text-primary wow fadeIn">最终蓝图</h2>
+            <h2 class="text-primary wow fadeIn i18n" name="finalBlueprint">最终蓝图</h2>
             <hr class="primary">
             <div class="mapImgBox wow fadeInRight">
                 <img src="assets/img/map.png" alt="">
@@ -218,24 +220,24 @@
                 </ul>
                 <div class="flex space-between">
                     <div class="countryInfo j wow slideInRight">
-                        <h5>Japan</h5>
-                        <p>区块链的老牌强国</p>
+                        <h5 class="i18n" name="japan">Japan</h5>
+                        <p class="i18n" name="japanText">区块链的老牌强国</p>
                     </div>
                     <div class="countryInfo u wow slideInRight">
-                        <h5>USA</h5>
-                        <p>CCVT流通最频繁的国度</p>
+                        <h5 class="i18n" name="usa">USA</h5>
+                        <p class="i18n" name="usaText">CCVT流通最频繁的国度</p>
                     </div>
                     <div class="countryInfo e wow slideInRight">
-                        <h5>Egypt</h5>
-                        <p>通信大国</p>
+                        <h5 class="i18n" name="egypt">Egypt</h5>
+                        <p class="i18n" name="egyptText">通信大国</p>
                     </div>
                     <div class="countryInfo r wow slideInRight">
-                        <h5>Russia</h5>
-                        <p>亚欧大国，区块链的大市场。</p>
+                        <h5 class="i18n" name="russia">Russia</h5>
+                        <p class="i18n" name="russiaText">亚欧大国，区块链的大市场。</p>
                     </div>
                     <div class="countryInfo c wow slideInRight">
-                        <h5>China</h5>
-                        <p>CCVT的发源地和最大市场</p>
+                        <h5 class="i18n" name="china">China</h5>
+                        <p class="i18n" name="chinaText">CCVT的发源地和最大市场</p>
                     </div>
                 </div>
             </div>
@@ -246,7 +248,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="margin-top-0 wow fadeIn text-primary">Count Us</h2>
+                <h2 class="margin-top-0 wow fadeIn text-primary i18n" name="countUs">Count Us</h2>
                 <hr class="primary">
                 <!--<p>We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>-->
             </div>
@@ -254,24 +256,25 @@
                 <form class="contact-form row">
                     <div class="col-md-4">
                         <label></label>
-                        <input type="text" class="form-control" placeholder="Name">
+                        <input type="text" class="form-control i18n-input" selectname="name" selectattr="placeholder">
                     </div>
                     <div class="col-md-4">
                         <label></label>
-                        <input type="text" class="form-control" placeholder="Email">
+                        <input type="text" class="form-control i18n-input" selectname="email" selectattr="placeholder">
                     </div>
                     <div class="col-md-4">
                         <label></label>
-                        <input type="text" class="form-control" placeholder="Phone">
+                        <input type="text" class="form-control i18n-input" selectname="phone" selectattr="placeholder">
                     </div>
                     <div class="col-md-12">
                         <label></label>
-                        <textarea class="form-control" rows="9" placeholder="Your message here.."></textarea>
+                        <textarea class="form-control i18n-input" selectname="content" selectattr="placeholder" rows="9"></textarea>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
                         <label></label>
-                        <button type="button" data-toggle="modal" data-target="#alertModal"
-                                class="btn btn-primary btn-block btn-lg">Send <i class="ion-android-arrow-forward"></i>
+                        <button type="button" data-toggle="modal" data-target="#alertModal" class="btn btn-primary btn-block btn-lg">
+                            <span class="i18n" name="submit">Submit</span>
+                            <i class="ion-android-arrow-forward"></i>
                         </button>
                     </div>
                 </form>
@@ -305,10 +308,11 @@
 </div>
 <!--scripts loaded here -->
 <script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.easing.min.js"></script>
+<script src="assets/js/wow.js"></script>
 <script src="assets/language/jquery.i18n.properties.js"></script>
 <script src="assets/language/language.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/waterpipe.js"></script>
 <script src="assets/js/layer/layer.js"></script>
 <script src="assets/js/cnt.js"></script>
 <script src="user/js/common.js"></script>
