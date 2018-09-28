@@ -1,5 +1,10 @@
 <?php
 
+if (time()>1538323200){
+    echo "不运行";
+    die();
+}
+
 
 require_once "../inc/common.php";
 
