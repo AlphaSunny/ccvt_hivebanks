@@ -105,6 +105,14 @@ $us_id = get_guid();
 $bind_id = get_guid();
 // 用户基本信息数组
 $data_base = array();
+
+if($invit_code) {
+    $icc = invite_code_check($invit_code);
+    if (!$icc)
+        exit_error('215', '邀请码错误');
+    $data_base['invite_code'] = $invit_code;
+}
+
 // 用户绑定信息数组
 $data_log_bind = array();
 $variable = 'email';

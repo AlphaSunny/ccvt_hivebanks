@@ -1,5 +1,22 @@
 <?php
 
+
+/**
+ * 检查邀请码是否存在
+ * @param $invite_check
+ * @return bool
+ */
+function invite_code_check($invite_check){
+
+    $db = new DB_COM();
+    $sql = "select us_nm from us_base where us_nm={$invite_check}";
+    $db->query($sql);
+    if($db->fetchRow())
+        return true;
+    return false;
+
+}
+
 //======================================
 // 函数: 创建注册用户
 // 参数: data        信息数组
