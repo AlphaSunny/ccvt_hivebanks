@@ -34,6 +34,7 @@ function ins_base_user_reg_base_info($data_base)
 
 
 
+
 //======================================
 // 函数: 注册创建用户时给送糖果(ccvt)
 // 参数: data        信息数组
