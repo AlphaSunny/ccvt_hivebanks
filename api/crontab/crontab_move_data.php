@@ -34,9 +34,7 @@ while ($row = mysql_fetch_assoc($result)) {
         $d['security_level'] = $row['security_level'];
         $d['utime'] = $row['utime'];
         $d['ctime'] = $row['ctime'];
-        $d['invite_code'] = $row['invite_code'];
         $sql = $db->sqlInsert("us_base", $d);
-        echo $sql;die;
         $db->query($sql);
         send_to_us_ccvt($row['us_id']);
     }
