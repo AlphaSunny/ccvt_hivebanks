@@ -16,24 +16,29 @@ ini_set("display_errors", "off");
 error_reporting(E_ALL | E_STRICT);
 
 //执行MySQL语句
-$sql = "SELECT * FROM us_base order by ctime ASC ";
+$sql = "SELECT * FROM us_base WHERE order by ctime ASC ";
 $result=mysql_query($sql);
 while ($row = mysql_fetch_assoc($result)) {
     $db = new DB_COM();
-    $d['us_id'] = $row['us_id'];
-    $d['us_nm'] = $row['us_nm'];
-    $d['us_account'] = $row['us_account'];
-    $d['base_amount'] = $row['base_amount'];
-    $d['lock_amount'] = $row['lock_amount'];
-    $d['us_type'] = $row['us_type'];
-    $d['us_level'] = $row['us_level'];
-    $d['security_level'] = $row['security_level'];
-    $d['utime'] = $row['utime'];
-    $d['ctime'] = $row['ctime'];
-    $d['invite_code'] = $row['invite_code'];
-    $sql = $db->sqlInsert("us_base", $d);
-    $db->query($sql);
-    send_to_us_ccvt($row['us_id']);
+    $s = "SELECT * FROM us_base WHERE us_id='{$row['us_id']}'";
+    $db -> query($s);
+    $user = $db -> fetchRow();
+    if (!$user){
+        $d['us_id'] = $row['us_id'];
+        $d['us_nm'] = $row['us_nm'];
+        $d['us_account'] = $row['us_account'];
+        $d['base_amount'] = $row['base_amount'];
+        $d['lock_amount'] = $row['lock_amount'];
+        $d['us_type'] = $row['us_type'];
+        $d['us_level'] = $row['us_level'];
+        $d['security_level'] = $row['security_level'];
+        $d['utime'] = $row['utime'];
+        $d['ctime'] = $row['ctime'];
+        $d['invite_code'] = $row['invite_code'];
+        $sql = $db->sqlInsert("us_base", $d);
+        $db->query($sql);
+        send_to_us_ccvt($row['us_id']);
+    }
 }
 
 //建立数据库链接
@@ -48,19 +53,24 @@ $sql2 = "SELECT * FROM us_bind order by ctime ASC ";
 $result2=mysql_query($sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
     $db = new DB_COM();
-    $d2['bind_id'] = $row2['bind_id'];
-    $d2['us_id'] = $row2['us_id'];
-    $d2['bind_type'] = $row2['bind_type'];
-    $d2['bind_name'] = $row2['bind_name'];
-    $d2['bind_info'] = $row2['bind_info'];
-    $d2['bind_flag'] = $row2['bind_flag'];
-    $d2['utime'] = $row2['utime'];
-    $d2['ctime'] = $row2['ctime'];
-    $sql3 = $db->sqlInsert("us_bind", $d2);
-    $db->query($sql3);
+    $s2 = "SELECT * FROM us_bind WHERE bind_id='{$row2['bind_id']}'";
+    $db -> query($s2);
+    $bind = $db -> fetchRow();
+    if (!$bind){
+        $d2['bind_id'] = $row2['bind_id'];
+        $d2['us_id'] = $row2['us_id'];
+        $d2['bind_type'] = $row2['bind_type'];
+        $d2['bind_name'] = $row2['bind_name'];
+        $d2['bind_info'] = $row2['bind_info'];
+        $d2['bind_flag'] = $row2['bind_flag'];
+        $d2['utime'] = $row2['utime'];
+        $d2['ctime'] = $row2['ctime'];
+        $sql3 = $db->sqlInsert("us_bind", $d2);
+        $db->query($sql3);
+    }
 }
 
-
+echo "已完成同步!";
 
 
 //======================================
