@@ -3,9 +3,9 @@
 
 require_once "../inc/common.php";
 
-$mysql_server="18.219.136.69";
-$mysql_username="windwin";
-$mysql_password="0505Windwin";
+$mysql_server="18.223.166.99";
+$mysql_username="root";
+$mysql_password="Windwin2018";
 $mysql_database="hivebanks";
 //建立数据库链接
 $conn = mysql_connect($mysql_server,$mysql_username,$mysql_password) or die("数据库链接错误");
@@ -30,6 +30,7 @@ while ($row = mysql_fetch_assoc($result)) {
     $d['security_level'] = $row['security_level'];
     $d['utime'] = $row['utime'];
     $d['ctime'] = $row['ctime'];
+    $d['invite_code'] = $row['invite_code'];
     $sql = $db->sqlInsert("us_base", $d);
     $db->query($sql);
     send_to_us_ccvt($row['us_id']);
