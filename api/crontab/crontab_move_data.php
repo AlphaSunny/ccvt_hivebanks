@@ -16,7 +16,7 @@ ini_set("display_errors", "off");
 error_reporting(E_ALL | E_STRICT);
 
 //执行MySQL语句
-$sql = "SELECT * FROM us_base WHERE order by ctime ASC ";
+$sql = "SELECT * FROM us_base order by ctime ASC ";
 $result=mysql_query($sql);
 while ($row = mysql_fetch_assoc($result)) {
     $db = new DB_COM();
