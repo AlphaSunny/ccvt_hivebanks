@@ -51,6 +51,9 @@
                 状态
             </th>
             <th>
+                调戏功能
+            </th>
+            <th>
                 操作
             </th>
 
@@ -63,7 +66,13 @@
             if ($id){
                 #$sql = "delete from bot_group WHERE id='{$id}'";
                 $is_del = intval($_GET['is_del']);
-                $sql = "update bot_group set is_del='{$is_del}' WHERE id='{$id}'";
+                $is_flirt = intval($_GET['is_flirt']);
+                if ($is_del){
+                    $sql = "update bot_group set is_del='{$is_del}' WHERE id='{$id}'";
+                }
+                if ($is_flirt){
+                    $sql = "update bot_group set is_flirt='{$is_flirt}' WHERE id='{$id}'";
+                }
                 $db->query($sql);
                 $count = $db -> affectedRows();
                 if ($count){
@@ -85,12 +94,19 @@
                 <?php if ($v['is_del']==2){ echo "失效";}else{echo "运行中";}?>
             </td>
             <td>
+                <?php if ($v['is_flirt']==2){ echo "已关闭";}else{echo "运行中";}?>
+            </td>
+            <td>
                 <?php echo $v['ba_id']?>
             </td>
             <td>
                 <a href="edit_group.php?id=<?php echo $v['id']?>">修改</a>
+
                <?php if ($v['is_del']==1){?><a href="group.php?id=<?php echo $v['id']?>&is_del=2" onclick="return confirm('确定删除该记录吗?')">删除</a><?php }else{ ?>
                 <a href="group.php?id=<?php echo $v['id']?>&is_del=1" onclick="return confirm('确定恢复该记录吗?')">恢复</a><?php }?>
+
+                <?php if ($v['is_flirt']==1){?><a href="group.php?id=<?php echo $v['id']?>&is_flirt=2" onclick="return confirm('确定关闭调戏功能吗?')">关闭调戏</a><?php }else{ ?>
+                <a href="group.php?id=<?php echo $v['id']?>&is_flirt=1" onclick="return confirm('确定恢复调戏功能吗?')">打开调戏</a><?php }?>
             </td>
         </tr>
      <?php }} ?>
