@@ -74,7 +74,7 @@
 <div id="content">
     <ul>
         <?php
-        require_once '../api/inc/common.php';
+        require_once '../inc/common.php';
         ini_set("display_errors", "off");
         $args = array('datetime');
         chk_empty_args('GET', $args);

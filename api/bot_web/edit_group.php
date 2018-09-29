@@ -90,7 +90,7 @@
 </style>
 <body>
 <?php
-    require_once '../api/inc/common.php';
+    require_once '../inc/common.php';
     ini_set("display_errors", "off");
     $db = new DB_COM();
     if ($_POST['name'] && $_POST['ba_id']){
@@ -126,7 +126,7 @@
             ini_set("display_errors", "off");
             $id = intval($_GET['id']);
             if ($id) {
-                require_once '../api/inc/common.php';
+                require_once '../inc/common.php';
                 $db = new DB_COM();
                 $sql = "select * from bot_group WHERE id='{$id}'";
                 $db->query($sql);

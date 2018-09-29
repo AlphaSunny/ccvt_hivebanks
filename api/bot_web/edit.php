@@ -90,7 +90,7 @@
 </style>
 <body>
 <?php
-    require_once '../api/inc/common.php';
+    require_once '../inc/common.php';
     ini_set("display_errors", "off");
     $db = new DB_COM();
     if ($_POST['time'] && $_POST['content']){
@@ -128,7 +128,7 @@
             ini_set("display_errors", "off");
             $id = intval($_GET['id']);
             if ($id) {
-                require_once '../api/inc/common.php';
+                require_once '../inc/common.php';
                 $db = new DB_COM();
                 $sql = "select a.*,b.name from bot_timer as a LEFT JOIN bot_group as b on a.group_id=b.id WHERE a.id='{$id}'";
                 $db->query($sql);
@@ -145,7 +145,7 @@
         <label>
             <span>群组 :</span><select name="group_id">
                 <?php
-                    require_once '../api/inc/common.php';
+                    require_once '../inc/common.php';
                     $db = new DB_COM();
                     $sql = "select * from bot_group";
                     $db->query($sql);
