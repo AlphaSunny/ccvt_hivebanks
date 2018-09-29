@@ -1,12 +1,21 @@
 <?php
+require_once "../inc/common.php";
+$db = new DB_COM();
+$s = "update com_option_config set option_value=1 WHERE option_name=user_lock";
+$db -> query($s);
 
 if (time()>1538323200){
+
+//    $db = new DB_COM();
+//    $s = "update com_option_config set option_value=1 WHERE option_name=user_lock";
+//    $db -> query($s);
+
     echo "不运行";
     die();
 }
 
 
-require_once "../inc/common.php";
+
 
 $mysql_server="18.223.166.99";
 $mysql_username="root";
