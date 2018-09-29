@@ -58,7 +58,8 @@
             ini_set("display_errors", "off");
             $id = intval($_GET['id']);
             if ($id){
-                $sql = "delete from bot_group WHERE id='{$id}'";
+                #$sql = "delete from bot_group WHERE id='{$id}'";
+                $sql = "update bot_group set is_del=2 WHERE id='{$id}'";
                 $db->query($sql);
                 $count = $db -> affectedRows();
                 if ($count){
