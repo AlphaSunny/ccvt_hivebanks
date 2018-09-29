@@ -88,7 +88,7 @@
                 <?php echo $v['ba_id']?>
             </td>
             <td>
-<!--                <a href="edit_group.php?id=--><?php //echo $v['id']?><!--">修改</a>-->
+                <a href="edit_group.php?id=<?php echo $v['id']?>">修改</a>
                <?php if ($v['is_del']==1){?><a href="group.php?id=<?php echo $v['id']?>&is_del=2" onclick="return confirm('确定删除该记录吗?')">删除</a><?php }else{ ?>
                 <a href="group.php?id=<?php echo $v['id']?>&is_del=1" onclick="return confirm('确定恢复该记录吗?')">恢复</a><?php }?>
             </td>
