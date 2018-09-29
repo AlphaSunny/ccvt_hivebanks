@@ -30,7 +30,7 @@ if ($datetime){
 }
 $group_name = urlencode(base64_encode(get_arg_str('GET', 'group_name')));
 
-$url = "http://website.phpmanong.cn/chat.php?datetime=".base64_encode($datetime)."&group_name=".$group_name;
+$url = "http://ccvt.io/api/bot_web/chat.php?datetime=".base64_encode($datetime)."&group_name=".$group_name;
 
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
