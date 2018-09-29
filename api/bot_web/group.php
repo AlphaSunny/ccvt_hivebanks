@@ -94,10 +94,10 @@
                 <?php if ($v['is_del']==2){ echo "失效";}else{echo "运行中";}?>
             </td>
             <td>
-                <?php if ($v['is_flirt']==2){ echo "已关闭";}else{echo "运行中";}?>
+                <?php echo $v['ba_id']?>
             </td>
             <td>
-                <?php echo $v['ba_id']?>
+                <?php if ($v['is_flirt']==2){ echo "已关闭";}else{echo "运行中";}?>
             </td>
             <td>
                 <a href="edit_group.php?id=<?php echo $v['id']?>">修改</a>
