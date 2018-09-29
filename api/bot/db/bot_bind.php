@@ -135,7 +135,7 @@ function search_timer()
 function search_bot_group()
 {
     $db = new DB_COM();
-    $sql = "SELECT id,name,ba_id,is_del FROM bot_group ORDER BY intime asc";
+    $sql = "SELECT id,name,ba_id,is_del,is_flirt FROM bot_group ORDER BY intime asc";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
