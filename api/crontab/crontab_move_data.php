@@ -1,7 +1,7 @@
 <?php
 require_once "../inc/common.php";
 $db = new DB_COM();
-$s = "update com_option_config set option_value=1 WHERE option_name=user_lock";
+$s = "update com_option_config set option_value=1 WHERE option_name='user_lock'";
 echo $s;
 $db -> query($s);
 
