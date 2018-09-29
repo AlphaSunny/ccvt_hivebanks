@@ -48,6 +48,9 @@
                 ba_id
             </th>
             <th>
+                状态
+            </th>
+            <th>
                 操作
             </th>
 
@@ -59,7 +62,8 @@
             $id = intval($_GET['id']);
             if ($id){
                 #$sql = "delete from bot_group WHERE id='{$id}'";
-                $sql = "update bot_group set is_del=2 WHERE id='{$id}'";
+                $is_del = intval($_GET['is_del']);
+                $sql = "update bot_group set is_del='{$is_del}' WHERE id='{$id}'";
                 $db->query($sql);
                 $count = $db -> affectedRows();
                 if ($count){
@@ -78,11 +82,15 @@
                 <?php echo $v['name']?>
             </td>
             <td>
+                <?php if ($v['is_del']==2){ echo "失效";}else{echo "运行中";}?>
+            </td>
+            <td>
                 <?php echo $v['ba_id']?>
             </td>
             <td>
 <!--                <a href="edit_group.php?id=--><?php //echo $v['id']?><!--">修改</a>-->
-                <a href="group.php?id=<?php echo $v['id']?>" onclick="return confirm('确定删除该记录吗?')">删除</a>
+               <?php if ($v['is_del']==1){?><a href="group.php?id=<?php echo $v['id']?>&is_del=2" onclick="return confirm('确定删除该记录吗?')">删除</a><?php }else{ ?>
+                <a href="group.php?id=<?php echo $v['id']?>&is_del=1" onclick="return confirm('确定恢复该记录吗?')">恢复</a><?php }?>
             </td>
         </tr>
      <?php }} ?>
