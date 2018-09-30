@@ -48,53 +48,53 @@
                     <div class="form-header fadeInLeft">
                         <span class="f24 i18n" name="alreadyAccount">Already Have An Account?</span>&nbsp;&nbsp;<a href="login.html" class="c-login i18n" name="login">Login</a>
                     </div>
-                    <div class="registerToggleBox">
-                        <ul class="flex center space-around">
-                            <li class="active registerToggle phoneRegister">
-                                <i class="iconfont icon-shouji"></i>
-                                <span class="phoneRegisterTitle i18n" name="phoneRegisterTitle">Phone Register</span>
-                            </li>
-                            <li class="registerToggle emailRegister">
-                                <i class="iconfont icon-youxiang"></i>
-                                <span class="emailRegisterTitle i18n" name="emailRegisterTitle">Email Register</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- email register -->
-                    <div class="emailRegisterBox form-inner-content fadeInRight">
-                        <ul class="mess-ul">
-                            <li>
-                                <input type="email" class="form-control email i18n-input" name="username" value="" selectname="emailInput" selectattr="placeholder">
-                                <span class='ty-color input_tips email_tips i18n' name="emailNotEmpty">* E-mail Can Not Be Empty</span>
-                                <span class='ty-color input_tips emailErrorTips i18n' name="emailBad">* Bad Mailbox Format</span>
-                                <span class='ty-color input_tips emailLoginTips i18n' name="accountAlready">* Account Already Exists, Please Login</span>
-                            </li>
-                            <li>
-                                <input type="password" maxlength="16" id='emailPass' class="form-control emailPassword i18n-input" name="emailPassword" value="" selectname="passwordInput" selectattr="placeholder">
-                                <span class='ty-color input_tips password_tips i18n' name="passwordNotEmpty">* Password Can Not Be Blank</span>
-                                <span class='ty-color input_tips errEmailPass_tips i18n' name="PasswordStructure">* 8-16 Bits are composed of letters (case-sensitive),numbers,symbols</span>
-                                <div id="emailLevel" class="email-pw-strength pw-strength">
-                                    <div class="pw-bar"></div>
-                                    <div class="pw-bar-on"></div>
-                                    <div class="pw-txt">
-                                        <span class="weak i18n" name="weak">weak</span>
-                                        <span class="medium i18n" name="medium">medium</span>
-                                        <span class="strong i18n" name="strong">strong</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <input type="password" class="form-control againEmailPassword i18n-input" name="againEmailPassword" value="" selectname="againPasswordInput" selectattr="placeholder">
-                                <span class='ty-color input_tips emailAgainPassword_tips i18n' name="confirmPasswordNotEmpty">* Confirm Password Can Not Be Blank</span>
-                                <span class='ty-color input_tips emailSamePassword_tips i18n' name="TwoPassword">* Two Passwords Must Be The Same</span>
-                            </li>
-                            <!--<li>-->
-                                <!--<input type="text" class="form-control emailInvitCode i18n-input" name="emailInvitCode" value="" selectname="invitCodeInput" selectattr="placeholder">-->
-                                <!--<span class='ty-color input_tips emailInvitCode_tips i18n' name="invitCodeNotEmpty">* Invitation Code Cannot Be Empty</span>-->
+                    <!--<div class="registerToggleBox">-->
+                        <!--<ul class="flex center space-around">-->
+                            <!--<li class="active registerToggle phoneRegister">-->
+                                <!--<i class="iconfont icon-shouji"></i>-->
+                                <!--<span class="phoneRegisterTitle i18n" name="phoneRegisterTitle">Phone Register</span>-->
                             <!--</li>-->
-                        </ul>
-                        <button data-toggle="modal" class="btn btn-lg btn-success register emailRegisterBtn login i18n" name="register">Register</button>
-                    </div>
+                            <!--<li class="registerToggle emailRegister">-->
+                                <!--<i class="iconfont icon-youxiang"></i>-->
+                                <!--<span class="emailRegisterTitle i18n" name="emailRegisterTitle">Email Register</span>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!-- email register -->
+                    <!--<div class="emailRegisterBox form-inner-content fadeInRight">-->
+                        <!--<ul class="mess-ul">-->
+                            <!--<li>-->
+                                <!--<input type="email" class="form-control email i18n-input" name="username" value="" selectname="emailInput" selectattr="placeholder">-->
+                                <!--<span class='ty-color input_tips email_tips i18n' name="emailNotEmpty">* E-mail Can Not Be Empty</span>-->
+                                <!--<span class='ty-color input_tips emailErrorTips i18n' name="emailBad">* Bad Mailbox Format</span>-->
+                                <!--<span class='ty-color input_tips emailLoginTips i18n' name="accountAlready">* Account Already Exists, Please Login</span>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<input type="password" maxlength="16" id='emailPass' class="form-control emailPassword i18n-input" name="emailPassword" value="" selectname="passwordInput" selectattr="placeholder">-->
+                                <!--<span class='ty-color input_tips password_tips i18n' name="passwordNotEmpty">* Password Can Not Be Blank</span>-->
+                                <!--<span class='ty-color input_tips errEmailPass_tips i18n' name="PasswordStructure">* 8-16 Bits are composed of letters (case-sensitive),numbers,symbols</span>-->
+                                <!--<div id="emailLevel" class="email-pw-strength pw-strength">-->
+                                    <!--<div class="pw-bar"></div>-->
+                                    <!--<div class="pw-bar-on"></div>-->
+                                    <!--<div class="pw-txt">-->
+                                        <!--<span class="weak i18n" name="weak">weak</span>-->
+                                        <!--<span class="medium i18n" name="medium">medium</span>-->
+                                        <!--<span class="strong i18n" name="strong">strong</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<input type="password" class="form-control againEmailPassword i18n-input" name="againEmailPassword" value="" selectname="againPasswordInput" selectattr="placeholder">-->
+                                <!--<span class='ty-color input_tips emailAgainPassword_tips i18n' name="confirmPasswordNotEmpty">* Confirm Password Can Not Be Blank</span>-->
+                                <!--<span class='ty-color input_tips emailSamePassword_tips i18n' name="TwoPassword">* Two Passwords Must Be The Same</span>-->
+                            <!--</li>-->
+                            <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<input type="text" class="form-control emailInvitCode i18n-input" name="emailInvitCode" value="" selectname="invitCodeInput" selectattr="placeholder">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<span class='ty-color input_tips emailInvitCode_tips i18n' name="invitCodeNotEmpty">* Invitation Code Cannot Be Empty</span>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                        <!--</ul>-->
+                        <!--<button data-toggle="modal" class="btn btn-lg btn-success register emailRegisterBtn login i18n" name="register">Register</button>-->
+                    <!--</div>-->
 
                     <!-- Small modal -->
                     <div id="registerSuccess" class="modal fade" tabindex="-1" role="dialog" data-backdrop="false" data-keyboard="false">
