@@ -11,6 +11,7 @@ $res = openssl_pkey_new($config);
 //从得到的资源中获取私钥  并把私钥赋给$privKey
 openssl_pkey_export($res, $privKey);
 
+print_r($privKey);
 //从得到的资源中获取私钥  并把私钥赋给$pubKey
 $pubKey = openssl_pkey_get_details($res);
 
