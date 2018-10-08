@@ -21,6 +21,15 @@ $pubKey = $pubKey["key"];
 print_r(base64_encode($pubKey));
 echo "<br />";
 print_r($pubKey);
+
+echo "<br />";
+$data = "1234";
+openssl_public_encrypt($data, $encrypted, $pubKey);
+echo base64_encode($encrypted);
+echo "<br />";
+$decrypted = base64_decode($encrypted);
+openssl_private_decrypt($encrypted, $decrypted, $privKey);
+echo $decrypted;
 //var_dump(array('privKey'=>$privKey,'pubKey'=>$pubKey));
 die;
 
