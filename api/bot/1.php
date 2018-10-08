@@ -12,12 +12,15 @@ $res = openssl_pkey_new($config);
 openssl_pkey_export($res, $privKey);
 
 print_r($privKey);
+echo "<br />";
 //从得到的资源中获取私钥  并把私钥赋给$pubKey
 $pubKey = openssl_pkey_get_details($res);
 
 $pubKey = $pubKey["key"];
 
 print_r(base64_encode($pubKey));
+echo "<br />";
+print_r($pubKey);
 //var_dump(array('privKey'=>$privKey,'pubKey'=>$pubKey));
 die;
 
