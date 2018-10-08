@@ -24,10 +24,11 @@ print_r($pubKey);
 
 echo "<br />";
 $data = "1234";
-echo $data;
+
 openssl_public_encrypt($data, $encrypted, $pubKey);
 echo base64_encode($encrypted);
 echo "<br />";
+echo $data;
 $decrypted = base64_decode($encrypted);
 openssl_private_decrypt($encrypted, $decrypted, $privKey);
 echo $decrypted;
