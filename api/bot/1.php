@@ -17,7 +17,7 @@ $pubKey = openssl_pkey_get_details($res);
 
 $pubKey = $pubKey["key"];
 
-print_r($pubKey);
+print_r(base64_encode($pubKey));
 //var_dump(array('privKey'=>$privKey,'pubKey'=>$pubKey));
 die;
 
