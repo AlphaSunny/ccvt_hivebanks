@@ -1,12 +1,12 @@
 <?php
 //http://www.lampol-blog.com/detail/aid/ZDk5MmFNZ2pJL1pROW5QZU9KZ2FWdVlFTDVHRnRmZm4rNDMzSFlHNg%3D%3D 各种秘钥生成的教程
 //生成密钥
-$opensslConfigPath = "D:\phpstudy\PHPTutorial\Apache\conf\openssl.cnf";
+//$opensslConfigPath = "D:\phpstudy\PHPTutorial\Apache\conf\openssl.cnf";
 $config = array(
     "digest_alg" => "sha512",
     "private_key_bits" =>2048,
     "private_key_type" => OPENSSL_KEYTYPE_RSA,
-    'config'=> $opensslConfigPath
+    //'config'=> $opensslConfigPath
 );
 
 
