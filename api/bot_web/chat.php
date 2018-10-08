@@ -144,7 +144,7 @@
 
             <div class="infoBox flex">
                 <div class="photo">
-                    <img src="<?php echo $v['head_img']?>" alt="">
+                    <img src="http://52.53.151.223:8000/<?php echo $v['head_img']?>" alt="">
                 </div>
                 <div class="chatInfo">
                     <p class="name"><?php echo $v['bot_nickname']?></p>
