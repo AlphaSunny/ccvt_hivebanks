@@ -24,6 +24,7 @@ print_r($pubKey);
 
 echo "<br />";
 $data = "1234";
+echo $data;
 openssl_public_encrypt($data, $encrypted, $pubKey);
 echo base64_encode($encrypted);
 echo "<br />";
