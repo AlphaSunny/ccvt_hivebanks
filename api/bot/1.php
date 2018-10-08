@@ -1,6 +1,6 @@
 <?php
 $config = array(
-    //"digest_alg" => "sha512",
+    "digest_alg" => "sha512",
     "private_key_bits" => 512,
     "private_key_type" => OPENSSL_KEYTYPE_RSA,
 );
