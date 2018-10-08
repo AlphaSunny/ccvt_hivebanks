@@ -4,7 +4,7 @@
 #$opensslConfigPath = "D:\phpstudy\PHPTutorial\Apache\conf\openssl.cnf";
 $config = array(
     "digest_alg" => "sha256",
-    "private_key_bits" =>1024,
+    "private_key_bits" =>256,
     "private_key_type" => OPENSSL_KEYTYPE_RSA,
     #'config'=> $opensslConfigPath
 );
