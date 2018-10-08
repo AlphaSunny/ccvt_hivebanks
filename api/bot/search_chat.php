@@ -32,9 +32,8 @@ $group_name = urlencode(base64_encode(get_arg_str('GET', 'group_name')));
 
 $json_string = file_get_contents('../../h5/assets/json/config_url.json');
 $data = json_decode($json_string, true);
-print_r($data);die;
 
-$url = "http://ccvt.io/api/bot_web/chat.php?datetime=".base64_encode($datetime)."&group_name=".$group_name;
+$url = $data['api_url']."/api/bot_web/chat.php?datetime=".base64_encode($datetime)."&group_name=".$group_name;
 
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
