@@ -15,7 +15,9 @@ openssl_pkey_export($res, $privKey);
 $pubKey = openssl_pkey_get_details($res);
 
 $pubKey = $pubKey["key"];
-var_dump(array('privKey'=>$privKey,'pubKey'=>$pubKey));
+
+print_r($pubKey);
+//var_dump(array('privKey'=>$privKey,'pubKey'=>$pubKey));
 die;
 
 
