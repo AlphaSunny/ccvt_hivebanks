@@ -18,7 +18,7 @@ openssl_pkey_export($res, $privkey, null, $config);
 $pubKey = openssl_pkey_get_details($res)['key'];
 print_r($privkey);
 echo '<div style="height:100px;background:#ffe583">1</div>';
-print_r($pubKey);
+print_r(base64_encode($pubKey));
 file_put_contents('private.key',$privkey);
 file_put_contents('public.key',$pubKey);
 ?>
