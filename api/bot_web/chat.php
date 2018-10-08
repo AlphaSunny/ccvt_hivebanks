@@ -2,77 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>记录</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>聊天记录</title>
 </head>
 <style>
-    body, html {
-        height: 100%;
+    body {
+        background: rgb(243, 243, 243);
         margin: 0;
         padding: 0;
-        background: rgb(243,243,243);
-        color: #333;
-        font-size: 14px;
-        font-family: 'Roboto', "微软雅黑", sans-serif;
+        font-size: 16px;
     }
 
-    #title{
-        padding: 1rem 0;
-        border-bottom: 1px solid #9e9e9e;
-    }
-
-    #content {
-        margin: auto;
-        padding: 30px;
-    }
-
-    h1 {
-        text-align: center;
-        padding: 0;
+    p {
         margin: 0;
+        padding: 0;
     }
 
-    #content li {
+    #chat {
+        width: 100%;
+    }
+
+    #chat .title {
+        margin: 0;
+        background: #333333;
+        color: #ffffff;
+        padding: 3% 0;
+    }
+
+    #chat li {
         list-style: none;
-        padding: 2% 0;
     }
 
-    ul {
-        padding: 0;
+    #chat .chatList {
+        padding: 0 10px;
     }
 
-    #content .time {
-        color: #333;
-        font-size: 12px;
-    }
-
-    #content .chatContent {
+    #chat .chatContent {
         background: #ffffff;
-        color: #333333;
-        padding: 2%;
-        border-radius: 20px;
-        position: relative;
-        margin: 0;
+        padding: 3%;
+        border-radius: 5px;
+        width: 100%;
+        text-align: justify;
     }
 
-    #content .chatContent:before {
-        content: "";
-        width: 0;
-        height: 0;
-        display: block;
-        position: absolute;
-        top: 0%;
-        left: 3%;
-        transform: rotate(45deg);
+    #chat .time {
+        font-size: 12px;
+        color: #ffffff;
         border-radius: 5px;
-        border: 1.5rem solid #ffffff;
-        border-bottom-color: transparent;
-        border-right-color: transparent;
+        padding: 1% 2%;
+        background: #cac8c8;
+    }
+
+    .timeBox {
+        padding: 5% 0;
+    }
+
+    #chat .chatItem {
+        position: relative;
+        margin-bottom: 5%;
+    }
+
+    #chat .photo {
+        width: 2.5rem;
+        height: 2.5rem;
+        background: #204d74;
+        display: inline-block;
+        position: relative;
+    }
+
+    .photo:after {
+        content: "";
+        border: 5px solid #ffffff;
+        position: absolute;
+        right: -35%;
+        top: 66%;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        transform: rotate(135deg);
+        border-radius: 2px;
+    }
+
+    #chat .chatInfo {
+        max-width: 75%;
+        padding-left: 2%;
+    }
+
+    #chat .name {
+        color: #9e9e9e;
+        font-size: 12px;
+        margin-bottom: 1%;
+    }
+
+    .infoBox {
+        display: flex;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .photo img {
+        width: 100%;
     }
 </style>
 <body>
-<div id="title"><h1><?php echo base64_decode($_REQUEST['group_name']);?>--聊天记录</h1></div>
-<div id="content">
-    <ul>
+<div id="chat">
+    <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']);?></p>
+    <ul class="chatList">
         <?php
         require_once '../inc/common.php';
         ini_set("display_errors", "off");
@@ -85,19 +122,37 @@
         $day_end = strtotime(date($datetime.' 23:59:59'));
 
         $tblPrefix = "@风赢小助手";
-        $sql = "select bot_nickname,bot_content,bot_send_time from bot_message WHERE group_name='{$group_name}' AND bot_content NOT LIKE '$tblPrefix%' AND bot_nickname!='风赢小助手' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY bot_create_time  ASC ";
+        $tblPrefix2 = "@小助手";
+        $sql = "select bot_nickname,bot_content,bot_send_time from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY bot_create_time  ASC ";
         $db->query($sql);
         $rows = $db->fetchAll();
         foreach ($rows as $k=>$v){
+            $ti = -1;
         ?>
-        <li>
-            <p>
-                <span class="name"><?php echo $v['bot_nickname']?></span>
+        <li class="chatItem">
+            <?php
+                $bot_create_time = $v['bot_create_time'];
+                if($ti!=-1 and $bot_create_time-$ti>1800){
+            ?>
+            <div class="text-center timeBox">
                 <span class="time"><?php echo $v['bot_send_time']?></span>
-            </p>
-            <p class="chatContent">
-                <?php echo $v['bot_content']?>
-            </p>
+            </div>
+            <?php
+                }
+                $ti = $bot_create_time;
+            ?>
+
+            <div class="infoBox flex">
+                <div class="photo">
+                    <img src="http://52.53.151.223:8000/<?php echo $v['head_img']?>" alt="">
+                </div>
+                <div class="chatInfo">
+                    <p class="name"><?php echo $v['bot_nickname']?></p>
+                    <p class="chatContent">
+                        <?php echo $v['bot_content']?>
+                    </p>
+                </div>
+            </div>
         </li>
         <?php } ?>
     </ul>
