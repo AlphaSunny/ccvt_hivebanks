@@ -21,7 +21,7 @@ GET参数
 
 php_begin();
 
-$args = array('nickname','content','send_time','wechat','ba_id','group_name','type');
+$args = array('nickname','content','send_time','wechat','ba_id','group_name','type','head_img');
 chk_empty_args('GET', $args);
 
 //信息唯一值
@@ -34,6 +34,7 @@ $data['wechat'] = get_arg_str('GET','wechat');
 $data['ba_id']  = get_arg_str('GET', 'ba_id');
 $data['group_name']  = get_arg_str('GET', 'group_name');
 $data['type']  = get_arg_str('GET', 'type');
+$data['head_img']  = get_arg_str('GET', 'head_img');
 //存入群消息
 send_amount($data);
 exit_ok();
