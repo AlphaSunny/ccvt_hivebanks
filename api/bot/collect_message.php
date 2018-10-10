@@ -27,7 +27,7 @@ chk_empty_args('GET', $args);
 //信息唯一值
 $data['bot_message_id'] = get_guid();
 $data['bot_nickname'] = get_arg_str('GET','nickname');
-$data['bot_content'] = get_arg_str('GET', 'content');
+$data['bot_content'] = $_REQUEST['content'];
 echo strlen($data['bot_content']);
 echo $data['bot_content'];die;
 $data['bot_send_time'] = get_arg_str('GET', 'send_time');
