@@ -22,6 +22,7 @@ function send_amount($data) {
 
     //存储聊天记录
     $sql = $db->sqlInsert("bot_message", $data);
+    echo $sql;die;
     $bot_message_id = $db->query($sql);
     if (!$bot_message_id){
         $db->Rollback($pInTrans);
