@@ -128,7 +128,7 @@
         $rows = $db->fetchAll();
 
         foreach ($rows as $k=>$v){
-            $ti = $ti+-1;
+            $ti = $ti+(-1);
         ?>
         <li class="chatItem">
             <?php
