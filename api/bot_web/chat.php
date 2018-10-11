@@ -155,7 +155,7 @@
                         <?php
                            }elseif($v['type']=="Video" || $v['type']=="Recording"){
                         ?>
-                               <audio id="audioplayer" preload="auto" controls style="width: 100%;height: 150px" >
+                               <audio id="audioplayer" preload="auto" controls style="width:150%;" >
                                    <source src="<?php echo $v['bot_content']?>" type="audio/mp3">
                                </audio>
                         <?php
