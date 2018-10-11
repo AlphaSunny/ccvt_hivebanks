@@ -148,7 +148,23 @@
                 <div class="chatInfo">
                     <p class="name"><?php echo $v['bot_nickname']?></p>
                     <p class="chatContent">
-                        <?php echo $v['bot_content']?>
+                        <?php
+                           if($v['type']=="Picture"){
+                        ?>
+                        <img src="<?php echo $v['bot_content']?>">
+                        <?php
+                           }elseif($v['type']=="Video" || $v['type']=="Recording"){
+                        ?>
+                               <audio id="audioplayer" preload="auto" controls style="width:100%;" >
+                                   <source src="<?php echo $v['bot_content']?>" type="audio/mp3">
+                               </audio>
+                        <?php
+                           }else{
+                        ?>
+                          <?php echo $v['bot_content']?>
+                        <?php
+                        }
+                        ?>
                     </p>
                 </div>
             </div>
