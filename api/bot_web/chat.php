@@ -141,6 +141,8 @@
             </div>
             <?php
                 }
+                echo $v['bot_create_time'];
+                $ti = $v['bot_create_time'];
             ?>
 
             <div class="infoBox flex">
@@ -156,9 +158,6 @@
             </div>
         </li>
         <?php
-            echo $v['bot_create_time'];
-            $ti = $v['bot_create_time'];
-            echo $ti;
         } ?>
     </ul>
 </div>
