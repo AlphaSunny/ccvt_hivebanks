@@ -134,15 +134,14 @@
                 echo $v['bot_create_time'];
                 echo "<br />";
                 echo $ti;
-                if($ti!=-1 and $v['bot_create_time']-$ti>60){
+                if($ti!=-1 and ($v['bot_create_time']-$ti)>60){
             ?>
             <div class="text-center timeBox">
                 <span class="time"><?php echo $v['bot_send_time'];?></span>
             </div>
             <?php
-                }else{
-                    $ti = $v['bot_create_time'];
                 }
+                $ti = $v['bot_create_time'];
             ?>
 
             <div class="infoBox flex">
