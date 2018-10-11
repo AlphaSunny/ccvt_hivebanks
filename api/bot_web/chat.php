@@ -134,7 +134,7 @@
                 echo $v['bot_create_time'];
                 echo "<br />";
                 echo $ti;
-                if($ti!=-1 and ($v['bot_create_time']-$ti)>60){
+                if(($v['bot_create_time']-$ti)>60){
             ?>
             <div class="text-center timeBox">
                 <span class="time"><?php echo $v['bot_send_time'];?></span>
