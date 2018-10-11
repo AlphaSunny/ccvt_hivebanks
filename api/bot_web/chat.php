@@ -151,7 +151,7 @@
                         <?php
                            if($v['type']=="Picture"){
                         ?>
-                        <img src="<?php echo $v['bot_content']?>">
+                        <img src="<?php echo $v['bot_content']?>" style="width: 70%;height: 150px">
                         <?php
                            }elseif($v['type']=="Video" || $v['type']=="Recording"){
                         ?>
