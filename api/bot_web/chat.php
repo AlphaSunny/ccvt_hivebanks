@@ -157,6 +157,7 @@
         </li>
         <?php
             $ti = $v['bot_create_time'];
+            echo $ti;
         } ?>
     </ul>
 </div>
