@@ -131,7 +131,7 @@
         ?>
         <li class="chatItem">
             <?php
-                if($ti!=-1 && ($v['bot_create_time']-$ti)>60){
+                if($ti!=-1){
             ?>
             <div class="text-center timeBox">
                 <span class="time"><?php echo $v['bot_send_time'];?></span>
