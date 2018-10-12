@@ -23,10 +23,10 @@ function  get_log_balance_total($us_id)
 //         hash_id              HASH值
 //         ctime                变动时间
 //======================================
-function get_log_balance($ba_id)
+function get_log_balance($ba_id,$offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "SELECT tx_type,tx_amount,credit_balance,hash_id,ctime FROM com_base_balance WHERE credit_id = '{$ba_id}' order by ctime desc";
+    $sql = "SELECT tx_type,tx_amount,credit_balance,hash_id,ctime FROM com_base_balance WHERE credit_id = '{$ba_id}' order by ctime desc limit $offset , $limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;

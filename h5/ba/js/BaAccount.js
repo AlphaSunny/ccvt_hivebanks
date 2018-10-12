@@ -125,7 +125,7 @@ $(function () {
                 if (data.length <= 0) {
                     $('.eg').hide();
                 }
-                var pageCount = Math.ceil(data.length / limit);
+                var pageCount = Math.ceil(response.total / limit);
                 $('.totalPage').text(pageCount);
                 $.each(data, function (i, val) {
                     if(data == false){
