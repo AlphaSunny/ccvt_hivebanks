@@ -64,6 +64,8 @@ function ins_base_user_reg_base_info($data_base)
         send_to_us_ccvt(get_invite_code_us($data_base['invite_code']),'invite_send','50');
     }
 
+    echo 2222;die;
+
     return true;
 }
 
