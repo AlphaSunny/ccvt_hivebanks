@@ -25,7 +25,7 @@ function invite_code_check($invite_check){
 function get_invite_code_us($invite_check){
 
     $db = new DB_COM();
-    $sql = "select us_id from us_base where us_nm={$invite_check}";
+    $sql = "select us_id from us_base where us_nm='{$invite_check}'";
     $db->query($sql);
     $rows = $db->fetchRow();
     return $rows['us_id'];
