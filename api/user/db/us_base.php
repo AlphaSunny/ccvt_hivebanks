@@ -132,7 +132,6 @@ function send_to_us_ccvt($us_id,$type,$money)
     $com_balance_us["ctime"] = $ctime;
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
-    echo $sql;die;
     if (!$db->query($sql)) {
         return false;
     }
