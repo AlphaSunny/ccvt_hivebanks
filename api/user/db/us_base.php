@@ -64,7 +64,6 @@ function ins_base_user_reg_base_info($data_base)
         send_to_us_ccvt(get_invite_code_us($data_base['invite_code']),'invite_send','50');
     }
 
-    echo 2222;die;
 
     return true;
 }
@@ -90,6 +89,7 @@ function send_to_us_ccvt($us_id,$type,$money)
     if (!$db->affectedRows()){
         return false;
     }
+    echo 2222;
 
     //ba减钱
     $sql = "select * from ba_base ORDER BY utime asc limit 1";
@@ -101,6 +101,7 @@ function send_to_us_ccvt($us_id,$type,$money)
     if (!$db->affectedRows()){
         return false;
     }
+    echo 3333;
 
     //增币记录
     $d['re_id'] = get_guid();
@@ -116,6 +117,8 @@ function send_to_us_ccvt($us_id,$type,$money)
     if (!$id){
         return false;
     }
+
+    echo 444;
 
     //us添加基准资产变动记录
     $us_type = 'us_reg_send_balance';
