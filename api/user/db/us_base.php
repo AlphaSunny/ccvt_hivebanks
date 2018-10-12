@@ -17,6 +17,21 @@ function invite_code_check($invite_check){
 
 }
 
+/**
+ * 根据邀请码获取用户
+ * @param $invite_check
+ * @return bool
+ */
+function get_invite_code_us($invite_check){
+
+    $db = new DB_COM();
+    $sql = "select us_id from us_base where us_nm={$invite_check}";
+    $db->query($sql);
+    $rows = $db->fetchRow();
+    return $rows['us_id'];
+
+}
+
 //======================================
 // 函数: 创建注册用户
 // 参数: data        信息数组
@@ -41,7 +56,12 @@ function ins_base_user_reg_base_info($data_base)
     $array = array('2018-10-01','2018-10-02','2018-10-03','2018-10-04','2018-10-05','2018-10-06','2018-10-07');
     $now = date('Y-m-d');
     if(in_array($now,$array)){
-        send_to_us_ccvt($data_base['us_id']);
+        send_to_us_ccvt($data_base['us_id'],'reg_send','500');
+    }
+
+    //邀请人获取50ccvt
+    if ($data_base['invite_code']){
+        send_to_us_ccvt(get_invite_code_us($data_base['invite_code']),'invite_send','50');
     }
 
     return true;
@@ -58,12 +78,11 @@ function ins_base_user_reg_base_info($data_base)
 // 返回: true         创建成功
 //       false        创建失败
 //======================================
-function send_to_us_ccvt($us_id)
+function send_to_us_ccvt($us_id,$type,$money)
 {
     $db = new DB_COM();
     //送币
     $unit = la_unit();
-    $money = "500";
     $sql = "update us_base set base_amount=base_amount+'{$money}'*'{$unit}' WHERE us_id='{$us_id}'";
     $db -> query($sql);
     if (!$db->affectedRows()){
@@ -104,7 +123,7 @@ function send_to_us_ccvt($us_id)
     $com_balance_us['prvs_hash'] = get_recharge_pre_hash($us_id);
     $com_balance_us["credit_id"] = $d['us_id'];
     $com_balance_us["debit_id"] = $rows['ba_id'];
-    $com_balance_us["tx_type"] = "reg_send";
+    $com_balance_us["tx_type"] = $type;
     $com_balance_us["tx_amount"] = $money*$unit;
     $com_balance_us["credit_balance"] = get_us_account($us_id);
     $com_balance_us["utime"] = time();
@@ -122,7 +141,7 @@ function send_to_us_ccvt($us_id)
     $com_balance_ba['prvs_hash'] = get_recharge_pre_hash($rows['ba_id']);
     $com_balance_ba["credit_id"] = $rows['ba_id'];
     $com_balance_ba["debit_id"] = $d['us_id'];
-    $com_balance_ba["tx_type"] = "reg_send";
+    $com_balance_ba["tx_type"] = $type;
     $com_balance_ba["tx_amount"] = $money*$unit;
     $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id']);
     $com_balance_ba["utime"] = time();
