@@ -39,7 +39,7 @@ $ba_id = check_token($token);
 $total = get_log_balance_total($ba_id);
 // 获取当前用户的交易记录
 $newrows = array();
-$rows = get_log_balance($ba_id,$offset,$limit);
+$rows = get_log_balance($ba_id);
 foreach ($rows as $row) {
     $newrow["tx_type"] = $row["tx_type"];
     $newrow["tx_amount"] = $row["tx_amount"] / get_la_base_unit();
