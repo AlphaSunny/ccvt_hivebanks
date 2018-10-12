@@ -89,7 +89,6 @@ function send_to_us_ccvt($us_id,$type,$money)
     if (!$db->affectedRows()){
         return false;
     }
-    echo 2222;
 
     //ba减钱
     $sql = "select * from ba_base ORDER BY utime asc limit 1";
@@ -101,7 +100,6 @@ function send_to_us_ccvt($us_id,$type,$money)
     if (!$db->affectedRows()){
         return false;
     }
-    echo 3333;
 
     //增币记录
     $d['re_id'] = get_guid();
@@ -118,7 +116,6 @@ function send_to_us_ccvt($us_id,$type,$money)
         return false;
     }
 
-    echo 444;
 
     //us添加基准资产变动记录
     $us_type = 'us_reg_send_balance';
@@ -135,6 +132,7 @@ function send_to_us_ccvt($us_id,$type,$money)
     $com_balance_us["ctime"] = $ctime;
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
+    echo $sql;die;
     if (!$db->query($sql)) {
         return false;
     }
