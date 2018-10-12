@@ -35,6 +35,8 @@ $token = get_arg_str('GET', 'token',128);
 list($limit, $offset) = get_paging_arg('GET');
 //验证token
 $ba_id = check_token($token);
+// 获取当前用户的交易总记录
+$total = get_log_balance_total($ba_id);
 // 获取当前用户的交易记录
 $newrows = array();
 $rows = get_log_balance($ba_id,$offset,$limit);
@@ -52,5 +54,6 @@ $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
 $rtn_ary['rows'] = $newrows ? $newrows : [];
+$rtn_ary['total'] = $total;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
