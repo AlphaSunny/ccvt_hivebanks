@@ -41,16 +41,16 @@
     <table width="100%" id="ListArea" border="0" class="t1" align="center" cellpadding="0"
            cellspacing="0">
         <tr align="center">
-            <th>
+            <th style="width: 10%">
                 时间
             </th>
-            <th>
+            <th style="width: 60%">
                 内容
             </th>
-            <th>
+            <th style="width: 20%">
                 群组
             </th>
-            <th>
+            <th style="width: 10%">
                 操作
             </th>
 
