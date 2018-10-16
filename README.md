@@ -9,6 +9,7 @@ wget -O /hivebanks.tar http://doc.fnying.com/environment/hivebanks.tar && tar xv
 3：The configuration script information is as follows
 #!/bin/bash
 
+
 apt-get -y update
 # installation nginx
 apt-get -y install nginx
