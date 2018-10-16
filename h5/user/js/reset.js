@@ -69,6 +69,21 @@ $(function () {
         }
     });
 
+    $(".email_confirm_Password").focus(function () {
+        $(this).siblings('span').hide();
+    });
+    $('.email_confirm_Password').blur(function () {
+        var confirmemailPassword = $(this).val();
+        if (confirmemailPassword.length <= 0) {
+            $('.confirmpassword_tips').fadeIn().siblings('span').hide();
+            return;
+        }
+        if (emailPassword.length < 8) {
+            $('.errconfirmEmailPass_tips').fadeIn().siblings('span').hide();
+            return;
+        }
+    });
+
     // Reset email to get verification code
     $('.emailCodeBtn').click(function () {
         var email = $('.email').val();
@@ -95,7 +110,10 @@ $(function () {
         var email = $('.email').val(),
             cfm_code = $('.emailcfmCode').val(),
             emailPassword = $('.emailPassword').val(),
-            pass_word_hash = hex_sha1(emailPassword);
+            email_confirm_Password = $('.email_confirm_Password').val(),
+            pass_word_hash = hex_sha1(emailPassword),
+            confirm_pass_word_hash = hex_sha1(email_confirm_Password);
+
         if (email == '') {
             $('.email_tips').fadeIn().siblings('span').fadeOut();
             LayerFun('emailNotEmpty');
@@ -116,14 +134,20 @@ $(function () {
             LayerFun('passwordNotEmpty');
             return;
         }
+        if (confirm_pass_word_hash == '') {
+            $('.confirmpassword_tips').fadeIn().siblings('span').hide();
+            LayerFun('confirmPasswordNotEmpty');
+            return;
+        }
         var $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
-        ResetEmailPassword(email, cfm_code, pass_word_hash, function (response) {
+        ResetEmailPassword(email, cfm_code, pass_word_hash, confirm_pass_word_hash, function (response) {
             ActiveClick($this, btnText);
             if (response.errcode == '0') {
                 $('.email').val('');
                 $('.emailcfmCode').val('');
                 $('.emailPassword').val('');
+                $('.email_confirm_Password').val('');
                 LayerFun('modifySuccess');
             }
 
@@ -203,6 +227,21 @@ $(function () {
         }
     });
 
+    $('.confirmphonePassword').focus(function () {
+        $(this).siblings('span').hide();
+    });
+    $('.confirmphonePassword').blur(function () {
+        var phonePassword = $(this).val();
+        if(phonePassword.length <= 0){
+            $('.ConfirmPhonepassword_tips').fadeIn().siblings('span').hide();
+            return;
+        }
+        if(phonePassword.length < 8){
+            $('.errconfirmPhonePass_tips').fadeIn().siblings('span').hide();
+            return;
+        }
+    });
+
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
         var bind_type = '3', $this = $(this), cfm_code = $('.phoneCfmCode').val();
@@ -226,7 +265,9 @@ $(function () {
             cfm_code = $('.phoneCfmCode').val(),
             sms_code = $('.phoneSmsCode').val(),
             phonePassword = $('.phonePassword').val(),
-            pass_word_hash = hex_sha1(phonePassword);
+            confirmphonePassword = $('.confirmphonePassword').val(),
+            pass_word_hash = hex_sha1(phonePassword),
+            confirm_pass_word_hash = hex_sha1(confirmphonePassword);
         if (cellphone == '') {
             LayerFun('phoneNotEmpty');
             $('.phone_tips').fadeIn().siblings('span').hide();
@@ -249,21 +290,32 @@ $(function () {
             $('.Phonepassword_tips').fadeIn().siblings('span').hide();
             return;
         }
+        if (confirmphonePassword == '') {
+            LayerFun('confirmPasswordNotEmpty');
+            $('.ConfirmPhonepassword_tips').fadeIn().siblings('span').hide();
+            return;
+        }
         if (phonePassword.length < 8) {
             LayerFun('passwordNotEmpty');
             $('.PasswordStructure').fadeIn().siblings('span').hide();
             return;
         }
+        if (confirmphonePassword.length < 8) {
+            LayerFun('confirmPasswordNotEmpty');
+            $('.confirmPasswordStructure').fadeIn().siblings('span').hide();
+            return;
+        }
 
         var $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
-        ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash, function (response) {
+        ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash, confirm_pass_word_hash, function (response) {
             ActiveClick($this, btnText);
             if (response.errcode == '0') {
                 $('.phone').val('');
                 $('.phoneCfmCode').val('');
                 $('.phoneSmsCode').val('');
                 $('.phonePassword').val('');
+                $('.confirmphonePassword').val('');
                 LayerFun('modifySuccess');
             }
 
