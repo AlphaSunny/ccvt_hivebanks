@@ -69,39 +69,39 @@ function GetErrorCode(code) {
 
 //Get configuration file/Base currency type
 var config_api_url = '', config_h5_url = '', userLanguage = getCookie('userLanguage');
-    $.ajax({
-        url: url+"/h5/assets/json/config_url.json",
-        async: false,
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            config_api_url = data.api_url;
-            config_h5_url = data.h5_url;
-            var benchmark_type = data.benchmark_type.toUpperCase();
-            var ca_currency = data.ca_currency.toUpperCase();
-            $('.base_type').text(benchmark_type);
-            $('.ca_currency').text(ca_currency);
-            SetCookie('ca_currency', ca_currency);
-            SetCookie('benchmark_type', benchmark_type);
-            if(!userLanguage){
-                SetCookie('userLanguage', data.userLanguage);
-            }else {
-                return;
-            }
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-
+$.ajax({
+    url: url+"/h5/assets/json/config_url.json",
+    async: false,
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+        config_api_url = data.api_url;
+        config_h5_url = data.h5_url;
+        var benchmark_type = data.benchmark_type.toUpperCase();
+        var ca_currency = data.ca_currency.toUpperCase();
+        $('.base_type').text(benchmark_type);
+        $('.ca_currency').text(ca_currency);
+        SetCookie('ca_currency', ca_currency);
+        SetCookie('benchmark_type', benchmark_type);
+        if(!userLanguage){
+            SetCookie('userLanguage', data.userLanguage);
+        }else {
+            return;
         }
-    });
+    },
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+    }
+});
 
 // Call API common function
 function CallApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/user/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
-    };
+        };
     error_func = error_func || function () {
-    };
+        };
     $.ajax({
         url: api_site + api_url,
         dataType: "jsonp",
@@ -129,9 +129,9 @@ function CallBaApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/ba/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
-    };
+        };
     error_func = error_func || function () {
-    };
+        };
     $.ajax({
         url: api_site + api_url,
         dataType: "jsonp",
@@ -159,9 +159,9 @@ function CallCaApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/ca/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
-    };
+        };
     error_func = error_func || function () {
-    };
+        };
     $.ajax({
         url: api_site + api_url,
         dataType: "jsonp",
@@ -189,9 +189,9 @@ function CallLaApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/la/admin/admin/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
-    };
+        };
     error_func = error_func || function () {
-    };
+        };
     $.ajax({
         url: api_site + api_url,
         dataType: "jsonp",
@@ -219,9 +219,9 @@ function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/la/admin/configure/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
-    };
+        };
     error_func = error_func || function () {
-    };
+        };
     $.ajax({
         url: api_site + api_url,
         dataType: "jsonp",
@@ -310,12 +310,13 @@ function PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, suc_func,
 }
 
 // Reset password (mailbox)
-function ResetEmailPassword(email, cfm_code, pass_word_hash, suc_func, error_func) {
+function ResetEmailPassword(email, cfm_code, pass_word_hash,confirm_pass_word_hash, suc_func, error_func) {
     var api_url = 'rst_pw_email.php',
         post_data = {
             'email': email,
             'cfm_code': cfm_code,
-            'pass_word_hash': pass_word_hash
+            'pass_word_hash': pass_word_hash,
+            'confirm_pass_word_hash':confirm_pass_word_hash
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
@@ -330,13 +331,14 @@ function GetEmailCode(email, suc_func, error_func) {
 }
 
 // Reset password (phone)
-function ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash, suc_func, error_func) {
+function ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash, confirm_pass_word_hash, suc_func, error_func) {
     var api_url = 'rst_pw_phone.php',
         post_data = {
             'country_code': country_code,
             'cellphone': cellphone,
             'sms_code': sms_code,
-            'pass_word_hash': pass_word_hash
+            'pass_word_hash': pass_word_hash,
+            'confirm_pass_word_hash':confirm_pass_word_hash
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
@@ -432,7 +434,7 @@ function FileBind(token, file_type, file_url, suc_func, error_func) {
             'token': token,
             'file_type': file_type,
             'file_url': file_url
-    };
+        };
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
@@ -457,7 +459,7 @@ function GoogleBind(token, email, suc_func, error_func) {
             'token' : token,
             'email' : email
         };
-        CallApi(api_url, post_data, suc_func, error_func);
+    CallApi(api_url, post_data, suc_func, error_func);
 }
 
 //Google verification
