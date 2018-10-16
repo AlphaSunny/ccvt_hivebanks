@@ -3,6 +3,7 @@
 require_once '../inc/common.php';
 require_once 'db/us_base.php';
 require_once 'db/us_bind.php';
+require_once 'db/us_log_bind.php';
 
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
@@ -32,14 +33,15 @@ $cellphone = get_arg_str('GET', 'cellphone');
 // 密码HASH
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
 // 验证码
- $sms_code = get_arg_str('GET', 'sms_code');
+$sms_code = get_arg_str('GET', 'sms_code');
 $cellphone_num = $country_code .'-'. $cellphone;
 $variable = 'cellphone';
 $variable_code ='phone_code';
+$now_time = time();
 // 获取最新的创建记录
 $row = get_us_id_by_variable($variable,$cellphone_num);
 if(!$row['us_id']){
-  exit_error('112', 'User does not exist');
+    exit_error('112', 'User does not exist');
 }
 // 获取绑定信息日志表该用户最新的数据
 $rec = get_us_log_bind_by_variable($variable_code , $cellphone_num);
@@ -65,7 +67,7 @@ if(!$userd_salt){
 
 $upd_pass_for_phone = upd_pass_for_us_id($row['us_id'],$pass_word_hash);
 if($upd_pass_for_phone){
-   exit_ok('Modified successfully!');
+    exit_ok('Modified successfully!');
 }else{
-   exit_error('101',  'Modify failed please try again!');
+    exit_error('101',  'Modify failed please try again!');
 }
