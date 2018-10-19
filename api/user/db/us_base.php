@@ -53,16 +53,22 @@ function ins_base_user_reg_base_info($data_base)
       return false;
 
     //2018年 10.1-10.7注册送500ccvt
-    $array = array('2018-10-01','2018-10-02','2018-10-03','2018-10-04','2018-10-05','2018-10-06','2018-10-07');
-    $now = date('Y-m-d');
-    if(in_array($now,$array)){
-        send_to_us_ccvt($data_base['us_id'],'reg_send','500');
-    }
+//    $array = array('2018-10-01','2018-10-02','2018-10-03','2018-10-04','2018-10-05','2018-10-06','2018-10-07');
+//    $now = date('Y-m-d');
+//    if(in_array($now,$array)){
+//        send_to_us_ccvt($data_base['us_id'],'reg_send','500');
+//    }
+
+
+    //注册获取50ccvt
+    send_to_us_ccvt($data_base['us_id'],'reg_send','50');
 
     //邀请人获取50ccvt
     if ($data_base['invite_code']){
         send_to_us_ccvt(get_invite_code_us($data_base['invite_code']),'invite_send','50');
     }
+
+
 
 
     return true;
