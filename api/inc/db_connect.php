@@ -6,4 +6,5 @@ protected $user = 'windwin';
 protected $password = '0505Windwin';
 protected $database = 'ccvt';
 protected $character = 'utf8mb4';
+
 }?>
