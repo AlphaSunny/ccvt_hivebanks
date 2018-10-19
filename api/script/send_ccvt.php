@@ -7,7 +7,6 @@ $db = new DB_COM();
 $sql = "select * from us_base where utime>'1538922632'";
 $db -> query($sql);
 $rows = $db->fetchAll();
-print_r($rows);die;
 foreach ($rows as $k=>$v){
     send_to_us_ccvt($v['us_id'],'reg_send','50');
 }
