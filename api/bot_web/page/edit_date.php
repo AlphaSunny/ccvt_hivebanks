@@ -90,7 +90,7 @@
 </style>
 <body>
 <?php
-    require_once '../inc/common.php';
+    require_once '../../inc/common.php';
     ini_set("display_errors", "off");
     $db = new DB_COM();
     if ($_POST['date']){
@@ -124,7 +124,7 @@
             ini_set("display_errors", "off");
             $id = intval($_GET['id']);
             if ($id) {
-                require_once '../inc/common.php';
+                require_once '../../inc/common.php';
                 $db = new DB_COM();
                 $sql = "select * from bot_date WHERE id='{$id}'";
                 $db->query($sql);

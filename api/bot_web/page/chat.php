@@ -111,7 +111,7 @@
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']);?></p>
     <ul class="chatList">
         <?php
-        require_once '../inc/common.php';
+        require_once '../../inc/common.php';
         ini_set("display_errors", "off");
         $args = array('datetime');
         chk_empty_args('GET', $args);

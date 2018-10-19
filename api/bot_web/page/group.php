@@ -59,7 +59,7 @@
 
         </tr>
         <?php
-            require_once '../inc/common.php';
+            require_once '../../inc/common.php';
             $db = new DB_COM();
             ini_set("display_errors", "off");
             $id = intval($_GET['id']);

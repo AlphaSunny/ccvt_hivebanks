@@ -90,34 +90,32 @@
 </style>
 <body>
 <?php
-    require_once '../inc/common.php';
+    require_once '../../inc/common.php';
     ini_set("display_errors", "off");
     $db = new DB_COM();
-    if ($_POST['time'] && $_POST['content']){
+    if ($_POST['name'] && $_POST['ba_id']){
         $id = $_POST['id'];
-        $time = $_POST['time'];
-        $content = $_POST['content'];
-        $group_id = $_POST['group_id'];
+        $name = $_POST['name'];
+        $ba_id = $_POST['ba_id'];
         if ($id){
-            $sql = "update bot_timer set time='{$time}',content='{$content}',group_id='{$group_id}' WHERE id='{$id}'";
+            $sql = "update bot_group set name='{$name}',ba_id='{$ba_id}' WHERE id='{$id}'";
             $db->query($sql);
             $count = $db->affectedRows($sql);
             if (!$count){
                 echo "<script type='text/javascript'> alert('失败');window.history.go(-1);</script>";
             }else{
-                echo "<script type='text/javascript'> alert('sucess');window.location.href='timer.php'; </script>";
+                echo "<script type='text/javascript'> alert('sucess');window.location.href='group.php'; </script>";
             }
         }else{
-            $data['time'] = $time;
-            $data['content'] = $content;
+            $data['name'] = $name;
+            $data['ba_id'] = $ba_id;
             $data['intime'] = time();
-            $data['group_id'] = $group_id;
-            $sql = $db->sqlInsert("bot_timer", $data);
+            $sql = $db->sqlInsert("bot_group", $data);
             $timer_id = $db->query($sql);
             if (!$timer_id){
                 echo "<script type='text/javascript'> alert('失败');window.history.go(-1);</script>";
             }else{
-                echo "<script type='text/javascript'> alert('sucess');window.location.href='timer.php'; </script>";
+                echo "<script type='text/javascript'> alert('sucess');window.location.href='group.php'; </script>";
             }
         }
     }
@@ -128,9 +126,9 @@
             ini_set("display_errors", "off");
             $id = intval($_GET['id']);
             if ($id) {
-                require_once '../inc/common.php';
+                require_once '../../inc/common.php';
                 $db = new DB_COM();
-                $sql = "select a.*,b.name from bot_timer as a LEFT JOIN bot_group as b on a.group_id=b.id WHERE a.id='{$id}'";
+                $sql = "select * from bot_group WHERE id='{$id}'";
                 $db->query($sql);
                 $row = $db->fetchRow();
             }
@@ -138,30 +136,13 @@
         <h1><?php if ($id){echo "修改";}else{echo "添加";}?>页面</h1>
         <input type="hidden" name="id" value="<?php echo $id?>">
         <label>
-            <span>时间 :</span>
-            <input id="time" type="text" name="time"  value="<?php if ($id){echo $row['time'];}?>" placeholder="" />
+            <span>群组名称 :</span>
+            <input id="name" type="text" name="name"  value="<?php if ($id){echo $row['name'];}?>" placeholder="" />
         </label>
-
         <label>
-            <span>群组 :</span><select name="group_id">
-                <?php
-                    require_once '../inc/common.php';
-                    $db = new DB_COM();
-                    $sql = "select * from bot_group";
-                    $db->query($sql);
-                    $rows = $db->fetchAll();
-                    foreach ($rows as $k=>$v){
-                ?>
-                 <option value="<?php echo $v['id'];?>" <?php if($row['group_id']==$v['id']){ ?>selected="selected"<?php } ?>><?php echo $v['name'];?></option>
-                <?php } ?>
-            </select>
+            <span>ba_id :</span>
+            <textarea id="ba_id" name="ba_id" placeholder=""><?php if ($id){echo $row['ba_id'];}?></textarea>
         </label>
-
-        <label>
-            <span>内容 :</span>
-            <textarea id="content" name="content" placeholder=""><?php if ($id){echo $row['content'];}?></textarea>
-        </label>
-
         <label>
             <span>&nbsp;</span>
             <input type="submit" class="button" id="submit" value="Send"/>
@@ -179,15 +160,15 @@
 window.onload = function () {
     var subBtn = document.getElementById("submit");
     subBtn.onclick = function () {
-        var time = document.getElementById("time").value;
-        var content = document.getElementById("content").value;
-        if (time==''){
-            alert('请填写时间');
-            time.focus();
+        var name = document.getElementById("name").value;
+        var ba_id = document.getElementById("ba_id").value;
+        if (name==''){
+            alert('请填写群组名称');
+            name.focus();
             return false;
-        }else if (content==''){
-            alert('请填写内容');
-            content.focus();
+        }else if (ba_id==''){
+            alert('请填写ba_id');
+            ba_id.focus();
             return false;
         }
     }
