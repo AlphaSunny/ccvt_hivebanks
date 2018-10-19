@@ -184,10 +184,10 @@
         <li>参与发言人数:<?php echo $count;?>人</li>
         <?php
            foreach ($rows as $k=>$v){
-           ?>
-               <li><?php echo $v['bot_nickname']?>:<?php echo $v['count']?>发言</li>
-        <?php} ?>
-       
+        ?>
+          <li><?php echo $v['bot_nickname'];?>:<?php echo $v['count'];?>发言</li>
+        <?php } ?>
+
 
     </ul>
 </div>
