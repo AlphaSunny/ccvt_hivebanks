@@ -175,8 +175,7 @@
 
     <ul style="margin-top: 50px;">
         <?php
-            require_once '../../inc/common.php';
-            ini_set("display_errors", "off");
+        
             $sql = "select bot_nickname,count(bot_message_id) as count from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by `bot_nickname` order by count desc";
             $db->query($sql);
             $rows = $db->fetchAll();
