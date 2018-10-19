@@ -187,7 +187,7 @@
            ?>
                <li><?php echo $v['bot_nickname']?>:<?php echo $v['count']?>发言</li>
         <?php} ?>
-        ?>
+       
 
     </ul>
 </div>
