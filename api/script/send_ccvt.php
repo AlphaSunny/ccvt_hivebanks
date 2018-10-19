@@ -8,7 +8,7 @@ $db -> query($sql);
 $rows = $db->fetchAll();
 
 echo count($rows);
-var_dump($rows);
+print_r($rows);
 
 
 
