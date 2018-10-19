@@ -6,6 +6,8 @@ $db = new DB_COM();
 $sql = "select * from us_base where utime>'1538922632'";
 $db -> query($sql);
 $rows = $db->fetchAll();
+
+echo count($rows);
 print_r($rows);
 
 
