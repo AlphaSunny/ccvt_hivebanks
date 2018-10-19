@@ -175,15 +175,20 @@
 
     <ul style="margin-top: 50px;">
         <?php
-        
+
             $sql = "select bot_nickname,count(bot_message_id) as count from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by `bot_nickname` order by count desc";
             $db->query($sql);
             $rows = $db->fetchAll();
-            print_r($rows);
+            $count = count($rows);
         ?>
-        <li>参与发言人数:2人</li>
-        <li>OPPO Find X 全面屏，更懂你:20发言</li>
-        <li>各位老总。带我装逼带我飞:20发言</li>
+        <li>参与发言人数:<?php echo $count;?>人</li>
+        <?php
+           foreach ($rows as $k=>$v){
+           ?>
+               <li><?php echo $v['bot_nickname']?>:<?php echo $v['count']?>发言</li>
+        <?php} ?>
+        ?>
+
     </ul>
 </div>
 </body>
