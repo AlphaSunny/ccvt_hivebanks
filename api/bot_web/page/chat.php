@@ -124,8 +124,6 @@
         $tblPrefix = "@风赢小助手";
         $tblPrefix2 = "@小助手";
         $sql = "select bot_nickname,bot_content,bot_send_time,head_img,type from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY bot_create_time  ASC ";
-
-        echo $sql;
         $db->query($sql);
         $rows = $db->fetchAll();
         $ti = -1;
@@ -173,6 +171,12 @@
         </li>
         <?php
         } ?>
+    </ul>
+
+    <ul>
+        <li>参与聊天人数:2人</li>
+        <li>OPPO Find X 全面屏，更懂你:20发言</li>
+        <li>各位老总。带我装逼带我飞:20发言</li>
     </ul>
 </div>
 </body>
