@@ -154,4 +154,13 @@ function search_bot_date()
     return $rows;
 }
 
+function test_add($data){
+    $db = new DB_COM();
+    $sql = $db->sqlInsert("bot_test", $data);
+    $q_id = $db->query($sql);
+    if ($q_id == 0)
+        return false;
+    return true;
+}
+
 ?>
