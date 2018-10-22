@@ -35,9 +35,9 @@ foreach ($rows as $k=>$v){
 
 // 返回数据做成
 $rtn_ary = array();
-$rtn_ary['errcode'] = '0';
-$rtn_ary['errmsg'] = '';
-$rtn_ary['rows'] = $rows;
+$rtn_ary['code'] = '0';
+$rtn_ary['count'] = 10;
+$rtn_ary['data'] = $rows;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
