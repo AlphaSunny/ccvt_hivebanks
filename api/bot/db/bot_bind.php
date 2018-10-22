@@ -153,14 +153,28 @@ function search_bot_date()
     $rows = $db -> fetchAll();
     return $rows;
 }
-
-function test_add($data){
+//======================================
+// 函数:微信机器人二维码地址
+// 参数: $data
+//返回： rows               数据
+//======================================
+function bot_qrcode($data){
     $db = new DB_COM();
-    $sql = $db->sqlInsert("bot_test", $data);
-    $q_id = $db->query($sql);
-    if ($q_id == 0)
-        return false;
-    return true;
+    $sql = "select * from bot_status limit 1";
+    $db -> query($sql);
+    $info = $db->fetchRow();
+    $time = time();
+    if ($info){
+        $sql = "update bot_status set qr_path='{$data['qrcode']}', ctime='{$time}' where id='{$info['id']}'";
+        $db->query($sql);
+        return $db->affectedRows();
+    }else{
+        $sql = $db->sqlInsert("bot_status", $data);
+        $q_id = $db->query($sql);
+        if ($q_id == 0)
+            return false;
+        return true;
+    }
 }
 
 ?>
