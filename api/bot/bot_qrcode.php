@@ -27,7 +27,7 @@ chk_empty_args('GET', $args);
 $qr_code = get_arg_str('GET','qrcode');
 
 //信息
-$data['qr_path'] = $qr_code;
+$data['qrcode'] = $qr_code;
 $data['ctime'] = time();
 
 // 添加群组
