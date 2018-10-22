@@ -201,4 +201,19 @@ function bot_alive($data){
     }
 }
 
+//======================================
+// 函数: 获取二维码地址
+// 参数: $data
+//返回： true               成功
+//        false             失败
+//======================================
+function get_qrcode()
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM bot_status limit 1";
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    return $row;
+}
+
 ?>
