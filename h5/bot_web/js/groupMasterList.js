@@ -71,7 +71,7 @@ $(function () {
         var group_name = $(this).parents("td").siblings("td[data-field='name']").children().text();
         var is_del = $(this).parents("td").siblings("td[data-field='is_del']").children().text();
         var is_flirt = $(this).parents("td").siblings("td[data-field='is_flirt']").children().text();
-        layer.open({
+        var index = layer.open({
             type: 2,
             title: '编辑',
             shadeClose: true,
@@ -110,7 +110,9 @@ $(function () {
                     var del = "1";
                     var flirt = "1";
                     EditGroup(token, group_name, del, flirt, group_id, function (response) {
-                        console.log(response);
+                        if(response.errcode == "0"){
+                            layer.close(index);
+                        }
                     },function (response) {
                         console.log(response);
                     })
