@@ -70,13 +70,13 @@ $(function () {
             shade: [0],
             area: ['340px', '215px'],
             offset: 'rb', //右下角弹出
-            time: 0, //2秒后自动关闭
+            time: 500, //2秒后自动关闭
             anim: 2,
-            // content: ['../html/login.html', 'no'], //iframe的url，no代表不显示滚动条
+            content: ['../html/login.html', 'no'], //iframe的url，no代表不显示滚动条
             end: function(){ //此处用于演示
                 layer.open({
                     type: 2,
-                    title: '很多时候，我们想最大化看，比如像这个页面。',
+                    title: '编辑',
                     shadeClose: true,
                     shade: false,
                     maxmin: true, //开启最大化最小化按钮
