@@ -28,7 +28,7 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
         page: true,
         id: 'dataCheck',
 
-        url: 'http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=' + robot_token,
+        url: 'http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=' + encodeURI(robot_token),
         method: 'get',
         limits: [10, 30, 50, 70, 100],
         limit: 30,//默认采用30,
