@@ -1,5 +1,5 @@
 <?php
 //echo shell_exec("sudo mkdir 222");
 
-echo exec("ls -l", $res);
+echo exec("cp 1.php 3.php", $res);
 ?>
