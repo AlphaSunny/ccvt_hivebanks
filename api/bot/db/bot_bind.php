@@ -216,4 +216,19 @@ function get_qrcode()
     return $row;
 }
 
+//======================================
+// 函数: 获取key_code
+// 参数:
+//返回： true               成功
+//        false             失败
+//======================================
+function get_key_code()
+{
+    $db = new DB_COM();
+    $sql = "SELECT key_code FROM la_admin limit 1";
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    return $row['key_code'];
+}
+
 ?>
