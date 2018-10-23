@@ -104,12 +104,11 @@ $(function () {
 
                 //获取提交按钮
                 subBtn = body.find("#subBtn");
+                subBtn.click(function () {
+                    console.log("666click");
+                })
 
             }
         });
     });
-
-    subBtn.click(function () {
-        console.log("666click");
-    })
 });
