@@ -70,27 +70,6 @@
             , layedit = layui.layedit
             , laydate = layui.laydate;
 
-        //日期
-        laydate.render({
-            elem: '#date'
-        });
-        laydate.render({
-            elem: '#date1'
-        });
-
-        //自定义验证规则
-        form.verify({
-            title: function (value) {
-                if (value.length < 5) {
-                    return '标题至少得5个字符啊';
-                }
-            }
-            , pass: [/(.+){6,12}$/, '密码必须6到12位']
-            , content: function (value) {
-                layedit.sync();
-            }
-        });
-
         //监听指定开关
         form.on('switch(switchTest)', function (data) {
             layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
