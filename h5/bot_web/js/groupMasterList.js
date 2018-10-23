@@ -65,7 +65,11 @@ $(function () {
         console.log("edit");
         layer.open({
             type: 1,
-            content: '<div style="width: 500px"><h1>hello</h1></div>' //这里content是一个普通的String
+            skin: 'layui-layer-demo', //样式类名
+            closeBtn: 0, //不显示关闭按钮
+            anim: 2,
+            shadeClose: true, //开启遮罩关闭
+            content: '<div style="width: 500px"><h1>hello</h1></div>'
         });
     })
 });
