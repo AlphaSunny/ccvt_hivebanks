@@ -85,11 +85,19 @@ $(function () {
 
                 //获取运行状态开关
                 var operating = body.find(".operating");
-                console.log(operating);
+                if(is_del == 1){
+                    operating.attr("checked", true);
+                    operating.val("1");
+                }
+                console.log(operating.val());
 
                 //获取调戏功能开关
                 var opts = body.find(".opts");
-                console.log(opts);
+                if(is_flirt == 1){
+                    opts.attr("checked", true);
+                    opts.val("1");
+                }
+                console.log(opts.val());
 
             }
         });
