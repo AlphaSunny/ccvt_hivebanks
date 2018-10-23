@@ -8,6 +8,10 @@
     background: none;
 }
 
+.layui-table{
+    width: 100%!important;
+}
+
 .layui-layout-admin .my-header {
     position: fixed;
     top: 0;
