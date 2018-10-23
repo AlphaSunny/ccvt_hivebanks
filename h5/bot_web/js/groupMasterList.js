@@ -1,6 +1,5 @@
 //get token
 var robot_token = GetCookie("robot_token");
-console.log(robot_token);
 
 // layui方法
 layui.use(['table', 'form', 'layer', 'vip_table'], function () {
