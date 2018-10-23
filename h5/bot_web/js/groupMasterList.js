@@ -65,7 +65,7 @@ $(function () {
         console.log("edit");
         layer.open({
             type: 1,
-            content: '<h1>hello</h1>' //这里content是一个普通的String
+            content: '<div style="width: 500px"><h1>hello</h1></div>' //这里content是一个普通的String
         });
     })
 });
