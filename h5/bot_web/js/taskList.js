@@ -20,7 +20,7 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
         cols: [[                  //标题栏
             {checkbox: true, sort: true, fixed: true, space: true}
             , {field: 'time', title: '时间', width: 200}
-            , {field: 'content', title: '内容', width: 400}
+            , {field: 'content', title: '内容', width: 200}
             , {field: 'name', title: '群主', width: 200}
             , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
         ]],
