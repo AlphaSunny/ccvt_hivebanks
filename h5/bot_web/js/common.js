@@ -69,7 +69,7 @@ $.ajax({
     success: function (data) {
         config_api_url = data.api_url;
         config_h5_url = data.h5_url;
-        if(!userLanguage){
+        if (!userLanguage) {
             SetCookie('userLanguage', data.userLanguage);
         }
     },
@@ -114,8 +114,20 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
 function RobotEmailLogin(email, pass_word_hash, suc_func, error_func) {
     var api_url = "email_login.php",
         post_data = {
-            "email" : email,
-            "pass_word_hash" : pass_word_hash
+            "email": email,
+            "pass_word_hash": pass_word_hash
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+function EditGroup(token, group_name, del, flirt, group_id, suc_func, error_func) {
+    var api_url = "group_info.php",
+        post_data = {
+            "token": token,
+            "group_name": group_name,
+            "del": del,
+            "flirt": flirt,
+            "group_id": group_id
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }

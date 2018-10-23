@@ -1,5 +1,5 @@
 //get token
-var robot_token = GetCookie("robot_token");
+var token = GetCookie("robot_token");
 
 // layui方法
 layui.use(['table', 'form', 'layer', 'vip_table'], function () {
@@ -29,7 +29,7 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
         ]],
         page: true,
         id: 'dataCheck',
-        url: 'http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=' + encodeURIComponent(robot_token),
+        url: 'http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=' + encodeURIComponent(token),
         method: 'get',
         limits: [10, 30, 50, 70, 100],
         limit: 30,//默认采用30,
@@ -67,7 +67,8 @@ $(function () {
 
     //edit
     $(document).on("click", ".editBtn", function () {
-        var groupName = $(this).parents("td").siblings("td[data-field='name']").children().text();
+        var group_id = $(this).parents("td").siblings("td[data-field='id']").children().text();
+        var group_name = $(this).parents("td").siblings("td[data-field='name']").children().text();
         var is_del = $(this).parents("td").siblings("td[data-field='is_del']").children().text();
         var is_flirt = $(this).parents("td").siblings("td[data-field='is_flirt']").children().text();
         layer.open({
@@ -85,7 +86,7 @@ $(function () {
 
                 //get group name
                 var groupNameInput = body.find("#groupNameInput");
-                groupNameInput.val(groupName);
+                groupNameInput.val(group_name);
 
                 //获取运行状态开关
                 var operating = body.find(".operating");
@@ -106,7 +107,13 @@ $(function () {
                 //获取提交按钮
                 subBtn = body.find("#subBtn");
                 subBtn.click(function () {
-                    console.log("666click");
+                    var del = "1";
+                    var flirt = "1";
+                    EditGroup(token, group_name, del, flirt, group_id, function (response) {
+                        console.log(response);
+                    },function (response) {
+                        console.log(response);
+                    })
                 })
 
             }
