@@ -1,5 +1,5 @@
 <?php
-echo exec('1.sh')
+echo exec('/alidata/www/ccvt/api/bot/1.sh')
 
 
 ?>
