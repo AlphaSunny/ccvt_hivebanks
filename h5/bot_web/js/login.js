@@ -15,8 +15,9 @@ $(function () {
             if (response.errcode == '0') {
                 var token = response.token;
                 SetCookie('robot_token', token);
+                layer.msg("success");
                 // SetCookie('robot_username', username);
-                window.location.href = 'groupMasterList.html';
+                // window.location.href = 'groupMasterList.html';
             }
         }, function (response) {
             layer.msg(response.errmsg);
