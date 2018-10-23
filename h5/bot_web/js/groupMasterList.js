@@ -18,6 +18,7 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
         height: vipTable.getFullHeight(),    //容器高度,
         cols: [[                  //标题栏
             {checkbox: true, sort: true, fixed: true, space: true}
+            , {field: 'id', title: 'id', width: 0}
             , {field: 'name', title: '名称', width: 280}
             , {field: 'ba_id', title: 'ba_id', width: 380}
             , {field: 'del', title: '状态', width: 100}
