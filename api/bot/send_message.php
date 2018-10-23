@@ -19,7 +19,7 @@ GET参数
 php_begin();
 
 $url = 'http://agent_service.fnying.com/sms/bot_status.php';
-$post_data['cellphone,']       = '15801075991';
+$post_data['cellphone']    = '15801075991';
 $post_data['key_code']      = 'A89639D2-54E6-2BFE-803A-E201ADB0B6DD';
 $o = "";
 foreach ( $post_data as $k => $v )
