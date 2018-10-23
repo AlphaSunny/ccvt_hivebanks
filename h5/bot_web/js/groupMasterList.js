@@ -35,7 +35,7 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
         done: function (res, curr, count) {
             //如果是异步请求数据方式，res即为你接口返回的信息。
             //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-            // console.log(res);
+            console.log(res);
 
             //得到当前页码
             // console.log(curr);
