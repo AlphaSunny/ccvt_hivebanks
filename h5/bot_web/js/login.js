@@ -18,6 +18,7 @@ $(function () {
         });
         RobotEmailLogin(email, pass_word_hash, function (response) {
             if (response.errcode == '0') {
+                layer.close(index);
                 var token = response.token;
                 SetCookie('robot_token', token);
                 layer.msg("success");
@@ -27,6 +28,7 @@ $(function () {
                 },1000);
             }
         }, function (response) {
+            layer.close(index);
             layer.msg(response.errmsg);
         })
     });
