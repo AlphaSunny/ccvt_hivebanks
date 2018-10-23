@@ -14,7 +14,7 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
     // 表格渲染
     var tableIns = table.render({
         elem: '#dateTable',                 //指定原始表格元素选择器（推荐id选择器）,
-        minWidth: 1200,
+        width: 1200,
         height: 360,
         // height: vipTable.getFullHeight(),    //容器高度,
         cols: [[                  //标题栏
