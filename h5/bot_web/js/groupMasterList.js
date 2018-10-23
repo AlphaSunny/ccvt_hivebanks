@@ -79,8 +79,18 @@ $(function () {
             success:function (layero,index) {
                 var body = layer.getChildFrame('body',index);
                 // var iframeWin = window[layero.find('iframe')[0]['name']];
+                //get group name
                 var groupNameInput = body.find("#groupNameInput");
                 groupNameInput.val(groupName);
+
+                //获取运行状态开关
+                var operating = body.find(".operating");
+                console.log(operating);
+
+                //获取调戏功能开关
+                var opts = body.find(".opts");
+                console.log(opts);
+
             }
         });
     })
