@@ -64,12 +64,16 @@ $(function () {
     $(document).on("click", ".editBtn", function () {
         console.log("edit");
         layer.open({
-            type: 1,
-            skin: 'layui-layer-demo', //样式类名
-            closeBtn: 0, //不显示关闭按钮
-            anim: 2,
-            shadeClose: true, //开启遮罩关闭
-            content: '<div style="width: 500px"><h1>hello</h1></div>'
+            type: 2,
+            content: '../html/login.html' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
         });
+        // layer.open({
+        //     type: 1,
+        //     skin: 'layui-layer-demo', //样式类名
+        //     closeBtn: 0, //不显示关闭按钮
+        //     anim: 2,
+        //     shadeClose: true, //开启遮罩关闭
+        //     content: '<div style="width: 500px"><h1>hello</h1></div>'
+        // });
     })
 });
