@@ -58,3 +58,10 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
         tableIns.reload();
     });
 });
+
+$(function () {
+   //edit
+   $(".edit").click(function () {
+       console.log("edit");
+   })
+});
