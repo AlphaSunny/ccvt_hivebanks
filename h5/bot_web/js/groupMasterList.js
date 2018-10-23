@@ -61,7 +61,7 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
 
 $(function () {
    //edit
-   $(".edit").click(function () {
+   $(".editBtn").click(function () {
        console.log("edit");
    })
 });
