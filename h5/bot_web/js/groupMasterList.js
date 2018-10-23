@@ -26,7 +26,6 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
         ]],
         page: true,
         id: 'dataCheck',
-
         url: 'http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=' + encodeURIComponent(robot_token),
         method: 'get',
         limits: [10, 30, 50, 70, 100],
