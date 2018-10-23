@@ -24,7 +24,7 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
             , {field: 'is_del', title: '是否开启状态', width: 100}
             , {field: 'flirt', title: '调戏功能', width: 100}
             , {field: 'is_flirt', title: '是否开启调戏功能', width: 100}
-            , {fixed: 'opt', title: '操作', width: 240, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
+            , {fixed: 'right', title: '操作', width: 240, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
         ]],
         page: true,
         id: 'dataCheck',
