@@ -80,7 +80,7 @@ $(function () {
                     shadeClose: true,
                     shade: false,
                     maxmin: true, //开启最大化最小化按钮
-                    area: ['800', '450'],
+                    area: ['800px', '450px'],
                     content: '../html/edit_group.html'
                 });
             }
