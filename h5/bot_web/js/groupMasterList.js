@@ -62,6 +62,8 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
 });
 
 $(function () {
+    var subBtn = "";
+
     //edit
     $(document).on("click", ".editBtn", function () {
         var groupName = $(this).parents("td").siblings("td[data-field='name']").children().text();
@@ -79,6 +81,7 @@ $(function () {
             success:function (layero,index) {
                 var body = layer.getChildFrame('body',index);
                 // var iframeWin = window[layero.find('iframe')[0]['name']];
+
                 //get group name
                 var groupNameInput = body.find("#groupNameInput");
                 groupNameInput.val(groupName);
@@ -90,7 +93,6 @@ $(function () {
                     operating.val("1");
                     operating.siblings(".layui-form-switch").addClass("layui-form-onswitch")
                 }
-                console.log(operating.val());
 
                 //获取调戏功能开关
                 var opts = body.find(".opts");
@@ -99,9 +101,15 @@ $(function () {
                     opts.val("1");
                     opts.siblings(".layui-form-switch").addClass("layui-form-onswitch")
                 }
-                console.log(opts.val());
+
+                //获取提交按钮
+                subBtn = body.find("#subBtn");
 
             }
         });
+    });
+
+    subBtn.click(function () {
+        console.log("666click");
     })
 });
