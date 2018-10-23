@@ -17,7 +17,9 @@ $(function () {
                 SetCookie('robot_token', token);
                 layer.msg("success");
                 // SetCookie('robot_username', username);
-                // window.location.href = 'groupMasterList.html';
+                setTimeout(function () {
+                    window.location.href = 'groupMasterList.html';
+                },1000);
             }
         }, function (response) {
             layer.msg(response.errmsg);
