@@ -19,7 +19,7 @@ $(function () {
                 window.location.href = 'groupMasterList.html';
             }
         }, function (response) {
-            layer.msg("登录失败，请重新登录")
+            layer.msg(response.errmsg);
         })
     });
 });
