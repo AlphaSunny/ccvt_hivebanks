@@ -71,7 +71,7 @@ $(function () {
     //edit
     $(document).on("click", ".editBtn", function () {
         var group_id = $(this).parents("td").siblings("td[data-field='id']").children().text();
-        var group_name = $(this).parents("td").siblings("td[data-field='name']").children().text();
+        var groupName = $(this).parents("td").siblings("td[data-field='name']").children().text();
         var is_del = $(this).parents("td").siblings("td[data-field='is_del']").children().text();
         var is_flirt = $(this).parents("td").siblings("td[data-field='is_flirt']").children().text();
         var index = layer.open({
@@ -89,7 +89,7 @@ $(function () {
 
                 //get group name
                 var groupNameInput = body.find("#groupNameInput");
-                groupNameInput.val(group_name);
+                groupNameInput.val(groupName);
 
                 //获取运行状态开关
                 var operating = body.find(".operating");
@@ -112,6 +112,7 @@ $(function () {
                 subBtn.click(function () {
                     var del = "1";
                     var flirt = "1";
+                    var group_name = groupNameInput.val();
                     EditGroup(token, group_name, del, flirt, group_id, function (response) {
                         if(response.errcode == "0"){
                             layer.close(index);
