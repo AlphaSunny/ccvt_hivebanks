@@ -63,5 +63,9 @@ $(function () {
     //edit
     $(document).on("click", ".editBtn", function () {
         console.log("edit");
+        layer.open({
+            type: 1,
+            content: '<h1>hello</h1>' //这里content是一个普通的String
+        });
     })
 });
