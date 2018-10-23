@@ -121,7 +121,7 @@ function RobotEmailLogin(email, pass_word_hash, suc_func, error_func) {
 }
 
 function EditGroup(token, group_name, del, flirt, group_id, suc_func, error_func) {
-    var api_url = "group_info.php",
+    var api_url = "group_edit.php",
         post_data = {
             "token": token,
             "group_name": group_name,
