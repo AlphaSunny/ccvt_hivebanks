@@ -1,5 +1,5 @@
 <?php
-echo shell_exec("sudu mkdir 222");
+echo shell_exec("sudo mkdir 222");
 
 
 ?>
