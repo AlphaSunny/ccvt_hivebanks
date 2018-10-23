@@ -1,5 +1,5 @@
 <?php
-exec('1.sh')
+echo exec('1.sh')
 
 
 ?>
