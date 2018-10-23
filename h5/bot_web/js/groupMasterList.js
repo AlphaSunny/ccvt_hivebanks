@@ -64,6 +64,8 @@ layui.use(['table', 'form', 'layer', 'vip_table'], function () {
 $(function () {
     //edit
     $(document).on("click", ".editBtn", function () {
+        var groupName = $(this).parents("td").siblings("td[data-field='name']").children().text();
+        console.log(groupName);
         layer.open({
             type: 2,
             title: false,
