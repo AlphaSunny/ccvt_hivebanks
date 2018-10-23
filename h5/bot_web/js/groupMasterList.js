@@ -69,24 +69,14 @@ $(function () {
         var is_flirt = $(this).parents("td").siblings("td[data-field='is_flirt']").children().text();
         layer.open({
             type: 2,
-            title: false,
-            closeBtn: 0, //不显示关闭按钮
-            shade: [0],
-            area: ['340px', '215px'],
-            offset: 'rb', //右下角弹出
-            time: 500, //2秒后自动关闭
-            anim: 2,
-            content: ['../html/edit_group.html', 'no'], //iframe的url，no代表不显示滚动条
-            end: function () { //此处用于演示
-                layer.open({
-                    type: 2,
-                    title: '编辑',
-                    shadeClose: true,
-                    shade: false,
-                    maxmin: true, //开启最大化最小化按钮
-                    area: ['800px', '450px'],
-                    content: '../html/edit_group.html?groupName=' + groupName + 'is_del' + is_del + 'is_flirt' + is_flirt
-                });
+            title: '编辑',
+            shadeClose: true,
+            shade: false,
+            maxmin: true, //开启最大化最小化按钮
+            area: ['800px', '450px'],
+            content: '../html/edit_group.html?groupName=' + groupName + 'is_del' + is_del + 'is_flirt' + is_flirt,
+            success:function (layero,index) {
+                // var body = layer.getChildFram
             }
         });
     })
