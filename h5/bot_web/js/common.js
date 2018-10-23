@@ -111,10 +111,10 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
     });
 };
 
-function RobotEmailLogin(username, pass_word_hash, suc_func, error_func) {
+function RobotEmailLogin(email, pass_word_hash, suc_func, error_func) {
     var api_url = "email_login.php",
         post_data = {
-            "username" : username,
+            "email" : email,
             "pass_word_hash" : pass_word_hash
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
