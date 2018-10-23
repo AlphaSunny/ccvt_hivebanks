@@ -65,7 +65,8 @@ $(function () {
     //edit
     $(document).on("click", ".editBtn", function () {
         var groupName = $(this).parents("td").siblings("td[data-field='name']").children().text();
-        console.log(groupName);
+        var is_del = $(this).parents("td").siblings("td[data-field='is_del']").children().text();
+        var is_flirt = $(this).parents("td").siblings("td[data-field='is_flirt']").children().text();
         layer.open({
             type: 2,
             title: false,
@@ -76,7 +77,7 @@ $(function () {
             time: 500, //2秒后自动关闭
             anim: 2,
             content: ['../html/edit_group.html', 'no'], //iframe的url，no代表不显示滚动条
-            end: function(){ //此处用于演示
+            end: function () { //此处用于演示
                 layer.open({
                     type: 2,
                     title: '编辑',
@@ -84,7 +85,7 @@ $(function () {
                     shade: false,
                     maxmin: true, //开启最大化最小化按钮
                     area: ['800px', '450px'],
-                    content: '../html/edit_group.html'
+                    content: '../html/edit_group.html?groupName=' + groupName + 'is_del' + is_del + 'is_flirt' + is_flirt
                 });
             }
         });
