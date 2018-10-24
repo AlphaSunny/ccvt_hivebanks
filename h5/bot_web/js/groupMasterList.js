@@ -130,6 +130,7 @@ $(function () {
                     }else {
                         operating.val("1");
                     }
+                    console.log(operating.val());
                 });
 
                 //获取调戏功能开关
