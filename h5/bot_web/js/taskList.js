@@ -132,6 +132,7 @@ $(function () {
             DelTask(token, timer_id, function (response) {
                 if (response.errcode == "0") {
                     layer.msg('删除成功', {icon: 1});
+                    GetTaskListFun();
                 }
             }, function (response) {
                 layer.msg('删除失败', {icon: 2});
