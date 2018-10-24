@@ -143,18 +143,17 @@ $(function () {
     //添加任务信息
     $(".addTaskBtn").click(function () {
         //获取群列表
-        var groupArr = [];
-        GetGroupList(token, function (response) {
-            console.log(response);
-        }, function (response) {
-            console.log(response);
-            var groupList = response.data;
-            $.each(groupList, function (i, val) {
-                // console.log(val);
-                groupArr.push(val.name);
-                // console.log(groupArr);
-            })
-        });
+        // var groupArr = [];
+        // GetGroupList(token, function (response) {
+        //     console.log(response);
+        // }, function (response) {
+        //     var groupList = response.data;
+        //     $.each(groupList, function (i, val) {
+        //         // console.log(val);
+        //         groupArr.push(val.name);
+        //         // console.log(groupArr);
+        //     })
+        // });
 
         var index = layer.open({
             type: 2,
@@ -169,10 +168,21 @@ $(function () {
 
                 //get group name
                 var groupNameSelect = body.find("#groupNameSelect");
-                $.each(groupArr,function (i, val) {
-                    console.log(val);
-                    groupNameSelect.append(val);
+                GetGroupList(token, function (response) {
+                    console.log(response);
+                }, function (response) {
+                    var groupList = response.data;
+                    $.each(groupList, function (i, val) {
+                        groupNameSelect.append(val.name);
+                        // console.log(val);
+                        // groupArr.push(val.name);
+                        // console.log(groupArr);
+                    })
                 });
+                // $.each(groupArr,function (i, val) {
+                //     console.log(val);
+                //     groupNameSelect.append(val);
+                // });
 
                 //获取时间输入框
                 var timeInput = body.find("#time");
