@@ -191,9 +191,23 @@ $(function () {
 
                 //获取运行状态开关
                 var addOperating = body.find(".addOperating");
+                addOperating.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
+                    if (opts.val() == "1") {
+                        opts.val("2");
+                    } else {
+                        opts.val("1");
+                    }
+                });
 
                 //获取调戏功能开关
                 var addOpts = body.find(".addOpts");
+                addOpts.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
+                    if (opts.val() == "1") {
+                        opts.val("2");
+                    } else {
+                        opts.val("1");
+                    }
+                });
 
 
                 //获取提交按钮
