@@ -65,13 +65,57 @@ function GetTaskListFun() {
 GetTaskListFun();
 
 $(function () {
-    // var taskEditBtn = "";
+    var taskSubBtn = "";
+    //编辑任务
     $(document).on("click", ".taskEditBtn", function () {
         var timer_id = $(this).parents("td").siblings("td[data-field='id']").children().text();
         var content = $(this).parents("td").siblings("td[data-field='content']").children().text();
         var time = $(this).parents("td").siblings("td[data-field='time']").children().text();
+        var groupName = $(this).parents("td").siblings("td[data-field='name']").children().text();
         console.log(timer_id);
         console.log(content);
         console.log(time);
+        var index = layer.open({
+            type: 2,
+            title: '编辑',
+            shadeClose: true,
+            shade: false,
+            maxmin: true, //开启最大化最小化按钮
+            area: ['800px', '450px'],
+            content: '../html/edit_group.html',
+            success: function (layero, index) {
+                var body = layer.getChildFrame('body', index);
+
+                //get group name
+                var groupNameInput = body.find("#groupNameInput");
+                groupNameInput.val(groupName);
+
+                //获取时间输入框
+                var timeInput = body.find("#time");
+                timeInput.val(time);
+
+                //获取内容输入框
+                var contentInput = body.find("#content");
+                contentInput.val(content);
+
+
+                //获取提交按钮
+                taskSubBtn = body.find("#taskSubBtn");
+
+                //提交编辑信息
+                taskSubBtn.click(function () {
+                    console.log("sub task");
+                    // EditTask(token, timer_id, time, content, function (response) {
+                    //     if (response.errcode == "0") {
+                    //         layer.close(index);
+                    //         GetTaskListFun();
+                    //     }
+                    // }, function (response) {
+                    //     console.log(response);
+                    // })
+                })
+
+            }
+        });
     })
 });
