@@ -124,16 +124,17 @@ $(function () {
 
         //确认删除提示
         layer.confirm('确认删除?', {
-            btn: ['取消','确认'] //按钮
-        }, function(){
+            btn: ['取消', '确认'] //按钮
+        }, function () {
             layer.msg('已取消', {icon: 1});
-        }, function(){
-            // layer.msg('删除成功', {icon: 1});
+        }, function () {
             console.log("666");
             DelTask(token, timer_id, function (response) {
-                console.log(response);
+                if (response.errcode == "0") {
+                    layer.msg('删除成功', {icon: 1});
+                }
             }, function (response) {
-                layer.msg(response.errmsg);
+                layer.msg('删除失败', {icon: 2});
             })
         });
     })

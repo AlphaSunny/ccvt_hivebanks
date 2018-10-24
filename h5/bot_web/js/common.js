@@ -101,7 +101,7 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
         dataType: "jsonp",
         data: post_data,
         success: function (response) {
-            console.log(response);
+            // console.log(response);
             // API return failed
             if (response.errcode != 0) {
                 error_func(response);
