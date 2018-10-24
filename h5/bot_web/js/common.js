@@ -18,6 +18,14 @@ function GetCookie(name) {
     }
 }
 
+// Delete cookie function
+function DelCookie(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = GetCookie(name);
+    if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ';path=/';
+}
+
 // Get URL parameters
 function GetQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -46,7 +54,6 @@ function getRootPath() {
 }
 
 var url = getRootPath();
-console.log(url);
 
 //Get failed error code prompt
 // function GetErrorCode(code) {
