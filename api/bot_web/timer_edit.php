@@ -17,7 +17,7 @@ GET参数
 */
 
 php_begin();
-$args = array('token','timer_id','time','group_id','content');
+$args = array('token','timer_id','time','content');
 chk_empty_args('GET', $args);
 
 // 用户token
@@ -38,7 +38,6 @@ $data['timer_id'] = $timer_id;
 $data['time'] = $time;
 $data['content'] = $content;
 $data['ba_id'] = $ba_id;
-$data['group_id'] = $group_id;
 //修改群组
 $row = save_timer($data);
 if (!$row){

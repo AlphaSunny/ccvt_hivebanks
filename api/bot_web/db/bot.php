@@ -102,7 +102,7 @@ function save_timer($date)
 {
     $db = new DB_COM();
     $time = time();
-    $sql = "update bot_timer set time = '{$date['time']}' , content = '{$date['content']}', ba_id = '{$date['ba_id']}', group_id = '{$date['group_id']}',uptime='{$time}' where id='{$date['timer_id']}' ";
+    $sql = "update bot_timer set time = '{$date['time']}' , content = '{$date['content']}', ba_id = '{$date['ba_id']}',uptime='{$time}' where id='{$date['timer_id']}' ";
     $db->query($sql);
     return $db->affectedRows();
 }
