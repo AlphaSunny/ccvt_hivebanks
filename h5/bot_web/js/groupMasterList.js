@@ -128,6 +128,7 @@ $(function () {
                     // }else {
                     //     operating.val("1");
                     // }
+                    console.log($(this));
                     console.log(operating.val());
                 });
 
