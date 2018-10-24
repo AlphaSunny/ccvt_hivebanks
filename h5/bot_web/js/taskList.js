@@ -174,7 +174,7 @@ $(function () {
                     console.log(response);
                     var groupList = response.data;
                     $.each(groupList, function (i, val) {
-                        groupNameSelect.append(val.name);
+                        groupNameSelect.append("<option value='"+ val.id +"'>"+ val.name +"</option>");
                         // console.log(val);
                         // groupArr.push(val.name);
                         // console.log(groupArr);
