@@ -130,6 +130,11 @@ $(function () {
         }, function(){
             // layer.msg('删除成功', {icon: 1});
             console.log("666");
+            DelTask(token, timer_id, function (response) {
+                console.log(response);
+            }, function (response) {
+                layer.msg(response.errmsg);
+            })
         });
     })
 });
