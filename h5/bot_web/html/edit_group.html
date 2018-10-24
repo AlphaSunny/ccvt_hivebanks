@@ -12,10 +12,10 @@
     .layui-form{
         padding: 5% 5% 5% 0;
     }
-    /*.layui-input-block{*/
-        /*display: flex;*/
-        /*align-items: center;*/
-    /*}*/
+    .layui-input-block{
+        display: flex;
+        align-items: center;
+    }
     .layui-unselect.layui-form-switch{
         margin: 0 1%;
     }
@@ -34,19 +34,17 @@
         <label class="layui-form-label">运行状态</label>
         <div class="layui-input-block">
             <span>关</span>
-            <input type="checkbox" name="switch" checked class="operating" lay-skin="switch">
+            <input type="checkbox" name="switch" checked class="operating" value="2" lay-skin="switch" lay-filter="operating">
             <span>开</span>
         </div>
     </div>
-
-    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" title="开关">
 
     <!--调戏功能-->
     <div class="layui-form-item">
         <label class="layui-form-label">调戏功能</label>
         <div class="layui-input-block">
             <span>关</span>
-            <input type="checkbox" name="switch" checked class="opts" lay-skin="switch">
+            <input type="checkbox" name="switch" checked class="opts" value="2" lay-skin="switch">
             <span>开</span>
         </div>
     </div>
