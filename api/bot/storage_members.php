@@ -23,14 +23,12 @@ php_begin();
 $args = array('name_json','group_name','group_id');
 chk_empty_args('GET', $args);
 
-print_r(json_decode($_REQUEST['name_json']));
-die;
+$name_json = json_decode($_REQUEST['name_json']);
 
 //信息
-$data['name'] = get_arg_str('GET','name');
+$data['name'] = $name_json;
 $data['group_id'] = get_arg_str('GET','group_id');
 $data['group_name'] = get_arg_str('GET','group_name');
-$data['intime'] = time();
 
 // 更新群组成员
 $row = storage_members($data);

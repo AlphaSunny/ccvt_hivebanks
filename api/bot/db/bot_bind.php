@@ -239,13 +239,17 @@ function get_key_code()
 //======================================
 function storage_members($data)
 {
+    echo get_guid();
+    die;
     $db = new DB_COM();
-    $sql = "select remark from bot_group_members where group_id='{$data['group_id']}'";
-
-    $sql = "SELECT key_code FROM la_admin limit 1";
+    $sql = "delete from bot_group_members WHERE group_id='{$data['group_id']}'";
     $db -> query($sql);
-    $row = $db -> fetchRow();
-    return $row['key_code'];
+
+    //插入数据
+    $sql= "insert into twenty_million (member_id,name,group_id,group_name,intime) values";
+//    for($i=0;$i<2000000;$i++) {
+//        $sql .= "('".get_guid();."'),";
+//    }
 }
 
 ?>
