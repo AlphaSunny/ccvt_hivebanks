@@ -177,15 +177,8 @@ $(function () {
                         console.log(val.id, val.name);
                         groupNameSelect.append("<option value='"+ val.id +"'>"+ val.name +"</option>");
                         ddSelect.append("<dd lay-value='"+ val.id +"'>"+ val.name +"</dd>");
-                        // console.log(val);
-                        // groupArr.push(val.name);
-                        // console.log(groupArr);
                     })
                 });
-                // $.each(groupArr,function (i, val) {
-                //     console.log(val);
-                //     groupNameSelect.append(val);
-                // });
 
                 //获取时间输入框
                 var timeInput = body.find("#time");
