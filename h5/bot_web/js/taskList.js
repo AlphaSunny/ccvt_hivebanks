@@ -1,5 +1,5 @@
 //get token
-var robot_token = GetCookie("robot_token");
+var token = GetCookie("robot_token");
 
 //获取任务列表
 function GetTaskListFun() {
