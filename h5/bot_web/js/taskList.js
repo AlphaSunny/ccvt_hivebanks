@@ -171,7 +171,7 @@ $(function () {
                 var groupNameSelect = body.find("#groupNameSelect");
                 $.each(groupArr,function (i, val) {
                     console.log(val);
-                    groupNameSelect.push(val);
+                    groupNameSelect.append(val);
                 });
 
                 //获取时间输入框
