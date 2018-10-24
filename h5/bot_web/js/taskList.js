@@ -126,9 +126,10 @@ $(function () {
         layer.confirm('确认删除?', {
             btn: ['取消','确认'] //按钮
         }, function(){
-            // layer.msg('的确很重要', {icon: 1});
+            layer.msg('已取消', {icon: 1});
         }, function(){
-            layer.msg('删除成功', {icon: 1});
+            // layer.msg('删除成功', {icon: 1});
+            console.log("666");
         });
     })
 });
