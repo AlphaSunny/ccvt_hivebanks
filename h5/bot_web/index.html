@@ -51,7 +51,7 @@
                 <dl class="layui-nav-child">
                     <!--<dd><a href="javascript:;" href-url="html/login.html"><i class="layui-icon">&#xe621;</i>登录页</a></dd>-->
                     <!--<dd><a href="javascript:;" href-url="html/map.html"><i class="layui-icon">&#xe621;</i>图表</a></dd>-->
-                    <dd><a href="/"><i class="layui-icon">&#x1006;</i>退出</a></dd>
+                    <dd><a href="javascript:;" id="logout"><i class="layui-icon">&#x1006;</i>退出</a></dd>
                 </dl>
             </li>
         </ul>
@@ -110,9 +110,10 @@
         
     </div>
 </div>
-
+<script src="../assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="../assets/layui/layui.js"></script>
 <script type="text/javascript" src="./frame/static/js/vip_comm.js"></script>
+<script src="js/common.js"></script>
 <script type="text/javascript">
 layui.use(['layer','vip_nav'], function () {
 
@@ -126,6 +127,13 @@ layui.use(['layer','vip_nav'], function () {
     // 主体菜单生成 [请求地址,过滤ID,是否展开,携带参数]
     vipNav.main('./json/nav_main.json','side-main',true);
 });
+
+$(function () {
+    $("#logout") .click(function () {
+        console.log("logout");
+    })
+});
+
 </script>
 </body>
 </html>
