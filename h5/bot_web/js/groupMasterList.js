@@ -121,7 +121,7 @@ $(function () {
                 }
 
                 console.log(operating.siblings(".layui-form-switch"));
-                operating.siblings(".layui-form-switch").change(function () {
+                operating.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
                    console.log("change");
                 });
 
