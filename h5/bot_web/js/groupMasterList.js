@@ -102,11 +102,9 @@ $(function () {
             shade: false,
             maxmin: true, //开启最大化最小化按钮
             area: ['800px', '450px'],
-            // content: '../html/edit_group.html?groupName=' + groupName + 'is_del' + is_del + 'is_flirt' + is_flirt,
             content: '../html/edit_group.html',
             success: function (layero, index) {
                 var body = layer.getChildFrame('body', index);
-                // var iframeWin = window[layero.find('iframe')[0]['name']];
 
                 //get group name
                 var groupNameInput = body.find("#groupNameInput");
@@ -125,11 +123,11 @@ $(function () {
                 }
 
                 operating.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
-                    if(operating.val() == "1"){
-                        operating.val("2");
-                    }else {
-                        operating.val("1");
-                    }
+                    // if(operating.val() == "1"){
+                    //     operating.val("2");
+                    // }else {
+                    //     operating.val("1");
+                    // }
                     console.log(operating.val());
                 });
 
