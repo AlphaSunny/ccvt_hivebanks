@@ -1,7 +1,7 @@
 //get token
 var token = GetCookie("robot_token");
 
-function GetGroupListFun(){
+function GetGroupListFun() {
     // layui方法
     layui.use(['table', 'form', 'layer', 'vip_table'], function () {
 
@@ -75,14 +75,15 @@ function GetGroupListFun(){
         //     console.log(data.value); //开关value值，也可以通过data.elem.value得到
         //     console.log(data.othis); //得到美化后的DOM对象
         // });
-        form.on('switch(operating)', function(data){
-            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
-                offset: '6px'
-            });
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-        });
+        // form.on('switch(operating)', function (data) {
+        //     layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+        //         offset: '6px'
+        //     });
+        //     layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        // });
     });
 }
+
 GetGroupListFun();
 
 $(function () {
@@ -103,8 +104,8 @@ $(function () {
             area: ['800px', '450px'],
             // content: '../html/edit_group.html?groupName=' + groupName + 'is_del' + is_del + 'is_flirt' + is_flirt,
             content: '../html/edit_group.html',
-            success:function (layero,index) {
-                var body = layer.getChildFrame('body',index);
+            success: function (layero, index) {
+                var body = layer.getChildFrame('body', index);
                 // var iframeWin = window[layero.find('iframe')[0]['name']];
 
                 //get group name
@@ -113,19 +114,20 @@ $(function () {
 
                 //获取运行状态开关
                 var operating = body.find(".operating");
-                if(is_del == 1){
+                if (is_del == 1) {
                     operating.attr("checked", true);
                     operating.val("1");
                     operating.siblings(".layui-form-switch").addClass("layui-form-onswitch")
-                };
+                }
 
-                // operating.siblings(".layui-form-switch").bind("change", function () {
-                //    console.log("change");
-                // });
+                console.log(operating.siblings(".layui-form-switch"));
+                operating.siblings(".layui-form-switch").bind("change", function () {
+                   console.log("change");
+                });
 
                 //获取调戏功能开关
                 var opts = body.find(".opts");
-                if(is_flirt == 1){
+                if (is_flirt == 1) {
                     opts.attr("checked", true);
                     opts.val("1");
                     opts.siblings(".layui-form-switch").addClass("layui-form-onswitch")
@@ -138,11 +140,11 @@ $(function () {
                     var flirt = "1";
                     var group_name = groupNameInput.val();
                     EditGroup(token, group_name, del, flirt, group_id, function (response) {
-                        if(response.errcode == "0"){
+                        if (response.errcode == "0") {
                             layer.close(index);
                             GetGroupListFun();
                         }
-                    },function (response) {
+                    }, function (response) {
                         console.log(response);
                     })
                 })
