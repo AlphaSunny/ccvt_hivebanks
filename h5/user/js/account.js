@@ -139,10 +139,14 @@ $(function () {
         var canvas = $("#inviteImg")[0];
         var content = canvas.getContext("2d");
         var qrImg = new Image();
-        qrImg.src = "img/inviteImg.jpg";
+        qrImg.crossOrigin = "*";
+        qrImg.src = "img/inviteImg.png";
         qrImg.onload = function () {
             content.drawImage(this, 0, 0, 568, 886);
             content.drawImage(qrctx, 80, 630, 160, 160);
+            var base64 = canvas.toDataURL("image/png");
+            $("#base64Img").attr("src", base64);
+            $(".inviteImgBox, #qrcode").remove();
         };
     });
 
