@@ -97,7 +97,10 @@ $(function () {
                     operating.attr("checked", true);
                     operating.val("1");
                     operating.siblings(".layui-form-switch").addClass("layui-form-onswitch")
-                }
+                };
+                operating.change(function () {
+                   console.log("change");
+                });
 
                 //获取调戏功能开关
                 var opts = body.find(".opts");
