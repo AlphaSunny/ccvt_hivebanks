@@ -171,6 +171,7 @@ $(function () {
                 GetGroupList(token, function (response) {
                     console.log(response);
                 }, function (response) {
+                    console.log(response);
                     var groupList = response.data;
                     $.each(groupList, function (i, val) {
                         groupNameSelect.append(val.name);
