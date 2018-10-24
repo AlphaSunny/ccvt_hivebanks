@@ -75,6 +75,12 @@ function GetGroupListFun(){
         //     console.log(data.value); //开关value值，也可以通过data.elem.value得到
         //     console.log(data.othis); //得到美化后的DOM对象
         // });
+        form.on('switch(operating)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
     });
 }
 GetGroupListFun();
