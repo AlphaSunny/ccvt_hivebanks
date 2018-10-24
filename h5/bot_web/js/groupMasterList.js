@@ -147,8 +147,8 @@ $(function () {
                 //获取提交按钮
                 subBtn = body.find("#subBtn");
                 subBtn.click(function () {
-                    var del = "1";
-                    var flirt = "1";
+                    var del = operating.val();
+                    var flirt = opts.val();
                     var group_name = groupNameInput.val();
                     EditGroup(token, group_name, del, flirt, group_id, function (response) {
                         if (response.errcode == "0") {
