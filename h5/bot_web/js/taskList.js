@@ -138,5 +138,57 @@ $(function () {
                 layer.msg('删除失败', {icon: 2});
             })
         });
+    });
+
+    //添加任务信息
+    $(".addTaskBtn").click(function () {
+        //获取群列表
+        GetGroupList(token, function (response) {
+            console.log(response);
+        }, function (response) {
+            layer.msg(response.errmsg);
+        });
+
+        var index = layer.open({
+            type: 2,
+            title: '编辑',
+            shadeClose: true,
+            shade: false,
+            maxmin: true, //开启最大化最小化按钮
+            area: ['800px', '450px'],
+            content: '../html/edit_task.html',
+            success: function (layero, index) {
+                var body = layer.getChildFrame('body', index);
+
+                //get group name
+                var groupNameInput = body.find("#groupNameInput");
+                // groupNameInput.val(taskGroupName);
+
+                //获取时间输入框
+                var timeInput = body.find("#time");
+
+                //获取内容输入框
+                var contentInput = body.find("#content");
+
+                //获取提交按钮
+                taskSubBtn = body.find("#taskSubBtn");
+
+                //提交编辑信息
+                taskSubBtn.click(function () {
+                    var time = timeInput.val(),
+                        content = contentInput.val(),
+                        group_id = "30";
+                    AddTask(token, time, group_id, content, function (response) {
+                        if (response.errcode == "0") {
+                            layer.close(index);
+                            GetTaskListFun();
+                        }
+                    }, function (response) {
+                        console.log(response);
+                    })
+                })
+
+            }
+        });
     })
 });

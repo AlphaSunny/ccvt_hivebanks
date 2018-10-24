@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../assets/layui/css/layui.css">
+</head>
+<style>
+    .layui-form {
+        padding: 5% 5% 5% 0;
+    }
+    .timeType{
+        color: #9e9e9e;
+    }
+</style>
+<body>
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+        <label class="layui-form-label">群名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" required id="addGroupNameInput" lay-verify="required" readonly autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">时间</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" required id="addTime" lay-verify="required" placeholder="请输入时间" autocomplete="off" class="layui-input">
+            <p class="timeType">时间格式: 10:5/10:15  分钟在10以内请使用但数字 如: 10:5</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">内容</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" required id="addContent" class="layui-textarea"></textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" id="addTaskSubBtn">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+
+<script src="../../assets/js/jquery.min.js"></script>
+<script src="../../assets/js/layer/layer.js"></script>
+<script src="../../assets/layui/layui.all.js"></script>
+<script>
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+    });
+</script>
+
+</body>
+</html>

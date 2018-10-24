@@ -13,7 +13,7 @@ function GetCookie(name) {
     var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
     if (arr == null && name == "robot_token") {
-        window.location.href = url+"/h5/bot_web/html/login.html";
+        window.location.href = url + "/h5/bot_web/html/login.html";
         return;
     }
 }
@@ -171,6 +171,27 @@ function DelTask(token, timer_id, suc_func, error_func) {
         post_data = {
             "token": token,
             "timer_id": timer_id
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+//获取群主列表
+function GetGroupList(token, suc_func, error_func) {
+    var api_url = "group_list.php",
+        post_data = {
+            "token": token
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+//添加任务信息
+function AddTask(token, time, group_id, content, suc_func, error_func) {
+    var api_url = "timer_add.php",
+        post_data = {
+            "token": token,
+            "time": time,
+            "group_id": group_id,
+            "content": content
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
