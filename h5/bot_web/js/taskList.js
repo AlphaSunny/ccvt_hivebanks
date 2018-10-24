@@ -20,6 +20,7 @@ function GetTaskListFun() {
             height: vipTable.getFullHeight(),    //容器高度,
             cols: [[                  //标题栏
                 {checkbox: true, sort: true, fixed: true, space: true}
+                , {field: 'id', title: 'id', width: 0}
                 , {field: 'time', title: '时间', width: 280}
                 , {field: 'content', title: '内容', width: 380}
                 , {field: 'name', title: '群主', width: 100}
@@ -66,6 +67,11 @@ GetTaskListFun();
 $(function () {
     // var taskEditBtn = "";
     $(document).on("click", ".taskEditBtn", function () {
-        console.log("edit");
+        var timer_id = $(this).parents("td").siblings("td[data-field='id']").children().text();
+        var content = $(this).parents("td").siblings("td[data-field='content']").children().text();
+        var time = $(this).parents("td").siblings("td[data-field='time']").children().text();
+        console.log(timer_id);
+        console.log(content);
+        console.log(time);
     })
 });
