@@ -121,6 +121,14 @@ $(function () {
     //删除任务
     $(document).on("click", ".taskDelBtn", function () {
         var timer_id = $(this).parents("td").siblings("td[data-field='id']").children().text();
-        console.log(timer_id);
+
+        //确认删除提示
+        layer.confirm('确认删除?', {
+            btn: ['取消','确认'] //按钮
+        }, function(){
+            // layer.msg('的确很重要', {icon: 1});
+        }, function(){
+            layer.msg('删除成功', {icon: 1});
+        });
     })
 });
