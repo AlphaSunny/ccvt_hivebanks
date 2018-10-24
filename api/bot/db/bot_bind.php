@@ -244,7 +244,7 @@ function storage_members($data)
     $db -> query($sql);
 
     //插入数据
-    $sql= "insert into twenty_million (member_id,name,group_id,group_name,intime) values ";
+    $sql= "insert into bot_group_members (member_id,name,group_id,group_name,intime) values ";
     foreach (json_decode($data['name']) as $k=>$value){
         $sql .= "('".get_guid()."','".$value."','".$data['group_id']."','".$data['group_name']."','".time()."'),";
     }
