@@ -117,19 +117,17 @@ $(function () {
                     operating.val("1");
                     operating.siblings(".layui-form-switch").addClass("layui-form-onswitch");
                 }else {
-                    // operating.attr("checked", false);
-                    // operating.val("2");
-                    // operating.siblings(".layui-form-switch").removeClass("layui-form-onswitch");
+                    operating.attr("checked", false);
+                    operating.val("2");
+                    operating.siblings(".layui-form-switch").removeClass("layui-form-onswitch");
                 }
 
                 operating.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
-                    // if(operating.val() == "1"){
-                    //     operating.val("2");
-                    // }else {
-                    //     operating.val("1");
-                    // }
-                    console.log($(this));
-                    console.log(operating.val());
+                    if(operating.val() == "1"){
+                        operating.val("2");
+                    }else {
+                        operating.val("1");
+                    }
                 });
 
                 //获取调戏功能开关
