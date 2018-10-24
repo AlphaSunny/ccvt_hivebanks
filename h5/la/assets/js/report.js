@@ -99,6 +99,27 @@ $(function () {
                     '</tr>';
                 $('#amount_reportInfo').html(trInfo);
 
+                var trGift = '';
+                var G = (data.gift_row[0].t),
+                    IG = (data.gift_row[1].IG),
+                    NDG = (data.gift_row[2].NDG),
+                    NDBG = (data.gift_row[3].NDBG),
+                    NDAG = (data.gift_row[4].NDAG);
+                var giftRegister = Number(NDG) + Number(NDBG) + Number(NDAG);
+
+
+
+                trGift += '<tr>' +
+                    '<td><span class="sum_us_recharge_base_amount">' + G + '</span><span class="base_type">BTC</span></td>' +
+                    '<td><span class="sum_us_withdraw_base_amount">' + IG + '</span><span class="base_type">BTC</span></td>' +
+                    '<td><span class="sum_us_recharge_base_amount">' + giftRegister + '</span><span class="base_type">BTC</span></td>' +
+
+                    // '<td><span class="sum_ba_recharge_base_amount">' + NDG + '</span><span class="base_type">BTC</span></td>' +
+                    // '<td><span class="sum_ba_withdraw_base_amount">' + NDBG + '</span><span class="base_type">BTC</span></td>' +
+                    // '<td><span class="sum_ca_recharge_base_amount">' + NDAG + '</span><span class="base_type">BTC</span></td>' +
+                    '</tr>';
+                $('#amount_gift').html(trGift);
+
                 DonutFun(us_register_count, ba_register_count, ca_register_count);
                 var dataChartObj = {}, dataChart = [];
                 dataChartObj.y = new Date().Format('yyyy-MM-dd'),
