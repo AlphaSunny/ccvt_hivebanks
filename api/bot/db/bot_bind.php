@@ -239,16 +239,18 @@ function get_key_code()
 //======================================
 function storage_members($data)
 {
-    echo get_guid();
-    die;
     $db = new DB_COM();
     $sql = "delete from bot_group_members WHERE group_id='{$data['group_id']}'";
     $db -> query($sql);
 
     //插入数据
     $sql= "insert into twenty_million (member_id,name,group_id,group_name,intime) values";
+    foreach ($data['name_json'] as $k=>$value){
+        echo $value;
+    }
+    die;
 //    for($i=0;$i<2000000;$i++) {
-//        $sql .= "('".get_guid();."'),";
+//        $sql .= "('".get_guid()."','".."'),";
 //    }
 }
 
