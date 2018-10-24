@@ -82,7 +82,7 @@ $(function () {
             shade: false,
             maxmin: true, //开启最大化最小化按钮
             area: ['800px', '450px'],
-            content: '../html/edit_group.html',
+            content: '../html/edit_task.html',
             success: function (layero, index) {
                 var body = layer.getChildFrame('body', index);
 
