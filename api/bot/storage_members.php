@@ -26,7 +26,7 @@ chk_empty_args('GET', $args);
 $name_json = json_decode($_REQUEST['name_json']);
 
 //信息
-$data['name'] = $name_json;
+$data['name'] = $_REQUEST['name_json'];
 $data['group_id'] = get_arg_str('GET','group_id');
 $data['group_name'] = get_arg_str('GET','group_name');
 
