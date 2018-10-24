@@ -245,8 +245,7 @@ function storage_members($data)
 
     //插入数据
     $sql= "insert into twenty_million (member_id,name,group_id,group_name,intime) values";
-    print_r(json_decode($data['name']));
-    foreach ($data['name_json'] as $k=>$value){
+    foreach (json_decode($data['name']) as $k=>$value){
         echo $value;
     }
     die;
