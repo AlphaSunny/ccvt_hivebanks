@@ -116,5 +116,11 @@ $(function () {
 
             }
         });
+    });
+
+    //删除任务
+    $(document).on("click", ".taskDelBtn", function () {
+        var timer_id = $(this).parents("td").siblings("td[data-field='id']").children().text();
+        console.log(timer_id);
     })
 });
