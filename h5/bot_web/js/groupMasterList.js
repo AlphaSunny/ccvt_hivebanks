@@ -117,9 +117,9 @@ $(function () {
                     operating.val("1");
                     operating.siblings(".layui-form-switch").addClass("layui-form-onswitch");
                 }else {
-                    operating.attr("checked", false);
-                    operating.val("2");
-                    operating.siblings(".layui-form-switch").removeClass("layui-form-onswitch");
+                    // operating.attr("checked", false);
+                    // operating.val("2");
+                    // operating.siblings(".layui-form-switch").removeClass("layui-form-onswitch");
                 }
 
                 operating.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
