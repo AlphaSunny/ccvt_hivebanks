@@ -69,12 +69,10 @@ $(function () {
     //编辑任务
     $(document).on("click", ".taskEditBtn", function () {
         var timer_id = $(this).parents("td").siblings("td[data-field='id']").children().text();
-        var content = $(this).parents("td").siblings("td[data-field='content']").children().text();
-        var time = $(this).parents("td").siblings("td[data-field='time']").children().text();
-        var groupName = $(this).parents("td").siblings("td[data-field='name']").children().text();
-        console.log(timer_id);
-        console.log(content);
-        console.log(time);
+        var taskContent = $(this).parents("td").siblings("td[data-field='content']").children().text();
+        var taskTime = $(this).parents("td").siblings("td[data-field='time']").children().text();
+        var taskGroupName = $(this).parents("td").siblings("td[data-field='name']").children().text();
+
         var index = layer.open({
             type: 2,
             title: '编辑',
@@ -88,15 +86,15 @@ $(function () {
 
                 //get group name
                 var groupNameInput = body.find("#groupNameInput");
-                groupNameInput.val(groupName);
+                groupNameInput.val(taskGroupName);
 
                 //获取时间输入框
                 var timeInput = body.find("#time");
-                timeInput.val(time);
+                timeInput.val(taskTime);
 
                 //获取内容输入框
                 var contentInput = body.find("#content");
-                contentInput.val(content);
+                contentInput.val(taskContent);
 
 
                 //获取提交按钮
@@ -104,15 +102,16 @@ $(function () {
 
                 //提交编辑信息
                 taskSubBtn.click(function () {
-                    console.log("sub task");
-                    // EditTask(token, timer_id, time, content, function (response) {
-                    //     if (response.errcode == "0") {
-                    //         layer.close(index);
-                    //         GetTaskListFun();
-                    //     }
-                    // }, function (response) {
-                    //     console.log(response);
-                    // })
+                    var time = timeInput.val(),
+                        content = contentInput.val();
+                    EditTask(token, timer_id, time, content, function (response) {
+                        if (response.errcode == "0") {
+                            layer.close(index);
+                            GetTaskListFun();
+                        }
+                    }, function (response) {
+                        console.log(response);
+                    })
                 })
 
             }

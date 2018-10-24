@@ -12,14 +12,16 @@
     .layui-form {
         padding: 5% 5% 5% 0;
     }
+    .timeType{
+        color: #9e9e9e;
+    }
 </style>
 <body>
 <form class="layui-form" action="">
     <div class="layui-form-item">
         <label class="layui-form-label">群名称</label>
         <div class="layui-input-block">
-            <input type="text" name="title" required id="groupNameInput" lay-verify="required" placeholder="请输入群名称"
-                   autocomplete="off" class="layui-input">
+            <input type="text" name="title" required id="groupNameInput" lay-verify="required" readonly autocomplete="off" class="layui-input">
         </div>
     </div>
 
@@ -27,7 +29,7 @@
         <label class="layui-form-label">时间</label>
         <div class="layui-input-block">
             <input type="text" name="title" required id="time" lay-verify="required" placeholder="请输入时间" autocomplete="off" class="layui-input">
-            <p>时间格式: 10:5/10:15  分钟在10以内请使用但数字 如: 10:5</p>
+            <p class="timeType">时间格式: 10:5/10:15  分钟在10以内请使用但数字 如: 10:5</p>
         </div>
     </div>
 
