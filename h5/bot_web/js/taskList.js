@@ -167,15 +167,16 @@ $(function () {
                 var body = layer.getChildFrame('body', index);
 
                 //get group name
-                // var groupNameSelect = body.find("#groupNameSelect");
-                var groupNameSelect = body.find(".layui-anim.layui-anim-upbit");
+                var groupNameSelect = body.find("#groupNameSelect");
+                var ddSelect = body.find(".layui-anim.layui-anim-upbit");
                 GetGroupList(token, function (response) {
                     console.log(response);
                 }, function (response) {
                     var groupList = response.data;
                     $.each(groupList, function (i, val) {
                         console.log(val.id, val.name);
-                        groupNameSelect.append("<dd lay-value='"+ val.id +"'>"+ val.name +"</dd>");
+                        groupNameSelect.append("<option value='"+ val.id +"'>"+ val.name +"</option>");
+                        ddSelect.append("<dd lay-value='"+ val.id +"'>"+ val.name +"</dd>");
                         // console.log(val);
                         // groupArr.push(val.name);
                         // console.log(groupArr);
