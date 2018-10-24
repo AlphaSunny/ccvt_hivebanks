@@ -231,4 +231,21 @@ function get_key_code()
     return $row['key_code'];
 }
 
+//======================================
+// 函数: 更新群组成员
+// 参数:  $data
+//返回： true               成功
+//        false             失败
+//======================================
+function storage_members($data)
+{
+    $db = new DB_COM();
+    $sql = "select remark from bot_group_members where group_id='{$data['group_id']}'";
+
+    $sql = "SELECT key_code FROM la_admin limit 1";
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    return $row['key_code'];
+}
+
 ?>
