@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../assets/layui/css/layui.css">
 </head>
 <style>
-    .layui-form {
+    .layui-form{
         padding: 5% 5% 5% 0;
     }
 </style>
@@ -18,8 +18,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">群名称</label>
         <div class="layui-input-block">
-            <input type="text" name="title" required id="groupNameInput" lay-verify="required" placeholder="请输入群名称"
-                   autocomplete="off" class="layui-input">
+            <input type="text" name="title" required id="groupNameInput"  lay-verify="required" placeholder="请输入群名称" autocomplete="off" class="layui-input">
         </div>
     </div>
 
@@ -27,8 +26,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">运行状态</label>
         <div class="layui-input-block">
-            <input type="checkbox" name="switch" checked class="operating" value="2" lay-skin="switch"
-                   lay-text="ON|OFF">
+            <input type="checkbox" name="switch" checked class="operating" value="2" lay-skin="switch" lay-text="ON|OFF">
         </div>
     </div>
 
@@ -54,13 +52,13 @@
 <script src="../../assets/layui/layui.all.js"></script>
 <script>
     //Demo
-    layui.use('form', function () {
+    layui.use('form', function(){
         var form = layui.form;
 
         //监听提交
         // form.on('submit(formDemo)', function(data){
-        //         layer.msg(JSON.stringify(data.field));
-        //         return false;
+        //     layer.msg(JSON.stringify(data.field));
+        //     return false;
         // });
 
         // form.on('checkbox(filter)', function(data){
