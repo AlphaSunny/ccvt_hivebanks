@@ -146,8 +146,11 @@ $(function () {
         GetGroupList(token, function (response) {
             console.log(response);
         }, function (response) {
-            layer.msg(response.errmsg);
             console.log(response);
+            var groupList = response.data;
+            $.each(groupList, function (i, val) {
+                console.log(val);
+            })
         });
 
         // var index = layer.open({
