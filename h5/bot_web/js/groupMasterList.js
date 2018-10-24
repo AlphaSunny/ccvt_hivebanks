@@ -121,6 +121,9 @@ $(function () {
                 }
 
                 operating.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
+                    if(operating.val() == "1"){
+                        operating.val("2");
+                    }
                    console.log($(this).siblings("input").val());
                 });
 
