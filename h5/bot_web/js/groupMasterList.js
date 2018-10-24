@@ -98,7 +98,7 @@ $(function () {
                     operating.val("1");
                     operating.siblings(".layui-form-switch").addClass("layui-form-onswitch")
                 };
-                operating.change(function () {
+                operating.on("change", function () {
                    console.log("change");
                 });
 
