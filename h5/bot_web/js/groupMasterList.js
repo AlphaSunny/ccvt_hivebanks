@@ -87,7 +87,7 @@ function GetGroupListFun() {
 GetGroupListFun();
 
 $(function () {
-    var subBtn = "";
+    var subBtn = "", addSubBtn = "";
 
     //edit
     $(document).on("click", ".editBtn", function () {
@@ -116,7 +116,7 @@ $(function () {
                     operating.attr("checked", true);
                     operating.val("1");
                     operating.siblings(".layui-form-switch").addClass("layui-form-onswitch");
-                }else {
+                } else {
                     operating.attr("checked", false);
                     operating.val("2");
                     operating.siblings(".layui-form-switch").removeClass("layui-form-onswitch").children("em").text("OFF");
@@ -124,9 +124,9 @@ $(function () {
                 }
 
                 operating.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
-                    if(operating.val() == "1"){
+                    if (operating.val() == "1") {
                         operating.val("2");
-                    }else {
+                    } else {
                         operating.val("1");
                     }
                 });
@@ -137,27 +137,80 @@ $(function () {
                     opts.attr("checked", true);
                     opts.val("1");
                     opts.siblings(".layui-form-switch").addClass("layui-form-onswitch")
-                }else {
+                } else {
                     opts.attr("checked", false);
                     opts.val("2");
                     opts.siblings(".layui-form-switch").removeClass("layui-form-onswitch").children("em").text("OFF");
                 }
 
                 opts.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
-                    if(opts.val() == "1"){
+                    if (opts.val() == "1") {
                         opts.val("2");
-                    }else {
+                    } else {
                         opts.val("1");
                     }
                 });
 
                 //获取提交按钮
                 subBtn = body.find("#subBtn");
+
+                //提交编辑信息
                 subBtn.click(function () {
                     var del = operating.val();
                     var flirt = opts.val();
                     var group_name = groupNameInput.val();
                     EditGroup(token, group_name, del, flirt, group_id, function (response) {
+                        if (response.errcode == "0") {
+                            layer.close(index);
+                            GetGroupListFun();
+                        }
+                    }, function (response) {
+                        console.log(response);
+                    })
+                })
+
+            }
+        });
+    });
+
+    //add
+    $(".groupAddBtn").click(function () {
+        var add = layer.open({
+            type: 2,
+            title: '添加群',
+            shadeClose: true,
+            shade: false,
+            maxmin: true, //开启最大化最小化按钮
+            area: ['800px', '450px'],
+            content: '../html/add_group.html',
+            success: function (layero, index) {
+                var body = layer.getChildFrame('body', index);
+
+                //get group name
+                var addGroupNameInput = body.find("#addGroupNameInput");
+
+                //获取运行状态开关
+                var addOperating = body.find(".addOperating");
+
+                //获取调戏功能开关
+                var addOpts = body.find(".addOpts");
+
+
+                //获取提交按钮
+                addSubBtn = body.find("#addSubBtn");
+
+                //提交添加信息
+                addSubBtn.click(function () {
+                    //获取群名称
+                    var group_name = addGroupNameInput.val();
+
+                    //获取运行状态
+                    var del = addOperating.val();
+
+                    //获取调戏状态
+                    var flirt = addOpts.val();
+
+                    AddGroup(token, group_name, del, flirt, function (response) {
                         if (response.errcode == "0") {
                             layer.close(index);
                             GetGroupListFun();

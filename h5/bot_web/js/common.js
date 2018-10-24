@@ -128,6 +128,7 @@ function RobotEmailLogin(email, pass_word_hash, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//编辑群主信息
 function EditGroup(token, group_name, del, flirt, group_id, suc_func, error_func) {
     var api_url = "group_edit.php",
         post_data = {
@@ -136,6 +137,18 @@ function EditGroup(token, group_name, del, flirt, group_id, suc_func, error_func
             "del": del,
             "flirt": flirt,
             "group_id": group_id
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+//添加群主信息
+function AddGroup(token, group_name, del, flirt, suc_func, error_func) {
+    var api_url = "group_add.php",
+        post_data = {
+            "token": token,
+            "group_name": group_name,
+            "del": del,
+            "flirt": flirt
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
