@@ -46,18 +46,19 @@ function getRootPath() {
 }
 
 var url = getRootPath();
+console.log(url);
 
 //Get failed error code prompt
-function GetErrorCode(code) {
-    $.getJSON(url + "/h5/assets/json/errcode.json", function (response) {
-        $.each(response, function (i, val) {
-            if (response[i].code == code) {
-                layer.msg('<p class="i18n" name="' + code + '">' + response[i].code_value + '</p>');
-                execI18n();
-            }
-        })
-    })
-}
+// function GetErrorCode(code) {
+//     $.getJSON(url + "/h5/assets/json/errcode.json", function (response) {
+//         $.each(response, function (i, val) {
+//             if (response[i].code == code) {
+//                 layer.msg('<p class="i18n" name="' + code + '">' + response[i].code_value + '</p>');
+//                 execI18n();
+//             }
+//         })
+//     })
+// }
 
 //Get configuration file
 var config_api_url = '', config_h5_url = '', userLanguage = GetCookie('userLanguage');

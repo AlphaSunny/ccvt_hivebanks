@@ -98,9 +98,9 @@ $(function () {
                     operating.val("1");
                     operating.siblings(".layui-form-switch").addClass("layui-form-onswitch")
                 };
-                operating.on("change", function () {
-                   console.log("change");
-                });
+                // operating.on("change", function () {
+                //    console.log("change");
+                // });
 
                 //获取调戏功能开关
                 var opts = body.find(".opts");
