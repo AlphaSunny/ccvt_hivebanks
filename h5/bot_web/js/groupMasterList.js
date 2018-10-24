@@ -117,7 +117,11 @@ $(function () {
                 if (is_del == 1) {
                     operating.attr("checked", true);
                     operating.val("1");
-                    operating.siblings(".layui-form-switch").addClass("layui-form-onswitch")
+                    operating.siblings(".layui-form-switch").addClass("layui-form-onswitch");
+                }else {
+                    operating.attr("checked", false);
+                    operating.val("2");
+                    operating.siblings(".layui-form-switch").removeClass("layui-form-onswitch");
                 }
 
                 operating.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
@@ -134,6 +138,10 @@ $(function () {
                     opts.attr("checked", true);
                     opts.val("1");
                     opts.siblings(".layui-form-switch").addClass("layui-form-onswitch")
+                }else {
+                    opts.attr("checked", false);
+                    opts.val("2");
+                    opts.siblings(".layui-form-switch").removeClass("layui-form-onswitch");
                 }
 
                 opts.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
