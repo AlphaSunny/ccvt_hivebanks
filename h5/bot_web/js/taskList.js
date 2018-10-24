@@ -147,6 +147,7 @@ $(function () {
             console.log(response);
         }, function (response) {
             layer.msg(response.errmsg);
+            console.log(response);
         });
 
         // var index = layer.open({
