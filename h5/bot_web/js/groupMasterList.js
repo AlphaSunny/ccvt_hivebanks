@@ -126,7 +126,6 @@ $(function () {
                     }else {
                         operating.val("1");
                     }
-                   console.log($(this).siblings("input").val());
                 });
 
                 //获取调戏功能开关
@@ -136,6 +135,14 @@ $(function () {
                     opts.val("1");
                     opts.siblings(".layui-form-switch").addClass("layui-form-onswitch")
                 }
+
+                opts.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
+                    if(opts.val() == "1"){
+                        opts.val("2");
+                    }else {
+                        opts.val("1");
+                    }
+                });
 
                 //获取提交按钮
                 subBtn = body.find("#subBtn");
