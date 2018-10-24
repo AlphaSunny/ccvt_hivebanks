@@ -150,9 +150,9 @@ $(function () {
             console.log(response);
             var groupList = response.data;
             $.each(groupList, function (i, val) {
-                console.log(val);
+                // console.log(val);
                 groupArr.push(val.name);
-                console.log(groupArr);
+                // console.log(groupArr);
             })
         });
 
@@ -170,6 +170,7 @@ $(function () {
                 //get group name
                 var groupNameSelect = body.find("#groupNameSelect");
                 $.each(groupArr,function (i, val) {
+                    console.log(val);
                     groupNameSelect.push(val);
                 });
 
