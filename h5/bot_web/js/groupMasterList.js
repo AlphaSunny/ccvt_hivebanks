@@ -120,9 +120,8 @@ $(function () {
                     operating.siblings(".layui-form-switch").addClass("layui-form-onswitch")
                 }
 
-                console.log(operating.siblings(".layui-form-switch"));
                 operating.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
-                   console.log("change");
+                   console.log($(this).siblings("input").val());
                 });
 
                 //获取调戏功能开关
