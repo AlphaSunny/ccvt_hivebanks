@@ -23,7 +23,7 @@ php_begin();
 $args = array('name_json','group_name','group_id');
 chk_empty_args('GET', $args);
 
-echo implode(",",$_REQUEST['name_json']);
+var_dump(json_decode($_REQUEST['name_json']));
 die;
 
 //信息
