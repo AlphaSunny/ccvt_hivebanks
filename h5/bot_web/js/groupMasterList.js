@@ -120,6 +120,7 @@ $(function () {
                     operating.attr("checked", false);
                     operating.val("2");
                     operating.siblings(".layui-form-switch").removeClass("layui-form-onswitch");
+                    operating.siblings(".layui-form-switch").children("em").text("OFF");
                 }
 
                 operating.siblings(".layui-form-switch").bind("DOMNodeInserted", function () {
