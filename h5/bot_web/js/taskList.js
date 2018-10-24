@@ -168,8 +168,10 @@ $(function () {
                 var body = layer.getChildFrame('body', index);
 
                 //get group name
-                var groupNameInput = body.find("#groupNameInput");
-                // groupNameInput.val(taskGroupName);
+                var groupNameSelect = body.find("#groupNameSelect");
+                $.each(groupArr,function (i, val) {
+                    groupNameSelect.push(val);
+                });
 
                 //获取时间输入框
                 var timeInput = body.find("#time");
