@@ -17,7 +17,7 @@ function GetGroupListFun() {
             elem: '#dateTable',
             height: vipTable.getFullHeight(),    //容器高度,
             cols: [[                  //标题栏
-                {checkbox: false, sort: true, fixed: true, space: false}
+                // {checkbox: false, sort: true, fixed: true, space: false}
                 , {field: 'id', title: 'id', width: 0}
                 , {field: 'name', title: '群名称', width: 200, align: 'center'}
                 // , {field: 'ba_id', title: 'ba_id', width: 380}
