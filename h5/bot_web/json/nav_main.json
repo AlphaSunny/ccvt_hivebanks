@@ -13,11 +13,6 @@
           "text": "任务列表",
           "icon": "&#xe621;",
           "href": "html/taskList.html"
-        },
-        {
-          "text": "详情",
-          "icon": "&#xe621;",
-          "href": "html/form.html"
         }
       ]
     }
