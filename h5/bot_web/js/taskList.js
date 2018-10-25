@@ -168,7 +168,8 @@ $(function () {
                 });
 
                 //监听下拉框
-                $(document).on("click", ".selectChildren", function () {
+                var selectChildren = body.find(".selectChildren");
+                $(selectChildren).on("click", function () {
                    console.log($(this).text());
                 });
 
