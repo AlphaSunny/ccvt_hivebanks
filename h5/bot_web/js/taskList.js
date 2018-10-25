@@ -176,7 +176,7 @@ $(function () {
                     $.each(groupList, function (i, val) {
                         console.log(val.id, val.name);
                         groupNameSelect.append("<option value='"+ val.id +"'>"+ val.name +"</option>");
-                        ddSelect.append("<dd lay-value='"+ val.id +"'>"+ val.name +"</dd>");
+                        ddSelect.append("<dd lay-value='"+ val.id +"' class=''>"+ val.name +"</dd>");
                     })
                 });
 
