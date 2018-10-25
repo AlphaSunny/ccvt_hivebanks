@@ -189,12 +189,17 @@ $(function () {
                     var time = timeInput.val(),
                         content = contentInput.val(),
                         group_id = selectInput.attr("name");
+                    var loading = layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
                     AddTask(token, time, group_id, content, function (response) {
                         if (response.errcode == "0") {
+                            layer.close(loading);
                             layer.close(index);
                             GetTaskListFun();
                         }
                     }, function (response) {
+                        layer.close(loading);
                         console.log(response);
                     })
                 })
