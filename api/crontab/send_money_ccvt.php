@@ -13,7 +13,6 @@ $pInTrans = $db->StartTrans();  //开启事务
 $sql = "select ba_id from bot_message WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by ba_id";
 $db->query($sql);
 $ba_list = $db->fetchAll();
-print_r($ba_list);die;
 foreach ($ba_list as $k=>$value){
     //判断当前ba是否有余额
     $data = sel_ba_amout($value['ba_id'],$day_start,$day_end);
@@ -23,6 +22,7 @@ foreach ($ba_list as $k=>$value){
         file_put_contents("ba_no_money.log",json_encode($data)."\n",FILE_APPEND);
         break;
     }
+    echo $value['ba_id'];die;
     //循环ba,查询ba下微信用户及发言数
     $sql = "select wechat,count(bot_message_id) as count from bot_message where ba_id='{$value['ba_id']}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
     $db->query($sql);
