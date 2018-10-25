@@ -134,6 +134,7 @@
     });
 
     $(function () {
+        GetCookie("robot_token");
         var url = getRootPath();
         $("#logout").click(function () {
             DelCookie("robot_token");
