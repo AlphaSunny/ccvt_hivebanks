@@ -65,6 +65,7 @@ foreach ($ba_list as $k=>$value){
         $d['ba_id'] = $value['ba_id'];
         $d['wechat'] = $v['wechat'];
         $d['num'] = $v['count'];
+        $d['amount'] = $v['count']*$unit;
         $d['is_replacement'] = 0;
         $d['send_time'] = date('Y-m-d H:i:s',time());
         $d['bot_create_time'] = strtotime("-1 day");
