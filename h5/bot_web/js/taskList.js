@@ -170,6 +170,8 @@ $(function () {
                 //监听下拉框
                 $(body).on("click", ".selectChildren", function () {
                     console.log("click");
+                    console.log($(this).text());
+                    console.log($(this).attr("lay-value"));
                 });
                 // var selectChildren = body.find(".selectChildren");
                 // console.log(selectChildren);
