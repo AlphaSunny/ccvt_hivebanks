@@ -167,20 +167,14 @@ $(function () {
                     layui.use('form', function () {
                         var form = layui.form;
                         form.render("select");
-                        // form.on('select(aihao)', function(data){
-                        //     console.log(data.elem); //得到select原始DOM对象
-                        //     console.log(data.value); //得到被选中的值
-                        //     console.log(data.othis); //得到美化后的DOM对象
-                        // });
-
                     });
                 });
 
                 //监听下拉框
-                // $(body).on("click", ".selectChildren", function () {
-                //     $(this).siblings().removeClass("layui-this");
-                //     $(this).addClass("layui-this");
-                // });
+                $(body).on("click", ".selectChildren", function () {
+                    $(this).siblings().removeClass("layui-this");
+                    $(this).addClass("layui-this");
+                });
 
                 //获取时间输入框
                 var timeInput = body.find("#time");
