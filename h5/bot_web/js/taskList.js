@@ -20,7 +20,7 @@ function GetTaskListFun() {
             cols: [[                  //标题栏
                 {checkbox: true, sort: true, fixed: true, space: true}
                 , {field: 'id', title: 'id', width: 0}
-                , {field: 'time', title: '时间', width: 150, align: 'center',}
+                , {field: 'time', title: '时间', width: 100, align: 'center',}
                 , {field: 'content', title: '内容', width: 380, align: 'center',}
                 , {field: 'name', title: '群主', width: 200, align: 'center',}
                 , {fixed: 'right', title: '操作', width: 150, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
