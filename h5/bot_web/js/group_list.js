@@ -21,7 +21,7 @@ $(function () {
     });
 
     //编辑对应的群主
-    $(document).on("click", ".editBtn", function (response) {
-        $("#editGroupModal").modal("show");
-    })
+    // $(document).on("click", ".editBtn", function (response) {
+    //     $("#editGroupModal").modal("show");
+    // })
 });
