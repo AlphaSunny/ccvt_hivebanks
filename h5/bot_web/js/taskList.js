@@ -155,9 +155,8 @@ $(function () {
                 //get group name
                 var groupNameSelect = body.find("#groupNameSelect");
                 var ddSelect = body.find(".layui-anim.layui-anim-upbit");
-                // var ddSelect = body.find(".layui-anim.layui-anim-upbit");
+                var selectInput = body.find(".layui-input.layui-unselect");
                 GetGroupList(token, function (response) {
-                    console.log(response);
                 }, function (response) {
                     var groupList = response.data;
                     $.each(groupList, function (i, val) {
@@ -174,6 +173,8 @@ $(function () {
                 $(body).on("click", ".selectChildren", function () {
                     $(this).siblings().removeClass("layui-this");
                     $(this).addClass("layui-this");
+                    selectInput.val($(this).text());
+                    selectInput.attr("name", $(this).attr("lay-value"));
                     console.log($(this).attr("lay-value"));
                     console.log($(this).text());
                 });
