@@ -20,9 +20,9 @@ function GetTaskListFun() {
             cols: [[                  //标题栏
                 {checkbox: true, sort: true, fixed: true, space: true}
                 , {field: 'id', title: 'id', width: 0}
-                , {field: 'time', title: '时间', width: 150}
-                , {field: 'content', title: '内容', width: 380}
-                , {field: 'name', title: '群主', width: 200}
+                , {field: 'time', title: '时间', width: 150, align: 'center',}
+                , {field: 'content', title: '内容', width: 380, align: 'center',}
+                , {field: 'name', title: '群主', width: 200, align: 'center',}
                 , {fixed: 'right', title: '操作', width: 150, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
             ]],
             page: true,
@@ -160,8 +160,8 @@ $(function () {
                 }, function (response) {
                     var groupList = response.data;
                     $.each(groupList, function (i, val) {
-                        groupNameSelect.append("<option value='"+ val.id +"'>"+ val.name +"</option>");
-                        ddSelect.append("<dd lay-value='"+ val.id +"' class='selectChildren'>"+ val.name +"</dd>");
+                        groupNameSelect.append("<option value='" + val.id + "'>" + val.name + "</option>");
+                        ddSelect.append("<dd lay-value='" + val.id + "' class='selectChildren'>" + val.name + "</dd>");
                     });
                     layui.use('form', function () {
                         var form = layui.form;
@@ -190,7 +190,7 @@ $(function () {
                         content = contentInput.val(),
                         group_id = selectInput.attr("name");
                     var loading = layer.load(1, {
-                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                        shade: [0.1, '#fff'] //0.1透明度的白色背景
                     });
                     AddTask(token, time, group_id, content, function (response) {
                         if (response.errcode == "0") {
