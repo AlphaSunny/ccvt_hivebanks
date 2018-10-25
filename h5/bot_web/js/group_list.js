@@ -9,14 +9,19 @@ $(function () {
                     "<td>"+ data[i].del +"</td>" +
                     "<td>"+ data[i].flirt +"</td>" +
                     "<td>" +
-                    "<button class='btn-success btn-sm'>编辑</button>" +
-                    "<button class='btn-sm btn-danger'>删除</button>" +
+                    "<button class='btn-success btn-sm editBtn'>编辑</button>" +
+                    "<button class='btn-sm btn-danger delBtn'>删除</button>" +
                     "</td>" +
                     "</tr>"
             });
             $("#groupListTable").html(tr);
         }
     }, function (response) {
-        console.log(response);
+        layer.msg(response.errmsg);
     });
+
+    //编辑对应的群主
+    $(document).on("click", ".editBtn", function (response) {
+        $("#editGroupModal").modal("show");
+    })
 });
