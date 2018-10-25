@@ -28,7 +28,6 @@ foreach ($ba_list as $k=>$value){
     $rows = $db->fetchAll();
     foreach ($rows as $a=>$v){
         $result = get_us_id($v['wechat']);
-        print_r($result);
         if ($result==0){
             continue;
         }
