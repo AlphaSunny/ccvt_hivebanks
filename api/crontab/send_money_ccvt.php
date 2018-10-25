@@ -157,6 +157,7 @@ function sel_ba_amout($ba_id,$day_start,$day_end){
 function send_money_if($ba_id,$wechat,$day_start,$day_end){
     $db = new DB_COM();
     $sql = "select * from bot_Iss_records WHERE ba_id='{$ba_id}' AND wechat='{$wechat}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' limit 1";
+    echo $sql;die;
     $db->query($sql);
     $rows = $db->fetchRow();
     return $rows;
