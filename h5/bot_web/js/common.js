@@ -13,7 +13,7 @@ function GetCookie(name) {
     var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
     if (arr == null && name == "robot_token") {
-        window.location.href = url + "/h5/bot_web/html/login.html";
+        window.location.href = "login.html";
         return;
     }
 }
