@@ -63,3 +63,6 @@
 .switch.switch-anim:checked:before {
     transition: left 0.3s;
 }
+.switch:focus{
+    outline: none!important;
+}
