@@ -13,12 +13,6 @@ function GetTaskListFun() {
             , vipTable = layui.vip_table
             , $ = layui.jquery;
 
-        form.on('select(filter)', function(data){
-            console.log(data.elem); //得到select原始DOM对象
-            console.log(data.value); //得到被选中的值
-            console.log(data.othis); //得到美化后的DOM对象
-        });
-
         // 表格渲染
         var tableIns = table.render({
             elem: '#dateTable',                 //指定原始表格元素选择器（推荐id选择器）,
@@ -171,6 +165,11 @@ $(function () {
                         groupNameSelect.append("<option value='"+ val.id +"'>"+ val.name +"</option>");
                         ddSelect.append("<dd lay-value='"+ val.id +"' class=''>"+ val.name +"</dd>");
                     })
+                });
+
+                //监听下拉框
+                ddSelect.children("dd").click(function () {
+                   console.log($(this).text());
                 });
 
                 //获取时间输入框
