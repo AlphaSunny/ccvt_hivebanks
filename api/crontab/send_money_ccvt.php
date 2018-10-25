@@ -22,7 +22,7 @@ foreach ($ba_list as $k=>$value){
         file_put_contents("ba_no_money.log",json_encode($data)."\n",FILE_APPEND);
         break;
     }
-    echo $value['ba_id'];die;
+    echo $value['ba_id'];
     //循环ba,查询ba下微信用户及发言数
     $sql = "select wechat,count(bot_message_id) as count from bot_message where ba_id='{$value['ba_id']}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
     $db->query($sql);
