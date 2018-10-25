@@ -10,7 +10,7 @@ $(function () {
                     "<td>"+ data[i].flirt +"</td>" +
                     "<td>" +
                     "<button class='btn-success btn-sm editBtn'>编辑</button>" +
-                    "<button class='btn-sm btn-danger delBtn '>删除</button>" +
+                    // "<button class='btn-sm btn-danger delBtn margin-left-5'>详情</button>" +
                     "</td>" +
                     "</tr>"
             });
