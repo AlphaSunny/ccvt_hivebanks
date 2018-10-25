@@ -18,7 +18,7 @@ function GetTaskListFun() {
             // minWidth: 100,
             height: vipTable.getFullHeight(),    //容器高度,
             cols: [[                  //标题栏
-                {checkbox: true, sort: true, fixed: true, space: true}
+                {checkbox: false, sort: true, fixed: true, space: true}
                 , {field: 'id', title: 'id', width: 0}
                 , {field: 'time', title: '时间', width: 100, align: 'center',}
                 , {field: 'content', title: '内容', width: 380, align: 'center',}
