@@ -25,10 +25,11 @@ $(function () {
                 // SetCookie('robot_username', username);
                 setTimeout(function () {
                     window.location.href = 'group_list.html';
-                },1000);
+                }, 1000);
             }
         }, function (response) {
             // layer.close(loading);
             // layer.msg(response.errmsg);
         })
+    })
 });
