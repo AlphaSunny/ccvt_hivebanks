@@ -21,7 +21,7 @@ function GetGroupListFun() {
                 {checkbox: true, sort: true, fixed: true, space: true}
                 , {field: 'id', title: 'id', width: 0}
                 , {field: 'name', title: '名称', width: 280}
-                , {field: 'ba_id', title: 'ba_id', width: 380}
+                // , {field: 'ba_id', title: 'ba_id', width: 380}
                 , {field: 'del', title: '状态', width: 100}
                 , {field: 'is_del', title: '是否开启状态', width: 100}
                 , {field: 'flirt', title: '调戏功能', width: 100}
