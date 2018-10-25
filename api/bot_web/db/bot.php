@@ -60,6 +60,20 @@ function get_group_info($group_id)
     return $row;
 }
 
+//======================================
+// 函数: 获取群组成员列表
+// 参数: group_id      群组id
+//
+// 返回: row           最新信息数组
+//======================================
+function get_group_members_list($group_id)
+{
+    $db = new DB_COM();
+    $sql = "SELECT name,group_name FROM bot_group_members WHERE group_id='{$group_id}'";
+    $db -> query($sql);
+    $row = $db -> fetchAll();
+    return $row;
+}
 
 
 //======================================
