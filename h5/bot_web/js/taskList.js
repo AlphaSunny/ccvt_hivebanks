@@ -162,17 +162,17 @@ $(function () {
                 }, function (response) {
                     var groupList = response.data;
                     $.each(groupList, function (i, val) {
-                        console.log(val.id, val.name);
                         groupNameSelect.append("<option value='"+ val.id +"'>"+ val.name +"</option>");
                         ddSelect.append("<dd lay-value='"+ val.id +"' class='selectChildren'>"+ val.name +"</dd>");
-                    })
+                    });
+                    form.render('select');
                 });
 
                 //监听下拉框
-                $(body).on("click", ".selectChildren", function () {
-                    $(this).siblings().removeClass("layui-this");
-                    $(this).addClass("layui-this");
-                });
+                // $(body).on("click", ".selectChildren", function () {
+                //     $(this).siblings().removeClass("layui-this");
+                //     $(this).addClass("layui-this");
+                // });
 
                 //获取时间输入框
                 var timeInput = body.find("#time");
