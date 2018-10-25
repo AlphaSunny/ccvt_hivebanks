@@ -69,7 +69,7 @@ function get_group_info($group_id)
 function get_group_members_list($group_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT name,group_name FROM bot_group_members WHERE group_id='{$group_id}'";
+    $sql = "SELECT name,group_name,group_id FROM bot_group_members WHERE group_id='{$group_id}'";
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;
