@@ -12,8 +12,6 @@ function GetTaskListFun() {
             , layer = layui.layer
             , vipTable = layui.vip_table
             , $ = layui.jquery;
-        form.render("select");
-
         // 表格渲染
         var tableIns = table.render({
             elem: '#dateTable',                 //指定原始表格元素选择器（推荐id选择器）,
@@ -166,7 +164,15 @@ $(function () {
                         groupNameSelect.append("<option value='"+ val.id +"'>"+ val.name +"</option>");
                         ddSelect.append("<dd lay-value='"+ val.id +"' class='selectChildren'>"+ val.name +"</dd>");
                     });
-                    GetTaskListFun();
+                    layui.use('form', function () {
+                        var form = layui.form;
+                        form.on('select(aihao)', function(data){
+                            console.log(data.elem); //得到select原始DOM对象
+                            console.log(data.value); //得到被选中的值
+                            console.log(data.othis); //得到美化后的DOM对象
+                        });
+
+                    });
                 });
 
                 //监听下拉框
