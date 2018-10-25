@@ -12,6 +12,7 @@ function GetTaskListFun() {
             , layer = layui.layer
             , vipTable = layui.vip_table
             , $ = layui.jquery;
+        form.render("select");
 
         // 表格渲染
         var tableIns = table.render({
@@ -165,7 +166,7 @@ $(function () {
                         groupNameSelect.append("<option value='"+ val.id +"'>"+ val.name +"</option>");
                         ddSelect.append("<dd lay-value='"+ val.id +"' class='selectChildren'>"+ val.name +"</dd>");
                     });
-                    form.render('select');
+                    GetTaskListFun();
                 });
 
                 //监听下拉框
