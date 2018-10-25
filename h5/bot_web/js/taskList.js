@@ -172,24 +172,25 @@ $(function () {
                 //监听下拉框
                 $(body).on("click", ".selectChildren", function () {
                     $(this).addClass("layui-this").siblings().removeClass("layui-this");//增加layui-this属性，其他元素删除该属性
-                    selectInput.val($(this).text()).attr("name", $(this).attr("lay-value"));
-                    // selectInput.attr("name", $(this).attr("lay-value"));
+                    selectInput.val($(this).text()).attr("name", $(this).attr("lay-value"));//给select input赋值
                 });
 
                 //获取时间输入框
-                var timeInput = body.find("#time");
+                var timeInput = body.find("#addTime");
 
                 //获取内容输入框
-                var contentInput = body.find("#content");
+                var contentInput = body.find("#addContent");
 
                 //获取提交按钮
-                taskSubBtn = body.find("#taskSubBtn");
+                taskSubBtn = body.find("#addTaskSubBtn");
 
                 //提交添加信息
                 taskSubBtn.click(function () {
                     var time = timeInput.val(),
                         content = contentInput.val(),
-                        group_id = "30";
+                        group_id = selectInput.attr("name");
+                    console.log(time, content, group_id);
+                    return;
                     AddTask(token, time, group_id, content, function (response) {
                         if (response.errcode == "0") {
                             layer.close(index);
