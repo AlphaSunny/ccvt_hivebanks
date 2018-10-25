@@ -13,6 +13,12 @@ function GetTaskListFun() {
             , vipTable = layui.vip_table
             , $ = layui.jquery;
 
+        form.on('select(filter)', function(data){
+            console.log(data.elem); //得到select原始DOM对象
+            console.log(data.value); //得到被选中的值
+            console.log(data.othis); //得到美化后的DOM对象
+        });
+
         // 表格渲染
         var tableIns = table.render({
             elem: '#dateTable',                 //指定原始表格元素选择器（推荐id选择器）,
@@ -142,19 +148,6 @@ $(function () {
 
     //添加任务信息
     $(".addTaskBtn").click(function () {
-        //获取群列表
-        // var groupArr = [];
-        // GetGroupList(token, function (response) {
-        //     console.log(response);
-        // }, function (response) {
-        //     var groupList = response.data;
-        //     $.each(groupList, function (i, val) {
-        //         // console.log(val);
-        //         groupArr.push(val.name);
-        //         // console.log(groupArr);
-        //     })
-        // });
-
         var index = layer.open({
             type: 2,
             title: '编辑',
