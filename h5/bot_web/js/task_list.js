@@ -4,7 +4,7 @@ $(function () {
         if(response.errcode == "0"){
             var data = response.rows, tr = "";
             $.each(data, function (i, val) {
-                tr+="<tr>" +
+                tr+="<tr class='text-center'>" +
                     "<td>"+ data[i].time +"</td>" +
                     "<td>"+ data[i].name +"</td>" +
                     "<td>"+ data[i].content +"</td>" +
