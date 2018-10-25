@@ -20,17 +20,16 @@
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
     <!--<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-switch.min.css">-->
-    <link rel="stylesheet" type="text/css" href="../assets/layui/css/layui2-4.css">
+    <!--<link rel="stylesheet" type="text/css" href="../assets/layui/css/layui2-4.css">-->
+    <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css"
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="app sidebar-mini rtl">
 <!-- Navbar-->
 <header class="app-header"><a class="app-header__logo" href="index.html">Robot</a>
-    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
-                                    aria-label="Hide Sidebar"></a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
     <!-- Navbar Right Menu-->
     <ul class="app-nav">
         <!--<li class="app-search">-->
@@ -209,7 +208,7 @@
                     <h4 class="modal-title" id="myModalLabel">编辑群信息</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal layui-form">
+                    <form class="form-horizontal">
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">群名称</label>
                             <div class="col-sm-10">
@@ -217,26 +216,27 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="layui-form-item" pane="">
-                                <label class="layui-form-label">开关-开</label>
-                                <div class="layui-input-block">
-                                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" title="开关">
-                                </div>
-                            </div>
+                            <input class="switch switch-anim" type="checkbox" checked>
+                            <!--<div class="layui-form-item" pane="">-->
+                                <!--<label class="layui-form-label">开关-开</label>-->
+                                <!--<div class="layui-input-block">-->
+                                    <!--<input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" title="开关">-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">开关</label>
-                                <div class="layui-input-block">
-                                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                                </div>
-                            </div>
+                            <!--<div class="layui-form-item">-->
+                                <!--<label class="layui-form-label">开关</label>-->
+                                <!--<div class="layui-input-block">-->
+                                    <!--<input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">开关-默认关</label>
-                                <div class="layui-input-block">
-                                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                                </div>
-                            </div>
+                            <!--<div class="layui-form-item">-->
+                                <!--<label class="layui-form-label">开关-默认关</label>-->
+                                <!--<div class="layui-input-block">-->
+                                    <!--<input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">-->
+                                <!--</div>-->
+                            <!--</div>-->
                             <!--<div class="switch" data-on="success" data-off="warning">-->
                                 <!--<input type="checkbox" checked/>-->
                             <!--</div>-->
@@ -280,7 +280,7 @@
 <script src="../assets/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
-<script src="../assets/layui/layui2-4.js"></script>
+<!--<script src="../assets/layui/layui2-4.js"></script>-->
 <script src="../assets/js/pace.min.js"></script>
 <!-- Page specific javascripts-->
 <!-- Data table plugin-->
