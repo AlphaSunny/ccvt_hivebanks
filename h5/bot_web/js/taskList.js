@@ -171,7 +171,7 @@ $(function () {
                 $(body).on("click", ".selectChildren", function () {
                     console.log($(this).text());
                     console.log($(this).attr("lay-value"));
-                    $(this).addClass("layui-this").siblings().removeClass("layui-this");
+                    $(this).siblings().removeClass("layui-this").addClass("layui-this");
                 });
                 // var selectChildren = body.find(".selectChildren");
                 // console.log(selectChildren);
