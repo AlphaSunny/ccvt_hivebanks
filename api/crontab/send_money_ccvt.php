@@ -13,6 +13,7 @@ $pInTrans = $db->StartTrans();  //开启事务
 $sql = "select ba_id from bot_message WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by ba_id";
 $db->query($sql);
 $ba_list = $db->fetchAll();
+print_r($ba_list);
 foreach ($ba_list as $k=>$value){
     //判断当前ba是否有余额
     $data = sel_ba_amout($value['ba_id'],$day_start,$day_end);
