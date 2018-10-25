@@ -168,11 +168,14 @@ $(function () {
                 });
 
                 //监听下拉框
-                var selectChildren = body.find(".selectChildren");
-                console.log(selectChildren);
-                selectChildren.click(function () {
-                   console.log("click");
+                $(body).on("click", ".selectChildren", function () {
+                    console.log("click");
                 });
+                // var selectChildren = body.find(".selectChildren");
+                // console.log(selectChildren);
+                // selectChildren.click(function () {
+                //    console.log("click");
+                // });
 
                 //获取时间输入框
                 var timeInput = body.find("#time");
