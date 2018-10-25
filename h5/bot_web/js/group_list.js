@@ -2,6 +2,7 @@ $(function () {
     var token = GetCookie("robot_token");
     GetGroupList(token, function (response) {
         var data = response.data, tr = "";
+        console.log(data);
         $.each(data, function (i, val) {
             tr+="<tr>" +
                 "<td>"+ data[i].name +"</td>" +
