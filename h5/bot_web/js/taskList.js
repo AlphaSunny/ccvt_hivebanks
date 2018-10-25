@@ -169,9 +169,10 @@ $(function () {
 
                 //监听下拉框
                 var selectChildren = body.find(".selectChildren");
-                selectChildren.on("click", function () {
-                   console.log($(this).text());
-                });
+                console.log(selectChildren);
+                // selectChildren.on("click", function () {
+                //    console.log($(this).text());
+                // });
 
                 //获取时间输入框
                 var timeInput = body.find("#time");
