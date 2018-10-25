@@ -22,11 +22,11 @@ function GetGroupListFun() {
                 , {field: 'id', title: 'id', width: 0}
                 , {field: 'name', title: '群名称', width: 150, align: 'center'}
                 // , {field: 'ba_id', title: 'ba_id', width: 380}
-                , {field: 'del', title: '状态', width: 800, align: 'center'}
-                , {field: 'is_del', title: '是否开启状态', width: 800, align: 'center'}
-                , {field: 'flirt', title: '调戏功能', width: 100, align: 'center'}
-                , {field: 'is_flirt', title: '是否开启调戏功能', width: 800, align: 'center'}
-                , {fixed: 'right', title: '操作', width: 80, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
+                , {field: 'del', title: '状态', width: 80, align: 'center'}
+                , {field: 'is_del', title: '是否开启状态', width: 80, align: 'center'}
+                , {field: 'flirt', title: '调戏功能', width: 80, align: 'center'}
+                , {field: 'is_flirt', title: '是否开启调戏功能', width: 80, align: 'center'}
+                , {fixed: 'right', title: '操作', width: 100, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
             ]],
             page: true,
             id: 'dataCheck',
