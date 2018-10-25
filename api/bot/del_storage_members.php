@@ -5,7 +5,7 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 /*
-========================== 微信存储群成员 ==========================
+========================== 删除存储群成员 ==========================
 GET参数
   nickname        string类型
   content          string
@@ -20,20 +20,11 @@ GET参数
 
 php_begin();
 
-$args = array('name','group_name','group_id');
+$args = array('group_id');
 chk_empty_args('GET', $args);
 
-//$name_json = json_decode($_REQUEST['name_json']);
-
-//信息
-$data['member_id'] = get_guid();
-$data['name'] = get_arg_str('GET','name');
-$data['group_id'] = get_arg_str('GET','group_id');
-$data['group_name'] = get_arg_str('GET','group_name');
-$data['intime'] = time();
-
-// 更新群组成员
-$row = storage_members($data);
+// 删除群组成员
+$row = del_storage_members(get_arg_str('GET','group_id'));
 if (!$row){
     exit_error('109','失败');
 }

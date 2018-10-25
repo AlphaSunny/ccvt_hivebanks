@@ -239,20 +239,34 @@ function get_key_code()
 //======================================
 function storage_members($data)
 {
-    $db = new DB_COM();
-    $sql = "delete from bot_group_members WHERE group_id='{$data['group_id']}'";
-    $db -> query($sql);
-
     //插入数据
-    $sql= "insert into bot_group_members (member_id,name,group_id,group_name,intime) values ";
-    foreach (json_decode($data['name']) as $k=>$value){
-        $sql .= "('".get_guid()."','".$value."','".$data['group_id']."','".$data['group_name']."','".time()."'),";
-    }
-    echo $sql;
-    die;
-//    for($i=0;$i<2000000;$i++) {
-//        $sql .= "('".get_guid()."','".."'),";
+//    $sql= "insert into bot_group_members (member_id,name,group_id,group_name,intime) values ";
+//    foreach (json_decode($data['name']) as $k=>$value){
+//        $sql .= "('".get_guid()."','".$value."','".$data['group_id']."','".$data['group_name']."','".time()."'),";
 //    }
+
+    $db = new DB_COM();
+    $sql = $db->sqlInsert("bot_group_members", $data);
+    $q_id = $db->query($sql);
+    if ($q_id == 0)
+        return false;
+    return true;
+}
+
+//======================================
+// 函数: 删除群组成员
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function del_storage_members($group_id)
+{
+    $db = new DB_COM();
+    $sql = "DELETE from bot_group_members where group_id='{$group_id}'";
+    $res = $db->query($sql);
+    if($res)
+        return true;
+    return false;
 }
 
 ?>
