@@ -16,7 +16,7 @@ function GetGroupListFun() {
         var tableIns = table.render({
             elem: '#dateTable',                 //指定原始表格元素选择器（推荐id选择器）,
             // minWidth: 100,
-            cellMinWidth: 100,
+            cellMinWidth: 150,
             height: vipTable.getFullHeight(),    //容器高度,
             cols: [[                  //标题栏
                 {checkbox: true, sort: true, fixed: true, space: true}
