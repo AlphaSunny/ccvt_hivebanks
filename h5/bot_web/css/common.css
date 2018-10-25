@@ -97,4 +97,5 @@
 
 .switch:focus {
     outline: none !important;
+    margin: 0;
 }
