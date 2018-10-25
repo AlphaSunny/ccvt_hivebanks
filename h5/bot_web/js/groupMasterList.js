@@ -25,7 +25,7 @@ function GetGroupListFun() {
                 , {field: 'is_del', title: '是否开启状态', width: 80, align: 'center'}
                 , {field: 'flirt', title: '调戏功能', width: 120, align: 'center'}
                 , {field: 'is_flirt', title: '是否开启调戏功能', width: 0, align: 'center'}
-                , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
+                , {title: '操作', width: 200, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
             ]],
             page: true,
             id: 'dataCheck',
