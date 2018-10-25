@@ -53,6 +53,8 @@
     -webkit-appearance: none;
     user-select: none;
     outline: none;
+    margin-left: 2%!important;
+    margin-right: 2%!important;
 }
 
 .switch:before {
@@ -101,6 +103,4 @@ input[type=checkbox] {
 
 .switch:focus {
     outline: none !important;
-    margin-left: 2%!important;
-    margin-right: 2%!important;
 }
