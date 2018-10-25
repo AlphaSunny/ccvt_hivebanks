@@ -28,6 +28,7 @@ foreach ($ba_list as $k=>$value){
     $sql = "select wechat,count(bot_message_id) as count from bot_message where ba_id='{$value['ba_id']}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
     $db->query($sql);
     $rows = $db->fetchAll();
+    print_r($rows);
     foreach ($rows as $a=>$v){
         $result = get_us_id($v['wechat']);
         if ($result==0){
