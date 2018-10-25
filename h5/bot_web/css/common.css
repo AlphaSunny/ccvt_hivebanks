@@ -101,4 +101,6 @@ input[type=checkbox] {
 
 .switch:focus {
     outline: none !important;
+    margin-left: 2%!important;
+    margin-right: 2%!important;
 }
