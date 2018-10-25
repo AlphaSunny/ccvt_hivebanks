@@ -16,17 +16,18 @@ function GetGroupListFun() {
         var tableIns = table.render({
             elem: '#dateTable',                 //指定原始表格元素选择器（推荐id选择器）,
             // minWidth: 100,
+            cellMinWidth: 100,
             height: vipTable.getFullHeight(),    //容器高度,
             cols: [[                  //标题栏
                 {checkbox: true, sort: true, fixed: true, space: true}
-                , {field: 'id', title: 'id', width: 0}
-                , {field: 'name', title: '群名称', width: 200, align: 'center'}
+                , {field: 'id', title: 'id'}
+                , {field: 'name', title: '群名称', align: 'center'}
                 // , {field: 'ba_id', title: 'ba_id', width: 380}
-                , {field: 'del', title: '状态', width: 80, align: 'center'}
-                , {field: 'is_del', title: '是否开启状态', width: 80, align: 'center'}
-                , {field: 'flirt', title: '调戏功能', width: 120, align: 'center'}
-                , {field: 'is_flirt', title: '是否开启调戏功能', width: 80, align: 'center'}
-                , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
+                , {field: 'del', title: '状态', align: 'center'}
+                , {field: 'is_del', title: '是否开启状态', align: 'center'}
+                , {field: 'flirt', title: '调戏功能', align: 'center'}
+                , {field: 'is_flirt', title: '是否开启调戏功能', align: 'center'}
+                , {fixed: 'right', title: '操作', align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
             ]],
             page: true,
             id: 'dataCheck',
