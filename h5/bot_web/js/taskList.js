@@ -169,7 +169,7 @@ $(function () {
 
                 //监听下拉框
                 var selectChildren = body.find(".selectChildren");
-                $(selectChildren).on("click", function () {
+                selectChildren.on("click", function () {
                    console.log($(this).text());
                 });
 
