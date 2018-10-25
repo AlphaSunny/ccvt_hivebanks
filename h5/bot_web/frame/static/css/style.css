@@ -97,6 +97,7 @@
 
 .layui-nav-child {
     right: 0;
+    left: unset;
 }
 
 .my-side ul.layui-nav li a i, .layui-nav .layui-nav-child a i, .layui-nav .layui-nav-item a i, .layui-tab-card > .layui-tab-title li span i {
