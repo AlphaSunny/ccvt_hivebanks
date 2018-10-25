@@ -155,7 +155,7 @@ $(function () {
 
                 //get group name
                 var groupNameSelect = body.find("#groupNameSelect");
-                var ddSelect = body.find(".layui-anim .layui-anim-upbit");
+                var ddSelect = body.find(".layui-anim.layui-anim-upbit");
                 // var ddSelect = body.find(".layui-anim.layui-anim-upbit");
                 GetGroupList(token, function (response) {
                     console.log(response);
