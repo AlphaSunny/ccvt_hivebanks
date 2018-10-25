@@ -21,14 +21,28 @@
 </style>
 <body>
 <form class="layui-form" action="">
-    <div class="layui-inline selectBox">
-        <label class="layui-form-label">群名称</label>
-        <div class="layui-input-inline">
-            <select name="modules" id="groupNameSelect" lay-verify="required" lay-search="">
-                <option value="">请选择群名称</option>
-                <option value="1">layer</option>
-                <option value="2">form</option>
-                <option value="3">layim</option>
+    <!--<div class="layui-inline selectBox">-->
+        <!--<label class="layui-form-label">群名称</label>-->
+        <!--<div class="layui-input-inline">-->
+            <!--<select name="modules" id="groupNameSelect" lay-verify="required" lay-search="">-->
+                <!--<option value="">请选择群名称</option>-->
+                <!--<option value="1">layer</option>-->
+                <!--<option value="2">form</option>-->
+                <!--<option value="3">layim</option>-->
+            <!--</select>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">选择框</label>
+        <div class="layui-input-block">
+            <select name="interest" id="groupNameSelect" lay-filter="aihao">
+                <option value=""></option>
+                <option value="0">写作</option>
+                <option value="1">阅读</option>
+                <option value="2">游戏</option>
+                <option value="3">音乐</option>
+                <option value="4">旅行</option>
             </select>
         </div>
     </div>
