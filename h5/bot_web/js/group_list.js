@@ -4,6 +4,7 @@ $(function () {
         var data = response.data, tr = "";
         console.log(data);
         $.each(data, function (i, val) {
+            console.log(val);
             tr+="<tr>" +
                 "<td>"+ data[i].name +"</td>" +
                 "<td>"+ data[i].del +"</td>" +
