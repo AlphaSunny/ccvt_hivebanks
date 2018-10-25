@@ -169,15 +169,9 @@ $(function () {
 
                 //监听下拉框
                 $(body).on("click", ".selectChildren", function () {
-                    console.log($(this).text());
-                    console.log($(this).attr("lay-value"));
-                    $(this).siblings().removeClass("layui-this").addClass("layui-this");
+                    $(this).siblings().removeClass("layui-this");
+                    $(this).addClass("layui-this");
                 });
-                // var selectChildren = body.find(".selectChildren");
-                // console.log(selectChildren);
-                // selectChildren.click(function () {
-                //    console.log("click");
-                // });
 
                 //获取时间输入框
                 var timeInput = body.find("#time");
