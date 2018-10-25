@@ -189,8 +189,6 @@ $(function () {
                     var time = timeInput.val(),
                         content = contentInput.val(),
                         group_id = selectInput.attr("name");
-                    console.log(time, content, group_id);
-                    return;
                     AddTask(token, time, group_id, content, function (response) {
                         if (response.errcode == "0") {
                             layer.close(index);
