@@ -155,6 +155,7 @@ $(function () {
 
                 //get group name
                 var groupNameSelect = body.find("#groupNameSelect");
+                var ddSelect = body.find(".layui-anim .layui-anim-upbit");
                 // var ddSelect = body.find(".layui-anim.layui-anim-upbit");
                 GetGroupList(token, function (response) {
                     console.log(response);
@@ -163,7 +164,7 @@ $(function () {
                     $.each(groupList, function (i, val) {
                         console.log(val.id, val.name);
                         groupNameSelect.append("<option value='"+ val.id +"'>"+ val.name +"</option>");
-                        // ddSelect.append("<dd lay-value='"+ val.id +"' class='selectChildren'>"+ val.name +"</dd>");
+                        ddSelect.append("<dd lay-value='"+ val.id +"' class='selectChildren'>"+ val.name +"</dd>");
                     })
                 });
 
