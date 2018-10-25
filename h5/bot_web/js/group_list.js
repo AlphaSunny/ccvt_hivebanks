@@ -4,13 +4,13 @@ $(function () {
         if(response.errcode == "0"){
             var data = response.rows, tr = "";
             $.each(data, function (i, val) {
-                tr+="<tr>" +
+                tr+="<tr class='text-center'>" +
                     "<td>"+ data[i].name +"</td>" +
                     "<td>"+ data[i].del +"</td>" +
                     "<td>"+ data[i].flirt +"</td>" +
                     "<td>" +
                     "<button class='btn-success btn-sm editBtn'>编辑</button>" +
-                    "<button class='btn-sm btn-danger delBtn'>删除</button>" +
+                    "<button class='btn-sm btn-danger delBtn '>删除</button>" +
                     "</td>" +
                     "</tr>"
             });
