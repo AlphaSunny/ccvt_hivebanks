@@ -174,6 +174,8 @@ $(function () {
                 $(body).on("click", ".selectChildren", function () {
                     $(this).siblings().removeClass("layui-this");
                     $(this).addClass("layui-this");
+                    console.log($(this).attr("lay-value"));
+                    console.log($(this).text());
                 });
 
                 //获取时间输入框
