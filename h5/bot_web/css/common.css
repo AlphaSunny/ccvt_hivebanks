@@ -95,7 +95,10 @@
     transition: left 0.3s;
 }
 
+input[type=checkbox] {
+    margin: unset;
+}
+
 .switch:focus {
     outline: none !important;
-    margin: 0!important;
 }
