@@ -22,7 +22,7 @@ foreach ($ba_list as $k=>$value){
         $data['ba_id'] = $value['ba_id'];
         $data['time'] = date('Y-m-d H:i:s',time());
         file_put_contents("ba_no_money.log",json_encode($data)."\n",FILE_APPEND);
-        break;
+        continue;
     }
     //循环ba,查询ba下微信用户及发言数
     $sql = "select wechat,count(bot_message_id) as count from bot_message where ba_id='{$value['ba_id']}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
@@ -32,7 +32,7 @@ foreach ($ba_list as $k=>$value){
     foreach ($rows as $a=>$v){
         $result = get_us_id($v['wechat']);
         if ($result==0){
-            break;
+            continue;
         }
 
         //判断今日是否已经增过币
@@ -40,7 +40,7 @@ foreach ($ba_list as $k=>$value){
         if ($send){
             $db->Rollback($pInTrans);
             echo $value['ba_id']."已增过币";
-            break;
+            continue;
         }
         //送币
         $unit = la_unit();
@@ -49,7 +49,7 @@ foreach ($ba_list as $k=>$value){
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
             echo "us修改余额失败";
-            break;
+            continue;
         }
 
         //ba减钱
@@ -58,7 +58,7 @@ foreach ($ba_list as $k=>$value){
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
             echo "ba修改余额失败";
-            break;
+            continue;
         }
 
 
@@ -78,7 +78,7 @@ foreach ($ba_list as $k=>$value){
         if (!$id){
             $db->Rollback($pInTrans);
             echo "添加记录失败";
-            break;
+            continue;
         }
 
 
@@ -99,7 +99,7 @@ foreach ($ba_list as $k=>$value){
         $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
         if (!$db->query($sql)) {
             $db->Rollback($pInTrans);
-            break;
+            continue;
         }
 
         //ba添加基准资产变动记录
@@ -118,7 +118,7 @@ foreach ($ba_list as $k=>$value){
         $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
         if (!$db->query($sql)) {
             $db->Rollback($pInTrans);
-            break;
+            continue;
         }
 
 
