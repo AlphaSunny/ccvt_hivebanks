@@ -171,10 +171,9 @@ $(function () {
 
                 //监听下拉框
                 $(body).on("click", ".selectChildren", function () {
-                    $(this).addClass("layui-this").siblings().removeClass("layui-this");
-                    // $(this).addClass("layui-this");
-                    selectInput.val($(this).text());
-                    selectInput.attr("name", $(this).attr("lay-value"));
+                    $(this).addClass("layui-this").siblings().removeClass("layui-this");//增加layui-this属性，其他元素删除该属性
+                    selectInput.val($(this).text()).attr("name", $(this).attr("lay-value"));
+                    // selectInput.attr("name", $(this).attr("lay-value"));
                 });
 
                 //获取时间输入框
