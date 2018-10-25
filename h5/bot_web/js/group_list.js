@@ -15,7 +15,7 @@ $(function () {
         });
         $("#groupListTable").html(tr);
     }, function (response) {
-
+        console.log(response);
     });
    // $.ajax({
    //     url:"http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=PNySspBA0hK9ZWn0WOhqXk2GbJVjhdCRR%2FR0fNIyU7V0%2B5xF%2BSjhwT24DASvFjE6b2IwIKKPz%2Bo2V6AEA2MepQ%3D%3D",
