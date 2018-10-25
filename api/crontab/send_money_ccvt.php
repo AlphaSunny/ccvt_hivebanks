@@ -67,7 +67,7 @@ foreach ($ba_list as $k=>$value){
         $d['num'] = $v['count'];
         $d['is_replacement'] = 0;
         $d['send_time'] = date('Y-m-d H:i:s',time());
-        $d['bot_create_time'] = time();
+        $d['bot_create_time'] = strtotime("-1 day");
         $lgn_type = 'phone';
         $d['tx_hash'] = hash('md5', $value['ba_id'] . $lgn_type . get_ip() . time() . date('Y-m-d H:i:s'));
         $d['us_id'] = get_us_id($v['wechat']);
@@ -157,7 +157,6 @@ function sel_ba_amout($ba_id,$day_start,$day_end){
 function send_money_if($ba_id,$wechat,$day_start,$day_end){
     $db = new DB_COM();
     $sql = "select * from bot_Iss_records WHERE ba_id='{$ba_id}' AND wechat='{$wechat}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' limit 1";
-    echo $sql;die;
     $db->query($sql);
     $rows = $db->fetchRow();
     return $rows;
