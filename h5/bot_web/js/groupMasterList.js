@@ -14,8 +14,7 @@ function GetGroupListFun() {
 
         // 表格渲染
         var tableIns = table.render({
-            elem: '#dateTable',                 //指定原始表格元素选择器（推荐id选择器）,
-            // minWidth: 100,
+            elem: '#dateTable',
             height: vipTable.getFullHeight(),    //容器高度,
             cols: [[                  //标题栏
                 {checkbox: true, sort: true, fixed: true, space: true}
@@ -25,7 +24,7 @@ function GetGroupListFun() {
                 , {field: 'del', title: '状态', width: 80, align: 'center'}
                 , {field: 'is_del', title: '是否开启状态', width: 80, align: 'center'}
                 , {field: 'flirt', title: '调戏功能', width: 120, align: 'center'}
-                , {field: 'is_flirt', title: '是否开启调戏功能', width: 80, align: 'center'}
+                , {field: 'is_flirt', title: '是否开启调戏功能', width: 0, align: 'center'}
                 , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
             ]],
             page: true,
