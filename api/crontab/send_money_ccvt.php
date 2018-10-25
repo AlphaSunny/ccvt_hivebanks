@@ -15,6 +15,7 @@ $db->query($sql);
 $ba_list = $db->fetchAll();
 print_r($ba_list);
 foreach ($ba_list as $k=>$value){
+    echo $value['ba_id'];
     //判断当前ba是否有余额
     $data = sel_ba_amout($value['ba_id'],$day_start,$day_end);
     if ($data['remark']==-1){
