@@ -25,10 +25,10 @@ $(function () {
         var is_del = $(this).parents(".trItem").find(".is_del").attr("name");
         var is_flirt = $(this).parents(".trItem").find(".is_flirt").attr("name");
         if(is_del == "1"){
-            $(".runSwitch").attr("checked", true);
+            $(".runSwitch").attr("checked", true).val("1");
         }
         if(is_flirt == "1"){
-            $(".trickSwitch").attr("checked", true);
+            $(".trickSwitch").attr("checked", true).val("1");
         }
         $("#editGroupModal").modal("show");
     })
