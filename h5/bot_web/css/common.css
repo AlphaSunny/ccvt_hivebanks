@@ -95,6 +95,10 @@ textarea#content{
     outline: none !important;
 }
 
+.treeview-menu li{
+    line-height: 3rem;
+}
+
 /*none*/
 .none{
     display: none!important;
