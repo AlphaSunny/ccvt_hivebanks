@@ -12,7 +12,14 @@ $(function () {
                 {"data": "flirt"},
                 {"data": "is_flirt"}
             ]
-        })
+        });
+        var tr = "<tr>" +
+            "<td>" +
+            "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+            "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
+            "</td>" +
+            "</tr>";
+        $("#groupListTable").html(tr);
         // GetGroupList(token, function (response) {
         //     if (response.errcode == "0") {
         //         var data = response.rows, tr = "";
