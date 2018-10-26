@@ -28,10 +28,14 @@ foreach ($ba_list as $k=>$value){
     $db->query($sql);
     $rows = $db->fetchAll();
     foreach ($rows as $a=>$v){
+        echo 222;
         $result = get_us_id($v['wechat']);
         if ($result==0){
+            echo 333;
             continue;
         }
+        echo 4444;
+        die();
 
 //        //判断今日是否已经增过币
 //        $send = send_money_if($value['ba_id'],$v['wechat'],$day_start,$day_end);
@@ -168,7 +172,6 @@ function send_money_if($ba_id,$wechat,$day_start,$day_end){
 function get_us_id($wechat){
     $db = new DB_COM();
     $sql = "select us_id from us_base WHERE wechat='{$wechat}' limit 1";
-    echo $sql;
     $db->query($sql);
     $us_id = $db -> getField($sql,'us_id');
     if($us_id == null)
