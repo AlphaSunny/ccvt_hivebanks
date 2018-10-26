@@ -154,5 +154,10 @@ $(function () {
     $('.copy_invite_address').click(function () {
         new ClipboardJS('.copy_invite_address');
         layer.msg("copy success")
-    })
+    });
+
+    //bind weChat group
+    $(".weChatBindBtn").click(function () {
+        $("#weChatGroupName").modal("show");
+    });
 });
