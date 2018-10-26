@@ -5,12 +5,12 @@ $(function () {
         $("#groupMasterListTable").DataTable({
             "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
             "columns": [
-                {"data": "id","class":"abc"},
-                {"data": "name"},
-                {"data": "del"},
-                {"data": "is_del","bVisible" : false},
-                {"data": "flirt"},
-                {"data": "is_flirt","bVisible" : false},
+                {"data": "id", "class": "id"},
+                {"data": "name", "class": "name"},
+                {"data": "del", "class": "del"},
+                {"data": "is_del", "class": "is_del", "bVisible": false},
+                {"data": "flirt", "class": "flirt"},
+                {"data": "is_flirt", "class": "is_flirt", "bVisible": false},
             ]
         });
         setTimeout(function () {
@@ -19,7 +19,7 @@ $(function () {
                 "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
                 "</td>";
             $(".odd,.even").append(td);
-        },500);
+        }, 500);
         // GetGroupList(token, function (response) {
         //     if (response.errcode == "0") {
         //         var data = response.rows, tr = "";
