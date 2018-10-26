@@ -6,7 +6,7 @@ $(function () {
     var group_id = GetQueryString("group_id");
 
     $('#groupMemberTable').DataTable({
-        "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_members_list.php?token=" + token + "&group_id=" + group_id,
+        "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_members_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id,
         "columns": [
             {"data": "name"}
             // {"data": "position"},
