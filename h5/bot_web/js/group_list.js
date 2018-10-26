@@ -1,7 +1,7 @@
 $(function () {
     var token = GetCookie("robot_token");
 
-    function GetGroupListFun() {
+    // function GetGroupListFun() {
         $("#groupMasterListTable").DataTable({
             "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
             "columns": [
@@ -39,9 +39,8 @@ $(function () {
         // }, function (response) {
         //     layer.msg(response.errmsg);
         // });
-    }
-
-    GetGroupListFun();
+    // }
+    // GetGroupListFun();
 
     //编辑对应的群主-弹出编辑框
     var group_id = "";
@@ -94,6 +93,7 @@ $(function () {
         EditGroup(token, group_name, del, flirt, group_id, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
+                window.location.reload();
                 // GetGroupListFun();
                 $("#editGroupModal").modal("hide");
             }
