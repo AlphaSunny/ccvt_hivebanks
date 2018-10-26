@@ -14,13 +14,13 @@ $(function () {
                 // {"data": "<td><button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button></td><button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"}
             ]
         });
-        setTimeout(function () {
+        // setTimeout(function () {
             var td = "<td>" +
                 "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                 "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
                 "</td>";
             $(".odd,.even").append(td);
-        },3000);
+        // },3000);
         // GetGroupList(token, function (response) {
         //     if (response.errcode == "0") {
         //         var data = response.rows, tr = "";
