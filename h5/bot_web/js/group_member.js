@@ -1,4 +1,5 @@
 $(function () {
+    $('#groupMemberTable').DataTable();
     //获取token
     var token = GetCookie("robot_token");
 
