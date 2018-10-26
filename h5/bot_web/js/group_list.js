@@ -78,5 +78,12 @@ $(function () {
             $("#editGroupModal").modal("hide");
             layer.msg(response.errmsg);
         })
-    })
+    });
+
+    //添加消息
+    $(".addGroupBtn").click(function () {
+        $("#myModalLabel").text("添加群信息");
+        $("#groupName").removeAttr("readonly");
+        $("#editGroupModal").modal("show");
+    });
 });
