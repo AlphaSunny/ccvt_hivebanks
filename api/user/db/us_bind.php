@@ -225,6 +225,7 @@ function ins_google_bind($bind_data){
 function check_wechat_is_bind($us_id,$wechat){
     $db = new DB_COM();
     $sql = "SELECT * FROM us_base WHERE wechat = '{$wechat}' AND us_id!='{$us_id}'";
+    echo $sql;die;
     $db->query($sql);
     $row = $db->fetchRow();
     return $row;
