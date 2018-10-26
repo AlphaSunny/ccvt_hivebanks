@@ -27,6 +27,7 @@ function check_group_name($ba_id,$group_name,$vail,$id='')
     if ($vail=='edit'){
         $sql .= " AND id!='{$id}'";
     }
+    echo $sql;
     $db -> query($sql);
     $row = $db -> fetchRow();
     return $row;
