@@ -15,6 +15,20 @@ function get_group_list($ba_id)
     return $row;
 }
 //======================================
+// 函数: 检查名称已存在
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function check_group_name($ba_id,$group_name)
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM bot_group WHERE ba_id = '{$ba_id}' AND name='{$group_name}'";
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    return $row;
+}
+//======================================
 // 函数: 添加群组
 // 参数: group_name      群组名称
 //

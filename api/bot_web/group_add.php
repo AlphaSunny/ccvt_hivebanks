@@ -28,6 +28,13 @@ $group_name = get_arg_str('GET', 'group_name');
 //验证token
 $ba_id = check_token($token);
 
+//判断名称是否已添加
+$is_name = check_group_name($ba_id,$group_name);
+if ($is_name){
+    exit_error('109','名称已存在');
+}
+
+
 $data['ba_id'] = $ba_id;
 $data['name'] = $group_name;
 $data['intime'] = time();
