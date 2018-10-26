@@ -11,7 +11,10 @@ $(function () {
                 {"data": "is_del", "class": "is_del", "bVisible": false},
                 {"data": "flirt", "class": "flirt"},
                 {"data": "is_flirt", "class": "is_flirt", "bVisible": false},
-            ]
+            ],
+            callback:function () {
+                console.log("hui")
+            }
         });
         setTimeout(function () {
             var td = "<td>" +
