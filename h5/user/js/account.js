@@ -157,7 +157,7 @@ $(function () {
     });
 
     //bind weChat group
-    $(".weChatBindBtn").click(function () {
-        $("#weChatGroupName").modal("show");
+    $(".bindWeChatBtn").click(function () {
+        console.log($("#weChatName").val());
     });
 });
