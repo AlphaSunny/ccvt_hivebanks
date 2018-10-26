@@ -20,6 +20,12 @@ $(function () {
             $('.lockBalance').text(data.lock_amount);
             $('.levelNum').text(security_level);
             // $('.userLevelNum').text(us_level);
+            if(data.wechat){
+                $(".wechat").text(data.wechat);
+                $("#weChatBindBtn").remove();
+            }else {
+                $("#weChatModifyBtn").remove();
+            }
         }
     }, function (response) {
         layer.msg(response.errcode);

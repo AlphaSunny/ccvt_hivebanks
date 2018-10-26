@@ -137,9 +137,11 @@
                                 </div>
                             </li>
                             <li class='flex center space-between font-weight-400'>
-                                <div><span class='' name=''>群昵称</span>:</div>
-                                <div class=''>
-                                    <button class="btn btn-success btn-sm weChatBindBtn i18n" data-toggle="modal" data-target="#weChatGroupName" name="bind">bind</button>
+                                <div><span class='i18n' name='weChatGroupNickname'>weChatGroupNickname</span>:</div>
+                                <div class='flex center'>
+                                    <span class='wechat i18n' name="unbound"></span>
+                                    <button class="btn btn-success btn-sm weChatBindBtn i18n" id="weChatBindBtn" data-toggle="modal" data-target="#weChatGroupName" name="bind">bind</button>
+                                    <button class="btn btn-success btn-sm weChatBindBtn i18n" id="weChatModifyBtn" data-toggle="modal" data-target="#weChatGroupName" name="modify">modify</button>
                                 </div>
                             </li>
                             <li class='flex center space-between font-weight-400'>
