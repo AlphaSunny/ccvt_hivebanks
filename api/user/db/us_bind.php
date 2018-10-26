@@ -256,6 +256,7 @@ function bind_wechat($data){
         }
 
         $sql = "update us_base set wechat='{$data['wechat']}',utime='{$data['utime']}' WHERE us_id='{$data['us_id']}'";
+        echo $sql;die;
         $db->query($sql);
         $result = $db -> affectedRows();
         return $result;
