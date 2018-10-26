@@ -45,7 +45,7 @@ $(function () {
 
     //编辑对应的群主-弹出编辑框
     var group_id = "";
-    $(document).on("click", ".editBtn", function (response) {
+    $(document).on("click", ".editBtn", function () {
         // var id= $(this).parents("tr[role='row']").find(".id").text();
         // var is_del= $(this).parents("tr[role='row']").find(".is_del").text();
 
