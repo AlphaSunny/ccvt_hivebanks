@@ -250,7 +250,7 @@ function bind_wechat($data){
         }
     }else{
         $sql = $db->sqlInsert("us_bind", $data);
-        echo $sql;
+        echo $sql;die;
         $q_id = $db->query($sql);
         if ($q_id == 0){
             return false;
