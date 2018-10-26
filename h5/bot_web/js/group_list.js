@@ -36,14 +36,18 @@ $(function () {
         var is_flirt = $(this).parents(".trItem").find(".is_flirt").attr("name");//获取是否开启调戏功能
         console.log(is_del);
         if (is_del == "1") {
-            $("#runSwitch").attr("checked", true).val("1");
+            $("#runSwitch").addClass("active").val("1");
+            // $("#runSwitch").attr("checked", true).val("1");
         }else {
-            $("#runSwitch").removeAttr("checked").val("2");
+            $("#runSwitch").removeClass("active").val("1");
+            // $("#runSwitch").removeAttr("checked").val("2");
         }
         if (is_flirt == "1") {
-            $("#trickSwitch").attr("checked", true).val("1");
+            $("#trickSwitch").addClass("active").val("1");
+            // $("#trickSwitch").attr("checked", true).val("1");
         }else {
-            $("#trickSwitch").removeAttr("checked").val("2");
+            $("#trickSwitch").removeClass("active").val("1");
+            // $("#trickSwitch").removeAttr("checked").val("2");
         }
         $("#groupName").val(group_name);
         $("#editGroupModal").modal("show");
@@ -52,16 +56,16 @@ $(function () {
     //监听开关按钮状态
     $("#runSwitch").on("change", function () {
         if ($(this).val() == "1") {
-            $(this).removeAttr("checked").val("2");
+            $(this).removeClass("active").val("2");
         } else {
-            $(this).attr("checked", true).val("1");
+            $(this).addClass("active").val("1");
         }
     });
     $("#trickSwitch").on("change", function () {
         if ($(this).val() == "1") {
-            $(this).removeAttr("checked").val("2");
+            $(this).removeClass("active").val("2");
         } else {
-            $(this).attr("checked", true).val("1");
+            $(this).addClass("active").val("1");
         }
     });
 
@@ -96,7 +100,7 @@ $(function () {
         $(".editSubBtn").addClass("none");
         //初始化添加的内容
         $("#groupName").val("");
-        $("#runSwitch,#trickSwitch").attr("checked", true).val("1");
+        $("#runSwitch,#trickSwitch").addClass("active").val("1");
         //显示添加信息框
         $("#editGroupModal").modal("show");
     });
