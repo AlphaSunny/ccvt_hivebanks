@@ -21,7 +21,7 @@ $(function () {
             $('.levelNum').text(security_level);
             // $('.userLevelNum').text(us_level);
             if(data.wechat){
-                $(".wechat").text(data.wechat);
+                $(".wechat").text(data.wechat).removeClass("i18n");
                 $("#weChatBindBtn").remove();
             }else {
                 $("#weChatModifyBtn").remove();
