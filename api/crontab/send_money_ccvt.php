@@ -40,7 +40,7 @@ foreach ($ba_list as $k=>$value){
             echo $value['ba_id']."已增过币";
             continue;
         }
-        echo 2222;
+
         //送币
         $unit = la_unit();
         $sql = "update us_base set base_amount=base_amount+'{$v['count']}'*'{$unit}' WHERE wechat='{$v['wechat']}'";
@@ -50,6 +50,7 @@ foreach ($ba_list as $k=>$value){
             echo "us修改余额失败";
             continue;
         }
+        echo 2222;
 
         //ba减钱
         $sql = "update ba_base set base_amount=base_amount-'{$v['count']}'*'{$unit}' WHERE ba_id='{$value['ba_id']}'";
