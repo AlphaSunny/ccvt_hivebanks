@@ -34,6 +34,7 @@ $(function () {
         })
     });
 
+    //确认删除
     $(document).on("click", ".layui-layer-btn1", function () {
         DelTask(token, timer_id, function (response) {
             if (response.errcode == "0") {
@@ -43,5 +44,10 @@ $(function () {
         }, function (response) {
             layer.msg('删除失败', {icon: 2});
         })
+    });
+
+    //编辑任务
+    $(document).on("click", ".editBtn", function () {
+        $("#editTaskModal").modal("show");
     })
 });
