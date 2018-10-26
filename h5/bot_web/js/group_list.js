@@ -147,7 +147,7 @@ $(function () {
 
     //进入详情查看
     $(document).on("click", ".infoBtn", function () {
-        var group_id = $(this).parents(".trItem").find(".groupName").attr("name");
+        var group_id = $(this).parents("tr[role='row']").find(".id").text();
         window.location.href = "group_member.html?group_id=" + group_id;
     })
 });
