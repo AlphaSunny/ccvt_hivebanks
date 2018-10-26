@@ -46,9 +46,6 @@ $(function () {
     //编辑对应的群主-弹出编辑框
     var group_id = "";
     $(document).on("click", ".editBtn", function () {
-        // var id= $(this).parents("tr[role='row']").find(".id").text();
-        // var is_del= $(this).parents("tr[role='row']").find(".is_del").text();
-
         $(".addSubBtn").addClass("none");
         $(".editSubBtn").removeClass("none");
         group_id = $(this).parents("tr[role='row']").find(".id").text();//获取群id
@@ -58,12 +55,12 @@ $(function () {
         if (is_del == "1") {
             $("#runSwitch").addClass("active").val("1");
         } else {
-            $("#runSwitch").removeClass("active").val("1");
+            $("#runSwitch").removeClass("active").val("2");
         }
         if (is_flirt == "1") {
             $("#trickSwitch").addClass("active").val("1");
         } else {
-            $("#trickSwitch").removeClass("active").val("1");
+            $("#trickSwitch").removeClass("active").val("2");
         }
         $("#groupName").val(group_name);
         $("#editGroupModal").modal("show");
