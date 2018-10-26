@@ -24,4 +24,8 @@
 	//Activate bootstrip tooltips
 	$("[data-toggle='tooltip']").tooltip();
 
+	$(".logOut").click(function () {
+		DelCookie("robot_token");
+		window.location.href = "login.html";
+    })
 })();
