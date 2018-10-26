@@ -36,5 +36,10 @@ $(function () {
     //监听开关按钮状态
     $(".runSwitch").on("change", function () {
         console.log("change");
+        if($(this).val() == "1"){
+            $(this).val("2");
+        }else {
+            $(this).val("1");
+        }
     })
 });
