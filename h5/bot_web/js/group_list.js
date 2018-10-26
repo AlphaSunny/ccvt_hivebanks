@@ -15,13 +15,11 @@ $(function () {
             ]
         });
         setTimeout(function () {
-            var tr = "<tr>" +
-                "<td>" +
+            var td = "<td>" +
                 "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                 "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
-                "</td>" +
-                "</tr>";
-            $("#groupListTable").append(tr);
+                "</td>";
+            $(".odd,.even").append(td);
         },3000);
         // GetGroupList(token, function (response) {
         //     if (response.errcode == "0") {
