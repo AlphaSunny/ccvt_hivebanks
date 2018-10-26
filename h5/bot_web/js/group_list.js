@@ -37,12 +37,12 @@ $(function () {
         if (is_del == "1") {
             $("#runSwitch").attr("checked", true).val("1");
         }else {
-            $("#runSwitch").attr("checked", false).val("2");
+            $("#runSwitch").removeAttr("checked").val("2");
         }
         if (is_flirt == "1") {
             $("#trickSwitch").attr("checked", true).val("1");
         }else {
-            $("#trickSwitch").attr("checked", false).val("2");
+            $("#trickSwitch").removeAttr("checked").val("2");
         }
         $("#groupName").val(group_name);
         $("#editGroupModal").modal("show");
