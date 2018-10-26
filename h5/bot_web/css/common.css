@@ -105,3 +105,8 @@ input[type=checkbox] {
 .switch:focus {
     outline: none !important;
 }
+
+/*none*/
+.none{
+    display: none;
+}
