@@ -8,10 +8,9 @@ $(function () {
                 {"data": "id"},
                 {"data": "name"},
                 {"data": "del"},
-                {"data": "is_del"},
+                {"data": "is_del","bVisible" : false},
                 {"data": "flirt"},
-                {"data": "is_flirt"},
-                // {"data": "<td><button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button></td><button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"}
+                {"data": "is_flirt","bVisible" : false},
             ]
         });
         setTimeout(function () {
