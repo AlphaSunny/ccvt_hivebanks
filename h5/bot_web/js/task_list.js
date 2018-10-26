@@ -104,10 +104,9 @@ $(function () {
     });
 
     //添加信息选择群主
-    $(document).on("click", ".groupItem", function () {
-        $(this).attr("checked", true);
-        console.log("checked");
-    });
+    // $(document).on("click", ".groupItem", function () {
+    //     $(this).attr("checked", true);
+    // });
 
     //确认添加信息
     $(".addSubBtn").click(function () {
