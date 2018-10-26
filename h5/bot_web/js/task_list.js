@@ -11,8 +11,8 @@ $(function () {
                         "<td class='content' name=" + data[i].id + ">" + data[i].content + "</td>" +
                         "<td class='name'>" + data[i].name + "</td>" +
                         "<td>" +
-                        "<button class='btn-success btn-sm editBtn'>编辑</button>" +
-                        "<button class='btn-sm btn-danger delBtn margin-left-5'>删除</button>" +
+                        "<button class='btn-success btn-sm editBtn'><i class='glyphicon glyphicon-pencil'></i>编辑</button>" +
+                        "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='glyphicon glyphicon-trash'></i>删除</button>" +
                         "</td>" +
                         "</tr>";
                 });
