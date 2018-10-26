@@ -35,7 +35,6 @@ foreach ($ba_list as $k=>$value){
             continue;
         }
         echo 4444;
-        die();
 
 //        //判断今日是否已经增过币
 //        $send = send_money_if($value['ba_id'],$v['wechat'],$day_start,$day_end);
