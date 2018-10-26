@@ -19,6 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/js/layer/layer.css">
     <!--<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-switch.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="../assets/layui/css/layui2-4.css">-->
     <link rel="stylesheet" type="text/css" href="css/common.css">
@@ -210,25 +211,25 @@
                 <div class="modal-body">
                     <form class="form-horizontal">
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">群名称</label>
+                            <label for="groupName" class="col-sm-2 control-label">群名称</label>
                             <div class="col-sm-10">
-                                <input type="email" readonly class="form-control" id="inputEmail3" placeholder="Email">
+                                <input type="email" readonly class="form-control" id="groupName">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">运行状态</label>
+                            <label for="runSwitch" class="col-sm-2 control-label">运行状态</label>
                             <div class="col-sm-10 flex center">
-                                <span>开</span>
-                                <input class="switch runSwitch switch-anim margin-left-2 margin-right-2" type="checkbox" value="2">
                                 <span>关</span>
+                                <input id="runSwitch" class="switch runSwitch switch-anim margin-left-2 margin-right-2" type="checkbox" value="2">
+                                <span>开</span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">调戏状态</label>
+                            <label for="trickSwitch" class="col-sm-2 control-label">调戏状态</label>
                             <div class="col-sm-10 flex center">
-                                <span>开</span>
-                                <input class="switch trickSwitch switch-anim margin-left-2 margin-right-2" type="checkbox" value="2">
                                 <span>关</span>
+                                <input id="trickSwitch" class="switch trickSwitch switch-anim margin-left-2 margin-right-2" type="checkbox" value="2">
+                                <span>开</span>
                             </div>
                         </div>
                         <!--<div class="form-group">-->
@@ -240,7 +241,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">立即提交</button>
+                    <button type="button" class="btn btn-primary subBtn">立即提交</button>
                 </div>
             </div>
         </div>
@@ -252,6 +253,7 @@
 <script src="../assets/js/jquery-3.2.1.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/layer/layer.js"></script>
 <script src="js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
 <!--<script src="../assets/layui/layui2-4.js"></script>-->
