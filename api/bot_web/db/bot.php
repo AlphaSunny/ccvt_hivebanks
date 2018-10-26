@@ -20,10 +20,13 @@ function get_group_list($ba_id)
 //
 // 返回: row           最新信息数组
 //======================================
-function check_group_name($ba_id,$group_name)
+function check_group_name($ba_id,$group_name,$vail,$id='')
 {
     $db = new DB_COM();
     $sql = "SELECT * FROM bot_group WHERE ba_id = '{$ba_id}' AND name='{$group_name}'";
+    if ($vail=='edit'){
+        $sql .= " AND id!='{$id}'";
+    }
     $db -> query($sql);
     $row = $db -> fetchRow();
     return $row;

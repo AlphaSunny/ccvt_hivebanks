@@ -28,8 +28,9 @@ $group_name = get_arg_str('GET', 'group_name');
 //验证token
 $ba_id = check_token($token);
 
+$vail = 'add';
 //判断名称是否已添加
-$is_name = check_group_name($ba_id,$group_name);
+$is_name = check_group_name($ba_id,$group_name,$vail);
 if ($is_name){
     exit_error('109','名称已存在');
 }

@@ -30,6 +30,12 @@ $group_name = get_arg_str('GET', 'group_name');
 //验证token
 $ba_id = check_token($token);
 
+$vail = 'edit';
+//判断名称是否已添加
+$is_name = check_group_name($ba_id,$group_name,$group_id);
+if ($is_name){
+    exit_error('109','名称已存在');
+}
 
 $date['group_id'] = $group_id;
 $date['name'] = $group_name;
