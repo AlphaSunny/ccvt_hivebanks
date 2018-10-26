@@ -50,7 +50,7 @@ $data['utime'] = time();
 $data['ctime'] = date('Y-m-d H:i:s');
 $we = bind_wechat($data);
 
-if(!$ret){
+if(!$we){
     exit_error('148',"failed");
 }
 
