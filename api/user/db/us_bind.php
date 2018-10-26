@@ -244,6 +244,7 @@ function bind_wechat($data){
             return true;
         }else{
             $sql = "update us_bind set bind_info='{$data['bind_info']}',utime='{$data['utime']}' WHERE bind_id='{$row['bind_id']}'";
+            echo $sql;die;
             $db->query($sql);
             $result = $db -> affectedRows();
             return $result;
