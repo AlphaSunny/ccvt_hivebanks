@@ -46,24 +46,25 @@ $(function () {
     //编辑对应的群主-弹出编辑框
     var group_id = "";
     $(document).on("click", ".editBtn", function (response) {
-        $(".addSubBtn").addClass("none");
-        $(".editSubBtn").removeClass("none");
-        group_id = $(this).parents(".trItem").find(".groupName").attr("name");//获取群id
-        var group_name = $(this).parents(".trItem").find(".groupName").text();//获取群名称
-        var is_del = $(this).parents(".trItem").find(".is_del").attr("name");//获取是否运行状态
-        var is_flirt = $(this).parents(".trItem").find(".is_flirt").attr("name");//获取是否开启调戏功能
-        if (is_del == "1") {
-            $("#runSwitch").addClass("active").val("1");
-        } else {
-            $("#runSwitch").removeClass("active").val("1");
-        }
-        if (is_flirt == "1") {
-            $("#trickSwitch").addClass("active").val("1");
-        } else {
-            $("#trickSwitch").removeClass("active").val("1");
-        }
-        $("#groupName").val(group_name);
-        $("#editGroupModal").modal("show");
+        var id= $(this).parents("tr[role=row]").find(".id").text();
+        // $(".addSubBtn").addClass("none");
+        // $(".editSubBtn").removeClass("none");
+        // group_id = $(this).parents(".trItem").find(".groupName").attr("name");//获取群id
+        // var group_name = $(this).parents(".trItem").find(".groupName").text();//获取群名称
+        // var is_del = $(this).parents(".trItem").find(".is_del").attr("name");//获取是否运行状态
+        // var is_flirt = $(this).parents(".trItem").find(".is_flirt").attr("name");//获取是否开启调戏功能
+        // if (is_del == "1") {
+        //     $("#runSwitch").addClass("active").val("1");
+        // } else {
+        //     $("#runSwitch").removeClass("active").val("1");
+        // }
+        // if (is_flirt == "1") {
+        //     $("#trickSwitch").addClass("active").val("1");
+        // } else {
+        //     $("#trickSwitch").removeClass("active").val("1");
+        // }
+        // $("#groupName").val(group_name);
+        // $("#editGroupModal").modal("show");
     });
 
     //监听开关按钮状态
