@@ -74,9 +74,11 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 GetTaskListFun();
+                $("#editTaskModal").modal("hide");
             }
         }, function (response) {
             layer.close(loading);
+            $("#editTaskModal").modal("hide");
             layer.msg(response.errmsg);
         })
     })
