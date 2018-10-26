@@ -20,8 +20,11 @@ $(function () {
         layer.msg(response.errmsg);
     });
 
-    //编辑对应的群主
+    //编辑对应的群主-弹出编辑框
     $(document).on("click", ".editBtn", function (response) {
         $("#editGroupModal").modal("show");
     })
+
+    //监听开关按钮状态
+
 });
