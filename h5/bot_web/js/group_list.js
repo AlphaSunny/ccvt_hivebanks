@@ -21,7 +21,7 @@ $(function () {
                 "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
                 "</td>" +
                 "</tr>";
-            $("#groupListTable").html(tr);
+            $("#groupListTable").append(tr);
         },3000);
         // GetGroupList(token, function (response) {
         //     if (response.errcode == "0") {
