@@ -449,7 +449,7 @@ $(function () {
         })
     });
 
-    //Upload image to determine BA/CA
+    //Upload images to determine BA/CA
     $('.baseBaTypeBtnConfirm').click(function () {
         var api_url = '';
         if (option_src == '') {
@@ -483,12 +483,12 @@ $(function () {
         }
     });
 
-    //Upload image cancel
+    //Upload images cancel
     $('.uploadImgRow .cancel').click(function () {
         $('#uploadImgModal').modal('close');
     });
 
-    //Upload image
+    //Upload images
     $('#uploadFile').on('change', function () {
         var objUrl = getObjectURL(this.files[0]);
         if (objUrl) {
@@ -501,7 +501,7 @@ $(function () {
         option_src = UpLoadImg(formData);
     });
 
-    //Select an image to display
+    //Select an images to display
     function getObjectURL(file) {
         var url = null;
         if (window.createObjectURL != undefined) { // basic

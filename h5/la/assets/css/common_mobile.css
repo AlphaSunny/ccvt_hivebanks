@@ -10,7 +10,7 @@ http://creativecommons.org/licenses/by/3.0/
 body {
     font-family: 'Open Sans', sans-serif;
     background: #1F2837;
-    /*background-image: linear-gradient(to bottom, #1F2837 0%, #1F2837 10%, #1F2837 100%);*/
+    /*background-images: linear-gradient(to bottom, #1F2837 0%, #1F2837 10%, #1F2837 100%);*/
 }
 .navbar-right{float: right}
 #wrapper {

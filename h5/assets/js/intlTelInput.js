@@ -371,7 +371,7 @@
                 if ($.fn[pluginName].windowLoaded) {
                     $.fn[pluginName].loadUtils(this.options.utilsScript, this.utilsScriptDeferred);
                 } else {
-                    // wait until the load event so we don't block any other requests e.g. the flags image
+                    // wait until the load event so we don't block any other requests e.g. the flags images
                     $(window).on("load", function() {
                         $.fn[pluginName].loadUtils(that.options.utilsScript, that.utilsScriptDeferred);
                     });

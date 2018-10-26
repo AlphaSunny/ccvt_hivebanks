@@ -191,7 +191,7 @@ $(function () {
         $('.idPhotoFormBox').fadeToggle('fast');
     });
 
-    //Return image information
+    //Return images information
     function UpLoadImg(formData) {
         var src = '';
         $.ajax({

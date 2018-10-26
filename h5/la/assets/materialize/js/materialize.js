@@ -1062,7 +1062,7 @@ if (jQuery) {
             returnToOriginal();
           });
           // Animate Overlay
-          // Put before in origin image to preserve z-index layering.
+          // Put before in origin images to preserve z-index layering.
           origin.before(overlay);
           overlay.velocity({opacity: 1},
                            {duration: inDuration, queue: false, easing: 'easeOutQuad'} );
@@ -1094,7 +1094,7 @@ if (jQuery) {
           newHeight = windowHeight * 0.9;
         }
 
-        // Animate image + set z-index
+        // Animate images + set z-index
         if(origin.hasClass('responsive-img')) {
           origin.velocity({'max-width': newWidth, 'width': originalWidth}, {duration: 0, queue: false,
             complete: function(){
@@ -1156,7 +1156,7 @@ if (jQuery) {
       });
 
 
-      // This function returns the modaled image to the original spot
+      // This function returns the modaled images to the original spot
       function returnToOriginal() {
 
           doneAnimating = false;
@@ -1196,7 +1196,7 @@ if (jQuery) {
             }
           );
 
-          // Remove Caption + reset css settings on image
+          // Remove Caption + reset css settings on images
           $('.materialbox-caption').velocity({opacity: 0}, {
             duration: outDuration, // Delay prevents animation overlapping
             queue: false, easing: 'easeOutQuad',
@@ -1277,7 +1277,7 @@ $(document).ready(function(){
 
         }
 
-        // Wait for image load
+        // Wait for images load
         $this.children("img").one("load", function() {
           updateParallax(true);
         }).each(function() {
@@ -3228,7 +3228,7 @@ $(document).ready(function(){
       var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
 
       // Function that renders and appends the option taking into
-      // account type and possible image icon.
+      // account type and possible images icon.
       var appendOptionWithIcon = function(select, option, type) {
         // Add disabled attr if disabled
         var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
@@ -3603,11 +3603,11 @@ $(document).ready(function(){
           captionTransition($(this), 0);
         });
 
-        // Move img src into background-image
+        // Move img src into background-images
         $slides.find('img').each(function () {
-          var placeholderBase64 = 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+          var placeholderBase64 = 'data:images/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
           if ($(this).attr('src') !== placeholderBase64) {
-            $(this).css('background-image', 'url(' + $(this).attr('src') + ')' );
+            $(this).css('background-images', 'url(' + $(this).attr('src') + ')' );
             $(this).attr('src', placeholderBase64);
           }
         });
@@ -7330,7 +7330,7 @@ Picker.extend( 'pickadate', DatePicker )
       var defaults = {
         time_constant: 200, // ms
         dist: -100, // zoom scale TODO: make this more intuitive as an option
-        shift: 0, // spacing for center image
+        shift: 0, // spacing for center images
         padding: 0, // Padding between non center items
         full_width: false, // Change to full width styles
         indicators: false, // Toggle indicators

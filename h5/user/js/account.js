@@ -152,7 +152,7 @@ $(function () {
         qrImg.onload = function () {
             content.drawImage(this, 0, 0, 568, 886);
             content.drawImage(qrctx, 80, 630, 160, 160);
-            var base64 = canvas.toDataURL("image/png");
+            var base64 = canvas.toDataURL("images/png");
             $("#base64Img").attr("src", base64);
             $(".inviteImgBox, #qrcode").remove();
         };

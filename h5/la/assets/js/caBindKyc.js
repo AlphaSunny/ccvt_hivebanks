@@ -88,7 +88,7 @@ $(function () {
         })
     });
 
-    //view image
+    //view images
     $(document).on('click', '.look', function () {
         var idPhotoSrc = $(this).parents('.caKycItem').find('.idPhotoSrc').text();
         var idPhotoSrcOne = idPhotoSrc.split(',')[0];

@@ -3,7 +3,7 @@ $(function () {
     var token = GetCookie('user_token');
     GetUsAccount();
 
-    //Get image
+    //Get images
     var img = decodeURIComponent(window.location.search.split('=')[1]);
     $('.bankImg').attr('src', img);
     var start = img.indexOf('/'), end = img.indexOf('.');

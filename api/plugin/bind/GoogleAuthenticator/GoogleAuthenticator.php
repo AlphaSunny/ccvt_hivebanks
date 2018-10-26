@@ -88,7 +88,7 @@ class PHPGangsta_GoogleAuthenticator
     }
 
     /**
-     * Get QR-Code URL for image, from google charts.
+     * Get QR-Code URL for images, from google charts.
      *
      * @param string $name
      * @param string $secret

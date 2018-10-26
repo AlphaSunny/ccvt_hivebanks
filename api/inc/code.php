@@ -32,9 +32,9 @@
 //  //8>增加干扰元素，设置雪花点
 //  for($i=0;$i<200;$i++){
 //      //设置点的颜色，50-200颜色比数字浅，不干扰阅读
-//      $pointcolor = imagecolorallocate($image,rand(50,200), rand(50,200), rand(50,200));
+//      $pointcolor = imagecolorallocate($images,rand(50,200), rand(50,200), rand(50,200));
 //      //imagesetpixel — 画一个单一像素
-//      imagesetpixel($image, rand(1,99), rand(1,29), $pointcolor);
+//      imagesetpixel($images, rand(1,99), rand(1,29), $pointcolor);
 //  }
   //9>增加干扰元素，设置横线
   for($i=0;$i<4;$i++){
@@ -44,9 +44,9 @@
       imageline($image,rand(1,99), rand(1,29),rand(1,99), rand(1,29),$linecolor);
   }
 
-  //2>设置头部，image/png
-  header('Content-Type: image/png');
+  //2>设置头部，images/png
+  header('Content-Type: images/png');
   //3>imagepng() 建立png图形函数
   imagepng($image);
-  //4>imagedestroy() 结束图形函数 销毁$image
+  //4>imagedestroy() 结束图形函数 销毁$images
   imagedestroy($image);

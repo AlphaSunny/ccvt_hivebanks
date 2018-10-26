@@ -321,7 +321,7 @@ textarea::-ms-input-placeholder
     width: 100%;
     z-index: 1;
     background: #000000;
-    /*background-image: linear-gradient(to right, #041636, #0b2758);*/
+    /*background-images: linear-gradient(to right, #041636, #0b2758);*/
     border-color: transparent;
 }
 .dropdown-menu>li>a{
@@ -356,7 +356,7 @@ textarea::-ms-input-placeholder
     /*z-index: 1;*/
     /*border: unset;*/
     /*background: #000000;*/
-    /*!*background-image: linear-gradient(to right, #041636, #0b2758);*!*/
+    /*!*background-images: linear-gradient(to right, #041636, #0b2758);*!*/
     /*border-color: transparent;*/
 /*}*/
 .personal{

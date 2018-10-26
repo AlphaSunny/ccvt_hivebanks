@@ -62,7 +62,7 @@
             this.displayCanvas[0].height = this.displayHeight;
             this.context = this.displayCanvas[0].getContext("2d");
 
-            //off screen canvas used only when exporting image
+            //off screen canvas used only when exporting images
             this.exportCanvas = document.createElement('canvas');
             this.exportCanvas.width = this.displayWidth;
             this.exportCanvas.height = this.displayHeight;
@@ -287,12 +287,12 @@
         },
         download: function(width, height){
             this.exportContext.drawImage(this.displayCanvas[0], 0, 0, width, height, 0, 0, width, height);
-            //we will open a new window with the image contained within:        
-            //retrieve canvas image as data URL:
-            var dataURL = this.exportCanvas.toDataURL("image/png");
-            //open a new window of appropriate size to hold the image:
+            //we will open a new window with the images contained within:
+            //retrieve canvas images as data URL:
+            var dataURL = this.exportCanvas.toDataURL("images/png");
+            //open a new window of appropriate size to hold the images:
             var imageWindow = window.open("", "fractalLineImage", "left=0,top=0,width="+width+",height="+height+",toolbar=0,resizable=0");
-            //write some html into the new window, creating an empty image:
+            //write some html into the new window, creating an empty images:
             imageWindow.document.write("<title>Export Image</title>")
             imageWindow.document.write("<img id='exportImage'"
                                         + " alt=''"
@@ -300,7 +300,7 @@
                                         + " width='"  + width  + "'"
                                         + " style='position:absolute;left:0;top:0'/>");
             imageWindow.document.close();
-            //copy the image into the empty img in the newly opened window:
+            //copy the images into the empty img in the newly opened window:
             var exportImage = imageWindow.document.getElementById("exportImage");
             exportImage.src = dataURL;
         }
