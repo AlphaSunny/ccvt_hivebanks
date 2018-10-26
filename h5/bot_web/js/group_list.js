@@ -94,7 +94,7 @@ $(function () {
         EditGroup(token, group_name, del, flirt, group_id, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
-                GetGroupListFun();
+                // GetGroupListFun();
                 $("#editGroupModal").modal("hide");
             }
         }, function (response) {
