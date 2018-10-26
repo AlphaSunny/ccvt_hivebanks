@@ -85,6 +85,7 @@ $(function () {
         $("#myModalLabel").text("添加群信息");
         $("#groupName").removeAttr("readonly");
         $("#addSubBtn").removeClass("editSubBtn");
+        $("#groupName").val("");
         $("#editGroupModal").modal("show");
     });
     
