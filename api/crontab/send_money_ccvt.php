@@ -23,7 +23,6 @@ foreach ($ba_list as $k=>$value){
         file_put_contents("ba_no_money.log",json_encode($data)."\n",FILE_APPEND);
         continue;
     }
-    echo 1;
     //循环ba,查询ba下微信用户及发言数
     $sql = "select wechat,count(bot_message_id) as count from bot_message where ba_id='{$value['ba_id']}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
     $db->query($sql);
@@ -33,6 +32,7 @@ foreach ($ba_list as $k=>$value){
         if ($result==0){
             continue;
         }
+        echo 222;
 
         //判断今日是否已经增过币
         $send = send_money_if($value['ba_id'],$v['wechat'],$day_start,$day_end);
