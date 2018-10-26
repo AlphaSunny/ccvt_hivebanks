@@ -65,7 +65,7 @@ $(function () {
         var group_name = $("#groupName").val();
         //loading
         var loading = layer.load(1, {
-            shade: [0.1,'#fff'] //0.1透明度的白色背景
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
         EditGroup(token, group_name, del, flirt, group_id, function (response) {
             if (response.errcode == "0") {
@@ -82,13 +82,17 @@ $(function () {
 
     //添加消息
     $(".addGroupBtn").click(function () {
+        //更改默认值
         $("#myModalLabel").text("添加群信息");
         $("#groupName").removeAttr("readonly");
         $("#addSubBtn").removeClass("editSubBtn");
+        //初始化添加的内容
         $("#groupName").val("");
+        $("#runSwitch,#trickSwitch").attr("checked", true).val("1");
+        //显示添加信息框
         $("#editGroupModal").modal("show");
     });
-    
+
     //确认提交添加信息
     $(".addSubBtn").click(function () {
         //获取群名称
@@ -101,7 +105,7 @@ $(function () {
         var flirt = $("#trickSwitch").val();
         //loading
         var loading = layer.load(1, {
-            shade: [0.1,'#fff'] //0.1透明度的白色背景
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
         AddGroup(token, group_name, del, flirt, function (response) {
             if (response.errcode == "0") {
