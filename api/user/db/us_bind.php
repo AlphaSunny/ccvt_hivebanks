@@ -217,3 +217,48 @@ function ins_google_bind($bind_data){
         return false;
     return true;
 }
+
+//======================================
+// 函数: 检查微信是否数据库已经存储
+// 参数: wechat               wechat
+//======================================
+function check_wechat_is_bind($us_id,$wechat){
+    $db = new DB_COM();
+    $sql = "SELECT * FROM us_base WHERE wechat = '{$wechat}' AND us_id!='{$us_id}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    return $row;
+}
+
+//======================================
+// 函数: 绑定微信
+// 参数: $data    数据信息
+//======================================
+function bind_wechat($data){
+    $db = new DB_COM();
+    $sql = "select * from us_bind WHERE us_id='{$data['us_id']}' AND bind_name='{$data['bind_name']}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if ($row){
+        if ($row['bind_info']==$data['bind_info']){
+            return true;
+        }else{
+            $sql = "update us_bind set bind_info='{$data['bind_info']}',utime='{$data['utime']}' WHERE bind_id='{$row['bind_id']}'";
+            $db->query($sql);
+            $result = $db -> affectedRows();
+            return $result;
+        }
+    }else{
+        $sql = $db->sqlInsert("us_bind", $data);
+        $q_id = $db->query($sql);
+        if ($q_id == 0){
+            return false;
+        }
+
+        $sql = "update us_base set wechat='{$data['wechat']}',utime='{$data['utime']}' WHERE us_id='{$data['us_id']}'";
+        $db->query($sql);
+        $result = $db -> affectedRows();
+        return $result;
+
+    }
+}
