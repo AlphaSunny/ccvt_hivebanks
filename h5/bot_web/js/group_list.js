@@ -47,6 +47,7 @@ $(function () {
     var group_id = "";
     $(document).on("click", ".editBtn", function (response) {
         var id= $(this).parents("tr[role='row']").find(".id").text();
+        console.log(id);
         // $(".addSubBtn").addClass("none");
         // $(".editSubBtn").removeClass("none");
         // group_id = $(this).parents(".trItem").find(".groupName").attr("name");//获取群id
