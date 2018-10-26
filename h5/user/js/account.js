@@ -23,8 +23,10 @@ $(function () {
             if(data.wechat){
                 $(".wechat").text(data.wechat).removeClass("i18n");
                 $("#weChatBindBtn").remove();
+                $("#weChatModifyBtn").fadeIn("fast");
             }else {
                 $("#weChatModifyBtn").remove();
+                $("#weChatBindBtn").fadeIn("fast");
             }
         }
     }, function (response) {
