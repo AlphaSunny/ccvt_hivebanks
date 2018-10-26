@@ -48,6 +48,38 @@ $(function () {
 
     //编辑任务
     $(document).on("click", ".editBtn", function () {
+        var group_name = $(this).parents(".trItem").find(".name").text();
+        var time = $(this).parents(".trItem").find(".time").text();
+        var content = $(this).parents(".trItem").find(".content").text();
+        var task_id = $(this).parents(".trItem").find(".content").attr("name");
+        $("#timer_id").val(task_id);
+        $("#groupName").val(group_name);
+        $("#time").val(time);
+        $("#content").val(content);
+        $(".addSubBtn").addClass("none");
+        $(".editSubBtn").removeClass("none");
         $("#editTaskModal").modal("show");
+    });
+
+    //确认编辑
+    $(".editSubBtn").click(function () {
+        var timer_id = $("#timer_id").val();
+        var time = $("#time").val();
+        var content = $("#content").val();
+        //loading
+        var loading = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+        EditTask(token, timer_id, time, content, function (response) {
+            if (response.errcode == "0") {
+                layer.close(loading);
+                GetTaskListFun();
+            }
+        }, function (response) {
+            layer.close(loading);
+            layer.msg(response.errmsg);
+        })
     })
+
+
 });
