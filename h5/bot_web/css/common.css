@@ -97,6 +97,9 @@ table{
 table .operating{
     width: 18%;
 }
+table td{
+    text-align: center;
+}
 
 .switch:focus {
     outline: none !important;
