@@ -51,16 +51,16 @@ $(function () {
     //监听开关按钮状态
     $("#runSwitch").on("change", function () {
         if ($(this).val() == "1") {
-            $(this).val("2");
+            $(this).removeAttr("checked").val("2");
         } else {
-            $(this).val("1");
+            $(this).attr("checked", true).val("1");
         }
     });
     $("#trickSwitch").on("change", function () {
         if ($(this).val() == "1") {
-            $(this).val("2");
+            $(this).removeAttr("checked").val("2");
         } else {
-            $(this).val("1");
+            $(this).attr("checked", true).val("1");
         }
     });
 
