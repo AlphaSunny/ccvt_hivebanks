@@ -110,8 +110,24 @@ $(function () {
 
     //确认添加信息
     $(".addSubBtn").click(function () {
-        console.log($("#selectGroupName").val());
-        console.log($("#selectGroupName").text());
+        var time = $("#time").val();
+        var content = $("#content").val();
+        var group_id = $("#selectGroupName").val();
+        //loading
+        var loading = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+        AddTask(token, time, group_id, content, function (response) {
+            if (response.errcode == "0") {
+                layer.close(loading);
+                GetTaskListFun();
+                $("#editTaskModal").modal("hide");
+            }
+        }, function (response) {
+            layer.close(loading);
+            $("#editTaskModal").modal("hide");
+            layer.msg(response.errmsg);
+        })
     });
 
 
