@@ -41,24 +41,24 @@ foreach ($ba_list as $k=>$value){
             continue;
         }
 
-        //送币
-        $unit = la_unit();
-        $sql = "update us_base set base_amount=base_amount+'{$v['count']}'*'{$unit}' WHERE wechat='{$v['wechat']}'";
-        $db -> query($sql);
-        if (!$db->affectedRows()){
-            $db->Rollback($pInTrans);
-            echo "us修改余额失败";
-            continue;
-        }
-
-        //ba减钱
-        $sql = "update ba_base set base_amount=base_amount-'{$v['count']}'*'{$unit}' WHERE ba_id='{$value['ba_id']}'";
-        $db -> query($sql);
-        if (!$db->affectedRows()){
-            $db->Rollback($pInTrans);
-            echo "ba修改余额失败";
-            continue;
-        }
+//        //送币
+//        $unit = la_unit();
+//        $sql = "update us_base set base_amount=base_amount+'{$v['count']}'*'{$unit}' WHERE wechat='{$v['wechat']}'";
+//        $db -> query($sql);
+//        if (!$db->affectedRows()){
+//            $db->Rollback($pInTrans);
+//            echo "us修改余额失败";
+//            continue;
+//        }
+//
+//        //ba减钱
+//        $sql = "update ba_base set base_amount=base_amount-'{$v['count']}'*'{$unit}' WHERE ba_id='{$value['ba_id']}'";
+//        $db -> query($sql);
+//        if (!$db->affectedRows()){
+//            $db->Rollback($pInTrans);
+//            echo "ba修改余额失败";
+//            continue;
+//        }
 
 
 //        //增币记录
