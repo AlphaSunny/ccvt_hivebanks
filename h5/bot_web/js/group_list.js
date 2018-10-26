@@ -59,7 +59,7 @@ $(function () {
     });
 
     //提交编辑
-    $(".subBtn").click(function () {
+    $(".editSubBtn").click(function () {
         var del = $("#runSwitch").val();
         var flirt = $("#trickSwitch").val();
         var group_name = $("#groupName").val();
@@ -84,6 +84,34 @@ $(function () {
     $(".addGroupBtn").click(function () {
         $("#myModalLabel").text("添加群信息");
         $("#groupName").removeAttr("readonly");
+        $("#addSubBtn").removeClass("editSubBtn");
         $("#editGroupModal").modal("show");
     });
+    
+    //确认提交添加信息
+    $(".addSubBtn").click(function () {
+        //获取群名称
+        var group_name = $("#groupName").val();
+
+        //获取运行状态
+        var del = $("#runSwitch").val();
+
+        //获取调戏状态
+        var flirt = $("#trickSwitch").val();
+        //loading
+        var loading = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        AddGroup(token, group_name, del, flirt, function (response) {
+            if (response.errcode == "0") {
+                layer.close(loading);
+                GetGroupListFun();
+                $("#editGroupModal").modal("hide");
+            }
+        }, function (response) {
+            layer.close(loading);
+            $("#editGroupModal").modal("hide");
+            layer.msg(response.errmsg);
+        })
+    })
 });
