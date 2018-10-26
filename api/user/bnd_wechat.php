@@ -35,7 +35,7 @@ $us_id = check_token($token);
 //判断微信是否已经绑定过
 $is_bind = check_wechat_is_bind($us_id,$wechat);
 if($is_bind){
-    exit_error('106','WeChat is already tied');
+    exit_error('147','WeChat is already tied');
 }
 
 //绑定微信号
@@ -51,7 +51,7 @@ $data['ctime'] = date('Y-m-d H:i:s');
 $we = bind_wechat($data);
 
 if(!$ret){
-    exit_error('101',"failed");
+    exit_error('148',"failed");
 }
 
 // 返回数据做成
