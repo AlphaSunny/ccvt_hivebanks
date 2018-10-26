@@ -30,6 +30,8 @@ $(function () {
     $(document).on("click", ".editBtn", function (response) {
         group_id = $(this).parents(".trItem").find("groupName").attr("name");
         var group_name = $(this).parents(".trItem").find("groupName").text();
+        console.log(group_name);
+        console.log(group_id);
         var is_del = $(this).parents(".trItem").find(".is_del").attr("name");
         var is_flirt = $(this).parents(".trItem").find(".is_flirt").attr("name");
         if (is_del == "1") {
