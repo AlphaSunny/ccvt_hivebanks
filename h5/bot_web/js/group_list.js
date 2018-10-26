@@ -36,12 +36,12 @@ $(function () {
         var is_flirt = $(this).parents(".trItem").find(".is_flirt").attr("name");//获取是否开启调戏功能
         if (is_del == "1") {
             $("#runSwitch").addClass("active").val("1");
-        }else {
+        } else {
             $("#runSwitch").removeClass("active").val("1");
         }
         if (is_flirt == "1") {
             $("#trickSwitch").addClass("active").val("1");
-        }else {
+        } else {
             $("#trickSwitch").removeClass("active").val("1");
         }
         $("#groupName").val(group_name);
@@ -125,5 +125,11 @@ $(function () {
             $("#editGroupModal").modal("hide");
             layer.msg(response.errmsg);
         })
+    });
+
+    //进入详情查看
+    $(document).on("click", "infoBtn", function () {
+        var group_id = $(this).parents(".trItem").find(".groupName").attr("name");
+        window.location.href = "group_member.html?group_id=" + group_id;
     })
 });
