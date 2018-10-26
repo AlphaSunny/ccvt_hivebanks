@@ -34,6 +34,7 @@ $(function () {
         var group_name = $(this).parents(".trItem").find(".groupName").text();//获取群名称
         var is_del = $(this).parents(".trItem").find(".is_del").attr("name");//获取是否运行状态
         var is_flirt = $(this).parents(".trItem").find(".is_flirt").attr("name");//获取是否开启调戏功能
+        console.log(is_del);
         if (is_del == "1") {
             $("#runSwitch").attr("checked", true).val("1");
         }else {
