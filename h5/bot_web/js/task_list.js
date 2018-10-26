@@ -86,6 +86,24 @@ $(function () {
 
     //添加信息
     $(".addTaskBtn").click(function () {
+        GetGroupList(token, function (response) {
+            if (response.errcode == "0") {
+                var data = response.rows, option = "";
+                $.each(data, function (i, val) {
+                    option+="<option value="+ data[i].id +">"+ data[i].name +"</option>"
+                });
+                $("#selectGroupName").html(option);
+            }
+        }, function (response) {
+            layer.msg(response.errmsg);
+        });
+
+
+
+
+
+
+
         $("#groupName").fadeOut("fast");
         $("#editTaskModal").modal("show");
     });
