@@ -8,13 +8,10 @@ $(function () {
                 {"data": "id", "class": "id"},
                 {"data": "name", "class": "name"},
                 {"data": "del", "class": "del"},
-                {"data": "is_del", "class": "is_del", "bVisible": false},
+                {"data": "is_del", "class": "is_del"},
                 {"data": "flirt", "class": "flirt"},
-                {"data": "is_flirt", "class": "is_flirt", "bVisible": false},
-            ],
-            callback:function () {
-                console.log("hui")
-            }
+                {"data": "is_flirt", "class": "is_flirt"},
+            ]
         });
         setTimeout(function () {
             var td = "<td>" +
