@@ -112,6 +112,7 @@ $(function () {
     //确认添加信息
     $(".addSubBtn").click(function () {
         console.log($("#selectGroupName").val());
+        console.log($("#selectGroupName").text());
     });
 
 
