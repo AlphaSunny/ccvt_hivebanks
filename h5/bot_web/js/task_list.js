@@ -25,10 +25,9 @@ $(function () {
         layer.confirm('确定删除该条数据？', {
             btn: ['取消','确认'] //按钮
         })
-        // , function(){
-        //
-        // }, function(){
-        //     // layer.msg('的确很重要', {icon: 1});
-        // });
+    });
+
+    $(document).on("click", ".layui-layer-btn1", function () {
+        console.log("ok");
     })
 });
