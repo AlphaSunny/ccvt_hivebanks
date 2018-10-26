@@ -173,6 +173,7 @@ function get_us_id($wechat){
     echo 222;
     $us_id = $db -> getField($sql,'us_id');
     echo 333;
+    echo "<br />";
     if($us_id == null)
         return 0;
     return $us_id;
