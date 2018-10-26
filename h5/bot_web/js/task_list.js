@@ -107,7 +107,12 @@ $(function () {
     $(document).on("click", ".groupItem", function () {
         $(this).attr("checked", true);
         console.log("checked");
-    })
+    });
+
+    //确认添加信息
+    $(".addSubBtn").click(function () {
+        console.log($("#selectGroupName").val());
+    });
 
 
 
