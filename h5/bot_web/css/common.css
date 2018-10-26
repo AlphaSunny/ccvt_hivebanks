@@ -91,6 +91,13 @@ textarea#content{
     width: 100%;
 }
 
+table{
+    width: 100%;
+}
+table .operating{
+    width: 18%;
+}
+
 .switch:focus {
     outline: none !important;
 }
