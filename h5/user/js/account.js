@@ -177,6 +177,9 @@ $(function () {
                 ShowLoading("hide");
                 $("#weChatGroupName").modal("hide");
                 LayerFun("bindSuccess");
+                // $(".wechat").text(data.wechat).removeClass("i18n");
+                // $("#weChatBindBtn").remove();
+                // $("#weChatModifyBtn").fadeIn("fast");
             }
         }, function (response) {
             ShowLoading("hide");
