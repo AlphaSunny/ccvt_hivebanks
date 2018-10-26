@@ -32,7 +32,6 @@ foreach ($ba_list as $k=>$value){
         if ($result==0){
             continue;
         }
-        echo 222;
 
         //判断今日是否已经增过币
         $send = send_money_if($value['ba_id'],$v['wechat'],$day_start,$day_end);
@@ -41,6 +40,7 @@ foreach ($ba_list as $k=>$value){
             echo $value['ba_id']."已增过币";
             continue;
         }
+        echo 2222;
         //送币
         $unit = la_unit();
         $sql = "update us_base set base_amount=base_amount+'{$v['count']}'*'{$unit}' WHERE wechat='{$v['wechat']}'";
