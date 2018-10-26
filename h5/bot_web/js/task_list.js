@@ -52,6 +52,7 @@ $(function () {
         var time = $(this).parents(".trItem").find(".time").text();
         var content = $(this).parents(".trItem").find(".content").text();
         var task_id = $(this).parents(".trItem").find(".content").attr("name");
+        $("#selectGroupName").fadeOut("fast");
         $("#timer_id").val(task_id);
         $("#groupName").val(group_name);
         $("#time").val(time);
@@ -81,7 +82,13 @@ $(function () {
             $("#editTaskModal").modal("hide");
             layer.msg(response.errmsg);
         })
-    })
+    });
+
+    //添加信息
+    $(".addTaskBtn").click(function () {
+        $("#groupName").fadeOut("fast");
+        $("#editTaskModal").modal("show");
+    });
 
 
 });
