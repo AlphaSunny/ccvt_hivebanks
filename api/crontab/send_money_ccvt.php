@@ -170,6 +170,7 @@ function get_us_id($wechat){
     $db = new DB_COM();
     echo 111;
     $sql = "select us_id from us_base WHERE wechat='{$wechat}' limit 1";
+    echo $sql;
     $db->query($sql);
     echo 222;
     $us_id = $db -> getField($sql,'us_id');
