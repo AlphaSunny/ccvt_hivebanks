@@ -46,7 +46,7 @@ $(function () {
     //编辑对应的群主-弹出编辑框
     var group_id = "";
     $(document).on("click", ".editBtn", function (response) {
-        var id= $(this).parents("tr[role=row]").find(".id").text();
+        var id= $(this).parents("tr[role='row']").find(".id").text();
         // $(".addSubBtn").addClass("none");
         // $(".editSubBtn").removeClass("none");
         // group_id = $(this).parents(".trItem").find(".groupName").attr("name");//获取群id
