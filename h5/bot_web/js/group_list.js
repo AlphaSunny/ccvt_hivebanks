@@ -28,7 +28,6 @@ $(function () {
     //编辑对应的群主-弹出编辑框
     var group_id = "";
     $(document).on("click", ".editBtn", function (response) {
-        GetGroupListFun();
         group_id = $(this).parents(".trItem").find(".groupName").attr("name");
         var group_name = $(this).parents(".trItem").find(".groupName").text();
         console.log(group_name);
