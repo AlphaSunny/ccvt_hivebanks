@@ -31,8 +31,10 @@ $(function () {
             $(".trickSwitch").attr("checked", true).val("1");
         }
         $("#editGroupModal").modal("show");
-    })
+    });
 
     //监听开关按钮状态
-
+    $(".runSwitch").on("change", function () {
+        console.log("change");
+    })
 });
