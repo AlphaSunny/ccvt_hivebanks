@@ -36,9 +36,13 @@ $(function () {
         var is_flirt = $(this).parents(".trItem").find(".is_flirt").attr("name");//获取是否开启调戏功能
         if (is_del == "1") {
             $("#runSwitch").attr("checked", true).val("1");
+        }else {
+            $("#runSwitch").attr("checked", false).val("2");
         }
         if (is_flirt == "1") {
             $("#trickSwitch").attr("checked", true).val("1");
+        }else {
+            $("#trickSwitch").attr("checked", false).val("2");
         }
         $("#groupName").val(group_name);
         $("#editGroupModal").modal("show");
