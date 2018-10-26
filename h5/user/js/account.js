@@ -158,6 +158,17 @@ $(function () {
 
     //bind weChat group
     $(".bindWeChatBtn").click(function () {
-        console.log($("#weChatName").val());
+        var wechat = $("#weChatName").val();
+        if(wechat.length <= 0){
+            LayerFun("pleaseEnterNickname");
+            return;
+        }
+        BindWeChatName(token, wechat, function (response) {
+            if(response.errcode == "0"){
+                LayerFun("bindSuccess");
+            }
+        }, function (response) {
+            LayerFun(response.errcode);
+        })
     });
 });

@@ -53,14 +53,15 @@ function getRootPath() {
     var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
     return localhostPath;
 }
+
 var url = getRootPath();
 
 //Get data failure prompt
 function GetErrorCode(code) {
-    $.getJSON(url+"/h5/assets/json/errcode.json", function (response) {
+    $.getJSON(url + "/h5/assets/json/errcode.json", function (response) {
         $.each(response, function (i, val) {
             if (response[i].code_key == code) {
-                layer.msg('<p class="i18n" name="'+ code +'">' + response[i].code_value + '</p>');
+                layer.msg('<p class="i18n" name="' + code + '">' + response[i].code_value + '</p>');
                 execI18n();
             }
         })
@@ -70,7 +71,7 @@ function GetErrorCode(code) {
 //Get configuration file/Base currency type
 var config_api_url = '', config_h5_url = '', userLanguage = getCookie('userLanguage');
 $.ajax({
-    url: url+"/h5/assets/json/config_url.json",
+    url: url + "/h5/assets/json/config_url.json",
     async: false,
     type: "GET",
     dataType: "json",
@@ -83,9 +84,9 @@ $.ajax({
         $('.ca_currency').text(ca_currency);
         SetCookie('ca_currency', ca_currency);
         SetCookie('benchmark_type', benchmark_type);
-        if(!userLanguage){
+        if (!userLanguage) {
             SetCookie('userLanguage', data.userLanguage);
-        }else {
+        } else {
             return;
         }
     },
@@ -99,9 +100,9 @@ function CallApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/user/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
-        };
+    };
     error_func = error_func || function () {
-        };
+    };
     $.ajax({
         url: api_site + api_url,
         dataType: "jsonp",
@@ -129,9 +130,9 @@ function CallBaApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/ba/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
-        };
+    };
     error_func = error_func || function () {
-        };
+    };
     $.ajax({
         url: api_site + api_url,
         dataType: "jsonp",
@@ -159,9 +160,9 @@ function CallCaApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/ca/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
-        };
+    };
     error_func = error_func || function () {
-        };
+    };
     $.ajax({
         url: api_site + api_url,
         dataType: "jsonp",
@@ -189,9 +190,9 @@ function CallLaApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/la/admin/admin/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
-        };
+    };
     error_func = error_func || function () {
-        };
+    };
     $.ajax({
         url: api_site + api_url,
         dataType: "jsonp",
@@ -219,9 +220,9 @@ function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/la/admin/configure/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
-        };
+    };
     error_func = error_func || function () {
-        };
+    };
     $.ajax({
         url: api_site + api_url,
         dataType: "jsonp",
@@ -248,7 +249,7 @@ function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
 function RegisterSwitch(type, suc_func, error_func) {
     var api_url = 'reg_lock.php',
         post_data = {
-            'type' : type
+            'type': type
         };
     CallLaApi(api_url, post_data, suc_func, error_func);
 }
@@ -310,13 +311,13 @@ function PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, suc_func,
 }
 
 // Reset password (mailbox)
-function ResetEmailPassword(email, cfm_code, pass_word_hash,confirm_pass_word_hash, suc_func, error_func) {
+function ResetEmailPassword(email, cfm_code, pass_word_hash, confirm_pass_word_hash, suc_func, error_func) {
     var api_url = 'rst_pw_email.php',
         post_data = {
             'email': email,
             'cfm_code': cfm_code,
             'pass_word_hash': pass_word_hash,
-            'confirm_pass_word_hash':confirm_pass_word_hash
+            'confirm_pass_word_hash': confirm_pass_word_hash
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
@@ -338,7 +339,7 @@ function ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash, c
             'cellphone': cellphone,
             'sms_code': sms_code,
             'pass_word_hash': pass_word_hash,
-            'confirm_pass_word_hash':confirm_pass_word_hash
+            'confirm_pass_word_hash': confirm_pass_word_hash
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
@@ -370,6 +371,16 @@ function UserInformation(token, suc_func, error_func) {
         };
     CallApi(api_url, post_data, suc_func, error_func);
 };
+
+//bind weChat group name
+function BindWeChatName(token, wechat, suc_func, error_func) {
+    var api_url = 'info_base.php',
+        post_data = {
+            'token': token,
+            'wechat': wechat
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
 
 // User Change Record - Login Record - Transfer - BA / CA - Recharge / Withdrawal - Record
 function AllRecord(token, limit, offset, api_url, suc_func, error_func) {
@@ -456,8 +467,8 @@ function Hash(token, hash_type, hash, pass_word_hash, phone, phoneCode, suc_func
 function GoogleBind(token, email, suc_func, error_func) {
     var api_url = 'bnd_Google.php',
         post_data = {
-            'token' : token,
-            'email' : email
+            'token': token,
+            'email': email
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
@@ -466,8 +477,8 @@ function GoogleBind(token, email, suc_func, error_func) {
 function GoogleVerify(token, code, suc_func, error_func) {
     var api_url = 'cfm_Google.php',
         post_data = {
-            'token' : token,
-            'code' : code
+            'token': token,
+            'code': code
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
