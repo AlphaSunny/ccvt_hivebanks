@@ -87,7 +87,7 @@ input[type=checkbox] {
     margin: unset;
 }
 
-textarea.content{
+textarea#content{
     width: 100%;
 }
 
