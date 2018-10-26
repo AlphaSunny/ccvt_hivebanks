@@ -1,34 +1,51 @@
 $(function () {
     var token = GetCookie("robot_token");
 
-    function GetTaskListFun() {
-        GetTaskList(token, function (response) {
-            if (response.errcode == "0") {
-                var data = response.rows, tr = "";
-                $.each(data, function (i, val) {
-                    tr += "<tr class='text-center trItem'>" +
-                        "<td class='time'>" + data[i].time + "</td>" +
-                        "<td class='content' name=" + data[i].id + ">" + data[i].content + "</td>" +
-                        "<td class='name'>" + data[i].name + "</td>" +
-                        "<td>" +
-                        "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-                        "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
-                        "</td>" +
-                        "</tr>";
-                });
-                $("#groupListTable").html(tr);
-            }
-        }, function (response) {
-            layer.msg(response.errmsg);
-        });
-    }
+    $("#taskListTable").DataTable({
+        "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
+        "columns": [
+            {"data": "id", "class": "id"},
+            {"data": "time", "class": "time"},
+            {"data": "content", "class": "content"},
+            {"data": "name", "class": "name"},
+        ]
+    });
+    setTimeout(function () {
+        var td = "<td>" +
+            "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+            "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
+            "</td>";
+        $(".odd,.even").append(td);
+    }, 500);
 
-    GetTaskListFun();
+    // function GetTaskListFun() {
+    //     GetTaskList(token, function (response) {
+    //         if (response.errcode == "0") {
+    //             var data = response.rows, tr = "";
+    //             $.each(data, function (i, val) {
+    //                 tr += "<tr class='text-center trItem'>" +
+    //                     "<td class='time'>" + data[i].time + "</td>" +
+    //                     "<td class='content' name=" + data[i].id + ">" + data[i].content + "</td>" +
+    //                     "<td class='name'>" + data[i].name + "</td>" +
+    //                     "<td>" +
+    //                     "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+    //                     "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
+    //                     "</td>" +
+    //                     "</tr>";
+    //             });
+    //             $("#groupListTable").html(tr);
+    //         }
+    //     }, function (response) {
+    //         layer.msg(response.errmsg);
+    //     });
+    // }
+    // GetTaskListFun();
 
     //删除任务
     var timer_id = "";
     $(document).on("click", ".delBtn", function () {
-        timer_id = $(this).parents(".trItem").find(".content").attr("name");
+        // timer_id = $(this).parents(".trItem").find(".content").attr("name");
+        timer_id = $(this).parents("tr[role='row']").find(".id").text();
         layer.confirm('确定删除该条数据？', {
             btn: ['取消', '确认'] //按钮
         })
@@ -39,7 +56,8 @@ $(function () {
         DelTask(token, timer_id, function (response) {
             if (response.errcode == "0") {
                 layer.msg('删除成功', {icon: 1});
-                GetTaskListFun();
+                // GetTaskListFun();
+                window.location.reload();
             }
         }, function (response) {
             layer.msg('删除失败', {icon: 2});
@@ -74,8 +92,9 @@ $(function () {
         EditTask(token, timer_id, time, content, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
-                GetTaskListFun();
+                // GetTaskListFun();
                 $("#editTaskModal").modal("hide");
+                window.location.reload();
             }
         }, function (response) {
             layer.close(loading);
@@ -90,7 +109,7 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows, option = "";
                 $.each(data, function (i, val) {
-                    option+="<option class='groupItem' value="+ data[i].id +">"+ data[i].name +"</option>"
+                    option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
                 });
                 $("#selectGroupName").html(option);
             }
@@ -120,8 +139,9 @@ $(function () {
         AddTask(token, time, group_id, content, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
-                GetTaskListFun();
+                // GetTaskListFun();
                 $("#editTaskModal").modal("hide");
+                window.location.reload();
             }
         }, function (response) {
             layer.close(loading);
@@ -129,7 +149,6 @@ $(function () {
             layer.msg(response.errmsg);
         })
     });
-
 
 
 });

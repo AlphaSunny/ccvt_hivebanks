@@ -135,8 +135,9 @@ $(function () {
         AddGroup(token, group_name, del, flirt, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
-                GetGroupListFun();
+                // GetGroupListFun();
                 $("#editGroupModal").modal("hide");
+                window.location.reload();
             }
         }, function (response) {
             layer.close(loading);
