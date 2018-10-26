@@ -50,7 +50,6 @@ foreach ($ba_list as $k=>$value){
             echo "us修改余额失败";
             continue;
         }
-        echo 2222;
 
         //ba减钱
         $sql = "update ba_base set base_amount=base_amount-'{$v['count']}'*'{$unit}' WHERE ba_id='{$value['ba_id']}'";
@@ -83,44 +82,7 @@ foreach ($ba_list as $k=>$value){
         }
 
 
-        //us添加基准资产变动记录
-        $us_type = 'us_send_balance';
-        $ctime = date('Y-m-d H:i:s');
-        $com_balance_us['hash_id'] = hash('md5', $d['us_id'] . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
-        $com_balance_us['tx_id'] = $d['tx_hash'];
-        $com_balance_us['prvs_hash'] = get_recharge_pre_hash($d['us_id']);
-        $com_balance_us["credit_id"] = $d['us_id'];
-        $com_balance_us["debit_id"] = $value['ba_id'];
-        $com_balance_us["tx_type"] = "ba_send";
-        $com_balance_us["tx_amount"] = $v['count']*$unit;
-        $com_balance_us["credit_balance"] = get_us_account($d['us_id'])+($v['count']*$unit);
-        $com_balance_us["utime"] = time();
-        $com_balance_us["ctime"] = $ctime;
-
-        $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
-        if (!$db->query($sql)) {
-            $db->Rollback($pInTrans);
-            continue;
-        }
-
-        //ba添加基准资产变动记录
-        $us_type = 'ba_send_balance';
-        $com_balance_ba['hash_id'] = hash('md5', $value['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
-        $com_balance_ba['tx_id'] = $d['tx_hash'];
-        $com_balance_ba['prvs_hash'] = get_recharge_pre_hash($value['ba_id']);
-        $com_balance_ba["credit_id"] = $value['ba_id'];
-        $com_balance_ba["debit_id"] = $d['us_id'];
-        $com_balance_ba["tx_type"] = "ba_send";
-        $com_balance_ba["tx_amount"] = $v['count']*$unit;
-        $com_balance_ba["credit_balance"] = get_ba_account($value['ba_id'])-($v['count']*$unit);
-        $com_balance_ba["utime"] = time();
-        $com_balance_ba["ctime"] = $ctime;
-
-        $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
-        if (!$db->query($sql)) {
-            $db->Rollback($pInTrans);
-            continue;
-        }
+        
 
 
     }
