@@ -66,10 +66,10 @@ $(function () {
 
     //编辑任务
     $(document).on("click", ".editBtn", function () {
-        var group_name = $(this).parents(".trItem").find(".name").text();
-        var time = $(this).parents(".trItem").find(".time").text();
-        var content = $(this).parents(".trItem").find(".content").text();
-        var task_id = $(this).parents(".trItem").find(".content").attr("name");
+        var group_name = $(this).parents("tr[role='row']").find(".name").text();
+        var time = $(this).parents("tr[role='row']").find(".time").text();
+        var content = $(this).parents("tr[role='row']").find(".content").text();
+        var task_id = $(this).parents("tr[role='row']").find(".id").text();
         $("#selectGroupName").fadeOut("fast");
         $("#timer_id").val(task_id);
         $("#groupName").val(group_name);
