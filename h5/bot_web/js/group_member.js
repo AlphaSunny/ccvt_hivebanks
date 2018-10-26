@@ -7,14 +7,15 @@ $(function () {
 
     $('#groupMemberTable').DataTable({
         "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_members_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id,
-        "columns": [
-            {"rows": "name"}
+        "dataSrc" : "rows"
+        // "columns": [
+        //     {"rows": "name"}
             // {"data": "position"},
             // {"data": "office"},
             // {"data": "extn"},
             // {"data": "start_date"},
             // {"data": "salary"}
-        ]
+        // ]
     });
 
 
