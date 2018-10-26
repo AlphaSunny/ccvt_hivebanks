@@ -165,6 +165,7 @@ $(function () {
         }
         BindWeChatName(token, wechat, function (response) {
             if(response.errcode == "0"){
+                $("#weChatGroupName").modal("hide");
                 LayerFun("bindSuccess");
             }
         }, function (response) {
