@@ -11,16 +11,18 @@ $(function () {
                 {"data": "is_del"},
                 {"data": "flirt"},
                 {"data": "is_flirt"},
-                {"data": "<td><button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button></td><button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"}
+                // {"data": "<td><button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button></td><button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"}
             ]
         });
-        // var tr = "<tr>" +
-        //     "<td>" +
-        //     "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-        //     "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
-        //     "</td>" +
-        //     "</tr>";
-        // $("#groupListTable").html(tr);
+        setTimeout(function () {
+            var tr = "<tr>" +
+                "<td>" +
+                "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+                "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
+                "</td>" +
+                "</tr>";
+            $("#groupListTable").html(tr);
+        },3000);
         // GetGroupList(token, function (response) {
         //     if (response.errcode == "0") {
         //         var data = response.rows, tr = "";
