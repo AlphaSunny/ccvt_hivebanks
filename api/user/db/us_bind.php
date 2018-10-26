@@ -244,10 +244,12 @@ function bind_wechat($data){
             return true;
         }else{
             $sql = "update us_bind set bind_info='{$data['bind_info']}',utime='{$data['utime']}' WHERE bind_id='{$row['bind_id']}'";
-            echo $sql;die;
             $db->query($sql);
-            $result = $db -> affectedRows();
-            return $result;
+
+            $sql = "update us_base set wechat='{$data['bind_info']}',utime='{$data['utime']}' WHERE us_id='{$data['us_id']}'";
+            $db->query($sql);
+            $count = $db -> affectedRows();
+            return $count;
         }
     }else{
         $sql = $db->sqlInsert("us_bind", $data);
