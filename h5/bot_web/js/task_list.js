@@ -2,7 +2,7 @@ $(function () {
     var token = GetCookie("robot_token");
 
     $("#taskListTable").DataTable({
-        "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
+        "ajax": "http://ccvt_test.fnying.com/api/bot_web/timer_list.php?token=" + encodeURIComponent(token),
         "columns": [
             {"data": "id", "class": "id"},
             {"data": "time", "class": "time"},
