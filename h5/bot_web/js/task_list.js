@@ -90,23 +90,25 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows, option = "";
                 $.each(data, function (i, val) {
-                    option+="<option value="+ data[i].id +">"+ data[i].name +"</option>"
+                    option+="<option class='groupItem' value="+ data[i].id +">"+ data[i].name +"</option>"
                 });
                 $("#selectGroupName").html(option);
             }
         }, function (response) {
             layer.msg(response.errmsg);
         });
-
-
-
-
-
-
-
+        $(".addSubBtn").removeClass("none");
+        $(".editSubBtn").addClass("none");
         $("#groupName").fadeOut("fast");
         $("#editTaskModal").modal("show");
     });
+
+    //添加信息选择群主
+    $(document).on("click", ".groupItem", function () {
+        $(this).attr("checked", true);
+        console.log("checked");
+    })
+
 
 
 });
