@@ -5,7 +5,7 @@ $(function () {
         $("#groupMasterListTable").DataTable({
             "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
             "columns": [
-                {"data": "id"},
+                {"data": "id","class":"abc"},
                 {"data": "name"},
                 {"data": "del"},
                 {"data": "is_del","bVisible" : false},
