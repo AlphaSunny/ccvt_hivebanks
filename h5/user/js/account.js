@@ -163,12 +163,15 @@ $(function () {
             LayerFun("pleaseEnterNickname");
             return;
         }
+        ShowLoading("show");
         BindWeChatName(token, wechat, function (response) {
             if(response.errcode == "0"){
+                ShowLoading("hide");
                 $("#weChatGroupName").modal("hide");
                 LayerFun("bindSuccess");
             }
         }, function (response) {
+            ShowLoading("hide");
             LayerFun(response.errcode);
         })
     });

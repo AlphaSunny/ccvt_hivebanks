@@ -374,7 +374,7 @@ function UserInformation(token, suc_func, error_func) {
 
 //bind weChat group name
 function BindWeChatName(token, wechat, suc_func, error_func) {
-    var api_url = 'info_base.php',
+    var api_url = 'bnd_wechat.php',
         post_data = {
             'token': token,
             'wechat': wechat
