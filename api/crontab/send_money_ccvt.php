@@ -33,13 +33,13 @@ foreach ($ba_list as $k=>$value){
             continue;
         }
 
-        //判断今日是否已经增过币
-        $send = send_money_if($value['ba_id'],$v['wechat'],$day_start,$day_end);
-        if ($send){
-            $db->Rollback($pInTrans);
-            echo $value['ba_id']."已增过币";
-            continue;
-        }
+//        //判断今日是否已经增过币
+//        $send = send_money_if($value['ba_id'],$v['wechat'],$day_start,$day_end);
+//        if ($send){
+//            $db->Rollback($pInTrans);
+//            echo $value['ba_id']."已增过币";
+//            continue;
+//        }
 
 //        //送币
 //        $unit = la_unit();
