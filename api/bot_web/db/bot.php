@@ -28,6 +28,7 @@ function check_group_name($ba_id,$group_name,$vail,$id='')
         $sql .= " AND id!='{$id}'";
     }
     echo $sql;
+    die;
     $db -> query($sql);
     $row = $db -> fetchRow();
     return $row;
