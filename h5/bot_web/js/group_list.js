@@ -12,7 +12,7 @@ $(function () {
                         "<td class='is_flirt' name=" + data[i].is_flirt + ">" + data[i].flirt + "</td>" +
                         "<td>" +
                         "<button class='btn-success btn-sm editBtn'>编辑</button>" +
-                        "<button class='btn-sm btn-danger infoBtn margin-left-5'>详情</button>" +
+                        "<button class='btn-sm btn-info infoBtn margin-left-5'>详情</button>" +
                         "</td>" +
                         "</tr>"
                 });
