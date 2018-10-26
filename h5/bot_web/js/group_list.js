@@ -28,6 +28,7 @@ $(function () {
     //编辑对应的群主-弹出编辑框
     var group_id = "";
     $(document).on("click", ".editBtn", function (response) {
+        $(".editSubBtn").removeClass("addSubBtn");
         group_id = $(this).parents(".trItem").find(".groupName").attr("name");
         var group_name = $(this).parents(".trItem").find(".groupName").text();
         var is_del = $(this).parents(".trItem").find(".is_del").attr("name");
@@ -85,7 +86,7 @@ $(function () {
         //更改默认值
         $("#myModalLabel").text("添加群信息");
         $("#groupName").removeAttr("readonly");
-        $("#addSubBtn").removeClass("editSubBtn");
+        $(".addSubBtn").removeClass("editSubBtn");
         //初始化添加的内容
         $("#groupName").val("");
         $("#runSwitch,#trickSwitch").attr("checked", true).val("1");
