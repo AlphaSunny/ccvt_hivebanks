@@ -36,16 +36,17 @@ $(function () {
 
     Get_News_List(function (response) {
         if (response.errcode == "0") {
-            var data = response.rows;
-            console.log(data);
+            var data = response.rows, a = "";
             $.each(data, function (i, val) {
-                $(".latestNewsText").text(data[i].title);
-            })
+                // $(".latestNewsText").text(data[i].title);
+                a+="<a href='javascript:;' name="+ data[i].news_id +">data[i].title</a>"
+            });
+            $(".latestNewsText").html(a);
 
         }
     }, function (response) {
         if(response.errcode == "-1"){
-            $(".latestNewsText").text("暂无更多动态");
+            $(".latestNewsText").html("<span>暂无更多动态</span>");
         }
     })
 });
