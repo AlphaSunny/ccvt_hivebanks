@@ -797,7 +797,7 @@ h4.title {
     animation: newsTextMove 5s 5s linear infinite;
 }
 
-@keyframes newsTitleMove {
+@keyframes newsTextMove {
 
     0%, 80% {
         transform: translateY(0);
