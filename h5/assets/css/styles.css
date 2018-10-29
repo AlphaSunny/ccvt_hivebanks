@@ -765,6 +765,9 @@ h4.title {
     width: 23px;
     display: inline-block;
 }
+.latestNewsText{
+    display: inline-block;
+}
 
 @media screen and (max-width: 768px) {
     h4.title {
