@@ -53,13 +53,21 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php
+                            $sql = "select * from bot_Iss_records WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                            $db->query($sql);
+                            $list = $db->fetchAll();
+                            foreach ($list as $k=>$v){
+                                 echo $k;
+                        ?>
                         <tr>
                             <td>🥇</td>
-                            <td>大晚上的不睡觉</td>
+                            <td><?php echo $v['wechat'];?></td>
                             <td>30</td>
                             <td>5</td>
                             <td>5</td>
                         </tr>
+                        <?php }?>
                         <tr>
                             <td>🥈</td>
                             <td>大晚上的不睡觉</td>
