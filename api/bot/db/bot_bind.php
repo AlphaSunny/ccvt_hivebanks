@@ -313,5 +313,26 @@ function get_token(){
     return $res['access_token'];
 
 }
+//======================================
+// 函数: 百度api验证内容
+//======================================
+function get_is_effective(){
+    $token = get_token();
+    $url = 'https://aip.baidubce.com/rest/2.0/antispam/v2/spam';
+    $post_data['access_token']       = $token;
+    $post_data['content']      = '傻逼';
+    $o = "";
+    foreach ( $post_data as $k => $v )
+    {
+        $o.= "$k=" . urlencode( $v ). "&" ;
+    }
+    $post_data = substr($o,0,-1);
+
+    $res = request_post($url, $post_data);
+
+    $res = json_decode($res,true);
+    return $res['result']['spam'];
+
+}
 
 ?>
