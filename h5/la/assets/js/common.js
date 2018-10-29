@@ -303,7 +303,7 @@ function CallKycApi(api_url, post_data, suc_func, error_func) {
 
 // Call API to query news list function
 function CallNewsApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/src/api/admin/news/';
+    var api_site = config_api_url + '/api/api/admin/news/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
