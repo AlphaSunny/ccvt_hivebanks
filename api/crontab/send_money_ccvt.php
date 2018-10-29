@@ -13,7 +13,7 @@ $db = new DB_COM();
 
 $pInTrans = $db->StartTrans();  //开启事务
 //群聊微信用户及发言数
-$group_name = "风赢科技绝密小分队";
+$group_name = "测试2";
 $sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$group_name}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
 echo $sql;die;
 
