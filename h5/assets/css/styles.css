@@ -15,7 +15,7 @@ body {
     webkit-tap-highlight-color: #222;
 }
 
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus{
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus {
     color: #fff;
     background-color: #12587f;
 }
@@ -715,7 +715,7 @@ li.round_border:after {
     background-size: 200% 100%;
 }
 
-h4.title{
+h4.title {
     letter-spacing: 12px;
     font-size: 26px;
     margin-top: 5%;
@@ -745,4 +745,10 @@ h4.title{
 
 .accountNone {
     display: none !important;
+}
+
+@media only screen and(max-width: 768px) and (min-width: 320px) {
+    h4.title{
+        font-size: 18px;
+    }
 }
