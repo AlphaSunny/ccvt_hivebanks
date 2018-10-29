@@ -38,7 +38,7 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows, a = "";
             $.each(data, function (i, val) {
-                a+="<a href='javascript:;' name="+ data[i].news_id +">"+ data[i].title +"</a>"
+                a+="<p><a href='javascript:;' name="+ data[i].news_id +">"+ data[i].title +"</a></p>"
             });
             $(".latestNewsText").html(a);
 
