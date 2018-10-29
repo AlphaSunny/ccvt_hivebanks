@@ -50,7 +50,7 @@ $(function () {
     setInterval(function () {
         console.log("res");
         var height = $(".latestNewsText>p").height();
-        $(".latestNewsText").css("transform",translateY(height));
+        $(".latestNewsText").css("transform","translateY("+height+")");
     }, 3000);
 });
 
