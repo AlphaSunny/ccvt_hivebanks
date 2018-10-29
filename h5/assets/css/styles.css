@@ -769,6 +769,7 @@ h4.title {
 .latestNewsBox {
     width: 23px;
     display: inline-block;
+    color: #ffffff;
     animation: newsTitleMove 1s linear 5s infinite;
 }
 
