@@ -31,7 +31,7 @@
                         $db->query($sql);
                         $all_send_ccvt = $db->getField($sql,all_send_ccvt); //总赠送ccvt数量
 
-                        $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='测试2' bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                        $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='测试2' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
                         $db->query($sql);
                         $all_message = $db->getField($sql,all_message); //总聊天数量
                     ?>
