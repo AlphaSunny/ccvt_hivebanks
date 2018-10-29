@@ -3,8 +3,6 @@ require_once "../inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
-//$day_start = strtotime(date('Y-m-d 00:00:00',strtotime("-1 day"))); //昨日开始时间
-//$day_end = strtotime(date('Y-m-d 23:59:59',strtotime("-1 day")));    //昨日结束时间
 
 $day_start = strtotime(date('Y-m-d 08:00:00')); //早上八点
 $day_end = strtotime(date('Y-m-d 20:00:00'));    //晚上十点
@@ -24,7 +22,7 @@ if (!$ba_base){
     echo "ba不存在";
     die;
 }
-$sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$group_name}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
+$sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$group_name}' AND type='Text' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
 $db->query($sql);
 $rows = $db->fetchAll();
 if ($rows){
