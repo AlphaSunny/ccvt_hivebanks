@@ -49,7 +49,8 @@ $(function () {
     });
     setInterval(function () {
         console.log("res");
-        $(".latestNewsText").css("transform","translateY(-2.5rem)");
+        var height = $(".latestNewsText>p").height();
+        $(".latestNewsText").css("transform",translateY(height));
     }, 3000);
 });
 
