@@ -171,7 +171,6 @@ function send_money_if($ba_id,$wechat){
 function get_us_id($wechat){
     $db = new DB_COM();
     $sql = "select us_id from us_base WHERE wechat='{$wechat}' limit 1";
-    echo $sql;
     $db->query($sql);
     $us_id = $db -> getField($sql,'us_id');
     if($us_id == null)
