@@ -38,6 +38,9 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows;
             console.log(data);
+            $.each(data, function (i, val) {
+                $(".latestNewsText").text(data[i].title);
+            })
 
         }
     }, function (response) {
