@@ -31,6 +31,6 @@ $post_data = substr($o,0,-1);
 
 $res = request_post($url, $post_data);
 
-var_dump($res);
+print_r($res);
 
 ?>
