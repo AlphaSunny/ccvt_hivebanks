@@ -32,7 +32,7 @@ if ($rows){
         //判断用户表是否有这个微信
         $result = get_us_id($v['wechat']);
         echo 111;
-        if ($result==0){
+        if (!$result){
             continue;
         }
         echo 222;
