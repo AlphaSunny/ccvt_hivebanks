@@ -31,6 +31,7 @@ if ($rows){
     foreach ($rows as $k=>$v){
         //判断用户表是否有这个微信
         $result = get_us_id($v['wechat']);
+        echo 111;
         if ($result==0){
             continue;
         }
