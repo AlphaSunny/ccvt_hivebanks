@@ -46,14 +46,14 @@ if ($rows){
         //送币
         $unit = la_unit();
         $give_account = $v['count'] >=5 ? 5 : $v['count'];
-        echo $give_account;die;
-        $sql = "update us_base set base_amount=base_amount+'{$give_account}'*'{$unit}' WHERE wechat='{$v['wechat']}'";
-        $db -> query($sql);
-        if (!$db->affectedRows()){
-            $db->Rollback($pInTrans);
-            echo "us修改余额失败";
-            continue;
-        }
+        echo $give_account;
+//        $sql = "update us_base set base_amount=base_amount+'{$give_account}'*'{$unit}' WHERE wechat='{$v['wechat']}'";
+//        $db -> query($sql);
+//        if (!$db->affectedRows()){
+//            $db->Rollback($pInTrans);
+//            echo "us修改余额失败";
+//            continue;
+//        }
 
     }
 }
