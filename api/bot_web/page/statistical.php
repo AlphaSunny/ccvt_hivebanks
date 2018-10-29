@@ -69,7 +69,17 @@
                                 <?php }else{ echo $k;}?>
                             </td>
                             <td><?php echo $v['wechat'];?></td>
-                            <td>30</td>
+                            <td>
+                                <?php
+                                    $sql = "select unit from la_base limit 1";
+                                    $db->query($sql);
+                                    $unit = $db->getField($sql,'unit');
+                                    $sql = "select base_amount from us_base WHERE us_id='{$v['us_id']}'";
+                                    $db->query($sql);
+                                    $base_amount = $db->getField($sql,'base_amount')/$unit;
+                                    echo $base_amount;
+                                ?>
+                            </td>
                             <td>5</td>
                             <td>5</td>
                         </tr>
