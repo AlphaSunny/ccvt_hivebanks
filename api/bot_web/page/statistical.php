@@ -58,10 +58,16 @@
                             $db->query($sql);
                             $list = $db->fetchAll();
                             foreach ($list as $k=>$v){
-                                 echo $k;
                         ?>
                         <tr>
-                            <td>🥇</td>
+                            <td><?php if ($k==0){?>
+                                    🥇
+                                <?php }elseif($k==1){?>
+                                    🥈
+                                <?php }elseif($k==2){?>
+                                    🥉
+                                <?php }else{ echo $k;}?>
+                            </td>
                             <td><?php echo $v['wechat'];?></td>
                             <td>30</td>
                             <td>5</td>
