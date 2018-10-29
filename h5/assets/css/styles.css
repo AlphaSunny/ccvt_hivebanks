@@ -766,7 +766,7 @@ h4.title {
     display: inline-block;
 }
 .latestNewsText, .newsTitleBox{
-    display: inline-block;
+    float: left;
 }
 
 .latestNewsText p{
