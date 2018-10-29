@@ -87,5 +87,5 @@ $(function () {
 });
 
 $(document).ready(function () {
-    $("#scrollDiv").Scroll({line: 1, speed: 500, timer: 1000});
+    $(".latestNewsText").Scroll({line: 1, speed: 500, timer: 1000});
 });
