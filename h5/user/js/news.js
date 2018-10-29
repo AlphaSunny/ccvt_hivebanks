@@ -41,6 +41,9 @@ $(function () {
                 a+="<p><a href='javascript:;' name="+ data[i].news_id +">"+ data[i].title +"</a></p>"
             });
             $(".latestNewsText").html(a);
+            setInterval(function () {
+                console.log("res");
+            }, 3000);
 
         }
     }, function (response) {
