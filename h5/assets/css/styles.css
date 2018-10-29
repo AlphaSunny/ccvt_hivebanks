@@ -776,14 +776,6 @@ h4.title {
     animation: newsTitleMove 1s linear 5s infinite;
 }
 
-.latestNewsText, .newsTitleBox {
-    float: left;
-}
-
-.latestNewsText {
-    margin-left: 1%;
-}
-
 @keyframes newsTitleMove {
     0% {
         color: red;
@@ -793,6 +785,28 @@ h4.title {
     }
     100% {
         color: yellow;
+    }
+}
+
+.latestNewsText, .newsTitleBox {
+    float: left;
+}
+
+.latestNewsText {
+    margin-left: 1%;
+    animation: newsTextMove 5s 5s linear infinite;
+}
+
+@keyframes newsTitleMove {
+
+    0%, 80% {
+        transform: translateY(0);
+    }
+    90% {
+        transform: translateY(-1.25rem);
+    }
+    100% {
+        transform: translateY(-2.5rem);
     }
 }
 
