@@ -31,10 +31,10 @@ if ($rows){
     foreach ($rows as $k=>$v){
         //判断用户表是否有这个微信
         $result = get_us_id($v['wechat']);
-        echo $result;
         if ($result==0){
             continue;
         }
+        echo 222;
         //判断今日是否已经增过币
         $send = send_money_if($ba_id,$v['wechat']);
         if ($send){
