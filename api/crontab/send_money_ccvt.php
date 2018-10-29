@@ -6,24 +6,55 @@ error_reporting(E_ALL | E_STRICT);
 //$day_start = strtotime(date('Y-m-d 00:00:00',strtotime("-1 day"))); //昨日开始时间
 //$day_end = strtotime(date('Y-m-d 23:59:59',strtotime("-1 day")));    //昨日结束时间
 
-$day_start = strtotime(date('Y-m-d 00:00:00')); //昨日开始时间
-$day_end = strtotime(date('Y-m-d 23:59:59'));    //昨日结束时间
+$day_start = strtotime(date('Y-m-d 08:00:00')); //早上八点
+$day_end = strtotime(date('Y-m-d 20:00:00'));    //晚上十点
 
 $db = new DB_COM();
 
-$pInTrans = $db->StartTrans();  //开启事务
 //群聊微信用户及发言数
 $group_name = "测试2";
 $sql = "select ba_id from bot_group where name='{$group_name}'";
 $db->query($sql);
 $ba_id = $db->getField($sql,'ba_id');
-echo $ba_id;die;
+//判断ba是否存在
+$sql = "select * from ba_base where ba_id='{$ba_id}'";
+$db->query($sql);
+$ba_base = $db->fetchRow();
+if (!$ba_base){
+    echo "ba不存在";
+    die;
+}
 $sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$group_name}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
 $db->query($sql);
 $rows = $db->fetchAll();
 if ($rows){
+    $pInTrans = $db->StartTrans();  //开启事务
     foreach ($rows as $k=>$v){
-        
+        //判断用户表是否有这个微信
+        $result = get_us_id($v['wechat']);
+        if ($result==0){
+            continue;
+        }
+        //判断今日是否已经增过币
+        $send = send_money_if($ba_id,$v['wechat'],$day_start,$day_end);
+        if ($send){
+            $db->Rollback($pInTrans);
+            echo $v['wechat']."已增过币";
+            continue;
+        }
+
+        //送币
+        $unit = la_unit();
+        $give_account = $v['count'] >=5 ? 5 : $v['count'];
+        echo $give_account;die;
+        $sql = "update us_base set base_amount=base_amount+'{$give_account}'*'{$unit}' WHERE wechat='{$v['wechat']}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            $db->Rollback($pInTrans);
+            echo "us修改余额失败";
+            continue;
+        }
+
     }
 }
 
