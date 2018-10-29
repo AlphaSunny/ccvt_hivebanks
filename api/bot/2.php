@@ -19,13 +19,29 @@ function request_post($url = '', $param = '') {
 }
 
 function get_token(){
+    $url = 'https://aip.baidubce.com/oauth/2.0/token';
+    $post_data['grant_type']       = 'client_credentials';
+    $post_data['client_id']      = 'QxXAyNDv1PkrVtRpfmEi7z98';
+    $post_data['client_secret'] = 'l94MMV97gRIIV14HSVwri3jzaD4xxxoK';
+    $o = "";
+    foreach ( $post_data as $k => $v )
+    {
+        $o.= "$k=" . urlencode( $v ). "&" ;
+    }
+    $post_data = substr($o,0,-1);
+
+    $res = request_post($url, $post_data);
+
+    $res = json_decode($res,true);
+
+    return $res['access_token'];
 
 }
 
-$url = 'https://aip.baidubce.com/oauth/2.0/token';
-$post_data['grant_type']       = 'client_credentials';
-$post_data['client_id']      = 'QxXAyNDv1PkrVtRpfmEi7z98';
-$post_data['client_secret'] = 'l94MMV97gRIIV14HSVwri3jzaD4xxxoK';
+$token = get_token();
+$url = 'https://aip.baidubce.com/rest/2.0/antispam/v2/spam';
+$post_data['access_token']       = $token;
+$post_data['content']      = '你好';
 $o = "";
 foreach ( $post_data as $k => $v )
 {
@@ -35,8 +51,8 @@ $post_data = substr($o,0,-1);
 
 $res = request_post($url, $post_data);
 
-$res = json_decode($res,true);
-echo $res['access_token'];
 print_r($res);
+
+
 
 ?>
