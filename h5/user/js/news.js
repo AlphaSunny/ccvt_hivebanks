@@ -47,11 +47,11 @@ $(function () {
             $(".latestNewsText").html("<span>暂无更多动态</span>");
         }
     });
-    setInterval(function () {
-        console.log("res");
-        var height = $(".latestNewsText>p").height();
-        console.log(height);
-        $(".latestNewsText").css("transform","translateY("+height+")");
-    }, 3000);
+    // setInterval(function () {
+    //     console.log("res");
+    //     var height = $(".latestNewsText>p").height();
+    //     console.log(height);
+    //     $(".latestNewsText").css("transform","translateY("+height+")");
+    // }, 3000);
 });
 
