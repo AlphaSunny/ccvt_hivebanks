@@ -34,6 +34,7 @@ if ($rows){
         if ($result==0){
             continue;
         }
+        echo $v['wechat'];
         //判断今日是否已经增过币
         $send = send_money_if($ba_id,$v['wechat']);
         if ($send){
