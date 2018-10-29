@@ -775,8 +775,21 @@ h4.title {
     float: left;
 }
 
-.latestNewsText{
+.latestNewsText {
     margin-left: 1%;
+    animation: 1s newsMove linear infinite;
+}
+
+@keyframes newsMove {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-1.25rem);
+    }
+    100% {
+        transform: translateY(-2.5rem);
+    }
 }
 
 .latestNewsText p {
