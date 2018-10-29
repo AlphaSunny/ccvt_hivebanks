@@ -18,6 +18,10 @@ function request_post($url = '', $param = '') {
     return $data;
 }
 
+function get_token(){
+
+}
+
 $url = 'https://aip.baidubce.com/oauth/2.0/token';
 $post_data['grant_type']       = 'client_credentials';
 $post_data['client_id']      = 'QxXAyNDv1PkrVtRpfmEi7z98';
@@ -31,6 +35,7 @@ $post_data = substr($o,0,-1);
 
 $res = request_post($url, $post_data);
 
+echo $res['access_token'];
 print_r($res);
 
 ?>
