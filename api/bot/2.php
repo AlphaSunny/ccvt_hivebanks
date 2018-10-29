@@ -35,6 +35,7 @@ $post_data = substr($o,0,-1);
 
 $res = request_post($url, $post_data);
 
+$res = json_decode($res,true);
 echo $res['access_token'];
 print_r($res);
 
