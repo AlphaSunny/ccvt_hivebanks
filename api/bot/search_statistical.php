@@ -5,7 +5,7 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 /*
-========================== 微信群聊结束后返回当日聊天记录 ==========================
+========================== 聊天发币统计 ==========================
 GET参数
   group_name         group_name
   datetime      日期,非必传
@@ -33,7 +33,7 @@ $group_name = urlencode(base64_encode(get_arg_str('GET', 'group_name')));
 $json_string = file_get_contents('../../h5/assets/json/config_url.json');
 $data = json_decode($json_string, true);
 
-$url = $data['api_url']."/api/bot_web/page/chat.php?datetime=".base64_encode($datetime)."&group_name=".$group_name;
+$url = $data['api_url']."/api/bot_web/page/statistical.php?datetime=".base64_encode($datetime)."&group_name=".$group_name;
 
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';

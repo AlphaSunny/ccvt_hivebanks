@@ -14,10 +14,28 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>今日聊天发币统计表</h3>
+                <h3>聊天发币统计</h3>
                 <div>
+                    <?php
+                        require_once '../../inc/common.php';
+                        ini_set("display_errors", "off");
+                        $args = array('datetime');
+                        chk_empty_args('GET', $args);
+                        $db = new DB_COM();
+                        $datetime = base64_decode(get_arg_str('GET', 'datetime'));
+                        $group_name = base64_decode(get_arg_str('GET', 'group_name'));
+                        $day_start = strtotime(date($datetime.' 00:00:00'));
+                        $day_end = strtotime(date($datetime.' 23:59:59'));
+
+                        $sql = "select sum(num) as all_send_ccvt from bot_Iss_records WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                        $db->query($sql);
+                        $all_send_ccvt = $db->getField($sql,all_send_ccvt);
+                    echo $all_send_ccvt;
+                    ?>
+                    <p>时间:<?php echo $datetime;?></p>
                     <p>今日发币总数量:500(CCVT)</p>
                     <p>今日发言总数量:400(条)</p>
+
                 </div>
 
                 <div class="table-responsive">
