@@ -35,6 +35,9 @@ $data['ba_id']  = get_arg_str('GET', 'ba_id');
 $data['group_name']  = get_arg_str('GET', 'group_name');
 $data['type']  = get_arg_str('GET', 'type');
 $data['head_img']  = get_arg_str('GET', 'head_img');
+
+$access_token = get_token();
+
 //存入群消息
 send_amount($data);
 exit_ok();
