@@ -769,6 +769,7 @@ h4.title {
 .latestNewsBox {
     width: 23px;
     display: inline-block;
+    animation: newsTitleMove 1s linear 5s infinite;
 }
 
 .latestNewsText, .newsTitleBox {
@@ -777,18 +778,17 @@ h4.title {
 
 .latestNewsText {
     margin-left: 1%;
-    animation: newsMove 1s linear 5s infinite;
 }
 
-@keyframes newsMove {
+@keyframes newsTitleMove {
     0% {
-        transform: translateY(0);
+        color: red;
     }
     50% {
-        transform: translateY(-1.25rem);
+        color: blueviolet;
     }
     100% {
-        transform: translateY(-2.5rem);
+        color: green;
     }
 }
 
