@@ -38,21 +38,11 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows;
             console.log(data);
-            // var li = "";
-            // $.each(data, function (i, val) {
-            //     li += "<li>" +
-            //         "<a href='newsInfo.html?news_id=" + data[i].news_id + "'>" + data[i].title + "</a>" +
-            //         "<p class='news_time font-size-14'><span>" + data[i].utime + "</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>" + data[i].author + "</span></p>" +
-            //         "</li>"
-            // });
-            // $(".news_list_item").html(li);
 
         }
     }, function (response) {
         if(response.errcode == "-1"){
-            console.log("暂无更多动态")
-            // $(".news_list_item").html("<li class='i18n' name='noNews'></li>");
-            // execI18n();
+            $(".latestNewsText").text("暂无更多动态");
         }
     })
 });
