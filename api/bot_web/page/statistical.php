@@ -29,12 +29,15 @@
 
                         $sql = "select sum(num) as all_send_ccvt from bot_Iss_records WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
                         $db->query($sql);
-                        $all_send_ccvt = $db->getField($sql,all_send_ccvt);
-                    echo $all_send_ccvt;
+                        $all_send_ccvt = $db->getField($sql,all_send_ccvt); //总赠送ccvt数量
+
+                        $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='测试2' bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                        $db->query($sql);
+                        $all_message = $db->getField($sql,all_message); //总聊天数量
                     ?>
                     <p>时间:<?php echo $datetime;?></p>
-                    <p>今日发币总数量:500(CCVT)</p>
-                    <p>今日发言总数量:400(条)</p>
+                    <p>今日发币总数量:<?php echo $all_send_ccvt;?>(CCVT)</p>
+                    <p>今日发言总数量:<?php echo $all_message;?>(条)</p>
 
                 </div>
 
