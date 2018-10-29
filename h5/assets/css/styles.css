@@ -761,15 +761,21 @@ h4.title {
     z-index: 1;
 }
 
+.newsTitleBox {
+    height: 2.5rem;
+    overflow: hidden;
+}
+
 .latestNewsBox {
     width: 23px;
     display: inline-block;
 }
-.latestNewsText, .newsTitleBox{
+
+.latestNewsText, .newsTitleBox {
     float: left;
 }
 
-.latestNewsText p{
+.latestNewsText p {
     margin: 0;
     padding: 0;
     line-height: normal;
