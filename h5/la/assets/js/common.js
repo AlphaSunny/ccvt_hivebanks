@@ -93,7 +93,7 @@ $.ajax({
 
 // Call the API LA configuration function
 function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/src/la/admin/configure/';
+    var api_site = config_api_url + '/api/la/admin/configure/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -123,7 +123,7 @@ function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
 
 // Call the API LA function
 function CallLaInfoApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/src/la/';
+    var api_site = config_api_url + '/api/la/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -153,7 +153,7 @@ function CallLaInfoApi(api_url, post_data, suc_func, error_func) {
 
 // Call the API report function
 function CallReportApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/src/la/admin/report_form/';
+    var api_site = config_api_url + '/api/la/admin/report_form/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -183,7 +183,7 @@ function CallReportApi(api_url, post_data, suc_func, error_func) {
 
 // Call API management function
 function CallApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/src/la/admin/manage/';
+    var api_site = config_api_url + '/api/la/admin/manage/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -213,7 +213,7 @@ function CallApi(api_url, post_data, suc_func, error_func) {
 
 // Call the API Admin function
 function CallLaAdminApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/src/la/admin/admin/';
+    var api_site = config_api_url + '/api/la/admin/admin/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -243,7 +243,7 @@ function CallLaAdminApi(api_url, post_data, suc_func, error_func) {
 
 // Call API query transaction common function
 function CallTransactionApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/src/la/admin/transaction/';
+    var api_site = config_api_url + '/api/la/admin/transaction/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -273,7 +273,7 @@ function CallTransactionApi(api_url, post_data, suc_func, error_func) {
 
 // Call API to query KYC audit list function
 function CallKycApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/src/la/admin/kyc/';
+    var api_site = config_api_url + '/api/la/admin/kyc/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -303,7 +303,7 @@ function CallKycApi(api_url, post_data, suc_func, error_func) {
 
 // Call API to query news list function
 function CallNewsApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/src/la/admin/news/';
+    var api_site = config_api_url + '/src/api/admin/news/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
