@@ -43,6 +43,7 @@ $(function () {
             $(".latestNewsText").html(a);
             setInterval(function () {
                 console.log("res");
+                $(".latestNewsText").css("transform","translateY(-2.5rem)");
             }, 3000);
 
         }
