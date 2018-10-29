@@ -777,7 +777,7 @@ h4.title {
 
 .latestNewsText {
     margin-left: 1%;
-    animation: 1s 5s newsMove linear infinite;
+    animation: newsMove 1s linear 5s infinite;
 }
 
 @keyframes newsMove {
