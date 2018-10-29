@@ -41,7 +41,7 @@ function get_token(){
 $token = get_token();
 $url = 'https://aip.baidubce.com/rest/2.0/antispam/v2/spam';
 $post_data['access_token']       = $token;
-$post_data['content']      = 'sb';
+$post_data['content']      = 'SB';
 $o = "";
 foreach ( $post_data as $k => $v )
 {
