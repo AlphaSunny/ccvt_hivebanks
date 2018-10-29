@@ -751,15 +751,17 @@ h4.title {
     position: absolute;
     top: 13%;
     width: 80%;
-    border: 1px solid gold;
+    /*border: 1px solid gold;*/
+    background: rgba(255, 255, 255, 0.1);
     left: 50%;
     padding: 5px;
     margin-left: -40%;
     text-align: left;
     border-radius: 5px;
+    z-index: 1;
 }
 
-.latestNewsBox{
+.latestNewsBox {
     width: 23px;
     display: inline-block;
 }
