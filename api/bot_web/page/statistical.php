@@ -54,7 +54,7 @@
                         </thead>
                         <tbody>
                         <?php
-                            $sql = "select * from bot_Iss_records WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                            $sql = "select * from bot_Iss_records WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY num DESC ";
                             $db->query($sql);
                             $list = $db->fetchAll();
                             foreach ($list as $k=>$v){
@@ -80,8 +80,15 @@
                                     echo $base_amount;
                                 ?>
                             </td>
-                            <td>5</td>
-                            <td>5</td>
+                            <td><?php echo $v['num'];?></td>
+                            <td>
+                                <?php
+                                   $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='测试2' AND wechat='{$v['wechat']}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                                   $db->query($sql);
+                                   $count = $db->getField($sql,'all_message');
+                                   echo $count;
+                                ?>
+                            </td>
                         </tr>
                         <?php }?>
                         <tr>
