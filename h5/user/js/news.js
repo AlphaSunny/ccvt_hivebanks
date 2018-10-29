@@ -38,8 +38,7 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows, a = "";
             $.each(data, function (i, val) {
-                // $(".latestNewsText").text(data[i].title);
-                a+="<a href='javascript:;' name="+ data[i].news_id +">data[i].title</a>"
+                a+="<a href='javascript:;' name="+ data[i].news_id +">+ data[i].title +</a>"
             });
             $(".latestNewsText").html(a);
 
