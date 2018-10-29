@@ -22,7 +22,7 @@ if (!$ba_base){
     echo "ba不存在";
     die;
 }
-$sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$group_name}' AND type='Text' AND wechat='Edwin' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
+$sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$group_name}' AND type='Text' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
 $db->query($sql);
 $rows = $db->fetchAll();
 print_r($rows);
@@ -31,11 +31,9 @@ if ($rows){
     foreach ($rows as $k=>$v){
         //判断用户表是否有这个微信
         $result = get_us_id($v['wechat']);
-        echo 111;
         if (!$result){
             continue;
         }
-        echo 222;
         //判断今日是否已经增过币
         $send = send_money_if($ba_id,$v['wechat']);
         if ($send){
@@ -43,8 +41,6 @@ if ($rows){
             echo $v['wechat']."已增过币";
             continue;
         }
-
-        echo $v['wechat'];
 
         //送币
         $unit = la_unit();
