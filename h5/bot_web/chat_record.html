@@ -13,7 +13,7 @@
     <!--<meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">-->
     <!--<meta property="og:images" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">-->
     <!--<meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">-->
-    <title>群成员</title>
+    <title>聊天记录</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -166,28 +166,29 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i>群成员</h1>
-            <p>群成员</p>
+            <h1><i class="fa fa-th-list"></i>聊天记录</h1>
+            <p>聊天记录</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
             <li class="breadcrumb-item">首页</li>
             <li class="breadcrumb-item"><a href="group_list.html">群列表</a></li>
-            <li class="breadcrumb-item active">群成员</li>
+            <li class="breadcrumb-item active">聊天记录</li>
         </ul>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
-                <button class="btn btn-success margin-bottom-2 lookChatCode">查看聊天记录</button>
+                <!--<button class="btn btn-success margin-bottom-2 lookChatCode">查看聊天记录</button>-->
                 <div class="tile-body table-responsive">
                     <table class="table table-hover table-bordered" id="groupMemberTable">
                         <thead>
                         <tr class="text-center">
-                            <th>群昵称</th>
+                            <th>昵称</th>
+                            <th>内容</th>
                         </tr>
                         </thead>
-                        <tbody id="groupMember">
+                        <tbody id="chatRecordTable">
 
                         </tbody>
                     </table>
@@ -259,7 +260,7 @@
 <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>
 <!--<script type="text/javascript">$('#sampleTable').DataTable();</script>-->
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/group_member.js"></script>
+<script type="text/javascript" src="js/chat_record.js"></script>
 <!-- Google analytics script-->
 <script type="text/javascript">
     if (document.location.hostname == 'pratikborsadiya.in') {
