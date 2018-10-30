@@ -64,7 +64,7 @@ $(function () {
         var lineHeight = $self.find("li:first").height();
         $self.animate({
             "marginTop": -lineHeight + "px"
-        }, 600, function() {
+        }, 2000, function() {
             $self.css({
                 marginTop: 0
             }).find("li:first").appendTo($self);

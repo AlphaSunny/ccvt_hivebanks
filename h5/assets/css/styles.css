@@ -801,6 +801,7 @@ h4.title {
     margin: 0;
     line-height: normal;
     height: 2.5rem;
+    list-style: none;
 }
 
 @media screen and (max-width: 768px) {
