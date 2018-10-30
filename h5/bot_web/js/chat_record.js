@@ -3,5 +3,5 @@ $(function () {
        $(this).toggle(function () {
            $(this).addClass(".activeWeChatBtn");
        });
-   }) 
+   })
 });
