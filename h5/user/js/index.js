@@ -91,7 +91,7 @@ $(function () {
         if(!news_id){
             return;
         }else {
-            window.location.href = "h5/newsInfo" + news_id;
+            window.location.href = "newsInfo.html?news_id=" + news_id;
         }
     })
 
