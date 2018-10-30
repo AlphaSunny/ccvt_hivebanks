@@ -85,6 +85,14 @@ $(function () {
         var timer_id = $("#timer_id").val();
         var time = $("#time").val();
         var content = $("#content").val();
+        if (time.length <= 0) {
+            layer.msg("请输入时间");
+            return;
+        }
+        if (content.length <= 0) {
+            layer.msg("请输入内容");
+            return;
+        }
         //loading
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
@@ -125,11 +133,6 @@ $(function () {
         $("#groupName").fadeOut("fast");
         $("#editTaskModal").modal("show");
     });
-
-    //添加信息选择群主
-    // $(document).on("click", ".groupItem", function () {
-    //     $(this).attr("checked", true);
-    // });
 
     //确认添加信息
     $(".addSubBtn").click(function () {
