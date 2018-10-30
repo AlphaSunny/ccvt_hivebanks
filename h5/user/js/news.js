@@ -38,15 +38,39 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows, a = "";
             $.each(data, function (i, val) {
-                a+="<p><a href='javascript:;' name="+ data[i].news_id +">"+ data[i].title +"</a></p>"
+                a += "<p><a href='javascript:;' name=" + data[i].news_id + ">" + data[i].title + "</a></p>"
             });
             $(".latestNewsText").html(a);
         }
     }, function (response) {
-        if(response.errcode == "-1"){
+        if (response.errcode == "-1") {
             $(".latestNewsText").html("<span>暂无更多动态</span>");
         }
     });
+
+
+    var latestNews = $(".latestNews");
+    var scrollInterval = "";
+
+    latestNews.hover(function () {
+        clearInterval(scrollInterval);
+    }, function () {
+        scrollInterval = setInterval(function () {
+            scrollNew(latestNews);
+        }, 2000);
+    }).trigger("mouseleave");
+
+    function scrollNew(ele) {
+        var latestNewsText = $(".latestNewsText");
+        var lineHeight = ele.find("p:first").height();
+        latestNewsText.animate({
+            "marginTop": -lineHeight + "px"
+        }, 2000, function () {
+            latestNewsText.css("marginTop", 0);
+        })
+
+    }
+
     // setInterval(function () {
     //     console.log("res");
     //     var height = $(".latestNewsText>p").height();
