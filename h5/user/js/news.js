@@ -56,7 +56,7 @@ $(function () {
     }, function() {
         scrollTimer = setInterval(function() {
             scrollNews($this);
-        }, 5000);
+        }, 3000);
     }).trigger("mouseleave");
 
     function scrollNews(obj) {
