@@ -15,13 +15,20 @@ $(function () {
 
     function GetNewsRecordFun(status) {
         $("#chatRecordTable").DataTable({
-            "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
+            ajax: {
+                type:"GET",
+                url:"http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
+                data:function (response) {
+                    console.log(response);
+                }
+            },
+
             destroy:true,
             "columns": [
                 {"data": "bot_nickname", "class": "bot_nickname"},
                 {"data": "bot_content", "class": "bot_content"},
                 {"data": "bot_send_time", "class": "bot_send_time"}
-            ]
+            ],
         });
     }
     //     GetNewsRecord(token, group_id, status, function (response) {
