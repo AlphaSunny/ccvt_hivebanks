@@ -6,8 +6,8 @@ $(function () {
             url: url + "/api/bot/get_qrcode.php",
             async: false,
             success: function (response) {
-                
-                $("#qr_img").src(response.qr_path);
+
+                $("#qr_img").attr("src",response.qr_path);
             }
         })
     }
