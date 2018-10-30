@@ -8,7 +8,7 @@ $(function () {
             success: function (response) {
             console.log(response);
             console.log(response.qr_path);
-                $("#qr_img").attr("src",response.qr_path);
+                $("#qr_img").attr("src",response.rows.qr_path);
             }
         })
     }
