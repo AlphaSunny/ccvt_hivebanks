@@ -2,7 +2,7 @@ $(function () {
     var token = GetCookie("robot_token");
 
     function GetGroupListFun() {
-        // $("#groupMasterListTable").DataTable({
+        $("#groupMasterListTable").DataTable({
             "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
             destroy:true,
             "columns": [
