@@ -50,6 +50,7 @@ $(function () {
 
 
     function notice(ul){
+        var lineHeight = ul.find("p:first").height();
         var li = ul.find('p').eq(0).html();
         ul.append('<p>'+li+'</p>');
         var num = 0;
@@ -62,7 +63,7 @@ $(function () {
                 });
             }
             $('.latestNewsText').animate({
-                marginTop:-13 * num
+                marginTop:-lineHeight * num
             },400);
         },2000);
     }
