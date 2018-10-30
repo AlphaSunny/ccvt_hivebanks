@@ -53,7 +53,7 @@ $(function () {
     var latestNewsText = $(".latestNewsText");
     var lineHeight = latestNewsText.find("p:first").height();
     var length = latestNewsText.find("p").length;
-    var scrollInterval = "";
+    var scrollInterval;
     var num = 0;
 
     scrollInterval = setInterval(function () {
@@ -66,6 +66,9 @@ $(function () {
             "marginTop": -lineHeight * num + "px"
         })
     }, 2000);
+    latestNews.hover(function () {
+        clearInterval(scrollInterval);
+    })
     // latestNews.hover(function () {
     //     clearInterval(scrollInterval);
     // }, function () {
