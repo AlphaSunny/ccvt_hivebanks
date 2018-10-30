@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--<meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">-->
-    <!-- Twitter meta-->
-    <!--<meta property="twitter:card" content="summary_large_image">-->
-    <!--<meta property="twitter:site" content="@pratikborsadiya">-->
-    <!--<meta property="twitter:creator" content="@pratikborsadiya">-->
-    <!-- Open Graph Meta-->
-    <!--<meta property="og:type" content="website">-->
-    <!--<meta property="og:site_name" content="Vali Admin">-->
-    <!--<meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">-->
-    <!--<meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">-->
-    <!--<meta property="og:images" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">-->
-    <!--<meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">-->
     <title>群主列表</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -92,12 +80,11 @@
 <!-- Sidebar menu-->
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
-    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar"
-                                        src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
-                                        alt="User Image">
+    <div class="app-sidebar__user">
+        <img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
         <div>
-            <p class="app-sidebar__user-name">John Doe</p>
-            <p class="app-sidebar__user-designation">Frontend Developer</p>
+            <p class="app-sidebar__user-name robot_username"></p>
+            <!--<p class="app-sidebar__user-designation">Frontend Developer</p>-->
         </div>
     </div>
     <ul class="app-menu">
@@ -254,7 +241,6 @@
 <script src="js/popper.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
 <script src="../assets/js/layer/layer.js"></script>
-<script src="js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
 <!--<script src="../assets/layui/layui2-4.js"></script>-->
 <script src="../assets/js/pace.min.js"></script>
@@ -265,6 +251,7 @@
 <!--<script type="text/javascript">$('#sampleTable').DataTable();</script>-->
 <!--<script type="text/javascript" src="../assets/js/bootstrap-switch.min.js"></script>-->
 <script type="text/javascript" src="js/common.js"></script>
+<script src="js/main.js"></script>
 <script type="text/javascript" src="js/group_list.js"></script>
 <!-- Google analytics script-->
 <script type="text/javascript">

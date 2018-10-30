@@ -1,6 +1,5 @@
 (function () {
 	"use strict";
-
 	var treeviewMenu = $('.app-menu');
 
 	// Toggle Sidebar
@@ -24,8 +23,13 @@
 	//Activate bootstrip tooltips
 	$("[data-toggle='tooltip']").tooltip();
 
+	//log out
 	$(".logOut").click(function () {
 		DelCookie("robot_token");
 		window.location.href = "login.html";
-    })
+    });
+
+	//get name
+	var robot_username = GetCookie("robot_username");
+	$(".robot_username").text(robot_username);
 })();
