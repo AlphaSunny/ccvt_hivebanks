@@ -22,8 +22,7 @@ $(function () {
                 var token = response.token;
                 SetCookie('robot_token', token);
                 layer.msg("success");
-                console.log(response);
-                // SetCookie('robot_username', username);
+                SetCookie('robot_username', email);
                 setTimeout(function () {
                     window.location.href = 'group_list.html';
                 }, 1000);
