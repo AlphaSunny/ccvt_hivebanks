@@ -177,20 +177,19 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="robot_qr">
-                <img src="" id="qr_img" alt="">
+            <div class="qr_box">
+                <div class="robot_qr">
+                    <img src="" id="qr_img" alt="">
+                </div>
+                <div class="form_box">
+                    <form action="http://18.219.136.69:8000/search" method="get">
+                        <div id="login_click">
+                            <input type="hidden" value="" id="port" name="port">
+                            <input type="submit" class="btn btn-success" value="生成二维码" onclick="javascript:return checkForm();">
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div>
-                <form action="http://18.219.136.69:8000/search" method="get">
-                    <!--<div class="button"><input type="submit" value="lgoin"></div>-->
-
-                    <div id="login_click">
-                        <input type="hidden" value="" id="port" name="port">
-                        <input type="submit" class="btn btn-success" value="生成二维码" onclick="javascript:return checkForm();">
-                    </div>
-                </form>
-            </div>
-            <!--<button class="btn btn-success qr_btn">生成二维码</button>-->
         </div>
     </div>
 
@@ -241,8 +240,10 @@
             async: false,
             success: function (response) {
                 var robot_alive = GetCookie("robot_alive");
-                if(robot_alive == response.rows.robot_alive){
-                    alert("微信以登录，请勿重新登录");
+                if(robot_alive == "1"){
+                    // alert("微信以登录，请勿重新登录");
+                    $(".robot_qr,.form-box").remove();
+                    $(".qr_box").html("<h1>微信以登录，请勿重新登录</h1>")
                 }else {
                     SetCookie("robot_alive",response.rows.robot_alive);
                     $("#qr_img").attr("src",response.rows.qr_path);
