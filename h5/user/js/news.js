@@ -36,87 +36,39 @@ $(function () {
 
     Get_News_List(function (response) {
         if (response.errcode == "0") {
-            var data = response.rows, a = "";
+            var data = response.rows, li = "";
             $.each(data, function (i, val) {
-                a += "<p><a href='javascript:;' name=" + data[i].news_id + ">" + data[i].title + "</a></p>"
+                li += "<li><a href='javascript:;' name=" + data[i].news_id + ">" + data[i].title + "</a></li>"
             });
-            $(".latestNewsText").html(a);
+            $(".latestNewsText").html(li);
         }
     }, function (response) {
         if (response.errcode == "-1") {
-            $(".latestNewsText").html("<span>暂无更多动态</span>");
+            $(".latestNewsText").html("<li>暂无更多动态</li>");
         }
     });
 
 
-    function notice(ul){
-        var lineHeight = ul.find("p:first").height();
-        var li = ul.find('p').eq(0).html();
-        ul.append('<p>'+li+'</p>');
-        var num = 0;
-        setInterval(function(){
-            num ++;
-            if(num == ul.find('li').length){
-                num = 1;
-                ul.css({
-                    marginTop:0
-                });
-            }
-            $('.latestNewsText').animate({
-                marginTop:-lineHeight * num
-            },400);
-        },2000);
+    var $this = $(".latestNews");
+    var scrollTimer;
+    $this.hover(function() {
+        clearInterval(scrollTimer);
+    }, function() {
+        scrollTimer = setInterval(function() {
+            scrollNews($this);
+        }, 2000);
+    }).trigger("mouseleave");
+
+    function scrollNews(obj) {
+        var $self = obj.find("ul");
+        var lineHeight = $self.find("li:first").height();
+        $self.animate({
+            "marginTop": -lineHeight + "px"
+        }, 600, function() {
+            $self.css({
+                marginTop: 0
+            }).find("li:first").appendTo($self);
+        })
     }
-
-    notice($('.latestNewsText'));
-
-    // var latestNews = $(".latestNews");
-    // var latestNewsText = $(".latestNewsText");
-    // var lineHeight = latestNewsText.find("p:first").height();
-    // var length = latestNewsText.find("p").length;
-    // var scrollInterval;
-    // var num = 0;
-    //
-    // scrollInterval = setInterval(function () {
-    //     num++;
-    //     if (num == length) {
-    //         num = 1;
-    //         latestNewsText.css("marginTop", 0);
-    //     }
-    //     latestNewsText.animate({
-    //         "marginTop": -lineHeight * num + "px"
-    //     })
-    // }, 2000);
-    // latestNews.hover(function () {
-    //     clearInterval(scrollInterval);
-    // })
-    // latestNews.hover(function () {
-    //     clearInterval(scrollInterval);
-    // }, function () {
-    //     scrollInterval = setInterval(function () {
-    //         scrollNew(latestNewsText);
-    //     }, 2000);
-    // }).trigger("mouseleave");
-    //
-    // function scrollNew(ele) {
-    //     var lineHeight = ele.find("p:first").height();
-    //     latestNewsText.animate({
-    //         "marginTop": -lineHeight + "px"
-    //     }, 2000, function () {
-    //         var length = latestNewsText.find("p").length;
-    //         // if()
-    //     })
-    // }
-
-// , function () {
-//         latestNewsText.css("marginTop", 0);
-//     }
-
-    // setInterval(function () {
-    //     console.log("res");
-    //     var height = $(".latestNewsText>p").height();
-    //     console.log(height);
-    //     $(".latestNewsText").css("transform","translateY("+height+")");
-    // }, 3000);
 });
 
