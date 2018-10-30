@@ -178,6 +178,8 @@ function get_message_list($group_id,$status)
 {
     $db = new DB_COM();
     $sql = "select bot_nickname,bot_content,bot_send_time,type,group_name from bot_message as b LEFT JOIN bot_group as g ON b.group_name=g.name WHERE g.id='{$group_id}' ";
+
+    $end = time();
     switch ($status){
         case 1:
             $start = strtotime(date('Y-m-d 00:00:00'));
@@ -192,9 +194,6 @@ function get_message_list($group_id,$status)
         case 4:
             $start = strtotime(date('Y-m-d 00:00:00',strtotime("-7 day")));
 
-    }
-    if ($status!=2){
-        $end = time();
     }
 
     $sql .=" AND bot_create_time between '{$start}' and '{$end}'";
