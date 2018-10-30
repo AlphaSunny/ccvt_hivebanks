@@ -246,7 +246,7 @@
                 var robot_alive = GetCookie("robot_alive");
                 if(response.rows.robot_alive=="1"){
                     $(".robot_qr,.form-box").remove();
-                    $(".qr_box").html("<h1>微信以登录，请勿重新登录</h1>")
+                    $(".qr_box").html("<h1>微信机器人已登录，请勿重新登录</h1>")
                 }else {
                     // SetCookie("robot_alive",response.rows.robot_alive);
                     $("#qr_img").attr("src",response.rows.qr_path);
