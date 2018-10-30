@@ -184,6 +184,7 @@ function get_message_list($group_id,$status)
             break;
         case 2:
             $start = strtotime(date('Y-m-d 00:00:00',strtotime("-1 day")));
+            $end = strtotime(date('Y-m-d 23:59:59',strtotime("-1 day")));
             break;
         case 3:
             $start = strtotime(date('Y-m-d 00:00:00',strtotime("-3 day")));
@@ -192,7 +193,10 @@ function get_message_list($group_id,$status)
             $start = strtotime(date('Y-m-d 00:00:00',strtotime("-7 day")));
 
     }
-    $end = time();
+    if ($status!=3){
+        $end = time();
+    }
+
     $sql .=" AND bot_create_time between '{$start}' and '{$end}'";
     $db->query($sql);
     $rows = $db -> fetchAll();
