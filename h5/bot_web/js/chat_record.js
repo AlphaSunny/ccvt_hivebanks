@@ -18,9 +18,9 @@ $(function () {
             "ajax":"http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
             destroy:true,
             "columns": [
-                {"success": "bot_nickname", "class": "bot_nickname"},
-                {"success": "bot_content", "class": "bot_content"},
-                {"success": "bot_send_time", "class": "bot_send_time"}
+                {"data": "bot_nickname", "class": "bot_nickname"},
+                {"data": "bot_content", "class": "bot_content"},
+                {"data": "bot_send_time", "class": "bot_send_time"}
             ],
         });
     }
