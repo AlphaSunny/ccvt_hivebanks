@@ -193,7 +193,7 @@ function get_message_list($group_id,$status)
             $start = strtotime(date('Y-m-d 00:00:00',strtotime("-7 day")));
 
     }
-    if ($status!=3){
+    if ($status!=2){
         $end = time();
     }
 
