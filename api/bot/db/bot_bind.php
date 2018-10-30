@@ -335,4 +335,5 @@ function get_is_effective($content){
 
 }
 
+
 ?>
