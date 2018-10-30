@@ -794,25 +794,11 @@ h4.title {
 
 .latestNewsText {
     margin-left: 1%;
-    /*animation: 5s newsTextMove linear 5s infinite normal;*/
+    margin-bottom: 0;
 }
 
-/*@keyframes newsTextMove {*/
-
-    /*0%{*/
-        /*transform: translateY(0);*/
-    /*}*/
-    /*50% {*/
-        /*transform: translateY(-1.25rem);*/
-    /*}*/
-    /*100% {*/
-        /*transform: translateY(-2.5rem);*/
-    /*}*/
-/*}*/
-
-.latestNewsText p {
+.latestNewsText li {
     margin: 0;
-    /*padding-bottom: 5px;*/
     line-height: normal;
     height: 2.5rem;
 }
