@@ -18,7 +18,7 @@ $(function () {
             ajax: {
                 type:"GET",
                 url:"http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
-                data:function (response) {
+                success:function (response) {
                     console.log(response);
                 }
             },
