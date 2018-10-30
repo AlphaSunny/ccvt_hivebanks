@@ -24,7 +24,7 @@ $(function () {
                 layer.msg("success");
                 SetCookie('robot_username', email);
                 setTimeout(function () {
-                    window.location.href = 'group_list.html';
+                    window.location.href = 'robot_login.html';
                 }, 1000);
             }
         }, function (response) {
