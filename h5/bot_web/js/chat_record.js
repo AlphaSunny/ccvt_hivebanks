@@ -19,16 +19,16 @@ $(function () {
                 type:"GET",
                 url:"http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
                 success:function (response) {
-                    console.log(response);
+                    console.log(response.data);
                 }
             },
 
             destroy:true,
-            "columns": [
-                {"success": "bot_nickname", "class": "bot_nickname"},
-                {"success": "bot_content", "class": "bot_content"},
-                {"success": "bot_send_time", "class": "bot_send_time"}
-            ],
+            // "columns": [
+            //     {"success": "bot_nickname", "class": "bot_nickname"},
+            //     {"success": "bot_content", "class": "bot_content"},
+            //     {"success": "bot_send_time", "class": "bot_send_time"}
+            // ],
         });
     }
     //     GetNewsRecord(token, group_id, status, function (response) {
