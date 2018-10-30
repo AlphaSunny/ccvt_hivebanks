@@ -14,11 +14,20 @@ $(function () {
    });
 
     function GetNewsRecordFun(status) {
-        GetNewsRecord(token, group_id, status, function (response) {
-            console.log(response);
-        }, function (response) {
-            layer.msg("获取失败,请稍后重试！");
+        $("#chatRecordTable").DataTable({
+            "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
+            "columns": [
+                {"data": "bot_nickname", "class": "bot_nickname"},
+                {"data": "bot_content", "class": "bot_content"},
+                {"data": "bot_send_time", "class": "bot_send_time"}
+            ]
         });
     }
+    //     GetNewsRecord(token, group_id, status, function (response) {
+    //         console.log(response);
+    //     }, function (response) {
+    //         layer.msg("获取失败,请稍后重试！");
+    //     });
+    // }
     GetNewsRecordFun(status);
 });
