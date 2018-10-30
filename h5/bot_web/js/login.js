@@ -10,8 +10,6 @@ $(function () {
     var robot_token = GetCookie("robot_token");
     if (robot_token) {
         window.location.href = "robot_login.html";
-    } else {
-        return;
     }
 
     $(".loginBtn").click(function () {
