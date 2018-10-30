@@ -1,4 +1,19 @@
 $(function () {
+    function GetCookie(name) {
+        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        if (arr != null) return unescape(arr[2]);
+        if (arr == null) {
+            return;
+        }
+    }
+
+    var robot_token = GetCookie("robot_token");
+    if (robot_token) {
+        window.location.href = "robot_login.html";
+    } else {
+        return;
+    }
+
     $(".loginBtn").click(function () {
         var email = $("#email").val();
         var password = $("#password").val();
@@ -14,7 +29,7 @@ $(function () {
 
         //loading层
         var loading = layer.load(1, {
-            shade: [0.1,'#fff'] //0.1透明度的白色背景
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
         RobotEmailLogin(email, pass_word_hash, function (response) {
             if (response.errcode == '0') {
