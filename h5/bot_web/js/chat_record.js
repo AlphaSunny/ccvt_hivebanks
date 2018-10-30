@@ -16,9 +16,9 @@ $(function () {
     function GetNewsRecordFun(status) {
         var tr = "";
         $("#chatRecordTable").DataTable({
-            ajax: {
-                type:"GET",
-                url:"http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
+            // ajax: {
+            //     type:"GET",
+            //     url:"http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
                 // success:function (response) {
                 //     var data = response.data;
                 //     $.each(data, function (i, val) {
@@ -33,8 +33,8 @@ $(function () {
                 // fnDrawCallback:function (res) {
                 //     console.log(res);
                 // }
-            },
-
+            // },
+            "ajax":"http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
             destroy:true,
             "columns": [
                 {"success": "bot_nickname", "class": "bot_nickname"},
