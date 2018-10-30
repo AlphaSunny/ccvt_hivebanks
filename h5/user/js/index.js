@@ -34,13 +34,6 @@ $(function () {
             window.location.href = 'ca/CaLogin.html';
         }
     });
-    // $('.usLogin').click(function () {
-    //     if (user_token || login_us) {
-    //         window.location.href = 'user/account.html';
-    //     } else {
-    //         window.location.href = 'user/login.html';
-    //     }
-    // });
 
     $('.toAccountBtn').click(function () {
         if (login_us || user_token) {
@@ -53,6 +46,55 @@ $(function () {
             window.location.href = 'ca/CaAccount.html';
         }
     });
+
+    //get new list
+    Get_News_List(function (response) {
+        if (response.errcode == "0") {
+            var data = response.rows, li = "";
+            $.each(data, function (i, val) {
+                li += "<li><a href='javascript:;' class='toNewsInfo' name=" + data[i].news_id + ">" + data[i].title + "</a></li>"
+            });
+            $(".latestNewsText").html(li);
+        }
+    }, function (response) {
+        if (response.errcode == "-1") {
+            $(".latestNewsText").html("<li>暂无更多动态</li>");
+        }
+    });
+
+
+    var $this = $(".latestNews");
+    var scrollTimer;
+    $this.hover(function () {
+        clearInterval(scrollTimer);
+    }, function () {
+        scrollTimer = setInterval(function () {
+            scrollNews($this);
+        }, 3000);
+    }).trigger("mouseleave");
+
+    function scrollNews(obj) {
+        var $self = obj.find("ul");
+        var lineHeight = $self.find("li:first").height();
+        $self.animate({
+            "marginTop": -lineHeight + "px"
+        }, 2000, function () {
+            $self.css({
+                marginTop: 0
+            }).find("li:first").appendTo($self);
+        })
+    }
+
+    //to news info
+    $(document).on("click", ".toNewsInfo", function () {
+        var news_id = $(this).attr("name");
+        if(!news_id){
+            return;
+        }else {
+            window.location.href = "newsInfo" + news_id;
+        }
+    })
+
 });
 
 //scroll
