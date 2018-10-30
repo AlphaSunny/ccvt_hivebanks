@@ -136,6 +136,13 @@ $(function () {
         var time = $("#time").val();
         var content = $("#content").val();
         var group_id = $("#selectGroupName").val();
+        if (time.length <= 0) {
+            layer.msg("请输入时间");
+            return;
+        }
+        if (content.length <= 0) {
+            layer.msg("请输入内容");
+        }
         //loading
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
