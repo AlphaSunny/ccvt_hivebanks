@@ -14,7 +14,6 @@ $(function () {
    });
 
     function GetNewsRecordFun(status) {
-        var tr = "";
         $("#chatRecordTable").DataTable({
             "ajax":"http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
             destroy:true,
