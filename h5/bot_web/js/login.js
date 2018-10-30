@@ -23,7 +23,6 @@ $(function () {
                 SetCookie('robot_token', token);
                 layer.msg("success");
                 console.log(response);
-                return;
                 // SetCookie('robot_username', username);
                 setTimeout(function () {
                     window.location.href = 'group_list.html';
