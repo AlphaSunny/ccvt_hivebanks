@@ -25,9 +25,9 @@ $(function () {
 
             destroy:true,
             "columns": [
-                {"data": "bot_nickname", "class": "bot_nickname"},
-                {"data": "bot_content", "class": "bot_content"},
-                {"data": "bot_send_time", "class": "bot_send_time"}
+                {"success": "bot_nickname", "class": "bot_nickname"},
+                {"success": "bot_content", "class": "bot_content"},
+                {"success": "bot_send_time", "class": "bot_send_time"}
             ],
         });
     }
