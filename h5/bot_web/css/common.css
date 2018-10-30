@@ -109,6 +109,17 @@ table td{
     line-height: 2.5rem;
 }
 
+/*chat record*/
+.weChatBtn{
+    background: transparent;
+    color: #000000;
+}
+.weChatBtn.activeWeChatBtn{
+    background: #138496;
+    color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
 /*none*/
 .none{
     display: none!important;
