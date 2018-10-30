@@ -166,3 +166,35 @@ function get_timer_info($timer_id)
     $row = $db -> fetchRow();
     return $row;
 }
+
+
+//======================================
+// 函数: 获取群聊记录
+// 参数: group_id      群组id
+//      status      1:今日 2:昨天  3:3天内  4:七天内
+// 返回: row           最新信息数组
+//======================================
+function get_timer_list($group_id,$status)
+{
+    $db = new DB_COM();
+    $sql = "select bot_nickname,bot_content,bot_send_time,type,group_name from bot_message as b LEFT JOIN bot_group as g ON b.group_name=g.name WHERE g.id='{$group_id}' ";
+    switch ($status){
+        case 1:
+            $start = strtotime(date('Y-m-d 00:00:00'));
+            break;
+        case 2:
+            $start = strtotime(date('Y-m-d 00:00:00',strtotime("-1 day")));
+            break;
+        case 3:
+            $start = strtotime(date('Y-m-d 00:00:00',strtotime("-3 day")));
+            break;
+        case 4:
+            $start = strtotime(date('Y-m-d 00:00:00',strtotime("-7 day")));
+
+    }
+    $end = time();
+    $sql .=" AND bot_create_time between '{$start}' and '{$end}'";
+    echo $sql;
+
+    
+}

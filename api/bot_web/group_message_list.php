@@ -11,6 +11,8 @@ header("Content-Type:application/json;charset=utf-8");
 ========================== 聊天记录查询 ==========================
 GET参数
   token                用户token
+  group_id          群组id
+  status            1:今日 2:昨天  3:3天内  4:七天内
 
 返回
   errcode = 0     请求成功
@@ -18,9 +20,21 @@ GET参数
 */
 
 php_begin();
-$args = array('token','group_id');
+$args = array('token','group_id','status');
 chk_empty_args('GET', $args);
 
+// 用户token
+$token = get_arg_str('GET', 'token',128);
+//验证token
+check_token($token);
+
+// 群组id
+$group_id = get_arg_str('GET', 'group_id');
+// status
+$status = get_arg_str('GET', 'status');
+
+// 记录数组
+$rows = get_message_list($group_id,$status);
 
 
 // 返回数据做成
