@@ -180,7 +180,17 @@
             <div class="robot_qr">
                 <img src="" id="qr_img" alt="">
             </div>
-            <button class="btn btn-success qr_btn">生成二维码</button>
+            <div>
+                <form action="http://18.219.136.69:8000/search" method="get">
+                    <!--<div class="button"><input type="submit" value="lgoin"></div>-->
+
+                    <div id="login_click">
+                        <input type="hidden" value="" id="port" name="port">
+                        <input type="submit" value="生成二维码" onclick="javascript:return checkForm();">
+                    </div>
+                </form>
+            </div>
+            <!--<button class="btn btn-success qr_btn">生成二维码</button>-->
         </div>
     </div>
 
@@ -223,6 +233,41 @@
 <script type="text/javascript" src="js/robot_login.js"></script>
 <!-- Google analytics script-->
 <script type="text/javascript">
+    var url = getRootPath();
+
+    function GetQr() {
+        $.get({
+            url: url + "/api/bot/get_qrcode.php",
+            async: false,
+            success: function (response) {
+                var robot_alive = GetCookie("robot_alive");
+                if(robot_alive == response.rows.robot_alive){
+                    alert("微信以登录，请勿重新登录");
+                }else {
+                    SetCookie("robot_alive");
+                    $("#qr_img").attr("src",response.rows.qr_path);
+                }
+
+            }
+        })
+    }
+
+    GetQr();
+    function checkForm(){
+        GetQr();
+        // var status=document.cookie.split(";")[0].split("=")[1];
+        // console.log(status);
+        // if(status==1){
+        //     alert('微信已登录，请勿重新登录!');
+        //     return false;
+        // }else{
+        //     setTimeout('reload()', 4000);
+        //     return true;
+        // }
+    }
+
+
+
     if (document.location.hostname == 'pratikborsadiya.in') {
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
