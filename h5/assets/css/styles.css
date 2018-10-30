@@ -809,4 +809,11 @@ h4.title {
     h4.title {
         font-size: 18px;
     }
+
+    .latestNews {
+        width: 100%;
+        left: 0;
+        top: 16%;
+        margin-left: 0;
+    }
 }
