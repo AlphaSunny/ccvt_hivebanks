@@ -174,7 +174,7 @@ function get_timer_info($timer_id)
 //      status      1:今日 2:昨天  3:3天内  4:七天内
 // 返回: row           最新信息数组
 //======================================
-function get_timer_list($group_id,$status)
+function get_message_list($group_id,$status)
 {
     $db = new DB_COM();
     $sql = "select bot_nickname,bot_content,bot_send_time,type,group_name from bot_message as b LEFT JOIN bot_group as g ON b.group_name=g.name WHERE g.id='{$group_id}' ";
@@ -196,5 +196,5 @@ function get_timer_list($group_id,$status)
     $sql .=" AND bot_create_time between '{$start}' and '{$end}'";
     echo $sql;
 
-    
+
 }
