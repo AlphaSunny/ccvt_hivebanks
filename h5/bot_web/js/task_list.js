@@ -142,6 +142,7 @@ $(function () {
         }
         if (content.length <= 0) {
             layer.msg("请输入内容");
+            return;
         }
         //loading
         var loading = layer.load(1, {
