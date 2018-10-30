@@ -244,7 +244,7 @@
                 if(robot_alive == response.rows.robot_alive){
                     alert("微信以登录，请勿重新登录");
                 }else {
-                    SetCookie("robot_alive");
+                    SetCookie("robot_alive",response.rows.robot_alive);
                     $("#qr_img").attr("src",response.rows.qr_path);
                 }
 
