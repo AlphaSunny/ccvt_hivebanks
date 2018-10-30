@@ -107,7 +107,7 @@ $(function () {
     $(".addTaskBtn").click(function () {
         GetGroupList(token, function (response) {
             if (response.errcode == "0") {
-                var data = response.rows, option = "";
+                var data = response.data, option = "";
                 $.each(data, function (i, val) {
                     option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
                 });
