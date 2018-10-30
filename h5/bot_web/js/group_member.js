@@ -7,12 +7,15 @@ $(function () {
 
     $('#groupMemberTable').DataTable({
         "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_members_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id,
-        // "dataSrc" : "rows"
         "columns": [
             {"data": "name"}
         ]
     });
 
+    //查看聊天记录
+    $(".lookChatCode").click(function () {
+        window.location.href = "chat_record.html?group_id=" + group_id;
+    });
 
     //获取群成员列表
     // GetGroupMember(token,group_id, function (response) {
