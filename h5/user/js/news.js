@@ -50,6 +50,7 @@ $(function () {
 
 
     var latestNews = $(".latestNews");
+    var latestNewsText = $(".latestNewsText");
     var scrollInterval = "";
 
     latestNews.hover(function () {
@@ -61,15 +62,15 @@ $(function () {
     }).trigger("mouseleave");
 
     function scrollNew(ele) {
-        var latestNewsText = $(".latestNewsText");
         var lineHeight = ele.find("p:first").height();
         latestNewsText.animate({
             "marginTop": -lineHeight + "px"
-        }, 2000, function () {
-            latestNewsText.css("marginTop", 0);
-        })
-
+        }, 2000)
     }
+
+// , function () {
+//         latestNewsText.css("marginTop", 0);
+//     }
 
     // setInterval(function () {
     //     console.log("res");
