@@ -57,7 +57,7 @@ $(function () {
         clearInterval(scrollInterval);
     }, function () {
         scrollInterval = setInterval(function () {
-            scrollNew(latestNews);
+            scrollNew(latestNewsText);
         }, 2000);
     }).trigger("mouseleave");
 
