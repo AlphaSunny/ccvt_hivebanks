@@ -65,7 +65,9 @@ $(function () {
         var lineHeight = ele.find("p:first").height();
         latestNewsText.animate({
             "marginTop": -lineHeight + "px"
-        }, 2000)
+        }, 2000, function () {
+            console.log(latestNewsText.find("p").length);
+        })
     }
 
 // , function () {
