@@ -19,8 +19,7 @@ $(function () {
             ajax: {
                 type:"GET",
                 url:"http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
-                data:function (response) {
-                    console.log(response.data);
+                success:function (response) {
                     var data = response.data;
                     $.each(data, function (i, val) {
                         tr+="<tr>" +
@@ -30,6 +29,9 @@ $(function () {
                             "</tr>"
                     });
                     $("#chatRecordTbody").html(tr);
+                },
+                fnDrawCallback:function (res) {
+                    console.log(res);
                 }
             },
 
