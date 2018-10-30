@@ -13,7 +13,7 @@ $(function () {
                 {"data": "flirt", "class": "flirt"},
                 {"data": "is_flirt", "class": "is_flirt none"},
             ]
-        });
+        }).load();
         setTimeout(function () {
             var td = "<td>" +
                 "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
@@ -97,6 +97,7 @@ $(function () {
                 $("#editGroupModal").modal("hide");
                 // window.location.reload();
                 GetGroupListFun();
+
             }
         }, function (response) {
             layer.close(loading);
