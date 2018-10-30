@@ -2,7 +2,7 @@ $(function () {
     var token = GetCookie("robot_token");
 
     function GetGroupListFun() {
-        $("#groupMasterListTable").DataTable({
+        // $("#groupMasterListTable").DataTable({
             "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
             destroy:true,
             "columns": [
@@ -13,7 +13,7 @@ $(function () {
                 {"data": "flirt", "class": "flirt"},
                 {"data": "is_flirt", "class": "is_flirt none"},
             ]
-        }).load();
+        });
         setTimeout(function () {
             var td = "<td>" +
                 "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
@@ -40,8 +40,8 @@ $(function () {
         // }, function (response) {
         //     layer.msg(response.errmsg);
         // });
-    }
-    GetGroupListFun();
+    // }
+    // GetGroupListFun();
 
     //编辑对应的群主-弹出编辑框
     var group_id = "";
@@ -95,8 +95,8 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
-                // window.location.reload();
-                GetGroupListFun();
+                window.location.reload();
+                // GetGroupListFun();
 
             }
         }, function (response) {
@@ -138,8 +138,8 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
-                GetGroupListFun();
-                // window.location.reload();
+                // GetGroupListFun();
+                window.location.reload();
             }
         }, function (response) {
             layer.close(loading);
