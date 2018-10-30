@@ -795,6 +795,7 @@ h4.title {
 .latestNewsText {
     margin-left: 1%;
     margin-bottom: 0;
+    padding-left: 0;
 }
 
 .latestNewsText li {
