@@ -51,25 +51,38 @@ $(function () {
 
     var latestNews = $(".latestNews");
     var latestNewsText = $(".latestNewsText");
+    var lineHeight = latestNewsText.find("p:first").height();
+    var length = latestNewsText.find("p").length;
     var scrollInterval = "";
+    var num = 0;
 
-    latestNews.hover(function () {
-        clearInterval(scrollInterval);
-    }, function () {
-        scrollInterval = setInterval(function () {
-            scrollNew(latestNewsText);
-        }, 2000);
-    }).trigger("mouseleave");
-
-    function scrollNew(ele) {
-        var lineHeight = ele.find("p:first").height();
+    scrollInterval = setInterval(function () {
+        num++;
+        if (num == length) {
+            num = 1;
+            latestNewsText.css("marginTop", 0);
+        }
         latestNewsText.animate({
-            "marginTop": -lineHeight + "px"
-        }, 2000, function () {
-            var length = latestNewsText.find("p").length;
-            // if()
+            "marginTop": -lineHeight * num + "px"
         })
-    }
+    }, 2000);
+    // latestNews.hover(function () {
+    //     clearInterval(scrollInterval);
+    // }, function () {
+    //     scrollInterval = setInterval(function () {
+    //         scrollNew(latestNewsText);
+    //     }, 2000);
+    // }).trigger("mouseleave");
+    //
+    // function scrollNew(ele) {
+    //     var lineHeight = ele.find("p:first").height();
+    //     latestNewsText.animate({
+    //         "marginTop": -lineHeight + "px"
+    //     }, 2000, function () {
+    //         var length = latestNewsText.find("p").length;
+    //         // if()
+    //     })
+    // }
 
 // , function () {
 //         latestNewsText.css("marginTop", 0);
