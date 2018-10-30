@@ -66,7 +66,8 @@ $(function () {
         latestNewsText.animate({
             "marginTop": -lineHeight + "px"
         }, 2000, function () {
-            console.log(latestNewsText.find("p").length);
+            var length = latestNewsText.find("p").length;
+            // if()
         })
     }
 
