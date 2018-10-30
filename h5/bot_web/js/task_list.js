@@ -108,6 +108,7 @@ $(function () {
         GetGroupList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.data, option = "";
+                console.log(response);
                 $.each(data, function (i, val) {
                     option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
                 });
