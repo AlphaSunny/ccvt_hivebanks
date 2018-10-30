@@ -16,6 +16,7 @@ $(function () {
     function GetNewsRecordFun(status) {
         $("#chatRecordTable").DataTable({
             "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
+            destroy:true,
             "columns": [
                 {"data": "bot_nickname", "class": "bot_nickname"},
                 {"data": "bot_content", "class": "bot_content"},
