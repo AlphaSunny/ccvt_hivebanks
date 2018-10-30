@@ -214,3 +214,13 @@ function GetGroupMember(token, group_id,suc_func, error_func) {
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
+
+//获取聊天记录
+function GetNewsRecord(token, group_id, suc_func, error_func) {
+    var api_url = "group_message_list.php",
+        post_data = {
+            "token": token,
+            "group_id": group_id
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
