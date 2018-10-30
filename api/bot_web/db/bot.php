@@ -196,7 +196,7 @@ function get_message_list($group_id,$status)
 
     }
 
-    $sql .=" AND bot_create_time between '{$start}' and '{$end}'";
+    $sql .=" AND bot_create_time between '{$start}' and '{$end}' order by bot_create_time asc";
     $db->query($sql);
     $rows = $db -> fetchAll();
     return $rows;
