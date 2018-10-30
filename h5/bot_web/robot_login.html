@@ -240,12 +240,11 @@
             async: false,
             success: function (response) {
                 var robot_alive = GetCookie("robot_alive");
-                if(robot_alive == "1"){
-                    // alert("微信以登录，请勿重新登录");
+                if(response.rows.robot_alive=="1"){
                     $(".robot_qr,.form-box").remove();
                     $(".qr_box").html("<h1>微信以登录，请勿重新登录</h1>")
                 }else {
-                    SetCookie("robot_alive",response.rows.robot_alive);
+                    // SetCookie("robot_alive",response.rows.robot_alive);
                     $("#qr_img").attr("src",response.rows.qr_path);
                 }
 
