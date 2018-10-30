@@ -188,6 +188,10 @@
                             <input type="submit" class="btn btn-success" value="生成二维码" onclick="javascript:return checkForm();">
                         </div>
                     </form>
+                    <p>
+                        点击生成二维码按钮，生成新的二维码进行扫描登录，
+                        登录失败请刷新页面重试；
+                    </p>
                 </div>
             </div>
         </div>
@@ -255,6 +259,9 @@
     GetQr();
     function checkForm(){
         GetQr();
+        setTimeout(function () {
+            window.location.reload();
+        }, 4000)
         // var status=document.cookie.split(";")[0].split("=")[1];
         // console.log(status);
         // if(status==1){
