@@ -63,38 +63,34 @@ $(function () {
     });
 
 
-    // var $this = $(".latestNews");
-    // var scrollTimer;
-    // $this.hover(function () {
-    //     clearInterval(scrollTimer);
-    // }, function () {
-    //     scrollTimer = setInterval(function () {
-    //         scrollNews($this);
-    //     }, 3000);
-    // }).trigger("mouseleave");
-    //
-    // function scrollNews(obj) {
-    //     var $self = obj.find("ul");
-    //     var lineHeight = $self.find("li:first").height();
-    //     $self.animate({
-    //         "marginTop": -lineHeight + "px"
-    //     }, 2000, function () {
-    //         $self.css({
-    //             marginTop: 0
-    //         }).find("li:first").appendTo($self);
-    //     })
-    // }
+    var $this = $(".latestNews");
+    var scrollTimer;
+    $this.hover(function () {
+        clearInterval(scrollTimer);
+    }, function () {
+        scrollTimer = setInterval(function () {
+            scrollNews($this);
+        }, 3000);
+    }).trigger("mouseleave");
 
-    function tar(){
-        window.location.href = "http://www.baidu.com";
+    function scrollNews(obj) {
+        var $self = obj.find("ul");
+        var lineHeight = $self.find("li:first").height();
+        $self.animate({
+            "marginTop": -lineHeight + "px"
+        }, 2000, function () {
+            $self.css({
+                marginTop: 0
+            }).find("li:first").appendTo($self);
+        })
     }
 
     //to news info
     $(document).on("click", ".toNewsInfo", function () {
         var news_id = $(this).attr("name");
-        if(!news_id){
+        if (!news_id) {
             return;
-        }else {
+        } else {
             window.location.href = "newsInfo.html?news_id=" + news_id;
         }
     })
