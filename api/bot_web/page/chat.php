@@ -40,7 +40,7 @@
 
     #chat .chatContent {
         background: #ffffff;
-        padding: 3%;
+        padding: 3% 3% 3% 0.3rem;
         border-radius: 5px;
         width: 100%;
         text-align: justify;
