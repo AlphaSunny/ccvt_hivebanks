@@ -40,11 +40,14 @@
                             $db->query($sql);
                             $all_message = $db->getField($sql, all_message); //总聊天数量
                             ?>
-                            <p>风赢科技绝密小锋队</p>
-                            <p>时间:<?php echo $datetime; ?></p>
-                            <p>今日奖励总数量:<?php echo $all_send_ccvt; ?>(CCVT)</p>
-                            <p>今日发言总数量:<?php echo $all_message; ?>(条)</p>
-
+                            <div>
+                                <p>风赢科技绝密小锋队</p>
+                                <p>时间:<?php echo $datetime; ?></p>
+                            </div>
+                            <div>
+                                <p>今日奖励总数量:<?php echo $all_send_ccvt; ?>(CCVT)</p>
+                                <p>今日发言总数量:<?php echo $all_message; ?>(条)</p>
+                            </div>
                         </div>
 
                         <div class="table-responsive">
@@ -110,7 +113,7 @@
             </div>
         </section>
         <div class="swiper-slide" id="chat">
-            <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']);?></p>
+            <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>
             <ul class="chatList">
                 <?php
                 require_once '../../inc/common.php';
@@ -120,8 +123,8 @@
                 $db = new DB_COM();
                 $datetime = base64_decode(get_arg_str('GET', 'datetime'));
                 $group_name = base64_decode(get_arg_str('GET', 'group_name'));
-                $day_start = strtotime(date($datetime.' 00:00:00'));
-                $day_end = strtotime(date($datetime.' 23:59:59'));
+                $day_start = strtotime(date($datetime . ' 00:00:00'));
+                $day_end = strtotime(date($datetime . ' 23:59:59'));
 
                 $tblPrefix = "@风赢小助手";
                 $tblPrefix2 = "@小助手";
@@ -129,14 +132,14 @@
                 $db->query($sql);
                 $rows = $db->fetchAll();
                 $ti = -1;
-                foreach ($rows as $k=>$v){
+                foreach ($rows as $k => $v) {
                     ?>
                     <li class="chatItem">
                         <?php
-                        if($ti!=-1 && ($v['bot_create_time']-$ti)>60){
+                        if ($ti != -1 && ($v['bot_create_time'] - $ti) > 60) {
                             ?>
                             <div class="text-center timeBox">
-                                <span class="time"><?php echo $v['bot_send_time'];?></span>
+                                <span class="time"><?php echo $v['bot_send_time']; ?></span>
                             </div>
                             <?php
                         }
@@ -145,25 +148,25 @@
 
                         <div class="infoBox flex">
                             <div class="photo">
-                                <img src="http://52.53.151.223:8000/<?php echo $v['head_img']?>" alt="">
+                                <img src="http://52.53.151.223:8000/<?php echo $v['head_img'] ?>" alt="">
                             </div>
                             <div class="chatInfo">
-                                <p class="name"><?php echo $v['bot_nickname']?></p>
+                                <p class="name"><?php echo $v['bot_nickname'] ?></p>
                                 <p class="chatContent">
                                     <?php
-                                    if($v['type']=="Picture"){
+                                    if ($v['type'] == "Picture") {
                                         ?>
-                                        <img src="<?php echo $v['bot_content']?>" style="width: 100%;height: 150px">
+                                        <img src="<?php echo $v['bot_content'] ?>" style="width: 100%;height: 150px">
                                         <?php
-                                    }elseif($v['type']=="Video" || $v['type']=="Recording"){
+                                    } elseif ($v['type'] == "Video" || $v['type'] == "Recording") {
                                         ?>
-                                        <audio id="audioplayer" preload="auto" controls style="width:150%;" >
-                                            <source src="<?php echo $v['bot_content']?>" type="audio/mp3">
+                                        <audio id="audioplayer" preload="auto" controls style="width:150%;">
+                                            <source src="<?php echo $v['bot_content'] ?>" type="audio/mp3">
                                         </audio>
                                         <?php
-                                    }else{
+                                    } else {
                                         ?>
-                                        <?php echo $v['bot_content']?>
+                                        <?php echo $v['bot_content'] ?>
                                         <?php
                                     }
                                     ?>
@@ -183,11 +186,11 @@
                 $rows = $db->fetchAll();
                 $count = count($rows);
                 ?>
-                <li>参与发言人数:<?php echo $count;?>人</li>
+                <li>参与发言人数:<?php echo $count; ?>人</li>
                 <?php
-                foreach ($rows as $k=>$v){
+                foreach ($rows as $k => $v) {
                     ?>
-                    <li><?php echo $v['bot_nickname'];?>:<?php echo $v['count'];?>发言</li>
+                    <li><?php echo $v['bot_nickname']; ?>:<?php echo $v['count']; ?>发言</li>
                 <?php } ?>
 
 
