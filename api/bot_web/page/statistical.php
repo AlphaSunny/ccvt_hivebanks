@@ -7,7 +7,7 @@
     <title>统计列表</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/swiper.min.css">
-<!--    <link rel="stylesheet" href="css/common.css">-->
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/statistics.css">
     <script src="js/swiper.min.js"></script>
 </head>
