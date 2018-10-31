@@ -48,8 +48,8 @@
 <!--                            <th>排名</th>-->
                             <th class="text-center">名称</th>
 <!--                            <th class="text-center">拥有数量(CCVT)</th>-->
-                            <th class="text-center">今日获得(CCVT)</th>
-                            <th class="text-center">今日发言数</th>
+                            <th class="text-center">获得(CCVT)</th>
+                            <th class="text-center">发言数</th>
                         </tr>
                         </thead>
                         <tbody>
