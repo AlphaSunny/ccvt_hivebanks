@@ -270,6 +270,28 @@ function del_storage_members($group_id)
 }
 
 //======================================
+// 函数: 判断时间内群内是否有人发消息
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function check_chat_time($group_name)
+{
+    $db = new DB_COM();
+    $sql = "select check_chat_time from bot_status limit 1";
+    $db->query($sql);
+    $time = $db->getField($sql,'check_chat_time');
+
+    $start = time()-($time*60);
+    $end = time();
+    $sql = "select count(bot_message_id) as count from bot_message WHERE group_name='{$group_name}' AND bot_create_time BETWEEN '{$start}' AND '{$end}'";
+    $db->query($sql);
+    $count = $db->getField($sql,'count');
+    echo $count;die;
+    return $count;
+}
+
+//======================================
 // 函数: post提交
 //======================================
 function request_post($url = '', $param = '') {
