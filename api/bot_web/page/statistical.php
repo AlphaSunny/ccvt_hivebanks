@@ -6,10 +6,19 @@
           content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>统计列表</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/statistical.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/statistical.css">
+    <script src="js/swiper.min.js"></script>
 </head>
 <body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+    </div>
+
 <section id="statistical">
     <div class="container">
         <div class="row">
