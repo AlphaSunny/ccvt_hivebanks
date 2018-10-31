@@ -67,7 +67,7 @@ if ($rows){
         $d['bot_ls_id'] = get_guid();
         $d['ba_id'] = $ba_id;
         $d['wechat'] = $v['wechat'];
-        $d['num'] = $give_account;
+        $d['num'] = $v['count'];
         $d['amount'] = $give_account*$unit;
         $d['is_replacement'] = 0;
         $d['send_time'] = date('Y-m-d H:i:s',time());
