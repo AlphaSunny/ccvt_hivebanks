@@ -26,7 +26,7 @@ $datetime = get_arg_str('GET', 'datetime');
 if ($datetime){
     $datetime = base64_decode($datetime);
 }else{
-    $datetime = date('Y-m-d');
+    $datetime = date('Y-m-d',strtotime("-1 day"));
 }
 $group_name = urlencode(base64_encode(get_arg_str('GET', 'group_name')));
 
