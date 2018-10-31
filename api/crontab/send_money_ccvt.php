@@ -44,7 +44,7 @@ if ($rows){
 
         //送币
         $unit = la_unit();
-        $give_account = $v['count'] >=5 ? 5 : $v['count'];
+        $give_account = $v['count'] >=5 ? 50 : $v['count']*10;
 
         $sql = "update us_base set base_amount=base_amount+'{$give_account}'*'{$unit}' WHERE wechat='{$v['wechat']}'";
         $db -> query($sql);
