@@ -152,28 +152,31 @@
                                 <div class="photo">
                                     <img src="http://52.53.151.223:8000/<?php echo $v['head_img'] ?>" alt="">
                                 </div>
-                                <div class="chatInfo">
+                                <div>
                                     <p class="name"><?php echo $v['bot_nickname'] ?></p>
-                                    <p class="chatContent">
-                                        <?php
-                                        if ($v['type'] == "Picture") {
-                                            ?>
-                                            <img src="<?php echo $v['bot_content'] ?>" style="width: 100%;height: 150px">
+                                    <div class="chatInfo">
+                                        <p class="chatContent">
                                             <?php
-                                        } elseif ($v['type'] == "Video" || $v['type'] == "Recording") {
+                                            if ($v['type'] == "Picture") {
+                                                ?>
+                                                <img src="<?php echo $v['bot_content'] ?>" style="width: 100%;height: 150px">
+                                                <?php
+                                            } elseif ($v['type'] == "Video" || $v['type'] == "Recording") {
+                                                ?>
+                                                <audio id="audioplayer" preload="auto" controls style="width:150%;">
+                                                    <source src="<?php echo $v['bot_content'] ?>" type="audio/mp3">
+                                                </audio>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <?php echo $v['bot_content'] ?>
+                                                <?php
+                                            }
                                             ?>
-                                            <audio id="audioplayer" preload="auto" controls style="width:150%;">
-                                                <source src="<?php echo $v['bot_content'] ?>" type="audio/mp3">
-                                            </audio>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <?php echo $v['bot_content'] ?>
-                                            <?php
-                                        }
-                                        ?>
-                                    </p>
+                                        </p>
+                                    </div>
                                 </div>
+
                             </div>
                         </li>
                         <?php
