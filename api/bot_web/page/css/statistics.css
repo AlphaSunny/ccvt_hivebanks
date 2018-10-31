@@ -34,7 +34,7 @@ p {
     background: #ffffff;
     padding: 3% 3% 3% 0.3rem;
     border-radius: 5px;
-    width: 100%;
+    /*width: 100%;*/
     text-align: justify;
     min-height: 36px;
     display: flex;
@@ -83,7 +83,7 @@ p {
 }
 
 #chat .chatInfo {
-    max-width: 75%;
+    max-width: 80%;
 }
 
 #chat .name {
