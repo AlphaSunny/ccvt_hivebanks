@@ -287,7 +287,6 @@ function check_chat_time($group_name)
     $sql = "select count(bot_message_id) as count from bot_message WHERE group_name='{$group_name}' AND bot_create_time BETWEEN '{$start}' AND '{$end}'";
     $db->query($sql);
     $count = $db->getField($sql,'count');
-    echo $count;die;
     return $count;
 }
 

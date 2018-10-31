@@ -26,10 +26,16 @@ chk_empty_args('GET', $args);
 $group_name = get_arg_str('GET', 'group_name');
 
 $row = check_chat_time($group_name);
+if ($row){
+    $is_hive = 1;
+}else{
+    $is_hive = 2;
+}
+
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['url'] = $url;
+$rtn_ary['is_hive'] = $is_hive;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
