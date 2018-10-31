@@ -27,6 +27,7 @@ p {
 
 #chat .chatList {
     padding: 0 10px;
+    margin-top: 1rem;
 }
 
 #chat .chatContent {
@@ -104,7 +105,7 @@ section#statistical {
     padding: 5% 0;
 }
 
-.sm_title_text_color{
+.sm_title_text_color {
     color: #581e1e;
 }
 
