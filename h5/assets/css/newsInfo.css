@@ -34,3 +34,9 @@ h1.title {
     border-top: 1px solid #eeeeee;
     padding-top: 2%;
 }
+
+@media screen and (max-width:768px){
+    .leftNewsTitle{
+        padding: 2%;
+    }
+}
