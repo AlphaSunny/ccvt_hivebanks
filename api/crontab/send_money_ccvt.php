@@ -10,7 +10,7 @@ if(time()<1541073600){
 
 
 $day_start = strtotime(date('Y-m-d 08:00:00')); //早上八点
-$day_end = strtotime(date('Y-m-d 20:00:00'));    //晚上十点
+$day_end = strtotime(date('Y-m-d 22:00:00'));    //晚上十点
 
 $db = new DB_COM();
 
