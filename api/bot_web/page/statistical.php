@@ -112,7 +112,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="swiper-slide">
             <div id="chat">
                 <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>

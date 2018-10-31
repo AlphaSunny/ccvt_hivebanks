@@ -2,44 +2,45 @@ $(function () {
     var token = GetCookie("robot_token");
 
     // function GetGroupListFun() {
-        $("#groupMasterListTable").DataTable({
-            "ajax": "http://ccvt_test.fnying.com/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
-            destroy:true,
-            "columns": [
-                {"data": "id", "class": "id"},
-                {"data": "name", "class": "name"},
-                {"data": "del", "class": "del"},
-                {"data": "is_del", "class": "is_del none"},
-                {"data": "flirt", "class": "flirt"},
-                {"data": "is_flirt", "class": "is_flirt none"},
-            ]
-        });
-        setTimeout(function () {
-            var td = "<td>" +
-                "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-                "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
-                "</td>";
-            $(".odd,.even").append(td);
-        }, 500);
-        // GetGroupList(token, function (response) {
-        //     if (response.errcode == "0") {
-        //         var data = response.rows, tr = "";
-        //         $.each(data, function (i, val) {
-        //             tr += "<tr class='text-center trItem'>" +
-        //                 "<td class='groupName' name=" + data[i].id + ">" + data[i].name + "</td>" +
-        //                 "<td class='is_del' name=" + data[i].is_del + ">" + data[i].del + "</td>" +
-        //                 "<td class='is_flirt' name=" + data[i].is_flirt + ">" + data[i].flirt + "</td>" +
-        //                 "<td>" +
-        //                 "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-        //                 "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
-        //                 "</td>" +
-        //                 "</tr>"
-        //         });
-        //         $("#groupListTable").html(tr);
-        //     }
-        // }, function (response) {
-        //     layer.msg(response.errmsg);
-        // });
+    var url = getRootPath();
+    $("#groupMasterListTable").DataTable({
+        "ajax": url + "/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
+        destroy: true,
+        "columns": [
+            {"data": "id", "class": "id"},
+            {"data": "name", "class": "name"},
+            {"data": "del", "class": "del"},
+            {"data": "is_del", "class": "is_del none"},
+            {"data": "flirt", "class": "flirt"},
+            {"data": "is_flirt", "class": "is_flirt none"},
+        ]
+    });
+    setTimeout(function () {
+        var td = "<td>" +
+            "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+            "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
+            "</td>";
+        $(".odd,.even").append(td);
+    }, 500);
+    // GetGroupList(token, function (response) {
+    //     if (response.errcode == "0") {
+    //         var data = response.rows, tr = "";
+    //         $.each(data, function (i, val) {
+    //             tr += "<tr class='text-center trItem'>" +
+    //                 "<td class='groupName' name=" + data[i].id + ">" + data[i].name + "</td>" +
+    //                 "<td class='is_del' name=" + data[i].is_del + ">" + data[i].del + "</td>" +
+    //                 "<td class='is_flirt' name=" + data[i].is_flirt + ">" + data[i].flirt + "</td>" +
+    //                 "<td>" +
+    //                 "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+    //                 "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
+    //                 "</td>" +
+    //                 "</tr>"
+    //         });
+    //         $("#groupListTable").html(tr);
+    //     }
+    // }, function (response) {
+    //     layer.msg(response.errmsg);
+    // });
     // }
     // GetGroupListFun();
 

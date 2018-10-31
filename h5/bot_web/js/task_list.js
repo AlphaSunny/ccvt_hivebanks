@@ -1,8 +1,9 @@
 $(function () {
     var token = GetCookie("robot_token");
 
+    var url = getRootPath();
     $("#taskListTable").DataTable({
-        "ajax": "http://ccvt_test.fnying.com/api/bot_web/timer_list.php?token=" + encodeURIComponent(token),
+        "ajax": url + "/api/bot_web/timer_list.php?token=" + encodeURIComponent(token),
         "columns": [
             {"data": "id", "class": "id"},
             {"data": "time", "class": "time"},
