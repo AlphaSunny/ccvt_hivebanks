@@ -9,6 +9,10 @@ section#statistical {
     padding: 5% 0;
 }
 
+.sm_title_text_color{
+    color: #581e1e;
+}
+
 p {
     margin: 0;
     padding: 0;
