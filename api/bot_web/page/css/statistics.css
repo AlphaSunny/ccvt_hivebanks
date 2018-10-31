@@ -5,14 +5,6 @@ body {
     font-size: 16px;
 }
 
-section#statistical {
-    padding: 5% 0;
-}
-
-.sm_title_text_color{
-    color: #581e1e;
-}
-
 p {
     margin: 0;
     padding: 0;
@@ -104,3 +96,12 @@ p {
 .photo img {
     width: 100%;
 }
+
+/*section#statistical {*/
+    /*padding: 5% 0;*/
+/*}*/
+
+/*.sm_title_text_color{*/
+    /*color: #581e1e;*/
+/*}*/
+
