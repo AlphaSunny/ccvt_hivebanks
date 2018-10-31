@@ -113,7 +113,7 @@
         </div>
     </section>
     <script>
-        var mySwiper = new Swiper();
+        var mySwiper = new Swiper(".swiper-container");
     </script>
 </body>
 </html>
