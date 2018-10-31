@@ -300,9 +300,6 @@
                 </div>
             </div>
         </section>
-
-
-
     </div>
     <script>
         var mySwiper = new Swiper(".swiper-container", {
