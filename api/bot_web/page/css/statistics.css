@@ -36,6 +36,8 @@ p {
     width: 100%;
     text-align: justify;
     min-height: 36px;
+    display: flex;
+    align-items: center;
 }
 
 #chat .time {
