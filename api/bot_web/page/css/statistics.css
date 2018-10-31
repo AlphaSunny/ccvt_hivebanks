@@ -35,6 +35,7 @@ p {
     border-radius: 5px;
     width: 100%;
     text-align: justify;
+    min-height: 36px;
 }
 
 #chat .time {
@@ -66,8 +67,8 @@ p {
     content: "";
     border: 5px solid #ffffff;
     position: absolute;
-    right: -35%;
-    top: 66%;
+    right: -30%;
+    top: 50%;
     border-top-color: transparent;
     border-left-color: transparent;
     transform: rotate(135deg);
