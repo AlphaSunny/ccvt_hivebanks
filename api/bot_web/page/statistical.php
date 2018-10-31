@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>聊天发币统计</h3>
+                <h3>CCVT奖励统计</h3>
                 <div>
                     <?php
                         require_once '../../inc/common.php';
@@ -36,7 +36,7 @@
                         $all_message = $db->getField($sql,all_message); //总聊天数量
                     ?>
                     <p>时间:<?php echo $datetime;?></p>
-                    <p>今日发币总数量:<?php echo $all_send_ccvt;?>(CCVT)</p>
+                    <p>今日奖励总数量:<?php echo $all_send_ccvt;?>(CCVT)</p>
                     <p>今日发言总数量:<?php echo $all_message;?>(条)</p>
 
                 </div>
@@ -45,9 +45,9 @@
                     <table class="table" id="statisticalTable">
                         <thead>
                         <tr>
-                            <th>排名</th>
+<!--                            <th>排名</th>-->
                             <th class="text-center">名称</th>
-                            <th class="text-center">拥有数量(CCVT)</th>
+<!--                            <th class="text-center">拥有数量(CCVT)</th>-->
                             <th class="text-center">今日获得(CCVT)</th>
                             <th class="text-center">今日发言数</th>
                         </tr>
@@ -60,26 +60,26 @@
                             foreach ($list as $k=>$v){
                         ?>
                         <tr>
-                            <td><?php if ($k==0){?>
-                                    🥇
-                                <?php }elseif($k==1){?>
-                                    🥈
-                                <?php }elseif($k==2){?>
-                                    🥉
-                                <?php }else{ echo $k;}?>
-                            </td>
+<!--                            <td>--><?php //if ($k==0){?>
+<!--                                    🥇-->
+<!--                                --><?php //}elseif($k==1){?>
+<!--                                    🥈-->
+<!--                                --><?php //}elseif($k==2){?>
+<!--                                    🥉-->
+<!--                                --><?php //}else{ echo $k;}?>
+<!--                            </td>-->
                             <td><?php echo $v['wechat'];?></td>
-                            <td>
-                                <?php
-                                    $sql = "select unit from la_base limit 1";
-                                    $db->query($sql);
-                                    $unit = $db->getField($sql,'unit');
-                                    $sql = "select base_amount from us_base WHERE us_id='{$v['us_id']}'";
-                                    $db->query($sql);
-                                    $base_amount = $db->getField($sql,'base_amount')/$unit;
-                                    echo $base_amount;
-                                ?>
-                            </td>
+<!--                            <td>-->
+<!--                                --><?php
+//                                    $sql = "select unit from la_base limit 1";
+//                                    $db->query($sql);
+//                                    $unit = $db->getField($sql,'unit');
+//                                    $sql = "select base_amount from us_base WHERE us_id='{$v['us_id']}'";
+//                                    $db->query($sql);
+//                                    $base_amount = $db->getField($sql,'base_amount')/$unit;
+//                                    echo $base_amount;
+//                                ?>
+<!--                            </td>-->
                             <td><?php echo $v['num'];?></td>
                             <td>
                                 <?php
