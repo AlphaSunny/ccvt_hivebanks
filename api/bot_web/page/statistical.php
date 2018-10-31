@@ -215,7 +215,6 @@
         </section>
 
         <section class="swiper-slide">
-            <!--            <iframe src="chat.php" class="loading" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"></iframe>-->
             <div id="chat">
                 <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>
                 <ul class="chatList">
