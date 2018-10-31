@@ -78,9 +78,12 @@ p {
     border-radius: 2px;
 }
 
+#chat .infoNameBox{
+    padding-left: 2%;
+}
+
 #chat .chatInfo {
     max-width: 75%;
-    padding-left: 2%;
 }
 
 #chat .name {
