@@ -85,6 +85,10 @@ $(function () {
     //     })
     // }
 
+    function tar(){
+        window.location.href = "http://www.baidu.com";
+    }
+
     //to news info
     $(document).on("click", ".toNewsInfo", function () {
         var news_id = $(this).attr("name");
