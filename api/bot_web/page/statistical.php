@@ -41,10 +41,10 @@
                             $all_message = $db->getField($sql, all_message); //总聊天数量
                             ?>
                             <div>
-                                <p>风赢科技绝密小锋队</p>
+                                <h3>风赢科技绝密小锋队</h3>
                                 <p>时间:<?php echo $datetime; ?></p>
                             </div>
-                            <div>
+                            <div class="flex space-between">
                                 <p>今日奖励总数量:<?php echo $all_send_ccvt; ?>(CCVT)</p>
                                 <p>今日发言总数量:<?php echo $all_message; ?>(条)</p>
                             </div>

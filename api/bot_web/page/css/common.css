@@ -39,6 +39,10 @@
     align-items: center;
 }
 
+.flex.space-between{
+    justify-content: space-between;
+}
+
 /*switch*/
 .switch {
     width: 57px;
