@@ -41,7 +41,7 @@
                             $all_message = $db->getField($sql, all_message); //总聊天数量
                             ?>
                             <div>
-                                <p>所属群:<风赢科技绝密小锋队></p>
+                                <p>所属群:《风赢科技绝密小锋队》</p>
                                 <p class="font-size-14">时间:<?php echo $datetime; ?></p>
                             </div>
                             <div class="flex space-between font-size-14">
