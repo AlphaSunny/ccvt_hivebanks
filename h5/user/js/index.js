@@ -52,7 +52,7 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows, li = "";
             $.each(data, function (i, val) {
-                li += "<li><a href='javascript:;' class='toNewsInfo' name=" + data[i].news_id + ">" + data[i].title + "</a></li>"
+                li += "<li><a href='javascript:void(0)' class='toNewsInfo' name=" + data[i].news_id + ">" + data[i].title + "</a></li>"
             });
             $(".latestNewsText").html(li);
         }
