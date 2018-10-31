@@ -284,7 +284,7 @@ function check_chat_time($group_name)
 
     $start = time()-($time*60);
     $end = time();
-    $sql = "select count(bot_message_id) as count from bot_message WHERE group_name='{$group_name}' AND bot_create_time BETWEEN '{$start}' AND '{$end}'";
+    $sql = "select count(bot_message_id) as count from bot_message WHERE group_name='{$group_name}' AND (wechat!='小助手' OR wechat!='风赢小助手') AND bot_create_time BETWEEN '{$start}' AND '{$end}'";
     $db->query($sql);
     $count = $db->getField($sql,'count');
     return $count;
