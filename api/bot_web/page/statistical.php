@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h3>CCVT奖励统计</h3>
-                        <div>
+                        <div class="margin-bottom-2">
                             <?php
                             require_once '../../inc/common.php';
                             ini_set("display_errors", "off");
