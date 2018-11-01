@@ -60,13 +60,6 @@ function category_list(){
     $sql = "select category from la_news WHERE status=1 GROUP BY category";
     $db->query($sql);
     $rows = $db->fetchAll();
-    if ($rows){
-        foreach ($rows as $k=>$v){
-            $sql = "select title,author,utime,ctime,news_id from la_news WHERE category='{$v['category']}' AND status = 1 order by ctime desc";
-            $db->query($sql);
-            $rows['list'] = $db->fetchAll();
-        }
-    }
     return $rows;
 }
 /**
