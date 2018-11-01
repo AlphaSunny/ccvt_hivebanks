@@ -265,6 +265,10 @@ function get_qrcode()
             //计算秒数
             $secs = $remain%60;
             $row['elapsed_time'] = $days."天".$hours."小时".$mins."分钟".$secs."秒";
+
+            $sql = "select count(bot_message_id) as count from bot_message WHERE bot_create_time>='{$t['login_in_time']}'";
+            $db->query($sql);
+            $row['count'] = $db->getField($sql,'count');
         }
 
     }
