@@ -31,3 +31,21 @@ function news_detail($news_id){
     $rows = $db->fetchAll();
     return $rows;
 }
+
+
+/**
+ * @param $data
+ * @return bool
+ * 爬虫爬取新闻添加
+ */
+function news_add($data){
+
+    $data['ctime'] = date('Y-m-d H:i:s',time());
+    $data['utime'] = date('Y-m-d H:i:s',time());
+    $db = new DB_COM();
+    $sql = $db->sqlInsert('la_news', $data);
+    $q_id = $db->query($sql);
+    if ($q_id == 0)
+        return false;
+    return true;
+}
