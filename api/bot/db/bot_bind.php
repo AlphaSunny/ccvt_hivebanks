@@ -361,6 +361,10 @@ function get_news()
     $sql = "select news_id,title from la_news WHERE is_hive_been=1 ORDER BY ctime DESC limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
+    if ($row){
+        $sql = "update la_news set is_hive_been=2 WHERE news_id='{$row['news_id']}'";
+        $db->query($sql);
+    }
     return $row;
 }
 
