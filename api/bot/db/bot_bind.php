@@ -193,7 +193,7 @@ function bot_alive($data){
         $db->query($sql);
         if ($db->affectedRows()){
             if ($data['robot_alive']==2){
-                $sql = "select * from bot_log_login WHERE login_out_time=='' ORDER BY intime desc";
+                $sql = "select * from bot_log_login WHERE login_out_time='' ORDER BY intime desc";
                 $db->query($sql);
                 $lo = $db->fetchRow();
                 print_r($lo);
