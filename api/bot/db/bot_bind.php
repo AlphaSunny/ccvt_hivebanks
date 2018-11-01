@@ -350,6 +350,21 @@ function check_chat_time($group_name)
 }
 
 //======================================
+// 函数: 获取最新的未推送的一个文章
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function get_news()
+{
+    $db = new DB_COM();
+    $sql = "select news_id,title from la_news WHERE is_hive_been=1 ORDER BY ctime DESC limit 1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    return $row;
+}
+
+//======================================
 // 函数: post提交
 //======================================
 function request_post($url = '', $param = '') {
