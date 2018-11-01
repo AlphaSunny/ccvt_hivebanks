@@ -194,6 +194,7 @@ function bot_alive($data){
         if ($db->affectedRows()){
             if ($data['robot_alive']==2){
                 $sql = "select * from bot_log_login WHERE login_out_time=NULL ORDER BY intime desc limit 1";
+                echo $sql;
                 $db->query($sql);
                 $lo = $db->fetchRow();
                 print_r($lo);
