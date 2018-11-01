@@ -6,6 +6,7 @@
 .newsInfo_nav{
     max-height: 10rem;
     overflow: auto;
+    background: #eeeeee;
 }
 
 .leftNewsTitle {
