@@ -3,10 +3,7 @@ require_once "../inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
-if(time()<1541073600){
-    echo "还没到时间!";
-    die;
-}
+
 
 
 $day_start = strtotime(date('Y-m-d 08:00:00')); //早上八点
