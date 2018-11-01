@@ -50,7 +50,7 @@ $(function () {
     //get new list
     Get_News_List(function (response) {
         if (response.errcode == "0") {
-            var data = response.rows, li = "";
+            var data = response.new_rows, li = "";
             $.each(data, function (i, val) {
                 li += "<li><a href='javascript:void(0)' class='toNewsInfo' name=" + data[i].news_id + ">" + data[i].title + "</a></li>"
             });
