@@ -92,7 +92,7 @@ $(function () {
             $.each(data, function (i, val) {
                 var new_list = data[i].list;
                 var li = eachNewList(new_list);
-                div += "<div class='dropdown'>" +
+                div += "<div class='dropdown margin-bottom-5'>" +
                     "<button class='btn btn-success dropdown-toggle width-100 flex center space-between' type='button' id=" + data[i].category + " data-toggle='dropdown'>" + data[i].category_name + "<span class='caret'></span></button>" +
                     "<ul class='dropdown-menu width-100 newsInfo_nav'>" +
                     li +
