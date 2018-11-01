@@ -7,17 +7,17 @@
  */
 
 
-/**
- * @return array
- * 新闻列表@todo 分页
- */
-function news_list(){
-    $db = new DB_COM();
-    $sql = "select title,author,utime,ctime,news_id from la_news where status = 1 order by ctime desc";
-    $db->query($sql);
-    $rows = $db->fetchAll();
-    return $rows;
-}
+///**
+// * @return array
+// * 新闻列表@todo 分页
+// */
+//function news_list(){
+//    $db = new DB_COM();
+//    $sql = "select title,author,utime,ctime,news_id from la_news where status = 1 order by ctime desc";
+//    $db->query($sql);
+//    $rows = $db->fetchAll();
+//    return $rows;
+//}
 
 /**
  * @param $news_id
@@ -70,6 +70,19 @@ function category_list(){
 function get_news_list($category){
     $db = new DB_COM();
     $sql = "select title,author,utime,ctime,news_id from la_news WHERE category='$category' AND status = 1 order by ctime desc";
+    $db->query($sql);
+    $rows= $db->fetchAll();
+    return $rows;
+}
+
+/**
+ * @param $data
+ * @return bool
+ * 文章列表
+ */
+function get_new_five_news(){
+    $db = new DB_COM();
+    $sql = "select title,author,utime,ctime,news_id from la_news WHERE  status = 1 order by ctime desc limit 5";
     $db->query($sql);
     $rows= $db->fetchAll();
     return $rows;
