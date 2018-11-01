@@ -18,6 +18,21 @@ header("Content-Type:application/json;charset=utf-8");
 php_begin();
 
 $list = category_list();
+if ($list){
+    foreach ($list as $k=>$v){
+        switch ($v['category']){
+            case 1:
+                $list[$k]['category_name'] = "官方新闻";
+                break;
+            case 2:
+                $list[$k]['category_name'] = "行业新闻";
+                break;
+            default:
+                $list[$k]['category_name'] = "其他";
+                break;
+        }
+    }
+}
 print_r($list);die;
 if($list){
 
