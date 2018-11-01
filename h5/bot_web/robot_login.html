@@ -112,9 +112,9 @@
                     $(".qr_box").html("<div>" +
                         "<h1>微信机器人已登录，请勿重新登录。</h1>" +
                         "<div class='flex center'>" +
-                        "<p>最近一次登录时间:<span class='time'>2018/10/31</span></p>" +
-                        "<p class='margin-left-2'>已登录运行时间:<span class='alreadyTime'>20小时30分15秒</span></p>" +
-                        "<p class='margin-left-2'>已处理199条数据</p>" +
+                        "<p>最近一次登录时间:<span class='login_time'>"+ response.rows.login_time +"</span></p>" +
+                        "<p class='margin-left-2'>已登录运行时间:<span class='elapsed_time'>"+ response.rows.elapsed_time +"</span></p>" +
+                        "<p class='margin-left-2'>已处理<span>"+ 200 +"</span>条数据</p>" +
                         "</div>" +
                         "</div>")
                 } else {
