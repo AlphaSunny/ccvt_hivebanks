@@ -24,6 +24,11 @@
     margin-top: 2%;
 }
 
+/*font-weight*/
+.font-bold{
+    font-weight: bold;
+}
+
 /*btn*/
 .btn {
     cursor: pointer;
