@@ -36,7 +36,7 @@ function news_detail($news_id){
 /**
  * @param $data
  * @return bool
- * 爬虫爬取新闻添加
+ * 爬虫爬取新闻添加(别人调)
  */
 function news_add($data){
 
@@ -48,4 +48,17 @@ function news_add($data){
     if ($q_id == 0)
         return false;
     return true;
+}
+
+/**
+ * @param $data
+ * @return bool
+ * 文章分类
+ */
+function category_list(){
+    $db = new DB_COM();
+    $sql = "select category from la_news WHERE status=1 GROUP BY category";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    return $rows;
 }
