@@ -196,8 +196,9 @@ function bot_alive($data){
                 $sql = "select * from bot_log_login WHERE login_out_time=='' ORDER BY intime desc";
                 $db->query($sql);
                 $lo = $db->fetchRow();
+                print_r($lo);
                 if ($lo){
-                    $sql = "update bot_log_login set login_out_time='{$time}'";
+                    $sql = "update bot_log_login set login_out_time='{$time}' WHERE id='{$lo['id']}'";
                     $db->query($sql);
                     return $db->affectedRows();
                 }else{
