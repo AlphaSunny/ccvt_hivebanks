@@ -197,6 +197,7 @@ function bot_alive($data){
                 $db->query($sql);
                 $lo = $db->fetchRow();
                 print_r($lo);
+                echo 22;die;
                 if ($lo){
                     $sql = "update bot_log_login set login_out_time='{$time}' WHERE id='{$lo['id']}'";
                     $db->query($sql);
