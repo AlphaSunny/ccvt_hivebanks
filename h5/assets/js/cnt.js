@@ -21,6 +21,7 @@ $(function () {
         var url = "http://ow.fnying.com/website/get_uuid.php";
         $.get({
             url: url,
+            dataType:"jsonp",
             success: function (response) {
                 uuid = response.uuid;
                 SetCookie('UUID', uuid);
