@@ -80,7 +80,7 @@ $(function () {
     function eachNewList(new_list) {
         var li = "";
         $.each(new_list, function (i, val) {
-            li += "<li class='leftNewsTitle' title='" + data[i].title + "' name='" + data[i].news_id + "'>" + data[i].title + "</li>";
+            li += "<li class='leftNewsTitle' title='" + new_list[i].title + "' name='" + new_list[i].news_id + "'>" + new_list[i].title + "</li>";
         });
         return li;
     }
