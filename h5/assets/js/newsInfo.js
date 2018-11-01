@@ -77,15 +77,46 @@ $(function () {
         GetNewsInfoFun(news_id);
     });
 
+    function eachNewList(new_list) {
+        var li = "";
+        $.each(new_list, function (i, val) {
+            li += "<li class='leftNewsTitle' title='" + data[i].title + "' name='" + data[i].news_id + "'>" + data[i].title + "</li>";
+        });
+        return li;
+    }
+
     //get news list
     Get_News_List(function (response) {
         if (response.errcode == "0") {
-            var data = response.rows;
-            var li = "", li_first = "", li_other = "";
+            var data = response.rows, div = "";
             $.each(data, function (i, val) {
-                li += "<li class='leftNewsTitle' title='" + data[i].title + "' name='" + data[i].news_id + "'>" + data[i].title + "</li>"
+                var new_list = data[i].list;
+                var li = eachNewList(new_list);
+                div += "<div class='dropdown'>" +
+                    "<button class='btn btn-success dropdown-toggle width-100 flex center space-between' type='button' id=" + data[i].category + " data-toggle='dropdown'>" + data[i].category_name + "<span class='caret'></span></button>" +
+                    "<ul class='dropdown-menu width-100 newsInfo_nav'>" +
+                    li +
+                    "</ul>" +
+                    "</div>"
             });
-            $(".newsInfo_nav").html(li);
+
+            $(".new_nav_box").html(div);
+
+
+            // <div class="dropdown">
+            //         <button class="btn btn-success dropdown-toggle width-100 flex center space-between" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            //         官方新闻
+            //         <span class="caret"></span>
+            //         </button>
+            //         <ul class="dropdown-menu width-100 newsInfo_nav">
+            //
+            //         </ul>
+            //         </div>
+            // var li = "", li_first = "", li_other = "";
+            // $.each(data, function (i, val) {
+            //     li += "<li class='leftNewsTitle' title='" + data[i].title + "' name='" + data[i].news_id + "'>" + data[i].title + "</li>"
+            // });
+            // $(".newsInfo_nav").html(li);
 
         }
     }, function (response) {
