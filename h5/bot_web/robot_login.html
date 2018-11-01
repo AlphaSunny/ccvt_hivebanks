@@ -11,12 +11,14 @@
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="app sidebar-mini rtl">
 <!-- Navbar-->
 <header class="app-header"><a class="app-header__logo" href="group_list.html">Robot</a>
-    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+                                    aria-label="Hide Sidebar"></a>
     <!-- Navbar Right Menu-->
     <ul class="app-nav">
         <!-- User Menu-->
@@ -107,7 +109,11 @@
             success: function (response) {
                 if (response.rows.robot_alive == "1") {
                     $(".robot_qr,.form-box").remove();
-                    $(".qr_box").html("<h1>微信机器人已登录，请勿重新登录。</h1>")
+                    $(".qr_box").html("<div>" +
+                        "<h1>微信机器人已登录，请勿重新登录。</h1>" +
+                        "<p>最近一次登录时间:<span class='time'>2018/10/31</span></p>" +
+                        "<p>已登录运行时间:<span class='alreadyTime'>20小时30分15秒</span></p>" +
+                        "</div>")
                 } else {
                     $("#qr_img").attr("src", response.rows.qr_path);
                 }
