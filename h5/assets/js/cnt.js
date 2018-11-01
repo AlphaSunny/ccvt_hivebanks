@@ -13,8 +13,6 @@ xmlhttp.send();
 
 $(function () {
     //获取uuid
-    // var arr = document.cookie.match(new RegExp("(^| )UUID=([^;]*)(;|$)"));
-    // var uuid = uuid = (arr != null) ? unescape(arr[2]) : '';
     if (!uuid) {
         uuid = new Date().getTime();
         // 取得UUID
