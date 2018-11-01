@@ -191,12 +191,41 @@ function bot_alive($data){
     if ($info){
         $sql = "update bot_status set robot_alive='{$data['robot_alive']}', ctime='{$time}' where id='{$info['id']}'";
         $db->query($sql);
-        return $db->affectedRows();
+        if ($db->affectedRows()){
+            if ($data['robot_alive']==2){
+                $sql = "select * from bot_log_login WHERE login_out_time=='' ORDER BY intime desc";
+                $db->query($sql);
+                $lo = $db->fetchRow();
+                if ($lo){
+                    $sql = "update bot_log_login set login_out_time='{$time}'";
+                    $db->query($sql);
+                    return $db->affectedRows();
+                }else{
+                    return 1;
+                }
+            }else{
+                $d['login_in_time'] = $time;
+                $d['intime'] = $time;
+                $sql = $db->sqlInsert("bot_log_login", $data);
+                $q_id = $db->query($sql);
+                if ($q_id == 0)
+                    return false;
+                return true;
+            }
+        }
     }else{
         $sql = $db->sqlInsert("bot_status", $data);
         $q_id = $db->query($sql);
         if ($q_id == 0)
             return false;
+
+        $d['login_in_time'] = $time;
+        $d['intime'] = $time;
+        $sql = $db->sqlInsert("bot_log_login", $data);
+        $q_id = $db->query($sql);
+        if ($q_id == 0)
+            return false;
+
         return true;
     }
 }
