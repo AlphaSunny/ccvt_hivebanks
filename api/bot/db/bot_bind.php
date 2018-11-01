@@ -247,6 +247,27 @@ function get_qrcode()
     $sql = "SELECT * FROM bot_status limit 1";
     $db -> query($sql);
     $row = $db -> fetchRow();
+    if ($row){
+        $sql = "select * from bot_log_login WHERE login_out_time=0 ORDER BY intime DESC limit 1";
+        $db->query($sql);
+        $t = $db->fetchRow();
+        if ($t){
+            $row['login_time'] = date('Y-m-d H:i:s',$t['login_in_time']);
+            //计算天数
+            $timediff = time()-$t['login_in_time'];
+            $days = intval($timediff/86400);
+            //计算小时数
+            $remain = $timediff%86400;
+            $hours = intval($remain/3600);
+            //计算分钟数
+            $remain = $remain%3600;
+            $mins = intval($remain/60);
+            //计算秒数
+            $secs = $remain%60;
+            $row['elapsed_time'] = $days."天".$hours."小时".$mins."分钟".$secs."秒";
+        }
+
+    }
     return $row;
 }
 
