@@ -111,9 +111,11 @@
                     $(".robot_qr,.form-box").remove();
                     $(".qr_box").html("<div>" +
                         "<h1>微信机器人已登录，请勿重新登录。</h1>" +
+                        "<div class='flex center'>" +
                         "<p>最近一次登录时间:<span class='time'>2018/10/31</span></p>" +
-                        "<p>已登录运行时间:<span class='alreadyTime'>20小时30分15秒</span></p>" +
-                        "<p>已处理199条数据</p>" +
+                        "<p class='margin-left-2'>已登录运行时间:<span class='alreadyTime'>20小时30分15秒</span></p>" +
+                        "<p class='margin-left-2>已处理199条数据</p>" +
+                        "</div>" +
                         "</div>")
                 } else {
                     $("#qr_img").attr("src", response.rows.qr_path);
