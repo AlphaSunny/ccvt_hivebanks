@@ -90,5 +90,10 @@ $(function () {
         }
     }, function (response) {
         return;
+    });
+
+    //news nav
+    $(document).on("click", ".newsInfo_nav>li", function () {
+        $(this).children("ul").slideToggle();
     })
 });
