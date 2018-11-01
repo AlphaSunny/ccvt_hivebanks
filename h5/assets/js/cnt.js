@@ -18,7 +18,7 @@ $(function () {
     if (!uuid) {
         uuid = new Date().getTime();
         // 取得UUID
-        var url = "http://ow.fnying.com/website/get_uuid.php";
+        var url = "http://www.fnying.com/php/get_uuid.php";
         $.get({
             url: url,
             dataType:"jsonp",
