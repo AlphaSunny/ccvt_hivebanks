@@ -206,7 +206,7 @@ function bot_alive($data){
             }else{
                 $d['login_in_time'] = $time;
                 $d['intime'] = $time;
-                $sql = $db->sqlInsert("bot_log_login", $data);
+                $sql = $db->sqlInsert("bot_log_login", $d);
                 $q_id = $db->query($sql);
                 if ($q_id == 0)
                     return false;
@@ -221,7 +221,7 @@ function bot_alive($data){
 
         $d['login_in_time'] = $time;
         $d['intime'] = $time;
-        $sql = $db->sqlInsert("bot_log_login", $data);
+        $sql = $db->sqlInsert("bot_log_login", $d);
         $q_id = $db->query($sql);
         if ($q_id == 0)
             return false;
