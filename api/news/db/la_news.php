@@ -69,3 +69,15 @@ function category_list(){
     }
     return $rows;
 }
+/**
+ * @param $data
+ * @return bool
+ * 文章列表
+ */
+function get_news_list($category){
+    $db = new DB_COM();
+    $sql = "select title,author,utime,ctime,news_id from la_news WHERE category='$category' AND status = 1 order by ctime desc";
+    $db->query($sql);
+    $rows= $db->fetchAll();
+    return $rows;
+}

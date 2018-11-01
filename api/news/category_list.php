@@ -18,7 +18,6 @@ header("Content-Type:application/json;charset=utf-8");
 php_begin();
 
 $list = category_list();
-print_r($list);die;
 if ($list){
     foreach ($list as $k=>$v){
         switch ($v['category']){
@@ -32,6 +31,7 @@ if ($list){
                 $list[$k]['category_name'] = "其他";
                 break;
         }
+        $list[$k]['list'] = get_news_list($v['category']);
     }
 }
 $rtn_ary = array();
