@@ -3,6 +3,11 @@
     color: #fff;
 }
 
+.newsInfo_nav{
+    max-height: 10rem;
+    overflow: auto;
+}
+
 .leftNewsTitle {
     text-overflow: ellipsis;
     overflow: hidden;
