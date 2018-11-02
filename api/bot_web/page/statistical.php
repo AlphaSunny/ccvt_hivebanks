@@ -13,6 +13,15 @@
 </head>
 
 <body>
+<div class="box">
+    <div class="img_box">
+        <img src="img/more.svg" alt="">
+    </div>
+    <ul class="more_box">
+        <li><a href="javascript:;" id="register">注册</a></li>
+        <li><a href="javascript:;" id="login">登录</a></li>
+    </ul>
+</div>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <section id="statistical" class="swiper-slide">
@@ -189,6 +198,35 @@
     <script>
         var mySwiper = new Swiper(".swiper-container", {
             loop: true
+        });
+    </script>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function () {
+            function getRootPath() {
+                //Get current URL
+                var curWwwPath = window.document.location.href;
+                //Get the directory after the host address
+                var pathName = window.document.location.pathname;
+                var pos = curWwwPath.indexOf(pathName);
+                //Get the host address
+                var localhostPath = curWwwPath.substring(0, pos);
+                //Get the project name with "/"
+                var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+                return localhostPath;
+            }
+
+            var url = getRootPath();
+            $(".img_box").click(function () {
+                $(".more_box").slideToggle();
+            });
+
+            $("#register").click(function () {
+                window.location.href = "ccvt.io/h5/user/register.html";
+            });
+            $("#login").click(function () {
+                window.location.href = "ccvt.io/h5/user/login.html";
+            })
         });
     </script>
 </body>
