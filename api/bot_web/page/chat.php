@@ -191,6 +191,7 @@
                     </div>
                     <?php
                 }
+                echo $v['bot_create_time'];
                 $ti = $v['bot_create_time'];
                 ?>
 
