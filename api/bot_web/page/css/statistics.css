@@ -132,7 +132,7 @@ section#statistical {
     right: 0;
 }
 
-.img_box:hover {
+.img_box.clickActive {
     transform: rotate(45deg);
     transition: all .2s;
 }
