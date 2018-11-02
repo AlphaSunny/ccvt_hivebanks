@@ -184,15 +184,15 @@
             ?>
             <li class="chatItem">
                 <?php
-                if ($ti != -1 && ($v['bot_create_time'] - $ti) > 60) {
-                    ?>
+//                if ($ti != -1 && ($v['bot_create_time'] - $ti) > 60) {
+//                    ?>
                     <div class="text-center timeBox">
                         <span class="time"><?php echo $v['bot_send_time']; ?></span>
                     </div>
-                    <?php
-                }
-                $ti = $v['bot_create_time'];
-                ?>
+<!--                    --><?php
+//                }
+//                $ti = $v['bot_create_time'];
+//                ?>
 
                 <div class="infoBox flex">
                     <div class="photo">
