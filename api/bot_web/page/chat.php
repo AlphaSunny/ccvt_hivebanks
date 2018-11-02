@@ -122,7 +122,7 @@
         right: 0;
     }
 
-    .img_box:hover {
+    .img_box.clickActive {
         transform: rotate(45deg);
         transition: all .2s;
     }
@@ -263,6 +263,11 @@
         var url = getRootPath();
         $(".img_box").click(function () {
             $(".more_box").slideToggle();
+            if($(this).hasClass('clickActive')){
+                $(this).removeClass("clickActive");
+            }else {
+                $(this).addClass("clickActive");
+            }
         });
 
         $("#register").click(function () {
