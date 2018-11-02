@@ -121,6 +121,7 @@ section#statistical {
     height: 3rem;
     background: transparent;
     z-index: 10;
+    top: 8%;
 }
 
 .img_box {
