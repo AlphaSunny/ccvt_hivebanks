@@ -179,6 +179,7 @@
         $sql = "select bot_nickname,bot_content,bot_send_time,head_img,type from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY bot_create_time  ASC ";
         $db->query($sql);
         $rows = $db->fetchAll();
+        print_r($rows);
         $ti = -1;
         foreach ($rows as $k => $v) {
             ?>
@@ -191,7 +192,6 @@
                     </div>
                     <?php
                 }
-                echo $v['bot_create_time'];
                 $ti = $v['bot_create_time'];
                 ?>
 
