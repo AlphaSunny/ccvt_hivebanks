@@ -105,10 +105,63 @@
     .photo img {
         width: 100%;
     }
+    .box {
+        position: fixed;
+        right: 2%;
+        width: 3rem;
+        height: 3rem;
+        background: transparent;
+        z-index: 10;
+    }
+
+    .img_box {
+        width: 3rem;
+        height: 3rem;
+        position: absolute;
+        z-index: 1;
+        right: 0;
+    }
+
+    .img_box:hover {
+        transform: rotate(45deg);
+        transition: all .2s;
+    }
+
+    .more_box {
+        position: absolute;
+        right: 0;
+        padding: 0;
+        margin: 0;
+        top: 6%;
+        background: gainsboro;
+        height: 5rem;
+        width: 3rem;
+        text-align: center;
+        padding-top: 3rem;
+        border-radius: 2rem;
+        display: none;
+    }
+
+    .more_box li {
+        line-height: 2;
+    }
+
+    .more_box li a {
+        color: #fe3e28;
+    }
 </style>
 <body>
 <div id="chat">
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>
+    <div class="box">
+        <div class="img_box">
+            <img src="image/more.svg" alt="">
+        </div>
+        <ul class="more_box">
+            <li><a href="javascript:;" id="register">注册</a></li>
+            <li><a href="javascript:;" id="login">登录</a></li>
+        </ul>
+    </div>
     <ul class="chatList">
         <?php
         require_once '../../inc/common.php';
@@ -191,5 +244,34 @@
 
     </ul>
 </div>
+<script src="js/jquery.min.js"></script>
+<script>
+    $(function () {
+        function getRootPath() {
+            //Get current URL
+            var curWwwPath = window.document.location.href;
+            //Get the directory after the host address
+            var pathName = window.document.location.pathname;
+            var pos = curWwwPath.indexOf(pathName);
+            //Get the host address
+            var localhostPath = curWwwPath.substring(0, pos);
+            //Get the project name with "/"
+            var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+            return localhostPath;
+        }
+
+        var url = getRootPath();
+        $(".img_box").click(function () {
+            $(".more_box").slideToggle();
+        });
+
+        $("#register").click(function () {
+            window.location.href = url + "/h5/user/register.html";
+        });
+        $("#login").click(function () {
+            window.location.href = url + "/h5/user/login.html";
+        })
+    });
+</script>
 </body>
 </html>
