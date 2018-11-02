@@ -168,7 +168,8 @@
                                             <?php
                                             if ($v['type'] == "Picture") {
                                                 ?>
-                                                <img src="<?php echo $v['bot_content'] ?>" style="width: 100%;height: 150px">
+                                                <img src="<?php echo $v['bot_content'] ?>"
+                                                     style="width: 100%;height: 150px">
                                                 <?php
                                             } elseif ($v['type'] == "Video" || $v['type'] == "Recording") {
                                                 ?>
@@ -222,10 +223,10 @@
             });
 
             $("#register").click(function () {
-                window.location.href = "ccvt.io/h5/user/register.html";
+                window.location.href = url + "/h5/user/register.html";
             });
             $("#login").click(function () {
-                window.location.href = "ccvt.io/h5/user/login.html";
+                window.location.href = url + "/h5/user/login.html";
             })
         });
     </script>
