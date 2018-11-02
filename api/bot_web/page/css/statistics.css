@@ -125,8 +125,8 @@ section#statistical {
 }
 
 .img_box {
-    width: 3rem;
-    height: 3rem;
+    width: 5rem;
+    height: 5rem;
     position: absolute;
     z-index: 1;
     right: 0;
@@ -144,8 +144,8 @@ section#statistical {
     margin: 0;
     top: 6%;
     background: gainsboro;
-    height: 9rem;
-    width: 3rem;
+    height: 12rem;
+    width: 5rem;
     text-align: center;
     padding-top: 3rem;
     border-radius: 2rem;
