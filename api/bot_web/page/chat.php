@@ -155,7 +155,7 @@
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>
     <div class="box">
         <div class="img_box">
-            <img src="image/more.svg" alt="">
+            <img src="img/more.svg" alt="">
         </div>
         <ul class="more_box">
             <li><a href="javascript:;" id="register">注册</a></li>
