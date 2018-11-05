@@ -31,7 +31,7 @@
                 <li><a href="javascript:;" class="usLogin">用户通道</a></li>
                 <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
                 <?php
-
+                    echo $_SERVER['SERVER_NAME'];
                 ?>
                 <li><a href="javascript:;">查看奖励统计</a></li>
             </ul>
