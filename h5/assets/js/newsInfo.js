@@ -17,7 +17,7 @@ $(function () {
     var ca_token = GetIndexCookie('ca_token');
 
     if (user_token || login_us) {
-        $('.usLogin, .usRegister').remove();
+        $('.usLogin').remove();
         $('.accountNone').removeClass('accountNone');
     }
     $('.baLogin').click(function () {
@@ -43,17 +43,17 @@ $(function () {
         }
     });
 
-    // $('.toAccountBtn').click(function () {
-    //     if (login_us || user_token) {
-    //         window.location.href = 'user/account.html';
-    //     }
-    //     if (login_ba && ba_token) {
-    //         window.location.href = 'ba/BaAccount.html';
-    //     }
-    //     if (login_ca && ca_token) {
-    //         window.location.href = 'ca/CaAccount.html';
-    //     }
-    // });
+    $('.toAccountBtn').click(function () {
+        if (login_us || user_token) {
+            window.location.href = 'user/account.html';
+        }
+        // if (login_ba && ba_token) {
+        //     window.location.href = 'ba/BaAccount.html';
+        // }
+        // if (login_ca && ca_token) {
+        //     window.location.href = 'ca/CaAccount.html';
+        // }
+    });
 
     //click toggle
     $(document).on("click", ".leftNewsTitle", function () {

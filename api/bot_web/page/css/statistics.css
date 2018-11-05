@@ -160,3 +160,7 @@ section#statistical {
 .more_box li a {
     color: #fe3e28;
 }
+
+.accountNone{
+    display: none;
+}
