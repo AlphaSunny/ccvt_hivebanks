@@ -135,6 +135,7 @@
     GetQr();
 
     $(".submit").click(function () {
+        console.log("click");
         $.get({
             url: search_pory + "/search",
             success:function () {
