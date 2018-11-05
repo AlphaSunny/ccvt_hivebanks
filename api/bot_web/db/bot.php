@@ -227,6 +227,6 @@ function iss_records_list($da)
     $sql = "select unit from la_base limit 1";
     $db->query($sql);
     $unit = $db->getField($sql,'unit');
-    $data['all_amount'] = sum()
+    $data['all_amount'] = array_sum(array_map(function($val){return $val['amount'];}, $rows))/$unit;
     return $data;
 }
