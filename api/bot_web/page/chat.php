@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>聊天记录</title>
 </head>
 
@@ -129,6 +130,7 @@
     </ul>
 </div>
 <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/chat.js"></script>
 
 </body>
