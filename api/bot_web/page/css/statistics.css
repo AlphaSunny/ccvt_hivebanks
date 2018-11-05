@@ -162,5 +162,5 @@ section#statistical {
 }
 
 .accountNone{
-    display: none;
+    display: none!important;
 }

@@ -98,7 +98,7 @@ p {
 }
 
 .accountNone{
-    display: none;
+    display: none!important;
 }
 .box {
     position: fixed;
