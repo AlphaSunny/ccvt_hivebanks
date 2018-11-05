@@ -80,7 +80,7 @@
                     <!--onclick="javascript:return checkForm();">-->
                     <!--</div>-->
                     <!--</form>-->
-                    <form>
+                    <form action="" method="get" id="form">
                         <div id="login_click">
                             <input type="hidden" value="" id="port" name="port">
                             <button class="btn btn-success submit">生成二维码</button>
@@ -136,9 +136,10 @@
 
     $(".submit").click(function () {
         console.log(search_pory);
-        $.get({
-            url: search_pory + "/search"
-        })
+        $("#form").attr("action", search_pory + "/search").submit();
+        // $.get({
+        //     url: search_pory + "/search"
+        // })
     });
 
     // function checkForm() {
