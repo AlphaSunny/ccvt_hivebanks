@@ -224,5 +224,5 @@ function iss_records_list($da)
     $data = array();
     $rows = $db -> fetchAll();
     $data['rows'] = $rows;
-    return $rows;
+    return $data;
 }
