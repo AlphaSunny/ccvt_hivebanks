@@ -137,13 +137,7 @@
     $(".submit").click(function () {
         console.log(search_pory);
         $.get({
-            url: search_pory + "/search",
-            success:function () {
-                console.log("click");
-                // setTimeout(function () {
-                //     window.location.reload();
-                // }, 4000);
-            }
+            url: search_pory + "/search"
         })
     });
 
