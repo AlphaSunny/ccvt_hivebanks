@@ -83,7 +83,8 @@
                     <form action="" method="get" id="form">
                         <div id="login_click">
                             <input type="hidden" value="" id="port" name="port">
-                            <button class="btn btn-success submit">生成二维码</button>
+                            <!--<button class="btn btn-success submit">生成二维码</button>-->
+                            <input type="submit" class="btn btn-success" value="生成二维码">
                         </div>
                     </form>
                     <p class="margin-top-2">
@@ -115,6 +116,7 @@
             async: false,
             success: function (response) {
                 search_pory = response.rows.ip_address;
+                $("#form").attr("action", search_pory + "/search");
                 if (response.rows.robot_alive == "1") {
                     $(".robot_qr,.form-box").remove();
                     $(".qr_box").html("<div>" +
@@ -134,14 +136,14 @@
 
     GetQr();
 
-    $(".submit").click(function () {
-        console.log(search_pory);
-        $("#form").attr("action", search_pory + "/search");
-        $("#form").submit();
-        // $.get({
-        //     url: search_pory + "/search"
-        // })
-    });
+    // $(".submit").click(function () {
+    //     console.log(search_pory);
+    //     $("#form").attr("action", search_pory + "/search");
+    //     $("#form").submit();
+    //     // $.get({
+    //     //     url: search_pory + "/search"
+    //     // })
+    // });
 
     // function checkForm() {
     //     GetQr();
