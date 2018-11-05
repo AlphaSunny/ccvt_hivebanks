@@ -215,7 +215,7 @@ function iss_records_list($da)
     $db->query($sql);
     $unit = $db->getField($sql,'unit');
 
-    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}',send_time FROM bot_Iss_records WHERE ba_id = '{$da['ba_id']}'";
+    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE ba_id = '{$da['ba_id']}'";
     if ($da['start_time'] && !$da['end_time']){
         $sql .= " and send_time>'{$da['start_time']}'";
     }elseif (!$da['start_time'] && $da['end_time']){
