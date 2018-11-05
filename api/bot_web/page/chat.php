@@ -28,7 +28,7 @@
                 <li><a href="#">BA通道</a></li>
                 <li><a href="#">CA通道</a></li>
                 <li><a href="#">用户通道</a></li>
-                <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
+                <li class=""><a href="javascript:;" class="i18n accountNone toAccountBtn alreadyLogin" name="account">Account</a></li>
                 <li><a href="#">查看奖励统计</a></li>
             </ul>
         </div>
