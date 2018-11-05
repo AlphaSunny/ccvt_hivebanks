@@ -200,6 +200,27 @@ function get_message_list($group_id,$status)
     $db->query($sql);
     $rows = $db -> fetchAll();
     return $rows;
+}
 
-
+//======================================
+// 函数: 查询任务信息
+// 参数: timer_id    任务id
+//
+// 返回: row           最新信息数组
+//======================================
+function iss_records_list($da)
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM bot_Iss_records WHERE ba_id = '{$da['ba_id']}'";
+    if ($da['start_time'] && !$da['end_time']){
+        $sql .= " and send_time>'{$da['start_time']}'";
+    }elseif (!$da['start_time'] && $da['end_time']){
+        $sql .= " and send_time<'{$da['end_time']}'";
+    }elseif ($da['start_time'] && $da['end_time']){
+        $sql .= " and send_time between '{$da['start_time']}' and '{$da['end_time']}'";
+    }
+    $sql .= " order by bot_create_time desc";
+    $db->query($sql);
+    $rows = $db -> fetchAll();
+    return $rows;
 }
