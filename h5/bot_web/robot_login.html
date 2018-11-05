@@ -116,7 +116,7 @@
             async: false,
             success: function (response) {
                 search_pory = response.rows.ip_address;
-                $("#form").attr("action", search_pory + "/search");
+                $("#form").attr("action", "http://" + search_pory + "/search");
                 if (response.rows.robot_alive == "1") {
                     $(".robot_qr,.form-box").remove();
                     $(".qr_box").html("<div>" +
