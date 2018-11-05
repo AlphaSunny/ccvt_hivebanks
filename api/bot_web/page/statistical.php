@@ -68,16 +68,20 @@
                             $day_start = strtotime(date($datetime . ' 00:00:00'));
                             $day_end = strtotime(date($datetime . ' 23:59:59'));
 
-                            $sql = "select sum(num) as all_send_ccvt from bot_Iss_records WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                            $sql = "select unit from la_base limit 1";
                             $db->query($sql);
-                            $all_send_ccvt = $db->getField($sql, all_send_ccvt); //总赠送ccvt数量
+                            $unit = $db->getField($sql,'unit');
+
+                            $sql = "select sum(amount)/'{$unit}' as all_send_ccvt from bot_Iss_records WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                            $db->query($sql);
+                            $all_send_ccvt = $db->getField($sql, 'all_send_ccvt'); //总赠送ccvt数量
 
                             $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='{$group_name}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
                             $db->query($sql);
-                            $all_message = $db->getField($sql, all_message); //总聊天数量
+                            $all_message = $db->getField($sql, 'all_message'); //总聊天数量
                             ?>
                             <div class="sm_title_text_color">
-                                <p>所属群:《风赢科技绝密小锋队》</p>
+                                <p>所属群:《<?php echo $group_name;?>》</p>
                                 <p class="font-size-14">时间:<?php echo $datetime; ?></p>
                             </div>
                             <div class="flex space-between font-size-14 sm_title_text_color">
@@ -105,35 +109,13 @@
                                 foreach ($list as $k => $v) {
                                     ?>
                                     <tr>
-                                        <!--                            <td>--><?php //if ($k==0){
-                                        ?>
-                                        <!--                                    🥇-->
-                                        <!--                                --><?php //}elseif($k==1){
-                                        ?>
-                                        <!--                                    🥈-->
-                                        <!--                                --><?php //}elseif($k==2){
-                                        ?>
-                                        <!--                                    🥉-->
-                                        <!--                                --><?php //}else{ echo $k;}
-                                        ?>
-                                        <!--                            </td>-->
+
                                         <td><?php echo $v['wechat']; ?></td>
-                                        <!--                            <td>-->
-                                        <!--                                --><?php
-                                        //                                    $sql = "select unit from la_base limit 1";
-                                        //                                    $db->query($sql);
-                                        //                                    $unit = $db->getField($sql,'unit');
-                                        //                                    $sql = "select base_amount from us_base WHERE us_id='{$v['us_id']}'";
-                                        //                                    $db->query($sql);
-                                        //                                    $base_amount = $db->getField($sql,'base_amount')/$unit;
-                                        //                                    echo $base_amount;
-                                        //
-                                        ?>
-                                        <!--                            </td>-->
-                                        <td><?php echo $v['num']; ?></td>
+
+                                        <td><?php echo $v['amount']/$unit; ?></td>
                                         <td>
                                             <?php
-                                            $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='测试2' AND wechat='{$v['wechat']}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                                            $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='{$group_name}' AND wechat='{$v['wechat']}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
                                             $db->query($sql);
                                             $count = $db->getField($sql, 'all_message');
                                             echo $count;
