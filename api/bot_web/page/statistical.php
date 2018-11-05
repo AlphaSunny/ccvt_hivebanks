@@ -33,6 +33,7 @@
                 <li><a href="#">BA通道</a></li>
                 <li><a href="#">CA通道</a></li>
                 <li><a href="#">用户通道</a></li>
+                <li><a href="#">查看聊天记录</a></li>
             </ul>
         </div>
     </div>
