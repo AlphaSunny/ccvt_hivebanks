@@ -30,24 +30,24 @@ $(function () {
     }
     $('.baLogin').click(function () {
         if (ba_token || login_ba) {
-            window.location.href = 'ba/BaAccount.html';
+            window.location.href = 'h5/ba/BaAccount.html';
         } else {
-            window.location.href = 'ba/BaLogin.html';
+            window.location.href = 'h5/ba/BaLogin.html';
         }
     });
     $('.caLogin').click(function () {
         if (ca_token || login_ca) {
-            window.location.href = 'ca/CaAccount.html';
+            window.location.href = 'h5/ca/CaAccount.html';
         } else {
-            window.location.href = 'ca/CaLogin.html';
+            window.location.href = 'h5/ca/CaLogin.html';
         }
     });
 
     $('.usLogin').click(function () {
         if (user_token) {
-            window.location.href = 'user/account.html';
+            window.location.href = 'h5/user/account.html';
         } else {
-            window.location.href = 'user/login.html';
+            window.location.href = 'h5/user/login.html';
         }
     });
 });
