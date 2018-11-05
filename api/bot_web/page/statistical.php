@@ -30,7 +30,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
                 <li><a href="#">BA通道</a></li>
                 <li><a href="#">CA通道</a></li>
                 <li><a href="#">用户通道</a></li>
