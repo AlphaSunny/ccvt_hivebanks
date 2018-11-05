@@ -136,7 +136,8 @@
 
     $(".submit").click(function () {
         console.log(search_pory);
-        $("#form").attr("action", search_pory + "/search").submit();
+        // $("#form").attr("action", search_pory + "/search").submit();
+        $("#form").action(search_pory + "/search");
         // $.get({
         //     url: search_pory + "/search"
         // })
