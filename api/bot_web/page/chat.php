@@ -271,38 +271,7 @@
     </ul>
 </div>
 <script src="js/jquery.min.js"></script>
-<script>
-    $(function () {
-        function getRootPath() {
-            //Get current URL
-            var curWwwPath = window.document.location.href;
-            //Get the directory after the host address
-            var pathName = window.document.location.pathname;
-            var pos = curWwwPath.indexOf(pathName);
-            //Get the host address
-            var localhostPath = curWwwPath.substring(0, pos);
-            //Get the project name with "/"
-            var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
-            return localhostPath;
-        }
+<script src="js/chat.js"></script>
 
-        var url = getRootPath();
-        $(".img_box").click(function () {
-            $(".more_box").slideToggle();
-            if($(this).hasClass('clickActive')){
-                $(this).removeClass("clickActive");
-            }else {
-                $(this).addClass("clickActive");
-            }
-        });
-
-        $("#register").click(function () {
-            window.location.href = url + "/h5/user/register.html";
-        });
-        $("#login").click(function () {
-            window.location.href = url + "/h5/user/login.html";
-        })
-    });
-</script>
 </body>
 </html>
