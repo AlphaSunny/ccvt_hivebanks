@@ -221,6 +221,8 @@ function iss_records_list($da)
     }
     $sql .= " order by bot_create_time desc";
     $db->query($sql);
+    $data = array();
     $rows = $db -> fetchAll();
+    $data['rows'] = $rows;
     return $rows;
 }
