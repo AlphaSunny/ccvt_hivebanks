@@ -1,4 +1,18 @@
 $(function () {
+    function getRootPath() {
+        //Get current URL
+        var curWwwPath = window.document.location.href;
+        //Get the directory after the host address
+        var pathName = window.document.location.pathname;
+        var pos = curWwwPath.indexOf(pathName);
+        //Get the host address
+        var localhostPath = curWwwPath.substring(0, pos);
+        //Get the project name with "/"
+        var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+        return localhostPath;
+    }
+    var url = getRootPath();
+
     // Get URL parameters
     function GetQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -30,24 +44,24 @@ $(function () {
     }
     $('.baLogin').click(function () {
         if (ba_token || login_ba) {
-            window.location.href = 'h5/ba/BaAccount.html';
+            window.location.href = url+'/h5/ba/BaAccount.html';
         } else {
-            window.location.href = 'h5/ba/BaLogin.html';
+            window.location.href = url+'/h5/ba/BaLogin.html';
         }
     });
     $('.caLogin').click(function () {
         if (ca_token || login_ca) {
-            window.location.href = 'h5/ca/CaAccount.html';
+            window.location.href = url+'/h5/ca/CaAccount.html';
         } else {
-            window.location.href = 'h5/ca/CaLogin.html';
+            window.location.href = url+'/h5/ca/CaLogin.html';
         }
     });
 
     $('.usLogin').click(function () {
         if (user_token) {
-            window.location.href = 'h5/user/account.html';
+            window.location.href = url+'/h5/user/account.html';
         } else {
-            window.location.href = 'h5/user/login.html';
+            window.location.href = url+'/h5/user/login.html';
         }
     });
 });

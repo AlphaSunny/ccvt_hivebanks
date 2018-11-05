@@ -25,11 +25,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">BA通道</a></li>
-                <li><a href="#">CA通道</a></li>
-                <li><a href="#">用户通道</a></li>
+                <li><a href="javascript:;" class="baLogin">BA通道</a></li>
+                <li><a href="javascript:;" class="caLogin">CA通道</a></li>
+                <li><a href="javascript:;" class="usLogin">用户通道</a></li>
                 <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
-                <li><a href="#">查看奖励统计</a></li>
+                <li><a href="javascript:;">查看统计奖励</a></li>
             </ul>
         </div>
     </div>

@@ -64,21 +64,4 @@ $(function () {
             window.location.href = url+'/h5/user/login.html';
         }
     });
-
-    // var url = getRootPath();
-    // $(".img_box").click(function () {
-    //     $(".more_box").slideToggle();
-    //     if($(this).hasClass('clickActive')){
-    //         $(this).removeClass("clickActive");
-    //     }else {
-    //         $(this).addClass("clickActive");
-    //     }
-    // });
-
-    // $("#register").click(function () {
-    //     window.location.href = url + "/h5/user/register.html";
-    // });
-    // $("#login").click(function () {
-    //     window.location.href = url + "/h5/user/login.html";
-    // })
 });
