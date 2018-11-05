@@ -12,6 +12,14 @@ $(function () {
     //     return localhostPath;
     // }
 
+    // Get URL parameters
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
     var login_us = GetQueryString('user');
     var login_ba = GetQueryString('ba');
     var login_ca = GetQueryString('ca');
