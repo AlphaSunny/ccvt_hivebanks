@@ -133,15 +133,20 @@
                                 <div><span class='i18n' name='invitationCode'>Invitation code</span>:</div>
                                 <div class='level flex center'>
                                     <span class='us_nm'></span>
-                                    <button class="btn btn-success btn-sm i18n inviteBtn" name="invite" data-toggle="modal" data-target="#invite"></button>
+                                    <button class="btn btn-success btn-sm i18n inviteBtn" name="invite"
+                                            data-toggle="modal" data-target="#invite"></button>
                                 </div>
                             </li>
                             <li class='flex center space-between font-weight-400'>
                                 <div><span class='i18n' name='weChatGroupNickname'>weChatGroupNickname</span>:</div>
                                 <div class='flex center'>
                                     <span class='wechat i18n font-size-14' name="unbound"></span>
-                                    <button class="btn btn-success btn-sm weChatBindBtn i18n none" id="weChatBindBtn" data-toggle="modal" data-target="#weChatGroupName" name="bind">bind</button>
-                                    <button class="btn btn-success btn-sm weChatBindBtn i18n none" id="weChatModifyBtn" data-toggle="modal" data-target="#weChatGroupName" name="modify">modify</button>
+                                    <button class="btn btn-success btn-sm weChatBindBtn i18n none" id="weChatBindBtn"
+                                            data-toggle="modal" data-target="#weChatGroupName" name="bind">bind
+                                    </button>
+                                    <button class="btn btn-success btn-sm weChatBindBtn i18n none" id="weChatModifyBtn"
+                                            data-toggle="modal" data-target="#weChatGroupName" name="modify">modify
+                                    </button>
                                 </div>
                             </li>
                             <li class='flex center space-between font-weight-400'>
@@ -300,7 +305,10 @@
             </div>
         </div>
         <div class="row footer-copyright">
-            <p class="i18n" name="allRightsReserved">©2018-2019 ccvt.io All Rights Reserved</p>
+            <span>
+                <span class="i18n" name="version">©2018-2019 Powered by</span>
+                <a href="http://www.hivebanks.com">hivebanks</a>
+            </span>
         </div>
     </div>
 </section>
@@ -380,13 +388,17 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title i18n" name="inviteNewUsers" id="myModalLabel"></h4>
             </div>
             <div class="modal-body">
                 <div class="flex">
                     <input type="text" id="copy_invite_address" readonly class="form-control inviteInput">
-                    <button data-clipboard-target="#copy_invite_address" class="btn btn-success copy_invite_address margin-left-2 i18n" name="copyAddress">copy address</button>
+                    <button data-clipboard-target="#copy_invite_address"
+                            class="btn btn-success copy_invite_address margin-left-2 i18n" name="copyAddress">copy
+                        address
+                    </button>
                 </div>
                 <div id="qrcode" class="margin-top-2 none"></div>
                 <div class="inviteImgBox margin-top-2">
@@ -395,7 +407,8 @@
                 <div>
                     <img src="" id="base64Img" alt="">
                     <p class="font-size-14 i18n" name="copyInviteTo"></p>
-                    <p class="font-size-14"><span class="i18n" name="registerSuccessAfter"></span><span class="font-weight-400">50 CCVT</span></p>
+                    <p class="font-size-14"><span class="i18n" name="registerSuccessAfter"></span><span
+                            class="font-weight-400">50 CCVT</span></p>
                 </div>
             </div>
         </div>
