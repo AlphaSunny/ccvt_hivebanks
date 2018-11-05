@@ -38,15 +38,15 @@
     </div>
 </nav>
 <!--nav-->
-<div class="box">
-    <div class="img_box">
-        <img src="img/more.svg" alt="">
-    </div>
-    <ul class="more_box">
-        <li><a href="javascript:;" id="register">注册</a></li>
-        <li><a href="javascript:;" id="login">登录</a></li>
-    </ul>
-</div>
+<!--<div class="box">-->
+<!--    <div class="img_box">-->
+<!--        <img src="img/more.svg" alt="">-->
+<!--    </div>-->
+<!--    <ul class="more_box">-->
+<!--        <li><a href="javascript:;" id="register">注册</a></li>-->
+<!--        <li><a href="javascript:;" id="login">登录</a></li>-->
+<!--    </ul>-->
+<!--</div>-->
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <section id="statistical" class="swiper-slide">
