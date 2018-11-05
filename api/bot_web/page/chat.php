@@ -31,9 +31,27 @@
                 <li><a href="javascript:;" class="usLogin">用户通道</a></li>
                 <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
                 <?php
-                    echo $_SERVER['SERVER_NAME'];
+                    require_once '../../inc/common.php';
+                    ini_set("display_errors", "off");
+                    $args = array('datetime');
+                    chk_empty_args('GET', $args);
+                    $db = new DB_COM();
+                    $datetime = base64_decode(get_arg_str('GET', 'datetime'));
+                    $group_name = base64_decode(get_arg_str('GET', 'group_name'));
+                    $day_start = strtotime(date($datetime . ' 00:00:00'));
+                    $day_end = strtotime(date($datetime . ' 23:59:59'));
+
+                    $status = base64_decode(get_arg_str('GET', 'status'));
+
+                    $json_string = file_get_contents('../../h5/assets/json/config_url.json');
+                    $data = json_decode($json_string, true);
+                    $url = $data['api_url']."/api/bot_web/page/statistical.php?datetime=".get_arg_str('GET', 'datetime')."&group_name=".get_arg_str('GET', 'group_name')."&status=".base64_encode(2);
                 ?>
-                <li><a href="javascript:;">查看奖励统计</a></li>
+                <?php
+                   if ($status!=1){
+                ?>
+                <li><a href="<?php echo $url;?>">查看奖励统计</a></li>
+                <?php }?>
             </ul>
         </div>
     </div>
@@ -52,15 +70,7 @@
 <!--    </div>-->
     <ul class="chatList">
         <?php
-        require_once '../../inc/common.php';
-        ini_set("display_errors", "off");
-        $args = array('datetime');
-        chk_empty_args('GET', $args);
-        $db = new DB_COM();
-        $datetime = base64_decode(get_arg_str('GET', 'datetime'));
-        $group_name = base64_decode(get_arg_str('GET', 'group_name'));
-        $day_start = strtotime(date($datetime . ' 00:00:00'));
-        $day_end = strtotime(date($datetime . ' 23:59:59'));
+
 
         $tblPrefix = "@风赢小助手";
         $tblPrefix2 = "@小助手";

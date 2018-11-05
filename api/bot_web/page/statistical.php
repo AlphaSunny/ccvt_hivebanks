@@ -34,7 +34,25 @@
                 <li><a href="javascript:;" class="caLogin">CA通道</a></li>
                 <li><a href="javascript:;" class="usLogin">用户通道</a></li>
                 <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
-                <li><a href="javascript:;">查看聊天记录</a></li>
+
+                <?php
+                    require_once '../../inc/common.php';
+                    ini_set("display_errors", "off");
+                    $args = array('datetime');
+                    chk_empty_args('GET', $args);
+                    $db = new DB_COM();
+                    $datetime = base64_decode(get_arg_str('GET', 'datetime'));
+                    $group_name = base64_decode(get_arg_str('GET', 'group_name'));
+                    $day_start = strtotime(date($datetime . ' 00:00:00'));
+                    $day_end = strtotime(date($datetime . ' 23:59:59'));
+
+                    $json_string = file_get_contents('../../h5/assets/json/config_url.json');
+                    $data = json_decode($json_string, true);
+
+                    $url = $data['api_url']."/api/bot_web/page/chat.php?datetime=".get_arg_str('GET', 'datetime')."&group_name=".get_arg_str('GET', 'group_name')."&status=".base64_encode(2);
+
+                ?>
+                <li><a href="<?php echo $url;?>">查看聊天记录</a></li>
             </ul>
         </div>
     </div>
@@ -58,15 +76,6 @@
                         <h3>CCVT奖励统计</h3>
                         <div class="margin-bottom-2">
                             <?php
-                            require_once '../../inc/common.php';
-                            ini_set("display_errors", "off");
-                            $args = array('datetime');
-                            chk_empty_args('GET', $args);
-                            $db = new DB_COM();
-                            $datetime = base64_decode(get_arg_str('GET', 'datetime'));
-                            $group_name = base64_decode(get_arg_str('GET', 'group_name'));
-                            $day_start = strtotime(date($datetime . ' 00:00:00'));
-                            $day_end = strtotime(date($datetime . ' 23:59:59'));
 
                             $sql = "select unit from la_base limit 1";
                             $db->query($sql);
