@@ -2,154 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="css/chat.css">
     <title>聊天记录</title>
 </head>
-<style>
-    body {
-        background: rgb(243, 243, 243);
-        margin: 0;
-        padding: 0;
-        font-size: 16px;
-    }
 
-    p {
-        margin: 0;
-        padding: 0;
-    }
-
-    #chat {
-        width: 100%;
-    }
-
-    #chat .title {
-        margin: 0;
-        background: #333333;
-        color: #ffffff;
-        padding: 3% 0;
-    }
-
-    #chat li {
-        list-style: none;
-    }
-
-    #chat .chatList {
-        padding: 0 10px;
-    }
-
-    #chat .chatContent {
-        background: #ffffff;
-        padding: 3% 3% 3% 0.3rem;
-        border-radius: 5px;
-        width: 100%;
-        text-align: justify;
-    }
-
-    #chat .time {
-        font-size: 12px;
-        color: #ffffff;
-        border-radius: 5px;
-        padding: 1% 2%;
-        background: #cac8c8;
-    }
-
-    .timeBox {
-        padding: 5% 0;
-    }
-
-    #chat .chatItem {
-        position: relative;
-        margin-bottom: 5%;
-    }
-
-    #chat .photo {
-        width: 2.5rem;
-        height: 2.5rem;
-        background: #204d74;
-        display: inline-block;
-        position: relative;
-    }
-
-    .photo:after {
-        content: "";
-        border: 5px solid #ffffff;
-        position: absolute;
-        right: -35%;
-        top: 66%;
-        border-top-color: transparent;
-        border-left-color: transparent;
-        transform: rotate(135deg);
-        border-radius: 2px;
-    }
-
-    #chat .chatInfo {
-        max-width: 75%;
-        padding-left: 2%;
-    }
-
-    #chat .name {
-        color: #9e9e9e;
-        font-size: 12px;
-        margin-bottom: 1%;
-    }
-
-    .infoBox {
-        display: flex;
-    }
-
-    .text-center {
-        text-align: center;
-    }
-
-    .photo img {
-        width: 100%;
-    }
-    .box {
-        position: fixed;
-        right: 2%;
-        width: 3rem;
-        height: 3rem;
-        background: transparent;
-        z-index: 10;
-    }
-
-    .img_box {
-        width: 3rem;
-        height: 3rem;
-        position: absolute;
-        z-index: 1;
-        right: 0;
-    }
-
-    .img_box.clickActive {
-        transform: rotate(45deg);
-        transition: all .2s;
-    }
-
-    .more_box {
-        position: absolute;
-        right: 0;
-        padding: 0;
-        margin: 0;
-        top: 6%;
-        background: gainsboro;
-        height: 5rem;
-        width: 3rem;
-        text-align: center;
-        padding-top: 3rem;
-        border-radius: 2rem;
-        display: none;
-    }
-
-    .more_box li {
-        line-height: 2;
-    }
-
-    .more_box li a {
-        color: #fe3e28;
-    }
-</style>
 <body>
 <!--nav-->
 <nav class="navbar navbar-default">
@@ -171,6 +28,7 @@
                 <li><a href="#">BA通道</a></li>
                 <li><a href="#">CA通道</a></li>
                 <li><a href="#">用户通道</a></li>
+                <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
                 <li><a href="#">查看奖励统计</a></li>
             </ul>
         </div>
