@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>任务列表</title>
+    <title>奖励统计列表</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,33 +59,31 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i>机器人登录</h1>
-            <p>机器人登录</p>
+            <h1><i class="fa fa-th-list"></i>奖励统计列表</h1>
+            <p>奖励统计列表</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
             <li class="breadcrumb-item">首页</li>
-            <li class="breadcrumb-item active"><a href="#">机器人登录</a></li>
+            <li class="breadcrumb-item active"><a href="#">奖励统计列表</a></li>
         </ul>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="qr_box">
-                <div class="robot_qr text-center">
-                    <img src="" id="qr_img" alt="">
-                </div>
-                <div class="form_box margin-top-2 text-center">
-                    <form action="" method="get" id="form">
-                        <div id="login_click">
-                            <input type="hidden" value="" id="port" name="port">
-                            <button class="btn btn-success submit">生成二维码</button>
-                        </div>
-                    </form>
-                    <p class="margin-top-2">
-                        点击生成二维码按钮，生成新的二维码进行扫描登录；<br>
-                        如果登录失败，请刷新页面重试；
-                    </p>
-                </div>
+            <div class="tile-body table-responsive">
+                <table class="table table-hover table-bordered" id="sendTable">
+                    <thead>
+                    <tr class="text-center">
+                        <th>群昵称</th>
+                        <th>获得(CCVT)</th>
+                        <th>发言数</th>
+                        <th>奖励时间</th>
+                    </tr>
+                    </thead>
+                    <tbody id="sendBody">
+
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -98,45 +96,8 @@
 <script src="../assets/js/pace.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script src="js/main.js"></script>
-<script type="text/javascript" src="js/robot_login.js"></script>
+<script type="text/javascript" src="js/send_amount.js"></script>
 <script type="text/javascript">
-    GetCookie("robot_token");
-    var url = getRootPath();
-    var search_pory = "";
-
-    function GetQr() {
-        $.get({
-            url: url + "/api/bot/get_qrcode.php",
-            async: false,
-            success: function (response) {
-                search_pory = response.rows.ip_address;
-                $("#form").attr("action", "http://" + search_pory + "/search");
-                if (response.rows.robot_alive == "1") {
-                    $(".robot_qr,.form-box").remove();
-                    $(".qr_box").html("<div>" +
-                        "<h1>微信机器人已登录，请勿重新登录。</h1>" +
-                        "<div class='flex center'>" +
-                        "<p>最近一次登录时间:<span class='login_time font-bold'>" + response.rows.login_time + "</span></p>" +
-                        "<p class='margin-left-2'>已登录运行时间:<span class='elapsed_time font-bold'>" + response.rows.elapsed_time + "</span></p>" +
-                        "<p class='margin-left-2'>已处理<span class='font-bold'>" + response.rows.count + "</span>条数据</p>" +
-                        "</div>" +
-                        "</div>")
-                } else {
-                    $("#qr_img").attr("src", response.rows.qr_path);
-                }
-            }
-        })
-    }
-
-    GetQr();
-
-    $(".submit").click(function () {
-        $("#form").submit();
-        setTimeout(function () {
-            window.location.reload();
-        }, 4000);
-    });
-
     <!-- Google analytics script-->
     if (document.location.hostname == 'pratikborsadiya.in') {
         (function (i, s, o, g, r, a, m) {
