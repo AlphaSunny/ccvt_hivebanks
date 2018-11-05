@@ -49,7 +49,9 @@
                     $json_string = file_get_contents('../../h5/assets/json/config_url.json');
                     $data = json_decode($json_string, true);
 
-                    $url = $data['api_url']."/api/bot_web/page/chat.php?datetime=".base64_encode($datetime)."&group_name=".get_arg_str('GET', 'group_name')."&status=".base64_encode(2);
+                    $group_name2 =  urlencode(base64_encode($group_name));
+
+                    $url = $data['api_url']."/api/bot_web/page/chat.php?datetime=".base64_encode($datetime)."&group_name=".$group_name2."&status=".base64_encode(2);
 
                 ?>
                 <li><a href="<?php echo $url;?>">查看聊天记录</a></li>
