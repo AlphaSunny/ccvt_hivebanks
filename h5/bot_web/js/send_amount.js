@@ -11,6 +11,9 @@ $(function () {
             {"data": "amount"},
             {"data": "num"},
             {"data": "send_time"}
-        ]
+        ],
+        success:function (res) {
+            console.log(res);
+        }
     });
 });
