@@ -135,13 +135,14 @@
     GetQr();
 
     $(".submit").click(function () {
-        console.log("click");
+
         $.get({
             url: search_pory + "/search",
             success:function () {
-                setTimeout(function () {
-                    window.location.reload();
-                }, 4000);
+                console.log("click");
+                // setTimeout(function () {
+                //     window.location.reload();
+                // }, 4000);
             }
         })
     });
