@@ -30,6 +30,7 @@
                 <li><a href="javascript:;" class="caLogin">CA通道</a></li>
                 <li><a href="javascript:;" class="usLogin">用户通道</a></li>
                 <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
+                <>
                 <li><a href="javascript:;">查看统计奖励</a></li>
             </ul>
         </div>
