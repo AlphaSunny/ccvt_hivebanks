@@ -211,7 +211,11 @@ function get_message_list($group_id,$status)
 function iss_records_list($da)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM bot_Iss_records WHERE ba_id = '{$da['ba_id']}'";
+    $sql = "select unit from la_base limit 1";
+    $db->query($sql);
+    $unit = $db->getField($sql,'unit');
+
+    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}',send_time FROM bot_Iss_records WHERE ba_id = '{$da['ba_id']}'";
     if ($da['start_time'] && !$da['end_time']){
         $sql .= " and send_time>'{$da['start_time']}'";
     }elseif (!$da['start_time'] && $da['end_time']){
@@ -224,9 +228,7 @@ function iss_records_list($da)
     $data = array();
     $rows = $db -> fetchAll();
     $data['rows'] = $rows;
-    $sql = "select unit from la_base limit 1";
-    $db->query($sql);
-    $unit = $db->getField($sql,'unit');
-    $data['all_amount'] = array_sum(array_map(function($val){return $val['amount'];}, $rows))/$unit;
+
+    $data['all_amount'] = array_sum(array_map(function($val){return $val['amount'];}, $rows));
     return $data;
 }
