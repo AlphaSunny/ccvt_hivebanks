@@ -83,8 +83,8 @@
                     <form action="" method="get" id="form">
                         <div id="login_click">
                             <input type="hidden" value="" id="port" name="port">
-                            <!--<button class="btn btn-success submit">生成二维码</button>-->
-                            <input type="submit" class="btn btn-success" value="生成二维码">
+                            <button class="btn btn-success submit">生成二维码</button>
+                            <!--<input type="submit" class="btn btn-success" value="生成二维码">-->
                         </div>
                     </form>
                     <p class="margin-top-2">
@@ -136,14 +136,12 @@
 
     GetQr();
 
-    // $(".submit").click(function () {
-    //     console.log(search_pory);
-    //     $("#form").attr("action", search_pory + "/search");
-    //     $("#form").submit();
-    //     // $.get({
-    //     //     url: search_pory + "/search"
-    //     // })
-    // });
+    $(".submit").click(function () {
+        $("#form").submit();
+        setTimeout(function () {
+            window.location.reload();
+        }, 4000);
+    });
 
     // function checkForm() {
     //     GetQr();
