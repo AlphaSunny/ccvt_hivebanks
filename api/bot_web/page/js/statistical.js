@@ -1,16 +1,16 @@
 $(function () {
-    function getRootPath() {
-        //Get current URL
-        var curWwwPath = window.document.location.href;
-        //Get the directory after the host address
-        var pathName = window.document.location.pathname;
-        var pos = curWwwPath.indexOf(pathName);
-        //Get the host address
-        var localhostPath = curWwwPath.substring(0, pos);
-        //Get the project name with "/"
-        var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
-        return localhostPath;
-    }
+    // function getRootPath() {
+    //     //Get current URL
+    //     var curWwwPath = window.document.location.href;
+    //     //Get the directory after the host address
+    //     var pathName = window.document.location.pathname;
+    //     var pos = curWwwPath.indexOf(pathName);
+    //     //Get the host address
+    //     var localhostPath = curWwwPath.substring(0, pos);
+    //     //Get the project name with "/"
+    //     var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+    //     return localhostPath;
+    // }
 
     var login_us = GetQueryString('user');
     var login_ba = GetQueryString('ba');
