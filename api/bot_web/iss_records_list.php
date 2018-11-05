@@ -37,15 +37,15 @@ $da['end_time'] = $end_time;
 // 交易记录数组
 $rows = iss_records_list($da);
 
-print_r($rows);die;
-
 
 // 返回数据做成
 $rtn_ary = array();
 //$rtn_ary['errcode'] = '0';
 //$rtn_ary['errmsg'] = '';
 //$rtn_ary['count'] = count($rows);
-$rtn_ary['data'] = $rows;
+$rtn_ary['data'] = $rows['rows'];
+$rtn_ary['all_amount'] = $rows['all_amount'];
+$rtn_ary['all_chat'] = $rows['all_chat'];
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 

@@ -228,7 +228,7 @@ function iss_records_list($da)
     $data = array();
     $rows = $db -> fetchAll();
     $data['rows'] = $rows;
-
     $data['all_amount'] = array_sum(array_map(function($val){return $val['amount'];}, $rows));
+    $data['all_chat'] = array_sum(array_map(function($val){return $val['num'];}, $rows));
     return $data;
 }
