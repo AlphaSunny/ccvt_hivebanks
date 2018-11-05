@@ -224,5 +224,9 @@ function iss_records_list($da)
     $data = array();
     $rows = $db -> fetchAll();
     $data['rows'] = $rows;
+    $sql = "select unit from la_base limit 1";
+    $db->query($sql);
+    $unit = $db->getField($sql,'unit');
+    $data['all_amount'] = sum()
     return $data;
 }
