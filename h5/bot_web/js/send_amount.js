@@ -4,8 +4,8 @@ $(function () {
 
 
     var url = getRootPath();
-    $('#groupMemberTable').DataTable({
-        "ajax": url + "/api/bot_web/group_members_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id,
+    $('#sendAmountTable').DataTable({
+        "ajax": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
         "columns": [
             {"data": "wechat"},
             {"data": "amount"},
