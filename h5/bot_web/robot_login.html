@@ -73,11 +73,17 @@
                     <img src="" id="qr_img" alt="">
                 </div>
                 <div class="form_box margin-top-2 text-center">
-                    <form action="http://18.219.136.69:8000/search" method="get">
+                    <!--<form action="http://18.219.136.69:8000/search" method="get">-->
+                    <!--<div id="login_click">-->
+                    <!--<input type="hidden" value="" id="port" name="port">-->
+                    <!--<input type="submit" class="btn btn-success" value="生成二维码"-->
+                    <!--onclick="javascript:return checkForm();">-->
+                    <!--</div>-->
+                    <!--</form>-->
+                    <form>
                         <div id="login_click">
                             <input type="hidden" value="" id="port" name="port">
-                            <input type="submit" class="btn btn-success" value="生成二维码"
-                                   onclick="javascript:return checkForm();">
+                            <button class="btn btn-success submit">生成二维码</button>
                         </div>
                     </form>
                     <p class="margin-top-2">
@@ -101,20 +107,22 @@
 <script type="text/javascript">
     GetCookie("robot_token");
     var url = getRootPath();
+    var search_pory = "";
 
     function GetQr() {
         $.get({
             url: url + "/api/bot/get_qrcode.php",
             async: false,
             success: function (response) {
+                search_pory = response.rows.ip_address;
                 if (response.rows.robot_alive == "1") {
                     $(".robot_qr,.form-box").remove();
                     $(".qr_box").html("<div>" +
                         "<h1>微信机器人已登录，请勿重新登录。</h1>" +
                         "<div class='flex center'>" +
-                        "<p>最近一次登录时间:<span class='login_time font-bold'>"+ response.rows.login_time +"</span></p>" +
-                        "<p class='margin-left-2'>已登录运行时间:<span class='elapsed_time font-bold'>"+ response.rows.elapsed_time +"</span></p>" +
-                        "<p class='margin-left-2'>已处理<span class='font-bold'>"+ response.rows.count +"</span>条数据</p>" +
+                        "<p>最近一次登录时间:<span class='login_time font-bold'>" + response.rows.login_time + "</span></p>" +
+                        "<p class='margin-left-2'>已登录运行时间:<span class='elapsed_time font-bold'>" + response.rows.elapsed_time + "</span></p>" +
+                        "<p class='margin-left-2'>已处理<span class='font-bold'>" + response.rows.count + "</span>条数据</p>" +
                         "</div>" +
                         "</div>")
                 } else {
@@ -126,12 +134,23 @@
 
     GetQr();
 
-    function checkForm() {
-        GetQr();
-        setTimeout(function () {
-            window.location.reload();
-        }, 4000);
-    }
+    $(".submit").click(function () {
+        $.get({
+            url: search_pory + "/search",
+            success:function () {
+                setTimeout(function () {
+                    window.location.reload();
+                }, 4000);
+            }
+        })
+    });
+
+    // function checkForm() {
+    //     GetQr();
+    //     setTimeout(function () {
+    //         window.location.reload();
+    //     }, 4000);
+    // }
 
     <!-- Google analytics script-->
     if (document.location.hostname == 'pratikborsadiya.in') {
