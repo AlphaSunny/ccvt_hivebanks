@@ -99,8 +99,6 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
-                // window.location.reload();
-                // GetGroupListFun();
                 table.ajax.reload();
 
             }
@@ -144,7 +142,8 @@ $(function () {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
                 // GetGroupListFun();
-                window.location.reload();
+                // window.location.reload();
+                table.ajax.reload();
             }
         }, function (response) {
             layer.close(loading);
