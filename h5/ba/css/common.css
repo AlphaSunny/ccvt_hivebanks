@@ -17,6 +17,10 @@ body {
     font-weight: 300;
 }
 
+.vh-100{
+    min-height: 100vh;
+}
+
 img {
     -moz-user-select: none;
     -webkit-user-select: none;

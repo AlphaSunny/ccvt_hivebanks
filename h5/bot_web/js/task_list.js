@@ -47,7 +47,6 @@ $(function () {
     //删除任务
     var timer_id = "";
     $(document).on("click", ".delBtn", function () {
-        // timer_id = $(this).parents(".trItem").find(".content").attr("name");
         timer_id = $(this).parents("tr[role='row']").find(".id").text();
         layer.confirm('确定删除该条数据？', {
             btn: ['取消', '确认'] //按钮
