@@ -182,6 +182,7 @@ function  check_us_account($account)
 {
     $db = new DB_COM();
     $sql = "SELECT * FROM us_base where us_account = '{$account}' limit 1";
+    echo $sql;die;
     $db -> query($sql);
     $row = $db -> fetchRow();
     return $row;
