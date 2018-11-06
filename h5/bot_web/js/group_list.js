@@ -141,8 +141,6 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
-                // GetGroupListFun();
-                // window.location.reload();
                 table.ajax.reload();
             }
         }, function (response) {

@@ -2,7 +2,7 @@ $(function () {
     var token = GetCookie("robot_token");
 
     var url = getRootPath();
-    $("#taskListTable").DataTable({
+    var table = $("#taskListTable").DataTable({
         "ajax": url + "/api/bot_web/timer_list.php?token=" + encodeURIComponent(token),
         "deferRender":true,
         "columns": [
@@ -59,8 +59,7 @@ $(function () {
         DelTask(token, timer_id, function (response) {
             if (response.errcode == "0") {
                 layer.msg('删除成功', {icon: 1});
-                // GetTaskListFun();
-                window.location.reload();
+                table.ajax.reload();
             }
         }, function (response) {
             layer.msg('删除失败', {icon: 2});
@@ -105,7 +104,8 @@ $(function () {
                 layer.close(loading);
                 // GetTaskListFun();
                 $("#editTaskModal").modal("hide");
-                window.location.reload();
+                // window.location.reload();
+                table.ajax.reload();
             }
         }, function (response) {
             layer.close(loading);
@@ -117,13 +117,7 @@ $(function () {
     //添加信息
     $(".addTaskBtn").click(function () {
         GetGroupList(token, function (response) {
-            // if (response.errcode == "0") {
-            //     var data = response.data, option = "";
-            //     $.each(data, function (i, val) {
-            //         option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
-            //     });
-            //     $("#selectGroupName").html(option);
-            // }
+
         }, function (response) {
             var data = response.data, option = "";
             $.each(data, function (i, val) {
@@ -159,7 +153,8 @@ $(function () {
                 layer.close(loading);
                 // GetTaskListFun();
                 $("#editTaskModal").modal("hide");
-                window.location.reload();
+                // window.location.reload();
+                table.ajax.reload();
             }
         }, function (response) {
             layer.close(loading);
