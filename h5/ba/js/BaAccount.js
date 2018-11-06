@@ -28,6 +28,7 @@ $(function () {
             }
             if(benchmark_type != response.bit_type){
                 $('.base_ba_address').remove();
+                $('.rewardTransfer').remove();
                 $('.BaMarginRechargePendingBox').remove();
                 $('.BaMarginWithdrawPendingBox').remove();
             }
