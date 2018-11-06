@@ -5,16 +5,20 @@ $(function () {
 
     var url = getRootPath();
 
+    function GetAmount(start_time, end_time, nickname) {
+        // if (!start_time) {
+        //     start_time = "";
+        // }
         $.ajax({
-            "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
+            "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token) + "&start_time=" + start_time + "&end_time=" + end_time + "&nickname=" + nickname,
             "type": "GET",
             success: function (data) {
                 $(".all_amount").text(data.all_amount);
                 $(".all_chat").text(data.all_chat);
                 $('#sendAmountTable').DataTable({
                     order: [[3, "desc"]],
-                    deferRender:true,
-                    data:data.data,
+                    deferRender: true,
+                    data: data.data,
                     columns: [
                         {"data": "wechat"},
                         {"data": "amount"},
@@ -24,16 +28,21 @@ $(function () {
                 });
             }
         });
+    }
+
+    GetAmount();
 
 
     $(".searchBtn").click(function () {
         var start_time = $("#startTime").val();
         var end_time = $("#end_time").val();
-        GetAmount(token, start_time, end_time, function (response) {
-            console.log(response);
-        }, function (response) {
+        GetAmount(start_time, end_time);
 
-        })
+        // GetAmount(token, start_time, end_time, function (response) {
+        //     console.log(response);
+        // }, function (response) {
+        //
+        // })
         // $.ajax({
         //     "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
         //     "type": "GET",
