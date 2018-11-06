@@ -29,7 +29,8 @@ $(function () {
     });
 
     $('.contract').click(function () {
-        window.location.href = 'h5/contract/ccvtContract.html';
+
+        window.location.href = 'contract/';
     });
 
 
