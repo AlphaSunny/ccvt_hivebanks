@@ -21,7 +21,7 @@ $(function () {
         "ajax": {
             "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
             "dataSrc": function (json) {
-                console.log(json.data);
+                console.log(json.all_amount);
             }
         }
         // "ajax": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
