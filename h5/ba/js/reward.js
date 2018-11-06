@@ -1,6 +1,7 @@
 $(function () {
     //get token
     var token = GetCookie("ba_token");
+    GetBaAccount();
 
     var account = "", ccvt_num = "", why = "";
     $(".confirmTransfer").click(function () {
