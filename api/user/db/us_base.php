@@ -50,7 +50,7 @@ function ins_base_user_reg_base_info($data_base)
     $sql = $db ->sqlInsert("us_base", $data_base);
     $q_id = $db->query($sql);
     if ($q_id == 0)
-      return false;
+        return false;
 
     //2018年 10.1-10.7注册送500ccvt
 //    $array = array('2018-10-01','2018-10-02','2018-10-03','2018-10-04','2018-10-05','2018-10-06','2018-10-07');
@@ -61,11 +61,11 @@ function ins_base_user_reg_base_info($data_base)
 
 
     //注册获取50ccvt
-    send_to_us_ccvt($data_base['us_id'],'reg_send','50');
+    send_to_us_ccvt($data_base['us_id'],'reg_send','50','注册赠送');
 
     //邀请人获取50ccvt
     if ($data_base['invite_code']){
-        send_to_us_ccvt(get_invite_code_us($data_base['invite_code']),'invite_send','50');
+        send_to_us_ccvt(get_invite_code_us($data_base['invite_code']),'invite_send','50','邀请赠送');
     }
 
 
@@ -85,7 +85,7 @@ function ins_base_user_reg_base_info($data_base)
 // 返回: true         创建成功
 //       false        创建失败
 //======================================
-function send_to_us_ccvt($us_id,$type,$money)
+function send_to_us_ccvt($us_id,$type,$money,$why)
 {
     $db = new DB_COM();
     //送币
@@ -116,6 +116,7 @@ function send_to_us_ccvt($us_id,$type,$money)
     $lgn_type = 'phone';
     $d['tx_hash'] = hash('md5', $rows['ba_id'] . $lgn_type . get_ip() . time() . date('Y-m-d H:i:s'));
     $d['us_id'] = $us_id;
+    $d['why'] = $why;
     $sql = $db->sqlInsert("us_send_ccvt_records", $d);
     $id = $db->query($sql);
     if (!$id){
@@ -233,11 +234,11 @@ function  get_recharge_pre_hash($ba_id)
 //======================================
 function get_us_base_info_by_token($us_id)
 {
-  $db = new DB_COM();
-  $sql = "SELECT * FROM us_base WHERE us_id = '{$us_id}'";
-  $db->query($sql);
-  $row = $db->fetchRow();
-  return $row;
+    $db = new DB_COM();
+    $sql = "SELECT * FROM us_base WHERE us_id = '{$us_id}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    return $row;
 }
 //======================================
 // 函数: 获取用户安全等级
@@ -246,11 +247,11 @@ function get_us_base_info_by_token($us_id)
 //======================================
 function get_us_security_level_by_token($us_id)
 {
-  $db = new DB_COM();
-  $sql = "SELECT security_level FROM us_base WHERE us_id = '{$us_id}'";
-  $db->query($sql);
-  $security_level = $db->getField($sql,'security_level');
-  return $security_level;
+    $db = new DB_COM();
+    $sql = "SELECT security_level FROM us_base WHERE us_id = '{$us_id}'";
+    $db->query($sql);
+    $security_level = $db->getField($sql,'security_level');
+    return $security_level;
 }
 //======================================
 // 函数: 更新用户基本信息数据
