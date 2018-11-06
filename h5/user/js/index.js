@@ -29,8 +29,7 @@ $(function () {
     });
 
     $('.contract').click(function () {
-        alert("yang");
-        window.location.href = 'ba/BaLogin.html';
+        window.location.href = 'contract/index.html';
     });
 
 
