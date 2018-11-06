@@ -20,6 +20,8 @@ $(function () {
             "type": "GET",
             success: function (data) {
             console.log(data.data);
+            console.log(typeof data);
+            console.log(typeof data.data);
                 $('#sendAmountTable').DataTable({
                     ajax:data,
                     order: [[3, "desc"]],
