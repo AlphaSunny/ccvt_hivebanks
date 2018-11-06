@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>CcvtWallet</title>
+</head>
+<body>
+  <nav>
+    	<ul>
+    		<li><a href="ccvtContract.html" class="navbar-brand">CcvtWallet</a></li>
+    	</ul>
+  </nav>
+
+  <div class="margin-top-50">
+    <div class="form-group col-md-6 col-md-offset-3">
+      <label class="control-label">Your account</label>
+  		<input type="text" class="form-control" id="accountAddress">
+      <!-- <p id="accountAddress"></p> -->
+  	</div>
+
+    <div class="form-group col-md-6 col-md-offset-3">
+  		<label class="control-label">Beneficiary is</label>
+  		<input type="text" class="form-control" id="beneficiary">
+  	</div>
+
+    <div class="form-group col-md-6 col-md-offset-3">
+  		<label class="control-label">OpengingTime</label>
+  		<input type="text" class="form-control" id="releaseTime">
+  	</div>
+
+    <div class="form-group col-md-6 col-md-offset-3">
+  		<label class="control-label">Time is</label>
+  		<input type="text" class="form-control" id="time">
+  	</div>
+
+    <div class="form-group col-md-6 col-md-offset-3">
+  		<label class="control-label">Your ccvt balance is</label>
+  		<input type="text" class="form-control" id="ccvt-balance">
+  	</div>
+  </div>
+
+  <div class="col-md-4 col-md-offset-4 margin-top-20">
+      <button type="button" class="btn btn-info btn-block center-block" name="button" onclick="App.unfreeze(); return false;">unfreeze</button>
+  </div>
+
+
+  <script src="js/web3.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/truffle-contract.min.js"></script>
+</body>
+</html>
