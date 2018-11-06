@@ -20,7 +20,7 @@ $(function () {
         ajax: {
             "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
             "type": "GET",
-            data: function (data) {
+            success: function (data) {
                 console.log(data);
             }
         },
