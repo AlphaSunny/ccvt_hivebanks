@@ -223,7 +223,12 @@ function iss_records_list($da)
     }elseif ($da['start_time'] && $da['end_time']){
         $sql .= " and send_time between '{$da['start_time']}' and '{$da['end_time']}'";
     }
+
+    if ($da['nickname']){
+        $sql .=" and wechat LIKE '".$da['nicknaem']%"'";
+    }
     $sql .= " order by bot_create_time desc";
+    echo $sql;
     $db->query($sql);
     $data = array();
     $rows = $db -> fetchAll();

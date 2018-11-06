@@ -30,9 +30,13 @@ $ba_id = check_token($token);
 $start_time = get_arg_str('GET', 'start_time');
 $end_time = get_arg_str('GET', 'end_time');
 
+//昵称
+$nickname = get_arg_str('GET', 'nickname');
+
 $da['ba_id'] = $ba_id;
 $da['start_time'] = $start_time;
 $da['end_time'] = $end_time;
+$da['nickname'] = $nickname;
 
 // 交易记录数组
 $rows = iss_records_list($da);
