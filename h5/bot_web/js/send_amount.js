@@ -4,16 +4,35 @@ $(function () {
 
 
     var url = getRootPath();
+    // $('#sendAmountTable').DataTable({
+    //     "ajax": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
+    //     "columns": [
+    //         {"data": "wechat"},
+    //         {"data": "amount"},
+    //         {"data": "num"},
+    //         {"data": "send_time"}
+    //     ],
+    //     success:function (res) {
+    //         console.log(res);
+    //     }
+    // });
+
     $('#sendAmountTable').DataTable({
-        "ajax": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
-        "columns": [
-            {"data": "wechat"},
-            {"data": "amount"},
-            {"data": "num"},
-            {"data": "send_time"}
-        ],
-        success:function (res) {
-            console.log(res);
+        "ajax": {
+            "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
+            "dataSrc": function (json) {
+                console.log(json);
+            }
         }
+        // "ajax": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
+        // "columns": [
+        //     {"data": "wechat"},
+        //     {"data": "amount"},
+        //     {"data": "num"},
+        //     {"data": "send_time"}
+        // ],
+        // success:function (res) {
+        //     console.log(res);
+        // }
     });
 });
