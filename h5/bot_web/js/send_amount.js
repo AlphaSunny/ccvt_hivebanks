@@ -30,7 +30,8 @@ $(function () {
         });
     }
 
-    GetAmount();
+    var start_time = "", end_time = "", nickname = "";
+    GetAmount(start_time, end_time, nickname);
 
 
     $(".searchBtn").click(function () {
