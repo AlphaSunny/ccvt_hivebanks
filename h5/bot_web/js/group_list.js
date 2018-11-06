@@ -3,7 +3,7 @@ $(function () {
 
     // function GetGroupListFun() {
     var url = getRootPath();
-    $("#groupMasterListTable").DataTable({
+    var table = $("#groupMasterListTable").DataTable({
         "ajax": url + "/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
         destroy: true,
         "deferRender": true,
@@ -24,13 +24,7 @@ $(function () {
             }
         }]
     });
-    // setTimeout(function () {
-    //     var td = "<td>" +
-    //         "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-    //         "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
-    //         "</td>";
-    //     $(".odd,.even").append(td);
-    // }, 500);
+
     // GetGroupList(token, function (response) {
     //     if (response.errcode == "0") {
     //         var data = response.rows, tr = "";
@@ -105,8 +99,9 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
-                window.location.reload();
+                // window.location.reload();
                 // GetGroupListFun();
+                table.ajax.reload();
 
             }
         }, function (response) {
