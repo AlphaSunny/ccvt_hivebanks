@@ -12,7 +12,7 @@ $(function () {
             {"data": "name", "class": "name"},
         ],
         "columnDefs":[{
-            "targets":[-1],
+            "targets":[4],
             "data":null,
             "render":function () {
                 return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
