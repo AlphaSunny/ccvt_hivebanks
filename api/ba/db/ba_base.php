@@ -237,6 +237,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why)
     $lgn_type = 'phone';
     $d['tx_hash'] = hash('md5', $rows['ba_id'] . $lgn_type . get_ip() . time() . date('Y-m-d H:i:s'));
     $d['us_id'] = $us_id;
+    $d['flag'] = 2;
     $d['why'] = $why;
     $sql = $db->sqlInsert("us_send_ccvt_records", $d);
     $id = $db->query($sql);
