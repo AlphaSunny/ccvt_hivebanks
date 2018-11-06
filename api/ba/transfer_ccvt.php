@@ -1,7 +1,7 @@
 <?php
 
 require_once '../inc/common.php';
-require_once 'db/ba_log_login.php';
+require_once 'db/ba_base.php';
 
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
