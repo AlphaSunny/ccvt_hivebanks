@@ -48,6 +48,10 @@
     align-items: center;
 }
 
+.inline-block{
+    display: inline-block;
+}
+
 /*switch*/
 .switch {
     width: 57px;
