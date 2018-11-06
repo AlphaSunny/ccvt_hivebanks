@@ -10,7 +10,7 @@ $(function () {
             {"data": "wechat"},
             {"data": "amount"},
             {"data": "num"},
-            {"data": "send_time", "sort":true}
+            {"data": "send_time", orderable: true}
         ]
     });
 
@@ -21,15 +21,15 @@ $(function () {
     //             console.log(json.all_amount);
     //         }
     //     }
-        // "ajax": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
-        // "columns": [
-        //     {"data": "wechat"},
-        //     {"data": "amount"},
-        //     {"data": "num"},
-        //     {"data": "send_time"}
-        // ],
-        // success:function (res) {
-        //     console.log(res);
-        // }
+    // "ajax": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
+    // "columns": [
+    //     {"data": "wechat"},
+    //     {"data": "amount"},
+    //     {"data": "num"},
+    //     {"data": "send_time"}
+    // ],
+    // success:function (res) {
+    //     console.log(res);
+    // }
     // });
 });
