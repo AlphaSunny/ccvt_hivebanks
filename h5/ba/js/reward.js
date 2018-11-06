@@ -24,9 +24,11 @@ $(function () {
             return;
         }
         $("#transferModal").modal("show");
+        ShowLoading("hide");
     });
 
     $(".confirmTransferBtn").click(function () {
+        ShowLoading("show");
         Transfer_CCVT(token, account, ccvt_num, why, function (response) {
             if(response.errcode == "0"){
                 ShowLoading("hide");
