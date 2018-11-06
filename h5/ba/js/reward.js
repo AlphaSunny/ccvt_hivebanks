@@ -33,7 +33,8 @@ $(function () {
             if(response.errcode == "0"){
                 ShowLoading("hide");
                 $("#transferModal").modal("hide");
-                console.log(response);
+                layer.msg("转账成功");
+                window.location.href="BaAccount.html";
             }
         }, function (response) {
             ShowLoading("hide");
