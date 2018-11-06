@@ -17,14 +17,14 @@ $(function () {
     // });
 
     $('#sendAmountTable').DataTable({
-        "ajax": {
+        ajax: {
             "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
             "type": "GET",
             success: function (res) {
                 console.log(res);
             }
         },
-        "columns": [
+        columns: [
             {"data": "wechat"},
             {"data": "amount"},
             {"data": "num"},
