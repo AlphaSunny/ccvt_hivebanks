@@ -32,11 +32,13 @@ $(function () {
         Transfer_CCVT(token, account, ccvt_num, why, function (response) {
             if(response.errcode == "0"){
                 ShowLoading("hide");
+                $("#transferModal").modal("hide");
                 console.log(response);
             }
         }, function (response) {
             ShowLoading("hide");
-            console.log(response);
+            $("#transferModal").modal("hide");
+            lay.msg(response.errmsg);
         })
     });
 });
