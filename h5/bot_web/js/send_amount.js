@@ -20,9 +20,9 @@ $(function () {
         ajax: {
             "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
             "type": "GET",
-            // callback: function (res) {
-            //     console.log(res);
-            // }
+            data: function (res) {
+                console.log(res);
+            }
         },
         order: [[3, "desc"]],
         deferRender:true,
