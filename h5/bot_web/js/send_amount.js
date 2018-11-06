@@ -20,8 +20,7 @@ $(function () {
             "type": "GET",
             success: function (data) {
             console.log(data.data);
-            console.log(data.JSON.stringify());
-            console.log(data.JSON.parse());
+            console.log(JSON.stringify(data));
                 $('#sendAmountTable').DataTable({
                     ajax:data,
                     order: [[3, "desc"]],
