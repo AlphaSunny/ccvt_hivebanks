@@ -89,7 +89,7 @@ function gift_detail(){
 
     $db = new DB_COM();
     $data = array();
-    $sql = "select us_account ,us_num,base_amount,ctime,invite_code,wechat from us_base order by base_amount";
+    $sql = "select us_account ,us_nm,base_amount,ctime,invite_code,wechat from us_base order by base_amount";
     $db->query($sql);
     $rows = $db->fetchAll();
     $data[] = $rows;
