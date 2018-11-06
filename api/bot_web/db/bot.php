@@ -228,7 +228,7 @@ function iss_records_list($da)
         $sql .=" and wechat LIKE '".$da['nicknaem']%"'";
     }
     $sql .= " order by bot_create_time desc";
-    echo $sql;
+    echo $sql;die;
     $db->query($sql);
     $data = array();
     $rows = $db -> fetchAll();
