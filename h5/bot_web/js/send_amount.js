@@ -21,15 +21,16 @@ $(function () {
             success: function (data) {
             console.log(data);
                 $('#sendAmountTable').DataTable({
+                    ajax:data,
                     order: [[3, "desc"]],
                     deferRender:true,
-                    dataSrc:data,
-                    // columns: [
-                    //     {"data": "wechat"},
-                    //     {"data": "amount"},
-                    //     {"data": "num"},
-                    //     {"data": "send_time"}
-                    // ],
+                    // dataSrc:data,
+                    columns: [
+                        {"data": "wechat"},
+                        {"data": "amount"},
+                        {"data": "num"},
+                        {"data": "send_time"}
+                    ],
                 });
         }
     });
