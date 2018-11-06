@@ -38,7 +38,7 @@ $(function () {
         }, function (response) {
             ShowLoading("hide");
             $("#transferModal").modal("hide");
-            lay.msg(response.errmsg);
+            layer.msg(response.errmsg);
         })
     });
 });

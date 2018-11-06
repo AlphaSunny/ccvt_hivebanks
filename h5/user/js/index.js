@@ -29,7 +29,6 @@ $(function () {
     });
 
     $('.contract').click(function () {
-
         window.location.href = 'contract/';
     });
 
