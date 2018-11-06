@@ -23,12 +23,13 @@ $(function () {
                 $('#sendAmountTable').DataTable({
                     order: [[3, "desc"]],
                     deferRender:true,
-                    columns: [
-                        {"data": "wechat"},
-                        {"data": "amount"},
-                        {"data": "num"},
-                        {"data": "send_time"}
-                    ],
+                    dataSrc:data,
+                    // columns: [
+                    //     {"data": "wechat"},
+                    //     {"data": "amount"},
+                    //     {"data": "num"},
+                    //     {"data": "send_time"}
+                    // ],
                 });
         }
     });
