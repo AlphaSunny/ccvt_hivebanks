@@ -5,12 +5,12 @@ $(function () {
 
     var url = getRootPath();
 
-    $.ajax({
-        "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
+        $.ajax({
+            "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
             "type": "GET",
             success: function (data) {
-            $(".all_amount").text(data.all_amount);
-            $(".all_chat").text(data.all_chat);
+                $(".all_amount").text(data.all_amount);
+                $(".all_chat").text(data.all_chat);
                 $('#sendAmountTable').DataTable({
                     order: [[3, "desc"]],
                     deferRender:true,
@@ -22,7 +22,37 @@ $(function () {
                         {"data": "send_time"}
                     ],
                 });
-        }
+            }
+        });
+
+
+    $(".searchBtn").click(function () {
+        var start_time = $("#startTime").val();
+        var end_time = $("#end_time").val();
+        GetAmount(start_time, end_time, function (response) {
+            console.log(response);
+        }, function (response) {
+
+        })
+        // $.ajax({
+        //     "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
+        //     "type": "GET",
+        //     success: function (data) {
+        //         $(".all_amount").text(data.all_amount);
+        //         $(".all_chat").text(data.all_chat);
+        //         $('#sendAmountTable').DataTable({
+        //             order: [[3, "desc"]],
+        //             deferRender:true,
+        //             data:data.data,
+        //             columns: [
+        //                 {"data": "wechat"},
+        //                 {"data": "amount"},
+        //                 {"data": "num"},
+        //                 {"data": "send_time"}
+        //             ],
+        //         });
+        //     }
+        // });
     });
 
     //Set time
@@ -30,8 +60,8 @@ $(function () {
         initTime: new Date(),
         format: 'Y/m/d H:i',
         value: new Date(),
-        minDate: new Date(),//Set minimum date
-        minTime: new Date(),//Set minimum time
+        // minDate: new Date(),//Set minimum date
+        // minTime: new Date(),//Set minimum time
         yearStart: 2018,//Set the minimum year
         yearEnd: 2050 //Set the maximum year
     });

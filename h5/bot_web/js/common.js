@@ -225,3 +225,13 @@ function GetNewsRecord(token, group_id, status, suc_func, error_func) {
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
+
+//搜索获取统计列表
+function GetAmount(start_time, end_time,suc_func, error_func) {
+    var api_url = "iss_records_list.php",
+        post_data = {
+            "start_time": start_time,
+            "end_time": end_time
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
