@@ -24,7 +24,7 @@ $(function () {
                     ajax:data,
                     order: [[3, "desc"]],
                     deferRender:true,
-                    dataSrc:data,
+                    dataSrc:"data",
                     columns: [
                         {"data": "wechat"},
                         {"data": "amount"},
