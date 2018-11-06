@@ -21,10 +21,10 @@ $(function () {
             success: function (data) {
             console.log(data.data);
                 $('#sendAmountTable').DataTable({
-                    // ajax:data.data,
+                    ajax:data,
                     order: [[3, "desc"]],
                     deferRender:true,
-                    dataSrc:data.data,
+                    dataSrc:data,
                     columns: [
                         {"data": "wechat"},
                         {"data": "amount"},
