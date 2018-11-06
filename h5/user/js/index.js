@@ -29,7 +29,7 @@ $(function () {
     });
 
     $('.contract').click(function () {
-        window.location.href = 'h5/contract/index.html';
+        window.location.href = 'contract/';
     });
 
 
