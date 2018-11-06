@@ -224,7 +224,6 @@ function iss_records_list($da)
         $sql .= " and send_time between '{$da['start_time']}' and '{$da['end_time']}'";
     }
     $sql .= " order by bot_create_time desc";
-    echo $sql;die;
     $db->query($sql);
     $data = array();
     $rows = $db -> fetchAll();
