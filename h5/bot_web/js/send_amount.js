@@ -15,22 +15,21 @@ $(function () {
     //         {"data": "send_time"}
     //     ]
     // });
-
-    $('#sendAmountTable').DataTable({
-        ajax: {
-            "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
+    $.ajax({
+        "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
             "type": "GET",
             success: function (data) {
-                console.log(data);
-            }
-        },
-        order: [[3, "desc"]],
-        deferRender:true,
-        columns: [
-            {"data": "wechat"},
-            {"data": "amount"},
-            {"data": "num"},
-            {"data": "send_time"}
-        ],
+            console.log(data);
+                $('#sendAmountTable').DataTable({
+                    order: [[3, "desc"]],
+                    deferRender:true,
+                    columns: [
+                        {"data": "wechat"},
+                        {"data": "amount"},
+                        {"data": "num"},
+                        {"data": "send_time"}
+                    ],
+                });
+        }
     });
 });
