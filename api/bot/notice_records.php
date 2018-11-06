@@ -21,6 +21,7 @@ php_begin();
 $args = array('nickname');
 chk_empty_args('GET', $args);
 
+
 //群昵称
 $nickname = get_arg_str('GET','nickname');
 
