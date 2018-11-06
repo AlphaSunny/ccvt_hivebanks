@@ -36,34 +36,10 @@ $(function () {
 
 
     $(".searchBtn").click(function () {
-        var start_time = $("#startTime").val();
-        var end_time = $("#endTime").val();
+        start_time = $("#startTime").val();
+        end_time = $("#endTime").val();
+        nickname = $("#nickname").val();
         GetAmount(start_time, end_time, nickname);
-
-        // GetAmount(token, start_time, end_time, function (response) {
-        //     console.log(response);
-        // }, function (response) {
-        //
-        // })
-        // $.ajax({
-        //     "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
-        //     "type": "GET",
-        //     success: function (data) {
-        //         $(".all_amount").text(data.all_amount);
-        //         $(".all_chat").text(data.all_chat);
-        //         $('#sendAmountTable').DataTable({
-        //             order: [[3, "desc"]],
-        //             deferRender:true,
-        //             data:data.data,
-        //             columns: [
-        //                 {"data": "wechat"},
-        //                 {"data": "amount"},
-        //                 {"data": "num"},
-        //                 {"data": "send_time"}
-        //             ],
-        //         });
-        //     }
-        // });
     });
 
     //Set time
