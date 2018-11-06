@@ -230,6 +230,7 @@ function GetNewsRecord(token, group_id, status, suc_func, error_func) {
 function GetAmount(token, start_time, end_time,suc_func, error_func) {
     var api_url = "iss_records_list.php",
         post_data = {
+            "token": token,
             "start_time": start_time,
             "end_time": end_time
         };
