@@ -24,6 +24,8 @@ $(function () {
             //     console.log(res);
             // }
         },
+        order: [[3, "desc"]],
+        deferRender:true,
         columns: [
             {"data": "wechat"},
             {"data": "amount"},
