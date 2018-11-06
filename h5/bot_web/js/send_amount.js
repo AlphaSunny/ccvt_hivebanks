@@ -7,10 +7,10 @@ $(function () {
     $('#sendAmountTable').DataTable({
         "ajax": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
         "columns": [
-            {"data": "wechat"},
+            {"data": "wechat", "orderable" : false},
             {"data": "amount"},
             {"data": "num"},
-            {"data": "send_time", orderable: true}
+            {"data": "send_time", "orderable": true}
         ]
     });
 
