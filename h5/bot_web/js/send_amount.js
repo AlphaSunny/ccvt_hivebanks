@@ -19,12 +19,12 @@ $(function () {
         "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
             "type": "GET",
             success: function (data) {
-            console.log(data);
+            console.log(data.data);
                 $('#sendAmountTable').DataTable({
-                    ajax:data.data,
+                    // ajax:data.data,
                     order: [[3, "desc"]],
                     deferRender:true,
-                    // dataSrc:data,
+                    dataSrc:data.data,
                     columns: [
                         {"data": "wechat"},
                         {"data": "amount"},
