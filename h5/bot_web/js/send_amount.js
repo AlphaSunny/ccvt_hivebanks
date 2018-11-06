@@ -20,10 +20,7 @@ $(function () {
         ajax: {
             "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
             "type": "GET",
-            "dataSrc":"data",
-            // success: function (res) {
-            //     console.log(res);
-            // }
+            // "dataSrc":"data",
         },
         columns: [
             {"data": "wechat"},
@@ -31,5 +28,8 @@ $(function () {
             {"data": "num"},
             {"data": "send_time"}
         ],
+        success: function (res) {
+            console.log(res);
+        }
     });
 });
