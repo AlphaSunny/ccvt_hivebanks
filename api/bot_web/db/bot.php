@@ -225,7 +225,7 @@ function iss_records_list($da)
     }
 
     if ($da['nickname']){
-        $sql .=" and wechat LIKE ".$da["nickname"]%"";
+        $sql .=" and wechat LIKE '{$da["nicknaem"]}%'";
     }
     $sql .= " order by bot_create_time desc";
     echo $sql;die;
