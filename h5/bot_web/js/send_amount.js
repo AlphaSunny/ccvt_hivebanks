@@ -22,10 +22,10 @@ $(function () {
             console.log(data.data);
             console.log(JSON.stringify(data));
                 $('#sendAmountTable').DataTable({
-                    ajax:data,
+                    // ajax:data,
                     order: [[3, "desc"]],
                     deferRender:true,
-                    data:data.data,
+                    data:data,
                     columns: [
                         {"data": "wechat"},
                         {"data": "amount"},
