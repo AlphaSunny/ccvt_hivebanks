@@ -6,7 +6,7 @@ $(function () {
     $("#groupMasterListTable").DataTable({
         "ajax": url + "/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
         destroy: true,
-        "deferRender":true,
+        "deferRender": true,
         "columns": [
             {"data": "id", "class": "id"},
             {"data": "name", "class": "name"},
@@ -14,15 +14,23 @@ $(function () {
             {"data": "is_del", "class": "is_del none"},
             {"data": "flirt", "class": "flirt"},
             {"data": "is_flirt", "class": "is_flirt none"},
-        ]
+        ],
+        "columnDefs": [{
+            "target": 6,
+            "data": null,
+            "render": function () {
+                return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+                    "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"
+            }
+        }]
     });
-    setTimeout(function () {
-        var td = "<td>" +
-            "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-            "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
-            "</td>";
-        $(".odd,.even").append(td);
-    }, 500);
+    // setTimeout(function () {
+    //     var td = "<td>" +
+    //         "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+    //         "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
+    //         "</td>";
+    //     $(".odd,.even").append(td);
+    // }, 500);
     // GetGroupList(token, function (response) {
     //     if (response.errcode == "0") {
     //         var data = response.rows, tr = "";
