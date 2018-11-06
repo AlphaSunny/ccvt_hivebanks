@@ -28,11 +28,6 @@ $(function () {
         }
     });
 
-    $('.contract').click(function () {
-        alert("yang");
-        window.location.href = 'ba/BaLogin.html';
-    });
-
     $('.caLogin').click(function () {
         if (ca_token || login_ca) {
             window.location.href = 'ca/CaAccount.html';
