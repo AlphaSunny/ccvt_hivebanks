@@ -21,12 +21,11 @@ $(function () {
             success: function (data) {
             console.log(data.data);
             console.log(JSON.stringify(data));
-            console.log(JSON.parse(data));
                 $('#sendAmountTable').DataTable({
                     ajax:data,
                     order: [[3, "desc"]],
                     deferRender:true,
-                    data:data.data,
+                    data:data,
                     columns: [
                         {"data": "wechat"},
                         {"data": "amount"},
