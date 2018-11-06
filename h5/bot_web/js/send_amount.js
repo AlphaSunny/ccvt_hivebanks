@@ -21,7 +21,7 @@ $(function () {
             success: function (data) {
             console.log(data);
                 $('#sendAmountTable').DataTable({
-                    ajax:data,
+                    ajax:JSON.stringify(data),
                     order: [[3, "desc"]],
                     deferRender:true,
                     // dataSrc:data,
