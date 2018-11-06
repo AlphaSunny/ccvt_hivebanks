@@ -349,6 +349,38 @@ function check_chat_time($group_name)
     return $count;
 }
 
+
+//======================================
+// 函数: 判断群聊是否已经绑定ccvt账户,如果没绑定通知
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function notice_records($data)
+{
+    $db = new DB_COM();
+    $sql = "select * from us_base WHERE wechat='{$data['wechat']}' limit 1";
+    $db->query($sql);
+    $wechat = $db->fetchRow();
+    if ($wechat){
+        $status = 1;
+    }else{
+        $start = strtotime('Y-m-d 00:00:00');
+        $end = strtotime('Y-m-d 23:59:59');
+        $sql = "select * from bot_notice_records WHERE wechat='{$data['wechat']}' AND intime BETWEEN '{$start}' AND '{$end}'";
+        $db->query($sql);
+        $row = $db->fetchRow();
+        if ($row){
+            $status = 1;
+        }else{
+            $sql = $db->sqlInsert("bot_notice_records", $data);
+            $db->query($sql);
+            $status = 2;
+        }
+    }
+    return $status;
+}
+
 //======================================
 // 函数: 获取最新的未推送的一个文章
 // 参数:
