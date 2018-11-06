@@ -8,6 +8,7 @@ $(function () {
     var url = getRootPath();
     $('#groupMemberTable').DataTable({
         "ajax": url + "/api/bot_web/group_members_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id,
+        "deferRender":true,
         "columns": [
             {"data": "name"}
         ]

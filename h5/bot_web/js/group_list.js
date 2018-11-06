@@ -6,6 +6,7 @@ $(function () {
     $("#groupMasterListTable").DataTable({
         "ajax": url + "/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
         destroy: true,
+        "deferRender":true,
         "columns": [
             {"data": "id", "class": "id"},
             {"data": "name", "class": "name"},
