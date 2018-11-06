@@ -29,7 +29,7 @@ $(function () {
     $(".searchBtn").click(function () {
         var start_time = $("#startTime").val();
         var end_time = $("#end_time").val();
-        GetAmount(start_time, end_time, function (response) {
+        GetAmount(token, start_time, end_time, function (response) {
             console.log(response);
         }, function (response) {
 
