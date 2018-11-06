@@ -151,9 +151,7 @@ $(function () {
         AddTask(token, time, group_id, content, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
-                // GetTaskListFun();
                 $("#editTaskModal").modal("hide");
-                // window.location.reload();
                 table.ajax.reload();
             }
         }, function (response) {
