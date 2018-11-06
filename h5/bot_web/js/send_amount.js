@@ -21,15 +21,15 @@ $(function () {
             "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
             "type": "GET",
             "dataSrc":"data",
-            success: function (res) {
-                console.log(res);
-            }
+            // success: function (res) {
+            //     console.log(res);
+            // }
         },
-        columns: [
-            {"data": "wechat"},
-            {"data": "amount"},
-            {"data": "num"},
-            {"data": "send_time"}
-        ],
+        // columns: [
+        //     {"data": "wechat"},
+        //     {"data": "amount"},
+        //     {"data": "num"},
+        //     {"data": "send_time"}
+        // ],
     });
 });
