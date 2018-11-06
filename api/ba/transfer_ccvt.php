@@ -17,11 +17,6 @@ GET参数
 说明
 */
 
-preg_match('/^([a-z\-]+)/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $matches);
-$lang = $matches[1];
-print_r($lang);die;
-
-
 php_begin();
 $args = array('token','account','why','ccvt_num');
 chk_empty_args('GET', $args);
