@@ -29,6 +29,11 @@ function get_log_balance($ba_id,$offset,$limit)
     $sql = "SELECT tx_type,tx_amount,credit_balance,hash_id,ctime FROM com_base_balance WHERE credit_id = '{$ba_id}' order by ctime desc limit $offset , $limit";
     $db->query($sql);
     $rows = $db->fetchAll();
+
+    $d['lan'] = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 4);
+    $sql = $db->sqlInsert("test", $d);
+    $db->query($sql);
+
     return $rows;
 }
 //======================================
