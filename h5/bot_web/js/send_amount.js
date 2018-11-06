@@ -17,6 +17,7 @@ $(function () {
                 $(".all_chat").text(data.all_chat);
                 $('#sendAmountTable').DataTable({
                     order: [[3, "desc"]],
+                    destroy: true,
                     deferRender: true,
                     data: data.data,
                     columns: [
