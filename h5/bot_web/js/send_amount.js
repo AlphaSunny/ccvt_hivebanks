@@ -6,11 +6,12 @@ $(function () {
     var url = getRootPath();
     $('#sendAmountTable').DataTable({
         "ajax": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token),
+        "order": [[3, "desc"]],
         "columns": [
             {"data": "wechat"},
             {"data": "amount"},
             {"data": "num"},
-            {"data": "send_time", "sort": true}
+            {"data": "send_time"}
         ]
     });
 
