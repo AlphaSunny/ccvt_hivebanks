@@ -16,7 +16,7 @@ $(function () {
             {"data": "is_flirt", "class": "is_flirt none"},
         ],
         "columnDefs": [{
-            "target": 6,
+            "targets": 6,
             "data": null,
             "render": function () {
                 return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
