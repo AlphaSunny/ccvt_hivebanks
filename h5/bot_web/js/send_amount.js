@@ -10,7 +10,7 @@ $(function () {
             {"data": "wechat"},
             {"data": "amount"},
             {"data": "num"},
-            {"data": "send_time", order:"desc"}
+            {"data": "send_time", sort:"desc"}
         ]
     });
 
