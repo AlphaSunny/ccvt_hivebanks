@@ -25,11 +25,11 @@ $(function () {
             //     console.log(res);
             // }
         },
-        // columns: [
-        //     {"data": "wechat"},
-        //     {"data": "amount"},
-        //     {"data": "num"},
-        //     {"data": "send_time"}
-        // ],
+        columns: [
+            {"data": "wechat"},
+            {"data": "amount"},
+            {"data": "num"},
+            {"data": "send_time"}
+        ],
     });
 });
