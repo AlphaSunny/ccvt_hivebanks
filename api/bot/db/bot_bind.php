@@ -368,6 +368,7 @@ function notice_records($data)
         $start = strtotime('Y-m-d 00:00:00');
         $end = strtotime('Y-m-d 23:59:59');
         $sql = "select * from bot_notice_records WHERE wechat='{$data['wechat']}' AND intime BETWEEN '{$start}' AND '{$end}'";
+        echo $sql;die;
         $db->query($sql);
         $row = $db->fetchRow();
         if ($row){
