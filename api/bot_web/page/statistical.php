@@ -12,49 +12,49 @@
 
 <body>
 <!--nav-->
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">CCVT</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript:;" class="usLogin"></a></li>
-                <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
-
-                <?php
-                    require_once '../../inc/common.php';
-                    ini_set("display_errors", "off");
-                    $args = array('datetime');
-                    chk_empty_args('GET', $args);
-                    $db = new DB_COM();
-                    $datetime = base64_decode(get_arg_str('GET', 'datetime'));
-                    $group_name = base64_decode(get_arg_str('GET', 'group_name'));
-                    $day_start = strtotime(date($datetime . ' 00:00:00'));
-                    $day_end = strtotime(date($datetime . ' 23:59:59'));
-
-                    $json_string = file_get_contents('../../h5/assets/json/config_url.json');
-                    $data = json_decode($json_string, true);
-
-                    $group_name2 =  urlencode(base64_encode($group_name));
-
-                    $url = $data['api_url']."/api/bot_web/page/chat.php?datetime=".base64_encode($datetime)."&group_name=".$group_name2."&status=".base64_encode(2);
-
-                ?>
-                <li><a href="<?php echo $url;?>">查看聊天记录</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<!--<nav class="navbar navbar-default">-->
+<!--    <div class="container-fluid">-->
+<!--        <!-- Brand and toggle get grouped for better mobile display -->
+<!--        <div class="navbar-header">-->
+<!--            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+<!--                <span class="sr-only">Toggle navigation</span>-->
+<!--                <span class="icon-bar"></span>-->
+<!--                <span class="icon-bar"></span>-->
+<!--                <span class="icon-bar"></span>-->
+<!--            </button>-->
+<!--            <a class="navbar-brand" href="#">CCVT</a>-->
+<!--        </div>-->
+<!---->
+<!--        <!-- Collect the nav links, forms, and other content for toggling -->
+<!--        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+<!--            <ul class="nav navbar-nav navbar-right">-->
+<!--                <li><a href="javascript:;" class="usLogin"></a></li>-->
+<!--                <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>-->
+<!---->
+<!--                --><?php
+//                    require_once '../../inc/common.php';
+//                    ini_set("display_errors", "off");
+//                    $args = array('datetime');
+//                    chk_empty_args('GET', $args);
+//                    $db = new DB_COM();
+//                    $datetime = base64_decode(get_arg_str('GET', 'datetime'));
+//                    $group_name = base64_decode(get_arg_str('GET', 'group_name'));
+//                    $day_start = strtotime(date($datetime . ' 00:00:00'));
+//                    $day_end = strtotime(date($datetime . ' 23:59:59'));
+//
+//                    $json_string = file_get_contents('../../h5/assets/json/config_url.json');
+//                    $data = json_decode($json_string, true);
+//
+//                    $group_name2 =  urlencode(base64_encode($group_name));
+//
+//                    $url = $data['api_url']."/api/bot_web/page/chat.php?datetime=".base64_encode($datetime)."&group_name=".$group_name2."&status=".base64_encode(2);
+//
+//                ?>
+<!--                <li><a href="--><?php //echo $url;?><!--">查看聊天记录</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
 <!--nav-->
 <!--<div class="box">-->
 <!--    <div class="img_box">-->
@@ -88,7 +88,10 @@
                             $all_message = $db->getField($sql, 'all_message'); //总聊天数量
                             ?>
                             <div class="sm_title_text_color">
-                                <p>所属群:《<?php echo $group_name;?>》</p>
+                                <div>
+                                    <p>所属群:《<?php echo $group_name;?>》</p>
+                                    <a href="<?php //echo $url;?>">查看聊天记录</a>
+                                </div>
                                 <p class="font-size-14">时间:<?php echo $datetime; ?></p>
                             </div>
                             <div class="flex space-between font-size-14 sm_title_text_color">
