@@ -92,6 +92,21 @@ function get_group_members_list($group_id)
     return $row;
 }
 
+//======================================
+// 函数: 删除群组
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function del_group($group_id)
+{
+    $db = new DB_COM();
+    $sql = "delete from bot_group WHERE id='{$group_id}'";
+    $db->query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+
 
 //======================================
 // 函数: 获取任务列表
