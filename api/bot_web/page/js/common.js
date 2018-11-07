@@ -105,14 +105,3 @@ function ActiveClick($this, btnText) {
     $this.attr('data-clickStatus', 1);
     $this.html(btnText);
 }
-
-/**
- * Initialization page loading loading
- */
-window.onload = function () {
-    if (document.readyState === 'complete') {
-        document.body.style.overflow = "auto";
-        var loading = document.querySelector(".loading");
-        loading.parentNode.removeChild(loading);
-    }
-};
