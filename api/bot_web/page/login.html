@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/intlTelInput.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/login.css">
     <title>登录</title>
@@ -27,7 +28,8 @@
             <div class="form_box">
                 <form class="">
                     <div class="form-group form-group-sm">
-                        <input type="text" class="form-control" id="phoneAccount" placeholder="请输入手机号">
+                        <input type="tel" id="phone" maxlength="11" class="form-control" id="phoneAccount"
+                               placeholder="请输入手机号">
                         <input type="password" class="form-control" id="phonePassword" placeholder="请输入密码">
                         <input type="text" class="form-control" id="phoneSmsCode" placeholder="请输入验证码">
                         <button class="login_btn">登录</button>
@@ -44,6 +46,12 @@
 </section>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/intlTelInput.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript">
+    $("#phone").intlTelInput({
+        separateDialCode: true,
+    });
+</script>
 </body>
 </html>
