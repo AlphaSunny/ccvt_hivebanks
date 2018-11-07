@@ -171,6 +171,8 @@ function ActiveClick($this, btnText) {
 }
 
 //spring login
+var div = $("<div id='mySpin'></div>");
+$("body").append(div);
 function ShowLogin(type) {
     var opts = {
         lines: 8, // The number of lines to draw
