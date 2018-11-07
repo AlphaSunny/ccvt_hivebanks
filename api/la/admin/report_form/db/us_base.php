@@ -84,13 +84,20 @@ function gift_data(){
 
 /**
  * @return array
- * gift ccvt of register invite 
+ * gift ccvt of register invite
  */
 function gift_detail(){
 
     $db = new DB_COM();
 
-    $sql = "select us_account ,us_nm,base_amount,ctime,invite_code,wechat from us_base order by base_amount desc ";
+    $sql = "select a.invite_code,count(a.us_id) as count,
+(select us_account as us_account from us_base where us_nm=a.invite_code) as us_account,
+(select base_amount/(select unit from la_base limit 1) as us_account from us_base where us_nm=a.invite_code) as base_amount,
+(select us_id from us_base where us_nm=a.invite_code) as id,
+(select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='cellphone' limit 1) as phone,
+(select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='wechat' limit 1) as wechat,
+(select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='email' limit 1) as email
+from us_base as a where invite_code!=0 group by invite_code order by count desc; ";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
