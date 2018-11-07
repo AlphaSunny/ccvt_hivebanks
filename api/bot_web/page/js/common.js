@@ -134,6 +134,28 @@ function GetImgCode() {
 }
 
 /**
+ * Disable button
+ * @param $this Button object
+ * @param btnText Button text content defaults to "in process"
+ * @return {boolean}
+ */
+function DisableClick($this, btnText) {
+    if (!$this) {
+        console.warn("$this Can not be empty");
+        return true;
+    }
+    var status = Number($this.attr('data-clickStatus') || 1);
+    if (status == 0) {
+        return true;
+    }
+
+    btnText = btnText ? btnText : "loading...";
+    $this.attr('data-clickStatus', 0);
+    $this.html(btnText);
+    return false;
+}
+
+/**
  * Activation button
  * @param $this Button object
  * @param btnText Button text content defaults to "in process"
