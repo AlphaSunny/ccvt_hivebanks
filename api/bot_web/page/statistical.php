@@ -72,7 +72,7 @@
                 <div class="row title_box">
                     <div class="col-md-12 col-sm-12 flex center space-between">
                         <h3>CCVT奖励统计</h3>
-                        <p class="login">登录</p>
+                        <a href="login.html" class="login">登录</a>
                     </div>
                 </div>
                 <div class="row margin-top-5">
