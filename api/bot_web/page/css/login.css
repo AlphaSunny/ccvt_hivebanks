@@ -38,6 +38,8 @@ body, html {
     border: 1px solid #ff3f00;
     width: 49%;
     height: 3rem;
+    background: transparent;
+    color: #fff;
 }
 
 .toggleBtnBox button.active{
