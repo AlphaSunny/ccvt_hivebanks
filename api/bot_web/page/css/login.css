@@ -20,7 +20,7 @@ body, html {
     color: #555555 !important;
     padding: 0.5em !important;
     border: unset;
-    height: 3em!important;
+    height: 3em !important;
     margin-bottom: 1.5em;
 }
 
@@ -32,4 +32,12 @@ body, html {
 
 .login_text, .register_text {
     color: #eb602e;
+}
+
+.login_btn {
+    width: 100%;
+    background: #fa5213;
+    color: #fff;
+    border: unset;
+    height: 3rem;
 }
