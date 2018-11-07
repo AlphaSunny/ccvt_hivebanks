@@ -84,13 +84,14 @@ function gift_data(){
 
 /**
  * @return array
+ * gift ccvt of register invite 
  */
 function gift_detail(){
 
     $db = new DB_COM();
-    $data = array();
+
     $sql = "select us_account ,us_nm,base_amount,ctime,invite_code,wechat from us_base order by base_amount desc ";
     $db->query($sql);
     $rows = $db->fetchAll();
-    $data[] = $rows;
+    return $rows;
 }
