@@ -5,6 +5,12 @@ $(function () {
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");
 
+    //切换手机/邮箱登录
+    $(".toggle_login_btn").click(function () {
+        $(this).addClass("active").siblings(".toggle_login_btn").removeClass("active");
+    });
+
+    //切换验证码
     $("#phone_imgCode").click(function () {
         GetImgCode();
     });
