@@ -211,7 +211,7 @@ p.filter_title:after {
 .backStatistics_box{
     position: fixed;
     right: -3%;
-    top: 30%;
+    bottom: 30%;
     background: rgba(0,0,0,0.2);
     color: #fff;
     padding: 1% 5% 1% 2%;

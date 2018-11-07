@@ -158,6 +158,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
     </ul>
 </div>
 <script src="js/jquery.min.js"></script>
+<script src="js/common.js"></script>
 <script src="js/chat.js"></script>
 
 </body>
