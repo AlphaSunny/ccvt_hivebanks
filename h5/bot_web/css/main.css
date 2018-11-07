@@ -13871,7 +13871,7 @@ be a descendant of the grid when it is being dragged.
       -ms-flex-align: center;
           align-items: center;
   padding: 12px 15px;
-  font-size: 1.08em;
+  font-size: 1.5em;
   border-left: 3px solid transparent;
   -webkit-transition: border-left-color 0.3s ease,
  background-color 0.3s ease;
