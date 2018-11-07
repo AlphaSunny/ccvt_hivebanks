@@ -7,7 +7,7 @@ $(function () {
     var url = getRootPath();
 
     $(".login").click(function () {
-        window.location.href = url + "/api/bot_web/page/login.html?datetime=" + datetime + "&group_name=" + group_name;
+        window.location.href = url + "/api/bot_web/page/login.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
     })
     // function getRootPath() {
     //     //Get current URL
