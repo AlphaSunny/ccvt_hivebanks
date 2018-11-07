@@ -6,10 +6,8 @@
           content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>统计列表</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-<!--    <link rel="stylesheet" href="css/swiper.min.css">-->
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/statistics.css">
-<!--    <script src="js/swiper.min.js"></script>-->
 </head>
 
 <body>
@@ -30,9 +28,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript:;" class="baLogin">BA通道</a></li>
-                <li><a href="javascript:;" class="caLogin">CA通道</a></li>
-                <li><a href="javascript:;" class="usLogin">用户通道</a></li>
+                <li><a href="javascript:;" class="usLogin"></a></li>
                 <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
 
                 <?php
