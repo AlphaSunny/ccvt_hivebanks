@@ -26,7 +26,7 @@ $(function () {
         GetImgCode();
     });
 
-    $(".phone_login_btn").click(function () {
+    $(".phoneLoginBtn").click(function () {
         ShowLogin("show");
         var country_code = $('.selected-dial-code').text().split("+")[1];
         var cellphone = $("#phone").val(),
