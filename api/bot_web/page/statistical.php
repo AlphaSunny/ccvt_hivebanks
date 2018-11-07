@@ -90,7 +90,7 @@
                             <div class="sm_title_text_color">
                                 <div>
                                     <p>所属群:《<?php echo $group_name;?>》</p>
-                                    <a href="<?php //echo $url;?>">查看聊天记录</a>
+                                    <a href="<?php echo $url;?>">查看聊天记录</a>
                                 </div>
                                 <p class="font-size-14">时间:<?php echo $datetime; ?></p>
                             </div>
