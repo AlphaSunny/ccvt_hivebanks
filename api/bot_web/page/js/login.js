@@ -30,6 +30,7 @@ $(function () {
             ShowLogin("hide");
             GetImgCode();
             ActiveClick($this, _text);
+            layer.msg(response.errmsg);
             if(response.errcode == "116"){
                 layer.msg("<p>登录失败，请<span>"+ response.errmsg +"</span>秒后重试</p>");
             }
