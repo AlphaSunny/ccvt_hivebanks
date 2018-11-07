@@ -21,7 +21,7 @@ body, html {
     padding: 0.5em !important;
     border: unset;
     height: 3em !important;
-    margin-bottom: 1.5em;
+    margin-bottom: 3em;
     width: 100%;
 }
 
@@ -74,7 +74,7 @@ body, html {
 }
 
 #phone_imgCode{
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
     margin-left: 5px;
 }
 
