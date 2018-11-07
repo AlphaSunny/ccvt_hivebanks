@@ -31,25 +31,25 @@
 <!--                <li><a href="javascript:;" class="usLogin"></a></li>-->
 <!--                <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>-->
 <!---->
-<!--                --><?php
-//                    require_once '../../inc/common.php';
-//                    ini_set("display_errors", "off");
-//                    $args = array('datetime');
-//                    chk_empty_args('GET', $args);
-//                    $db = new DB_COM();
-//                    $datetime = base64_decode(get_arg_str('GET', 'datetime'));
-//                    $group_name = base64_decode(get_arg_str('GET', 'group_name'));
-//                    $day_start = strtotime(date($datetime . ' 00:00:00'));
-//                    $day_end = strtotime(date($datetime . ' 23:59:59'));
-//
-//                    $json_string = file_get_contents('../../h5/assets/json/config_url.json');
-//                    $data = json_decode($json_string, true);
-//
-//                    $group_name2 =  urlencode(base64_encode($group_name));
-//
-//                    $url = $data['api_url']."/api/bot_web/page/chat.php?datetime=".base64_encode($datetime)."&group_name=".$group_name2."&status=".base64_encode(2);
-//
-//                ?>
+                <?php
+                    require_once '../../inc/common.php';
+                    ini_set("display_errors", "off");
+                    $args = array('datetime');
+                    chk_empty_args('GET', $args);
+                    $db = new DB_COM();
+                    $datetime = base64_decode(get_arg_str('GET', 'datetime'));
+                    $group_name = base64_decode(get_arg_str('GET', 'group_name'));
+                    $day_start = strtotime(date($datetime . ' 00:00:00'));
+                    $day_end = strtotime(date($datetime . ' 23:59:59'));
+
+                    $json_string = file_get_contents('../../h5/assets/json/config_url.json');
+                    $data = json_decode($json_string, true);
+
+                    $group_name2 =  urlencode(base64_encode($group_name));
+
+                    $url = $data['api_url']."/api/bot_web/page/chat.php?datetime=".base64_encode($datetime)."&group_name=".$group_name2."&status=".base64_encode(2);
+
+                ?>
 <!--                <li><a href="--><?php //echo $url;?><!--">查看聊天记录</a></li>-->
 <!--            </ul>-->
 <!--        </div>-->
