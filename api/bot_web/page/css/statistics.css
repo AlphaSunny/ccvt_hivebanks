@@ -119,6 +119,7 @@ p {
 
 .title_box .login{
     cursor: pointer;
+    color: #9e9e9e;
 }
 
 .title_box .login:hover{

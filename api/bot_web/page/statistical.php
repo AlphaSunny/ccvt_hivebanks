@@ -75,7 +75,7 @@
                         <p class="login">登录</p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row margin-top-5">
                     <div class="col-md-12">
                         <div class="margin-bottom-2">
                             <?php
