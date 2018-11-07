@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+.dropdown-menu>li>a{
+    line-height: 2.5;
+}
+
 /*margin*/
 .margin-bottom-2 {
     margin-bottom: 2%;
