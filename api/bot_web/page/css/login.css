@@ -14,3 +14,12 @@ body, html {
 .login_title_row h3 {
     margin: 0;
 }
+
+.form_box input {
+    background: #565656;
+    color: #555555;
+}
+
+.form_box input:focus {
+    background: #ffffff !important;
+}
