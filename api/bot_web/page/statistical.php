@@ -92,7 +92,7 @@
                             $all_message = $db->getField($sql, 'all_message'); //总聊天数量
                             ?>
                             <div class="sm_title_text_color">
-                                <div>
+                                <div class="flex center space-between">
                                     <p>所属群:《<?php echo $group_name;?>》</p>
                                     <a href="<?php echo $url;?>">查看聊天记录</a>
                                 </div>
