@@ -34,6 +34,18 @@ body, html {
     color: #eb602e;
 }
 
+.toggleBtnBox button{
+    border: 1px solid #ff3f00;
+    width: 49%;
+    height: 3rem;
+}
+
+.toggleBtnBox button.active{
+    color: #fff;
+    background: #ff3f00;
+    border: unset;
+}
+
 .login_btn {
     width: 100%;
     background: #fa5213;
