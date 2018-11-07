@@ -149,6 +149,6 @@ p {
     text-align: right;
 }
 
-.filter{
+.filter:focus{
     outline: none;
 }
