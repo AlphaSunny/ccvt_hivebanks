@@ -18,8 +18,10 @@ body, html {
 .form_box input {
     background: #565656;
     color: #555555;
+    border: unset;
 }
 
 .form_box input:focus {
     background: #ffffff !important;
+    border: unset!important;
 }
