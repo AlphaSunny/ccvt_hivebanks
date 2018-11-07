@@ -97,9 +97,10 @@ p {
     width: 100%;
 }
 
-.accountNone{
-    display: none!important;
+.accountNone {
+    display: none !important;
 }
+
 .box {
     position: fixed;
     right: 2%;
@@ -145,10 +146,14 @@ p {
     color: #fe3e28;
 }
 
-.filter_box{
-    text-align: right;
+#filter{
+    border: 1px solid #333333;
 }
 
-#filter:focus{
+#filter:focus {
     outline: none;
+}
+
+.font-size-14{
+    font-size: 14px;
 }

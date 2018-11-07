@@ -64,7 +64,7 @@
     <p class="filter_title">筛选</p>
     <div class="filter_box">
         <div>
-            <span>荣耀积分</span>
+            <span class="font-size-14">荣耀积分:</span>
             <select name="filter" id="filter" class="form-control">
                 <option value="none">选择荣耀积分范围</option>
                 <option value="0-30">0-30</option>
@@ -73,9 +73,10 @@
             </select>
         </div>
         <div class="form-group-sm">
-            昵称搜索:
+            <span class="font-size-14">昵称:</span>
             <input type="text" class="form-control">
         </div>
+        <div><button class="search_btn">搜索</button></div>
     </div>
 <!--    <div class="box">-->
 <!--        <div class="img_box">-->
