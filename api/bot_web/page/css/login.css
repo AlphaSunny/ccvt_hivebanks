@@ -35,11 +35,11 @@ body, html {
     color: #eb602e;
 }
 
-.register_text{
+.register_text {
     color: #ffffff;
 }
 
-.toggleBtnBox button{
+.toggleBtnBox button {
     border: 1px solid #ff3f00;
     width: 49%;
     height: 3rem;
@@ -48,7 +48,7 @@ body, html {
     outline: none;
 }
 
-.toggleBtnBox button.active{
+.toggleBtnBox button.active {
     color: #fff;
     background: #ff3f00;
     border: unset;
@@ -62,22 +62,22 @@ body, html {
     height: 3rem;
 }
 
-.form_container{
+.form_container {
     margin-top: 25%;
 }
 
-.intl-tel-input{
+.intl-tel-input {
     width: 100%;
     margin-bottom: 3rem;
     color: #ffffff;
     padding-left: 23%;
 }
 
-#phone_imgCode{
+#phone_imgCode {
     margin-bottom: 3rem;
     margin-left: 5px;
 }
 
-.amount_box{
+.amount_box, .email_login_btn, .email {
     display: none;
 }
