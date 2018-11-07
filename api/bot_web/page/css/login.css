@@ -20,6 +20,8 @@ body, html {
     color: #555555!important;
     padding: 0.5em!important;
     border: unset;
+    height: 3em;
+    margin: 1.5em;
 }
 
 .form_box input:focus {
