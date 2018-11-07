@@ -44,6 +44,7 @@ body, html {
     height: 3rem;
     background: transparent;
     color: #fff;
+    outline: none;
 }
 
 .toggleBtnBox button.active{
