@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link rel="stylesheet" href="css/chat.css">
-<!--    <link rel="stylesheet" href="css/bootstrap.min.css">-->
     <title>聊天记录</title>
 </head>
 
@@ -30,25 +30,25 @@
 <!--                <li><a href="javascript:;" class="caLogin">CA通道</a></li>-->
 <!--                <li><a href="javascript:;" class="usLogin">用户通道</a></li>-->
 <!--                <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>-->
-                <?php
-                    require_once '../../inc/common.php';
-                    ini_set("display_errors", "off");
-                    $args = array('datetime');
-                    chk_empty_args('GET', $args);
-                    $db = new DB_COM();
-                    $datetime = base64_decode(get_arg_str('GET', 'datetime'));
-                    $group_name = base64_decode(get_arg_str('GET', 'group_name'));
-                    $day_start = strtotime(date($datetime . ' 00:00:00'));
-                    $day_end = strtotime(date($datetime . ' 23:59:59'));
+<?php
+require_once '../../inc/common.php';
+ini_set("display_errors", "off");
+$args = array('datetime');
+chk_empty_args('GET', $args);
+$db = new DB_COM();
+$datetime = base64_decode(get_arg_str('GET', 'datetime'));
+$group_name = base64_decode(get_arg_str('GET', 'group_name'));
+$day_start = strtotime(date($datetime . ' 00:00:00'));
+$day_end = strtotime(date($datetime . ' 23:59:59'));
 
-                    $status = base64_decode(get_arg_str('GET', 'status'));
+$status = base64_decode(get_arg_str('GET', 'status'));
 
-                    $group_name2 = urlencode(base64_encode($group_name));
+$group_name2 = urlencode(base64_encode($group_name));
 
-                    $json_string = file_get_contents('../../h5/assets/json/config_url.json');
-                    $data = json_decode($json_string, true);
-                    $url = $data['api_url']."/api/bot_web/page/statistical.php?datetime=".base64_encode($datetime)."&group_name=".$group_name2."&status=".base64_encode(2);
-                ?>
+$json_string = file_get_contents('../../h5/assets/json/config_url.json');
+$data = json_decode($json_string, true);
+$url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64_encode($datetime) . "&group_name=" . $group_name2 . "&status=" . base64_encode(2);
+?>
 <!--                --><?php
 //                   if ($status!=1){
 //                ?>
@@ -76,17 +76,13 @@
             <span class="font-size-14">昵称:</span>
             <input type="text" class="form-control search_input">
         </div>
-        <div><button class="search_btn">搜索</button></div>
+        <div>
+            <button class="search_btn">搜索</button>
+        </div>
     </div>
-<!--    <div class="box">-->
-<!--        <div class="img_box">-->
-<!--            <img src="img/more.svg" alt="">-->
-<!--        </div>-->
-<!--        <ul class="more_box">-->
-<!--            <li><a href="javascript:;" id="register">注册</a></li>-->
-<!--            <li><a href="javascript:;" id="login">登录</a></li>-->
-<!--        </ul>-->
-<!--    </div>-->
+    <div>
+        <a href="javascript:;" class="backStatistics">奖励统计</a>
+    </div>
     <ul class="chatList">
         <?php
 
@@ -162,7 +158,6 @@
     </ul>
 </div>
 <script src="js/jquery.min.js"></script>
-<!--<script src="js/bootstrap.min.js"></script>-->
 <script src="js/chat.js"></script>
 
 </body>
