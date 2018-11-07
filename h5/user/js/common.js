@@ -699,4 +699,4 @@ window.onload = function () {
         loading.parentNode.removeChild(loading);
     }
 };
-$('[data-toggle="tooltip"]').tooltip()
+$('[data-toggle="tooltip"]').tooltip();

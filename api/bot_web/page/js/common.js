@@ -90,3 +90,29 @@ function GetImgCode() {
     $('#email_imgCode').attr("src", src);
     $('#phone_imgCode').attr("src", src);
 }
+
+/**
+ * Activation button
+ * @param $this Button object
+ * @param btnText Button text content defaults to "in process"
+ */
+function ActiveClick($this, btnText) {
+    if (!$this) {
+        console.warn("$this Can not be empty");
+        return;
+    }
+    btnText = btnText ? btnText : "确认";
+    $this.attr('data-clickStatus', 1);
+    $this.html(btnText);
+}
+
+/**
+ * Initialization page loading loading
+ */
+window.onload = function () {
+    if (document.readyState === 'complete') {
+        document.body.style.overflow = "auto";
+        var loading = document.querySelector(".loading");
+        loading.parentNode.removeChild(loading);
+    }
+};
