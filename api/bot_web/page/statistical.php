@@ -140,7 +140,7 @@
                                             echo $count;
                                             ?>
                                         </td>
-                                        <td><img src="img/zan.svg" alt=""></td>
+                                        <td><img src="img/zan.svg" class="zan_img" alt=""></td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>

@@ -117,12 +117,12 @@ p {
     padding: 3% 0;
 }
 
-.title_box .login{
+.title_box .login {
     cursor: pointer;
     color: #9e9e9e;
 }
 
-.title_box .login:hover{
+.title_box .login:hover {
     color: #5dff32;
 }
 
@@ -180,4 +180,8 @@ p {
 
 .accountNone {
     display: none !important;
+}
+
+.zan_img {
+    width: 2rem;
 }
