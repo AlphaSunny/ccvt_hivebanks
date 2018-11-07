@@ -107,6 +107,11 @@ p {
 /*section#statistical {*/
 /*padding: 5% 0;*/
 /*}*/
+.title_box {
+    background: #333333;
+    color: #ffffff;
+}
+
 .title_box h3 {
     margin: 0;
 }

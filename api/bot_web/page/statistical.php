@@ -69,10 +69,12 @@
 <!--    <div class="swiper-wrapper">-->
         <section id="statistical" class="swiper-slide">
             <div class="container">
-                <div class="row">
-                    <div class="title_box">
+                <div class="row title_box">
+                    <div class="col-md-12 col-sm-12">
                         <h3>CCVT奖励统计</h3>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12">
                         <div class="margin-bottom-2">
                             <?php
