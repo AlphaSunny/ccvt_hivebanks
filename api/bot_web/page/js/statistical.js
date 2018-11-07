@@ -3,6 +3,21 @@ $(function () {
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");
 
+    //获取 statistics_user_token
+    var token = GetCookie("statistics_user_token");
+    if(token){
+        $(".login").remove();
+        $(".amount_box").fadeIn("fast");
+        UserInformation(token, function (response) {
+            if(response.errcode == "0"){
+                var data = response.rows;
+                $(".amount").text(data.base_amount);
+            }
+        }, function (response) {
+            layer.msg("余额获取失败");
+        })
+    }
+
     //获取当前域名
     var url = getRootPath();
 

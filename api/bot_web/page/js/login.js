@@ -23,7 +23,7 @@ $(function () {
                 $('#phoneCfmCode').val('');
                 $('#phonePassword').val('');
                 var token = response.token;
-                SetCookie('user_token', token);
+                SetCookie('statistics_user_token', token);
                 window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
             }
         }, function (response) {

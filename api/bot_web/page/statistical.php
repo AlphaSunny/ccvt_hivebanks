@@ -73,6 +73,10 @@
                     <div class="col-md-12 col-sm-12 flex center space-between">
                         <h3>CCVT奖励统计</h3>
                         <a href="javascript:;" class="login">登录</a>
+                        <span class="none amount_box">
+                            余额:
+                            <span class="amount"></span>
+                        </span>
                     </div>
                 </div>
                 <div class="row margin-top-5">

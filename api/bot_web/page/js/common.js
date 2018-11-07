@@ -126,6 +126,15 @@ function PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, suc_func,
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+// user information
+function UserInformation(token, suc_func, error_func) {
+    var api_url = 'info_base.php',
+        post_data = {
+            'token': token
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+};
+
 //get img code
 function GetImgCode() {
     var src = config_api_url + '/api/inc/code.php';
