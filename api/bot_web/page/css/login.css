@@ -17,7 +17,8 @@ body, html {
 
 .form_box input {
     background: #565656;
-    color: #555555;
+    color: #555555!important;
+    padding: 0.5em!important;
     border: unset;
 }
 
