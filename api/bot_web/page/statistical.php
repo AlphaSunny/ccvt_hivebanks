@@ -113,10 +113,11 @@
                                 <thead>
                                 <tr>
                                     <!--                            <th>排名</th>-->
-                                    <th class="text-center">名称</th>
+                                    <th class="text-left">名称</th>
                                     <!--                            <th class="text-center">拥有数量(CCVT)</th>-->
                                     <th class="text-center">获得(CCVT)</th>
                                     <th class="text-center">发言数</th>
+                                    <th class="text-center">点赞</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -139,6 +140,7 @@
                                             echo $count;
                                             ?>
                                         </td>
+                                        <td>点赞</td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
