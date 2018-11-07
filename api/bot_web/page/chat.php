@@ -62,7 +62,7 @@
 <div id="chat">
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>
     <div class="filter_box">
-        <select name="filter" id="filter">
+        <select name="filter" id="filter" class="form-control">
             <option value="none">筛选</option>
             <option value="0-30">0-30</option>
             <option value="0-30">0-30</option>
