@@ -140,7 +140,7 @@
                                             echo $count;
                                             ?>
                                         </td>
-                                        <td>点赞</td>
+                                        <td><img src="img/zan.svg" alt=""></td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
