@@ -78,7 +78,7 @@ p {
     border-radius: 2px;
 }
 
-#chat .infoNameBox{
+#chat .infoNameBox {
     padding-left: 2%;
 }
 
@@ -105,13 +105,15 @@ p {
 }
 
 /*section#statistical {*/
-    /*padding: 5% 0;*/
+/*padding: 5% 0;*/
 /*}*/
+.title_box h3 {
+    margin: 0;
+}
 
 .sm_title_text_color {
     color: #581e1e;
 }
-
 
 /*box*/
 .box {
@@ -161,6 +163,6 @@ p {
     color: #fe3e28;
 }
 
-.accountNone{
-    display: none!important;
+.accountNone {
+    display: none !important;
 }

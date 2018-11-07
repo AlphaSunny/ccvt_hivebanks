@@ -70,10 +70,10 @@
         <section id="statistical" class="swiper-slide">
             <div class="container">
                 <div class="row">
+                    <div class="title_box">
+                        <h3>CCVT奖励统计</h3>
+                    </div>
                     <div class="col-md-12">
-                        <div class="title_box">
-                            <h3>CCVT奖励统计</h3>
-                        </div>
                         <div class="margin-bottom-2">
                             <?php
                             $sql = "select unit from la_base limit 1";
