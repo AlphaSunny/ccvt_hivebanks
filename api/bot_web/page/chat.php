@@ -61,11 +61,12 @@
 <!--nav-->
 <div id="chat">
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>
+    <p class="filter_title">筛选</p>
     <div class="filter_box">
         <div>
             <span>荣耀积分</span>
             <select name="filter" id="filter" class="form-control">
-                <option value="none">筛选</option>
+                <option value="none">选择荣耀积分范围</option>
                 <option value="0-30">0-30</option>
                 <option value="0-30">0-30</option>
                 <option value="0-30">0-30</option>
