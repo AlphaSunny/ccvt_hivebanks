@@ -21,6 +21,7 @@ $(function () {
         if (DisableClick($this)) return;
         PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, function (response) {
             ActiveClick($this, _text);
+            spinner.spin();
             if (response.errcode == '0') {
                 $('#phone').val('');
                 $('.phoneCfmCode').val('');
@@ -30,6 +31,7 @@ $(function () {
                 window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "group_name=" + encodeURIComponent(group_name);
             }
         }, function (response) {
+            spinner.spin();
             GetImgCode();
             ActiveClick($this, _text);
             if(response.errcode == "116"){
