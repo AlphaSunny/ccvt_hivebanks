@@ -6,10 +6,7 @@ $(function () {
     var group_name = GetQueryString("group_name");
 
     $(".login_btn").click(function () {
-        var target = document.getElementById("mySpin");
-        var spinner = new Spinner(opts);
-        spinner.spin(target);
-
+        ShowLogin("show");
         var country_code = $('.selected-dial-code').text().split("+")[1];
         var cellphone = $("#phone").val(),
             cfm_code = $(".phoneCfmCode").val(),
@@ -20,7 +17,7 @@ $(function () {
         if (DisableClick($this)) return;
         PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, function (response) {
             ActiveClick($this, _text);
-            spinner.spin();
+            ShowLogin("hide");
             if (response.errcode == '0') {
                 $('#phone').val('');
                 $('.phoneCfmCode').val('');
@@ -30,7 +27,7 @@ $(function () {
                 window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "group_name=" + encodeURIComponent(group_name);
             }
         }, function (response) {
-            spinner.spin();
+            ShowLogin("hide");
             GetImgCode();
             ActiveClick($this, _text);
             if(response.errcode == "116"){
