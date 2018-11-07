@@ -6,7 +6,6 @@ $(function () {
     var group_name = GetQueryString("group_name");
 
     $(".login_btn").click(function () {
-        alert("click");
         var target = document.getElementById("mySpin");
         var spinner = new Spinner(opts);
         spinner.spin(target);
