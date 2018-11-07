@@ -9,8 +9,8 @@ $(function () {
         ShowLogin("show");
         var country_code = $('.selected-dial-code').text().split("+")[1];
         var cellphone = $("#phone").val(),
-            cfm_code = $(".phoneCfmCode").val(),
-            phonePassword = $(".phonePassword").val(),
+            cfm_code = $("#phoneCfmCode").val(),
+            phonePassword = $("#phonePassword").val(),
             pass_word_hash = hex_sha1(phonePassword);
 
         var $this = $(this), _text = $(this).text();
@@ -20,8 +20,8 @@ $(function () {
             ShowLogin("hide");
             if (response.errcode == '0') {
                 $('#phone').val('');
-                $('.phoneCfmCode').val('');
-                $('.phonePassword').val('');
+                $('#phoneCfmCode').val('');
+                $('#phonePassword').val('');
                 var token = response.token;
                 SetCookie('user_token', token);
                 window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "group_name=" + encodeURIComponent(group_name);
