@@ -72,7 +72,7 @@
                 <div class="row title_box">
                     <div class="col-md-12 col-sm-12 flex center space-between">
                         <h3>CCVT奖励统计</h3>
-                        <a href="login.html" class="login">登录</a>
+                        <a href="javascript:;" class="login">登录</a>
                     </div>
                 </div>
                 <div class="row margin-top-5">
@@ -226,6 +226,7 @@
 <!--    </script>-->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
     <script src="js/statistical.js"></script>
 </body>
 </html>
