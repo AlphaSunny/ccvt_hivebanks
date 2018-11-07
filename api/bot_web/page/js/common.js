@@ -57,7 +57,8 @@ function getRootPath() {
 var url = getRootPath();
 
 //Get configuration file/Base currency type
-var config_api_url = '', config_h5_url = '', userLanguage = getCookie('userLanguage');
+var config_api_url = '', config_h5_url = '';
+// userLanguage = getCookie('userLanguage');
 $.ajax({
     url: url + "/h5/assets/json/config_url.json",
     async: false,
