@@ -155,6 +155,7 @@ p {
     background: #fafafa;
     border-bottom: 1px solid #9d9d9d;
     position: relative;
+    cursor: pointer;
 }
 
 p.filter_title:after {
