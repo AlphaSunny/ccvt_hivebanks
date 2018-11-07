@@ -17,8 +17,8 @@ body, html {
 
 .form_box input {
     background: #565656;
-    color: #555555!important;
-    padding: 0.5em!important;
+    color: #555555 !important;
+    padding: 0.5em !important;
     border: unset;
     height: 3em;
     margin-bottom: 1.5em;
@@ -26,6 +26,10 @@ body, html {
 
 .form_box input:focus {
     background: #ffffff !important;
-    border: unset!important;
+    border: unset !important;
     outline: none;
+}
+
+.login_text, .register_text {
+    color: #eb602e;
 }
