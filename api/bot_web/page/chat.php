@@ -74,7 +74,7 @@
         </div>
         <div class="form-group-sm">
             <span class="font-size-14">昵称:</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control search_input">
         </div>
         <div><button class="search_btn">搜索</button></div>
     </div>
