@@ -206,3 +206,19 @@ p.filter_title:after {
 .font-size-14{
     font-size: 14px;
 }
+
+.backStatistics_box{
+    position: absolute;
+    right: -3%;
+    top: 30%;
+    background: rgba(0,0,0,0.2);
+    color: #fff;
+    padding: 1% 5% 1% 2%;
+    border-radius: 40px;
+    font-size: 14px;
+}
+
+.backStatistics{
+    font-size: 14px;
+    color: #333333;
+}
