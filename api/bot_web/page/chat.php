@@ -61,9 +61,15 @@
 <!--nav-->
 <div id="chat">
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>
-    <div>
-        <p>筛选:</p>
-        <ul>
+    <div class="filter_box">
+        <select name="filter" id="filter">
+            <option value="none">筛选</option>
+            <option value="0-30">0-30</option>
+            <option value="0-30">0-30</option>
+            <option value="0-30">0-30</option>
+        </select>
+        <p class="filter_title">筛选:</p>
+        <ul class="filter_content">
             <li>0-30</li>
             <li>31-60</li>
             <li>61-100</li>
