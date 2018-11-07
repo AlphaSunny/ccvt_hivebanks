@@ -1,0 +1,12 @@
+.login_title_row {
+    background: #333333;
+    color: #ffffff;
+}
+
+.login_title_box {
+    padding: 3% 0;
+}
+
+.login_title_row h3 {
+    margin: 0;
+}
