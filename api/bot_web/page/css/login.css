@@ -24,4 +24,5 @@ body, html {
 .form_box input:focus {
     background: #ffffff !important;
     border: unset!important;
+    outline: none;
 }
