@@ -5,6 +5,10 @@ $(function () {
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");
 
+    $("#phone_imgCode").click(function () {
+        GetImgCode();
+    });
+
     $(".login_btn").click(function () {
         ShowLogin("show");
         var country_code = $('.selected-dial-code').text().split("+")[1];
@@ -12,6 +16,19 @@ $(function () {
             cfm_code = $("#phoneCfmCode").val(),
             phonePassword = $("#phonePassword").val(),
             pass_word_hash = hex_sha1(phonePassword);
+
+        if(cellphone.length <= 0){
+            layer.msg("请输入手机号码");
+            return;
+        }
+        if(phonePassword.length <= 0){
+            layer.msg("请输入密码");
+            return;
+        }
+        if (cfm_code.length <= 0) {
+            layer.msg("请输入验证码");
+            return;
+        }
 
         var $this = $(this), _text = $(this).text();
         if (DisableClick($this)) return;
