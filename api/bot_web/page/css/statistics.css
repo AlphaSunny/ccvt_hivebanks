@@ -117,6 +117,14 @@ p {
     padding: 3% 0;
 }
 
+.title_box .login{
+    cursor: pointer;
+}
+
+.title_box .login:focus{
+    color: #5dff32;
+}
+
 .sm_title_text_color {
     color: #581e1e;
 }
