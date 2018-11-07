@@ -147,3 +147,7 @@ table td{
 .none{
     display: none!important;
 }
+
+.dropdown i{
+    font-size: 2rem;
+}
