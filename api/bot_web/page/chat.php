@@ -61,6 +61,14 @@
 <!--nav-->
 <div id="chat">
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>
+    <div>
+        <p>筛选:</p>
+        <ul>
+            <li>0-30</li>
+            <li>31-60</li>
+            <li>61-100</li>
+        </ul>
+    </div>
 <!--    <div class="box">-->
 <!--        <div class="img_box">-->
 <!--            <img src="img/more.svg" alt="">-->
