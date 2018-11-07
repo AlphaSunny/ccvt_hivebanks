@@ -30,8 +30,12 @@ body, html {
     outline: none;
 }
 
-.login_text, .register_text {
+.login_text {
     color: #eb602e;
+}
+
+.register_text{
+    color: #ffffff;
 }
 
 .toggleBtnBox button{
