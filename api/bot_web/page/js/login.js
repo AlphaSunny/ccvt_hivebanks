@@ -9,14 +9,14 @@ $(function () {
     $(".toggle_login_btn").click(function () {
         $(this).addClass("active").siblings(".toggle_login_btn").removeClass("active");
         if ($(this).hasClass("email_login_btn")) {
-            $("#intl-tel-input").fadeOut("fast");
+            $(".intl-tel-input").fadeOut("fast");
             $("#phoneLoginBtn").fadeOut("fast");
             $("#email").fadeIn("fast");
             $("#emailLoginBtn").fadeIn("fast");
         } else {
             $("#email").fadeOut("fast");
             $("#emailLoginBtn").fadeOut("fast");
-            $("#intl-tel-input").fadeIn("fast");
+            $(".intl-tel-input").fadeIn("fast");
             $("#phoneLoginBtn").fadeIn("fast");
         }
     });
