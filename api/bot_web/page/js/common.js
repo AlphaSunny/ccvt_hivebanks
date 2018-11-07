@@ -84,6 +84,48 @@ $.ajax({
     }
 });
 
+// Call API common function
+function CallApi(api_url, post_data, suc_func, error_func) {
+    var api_site = config_api_url + '/api/user/';
+    post_data = post_data || {};
+    suc_func = suc_func || function () {
+    };
+    error_func = error_func || function () {
+    };
+    $.ajax({
+        url: api_site + api_url,
+        dataType: "jsonp",
+        data: post_data,
+        success: function (response) {
+            // API return failed
+            if (response.errcode != 0) {
+                error_func(response);
+            } else {
+                // Successfully process data
+                suc_func(response);
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            // API error exception
+            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            // Exception handling
+            error_func(response);
+        }
+    });
+}
+
+//Mobile phone login processing
+function PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, suc_func, error_func) {
+    var api_url = 'lgn_phone.php',
+        post_data = {
+            'country_code': country_code,
+            'cellphone': cellphone,
+            'pass_word_hash': pass_word_hash,
+            'cfm_code': cfm_code
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //get img code
 function GetImgCode() {
     var src = config_api_url + '/api/inc/code.php';
