@@ -78,6 +78,6 @@ body, html {
     margin-left: 5px;
 }
 
-.amount_box, .emailLoginBtn, .email {
+.amount_box, .emailLoginBtn, #email {
     display: none;
 }
