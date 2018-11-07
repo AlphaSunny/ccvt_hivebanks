@@ -20,7 +20,7 @@ body, html {
     color: #555555 !important;
     padding: 0.5em !important;
     border: unset;
-    height: 3em;
+    height: 3em!important;
     margin-bottom: 1.5em;
 }
 
