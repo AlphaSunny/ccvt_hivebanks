@@ -121,7 +121,7 @@ p {
     cursor: pointer;
 }
 
-.title_box .login:focus{
+.title_box .login:hover{
     color: #5dff32;
 }
 
