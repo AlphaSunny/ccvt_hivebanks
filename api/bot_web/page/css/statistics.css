@@ -185,3 +185,7 @@ p {
 .zan_img {
     width: 2rem;
 }
+
+.amount_box{
+    display: none;
+}
