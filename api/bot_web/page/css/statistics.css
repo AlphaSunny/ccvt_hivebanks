@@ -104,9 +104,9 @@ p {
     width: 100%;
 }
 
-section#statistical {
-    padding: 5% 0;
-}
+/*section#statistical {*/
+    /*padding: 5% 0;*/
+/*}*/
 
 .sm_title_text_color {
     color: #581e1e;

@@ -65,13 +65,12 @@
 <!--        <li><a href="javascript:;" id="login">登录</a></li>-->
 <!--    </ul>-->
 <!--</div>-->
-<div class="swiper-container">
-    <div class="swiper-wrapper">
+<!--<div class="swiper-container">-->
+<!--    <div class="swiper-wrapper">-->
         <section id="statistical" class="swiper-slide">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>CCVT奖励统计</h3>
                         <div class="margin-bottom-2">
                             <?php
 
@@ -214,7 +213,7 @@
 <!--            </div>-->
 <!--        </section>-->
 
-    </div>
+<!--    </div>-->
 <!--    <script>-->
 <!--        var mySwiper = new Swiper(".swiper-container", {-->
 <!--            loop: true-->
