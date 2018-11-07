@@ -72,6 +72,7 @@
                 <div class="row title_box">
                     <div class="col-md-12 col-sm-12">
                         <h3>CCVT奖励统计</h3>
+                        <p class="login">登录</p>
                     </div>
                 </div>
                 <div class="row">
