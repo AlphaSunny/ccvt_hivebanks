@@ -111,6 +111,36 @@ function CallApi(api_url, post_data, suc_func, error_func) {
     });
 }
 
+// Call API common function
+function CallBotApi(api_url, post_data, suc_func, error_func) {
+    var api_site = config_api_url + '/api/bot_web/page/';
+    post_data = post_data || {};
+    suc_func = suc_func || function () {
+    };
+    error_func = error_func || function () {
+    };
+    $.ajax({
+        url: api_site + api_url,
+        dataType: "jsonp",
+        data: post_data,
+        success: function (response) {
+            // API return failed
+            if (response.errcode != 0) {
+                error_func(response);
+            } else {
+                // Successfully process data
+                suc_func(response);
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            // API error exception
+            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            // Exception handling
+            error_func(response);
+        }
+    });
+}
+
 //Mobile phone login processing
 function PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, suc_func, error_func) {
     var api_url = 'lgn_phone.php',
@@ -188,6 +218,17 @@ function GetImgCode() {
     $('#phone_imgCode').attr("src", src);
 }
 
+//点赞
+function Give(token, give_us_id, give_num,suc_func, error_func){
+    var api_url = 'give_like.php',
+        post_data = {
+            'token': token,
+            'give_us_id': give_us_id,
+            'give_num': give_num
+        };
+    CallBotApi(api_url, post_data, suc_func, error_func);
+}
+
 /**
  * Disable button
  * @param $this Button object
@@ -224,28 +265,3 @@ function ActiveClick($this, btnText) {
     $this.attr('data-clickStatus', 1);
     $this.html(btnText);
 }
-
-//spring login
-// var div = $("<div id='mySpin'></div>");
-// $("body").append(div);
-
-// var opts = {
-//     lines: 8, // The number of lines to draw
-//     length: 10, // The length of each line
-//     width: 2, // The line thickness
-//     radius: 10, // The radius of the inner circle
-//     scale: 1, // Scales overall size of the spinner
-//     corners: 1, // Corner roundness (0..1)
-//     color: '#ffffff', // CSS color or array of colors
-//     fadeColor: 'transparent', // CSS color or array of colors
-//     speed: 1, // Rounds per second
-//     rotate: 0, // The rotation offset
-//     animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
-//     direction: 1, // 1: clockwise, -1: counterclockwise
-//     zIndex: 2e9, // The z-index (defaults to 2000000000)
-//     className: 'spinner', // The CSS class to assign to the spinner
-//     top: '50%', // Top position relative to parent
-//     left: '50%', // Left position relative to parent
-//     shadow: '0 0 1px transparent', // Box-shadow for the lines
-//     position: 'absolute' // Element positioning
-// };

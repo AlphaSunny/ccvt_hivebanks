@@ -26,9 +26,9 @@ $(function () {
     });
 
     //点赞
+    var give_us_id = "";
     $(".zan_btn").click(function () {
-        var us_id = $(this).children(".us_id").text();
-        console.log(us_id);
+        give_us_id = $(this).children(".us_id").text();
         if (!token) {
             alert("登录之后才可以点赞哦");
             return;
@@ -38,12 +38,25 @@ $(function () {
 
     //确定点赞
     $(".ok").click(function () {
-        $('.web_toast_text').text("点赞成功!");
-        $(".web_toast").fadeIn("fast");
-        $(".confirmMode").fadeOut("fast");
-        setTimeout(function () {
-            $(".web_toast").fadeOut("fast");
-        }, 2000);
+        var give_num = $(".confirm_input").val();
+
+        Give(token, give_us_id, give_num, function (response) {
+            if(response.errcode == "0"){
+                $('.web_toast_text').text("点赞成功!");
+                $(".web_toast").fadeIn("fast");
+                $(".confirmMode").fadeOut("fast");
+                setTimeout(function () {
+                    $(".web_toast").fadeOut("fast");
+                }, 2000);
+            }
+        }, function (response) {
+            $('.web_toast_text').text("点赞失败");
+            $(".web_toast").fadeIn("fast");
+            $(".confirmMode").fadeOut("fast");
+            setTimeout(function () {
+                $(".web_toast").fadeOut("fast");
+            }, 2000);
+        });
     });
 
     //取消按钮
