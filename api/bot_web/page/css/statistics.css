@@ -242,6 +242,10 @@ p {
     text-align: left;
 }
 
+.c-float-popWrap .c-float-modePop .content label {
+    display: block;
+}
+
 .c-float-popWrap .c-float-modePop .doBtn {
     width: 100%;
     margin-top: 15px;
