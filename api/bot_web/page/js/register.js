@@ -151,7 +151,7 @@ $(function () {
         RegShowLogin("show");
         PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_hash, invit_code, function (response) {
             ActiveClick($this, btnText);
-            ShowLoading("hide");
+            RegShowLogin("hide");
             if (response.errcode == '0') {
                 $('#phone').val('');
                 $('#phoneCfmCode').val('');
@@ -165,7 +165,7 @@ $(function () {
                 }, 1500);
             }
         }, function (response) {
-            ShowLoading("hide");
+            RegShowLogin("hide");
             ActiveClick($this, btnText);
             GetImgCode();
             layer(response.errmsg);
