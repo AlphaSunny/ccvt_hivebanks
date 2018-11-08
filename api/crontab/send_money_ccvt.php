@@ -85,6 +85,28 @@ if ($rows){
             continue;
         }
 
+        //转币记录
+        $u_id = get_us_id($v['wechat']);
+        $data['hash_id'] = hash('md5', $u_id . 4 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+        $data['prvs_hash'] = get_pre_hash(4);
+        $data['credit_id'] = $ba_id;
+        $data['debit_id'] = $u_id;
+        $data['tx_amount'] = $give_account*$unit;
+        $data['tx_hash'] = hash('md5', $u_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
+        $data['flag'] = 4;
+        $data['transfer_type'] = 1;
+        $data['transfer_state'] = 1;
+        $data['tx_detail'] = "聊天奖励";
+        $data['ctime'] = strtotime(date('Y-m-d H:i:s',time()));
+        $data['utime'] = date('Y-m-d H:i:s',time());
+        $sql = $db->sqlInsert("com_transfer_request", $data);
+        $id = $db->query($sql);
+        if (!$id){
+            echo "转币记录失败";
+            continue;
+        }
+
+
         //us添加基准资产变动记录
         $us_type = 'us_send_balance';
         $ctime = date('Y-m-d H:i:s');
@@ -218,6 +240,18 @@ function  get_recharge_pre_hash($ba_id)
 {
     $db = new DB_COM();
     $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}' and tx_type = 'ba_send' ORDER BY  ctime DESC LIMIT 1";
+    $hash_id = $db->getField($sql, 'hash_id');
+    if($hash_id == null)
+        return 0;
+    return $hash_id;
+}
+
+//======================================
+// 函数: 获取上传交易hash
+//======================================
+function get_pre_hash($flag){
+    $db = new DB_COM();
+    $sql = "SELECT hash_id FROM com_transfer_request WHERE flag = '{$flag}' ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;
