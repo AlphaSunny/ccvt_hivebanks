@@ -32,13 +32,23 @@
                 <div class="form-group form-group-sm">
                     <input type="tel" id="phone" maxlength="11" class="form-control"
                            placeholder="请输入手机号">
+                    <div class="flex center">
+                        <input type="text" class="form-control" id="phoneCfmCode" placeholder="请输入图形验证码">
+                        <img src="" id="phone_imgCode" alt="">
+                    </div>
+                    <div class="flex center">
+                        <input type="text" class="form-control" id="phoneSmsCode" placeholder="请输入短信验证码">
+                        <img src="" id="phone_sms_code" alt="">
+                    </div>
+                    <input type="password" id="password" maxlength="11" class="form-control"
+                           placeholder="请输入密码">
+                    <input type="password" id="confirm_password" maxlength="11" class="form-control"
+                           placeholder="请输入确认密码">
+                    <input type="text" id="invitation" maxlength="11" class="form-control"
+                           placeholder="请输入邀请码">
                     <input type="email" id="email" maxlength="11" class="form-control"
                            placeholder="请输入邮箱">
                     <input type="password" class="form-control" id="phonePassword" placeholder="请输入密码">
-                    <div class="flex center">
-                        <input type="text" class="form-control" id="phoneCfmCode" placeholder="请输入验证码">
-                        <img src="" id="phone_imgCode" alt="">
-                    </div>
                     <button class="login_btn phoneRegBtn">注册</button>
                     <button class="login_btn emailRegBtn">注册</button>
                 </div>
