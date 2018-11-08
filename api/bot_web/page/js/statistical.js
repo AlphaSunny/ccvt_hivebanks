@@ -36,8 +36,11 @@ $(function () {
 
     //确定点赞
     $(".ok").click(function () {
-        layer.msg("成功点赞");
+        $('.web_toast_text').text("点赞成功!").fadeIn("fast");
         $(".confirmMode").fadeOut("fast");
+        setTimeout(function () {
+            $('.web_toast_text').text("").fadeOut("fast");
+        },2000)
     });
 
     //取消按钮

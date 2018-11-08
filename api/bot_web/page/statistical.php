@@ -258,7 +258,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
 
 <div class="web_toast">
     <div class="cx_mask_transparent"></div>
-    <div>恭喜您，修改成功恭喜您，修改成功恭喜您修改成功恭喜您</div>
+    <div class="web_toast_text"></div>
 </div>
 
 <script src="js/jquery.min.js"></script>
