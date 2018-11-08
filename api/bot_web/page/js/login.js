@@ -69,6 +69,7 @@ $(function () {
             $(".intl-tel-input").fadeIn("fast");
             $(".phoneLoginBtn").fadeIn("fast");
         }
+        $("input").val("");
     });
 
     //切换验证码

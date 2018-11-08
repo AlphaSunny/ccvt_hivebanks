@@ -55,6 +55,7 @@ $(function () {
             $(".phone_reg_box").fadeIn("fast");
             $(".phoneRegBtn").fadeIn("fast");
         }
+        $("input").val("");
     });
 
     //切换验证码
