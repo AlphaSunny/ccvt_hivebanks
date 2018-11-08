@@ -47,6 +47,21 @@ if ($invite_rows){
     die();
 }
 
+//聊天奖励
+
+$sql = "select * from bot_Iss_records WHERE 1";
+$db->query($sql);
+$bot_rows = $db->fetchAll();
+if ($bot_rows){
+    foreach ($bot_rows as $c=>$d){
+        $send_money = $d['amount']/la_unit();
+        into_transfer($d['us_id'],$send_money,$d['bot_create_time'],4,'聊天奖励');
+    }
+}else{
+    echo "聊天奖励没有数据可以操作";
+    die();
+}
+
 
 echo "ok";
 
