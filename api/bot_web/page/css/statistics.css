@@ -335,7 +335,7 @@ p {
     bottom: 45%;
     margin: 0 10px;
     z-index: 9999;
-    display: block;
+    display: none;
     padding: 10px;
     color: #fff;
     background: rgba(0, 0, 0, .7);
