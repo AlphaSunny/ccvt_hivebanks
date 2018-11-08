@@ -29,6 +29,22 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
+
+    //用户减钱
+    $sql = "update us_base set base_amount=base_amount-'{$data['give_num']}' WHERE us_id='{$data['us_id']}'";
+    $db->query($sql);
+    if (!$db->affectedRows()){
+        $db->Rollback($pInTrans);
+        return 0;
+    }
+
+    //la加钱
+    $sql = "update la_base set base_amount=base_amount+'{$data['give_num']}' limit 1";
+    $db->query($sql);
+    if (!$db->affectedRows()){
+        $db->Rollback($pInTrans);
+        return 0;
+    }
     $db->Commit($pInTrans);
     return true;
 }
