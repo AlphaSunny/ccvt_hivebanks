@@ -10,10 +10,11 @@ function give_like_us($data)
 {
     $db = new DB_COM();
     $pInTrans = $db->StartTrans();  //开启事务
+    $unit = la_unit();
     $d['hash_id'] = hash('md5', $data['us_id'] . 'give_like_us' . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $d['credit_id'] = $data['us_id'];
     $d['debit_id'] = $data['give_us_id'];
-    $d['tx_amount'] = $data['give_num']*la_unit();
+    $d['tx_amount'] = $data['give_num']*$unit;
     $d['ctime'] = time();
     $d['utime'] = date('Y-m-d H:i:s');
     $sql = $db->sqlInsert("us_glory_integral_change_log", $d);
@@ -31,7 +32,8 @@ function give_like_us($data)
     }
 
     //用户减钱
-    $sql = "update us_base set base_amount=base_amount-'{$data['give_num']}' WHERE us_id='{$data['us_id']}'";
+
+    $sql = "update us_base set base_amount=base_amount-'{$data['give_num']}'*'{'$unit'}' WHERE us_id='{$data['us_id']}'";
     $db->query($sql);
     if (!$db->affectedRows()){
         $db->Rollback($pInTrans);
@@ -39,7 +41,7 @@ function give_like_us($data)
     }
 
     //la加钱
-    $sql = "update la_base set base_amount=base_amount+'{$data['give_num']}' limit 1";
+    $sql = "update la_base set base_amount=base_amount+'{$data['give_num']}'*'{'$unit'}' limit 1";
     $db->query($sql);
     if (!$db->affectedRows()){
         $db->Rollback($pInTrans);
