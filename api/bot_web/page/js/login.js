@@ -104,6 +104,7 @@ $(function () {
         var $this = $(this), _text = $(this).text();
         if (DisableClick($this)) return;
         EmailLogin(email, pass_word_hash, cfm_code, function (response) {
+            ShowLogin("hide");
             ActiveClick($this, _text);
             if (response.errcode == '0') {
                 $('#email').val('');
@@ -115,6 +116,7 @@ $(function () {
                 window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
             }
         }, function (response) {
+            ShowLogin("hide");
             GetImgCode();
             ActiveClick($this, _text);
             layer.msg(response.errmsg);
