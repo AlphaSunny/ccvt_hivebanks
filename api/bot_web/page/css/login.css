@@ -83,7 +83,8 @@ body, html {
 }
 
 .back_statistics{
-    display: block;
-    color: #ff3f00;
-    margin-bottom: 5%;
+    display: inline-block;
+    color: #f95017;
+    margin-top: 5%;
+    border-bottom: 1px solid;
 }
