@@ -123,6 +123,17 @@ function PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, suc_func,
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//Mailbox login processing
+function EmailLogin(email, pass_word_hash, cfm_code, suc_func, error_func) {
+    var api_url = 'lgn_email.php',
+        post_data = {
+            'email': email,
+            'pass_word_hash': pass_word_hash,
+            'cfm_code': cfm_code
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 // user information
 function UserInformation(token, suc_func, error_func) {
     var api_url = 'info_base.php',
