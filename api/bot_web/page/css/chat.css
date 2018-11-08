@@ -204,12 +204,17 @@ button.search_btn:hover {
 }
 
 .search_input {
-    width: 88%;
+    width: 84%;
     outline: none;
     background: transparent;
     border: 1px solid #333;
     border-radius: 3px;
     padding: 2%;
+}
+
+input.form-control.search_input:focus {
+    border-color: #ff0b28;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .font-size-14 {
