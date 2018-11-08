@@ -119,13 +119,12 @@ $(function () {
             again_pass_word = $('#confirm_password').val(),
             pass_word_hash = hex_sha1(pass_word),
             invit_code = $('#invitation').val();
-
-        if (!IsEmail(email)) {
-            layer.msg("邮箱格式错误");
-            return;
-        }
         if (email.length <= 0) {
             layer.msg("请输入邮箱");
+            return;
+        }
+        if (!IsEmail(email)) {
+            layer.msg("邮箱格式错误");
             return;
         }
         if (pass_word.length <= 0) {
