@@ -27,6 +27,7 @@ if (!$ba_base){
 $sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$group_name}' AND type='Text' AND is_effective='0' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
 $db->query($sql);
 $rows = $db->fetchAll();
+print_r($rows);die;
 if ($rows){
     $pInTrans = $db->StartTrans();  //开启事务
     foreach ($rows as $k=>$v){
