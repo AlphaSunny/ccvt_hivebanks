@@ -24,30 +24,34 @@
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <div class="toggleBtnBox">
-                <button class="phone_login_btn toggle_login_btn active">手机注册</button>
-                <button class="email_login_btn toggle_login_btn">邮箱注册</button>
+                <button class="phone_reg_btn toggle_reg_btn active">手机注册</button>
+                <button class="email_reg_btn toggle_reg_btn">邮箱注册</button>
             </div>
             <div class="form_box margin-top-5">
                 <!--<form class="">-->
                 <div class="form-group form-group-sm">
-                    <input type="tel" id="phone" maxlength="11" class="form-control"
-                           placeholder="请输入手机号">
-                    <div class="flex center">
-                        <input type="text" class="form-control" id="phoneCfmCode" placeholder="请输入图形验证码">
-                        <img src="" id="phone_imgCode" alt="">
+                    <div class="phone_reg_box">
+                        <input type="tel" id="phone" maxlength="11" class="form-control"
+                               placeholder="请输入手机号">
+                        <div class="flex center">
+                            <input type="text" class="form-control" id="phoneCfmCode" placeholder="请输入图形验证码">
+                            <img src="" id="phone_imgCode" alt="">
+                        </div>
+                        <div class="flex center">
+                            <input type="text" class="form-control" id="phoneSmsCode" placeholder="请输入短信验证码">
+                            <button class="get_sms_code_btn">获取验证码</button>
+                        </div>
                     </div>
-                    <div class="flex center">
-                        <input type="text" class="form-control" id="phoneSmsCode" placeholder="请输入短信验证码">
-                        <button class="get_sms_code_btn">获取验证码</button>
-                    </div>
+
+                    <input type="email" id="email" maxlength="11" class="form-control"
+                           placeholder="请输入邮箱">
+
                     <input type="password" id="password" maxlength="11" class="form-control"
                            placeholder="请输入密码">
                     <input type="password" id="confirm_password" maxlength="11" class="form-control"
                            placeholder="请输入确认密码">
                     <input type="text" id="invitation" maxlength="11" class="form-control"
                            placeholder="请输入邀请码">
-                    <input type="email" id="email" maxlength="11" class="form-control"
-                           placeholder="请输入邮箱">
                     <button class="login_btn phoneRegBtn">注册</button>
                     <button class="login_btn emailRegBtn">注册</button>
                 </div>
