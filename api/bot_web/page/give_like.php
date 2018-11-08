@@ -25,8 +25,20 @@ chk_empty_args('GET', $args);
 $token = get_arg_str('GET', 'token',128);
 // 用户id
 $give_us_id = get_arg_str('GET', 'give_us_id');
+
+// 金额
+$give_num = get_arg_str('GET', 'give_num');
+
 //验证token
 $us_id = check_token($token);
+
+//判断是否已达到上限
+$chcek = check_max_give($us_id,$give_num);
+if ($chcek==1){
+    exit_error('101','已达到最大上限');
+}elseif ($chcek==2){
+    exit_error('102','金额错误');
+}
 
 $data['us_id'] = $us_id;
 $data['give_us_id'] = $give_us_id;
@@ -34,12 +46,14 @@ $data['give_num'] = get_arg_str('GET', 'give_num');
 
 // 添加群组
 $row = give_like_us($data);
+if (!$row){
+    exit_error('103','赠送失败');
+}
 
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['row'] = $row;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
