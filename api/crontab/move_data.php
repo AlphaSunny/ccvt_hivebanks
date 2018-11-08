@@ -30,6 +30,24 @@ if ($rows){
     echo "注册赠送没有数据可以操作";
     die();
 }
+
+//邀请
+
+$sql = "select * from us_base WHERE invite_code!=0";
+$db->query($sql);
+$invite_rows = $db->fetchAll();
+if ($invite_rows){
+    foreach ($invite_rows as $a=>$b){
+        $invite_us_id = get_us_id($b['invite_code']);
+        $send_money = "50";
+        into_transfer($invite_us_id,$send_money,$b['ctime'],2,'邀请赠送');
+    }
+}else{
+    echo "邀请赠送没有数据可以操作";
+    die();
+}
+
+
 echo "ok";
 
 
@@ -88,4 +106,12 @@ function la_unit(){
     $db->query($sql);
     $rows = $db->fetchRow();
     return $rows['unit'];
+}
+
+function get_us_id($invite_code){
+    $db = new DB_COM();
+    $sql = "select us_id from us_base WHERE us_nm='{$invite_code}'";
+    $db->query($sql);
+    $rows = $db->fetchRow();
+    return $rows['us_id'];
 }
