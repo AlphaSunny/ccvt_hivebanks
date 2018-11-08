@@ -17,6 +17,7 @@ function give_like_us($data)
     $d['ctime'] = time();
     $d['utime'] = date('Y-m-d H:i:s');
     $sql = $db->sqlInsert("us_glory_integral_change_log", $data);
+    echo $sql;die;
     $id = $db->query($sql);
     if (!$id){
         $db->Rollback($pInTrans);
