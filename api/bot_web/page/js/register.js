@@ -168,7 +168,7 @@ $(function () {
             RegShowLogin("hide");
             ActiveClick($this, btnText);
             GetImgCode();
-            layer(response.errmsg);
+            layer.msg(response.errmsg);
             return;
         });
     });
