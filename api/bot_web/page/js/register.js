@@ -1,6 +1,37 @@
 $(function () {
     GetImgCode();
 
+    var target = document.getElementById("mySpin");
+    var spinner = new Spinner({
+        lines: 8, // The number of lines to draw
+        length: 10, // The length of each line
+        width: 2, // The line thickness
+        radius: 10, // The radius of the inner circle
+        scale: 1, // Scales overall size of the spinner
+        corners: 1, // Corner roundness (0..1)
+        color: '#ffffff', // CSS color or array of colors
+        fadeColor: 'transparent', // CSS color or array of colors
+        speed: 1, // Rounds per second
+        rotate: 0, // The rotation offset
+        animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
+        direction: 1, // 1: clockwise, -1: counterclockwise
+        zIndex: 2e9, // The z-index (defaults to 2000000000)
+        className: 'spinner', // The CSS class to assign to the spinner
+        top: '50%', // Top position relative to parent
+        left: '50%', // Left position relative to parent
+        shadow: '0 0 1px transparent', // Box-shadow for the lines
+        position: 'absolute' // Element positioning
+    });
+
+    function ShowLogin(type) {
+        if (type == "show") {
+            spinner.spin(target);
+        }
+        if (type == "hide") {
+            spinner.spin();
+        }
+    }
+
     //获取参数
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");
@@ -48,12 +79,15 @@ $(function () {
         }
         var $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
+        ShowLogin("show");
         GetPhoneCode(cellphone, country_code, bind_type, cfm_code, function (response) {
+            ShowLogin("hide");
             if (response.errcode == '0') {
                 CountDown($this);
                 layer.msg("发送成功");
             }
         }, function (response) {
+            ShowLogin("hide");
             ActiveClick($this, btnText);
             layer.msg(response.errmsg);
         });
@@ -114,10 +148,10 @@ $(function () {
         }
         var $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
-        // ShowLoading("show");
+        ShowLoading("show");
         PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_hash, invit_code, function (response) {
             ActiveClick($this, btnText);
-            // ShowLoading("hide");
+            ShowLoading("hide");
             if (response.errcode == '0') {
                 $('#phone').val('');
                 $('#phoneCfmCode').val('');
@@ -131,7 +165,7 @@ $(function () {
                 }, 1500);
             }
         }, function (response) {
-            // ShowLoading("hide");
+            ShowLoading("hide");
             ActiveClick($this, btnText);
             GetImgCode();
             layer(response.errmsg);
@@ -169,10 +203,10 @@ $(function () {
 
         var $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
-        // ShowLoading("show");
+        ShowLoading("show");
         EmailRegister(email, pass_word, pass_word_hash, invit_code, function (response) {
             ActiveClick($this, btnText);
-            // ShowLoading("hide");
+            ShowLoading("hide");
             if (response.errcode == '0') {
                 $('#email').val("");
                 $('#password').val("");
@@ -184,7 +218,7 @@ $(function () {
                 }, 500);
             }
         }, function (response) {
-            // ShowLoading("hide");
+            ShowLoading("hide");
             ActiveClick($this, btnText);
             layer.msg(response.errmsg);
             GetImgCode();
