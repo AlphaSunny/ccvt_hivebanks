@@ -33,18 +33,43 @@ $(function () {
 
     //获取手机验证码
     $(".get_sms_code_btn").click(function () {
+        var _this = $(this);
         var cellphone = $("#phone").val();
         var country_code = $('.selected-dial-code').text().split("+")[1];
         var bind_type = "1";
         var cfm_code = $("#phoneCfmCode").val();
+
+        if (cellphone.length <= 0) {
+            layer.msg("请输入手机号码");
+            return;
+        }
+        if (cfm_code.length <= 0) {
+            layer.msg("请输入图形验证码");
+            return;
+        }
         GetPhoneCode(cellphone, country_code, bind_type, cfm_code, function (response) {
             if (response.errcode == '0') {
+                CountDown(_this);
                 layer.msg("发送成功");
             }
         }, function (response) {
             layer.msg(response.errmsg);
         });
     });
+
+    //倒计时60秒
+    function CountDown(_this) {
+        var count = 60;
+        var timer = setInterval(function () {
+            if (count > 0) {
+                _this.text(count + "s");
+                count--;
+            } else {
+                _this.text("获取验证码");
+                clearInterval(timer);
+            }
+        }, 1000)
+    }
 
     //手机注册
     $('.phoneRegBtn').click(function () {
@@ -87,10 +112,10 @@ $(function () {
         }
         var $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
-        ShowLoading("show");
+        // ShowLoading("show");
         PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_hash, invit_code, function (response) {
             ActiveClick($this, btnText);
-            ShowLoading("hide");
+            // ShowLoading("hide");
             if (response.errcode == '0') {
                 $('#phone').val('');
                 $('#phoneCfmCode').val('');
@@ -104,7 +129,7 @@ $(function () {
                 }, 1500);
             }
         }, function (response) {
-            ShowLoading("hide");
+            // ShowLoading("hide");
             ActiveClick($this, btnText);
             GetImgCode();
             layer(response.errmsg);
