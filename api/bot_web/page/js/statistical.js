@@ -40,7 +40,7 @@ $(function () {
         $(".web_toast").fadeIn("fast");
         $(".confirmMode").fadeOut("fast");
         setTimeout(function () {
-            $(".web_toast").fadeOut("fast");
+            $(".web_toast").css("height", "0").fadeOut("fast");
             $('.web_toast_text').text("");
         },2000)
     });
