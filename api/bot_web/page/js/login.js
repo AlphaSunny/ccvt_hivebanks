@@ -12,6 +12,7 @@ $(function () {
 
     //切换手机/邮箱登录
     $(".toggle_login_btn").click(function () {
+        GetImgCode();
         $(this).addClass("active").siblings(".toggle_login_btn").removeClass("active");
         if ($(this).hasClass("email_login_btn")) {
             $(".intl-tel-input").fadeOut("fast");
@@ -33,7 +34,6 @@ $(function () {
 
     //手机登录
     $(".phoneLoginBtn").click(function () {
-        GetImgCode();
         ShowLogin("show");
         var country_code = $('.selected-dial-code').text().split("+")[1];
         var cellphone = $("#phone").val(),
@@ -81,7 +81,6 @@ $(function () {
 
     //邮箱登录
     $(".emailLoginBtn").click(function () {
-        GetImgCode();
         ShowLogin("show");
         var email = $("#email").val(),
             emailPassword = $("#phonePassword").val(),
