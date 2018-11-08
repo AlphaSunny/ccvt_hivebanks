@@ -134,6 +134,18 @@ function EmailLogin(email, pass_word_hash, cfm_code, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//get phone code
+function GetPhoneCode(cellphone, country_code, bind_type, cfm_code, suc_func, error_func) {
+    var api_url = 'sms_send.php',
+        post_data = {
+            'cellphone': cellphone,
+            'country_code': country_code,
+            'bind_type': bind_type,
+            'cfm_code': cfm_code
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 // user information
 function UserInformation(token, suc_func, error_func) {
     var api_url = 'info_base.php',

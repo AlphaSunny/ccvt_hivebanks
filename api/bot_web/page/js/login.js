@@ -9,6 +9,14 @@ $(function () {
     //获取参数
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");
+    var reg_type = GetQueryString("reg_type");
+
+    if (reg_type) {
+        $(".intl-tel-input").fadeOut("fast");
+        $(".phoneLoginBtn").fadeOut("fast");
+        $("#email").fadeIn("fast");
+        $(".emailLoginBtn").fadeIn("fast");
+    }
 
     //切换手机/邮箱登录
     $(".toggle_login_btn").click(function () {
