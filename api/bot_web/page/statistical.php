@@ -267,7 +267,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/sha.js"></script>
+<script src="js/spin.min.js"></script>
 <script src="js/common.js"></script>
 <script src="js/statistical.js"></script>
 </body>
