@@ -142,10 +142,10 @@ $(function () {
 
         var $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
-        ShowLoading("show");
+        // ShowLoading("show");
         EmailRegister(email, pass_word, pass_word_hash, invit_code, function (response) {
             ActiveClick($this, btnText);
-            ShowLoading("hide");
+            // ShowLoading("hide");
             if (response.errcode == '0') {
                 $('#email').val("");
                 $('#password').val("");
@@ -157,7 +157,7 @@ $(function () {
                 }, 500);
             }
         }, function (response) {
-            ShowLoading("hide");
+            // ShowLoading("hide");
             ActiveClick($this, btnText);
             layer.msg(response.errmsg);
             GetImgCode();
