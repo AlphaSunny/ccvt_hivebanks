@@ -128,7 +128,9 @@ $(function () {
                     data: response.rows.gift_detail,
                     columns: [
                         {"data": "us_account"},
-                        {"data": "wechat"},
+                        {"data": "wechat", render:function (data) {
+                                console.log(data);
+                            }},
                         {"data": "invite_code"},
                         {"data": "count"},
                         {"data": "base_amount"}
