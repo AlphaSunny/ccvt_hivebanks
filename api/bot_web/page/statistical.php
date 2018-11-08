@@ -129,7 +129,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                             ?>
                             <tr>
 
-                                <td><?php echo $v['wechat']; ?></td>
+                                <td><?php echo $v['wechat']; ?>(100000)</td>
 
                                 <td><?php echo $v['amount'] / $unit; ?></td>
                                 <td>
