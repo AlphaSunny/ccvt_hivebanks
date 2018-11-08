@@ -81,3 +81,18 @@ body, html {
 .amount_box, .emailRegBtn, #email {
     display: none;
 }
+
+#phoneSmsCode {
+    width: 74%;
+}
+
+.get_sms_code_btn {
+    margin-bottom: 3rem;
+    border: 1px solid #ff1c00;
+    height: 3rem;
+    background: transparent;
+    color: #fff;
+    padding: 2%;
+    margin-left: 1%;
+    outline: none;
+}
