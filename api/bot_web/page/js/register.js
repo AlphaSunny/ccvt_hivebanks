@@ -12,7 +12,7 @@ $(function () {
 
     //切换手机/邮箱登录
     $(".toggle_reg_btn").click(function () {
-        $(this).addClass("active").siblings(".toggle_login_btn").removeClass("active");
+        $(this).addClass("active").siblings(".toggle_reg_btn").removeClass("active");
         if ($(this).hasClass("email_reg_btn")) {
             $(".phone_reg_box").fadeOut("fast");
             $("#email").fadeIn("fast");
