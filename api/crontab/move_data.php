@@ -10,6 +10,7 @@ $db = new DB_COM();
 $sql = "select * from us_base where 1 ORDER BY ctime ASC ";
 $db->query($sql);
 $rows = $db->fetchAll();
+print_r($rows);die;
 if ($rows){
     foreach ($rows as $k=>$v){
         $sql = "select * from com_transfer_request WHERE debit_id='{$v['us_id']}' AND transfer_type=1 AND flag=1";
