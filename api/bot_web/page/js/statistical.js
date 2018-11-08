@@ -40,7 +40,7 @@ $(function () {
         $(".confirmMode").fadeOut("fast");
         setTimeout(function () {
             $('.web_toast_text').text("").fadeOut("fast");
-        },2000)
+        },12000)
     });
 
     //取消按钮
