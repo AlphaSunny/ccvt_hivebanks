@@ -6,9 +6,6 @@ $(function () {
     var url = getRootPath();
 
     function GetAmount(start_time, end_time, nickname) {
-        // if (!start_time) {
-        //     start_time = "";
-        // }
         $.ajax({
             "url": url + "/api/bot_web/iss_records_list.php?token=" + encodeURIComponent(token) + "&start_time=" + start_time + "&end_time=" + end_time + "&nickname=" + nickname,
             "type": "GET",

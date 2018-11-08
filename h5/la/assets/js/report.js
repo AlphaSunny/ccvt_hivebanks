@@ -120,6 +120,21 @@ $(function () {
                     '</tr>';
                 $('#amount_gift').html(trGift);
 
+                //邀请排名表
+                $('#rankingTable').DataTable({
+                    // order: [[3, "desc"]],
+                    destroy: true,
+                    deferRender: true,
+                    data: response.gift_detail,
+                    columns: [
+                        {"data": "us_account"},
+                        {"data": "wechat"},
+                        {"data": "invite_code"},
+                        {"data": "count"},
+                        {"data": "base_amount"}
+                    ],
+                });
+
                 DonutFun(us_register_count, ba_register_count, ca_register_count);
                 var dataChartObj = {}, dataChart = [];
                 dataChartObj.y = new Date().Format('yyyy-MM-dd'),

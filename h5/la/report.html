@@ -146,7 +146,8 @@
                                     <a href="baRegisterKyc.html" class="i18n" name="registrationReviewList"></a>
                                 </li>
                                 <li>
-                                    <a href="baWithdrawAddressKyc.html" class="i18n" name="withdrawAddressReviewList"></a>
+                                    <a href="baWithdrawAddressKyc.html" class="i18n"
+                                       name="withdrawAddressReviewList"></a>
                                 </li>
                             </ul>
                         </li>
@@ -163,7 +164,8 @@
                                     <a href="caRegisterKyc.html" class="i18n" name="registrationReviewList"></a>
                                 </li>
                                 <li>
-                                    <a href="caWithdrawAddressKyc.html" class="i18n" name="withdrawAddressReviewList"></a>
+                                    <a href="caWithdrawAddressKyc.html" class="i18n"
+                                       name="withdrawAddressReviewList"></a>
                                 </li>
                             </ul>
                         </li>
@@ -251,8 +253,10 @@
                                     <thead>
                                     <tr>
                                         <th colspan="2"><span class="i18n" name="userAssetChanges"></span></th>
-                                        <th colspan="2"><span class="i18n" name="digitalCurrencyAgentAssetChanges"></span></th>
-                                        <th colspan="2"><span class="i18n" name="legalCurrencyAgentAssetChanges"></span></th>
+                                        <th colspan="2"><span class="i18n"
+                                                              name="digitalCurrencyAgentAssetChanges"></span></th>
+                                        <th colspan="2"><span class="i18n" name="legalCurrencyAgentAssetChanges"></span>
+                                        </th>
                                     </tr>
                                     <tr>
                                         <th><span class="i18n" name="totalRecharge"></span></th>
@@ -293,21 +297,20 @@
                             </div>
                         </div>
 
-                        <div class="card-action"><h5 class="i18n" name="giftTotalOverview"></h5></div>
+                        <div class="card-action"><h5 class="i18n" name="">邀请排名表</h5></div>
                         <div class="card-content">
                             <div class="table-responsive, table-hover">
-                                <table class="bordered striped centered highlight">
+                                <table class="bordered striped centered highlight" id="rankingTable">
                                     <thead>
                                     <tr>
-                                        <th><span class="i18n" name="giftTotal"></span></th>
-                                        <th><span class="i18n" name="giftInvite"></span></th>
-                                        <th><span class="i18n" name="giftRegister"></span></th>
-                                        <!--<th><span class="i18n" name="giftNationalDay"></span></th>-->
-                                        <!--<th><span class="i18n" name="giftNationalDayBefore"></span></th>-->
-                                        <!--<th><span class="i18n" name="giftNationalDayAfter"></span></th>-->
+                                        <th><span class="i18n" name="">账户昵称</span></th>
+                                        <th><span class="i18n" name="">微信昵称</span></th>
+                                        <th><span class="i18n" name="">邀请码</span></th>
+                                        <th><span class="i18n" name="">邀请数量</span></th>
+                                        <th><span class="i18n" name="">账户余额</span></th>
                                     </tr>
                                     </thead>
-                                    <tbody id="amount_gift"></tbody>
+                                    <tbody id="ranking"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -316,19 +319,20 @@
             </div>
 
 
+        </div>
     </div>
-</div>
-<!--loading-->
-<div class="preloader-wrapper active">
-    <div class="spinner-layer spinner-red-only">
-        <div class="circle-clipper left">
-            <div class="circle"></div>
-        </div>
-        <div class="gap-patch">
-            <div class="circle"></div>
-        </div>
-        <div class="circle-clipper right">
-            <div class="circle"></div>
+    <!--loading-->
+    <div class="preloader-wrapper active">
+        <div class="spinner-layer spinner-red-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -342,6 +346,8 @@
 
 <!-- Bootstrap Js -->
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
 
 <script src="assets/materialize/js/materialize.min.js"></script>
 
