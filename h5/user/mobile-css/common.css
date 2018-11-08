@@ -338,7 +338,7 @@ textarea::-ms-input-placeholder
 }
 .navbar-brand{
     width: 40%;
-    padding-top: 8px!important;
+    /*padding-top: 8px!important;*/
 }
 .navbar-brand>img{
     height: unset;
