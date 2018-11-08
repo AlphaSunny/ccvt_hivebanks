@@ -6,7 +6,7 @@ $(function () {
     var group_name = GetQueryString("group_name");
 
     //前往登录
-    $(".register_text").click(function () {
+    $(".login_text").click(function () {
         window.location.href = url + "/api/bot_web/page/login.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
     });
 
