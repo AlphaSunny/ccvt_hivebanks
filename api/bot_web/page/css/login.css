@@ -56,7 +56,7 @@ body, html {
 
 .login_btn {
     width: 100%;
-    background: #fa5213;
+    background: #ff3f00;
     color: #fff;
     border: unset;
     height: 3rem;
@@ -80,4 +80,10 @@ body, html {
 
 .amount_box, .emailLoginBtn, #email {
     display: none;
+}
+
+.back_statistics{
+    display: block;
+    color: #ff3f00;
+    margin-bottom: 5%;
 }
