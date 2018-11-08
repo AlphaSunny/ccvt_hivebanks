@@ -145,6 +145,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                     <button class="btn btn-info btn-sm zan_btn">赞👍&nbsp;
                                         <?php
                                            $sql = "select sum(tx_amount)/'{$unit}' as zan from us_glory_integral_change_log WHERE debit_id='{$v['us_id']}' AND ctime BETWEEN '{$day_start}' AND '{$day_end}'";
+                                            echo $sql;
                                            $db->query($sql);
                                            $zan = $db->getField($sql,'zan')
                                         ?>
