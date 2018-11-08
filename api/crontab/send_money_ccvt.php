@@ -102,6 +102,7 @@ if ($rows){
         $sql = $db->sqlInsert("com_transfer_request", $data);
         $id = $db->query($sql);
         if (!$id){
+            $db->Rollback($pInTrans);
             echo "转币记录失败";
             continue;
         }

@@ -246,7 +246,7 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
 //    }
 
     $data['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
-    $data['prvs_hash'] = get_pre_hash($flag);
+    $data['prvs_hash'] = get_transfer_pre_hash($flag);
     $data['credit_id'] = $rows['ba_id'];
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $money*$unit;
@@ -354,7 +354,7 @@ function  get_recharge_pre_hash($ba_id)
 //======================================
 // 函数: 获取上传交易hash
 //======================================
-function get_pre_hash($flag){
+function get_transfer_pre_hash($flag){
     $db = new DB_COM();
     $sql = "SELECT hash_id FROM com_transfer_request WHERE flag = '{$flag}' ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
