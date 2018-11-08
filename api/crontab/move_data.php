@@ -10,7 +10,6 @@ $db = new DB_COM();
 $sql = "select * from us_base where 1 ORDER BY ctime ASC ";
 $db->query($sql);
 $rows = $db->fetchAll();
-print_r($rows);die;
 if ($rows){
     foreach ($rows as $k=>$v){
         $sql = "select * from com_transfer_request WHERE debit_id='{$v['us_id']}' AND transfer_type=1 AND flag=1";
@@ -50,7 +49,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail){
     $data['tx_detail'] = json_encode($detail);
     $data['ctime'] = strtotime($time);
     $data['utime'] = $time;
-    $sql = $db->sqlInsert("us_send_ccvt_records", $data);
+    $sql = $db->sqlInsert("com_transfer_request", $data);
     $id = $db->query($sql);
     if (!$id){
         echo $us_id."错误";
