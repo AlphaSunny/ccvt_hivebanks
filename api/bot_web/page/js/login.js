@@ -1,6 +1,11 @@
 $(function () {
     GetImgCode();
 
+    //返回奖励统计
+    $(".back_statistics").click(function () {
+        window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+    });
+
     //前往注册
     $(".register_text").click(function () {
         window.location.href = url + "/api/bot_web/page/register.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
