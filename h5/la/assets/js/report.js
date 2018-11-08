@@ -130,9 +130,11 @@ $(function () {
                         {
                             "data": "wechat",
                             render: function (data) {
-                                console.log(data);
                                 if (data == null) {
                                     data = "未绑定";
+                                    return data;
+                                }else {
+                                    data = data;
                                     return data;
                                 }
                             },
