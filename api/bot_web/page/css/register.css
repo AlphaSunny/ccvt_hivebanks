@@ -60,6 +60,7 @@ body, html {
     color: #fff;
     border: unset;
     height: 3rem;
+    outline: none;
 }
 
 .form_container {

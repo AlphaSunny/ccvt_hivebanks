@@ -146,6 +146,20 @@ function GetPhoneCode(cellphone, country_code, bind_type, cfm_code, suc_func, er
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//Mobile phone registration processing
+function PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_hash, invit_code, suc_func, error_func) {
+    var api_url = 'reg_phone.php',
+        post_data = {
+            'country_code': country_code,
+            'cellphone': cellphone,
+            'sms_code': sms_code,
+            'pass_word': pass_word,
+            'pass_word_hash': pass_word_hash,
+            'invit_code': invit_code
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 // email registration
 function EmailRegister(email, pass_word, pass_word_hash, invit_code, suc_func, error_func) {
     var api_url = 'reg_email.php',
