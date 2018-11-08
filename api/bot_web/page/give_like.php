@@ -37,7 +37,7 @@ $us_id = check_token($token);
 $chcek = check_max_give($us_id,$give_num);
 if ($chcek==1){
     exit_error('101','已达到最大上限');
-}elseif ($chcek==2){
+}elseif ($chcek==2 || $give_num<=0){
     exit_error('102','金额错误');
 }
 
