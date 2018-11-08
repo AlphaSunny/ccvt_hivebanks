@@ -55,6 +55,7 @@ $bot_rows = $db->fetchAll();
 if ($bot_rows){
     foreach ($bot_rows as $c=>$d){
         $send_money = $d['amount']/la_unit();
+        echo $d['bot_create_time'];
         into_transfer($d['us_id'],$send_money,$d['bot_create_time'],4,'聊天奖励');
     }
 }else{
