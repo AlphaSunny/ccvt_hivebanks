@@ -238,7 +238,11 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
     <div class="weui_mask_transparent"></div>
     <div class="c-float-modePop">
         <div class="warnMsg">点赞👍数量</div>
-        <div class="content"><label>数量：<input class="confirm_input" placeholder="请输入"></label></div>
+        <div class="content">
+            <label>数量：<input class="confirm_input" placeholder="请输入"></label>
+            <p>点赞功能将扣除对应数量的ccvt,对方将获取荣耀积分</p>
+            <p>每日上线10000ccvt</p>
+        </div>
         <div class="doBtn">
             <button class="cancel">取 消</button>
             <button class="ok">确 定</button>
