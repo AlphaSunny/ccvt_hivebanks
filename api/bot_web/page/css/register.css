@@ -88,9 +88,9 @@ body, html {
 
 .get_sms_code_btn {
     margin-bottom: 3rem;
-    border: 1px solid #ff1c00;
+    /*border: 1px solid #ff1c00;*/
     height: 3rem;
-    background: transparent;
+    background: #ff3f00;
     color: #fff;
     padding: 2%;
     margin-left: 1%;
