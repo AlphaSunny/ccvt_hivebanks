@@ -331,9 +331,10 @@ p {
 /*alert tips*/
 .web_toast {
     position: fixed;
+    left: 0;
+    bottom: 45%;
     margin: 0 10px;
     z-index: 9999;
-    display: none;
     display: block;
     padding: 10px;
     color: #fff;
