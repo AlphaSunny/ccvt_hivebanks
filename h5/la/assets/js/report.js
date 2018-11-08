@@ -118,7 +118,6 @@ $(function () {
                     // '<td><span class="sum_ca_recharge_base_amount">' + NDAG + '</span><span class="base_type">BTC</span></td>' +
                     '</tr>';
                 $('#amount_gift').html(trGift);
-                console.log(response.rows.gift_detail);
                 //邀请排名表
                 $('#rankingTable').DataTable({
                     order: [[3, "desc"]],
