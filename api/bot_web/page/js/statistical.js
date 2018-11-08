@@ -27,6 +27,8 @@ $(function () {
 
     //点赞
     $(".zan_btn").click(function () {
+        var us_id = $(this).children(".us_id").text();
+        console.log(us_id);
         if (!token) {
             alert("登录之后才可以点赞哦");
             return;
