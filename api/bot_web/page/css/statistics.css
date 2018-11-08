@@ -258,6 +258,7 @@ p {
     width: 80%;
     outline-color: #00b66c;
     border-radius: 5px;
+    color: #333333;
 }
 
 .c-float-popWrap .c-float-modePop button.cancel:after {
@@ -317,6 +318,10 @@ p {
 .c-float-modePop .doBtn {
     width: 100%;
     margin: 0 auto;
+}
+
+.confirmMode p{
+    font-size: 12px;
 }
 
 .hiden {
