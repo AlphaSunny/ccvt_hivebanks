@@ -15,10 +15,14 @@ $(function () {
         $(this).addClass("active").siblings(".toggle_reg_btn").removeClass("active");
         if ($(this).hasClass("email_reg_btn")) {
             $(".phone_reg_box").fadeOut("fast");
+            $(".phoneRegBtn").fadeOut("fast");
             $("#email").fadeIn("fast");
+            $(".emailRegBtn").fadeIn("fast");
         } else {
             $("#email").fadeOut("fast");
+            $(".emailRegBtn").fadeOut("fast");
             $(".phone_reg_box").fadeIn("fast");
+            $(".phoneRegBtn").fadeIn("fast");
         }
     });
 
