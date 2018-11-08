@@ -331,7 +331,7 @@ p {
 /*alert tips*/
 .web_toast {
     position: fixed;
-    left: 0;
+    left: 35%;
     bottom: 45%;
     margin: 0 10px;
     z-index: 9999;
