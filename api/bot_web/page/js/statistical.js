@@ -41,8 +41,10 @@ $(function () {
         $(".confirmMode").fadeOut("fast");
         setTimeout(function () {
             $(".web_toast").fadeOut("fast");
-        },2000);
-        $('.web_toast_text').text("");
+        }, 2000);
+        setTimeout(function () {
+            $('.web_toast_text').text("");
+        }, 100);
     });
 
     //取消按钮
