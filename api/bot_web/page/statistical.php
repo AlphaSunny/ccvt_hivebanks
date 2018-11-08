@@ -235,7 +235,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
 <!--    </script>-->
 
 <!--modal-->
-<div class="c-float-popWrap confirmMode hide" style="opacity: 1; top: 264px; left: 28px;">
+<div class="c-float-popWrap confirmMode hiden" style="opacity: 1; top: 264px; left: 28px;">
     <div class="weui_mask_transparent"></div>
     <div class="c-float-modePop">
         <div class="warnMsg">点赞👍数量</div>
