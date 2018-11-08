@@ -80,7 +80,7 @@ $(function () {
     });
 
     //邮箱登录
-    $("#emailLoginBtn").click(function () {
+    $(".emailLoginBtn").click(function () {
         GetImgCode();
         ShowLogin("show");
         var email = $("#email").val(),
