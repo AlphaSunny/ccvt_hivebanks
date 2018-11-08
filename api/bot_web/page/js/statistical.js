@@ -42,7 +42,7 @@ $(function () {
         setTimeout(function () {
             $(".web_toast").fadeOut("fast");
             $('.web_toast_text').text("");
-        },12000)
+        },2000)
     });
 
     //取消按钮
