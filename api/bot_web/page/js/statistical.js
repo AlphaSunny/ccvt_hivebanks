@@ -34,6 +34,12 @@ $(function () {
         $(".confirmMode").fadeIn("fast");
     });
 
+    //确定点赞
+    $(".ok").click(function () {
+        layer.msg("成功点赞");
+        $(".confirmMode").fadeOut("fast");
+    });
+
     //取消按钮
     $(".cancel").click(function () {
         $(".confirm_input").val("5");

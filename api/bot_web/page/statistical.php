@@ -140,8 +140,11 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                     echo $count;
                                     ?>
                                 </td>
-<!--                                <td><img src="img/zan.svg" class="zan_img" alt=""></td>-->
-                                <td><button class="btn btn-info btn-sm zan_btn">赞👍&nbsp;<span class="zan_count">100</span></button></td>
+                                <!--                                <td><img src="img/zan.svg" class="zan_img" alt=""></td>-->
+                                <td>
+                                    <button class="btn btn-info btn-sm zan_btn">赞👍&nbsp;<span
+                                                class="zan_count">100</span></button>
+                                </td>
                             </tr>
                         <?php } ?>
                         </tbody>
@@ -242,13 +245,20 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
         <div class="content">
             <label>数量：<input class="confirm_input" value="5" placeholder="请输入点赞数量"></label>
             <p>点赞功能将扣除对应数量的ccvt,对方将获取荣耀积分</p>
-            <p><span>每日上线10000ccvt</span><span class="margin-left-5">已点赞<span class="already_count" style="color: #333333">666</span>ccvt</span></p>
+            <p><span>每日上线10000ccvt</span><span class="margin-left-5">已点赞<span class="already_count"
+                                                                              style="color: #333333">666</span>ccvt</span>
+            </p>
         </div>
         <div class="doBtn">
             <button class="cancel">取 消</button>
             <button class="ok">确 定</button>
         </div>
     </div>
+</div>
+
+<div class="web_toast" style="display: block;left: 0px;bottom: 263.5px;">
+    <div class="cx_mask_transparent"></div>
+    恭喜您，修改成功恭喜您，修改成功恭喜您修改成功恭喜您
 </div>
 
 <script src="js/jquery.min.js"></script>
