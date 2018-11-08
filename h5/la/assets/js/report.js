@@ -108,7 +108,6 @@ $(function () {
                 var giftRegister = Number(NDG) + Number(NDBG) + Number(NDAG);
 
 
-
                 trGift += '<tr>' +
                     '<td><span class="sum_us_recharge_base_amount">' + G + '</span><span class="base_type">BTC</span></td>' +
                     '<td><span class="sum_us_withdraw_base_amount">' + IG + '</span><span class="base_type">BTC</span></td>' +
@@ -128,9 +127,17 @@ $(function () {
                     data: response.rows.gift_detail,
                     columns: [
                         {"data": "us_account"},
-                        {"data": "wechat", render:function (data) {
+                        {
+                            "data": "wechat",
+                            render: function (data) {
                                 console.log(data);
-                            }},
+                                if (data == null) {
+                                    data = "未绑定";
+                                    return data;
+                                }
+                            },
+                            target:1
+                        },
                         {"data": "invite_code"},
                         {"data": "count"},
                         {"data": "base_amount"}
@@ -140,9 +147,9 @@ $(function () {
                 DonutFun(us_register_count, ba_register_count, ca_register_count);
                 var dataChartObj = {}, dataChart = [];
                 dataChartObj.y = new Date().Format('yyyy-MM-dd'),
-                dataChartObj.u = sum_us_base_amount,
-                dataChartObj.b = sum_ba_base_amount,
-                dataChartObj.c = sum_ca_base_amount;
+                    dataChartObj.u = sum_us_base_amount,
+                    dataChartObj.b = sum_ba_base_amount,
+                    dataChartObj.c = sum_ca_base_amount;
                 dataChart.push(dataChartObj);
                 LineFun(dataChart);
             }
@@ -191,5 +198,6 @@ $(function () {
             lineColors: ['green', 'red', 'blue']
         });
     }
+
     // LineFun(dataChart);
 });
