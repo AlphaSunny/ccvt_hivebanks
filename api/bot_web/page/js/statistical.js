@@ -28,9 +28,12 @@ $(function () {
     //点赞
     $(".zan_img").click(function () {
         if (!token) {
-            alert("登录之后才可以点赞哦");
+            alert("登录之后才可以点赞哦"+"<a class='alert_login' href='javascript:;'>立即登录</a>");
         } else {
             $(this).attr("src", "img/zan2.svg");
         }
+    });
+    $(document).on("click", ".alert_login", function () {
+        window.location.href = url + "/api/bot_web/page/login.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
     })
 });
