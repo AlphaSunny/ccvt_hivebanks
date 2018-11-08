@@ -33,7 +33,6 @@ $(function () {
 
     //获取手机验证码
     $(".get_sms_code_btn").click(function () {
-        var _this = $(this);
         var cellphone = $("#phone").val();
         var country_code = $('.selected-dial-code').text().split("+")[1];
         var bind_type = "1";
@@ -47,12 +46,15 @@ $(function () {
             layer.msg("请输入图形验证码");
             return;
         }
+        var $this = $(this), btnText = $(this).text();
+        if (DisableClick($this)) return;
         GetPhoneCode(cellphone, country_code, bind_type, cfm_code, function (response) {
             if (response.errcode == '0') {
-                CountDown(_this);
+                CountDown($this);
                 layer.msg("发送成功");
             }
         }, function (response) {
+            ActiveClick($this, btnText);
             layer.msg(response.errmsg);
         });
     });
