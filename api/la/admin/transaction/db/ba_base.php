@@ -23,6 +23,22 @@ function get_ba_base_info()
     $rows = $db->fetchAll();
     return $rows;
 }
+
+/**
+ * @param $flag
+ * @return array
+ * 1：注册赠送  2：邀请赠送  3：ba调账赠送   4:群聊奖励
+ */
+function ba_gift($flag)
+{
+    $db = new DB_COM();
+    $sql = "select a.tx_amount/(select unit from la_base limit 1) as amount,a.tx_detail,
+        b.us_account,b.wechat,DATE_FORMAT(FROM_UNIXTIME(a.ctime), '%Y-%m-%d %H:%i:%s') AS gift_time
+      from com_transfer_request a ,us_base b where a.debit_id=b.us_id and a.flag='{$flag}'  order by a.ctime desc ;";
+    $db->query($sql);
+    return $db->fetchAll();
+
+}
 ////======================================
 ////  查询ba
 //// 参数: ba_id         ba的id
