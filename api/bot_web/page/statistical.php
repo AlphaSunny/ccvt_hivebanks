@@ -149,7 +149,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                            $sql = "select sum(tx_amount)/'{$unit}' as zan from us_glory_integral_change_log WHERE debit_id='{$v['us_id']}' AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
                                            $db->query($sql);
                                            $zan = $db->getField($sql,'zan');
-                                        echo $sql;
+                                           if (!$zan){$zan=0;}
                                         ?>
                                         <span class="zan_count"><?php echo $zan;?></span>
                                         <span class="none us_id"><?php echo $v['us_id']?></span>
