@@ -16,7 +16,7 @@ function give_like_us($data)
     $d['tx_amount'] = $data['give_num']*la_unit();
     $d['ctime'] = time();
     $d['utime'] = date('Y-m-d H:i:s');
-    $sql = $db->sqlInsert("us_glory_integral_change_log", $data);
+    $sql = $db->sqlInsert("us_glory_integral_change_log", $d);
     echo $sql;die;
     $id = $db->query($sql);
     if (!$id){
