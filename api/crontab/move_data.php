@@ -52,7 +52,6 @@ $db = new DB_COM();
 $sql = "select * from bot_Iss_records WHERE 1";
 $db->query($sql);
 $bot_rows = $db->fetchAll();
-print_r($bot_rows);die;
 if ($bot_rows){
     foreach ($bot_rows as $c=>$d){
         $send_money = $d['amount']/la_unit();
@@ -84,6 +83,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail){
     $data['ctime'] = strtotime($time);
     $data['utime'] = $time;
     $sql = $db->sqlInsert("com_transfer_request", $data);
+    echo $sql;die;
     $id = $db->query($sql);
     if (!$id){
         echo $us_id."错误";
