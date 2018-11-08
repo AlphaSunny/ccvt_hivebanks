@@ -5,11 +5,11 @@ $(function () {
 
     //获取 statistics_user_token
     var token = GetCookie("statistics_user_token");
-    if(token){
+    if (token) {
         $(".login").remove();
         $(".amount_box").fadeIn("fast");
         UserInformation(token, function (response) {
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 var data = response.rows;
                 $(".amount").text(data.base_amount);
             }
@@ -27,6 +27,10 @@ $(function () {
 
     //点赞
     $(".zan_img").click(function () {
-        $(this).attr("src", "img/zan2.svg");
+        if (!token) {
+            alert("登录之后才可以点赞哦");
+        } else {
+            $(this).attr("src", "img/zan2.svg");
+        }
     })
 });
