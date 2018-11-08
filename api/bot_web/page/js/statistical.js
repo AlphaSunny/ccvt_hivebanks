@@ -26,11 +26,17 @@ $(function () {
     });
 
     //点赞
-    $(".zan_img").click(function () {
+    $(".zan_btn").click(function () {
         if (!token) {
             alert("登录之后才可以点赞哦");
-        } else {
-            $(this).attr("src", "img/zan2.svg");
+            return;
         }
+        $(".confirmMode").fadeIn("fast");
+    });
+
+    //取消按钮
+    $(".cancel").click(function () {
+        $(".confirm_input").val("5");
+        $(".confirmMode").fadeOut("fast");
     });
 });
