@@ -258,6 +258,8 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
     </div>
 </div>
 
+<div id='mySpin'></div>
+
 <div class="web_toast">
     <div class="cx_mask_transparent"></div>
     <div class="web_toast_text"></div>
