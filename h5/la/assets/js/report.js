@@ -131,7 +131,7 @@ $(function () {
                             "data": "wechat",
                             render: function (data) {
                                 if (data == null) {
-                                    data = "未绑定";
+                                    data = "--";
                                     return data;
                                 }else {
                                     data = data;
