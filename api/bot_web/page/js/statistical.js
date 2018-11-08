@@ -85,7 +85,7 @@ $(function () {
             }
         }, function (response) {
             ZanShowLogin("hide");
-            $('.web_toast_text').text("点赞失败");
+            $('.web_toast_text').text(response.errmsg);
             $(".web_toast").fadeIn("fast");
             $(".confirmMode").fadeOut("fast");
             setTimeout(function () {
