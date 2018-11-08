@@ -48,6 +48,7 @@ $(function () {
                 setTimeout(function () {
                     $(".web_toast").fadeOut("fast");
                 }, 2000);
+                window.location.reload();
             }
         }, function (response) {
             $('.web_toast_text').text("点赞失败");
