@@ -31,7 +31,9 @@ $(function () {
         GetImgCode();
     });
 
+    //手机登录
     $(".phoneLoginBtn").click(function () {
+        GetImgCode();
         ShowLogin("show");
         var country_code = $('.selected-dial-code').text().split("+")[1];
         var cellphone = $("#phone").val(),
@@ -72,6 +74,53 @@ $(function () {
             layer.msg(response.errmsg);
             if (response.errcode == "116") {
                 layer.msg("<p>登录失败，请<span>" + response.errmsg + "</span>秒后重试</p>");
+                return;
+            }
+        });
+    });
+
+    //邮箱登录
+    $("#emailLoginBtn").click(function () {
+        GetImgCode();
+        ShowLogin("show");
+        var email = $("#email").val(),
+            emailPassword = $("#phonePassword").val(),
+            pass_word_hash = hex_sha1(emailPassword),
+            cfm_code = $("#phoneCfmCode").val();
+
+        if (email.length <= 0) {
+            layer.msg("请输入邮箱");
+            return;
+        }
+        if (!IsEmail(email)) {
+            layer.msg("邮箱格式错误");
+            return;
+        }
+        if (emailPassword.length <= 0) {
+            layer.msg("请输入密码");
+            return;
+        }
+
+        var $this = $(this), _text = $(this).text();
+        if (DisableClick($this)) return;
+        EmailLogin(email, pass_word_hash, cfm_code, function (response) {
+            ActiveClick($this, _text);
+            if (response.errcode == '0') {
+                $('#email').val('');
+                $('#phonePassword').val('');
+                $('#phoneCfmCode').val('');
+                layer.msg("登录成功");
+                var token = response.token;
+                SetCookie('statistics_user_token', token);
+                window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+            }
+        }, function (response) {
+            GetImgCode();
+            ActiveClick($this, _text);
+            layer.msg(response.errmsg);
+            if (response.errcode == '116') {//Login Failed
+                layer.msg("<p>登录失败，请<span>" + response.errmsg + "</span>秒后重试</p>");
+                return;
             }
         });
     })
