@@ -36,10 +36,12 @@ $(function () {
 
     //确定点赞
     $(".ok").click(function () {
-        $('.web_toast_text').text("点赞成功!").fadeIn("fast");
+        $('.web_toast_text').text("点赞成功!");
+        $(".web_toast").fadeIn("fast");
         $(".confirmMode").fadeOut("fast");
         setTimeout(function () {
-            $('.web_toast_text').text("").fadeOut("fast");
+            $(".web_toast").fadeOut("fast");
+            $('.web_toast_text').text("");
         },12000)
     });
 
