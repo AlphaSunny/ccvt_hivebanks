@@ -38,7 +38,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail){
     $db = new DB_COM();
 
     $data['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . $time);
-    $data['prvs_hash'] = get_pre_hash($us_id,$flag);
+    $data['prvs_hash'] = get_pre_hash($flag);
     $data['credit_id'] = get_ba_id();
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $send_money*la_unit();
@@ -46,7 +46,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail){
     $data['flag'] = $flag;
     $data['transfer_type'] = 1;
     $data['transfer_state'] = 1;
-    $data['tx_detail'] = json_encode($detail);
+    $data['tx_detail'] = $detail;
     $data['ctime'] = strtotime($time);
     $data['utime'] = $time;
     $sql = $db->sqlInsert("com_transfer_request", $data);
@@ -63,9 +63,9 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail){
 //======================================
 // 函数: 获取上传交易hash
 //======================================
-function get_pre_hash($us_id,$flag){
+function get_pre_hash($flag){
     $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_transfer_request WHERE debit_id = '{$us_id}' and flag = '{$flag}' ORDER BY  ctime DESC LIMIT 1";
+    $sql = "SELECT hash_id FROM com_transfer_request WHERE flag = '{$flag}' ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;
