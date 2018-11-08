@@ -97,7 +97,7 @@ if ($rows){
         $data['transfer_type'] = 1;
         $data['transfer_state'] = 1;
         $data['tx_detail'] = "聊天奖励";
-        $data['ctime'] = strtotime(date('Y-m-d H:i:s',time()));
+        $data['ctime'] = time();
         $data['utime'] = date('Y-m-d H:i:s',time());
         $sql = $db->sqlInsert("com_transfer_request", $data);
         $id = $db->query($sql);

@@ -195,7 +195,7 @@ function  check_us_account($account)
 function  send_ccvt_record($data)
 {
     //转账
-    send_to_us_ccvt($data['us_id'],'ba_tran',$data['num'],$data['why']);
+    send_to_us_ccvt($data['us_id'],'ba_tran',$data['num'],'3',$data['why']);
     return true;
 }
 
@@ -206,7 +206,7 @@ function  send_ccvt_record($data)
 // 返回: true         创建成功
 //       false        创建失败
 //======================================
-function send_to_us_ccvt($us_id,$type,$money,$why)
+function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
 {
     $db = new DB_COM();
     //送币
@@ -228,18 +228,36 @@ function send_to_us_ccvt($us_id,$type,$money,$why)
         return false;
     }
 
-    //增币记录
-    $d['re_id'] = get_guid();
-    $d['ba_id'] = $rows['ba_id'];
-    $d['num'] = $money;
-    $d['send_time'] = date('Y-m-d H:i:s',time());
-    $d['create_time'] = time();
-    $lgn_type = 'phone';
-    $d['tx_hash'] = hash('md5', $rows['ba_id'] . $lgn_type . get_ip() . time() . date('Y-m-d H:i:s'));
-    $d['us_id'] = $us_id;
-    $d['flag'] = 2;
-    $d['why'] = $why;
-    $sql = $db->sqlInsert("us_send_ccvt_records", $d);
+//    //增币记录
+//    $d['re_id'] = get_guid();
+//    $d['ba_id'] = $rows['ba_id'];
+//    $d['num'] = $money;
+//    $d['send_time'] = date('Y-m-d H:i:s',time());
+//    $d['create_time'] = time();
+//    $lgn_type = 'phone';
+//    $d['tx_hash'] = hash('md5', $rows['ba_id'] . $lgn_type . get_ip() . time() . date('Y-m-d H:i:s'));
+//    $d['us_id'] = $us_id;
+//    $d['flag'] = 2;
+//    $d['why'] = $why;
+//    $sql = $db->sqlInsert("us_send_ccvt_records", $d);
+//    $id = $db->query($sql);
+//    if (!$id){
+//        return false;
+//    }
+
+    $data['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $data['prvs_hash'] = get_pre_hash($flag);
+    $data['credit_id'] = $rows['ba_id'];
+    $data['debit_id'] = $us_id;
+    $data['tx_amount'] = $money*$unit;
+    $data['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+    $data['flag'] = $flag;
+    $data['transfer_type'] = 1;
+    $data['transfer_state'] = 1;
+    $data['tx_detail'] = $why;
+    $data['ctime'] = time();
+    $data['utime'] = date('Y-m-d H:i:s',time());
+    $sql = $db->sqlInsert("com_transfer_request", $data);
     $id = $db->query($sql);
     if (!$id){
         return false;
@@ -250,9 +268,9 @@ function send_to_us_ccvt($us_id,$type,$money,$why)
     $us_type = 'us_reg_send_balance';
     $ctime = date('Y-m-d H:i:s');
     $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
-    $com_balance_us['tx_id'] = $d['tx_hash'];
+    $com_balance_us['tx_id'] = $data['tx_hash'];
     $com_balance_us['prvs_hash'] = get_recharge_pre_hash($us_id);
-    $com_balance_us["credit_id"] = $d['us_id'];
+    $com_balance_us["credit_id"] = $us_id;
     $com_balance_us["debit_id"] = $rows['ba_id'];
     $com_balance_us["tx_type"] = $type;
     $com_balance_us["tx_amount"] = $money*$unit;
@@ -268,10 +286,10 @@ function send_to_us_ccvt($us_id,$type,$money,$why)
     //ba添加基准资产变动记录
     $us_type = 'ba_reg_send_balance';
     $com_balance_ba['hash_id'] = hash('md5', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
-    $com_balance_ba['tx_id'] = $d['tx_hash'];
+    $com_balance_ba['tx_id'] = $data['tx_hash'];
     $com_balance_ba['prvs_hash'] = get_recharge_pre_hash($rows['ba_id']);
     $com_balance_ba["credit_id"] = $rows['ba_id'];
-    $com_balance_ba["debit_id"] = $d['us_id'];
+    $com_balance_ba["debit_id"] = $us_id;
     $com_balance_ba["tx_type"] = $type;
     $com_balance_ba["tx_amount"] = $money*$unit;
     $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id']);
