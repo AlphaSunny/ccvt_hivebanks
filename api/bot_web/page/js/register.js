@@ -5,6 +5,11 @@ $(function () {
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");
 
+    //前往登录
+    $(".register_text").click(function () {
+        window.location.href = url + "/api/bot_web/page/login.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+    });
+
     //切换手机/邮箱登录
     $(".toggle_login_btn").click(function () {
         $(this).addClass("active").siblings(".toggle_login_btn").removeClass("active");
