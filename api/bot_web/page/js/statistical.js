@@ -40,9 +40,9 @@ $(function () {
         $(".web_toast").fadeIn("fast");
         $(".confirmMode").fadeOut("fast");
         setTimeout(function () {
-            $(".web_toast").css("height", "0").fadeOut("fast");
-            $('.web_toast_text').text("");
-        },2000)
+            $(".web_toast").fadeOut("fast");
+        },2000);
+        $('.web_toast_text').text("");
     });
 
     //取消按钮
