@@ -23,7 +23,7 @@ $(function () {
         position: 'absolute' // Element positioning
     });
 
-    function ShowLogin(type) {
+    function RegShowLogin(type) {
         if (type == "show") {
             spinner.spin(target);
         }
@@ -79,15 +79,15 @@ $(function () {
         }
         var $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
-        ShowLogin("show");
+        RegShowLogin("show");
         GetPhoneCode(cellphone, country_code, bind_type, cfm_code, function (response) {
-            ShowLogin("hide");
+            RegShowLogin("hide");
             if (response.errcode == '0') {
                 CountDown($this);
                 layer.msg("发送成功");
             }
         }, function (response) {
-            ShowLogin("hide");
+            RegShowLogin("hide");
             ActiveClick($this, btnText);
             layer.msg(response.errmsg);
         });
@@ -148,7 +148,7 @@ $(function () {
         }
         var $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
-        ShowLoading("show");
+        RegShowLogin("show");
         PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_hash, invit_code, function (response) {
             ActiveClick($this, btnText);
             ShowLoading("hide");
@@ -203,10 +203,10 @@ $(function () {
 
         var $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
-        ShowLoading("show");
+        RegShowLogin("show");
         EmailRegister(email, pass_word, pass_word_hash, invit_code, function (response) {
             ActiveClick($this, btnText);
-            ShowLoading("hide");
+            RegShowLogin("hide");
             if (response.errcode == '0') {
                 $('#email').val("");
                 $('#password').val("");
@@ -218,7 +218,7 @@ $(function () {
                 }, 500);
             }
         }, function (response) {
-            ShowLoading("hide");
+            RegShowLogin("hide");
             ActiveClick($this, btnText);
             layer.msg(response.errmsg);
             GetImgCode();
