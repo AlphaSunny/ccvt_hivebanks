@@ -28,7 +28,7 @@ $(function () {
     //点赞
     $(".zan_img").click(function () {
         if (!token) {
-            alert("登录之后才可以点赞哦"+"<a class='alert_login' href='javascript:;'>立即登录</a>");
+            alert("登录之后才可以点赞哦");
         } else {
             $(this).attr("src", "img/zan2.svg");
         }
