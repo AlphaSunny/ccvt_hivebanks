@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/intlTelInput.css">
+    <link rel="stylesheet" href="js/layer/layer.css">
+    <link rel="stylesheet" href="css/spin.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/register.css">
+    <title>登录</title>
+</head>
+<body>
+<div class="container login_title_row">
+    <div class="login_title_box">
+        <h3>CCVT登录</h3>
+        <!--<a href="#">奖励统计</a>-->
+    </div>
+</div>
+<section class="container form_container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="toggleBtnBox">
+                <button class="phone_login_btn toggle_login_btn active">手机登录</button>
+                <button class="email_login_btn toggle_login_btn">邮箱登录</button>
+            </div>
+            <div class="form_box margin-top-5">
+                <!--<form class="">-->
+                <div class="form-group form-group-sm">
+                    <input type="tel" id="phone" maxlength="11" class="form-control"
+                           placeholder="请输入手机号">
+                    <input type="email" id="email" maxlength="11" class="form-control"
+                           placeholder="请输入邮箱">
+                    <input type="password" class="form-control" id="phonePassword" placeholder="请输入密码">
+                    <div class="flex center">
+                        <input type="text" class="form-control" id="phoneCfmCode" placeholder="请输入验证码">
+                        <img src="" id="phone_imgCode" alt="">
+                    </div>
+                    <button class="login_btn phoneLoginBtn">登录</button>
+                    <button class="login_btn emailLoginBtn">登录</button>
+                </div>
+                <!--</form>-->
+            </div>
+            <div>
+                <p class="text-center">
+                    <span class="login_text">登录</span> OR <span class="register_text">注册</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/intlTelInput.js"></script>
+<script src="js/jquery.flagstrap.js"></script>
+<script src="js/spin.min.js"></script>
+<script src="js/sha.js"></script>
+<script src="js/layer/layer.js"></script>
+<script src="js/common.js"></script>
+<script src="js/register.js"></script>
+<script type="text/javascript">
+    $("#phone").intlTelInput({
+        separateDialCode: true,
+    });
+</script>
+</body>
+</html>

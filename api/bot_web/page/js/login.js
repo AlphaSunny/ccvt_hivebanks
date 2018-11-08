@@ -1,6 +1,11 @@
 $(function () {
     GetImgCode();
 
+    //前往注册
+    $(".register_text").click(function () {
+        window.location.href = url + "/api/bot_web/page/register.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+    });
+
     //获取参数
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");

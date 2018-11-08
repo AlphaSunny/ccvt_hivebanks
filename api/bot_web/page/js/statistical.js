@@ -33,7 +33,4 @@ $(function () {
             $(this).attr("src", "img/zan2.svg");
         }
     });
-    $(document).on("click", ".alert_login", function () {
-        window.location.href = url + "/api/bot_web/page/login.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
-    })
 });
