@@ -122,7 +122,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                         </thead>
                         <tbody>
                         <?php
-                        $sql = "select us_id,wechat,amount,num,send_time,bot_create_time,(SELECT glory_level_integral from us_base WHERE us_id=us_id) as glory_level_integral from bot_Iss_records WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY num DESC ";
+                        $sql = "select a.us_id,a.wechat,a.amount,a.num,send_time,a.bot_create_time,(SELECT glory_level_integral from us_base WHERE us_id=a.us_id) as glory_level_integral from bot_Iss_records as a WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY num DESC ";
                         echo $sql;die;
                         $db->query($sql);
                         $list = $db->fetchAll();
