@@ -140,7 +140,8 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                     echo $count;
                                     ?>
                                 </td>
-                                <td><img src="img/zan.svg" class="zan_img" alt=""></td>
+<!--                                <td><img src="img/zan.svg" class="zan_img" alt=""></td>-->
+                                <td><button class="btn btn-info btn-sm">点赞</button></td>
                             </tr>
                         <?php } ?>
                         </tbody>
