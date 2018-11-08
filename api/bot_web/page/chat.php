@@ -80,9 +80,11 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
             <button class="search_btn">搜索</button>
         </div>
     </div>
+    <?php if ($status!=1){?>
     <div class="backStatistics_box">
         <a href="javascript:;" class="backStatistics">奖励统计</a>
     </div>
+    <?php }?>
     <ul class="chatList">
         <?php
 
