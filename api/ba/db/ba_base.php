@@ -350,3 +350,15 @@ function  get_recharge_pre_hash($ba_id)
         return 0;
     return $hash_id;
 }
+
+//======================================
+// 函数: 获取上传交易hash
+//======================================
+function get_pre_hash($flag){
+    $db = new DB_COM();
+    $sql = "SELECT hash_id FROM com_transfer_request WHERE flag = '{$flag}' ORDER BY  ctime DESC LIMIT 1";
+    $hash_id = $db->getField($sql, 'hash_id');
+    if($hash_id == null)
+        return 0;
+    return $hash_id;
+}
