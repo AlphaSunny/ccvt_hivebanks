@@ -151,19 +151,19 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                 </span>
                 <span class="margin-left-5">已点赞
                     <span class="already_count" style="color: #333333">
-<!--                        --><?php
-//                            $token = $_COOKIE['statistics_user_token'];
-//                        echo $token;
-//                            if ($token){
-//                                $token = urlencode($token);
-//                                $us_id = check_token($token);
-//                                $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-//                                $db->query($sql);
-//                                $all_am = $db->getField($sql,'all_am');
-//                                if (!$all_am){$all_am=0;}
-//                                echo $all_am;
-//                            }
-//                        ?>
+                        <?php
+                            $token = $_COOKIE['statistics_user_token'];
+                        echo $token;die;
+                            if ($token){
+                                $token = urlencode($token);
+                                $us_id = check_token($token);
+                                $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                                $db->query($sql);
+                                $all_am = $db->getField($sql,'all_am');
+                                if (!$all_am){$all_am=0;}
+                                echo $all_am;
+                            }
+                        ?>
                     </span>ccvt
                 </span>
             </p>
