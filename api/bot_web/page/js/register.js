@@ -100,7 +100,7 @@ $(function () {
         var count = 60;
         var timer = setInterval(function () {
             if (count > 0) {
-                _this.text(count + "s");
+                _this.text(count + "s 重新获取");
                 count--;
             } else {
                 _this.text("获取验证码");
