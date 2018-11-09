@@ -153,9 +153,8 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                 <span class="margin-left-5">已点赞
                     <span class="already_count" style="color: #333333">
                         <?php
-                            $token = $_COOKIE['statistics_user_token'];
-                            if ($token){
-                                $us_id = check_token($token);
+                            $us_id = $_COOKIE['statistics_user_id'];
+                            if ($us_id){
                                 $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
                                 $db->query($sql);
                                 $all_am = $db->getField($sql,'all_am');
