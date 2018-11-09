@@ -19,10 +19,10 @@ $(function () {
                     deferRender: true,
                     data: data.data,
                     columns: [
-                        {"data": "wechat"},
-                        {"data": "amount"},
-                        {"data": "num"},
-                        {"data": "send_time"}
+                        {"data": "give_account"},
+                        {"data": "receive_account"},
+                        {"data": "tx_amount"},
+                        {"data": "utime"}
                     ],
                 });
             }
