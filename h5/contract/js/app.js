@@ -22,14 +22,14 @@ App={
             // If a web3 instance is already provided by Meta Mask.
             App.web3Provider = web3.currentProvider;
             web3 = new Web3(web3.currentProvider);
-          } else {
+        } else {
             alert("请使用chrome,并安装metamask");
             // // Specify default instance if no web3 instance provided
             // App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
             // web3 = new Web3(App.web3Provider);
             // console.log("listen the port")
-          }
-          return App.initContracts();
+        }
+        return App.initContracts();
     },
 
     initContracts: function() {
@@ -47,7 +47,7 @@ App={
                     console.log("CommunicationCreatesValueToken Address:", communicationCreatesValueToken.address);
                 })
             }).done( function () {
-                return App.render();
+                    return App.render();
                 }
 
             )
@@ -91,31 +91,45 @@ App={
 
         App.contracts.CommunicationCreatesValueTokenLock.deployed().then(function(instance) {
             App.ccvtLockInstance = instance;
+            $('#lockAddress').val(App.ccvtLockInstance.address);
+            $('#thisUnfreeze').val(App.ccvtLockInstance);
             return App.ccvtLockInstance.beneficiary();
         }).then(function(beneficiary) {
             App.beneficiary = beneficiary;
             $('#beneficiary').val(beneficiary);
+            return App.ccvtLockInstance.getPartReleaseAmount();
+        }).then(function(amount) {
+            $('#thisUnfreeze').val(amount);
+            return App.ccvtLockInstance.totalFreeze();
+        }).then(function(totalFreeze){
+            $('#totalLock').val(totalFreeze);
             return App.ccvtLockInstance.openingTime();
         }).then(function(openingTime) {
             App.openingTime = openingTime;
             $('#releaseTime').val(openingTime);
             $('#time').val(timestampToTime(openingTime));
 
-            $('.tokens-sold').html(App.tokensSold);
-            $('.tokens-available').html(App.tokensAvailable);
+            let stage = getStage(openingTime);
+            console.log("stage" + stage);
+            let interval = 3600;
+            let nextUnfreeze = getNextUnfreeze(openingTime, stage, interval);
 
-            var progressPercent = (Math.ceil(App.tokensSold) / App.tokensAvailable) * 100;
-            $('#progress').css('width', progressPercent + '%');
+            nextUnfreeze = timestampToTime(nextUnfreeze);
+            $('#nextReleaseTime').val(nextUnfreeze);
 
+            //输出下一次解封时间
             // Load token contract
             App.contracts.CommunicationCreatesValueToken.deployed().then(function(instance) {
                 App.ccvtInstance = instance;
+                $('#ccvtAddress').val(App.ccvtInstance.address);
                 return App.ccvtInstance.balanceOf(App.account);
             }).then(function(balance) {
                 $('#ccvt-balance').val(balance.toNumber());
-                App.loading = false;
-                loader.hide();
-                content.show();
+                return App.ccvtInstance.balanceOf(App.ccvtLockInstance.address);
+                //return App.ccvtInstance.balanceOf("0x71b8acd403fa33c25bdc63a3c61f653e70c052a8");
+            }).then(function (lockBalance) {
+                console.log("log_balance" + lockBalance);
+                $('#lockBalance').val(lockBalance.toNumber());
             })
         })
     },
@@ -140,15 +154,30 @@ App={
 }
 
 function timestampToTime(timestamp) {
-        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
-        var Y = date.getFullYear() + '-';
-        var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
-        var D = date.getDate() + ' ';
-        var h = date.getHours() + ':';
-        var m = date.getMinutes() + ':';
-        var s = date.getSeconds();
-        return Y+M+D+h+m+s;
-    }
+    var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    var Y = date.getFullYear() + '-';
+    var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    var D = date.getDate() + ' ';
+    var h = date.getHours() + ':';
+    var m = date.getMinutes() + ':';
+    var s = date.getSeconds();
+    return Y+M+D+h+m+s;
+}
+
+
+function getStage(startTime)
+{
+    let passTime = (new Date().getTime())/1000 - startTime;
+    let stage = parseInt(passTime/3600);
+    return stage;
+}
+
+function getNextUnfreeze(openingTime, stage, interval)
+{
+    return parseInt(openingTime) + ( parseInt(stage)+1)*interval;
+}
+
+
 
 $(function() {
     $(window).load(function() {
