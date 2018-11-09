@@ -100,10 +100,10 @@ $(function () {
         var count = 60;
         var timer = setInterval(function () {
             if (count > 0) {
-                _this.text(count + "s 重新获取").css("font-size","12px");
+                _this.text(count + "s").attr("disabled", true);
                 count--;
             } else {
-                _this.text("获取验证码");
+                _this.text("获取验证码").attr("disabled",false);
                 clearInterval(timer);
                 GetImgCode();
             }
