@@ -42,7 +42,7 @@ body, html {
 .toggleBtnBox button {
     border: 1px solid #ff3f00;
     width: 49%;
-    height: 3rem;
+    height: 4rem;
     background: transparent;
     color: #fff;
     outline: none;
@@ -59,7 +59,7 @@ body, html {
     background: #ff3f00;
     color: #fff;
     border: unset;
-    height: 3rem;
+    height: 4rem;
 }
 
 .form_container {
