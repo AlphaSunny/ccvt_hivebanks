@@ -135,16 +135,28 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
         <div class="content">
             <label>数量：<input class="confirm_input" value="5" placeholder="请输入点赞数量"></label>
             <p>点赞功能将扣除对应数量的ccvt,对方将获取荣耀积分</p>
-            <p><span>每日上线<?php
+            <p>
+                <span>每日上线
+                    <?php
                     $sql = "SELECT max_give_like FROM bot_status limit 1";
                     $db -> query($sql);
                     $row = $db -> getField($sql,'max_give_like');
-                    //echo $row;
-
-                    $name = $_COOKIE['statistics_user_token'];
-                    echo $name;
-                    ?>ccvt</span><span class="margin-left-5">已点赞<span class="already_count"
-                                                                              style="color: #333333">666</span>ccvt</span>
+                    echo $row;
+                    ?>ccvt
+                </span>
+                <span class="margin-left-5">已点赞
+                    <span class="already_count" style="color: #333333">
+                        <?php
+                            $token = $_COOKIE['statistics_user_token'];
+                            $us_id = check_token($token);
+                            $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                            $db->query($sql);
+                            $all_am = $db->getField($sql,'all_am');
+                            if (!$all_am){$all_am=0;}
+                            echo $all_am;
+                        ?>
+                    </span>ccvt
+                </span>
             </p>
         </div>
         <div class="doBtn">
