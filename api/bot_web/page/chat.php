@@ -32,24 +32,24 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?>(<?php echo $datetime;?>)</p>
     <p class="filter_title">筛选</p>
     <div class="filter_box">
-        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-<!--        <div>-->
-<!--            <span class="font-size-14">荣耀积分:</span>-->
-<!--            <select name="filter" id="filter" class="form-control">-->
-<!--                <option value="none">选择荣耀积分范围</option>-->
-<!--                <option value="0-30">0-30</option>-->
-<!--                <option value="0-30">0-30</option>-->
-<!--                <option value="0-30">0-30</option>-->
-<!--            </select>-->
+<!--        <form action="--><?php //echo $_SERVER['PHP_SELF'];?><!--" method="get">-->
+<!--<!--        <div>-->-->
+<!--<!--            <span class="font-size-14">荣耀积分:</span>-->-->
+<!--<!--            <select name="filter" id="filter" class="form-control">-->-->
+<!--<!--                <option value="none">选择荣耀积分范围</option>-->-->
+<!--<!--                <option value="0-30">0-30</option>-->-->
+<!--<!--                <option value="0-30">0-30</option>-->-->
+<!--<!--                <option value="0-30">0-30</option>-->-->
+<!--<!--            </select>-->-->
+<!--<!--        </div>-->-->
+<!--        <div class="form-group-sm">-->
+<!--            <span class="font-size-14">昵称:</span>-->
+<!--            <input type="text" name="nikename" class="form-control search_input">-->
 <!--        </div>-->
-        <div class="form-group-sm">
-            <span class="font-size-14">昵称:</span>
-            <input type="text" name="nikename" class="form-control search_input">
-        </div>
-        <div>
-            <button class="search_btn">搜索</button>
-        </div>
-        </form>
+<!--        <div>-->
+<!--            <button class="search_btn">搜索</button>-->
+<!--        </div>-->
+<!--        </form>-->
     </div>
     <?php if ($status!=1){?>
     <div class="backStatistics_box">
@@ -58,7 +58,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
     <?php }?>
     <ul class="chatList">
         <?php
-        $nickname = $_POST['nikename'];
+        $nickname = $_GET['nikename'];
         $tblPrefix = "@风赢小助手";
         $tblPrefix2 = "@小助手";
         $sql = "select bot_nickname,bot_content,bot_send_time,head_img,type,bot_create_time from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
