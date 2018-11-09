@@ -9,27 +9,6 @@
 </head>
 
 <body>
-<!--nav-->
-<!--<nav class="navbar navbar-default">-->
-<!--    <div class="container-fluid">-->
-<!--        <!-- Brand and toggle get grouped for better mobile display -->
-<!--        <div class="navbar-header">-->
-<!--            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
-<!--                <span class="sr-only">Toggle navigation</span>-->
-<!--                <span class="icon-bar"></span>-->
-<!--                <span class="icon-bar"></span>-->
-<!--                <span class="icon-bar"></span>-->
-<!--            </button>-->
-<!--            <a class="navbar-brand" href="#">CCVT</a>-->
-<!--        </div>-->
-<!---->
-<!--        <!-- Collect the nav links, forms, and other content for toggling -->
-<!--        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
-<!--            <ul class="nav navbar-nav navbar-right">-->
-<!--                <li><a href="javascript:;" class="baLogin">BA通道</a></li>-->
-<!--                <li><a href="javascript:;" class="caLogin">CA通道</a></li>-->
-<!--                <li><a href="javascript:;" class="usLogin">用户通道</a></li>-->
-<!--                <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>-->
 <?php
 require_once '../../inc/common.php';
 ini_set("display_errors", "off");
@@ -49,16 +28,6 @@ $json_string = file_get_contents('../../h5/assets/json/config_url.json');
 $data = json_decode($json_string, true);
 $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64_encode($datetime) . "&group_name=" . $group_name2 . "&status=" . base64_encode(2);
 ?>
-<!--                --><?php
-//                   if ($status!=1){
-//                ?>
-<!--                <li><a href="--><?php //echo $url;?><!--">查看奖励统计</a></li>-->
-<!--                --><?php //}?>
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</nav>-->
-<!--nav-->
 <div id="chat">
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>
     <p class="filter_title">筛选</p>
