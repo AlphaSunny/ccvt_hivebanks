@@ -139,7 +139,10 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     $sql = "SELECT max_give_like FROM bot_status limit 1";
                     $db -> query($sql);
                     $row = $db -> getField($sql,'max_give_like');
-                    echo $row;
+                    //echo $row;
+
+                    $name = $_COOKIE['statistics_user_token'];
+                    echo $name;
                     ?>ccvt</span><span class="margin-left-5">已点赞<span class="already_count"
                                                                               style="color: #333333">666</span>ccvt</span>
             </p>
