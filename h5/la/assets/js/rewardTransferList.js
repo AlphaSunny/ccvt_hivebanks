@@ -8,9 +8,8 @@ $(function () {
     function GetRewardFun(type) {
         GetRewardList(token, type, function (response) {
             if (response.errcode == "0") {
-                console.log(response);
                 $('#rewardTable').DataTable({
-                    // order: [[3, "desc"]],
+                    order: [[2, "desc"]],
                     destroy: true,
                     deferRender: true,
                     data: response.rows,
@@ -31,6 +30,6 @@ $(function () {
 
     $("#filter_send").on("change", function () {
         var type = $(this).find("option:selected").val();
-        console.log(type);
+        GetRewardFun(type);
     })
 });
