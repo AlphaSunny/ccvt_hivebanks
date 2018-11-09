@@ -4,9 +4,10 @@ $(function () {
 
     //get reward
     var type = "5";
-    function GetRewardFun (type){
-        GetRewardList(token,type,function (response) {
-            if(response.errcode == "0"){
+
+    function GetRewardFun(type) {
+        GetRewardList(token, type, function (response) {
+            if (response.errcode == "0") {
                 console.log(response);
                 $('#rewardTable').DataTable({
                     // order: [[3, "desc"]],
@@ -25,5 +26,11 @@ $(function () {
             
         })
     }
+
     GetRewardFun(type);
+
+    $(".send_filter_child").click(function () {
+        var type = $(this).val();
+        console.log(type);
+    })
 });
