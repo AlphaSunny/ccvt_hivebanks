@@ -30,25 +30,25 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 ?>
 <div id="chat">
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>
-    <p class="filter_title">筛选</p>
-    <div class="filter_box">
-        <div>
-            <span class="font-size-14">荣耀积分:</span>
-            <select name="filter" id="filter" class="form-control">
-                <option value="none">选择荣耀积分范围</option>
-                <option value="0-30">0-30</option>
-                <option value="0-30">0-30</option>
-                <option value="0-30">0-30</option>
-            </select>
-        </div>
-        <div class="form-group-sm">
-            <span class="font-size-14">昵称:</span>
-            <input type="text" class="form-control search_input">
-        </div>
-        <div>
-            <button class="search_btn">搜索</button>
-        </div>
-    </div>
+<!--    <p class="filter_title">筛选</p>-->
+<!--    <div class="filter_box">-->
+<!--        <div>-->
+<!--            <span class="font-size-14">荣耀积分:</span>-->
+<!--            <select name="filter" id="filter" class="form-control">-->
+<!--                <option value="none">选择荣耀积分范围</option>-->
+<!--                <option value="0-30">0-30</option>-->
+<!--                <option value="0-30">0-30</option>-->
+<!--                <option value="0-30">0-30</option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="form-group-sm">-->
+<!--            <span class="font-size-14">昵称:</span>-->
+<!--            <input type="text" class="form-control search_input">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <button class="search_btn">搜索</button>-->
+<!--        </div>-->
+<!--    </div>-->
     <?php if ($status!=1){?>
     <div class="backStatistics_box">
         <a href="javascript:;" class="backStatistics">奖励统计</a>
