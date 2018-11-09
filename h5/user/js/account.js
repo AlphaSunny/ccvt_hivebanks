@@ -136,8 +136,8 @@ $(function () {
 
         $('#qrcode').qrcode({
             text: url,
-            width: 150,
-            height: 150
+            width: 120,
+            height: 120
         });
 
         //get canvas qr
