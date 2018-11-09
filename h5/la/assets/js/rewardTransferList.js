@@ -8,6 +8,18 @@ $(function () {
         GetRewardList(token,type,function (response) {
             if(response.errcode == "0"){
                 console.log(response);
+                $('#rewardTable').DataTable({
+                    // order: [[3, "desc"]],
+                    destroy: true,
+                    deferRender: true,
+                    data: response.rows,
+                    columns: [
+                        {"data": "us_account"},
+                        {"data": "tx_detail"},
+                        {"data": "amount"},
+                        {"data": "gift_time"},
+                    ],
+                });
             }
         }, function (response) {
             
