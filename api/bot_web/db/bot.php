@@ -226,9 +226,7 @@ function get_message_list($group_id,$status)
 function iss_records_list($da)
 {
     $db = new DB_COM();
-    $sql = "select unit from la_base limit 1";
-    $db->query($sql);
-    $unit = $db->getField($sql,'unit');
+    $unit = la_unit();
 
     $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE ba_id = '{$da['ba_id']}'";
     if ($da['start_time'] && !$da['end_time']){
@@ -251,4 +249,28 @@ function iss_records_list($da)
     $data['all_amount'] = array_sum(array_map(function($val){return $val['amount'];}, $rows));
     $data['all_chat'] = array_sum(array_map(function($val){return $val['num'];}, $rows));
     return $data;
+}
+
+//la基准
+function la_unit(){
+    $db = new DB_COM();
+    $sql = "select unit from la_base limit 1";
+    $db->query($sql);
+    $unit = $db->getField($sql,'unit');
+    return $unit;
+}
+
+//======================================
+// 函数: 获取积分记录
+//
+// 返回: row           最新信息数组
+//======================================
+function glory_integral_list()
+{
+    $db = new DB_COM();
+    $unit = la_unit();
+    $sql = "SELECT a.credit_id,a.debit_id,a.tx_amount/'{$unit}' as tx_amount,a.ctime,a.uptime,b.us_account as give_account,c.us_account as receive_account FROM us_glory_integral_change_log as a LEFT JOIN us_base as b ON a.credit_id=b.us_id LEFT JOIN us_base as c ON a.debit_id=c.us_id ORDER BY a.ctime DESC";
+    $db -> query($sql);
+    $row = $db -> fetchAll();
+    return $row;
 }
