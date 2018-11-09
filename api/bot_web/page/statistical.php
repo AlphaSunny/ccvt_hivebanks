@@ -155,6 +155,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                             $token = $_COOKIE['statistics_user_token'];
                         echo $token;
                             if ($token){
+                                $token = urldecode($token);
                                 $us_id = check_token($token);
                                 $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
                                 $db->query($sql);
