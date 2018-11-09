@@ -5,7 +5,7 @@ $(function () {
     //get reward
     var type = "5";
     function GetRewardFun (type){
-        GetRewardList(token,function (response) {
+        GetRewardList(token,type,function (response) {
             if(response.errcode == "0"){
                 console.log(response);
             }
