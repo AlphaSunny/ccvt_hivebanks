@@ -29,7 +29,7 @@ $data = json_decode($json_string, true);
 $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64_encode($datetime) . "&group_name=" . $group_name2 . "&status=" . base64_encode(2);
 ?>
 <div id="chat">
-    <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?></p>
+    <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?>(<?php echo $datetime;?>)</p>
 <!--    <p class="filter_title">筛选</p>-->
 <!--    <div class="filter_box">-->
 <!--        <div>-->
