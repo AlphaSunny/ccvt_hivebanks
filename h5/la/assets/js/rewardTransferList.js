@@ -23,14 +23,14 @@ $(function () {
                 });
             }
         }, function (response) {
-            
+
         })
     }
 
     GetRewardFun(type);
 
     $(".send_filter_child").click(function () {
-        var type = $(this).val();
+        var type = $(this).attr("value");
         console.log(type);
     })
 });
