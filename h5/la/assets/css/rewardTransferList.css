@@ -1,0 +1,13 @@
+li.send_type_btn {
+    display: inline-block;
+    border: 1px solid #9e9e9e;
+    padding: 0.5%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+li.send_type_btn:hover, li.send_type_btn.active {
+    background: #ff5f5d;
+    color: #fff;
+    border: 1px solid #ff5f5d;
+}
