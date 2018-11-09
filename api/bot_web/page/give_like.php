@@ -23,6 +23,7 @@ chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token',128);
+echo $token;
 // 用户id
 $give_us_id = get_arg_str('GET', 'give_us_id');
 
