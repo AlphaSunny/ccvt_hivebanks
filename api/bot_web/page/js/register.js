@@ -91,6 +91,7 @@ $(function () {
             RegShowLogin("hide");
             ActiveClick($this, btnText);
             layer.msg(response.errmsg);
+            GetImgCode();
         });
     });
 
@@ -104,6 +105,7 @@ $(function () {
             } else {
                 _this.text("获取验证码");
                 clearInterval(timer);
+                GetImgCode();
             }
         }, 1000)
     }
