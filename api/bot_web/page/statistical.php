@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/statistics.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/spin.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/statistical.js"></script>
 </head>
 
 <body>
@@ -174,11 +179,5 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
     <div class="cx_mask_transparent"></div>
     <div class="web_toast_text"></div>
 </div>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/spin.min.js"></script>
-<script src="js/common.js"></script>
-<script src="js/statistical.js"></script>
 </body>
 </html>
