@@ -42,6 +42,7 @@ $(function () {
         UserInformation(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
+                SetCookie('statistics_user_id', data.us_id);
                 $(".amount").text(data.base_amount);
             }
         }, function (response) {
