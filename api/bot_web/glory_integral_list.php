@@ -28,7 +28,6 @@ $ba_id = check_token($token);
 
 // 交易记录数组
 $rows = glory_integral_list();
-print_r($rows);
 
 // 返回数据做成
 $rtn_ary = array();
