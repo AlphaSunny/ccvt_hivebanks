@@ -29,8 +29,8 @@ $(function () {
 
     GetRewardFun(type);
 
-    $(".send_filter_child").click(function () {
-        var type = $(this).attr("value");
+    $("#filter_send").on("change", function () {
+        var type = $(this).find("option:selected").val();
         console.log(type);
     })
 });
