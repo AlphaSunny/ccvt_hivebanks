@@ -141,7 +141,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
             <label>数量：<input class="confirm_input" value="5" placeholder="请输入点赞数量"></label>
             <p>点赞功能将扣除对应数量的ccvt,对方将获取荣耀积分</p>
             <p>
-                
+
                 <span>每日上限
                     <?php
                     $sql = "SELECT max_give_like FROM bot_status limit 1";
