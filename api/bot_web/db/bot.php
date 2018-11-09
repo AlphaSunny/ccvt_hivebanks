@@ -269,8 +269,7 @@ function glory_integral_list()
 {
     $db = new DB_COM();
     $unit = la_unit();
-    $sql = "SELECT a.credit_id,a.debit_id,a.tx_amount/'{$unit}' as tx_amount,a.ctime,a.uptime,b.us_account as give_account,c.us_account as receive_account FROM us_glory_integral_change_log as a LEFT JOIN us_base as b ON a.credit_id=b.us_id LEFT JOIN us_base as c ON a.debit_id=c.us_id ORDER BY a.ctime DESC";
-    echo $sql;die;
+    $sql = "SELECT a.credit_id,a.debit_id,a.tx_amount/'{$unit}' as tx_amount,a.ctime,a.utime,b.us_account as give_account,c.us_account as receive_account FROM us_glory_integral_change_log as a LEFT JOIN us_base as b ON a.credit_id=b.us_id LEFT JOIN us_base as c ON a.debit_id=c.us_id ORDER BY a.ctime DESC";
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;
