@@ -24,8 +24,8 @@ chk_empty_args('GET', $args);
 $db = new DB_COM();
 $datetime = base64_decode(get_arg_str('GET', 'datetime'));
 $group_name = base64_decode(get_arg_str('GET', 'group_name'));
-$day_start = strtotime(date($datetime . ' 00:00:00'));
-$day_end = strtotime(date($datetime . ' 23:59:59'));
+$day_start = date($datetime . ' 00:00:00');
+$day_end = date($datetime . ' 23:59:59');
 
 $json_string = file_get_contents('../../h5/assets/json/config_url.json');
 $data = json_decode($json_string, true);
@@ -55,11 +55,11 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     $db->query($sql);
                     $unit = $db->getField($sql, 'unit');
 
-                    $sql = "select sum(amount)/'{$unit}' as all_send_ccvt from bot_Iss_records WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                    $sql = "select sum(amount)/'{$unit}' as all_send_ccvt from bot_Iss_records WHERE send_time BETWEEN '{$day_start}' AND '{$day_end}'";
                     $db->query($sql);
                     $all_send_ccvt = $db->getField($sql, 'all_send_ccvt'); //总赠送ccvt数量
 
-                    $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='{$group_name}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                    $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='{$group_name}' AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}'";
                     $db->query($sql);
                     $all_message = $db->getField($sql, 'all_message'); //总聊天数量
                     ?>
@@ -88,7 +88,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                         </thead>
                         <tbody>
                         <?php
-                        $sql = "select a.us_id,a.wechat,a.amount,a.num,send_time,a.bot_create_time,(SELECT glory_level_integral from us_base WHERE us_id=a.us_id) as glory_level_integral from bot_Iss_records as a WHERE bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY num DESC ";
+                        $sql = "select a.us_id,a.wechat,a.amount,a.num,send_time,a.bot_create_time,(SELECT glory_level_integral from us_base WHERE us_id=a.us_id) as glory_level_integral from bot_Iss_records as a WHERE send_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY num DESC ";
                         $db->query($sql);
                         $list = $db->fetchAll();
                         foreach ($list as $k => $v) {
@@ -100,7 +100,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                 <td><?php echo $v['amount'] / $unit; ?></td>
                                 <td>
                                     <?php
-                                    $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='{$group_name}' AND wechat='{$v['wechat']}' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                                    $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='{$group_name}' AND wechat='{$v['wechat']}' AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}'";
                                     $db->query($sql);
                                     $count = $db->getField($sql, 'all_message');
                                     echo $count;

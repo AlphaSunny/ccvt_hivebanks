@@ -17,8 +17,8 @@ chk_empty_args('GET', $args);
 $db = new DB_COM();
 $datetime = base64_decode(get_arg_str('GET', 'datetime'));
 $group_name = base64_decode(get_arg_str('GET', 'group_name'));
-$day_start = strtotime(date($datetime . ' 00:00:00'));
-$day_end = strtotime(date($datetime . ' 23:59:59'));
+$day_start = date($datetime . ' 00:00:00');
+$day_end = date($datetime . ' 23:59:59');
 
 $status = base64_decode(get_arg_str('GET', 'status'));
 
@@ -61,7 +61,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
         $nickname = $_GET['nikename'];
         $tblPrefix = "@风赢小助手";
         $tblPrefix2 = "@小助手";
-        $sql = "select bot_nickname,bot_content,bot_send_time,head_img,type,bot_create_time from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}'";
+        $sql = "select bot_nickname,bot_content,bot_send_time,head_img,type,bot_create_time from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}'";
         if ($nickname){
             $sql .= " AND bot_nickname LIKE '$nickname%'";
         }
