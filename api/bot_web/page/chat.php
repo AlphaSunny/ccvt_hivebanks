@@ -30,8 +30,8 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 ?>
 <div id="chat">
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?>(<?php echo $datetime;?>)</p>
-    <p class="filter_title">筛选</p>
-    <div class="filter_box">
+<!--    <p class="filter_title">筛选</p>-->
+<!--    <div class="filter_box">-->
 <!--        <form action="--><?php //echo $_SERVER['PHP_SELF'];?><!--" method="get">-->
 <!--<!--        <div>-->-->
 <!--<!--            <span class="font-size-14">荣耀积分:</span>-->-->
@@ -50,7 +50,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 <!--            <button class="search_btn">搜索</button>-->
 <!--        </div>-->
 <!--        </form>-->
-    </div>
+<!--    </div>-->
     <?php if ($status!=1){?>
     <div class="backStatistics_box">
         <a href="javascript:;" class="backStatistics">奖励统计</a>
