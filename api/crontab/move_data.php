@@ -70,16 +70,19 @@ echo "ok";
 function into_transfer($us_id,$send_money,$time,$flag,$detail){
     $db = new DB_COM();
 
+    //赠送者
     $data['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . $time);
     $data['prvs_hash'] = get_pre_hash($flag);
     $data['credit_id'] = get_ba_id();
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $send_money*la_unit();
+    $data['credit_balance'] = get_ba_base_amount($data['credit_id']);
     $data['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $data['flag'] = $flag;
     $data['transfer_type'] = 1;
     $data['transfer_state'] = 1;
     $data['tx_detail'] = $detail;
+    $data['give_or_receive'] = 1;
     $data['ctime'] = strtotime($time);
     $data['utime'] = $time;
     $sql = $db->sqlInsert("com_transfer_request", $data);
@@ -88,9 +91,48 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail){
         echo $us_id."错误";
         die();
     }
+
+    //接收者
+    $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . $time);
+    $dat['prvs_hash'] = get_pre_hash($flag);
+    $dat['credit_id'] = $us_id;
+    $dat['debit_id'] = get_ba_id();
+    $dat['tx_amount'] = $send_money*la_unit();
+    $dat['credit_balance'] = get_us_base_amount($us_id);
+    $dat['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+    $dat['flag'] = $flag;
+    $dat['transfer_type'] = 1;
+    $dat['transfer_state'] = 1;
+    $dat['tx_detail'] = $detail;
+    $dat['give_or_receive'] = 2;
+    $dat['ctime'] = strtotime($time);
+    $dat['utime'] = $time;
+    $sql = $db->sqlInsert("com_transfer_request", $dat);
+    $id = $db->query($sql);
+    if (!$id){
+        echo $us_id."错误";
+        die();
+    }
 }
 
 
+//获取ba余额
+function get_ba_base_amount($ba_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from ba_base WHERE ba_id='{$ba_id}'";
+    $db->query($sql);
+    $amount = $db->getField($sql,'base_amount');
+    return $amount;
+}
+
+//获取us余额
+function get_us_base_amount($us_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from us_base WHERE us_id='{$us_id}'";
+    $db->query($sql);
+    $amount = $db->getField($sql,'base_amount');
+    return $amount;
+}
 
 
 //======================================
