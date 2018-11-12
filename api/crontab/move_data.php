@@ -72,7 +72,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail){
 
     //赠送者
     $data['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . $time);
-    $data['prvs_hash'] = get_pre_hash(get_ba_id());
+    $prvs_hash = get_pre_hash(get_ba_id());
+    $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = get_ba_id();
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $send_money*la_unit();
@@ -94,7 +95,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail){
 
     //接收者
     $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . $time);
-    $dat['prvs_hash'] = get_pre_hash($us_id);
+    $prvs_hash = get_pre_hash($us_id);
+    $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = get_ba_id();
     $dat['tx_amount'] = $send_money*la_unit();
