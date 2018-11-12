@@ -33,34 +33,34 @@ if ($rows){
 
 //邀请
 
-$sql = "select * from us_base WHERE invite_code!=0";
-$db->query($sql);
-$invite_rows = $db->fetchAll();
-if ($invite_rows){
-    foreach ($invite_rows as $a=>$b){
-        $invite_us_id = get_us_id($b['invite_code']);
-        $send_money = "50";
-        into_transfer($invite_us_id,$send_money,$b['ctime'],2,'邀请赠送');
-    }
-}else{
-    echo "邀请赠送没有数据可以操作";
-    die();
-}
-
-//聊天奖励
-
-$sql = "select * from bot_Iss_records WHERE 1";
-$db->query($sql);
-$bot_rows = $db->fetchAll();
-if ($bot_rows){
-    foreach ($bot_rows as $c=>$d){
-        $send_money = $d['amount']/la_unit();
-        into_transfer($d['us_id'],$send_money,$d['send_time'],4,'聊天奖励');
-    }
-}else{
-    echo "聊天奖励没有数据可以操作";
-    die();
-}
+//$sql = "select * from us_base WHERE invite_code!=0";
+//$db->query($sql);
+//$invite_rows = $db->fetchAll();
+//if ($invite_rows){
+//    foreach ($invite_rows as $a=>$b){
+//        $invite_us_id = get_us_id($b['invite_code']);
+//        $send_money = "50";
+//        into_transfer($invite_us_id,$send_money,$b['ctime'],2,'邀请赠送');
+//    }
+//}else{
+//    echo "邀请赠送没有数据可以操作";
+//    die();
+//}
+//
+////聊天奖励
+//
+//$sql = "select * from bot_Iss_records WHERE 1";
+//$db->query($sql);
+//$bot_rows = $db->fetchAll();
+//if ($bot_rows){
+//    foreach ($bot_rows as $c=>$d){
+//        $send_money = $d['amount']/la_unit();
+//        into_transfer($d['us_id'],$send_money,$d['send_time'],4,'聊天奖励');
+//    }
+//}else{
+//    echo "聊天奖励没有数据可以操作";
+//    die();
+//}
 
 
 echo "ok";
@@ -72,7 +72,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail){
 
     //赠送者
     $data['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . $time);
-    $data['prvs_hash'] = get_pre_hash($flag);
+    $data['prvs_hash'] = get_pre_hash(get_ba_id());
     $data['credit_id'] = get_ba_id();
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $send_money*la_unit();
@@ -94,7 +94,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail){
 
     //接收者
     $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . $time);
-    $dat['prvs_hash'] = get_pre_hash($flag);
+    $dat['prvs_hash'] = get_pre_hash($us_id);
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = get_ba_id();
     $dat['tx_amount'] = $send_money*la_unit();
@@ -138,9 +138,9 @@ function get_us_base_amount($us_id){
 //======================================
 // 函数: 获取上传交易hash
 //======================================
-function get_pre_hash($flag){
+function get_pre_hash($credit_id){
     $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_transfer_request WHERE flag = '{$flag}' ORDER BY  ctime DESC LIMIT 1";
+    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;
