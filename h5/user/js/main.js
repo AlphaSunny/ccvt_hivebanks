@@ -188,7 +188,7 @@ function setTime($this) {
     $('.getCodeText').fadeOut();
     $this.attr("disabled", true);
     timer = setInterval(function () {
-        if (countdown >= 0) {
+        if (countdown > 0) {
             countdown--;
             $('.sixty').text(countdown + "s");
         } else {
