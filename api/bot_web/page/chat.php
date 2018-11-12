@@ -33,15 +33,15 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 <!--    <p class="filter_title">筛选</p>-->
 <!--    <div class="filter_box">-->
 <!--        <form action="--><?php //echo $_SERVER['PHP_SELF'];?><!--" method="get">-->
-<!--<!--        <div>-->-->
-<!--<!--            <span class="font-size-14">荣耀积分:</span>-->-->
-<!--<!--            <select name="filter" id="filter" class="form-control">-->-->
-<!--<!--                <option value="none">选择荣耀积分范围</option>-->-->
-<!--<!--                <option value="0-30">0-30</option>-->-->
-<!--<!--                <option value="0-30">0-30</option>-->-->
-<!--<!--                <option value="0-30">0-30</option>-->-->
-<!--<!--            </select>-->-->
-<!--<!--        </div>-->-->
+<!--<!--        <div>-->
+<!--<!--            <span class="font-size-14">荣耀积分:</span>-->
+<!--<!--            <select name="filter" id="filter" class="form-control">-->
+<!--<!--                <option value="none">选择荣耀积分范围</option>-->
+<!--<!--                <option value="0-30">0-30</option>-->
+<!--<!--                <option value="0-30">0-30</option>-->
+<!--<!--                <option value="0-30">0-30</option>-->
+<!--<!--            </select>-->
+<!--<!--        </div>-->
 <!--        <div class="form-group-sm">-->
 <!--            <span class="font-size-14">昵称:</span>-->
 <!--            <input type="text" name="nikename" class="form-control search_input">-->
