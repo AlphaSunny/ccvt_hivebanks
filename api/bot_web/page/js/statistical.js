@@ -107,7 +107,12 @@ $(function () {
         Give(token, give_us_id, give_num, state, function (response) {
             if (response.errcode == "0") {
                 ZanShowLogin("hide");
-                $('.web_toast_text').text("点赞成功!");
+                if (state == "1") {
+                    $('.web_toast_text').text("点赞成功!");
+                } else if (state == "2") {
+                    $('.web_toast_text').text("踩成功!");
+                }
+
                 $(".web_toast").fadeIn("fast");
                 $(".confirmMode").fadeOut("fast");
                 setTimeout(function () {
