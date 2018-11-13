@@ -83,7 +83,7 @@ function give_like_us($data)
     $data['credit_id'] = $data['us_id'];
     $data['debit_id'] = $data['give_us_id'];
     $data['tx_amount'] = $data['give_num']*$unit;
-    $data['credit_balance'] = get_ba_base_amount($data['credit_id']);
+    $data['credit_balance'] = get_us_base_amount($data['credit_id']);
     $data['tx_hash'] = hash('md5', $data['us_id'] . 5 . get_ip() . time() . date('Y-m-d H:i:s'));
     $data['flag'] = 5;
     $data['transfer_type'] = 1;
