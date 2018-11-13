@@ -159,10 +159,12 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
 <div class="c-float-popWrap confirmMode hiden" style="opacity: 1; top: 264px; left: 28px;">
     <div class="weui_mask_transparent"></div>
     <div class="c-float-modePop">
-        <div class="warnMsg">点赞👍数量</div>
+        <div class="warnMsg zan_title">点赞👍数量</div>
+        <div class="warnMsg cai_title">踩👎数量</div>
         <div class="content">
             <label>数量：<input class="confirm_input" value="5" placeholder="请输入点赞数量"></label>
-            <p>点赞功能将扣除对应数量的ccvt,对方将获取荣耀积分</p>
+            <p class="zan_text">点赞功能将扣除对应数量的ccvt,对方将获取荣耀积分</p>
+            <p class="cai_text">踩功能将扣除对应数量的ccvt,对方将减少荣耀积分</p>
             <p>
 
                 <span>每日上限

@@ -66,8 +66,14 @@ $(function () {
             return;
         }
         $(".confirmMode").fadeIn("fast");
+
+        $(".zan_title").fadeIn("fast");
         $(".zan_num").fadeIn("fast");
+        $(".zan_text").fadeIn("fast");
+
+        $(".cai_title").fadeOut("fast");
         $(".cai_num").fadeOut("fast");
+        $(".cai_text").fadeOut("fast");
     });
 
     //踩
@@ -78,8 +84,14 @@ $(function () {
             return;
         }
         $(".confirmMode").fadeIn("fast");
+
+        $(".cai_title").fadeIn("fast");
+        $(".cai_text").fadeIn("fast");
         $(".cai_num").fadeIn("fast");
+
+        $(".zan_title").fadeOut("fast");
         $(".zan_num").fadeOut("fast");
+        $(".zan_text").fadeOut("fast");
     });
 
     //确定点赞
