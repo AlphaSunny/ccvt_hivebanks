@@ -166,8 +166,8 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
             <p class="zan_text">点赞功能将扣除对应数量的ccvt,对方将获取荣耀积分</p>
             <p class="cai_text">踩功能将扣除对应数量的ccvt,对方将减少荣耀积分</p>
             <p>
-
-                <span>每日上限
+                <!--赞上限-->
+                <span class="zan_top">每日上限
                     <?php
                     $sql = "SELECT max_give_like FROM bot_status limit 1";
                     $db -> query($sql);
@@ -175,6 +175,17 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     echo $row;
                     ?>ccvt
                 </span>
+
+                <!--踩上限-->
+                <span class="cai_top">每日上限
+                    <?php
+                    $sql = "SELECT max_give_like FROM bot_status limit 1";
+                    $db -> query($sql);
+                    $row = $db -> getField($sql,'max_give_like');
+                    echo $row;
+                    ?>ccvt
+                </span>
+
                 <!--已赞数量-->
                 <span class="margin-left-5 zan_num">已点赞
                     <span class="already_count" style="color: #333333">

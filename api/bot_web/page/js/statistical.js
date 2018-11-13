@@ -68,10 +68,12 @@ $(function () {
         $(".zan_title").fadeIn("fast");
         $(".zan_num").fadeIn("fast");
         $(".zan_text").fadeIn("fast");
+        $(".zan_top").fadeIn("fast");
 
         $(".cai_title").fadeOut("fast");
         $(".cai_num").fadeOut("fast");
         $(".cai_text").fadeOut("fast");
+        $(".cai_top").fadeOut("fast");
 
         $(".confirmMode").fadeIn("fast");
         state = "1";
@@ -87,10 +89,12 @@ $(function () {
         $(".cai_title").fadeIn("fast");
         $(".cai_text").fadeIn("fast");
         $(".cai_num").fadeIn("fast");
+        $(".cai_top").fadeIn("fast");
 
         $(".zan_title").fadeOut("fast");
         $(".zan_num").fadeOut("fast");
         $(".zan_text").fadeOut("fast");
+        $(".zan_top").fadeOut("fast");
 
         $(".confirmMode").fadeIn("fast");
         state = "2";
