@@ -88,14 +88,21 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                         </thead>
                         <tbody>
                         <?php
-                        $sql = "select a.us_id,a.wechat,a.amount,a.num,send_time,a.bot_create_time,(SELECT glory_level_integral from us_base WHERE us_id=a.us_id) as glory_level_integral from bot_Iss_records as a WHERE send_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY num DESC ";
+                        $sql = "select us_id,wechat,amount,num,send_time,bot_create_time from bot_Iss_records WHERE send_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY num DESC ";
                         $db->query($sql);
                         $list = $db->fetchAll();
                         foreach ($list as $k => $v) {
                             ?>
                             <tr>
 
-                                <td class="text-left"><?php echo $v['wechat']; ?>(<?php echo $v['glory_level_integral']?>)</td>
+                                <td class="text-left"><?php echo $v['wechat']; ?>
+                                    (<?php
+                                      $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$v['us_id']}'";
+                                      $db->query($sql);
+                                      $base_amount = $db->getField($sql,'base_amount');
+                                      echo $base_amount;
+                                    ?>)
+                                </td>
 
                                 <td><?php echo $v['amount'] / $unit; ?></td>
                                 <td>
