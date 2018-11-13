@@ -97,6 +97,7 @@ function give_like_us($data)
     $data['ctime'] = time();
     $data['utime'] = date('Y-m-d H:i:s');
     $sql = $db->sqlInsert("com_transfer_request", $data);
+    echo $sql;die;
     $id = $db->query($sql);
     if (!$id){
         $db->Rollback($pInTrans);
