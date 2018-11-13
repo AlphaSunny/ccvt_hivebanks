@@ -12,6 +12,7 @@ $db->query($sql);
 $rows = $db->fetchAll();
 if ($rows){
     foreach ($rows as $k=>$v){
+        set_time_limit(0);
         $sql = "select * from com_transfer_request WHERE debit_id='{$v['us_id']}' AND transfer_type=1 AND flag=1";
         $db->query($sql);
         $row = $db->fetchRow();
@@ -38,6 +39,7 @@ $db->query($sql);
 $invite_rows = $db->fetchAll();
 if ($invite_rows){
     foreach ($invite_rows as $a=>$b){
+        set_time_limit(0);
         $invite_us_id = get_us_id($b['invite_code']);
         $send_money = "50";
         into_transfer($invite_us_id,$send_money,$b['ctime'],2,'邀请赠送','invite_send');
@@ -54,6 +56,7 @@ $db->query($sql);
 $bot_rows = $db->fetchAll();
 if ($bot_rows){
     foreach ($bot_rows as $c=>$d){
+        set_time_limit(0);
         $send_money = $d['amount']/la_unit();
         into_transfer($d['us_id'],$send_money,$d['send_time'],4,'聊天奖励','ba_send');
     }

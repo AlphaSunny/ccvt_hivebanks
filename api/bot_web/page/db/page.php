@@ -11,6 +11,8 @@ function give_like_us($data)
     $db = new DB_COM();
     $pInTrans = $db->StartTrans();  //开启事务
     $unit = la_unit();
+
+    //积分变动记录表
     $d['hash_id'] = hash('md5', $data['us_id'] . 'give_like_us' . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $d['credit_id'] = $data['us_id'];
     $d['debit_id'] = $data['give_us_id'];
@@ -20,13 +22,6 @@ function give_like_us($data)
     $sql = $db->sqlInsert("us_glory_integral_change_log", $d);
     $id = $db->query($sql);
     if (!$id){
-        $db->Rollback($pInTrans);
-        return 0;
-    }
-    //增加荣耀积分
-    $sql = "update us_base set glory_level_integral=glory_level_integral+'{$data['give_num']}' WHERE us_id='{$data['give_us_id']}'";
-    $db->query($sql);
-    if (!$db->affectedRows()){
         $db->Rollback($pInTrans);
         return 0;
     }
@@ -47,8 +42,136 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
+
+    //增加荣耀积分
+    $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$data['us_id']}'";
+    $db->query($sql);
+    $asset_us = $db->fetchRow();
+    if ($asset_us){
+        $sql = "update us_asset set base_amount=base_amount+'{$data['give_num']}' WHERE asset_id='GLOP' AND us_id='{$data['us_id']}'";
+        $db->query($sql);
+        if (!$db->affectedRows()){
+            $db->Rollback($pInTrans);
+            return 0;
+        }
+    }else{
+        $sql = "select * from us_base WHERE us_id='{$data['us_id']}'";
+        $db->query($sql);
+        $us_base = $db->fetchRow();
+        $asset['asset_id'] = 'GLOP';
+        $asset['us_id'] = $data['us_id'];
+        $asset['us_nm'] = $us_base['us_nm'];
+        $asset['us_account'] = $us_base['us_account'];
+        $asset['base_amount'] = $data['give_num']*$unit;
+        $asset['lock_amount'] = 0;
+        $asset['utime'] = time();
+        $asset['ctime'] = date('Y-m-d H:i:s');
+        $sql = $db->sqlInsert("us_asset", $asset);
+        $id = $db->query($sql);
+        if (!$id){
+            $db->Rollback($pInTrans);
+            return 0;
+        }
+    }
+
+
+    /******************************转账记录表***************************************************/
+    //赠送者
+    $data['hash_id'] = hash('md5', $data['us_id'] . 5 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $prvs_hash = get_pre_hash($data['us_id']);
+    $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $data['credit_id'] = $data['us_id'];
+    $data['debit_id'] = $data['give_us_id'];
+    $data['tx_amount'] = $data['give_num']*$unit;
+    $data['credit_balance'] = get_ba_base_amount($data['credit_id']);
+    $data['tx_hash'] = hash('md5', $data['us_id'] . 5 . get_ip() . time() . date('Y-m-d H:i:s'));
+    $data['flag'] = 5;
+    $data['transfer_type'] = 1;
+    $data['transfer_state'] = 1;
+    $data['tx_detail'] = '点赞消耗';
+    $data['give_or_receive'] = 1;
+    $data['ctime'] = time();
+    $data['utime'] = date('Y-m-d H:i:s');
+    $sql = $db->sqlInsert("com_transfer_request", $data);
+    $id = $db->query($sql);
+    if (!$id){
+        $db->Rollback($pInTrans);
+        return 0;
+    }
+
+    /***********************资金变动记录表***********************************/
+
+    //us添加基准资产变动记录
+    $us_type = 'us_get_balance';
+    $ctime = date('Y-m-d H:i:s');
+    $com_balance_us['hash_id'] = hash('md5', $data['us_id'] . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+    $com_balance_us['tx_id'] = $data['tx_hash'];
+    $prvs_hash = get_recharge_pre_hash($data['us_id']);
+    $com_balance_us['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;
+    $com_balance_us["credit_id"] = $data['us_id'];
+    $com_balance_us["debit_id"] = $data['give_us_id'];
+    $com_balance_us["tx_type"] = 'give_like';
+    $com_balance_us["tx_amount"] = $data['give_num']*$unit;
+    $com_balance_us["credit_balance"] = get_us_base_amount($data['us_id']);
+    $com_balance_us["utime"] = time();
+    $com_balance_us["ctime"] = date('Y-m-d H:i:s');
+
+    $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
+    if (!$db->query($sql)) {
+        $db->Rollback($pInTrans);
+        return 0;
+    }
+
+
+
     $db->Commit($pInTrans);
     return true;
+}
+
+function get_ba_id(){
+    $db = new DB_COM();
+    $sql = "select ba_id from ba_base limit 1";
+    $ba_id = $db->getField($sql,'ba_id');
+    if ($ba_id==null){
+        return 0;
+    }
+    return $ba_id;
+}
+
+//======================================
+// 函数: 获取上传交易hash
+//======================================
+function get_pre_hash($credit_id){
+    $db = new DB_COM();
+    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
+    $hash_id = $db->getField($sql, 'hash_id');
+    if($hash_id == null)
+        return 0;
+    return $hash_id;
+}
+
+//======================================
+// 函数: 获取资金变动记录表的前置hash
+// 参数: ba_id                 baID
+// 返回: hash_id               前置hashid
+//======================================
+function  get_recharge_pre_hash($ba_id)
+{
+    $db = new DB_COM();
+    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}'  ORDER BY  ctime DESC LIMIT 1";
+    $hash_id = $db->getField($sql, 'hash_id');
+    if($hash_id == null)
+        return 0;
+    return $hash_id;
+}
+
+//获取us余额
+function get_us_base_amount($us_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from us_base WHERE us_id='{$us_id}'";
+    $db->query($sql);
+    $amount = $db->getField($sql,'base_amount');
+    return $amount;
 }
 
 
