@@ -100,6 +100,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                       $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$v['us_id']}'";
                                       $db->query($sql);
                                       $base_amount = $db->getField($sql,'base_amount');
+                                      $base_amount = $base_amount ? $base_amount/$unit : 0;
                                       echo $base_amount;
                                     ?>)
                                 </td>
