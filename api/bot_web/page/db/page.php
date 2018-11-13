@@ -25,6 +25,7 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
+    echo 1;
 
     //用户减钱
 
@@ -34,6 +35,7 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
+    echo 2;
 
     //la加钱
     $sql = "update la_base set base_amount=base_amount+'{$data['give_num']}'*'{$unit}' limit 1";
@@ -42,6 +44,7 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
+    echo 3;
 
     //增加荣耀积分
     $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$data['us_id']}'";
@@ -73,6 +76,7 @@ function give_like_us($data)
             return 0;
         }
     }
+    echo 4;
 
 
     /******************************转账记录表***************************************************/
@@ -98,6 +102,7 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
+    echo 5;
 
     /***********************资金变动记录表***********************************/
 
@@ -121,6 +126,7 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
+    echo 6;
 
 
 
