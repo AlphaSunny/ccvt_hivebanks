@@ -66,6 +66,7 @@ $(function () {
             return;
         }
         $(".confirmMode").fadeIn("fast");
+        $(".zan_num").fadeIn("fast");
     });
 
     //确定点赞
