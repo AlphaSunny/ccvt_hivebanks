@@ -213,7 +213,6 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
             $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
             $db->query($sql);
             $row = $db->fetchRow();
-            echo 2222;
             if (!$row || $row['base_amount']==0 || $give_num>$row['base_amount']){
                 return 3;
             }

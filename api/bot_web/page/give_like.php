@@ -54,6 +54,8 @@ if ($chcek==1){
     exit_error('103','用户没有积分或积分不足');
 }
 
+echo 222;die;
+
 $data['us_id'] = $us_id;
 $data['give_us_id'] = $give_us_id;
 $data['give_num'] = get_arg_str('GET', 'give_num');
