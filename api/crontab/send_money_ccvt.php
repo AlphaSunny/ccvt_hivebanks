@@ -91,7 +91,7 @@ if ($rows){
         //赠送者
         $u_id = get_us_id($v['wechat']);
         $data['hash_id'] = hash('md5', $ba_id . 4 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
-        $data['prvs_hash'] = get_pre_hash(4);
+        $data['prvs_hash'] = get_pre_hash($ba_id);
         $data['credit_id'] = $ba_id;
         $data['debit_id'] = $u_id;
         $data['tx_amount'] = $give_account*$unit;
@@ -111,7 +111,7 @@ if ($rows){
             continue;
         }
         //接收者
-        $dat['hash_id'] = hash('md5', $u_id . 4 . get_ip() . time() . rand(1000, 9999) . $time);
+        $dat['hash_id'] = hash('md5', $u_id . 4 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
         $prvs_hash = get_pre_hash($u_id);
         $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
         $dat['credit_id'] = $u_id;
@@ -124,8 +124,8 @@ if ($rows){
         $dat['transfer_state'] = 1;
         $dat['tx_detail'] = "聊天奖励";
         $dat['give_or_receive'] = 2;
-        $dat['ctime'] = strtotime($time);
-        $dat['utime'] = $time;
+        $dat['ctime'] = time();
+        $dat['utime'] = date('Y-m-d H:i:s',time());
         $sql = $db->sqlInsert("com_transfer_request", $dat);
         $id = $db->query($sql);
         if (!$id){
@@ -273,7 +273,7 @@ function la_unit(){
 function  get_recharge_pre_hash($ba_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}' and tx_type = 'ba_send' ORDER BY  ctime DESC LIMIT 1";
+    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}'  ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;
@@ -283,9 +283,9 @@ function  get_recharge_pre_hash($ba_id)
 //======================================
 // 函数: 获取上传交易hash
 //======================================
-function get_pre_hash($flag){
+function get_pre_hash($credit_id){
     $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_transfer_request WHERE flag = '{$flag}' ORDER BY  ctime DESC LIMIT 1";
+    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;
