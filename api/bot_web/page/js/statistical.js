@@ -70,13 +70,25 @@ $(function () {
         $(".cai_num").fadeOut("fast");
     });
 
+    //踩
+    $(".cai_btn").click(function () {
+        give_us_id = $(this).children(".us_id").text();
+        if (!token) {
+            alert("登录之后才可以踩哦");
+            return;
+        }
+        $(".confirmMode").fadeIn("fast");
+        $(".cai_num").fadeIn("fast");
+        $(".zan_num").fadeOut("fast");
+    });
+
     //确定点赞
     $(".ok").click(function () {
         var give_num = $(".confirm_input").val();
         ZanShowLogin("show");
 
         Give(token, give_us_id, give_num, function (response) {
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 ZanShowLogin("hide");
                 $('.web_toast_text').text("点赞成功!");
                 $(".web_toast").fadeIn("fast");

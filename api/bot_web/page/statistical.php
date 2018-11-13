@@ -116,6 +116,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                 </td>
                                 <!--                                <td><img src="img/zan.svg" class="zan_img" alt=""></td>-->
                                 <td>
+                                    <!--赞按钮-->
                                     <button class="btn btn-info btn-sm zan_btn">赞👍&nbsp;
                                         <?php
                                            $s_time = strtotime(date('Y-m-d 00:00:00'),time());
@@ -128,6 +129,8 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                         <span class="zan_count"><?php echo $zan;?></span>
                                         <span class="none us_id"><?php echo $v['us_id']?></span>
                                     </button>
+
+                                    <!--踩按钮-->
                                     <button class="btn btn-default btn-sm cai_btn">踩👎&nbsp;
                                         <?php
                                         $s_time = strtotime(date('Y-m-d 00:00:00'),time());
