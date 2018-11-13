@@ -31,8 +31,8 @@ $sql = "select wechat,count(bot_message_id) as count from bot_message where grou
 $db->query($sql);
 $rows = $db->fetchAll();
 if ($rows){
+    $pInTrans = $db->StartTrans();  //开启事务
     foreach ($rows as $k=>$v){
-        $pInTrans = $db->StartTrans();  //开启事务
         //判断用户表是否有这个微信
         $result = get_us_id($v['wechat']);
         if (!$result){
@@ -149,8 +149,9 @@ if ($rows){
             $db->Rollback($pInTrans);
             continue;
         }
-        $db->Commit($pInTrans);
+
     }
+    $db->Commit($pInTrans);
 }
 
 echo "OK!";
