@@ -209,13 +209,13 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
     }elseif($give_num+$give_all>$max){
         return 2;
     }else{
-        $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
-        $db->query($sql);
-        $row = $db->fetchRow();
-        if (!$row || $row['base_amount']==0 || $give_num>$row['base_amount']){
-            return 3;
-        }else{
-            return 4;
+        if ($state==2){
+            $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
+            $db->query($sql);
+            $row = $db->fetchRow();
+            if (!$row || $row['base_amount']==0 || $give_num>$row['base_amount']){
+                return 3;
+            }
         }
     }
 }
