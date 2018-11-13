@@ -37,6 +37,12 @@ if (!$state){$state=1;}
 //验证token
 $us_id = check_token($token);
 
+//判断自己不能踩自己
+if ($state==2){
+    if ($us_id==$give_us_id){
+        exit_error('104','不能踩自己');
+    }
+}
 
 //判断是否已达到上限
 $chcek = check_max_give($us_id,$give_num,$state,$give_us_id);
