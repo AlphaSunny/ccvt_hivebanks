@@ -87,30 +87,53 @@ if ($rows){
             echo "添加记录失败";
             continue;
         }
-
-        //转币记录
+        /******************************转账记录表***************************************************/
+        //赠送者
         $u_id = get_us_id($v['wechat']);
-        $data['hash_id'] = hash('md5', $u_id . 4 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+        $data['hash_id'] = hash('md5', $ba_id . 4 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
         $data['prvs_hash'] = get_pre_hash(4);
         $data['credit_id'] = $ba_id;
         $data['debit_id'] = $u_id;
         $data['tx_amount'] = $give_account*$unit;
-        $data['tx_hash'] = hash('md5', $u_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
+        $data['credit_balance'] = get_ba_base_amount($data['credit_id']);
+        $data['tx_hash'] = hash('md5', $ba_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
         $data['flag'] = 4;
         $data['transfer_type'] = 1;
         $data['transfer_state'] = 1;
         $data['tx_detail'] = "聊天奖励";
+        $data['give_or_receive'] = 1;
         $data['ctime'] = time();
         $data['utime'] = date('Y-m-d H:i:s',time());
         $sql = $db->sqlInsert("com_transfer_request", $data);
         $id = $db->query($sql);
         if (!$id){
             $db->Rollback($pInTrans);
-            echo "转币记录失败";
+            continue;
+        }
+        //接收者
+        $dat['hash_id'] = hash('md5', $u_id . 4 . get_ip() . time() . rand(1000, 9999) . $time);
+        $prvs_hash = get_pre_hash($u_id);
+        $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+        $dat['credit_id'] = $u_id;
+        $dat['debit_id'] = $ba_id;
+        $dat['tx_amount'] = $give_account*$unit;
+        $dat['credit_balance'] = get_us_account($u_id);
+        $dat['tx_hash'] = hash('md5', $u_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
+        $dat['flag'] = 4;
+        $dat['transfer_type'] = 1;
+        $dat['transfer_state'] = 1;
+        $dat['tx_detail'] = "聊天奖励";
+        $dat['give_or_receive'] = 2;
+        $dat['ctime'] = strtotime($time);
+        $dat['utime'] = $time;
+        $sql = $db->sqlInsert("com_transfer_request", $dat);
+        $id = $db->query($sql);
+        if (!$id){
+            $db->Rollback($pInTrans);
             continue;
         }
 
-
+        /***********************资金变动记录表***********************************/
         //us添加基准资产变动记录
         $us_type = 'us_send_balance';
         $ctime = date('Y-m-d H:i:s');
@@ -193,7 +216,14 @@ function send_money_if($ba_id,$wechat){
     $rows = $db->fetchRow();
     return $rows;
 }
-
+//获取ba余额
+function get_ba_base_amount($ba_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from ba_base WHERE ba_id='{$ba_id}'";
+    $db->query($sql);
+    $amount = $db->getField($sql,'base_amount');
+    return $amount;
+}
 //获取us_id
 function get_us_id($wechat){
     $db = new DB_COM();
