@@ -80,7 +80,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     <table class="table" id="statisticalTable">
                         <thead>
                         <tr>
-                            <th class="text-left">名称</th>
+                            <th class="text-left">名称(荣耀积分)</th>
                             <th class="text-center">获得(CCVT)</th>
                             <th class="text-center">发言数</th>
                             <th class="text-center">点赞</th>
@@ -95,7 +95,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                             ?>
                             <tr>
 
-                                <td class="text-left"><?php echo $v['wechat']; ?></td>
+                                <td class="text-left"><?php echo $v['wechat']; ?>(<?php echo $v['glory_level_integral']?>)</td>
 
                                 <td><?php echo $v['amount'] / $unit; ?></td>
                                 <td>
@@ -106,6 +106,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                     echo $count;
                                     ?>
                                 </td>
+                                <!--                                <td><img src="img/zan.svg" class="zan_img" alt=""></td>-->
                                 <td>
                                     <button class="btn btn-info btn-sm zan_btn">赞👍&nbsp;
                                         <?php
