@@ -48,7 +48,7 @@ function give_like_us($data)
     $db->query($sql);
     $asset_us = $db->fetchRow();
     if ($asset_us){
-        $sql = "update us_asset set base_amount=base_amount+'{$data['give_num']}' WHERE asset_id='GLOP' AND us_id='{$data['us_id']}'";
+        $sql = "update us_asset set base_amount=base_amount+'{$data['give_num']}'*'{$unit}' WHERE asset_id='GLOP' AND us_id='{$data['us_id']}'";
         $db->query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
