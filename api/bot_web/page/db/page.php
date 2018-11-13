@@ -98,7 +98,6 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
-    echo 5;
 
     /***********************资金变动记录表***********************************/
 
@@ -122,7 +121,6 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
-    echo 6;
 
 
 
