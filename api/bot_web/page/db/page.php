@@ -19,6 +19,7 @@ function give_like_us($data)
     $d['tx_amount'] = $data['give_num']*$unit;
     $d['ctime'] = time();
     $d['utime'] = date('Y-m-d H:i:s');
+    $d['state'] = $data['state'];
     $sql = $db->sqlInsert("us_glory_integral_change_log", $d);
     $id = $db->query($sql);
     if (!$id){
@@ -43,12 +44,18 @@ function give_like_us($data)
         return 0;
     }
 
-    //增加荣耀积分
+    //增加荣耀积分(减少荣耀积分)
     $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$data['us_id']}'";
     $db->query($sql);
     $asset_us = $db->fetchRow();
     if ($asset_us){
-        $sql = "update us_asset set base_amount=base_amount+'{$data['give_num']}'*'{$unit}' WHERE asset_id='GLOP' AND us_id='{$data['us_id']}'";
+        $sql = "update us_asset set";
+        if ($data['state']==1){
+            $sql .= " base_amount=base_amount+'{$data['give_num']}'*'{$unit}'";
+        }elseif ($data['state']==2){
+            $sql .= " base_amount=base_amount-'{$data['give_num']}'*'{$unit}'";
+        }
+        $sql .= " WHERE asset_id='GLOP' AND us_id='{$data['us_id']}'";
         $db->query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
@@ -88,7 +95,7 @@ function give_like_us($data)
     $transfer['flag'] = 5;
     $transfer['transfer_type'] = 1;
     $transfer['transfer_state'] = 1;
-    $transfer['tx_detail'] = '点赞消耗';
+    $transfer['tx_detail'] = $data['state']==1 ? '点赞消耗' : "踩人消耗";
     $transfer['give_or_receive'] = 1;
     $transfer['ctime'] = time();
     $transfer['utime'] = date('Y-m-d H:i:s');
@@ -128,15 +135,6 @@ function give_like_us($data)
     return true;
 }
 
-function get_ba_id(){
-    $db = new DB_COM();
-    $sql = "select ba_id from ba_base limit 1";
-    $ba_id = $db->getField($sql,'ba_id');
-    if ($ba_id==null){
-        return 0;
-    }
-    return $ba_id;
-}
 
 //======================================
 // 函数: 获取上传交易hash
@@ -181,23 +179,29 @@ function get_us_base_amount($us_id){
 function get_max_give_like()
 {
     $db = new DB_COM();
-    $sql = "SELECT max_give_like FROM bot_status limit 1";
+    $sql = "SELECT max_give_like,max_give_no_like FROM bot_status limit 1";
     $db -> query($sql);
-    $row = $db -> getField($sql,'max_give_like');
+    $row = $db -> fetchRow();
     return $row;
 }
+
 
 //======================================
 // 函数: 判断是否当日已经达到最大上限
 //======================================
-function check_max_give($us_id,$give_num)
+function check_max_give($us_id,$give_num,$state,$give_us_id)
 {
     $db = new DB_COM();
-    $max = get_max_give_like();
+    if ($state==1){
+        $max = get_max_give_like()['max_give_like'];
+    }elseif ($state==2){
+        $max = get_max_give_like()['max_give_no_like'];
+    }
+
     $unit = la_unit();
     $start = strtotime(date('Y-m-d 00:00:00'));
     $end  = strtotime(date('Y-m-d 23:59:59'));
-    $sql = "SELECT sum(tx_amount)/'{$unit}' as give_all FROM us_glory_integral_change_log WHERE credit_id='{$us_id}' AND ctime BETWEEN '{$start}' AND '{$end}'";
+    $sql = "SELECT sum(tx_amount)/'{$unit}' as give_all FROM us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state='{$state}' AND ctime BETWEEN '{$start}' AND '{$end}'";
     $db -> query($sql);
     $give_all= $db -> getField($sql,'give_all');
     if ($give_all==$max){
@@ -205,9 +209,17 @@ function check_max_give($us_id,$give_num)
     }elseif($give_num+$give_all>$max){
         return 2;
     }else{
-        return 3;
+        $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
+        $db->query($sql);
+        $row = $db->fetchRow();
+        if (!$row || $row['base_amount']==0 || $give_num>$row['base_amount']){
+            return 3;
+        }else{
+            return 4;
+        }
     }
 }
+
 
 //la汇率
 function la_unit(){

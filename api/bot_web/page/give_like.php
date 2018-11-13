@@ -29,21 +29,29 @@ $give_us_id = get_arg_str('GET', 'give_us_id');
 // 金额
 $give_num = get_arg_str('GET', 'give_num');
 
+// 金额
+$state= get_arg_str('GET', 'state');
+
+if (!$state){$state=1;}
+
 //验证token
 $us_id = check_token($token);
 
 
 //判断是否已达到上限
-$chcek = check_max_give($us_id,$give_num);
+$chcek = check_max_give($us_id,$give_num,$state,$give_us_id);
 if ($chcek==1){
     exit_error('101','已达到最大上限');
 }elseif ($chcek==2 || $give_num<=0){
     exit_error('102','金额错误');
+}elseif ($chcek==3){
+    exit_error('103','用户没有积分或积分不足');
 }
 
 $data['us_id'] = $us_id;
 $data['give_us_id'] = $give_us_id;
 $data['give_num'] = get_arg_str('GET', 'give_num');
+$data['state'] = $state;
 
 // 添加群组
 $row = give_like_us($data);
