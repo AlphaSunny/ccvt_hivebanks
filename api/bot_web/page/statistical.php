@@ -128,6 +128,18 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                         <span class="zan_count"><?php echo $zan;?></span>
                                         <span class="none us_id"><?php echo $v['us_id']?></span>
                                     </button>
+                                    <button class="btn btn-info btn-sm zan_btn">踩👎&nbsp;
+                                        <?php
+                                        $s_time = strtotime(date('Y-m-d 00:00:00'),time());
+                                        $e_time = strtotime(date('Y-m-d 23:59:59'),time());
+                                        $sql = "select sum(tx_amount)/'{$unit}' as zan from us_glory_integral_change_log WHERE debit_id='{$v['us_id']}' AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                                        $db->query($sql);
+                                        $zan = $db->getField($sql,'zan');
+                                        if (!$zan){$zan=0;}
+                                        ?>
+                                        <span class="zan_count"><?php echo $zan;?></span>
+                                        <span class="none us_id"><?php echo $v['us_id']?></span>
+                                    </button>
                                 </td>
                             </tr>
                         <?php } ?>
