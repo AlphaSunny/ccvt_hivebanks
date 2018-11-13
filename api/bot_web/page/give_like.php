@@ -46,6 +46,7 @@ if ($state==2){
 
 //判断是否已达到上限
 $chcek = check_max_give($us_id,$give_num,$state,$give_us_id);
+echo $chcek;die;
 if ($chcek==1){
     exit_error('101','已达到最大上限');
 }elseif ($chcek==2 || $give_num<=0){
@@ -54,7 +55,6 @@ if ($chcek==1){
     exit_error('103','用户没有积分或积分不足');
 }
 
-echo 222;die;
 
 $data['us_id'] = $us_id;
 $data['give_us_id'] = $give_us_id;
