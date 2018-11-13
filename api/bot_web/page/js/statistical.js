@@ -100,8 +100,6 @@ $(function () {
     $(".ok").click(function () {
         var give_num = $(".confirm_input").val();
         ZanShowLogin("show");
-        console.log(state);
-        return;
         Give(token, give_us_id, give_num, state, function (response) {
             if (response.errcode == "0") {
                 ZanShowLogin("hide");
