@@ -45,7 +45,7 @@ function give_like_us($data)
     }
 
     //增加荣耀积分(减少荣耀积分)
-    $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$data['us_id']}'";
+    $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$data['give_us_id']}'";
     $db->query($sql);
     $asset_us = $db->fetchRow();
     if ($asset_us){
@@ -55,18 +55,18 @@ function give_like_us($data)
         }elseif ($data['state']==2){
             $sql .= " base_amount=base_amount-'{$data['give_num']}'*'{$unit}'";
         }
-        $sql .= " WHERE asset_id='GLOP' AND us_id='{$data['us_id']}'";
+        $sql .= " WHERE asset_id='GLOP' AND us_id='{$data['give_us_id']}'";
         $db->query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
             return 0;
         }
     }else{
-        $sql = "select * from us_base WHERE us_id='{$data['us_id']}'";
+        $sql = "select * from us_base WHERE us_id='{$data['give_us_id']}'";
         $db->query($sql);
         $us_base = $db->fetchRow();
         $asset['asset_id'] = 'GLOP';
-        $asset['us_id'] = $data['us_id'];
+        $asset['us_id'] = $data['give_us_id'];
         $asset['us_nm'] = $us_base['us_nm'];
         $asset['us_account'] = $us_base['us_account'];
         $asset['base_amount'] = $data['give_num']*$unit;
