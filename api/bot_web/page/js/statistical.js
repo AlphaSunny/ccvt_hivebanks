@@ -58,7 +58,7 @@ $(function () {
     });
 
     //点赞
-    var give_us_id = "";
+    var give_us_id = "", state = "";
     $(".zan_btn").click(function () {
         give_us_id = $(this).children(".us_id").text();
         if (!token) {
@@ -74,6 +74,7 @@ $(function () {
         $(".cai_text").fadeOut("fast");
 
         $(".confirmMode").fadeIn("fast");
+        state = "1";
     });
 
     //踩
@@ -92,6 +93,7 @@ $(function () {
         $(".zan_text").fadeOut("fast");
 
         $(".confirmMode").fadeIn("fast");
+        state = "2";
     });
 
     //确定点赞
@@ -99,7 +101,7 @@ $(function () {
         var give_num = $(".confirm_input").val();
         ZanShowLogin("show");
 
-        Give(token, give_us_id, give_num, function (response) {
+        Give(token, give_us_id, give_num, state, function (response) {
             if (response.errcode == "0") {
                 ZanShowLogin("hide");
                 $('.web_toast_text').text("点赞成功!");
@@ -125,5 +127,6 @@ $(function () {
     $(".cancel").click(function () {
         $(".confirm_input").val("5");
         $(".confirmMode").fadeOut("fast");
+        state = "";
     });
 });

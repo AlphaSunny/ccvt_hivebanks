@@ -219,12 +219,13 @@ function GetImgCode() {
 }
 
 //点赞
-function Give(token, give_us_id, give_num,suc_func, error_func){
+function Give(token, give_us_id, give_num, state, suc_func, error_func) {
     var api_url = 'give_like.php',
         post_data = {
             'token': token,
             'give_us_id': give_us_id,
-            'give_num': give_num
+            'give_num': give_num,
+            'state': state
         };
     CallBotApi(api_url, post_data, suc_func, error_func);
 }
