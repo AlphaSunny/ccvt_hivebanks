@@ -121,7 +121,7 @@ $(function () {
                 setTimeout(function () {
                     $(".web_toast").fadeOut("fast");
                     window.location.reload();
-                }, 2500);
+                }, 2000);
             }
         }, function (response) {
             ZanShowLogin("hide");
