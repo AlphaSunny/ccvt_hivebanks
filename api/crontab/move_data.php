@@ -94,14 +94,14 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
 
 /******************************转账记录表***************************************************/
     //赠送者
-    $data['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . $time);
+    $data['hash_id'] = hash('md5', $ba_id . $flag . get_ip() . time() . rand(1000, 9999) . $time);
     $prvs_hash = get_pre_hash($ba_id);
     $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = $ba_id;
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $send_money*$unit;
     $data['credit_balance'] = get_ba_base_amount($data['credit_id']);
-    $data['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+    $data['tx_hash'] = hash('md5', $ba_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $data['flag'] = $flag;
     $data['transfer_type'] = 1;
     $data['transfer_state'] = 1;
