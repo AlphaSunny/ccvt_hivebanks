@@ -42,6 +42,7 @@ function into_transfer($us_id,$give_us_id,$send_money,$time,$flag,$detail,$type)
 
     //la加钱
     $sql = "update la_base set base_amount=base_amount+'{$send_money}' limit 1";
+    echo $sql;die;
     $db->query($sql);
     if (!$db->affectedRows()){
         echo "la加钱错误";
