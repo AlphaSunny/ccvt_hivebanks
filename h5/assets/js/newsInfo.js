@@ -48,13 +48,40 @@ $(function () {
         if (login_us || user_token) {
             window.location.href = 'user/account.html';
         }
-        // if (login_ba && ba_token) {
-        //     window.location.href = 'ba/BaAccount.html';
-        // }
-        // if (login_ca && ca_token) {
-        //     window.location.href = 'ca/CaAccount.html';
-        // }
     });
+
+    var opts = {
+        lines: 8, // The number of lines to draw
+        length: 10, // The length of each line
+        width: 2, // The line thickness
+        radius: 10, // The radius of the inner circle
+        scale: 1, // Scales overall size of the spinner
+        corners: 1, // Corner roundness (0..1)
+        color: '#ffffff', // CSS color or array of colors
+        fadeColor: 'transparent', // CSS color or array of colors
+        speed: 1, // Rounds per second
+        rotate: 0, // The rotation offset
+        animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
+        direction: 1, // 1: clockwise, -1: counterclockwise
+        zIndex: 2e9, // The z-index (defaults to 2000000000)
+        className: 'spinner', // The CSS class to assign to the spinner
+        top: '50%', // Top position relative to parent
+        left: '50%', // Left position relative to parent
+        shadow: '0 0 1px transparent', // Box-shadow for the lines
+        position: 'absolute' // Element positioning
+    };
+    var target = document.getElementById("mySpin");
+    var spinner = new Spinner(opts);
+
+//show loading
+    function ShowLoading(type) {
+        if (type == "show") {
+            spinner.spin(target);
+        }
+        if (type == "hide") {
+            spinner.spin();
+        }
+    }
 
     //click toggle
     $(document).on("click", ".leftNewsTitle", function () {
@@ -66,7 +93,9 @@ $(function () {
 
     //get news info
     function GetNewsInfoFun(news_id) {
+        ShowLoading("show");
         GetNewsInfo(news_id, function (response) {
+            ShowLoading("hide");
             if (response.errcode == "0") {
                 var data = response.rows;
                 $(".title").text(data[0].title);
@@ -75,6 +104,7 @@ $(function () {
                 $(".news_content").html(data[0].content);
             }
         }, function (response) {
+            ShowLoading("hide");
             return;
         });
     }
@@ -110,23 +140,6 @@ $(function () {
             });
 
             $(".new_nav_box").html(div);
-
-
-            // <div class="dropdown">
-            //         <button class="btn btn-success dropdown-toggle width-100 flex center space-between" type="button" id="dropdownMenu1" data-toggle="dropdown">
-            //         官方新闻
-            //         <span class="caret"></span>
-            //         </button>
-            //         <ul class="dropdown-menu width-100 newsInfo_nav">
-            //
-            //         </ul>
-            //         </div>
-            // var li = "", li_first = "", li_other = "";
-            // $.each(data, function (i, val) {
-            //     li += "<li class='leftNewsTitle' title='" + data[i].title + "' name='" + data[i].news_id + "'>" + data[i].title + "</li>"
-            // });
-            // $(".newsInfo_nav").html(li);
-
         }
     }, function (response) {
         return;
