@@ -40,8 +40,6 @@ function into_transfer($us_id,$give_us_id,$send_money,$time,$flag,$detail,$type)
         die;
     }
 
-    echo 1;
-
     //la加钱
     $sql = "update la_base set base_amount=base_amount+'{$send_money}' limit 1";
     $db->query($sql);
@@ -49,9 +47,7 @@ function into_transfer($us_id,$give_us_id,$send_money,$time,$flag,$detail,$type)
         echo "la加钱错误";
         die;
     }
-
-    echo 2;
-
+    
 
     //增加荣耀积分(减少荣耀积分)
     $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
@@ -89,7 +85,6 @@ function into_transfer($us_id,$give_us_id,$send_money,$time,$flag,$detail,$type)
             die;
         }
     }
-    echo 3;
 
     /******************************转账记录表***************************************************/
 
@@ -118,8 +113,6 @@ function into_transfer($us_id,$give_us_id,$send_money,$time,$flag,$detail,$type)
         die;
     }
 
-    echo 4;
-
     /***********************资金变动记录表***********************************/
 
     //us添加基准资产变动记录
@@ -142,8 +135,6 @@ function into_transfer($us_id,$give_us_id,$send_money,$time,$flag,$detail,$type)
         echo "资金变动记录表错误";
         die;
     }
-
-    echo 5;
 }
 
 
