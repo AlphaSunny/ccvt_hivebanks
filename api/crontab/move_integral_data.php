@@ -60,7 +60,6 @@ function into_transfer($us_id,$give_us_id,$send_money,$time,$flag,$detail,$type)
             $sql .= " base_amount=base_amount-'{$send_money}'";
         }
         $sql .= " WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
-        echo $sql;die;
         $db->query($sql);
         if (!$db->affectedRows()){
             echo "增加荣耀积分错误";
