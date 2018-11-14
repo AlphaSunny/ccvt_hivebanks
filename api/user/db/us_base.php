@@ -88,11 +88,13 @@ function ins_base_user_reg_base_info($data_base)
 function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
 {
     $db = new DB_COM();
+    $pInTrans = $db->StartTrans();  //开启事务
     //送币
     $unit = la_unit();
     $sql = "update us_base set base_amount=base_amount+'{$money}'*'{$unit}' WHERE us_id='{$us_id}'";
     $db -> query($sql);
     if (!$db->affectedRows()){
+        $db->Rollback($pInTrans);
         return false;
     }
 
@@ -104,6 +106,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $sql = "update ba_base set base_amount=base_amount-'{$money}'*'{$unit}' WHERE ba_id='{$rows['ba_id']}'";
     $db -> query($sql);
     if (!$db->affectedRows()){
+        $db->Rollback($pInTrans);
         return false;
     }
 
@@ -116,7 +119,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $data['credit_id'] = $rows['ba_id'];
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $money*$unit;
-    $data['credit_balance'] = get_ba_account($rows['ba_id']);
+    $data['credit_balance'] = get_ba_account($rows['ba_id'])-$data['tx_amount'];
     $data['tx_hash'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $data['flag'] = $flag;
     $data['transfer_type'] = 1;
@@ -128,6 +131,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $sql = $db->sqlInsert("com_transfer_request", $data);
     $id = $db->query($sql);
     if (!$id){
+        $db->Rollback($pInTrans);
         return false;
     }
 
@@ -138,7 +142,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = $rows['ba_id'];
     $dat['tx_amount'] = $money*$unit;
-    $dat['credit_balance'] = get_us_account($us_id);
+    $dat['credit_balance'] = get_us_account($us_id)-$dat['tx_amount'];
     $dat['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $dat['flag'] = $flag;
     $dat['transfer_type'] = 1;
@@ -150,6 +154,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $sql = $db->sqlInsert("com_transfer_request", $dat);
     $id = $db->query($sql);
     if (!$id){
+        $db->Rollback($pInTrans);
         return false;
     }
 
@@ -165,12 +170,13 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $com_balance_us["debit_id"] = $rows['ba_id'];
     $com_balance_us["tx_type"] = $type;
     $com_balance_us["tx_amount"] = $money*$unit;
-    $com_balance_us["credit_balance"] = get_us_account($us_id);
+    $com_balance_us["credit_balance"] = get_us_account($us_id)-$com_balance_us["tx_amount"];
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = $ctime;
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
     if (!$db->query($sql)) {
+        $db->Rollback($pInTrans);
         return false;
     }
 
@@ -184,16 +190,17 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $com_balance_ba["debit_id"] = $us_id;
     $com_balance_ba["tx_type"] = $type;
     $com_balance_ba["tx_amount"] = $money*$unit;
-    $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id']);
+    $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id'])-$com_balance_ba["tx_amount"];
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
     if (!$db->query($sql)) {
+        $db->Rollback($pInTrans);
         return false;
     }
 
-
+    $db->Commit($pInTrans);
     return true;
 
 
