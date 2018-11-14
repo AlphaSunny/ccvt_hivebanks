@@ -217,6 +217,8 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
         return false;
     }
 
+    echo 1;
+
     //ba减钱
     $sql = "select * from ba_base ORDER BY utime asc limit 1";
     $db->query($sql);
@@ -227,6 +229,7 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     if (!$db->affectedRows()){
         return false;
     }
+    echo 2;
 
     /******************************转账记录表***************************************************/
     //增币记录  赠送者
@@ -250,6 +253,7 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     if (!$id){
         return false;
     }
+    echo 3;
 
     //接收者
     $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
@@ -272,6 +276,7 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     if (!$id){
         return false;
     }
+    echo 4;
 
     /***********************资金变动记录表***********************************/
     //us添加基准资产变动记录
@@ -293,6 +298,7 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     if (!$db->query($sql)) {
         return false;
     }
+    echo 5;
 
     //ba添加基准资产变动记录
     $us_type = 'ba_reg_send_balance';
@@ -312,6 +318,8 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     if (!$db->query($sql)) {
         return false;
     }
+
+    echo 6;
 
 
     return true;
