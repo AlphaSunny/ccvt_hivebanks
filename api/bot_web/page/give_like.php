@@ -44,10 +44,9 @@ if ($state==2){
     }
 }
 
-echo 22;
 //判断是否已达到上限
 $chcek = check_max_give($us_id,$give_num,$state,$give_us_id);
-echo 33;
+echo $chcek;
 if ($chcek==1){
     exit_error('101','已达到最大上限');
 }elseif ($chcek==2 || $give_num<=0){
