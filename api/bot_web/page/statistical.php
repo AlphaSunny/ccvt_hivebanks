@@ -117,7 +117,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                 <!--                                <td><img src="img/zan.svg" class="zan_img" alt=""></td>-->
                                 <td>
                                     <!--赞按钮-->
-                                    <button class="btn btn-info btn-sm zan_btn">赞👍&nbsp;
+                                    <button class="btn btn-info btn-sm zan_btn"><img src="img/zan3.svg" alt="">
                                         <?php
                                            $s_time = strtotime(date('Y-m-d 00:00:00'),time());
                                            $e_time = strtotime(date('Y-m-d 23:59:59'),time());
