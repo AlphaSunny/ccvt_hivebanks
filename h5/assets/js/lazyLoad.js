@@ -37,7 +37,7 @@
 // lazyLoad.load();
 
 $(window).on('scroll', function () {//当页面滚动的时候绑定事件
-    $('img').each(function () {//遍历所有的img标签
+    $('.mapImgBox img').each(function () {//遍历所有的img标签
         if (checkShow($(this)) && !isLoaded($(this))) {
             // 需要写一个checkShow函数来判断当前img是否已经出现在了视野中
             //还需要写一个isLoaded函数判断当前img是否已经被加载过了
