@@ -144,7 +144,7 @@ if ($rows){
         $com_balance_us["debit_id"] = $ba_id;
         $com_balance_us["tx_type"] = "ba_send";
         $com_balance_us["tx_amount"] = $give_account*$unit;
-        $com_balance_us["credit_balance"] = get_us_account($d['us_id']);
+        $com_balance_us["credit_balance"] = get_us_account($d['us_id'])+($give_account*$unit);
         $com_balance_us["utime"] = time();
         $com_balance_us["ctime"] = $ctime;
 
