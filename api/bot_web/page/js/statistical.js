@@ -109,15 +109,20 @@ $(function () {
                 ZanShowLogin("hide");
                 if (state == "1") {
                     $('.web_toast_text').text("点赞成功!");
+
+                    //点赞成功出现动画
+                    $(".zan_cai_img").attr("src",$(".zan_cai_img").attr("zan_data_src"));
+                    $(".suc_zan").fadeIn("fast");
                 } else if (state == "2") {
                     $('.web_toast_text').text("踩成功!");
+                    //踩成功出现动画
+                    $(".zan_cai_img").attr("src",$(".zan_cai_img").attr("cai_data_src"));
+                    $(".suc_zan").fadeIn("fast");
                 }
 
                 $(".web_toast").fadeIn("fast");
                 $(".confirmMode").fadeOut("fast");
 
-                //点赞成功出现动画
-                $(".suc_zan").fadeIn("fast");
                 setTimeout(function () {
                     $(".web_toast").fadeOut("fast");
                     window.location.reload();
