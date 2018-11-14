@@ -53,6 +53,8 @@ if ($chcek==1){
     exit_error('102','金额错误');
 }elseif ($chcek==3){
     exit_error('103','用户没有积分或积分不足');
+}elseif ($chcek==4){
+    exit_error('102','余额不足');
 }
 
 

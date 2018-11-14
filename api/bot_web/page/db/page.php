@@ -200,6 +200,16 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
     }
 
     $unit = la_unit();
+
+    $sql = "select base_amount/'{$unit}' as base_amount from us_base WHERE us_id='{$us_id}'";
+    $db->query($sql);
+    $base_amount = $db->getField($sql,'base_amount');
+    if ($give_num>$base_amount){
+        return 4;
+        false;
+    }
+
+
     $start = strtotime(date('Y-m-d 00:00:00'));
     $end  = strtotime(date('Y-m-d 23:59:59'));
     $sql = "SELECT sum(tx_amount)/'{$unit}' as give_all FROM us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state='{$state}' AND ctime BETWEEN '{$start}' AND '{$end}'";
