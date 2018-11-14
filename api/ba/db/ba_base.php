@@ -234,12 +234,15 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     /******************************转账记录表***************************************************/
     //增币记录  赠送者
     $data['hash_id'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    echo 3333;
     $prvs_hash = get_transfer_pre_hash($rows['ba_id']);
+    echo 4444;
     $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = $rows['ba_id'];
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $money*$unit;
     $data['credit_balance'] = get_ba_account($rows['ba_id']);
+    echo 555;
     $data['tx_hash'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $data['flag'] = $flag;
     $data['transfer_type'] = 1;
@@ -249,7 +252,6 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     $data['ctime'] = time();
     $data['utime'] = date('Y-m-d H:i:s',time());
     $sql = $db->sqlInsert("com_transfer_request", $data);
-    echo $sql;
     $id = $db->query($sql);
     if (!$id){
         return false;
