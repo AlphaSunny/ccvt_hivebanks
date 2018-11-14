@@ -48,6 +48,8 @@ function into_transfer($us_id,$give_us_id,$send_money,$time,$flag,$detail,$type)
         die;
     }
 
+    echo $flag;
+
     //增加荣耀积分(减少荣耀积分)
     $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
     $db->query($sql);
