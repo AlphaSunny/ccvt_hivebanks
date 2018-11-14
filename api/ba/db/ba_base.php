@@ -209,15 +209,16 @@ function  send_ccvt_record($data)
 function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
 {
     $db = new DB_COM();
+
+    $pInTrans = $db->StartTrans();  //开启事务
     //送币
     $unit = la_unit();
     $sql = "update us_base set base_amount=base_amount+'{$money}'*'{$unit}' WHERE us_id='{$us_id}'";
     $db -> query($sql);
     if (!$db->affectedRows()){
+        $db->Rollback($pInTrans);
         return false;
     }
-
-    echo 1;
 
     //ba减钱
     $sql = "select * from ba_base ORDER BY utime asc limit 1";
@@ -227,22 +228,19 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     $sql = "update ba_base set base_amount=base_amount-'{$money}'*'{$unit}' WHERE ba_id='{$rows['ba_id']}'";
     $db -> query($sql);
     if (!$db->affectedRows()){
+        $db->Rollback($pInTrans);
         return false;
     }
-    echo 2;
 
     /******************************转账记录表***************************************************/
     //增币记录  赠送者
     $data['hash_id'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
-    echo 3333;
     $prvs_hash = get_transfer_pre_hash($rows['ba_id']);
-    echo 4444;
     $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = $rows['ba_id'];
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $money*$unit;
-    $data['credit_balance'] = get_ba_account($rows['ba_id']);
-    echo 555;
+    $data['credit_balance'] = get_ba_account($rows['ba_id'])-$data['tx_amount'];
     $data['tx_hash'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $data['flag'] = $flag;
     $data['transfer_type'] = 1;
@@ -254,9 +252,9 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     $sql = $db->sqlInsert("com_transfer_request", $data);
     $id = $db->query($sql);
     if (!$id){
+        $db->Rollback($pInTrans);
         return false;
     }
-    echo 3;
 
     //接收者
     $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
@@ -265,7 +263,7 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = $rows['ba_id'];
     $dat['tx_amount'] = $money*$unit;
-    $dat['credit_balance'] = get_us_account($us_id);
+    $dat['credit_balance'] = get_us_account($us_id)-$dat['tx_amount'];
     $dat['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $dat['flag'] = $flag;
     $dat['transfer_type'] = 1;
@@ -277,9 +275,9 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     $sql = $db->sqlInsert("com_transfer_request", $dat);
     $id = $db->query($sql);
     if (!$id){
+        $db->Rollback($pInTrans);
         return false;
     }
-    echo 4;
 
     /***********************资金变动记录表***********************************/
     //us添加基准资产变动记录
@@ -293,15 +291,15 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     $com_balance_us["debit_id"] = $rows['ba_id'];
     $com_balance_us["tx_type"] = $type;
     $com_balance_us["tx_amount"] = $money*$unit;
-    $com_balance_us["credit_balance"] = get_us_account($us_id);
+    $com_balance_us["credit_balance"] = get_us_account($us_id)-$com_balance_us["tx_amount"];
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = $ctime;
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
     if (!$db->query($sql)) {
+        $db->Rollback($pInTrans);
         return false;
     }
-    echo 5;
 
     //ba添加基准资产变动记录
     $us_type = 'ba_reg_send_balance';
@@ -313,18 +311,17 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     $com_balance_ba["debit_id"] = $us_id;
     $com_balance_ba["tx_type"] = $type;
     $com_balance_ba["tx_amount"] = $money*$unit;
-    $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id']);
+    $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id'])-$com_balance_ba["tx_amount"];
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
     if (!$db->query($sql)) {
+        $db->Rollback($pInTrans);
         return false;
     }
 
-    echo 6;
-
-
+    $db->Commit($pInTrans);
     return true;
 
 
@@ -380,7 +377,6 @@ function  get_recharge_pre_hash($ba_id)
 function get_transfer_pre_hash($credit_id){
     $db = new DB_COM();
     $sql = "SELECT hash_id FROM com_transfer_request credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
-    echo $sql;die;
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;
