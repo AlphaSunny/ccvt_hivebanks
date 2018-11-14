@@ -1,7 +1,7 @@
 $(function () {
     //get invite
     var str = window.location.search.split("=")[1];
-    if(str){
+    if (str) {
         var invite = window.atob(str);
         $(".emailInvitCode,.phoneInvitCode").val(invite);
     }
