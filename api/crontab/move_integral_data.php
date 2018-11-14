@@ -14,7 +14,7 @@ $db = new DB_COM();
 $sql = "select * from us_glory_integral_change_log WHERE 1";
 $db->query($sql);
 $rows = $db->fetchAll();
-print_r($rows);die;
+var_dump($rows);die;
 if ($rows){
     foreach ($rows as $a=>$b){
         set_time_limit(0);
