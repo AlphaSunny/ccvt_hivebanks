@@ -84,16 +84,17 @@ function give_like_us($data)
 
     /******************************转账记录表***************************************************/
     //赠送者
-    $transfer['hash_id'] = hash('md5', $data['us_id'] . 5 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $flag = $data['state'] == 1 ? 5 : 6;
+    $transfer['hash_id'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_pre_hash($data['us_id']);
     $transfer['prvs_hash'] = $prvs_hash == 0 ? $transfer['hash_id'] : $prvs_hash;
     $transfer['credit_id'] = $data['us_id'];
     $transfer['debit_id'] = $data['give_us_id'];
     $transfer['tx_amount'] = $data['give_num']*$unit;
     $transfer['credit_balance'] = get_us_base_amount($transfer['credit_id']);
-    $transfer['tx_hash'] = hash('md5', $data['us_id'] . 5 . get_ip() . time() . date('Y-m-d H:i:s'));
-    $transfer['flag'] = 5;
-    $transfer['transfer_type'] = 1;
+    $transfer['tx_hash'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+    $transfer['flag'] = $flag;
+    $transfer['transfer_type'] = 3;
     $transfer['transfer_state'] = 1;
     $transfer['tx_detail'] = $data['state']==1 ? '点赞消耗' : "踩人消耗";
     $transfer['give_or_receive'] = 1;
