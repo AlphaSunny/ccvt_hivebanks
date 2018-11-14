@@ -693,6 +693,7 @@ function ActiveClick($this, btnText) {
  * Initialization page loading loading
  */
 window.onload = function () {
+    $("header").css("background","../img/banner-1.jpg");
     if (document.readyState === 'complete') {
         document.body.style.overflow = "auto";
         var loading = document.querySelector(".loading");
