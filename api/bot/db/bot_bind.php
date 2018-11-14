@@ -390,14 +390,14 @@ function notice_records($data)
 function get_news()
 {
     $db = new DB_COM();
-    $sql = "select news_id,title from la_news WHERE is_hive_been=1 AND category=1 ORDER BY ctime DESC limit 1";
+    $sql = "select news_id,title from la_news WHERE is_hive_been=1 AND category=1 AND status=1 ORDER BY ctime DESC limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
     if ($row){
         $sql = "update la_news set is_hive_been=2 WHERE news_id='{$row['news_id']}'";
         $db->query($sql);
     }else{
-        $sql = "select news_id,title from la_news WHERE is_hive_been=1 AND category=2 ORDER BY ctime DESC limit 1";
+        $sql = "select news_id,title from la_news WHERE is_hive_been=1 AND category=2 AND status=1 ORDER BY ctime DESC limit 1";
         $db->query($sql);
         $row = $db->fetchRow();
         if ($row){
