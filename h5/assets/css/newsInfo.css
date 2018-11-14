@@ -3,7 +3,7 @@
     color: #fff;
 }
 
-.newsInfo_nav{
+.newsInfo_nav {
     max-height: 20rem;
     overflow: auto;
     background: #eeeeee;
@@ -41,8 +41,12 @@ h1.title {
     padding-top: 2%;
 }
 
-@media screen and (max-width:768px){
-    .leftNewsTitle{
+.accountNone {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .leftNewsTitle {
         padding: 2%;
     }
 }
