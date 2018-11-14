@@ -249,6 +249,7 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     $data['ctime'] = time();
     $data['utime'] = date('Y-m-d H:i:s',time());
     $sql = $db->sqlInsert("com_transfer_request", $data);
+    echo $sql;
     $id = $db->query($sql);
     if (!$id){
         return false;
