@@ -16,6 +16,7 @@
 </head>
 
 <body>
+<div class="suc_zan"><img src="img/suc_zan.gif" alt=""></div>
 <?php
 require_once '../../inc/common.php';
 ini_set("display_errors", "off");
