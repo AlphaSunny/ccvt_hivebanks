@@ -120,7 +120,7 @@ $(function () {
                 $(".suc_zan").fadeIn("fast");
                 setTimeout(function () {
                     $(".web_toast").fadeOut("fast");
-                }, 2000);
+                }, 3000);
                 window.location.reload();
             }
         }, function (response) {
