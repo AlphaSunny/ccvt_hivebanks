@@ -142,7 +142,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = $rows['ba_id'];
     $dat['tx_amount'] = $money*$unit;
-    $dat['credit_balance'] = get_us_account($us_id)-$dat['tx_amount'];
+    $dat['credit_balance'] = get_us_account($us_id)+$dat['tx_amount'];
     $dat['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $dat['flag'] = $flag;
     $dat['transfer_type'] = 1;
@@ -170,7 +170,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $com_balance_us["debit_id"] = $rows['ba_id'];
     $com_balance_us["tx_type"] = $type;
     $com_balance_us["tx_amount"] = $money*$unit;
-    $com_balance_us["credit_balance"] = get_us_account($us_id)-$com_balance_us["tx_amount"];
+    $com_balance_us["credit_balance"] = get_us_account($us_id)+$com_balance_us["tx_amount"];
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = $ctime;
 
