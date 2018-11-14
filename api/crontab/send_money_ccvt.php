@@ -31,6 +31,7 @@ $sql = "select wechat,count(bot_message_id) as count from bot_message where grou
 $db->query($sql);
 $rows = $db->fetchAll();
 if ($rows){
+    $ba_account = 0;
     $pInTrans = $db->StartTrans();  //开启事务
     foreach ($rows as $k=>$v){
         //判断用户表是否有这个微信
@@ -87,6 +88,12 @@ if ($rows){
             echo "添加记录失败";
             continue;
         }
+
+        if ($ba_account==0){
+            $ba_account = get_ba_base_amount($ba_id)-($give_account*$unit);
+        }else{
+            $ba_account = $ba_account-($give_account*$unit);
+        }
         /******************************转账记录表***************************************************/
         //赠送者
         $u_id = get_us_id($v['wechat']);
@@ -95,7 +102,7 @@ if ($rows){
         $data['credit_id'] = $ba_id;
         $data['debit_id'] = $u_id;
         $data['tx_amount'] = $give_account*$unit;
-        $data['credit_balance'] = get_ba_base_amount($data['credit_id']);
+        $data['credit_balance'] = $ba_account;
         $data['tx_hash'] = hash('md5', $ba_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
         $data['flag'] = 4;
         $data['transfer_type'] = 1;
@@ -117,7 +124,7 @@ if ($rows){
         $dat['credit_id'] = $u_id;
         $dat['debit_id'] = $ba_id;
         $dat['tx_amount'] = $give_account*$unit;
-        $dat['credit_balance'] = get_us_account($u_id);
+        $dat['credit_balance'] = get_us_account($u_id)+$dat['tx_amount'];
         $dat['tx_hash'] = hash('md5', $u_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
         $dat['flag'] = 4;
         $dat['transfer_type'] = 1;
@@ -163,7 +170,7 @@ if ($rows){
         $com_balance_ba["debit_id"] = $d['us_id'];
         $com_balance_ba["tx_type"] = "ba_send";
         $com_balance_ba["tx_amount"] = $give_account*$unit;
-        $com_balance_ba["credit_balance"] = get_ba_account($ba_id);
+        $com_balance_ba["credit_balance"] = $ba_account;
         $com_balance_ba["utime"] = time();
         $com_balance_ba["ctime"] = $ctime;
 
