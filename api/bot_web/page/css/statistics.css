@@ -350,3 +350,13 @@ p {
     left: 0;
     /* background: rgba(255,255,255,.1); */
 }
+
+/*suc_zan*/
+.suc_zan {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    top: 30%;
+    display: none;
+}

@@ -115,6 +115,9 @@ $(function () {
 
                 $(".web_toast").fadeIn("fast");
                 $(".confirmMode").fadeOut("fast");
+
+                //点赞成功出现动画
+                $(".suc_zan").fadeIn("fast");
                 setTimeout(function () {
                     $(".web_toast").fadeOut("fast");
                 }, 2000);
