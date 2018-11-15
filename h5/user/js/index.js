@@ -77,7 +77,7 @@ $(function () {
     }, function () {
         scrollTimer = setInterval(function () {
             scrollNews($this);
-        }, 5000);
+        }, 10000);
     }).trigger("mouseleave");
 
     function scrollNews(obj) {
@@ -85,7 +85,7 @@ $(function () {
         var lineHeight = $self.find("li:first").height();
         $self.animate({
             "marginTop": -lineHeight + "px"
-        }, 10000, function () {
+        }, 6000, function () {
             $self.css({
                 marginTop: 0
             }).find("li:first").appendTo($self);
