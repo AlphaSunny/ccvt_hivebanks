@@ -100,5 +100,9 @@ function gift_detail(){
 from us_base as a where invite_code!=0 group by invite_code order by count desc; ";
     $db->query($sql);
     $rows = $db->fetchAll();
+    foreach ($rows as $k=>$v)
+    {
+        $rows[$k]['rank'] = $k+1;
+    }
     return $rows;
 }
