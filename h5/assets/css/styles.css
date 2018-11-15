@@ -927,6 +927,8 @@ h4.title {
     overflow: hidden;
     height: 3.5rem;
     line-height: 2.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .latestNews a {
