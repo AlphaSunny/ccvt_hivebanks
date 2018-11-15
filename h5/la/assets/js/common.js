@@ -80,7 +80,7 @@ $.ajax({
         config_h5_url = data.h5_url;
         var benchmark_type = data.benchmark_type.toUpperCase();
         $('.base_currency').text(benchmark_type);
-        SetCookie("benchmark_type", "benchmark_type");
+        SetCookie("benchmark_type", benchmark_type);
         if (!userLanguage) {
             SetCookie('userLanguage', data.userLanguage);
         } else {
