@@ -890,7 +890,7 @@ h4.title {
 .newsTitleBox {
     color: #ffffff;
     line-height: 2.5rem;
-    animation: newsTitleMove 1s linear 5s infinite;
+    animation: newsTitleMove 2s linear 5s infinite;
 }
 
 @keyframes newsTitleMove {
@@ -926,7 +926,7 @@ h4.title {
     white-space: nowrap;
     overflow: hidden;
     height: 3.5rem;
-    line-height: 2.5rem;
+    line-height: 3.5rem;
 }
 
 .latestNews a {
