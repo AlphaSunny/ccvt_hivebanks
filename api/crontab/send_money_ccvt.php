@@ -56,7 +56,7 @@ if ($rows){
         //获取等级
         $sca = get_us_scale($u_id);
         $scale = "select * from us_scale WHERE scale='{$sca}' limit 1";
-        $db->query($sql);
+        $db->query($scale);
         $s = $db->fetchRow();
         print_r($s);
 
