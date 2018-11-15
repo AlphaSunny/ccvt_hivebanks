@@ -926,13 +926,14 @@ h4.title {
     white-space: nowrap;
     overflow: hidden;
     height: 3.5rem;
-    line-height: 2.5rem;
+    line-height: 3.5rem;
     display: flex;
     align-items: center;
 }
 
 .latestNews a {
     color: #ffffff;
+    line-height: 3.5rem;
 }
 
 @media screen and (max-width: 768px) {
