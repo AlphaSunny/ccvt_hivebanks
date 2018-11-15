@@ -58,7 +58,6 @@ if ($rows){
         $scale = "select * from us_scale WHERE scale='{$sca}' limit 1";
         $db->query($scale);
         $s = $db->fetchRow();
-        print_r($s);
 
         $give_account = $v['count'] >=5 ? $s['max_send'] : $v['count']*$s['one_send'];
 
