@@ -213,9 +213,9 @@ footer {
     }
 
     .navbar-default.affix .navbar-header .navbar-brand {
-        font-size: 15px;
+        font-size: 3rem;
         color: #ffffff;
-        padding: 20px;
+        /*padding: 20px;*/
         letter-spacing: 1px;
     }
 
@@ -702,11 +702,18 @@ li.round_border:after {
 .shyTextBox {
     width: 80%;
 }
-
+.navbar-header > .navbar-brand{
+    padding: 15px 0 0 15px;
+}
 .logoText {
     font-size: 3rem;
+    /*padding-top: 15px;*/
+    display: flex;
+    align-items: center;
 }
-
+.logoText img{
+    height: 100%;
+}
 .title {
     background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #da8b9f 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #e6a1b3 70%, #f7acbc 80%, #ffd400 90%, #3498db);
     -webkit-background-clip: text;
