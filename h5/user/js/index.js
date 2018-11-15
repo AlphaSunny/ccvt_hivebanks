@@ -77,7 +77,7 @@ $(function () {
     }, function () {
         scrollTimer = setInterval(function () {
             scrollNews($this);
-        }, 10000);
+        }, 6000);
     }).trigger("mouseleave");
 
     function scrollNews(obj) {
