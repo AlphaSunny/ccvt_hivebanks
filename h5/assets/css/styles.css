@@ -19,7 +19,21 @@ body {
     color: #fff;
     background-color: #12587f;
 }
-
+/*float qr*/
+.float_qr_box{
+    position: fixed;
+    right: 0;
+    top: 30%;
+    display: flex;
+    align-items: center;
+}
+.float_qrImg_box{
+    width: 10rem;
+    height: 10rem;
+    border: 3px solid #fff;
+    text-align: center;
+    border-radius: 10px;
+}
 hr {
     max-width: 80px;
     border-width: 3px;
