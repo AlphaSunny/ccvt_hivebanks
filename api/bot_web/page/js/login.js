@@ -79,7 +79,6 @@ $(function () {
 
     //手机登录
     $(".phoneLoginBtn").click(function () {
-        ShowLogin("show");
         var country_code = $('.selected-dial-code').text().split("+")[1];
         var cellphone = $("#phone").val(),
             cfm_code = $("#phoneCfmCode").val(),
@@ -98,7 +97,7 @@ $(function () {
             layer.msg("请输入验证码");
             return;
         }
-
+        ShowLogin("show");
         var $this = $(this), _text = $(this).text();
         if (DisableClick($this)) return;
         PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, function (response) {
@@ -126,7 +125,7 @@ $(function () {
 
     //邮箱登录
     $(".emailLoginBtn").click(function () {
-        ShowLogin("show");
+
         var email = $("#email").val(),
             emailPassword = $("#phonePassword").val(),
             pass_word_hash = hex_sha1(emailPassword),
@@ -144,7 +143,7 @@ $(function () {
             layer.msg("请输入密码");
             return;
         }
-
+        ShowLogin("show");
         var $this = $(this), _text = $(this).text();
         if (DisableClick($this)) return;
         EmailLogin(email, pass_word_hash, cfm_code, function (response) {

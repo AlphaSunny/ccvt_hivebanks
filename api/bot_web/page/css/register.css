@@ -1,9 +1,10 @@
 body, html {
-    background: #444444;
-}
+    /*background: #444444;*/
+    background-image: linear-gradient(to bottom, #020e28 0%, #07234e 10%, #020e28 100%);}
 
 .login_title_row {
-    background: #333333;
+    /*background: #333333;*/
+    background-image: linear-gradient(to right, #041636, #0b2758);
     color: #ffffff;
 }
 
@@ -14,7 +15,9 @@ body, html {
 .login_title_row h3 {
     margin: 0;
 }
-
+.login_title_box img{
+    width: 35%;
+}
 .form_box input {
     background: #565656;
     color: #333333 !important;

@@ -1,9 +1,11 @@
 body, html {
-    background: #444444;
+    /*background: #444444;*/
+    background-image: linear-gradient(to bottom, #020e28 0%, #07234e 10%, #020e28 100%);
 }
 
 .login_title_row {
-    background: #333333;
+    /*background: #333333;*/
+    background-image: linear-gradient(to right, #041636, #0b2758);
     color: #ffffff;
 }
 
@@ -14,25 +16,31 @@ body, html {
 .login_title_row h3 {
     margin: 0;
 }
+.login_title_box img{
+    width: 35%;
+}
 
 .form_box input {
-    background: #565656;
+    background: transparent;
     color: #333333 !important;
     padding: 0.5em !important;
     border: unset;
     height: 3em !important;
     margin-bottom: 3em;
     width: 100%;
+    border-bottom: 1px solid #82ca9c82;
 }
 
 .form_box input:focus {
-    background: #f8ffb5 !important;
+    background: transparent;
     border: unset !important;
     outline: none;
+    border-bottom: 1px solid #82ca9c!important;
+    box-shadow: unset;
 }
 
 .login_text {
-    color: #eb602e;
+    color: #82ca9c;
 }
 
 .register_text {
@@ -40,25 +48,25 @@ body, html {
 }
 
 .toggleBtnBox button {
-    border: 1px solid #ff3f00;
+    border: 1px solid #82ca9c;
     width: 49%;
     height: 4rem;
     background: transparent;
-    color: #fff;
+    color: #82ca9c;
     outline: none;
 }
 
 .toggleBtnBox button.active {
     color: #fff;
-    background: #ff3f00;
+    background: #82ca9c;
     border: unset;
 }
 
 .login_btn {
     width: 100%;
-    background: #ff3f00;
-    color: #fff;
-    border: unset;
+    background: transparent;
+    color: #82ca9c;
+    border: 1px solid #82ca9c;
     height: 4rem;
 }
 
@@ -84,7 +92,7 @@ body, html {
 
 .back_statistics{
     display: inline-block;
-    color: #f95017;
+    color: #82ca9c;
     margin-top: 5%;
     border-bottom: 1px solid;
 }

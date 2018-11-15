@@ -143,6 +143,13 @@ $(function () {
                         {"data": "count"},
                         {"data": "base_amount"}
                     ],
+                    "columnDefs": [{
+                        "targets": 0,
+                        "data": null,
+                        "render": function () {
+                            return "<span>"+ data[index] +"</span>"
+                        }
+                    }]
                 });
 
                 DonutFun(us_register_count, ba_register_count, ca_register_count);
