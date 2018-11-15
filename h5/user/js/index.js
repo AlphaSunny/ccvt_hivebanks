@@ -65,6 +65,7 @@ $(function () {
     }, function (response) {
         if (response.errcode == "-1") {
             $(".latestNewsText").html("<li>暂无更多动态</li>");
+
         }
     });
 
@@ -99,7 +100,21 @@ $(function () {
         } else {
             window.location.href = "newsInfo.html?news_id=" + news_id;
         }
-    })
+    });
+
+    //close float qr
+    $(".float_qr_close").click(function () {
+        $(".float_qr_box").css("transform", "translateX(10rem)");
+        setTimeout(function () {
+            $(".float_qr_open").css("display", "flex");
+        },1200);
+    });
+
+    //open float qr
+    $(".float_qr_open").click(function () {
+        $(".float_qr_box").css("transform", "translateX(0rem)");
+        $(".float_qr_open").css("display", "none");
+    });
 
 });
 
