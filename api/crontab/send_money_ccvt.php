@@ -48,9 +48,18 @@ if ($rows){
             continue;
         }
 
+        //用户id
+        $u_id = get_us_id($v['wechat']);
+
         //送币
         $unit = la_unit();
-        $give_account = $v['count'] >=5 ? 50 : $v['count']*10;
+        //获取等级
+        $sca = get_us_scale($u_id);
+        $scale = "select * from us_scale WHERE scale='{$sca}' limit 1";
+        $db->query($sql);
+        $s = $db->fetchRow();
+
+        $give_account = $v['count'] >=5 ? $s['max_send'] : $v['count']*$s['one_send'];
 
         $sql = "update us_base set base_amount=base_amount+'{$give_account}'*'{$unit}' WHERE wechat='{$v['wechat']}'";
         $db -> query($sql);
@@ -80,7 +89,7 @@ if ($rows){
         $d['bot_create_time'] = time();
         $lgn_type = 'phone';
         $d['tx_hash'] = hash('md5', $ba_id . $lgn_type . get_ip() . time() . date('Y-m-d H:i:s'));
-        $d['us_id'] = get_us_id($v['wechat']);
+        $d['us_id'] = $u_id;
         $sql = $db->sqlInsert("bot_Iss_records", $d);
         $id = $db->query($sql);
         if (!$id){
@@ -96,7 +105,7 @@ if ($rows){
         }
         /******************************转账记录表***************************************************/
         //赠送者
-        $u_id = get_us_id($v['wechat']);
+
         $data['hash_id'] = hash('md5', $ba_id . 4 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
         $data['prvs_hash'] = get_pre_hash($ba_id);
         $data['credit_id'] = $ba_id;
@@ -240,6 +249,14 @@ function get_us_id($wechat){
     if($us_id == null)
         return 0;
     return $us_id;
+}
+//获取等级
+function get_us_scale($us_id){
+    $db = new DB_COM();
+    $sql = "select scale from us_base WHERE us_id='{$us_id}' limit 1";
+    $db->query($sql);
+    $scale = $db -> getField($sql,'scale');
+    return $scale;
 }
 
 //获取用户余额
