@@ -125,6 +125,7 @@ $(function () {
                     deferRender: true,
                     data: response.rows.gift_detail,
                     columns: [
+                        {"data": "rank"},
                         {"data": "us_account"},
                         {
                             "data": "wechat",
@@ -143,13 +144,14 @@ $(function () {
                         {"data": "count"},
                         {"data": "base_amount"}
                     ],
-                    "columnDefs": [{
-                        "targets": 0,
-                        "data": null,
-                        "render": function () {
-                            return "<span>"+ data[index] +"</span>"
-                        }
-                    }]
+
+                    // "columnDefs": [{
+                    //     "targets": 0,
+                    //     "data": null,
+                    //     "render": function () {
+                    //         return "<span>"+ data[index] +"</span>"
+                    //     }
+                    // }]
                 });
 
                 DonutFun(us_register_count, ba_register_count, ca_register_count);
