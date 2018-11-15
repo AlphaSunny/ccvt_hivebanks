@@ -120,7 +120,7 @@ $(function () {
                 $('#amount_gift').html(trGift);
                 //邀请排名表
                 $('#rankingTable').DataTable({
-                    order: [[3, "desc"]],
+                    order: [[4, "desc"]],
                     destroy: true,
                     deferRender: true,
                     data: response.rows.gift_detail,
