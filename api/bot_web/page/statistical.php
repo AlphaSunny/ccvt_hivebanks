@@ -66,7 +66,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     $all_message = $db->getField($sql, 'all_message'); //总聊天数量
                     ?>
                     <div class="sm_title_text_color">
-                        <h3>CCVT 聊天加奖励统计</h3>
+                        <h3>CCVT 聊天奖励统计</h3>
                         <div class="flex center space-between">
                             <p>所属群:《<?php echo $group_name; ?>》</p>
                             <a href="<?php echo $url; ?>">查看聊天记录</a>
