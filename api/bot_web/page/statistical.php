@@ -41,7 +41,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
         <div class="row title_box">
             <div class="col-md-12 col-sm-12 flex center space-between">
 <!--                <h3>CCVT奖励统计</h3>-->
-                <div><img src="img/ccvt_logo.png" alt=""></div>
+                <div><img class="logo_img" src="img/ccvt_logo.png" alt=""></div>
                 <a href="javascript:;" class="login">登录</a>
                 <span class="amount_box">
                             余额:
@@ -66,6 +66,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     $all_message = $db->getField($sql, 'all_message'); //总聊天数量
                     ?>
                     <div class="sm_title_text_color">
+                        <h3>CCVT 聊天加奖励统计</h3>
                         <div class="flex center space-between">
                             <p>所属群:《<?php echo $group_name; ?>》</p>
                             <a href="<?php echo $url; ?>">查看聊天记录</a>
