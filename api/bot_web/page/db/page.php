@@ -111,7 +111,7 @@ function give_like_us($data)
     //接收者(la)
     $dat['hash_id'] = hash('md5', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_pre_hash($la_id);
-    $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $dat['prvs_hash'] = $prvs_hash == 0 ? $dat['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $la_id;
     $dat['debit_id'] = $data['us_id'];
     $dat['tx_amount'] = $data['give_num']*$unit;
