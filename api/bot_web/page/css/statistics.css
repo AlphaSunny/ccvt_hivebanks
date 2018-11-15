@@ -108,7 +108,8 @@ p {
 }
 
 .title_box {
-    background: #333333;
+    /*background: #333333;*/
+    background-image: linear-gradient(to right, #041636, #0b2758);
     color: #ffffff;
 }
 
