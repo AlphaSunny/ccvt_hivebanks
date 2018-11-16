@@ -174,7 +174,7 @@ $(function () {
                         if(data[i].count.length == "3"){
                             count = "???"
                         }
-                        invite_itme += "<li><span>" + wechat +"</span><span class='count'>" + count +"</span></li>";
+                        invite_itme += "<li><span>" + data[i].wechat +"</span><span class='count'>" + count +"</span></li>";
                     }
                 });
                 $(".pai_ming_item_ul").html(invite_itme);
