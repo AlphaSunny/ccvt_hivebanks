@@ -162,9 +162,9 @@ $(function () {
                 var invite_itme = "", wechat = "", count = "";
                 $.each(data, function (i, val) {
                     if (i <= 10){
-                        if(data[i].wechat == null){
-                            wechat = "--"
-                        }
+                        // if(data[i].wechat == null){
+                        //     wechat = "--"
+                        // }
                         if(data[i].count.length == "1"){
                             count = "?"
                         }
