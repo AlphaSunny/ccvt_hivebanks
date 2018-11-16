@@ -161,22 +161,22 @@ $(function () {
                 var data = response.rows.gift_detail;
                 var invite_itme = "", wechat = "", count = "";
                 $.each(data, function (i, val) {
-                    if (i <= 10){
-                        if(data[i].wechat == null){
+                    if (i <= 10) {
+                        if (data[i].wechat == null) {
                             wechat = "--"
-                        }else {
+                        } else {
                             wechat = data[i].wechat
                         }
-                        if(data[i].count.length == "1"){
+                        if (data[i].count.length == "1") {
                             count = "?"
                         }
-                        if(data[i].count.length == "2"){
+                        if (data[i].count.length == "2") {
                             count = "??"
                         }
-                        if(data[i].count.length == "3"){
+                        if (data[i].count.length == "3") {
                             count = "???"
                         }
-                        invite_itme += "<li><span class='wechat'>" + wechat +"</span><span class='count'>" + count +"</span></li>";
+                        invite_itme += "<li><span class='wechat'>" + wechat + "</span><span class='count'>" + count + "</span></li>";
                     }
                 });
                 $(".pai_ming_item_ul").html(invite_itme);
@@ -235,4 +235,9 @@ $(function () {
             lineColors: ['green', 'red', 'blue']
         });
     }
+
+    //show invite img
+    $(".show_img_btn").click(function () {
+        $(".pai_ming_img_modal").slideToggle("fast");
+    });
 });
