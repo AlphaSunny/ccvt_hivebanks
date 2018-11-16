@@ -237,9 +237,7 @@ $(function () {
     }
 
     // LineFun(dataChart);
-    html2canvas($(".pai_ming_box"), {
-        onrendered:function (canvas) {
-            document.body.appendChild(canvas);
-        }
+    html2canvas($(".pai_ming_box")).then(canvas=>{
+        document.body.appendChild(canvas)
     })
 });
