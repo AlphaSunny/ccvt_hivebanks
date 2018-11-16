@@ -237,7 +237,10 @@ $(function () {
     }
 
     // LineFun(dataChart);
-    html2canvas($(".pai_ming_box")).then(canvas=>{
+    // html2canvas($(".pai_ming_box")).then(canvas=>{
+    //     document.body.appendChild(canvas)
+    // })
+    html2canvas(document.querySelector("#pai_ming_img")).then(canvas => {
         document.body.appendChild(canvas)
-    })
+    });
 });
