@@ -237,4 +237,9 @@ $(function () {
     }
 
     // LineFun(dataChart);
+    html2canvas($(".pai_ming_box"), {
+        onrendered:function (canvas) {
+            document.body.appendChild(canvas);
+        }
+    })
 });
