@@ -159,10 +159,22 @@ $(function () {
 
                 //邀请排名海报
                 var data = response.rows.gift_detail;
-                var invite_itme = "";
+                var invite_itme = "", wechat = "", count = "";
                 $.each(data, function (i, val) {
                     if (i <= 10){
-                        invite_itme += "<li><span>" + data[i].wechat +"</span><span>" + data[i].count +"</span></li>";
+                        if(data[i].wechat == null){
+                            wechat = "--"
+                        }
+                        if(data[i].count.length == "1"){
+                            count = "?"
+                        }
+                        if(data[i].count.length == "2"){
+                            count = "??"
+                        }
+                        if(data[i].count.length == "3"){
+                            count = "???"
+                        }
+                        invite_itme += "<li><span>" + wechat +"</span><span class='count'>" + count +"</span></li>";
                     }
                 });
                 $(".pai_ming_item_ul").html(invite_itme);
