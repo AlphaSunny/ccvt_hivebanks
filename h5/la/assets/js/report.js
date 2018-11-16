@@ -162,9 +162,11 @@ $(function () {
                 var invite_itme = "", wechat = "", count = "";
                 $.each(data, function (i, val) {
                     if (i <= 10){
-                        // if(data[i].wechat == null){
-                        //     wechat = "--"
-                        // }
+                        if(data[i].wechat == null){
+                            wechat = "--"
+                        }else {
+                            wechat = data[i].wechat
+                        }
                         if(data[i].count.length == "1"){
                             count = "?"
                         }
@@ -174,7 +176,7 @@ $(function () {
                         if(data[i].count.length == "3"){
                             count = "???"
                         }
-                        invite_itme += "<li><span class='wechat'>" + data[i].wechat +"</span><span class='count'>" + count +"</span></li>";
+                        invite_itme += "<li><span class='wechat'>" + wechat +"</span><span class='count'>" + count +"</span></li>";
                     }
                 });
                 $(".pai_ming_item_ul").html(invite_itme);
