@@ -12,4 +12,6 @@ $db = new DB_COM();
 $sql = "select * from us_asset WHERE 1";
 $db->query($sql);
 $rows = $db->fetchAll();
-print_r($rows);
+if ($rows){
+    
+}
