@@ -9,7 +9,7 @@ error_reporting(E_ALL | E_STRICT);
 
 $db = new DB_COM();
 
-$sql = "select * from us_asset WHERE 1";
+$sql = "select * from us_asset WHERE asset_id='GLOP'";
 $db->query($sql);
 $rows = $db->fetchAll();
 if ($rows){
@@ -18,7 +18,18 @@ if ($rows){
     foreach ($rows as $k=>$v){
         set_time_limit(0);
         $scale = $v['base_amount']/$unit;
-        echo $scale;
+        //判断等级提升
+        scale_upgrade($v['us_id'],$scale);
+    }
+}
+
+function scale_upgrade($us_id,$scale){
+    //判断是否可以升级
+    $us_scale = get_us_base($us_id)['scale']+1;
+    $sca = get_scale_info($us_scale);
+    print_r($sca);die;
+    if($scale>$sca['integral']){
+
     }
 }
 
@@ -29,4 +40,22 @@ function la_unit(){
     $db->query($sql);
     $rows = $db->fetchRow();
     return $rows['unit'];
+}
+
+//获取等级信息
+function get_scale_info($scale){
+    $db = new DB_COM();
+    $sql = "select * from us_scale WHERE scale='{$scale}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    return $row;
+}
+
+//获取用户信息
+function get_us_base($us_id){
+    $db = new DB_COM();
+    $sql = "select * from us_base from us_base WHERE us_id='{$us_id}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    return $row;
 }
