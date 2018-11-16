@@ -9,7 +9,7 @@ error_reporting(E_ALL | E_STRICT);
 
 $db = new DB_COM();
 
-$sql = "select * from us_scale WHERE 1";
+$sql = "select * from us_asset WHERE 1";
 $db->query($sql);
 $rows = $db->fetchAll();
 print_r($rows);
