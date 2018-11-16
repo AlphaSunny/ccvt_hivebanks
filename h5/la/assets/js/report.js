@@ -59,10 +59,10 @@ $(function () {
                     us_register_count = 0;
                 }
                 tr += '<tr>' +
-                    '<td><span class="sum_la_base_amount">' + sum_la_base_amount + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
-                    '<td><span class="sum_la_base_amount">' + sum_us_base_amount + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
-                    '<td><span class="sum_la_base_amount">' + sum_ba_base_amount + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
-                    '<td><span class="sum_la_base_amount">' + sum_ca_base_amount + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
+                    '<td><span class="sum_la_base_amount">' + sum_la_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_la_base_amount">' + sum_us_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_la_base_amount">' + sum_ba_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_la_base_amount">' + sum_ca_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
                     '</tr>';
                 $('#amount_report').html(tr);
                 var trInfo = '';
@@ -93,12 +93,12 @@ $(function () {
                 }
 
                 trInfo += '<tr>' +
-                    '<td><span class="sum_us_recharge_base_amount">' + sum_us_recharge_base_amount + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
-                    '<td><span class="sum_us_withdraw_base_amount">' + sum_us_withdraw_base_amount + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
-                    '<td><span class="sum_ba_recharge_base_amount">' + sum_ba_recharge_base_amount + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
-                    '<td><span class="sum_ba_withdraw_base_amount">' + sum_ba_withdraw_base_amount + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
-                    '<td><span class="sum_ca_recharge_base_amount">' + sum_ca_recharge_base_amount + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
-                    '<td><span class="sum_ca_withdraw_base_amount">' + sum_ca_withdraw_base_amount + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
+                    '<td><span class="sum_us_recharge_base_amount">' + sum_us_recharge_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_us_withdraw_base_amount">' + sum_us_withdraw_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_ba_recharge_base_amount">' + sum_ba_recharge_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_ba_withdraw_base_amount">' + sum_ba_withdraw_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_ca_recharge_base_amount">' + sum_ca_recharge_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_ca_withdraw_base_amount">' + sum_ca_withdraw_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
                     '</tr>';
                 $('#amount_reportInfo').html(trInfo);
 
@@ -112,9 +112,9 @@ $(function () {
 
 
                 trGift += '<tr>' +
-                    '<td><span class="sum_us_recharge_base_amount">' + G + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
-                    '<td><span class="sum_us_withdraw_base_amount">' + IG + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
-                    '<td><span class="sum_us_recharge_base_amount">' + giftRegister + '</span><span class="base_type">'+ benchmark_type +'</span></td>' +
+                    '<td><span class="sum_us_recharge_base_amount">' + G + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_us_withdraw_base_amount">' + IG + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_us_recharge_base_amount">' + giftRegister + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
 
                     // '<td><span class="sum_ba_recharge_base_amount">' + NDG + '</span><span class="base_type">BTC</span></td>' +
                     // '<td><span class="sum_ba_withdraw_base_amount">' + NDBG + '</span><span class="base_type">BTC</span></td>' +
@@ -136,12 +136,12 @@ $(function () {
                                 if (data == null) {
                                     data = "--";
                                     return data;
-                                }else {
+                                } else {
                                     data = data;
                                     return data;
                                 }
                             },
-                            target:1
+                            target: 1
                         },
                         {"data": "invite_code"},
                         {"data": "count"},
@@ -156,6 +156,16 @@ $(function () {
                     //     }
                     // }]
                 });
+
+                //邀请排名海报
+                var data = response.rows.gift_detail;
+                var invite_itme = "";
+                $.each(data, function (i, val) {
+                    if (i <= 10){
+                        invite_itme += "<li><span>" + data[i].wechat +"</span><span>" + data[i].count +"</span></li>";
+                    }
+                });
+                $(".pai_ming_item_ul").html(invite_itme);
 
                 DonutFun(us_register_count, ba_register_count, ca_register_count);
                 var dataChartObj = {}, dataChart = [];
