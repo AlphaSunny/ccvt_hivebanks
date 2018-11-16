@@ -55,7 +55,7 @@ function get_scale_info($scale){
 //获取用户信息
 function get_us_base($us_id){
     $db = new DB_COM();
-    $sql = "select * from us_base from us_base WHERE us_id='{$us_id}'";
+    $sql = "select * from us_base WHERE us_id='{$us_id}'";
     $db->query($sql);
     $row = $db->fetchRow();
     return $row;
