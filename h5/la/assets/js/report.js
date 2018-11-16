@@ -161,7 +161,7 @@ $(function () {
                 var data = response.rows.gift_detail;
                 var invite_itme = "", wechat = "", count = "";
                 $.each(data, function (i, val) {
-                    if (i <= 10) {
+                    if (i <= 9) {
                         if (data[i].wechat == null) {
                             wechat = "--"
                         } else {
