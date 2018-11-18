@@ -64,7 +64,7 @@ $(function () {
     });
 
     //踩
-    $(".zan_img_box").click(function () {
+    $(".cai_img_box").click(function () {
         give_us_id = $(this).children(".us_id").text();
         if (!token) {
             alert("登录之后才可以踩哦");
