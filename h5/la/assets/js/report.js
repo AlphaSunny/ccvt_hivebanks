@@ -129,8 +129,10 @@ $(function () {
                     language: {
                         paginate: {
                             url: "dataTables.german.lang",
+                            first:"<<",
                             previous: "<",
                             next: ">",
+                            last:">>",
                         }
                     },
                     data: response.rows.gift_detail,
