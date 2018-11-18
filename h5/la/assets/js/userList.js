@@ -15,7 +15,7 @@ $(function () {
                 GetDataEmpty('userList', '4');
             }
 
-            $("#userList").DataTable({
+            $("#userListTable").DataTable({
                 destroy: true,
                 deferRender: true,
                 lengthMenu: [ 10, 20, 50, 70, 100 ],
@@ -31,7 +31,7 @@ $(function () {
                         loadingRecords:"Please wait - loading..",
                     }
                 },
-                data:newData,
+                data:data,
                 columns:[
                     {"data":"us_id"},
                     {"data":"us_level"},
