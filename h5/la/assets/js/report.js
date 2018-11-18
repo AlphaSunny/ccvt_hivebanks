@@ -126,9 +126,10 @@ $(function () {
                     order: [[4, "desc"]],
                     destroy: true,
                     deferRender: true,
-                    "language": {
-                        "paginate": {
-                            "next": ">",
+                    language: {
+                        paginate: {
+                            previous: "<",
+                            next: ">",
                         }
                     },
                     data: response.rows.gift_detail,
