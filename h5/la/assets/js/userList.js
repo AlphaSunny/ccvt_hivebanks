@@ -9,8 +9,7 @@ $(function () {
             var data = response.rows, tr = '';
             var newData = [];
             $.each(data, function (i, val) {
-                console.log(val);
-                console.log(i);
+                newData.push(val);
             });
             if(data == false){
                 GetDataEmpty('userList', '4');
