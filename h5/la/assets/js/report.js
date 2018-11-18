@@ -128,6 +128,7 @@ $(function () {
                     deferRender: true,
                     language: {
                         paginate: {
+                            url: "dataTables.german.lang",
                             previous: "<",
                             next: ">",
                         }
