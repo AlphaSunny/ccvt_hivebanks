@@ -17,6 +17,13 @@ body {
     width: 100%;
 }
 
+.jump {
+    cursor: pointer;
+}
+
+.jump:hover {
+    color: #1E9FFF;
+}
 
 #page-wrapper {
     padding: 15px 15px;
