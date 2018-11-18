@@ -126,12 +126,12 @@ $(function () {
                     order: [[4, "desc"]],
                     destroy: true,
                     deferRender: true,
-                    language: {
+                    // language: {
                         paginate: {
                             url: "dataTables.german.lang",
                             previous: "<",
                             next: ">",
-                        }
+                        // }
                     },
                     data: response.rows.gift_detail,
                     columns: [
