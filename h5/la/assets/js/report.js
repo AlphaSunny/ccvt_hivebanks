@@ -127,6 +127,8 @@ $(function () {
                     destroy: true,
                     deferRender: true,
                     lengthMenu: [ 10, 20, 50, 70, 100 ],
+                    searching:false,//是否显示搜索框
+                    info:false,//是否显示表左下角文字
                     language: {
                         paginate: {
                             url: "dataTables.german.lang",
