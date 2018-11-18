@@ -133,6 +133,7 @@ $(function () {
                             previous: "<",
                             next: ">",
                             last:">>",
+                            loadingRecords:"Please wait - loading..",
                         }
                     },
                     data: response.rows.gift_detail,
