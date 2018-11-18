@@ -126,6 +126,11 @@ $(function () {
                     order: [[4, "desc"]],
                     destroy: true,
                     deferRender: true,
+                    "language": {
+                        "paginate": {
+                            "next": ">",
+                        }
+                    },
                     data: response.rows.gift_detail,
                     columns: [
                         {"data": "rank"},
@@ -147,14 +152,6 @@ $(function () {
                         {"data": "count"},
                         {"data": "base_amount"}
                     ],
-
-                    // "columnDefs": [{
-                    //     "targets": 0,
-                    //     "data": null,
-                    //     "render": function () {
-                    //         return "<span>"+ data[index] +"</span>"
-                    //     }
-                    // }]
                 });
 
                 //邀请排名海报
