@@ -10,6 +10,7 @@ $(function () {
             var newData = [];
             $.each(data, function (i, val) {
                 console.log(val);
+                console.log(i);
             });
             if(data == false){
                 GetDataEmpty('userList', '4');
