@@ -433,3 +433,18 @@ input.form-control.search_input:focus {
     top: 30%;
     display: none;
 }
+
+/*top*/
+#top{
+    position: fixed;
+    right: 2%;
+    bottom: 5%;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    border-radius: 100%;
+    display: none;
+}

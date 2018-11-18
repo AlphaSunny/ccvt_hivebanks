@@ -95,12 +95,12 @@ $(function () {
                     $('.web_toast_text').text("点赞成功!");
 
                     //点赞成功出现动画
-                    $(".zan_cai_img").attr("src",$(".zan_cai_img").attr("zan_data_src"));
+                    $(".zan_cai_img").attr("src", $(".zan_cai_img").attr("zan_data_src"));
                     $(".suc_zan").fadeIn("fast");
                 } else if (state == "2") {
                     $('.web_toast_text').text("踩成功!");
                     //踩成功出现动画
-                    $(".zan_cai_img").attr("src",$(".zan_cai_img").attr("cai_data_src"));
+                    $(".zan_cai_img").attr("src", $(".zan_cai_img").attr("cai_data_src"));
                     $(".suc_zan").fadeIn("fast");
                 }
 
@@ -134,5 +134,19 @@ $(function () {
     var url = getRootPath();
     $(".backStatistics").click(function () {
         window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+    });
+
+    //scroll top
+    //scroll top
+    $(window).scroll(function () {
+        var height = $(window).scrollTop();
+        if (height >= 300) {
+            $("#top").fadeIn("fast");
+        } else {
+            $("#top").fadeOut("fast");
+        }
+    });
+    $("#top").click(function () {
+        $("body, html").animate({scrollTop: 0}, 500);
     });
 });
