@@ -126,7 +126,7 @@ $(function () {
                     order: [[4, "desc"]],
                     destroy: true,
                     deferRender: true,
-                    lengthMenu: [ 10, 25, 50, 75, 100 ],
+                    lengthMenu: [ 10, 20, 50, 70, 100 ],
                     language: {
                         paginate: {
                             url: "dataTables.german.lang",
