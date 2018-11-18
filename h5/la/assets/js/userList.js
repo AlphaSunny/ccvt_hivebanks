@@ -29,7 +29,7 @@ $(function () {
                 },
                 data:data,
                 columns:[
-                    {"data":"us_id"},
+                    {"data":"us_id", className:"us_id"},
                     {"data":"us_level"},
                     {"data":"security_level"},
                     {"data":"ctime"},
