@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<div class="suc_zan"><img class="zan_cai_img" zan_data_src="img/suc_zan.gif" cai_data_src="img/suc_cai.gif" src="" alt=""></div>
 <?php
 require_once '../../inc/common.php';
 ini_set("display_errors", "off");
@@ -88,7 +89,13 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                         <img src="http://52.53.151.223:8000/<?php echo $v['head_img'] ?>" alt="">
                     </div>
                     <div class="chatInfo">
-                        <p class="name"><?php echo $v['bot_nickname'] ?></p>
+                        <p class="name">
+                            <span><?php echo $v['bot_nickname'] ?></span>
+                            <span class="zan_cai_box">
+                            <span class="zan_img_box"><img src="img/zan.svg" alt=""></span>
+                            <span class="cai_img_box"><img src="img/cai.svg" alt=""></span>
+                        </span>
+                        </p>
                         <p class="chatContent">
                             <?php
                             if ($v['type'] == "Picture") {
@@ -132,6 +139,84 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 
 
     </ul>
+</div>
+
+<!--modal-->
+<div class="c-float-popWrap confirmMode hiden" style="opacity: 1; top: 264px; left: 28px;">
+    <div class="weui_mask_transparent"></div>
+    <div class="c-float-modePop">
+        <div class="warnMsg zan_title">点赞👍数量</div>
+        <div class="warnMsg cai_title">踩👎数量</div>
+        <div class="content">
+            <label>数量：<input class="confirm_input" value="5" placeholder="请输入点赞数量"></label>
+            <p class="zan_text">点赞功能将扣除对应数量的ccvt,对方将获取荣耀积分</p>
+            <p class="cai_text">踩功能将扣除对应数量的ccvt,对方将减少荣耀积分</p>
+            <p>
+                <!--赞上限-->
+                <span class="zan_top">每日上限
+<!--                    --><?php
+//                    $sql = "SELECT max_give_like FROM bot_status limit 1";
+//                    $db -> query($sql);
+//                    $row = $db -> getField($sql,'max_give_like');
+//                    echo $row;
+//                    ?><!--ccvt-->
+                </span>
+
+                <!--踩上限-->
+                <span class="cai_top">每日上限
+<!--                    --><?php
+//                    $sql = "SELECT max_give_no_like FROM bot_status limit 1";
+//                    $db -> query($sql);
+//                    $row = $db -> getField($sql,'max_give_no_like');
+//                    echo $row;
+//                    ?><!--ccvt-->
+                </span>
+
+                <!--已赞数量-->
+                <span class="margin-left-5 zan_num">已点赞
+                    <span class="already_count" style="color: #333333">
+<!--                        --><?php
+//                        $us_id = $_COOKIE['statistics_user_id'];
+//                        if ($us_id){
+//                            $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+//                            $db->query($sql);
+//                            $all_am = $db->getField($sql,'all_am');
+//                            if (!$all_am){$all_am=0;}
+//                            echo $all_am;
+//                        }
+//                        ?>
+                    </span>ccvt
+                </span>
+
+                <!--已踩数量-->
+                <span class="margin-left-5 cai_num">已踩
+                    <span class="already_count" style="color: #333333">
+<!--                        --><?php
+//                        $us_id = $_COOKIE['statistics_user_id'];
+//                        if ($us_id){
+//                            $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+//                            $db->query($sql);
+//                            $all_am = $db->getField($sql,'all_am');
+//                            if (!$all_am){$all_am=0;}
+//                            echo $all_am;
+//                        }
+//                        ?>
+                    </span>ccvt
+                </span>
+            </p>
+        </div>
+        <div class="doBtn">
+            <button class="cancel">取 消</button>
+            <button class="ok">确 定</button>
+        </div>
+    </div>
+</div>
+
+<div id='mySpin'></div>
+
+<div class="web_toast">
+    <div class="cx_mask_transparent"></div>
+    <div class="web_toast_text"></div>
 </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/common.js"></script>

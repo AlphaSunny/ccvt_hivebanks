@@ -37,6 +37,10 @@ p {
     text-align: justify;
 }
 
+.chatContent img {
+    width: 100%;
+}
+
 #chat .time {
     font-size: 12px;
     color: #ffffff;
@@ -83,6 +87,24 @@ p {
     color: #9e9e9e;
     font-size: 12px;
     margin-bottom: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.zan_cai_box {
+    margin-right: -5%;
+}
+
+.zan_cai_box .zan_img_box, .zan_cai_box .cai_img_box {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    padding: 0 3px;
+}
+
+.zan_img_box img, .cai_img_box img {
+    width: 100%;
 }
 
 .infoBox {
@@ -236,4 +258,178 @@ input.form-control.search_input:focus {
 .backStatistics {
     font-size: 14px;
     color: #ff0000d4;
+}
+
+/*alert modal*/
+.c-float-popWrap.show {
+    display: block;
+}
+
+.c-float-popWrap {
+    width: 85%;
+    z-index: 9999;
+    position: fixed;
+    border-radius: 3px;
+    /* overflow: hidden; */
+}
+
+.weui_mask_transparent {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.c-float-popWrap .c-float-modePop {
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.c-float-modePop {
+    text-align: center;
+    background-color: #FAFAFC;
+}
+
+.c-float-popWrap .c-float-modePop .warnMsg {
+    padding: 0.8em 0 0.8em;
+    font-size: 15px;
+    color: #333;
+}
+
+.c-float-popWrap.confirmMode .c-float-modePop .content, .c-float-popWrap.confirmMode .c-float-modePop .doBtn {
+    display: block;
+}
+
+.c-float-popWrap .c-float-modePop .content {
+    padding: 0 20px;
+    font-size: 14px;
+    color: #888;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: left;
+}
+
+.c-float-popWrap .c-float-modePop .content label {
+    display: block;
+}
+
+.c-float-popWrap .c-float-modePop .doBtn {
+    width: 100%;
+    margin-top: 15px;
+    position: relative;
+}
+
+.confirm_input {
+    border: 1px solid #D5D5D6;
+    padding: 6px;
+    width: 80%;
+    outline-color: #00b66c;
+    border-radius: 5px;
+    color: #333333;
+}
+
+.c-float-popWrap .c-float-modePop button.cancel:after {
+    content: " ";
+    position: absolute;
+    right: -1px;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    border-left: 1px solid #D5D5D6;
+    color: #D5D5D6;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+}
+
+.c-float-popWrap .c-float-modePop .doBtn:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #D5D5D6;
+    color: #D5D5D6;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+
+.c-float-popWrap .c-float-modePop button.cancel {
+    position: relative;
+}
+
+.c-float-popWrap .c-float-modePop button {
+    background-color: #FAFAFC;
+    width: 49%;
+    height: 42px;
+    line-height: 42px;
+    color: #444;
+    font-size: 17px;
+    border: 0;
+    padding: 0;
+}
+
+.c-float-popWrap .c-float-modePop button.ok {
+    color: #0BB20C;
+}
+
+.c-float-modePop {
+    text-align: center;
+    background-color: #FAFAFC;
+}
+
+.c-float-modePop .doBtn {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.confirmMode p {
+    font-size: 12px;
+}
+
+.hiden {
+    display: none;
+}
+
+/*alert tips*/
+.web_toast {
+    position: fixed;
+    left: 35%;
+    bottom: 45%;
+    margin: 0 10px;
+    z-index: 9999;
+    display: none;
+    padding: 10px;
+    color: #fff;
+    background: rgba(0, 0, 0, .7);
+    font-size: 1.4rem;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.cx_mask_transparent {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* background: rgba(255,255,255,.1); */
+}
+
+/*suc_zan*/
+.suc_zan {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    top: 30%;
+    display: none;
 }
