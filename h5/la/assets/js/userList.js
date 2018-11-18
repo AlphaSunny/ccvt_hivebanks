@@ -7,10 +7,6 @@ $(function () {
     GetUserList(token, api_url, limit, offset, function (response) {
         if(response.errcode == '0'){
             var data = response.rows, tr = '';
-            var newData = [];
-            $.each(data, function (i, val) {
-                newData.push(val);
-            });
             if(data == false){
                 GetDataEmpty('userList', '4');
             }
