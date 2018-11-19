@@ -124,7 +124,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
         } ?>
     </ul>
 
-    <ul style="margin-top: 50px;">
+    <ul style="margin-top: 50px; padding-left: 15px; padding-right: 15px">
         <?php
 
         $sql = "select bot_nickname,count(bot_message_id) as count from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}' group by `bot_nickname` order by count desc";
@@ -133,10 +133,11 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
         $count = count($rows);
         ?>
         <li>参与发言人数:<?php echo $count; ?>人</li>
+        <li><span>昵称</span><span>发言数</span></li>
         <?php
         foreach ($rows as $k => $v) {
             ?>
-            <li><?php echo $v['bot_nickname']; ?>:<?php echo $v['count']; ?>发言</li>
+            <li><span><?php echo $v['bot_nickname']; ?>:</span><span><?php echo $v['count']; ?></span></li>
         <?php } ?>
 
 
