@@ -238,15 +238,18 @@ $(function () {
     GetDayUserFun(day);
 
     $(".day_7").click(function () {
+        $("#user-line-chart").empty();
         day = 7;
         GetDayUserFun(day);
     });
 
     $(".day_15").click(function () {
+        $("#user-line-chart").empty();
         day = 15;
         GetDayUserFun(day);
     });
     $(".day_30").click(function () {
+        $("#user-line-chart").empty();
         day = 30;
         GetDayUserFun(day);
     });
