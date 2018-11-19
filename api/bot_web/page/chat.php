@@ -56,7 +56,6 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
             $sql .= " AND b.bot_nickname LIKE '$nickname%'";
         }
         $sql .= " ORDER BY b.bot_create_time  ASC ";
-        echo $sql;
         $db->query($sql);
         $rows = $db->fetchAll();
         $ti = -1;
@@ -85,7 +84,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                             <span class="zan_cai_box">
                                 <span class="zan_img_box"><img src="img/zan.svg" alt=""></span>
                                 <span class="cai_img_box"><img src="img/cai.svg" alt=""></span>
-                                <span class="us_id none"></span>
+                                <span class="us_id none"><?php echo $v['us_id'];?></span>
                             </span>
                             <?php }?>
                         </p>
