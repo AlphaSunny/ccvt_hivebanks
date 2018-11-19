@@ -244,10 +244,18 @@ $(function () {
     //用户增长趋势图
     Morris.Line({
         element: 'user-line-chart',
-        data: [100,200,300,400,500,600,243,123,43,1,32,12,432,12,432,123,343],
-        xkey: 'y',
-        ykeys: ['u', 'b', 'c'],
-        labels: ['user'],
+        data: [
+            {year:"2018/11/10",value:"100"},
+            {year:"2018/11/11",value:"200"},
+            {year:"2018/11/12",value:"300"},
+            {year:"2018/11/13",value:"230"},
+            {year:"2018/11/14",value:"120"},
+            {year:"2018/11/15",value:"125"},
+            {year:"2018/11/16",value:"500"},
+        ],
+        xLabels: 'day',
+        // ykeys: ['u', 'b', 'c'],
+        // labels: ['user'],
         fillOpacity: 0.6,
         hideHover: 'auto',
         smooth: true,
