@@ -123,6 +123,7 @@ $(function () {
 
                 setTimeout(function () {
                     $(".web_toast").fadeOut("fast");
+                    $(".suc_zan").fadeOut("fast");
                 }, 2000);
             }
         }, function (response) {
