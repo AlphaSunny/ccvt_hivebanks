@@ -68,9 +68,10 @@ $(function () {
     });
 
     //点赞
-    var give_us_id = "", state = "";
+    var give_us_id = "", state = "", zan_count = "";
     $(".zan_btn").click(function () {
         give_us_id = $(this).children(".us_id").text();
+        zan_count = parseInt($(this).children(".zan_count").text());
         if (!token) {
             alert("登录之后才可以点赞哦");
             return;
@@ -90,8 +91,10 @@ $(function () {
     });
 
     //踩
+    var cai_count = "";
     $(".cai_btn").click(function () {
         give_us_id = $(this).children(".us_id").text();
+        cai_count = parseInt($(this).children(".cai_count").text());
         if (!token) {
             alert("登录之后才可以踩哦");
             return;
@@ -120,6 +123,8 @@ $(function () {
                 if (state == "1") {
                     first_already_zan_count += give_num;
                     $(".already_zan_count").text(first_already_zan_count);
+                    zan_count -= give_num;
+                    $(".zan_count").text(zan_count);
                     $('.web_toast_text').text("点赞成功!");
                     GetUserInfo();
                     //点赞成功出现动画
@@ -129,6 +134,8 @@ $(function () {
                 } else if (state == "2") {
                     first_already_cai_count += give_num;
                     $(".already_cai_count").text(first_already_cai_count);
+                    cai_count -= give_num;
+                    $(".cai_count").text(cai_count);
                     $('.web_toast_text').text("踩成功!");
                     GetUserInfo();
                     //踩成功出现动画
