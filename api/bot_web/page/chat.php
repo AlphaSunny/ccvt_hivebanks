@@ -136,7 +136,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
         <table>
             <thead>
             <tr>
-                <th>昵称</th>
+                <th style="text-align: left">昵称</th>
                 <th>发言数</th>
             </tr>
             </thead>
