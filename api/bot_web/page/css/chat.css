@@ -7,12 +7,17 @@ body {
 
 /*nav*/
 .logo_img {
-    height: 4rem;
+    height: 3rem;
 }
+
 .title_box {
     /*background: #333333;*/
     background-image: linear-gradient(to right, #041636, #0b2758);
     color: #ffffff;
+}
+
+.amount_box {
+    display: none;
 }
 
 p {
