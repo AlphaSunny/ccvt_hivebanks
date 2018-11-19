@@ -215,7 +215,7 @@ $(function () {
                 data: response.rows,
                 xkey: "date",
                 ykeys: ["num"],
-                labels: ['user'],
+                labels: ['注册数'],
                 xLabels:"day",
                 fillOpacity: 0.6,
                 hideHover: 'auto',
