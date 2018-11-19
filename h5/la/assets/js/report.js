@@ -241,6 +241,23 @@ $(function () {
         });
     }
 
+    //用户增长趋势图
+    Morris.Line({
+        element: 'morris-line-chart',
+        data: [100,200,300,400,500,600,243,123,43,1,32,12,432,12,432,123,343],
+        xkey: 'y',
+        ykeys: ['u', 'b', 'c'],
+        labels: ['user'],
+        fillOpacity: 0.6,
+        hideHover: 'auto',
+        smooth: true,
+        behaveLikeLine: true,
+        resize: true,
+        pointFillColors: ['#ffffff'],
+        pointStrokeColors: ['black'],
+        lineColors: ['green']
+    });
+
     //show invite img
     $(".show_img_btn").click(function () {
         $(".pai_ming_img_modal").slideToggle("fast");
