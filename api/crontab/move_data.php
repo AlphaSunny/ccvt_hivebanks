@@ -13,7 +13,7 @@ $rows = $db->fetchAll();
 if ($rows){
     foreach ($rows as $k=>$v){
         set_time_limit(0);
-        $sql = "select * from com_transfer_request WHERE debit_id='{$v['us_id']}' AND transfer_type=1 AND flag=1";
+        $sql = "select * from com_transfer_request WHERE debit_id='{$v['us_id']}' AND transfer_type='ba-us' AND flag=1";
         $db->query($sql);
         $row = $db->fetchRow();
         if (!$row){
@@ -106,7 +106,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
     $data['credit_balance'] = get_ba_base_amount($data['credit_id']);
     $data['tx_hash'] = hash('md5', $ba_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $data['flag'] = $flag;
-    $data['transfer_type'] = 1;
+    $data['transfer_type'] = 'ba-us';
     $data['transfer_state'] = 1;
     $data['tx_detail'] = $detail;
     $data['give_or_receive'] = 1;
@@ -130,7 +130,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
     $dat['credit_balance'] = get_us_base_amount($us_id);
     $dat['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $dat['flag'] = $flag;
-    $dat['transfer_type'] = 1;
+    $dat['transfer_type'] = 'ba-us';
     $dat['transfer_state'] = 1;
     $dat['tx_detail'] = $detail;
     $dat['give_or_receive'] = 2;
