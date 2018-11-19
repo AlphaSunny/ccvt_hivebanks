@@ -97,7 +97,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
 
 /******************************转账记录表***************************************************/
     //赠送者
-    $data['hash_id'] = hash('md5', $ba_id . $flag . get_ip() . time() . rand(1000, 9999) . $time);
+    $data['hash_id'] = hash('md5', $ba_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
     $prvs_hash = get_pre_hash($ba_id);
     $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = $ba_id;
@@ -121,7 +121,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
     }
 
     //接收者
-    $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . $time);
+    $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
     $prvs_hash = get_pre_hash($us_id);
     $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $us_id;
@@ -149,8 +149,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
 
     //us添加基准资产变动记录
     $us_type = 'us_get_balance';
-    $ctime = date('Y-m-d H:i:s');
-    $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+    $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
     $com_balance_us['tx_id'] = $dat['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($us_id);
     $com_balance_us['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;
@@ -170,7 +169,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
 
    //ba添加基准资产变动记录
     $us_type = 'ba_give_balance';
-    $com_balance_ba['hash_id'] = hash('md5', $ba_id. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+    $com_balance_ba['hash_id'] = hash('md5', $ba_id. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
     $com_balance_ba['tx_id'] = $data['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($ba_id);
     $com_balance_ba['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;
