@@ -205,9 +205,11 @@ $(function () {
     // setInterval(GetAssetsReportFun, 5000);
 
     //获取每天用户增长趋势图
-    var day = "7";
+    var day = "7", user_data = "";
     GetDayUserUp(token,day, function (response) {
-        console.log(response);
+        if(response.errcode == "0"){
+            user_data = response.rows;
+        }
     }, function (response) {
 
     });
@@ -253,7 +255,8 @@ $(function () {
     //用户增长趋势图
     Morris.Line({
         element: 'user-line-chart',
-        data: [
+        data: user_data,
+            // [
         //     { day: '2018-11-1', value: 100 },
         //     { day: '2018-11-2', value: 100 },
         //     { day: '2018-11-3', value: 100 },
@@ -284,7 +287,7 @@ $(function () {
         //     { day: '2018-11-28', value: 803 },
         //     { day: '2018-11-29', value: 803 },
         //     { day: '2018-11-30', value: 803 }
-        ],
+        // ],
         xkey: "day",
         ykeys: ["value"],
         labels: ['user'],
