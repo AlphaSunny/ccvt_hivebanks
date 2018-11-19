@@ -56,9 +56,9 @@ $(function () {
     });
 
     //点赞
-    var give_us_id = "", state = "";
+    var chat_name = "", state = "";
     $(".zan_img_box").click(function () {
-        give_us_id = $(this).children(".us_id").text();
+        chat_name = $(this).parents(".name").children(".chat_name").text();
         if (!token) {
             alert("登录之后才可以点赞哦");
             return;
@@ -102,7 +102,7 @@ $(function () {
     $(".ok").click(function () {
         var give_num = $(".confirm_input").val();
         ZanShowLogin("show");
-        Give(token, give_us_id, give_num, state, function (response) {
+        GiveChatName(token, chat_name, give_num, state, function (response) {
             if (response.errcode == "0") {
                 ZanShowLogin("hide");
                 if (state == "1") {

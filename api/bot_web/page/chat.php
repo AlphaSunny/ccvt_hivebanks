@@ -114,7 +114,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                     </div>
                     <div class="chatInfo">
                         <p class="name">
-                            <span><?php echo $v['bot_nickname'] ?></span>
+                            <span class="chat_name"><?php echo $v['bot_nickname'] ?></span>
                             <span class="zan_cai_box">
                             <span class="zan_img_box"><img src="img/zan.svg" alt=""></span>
                             <span class="cai_img_box"><img src="img/cai.svg" alt=""></span>

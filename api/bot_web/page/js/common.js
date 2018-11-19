@@ -230,6 +230,18 @@ function Give(token, give_us_id, give_num, state, suc_func, error_func) {
     CallBotApi(api_url, post_data, suc_func, error_func);
 }
 
+//聊天记录点赞
+function GiveChatName(token, chat_name, give_num, state, suc_func, error_func) {
+    var api_url = 'give_like.php',
+        post_data = {
+            'token': token,
+            'chat_name': chat_name,
+            'give_num': give_num,
+            'state': state
+        };
+    CallBotApi(api_url, post_data, suc_func, error_func);
+}
+
 /**
  * Disable button
  * @param $this Button object
