@@ -168,6 +168,8 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <span class="margin-left-5 zan_num">已点赞
                     <span class="already_count" style="color: #333333">
                         <?php
+                        $s_time = strtotime(date('Y-m-d 00:00:00'), time());
+                        $e_time = strtotime(date('Y-m-d 23:59:59'), time());
                                         $us_id = $_COOKIE['statistics_user_id'];
                                         if ($us_id){
                                             $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
