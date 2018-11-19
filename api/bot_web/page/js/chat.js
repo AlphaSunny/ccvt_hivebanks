@@ -56,8 +56,8 @@ $(function () {
     });
 
     //获取已经点赞和已经踩的数量
-    var first_already_zan_count = $(".already_zan_count").text();
-    var first_already_cai_count = $(".already_cai_count").text();
+    var first_already_zan_count = parseInt($(".already_zan_count").text());
+    var first_already_cai_count = parseInt($(".already_cai_count").text());
 
     //点赞
     var give_us_id = "", state = "";
