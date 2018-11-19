@@ -5,6 +5,11 @@ body {
     font-size: 16px;
 }
 
+/*nav*/
+.logo_img {
+    height: 4rem;
+}
+
 p {
     margin: 0;
     padding: 0;
@@ -435,11 +440,11 @@ input.form-control.search_input:focus {
 }
 
 /*top*/
-#top{
+#top {
     position: fixed;
     right: 2%;
     bottom: 5%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     color: #fff;
     width: 2rem;
     height: 2rem;
