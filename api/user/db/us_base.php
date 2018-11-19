@@ -62,10 +62,9 @@ function ins_base_user_reg_base_info($data_base)
 
     //注册获取50ccvt
     send_to_us_ccvt($data_base['us_id'],'reg_send','50','注册赠送','1');
-
+    ini_set("display_errors", "off");
     //邀请人获取50ccvt
-    $invite_code = $data_base['invite_code'];
-    if (!$invite_code){
+    if ($data_base['invite_code']){
         send_to_us_ccvt(get_invite_code_us($data_base['invite_code']),'invite_send','50','邀请赠送','2');
     }
 
