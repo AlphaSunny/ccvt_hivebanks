@@ -452,7 +452,7 @@ input.form-control.search_input:focus {
 
 /*suc_zan*/
 .suc_zan {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     width: 100%;
     text-align: center;
