@@ -102,6 +102,11 @@ $(function () {
                 $(".ctime").text(data[0].utime);
                 $(".author").text(data[0].author);
                 $(".news_content").html(data[0].content);
+                if(data[0].category == "1"){
+                    $(".title").text("官方新闻");
+                }else {
+                    $(".title").text("行业新闻");
+                }
             }
         }, function (response) {
             ShowLoading("hide");
