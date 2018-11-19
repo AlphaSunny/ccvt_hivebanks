@@ -51,11 +51,11 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
         $nickname = $_GET['nikename'];
         $tblPrefix = "@风赢小助手";
         $tblPrefix2 = "@小助手";
-        $sql = "select bot_nickname,bot_content,bot_send_time,head_img,type,bot_create_time,wechat from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}'";
+        $sql = "select b.bot_nickname,b.bot_content,b.bot_send_time,b.head_img,b.type,b.bot_create_time,b.wechat from bot_message as b WHERE b.group_name='{$group_name}' AND (b.bot_content NOT LIKE '$tblPrefix%' OR b.bot_content NOT LIKE '$tblPrefix2%') AND (b.bot_nickname!='风赢小助手' OR b.bot_nickname!='小助手') AND b.bot_send_time BETWEEN '{$day_start}' AND '{$day_end}'";
         if ($nickname) {
-            $sql .= " AND bot_nickname LIKE '$nickname%'";
+            $sql .= " AND b.bot_nickname LIKE '$nickname%'";
         }
-        $sql .= " ORDER BY bot_create_time  ASC ";
+        $sql .= " ORDER BY b.bot_create_time  ASC ";
         echo $sql;
         $db->query($sql);
         $rows = $db->fetchAll();
