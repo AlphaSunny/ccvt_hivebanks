@@ -48,6 +48,10 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
     <?php } ?>
     <ul class="chatList">
         <?php
+        $sql = "select unit from la_base limit 1";
+        $db->query($sql);
+        $unit = $db->getField($sql, 'unit');
+
         $nickname = $_GET['nikename'];
         $tblPrefix = "@风赢小助手";
         $tblPrefix2 = "@小助手";
@@ -173,7 +177,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                                         $us_id = $_COOKIE['statistics_user_id'];
                                         if ($us_id){
                                             $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-                                            echo $sql;
+
                                             $db->query($sql);
                                             $all_am = $db->getField($sql,'all_am');
                                             if (!$all_am){$all_am=0;}
