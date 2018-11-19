@@ -815,6 +815,16 @@ function GetAssetsReport(token, suc_func, error_func) {
     CallReportApi(api_url, post_data, suc_func, error_func);
 }
 
+//获取每天用户增长趋势
+function GetDayUserUp(token, day, suc_func, error_func) {
+    var api_url = 'reg_daily.php',
+        post_data = {
+            'token': token,
+            'day': day
+        };
+    CallReportApi(api_url, post_data, suc_func, error_func);
+}
+
 //open upload file server
 function OpenUploadFile(token, key_code, suc_func, error_func) {
     var api_url = 'set_upload_file_config.php',

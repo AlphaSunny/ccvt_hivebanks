@@ -204,6 +204,15 @@ $(function () {
 
     // setInterval(GetAssetsReportFun, 5000);
 
+    //获取每天用户增长趋势图
+    var day = "7";
+    GetDayUserUp(token,day, function (response) {
+        console.log(response);
+    }, function (response) {
+
+    });
+
+
     /* MORRIS DONUT CHART
 			----------------------------------------*/
 
@@ -245,36 +254,36 @@ $(function () {
     Morris.Line({
         element: 'user-line-chart',
         data: [
-            { day: '2018-11-1', value: 100 },
-            { day: '2018-11-2', value: 100 },
-            { day: '2018-11-3', value: 100 },
-            { day: '2018-11-4', value: 100 },
-            { day: '2018-11-5', value: 100 },
-            { day: '2018-11-6', value: 100 },
-            { day: '2018-11-7', value: 100 },
-            { day: '2018-11-8', value: 100 },
-            { day: '2018-11-9', value: 100 },
-            { day: '2018-11-10', value: 100 },
-            { day: '2018-11-11', value: 234 },
-            { day: '2018-11-12', value: 345 },
-            { day: '2018-11-13', value: 427 },
-            { day: '2018-11-14', value: 478 },
-            { day: '2018-11-15', value: 539 },
-            { day: '2018-11-16', value: 603 },
-            { day: '2018-11-17', value: 603 },
-            { day: '2018-11-18', value: 803 },
-            { day: '2018-11-19', value: 803 },
-            { day: '2018-11-20', value: 803 },
-            { day: '2018-11-21', value: 803 },
-            { day: '2018-11-22', value: 803 },
-            { day: '2018-11-23', value: 803 },
-            { day: '2018-11-24', value: 803 },
-            { day: '2018-11-25', value: 803 },
-            { day: '2018-11-26', value: 803 },
-            { day: '2018-11-27', value: 803 },
-            { day: '2018-11-28', value: 803 },
-            { day: '2018-11-29', value: 803 },
-            { day: '2018-11-30', value: 803 }
+        //     { day: '2018-11-1', value: 100 },
+        //     { day: '2018-11-2', value: 100 },
+        //     { day: '2018-11-3', value: 100 },
+        //     { day: '2018-11-4', value: 100 },
+        //     { day: '2018-11-5', value: 100 },
+        //     { day: '2018-11-6', value: 100 },
+        //     { day: '2018-11-7', value: 100 },
+        //     { day: '2018-11-8', value: 100 },
+        //     { day: '2018-11-9', value: 100 },
+        //     { day: '2018-11-10', value: 100 },
+        //     { day: '2018-11-11', value: 234 },
+        //     { day: '2018-11-12', value: 345 },
+        //     { day: '2018-11-13', value: 427 },
+        //     { day: '2018-11-14', value: 478 },
+        //     { day: '2018-11-15', value: 539 },
+        //     { day: '2018-11-16', value: 603 },
+        //     { day: '2018-11-17', value: 603 },
+        //     { day: '2018-11-18', value: 803 },
+        //     { day: '2018-11-19', value: 803 },
+        //     { day: '2018-11-20', value: 803 },
+        //     { day: '2018-11-21', value: 803 },
+        //     { day: '2018-11-22', value: 803 },
+        //     { day: '2018-11-23', value: 803 },
+        //     { day: '2018-11-24', value: 803 },
+        //     { day: '2018-11-25', value: 803 },
+        //     { day: '2018-11-26', value: 803 },
+        //     { day: '2018-11-27', value: 803 },
+        //     { day: '2018-11-28', value: 803 },
+        //     { day: '2018-11-29', value: 803 },
+        //     { day: '2018-11-30', value: 803 }
         ],
         xkey: "day",
         ykeys: ["value"],
