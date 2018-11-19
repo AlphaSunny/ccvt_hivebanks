@@ -7,15 +7,15 @@ body {
 
 /*nav*/
 /*.logo_img {*/
-    /*height: 3rem;*/
+/*height: 3rem;*/
 /*}*/
 
 /*.title_box {*/
-    /*!*background: #333333;*!*/
-    /*background-image: linear-gradient(to right, #041636, #0b2758);*/
-    /*color: #ffffff;*/
-    /*padding-left: 15px;*/
-    /*padding-right: 15px;*/
+/*!*background: #333333;*!*/
+/*background-image: linear-gradient(to right, #041636, #0b2758);*/
+/*color: #ffffff;*/
+/*padding-left: 15px;*/
+/*padding-right: 15px;*/
 /*}*/
 
 .amount_box {
@@ -23,8 +23,8 @@ body {
 }
 
 /*.title_box .login {*/
-    /*cursor: pointer;*/
-    /*color: #9e9e9e;*/
+/*cursor: pointer;*/
+/*color: #9e9e9e;*/
 /*}*/
 
 p {
@@ -238,6 +238,11 @@ p.filter_title:after {
     padding: 2% 0;
     outline: none;
     cursor: pointer;
+}
+
+.tellUserAccount td {
+    line-height: 2;
+    border-bottom: 1px solid #9e9e9e;
 }
 
 button.search_btn:hover {
