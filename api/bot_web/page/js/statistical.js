@@ -132,10 +132,10 @@ $(function () {
                 $(".web_toast").fadeIn("fast");
                 $(".confirmMode").fadeOut("fast");
 
-                setTimeout(function () {
-                    $(".web_toast").fadeOut("fast");
-                    window.location.reload();
-                }, 2000);
+                // setTimeout(function () {
+                //     $(".web_toast").fadeOut("fast");
+                //     window.location.reload();
+                // }, 2000);
             }
         }, function (response) {
             ZanShowLogin("hide");
