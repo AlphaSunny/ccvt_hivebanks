@@ -32,6 +32,8 @@ if ($rows){
     die();
 }
 
+die;
+
 //邀请
 
 $sql = "select * from us_base WHERE invite_code!=0";
