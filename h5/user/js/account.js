@@ -72,20 +72,22 @@ $(function () {
 
     var limit = 10, offset = 0, n = 0, type = '2';
     //trading status
-    TradingStatus(token, limit, offset, type, function (response) {
-        if (response.errcode == '0') {
-
-        }
-    }, function (response) {
-        // LayerFun(response.errcode);
-    });
+    // TradingStatus(token, limit, offset, type, function (response) {
+    //     if (response.errcode == '0') {
+    //
+    //     }
+    // }, function (response) {
+    //     // LayerFun(response.errcode);
+    // });
 
     //Account change record
     var account_change_url = 'log_balance.php';
 
     function GetAccountChange(token, limit, offset, account_change_url) {
         var tr = '';
+        ShowLoading("show");
         AllRecord(token, limit, offset, account_change_url, function (response) {
+            ShowLoading("hide");
             if (response.errcode == '0') {
                 var pageCount = Math.ceil(response.total / limit);
                 $('.totalPage').text(Math.ceil(response.total / limit));
@@ -112,6 +114,7 @@ $(function () {
                 n++;
             }
         }, function (response) {
+            ShowLoading("hide");
             GetDataFail('accountChange', '5');
         });
     };
