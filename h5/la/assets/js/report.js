@@ -252,6 +252,8 @@ $(function () {
             { day: '2018-11-14', value: 478 },
             { day: '2018-11-15', value: 539 },
             { day: '2018-11-16', value: 603 },
+            { day: '2018-11-17', value: 603 },
+            { day: '2018-11-18', value: 803 },
         ],
         xkey: "day",
         ykeys: ["value"],
