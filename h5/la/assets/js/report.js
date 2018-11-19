@@ -243,7 +243,7 @@ $(function () {
 
     //用户增长趋势图
     Morris.Line({
-        element: 'morris-line-chart',
+        element: 'user-line-chart',
         data: [100,200,300,400,500,600,243,123,43,1,32,12,432,12,432,123,343],
         xkey: 'y',
         ykeys: ['u', 'b', 'c'],
