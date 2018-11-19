@@ -133,14 +133,23 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
         $count = count($rows);
         ?>
         <li>参与发言人数:<?php echo $count; ?>人</li>
-        <li><span>昵称</span><span>发言数</span></li>
-        <?php
-        foreach ($rows as $k => $v) {
-            ?>
-            <li><span><?php echo $v['bot_nickname']; ?>:</span><span><?php echo $v['count']; ?></span></li>
-        <?php } ?>
-
-
+        <table>
+            <thead>
+            <tr>
+                <th>昵称</th>
+                <th>发言数</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($rows as $k => $v) {
+                ?>
+                <tr>
+                    <td><?php echo $v['bot_nickname']; ?>:</td>
+                    <td><?php echo $v['count']; ?></td></tr>
+            <?php } ?>
+            </tbody>
+        </table>
     </ul>
 </div>
 
