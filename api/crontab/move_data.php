@@ -32,9 +32,6 @@ if ($rows){
     die();
 }
 
-echo "OK";
-
-die;
 
 //邀请
 
