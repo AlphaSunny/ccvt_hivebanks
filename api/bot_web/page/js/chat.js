@@ -149,4 +149,9 @@ $(function () {
     $("#top").click(function () {
         $("body, html").animate({scrollTop: 0}, 500);
     });
+
+    //jump login
+    $(".login").click(function () {
+        window.location.href = url + "/api/bot_web/page/login.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+    });
 });
