@@ -88,19 +88,20 @@ function into_transfer($us_id,$give_us_id,$send_money,$time,$flag,$detail,$type)
 
     /******************************转账记录表***************************************************/
 
+    $la_id = get_la_id();
     $flag = $flag==1 ? 5 : 6;
 
     //赠送者
-    $transfer['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s',$time));
+    $transfer['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
     $prvs_hash = get_pre_hash($us_id);
     $transfer['prvs_hash'] = $prvs_hash == 0 ? $transfer['hash_id'] : $prvs_hash;
     $transfer['credit_id'] = $us_id;
-    $transfer['debit_id'] = $give_us_id;
+    $transfer['debit_id'] = $la_id;
     $transfer['tx_amount'] = $send_money;
     $transfer['credit_balance'] = get_us_base_amount($transfer['credit_id']);
     $transfer['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s',$time));
     $transfer['flag'] = $flag;
-    $transfer['transfer_type'] = 3;
+    $transfer['transfer_type'] = 'us-la';
     $transfer['transfer_state'] = 1;
     $transfer['tx_detail'] = $detail;
     $transfer['give_or_receive'] = 1;
@@ -113,12 +114,36 @@ function into_transfer($us_id,$give_us_id,$send_money,$time,$flag,$detail,$type)
         die;
     }
 
+
+    //接收者(la)
+    $dat['hash_id'] = hash('md5', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+    $prvs_hash = get_pre_hash($la_id);
+    $dat['prvs_hash'] = $prvs_hash == 0 ? $dat['hash_id'] : $prvs_hash;
+    $dat['credit_id'] = $la_id;
+    $dat['debit_id'] = $us_id;
+    $dat['tx_amount'] = $send_money;
+    $dat['credit_balance'] = get_la_base_amount($la_id);
+    $dat['tx_hash'] = hash('md5', $la_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+    $dat['flag'] = $flag;
+    $dat['transfer_type'] = 'us-la';
+    $dat['transfer_state'] = 1;
+    $dat['tx_detail'] = $detail;
+    $dat['give_or_receive'] = 2;
+    $dat['ctime'] = $time;
+    $dat['utime'] = date('Y-m-d H:i:s',$time);
+    $sql = $db->sqlInsert("com_transfer_request", $dat);
+    $id = $db->query($sql);
+    if (!$id){
+        echo "转账记录表错误";
+        die;
+    }
+
     /***********************资金变动记录表***********************************/
 
     //us添加基准资产变动记录
     $us_type = 'us_get_balance';
     $ctime = date('Y-m-d H:i:s');
-    $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+    $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
     $com_balance_us['tx_id'] = $transfer['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($us_id);
     $com_balance_us['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;
@@ -131,6 +156,25 @@ function into_transfer($us_id,$give_us_id,$send_money,$time,$flag,$detail,$type)
     $com_balance_us["ctime"] = date('Y-m-d H:i:s');
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
+    if (!$db->query($sql)) {
+        echo "资金变动记录表错误";
+        die;
+    }
+    //la添加基准资产变动记录
+    $us_type = 'la_get_balance';
+    $com_balance_ba['hash_id'] = hash('md5', $la_id. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
+    $com_balance_ba['tx_id'] = $dat['tx_hash'];
+    $prvs_hash = get_recharge_pre_hash($la_id);
+    $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
+    $com_balance_ba["credit_id"] = $la_id;
+    $com_balance_ba["debit_id"] = $us_id;
+    $com_balance_ba["tx_type"] = $type;
+    $com_balance_ba["tx_amount"] = $send_money;
+    $com_balance_ba["credit_balance"] = get_la_base_amount($la_id);
+    $com_balance_ba["utime"] = time();
+    $com_balance_ba["ctime"] = $ctime;
+
+    $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
     if (!$db->query($sql)) {
         echo "资金变动记录表错误";
         die;
@@ -211,4 +255,21 @@ function get_us_id($invite_code){
     $db->query($sql);
     $rows = $db->fetchRow();
     return $rows['us_id'];
+}
+//获取la id
+function get_la_id(){
+    $db = new DB_COM();
+    $sql = "select id from la_base limit 1";
+    $db->query($sql);
+    $id = $db->getField($sql,'id');
+    return $id;
+}
+
+//获取la余额
+function get_la_base_amount($la_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from la_base WHERE id='{$la_id}'";
+    $db->query($sql);
+    $amount = $db->getField($sql,'base_amount');
+    return $amount;
 }
