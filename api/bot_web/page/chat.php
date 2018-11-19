@@ -33,7 +33,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 <div id="chat">
 <!--    <div class="title_box">-->
 <!--        <div class="flex center space-between">-->
-<!--            <!--                <h3>CCVT奖励统计</h3>-->-->
+<!--            <!--                <h3>CCVT奖励统计</h3>-->
 <!--            <div><img class="logo_img" src="img/ccvt_logo.png" alt=""></div>-->
 <!--            <a href="javascript:;" class="login">登录</a>-->
 <!--            <span class="amount_box">-->
