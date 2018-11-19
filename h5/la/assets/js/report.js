@@ -255,7 +255,7 @@ $(function () {
         ],
         xkey: "day",
         ykeys: ["value"],
-        labels: ['day'],
+        labels: ['Value'],
         fillOpacity: 0.6,
         hideHover: 'auto',
         smooth: true,
