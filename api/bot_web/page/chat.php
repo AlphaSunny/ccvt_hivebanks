@@ -31,17 +31,17 @@ $data = json_decode($json_string, true);
 $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64_encode($datetime) . "&group_name=" . $group_name2 . "&status=" . base64_encode(2);
 ?>
 <div id="chat">
-    <div class="title_box">
-        <div class="flex center space-between">
-            <!--                <h3>CCVT奖励统计</h3>-->
-            <div><img class="logo_img" src="img/ccvt_logo.png" alt=""></div>
-            <a href="javascript:;" class="login">登录</a>
-            <span class="amount_box">
-                    余额:
-                    <span class="amount"></span>
-                </span>
-        </div>
-    </div>
+<!--    <div class="title_box">-->
+<!--        <div class="flex center space-between">-->
+<!--            <!--                <h3>CCVT奖励统计</h3>-->-->
+<!--            <div><img class="logo_img" src="img/ccvt_logo.png" alt=""></div>-->
+<!--            <a href="javascript:;" class="login">登录</a>-->
+<!--            <span class="amount_box">-->
+<!--                    余额:-->
+<!--                    <span class="amount"></span>-->
+<!--                </span>-->
+<!--        </div>-->
+<!--    </div>-->
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?>(<?php echo $datetime;?>)</p>
 <!--    <h2 class="text-center title">聊天记录</h2>-->
 <!--    <p>群名称：CCVT创世首发群</p>-->
