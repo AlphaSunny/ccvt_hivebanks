@@ -26,8 +26,9 @@ if ($rows){
 function scale_upgrade($us_id,$scale){
     //判断是否可以升级
     $us_scale = get_us_base($us_id)['scale']+1;
-    $sca = get_scale_info($us_scale);
-    print_r($sca);die;
+    //获取当前积分的等级
+    $sca = get_scale_info($scale);
+    print_r($sca);
     if($scale>$sca['integral']){
 
     }
@@ -45,7 +46,7 @@ function la_unit(){
 //获取等级信息
 function get_scale_info($scale){
     $db = new DB_COM();
-    $sql = "select * from us_scale WHERE scale='{$scale}'";
+    $sql = "select * from us_scale WHERE integral>'{$scale}' limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
     return $row;
