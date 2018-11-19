@@ -46,6 +46,8 @@ $(function () {
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");
     var reg_type = GetQueryString("reg_type");
+    var statistical = GetQueryString("statistical");
+    var chat = GetQueryString("chat");
 
     if (reg_type) {
         $(".intl-tel-input").fadeOut("fast");
@@ -109,7 +111,11 @@ $(function () {
                 $('#phonePassword').val('');
                 var token = response.token;
                 SetCookie('statistics_user_token', token);
-                window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+                if (statistical) {
+                    window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+                } else if (chat) {
+                    window.location.href = url + "/api/bot_web/page/chat.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+                }
             }
         }, function (response) {
             ShowLogin("hide");
@@ -156,7 +162,11 @@ $(function () {
                 layer.msg("登录成功");
                 var token = response.token;
                 SetCookie('statistics_user_token', token);
-                window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+                if (statistical) {
+                    window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+                } else if (chat) {
+                    window.location.href = url + "/api/bot_web/page/chat.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+                }
             }
         }, function (response) {
             ShowLogin("hide");
