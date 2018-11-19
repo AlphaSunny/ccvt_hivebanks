@@ -85,7 +85,7 @@ $(function () {
 
     function GetAccountChange(token, limit, offset, account_change_url) {
         var tr = '';
-        $("#accountChange").html("<tr><td colspan='5'><img src='../../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>tryingToLoad...</span></td></tr>")
+        $("#accountChange").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>tryingToLoad...</span></td></tr>")
         AllRecord(token, limit, offset, account_change_url, function (response) {
             if (response.errcode == '0') {
                 var pageCount = Math.ceil(response.total / limit);
