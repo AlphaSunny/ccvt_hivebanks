@@ -114,7 +114,7 @@ if ($rows){
         $data['credit_balance'] = $ba_account;
         $data['tx_hash'] = hash('md5', $ba_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
         $data['flag'] = 4;
-        $data['transfer_type'] = 1;
+        $data['transfer_type'] = 'ba-us';
         $data['transfer_state'] = 1;
         $data['tx_detail'] = "聊天奖励";
         $data['give_or_receive'] = 1;
@@ -136,7 +136,7 @@ if ($rows){
         $dat['credit_balance'] = get_us_account($u_id)+$dat['tx_amount'];
         $dat['tx_hash'] = hash('md5', $u_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
         $dat['flag'] = 4;
-        $dat['transfer_type'] = 1;
+        $dat['transfer_type'] = 'ba-us';
         $dat['transfer_state'] = 1;
         $dat['tx_detail'] = "聊天奖励";
         $dat['give_or_receive'] = 2;

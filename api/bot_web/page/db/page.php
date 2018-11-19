@@ -95,7 +95,7 @@ function give_like_us($data)
     $transfer['credit_balance'] = get_us_base_amount($transfer['credit_id'])-$transfer['tx_amount'];
     $transfer['tx_hash'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $transfer['flag'] = $flag;
-    $transfer['transfer_type'] = 3;
+    $transfer['transfer_type'] = 'us-la';
     $transfer['transfer_state'] = 1;
     $transfer['tx_detail'] = $data['state']==1 ? '点赞消耗' : "踩人消耗";
     $transfer['give_or_receive'] = 1;
@@ -118,7 +118,7 @@ function give_like_us($data)
     $dat['credit_balance'] = get_la_base_amount($la_id)+$dat['tx_amount'];
     $dat['tx_hash'] = hash('md5', $la_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $dat['flag'] = $flag;
-    $dat['transfer_type'] = 1;
+    $dat['transfer_type'] = 'us-la';
     $dat['transfer_state'] = 1;
     $dat['tx_detail'] = $data['state']==1 ? '点赞消耗' : "踩人消耗";
     $dat['give_or_receive'] = 2;
