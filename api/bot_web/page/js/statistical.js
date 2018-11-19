@@ -119,7 +119,7 @@ $(function () {
                 ZanShowLogin("hide");
                 if (state == "1") {
                     first_already_zan_count += give_num;
-                    // $(".already_zan_count").text(first_already_zan_count);
+                    $(".already_zan_count").text(first_already_zan_count);
                     $('.web_toast_text').text("点赞成功!");
                     GetUserInfo();
                     //点赞成功出现动画
@@ -128,7 +128,7 @@ $(function () {
 
                 } else if (state == "2") {
                     first_already_cai_count += give_num;
-                    // $(".already_cai_count").text(first_already_cai_count);
+                    $(".already_cai_count").text(first_already_cai_count);
                     $('.web_toast_text').text("踩成功!");
                     GetUserInfo();
                     //踩成功出现动画
