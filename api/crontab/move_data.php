@@ -79,6 +79,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
     $unit = la_unit();
     //us加钱
     $sql = "update us_base set base_amount=base_amount+'{$send_money}'*'{$unit}' WHERE us_id='{$us_id}'";
+    echo $sql."<br />";
     $db -> query($sql);
     if (!$db->affectedRows()){
         echo "us加钱错误";
@@ -90,6 +91,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
 
 
     $sql = "update ba_base set base_amount=base_amount-'{$send_money}'*'{$unit}' WHERE ba_id='{$ba_id}'";
+    echo $sql."<br />";
     $db -> query($sql);
     if (!$db->affectedRows()){
         echo "ba减钱错误";
@@ -114,6 +116,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
     $data['ctime'] = strtotime($time);
     $data['utime'] = $time;
     $sql = $db->sqlInsert("com_transfer_request", $data);
+    echo $sql."<br />";
     $id = $db->query($sql);
     if (!$id){
         echo $us_id."错误";
@@ -137,6 +140,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
     $dat['ctime'] = strtotime($time);
     $dat['utime'] = $time;
     $sql = $db->sqlInsert("com_transfer_request", $dat);
+    echo $sql."<br />";
     $id = $db->query($sql);
     if (!$id){
         echo $us_id."错误";
@@ -162,6 +166,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
     $com_balance_us["ctime"] = $time;
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
+    echo $sql."<br />";
     if (!$db->query($sql)) {
         return false;
     }
@@ -181,6 +186,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
     $com_balance_ba["ctime"] = $time;
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
+    echo $sql."<br />";
     if (!$db->query($sql)) {
         return false;
     }
