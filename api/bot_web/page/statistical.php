@@ -16,7 +16,8 @@
 </head>
 
 <body>
-<div class="suc_zan"><img class="zan_cai_img" zan_data_src="img/suc_zan.gif" cai_data_src="img/suc_cai.gif" src="" alt=""></div>
+<div class="suc_zan"><img class="zan_cai_img" zan_data_src="img/suc_zan.gif" cai_data_src="img/suc_cai.gif" src=""
+                          alt=""></div>
 <?php
 require_once '../../inc/common.php';
 ini_set("display_errors", "off");
@@ -40,13 +41,13 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
     <div class="container">
         <div class="row title_box">
             <div class="col-md-12 col-sm-12 flex center space-between">
-<!--                <h3>CCVT奖励统计</h3>-->
+                <!--                <h3>CCVT奖励统计</h3>-->
                 <div><img class="logo_img" src="img/ccvt_logo.png" alt=""></div>
                 <a href="javascript:;" class="login">登录</a>
                 <span class="amount_box">
-                            余额:
-                            <span class="amount"></span>
-                        </span>
+                    余额:
+                    <span class="amount"></span>
+                </span>
             </div>
         </div>
         <div class="row margin-top-5">
@@ -100,11 +101,11 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
 
                                 <td class="text-left"><?php echo $v['wechat']; ?>
                                     (<?php
-                                      $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$v['us_id']}'";
-                                      $db->query($sql);
-                                      $base_amount = $db->getField($sql,'base_amount');
-                                      $base_amount = $base_amount ? $base_amount/$unit : 0;
-                                      echo $base_amount;
+                                    $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$v['us_id']}'";
+                                    $db->query($sql);
+                                    $base_amount = $db->getField($sql, 'base_amount');
+                                    $base_amount = $base_amount ? $base_amount / $unit : 0;
+                                    echo $base_amount;
                                     ?>)
                                 </td>
 
@@ -121,31 +122,35 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                 <td>
                                     <!--赞按钮-->
                                     <button class="btn btn-info btn-sm zan_btn">赞👍&nbsp;
-<!--                                        <img src="img/zan3.svg" alt="">-->
+                                        <!--                                        <img src="img/zan3.svg" alt="">-->
                                         <?php
-                                           $s_time = strtotime(date('Y-m-d 00:00:00'),time());
-                                           $e_time = strtotime(date('Y-m-d 23:59:59'),time());
-                                           $sql = "select sum(tx_amount)/'{$unit}' as zan from us_glory_integral_change_log WHERE debit_id='{$v['us_id']}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-                                           $db->query($sql);
-                                           $zan = $db->getField($sql,'zan');
-                                           if (!$zan){$zan=0;}
+                                        $s_time = strtotime(date('Y-m-d 00:00:00'), time());
+                                        $e_time = strtotime(date('Y-m-d 23:59:59'), time());
+                                        $sql = "select sum(tx_amount)/'{$unit}' as zan from us_glory_integral_change_log WHERE debit_id='{$v['us_id']}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                                        $db->query($sql);
+                                        $zan = $db->getField($sql, 'zan');
+                                        if (!$zan) {
+                                            $zan = 0;
+                                        }
                                         ?>
-                                        <span class="zan_count"><?php echo $zan;?></span>
-                                        <span class="none us_id"><?php echo $v['us_id']?></span>
+                                        <span class="zan_count"><?php echo $zan; ?></span>
+                                        <span class="none us_id"><?php echo $v['us_id'] ?></span>
                                     </button>
 
                                     <!--踩按钮-->
                                     <button class="btn btn-default btn-sm cai_btn">踩👎&nbsp;
                                         <?php
-                                        $s_time = strtotime(date('Y-m-d 00:00:00'),time());
-                                        $e_time = strtotime(date('Y-m-d 23:59:59'),time());
+                                        $s_time = strtotime(date('Y-m-d 00:00:00'), time());
+                                        $e_time = strtotime(date('Y-m-d 23:59:59'), time());
                                         $sql = "select sum(tx_amount)/'{$unit}' as zan from us_glory_integral_change_log WHERE debit_id='{$v['us_id']}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
                                         $db->query($sql);
-                                        $zan = $db->getField($sql,'zan');
-                                        if (!$zan){$zan=0;}
+                                        $zan = $db->getField($sql, 'zan');
+                                        if (!$zan) {
+                                            $zan = 0;
+                                        }
                                         ?>
-                                        <span class="zan_count"><?php echo $zan;?></span>
-                                        <span class="none us_id"><?php echo $v['us_id']?></span>
+                                        <span class="zan_count"><?php echo $zan; ?></span>
+                                        <span class="none us_id"><?php echo $v['us_id'] ?></span>
                                     </button>
                                 </td>
                             </tr>
@@ -174,8 +179,8 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                 <span class="zan_top">每日上限
                     <?php
                     $sql = "SELECT max_give_like FROM bot_status limit 1";
-                    $db -> query($sql);
-                    $row = $db -> getField($sql,'max_give_like');
+                    $db->query($sql);
+                    $row = $db->getField($sql, 'max_give_like');
                     echo $row;
                     ?>ccvt
                 </span>
@@ -184,8 +189,8 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                 <span class="cai_top">每日上限
                     <?php
                     $sql = "SELECT max_give_no_like FROM bot_status limit 1";
-                    $db -> query($sql);
-                    $row = $db -> getField($sql,'max_give_no_like');
+                    $db->query($sql);
+                    $row = $db->getField($sql, 'max_give_no_like');
                     echo $row;
                     ?>ccvt
                 </span>
@@ -194,14 +199,16 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                 <span class="margin-left-5 zan_num">已点赞
                     <span class="already_count" style="color: #333333">
                         <?php
-                            $us_id = $_COOKIE['statistics_user_id'];
-                            if ($us_id){
-                                $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-                                $db->query($sql);
-                                $all_am = $db->getField($sql,'all_am');
-                                if (!$all_am){$all_am=0;}
-                                echo $all_am;
+                        $us_id = $_COOKIE['statistics_user_id'];
+                        if ($us_id) {
+                            $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                            $db->query($sql);
+                            $all_am = $db->getField($sql, 'all_am');
+                            if (!$all_am) {
+                                $all_am = 0;
                             }
+                            echo $all_am;
+                        }
                         ?>
                     </span>ccvt
                 </span>
@@ -211,11 +218,13 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     <span class="already_count" style="color: #333333">
                         <?php
                         $us_id = $_COOKIE['statistics_user_id'];
-                        if ($us_id){
+                        if ($us_id) {
                             $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
                             $db->query($sql);
-                            $all_am = $db->getField($sql,'all_am');
-                            if (!$all_am){$all_am=0;}
+                            $all_am = $db->getField($sql, 'all_am');
+                            if (!$all_am) {
+                                $all_am = 0;
+                            }
                             echo $all_am;
                         }
                         ?>
