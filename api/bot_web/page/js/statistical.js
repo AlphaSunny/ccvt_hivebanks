@@ -134,6 +134,7 @@ $(function () {
 
                 setTimeout(function () {
                     $(".web_toast").fadeOut("fast");
+                    $(".suc_zan").fadeOut("fast");
                     // window.location.reload();
                 }, 2000);
             }
