@@ -256,14 +256,14 @@ $(function () {
         xkey: "day",
         ykeys: ["value"],
         labels: ['user'],
-        // fillOpacity: 0.6,
-        // hideHover: 'auto',
-        // smooth: true,
-        // behaveLikeLine: true,
-        // resize: true,
-        // pointFillColors: ['#ffffff'],
-        // pointStrokeColors: ['black'],
-        // lineColors: ['green']
+        fillOpacity: 0.6,
+        hideHover: 'auto',
+        smooth: true,
+        behaveLikeLine: true,
+        resize: true,
+        pointFillColors: ['#ffffff'],
+        pointStrokeColors: ['black'],
+        lineColors: ['green']
     });
 
     //show invite img
