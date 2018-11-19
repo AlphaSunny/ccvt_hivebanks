@@ -69,7 +69,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 <!--    </div>-->
     <?php if ($status!=1){?>
         <div class="backStatistics_box login_right_box">
-            <a href="javascript:;" class="backStatistics login">登录</a>
+            <a href="javascript:;" class="backStatistics">登录</a>
         </div>
 
     <div class="backStatistics_box">
