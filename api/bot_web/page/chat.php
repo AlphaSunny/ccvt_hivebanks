@@ -145,7 +145,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
             foreach ($rows as $k => $v) {
                 ?>
                 <tr>
-                    <td><?php echo $v['bot_nickname']; ?>:</td>
+                    <td style="text-align: left"><?php echo $v['bot_nickname']; ?>:</td>
                     <td><?php echo $v['count']; ?></td></tr>
             <?php } ?>
             </tbody>
