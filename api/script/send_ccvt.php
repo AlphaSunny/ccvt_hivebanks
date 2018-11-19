@@ -33,7 +33,7 @@ function send_to_us_ccvt($us_id,$type,$money)
     }
 
     //ba减钱
-    $sql = "select * from ba_base ORDER BY utime asc limit 1";
+    $sql = "select * from ba_base ORDER BY ctime asc limit 1";
     $db->query($sql);
     $rows = $db->fetchRow();
 
