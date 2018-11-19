@@ -85,9 +85,8 @@ $(function () {
 
     function GetAccountChange(token, limit, offset, account_change_url) {
         var tr = '';
-        ShowLoading("show");
+        $("#accountChange").html("<tr><td colspan='5'><img src='../../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>tryingToLoad...</span></td></tr>")
         AllRecord(token, limit, offset, account_change_url, function (response) {
-            ShowLoading("hide");
             if (response.errcode == '0') {
                 var pageCount = Math.ceil(response.total / limit);
                 $('.totalPage').text(Math.ceil(response.total / limit));
@@ -114,7 +113,6 @@ $(function () {
                 n++;
             }
         }, function (response) {
-            ShowLoading("hide");
             GetDataFail('accountChange', '5');
         });
     };
