@@ -31,7 +31,7 @@ function scale_upgrade($us_id,$scale){
     $sca = get_scale_info($scale);
     print_r($sca);
     echo $scale."<br />";
-    if($scale>$sca['integral']){
+    if($us_scale<$sca['scale']){
 
     }
 }
