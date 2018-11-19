@@ -43,7 +43,8 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
         </div>
     </div>
 <!--    <p class="text-center title">--><?php //echo base64_decode($_REQUEST['group_name']); ?><!--(--><?php //echo $datetime;?><!--)</p>-->
-    <h2 class="text-center title">CCVT创世首发群(2018/11/18)聊天记录</h2>
+    <h2 class="text-center title">CCVT创世首发群聊天记录</h2>
+    <h3>(2018/11/18)</h3>
 <!--    <p class="filter_title">筛选</p>-->
 <!--    <div class="filter_box">-->
 <!--        <form action="--><?php //echo $_SERVER['PHP_SELF'];?><!--" method="get">-->
