@@ -47,7 +47,7 @@ function la_unit(){
 //获取等级信息
 function get_scale_info($scale){
     $db = new DB_COM();
-    $sql = "select * from us_scale WHERE integral>='{$scale}' limit 1";
+    $sql = "select * from us_scale WHERE integral<='{$scale}' limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
     return $row;
