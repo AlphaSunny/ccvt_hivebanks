@@ -10,7 +10,8 @@
 </head>
 
 <body>
-<div class="suc_zan"><img class="zan_cai_img" zan_data_src="img/suc_zan.gif" cai_data_src="img/suc_cai.gif" src="" alt=""></div>
+<div class="suc_zan"><img class="zan_cai_img" zan_data_src="img/suc_zan.gif" cai_data_src="img/suc_cai.gif" src=""
+                          alt=""></div>
 <?php
 require_once '../../inc/common.php';
 ini_set("display_errors", "off");
@@ -31,58 +32,62 @@ $data = json_decode($json_string, true);
 $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64_encode($datetime) . "&group_name=" . $group_name2 . "&status=" . base64_encode(2);
 ?>
 <div id="chat">
-<!--    <div class="title_box">-->
-<!--        <div class="flex center space-between">-->
-<!--            <!--                <h3>CCVT奖励统计</h3>-->
-<!--            <div><img class="logo_img" src="img/ccvt_logo.png" alt=""></div>-->
-<!--            <a href="javascript:;" class="login">登录</a>-->
-<!--            <span class="amount_box">-->
-<!--                    余额:-->
-<!--                    <span class="amount"></span>-->
-<!--                </span>-->
-<!--        </div>-->
-<!--    </div>-->
-    <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?>(<?php echo $datetime;?>)</p>
-<!--    <h2 class="text-center title">聊天记录</h2>-->
-<!--    <p>群名称：CCVT创世首发群</p>-->
-<!--    <p>时间：2018/11/18</p>-->
-<!--    <p class="filter_title">筛选</p>-->
-<!--    <div class="filter_box">-->
-<!--        <form action="--><?php //echo $_SERVER['PHP_SELF'];?><!--" method="get">-->
-<!--<!--        <div>-->
-<!--<!--            <span class="font-size-14">荣耀积分:</span>-->
-<!--<!--            <select name="filter" id="filter" class="form-control">-->
-<!--<!--                <option value="none">选择荣耀积分范围</option>-->
-<!--<!--                <option value="0-30">0-30</option>-->
-<!--<!--                <option value="0-30">0-30</option>-->
-<!--<!--                <option value="0-30">0-30</option>-->
-<!--<!--            </select>-->
-<!--<!--        </div>-->
-<!--        <div class="form-group-sm">-->
-<!--            <span class="font-size-14">昵称:</span>-->
-<!--            <input type="text" name="nikename" class="form-control search_input">-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <button class="search_btn">搜索</button>-->
-<!--        </div>-->
-<!--        </form>-->
-<!--    </div>-->
-    <?php if ($status!=1){?>
+    <!--    <div class="title_box">-->
+    <!--        <div class="flex center space-between">-->
+    <!--            <!--                <h3>CCVT奖励统计</h3>-->
+    <!--            <div><img class="logo_img" src="img/ccvt_logo.png" alt=""></div>-->
+    <!--            <a href="javascript:;" class="login">登录</a>-->
+    <!--            <span class="amount_box">-->
+    <!--                    余额:-->
+    <!--                    <span class="amount"></span>-->
+    <!--                </span>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?>(<?php echo $datetime; ?>)</p>
+    <!--    <h2 class="text-center title">聊天记录</h2>-->
+    <!--    <p>群名称：CCVT创世首发群</p>-->
+    <!--    <p>时间：2018/11/18</p>-->
+    <!--    <p class="filter_title">筛选</p>-->
+    <!--    <div class="filter_box">-->
+    <!--        <form action="--><?php //echo $_SERVER['PHP_SELF'];?><!--" method="get">-->
+    <!--<!--        <div>-->
+    <!--<!--            <span class="font-size-14">荣耀积分:</span>-->
+    <!--<!--            <select name="filter" id="filter" class="form-control">-->
+    <!--<!--                <option value="none">选择荣耀积分范围</option>-->
+    <!--<!--                <option value="0-30">0-30</option>-->
+    <!--<!--                <option value="0-30">0-30</option>-->
+    <!--<!--                <option value="0-30">0-30</option>-->
+    <!--<!--            </select>-->
+    <!--<!--        </div>-->
+    <!--        <div class="form-group-sm">-->
+    <!--            <span class="font-size-14">昵称:</span>-->
+    <!--            <input type="text" name="nikename" class="form-control search_input">-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--            <button class="search_btn">搜索</button>-->
+    <!--        </div>-->
+    <!--        </form>-->
+    <!--    </div>-->
+    <?php if ($status != 1) { ?>
         <div class="backStatistics_box login_right_box">
-            <a href="javascript:;" class="backStatistics">登录</a>
+            <a href="javascript:;" class="backStatistics login">登录</a>
+            <span class="amount_box">
+                余额:
+                <span class="amount"></span>
+            </span>
         </div>
 
-    <div class="backStatistics_box">
-        <a href="javascript:;" class="backStatistics">奖励统计</a>
-    </div>
-    <?php }?>
+        <div class="backStatistics_box">
+            <a href="javascript:;" class="backStatistics">奖励统计</a>
+        </div>
+    <?php } ?>
     <ul class="chatList">
         <?php
         $nickname = $_GET['nikename'];
         $tblPrefix = "@风赢小助手";
         $tblPrefix2 = "@小助手";
         $sql = "select bot_nickname,bot_content,bot_send_time,head_img,type,bot_create_time from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}'";
-        if ($nickname){
+        if ($nickname) {
             $sql .= " AND bot_nickname LIKE '$nickname%'";
         }
         $sql .= " ORDER BY bot_create_time  ASC ";
@@ -173,37 +178,37 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
             <p>
                 <!--赞上限-->
                 <span class="zan_top">每日上限
-<!--                    --><?php
-//                    $sql = "SELECT max_give_like FROM bot_status limit 1";
-//                    $db -> query($sql);
-//                    $row = $db -> getField($sql,'max_give_like');
-//                    echo $row;
-//                    ?><!--ccvt-->
+                    <!--                    --><?php
+                    //                    $sql = "SELECT max_give_like FROM bot_status limit 1";
+                    //                    $db -> query($sql);
+                    //                    $row = $db -> getField($sql,'max_give_like');
+                    //                    echo $row;
+                    //                    ?><!--ccvt-->
                 </span>
 
                 <!--踩上限-->
                 <span class="cai_top">每日上限
-<!--                    --><?php
-//                    $sql = "SELECT max_give_no_like FROM bot_status limit 1";
-//                    $db -> query($sql);
-//                    $row = $db -> getField($sql,'max_give_no_like');
-//                    echo $row;
-//                    ?><!--ccvt-->
+                    <!--                    --><?php
+                    //                    $sql = "SELECT max_give_no_like FROM bot_status limit 1";
+                    //                    $db -> query($sql);
+                    //                    $row = $db -> getField($sql,'max_give_no_like');
+                    //                    echo $row;
+                    //                    ?><!--ccvt-->
                 </span>
 
                 <!--已赞数量-->
                 <span class="margin-left-5 zan_num">已点赞
                     <span class="already_count" style="color: #333333">
 <!--                        --><?php
-//                        $us_id = $_COOKIE['statistics_user_id'];
-//                        if ($us_id){
-//                            $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-//                            $db->query($sql);
-//                            $all_am = $db->getField($sql,'all_am');
-//                            if (!$all_am){$all_am=0;}
-//                            echo $all_am;
-//                        }
-//                        ?>
+                        //                        $us_id = $_COOKIE['statistics_user_id'];
+                        //                        if ($us_id){
+                        //                            $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                        //                            $db->query($sql);
+                        //                            $all_am = $db->getField($sql,'all_am');
+                        //                            if (!$all_am){$all_am=0;}
+                        //                            echo $all_am;
+                        //                        }
+                        //                        ?>
                     </span>ccvt
                 </span>
 
@@ -211,15 +216,15 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <span class="margin-left-5 cai_num">已踩
                     <span class="already_count" style="color: #333333">
 <!--                        --><?php
-//                        $us_id = $_COOKIE['statistics_user_id'];
-//                        if ($us_id){
-//                            $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-//                            $db->query($sql);
-//                            $all_am = $db->getField($sql,'all_am');
-//                            if (!$all_am){$all_am=0;}
-//                            echo $all_am;
-//                        }
-//                        ?>
+                        //                        $us_id = $_COOKIE['statistics_user_id'];
+                        //                        if ($us_id){
+                        //                            $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                        //                            $db->query($sql);
+                        //                            $all_am = $db->getField($sql,'all_am');
+                        //                            if (!$all_am){$all_am=0;}
+                        //                            echo $all_am;
+                        //                        }
+                        //                        ?>
                     </span>ccvt
                 </span>
             </p>
