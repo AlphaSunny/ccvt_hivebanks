@@ -133,7 +133,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
         $count = count($rows);
         ?>
         <li>参与发言人数:<?php echo $count; ?>人</li>
-        <table>
+        <table cellspacing="0">
             <thead>
             <tr>
                 <th style="text-align: left">昵称</th>
