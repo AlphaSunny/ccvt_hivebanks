@@ -30,6 +30,11 @@ $(function () {
         }
     }
 
+    //获取首次已赞和已踩的数量
+    var first_already_zan_count = $(".already_zan_count").text();
+    var first_already_cai_count = $(".already_cai_count").text();
+
+
     //获取参数
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");
@@ -108,15 +113,19 @@ $(function () {
             if (response.errcode == "0") {
                 ZanShowLogin("hide");
                 if (state == "1") {
+                    first_already_zan_count += give_num;
+                    $(".already_zan_count").text(first_already_zan_count + give_num);
                     $('.web_toast_text').text("点赞成功!");
 
                     //点赞成功出现动画
-                    $(".zan_cai_img").attr("src",$(".zan_cai_img").attr("zan_data_src"));
+                    $(".zan_cai_img").attr("src", $(".zan_cai_img").attr("zan_data_src"));
                     $(".suc_zan").fadeIn("fast");
                 } else if (state == "2") {
+                    first_already_cai_count += give_num;
+                    $(".already_cai_count").text(first_already_cai_count + give_num);
                     $('.web_toast_text').text("踩成功!");
                     //踩成功出现动画
-                    $(".zan_cai_img").attr("src",$(".zan_cai_img").attr("cai_data_src"));
+                    $(".zan_cai_img").attr("src", $(".zan_cai_img").attr("cai_data_src"));
                     $(".suc_zan").fadeIn("fast");
                 }
 

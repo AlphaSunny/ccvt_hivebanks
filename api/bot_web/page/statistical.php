@@ -197,7 +197,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
 
                 <!--已赞数量-->
                 <span class="margin-left-5 zan_num">已点赞
-                    <span class="already_count" style="color: #333333">
+                    <span class="already_zan_count" style="color: #333333">
                         <?php
                         $us_id = $_COOKIE['statistics_user_id'];
                         if ($us_id) {
@@ -215,7 +215,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
 
                 <!--已踩数量-->
                 <span class="margin-left-5 cai_num">已踩
-                    <span class="already_count" style="color: #333333">
+                    <span class="already_cai_count" style="color: #333333">
                         <?php
                         $us_id = $_COOKIE['statistics_user_id'];
                         if ($us_id) {
