@@ -288,8 +288,8 @@ $(function () {
         //     { day: '2018-11-29', value: 803 },
         //     { day: '2018-11-30', value: 803 }
         // ],
-        xkey: "day",
-        ykeys: ["value"],
+        xkey: "date",
+        ykeys: ["num"],
         labels: ['user'],
         xLabels:"day",
         fillOpacity: 0.6,
