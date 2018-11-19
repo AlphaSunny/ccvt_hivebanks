@@ -97,16 +97,19 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                         $list = $db->fetchAll();
                         foreach ($list as $k => $v) {
                             ?>
-                            <tr>
+                            <tr class="item">
 
-                                <td class="text-left"><?php echo $v['wechat']; ?>
-                                    (<?php
-                                    $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$v['us_id']}'";
-                                    $db->query($sql);
-                                    $base_amount = $db->getField($sql, 'base_amount');
-                                    $base_amount = $base_amount ? $base_amount / $unit : 0;
-                                    echo $base_amount;
-                                    ?>)
+                                <td class="text-left">
+                                    <span><?php echo $v['wechat']; ?></span>
+                                    (<span class="integral">
+                                        <?php
+                                        $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$v['us_id']}'";
+                                        $db->query($sql);
+                                        $base_amount = $db->getField($sql, 'base_amount');
+                                        $base_amount = $base_amount ? $base_amount / $unit : 0;
+                                        echo $base_amount;
+                                        ?>
+                                    </span>)
                                 </td>
 
                                 <td><?php echo $v['amount'] / $unit; ?></td>

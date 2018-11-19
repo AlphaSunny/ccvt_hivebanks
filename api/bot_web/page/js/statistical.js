@@ -68,10 +68,11 @@ $(function () {
     });
 
     //点赞
-    var give_us_id = "", state = "", zan_count = "";
+    var give_us_id = "", state = "", zan_count = "", integral = "";
     $(".zan_btn").click(function () {
         give_us_id = $(this).children(".us_id").text();
         zan_count = parseInt($(this).children(".zan_count").text());
+        integral = parseInt($(this).parents(".item").find(".integral").text());
         if (!token) {
             alert("登录之后才可以点赞哦");
             return;
@@ -95,6 +96,7 @@ $(function () {
     $(".cai_btn").click(function () {
         give_us_id = $(this).children(".us_id").text();
         cai_count = parseInt($(this).children(".cai_count").text());
+        integral = parseInt($(this).parents(".item").find(".integral").text());
         if (!token) {
             alert("登录之后才可以踩哦");
             return;
@@ -122,9 +124,14 @@ $(function () {
                 ZanShowLogin("hide");
                 if (state == "1") {
                     first_already_zan_count += give_num;
-                    $(".already_zan_count").text(first_already_zan_count);
+                    $(".already_zan_count").text(first_already_zan_count);//当前用户已经使用多少次赞
+
                     zan_count += give_num;
-                    $(".zan_count").text(zan_count);
+                    $(".zan_count").text(zan_count);//被赞用户被赞多少次
+
+                    integral += give_num;
+                    $(".integral").text(integral);//被赞用户剩余积分
+
                     $('.web_toast_text').text("点赞成功!");
                     GetUserInfo();
                     //点赞成功出现动画
@@ -133,9 +140,14 @@ $(function () {
 
                 } else if (state == "2") {
                     first_already_cai_count += give_num;
-                    $(".already_cai_count").text(first_already_cai_count);
+                    $(".already_cai_count").text(first_already_cai_count);//当前用户已经使用多少次踩
+
                     cai_count += give_num;
-                    $(".cai_count").text(cai_count);
+                    $(".cai_count").text(cai_count);//被踩用户被踩多少次
+
+                    integral -= give_num;
+                    $(".integral").text(integral);//被踩用户剩余积分
+
                     $('.web_toast_text').text("踩成功!");
                     GetUserInfo();
                     //踩成功出现动画
@@ -149,7 +161,6 @@ $(function () {
                 setTimeout(function () {
                     $(".web_toast").fadeOut("fast");
                     $(".suc_zan").fadeOut("fast");
-                    // window.location.reload();
                 }, 2000);
             }
         }, function (response) {
