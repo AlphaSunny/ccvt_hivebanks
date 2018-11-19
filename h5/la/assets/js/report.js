@@ -245,25 +245,23 @@ $(function () {
     Morris.Line({
         element: 'user-line-chart',
         data: [
-            {day:"2018/11/10",value:"100"},
-            {day:"2018/11/11",value:"200"},
-            {day:"2018/11/12",value:"300"},
-            {day:"2018/11/13",value:"230"},
-            {day:"2018/11/14",value:"120"},
-            {day:"2018/11/15",value:"125"},
-            {day:"2018/11/16",value:"500"},
+            { year: '2008', value: 20 },
+            { year: '2009', value: 10 },
+            { year: '2010', value: 5 },
+            { year: '2011', value: 5 },
+            { year: '2012', value: 20 }
         ],
-        xkey: "day",
+        xkey: "year",
         ykeys: ["value"],
         labels: ['Value'],
-        fillOpacity: 0.6,
-        hideHover: 'auto',
-        smooth: true,
-        behaveLikeLine: true,
-        resize: true,
-        pointFillColors: ['#ffffff'],
-        pointStrokeColors: ['black'],
-        lineColors: ['green']
+        // fillOpacity: 0.6,
+        // hideHover: 'auto',
+        // smooth: true,
+        // behaveLikeLine: true,
+        // resize: true,
+        // pointFillColors: ['#ffffff'],
+        // pointStrokeColors: ['black'],
+        // lineColors: ['green']
     });
 
     //show invite img
