@@ -122,10 +122,10 @@ $(function () {
                     $(".already_zan_count").text(first_already_zan_count);
                     $('.web_toast_text').text("点赞成功!");
                     GetUserInfo();
-
                     //点赞成功出现动画
                     $(".zan_cai_img").attr("src", $(".zan_cai_img").attr("zan_data_src"));
                     $(".suc_zan").fadeIn("fast");
+
                 } else if (state == "2") {
                     first_already_cai_count += give_num;
                     $(".already_cai_count").text(first_already_cai_count);
