@@ -51,7 +51,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
         $nickname = $_GET['nikename'];
         $tblPrefix = "@风赢小助手";
         $tblPrefix2 = "@小助手";
-        $sql = "select bot_nickname,bot_content,bot_send_time,head_img,type,bot_create_time from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}'";
+        $sql = "select bot_nickname,bot_content,bot_send_time,head_img,type,bot_create_time,wechat from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}'";
         if ($nickname) {
             $sql .= " AND bot_nickname LIKE '$nickname%'";
         }
