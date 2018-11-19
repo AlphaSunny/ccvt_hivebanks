@@ -56,9 +56,9 @@ $(function () {
     });
 
     //点赞
-    var chat_name = "", state = "";
+    var give_us_id = "", state = "";
     $(".zan_img_box").click(function () {
-        chat_name = $(this).parents(".name").children(".chat_name").text();
+        give_us_id = $(this).parents(".zan_cai_box").children(".us_id").text();
         if (!token) {
             alert("登录之后才可以点赞哦");
             return;
@@ -79,7 +79,7 @@ $(function () {
 
     //踩
     $(".cai_img_box").click(function () {
-        give_us_id = $(this).children(".us_id").text();
+        give_us_id = $(this).parents(".zan_cai_box").children(".us_id").text();
         if (!token) {
             alert("登录之后才可以踩哦");
             return;
@@ -102,7 +102,7 @@ $(function () {
     $(".ok").click(function () {
         var give_num = $(".confirm_input").val();
         ZanShowLogin("show");
-        GiveChatName(token, chat_name, give_num, state, function (response) {
+        Give(token, give_us_id, give_num, state, function (response) {
             if (response.errcode == "0") {
                 ZanShowLogin("hide");
                 if (state == "1") {
