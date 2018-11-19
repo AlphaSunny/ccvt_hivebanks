@@ -256,6 +256,7 @@ $(function () {
         xkey: "day",
         ykeys: ["value"],
         labels: ['user'],
+        xLabels:"day",
         fillOpacity: 0.6,
         hideHover: 'auto',
         smooth: true,// 是否平滑显示
