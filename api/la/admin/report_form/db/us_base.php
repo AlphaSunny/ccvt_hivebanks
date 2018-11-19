@@ -106,3 +106,18 @@ from us_base as a where invite_code!=0 group by invite_code order by count desc;
     }
     return $rows;
 }
+
+/**
+ * @param $day
+ * @return array
+ * 返回最近$day天的用户注册数
+ */
+function reg_daily($day){
+    $db = new DB_COM();
+    $sql = "select count(us_id) as num,DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d') as date 
+            from us_base where DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d') between 
+            date_sub(curdate(),interval {$day} day) and date_sub(curdate(),interval 1 day) group by DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d')";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    return $rows;
+}
