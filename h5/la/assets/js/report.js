@@ -258,7 +258,7 @@ $(function () {
         labels: ['user'],
         fillOpacity: 0.6,
         hideHover: 'auto',
-        smooth: true,
+        smooth: false,
         behaveLikeLine: true,
         resize: true,
         pointFillColors: ['#ffffff'],
