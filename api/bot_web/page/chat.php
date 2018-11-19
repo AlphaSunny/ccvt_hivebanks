@@ -58,6 +58,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
         $sql .= " ORDER BY bot_create_time  ASC ";
         $db->query($sql);
         $rows = $db->fetchAll();
+        print_r($rows);die;
         $ti = -1;
         foreach ($rows as $k => $v) {
             ?>
