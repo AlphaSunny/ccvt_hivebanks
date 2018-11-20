@@ -258,7 +258,10 @@ $(function () {
     //获取user ba ca每天资产变动
     function GetAmountLineFun(day){
         GetAmountLine(token, day, function (response) {
-            console.log(response);
+            if(response.errcode == "0"){
+                var data = response.rows;
+                LineFun(data);
+            }
         }, function (response) {
             LayerFun(response.errcode);
         });
@@ -284,10 +287,10 @@ $(function () {
     //折线图
     // var user = 2000, ba = 3000, ca = 4000;
     //     var dataChart = [{ y: '2018', u: user,  b: ba, c: ca}];
-    function LineFun(dataChart) {
+    function LineFun(data) {
         Morris.Line({
             element: 'morris-line-chart',
-            data: dataChart,
+            data: data,
             xkey: 'y',
             ykeys: ['u', 'b', 'c'],
             labels: ['user amount', 'ba amount', 'ca amount'],
