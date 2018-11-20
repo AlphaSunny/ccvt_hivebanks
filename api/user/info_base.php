@@ -34,6 +34,9 @@ $us_id = check_token($token);
 $row = get_us_base_info_by_token($us_id);
 $row["base_amount"] = $row["base_amount"] / get_la_base_unit();
 $row["lock_amount"] = $row["lock_amount"] / get_la_base_unit();
+if ($row['glory_of_integral']!=0){
+    $row["glory_of_integral"] = $row["glory_of_integral"] / get_la_base_unit();
+}
 
 // 返回数据做成
 $rtn_ary = array();

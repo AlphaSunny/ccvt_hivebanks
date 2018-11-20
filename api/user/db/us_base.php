@@ -305,6 +305,17 @@ function get_us_base_info_by_token($us_id)
     $sql = "SELECT * FROM us_base WHERE us_id = '{$us_id}'";
     $db->query($sql);
     $row = $db->fetchRow();
+
+    $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$us_id}'";
+    $db->query($sql);
+    $us_asset = $db->fetchRow();
+    if (!$us_asset){
+        $glory_of_integral = 0;
+    }else{
+        $glory_of_integral = $us_asset['base_amount'];
+    }
+    $row['glory_of_integral'] = $glory_of_integral;
+
     return $row;
 }
 //======================================
