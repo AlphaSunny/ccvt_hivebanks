@@ -206,6 +206,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                         <?php
                         $us_id = $_COOKIE['statistics_user_id'];
                         echo $us_id;
+                        echo 0;
                         if ($us_id) {
                             $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
                             echo $sql;
