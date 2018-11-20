@@ -72,9 +72,9 @@ $(function () {
     $(".zan_btn").click(function () {
         give_us_id = $(this).children(".us_id").text();
         zan_count = parseInt($(this).children(".zan_count").text());
-        zan_cai_this = $(this);
+        zan_cai_this = $(this).children(".zan_count");;
         integral = parseInt($(this).parents(".item").find(".integral").text());
-        integral_this = $(this).parents(".item").find("integral");
+        integral_this = $(this).parents(".item").find(".integral");
         if (!token) {
             alert("登录之后才可以点赞哦");
             return;
@@ -98,9 +98,9 @@ $(function () {
     $(".cai_btn").click(function () {
         give_us_id = $(this).children(".us_id").text();
         cai_count = parseInt($(this).children(".cai_count").text());
-        zan_cai_this = $(this);
+        zan_cai_this = $(this).children(".cai_count");
         integral = parseInt($(this).parents(".item").find(".integral").text());
-        integral_this = $(this).parents(".item").find("integral");
+        integral_this = $(this).parents(".item").find(".integral");
         if (!token) {
             alert("登录之后才可以踩哦");
             return;
