@@ -137,9 +137,10 @@ function total_daily($day){
               from us_base where DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d') between 
               date_sub(curdate(),interval 99999 day) and date_sub(curdate(),interval {$day} day) ;";
         $db->query($sql);
-        if($db->fetchRow()) {
-            $rows[$day] = $day;
-            $data[] = $rows;
+        $row = $db->fetchRow();
+        if($row) {
+//            $rows[$day] = $day;
+            $data[] = $row;
         }
     }
     return $data;
