@@ -26,7 +26,7 @@ if ($rows){
 function scale_upgrade($us_id,$scale){
 
     //判断是否可以升级
-    $us_scale = get_us_base($us_id)['scale']+1;
+    $us_scale = get_us_base($us_id)['scale'];
     //获取当前积分的等级
     $sca = get_scale_info($scale);
     print_r($sca)."<br />";
