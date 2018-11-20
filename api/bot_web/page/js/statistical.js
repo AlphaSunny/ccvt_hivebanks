@@ -49,6 +49,13 @@ $(function () {
         $(".logOut").remove();
     }
 
+    //点击退出
+    $(".logOut").click(function () {
+       DelCookie("statistics_user_token");
+       DelCookie("statistics_user_id");
+       window.reload();
+    });
+
     function GetUserInfo() {
         UserInformation(token, function (response) {
             if (response.errcode == "0") {
