@@ -72,7 +72,8 @@ $(function () {
     $(".zan_btn").click(function () {
         give_us_id = $(this).children(".us_id").text();
         zan_count = parseInt($(this).children(".zan_count").text());
-        zan_cai_this = $(this).children(".zan_count");;
+        zan_cai_this = $(this).children(".zan_count");
+        ;
         integral = parseInt($(this).parents(".item").find(".integral").text());
         integral_this = $(this).parents(".item").find(".integral");
         if (!token) {
@@ -122,6 +123,13 @@ $(function () {
     //确定点赞
     $(".ok").click(function () {
         var give_num = parseInt($(".confirm_input").val());
+        if (!(/(^[1-9])\d*$/.test(give_num))) {
+            alert("请输入正确的数值");
+            return;
+        }else {
+            console.log("输入正确");
+            return;
+        }
         ZanShowLogin("show");
         Give(token, give_us_id, give_num, state, function (response) {
             if (response.errcode == "0") {
