@@ -32,6 +32,7 @@ function scale_upgrade($us_id,$scale){
     //获取当前积分的等级
     $sca = get_scale_info($scale);
     if($us_scale<$sca['scale']){
+        echo 222;
         $db = new DB_COM();
         $pInTrans = $db->StartTrans();  //开启事务
         //升级记录表
