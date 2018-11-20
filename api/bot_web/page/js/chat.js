@@ -59,6 +59,9 @@ $(function () {
     var first_already_zan_count = parseInt($(".already_zan_count").text());
     var first_already_cai_count = parseInt($(".already_cai_count").text());
 
+    //获取余额
+    var user_amount = parseInt($(".amount").text());
+
     //点赞
     var give_us_id = "", state = "";
     $(".zan_img_box").click(function () {
@@ -112,6 +115,9 @@ $(function () {
                 if (state == "1") {
                     first_already_zan_count += give_num;
                     $(".already_zan_count").text(first_already_zan_count);
+
+                    user_amount -= give_num;
+                    $(".amount").text(user_amount);
                     $('.web_toast_text').text("点赞成功!");
 
                     //点赞成功出现动画
@@ -121,6 +127,10 @@ $(function () {
                     first_already_cai_count += give_num;
                     $(".already_cai_count").text(first_already_cai_count);
                     $('.web_toast_text').text("踩成功!");
+                    
+                    user_amount -= give_num;
+                    $(".amount").text(user_amount);
+
                     //踩成功出现动画
                     $(".zan_cai_img").attr("src", $(".zan_cai_img").attr("cai_data_src"));
                     $(".suc_zan").fadeIn("fast");
