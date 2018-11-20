@@ -61,6 +61,7 @@ $(function () {
 
     //获取余额
     var user_amount = parseInt($(".amount").text());
+    console.log(user_amount);
 
     //点赞
     var give_us_id = "", state = "";
@@ -127,7 +128,7 @@ $(function () {
                     first_already_cai_count += give_num;
                     $(".already_cai_count").text(first_already_cai_count);
                     $('.web_toast_text').text("踩成功!");
-                    
+
                     user_amount -= give_num;
                     $(".amount").text(user_amount);
 
