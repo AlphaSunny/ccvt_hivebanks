@@ -68,11 +68,13 @@ $(function () {
     });
 
     //点赞
-    var give_us_id = "", state = "", zan_count = "", integral = "";
+    var give_us_id = "", state = "", zan_count = "", integral = "", zan_cai_this = "", integral_this = "";
     $(".zan_btn").click(function () {
         give_us_id = $(this).children(".us_id").text();
         zan_count = parseInt($(this).children(".zan_count").text());
+        zan_cai_this = $(this);
         integral = parseInt($(this).parents(".item").find(".integral").text());
+        integral_this = $(this).parents(".item").find("integral");
         if (!token) {
             alert("登录之后才可以点赞哦");
             return;
@@ -96,7 +98,9 @@ $(function () {
     $(".cai_btn").click(function () {
         give_us_id = $(this).children(".us_id").text();
         cai_count = parseInt($(this).children(".cai_count").text());
+        zan_cai_this = $(this);
         integral = parseInt($(this).parents(".item").find(".integral").text());
+        integral_this = $(this).parents(".item").find("integral");
         if (!token) {
             alert("登录之后才可以踩哦");
             return;
@@ -127,10 +131,10 @@ $(function () {
                     $(".already_zan_count").text(first_already_zan_count);//当前用户已经使用多少次赞
 
                     zan_count += give_num;
-                    $(".zan_count").text(zan_count);//被赞用户被赞多少次
+                    zan_cai_this.text(zan_count);//被赞用户被赞多少次
 
                     integral += give_num;
-                    $(".integral").text(integral);//被赞用户剩余积分
+                    integral_this.text(integral);//被赞用户剩余积分
 
                     $('.web_toast_text').text("点赞成功!");
                     GetUserInfo();
@@ -143,10 +147,10 @@ $(function () {
                     $(".already_cai_count").text(first_already_cai_count);//当前用户已经使用多少次踩
 
                     cai_count += give_num;
-                    $(".cai_count").text(cai_count);//被踩用户被踩多少次
+                    zan_cai_this.text(cai_count);//被踩用户被踩多少次
 
                     integral -= give_num;
-                    $(".integral").text(integral);//被踩用户剩余积分
+                    integral_this.text(integral);//被踩用户剩余积分
 
                     $('.web_toast_text').text("踩成功!");
                     GetUserInfo();
