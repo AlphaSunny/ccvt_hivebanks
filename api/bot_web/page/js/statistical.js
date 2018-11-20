@@ -73,7 +73,7 @@ $(function () {
         give_us_id = $(this).children(".us_id").text();
         zan_count = parseInt($(this).children(".zan_count").text());
         zan_cai_this = $(this).children(".zan_count");
-        ;
+
         integral = parseInt($(this).parents(".item").find(".integral").text());
         integral_this = $(this).parents(".item").find(".integral");
         if (!token) {
@@ -135,10 +135,10 @@ $(function () {
                     first_already_zan_count += parseInt(give_num);
                     $(".already_zan_count").text(first_already_zan_count);//当前用户已经使用多少次赞
 
-                    zan_count += give_num;
+                    zan_count += parseInt(give_num);
                     zan_cai_this.text(zan_count);//被赞用户被赞多少次
 
-                    integral += give_num;
+                    integral += parseInt(give_num);
                     integral_this.text(integral);//被赞用户剩余积分
 
                     $('.web_toast_text').text("点赞成功!");
@@ -151,10 +151,10 @@ $(function () {
                     first_already_cai_count += parseInt(give_num);
                     $(".already_cai_count").text(first_already_cai_count);//当前用户已经使用多少次踩
 
-                    cai_count += give_num;
+                    cai_count += parseInt(give_num);
                     zan_cai_this.text(cai_count);//被踩用户被踩多少次
 
-                    integral -= give_num;
+                    integral -= parseInt(give_num);
                     integral_this.text(integral);//被踩用户剩余积分
 
                     $('.web_toast_text').text("踩成功!");

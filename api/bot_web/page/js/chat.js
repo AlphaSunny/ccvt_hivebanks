@@ -120,7 +120,7 @@ $(function () {
                     first_already_zan_count += parseInt(give_num);
                     $(".already_zan_count").text(first_already_zan_count);
 
-                    user_amount -= give_num;
+                    user_amount -= parseInt(give_num);
                     $(".amount").text(user_amount);
                     $('.web_toast_text').text("点赞成功!");
 
@@ -132,7 +132,7 @@ $(function () {
                     $(".already_cai_count").text(first_already_cai_count);
                     $('.web_toast_text').text("踩成功!");
 
-                    user_amount -= give_num;
+                    user_amount -= parseInt(give_num);
                     $(".amount").text(user_amount);
 
                     //踩成功出现动画
