@@ -139,7 +139,7 @@ function total_daily($day){
         $db->query($sql);
         $row = $db->fetchRow();
         if($row) {
-            $row['day'] = $day;
+            $row['day'] = intval($day);
             $data[] = $row;
         }
     }
