@@ -26,7 +26,6 @@ $(function () {
                 data:data,
                 columns:[
                     {"data":"ca_id", className:"ca_id jump"},
-                    {"data":"ca_type"},
                     {"data":"ca_level"},
                     {"data":"security_level"},
                     {"data":"ctime"}
