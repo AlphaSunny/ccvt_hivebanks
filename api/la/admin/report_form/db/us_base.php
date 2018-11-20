@@ -134,14 +134,14 @@ function total_daily($day){
 
     for($day ;$day>0 ;$day--){
 
-        $sql = "select sum(base_amount)/(select unit from la_base) as sum 
+        $sql = "select sum(base_amount)/(select unit from la_base) as us_sum 
               from us_base where DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d') between 
               date_sub(curdate(),interval 99999 day) and date_sub(curdate(),interval {$day} day) ;";
         $db->query($sql);
         $row = $db->fetchRow();
         if($row) {
             $row['day'] = date("Y-m-d",strtotime("-$day day"));
-            $row['ba_rest'] = 10000000 - $row['sum'];
+            $row['ba_rest'] = 10000000 - $row['us_sum'];
             $data[] = $row;
         }
     }
