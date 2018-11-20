@@ -48,6 +48,7 @@ function give_like_us($data)
     echo 3;
     //增加荣耀积分(减少荣耀积分)
     $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$data['give_us_id']}'";
+    echo $sql;
     $db->query($sql);
     $asset_us = $db->fetchRow();
     if ($asset_us){
