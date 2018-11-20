@@ -86,7 +86,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     <table class="table" id="statisticalTable">
                         <thead>
                         <tr>
-                            <th class="text-left">名称(荣耀积分)</th>
+                            <th class="text-left">名称</th>
                             <th class="text-center">获得(CCVT)</th>
                             <th class="text-center">发言数</th>
                             <th class="text-center">点赞</th>
@@ -103,15 +103,15 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
 
                                 <td class="text-left">
                                     <span><?php echo $v['wechat']; ?></span>
-                                    (<span class="integral">
-                                        <?php
-                                        $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$v['us_id']}'";
-                                        $db->query($sql);
-                                        $base_amount = $db->getField($sql, 'base_amount');
-                                        $base_amount = $base_amount ? $base_amount / $unit : 0;
-                                        echo $base_amount;
-                                        ?>
-                                    </span>)
+<!--                                    (<span class="integral">-->
+<!--                                        --><?php
+//                                        $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$v['us_id']}'";
+//                                        $db->query($sql);
+//                                        $base_amount = $db->getField($sql, 'base_amount');
+//                                        $base_amount = $base_amount ? $base_amount / $unit : 0;
+//                                        echo $base_amount;
+//                                        ?>
+<!--                                    </span>)-->
                                 </td>
 
                                 <td><?php echo $v['amount'] / $unit; ?></td>
