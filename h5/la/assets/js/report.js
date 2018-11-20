@@ -293,7 +293,7 @@ $(function () {
             data: data,
             xkey: 'day',
             ykeys: ['us_sum', 'ba_rest', 'ca_rest'],
-            labels: ['user amount', 'ba amount', 'ca amount'],
+            labels: ['User 资产', 'Ba 资产', 'Ca 资产'],
             fillOpacity: 0.6,
             hideHover: 'auto',
             smooth: true,
