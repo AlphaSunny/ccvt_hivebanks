@@ -131,7 +131,7 @@ function total_daily($day){
 
     $data = array();
     $db = new DB_COM();
-    $sql = "select "
+    
     for($day ;$day>0 ;$day--){
 
         $sql = "select sum(base_amount)/(select unit from la_base) as sum ,
