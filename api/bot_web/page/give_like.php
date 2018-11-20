@@ -56,6 +56,7 @@ if ($chcek==1){
     exit_error('102','余额不足');
 }
 
+echo 222;die;
 
 $data['us_id'] = $us_id;
 $data['give_us_id'] = $give_us_id;
