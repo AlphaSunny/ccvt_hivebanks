@@ -62,6 +62,7 @@ function get_scale_info($scale){
 function get_us_base($us_id){
     $db = new DB_COM();
     $sql = "select * from us_base WHERE us_id='{$us_id}'";
+    echo $sql;
     $db->query($sql);
     $row = $db->fetchRow();
     return $row;
