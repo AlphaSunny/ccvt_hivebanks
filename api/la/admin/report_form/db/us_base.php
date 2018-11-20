@@ -141,7 +141,7 @@ function total_daily($day){
         $row = $db->fetchRow();
         if($row) {
             $row['day'] = date("Y-m-d",strtotime("-$day day"));
-            $row['ba_rest'] = 10000000 - $row['num'];
+            $row['ba_rest'] = 10000000 - $row['sum'];
             $data[] = $row;
         }
     }
