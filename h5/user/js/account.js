@@ -19,6 +19,7 @@ $(function () {
             $('.availableBalance').text(data.base_amount);
             $('.lockBalance').text(data.lock_amount);
             $('.levelNum').text(security_level);
+            $('.glory_of_integral').text(data.glory_of_integral);
             // $('.userLevelNum').text(us_level);
             if(data.wechat){
                 $(".wechat").text(data.wechat).removeClass("i18n");
