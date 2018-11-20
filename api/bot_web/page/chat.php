@@ -84,7 +84,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                     <div class="chatInfo">
                         <p class="name">
                             <span class="chat_name"><?php echo $v['bot_nickname'] ?></span>
-                            <?php if ($v['us_id']!=NULL){?>
+                            <?php if ($v['us_id']!=NULL && $status!=1){?>
                             <span class="zan_cai_box">
                                 <span class="zan_img_box">
 <!--                                    <span class="zan_count">123</span>-->
