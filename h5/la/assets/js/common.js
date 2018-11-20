@@ -815,9 +815,19 @@ function GetAssetsReport(token, suc_func, error_func) {
     CallReportApi(api_url, post_data, suc_func, error_func);
 }
 
-//获取每天用户增长趋势
+//获取每天用户增长趋势GetAmountLine
 function GetDayUserUp(token, day, suc_func, error_func) {
     var api_url = 'reg_daily.php',
+        post_data = {
+            'token': token,
+            'day': day
+        };
+    CallReportApi(api_url, post_data, suc_func, error_func);
+}
+
+//获取每天user ba ca 资产变动
+function GetAmountLine(token, day, suc_func, error_func) {
+    var api_url = 'total_daily.php',
         post_data = {
             'token': token,
             'day': day

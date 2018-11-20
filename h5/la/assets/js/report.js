@@ -121,6 +121,7 @@ $(function () {
                     // '<td><span class="sum_ca_recharge_base_amount">' + NDAG + '</span><span class="base_type">BTC</span></td>' +
                     '</tr>';
                 $('#amount_gift').html(trGift);
+
                 //邀请排名表
                 $('#rankingTable').DataTable({
                     order: [[4, "desc"]],
@@ -187,13 +188,13 @@ $(function () {
                 $(".pai_ming_item_ul").html(invite_itme);
 
                 DonutFun(us_register_count, ba_register_count, ca_register_count);
-                var dataChartObj = {}, dataChart = [];
-                dataChartObj.y = new Date().Format('yyyy-MM-dd'),
-                    dataChartObj.u = sum_us_base_amount,
-                    dataChartObj.b = sum_ba_base_amount,
-                    dataChartObj.c = sum_ca_base_amount;
-                dataChart.push(dataChartObj);
-                LineFun(dataChart);
+                // var dataChartObj = {}, dataChart = [];
+                // dataChartObj.y = new Date().Format('yyyy-MM-dd'),
+                //     dataChartObj.u = sum_us_base_amount,
+                //     dataChartObj.b = sum_ba_base_amount,
+                //     dataChartObj.c = sum_ca_base_amount;
+                // dataChart.push(dataChartObj);
+                // LineFun(dataChart);
             }
         }, function (response) {
             LayerFun(response.errcode);
@@ -253,6 +254,16 @@ $(function () {
         day = 30;
         GetDayUserFun(day);
     });
+
+    //获取user ba ca每天资产变动
+    function GetAmountLineFun(day){
+        GetAmountLine(token, day, function (response) {
+            console.log(response);
+        }, function (response) {
+            LayerFun(response.errcode);
+        });
+    }
+    GetAmountLineFun(day);
 
     /* MORRIS DONUT CHART
 			----------------------------------------*/
