@@ -34,12 +34,12 @@ if(!$row){
 }
 //每天的注册用户数
 
-$reg_daily = totol_daily($day);
+$total_daily = total_daily($day);
 
 //成功后返回数据
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['rows'] = $reg_daily;
+$rtn_ary['rows'] = $total_daily;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
