@@ -29,11 +29,30 @@ function scale_upgrade($us_id,$scale){
     $us_scale = get_us_base($us_id)['scale'];
     //获取当前积分的等级
     $sca = get_scale_info($scale);
-    print_r($sca)."<br />";
-    echo $scale."<br />";
-    echo ($us_scale)."<br />";
     if($us_scale<$sca['scale']){
+        $db = new DB_COM();
+        $pInTrans = $db->StartTrans();  //开启事务
+        //升级记录表
+        $data['change_id'] = get_guid();
+        $data['us_id'] = $us_id;
+        $data['before_scale'] = $us_scale;
+        $data['after_scale'] = $sca['scale'];
+        $data['utime'] = time();
+        $data['ctime'] = date('Y-m-d H:i:s');
+        $sql = $db->sqlInsert("us_scale_changes", $data);
+        $id = $db->query($sql);
+        if (!$id){
+            $db->Rollback($pInTrans);
+            echo "添加记录失败";
+        }
 
+        //修改用户等级
+        $sql = "update us_base set scale='{$sca['scale']}' WHERE us_id='{$us_id}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            $db->Rollback($pInTrans);
+            echo "修改用户等级失败";
+        }
     }
 }
 
