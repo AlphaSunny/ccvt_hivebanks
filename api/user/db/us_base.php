@@ -1,6 +1,22 @@
 <?php
 
+/**
+ * 检查la是否关闭注册功能
+ * @param
+ * @return
+ */
+function check_is_reg(){
 
+    $db = new DB_COM();
+    $sql = "select option_value from com_option_config where option_name = 'user_lock'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if ($row['option_value']==1){
+        return true;
+    }
+    return false;
+
+}
 /**
  * 检查邀请码是否存在
  * @param $invite_check

@@ -13,17 +13,18 @@ function www_reg_permission($type){
 
     switch ($type){
         case 'ba':
-            $sql =  "select option_name ,option_value as is_open from com_option_config where option_name = 'ba_lock'";
+            $option_name = 'ba_lock';
             break;
         case 'ca':
-            $sql =  "select option_name ,option_value as is_open from com_option_config where option_name = 'ca_lock'";
+            $option_name = 'ca_lock';
             break;
         case 'us':
-            $sql =  "select option_name ,option_value as is_open from com_option_config where option_name = 'user_lock'";
+            $option_name = 'user_lock';
             break;
         default:
             break;
     }
+    $sql =  "select option_name ,option_value as is_open from com_option_config where option_name = '$option_name'";
     $db->query($sql);
     return $db->fetchAll();
 }
@@ -35,19 +36,17 @@ function www_reg_permission_modify($type,$status)
     switch ($type){
         case 'ba':
             $option_name = 'ba_lock';
-            $sql =  "update com_option_config set option_value = '$status' where option_name = '$option_name'";
             break;
         case 'ca':
             $option_name = 'ca_lock';
-            $sql =  "update com_option_config set option_value = '$status' where option_name = '$option_name'";
             break;
         case 'us':
             $option_name = 'user_lock';
-            $sql =  "update com_option_config set option_value = '$status' where option_name = '$option_name'";
             break;
         default:
             break;
     }
+    $sql =  "update com_option_config set option_value = '$status' where option_name = '$option_name'";
     $db->query($sql);
     return $db->affectedRows();
 
