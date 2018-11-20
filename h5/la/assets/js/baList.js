@@ -15,26 +15,32 @@ $(function () {
             $("#baListTable").DataTable({
                 destroy: true,
                 deferRender: true,
-                lengthMenu: [ 10, 20, 50, 70, 100 ],
-                searching:false,//是否显示搜索框
-                info:false,//是否显示表左下角文字
+                lengthMenu: [10, 20, 50, 70, 100],
+                searching: false,//是否显示搜索框
+                info: false,//是否显示表左下角文字
                 language: {
                     paginate: {
                         url: "dataTables.german.lang",
-                        first:"<<",
+                        first: "<<",
                         previous: "<",
                         next: ">",
-                        last:">>",
-                        loadingRecords:"Please wait - loading..",
+                        last: ">>",
+                        loadingRecords: "Please wait - loading..",
                     }
                 },
-                data:data,
-                columns:[
-                    {"data":"ba_id", className:"ba_id jump"},
-                    {"data":"ba_type"},
-                    {"data":"ba_level"},
-                    {"data":"security_level"},
-                    {"data":"ctime"}
+                data: data,
+                columns: [
+                    {   target:0,
+                        "data": "ba_id",
+                        className: "ba_id jump",
+                        render:function () {
+                            return "<span title = "+ ba_id.substr(0, 5) +">"+ ba_id +"</span>";
+                        }
+                    },
+                    {"data": "ba_type"},
+                    {"data": "ba_level"},
+                    {"data": "security_level"},
+                    {"data": "ctime"}
                 ],
             });
 
