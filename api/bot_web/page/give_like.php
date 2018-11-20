@@ -49,7 +49,7 @@ if ($state==2){
 $chcek = check_max_give($us_id,$give_num,$state,$give_us_id);
 if ($chcek==1){
     exit_error('101','已达到最大上限');
-}elseif ($chcek==2 || $give_num<=0 || !is_int($give_num)){
+}elseif ($chcek==2 || $give_num<=0 || !(is_int($give_num))){
     exit_error('102','金额错误');
 }elseif ($chcek==3){
     exit_error('103','用户没有积分或积分不足');
