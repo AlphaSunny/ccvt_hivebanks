@@ -19,10 +19,7 @@ if ($rows){
         set_time_limit(0);
         $scale = $v['base_amount']/$unit;
         //判断等级提升
-        if ($scale>=100){
-            scale_upgrade($v['us_id'],$scale);
-        }
-
+        scale_upgrade($v['us_id'],$scale);
     }
 }
 
@@ -32,9 +29,9 @@ function scale_upgrade($us_id,$scale){
     $us_scale = get_us_base($us_id)['scale'];
     //获取当前积分的等级
     $sca = get_scale_info($scale);
-    print_r($sca);
-    echo $scale;
-    echo ($us_scale);
+    print_r($sca)."<br />";
+    echo $scale."<br />";
+    echo ($us_scale)."<br />";
     if($us_scale<$sca['scale']){
 
     }
@@ -62,7 +59,6 @@ function get_scale_info($scale){
 function get_us_base($us_id){
     $db = new DB_COM();
     $sql = "select * from us_base WHERE us_id='{$us_id}'";
-    echo $sql;
     $db->query($sql);
     $row = $db->fetchRow();
     return $row;
