@@ -20,7 +20,7 @@ $(function () {
 
     //favicon
     var favicon_link = "<link rel='shortcut ico' href='../../favicon.ico'/>";
-    link.appendTo($('head')[0]);
+    favicon_link.appendTo($('head')[0]);
 
     //cnt.js
     var cnt = $("<script src='../assets/js/cnt.js'></script>");
