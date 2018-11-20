@@ -26,7 +26,6 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
-    echo 1;
 
     //用户减钱
 
@@ -36,7 +35,6 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
-    echo 2;
 
     //la加钱
     $sql = "update la_base set base_amount=base_amount+'{$data['give_num']}'*'{$unit}' limit 1";
@@ -45,10 +43,9 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
-    echo 3;
+
     //增加荣耀积分(减少荣耀积分)
     $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$data['give_us_id']}'";
-    echo $sql;
     $db->query($sql);
     $asset_us = $db->fetchRow();
     if ($asset_us){
@@ -83,7 +80,6 @@ function give_like_us($data)
             return 0;
         }
     }
-    echo 4;
 
 
     /******************************转账记录表***************************************************/
@@ -99,7 +95,7 @@ function give_like_us($data)
     $transfer['credit_balance'] = get_us_base_amount($transfer['credit_id'])-$transfer['tx_amount'];
     $transfer['tx_hash'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $transfer['flag'] = $flag;
-    $transfer['transfer_type'] = 'us-la';
+    $transfer['transfer_type'] = 'ba-us';
     $transfer['transfer_state'] = 1;
     $transfer['tx_detail'] = $data['state']==1 ? '点赞消耗' : "踩人消耗";
     $transfer['give_or_receive'] = 1;
@@ -122,7 +118,7 @@ function give_like_us($data)
     $dat['credit_balance'] = get_la_base_amount($la_id)+$dat['tx_amount'];
     $dat['tx_hash'] = hash('md5', $la_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $dat['flag'] = $flag;
-    $dat['transfer_type'] = 'us-la';
+    $dat['transfer_type'] = 1;
     $dat['transfer_state'] = 1;
     $dat['tx_detail'] = $data['state']==1 ? '点赞消耗' : "踩人消耗";
     $dat['give_or_receive'] = 2;
