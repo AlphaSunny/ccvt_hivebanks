@@ -30,12 +30,9 @@ $(function () {
                 },
                 data: data,
                 columns: [
-                    {   target:0,
+                    {
                         "data": "ba_id",
                         className: "ba_id jump",
-                        render:function () {
-                            return "<span title = "+ data.ba_id.substring(0, 5) +">"+ ba_id +"</span>";
-                        }
                     },
                     {"data": "ba_type"},
                     {"data": "ba_level"},
