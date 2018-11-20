@@ -34,7 +34,7 @@ $(function () {
                         "data": "ba_id",
                         className: "ba_id jump",
                         render:function () {
-                            return "<span title = "+ ba_id.substr(0, 5) +">"+ ba_id +"</span>";
+                            return "<span title = "+ data.ba_id.substr(0, 5) +">"+ ba_id +"</span>";
                         }
                     },
                     {"data": "ba_type"},
