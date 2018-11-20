@@ -30,8 +30,8 @@ function scale_upgrade($us_id,$scale){
     //获取当前积分的等级
     $sca = get_scale_info($scale);
     print_r($sca);
-    echo $scale."<br />";
-    echo ($us_scale)."<br />";
+    echo $scale;
+    echo ($us_scale);
     if($us_scale<$sca['scale']){
 
     }
