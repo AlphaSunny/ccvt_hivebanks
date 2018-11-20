@@ -53,7 +53,7 @@ $(function () {
     $(".logOut").click(function () {
        DelCookie("statistics_user_token");
        DelCookie("statistics_user_id");
-       window.reload();
+       window.location.reload();
     });
 
     function GetUserInfo() {
