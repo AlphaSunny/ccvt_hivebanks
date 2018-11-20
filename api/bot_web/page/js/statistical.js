@@ -122,7 +122,7 @@ $(function () {
 
     //确定点赞
     $(".ok").click(function () {
-        var give_num = parseInt($(".confirm_input").val());
+        var give_num = $(".confirm_input").val();
         if (!(/^[1-9]\d*$/.test(give_num))) {
             alert("请输入正确的数值");
             return;
@@ -135,7 +135,7 @@ $(function () {
             if (response.errcode == "0") {
                 ZanShowLogin("hide");
                 if (state == "1") {
-                    first_already_zan_count += give_num;
+                    first_already_zan_count += parseInt(give_num);
                     $(".already_zan_count").text(first_already_zan_count);//当前用户已经使用多少次赞
 
                     zan_count += give_num;
