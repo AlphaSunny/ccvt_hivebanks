@@ -23,6 +23,8 @@ if ($rows){
     }
 }
 
+echo "OK";
+
 function scale_upgrade($us_id,$scale){
 
     //判断是否可以升级
