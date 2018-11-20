@@ -129,6 +129,7 @@ function reg_daily($day){
  */
 function total_daily($day){
 //    $day++;
+    var_dump($day);die;
     $data = array();
     $db = new DB_COM();
     for($day ;$day>0 ;$day--){
