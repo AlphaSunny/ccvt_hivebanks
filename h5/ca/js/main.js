@@ -10,12 +10,16 @@ $(function () {
         window.location.href = '../ccvtContract.html?ca=ca';
     });
 
-//    get time
+    //get time
     var time = new Date().toLocaleString('chinese', {hour12: false});
     $(".time").text(time);
 
-// Icon link
+    // Icon link
     var link = $('<link rel="stylesheet" href="//at.alicdn.com/t/font_626151_31e2mobvpdu.css">');
+    link.appendTo($('head')[0]);
+
+    //favicon
+    var link = $("<link rel='shortcut icon' href='../favicon.ico' />");
     link.appendTo($('head')[0]);
 
     //cnt.js
