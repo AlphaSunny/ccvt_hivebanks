@@ -142,6 +142,7 @@ function total_daily($day){
         if($row) {
             $row['day'] = date("Y-m-d",strtotime("-$day day"));
             $row['ba_rest'] = 10000000 - $row['us_sum'];
+            $row['ca_rest'] = 0;
             $data[] = $row;
         }
     }
