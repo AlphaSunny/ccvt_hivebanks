@@ -530,4 +530,14 @@ function check_token($token,$type=''){
         return $us_id;
 }
 
+//la汇率
+function la_unit(){
+    $db = new DB_COM();
+    $sql = "select unit from la_base limit 1";
+    $db->query($sql);
+    $rows = $db->fetchRow();
+    return $rows['unit'];
+}
+
+
 ?>
