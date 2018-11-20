@@ -33,6 +33,8 @@ $(function () {
     //获取token
     var token = GetCookie("statistics_user_token");
 
+    //获取余额
+    var user_amount = "";
     if (token) {
         $(".login").remove();
         $(".amount_box").fadeIn("fast");
@@ -41,6 +43,7 @@ $(function () {
                 var data = response.rows;
                 SetCookie('statistics_user_id', data.us_id);
                 $(".amount").text(data.base_amount);
+                user_amount = parseInt(data.base_amount);
             }
         }, function (response) {
             layer.msg("余额获取失败");
@@ -58,10 +61,6 @@ $(function () {
     //获取已经点赞和已经踩的数量
     var first_already_zan_count = parseInt($(".already_zan_count").text());
     var first_already_cai_count = parseInt($(".already_cai_count").text());
-
-    //获取余额
-    var user_amount = parseInt($(".amount").text());
-    console.log(user_amount);
 
     //点赞
     var give_us_id = "", state = "";
