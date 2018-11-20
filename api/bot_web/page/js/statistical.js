@@ -126,9 +126,6 @@ $(function () {
         if (!(/^[1-9]\d*$/.test(give_num))) {
             alert("请输入正确的数值");
             return;
-        } else {
-            console.log("输入正确");
-            return;
         }
         ZanShowLogin("show");
         Give(token, give_us_id, give_num, state, function (response) {
@@ -151,7 +148,7 @@ $(function () {
                     $(".suc_zan").fadeIn("fast");
 
                 } else if (state == "2") {
-                    first_already_cai_count += give_num;
+                    first_already_cai_count += parseInt(give_num);
                     $(".already_cai_count").text(first_already_cai_count);//当前用户已经使用多少次踩
 
                     cai_count += give_num;

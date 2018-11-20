@@ -107,13 +107,17 @@ $(function () {
 
     //确定点赞
     $(".ok").click(function () {
-        var give_num = parseInt($(".confirm_input").val());
+        var give_num = $(".confirm_input").val();
+        if (!(/^[1-9]\d*$/.test(give_num))) {
+            alert("请输入正确的数值");
+            return;
+        }
         ZanShowLogin("show");
         Give(token, give_us_id, give_num, state, function (response) {
             if (response.errcode == "0") {
                 ZanShowLogin("hide");
                 if (state == "1") {
-                    first_already_zan_count += give_num;
+                    first_already_zan_count += parseInt(give_num);
                     $(".already_zan_count").text(first_already_zan_count);
 
                     user_amount -= give_num;
@@ -124,7 +128,7 @@ $(function () {
                     $(".zan_cai_img").attr("src", $(".zan_cai_img").attr("zan_data_src"));
                     $(".suc_zan").fadeIn("fast");
                 } else if (state == "2") {
-                    first_already_cai_count += give_num;
+                    first_already_cai_count += parseInt(give_num);
                     $(".already_cai_count").text(first_already_cai_count);
                     $('.web_toast_text').text("踩成功!");
 
