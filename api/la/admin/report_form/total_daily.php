@@ -7,6 +7,10 @@
  */
 
 
+require_once "../../../inc/common.php";
+require_once "db/us_base.php";
+require_once  "db/la_admin.php";
+
 php_begin();
 $args = array("token",'day');
 chk_empty_args('GET', $args);
