@@ -45,6 +45,8 @@ $(function () {
         $(".login").remove();
         $(".amount_box").fadeIn("fast");
         GetUserInfo();
+    } else {
+        $(".logOut").remove();
     }
 
     function GetUserInfo() {

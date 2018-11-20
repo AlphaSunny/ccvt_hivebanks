@@ -68,7 +68,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     <div class="sm_title_text_color">
                         <div class="flex center space-between">
                             <h3>CCVT 聊天奖励统计</h3>
-                            <p>退出</p>
+                            <p class="logOut">退出</p>
                         </div>
                         <div class="flex center space-between">
                             <p>所属群:《<?php echo $group_name; ?>》</p>
