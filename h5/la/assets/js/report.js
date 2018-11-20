@@ -291,8 +291,8 @@ $(function () {
         Morris.Line({
             element: 'morris-line-chart',
             data: data,
-            xkey: 'y',
-            ykeys: ['u', 'b', 'c'],
+            xkey: 'day',
+            ykeys: ['us_sum', 'ba_rest', 'ca_rest'],
             labels: ['user amount', 'ba amount', 'ca amount'],
             fillOpacity: 0.6,
             hideHover: 'auto',
