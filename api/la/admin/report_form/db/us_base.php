@@ -140,7 +140,7 @@ function total_daily($day){
         $db->query($sql);
         $row = $db->fetchRow();
         if($row) {
-            $row['day'] = strtotime("-$day day");
+            $row['day'] = date("Y-m-d",strtotime("-$day day"));
 
             $data[] = $row;
         }
