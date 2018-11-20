@@ -131,10 +131,10 @@ function total_daily($day){
 
     $data = array();
     $db = new DB_COM();
-    
+
     for($day ;$day>0 ;$day--){
 
-        $sql = "select sum(base_amount)/(select unit from la_base) as sum ,
+        $sql = "select sum(base_amount)/(select unit from la_base) as sum 
               from us_base where DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d') between 
               date_sub(curdate(),interval 99999 day) and date_sub(curdate(),interval {$day} day) ;";
         $db->query($sql);
