@@ -30,7 +30,7 @@ $(function () {
                 },
                 data:data,
                 columns:[
-                    {"data":"ba_id", className:"us_id jump"},
+                    {"data":"ba_id", className:"ba_id jump"},
                     {"data":"ba_type"},
                     {"data":"ba_level"},
                     {"data":"security_level"},

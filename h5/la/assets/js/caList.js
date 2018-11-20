@@ -7,15 +7,40 @@ $(function () {
     GetUserList(token, api_url, limit, offset, function (response) {
         if (response.errcode == '0') {
             var data = response.rows, tr = '';
-            $.each(data, function (i, val) {
-                tr += '<tr>' +
-                    '<td><a href="javascript:;" class="ca_id">' + data[i].ca_id + '</a></td>' +
-                    '<td>' + data[i].ca_level + '</td>' +
-                    '<td>' + data[i].security_level + '</td>' +
-                    '<td>' + data[i].ctime + '</td>' +
-                    '</tr>'
+            $("#caListTable").DataTable({
+                destroy: true,
+                deferRender: true,
+                lengthMenu: [ 10, 20, 50, 70, 100 ],
+                searching:false,//是否显示搜索框
+                info:false,//是否显示表左下角文字
+                language: {
+                    paginate: {
+                        url: "dataTables.german.lang",
+                        first:"<<",
+                        previous: "<",
+                        next: ">",
+                        last:">>",
+                        loadingRecords:"Please wait - loading..",
+                    }
+                },
+                data:data,
+                columns:[
+                    {"data":"ca_id", className:"ca_id jump"},
+                    {"data":"ca_type"},
+                    {"data":"ca_level"},
+                    {"data":"security_level"},
+                    {"data":"ctime"}
+                ],
             });
-            $('#caList').html(tr);
+            // $.each(data, function (i, val) {
+            //     tr += '<tr>' +
+            //         '<td><a href="javascript:;" class="ca_id">' + data[i].ca_id + '</a></td>' +
+            //         '<td>' + data[i].ca_level + '</td>' +
+            //         '<td>' + data[i].security_level + '</td>' +
+            //         '<td>' + data[i].ctime + '</td>' +
+            //         '</tr>'
+            // });
+            // $('#caList').html(tr);
         }
     }, function (response) {
         LayerFun(response.errcode);
