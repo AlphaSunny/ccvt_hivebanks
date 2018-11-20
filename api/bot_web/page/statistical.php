@@ -205,17 +205,16 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     <span class="already_zan_count" style="color: #333333">
                         <?php
                         $us_id = $_COOKIE['statistics_user_id'];
-                        echo $us_id;
-                        echo 0;
                         if ($us_id) {
                             $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-                            echo $sql;
                             $db->query($sql);
                             $all_am = $db->getField($sql, 'all_am');
                             if (!$all_am) {
                                 $all_am = 0;
                             }
                             echo $all_am;
+                        }else{
+                            echo 0;
                         }
                         ?>
                     </span>ccvt
@@ -234,6 +233,8 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                 $all_am = 0;
                             }
                             echo $all_am;
+                        }else{
+                            echo 0;
                         }
                         ?>
                     </span>ccvt
