@@ -19,7 +19,10 @@ if ($rows){
         set_time_limit(0);
         $scale = $v['base_amount']/$unit;
         //判断等级提升
-        scale_upgrade($v['us_id'],$scale);
+        if ($scale>=100){
+            scale_upgrade($v['us_id'],$scale);
+        }
+
     }
 }
 
