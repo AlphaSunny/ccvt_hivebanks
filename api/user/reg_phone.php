@@ -91,13 +91,6 @@ $pass_word      = get_arg_str('GET', 'pass_word');
 // 用户基本信息
 $data_base = array();
 
-
-//判断la是否关闭了注册功能
-if (!check_is_reg()){
-    exit_error('215', '注册已关闭');
-}
-
-
 if($invit_code) {
     $icc = invite_code_check($invit_code);
     if (!$icc)
