@@ -123,10 +123,10 @@ $(function () {
     //确定点赞
     $(".ok").click(function () {
         var give_num = parseInt($(".confirm_input").val());
-        if (!(/(^[1-9]\d*$)/.test(give_num))) {
+        if (!(/^[1-9]\d*$/.test(give_num))) {
             alert("请输入正确的数值");
             return;
-        }else {
+        } else {
             console.log("输入正确");
             return;
         }
