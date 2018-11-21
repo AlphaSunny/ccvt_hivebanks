@@ -59,13 +59,13 @@ $(function () {
 
     function AutoScroll(obj) {
         var body_width = $(document).width();
-        if(body_width <= 768){
-            item_height = "34px";
-            margin_top = "-34px";
-        }else {
+        // if(body_width <= 768){
+        //     item_height = "34px";
+        //     margin_top = "-34px";
+        // }else {
             item_height = $(obj).find("ul>li").height();
-            margin_top = "0px"
-        }
+            margin_top = "0px";
+        // }
         $(obj).find("ul:first").animate({
             marginTop: -item_height
         }, 2000, function () {
