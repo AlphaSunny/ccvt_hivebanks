@@ -926,7 +926,7 @@ h4.title {
     line-height: 3.5rem;
     display: flex;
     align-items: center;
-    padding: 5px 0;
+    /*padding: 5px 0;*/
 }
 
 .latestNews a {

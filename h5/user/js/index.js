@@ -57,7 +57,7 @@ $(function () {
     function AutoScroll(obj) {
         $(obj).find("ul:first").animate({
             marginTop: "-3.5rem"
-        }, 500, function () {
+        }, 1000, function () {
             $(this).css({
                 marginTop: "0px"
             }).find("li:first").appendTo(this);
