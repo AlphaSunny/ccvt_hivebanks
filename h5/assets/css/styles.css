@@ -922,8 +922,8 @@ h4.title {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    height: 3.5rem;
-    line-height: 3.5rem;
+    height: 3rem;
+    line-height: 3rem;
     display: flex;
     align-items: center;
     /*padding: 5px 0;*/
