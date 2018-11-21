@@ -74,7 +74,7 @@ $(function () {
             $(".latestNewsText").html(li);
             setInterval(()=>{
                 AutoScroll(".latestNews")
-            }, 1000);
+            }, 3000);
         }
     }, function (response) {
         if (response.errcode == "-1") {
