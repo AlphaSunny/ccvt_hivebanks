@@ -947,8 +947,8 @@ h4.title {
 
 @media screen and (max-width: 768px) {
     header .header-content {
-        padding-top: 35%;
-        padding-bottom: 50%;
+        padding-top: 45%;
+        padding-bottom: 10%;
     }
 
     header .header-content h1 {
@@ -957,6 +957,7 @@ h4.title {
 
     .phone_show {
         display: block;
+        margin-top: 96%;
     }
 
     h4.title {
@@ -976,6 +977,6 @@ h4.title {
     }
 
     .float_qr_box {
-        top: 64%;
+        top: 50%;
     }
 }
