@@ -88,7 +88,9 @@ $(function () {
         clearInterval(i);
     });
     con1.mouseleave(function () {
-        i = setInterval("ScrollUp()", speed);
+        i = setInterval(function () {
+            ScrollUp();
+        }, speed);
     });
 
     // var $this = $(".latestNews");
