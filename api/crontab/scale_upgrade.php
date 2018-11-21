@@ -19,13 +19,13 @@ if ($rows){
         set_time_limit(0);
         $scale = $v['base_amount']/$unit;
         //判断等级提升
-        scale_upgrade($v['us_id'],$scale);
+        scale_upgrade($v['us_id'],$scale,$v['us_account']);
     }
 }
 
 echo "OK";
 
-function scale_upgrade($us_id,$scale){
+function scale_upgrade($us_id,$scale,$us_account){
 
     //判断是否可以升级
     $us_scale = get_us_base($us_id)['scale'];
@@ -56,6 +56,7 @@ function scale_upgrade($us_id,$scale){
             echo "修改用户等级失败";
         }
         $db->Commit($pInTrans);
+        echo $us_account."升级完成!<br />";
     }
 }
 
