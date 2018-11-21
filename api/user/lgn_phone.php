@@ -38,9 +38,15 @@ $cellphone = get_arg_str('GET', 'cellphone');
 // 密码HASH
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
 
+// 验证码
+$cfm_code = get_arg_str('GET', 'cfm_code');
+
 $cellphone_num = $country_code .'-'. $cellphone;
 // 加盐加密
-$salt = rand(10000000, 99999999); 
+$salt = rand(10000000, 99999999);
+
+if ($cfm_code != $_SESSION["authcode"])
+    exit_error("139", "图形验证码有误");
 
 //获取当前时间戳
 $now_time = time();
