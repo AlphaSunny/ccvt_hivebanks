@@ -20,7 +20,7 @@ GET参数
 */
 
 php_begin();
-$args = array('country_code', 'cellphone','pass_word_hash');
+$args = array('country_code', 'cellphone','pass_word_hash','confirm_pass_word_hash');
 chk_empty_args('GET', $args);
 
 // 国家代码
@@ -29,6 +29,13 @@ $country_code = get_arg_str('GET', 'country_code');
 $cellphone = get_arg_str('GET', 'cellphone');
 // 密码HASH
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
+// 确认密码HASH
+$confirm_pass_word_hash = get_arg_str('GET', 'confirm_pass_word_hash');
+
+//判断密码与确认密码是否一致
+if ($pass_word_hash!=$confirm_pass_word_hash){
+    exit_error('107','密码与确认密码不一致');
+}
 // 验证码
 // $cfm_code = get_arg_str('GET', 'cfm_code');
 $cellphone_num = $country_code .'-'. $cellphone;

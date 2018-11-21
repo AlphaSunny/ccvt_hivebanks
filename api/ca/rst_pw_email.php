@@ -20,15 +20,23 @@ GET参数
 */
 
 php_begin();
-$args = array('email', 'pass_word_hash','cfm_code');
+$args = array('email', 'pass_word_hash','cfm_code','confirm_pass_word_hash');
 chk_empty_args('GET', $args);
 
 // Email地址
 $email = get_arg_str('GET', 'email', 255);
 // 密码HASH
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
+// 确认密码HASH
+$confirm_pass_word_hash = get_arg_str('GET', 'confirm_pass_word_hash');
 // 验证码
 $cfm_code = get_arg_str('GET', 'cfm_code');
+
+//判断密码与确认密码是否一致
+if ($pass_word_hash!=$confirm_pass_word_hash){
+    exit_error('107','密码与确认密码不一致');
+}
+
 $variable = 'email';
 $now_time = time();
 // 获取最新的创建记录
