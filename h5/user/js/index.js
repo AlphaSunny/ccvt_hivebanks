@@ -60,7 +60,7 @@ $(function () {
     function AutoScroll(obj) {
         var item_height = $(obj).find("ul>li").height();
         $(obj).find("ul:first").animate({
-            marginTop: item_height
+            marginTop: -item_height
         }, 2000, function () {
             $(this).css({
                 marginTop: "0px"
