@@ -6,33 +6,82 @@ $(function () {
 
     //show ba recharge list
     var tr = '', ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
+
     function ShowDataFun(rechargeList) {
-        // $.each(rechargeList, function (i, val) {
-        //     ba_id_arr.push(rechargeList[i].ba_id.substring(0, 10) + '...');
-        //     us_id_arr.push(rechargeList[i].us_id.substring(0, 10) + '...');
-        //     tx_hash_arr.push(rechargeList[i].tx_hash.substring(0, 10) + '...');
-        //     if (rechargeList[i].qa_flag == '0') {
-        //         qa_flag_span = '<span class="i18n" name="unprocessed"></span>';
-        //     }
-        //     if (rechargeList[i].qa_flag == '1') {
-        //         qa_flag_span = '<span class="i18n" name="processed"></span>';
-        //     }
-        //     if (rechargeList[i].qa_flag == '2') {
-        //         qa_flag_span = '<span class="i18n" name="notRejected"></span>';
-        //     }
-        //     tr += '<tr>' +
-        //         '<td><a href="javascript:;" class="ba_id" title="' + rechargeList[i].ba_id + '">' + ba_id_arr[i] + '</a></td>' +
-        //         '<td><a href="javascript:;" class="us_id" title="' + rechargeList[i].us_id + '">' + us_id_arr[i] + '</a></td>' +
-        //         '<td><span class="asset_id">' + rechargeList[i].asset_id + '</span></td>' +
-        //         '<td><span class="base_amount">' + rechargeList[i].base_amount + '</span></td>' +
-        //         '<td><span class="bit_amount">' + rechargeList[i].bit_amount + '</span></td>' +
-        //         '<td><span class="tx_hash" title="' + rechargeList[i].tx_hash + '">' + tx_hash_arr[i] + '</span></td>' +
-        //         '<td><span class="tx_time">' + rechargeList[i].tx_time + '</span></td>' +
-        //         '<td>' + qa_flag_span + '</td>' +
-        //         '</tr>'
+        // $("#baRechargeTable").DataTable({
+        //     destroy: true,
+        //     deferRender: true,
+        //     lengthMenu: [10, 20, 50, 70, 100],
+        //     searching: false,//是否显示搜索框
+        //     info: false,//是否显示表左下角文字
+        //     language: {
+        //         paginate: {
+        //             url: "dataTables.german.lang",
+        //             first: "<<",
+        //             previous: "<",
+        //             next: ">",
+        //             last: ">>",
+        //             loadingRecords: "Please wait - loading..",
+        //         }
+        //     },
+        //     data: rechargeList,
+        //     columns: [
+        //         {
+        //             "data": "ba_id",
+        //             className: "ba_id jump",
+        //         },
+        //         {
+        //             "data": "us_id",
+        //             className: "us_id jump",
+        //         },
+        //         {
+        //             "data": "asset_id",
+        //             className: "asset_id",
+        //         },
+        //         {
+        //             "data": "base_amount",
+        //             className: "base_amount",
+        //         },
+        //         {
+        //             "data": "bit_amount",
+        //             className: "bit_amount",
+        //         },
+        //         {
+        //             "data": "tx_hash",
+        //             className: "tx_hash",
+        //         },
+        //         {
+        //             "data": "tx_time",
+        //             className: "tx_time",
+        //         },
+        //     ],
         // });
-        // $('#baRecharge').html(tr);
-        // execI18n();
+        $.each(rechargeList, function (i, val) {
+            ba_id_arr.push(rechargeList[i].ba_id.substring(0, 10) + '...');
+            us_id_arr.push(rechargeList[i].us_id.substring(0, 10) + '...');
+            tx_hash_arr.push(rechargeList[i].tx_hash.substring(0, 10) + '...');
+            if (rechargeList[i].qa_flag == '0') {
+                qa_flag_span = '<span class="i18n" name="unprocessed"></span>';
+            }
+            if (rechargeList[i].qa_flag == '1') {
+                qa_flag_span = '<span class="i18n" name="processed"></span>';
+            }
+            if (rechargeList[i].qa_flag == '2') {
+                qa_flag_span = '<span class="i18n" name="notRejected"></span>';
+            }
+            tr += '<tr>' +
+                '<td><a href="javascript:;" class="ba_id" title="' + rechargeList[i].ba_id + '">' + ba_id_arr[i] + '</a></td>' +
+                '<td><a href="javascript:;" class="us_id" title="' + rechargeList[i].us_id + '">' + us_id_arr[i] + '</a></td>' +
+                '<td><span class="asset_id">' + rechargeList[i].asset_id + '</span></td>' +
+                '<td><span class="base_amount">' + rechargeList[i].base_amount + '</span></td>' +
+                '<td><span class="bit_amount">' + rechargeList[i].bit_amount + '</span></td>' +
+                '<td><span class="tx_hash" title="' + rechargeList[i].tx_hash + '">' + tx_hash_arr[i] + '</span></td>' +
+                '<td><span class="tx_time">' + rechargeList[i].tx_time + '</span></td>' +
+                '<td>' + qa_flag_span + '</td>' +
+                '</tr>'
+        });
+        $('#baRecharge').html(tr);
+        execI18n();
     }
 
     //Get ba transaction history
