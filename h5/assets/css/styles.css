@@ -958,8 +958,12 @@ h4.title {
     .latestNews {
         width: 100%;
         left: 0;
-        top: 16%;
+        top: 12%;
         margin-left: 0;
         z-index: 10;
+    }
+
+    .float_qr_box {
+        top: 60%;
     }
 }
