@@ -29,9 +29,10 @@ function scale_upgrade($us_id,$scale){
 
     //判断是否可以升级
     $us_scale = get_us_base($us_id)['scale'];
-    echo $us_scale;
+    echo $us_scale."<br />";
     //获取当前积分的等级
     $sca = get_scale_info($scale);
+    echo $sca['scale']."<br />";
     if($us_scale<$sca['scale']){
         $db = new DB_COM();
         $pInTrans = $db->StartTrans();  //开启事务
