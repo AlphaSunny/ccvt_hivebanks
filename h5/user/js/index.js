@@ -17,7 +17,7 @@ $(function () {
     var ca_token = GetIndexCookie('ca_token');
 
     if (user_token || login_us) {
-        $('.usLogin, .usRegister').remove();
+        $('.usLogin, .usRegister,.phone_show').remove();
         $('.accountNone').removeClass('accountNone');
     }
     $('.baLogin').click(function () {
@@ -107,7 +107,7 @@ $(function () {
         $(".float_qr_box").css("transform", "translateX(10rem)");
         setTimeout(function () {
             $(".float_qr_open").css("display", "flex");
-        },1200);
+        }, 1200);
     });
 
     //open float qr
