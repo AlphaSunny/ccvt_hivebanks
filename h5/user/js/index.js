@@ -73,17 +73,17 @@ $(function () {
 
     function startSetinterval() {
         var box = $('.latestNews'), con1 = $(".latestNewsText"), con2 = $(".latestNewsText_two"), speed = 200;
-        con2.html = con1.html;
+        // con2.html = con1.html;
 
-        function ScrollUp() {
+        // function ScrollUp() {
+        //
+        // }
+
+        var i = setInterval(function () {
             if (box.scrollTop >= con1.scrollHeight) {
                 box.scrollTop = 0;
             } else
                 box.scrollTop++;
-        }
-
-        var i = setInterval(function () {
-            ScrollUp();
         }, speed);
 
         con1.hover(function () {
