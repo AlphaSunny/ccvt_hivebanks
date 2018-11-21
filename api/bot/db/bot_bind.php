@@ -169,7 +169,8 @@ function bot_qrcode($data){
         $db->query($sql);
         return $db->affectedRows();
     }else{
-        $sql = $db->sqlInsert("bot_status", $data);
+        $date['ctime'] = time();
+        $sql = $db->sqlInsert("bot_status", $date);
         $q_id = $db->query($sql);
         if ($q_id == 0)
             return false;
