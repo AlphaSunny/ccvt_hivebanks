@@ -804,9 +804,6 @@ li.round_border:after {
     width: 80%;
 }
 
-.navbar-header > .navbar-brand {
-    padding: 6px 0 6px 15px;
-}
 
 .logoText {
     font-size: 3rem;
@@ -949,6 +946,9 @@ h4.title {
 }
 
 @media screen and (max-width: 768px) {
+    .navbar-header > .navbar-brand {
+        padding: 6px 0 6px 15px;
+    }
     header .header-content {
         padding-top: 45%;
         padding-bottom: 10%;
