@@ -61,6 +61,7 @@ $(function () {
                 li += "<li><a href='javascript:void(0)' class='toNewsInfo' name=" + data[i].news_id + ">" + data[i].title + "</a></li>"
             });
             $(".latestNewsText").html(li);
+            startSetinterval();
         }
     }, function (response) {
         if (response.errcode == "-1") {
@@ -70,28 +71,31 @@ $(function () {
     });
 
 
-    var box = $('.latestNews'), con1 = $(".latestNewsText"), con2 = $(".latestNewsText_two"), speed = 200;
-    con2.html = con1.html;
+    function startSetinterval() {
+        var box = $('.latestNews'), con1 = $(".latestNewsText"), con2 = $(".latestNewsText_two"), speed = 200;
+        con2.html = con1.html;
 
-    function ScrollUp() {
-        if (box.scrollTop >= con1.scrollHeight) {
-            box.scrollTop = 0;
-        } else
-            box.scrollTop++;
-    }
+        function ScrollUp() {
+            if (box.scrollTop >= con1.scrollHeight) {
+                box.scrollTop = 0;
+            } else
+                box.scrollTop++;
+        }
 
-    var i = setInterval(function () {
-        ScrollUp();
-    }, speed);
-
-    con1.hover(function () {
-        clearInterval(i);
-    });
-    con1.mouseleave(function () {
-        i = setInterval(function () {
+        var i = setInterval(function () {
             ScrollUp();
         }, speed);
-    });
+
+        con1.hover(function () {
+            clearInterval(i);
+        });
+        con1.mouseleave(function () {
+            i = setInterval(function () {
+                ScrollUp();
+            }, speed);
+        });
+    }
+
 
     // var $this = $(".latestNews");
     // var scrollTimer;
