@@ -937,6 +937,14 @@ h4.title {
     line-height: 3.5rem;
 }
 
+.phone_show_btn {
+    padding: 3% 15%;
+}
+
+.web_none {
+    display: none;
+}
+
 @media screen and (max-width: 768px) {
     header .header-content {
         padding-top: 35%;
@@ -945,6 +953,10 @@ h4.title {
 
     header .header-content h1 {
         font-size: 2.5rem;
+    }
+
+    .phone_show {
+        display: block;
     }
 
     h4.title {
@@ -964,6 +976,6 @@ h4.title {
     }
 
     .float_qr_box {
-        top: 60%;
+        top: 64%;
     }
 }
