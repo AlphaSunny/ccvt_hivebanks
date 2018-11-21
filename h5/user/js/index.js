@@ -61,7 +61,7 @@ $(function () {
                 li += "<li><a href='javascript:void(0)' class='toNewsInfo' name=" + data[i].news_id + ">" + data[i].title + "</a></li>"
             });
             $(".latestNewsText").html(li);
-            startSetinterval();
+            setInterval('AutoScroll(".latestNews")', 1000);
         }
     }, function (response) {
         if (response.errcode == "-1") {
@@ -71,7 +71,7 @@ $(function () {
     });
 
 
-    function startSetinterval() {
+    // function startSetinterval() {
         function AutoScroll(obj) {
             $(obj).find("ul:first").animate({
                     marginTop: "-3.5rem"
@@ -83,7 +83,7 @@ $(function () {
                     }).find("li:first").appendTo(this);
                 });
         }
-        setInterval('AutoScroll(".latestNews")', 1000);
+
         // var box = $('.latestNews'), con1 = $(".latestNewsText"), con2 = $(".latestNewsText_two"), speed = 200;
         // // con2.html = con1.html;
         //
@@ -106,7 +106,7 @@ $(function () {
         //         ScrollUp();
         //     }, speed);
         // });
-    }
+    // }
 
 
     // var $this = $(".latestNews");
