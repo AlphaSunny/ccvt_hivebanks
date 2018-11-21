@@ -12,7 +12,6 @@ $db = new DB_COM();
 $sql = "select * from us_asset WHERE asset_id='GLOP'";
 $db->query($sql);
 $rows = $db->fetchAll();
-print_r($rows);
 if ($rows){
     $unit = la_unit();
     //积分
@@ -30,6 +29,7 @@ function scale_upgrade($us_id,$scale){
 
     //判断是否可以升级
     $us_scale = get_us_base($us_id)['scale'];
+    echo $us_scale;
     //获取当前积分的等级
     $sca = get_scale_info($scale);
     if($us_scale<$sca['scale']){
