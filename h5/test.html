@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box{width:260px;height:100px;margin:0 auto;border:2px solid red;overflow: auto}
+        ul{padding:0;margin:0;list-style: none;overflow: hidden}
+        ul li{height:24px;line-height: 24px;padding-left:10px;}
+        a{text-decoration: none;color:#000;}
+        a:hover{color:#f00}
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul id="con1" onMouseOut="Up()" onMouseOver="Stop()">
+        <li><a href="#" >1,课程html</a> </li>
+        <li><a href="#">2,课程css</a> </li>
+        <li><a href="#">3,课程js</a> </li>
+        <li><a href="#">4,课程jquery</a> </li>
+        <li><a href="#">5,课程html5</a> </li>
+        <li><a href="#">6,课程css3</a> </li>
+        <li><a href="#">7,课程hp</a> </li>
+        <li><a href="#">8,课程bpootstrap</a> </li>
+        <li><a href="#">9,课程apicloud</a> </li>
+    </ul>
+    <ul id="con2"></ul>
+</div>
+</body>
+<script type="text/javascript">
+    var box=document.getElementById("box");
+    var con1=document.getElementById("con1");
+    var con2=document.getElementById("con2");
+    var s=document.getElementsByTagName("a");
+    var speed=200;
+    con2.innerHTML=con1.innerHTML;
+    function  ScrollUp(){
+        if( box.scrollTop>=con1.scrollHeight){
+            box.scrollTop=0;
+        }else
+            box.scrollTop++;
+    }
+    var i=setInterval("ScrollUp()",speed);
+    function Stop(){
+        clearInterval(i);
+    }
+    function Up(){
+        i=setInterval("ScrollUp()",speed);
+    }
+
+</script>
+</html>
+---------------------
+作者：waterDjj
+来源：CSDN
+原文：https://blog.csdn.net/waterdjj/article/details/52022081
+版权声明：本文为博主原创文章，转载请附上博文链接！

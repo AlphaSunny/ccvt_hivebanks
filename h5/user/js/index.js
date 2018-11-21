@@ -70,27 +70,46 @@ $(function () {
     });
 
 
-    var $this = $(".latestNews");
-    var scrollTimer;
-    $this.hover(function () {
-        clearInterval(scrollTimer);
-    }, function () {
-        scrollTimer = setInterval(function () {
-            scrollNews($this);
-        }, 6000);
-    }).trigger("mouseleave");
+    var box = $('.latestNews'), con1 = $(".latestNewsText"), con2 = $(".latestNewsText_two"), speed = 200;
+    con2.innerHTML = con1.innerHTML;
 
-    function scrollNews(obj) {
-        var $self = obj.find("ul");
-        var lineHeight = $self.find("li:first").height();
-        $self.animate({
-            "marginTop": -lineHeight + "px"
-        }, 6000, function () {
-            $self.css({
-                marginTop: 0
-            }).find("li:first").appendTo($self);
-        })
+    function ScrollUp() {
+        if (box.scrollTop >= con1.scrollHeight) {
+            box.scrollTop = 0;
+        } else
+            box.scrollTop++;
     }
+
+    var i = setInterval("ScrollUp()", speed);
+
+    con1.hover(function () {
+        clearInterval(i);
+    });
+    con1.mouseleave(function () {
+        i = setInterval("ScrollUp()", speed);
+    });
+
+    // var $this = $(".latestNews");
+    // var scrollTimer;
+    // $this.hover(function () {
+    //     clearInterval(scrollTimer);
+    // }, function () {
+    //     scrollTimer = setInterval(function () {
+    //         scrollNews($this);
+    //     }, 6000);
+    // }).trigger("mouseleave");
+    //
+    // function scrollNews(obj) {
+    //     var $self = obj.find("ul");
+    //     var lineHeight = $self.find("li:first").height();
+    //     $self.animate({
+    //         "marginTop": -lineHeight + "px"
+    //     }, 6000, function () {
+    //         $self.css({
+    //             marginTop: 0
+    //         }).find("li:first").appendTo($self);
+    //     })
+    // }
 
     //to news info
     $(document).on("click", ".toNewsInfo", function () {
