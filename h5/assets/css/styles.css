@@ -947,7 +947,7 @@ h4.title {
 
 @media screen and (max-width: 768px) {
     .navbar-header > .navbar-brand {
-        padding: 6px 0 6px 15px;
+        padding: 6px 0 6px 15px!important;
     }
     header .header-content {
         padding-top: 45%;
