@@ -225,7 +225,7 @@ footer {
     font-family: 'Questrial', 'Helvetica Neue', Arial, sans-serif;
     /*color: #9c27b0;*/
     color: #1cb0fe;
-    padding: 15px;
+    padding: 15px 0 0 15px;
     -webkit-transition: padding .2s ease-in;
     -moz-transition: padding .2s ease-in;
     transition: padding .2s ease-in;
