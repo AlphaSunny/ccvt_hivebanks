@@ -71,7 +71,7 @@ $(function () {
 
 
     var box = $('.latestNews'), con1 = $(".latestNewsText"), con2 = $(".latestNewsText_two"), speed = 200;
-    con2.innerHTML = con1.innerHTML;
+    con2.innerText = con1.innerText;
 
     function ScrollUp() {
         if (box.scrollTop >= con1.scrollHeight) {
