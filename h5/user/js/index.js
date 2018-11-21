@@ -67,8 +67,18 @@ $(function () {
         });
     }
 
-    $('.latestNews').hover(() => {
+    function start_Scroll() {
+        timer_news = setInterval(() => {
+            AutoScroll(".latestNews")
+        }, 5000);
+    }
+
+    $('.latestNews').mouseenter(() => {
         clearInterval(timer_news);
+    });
+    
+    $('.latestNews').mouseleave(() => {
+        start_Scroll();
     });
 
 
@@ -80,9 +90,7 @@ $(function () {
                 li += "<li><a href='javascript:void(0)' class='toNewsInfo' name=" + data[i].news_id + ">" + data[i].title + "</a></li>"
             });
             $(".latestNewsText").html(li);
-            timer_news = setInterval(() => {
-                AutoScroll(".latestNews")
-            }, 5000);
+            start_Scroll();
         }
     }, function (response) {
         if (response.errcode == "-1") {
