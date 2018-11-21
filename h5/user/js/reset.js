@@ -78,7 +78,7 @@ $(function () {
             $('.confirmpassword_tips').fadeIn().siblings('span').hide();
             return;
         }
-        if (emailPassword.length < 8) {
+        if (confirmemailPassword.length < 8) {
             $('.errconfirmEmailPass_tips').fadeIn().siblings('span').hide();
             return;
         }
@@ -134,7 +134,7 @@ $(function () {
             LayerFun('passwordNotEmpty');
             return;
         }
-        if (confirm_pass_word_hash == '') {
+        if (email_confirm_Password == '') {
             $('.confirmpassword_tips').fadeIn().siblings('span').hide();
             LayerFun('confirmPasswordNotEmpty');
             return;
@@ -164,7 +164,7 @@ $(function () {
                 execI18n();
                 return;
             }
-            if(response.errcode == "114"){
+            if (response.errcode == "114") {
                 DelCookie('token');
                 window.location.href = 'login.html';
             }
@@ -177,11 +177,11 @@ $(function () {
     });
     $('#phone').blur(function () {
         var phone = $(this).val();
-        if(phone.length <= 0){
+        if (phone.length <= 0) {
             $('.phone_tips').fadeIn().siblings('span').hide();
             return;
         }
-        if(isNaN(phone)){
+        if (isNaN(phone)) {
             $('.phoneErrorTips').fadeIn().siblings('span').hide();
             return;
         }
@@ -193,7 +193,7 @@ $(function () {
     });
     $('.phoneCfmCode').blur(function () {
         var phoneCfmCode = $(this).val();
-        if(phoneCfmCode.length <= 0){
+        if (phoneCfmCode.length <= 0) {
             $('.phoneImgCode_tips').fadeIn().siblings('span').hide();
             return;
         }
@@ -205,7 +205,7 @@ $(function () {
     });
     $('.phoneSmsCode').blur(function () {
         var phoneSmsCode = $(this).val();
-        if(phoneSmsCode.length <= 0){
+        if (phoneSmsCode.length <= 0) {
             $('.phoneCode_tips').fadeIn();
             return;
         }
@@ -217,11 +217,11 @@ $(function () {
     });
     $('.phonePassword').blur(function () {
         var phonePassword = $(this).val();
-        if(phonePassword.length <= 0){
+        if (phonePassword.length <= 0) {
             $('.Phonepassword_tips').fadeIn().siblings('span').hide();
             return;
         }
-        if(phonePassword.length < 8){
+        if (phonePassword.length < 8) {
             $('.errPhonePass_tips').fadeIn().siblings('span').hide();
             return;
         }
@@ -232,11 +232,11 @@ $(function () {
     });
     $('.confirmphonePassword').blur(function () {
         var phonePassword = $(this).val();
-        if(phonePassword.length <= 0){
+        if (phonePassword.length <= 0) {
             $('.ConfirmPhonepassword_tips').fadeIn().siblings('span').hide();
             return;
         }
-        if(phonePassword.length < 8){
+        if (phonePassword.length < 8) {
             $('.errconfirmPhonePass_tips').fadeIn().siblings('span').hide();
             return;
         }
@@ -245,7 +245,7 @@ $(function () {
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
         var bind_type = '3', $this = $(this), cfm_code = $('.phoneCfmCode').val();
-        if($(".phone").val().length <= 0){
+        if ($(".phone").val().length <= 0) {
             $('.phone_tips').fadeIn().siblings('span').hide();
             LayerFun('phoneNotEmpty');
             return;
@@ -290,14 +290,15 @@ $(function () {
             $('.Phonepassword_tips').fadeIn().siblings('span').hide();
             return;
         }
-        if (confirmphonePassword == '') {
-            LayerFun('confirmPasswordNotEmpty');
-            $('.ConfirmPhonepassword_tips').fadeIn().siblings('span').hide();
-            return;
-        }
+
         if (phonePassword.length < 8) {
             LayerFun('passwordNotEmpty');
             $('.PasswordStructure').fadeIn().siblings('span').hide();
+            return;
+        }
+        if (confirmphonePassword == '') {
+            LayerFun('confirmPasswordNotEmpty');
+            $('.ConfirmPhonepassword_tips').fadeIn().siblings('span').hide();
             return;
         }
         if (confirmphonePassword.length < 8) {
@@ -325,7 +326,7 @@ $(function () {
             if (response.errcode == '120') {
                 $('.noPhonelTips').fadeIn('fast');
             }
-            if(response.errcode == "114"){
+            if (response.errcode == "114") {
                 DelCookie('user_token');
                 window.location.href = 'login.html';
             }
