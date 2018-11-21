@@ -54,6 +54,9 @@ $(function () {
     });
 
 
+    // scroll news
+    var timer_news = "";
+
     function AutoScroll(obj) {
         $(obj).find("ul:first").animate({
             marginTop: "-3rem"
@@ -64,6 +67,11 @@ $(function () {
         });
     }
 
+    $('.latestNews').hover(() => {
+        clearInterval(timer_news);
+    });
+
+
     //get new list
     Get_News_List(function (response) {
         if (response.errcode == "0") {
@@ -72,7 +80,7 @@ $(function () {
                 li += "<li><a href='javascript:void(0)' class='toNewsInfo' name=" + data[i].news_id + ">" + data[i].title + "</a></li>"
             });
             $(".latestNewsText").html(li);
-            setInterval(()=>{
+            timer_news = setInterval(() => {
                 AutoScroll(".latestNews")
             }, 5000);
         }
@@ -82,57 +90,6 @@ $(function () {
 
         }
     });
-
-
-    // function startSetinterval() {
-
-
-    // var box = $('.latestNews'), con1 = $(".latestNewsText"), con2 = $(".latestNewsText_two"), speed = 200;
-    // // con2.html = con1.html;
-    //
-    // function ScrollUp() {
-    //     if (box.scrollTop >= con1.scrollHeight) {
-    //         box.scrollTop = 0;
-    //     } else
-    //         box.scrollTop++;
-    // }
-    //
-    // var i = setInterval(function () {
-    //     ScrollUp();
-    // }, speed);
-    //
-    // con1.hover(function () {
-    //     clearInterval(i);
-    // });
-    // con1.mouseleave(function () {
-    //     i = setInterval(function () {
-    //         ScrollUp();
-    //     }, speed);
-    // });
-    // }
-
-
-    // var $this = $(".latestNews");
-    // var scrollTimer;
-    // $this.hover(function () {
-    //     clearInterval(scrollTimer);
-    // }, function () {
-    //     scrollTimer = setInterval(function () {
-    //         scrollNews($this);
-    //     }, 6000);
-    // }).trigger("mouseleave");
-    //
-    // function scrollNews(obj) {
-    //     var $self = obj.find("ul");
-    //     var lineHeight = $self.find("li:first").height();
-    //     $self.animate({
-    //         "marginTop": -lineHeight + "px"
-    //     }, 6000, function () {
-    //         $self.css({
-    //             marginTop: 0
-    //         }).find("li:first").appendTo($self);
-    //     })
-    // }
 
     //to news info
     $(document).on("click", ".toNewsInfo", function () {
