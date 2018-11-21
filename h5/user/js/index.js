@@ -53,6 +53,17 @@ $(function () {
         // }
     });
 
+
+    function AutoScroll(obj) {
+        $(obj).find("ul:first").animate({
+            marginTop: "-3.5rem"
+        }, 500, function () {
+            $(this).css({
+                marginTop: "0px"
+            }).find("li:first").appendTo(this);
+        });
+    }
+
     //get new list
     Get_News_List(function (response) {
         if (response.errcode == "0") {
@@ -72,40 +83,30 @@ $(function () {
 
 
     // function startSetinterval() {
-        function AutoScroll(obj) {
-            $(obj).find("ul:first").animate({
-                    marginTop: "-3.5rem"
-                },
-                500,
-                function() {
-                    $(this).css({
-                        marginTop: "0px"
-                    }).find("li:first").appendTo(this);
-                });
-        }
 
-        // var box = $('.latestNews'), con1 = $(".latestNewsText"), con2 = $(".latestNewsText_two"), speed = 200;
-        // // con2.html = con1.html;
-        //
-        // function ScrollUp() {
-        //     if (box.scrollTop >= con1.scrollHeight) {
-        //         box.scrollTop = 0;
-        //     } else
-        //         box.scrollTop++;
-        // }
-        //
-        // var i = setInterval(function () {
-        //     ScrollUp();
-        // }, speed);
-        //
-        // con1.hover(function () {
-        //     clearInterval(i);
-        // });
-        // con1.mouseleave(function () {
-        //     i = setInterval(function () {
-        //         ScrollUp();
-        //     }, speed);
-        // });
+
+    // var box = $('.latestNews'), con1 = $(".latestNewsText"), con2 = $(".latestNewsText_two"), speed = 200;
+    // // con2.html = con1.html;
+    //
+    // function ScrollUp() {
+    //     if (box.scrollTop >= con1.scrollHeight) {
+    //         box.scrollTop = 0;
+    //     } else
+    //         box.scrollTop++;
+    // }
+    //
+    // var i = setInterval(function () {
+    //     ScrollUp();
+    // }, speed);
+    //
+    // con1.hover(function () {
+    //     clearInterval(i);
+    // });
+    // con1.mouseleave(function () {
+    //     i = setInterval(function () {
+    //         ScrollUp();
+    //     }, speed);
+    // });
     // }
 
 
