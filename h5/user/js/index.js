@@ -58,8 +58,9 @@ $(function () {
     var timer_news = "";
 
     function AutoScroll(obj) {
+        var item_height = $(obj).find("ul>li").height();
         $(obj).find("ul:first").animate({
-            marginTop: "-3rem"
+            marginTop: item_height
         }, 2000, function () {
             $(this).css({
                 marginTop: "0px"
@@ -76,7 +77,7 @@ $(function () {
     $('.latestNews').mouseenter(() => {
         clearInterval(timer_news);
     });
-    
+
     $('.latestNews').mouseleave(() => {
         start_Scroll();
     });
