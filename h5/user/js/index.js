@@ -57,7 +57,7 @@ $(function () {
     function AutoScroll(obj) {
         $(obj).find("ul:first").animate({
             marginTop: "-3rem"
-        }, 3000, function () {
+        }, 2000, function () {
             $(this).css({
                 marginTop: "0px"
             }).find("li:first").appendTo(this);
@@ -74,7 +74,7 @@ $(function () {
             $(".latestNewsText").html(li);
             setInterval(()=>{
                 AutoScroll(".latestNews")
-            }, 3000);
+            }, 5000);
         }
     }, function (response) {
         if (response.errcode == "-1") {
