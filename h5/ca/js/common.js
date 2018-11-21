@@ -312,12 +312,13 @@ function PhoneRegister(country_code, cellphone, pass_word_hash, sms_code, suc_fu
 };
 
 // 重置密码(邮箱)
-function ResetEmailPassword(email, cfm_code, pass_word_hash, suc_func, error_func) {
+function ResetEmailPassword(email, cfm_code, pass_word_hash,confirm_pass_word_hash, suc_func, error_func) {
     var api_url = 'rst_pw_email.php',
         post_data = {
             'email': email,
             'cfm_code': cfm_code,
-            'pass_word_hash': pass_word_hash
+            'pass_word_hash': pass_word_hash,
+            'confirm_pass_word_hash': confirm_pass_word_hash
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
@@ -332,13 +333,14 @@ function GetEmailCode(email, suc_func, error_func) {
 }
 
 // 重置密码(手机)
-function ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash, suc_func, error_func) {
+function ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash,confirm_pass_word_hash, suc_func, error_func) {
     var api_url = 'rst_pw_phone.php',
         post_data = {
             'country_code': country_code,
             'cellphone': cellphone,
             'sms_code': sms_code,
-            'pass_word_hash': pass_word_hash
+            'pass_word_hash': pass_word_hash,
+            'confirm_pass_word_hash': confirm_pass_word_hash
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }

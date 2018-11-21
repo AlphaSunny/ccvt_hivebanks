@@ -82,6 +82,10 @@ $(function () {
             $('.errconfirmEmailPass_tips').fadeIn().siblings('span').hide();
             return;
         }
+        if ($('.emailPassword').val() != confirmemailPassword) {
+            $('.TwoPassword_email').fadeIn().siblings('span').hide();
+            return;
+        }
     });
 
     // Reset email to get verification code
@@ -137,6 +141,11 @@ $(function () {
         if (email_confirm_Password == '') {
             $('.confirmpassword_tips').fadeIn().siblings('span').hide();
             LayerFun('confirmPasswordNotEmpty');
+            return;
+        }
+        if (emailPassword != email_confirm_Password) {
+            $('.TwoPassword_email').fadeIn().siblings('span').hide();
+            LayerFun('TwoPassword');
             return;
         }
         var $this = $(this), btnText = $(this).text();
@@ -231,13 +240,18 @@ $(function () {
         $(this).siblings('span').hide();
     });
     $('.confirmphonePassword').blur(function () {
-        var phonePassword = $(this).val();
-        if (phonePassword.length <= 0) {
+        var confirmphonePassword = $(this).val();
+        if (confirmphonePassword.length <= 0) {
             $('.ConfirmPhonepassword_tips').fadeIn().siblings('span').hide();
             return;
         }
-        if (phonePassword.length < 8) {
+        if (confirmphonePassword.length < 8) {
             $('.errconfirmPhonePass_tips').fadeIn().siblings('span').hide();
+            return;
+        }
+
+        if ($('.phonePassword').val() != confirmphonePassword) {
+            $('.TwoPassword_phone').fadeIn().siblings('span').hide();
             return;
         }
     });
@@ -304,6 +318,11 @@ $(function () {
         if (confirmphonePassword.length < 8) {
             LayerFun('confirmPasswordNotEmpty');
             $('.confirmPasswordStructure').fadeIn().siblings('span').hide();
+            return;
+        }
+        if (phonePassword != confirmphonePassword) {
+            $('.TwoPassword_phone').fadeIn().siblings('span').hide();
+            LayerFun('TwoPassword');
             return;
         }
 
