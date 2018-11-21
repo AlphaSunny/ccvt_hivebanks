@@ -36,7 +36,7 @@ $(function () {
         if (response.errcode == '0') {
             var withdrawList = response.rows.withdraw;
             if (withdrawList == false) {
-                GetDataEmpty('baWithdraw', '8');
+                GetDataEmpty('caWithdraw', '6');
                 return;
             }
             ShowDataFun(withdrawList);
