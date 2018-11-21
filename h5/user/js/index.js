@@ -80,7 +80,9 @@ $(function () {
             box.scrollTop++;
     }
 
-    var i = setInterval("ScrollUp()", speed);
+    var i = setInterval(function () {
+        ScrollUp();
+    }, speed);
 
     con1.hover(function () {
         clearInterval(i);
