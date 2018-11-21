@@ -63,8 +63,10 @@ a span {
     outline: inherit;
 }
 
-.btn:disabled{
-    color: #ffffff;
+.btn-success:disabled{
+    color: #9e9e9e;
+    background: transparent;
+    border: 1px solid #9e9e9e;
 }
 
 *,
