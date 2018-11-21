@@ -385,7 +385,6 @@ textarea::-ms-input-placeholder {
 
 .navbar-brand {
     width: 40%;
-    padding-top: 8px !important;
 }
 
 .container > .navbar-header {
