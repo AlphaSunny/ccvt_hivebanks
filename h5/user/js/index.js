@@ -83,9 +83,7 @@ $(function () {
                     }).find("li:first").appendTo(this);
                 });
         }
-        $(document).ready(function() {
-            setInterval('AutoScroll(".latestNews")', 1000)
-        });
+        setInterval('AutoScroll(".latestNews")', 1000);
         // var box = $('.latestNews'), con1 = $(".latestNewsText"), con2 = $(".latestNewsText_two"), speed = 200;
         // // con2.html = con1.html;
         //
