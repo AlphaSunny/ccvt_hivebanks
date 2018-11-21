@@ -59,8 +59,8 @@ $(function () {
 
     function AutoScroll(obj) {
         var item_height = $(obj).find("ul>li").height();
+        console.log(item_height);
         var body_width = $(document).width();
-        console.log(body_width);
         if(body_width <= 768){
             margin_top = "-2.6rem";
         }else {
