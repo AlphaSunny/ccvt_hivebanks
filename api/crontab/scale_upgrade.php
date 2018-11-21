@@ -12,6 +12,7 @@ $db = new DB_COM();
 $sql = "select * from us_asset WHERE asset_id='GLOP'";
 $db->query($sql);
 $rows = $db->fetchAll();
+print_r($rows);
 if ($rows){
     $unit = la_unit();
     //积分
