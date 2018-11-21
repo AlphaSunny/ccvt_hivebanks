@@ -939,11 +939,16 @@ h4.title {
 
 @media screen and (max-width: 768px) {
     header .header-content {
-        padding-top: 50%;
+        padding-top: 35%;
+        padding-bottom: 50%;
+    }
+
+    header .header-content h1 {
+        font-size: 2.5rem;
     }
 
     h4.title {
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .latestNewsText {
