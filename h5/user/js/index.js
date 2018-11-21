@@ -55,15 +55,21 @@ $(function () {
 
 
     // scroll news
-    var timer_news = "";
+    var timer_news = "", margin_top = "";
 
     function AutoScroll(obj) {
         var item_height = $(obj).find("ul>li").height();
+        var body_width = $(document).width();
+        if(body_width <= 768){
+            margin_top = "-2.6rem";
+        }else {
+            margin_top = "0px"
+        }
         $(obj).find("ul:first").animate({
             marginTop: -item_height
         }, 2000, function () {
             $(this).css({
-                marginTop: "0px"
+                marginTop: margin_top
             }).find("li:first").appendTo(this);
         });
     }
