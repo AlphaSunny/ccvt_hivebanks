@@ -93,7 +93,7 @@ function send_to_us_ccvt($us_id)
 {
     $db = new DB_COM();
     //送币
-    $unit = la_unit();
+    $unit = get_la_base_unit();
     $money = "1000";
     $sql = "update us_base set base_amount=base_amount+'{$money}'*'{$unit}' WHERE us_id='{$us_id}'";
     $db -> query($sql);
@@ -169,14 +169,7 @@ function send_to_us_ccvt($us_id)
 
 
 }
-//la汇率
-function la_unit(){
-    $db = new DB_COM();
-    $sql = "select unit from la_base limit 1";
-    $db->query($sql);
-    $rows = $db->fetchRow();
-    return $rows['unit'];
-}
+
 
 //获取用户余额
 function get_us_account($us_id){
