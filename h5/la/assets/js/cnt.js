@@ -50,6 +50,6 @@ $(function () {
     } else {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET", "http://www.fnying.com/php/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
+    xmlhttp.open("GET", "https://ccvt_test.fnying.com/api/plugin/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
     xmlhttp.send();
 });
