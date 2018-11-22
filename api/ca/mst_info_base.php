@@ -2,7 +2,6 @@
 
 require_once '../inc/common.php';
 require_once 'db/ca_base.php';
-require_once 'db/la_base.php';
 require_once 'db/us_ca_recharge_request.php';
 require_once 'db/us_ca_withdraw_request.php';
 require_once 'db/ca_rate_setting.php';

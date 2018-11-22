@@ -3,7 +3,6 @@
 require_once '../inc/common.php';
 require_once 'db/ca_base.php';
 require_once 'db/ca_rate_setting.php';
-require_once "db/la_base.php";
 require_once "db/ca_bind.php";
 require_once "db/com_option_config.php";
 

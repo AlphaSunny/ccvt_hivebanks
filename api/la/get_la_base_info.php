@@ -6,7 +6,6 @@
  * Date: 2018/8/8
  * Time: 下午4:48
  */
-require_once "db/la_base.php";
 require_once "../inc/common.php";
 require_once "admin/configure/db/com_option_config.php";
 header("cache-control:no-cache,must-revalidate");

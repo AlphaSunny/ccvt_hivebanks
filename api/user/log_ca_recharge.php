@@ -3,7 +3,6 @@
 require_once '../inc/common.php';
 require_once 'db/log_ca_recharge.php';
 require_once 'db/us_base.php';
-require_once "db/la_base.php";
 
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");

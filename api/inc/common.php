@@ -530,6 +530,20 @@ function check_token($token,$type=''){
         return $us_id;
 }
 
+//======================================
+// 函数: 获取la的数字货币单位
+// 参数:
+// 返回: 数字货币单位
+//======================================
+function get_la_base_unit()
+{
+    $db = new DB_COM();
+    $sql = "SELECT unit FROM la_base limit 1";
+    $db->query($sql);
+    $rows = $db->fetchRow();
+    return $rows["unit"];
+}
+
 
 
 ?>

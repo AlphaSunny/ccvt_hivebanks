@@ -2,7 +2,6 @@
 
 require_once '../inc/common.php';
 require_once 'db/us_log_balance.php';
-require_once "db/la_base.php";
 
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");

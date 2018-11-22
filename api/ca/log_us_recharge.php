@@ -1,7 +1,6 @@
 <?php
 
 require_once '../inc/common.php';
-require_once "db/la_base.php";
 require_once 'db/us_ca_recharge_request.php';
 require_once 'db/ca_asset_account.php';
 
