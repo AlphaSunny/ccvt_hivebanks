@@ -51,7 +51,7 @@ $begin_limit_time =  get_arg_str('GET', 'begin_limit_time');
 $end_limit_time =  get_arg_str('GET', 'end_limit_time');
 
 //得到基本单位
-$unit = get_la_base_unit()['unit'];
+$unit = get_la_base_unit();
 
 //$begin_limit_time = $begin_limit_time ? $begin_limit_time : 0;
 //$end_limit_time = $end_limit_time ? $end_limit_time : 0;
