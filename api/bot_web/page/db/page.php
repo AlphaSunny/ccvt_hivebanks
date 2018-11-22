@@ -10,7 +10,7 @@ function give_like_us($data)
 {
     $db = new DB_COM();
     $pInTrans = $db->StartTrans();  //开启事务
-    $unit = la_unit();
+    $unit = get_la_base_unit();
 
     //积分变动记录表
     $d['hash_id'] = hash('md5', $data['us_id'] . 'give_like_us' . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
@@ -261,7 +261,7 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
         $max = get_max_give_like()['max_give_no_like'];
     }
 
-    $unit = la_unit();
+    $unit = get_la_base_unit();
 
     $sql = "select base_amount/'{$unit}' as base_amount from us_base WHERE us_id='{$us_id}'";
     $db->query($sql);
@@ -293,12 +293,3 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
     }
 }
 
-
-//la汇率
-function la_unit(){
-    $db = new DB_COM();
-    $sql = "select unit from la_base limit 1";
-    $db->query($sql);
-    $rows = $db->fetchRow();
-    return $rows['unit'];
-}

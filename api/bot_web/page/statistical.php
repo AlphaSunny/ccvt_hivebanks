@@ -53,9 +53,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
             <div class="col-md-12">
                 <div class="margin-bottom-2">
                     <?php
-                    $sql = "select unit from la_base limit 1";
-                    $db->query($sql);
-                    $unit = $db->getField($sql, 'unit');
+                    $unit = get_la_base_unit();
 
                     $sql = "select sum(amount)/'{$unit}' as all_send_ccvt from bot_Iss_records WHERE send_time BETWEEN '{$day_start}' AND '{$day_end}'";
                     $db->query($sql);

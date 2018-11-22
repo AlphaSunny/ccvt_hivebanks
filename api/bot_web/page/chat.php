@@ -48,9 +48,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
     <?php } ?>
     <ul class="chatList">
         <?php
-        $sql = "select unit from la_base limit 1";
-        $db->query($sql);
-        $unit = $db->getField($sql, 'unit');
+        $unit = get_la_base_unit();
 
         $nickname = $_GET['nikename'];
         $tblPrefix = "@风赢小助手";

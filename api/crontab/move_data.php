@@ -58,7 +58,7 @@ $bot_rows = $db->fetchAll();
 if ($bot_rows){
     foreach ($bot_rows as $c=>$d){
         set_time_limit(0);
-        $send_money = $d['amount']/la_unit();
+        $send_money = $d['amount']/get_la_base_unit();
         into_transfer($d['us_id'],$send_money,$d['send_time'],4,'聊天奖励','ba_send');
     }
 }else{
@@ -73,7 +73,7 @@ echo "ok";
 
 function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
     $db = new DB_COM();
-    $unit = la_unit();
+    $unit = get_la_base_unit();
     //us加钱
     $sql = "update us_base set base_amount=base_amount+'{$send_money}'*'{$unit}' WHERE us_id='{$us_id}'";
     $db -> query($sql);
@@ -240,14 +240,6 @@ function get_ba_id(){
         return 0;
     }
     return $ba_id;
-}
-//la汇率
-function la_unit(){
-    $db = new DB_COM();
-    $sql = "select unit from la_base limit 1";
-    $db->query($sql);
-    $rows = $db->fetchRow();
-    return $rows['unit'];
 }
 
 function get_us_id($invite_code){

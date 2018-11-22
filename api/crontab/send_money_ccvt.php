@@ -52,7 +52,7 @@ if ($rows){
         $u_id = get_us_id($v['wechat']);
 
         //送币
-        $unit = la_unit();
+        $unit = get_la_base_unit();
         //获取等级
         $sca = get_us_scale($u_id);
         $scale = "select * from us_scale WHERE scale='{$sca}' limit 1";
@@ -206,7 +206,7 @@ function sel_ba_amout($ba_id,$day_start,$day_end){
     if (!$ba_amount || $ba_amount['base_amount']<=0){
         $remark = -1;
     }
-    $unit = la_unit();
+    $unit = get_la_base_unit();
 
     $ba_amount = $ba_amount['base_amount']<=0 ? $ba_amount['base_amount'] : $ba_amount['base_amount']/$unit;
     //这个ba微信用户今日发言数
@@ -280,14 +280,6 @@ function get_ba_account($ba_id){
     return $base_amount;
 }
 
-//la汇率
-function la_unit(){
-    $db = new DB_COM();
-    $sql = "select unit from la_base limit 1";
-    $db->query($sql);
-    $rows = $db->fetchRow();
-    return $rows['unit'];
-}
 
 //======================================
 // 函数: 获取充值的前置hash

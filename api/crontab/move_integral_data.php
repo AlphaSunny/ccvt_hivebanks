@@ -240,14 +240,6 @@ function get_ba_id(){
     }
     return $ba_id;
 }
-//la汇率
-function la_unit(){
-    $db = new DB_COM();
-    $sql = "select unit from la_base limit 1";
-    $db->query($sql);
-    $rows = $db->fetchRow();
-    return $rows['unit'];
-}
 
 function get_us_id($invite_code){
     $db = new DB_COM();

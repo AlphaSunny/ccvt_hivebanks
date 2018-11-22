@@ -13,7 +13,7 @@ $sql = "select * from us_asset WHERE asset_id='GLOP'";
 $db->query($sql);
 $rows = $db->fetchAll();
 if ($rows){
-    $unit = la_unit();
+    $unit = get_la_base_unit();
     //积分
     foreach ($rows as $k=>$v){
         set_time_limit(0);
@@ -60,14 +60,6 @@ function scale_upgrade($us_id,$scale,$us_account){
     }
 }
 
-//la汇率
-function la_unit(){
-    $db = new DB_COM();
-    $sql = "select unit from la_base limit 1";
-    $db->query($sql);
-    $rows = $db->fetchRow();
-    return $rows['unit'];
-}
 
 //获取等级信息
 function get_scale_info($scale){
