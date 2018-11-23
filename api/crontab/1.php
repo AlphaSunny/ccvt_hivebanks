@@ -5,7 +5,7 @@ error_reporting(E_ALL | E_STRICT);
 
 
 
-for($i=0;$i<200;$i++){
+for($i=0;$i<100;$i++){
     $data['id'] = get_guid();
     $data['coupon_code'] = "ccvt-".randomkeys(8);
     $data['amount'] = 50;
