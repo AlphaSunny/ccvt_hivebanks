@@ -543,6 +543,7 @@ function send_to_us_ccvt($nickname,$voucher,$flag,$why,$type)
 
     //修改兑换码表
     $sql = "update us_voucher set is_ effective=2,us_id='{$us_id}',exchange_time='{$exchange_time}' WHERE id='{$vou['id']}'";
+    echo $sql;die;
     $db -> query($sql);
     if (!$db->affectedRows()){
         $db->Rollback($pInTrans);
