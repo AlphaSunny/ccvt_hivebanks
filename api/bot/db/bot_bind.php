@@ -436,6 +436,21 @@ function check_voucher($nickname,$voucher)
 }
 
 //======================================
+// 函数: 获取金额
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function get_voucher_amount($voucher)
+{
+    $db = new DB_COM();
+    $sql = "select * from us_voucher WHERE coupon_code='{$voucher}'";
+    $db->query($sql);
+    $vou = $db->fetchRow();
+    return $vou['amount'];
+}
+
+//======================================
 // 函数: 兑换
 // 参数:
 //
