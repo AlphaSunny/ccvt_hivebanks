@@ -429,7 +429,7 @@ function check_voucher($nickname,$voucher)
         $vou = $db->fetchRow();
         if (!$vou){
             return 2;
-        }elseif($vou['is_ effective']!=1){
+        }elseif($vou['is_effective']!=1){
             return 3;
         }
     }
