@@ -12,7 +12,7 @@ function randomkeys($length)
     {   
         $key .= $pattern{mt_rand(0,35)};    //生成php随机数   
     }   
-    return $key;   
+    return "ccvt-".$key;
 }   
 echo randomkeys(8); 
 ?>
