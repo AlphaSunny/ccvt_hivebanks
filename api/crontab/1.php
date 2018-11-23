@@ -4,6 +4,22 @@ ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
 
+
+for($i=0;$i<200;$i++){
+    $data['id'] = get_guid();
+    $data['coupon_code'] = "ccvt-".randomkeys(8);
+    $data['amount'] = 50;
+    $data['ctime'] = date('Y-m-d H:i:s');
+    $data['utime'] = time();
+    $sql = $db->sqlInsert("us_voucher", $data);
+    $id = $db->query($sql);
+    if (!$id){
+        echo "添加记录失败";
+    }
+}
+echo "ok";
+
+
 function randomkeys($length)
 {
     $key= '';
@@ -12,7 +28,6 @@ function randomkeys($length)
     {   
         $key .= $pattern{mt_rand(0,35)};    //生成php随机数   
     }   
-    return "ccvt-".$key;
-}   
-echo randomkeys(8); 
+    return $key;
+}
 ?>
