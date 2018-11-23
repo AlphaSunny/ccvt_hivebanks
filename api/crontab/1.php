@@ -27,7 +27,7 @@ function randomkeys($length)
     $pattern = '123456789abcdefghjklmnpqrstuvwxyz';
     for($i=0;$i<$length;$i++)   
     {   
-        $key .= $pattern{mt_rand(0,35)};    //生成php随机数   
+        $key .= $pattern{mt_rand(0,30)};    //生成php随机数
     }   
     return $key;
 }
