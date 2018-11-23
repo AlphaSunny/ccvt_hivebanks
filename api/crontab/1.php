@@ -11,6 +11,7 @@ for($i=0;$i<200;$i++){
     $data['amount'] = 50;
     $data['ctime'] = date('Y-m-d H:i:s');
     $data['utime'] = time();
+    $db = new DB_COM();
     $sql = $db->sqlInsert("us_voucher", $data);
     $id = $db->query($sql);
     if (!$id){
