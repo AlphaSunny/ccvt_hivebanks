@@ -5,10 +5,10 @@ error_reporting(E_ALL | E_STRICT);
 
 
 
-for($i=0;$i<40;$i++){
+for($i=0;$i<20;$i++){
     $data['id'] = get_guid();
     $data['coupon_code'] = "ccvt-".randomkeys(8);
-    $data['amount'] = 200;
+    $data['amount'] = 500;
     $data['ctime'] = date('Y-m-d H:i:s');
     $data['utime'] = time();
     $db = new DB_COM();
