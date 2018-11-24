@@ -68,9 +68,9 @@ curl_setopt_array($curl, array(
 
 
 //
-$response = curl_exec($curl);
+$response = json_decode(curl_exec($curl));
 
-$info = curl_getinfo($curl);
+//$info = curl_getinfo($curl);
 //echo "code: ${info['http_code']}";
 
 //print_r($info['request_header']);
