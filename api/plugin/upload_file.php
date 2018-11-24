@@ -26,6 +26,6 @@ return $ch;
 // and here's how you'd use it
 $ch = curl_init('http://agent_service.fnying.com/upload_file/upload_file.php');
 $ch = buildMultiPartRequest($ch, uniqid(),
-['key_code' => 'value'], ['file' => $_FILES['flie']['tmp_name']]);
+['key_code' => 'value'], ['file' => $_FILES['file']['tmp_name']]);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 var_dump(json_decode(curl_exec($ch)));
