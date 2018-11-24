@@ -25,8 +25,8 @@ $file = $_FILES['file'];
 $fields = array("key_code"=>"value1", "another_field2"=>"anothervalue");
 
 // files to upload
-$filenames = array($_FILES['file']);;
-
+$filenames = array($_FILES['file']['tmp_file']);
+var_dump($filenames);die;
 $files = array();
 foreach ($filenames as $f){
     $files[$f] = file_get_contents($f);
