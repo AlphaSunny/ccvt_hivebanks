@@ -74,11 +74,11 @@ $info = curl_getinfo($curl);
 
 //print_r($info['request_header']);
 
-var_dump($response);
+//var_dump($response);
 $err = curl_error($curl);
 
-echo "error";
-var_dump($err);
+
+//var_dump($err);
 curl_close($curl);
 
 
