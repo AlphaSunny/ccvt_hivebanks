@@ -1,114 +1,31 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ahino
- * Date: 2018/11/24
- * Time: 下午2:08
- */
-
-
-$key_code = $_REQUEST['key_code'];
-$file = $_FILES['file'];
-
-//$url = 'http://agent_service.fnying.com/upload_file/upload.php';
-//$header = array('Content-Type: multipart/form-data');
-//$fields = array('file' => '@' . $_FILES['file']['tmp_name'][0]);
-//$fields = array('file' => '@' . $_FILES,'key_code'=>$key_code);
-
-
-
-
-
-// data fields for POST request
-$fields = array("key_code"=>"value1");
-
-// files to upload
-$filenames = array($_FILES['file']['tmp_name']);
-$files = array();
-foreach ($filenames as $f){
-    $files[$f] = file_get_contents($f);
-}
-//var_dump($files);die;
-// URL to upload to
-$url = "http://agent_service.fnying.com/upload_file/upload.php";
-
-
-// curl
-
-$curl = curl_init();
-
-$url_data = http_build_query($fields);
-
-$boundary = uniqid();
+function buildMultiPartRequest($ch, $boundary, $fields, $files) {
 $delimiter = '-------------' . $boundary;
-
-$post_data = build_data_files($boundary, $fields, $files);
-
-
-curl_setopt_array($curl, array(
-    CURLOPT_URL => $url,
-    CURLOPT_RETURNTRANSFER => 1,
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    //CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POST => 1,
-    CURLOPT_POSTFIELDS => $post_data,
-    CURLOPT_HTTPHEADER => array(
-        //"Authorization: Bearer $TOKEN",
-        "Content-Type: multipart/form-data; boundary=" . $delimiter,
-        "Content-Length: " . strlen($post_data)
-
-    ),
-
-
-));
-
-
-//
-$response = json_decode(curl_exec($curl));
-
-//$info = curl_getinfo($curl);
-//echo "code: ${info['http_code']}";
-
-//print_r($info['request_header']);
-
-var_dump($response);
-$err = curl_error($curl);
-
-var_dump($err);
-
-//var_dump($err);
-curl_close($curl);
-
-
-
-
-function build_data_files($boundary, $fields, $files){
-    $data = '';
-    $eol = "\r\n";
-
-    $delimiter = '-------------' . $boundary;
-
-    foreach ($fields as $name => $content) {
-        $data .= "--" . $delimiter . $eol
-            . 'Content-Disposition: form-data; name="' . $name . "\"".$eol.$eol
-            . $content . $eol;
-    }
-
-
-    foreach ($files as $name => $content) {
-        $data .= "--" . $delimiter . $eol
-            . 'Content-Disposition: form-data; name="' . $name . '"; filename="' . $name . '"' . $eol
-            //. 'Content-Type: image/png'.$eol
-            . 'Content-Transfer-Encoding: binary'.$eol
-        ;
-
-        $data .= $eol;
-        $data .= $content . $eol;
-    }
-    $data .= "--" . $delimiter . "--".$eol;
-
-
-    return $data;
+$data = '';
+foreach ($fields as $name => $content) {
+$data .= "--" . $delimiter . "\r\n"
+. 'Content-Disposition: form-data; name="' . $name . "\"\r\n\r\n"
+. $content . "\r\n";
 }
+foreach ($files as $name => $content) {
+$data .= "--" . $delimiter . "\r\n"
+. 'Content-Disposition: form-data; name="' . $name . '"; filename="' . $name . '"' . "\r\n\r\n"
+. $content . "\r\n";
+}
+$data .= "--" . $delimiter . "--\r\n";
+curl_setopt_array($ch, [
+CURLOPT_POST => true,
+CURLOPT_HTTPHEADER => [
+'Content-Type: multipart/form-data; boundary=' . $delimiter,
+'Content-Length: ' . strlen($data)
+],
+CURLOPT_POSTFIELDS => $data
+]);
+return $ch;
+}
+// and here's how you'd use it
+$ch = curl_init('http://httpbin.org/post');
+$ch = buildMultiPartRequest($ch, uniqid(),
+['key_code' => 'value'], ['file' => $_FILES['flie']['tmp_name']]);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+echo curl_exec($ch);
