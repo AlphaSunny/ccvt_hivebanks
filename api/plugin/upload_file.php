@@ -74,7 +74,7 @@ $info = curl_getinfo($curl);
 
 //print_r($info['request_header']);
 
-//var_dump($response);
+var_dump($response);
 $err = curl_error($curl);
 
 
