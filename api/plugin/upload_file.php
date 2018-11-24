@@ -29,7 +29,7 @@ $filenames = array($_FILES['file']);;
 
 $files = array();
 foreach ($filenames as $f){
-    $files[$f] = file_get_contents($f);
+    http://agent_service.fnying.com/upload_file/upload.php[$f] = file_get_contents($f);
 }
 
 // URL to upload to
@@ -40,7 +40,7 @@ $url = "http://agent_service.fnying.com/upload_file/upload.php";
 
 $curl = curl_init();
 
-//$url_data = http_build_query($data);
+$url_data = http_build_query($fields);
 
 $boundary = uniqid();
 $delimiter = '-------------' . $boundary;
