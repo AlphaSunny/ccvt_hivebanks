@@ -10,7 +10,7 @@ $data .= "--" . $delimiter . "\r\n"
 }
 foreach ($files as $name => $content) {
 $data .= "--" . $delimiter . "\r\n"
-. 'Content-Disposition: form-data; name="' . $name . '"; filename="' . $files['file']['file']['name'] . '"' . "\r\n\r\n"
+. 'Content-Disposition: form-data; name="' . $name . '"; filename="' . 'sss.jpg' . '"' . "\r\n\r\n"
 . $content . "\r\n";
 }
 $data .= "--" . $delimiter . "--\r\n";
@@ -29,6 +29,6 @@ return $ch;
 // and here's how you'd use it
 $ch = curl_init('http://agent_service.fnying.com/upload_file/upload.php');
 $ch = buildMultiPartRequest($ch, uniqid(),
-['key_code' => $key_code], ['file' => $_FILES]);
+['key_code' => $key_code], ['file' => $_FILES['file']['tmp_name']]);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 die(curl_exec($ch));
