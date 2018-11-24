@@ -15,7 +15,7 @@ $header = array('Content-Type: multipart/form-data');
 //$fields = array('file' => '@' . $_FILES['file']['tmp_name'][0]);
 $fields = array('file' => '@' . $_FILES,'key_code'=>$key_code);
 $contents = file_get_contents($_FILES['file']['tmp_name']);
-
+var_dump($contents);die;
 $fields = array(
     'filetype'=>'jpg',
     'fileid'=>/*date(‘YmdGisu’) .*/ $_FILES['file']['name'],
