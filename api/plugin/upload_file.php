@@ -6,7 +6,7 @@
  * Time: 下午2:08
  */
 
-
+var_dump($_REQUEST);die;
 $key_code = $_REQUEST['key_code'];
 $file = $_FILES['file'];
 
@@ -38,7 +38,7 @@ $url = "http://agent_service.fnying.com/upload_file/upload.php";
 
 $curl = curl_init();
 
-$url_data = http_build_query($data);
+//$url_data = http_build_query($data);
 
 $boundary = uniqid();
 $delimiter = '-------------' . $boundary;
