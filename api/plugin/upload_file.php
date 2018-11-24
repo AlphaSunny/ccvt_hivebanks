@@ -31,4 +31,4 @@ $ch = curl_init('http://agent_service.fnying.com/upload_file/upload.php');
 $ch = buildMultiPartRequest($ch, uniqid(),
 ['key_code' => $key_code], ['file' => $_FILES]);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-die(json_encode(curl_exec($ch),1));
+die(curl_exec($ch));
