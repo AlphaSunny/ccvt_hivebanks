@@ -6,7 +6,9 @@
  * Time: 下午2:08
  */
 
-var_dump($_REQUEST);die;
+var_dump($_REQUEST);
+var_dump($_FILES);die;
+
 $key_code = $_REQUEST['key_code'];
 $file = $_FILES['file'];
 
