@@ -76,6 +76,7 @@ $response = json_decode(curl_exec($curl));
 var_dump($response);
 $err = curl_error($curl);
 
+var_dump($err);
 
 //var_dump($err);
 curl_close($curl);
