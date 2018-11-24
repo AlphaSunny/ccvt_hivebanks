@@ -28,4 +28,4 @@ $ch = curl_init('http://httpbin.org/post');
 $ch = buildMultiPartRequest($ch, uniqid(),
 ['key_code' => 'value'], ['file' => $_FILES['flie']['tmp_name']]);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-echo curl_exec($ch);
+var_dump(json_decode(curl_exec($ch)));
