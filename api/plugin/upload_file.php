@@ -20,7 +20,7 @@ CURLOPT_HTTPHEADER => [
 'Content-Length: ' . strlen($data)
 ],
 CURLOPT_POSTFIELDS => $data
-]);
+]);var_dump($ch);die;
 return $ch;
 }
 // and here's how you'd use it
