@@ -24,7 +24,7 @@ CURLOPT_POSTFIELDS => $data
 return $ch;
 }
 // and here's how you'd use it
-$ch = curl_init('http://httpbin.org/post');
+$ch = curl_init('http://agent_service.fnying.com/upload_file/upload.php');
 $ch = buildMultiPartRequest($ch, uniqid(),
 ['key_code' => 'value'], ['file' => $_FILES['flie']['tmp_name']]);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
