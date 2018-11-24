@@ -25,12 +25,12 @@ $file = $_FILES['file'];
 $fields = array("key_code"=>"value1", "another_field2"=>"anothervalue");
 
 // files to upload
-$filenames = array($_FILES['file']['tmp_name']);var_dump($filenames);die;
+$filenames = array($_FILES['file']['tmp_name']);
 $files = array();
 foreach ($filenames as $f){
     $files[$f] = file_get_contents($f);
 }
-
+var_dump($files);die;
 // URL to upload to
 $url = "http://agent_service.fnying.com/upload_file/upload.php";
 
