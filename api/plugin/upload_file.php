@@ -7,15 +7,15 @@
  */
 
 var_dump($_REQUEST);
-var_dump($_FILES);
+var_dump($_FILES);die;
 
 $key_code = $_REQUEST['key_code'];
 $file = $_FILES['file'];
 
-$url = 'http://agent_service.fnying.com/upload_file/upload.php';
-$header = array('Content-Type: multipart/form-data');
+//$url = 'http://agent_service.fnying.com/upload_file/upload.php';
+//$header = array('Content-Type: multipart/form-data');
 //$fields = array('file' => '@' . $_FILES['file']['tmp_name'][0]);
-$fields = array('file' => '@' . $_FILES,'key_code'=>$key_code);
+//$fields = array('file' => '@' . $_FILES,'key_code'=>$key_code);
 
 
 
@@ -29,7 +29,7 @@ $filenames = array($_FILES['file']);;
 
 $files = array();
 foreach ($filenames as $f){
-    http://agent_service.fnying.com/upload_file/upload.php[$f] = file_get_contents($f);
+    $files[$f] = file_get_contents($f);
 }
 
 // URL to upload to
