@@ -20,7 +20,7 @@ $fields = array('file' => '@' . $_FILES,'key_code'=>$key_code);
 
 
 // data fields for POST request
-$fields = array("f1"=>"value1", "another_field2"=>"anothervalue");
+$fields = array("key_code"=>"value1", "another_field2"=>"anothervalue");
 
 // files to upload
 $filenames = array($_FILES['file']);;
