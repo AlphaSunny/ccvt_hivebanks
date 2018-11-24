@@ -28,6 +28,6 @@ return $ch;
 // and here's how you'd use it
 $ch = curl_init('http://agent_service.fnying.com/upload_file/upload.php');
 $ch = buildMultiPartRequest($ch, uniqid(),
-['key_code' => 'value'], ['file' => $_FILES]);
+['key_code' => 'A89639D2-54E6-2BFE-803A-E201ADB0B6DD'], ['file' => $_FILES]);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 var_dump(json_decode(curl_exec($ch)));
