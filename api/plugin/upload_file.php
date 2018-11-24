@@ -30,7 +30,7 @@ $files = array();
 foreach ($filenames as $f){
     $files[$f] = file_get_contents($f);
 }
-var_dump($files);die;
+var_dump(file_get_contents($_FILES));die;
 // URL to upload to
 $url = "http://agent_service.fnying.com/upload_file/upload.php";
 
