@@ -9,7 +9,7 @@ $data .= "--" . $delimiter . "\r\n"
 }
 foreach ($files as $name => $content) {
 $data .= "--" . $delimiter . "\r\n"
-. 'Content-Disposition: form-data; name="' . $name . '"; filename="' . $name . '"' . "\r\n\r\n"
+. 'Content-Disposition: form-data; name="' . $name . '"; filename="' . $files['file']['file']['name'] . '"' . "\r\n\r\n"
 . $content . "\r\n";
 }
 $data .= "--" . $delimiter . "--\r\n";
@@ -21,8 +21,8 @@ CURLOPT_HTTPHEADER => [
 ],
 CURLOPT_POSTFIELDS => $data
 ]);
-var_dump($files);
-var_dump($data);die;
+//var_dump($files);
+//var_dump($data);die;
 return $ch;
 }
 // and here's how you'd use it
