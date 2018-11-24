@@ -8,7 +8,7 @@
 
 
 $key_code = $_REQUEST['key_code'];
-$file = $_FILES['file'];
+$file = $_FILES['file'];var_dump($file);var_dump($_FILES['file']['tmp_name'][0]);die;
 
 $url = 'http://agent_service.fnying.com/upload_file/upload.php';
 $header = array('Content-Type: multipart/form-data');
