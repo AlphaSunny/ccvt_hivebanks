@@ -6,8 +6,6 @@
  * Time: 下午2:08
  */
 
-var_dump($_REQUEST);
-var_dump($_FILES);
 
 $key_code = $_REQUEST['key_code'];
 $file = $_FILES['file'];
@@ -22,7 +20,7 @@ $file = $_FILES['file'];
 
 
 // data fields for POST request
-$fields = array("key_code"=>"value1", "another_field2"=>"anothervalue");
+$fields = array("key_code"=>"value1");
 
 // files to upload
 $filenames = array($_FILES['file']['tmp_name']);
