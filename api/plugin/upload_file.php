@@ -7,7 +7,7 @@
  */
 
 var_dump($_REQUEST);
-var_dump($_FILES);die;
+var_dump($_FILES);
 
 $key_code = $_REQUEST['key_code'];
 $file = $_FILES['file'];
