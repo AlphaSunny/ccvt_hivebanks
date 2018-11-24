@@ -14,15 +14,27 @@ $url = 'http://agent_service.fnying.com/upload_file/upload.php';
 $header = array('Content-Type: multipart/form-data');
 //$fields = array('file' => '@' . $_FILES['file']['tmp_name'][0]);
 $fields = array('file' => '@' . $_FILES,'key_code'=>$key_code);
+$contents = file_get_contents($_FILES['file']['tmp_name']);
 
-$resource = curl_init();
-curl_setopt($resource, CURLOPT_URL, $url);
-curl_setopt($resource, CURLOPT_HTTPHEADER, $header);
-curl_setopt($resource, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($resource, CURLOPT_POST, 1);
-curl_setopt($resource, CURLOPT_POSTFIELDS, $fields);
-//curl_setopt($resource, CURLOPT_COOKIE, 'apiToken=' . $token);
-$result = json_decode(curl_exec($resource));
-curl_close($resource);
+$fields = array(
+    'filetype'=>'jpg',
+    'fileid'=>/*date(‘YmdGisu’) .*/ $_FILES['file']['name'],
+    'content'=>$contents
+);
 
-var_dump($result);
+//open connection
+$ch = curl_init();
+
+//set the url, number of POST vars, POST data
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_VERBOSE, 0);
+curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible;)');
+curl_setopt($ch,CURLOPT_URL,$url);
+curl_setopt($ch,CURLOPT_POST,count($fields));
+curl_setopt($ch,CURLOPT_POSTFIELDS,$fields);
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+
+//execute post
+$output = curl_exec($ch);
+
+var_dump($output);
