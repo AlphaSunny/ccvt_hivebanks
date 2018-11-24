@@ -8,12 +8,12 @@
 
 
 $key_code = $_REQUEST['key_code'];
-$file = $_FILES['file'];var_dump($file);var_dump($_FILES['file']['tmp_name'][0]);die;
+$file = $_FILES['file'];
 
 $url = 'http://agent_service.fnying.com/upload_file/upload.php';
 $header = array('Content-Type: multipart/form-data');
 //$fields = array('file' => '@' . $_FILES['file']['tmp_name'][0]);
-$fields = array('file' => '@' . $_FILES['file']['tmp_name'][0],'key_code'=>$key_code);
+$fields = array('file' => '@' . $_FILES,'key_code'=>$key_code);
 
 $resource = curl_init();
 curl_setopt($resource, CURLOPT_URL, $url);
