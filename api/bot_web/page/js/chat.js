@@ -188,8 +188,7 @@ $(function () {
     //scroll bottom
     var bottom =$(window).document.elementHeight;
     $("#bottom").click(function () {
-        console.log(bottom);
-        $("body, html").animate({scrollTop: bottom}, 500);
+        window.scrollTo(0, document.documentElement.scrollHeight-document.documentElement.clientHeight);
     });
 
     //jump login
