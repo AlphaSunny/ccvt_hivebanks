@@ -52,7 +52,7 @@ $amount = get_voucher_amount($voucher);
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
-$rtn_ary['errmsg'] = "@".$nickname.",兑换成功,金额:".$amount."ccvt";
+$rtn_ary['errmsg'] = "@".$nickname.",恭喜您兑换成功,兑换金额:".$amount."ccvt";
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
