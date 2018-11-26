@@ -429,6 +429,10 @@ function check_voucher($nickname,$voucher)
         $vou = $db->fetchRow();
         if (!$vou){
             return 2;
+        }elseif(strtotime($vou['expiry_date'])<time()){
+            $sql = "update us_voucher set is_effective=2 WHERE id='{$vou['id']}'";
+            $db -> query($sql);
+            return 4;
         }elseif($vou['is_effective']!=1){
             return 3;
         }
