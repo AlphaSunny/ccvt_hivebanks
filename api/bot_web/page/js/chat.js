@@ -186,9 +186,9 @@ $(function () {
     });
 
     //scroll bottom
-    var bottom =$(window).document.elementHeight;
     $("#bottom").click(function () {
-        window.scrollTo(0, document.documentElement.scrollHeight-document.documentElement.clientHeight);
+        console.log("click");
+        window.scrollTo(0, document.documentElement.scrollHeight - document.documentElement.clientHeight);
     });
 
     //jump login
