@@ -98,8 +98,8 @@ $(function () {
             return;
         }
         chat = "bottom_cai";
-        bottom_cai_num = parseInt($(this).parents(".com_zan_cai_box").children(".bottom_cai_num").text());
-        _this_bottom_cai_button = $(this).parents(".com_zan_cai_box").children(".bottom_cai_num");
+        bottom_cai_num = parseInt($(this).parents(".com_zan_cai_box").find(".bottom_cai_num").text());
+        _this_bottom_cai_button = $(this).parents(".com_zan_cai_box").find(".bottom_cai_num");
         $(".cai_title").fadeIn("fast");
         $(".cai_text").fadeIn("fast");
         $(".cai_num").fadeIn("fast");
