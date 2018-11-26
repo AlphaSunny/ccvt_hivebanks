@@ -8,16 +8,14 @@ error_reporting(E_ALL | E_STRICT);
 
 $db = new DB_COM();
 $unit = get_la_base_unit();
-$sql = "select us_id,base_amount/'{$unit}' as base_amount from us_asset WHERE asset_id='GLOP' AND (base_amount/$unit)>=100 ORDER BY base_amount DESC ";
+$sql = "select us_id,base_amount/'{$unit}' as base_amount,us_account from us_asset WHERE asset_id='GLOP' AND (base_amount/$unit)>=100 ORDER BY base_amount DESC ";
 $db->query($sql);
 $rows = $db->fetchAll();
-print_r($rows);die;
 if ($rows){
-
     //积分
     foreach ($rows as $k=>$v){
         set_time_limit(0);
-        $scale = $v['base_amount']/$unit;
+        $scale = $v['base_amount'];
         //判断等级提升
         scale_upgrade($v['us_id'],$scale,$v['us_account']);
     }
@@ -38,7 +36,8 @@ function scale_upgrade($us_id,$scale,$us_account){
         $data['change_id'] = get_guid();
         $data['us_id'] = $us_id;
         $data['before_scale'] = $us_scale;
-        $data['after_scale'] = $sca['scale'];
+        $data['after_scale'] = 1;
+        $data['scale'] = $scale;
         $data['utime'] = time();
         $data['ctime'] = date('Y-m-d H:i:s');
         $sql = $db->sqlInsert("us_scale_changes", $data);
@@ -49,7 +48,7 @@ function scale_upgrade($us_id,$scale,$us_account){
         }
 
         //修改用户等级
-        $sql = "update us_base set scale='{$sca['scale']}' WHERE us_id='{$us_id}'";
+        $sql = "update us_base set scale=1 WHERE us_id='{$us_id}'";
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
