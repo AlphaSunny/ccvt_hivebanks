@@ -673,7 +673,7 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     $transfer['credit_id'] = $us_id;
     $transfer['debit_id'] = $la_id;
     $transfer['tx_amount'] = $account*$unit;
-    $transfer['credit_balance'] = get_us_base_amount($transfer['credit_id'])-$transfer['tx_amount'];
+    $transfer['credit_balance'] = get_us_account($transfer['credit_id'])-$transfer['tx_amount'];
     $transfer['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $transfer['flag'] = $flag;
     $transfer['transfer_type'] = 'us-la';
@@ -725,7 +725,7 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     $com_balance_us["debit_id"] = $la_id;
     $com_balance_us["tx_type"] = $type;
     $com_balance_us["tx_amount"] = $account*$unit;
-    $com_balance_us["credit_balance"] = get_us_base_amount($us_id)-$com_balance_us["tx_amount"];
+    $com_balance_us["credit_balance"] = get_us_account($us_id)-$com_balance_us["tx_amount"];
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = date('Y-m-d H:i:s');
 
