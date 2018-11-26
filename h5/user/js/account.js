@@ -214,7 +214,7 @@ $(function () {
             $("#exchange_modal").fadeOut();
             ShowLoading("hide");
         }, function (response) {
-            LayerFun(response.errcode);
+            layer.msg(response.errmsg);
             ShowLoading("hide");
         })
     })
