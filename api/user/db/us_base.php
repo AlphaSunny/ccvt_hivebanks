@@ -794,6 +794,16 @@ function get_la_base_amount($la_id){
     return $amount;
 }
 
+//获取用户荣耀积分
+function get_us_integral($us_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$us_id}'";
+    $db->query($sql);
+    $amount = $db->getField($sql,'base_amount');
+    return $amount;
+}
+
+
 /**
  * @param $us_nm
  * @return bool
