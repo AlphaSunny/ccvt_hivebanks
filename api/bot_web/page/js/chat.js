@@ -186,7 +186,7 @@ $(function () {
     });
 
     //scroll bottom
-    var bottom =$(document).elementHeight();
+    var bottom =$(window).document.elementHeight;
     $("#bottom").click(function () {
         console.log(bottom);
         $("body, html").animate({scrollTop: bottom}, 500);
