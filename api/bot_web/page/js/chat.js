@@ -65,7 +65,7 @@ $(function () {
     //点赞
     var give_us_id = "", state = "", chat = "",
         bottom_zan_num = "", _this_bottom_zan_button = "",
-        bottom_cai_num, _this_bottom_cai_button = "";
+        bottom_cai_num = "", _this_bottom_cai_button = "";
     $(".zan_img_box, .chat_zan_btn").click(function () {
         give_us_id = $(this).parents(".com_zan_cai_box").children(".us_id").text();
         if (!token) {
@@ -73,7 +73,7 @@ $(function () {
             return;
         }
         chat = "bottom_zan";
-        bottom_zan_num = $(this).parents(".com_zan_cai_box").children(".bottom_zan_num").text();
+        bottom_zan_num = parseInt($(this).parents(".com_zan_cai_box").children(".bottom_zan_num").text());
         _this_bottom_zan_button = $(this).parents(".com_zan_cai_box").children(".bottom_zan_num");
         $(".zan_title").fadeIn("fast");
         $(".zan_num").fadeIn("fast");
@@ -125,6 +125,12 @@ $(function () {
             if (response.errcode == "0") {
                 ZanShowLogin("hide");
                 if (state == "1") {
+                    //判断如果是在底部统计点赞
+                    if (chat == "bottom_zan") {
+                        bottom_zan_num += parseInt(give_num);
+                        _this_bottom_zan_button.text(bottom_zan_num);
+                    }
+
                     first_already_zan_count += parseInt(give_num);
                     $(".already_zan_count").text(first_already_zan_count);
 
@@ -135,13 +141,13 @@ $(function () {
                     //点赞成功出现动画
                     $(".zan_cai_img").attr("src", $(".zan_cai_img").attr("zan_data_src"));
                     $(".suc_zan").fadeIn("fast");
-
-                    //判断如果是在底部统计点赞
-                    if (chat == "bottom_zan") {
-                        bottom_zan_num += parseInt(give_num);
-                        _this_bottom_zan_button.text(bottom_zan_num);
-                    }
                 } else if (state == "2") {
+                    //判断如果是在底部统计踩
+                    if (chat == "bottom_cai") {
+                        bottom_cai_num += parseInt(give_num);
+                        _this_bottom_cai_button.text(bottom_cai_num);
+                    }
+
                     first_already_cai_count += parseInt(give_num);
                     $(".already_cai_count").text(first_already_cai_count);
                     $('.web_toast_text').text("踩成功!");
