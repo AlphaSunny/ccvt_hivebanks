@@ -187,7 +187,7 @@ $(function () {
 
     //scroll bottom
     $("#bottom").click(function () {
-        console.log("click");
+        console.log(document.documentElement.scrollHeight - document.documentElement.clientHeight);
         window.scrollTo(0, document.documentElement.scrollHeight - document.documentElement.clientHeight);
     });
 
