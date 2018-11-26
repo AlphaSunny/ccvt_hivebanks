@@ -36,21 +36,15 @@ if ($ccvt_num>10000 || $ccvt_num<=0){
 }
 
 //判断余额
-$check = check_us_amount($us_id);
-if ($check==1){
-    exit_error('101',"你的昵称未绑定账号,无法兑换!");
-}elseif($check==2){
-    exit_error('101',"兑换码不存在!");
-}elseif($check==3){
-    exit_error('101',"兑换码已经被兑换或已过期!");
-}elseif($check==4){
-    exit_error('101',"兑换码已过期!");
+$check = check_us_amount($us_id,$account);
+if (!$check){
+    exit_error('101',"余额不足");
 }
 
-//兑换
-$rows = us_voucher($us_id,$voucher);
+//转换
+$rows = turn_ccvt_integral($us_id,$account);
 if (!$rows){
-    exit_error('101',"兑换失败!");
+    exit_error('101',"转换失败!");
 }
 
 // 返回数据做成
