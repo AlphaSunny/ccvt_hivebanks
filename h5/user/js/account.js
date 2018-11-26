@@ -191,6 +191,10 @@ $(function () {
     });
 
     //exchange
+    $(".exchange_btn").click(function () {
+        $("#exchange_modal").fadeIn();
+    });
+
     $(".exchange_cancel_btn").click(function () {
         $("#exchange_modal").fadeOut();
     });
