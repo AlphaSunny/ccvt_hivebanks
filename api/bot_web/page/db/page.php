@@ -20,6 +20,7 @@ function give_like_us($data)
     $d['ctime'] = time();
     $d['utime'] = date('Y-m-d H:i:s');
     $d['state'] = $data['state'];
+    $d['tx_detail'] = $data['state'] ==1 ? "点赞" : "踩人";
     $sql = $db->sqlInsert("us_glory_integral_change_log", $d);
     $id = $db->query($sql);
     if (!$id){
