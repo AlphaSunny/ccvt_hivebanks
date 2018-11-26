@@ -9,7 +9,7 @@ $sql = "select name,(select count(bot_message_id) from bot_message where bot_nic
 $db->query($sql);
 $rows = $db->fetchAll();
 foreach ($rows as $k=>$v){
-    echo $v['name']."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发言数".$v['count']."<br />";
+    echo "发言数:".$v['count']."&nbsp;&nbsp;&nbsp;&nbsp;".$v['name']."<br />";
 }
 
 ?>
