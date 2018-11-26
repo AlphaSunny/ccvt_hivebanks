@@ -83,7 +83,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                         <p class="name">
                             <span class="chat_name"><?php echo $v['bot_nickname'] ?></span>
                             <?php if ($v['us_id']!=NULL && $status!=1){?>
-                            <span class="zan_cai_box">
+                            <span class="zan_cai_box com_zan_cai_box">
                                 <span class="zan_img_box">
 <!--                                    <span class="zan_count">123</span>-->
                                     <img src="img/zan.svg" alt="">
@@ -146,7 +146,11 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <tr>
                     <td style="text-align: left"><?php echo $v['bot_nickname']; ?>:</td>
                     <td><?php echo $v['count']; ?></td>
-                    <td><button class="chat_zan_btn"><img src="img/zan.svg" alt="">100</button>&nbsp;|&nbsp;<button class="chat_cai_btn"><img src="img/cai.svg" alt="">-12</button></td>
+                    <td class="com_zan_cai_box">
+                        <button class="chat_zan_btn"><img src="img/zan.svg" alt=""><span class="bottom_zan_num">100</span></button>&nbsp;|&nbsp;
+                        <button class="chat_cai_btn"><img src="img/cai.svg" alt=""><span class="bottom_cai_num">-12</span></button>
+                        <span class="us_id none"><?php echo $v['us_id'];?></span>
+                    </td>
                 </tr>
             <?php } ?>
             </tbody>

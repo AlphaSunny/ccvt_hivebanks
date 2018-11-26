@@ -63,13 +63,18 @@ $(function () {
     var first_already_cai_count = parseInt($(".already_cai_count").text());
 
     //点赞
-    var give_us_id = "", state = "";
-    $(".zan_img_box").click(function () {
-        give_us_id = $(this).parents(".zan_cai_box").children(".us_id").text();
+    var give_us_id = "", state = "", chat = "",
+        bottom_zan_num = "", _this_bottom_zan_button = "",
+        bottom_cai_num, _this_bottom_cai_button = "";
+    $(".zan_img_box, .chat_zan_btn").click(function () {
+        give_us_id = $(this).parents(".com_zan_cai_box").children(".us_id").text();
         if (!token) {
             alert("登录之后才可以点赞哦");
             return;
         }
+        chat = "bottom_zan";
+        bottom_zan_num = $(this).parents(".com_zan_cai_box").children(".bottom_zan_num").text();
+        _this_bottom_zan_button = $(this).parents(".com_zan_cai_box").children(".bottom_zan_num");
         $(".zan_title").fadeIn("fast");
         $(".zan_num").fadeIn("fast");
         $(".zan_text").fadeIn("fast");
@@ -85,12 +90,15 @@ $(function () {
     });
 
     //踩
-    $(".cai_img_box").click(function () {
-        give_us_id = $(this).parents(".zan_cai_box").children(".us_id").text();
+    $(".cai_img_box, .chat_cai_btn").click(function () {
+        give_us_id = $(this).parents(".com_zan_cai_box").children(".us_id").text();
         if (!token) {
             alert("登录之后才可以踩哦");
             return;
         }
+        chat = "bottom_cai";
+        bottom_cai_num = parseInt($(this).parents(".com_zan_cai_box").children(".bottom_cai_num").text());
+        _this_bottom_cai_button = $(this).parents(".com_zan_cai_box").children(".bottom_cai_num");
         $(".cai_title").fadeIn("fast");
         $(".cai_text").fadeIn("fast");
         $(".cai_num").fadeIn("fast");
@@ -127,6 +135,12 @@ $(function () {
                     //点赞成功出现动画
                     $(".zan_cai_img").attr("src", $(".zan_cai_img").attr("zan_data_src"));
                     $(".suc_zan").fadeIn("fast");
+
+                    //判断如果是在底部统计点赞
+                    if (chat == "bottom_zan") {
+                        bottom_zan_num += parseInt(give_num);
+                        _this_bottom_zan_button.text(bottom_zan_num);
+                    }
                 } else if (state == "2") {
                     first_already_cai_count += parseInt(give_num);
                     $(".already_cai_count").text(first_already_cai_count);
@@ -183,7 +197,7 @@ $(function () {
 
         if ($(window).scrollTop() + $(window).height() == $(document).height()) {
             $("#bottom").fadeOut();
-        }else {
+        } else {
             $("#bottom").fadeIn();
         }
     });
