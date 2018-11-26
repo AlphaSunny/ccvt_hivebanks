@@ -237,6 +237,7 @@ $(function () {
             $(".transform_ccvt_input").val("");
             LayerFun("submitSuccess");
             $(".availableBalance").text(response.us_amount);
+            $(".glory_of_integral").text(response.glory_of_integral);
             $(".customize_modal").fadeOut();
             ShowLoading("hide");
         }, function (response) {
