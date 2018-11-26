@@ -75,6 +75,7 @@ $(function () {
         chat = "bottom_zan";
         bottom_zan_num = parseInt($(this).parents(".com_zan_cai_box").children(".bottom_zan_num").text());
         _this_bottom_zan_button = $(this).parents(".com_zan_cai_box").children(".bottom_zan_num");
+        console.log(bottom_zan_num);
         $(".zan_title").fadeIn("fast");
         $(".zan_num").fadeIn("fast");
         $(".zan_text").fadeIn("fast");
@@ -128,6 +129,7 @@ $(function () {
                     //判断如果是在底部统计点赞
                     if (chat == "bottom_zan") {
                         bottom_zan_num += parseInt(give_num);
+                        console.log(bottom_zan_num);
                         _this_bottom_zan_button.text(bottom_zan_num);
                     }
 
@@ -144,7 +146,7 @@ $(function () {
                 } else if (state == "2") {
                     //判断如果是在底部统计踩
                     if (chat == "bottom_cai") {
-                        bottom_cai_num += parseInt(give_num);
+                        bottom_cai_num -= parseInt(give_num);
                         _this_bottom_cai_button.text(bottom_cai_num);
                     }
 
