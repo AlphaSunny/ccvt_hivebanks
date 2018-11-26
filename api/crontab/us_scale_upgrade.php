@@ -54,8 +54,8 @@ function scale_upgrade($us_id,$scale,$us_account){
             $db->Rollback($pInTrans);
             echo "修改用户等级失败";
         }
-        echo "升级完成&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$us_account."<br />";
         $db->Commit($pInTrans);
+        echo "升级完成&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$us_account."<br />";
     }
 }
 
