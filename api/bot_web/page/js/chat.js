@@ -193,7 +193,6 @@ $(function () {
 
     //scroll bottom
     $("#bottom").click(function () {
-        console.log(document.documentElement.scrollHeight - document.documentElement.clientHeight);
         var bottom = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         $("body, html").animate({scrollTop: bottom}, 500);
     });
