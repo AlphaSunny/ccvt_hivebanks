@@ -31,7 +31,7 @@ $us_id = check_token($token);
 //金额
 $account = get_arg_str('GET','account');
 
-if ($ccvt_num>10000 || $ccvt_num<=0){
+if ($account>10000 || $account<=0){
     exit_error("150","金额错误");
 }
 
