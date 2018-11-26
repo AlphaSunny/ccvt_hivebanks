@@ -616,6 +616,16 @@ function Exchange(token, voucher, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//TransformCCVT
+function TransformCCVT(token, account, suc_func, error_func) {
+    var api_url = 'turn_ccvt_integral.php',
+        post_data = {
+            'token': token,
+            'voucher': account
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //Login failure countdown
 function CountDown(count, ErrorNum, LoginBtn, input, LoginError) {
     var counts = count;

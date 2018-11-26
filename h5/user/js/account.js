@@ -192,11 +192,11 @@ $(function () {
 
     //exchange
     $(".exchange_btn").click(function () {
-        $("#exchange_modal").fadeIn();
+        $(".customize_modal").fadeIn();
     });
 
-    $(".exchange_cancel_btn").click(function () {
-        $("#exchange_modal").fadeOut();
+    $(".customize_modal_cancel_btn").click(function () {
+        $(".customize_modal").fadeOut();
         $(".voucher_input").val("");
     });
 
@@ -212,11 +212,36 @@ $(function () {
             $(".voucher_input").val("");
             LayerFun("submitSuccess");
             $(".availableBalance").text(response.us_amount);
-            $("#exchange_modal").fadeOut();
+            $(".customize_modal").fadeOut();
             ShowLoading("hide");
         }, function (response) {
             layer.msg(response.errmsg);
             ShowLoading("hide");
         })
-    })
+    });
+
+    //transform ccvt
+    $(".upgrade_btn").click(function () {
+        $(".customize_modal").fadeIn();
+    });
+
+    $(".transform_ccvt_confirm_btn").click(function () {
+        ShowLoading("show");
+        var account = $(".transform_ccvt_input").val();
+        if (account.length <= 0) {
+            LayerFun("pleaseInputChangeAmount");
+            ShowLoading("hide");
+            return
+        }
+        TransformCCVT(token, account, function (response) {
+            $(".transform_ccvt_input").val("");
+            LayerFun("submitSuccess");
+            $(".availableBalance").text(response.us_amount);
+            $(".customize_modal").fadeOut();
+            ShowLoading("hide");
+        }, function (response) {
+            layer.msg(response.errmsg);
+            ShowLoading("hide");
+        })
+    });
 });
