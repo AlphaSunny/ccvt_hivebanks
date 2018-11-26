@@ -180,6 +180,12 @@ $(function () {
         } else {
             $("#top").fadeOut("fast");
         }
+
+        if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+            $("#bottom").fadeOut();
+        }else {
+            $("#bottom").fadeIn();
+        }
     });
     $("#top").click(function () {
         $("body, html").animate({scrollTop: 0}, 500);
@@ -190,7 +196,6 @@ $(function () {
         console.log(document.documentElement.scrollHeight - document.documentElement.clientHeight);
         var bottom = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         $("body, html").animate({scrollTop: bottom}, 500);
-        // window.scrollTo(0, document.documentElement.scrollHeight - document.documentElement.clientHeight);
     });
 
     //jump login
