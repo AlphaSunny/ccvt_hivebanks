@@ -3,17 +3,17 @@ require_once "../inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
-//这个脚本暂时没有,因为每次升级只能升一级
 
-//等级提升程序(2018-11-26 11:00:02)
+//等级提升程序(每次只能升一级)
 
 $db = new DB_COM();
-
-$sql = "select * from us_asset WHERE asset_id='GLOP'";
+$unit = get_la_base_unit();
+$sql = "select * from us_asset WHERE asset_id='GLOP' AND (base_amount/$unit)>=100";
 $db->query($sql);
 $rows = $db->fetchAll();
+print_r($rows);die;
 if ($rows){
-    $unit = get_la_base_unit();
+
     //积分
     foreach ($rows as $k=>$v){
         set_time_limit(0);
