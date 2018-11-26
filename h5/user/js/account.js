@@ -22,11 +22,11 @@ $(function () {
             $('.glory_of_integral').text(data.glory_of_integral);
             $('.scale').text(data.scale);
             // $('.userLevelNum').text(us_level);
-            if(data.wechat){
+            if (data.wechat) {
                 $(".wechat").text(data.wechat).removeClass("i18n");
                 $("#weChatBindBtn").remove();
                 $("#weChatModifyBtn").fadeIn("fast");
-            }else {
+            } else {
                 $("#weChatModifyBtn").remove();
                 $("#weChatBindBtn").fadeIn("fast");
             }
@@ -170,13 +170,13 @@ $(function () {
     //bind weChat group
     $(".bindWeChatBtn").click(function () {
         var wechat = $("#weChatName").val();
-        if(wechat.length <= 0){
+        if (wechat.length <= 0) {
             LayerFun("pleaseEnterNickname");
             return;
         }
         ShowLoading("show");
         BindWeChatName(token, wechat, function (response) {
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 ShowLoading("hide");
                 $("#weChatGroupName").modal("hide");
                 LayerFun("bindSuccess");
@@ -189,4 +189,18 @@ $(function () {
             LayerFun(response.errcode);
         })
     });
+
+    //exchange
+    $(".exchange_cancel_btn").click(function () {
+        $("#exchange_modal").fadeOut();
+    });
+
+    $(".exchange_confirm_btn").click(function () {
+        var voucher = $(".voucher_input").val();
+        Exchange(token, voucher, function (response) {
+            console.log(response);
+        }, function (response) {
+            LayerFun(response.errcode);
+        })
+    })
 });

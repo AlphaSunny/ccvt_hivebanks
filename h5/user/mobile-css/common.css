@@ -135,6 +135,13 @@ p:last-child {
     margin-bottom: 0;
 }
 
+/*customize_modal*/
+.customize_modal {
+    top: 35%;
+    left: 1%;
+    width: 98%;
+}
+
 /*.home-wrap h1,*/
 .transition {
     -webkit-transition: all 300ms linear;

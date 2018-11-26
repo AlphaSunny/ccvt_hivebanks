@@ -136,6 +136,7 @@
                                         <i class="iconfont icon-svgwithdrawdeposit"></i>
                                         <span class="i18n" name="withdraw">Withdraw</span>
                                     </a>
+                                    <button class="btn btn-sm btn-success exchange_btn i18n" name="exchange">exchange</button>
                                 </li>
                             </ul>
                             <!--<div class="btn-box flex space-between">-->
@@ -163,7 +164,7 @@
                                 <div><span class='i18n' name='gloryPoints'>Glory points</span>:</div>
                                 <div class='level flex center'>
                                     <span class='glory_of_integral' data-toggle="tooltip" data-placement="top" title="100荣耀积分等于1荣耀等级">0</span>&nbsp;
-                                    <button class="turnGloryPoints_btn btn btn-success btn-sm i18n" name="turnGloryPoints" data-toggle="tooltip" data-placement="top" title="使用荣耀积分转荣耀等级">转荣耀积分</button>
+                                    <button class="turnGloryPoints_btn btn btn-success btn-sm i18n" name="turnGloryPoints" data-toggle="tooltip" data-placement="top" title="使用余额转换荣耀积分">转荣耀积分</button>
                                 </div>
                             </li>
 
@@ -441,6 +442,22 @@
                             class="font-weight-400">50 CCVT</span></p>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div id="exchange_modal" class="customize_modal none">
+    <div class="customize_modal_mask"></div>
+    <div class="customize_modal_content">
+        <div class="customize_modal_content_head padding-bottom-2"><h3 class="font-weight-400 i18n" name="redemptionCode">redemptionCode</h3></div>
+        <div class="customize_modal_content_body">
+            <div class="form-group">
+                <input type="text" class="form-control voucher_input">
+            </div>
+        </div>
+        <div class="customize_modal_content_footer margin-top-5">
+            <button class="btn btn-danger i18n exchange_cancel_btn" name="cancel">cancel</button>
+            <button class="btn btn-success i18n exchange_confirm_btn" name="confirm">confirm</button>
         </div>
     </div>
 </div>

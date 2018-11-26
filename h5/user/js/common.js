@@ -596,12 +596,22 @@ function GetAddBankList(token, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
-//Delete the bound bank card
+//Delete the bound bank card Exchange
 function DeleteBank(token, account_id, suc_func, error_func) {
     var api_url = 'del_us_bank_card.php',
         post_data = {
             'token': token,
             'account_id': account_id
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
+//Exchange
+function Exchange(token, voucher, suc_func, error_func) {
+    var api_url = 'exchange_voucher.php',
+        post_data = {
+            'token': token,
+            'voucher': voucher
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
