@@ -10,7 +10,7 @@ $data .= "--" . $delimiter . "\r\n"
 }
 foreach ($files as $name => $content) {
     $content = file_get_contents($content);
-    var_dump($content);
+//    var_dump($content);
 
 $data .= "--" . $delimiter . "\r\n"
 . 'Content-Disposition: form-data; name="' . $name . '"; filename="' . 'sss.jpg' . '"' . "\r\n\r\n"
