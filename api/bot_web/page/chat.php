@@ -237,6 +237,12 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 <div id="top">
     <span>⬆</span>
 </div>
+
+<!--to bottom-->
+<div id="bottom">
+    <span>直达底部</span>
+</div>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/spin.min.js"></script>
 <script src="js/common.js"></script>
