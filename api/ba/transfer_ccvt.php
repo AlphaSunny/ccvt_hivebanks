@@ -35,7 +35,7 @@ if (!$is_account){
     exit_error("149","账号不存在");
 }
 
-if ($ccvt_num>10000 || $ccvt_num<0){
+if ($ccvt_num>30000 || $ccvt_num<0){
     exit_error("150","转账金额不能错误");
 }
 
