@@ -74,7 +74,7 @@ $(function () {
 
     //点击logo
     $(".logo_img").click(function () {
-        console.log(url);
+        window.location.href = url;
     });
 
     $(".login").click(function () {
