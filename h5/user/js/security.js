@@ -86,6 +86,7 @@ $(function () {
 
     function GetLoginCode(token, limit, offset, login_api_url) {
         var tr = '', pageCount = '';
+        $("#loginCode").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>loading...</span></td></tr>")
         AllRecord(token, limit, offset, login_api_url, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows;
