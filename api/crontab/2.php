@@ -9,4 +9,5 @@ echo $sql;
 $db->query($sql);
 $rows = $db->fetchAll();
 print_r($rows);
+
 ?>
