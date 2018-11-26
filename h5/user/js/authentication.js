@@ -198,7 +198,7 @@ $(function () {
     function UpLoadImg(formData) {
         var src = '';
         $.ajax({
-            url: 'http://agent_service.fnying.com/upload_file/upload.php',
+            url: 'https://ccvt_test.fnying.com/api/plugin/upload_file.php',
             type: 'POST',
             data: formData,
             async: false,
