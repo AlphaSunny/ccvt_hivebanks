@@ -240,7 +240,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 
 <!--to bottom-->
 <div id="bottom">
-    <span>直达底部</span>
+    <span>跳转底部</span>
 </div>
 
 <script src="js/jquery.min.js"></script>

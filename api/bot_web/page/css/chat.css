@@ -480,3 +480,11 @@ input.form-control.search_input:focus {
     border-radius: 100%;
     display: none;
 }
+
+/*bottom*/
+#bottom{
+    position: fixed;
+    top: 8%;
+    right: 2%;
+    font-size: 14px;
+}

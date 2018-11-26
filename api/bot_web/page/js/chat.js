@@ -173,7 +173,6 @@ $(function () {
     });
 
     //scroll top
-    //scroll top
     $(window).scroll(function () {
         var height = $(window).scrollTop();
         if (height >= 300) {
@@ -184,6 +183,11 @@ $(function () {
     });
     $("#top").click(function () {
         $("body, html").animate({scrollTop: 0}, 500);
+    });
+
+    //scroll bottom
+    $("#bottom").click(function () {
+        $("body, html").animate({scrollTop: 100 + "%"}, 500);
     });
 
     //jump login
