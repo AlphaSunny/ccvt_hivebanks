@@ -124,7 +124,8 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 
     <div style="margin-top: 50px; padding-left: 15px; padding-right: 15px">
         <?php
-
+        $s_time = strtotime(date('Y-m-d 00:00:00'), time());
+        $e_time = strtotime(date('Y-m-d 23:59:59'), time());
         $sql = "select bot_nickname,count(bot_message_id) as count,(select us_id from us_base where wechat=bot_nickname limit 1) as us_id from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}' group by `bot_nickname` order by count desc";
         $db->query($sql);
         $rows = $db->fetchAll();
