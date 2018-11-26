@@ -136,6 +136,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
             <tr>
                 <th style="text-align: left">昵称</th>
                 <th>发言数</th>
+                <th>赞/踩</th>
             </tr>
             </thead>
             <tbody>
@@ -145,6 +146,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <tr>
                     <td style="text-align: left"><?php echo $v['bot_nickname']; ?>:</td>
                     <td><?php echo $v['count']; ?></td></tr>
+                    <td><button>赞👍</button><button>踩👎</button></td>
             <?php } ?>
             </tbody>
         </table>
