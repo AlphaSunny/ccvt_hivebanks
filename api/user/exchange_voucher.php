@@ -53,6 +53,7 @@ if (!$rows){
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
+$rtn_ary['us_amount'] = get_us_account($us_id)/get_la_base_unit();
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
