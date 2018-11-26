@@ -125,8 +125,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
     <div style="margin-top: 50px; padding-left: 15px; padding-right: 15px">
         <?php
 
-        $sql = "select bot_nickname,wechat,count(bot_message_id) as count from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}' group by `bot_nickname` order by count desc";
-        echo $sql;
+        $sql = "select bot_nickname,wechat,count(bot_message_id) as count,(select us_id from us_base where wechat=bot_nickname limit 1) as us_id from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}' group by `bot_nickname` order by count desc";
         $db->query($sql);
         $rows = $db->fetchAll();
         $count = count($rows);
@@ -148,11 +147,13 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <tr>
                     <td style="text-align: left"><?php echo $v['bot_nickname']; ?>:</td>
                     <td><?php echo $v['count']; ?></td>
+                    <?php if ($v['us_id']!=NULL){ ?>
                     <td class="com_zan_cai_box">
                         <button class="chat_zan_btn"><img src="img/zan.svg" alt=""><span class="bottom_zan_num">100</span></button>&nbsp;|&nbsp;
                         <button class="chat_cai_btn"><img src="img/cai.svg" alt=""><span class="bottom_cai_num">-12</span></button>
                         <span class="us_id none"><?php echo $v['us_id'];?></span>
                     </td>
+                    <?php }?>
                 </tr>
             <?php } ?>
             </tbody>
