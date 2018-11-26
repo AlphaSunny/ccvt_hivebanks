@@ -197,14 +197,25 @@ $(function () {
 
     $(".exchange_cancel_btn").click(function () {
         $("#exchange_modal").fadeOut();
+        $(".voucher_input").val("");
     });
 
     $(".exchange_confirm_btn").click(function () {
+        ShowLoading("show");
         var voucher = $(".voucher_input").val();
+        if (voucher.length <= 0) {
+            LayerFun("pleaseInputExchangeCode");
+            ShowLoading("hide");
+            return
+        }
         Exchange(token, voucher, function (response) {
-            console.log(response);
+            $(".voucher_input").val("");
+            LayerFun("submitSuccess");
+            $("#exchange_modal").fadeOut();
+            ShowLoading("hide");
         }, function (response) {
             LayerFun(response.errcode);
+            ShowLoading("hide");
         })
     })
 });
