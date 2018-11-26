@@ -486,7 +486,7 @@ input.form-control.search_input:focus {
     position: fixed;
     top: 8%;
     right: 2%;
-    font-size: 14px;
+    font-size: 12px;
     background: rgba(0,0,0,0.4);
     color: #ffffff;
     padding: 1%;
