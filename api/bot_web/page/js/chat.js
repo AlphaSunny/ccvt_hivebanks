@@ -188,7 +188,9 @@ $(function () {
     //scroll bottom
     $("#bottom").click(function () {
         console.log(document.documentElement.scrollHeight - document.documentElement.clientHeight);
-        window.scrollTo(0, document.documentElement.scrollHeight - document.documentElement.clientHeight);
+        var bottom = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        $("body, html").animate({scrollTop: bottom}, 500);
+        // window.scrollTo(0, document.documentElement.scrollHeight - document.documentElement.clientHeight);
     });
 
     //jump login
