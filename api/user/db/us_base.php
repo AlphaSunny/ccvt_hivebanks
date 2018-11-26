@@ -781,3 +781,51 @@ function get_la_base_amount($la_id){
     $amount = $db->getField($sql,'base_amount');
     return $amount;
 }
+
+/**
+ * @param $us_nm
+ * @return bool
+ * 判断该用户是否在邀请黑名单
+ */
+function black_list($us_nm){
+
+    $db = new DB_COM();
+    $sql = "select a.us_id from la_black_list a,us_base b where us_nm = {$us_nm} and a.us_id=b.us_id and a.black_info = 'invite_invalid'";
+    $db->query($sql);
+
+    if($db->fetchRow())
+        return true;
+    return false;
+}
+
+/**
+ * @param $us_nm
+ * @return bool
+ * 把恶意刷注册量者加入黑名单
+ */
+function black_action($us_nm){
+
+    $db = new DB_COM();
+    $sql = "select us_id from us_base where us_nm = {$us_nm}";
+    $db->query($sql);
+    $us_id = $db->fetchRow();
+    $us_id = $us_id['us_id'];
+
+    $data_base['us_id'] = $us_id;
+    $data_base['ctime'] = date('Y-m-d H:i:s',time());
+    $data_base['black_info'] = 'invite_invalid';
+    $sql = $db ->sqlInsert("la_black_list", $data_base);
+    if($db->query($sql))
+        return true;
+    return false;
+
+}
+
+function black_judge($us_nm){
+
+    //注册间隔低于一分钟出现三次的，拉黑
+
+    //同一ip一分钟内注册多次的，拉黑
+
+
+}
