@@ -482,14 +482,23 @@ input.form-control.search_input:focus {
 }
 
 /*bottom*/
-#bottom{
+#bottom {
     position: fixed;
     top: 8%;
     right: 2%;
     font-size: 12px;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     color: #ffffff;
     padding: 1%;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.chat_zan_btn, .chat_cai_btn {
+    width: 1.5rem;
+}
+
+.chat_zan_btn img, .chat_cai_btn img {
+    width: 100%;
+    height: 100%;
 }
