@@ -186,8 +186,10 @@ $(function () {
     });
 
     //scroll bottom
+    var bottom =$(document).elementHeight();
     $("#bottom").click(function () {
-        $("body, html").animate({scrollTop: 100 + "%"}, 500);
+        console.log(bottom);
+        $("body, html").animate({scrollTop: bottom}, 500);
     });
 
     //jump login
