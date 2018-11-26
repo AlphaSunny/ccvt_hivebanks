@@ -35,7 +35,9 @@ if ($check==1){
 }elseif($check==2){
     exit_error('101',"@".$nickname.",兑换码不存在!");
 }elseif($check==3){
-    exit_error('101',"@".$nickname.",兑换码已经被兑换!");
+    exit_error('101',"@".$nickname.",兑换码已经被兑换或已过期!");
+}elseif($check==4){
+    exit_error('101',"@".$nickname.",兑换码已过期!");
 }
 
 //兑换
