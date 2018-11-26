@@ -211,6 +211,7 @@ $(function () {
         Exchange(token, voucher, function (response) {
             $(".voucher_input").val("");
             LayerFun("submitSuccess");
+            $(".availableBalance").text(response.us_amount);
             $("#exchange_modal").fadeOut();
             ShowLoading("hide");
         }, function (response) {
