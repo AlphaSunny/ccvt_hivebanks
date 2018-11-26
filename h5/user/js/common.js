@@ -621,7 +621,7 @@ function TransformCCVT(token, account, suc_func, error_func) {
     var api_url = 'turn_ccvt_integral.php',
         post_data = {
             'token': token,
-            'voucher': account
+            'account': account
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
