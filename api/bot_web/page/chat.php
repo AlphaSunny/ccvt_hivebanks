@@ -147,13 +147,15 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <tr>
                     <td style="text-align: left"><?php echo $v['bot_nickname']; ?>:</td>
                     <td><?php echo $v['count']; ?></td>
-                    <?php if ($v['us_id']!=NULL){ ?>
+
                     <td class="com_zan_cai_box">
+                        <?php if ($v['us_id']!=NULL){ ?>
                         <button class="chat_zan_btn"><img src="img/zan.svg" alt=""><span class="bottom_zan_num">100</span></button>&nbsp;|&nbsp;
                         <button class="chat_cai_btn"><img src="img/cai.svg" alt=""><span class="bottom_cai_num">-12</span></button>
                         <span class="us_id none"><?php echo $v['us_id'];?></span>
+                        <?php }?>
                     </td>
-                    <?php }?>
+
                 </tr>
             <?php } ?>
             </tbody>
