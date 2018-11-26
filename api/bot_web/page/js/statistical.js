@@ -72,6 +72,11 @@ $(function () {
     //获取当前域名
     var url = getRootPath();
 
+    //点击logo
+    $(".logo_img").click(function () {
+        console.log(url);
+    });
+
     $(".login").click(function () {
         window.location.href = url + "/api/bot_web/page/login.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name) + "&statistical=statistical";
     });
