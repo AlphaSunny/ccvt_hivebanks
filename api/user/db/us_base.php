@@ -797,7 +797,7 @@ function get_la_base_amount($la_id){
 //获取用户荣耀积分
 function get_us_integral($us_id){
     $db = new DB_COM();
-    $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$us_id}'";
+    $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$us_id}' limit 1";
     $db->query($sql);
     $amount = $db->getField($sql,'base_amount');
     return $amount;
