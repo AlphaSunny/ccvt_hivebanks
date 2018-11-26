@@ -262,10 +262,7 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
     }
 
     $unit = get_la_base_unit();
-
-    $sql = "select base_amount/'{$unit}' as base_amount from us_base WHERE us_id='{$us_id}'";
-    $db->query($sql);
-    $base_amount = $db->getField($sql,'base_amount');
+    $base_amount = get_us_base_amount($us_id)/$unit;
     if ($give_num>$base_amount){
         return 4;
         false;
@@ -282,14 +279,14 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
     }elseif($give_num+$give_all>$max){
         return 2;
     }else{
-        if ($state==2){
-            $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
-            $db->query($sql);
-            $row = $db->fetchRow();
-            if (!$row || $row['base_amount']==0 || $give_num>($row['base_amount']/$unit)){
-                return 3;
-            }
-        }
+//        if ($state==2){
+//            $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
+//            $db->query($sql);
+//            $row = $db->fetchRow();
+//            if (!$row || $row['base_amount']==0 || $give_num>($row['base_amount']/$unit)){
+//                return 3;
+//            }
+//        }
     }
 }
 
