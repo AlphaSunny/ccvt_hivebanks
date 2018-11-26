@@ -74,7 +74,7 @@ $(function () {
         }
         chat = "bottom_zan";
         bottom_zan_num = parseInt($(this).parents(".com_zan_cai_box").children(".chat_zan_btn").text());
-        _this_bottom_zan_button = $(this).parents(".com_zan_cai_box").children(".bottom_zan_num");
+        _this_bottom_zan_button = $(this).parents(".com_zan_cai_box").children(".chat_zan_btn");
         console.log(bottom_zan_num);
         $(".zan_title").fadeIn("fast");
         $(".zan_num").fadeIn("fast");
