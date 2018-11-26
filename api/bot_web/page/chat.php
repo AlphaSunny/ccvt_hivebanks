@@ -153,34 +153,24 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                         <?php if ($v['us_id']!=NULL){ ?>
                         <button class="chat_zan_btn"><img src="img/zan.svg" alt=""><span class="bottom_zan_num">
                                 <?php
-                                $us_id = $_COOKIE['statistics_user_id'];
-                                if ($us_id) {
-                                    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                                    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$v['us_id']}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
                                     $db->query($sql);
                                     $all_am = $db->getField($sql, 'all_am');
                                     if (!$all_am) {
                                         $all_am = 0;
                                     }
                                     echo $all_am;
-                                }else{
-                                    echo 0;
-                                }
                                 ?>
                             </span></button>&nbsp;|&nbsp;
                         <button class="chat_cai_btn"><img src="img/cai.svg" alt=""><span class="bottom_cai_num">
                                     <?php
-                                    $us_id = $_COOKIE['statistics_user_id'];
-                                    if ($us_id) {
-                                        $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                                        $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$v['us_id']}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
                                         $db->query($sql);
                                         $all_am = $db->getField($sql, 'all_am');
                                         if (!$all_am) {
                                             $all_am = 0;
                                         }
                                         echo $all_am;
-                                    }else{
-                                        echo 0;
-                                    }
                                     ?>
                                 </span></button>
                         <span class="us_id none"><?php echo $v['us_id'];?></span>
