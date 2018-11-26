@@ -762,18 +762,6 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
 
 }
 
-//======================================
-// 函数: 获取上传交易hash
-//======================================
-function get_pre_hash($credit_id){
-    $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
-    $hash_id = $db->getField($sql, 'hash_id');
-    if($hash_id == null)
-        return 0;
-    return $hash_id;
-}
-
 
 
 //获取la id
