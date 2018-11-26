@@ -8,7 +8,7 @@ error_reporting(E_ALL | E_STRICT);
 
 $db = new DB_COM();
 $unit = get_la_base_unit();
-$sql = "select * from us_asset WHERE asset_id='GLOP' AND (base_amount/$unit)>=100";
+$sql = "select * from us_asset WHERE asset_id='GLOP' AND (base_amount/$unit)>=100 ORDER BY base_amount DESC ";
 $db->query($sql);
 $rows = $db->fetchAll();
 print_r($rows);die;
