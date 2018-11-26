@@ -57,7 +57,6 @@ function give_like_us($data)
             $sql .= " base_amount=base_amount-'{$data['give_num']}'*'{$unit}'";
         }
         $sql .= " WHERE asset_id='GLOP' AND us_id='{$data['give_us_id']}'";
-        echo $sql;
         $db->query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
