@@ -1,57 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style type="text/css">
-        #box{width:260px;height:100px;margin:0 auto;border:2px solid red;overflow: auto}
-        ul{padding:0;margin:0;list-style: none;overflow: hidden}
-        ul li{height:24px;line-height: 24px;padding-left:10px;}
-        a{text-decoration: none;color:#000;}
-        a:hover{color:#f00}
-    </style>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" href="./bootstrap-table/bootstrap-table.css"/>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.js"></script>
+    <script src="./bootstrap-table/bootstrap-table.js"></script>
+    <script src="user/js/common.js"></script>
+
+    <!--将表格数据导出为其他格式到本地时需要用到-->
+    <!--<script src="./bootstrap-table/bootstrap-table-export.js"></script>-->
+    <!--<script src="./extends/tableExport/jquery.base64.js"></script>-->
+    <!--<script src="./extends/tableExport/tableExport.js"></script>-->
+    <!--将表格数据导出为其他格式到本地时需要用到-->
+
 </head>
+
 <body>
-<div id="box">
-    <ul id="con1" onMouseOut="Up()" onMouseOver="Stop()">
-        <li><a href="#" >1,课程html</a> </li>
-        <li><a href="#">2,课程css</a> </li>
-        <li><a href="#">3,课程js</a> </li>
-        <li><a href="#">4,课程jquery</a> </li>
-        <li><a href="#">5,课程html5</a> </li>
-        <li><a href="#">6,课程css3</a> </li>
-        <li><a href="#">7,课程hp</a> </li>
-        <li><a href="#">8,课程bpootstrap</a> </li>
-        <li><a href="#">9,课程apicloud</a> </li>
-    </ul>
-    <ul id="con2"></ul>
+<div id="content">
+
+    <!--['json', 'xml', 'csv', 'txt', 'sql', 'excel']-->
+    <div id="content-body">
+
+        <div id="reportTableDiv" class="span10">
+            <table id="reportTable">
+            </table>
+        </div>
+    </div>
 </div>
-</body>
+
+
 <script type="text/javascript">
-    var box=document.getElementById("box");
-    var con1=document.getElementById("con1");
-    var con2=document.getElementById("con2");
-    var s=document.getElementsByTagName("a");
-    var speed=200;
-    con2.innerHTML=con1.innerHTML;
-    function  ScrollUp(){
-        if( box.scrollTop>=con1.scrollHeight){
-            box.scrollTop=0;
-        }else
-            box.scrollTop++;
-    }
-    var i=setInterval("ScrollUp()",speed);
-    function Stop(){
-        clearInterval(i);
-    }
-    function Up(){
-        i=setInterval("ScrollUp()",speed);
-    }
+    $(function () {
+        // token
+        var token = GetCookie('user_token');
+        var limit = 10, offset = 0;
+        var gloryPoints_change_url = "us_integral_change_log.php";
+
+        function GetGloryPointsChange(token, limit, offset, gloryPoints_change_url) {
+            var tr = '';
+            AllRecord(token, limit, offset, gloryPoints_change_url, function (response) {
+                if (response.errcode == '0') {
+                    var data = response.rows;
+                    if (data == false) {
+                        $('.gloryPoints_eg').hide();
+                        GetDataEmpty('gloryPointsChange', '3');
+                        return;
+                    }
+
+                    $('#gloryPointsChange').bootstrapTable({
+                        // method: 'get',
+                        cache: false,
+                        height: 500,//表格高度
+                        striped: true,//显示条纹
+                        pagination: true,//显示分页
+                        pageSize: 10,//默认显示多少条数据
+                        pageNumber: 1,
+                        pageList: [10, 20, 50],//显示多少条数据
+                        search: false,//显示搜索
+                        showColumns: false,//显示列选择
+                        showRefresh: false,//显示刷新
+                        showExport: true,//显示导出其他格式
+                        exportTypes: ['csv', 'txt', 'xml'],//设置导出到格式
+                        clickToSelect: false,//点击
+                        columns: [{
+                            field: "utime",//数据字段名
+                            title: "时间",//表格th内容
+                            align: "center",
+                            valign: "middle",
+                            sortable: "true"//排序
+                        },{
+                            field: "tx_amount",//数据字段名
+                            title: "荣耀积分",//表格th内容
+                            align: "center",
+                            valign: "middle",
+                            sortable: "true"//排序
+                        },{
+                            field: "tx_detail",//数据字段名
+                            title: "变动类型",//表格th内容
+                            align: "center",
+                            valign: "middle",
+                            sortable: "true"//排序
+                        }, ],
+                        data: data
+                    });
+
+                    $(window).resize(function () {
+                        $('#gloryPointsChange').bootstrapTable('resetView');
+                    });
+                }
+            }, function (response) {
+                GetDataFail('gloryPointsChange', '5');
+            });
+        };
+
+        GetGloryPointsChange(token, limit, offset, gloryPoints_change_url);
+
+
+
+
+        // $('#reportTable').bootstrapTable({
+        //     // method: 'get',
+        //     cache: false,
+        //     height: 500,//表格高度
+        //     striped: true,//显示条纹
+        //     pagination: true,//显示分页
+        //     pageSize: 10,//默认显示多少条数据
+        //     pageNumber: 1,
+        //     pageList: [10, 20, 50],//显示多少条数据
+        //     search: false,//显示搜索
+        //     showColumns: false,//显示列选择
+        //     showRefresh: false,//显示刷新
+        //     showExport: true,//显示导出其他格式
+        //     exportTypes: ['csv', 'txt', 'xml'],//设置导出到格式
+        //     clickToSelect: false,//点击
+        //     columns: [{
+        //         field: "user_email",//数据字段名
+        //         title: "email666",//表格th内容
+        //         align: "center",
+        //         valign: "middle",
+        //         sortable: "true"//排序
+        //     }],
+        //     data: data
+        // });
+
+        $(window).resize(function () {
+            $('#reportTable').bootstrapTable('resetView');
+        });
+    });
 
 </script>
+
+</body>
+
 </html>
----------------------
-作者：waterDjj
-来源：CSDN
-原文：https://blog.csdn.net/waterdjj/article/details/52022081
-版权声明：本文为博主原创文章，转载请附上博文链接！
