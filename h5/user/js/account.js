@@ -153,7 +153,7 @@ $(function () {
                         // '<td><span title="' + data[i].hash_id + '">' + data[i].hash_id.substr(0, 20) + '...' + '</span></td>' +
                         '<td><span>' + data[i].utime + '</span></td>' +
                         '<td><span>' + data[i].tx_amount + '</span></td>' +
-                        '<td><span class="i18n" name="' + data[i].tx_detail + '">' + data[i].tx_detail + '</span></td>' +
+                        '<td><span class="" name="' + data[i].tx_detail + '">' + data[i].tx_detail + '</span></td>' +
                         '</tr>'
                 });
                 $('.gloryPointsChange').html(tr);
