@@ -171,6 +171,7 @@ $(function () {
     GetGloryPointsChange(token, limit, offset, gloryPoints_change_url);
 
     // gloryPoints change Pagination
+
     // function GloryPointsPage(pageCount) {
     //     $('.gloryPoints_log_code').pagination({
     //         pageCount: pageCount,
