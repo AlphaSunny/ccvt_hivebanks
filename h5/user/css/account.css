@@ -134,5 +134,5 @@ i.iconfont.icon-anquanshezhi, i.iconfont.icon-yinhangqia, i.iconfont.icon-alipay
 }
 
 .fixed-table-pagination .pagination-detail{
-    display: none;
+    display: none!important;
 }
