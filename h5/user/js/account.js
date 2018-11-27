@@ -140,28 +140,73 @@ $(function () {
         $("#gloryPointsChange").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>loading...</span></td></tr>")
         AllRecord(token, limit, offset, gloryPoints_change_url, function (response) {
             if (response.errcode == '0') {
-                var pageCount = Math.ceil(response.total / limit);
-                $('.gloryPoints_totalPage').text(Math.ceil(response.total / limit));
+                // var pageCount = Math.ceil(response.total / limit);
+                // $('.gloryPoints_totalPage').text(Math.ceil(response.total / limit));
                 var data = response.rows;
                 if (data == false) {
                     $('.gloryPoints_eg').hide();
                     GetDataEmpty('gloryPointsChange', '3');
                     return;
                 }
-                $.each(data, function (i, val) {
-                    tr += '<tr>' +
-                        // '<td><span title="' + data[i].hash_id + '">' + data[i].hash_id.substr(0, 20) + '...' + '</span></td>' +
-                        '<td><span>' + data[i].utime + '</span></td>' +
-                        '<td><span>' + data[i].tx_amount + '</span></td>' +
-                        '<td><span class="" name="' + data[i].tx_detail + '">' + data[i].tx_detail + '</span></td>' +
-                        '</tr>'
+
+                $('#gloryPointsChange').bootstrapTable({
+                    // method: 'get',
+                    cache: false,
+                    height: 500,//表格高度
+                    striped: true,//显示条纹
+                    pagination: true,//显示分页
+                    pageSize: 10,//默认显示多少条数据
+                    pageNumber: 1,
+                    pageList: [10, 20, 50],//显示多少条数据
+                    search: false,//显示搜索
+                    showColumns: false,//显示列选择
+                    showRefresh: false,//显示刷新
+                    showExport: true,//显示导出其他格式
+                    exportTypes: ['csv', 'txt', 'xml'],//设置导出到格式
+                    clickToSelect: false,//点击
+                    columns: [{
+                        field: "utime",//数据字段名
+                        title: "时间",//表格th内容
+                        align: "center",
+                        valign: "middle",
+                        sortable: "true"//排序
+                    },{
+                        field: "tx_amount",//数据字段名
+                        title: "荣耀积分",//表格th内容
+                        align: "center",
+                        valign: "middle",
+                        sortable: "true"//排序
+                    },{
+                        field: "tx_detail",//数据字段名
+                        title: "变动类型",//表格th内容
+                        align: "center",
+                        valign: "middle",
+                        sortable: "true"//排序
+                    }, ],
+                    data: data
                 });
-                $('.gloryPointsChange').html(tr);
+
+                $(window).resize(function () {
+                    $('#gloryPointsChange').bootstrapTable('resetView');
+                });
+
+
+
+
+                // $.each(data, function (i, val) {
+                //     tr += '<tr>' +
+                //         // '<td><span title="' + data[i].hash_id + '">' + data[i].hash_id.substr(0, 20) + '...' + '</span></td>' +
+                //         '<td><span>' + data[i].utime + '</span></td>' +
+                //         '<td><span>' + data[i].tx_amount + '</span></td>' +
+                //         '<td><span class="" name="' + data[i].tx_detail + '">' + data[i].tx_detail + '</span></td>' +
+                //         '</tr>'
+                // });
+                // $('.gloryPointsChange').html(tr);
                 // execI18n();
-                if (n == 0) {
-                    GloryPointsPage(pageCount);
-                }
-                n++;
+                // if (n == 0) {
+                //     GloryPointsPage(pageCount);
+                // }
+                // n++;
             }
         }, function (response) {
             GetDataFail('gloryPointsChange', '5');
