@@ -17,6 +17,7 @@ rows            信息数组
 说明
 */
 require_once "../../../inc/common.php";
+require_once  "db/la_admin.php";
 require_once "../../db/la_func_common.php";
 require_once "db/us_base.php";
 
