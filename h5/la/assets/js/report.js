@@ -281,7 +281,7 @@ $(function () {
     //荣耀积分
     GloryPoints(token, function (response) {
         if(response.errcode == "0"){
-            $('#rankingTable').DataTable({
+            $('#gloryPointsTable').DataTable({
                 order: [[2, "desc"]],
                 destroy: true,
                 deferRender: true,
@@ -298,25 +298,10 @@ $(function () {
                         loadingRecords: "Please wait - loading..",
                     }
                 },
-                data: response.rows.gift_detail,
+                data: response.rows,
                 columns: [
-                    {"data": "rank"},
-                    {"data": "us_account"},
-                    {
-                        "data": "wechat",
-                        render: function (data) {
-                            if (data == null) {
-                                data = "--";
-                                return data;
-                            } else {
-                                data = data;
-                                return data;
-                            }
-                        },
-                        target: 1
-                    },
-                    {"data": "invite_code"},
-                    {"data": "count"},
+                    {"data": "ranking"},
+                    {"data": "wechat"},
                     {"data": "base_amount"}
                 ],
             });
