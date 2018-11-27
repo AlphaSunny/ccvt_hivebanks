@@ -288,7 +288,7 @@ $(function () {
 
     //exchange
     $(".exchange_btn").click(function () {
-        $(".customize_modal").fadeIn();
+        $("#exchange_modal").fadeIn();
     });
 
     $(".customize_modal_cancel_btn").click(function () {
@@ -308,7 +308,7 @@ $(function () {
             $(".voucher_input").val("");
             LayerFun("submitSuccess");
             $(".availableBalance").text(response.us_amount);
-            $(".customize_modal").fadeOut();
+            $("#exchange_modal").fadeOut();
             ShowLoading("hide");
         }, function (response) {
             layer.msg(response.errmsg);
@@ -318,7 +318,7 @@ $(function () {
 
     //transform ccvt
     $(".upgrade_btn").click(function () {
-        $(".customize_modal").fadeIn();
+        $("#transform_ccvt").fadeIn();
     });
 
     $(".transform_ccvt_confirm_btn").click(function () {
@@ -334,7 +334,7 @@ $(function () {
             LayerFun("submitSuccess");
             $(".availableBalance").text(response.us_amount);
             $(".glory_of_integral").text(response.glory_of_integral);
-            $(".customize_modal").fadeOut();
+            $("#transform_ccvt").fadeOut();
             ShowLoading("hide");
         }, function (response) {
             layer.msg(response.errmsg);
