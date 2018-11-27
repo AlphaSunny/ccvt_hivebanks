@@ -171,16 +171,16 @@ $(function () {
     GetGloryPointsChange(token, limit, offset, gloryPoints_change_url);
 
     // gloryPoints change Pagination
-    function GloryPointsPage(pageCount) {
-        $('.gloryPoints_log_code').pagination({
-            pageCount: pageCount,
-            callback: function (api) {
-                offset = (api.getCurrent() - 1) * limit;
-                $('.gloryPoints_currentPage').text(api.getCurrent());
-                GetGloryPointsChange(token, limit, offset, account_change_url);
-            }
-        });
-    }
+    // function GloryPointsPage(pageCount) {
+    //     $('.gloryPoints_log_code').pagination({
+    //         pageCount: pageCount,
+    //         callback: function (api) {
+    //             offset = (api.getCurrent() - 1) * limit;
+    //             $('.gloryPoints_currentPage').text(api.getCurrent());
+    //             GetGloryPointsChange(token, limit, offset, account_change_url);
+    //         }
+    //     });
+    // }
 
     //invite
     $(".inviteBtn").click(function () {
