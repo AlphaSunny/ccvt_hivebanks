@@ -668,7 +668,7 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     $la_id = get_la_id();
     //赠送者
     $transfer['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
-    $prvs_hash = get_pres_hash($us_id);
+    $prvs_hash = get_transfer_pre_hash($us_id);
     $transfer['prvs_hash'] = $prvs_hash == 0 ? $transfer['hash_id'] : $prvs_hash;
     $transfer['credit_id'] = $us_id;
     $transfer['debit_id'] = $la_id;
@@ -691,7 +691,7 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
 
     //接收者(la)
     $dat['hash_id'] = hash('md5', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
-    $prvs_hash = get_pres_hash($la_id);
+    $prvs_hash = get_transfer_pre_hash($la_id);
     $dat['prvs_hash'] = $prvs_hash == 0 ? $dat['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $la_id;
     $dat['debit_id'] = $us_id;
@@ -763,17 +763,6 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
 }
 
 
-//======================================
-// 函数: 获取上传交易hash
-//======================================
-function get_pres_hash($credit_id){
-    $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
-    $hash_id = $db->getField($sql, 'hash_id');
-    if($hash_id == null)
-        return 0;
-    return $hash_id;
-}
 
 
 //获取la id
