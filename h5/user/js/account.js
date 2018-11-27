@@ -126,7 +126,7 @@ $(function () {
             pageCount: pageCount,
             callback: function (api) {
                 offset = (api.getCurrent() - 1) * limit;
-                $('.currentPage').text(api.getCurrent());
+                $('.account_currentPage').text(api.getCurrent());
                 GetAccountChange(token, limit, offset, account_change_url);
             }
         });
