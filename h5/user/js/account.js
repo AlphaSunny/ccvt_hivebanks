@@ -91,7 +91,7 @@ $(function () {
         AllRecord(token, limit, offset, account_change_url, function (response) {
             if (response.errcode == '0') {
                 var pageCount = Math.ceil(response.total / limit);
-                $('.totalPage').text(Math.ceil(response.total / limit));
+                $('.accountChange_totalPage').text(Math.ceil(response.total / limit));
                 var data = response.rows;
                 if (data == false) {
                     $('.accountChange_eg').hide();
@@ -141,7 +141,7 @@ $(function () {
         AllRecord(token, limit, offset, gloryPoints_change_url, function (response) {
             if (response.errcode == '0') {
                 var pageCount = Math.ceil(response.total / limit);
-                $('.totalPage').text(Math.ceil(response.total / limit));
+                $('.gloryPoints_totalPage').text(Math.ceil(response.total / limit));
                 var data = response.rows;
                 if (data == false) {
                     $('.gloryPoints_eg').hide();
