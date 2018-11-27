@@ -137,7 +137,9 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
             <tr>
                 <th style="text-align: left">昵称</th>
                 <th>发言数</th>
+                <?php if ($status != 1) { ?>
                 <th>赞/踩</th>
+                <?php }?>
             </tr>
             </thead>
             <tbody>
