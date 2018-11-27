@@ -157,7 +157,7 @@ $(function () {
                     pagination: true,//显示分页
                     pageSize: 3,//默认显示多少条数据
                     pageNumber: 1,
-                    pageList: [10, 20, 50],//显示多少条数据
+                    pageList: [1, 2, 3],//显示多少条数据
                     search: false,//显示搜索
                     showColumns: false,//显示列选择
                     showRefresh: false,//显示刷新
