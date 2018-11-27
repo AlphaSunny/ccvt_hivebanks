@@ -151,14 +151,13 @@ $(function () {
                 $.each(data, function (i, val) {
                     tr += '<tr>' +
                         // '<td><span title="' + data[i].hash_id + '">' + data[i].hash_id.substr(0, 20) + '...' + '</span></td>' +
-                        '<td><span>' + data[i].ctime + '</span></td>' +
+                        '<td><span>' + data[i].utime + '</span></td>' +
                         '<td><span>' + data[i].tx_amount + '</span></td>' +
-                        '<td><span>' + data[i].credit_balance + '</span></td>' +
-                        '<td><span class="i18n" name="' + data[i].tx_type + '">' + data[i].tx_type + '</span></td>' +
+                        '<td><span class="i18n" name="' + data[i].tx_detail + '">' + data[i].tx_detail + '</span></td>' +
                         '</tr>'
                 });
-                $('.accountChange').html(tr);
-                execI18n();
+                $('.gloryPointsChange').html(tr);
+                // execI18n();
                 if (n == 0) {
                     GloryPointsPage(pageCount);
                 }
