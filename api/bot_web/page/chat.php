@@ -33,7 +33,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 ?>
 <div id="chat">
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?>(<?php echo $datetime; ?>)</p>
-
+    <?php if ($status != 1) { ?>
         <div class="backStatistics_box login_right_box">
             <a href="javascript:;" class="backStatistics login">登录</a>
             <span class="amount_box">
@@ -41,7 +41,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <span class="amount"></span>
             </span>
         </div>
-    <?php if ($status != 1) { ?>
+
         <div class="backStatistics_box">
             <a href="javascript:;" class="backStatistics">奖励统计</a>
         </div>
@@ -82,6 +82,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                     <div class="chatInfo">
                         <p class="name">
                             <span class="chat_name"><?php echo $v['bot_nickname'] ?></span>
+                            <?php if ($v['us_id']!=NULL && $status!=1){?>
                             <span class="zan_cai_box com_zan_cai_box">
                                 <span class="zan_img_box">
 <!--                                    <span class="zan_count">123</span>-->
@@ -93,6 +94,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                                 </span>
                                 <span class="us_id none"><?php echo $v['us_id'];?></span>
                             </span>
+                            <?php }?>
                         </p>
                         <p class="chatContent">
                             <?php
@@ -162,13 +164,13 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                             </span></button>&nbsp;|&nbsp;
                         <button class="chat_cai_btn"><img src="img/cai.svg" alt=""><span class="bottom_cai_num">
                                     <?php
-                                    $sql = "select sum(tx_amount)/'{$unit}' as zan from us_glory_integral_change_log WHERE debit_id='{$v['us_id']}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-                                    $db->query($sql);
-                                    $zan = $db->getField($sql, 'zan');
-                                    if (!$zan) {
-                                        $zan = 0;
-                                    }
-                                        echo $zan;
+                                        $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$v['us_id']}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                                        $db->query($sql);
+                                        $all_am = $db->getField($sql, 'all_am');
+                                        if (!$all_am) {
+                                            $all_am = 0;
+                                        }
+                                        echo $all_am;
                                     ?>
                                 </span></button>
                         <span class="us_id none"><?php echo $v['us_id'];?></span>
