@@ -44,7 +44,9 @@ i.iconfont.icon-zhanghu{
     height: 100%;
 }
 
-
+.fixed-table-pagination .pagination-detail{
+    display: none;
+}
 
 
 
