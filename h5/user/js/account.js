@@ -145,7 +145,7 @@ $(function () {
                 var data = response.rows;
                 if (data == false) {
                     $('.gloryPoints_eg').hide();
-                    GetDataEmpty('accountChange', '5');
+                    GetDataEmpty('gloryPointsChange', '3');
                     return;
                 }
                 $.each(data, function (i, val) {
