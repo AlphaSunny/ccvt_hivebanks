@@ -4,7 +4,7 @@ ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
 
-$str = "abcde";
+$str = "不给你扶";
 echo mb_strlen($str);
 die;
 
