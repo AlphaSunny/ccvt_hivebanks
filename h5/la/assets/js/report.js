@@ -304,9 +304,4 @@ $(function () {
             lineColors: ['green', 'red', 'blue']
         });
     }
-
-    //show invite img
-    $(".show_img_btn").click(function () {
-        $(".pai_ming_img_modal").slideToggle("fast");
-    });
 });

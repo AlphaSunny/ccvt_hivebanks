@@ -25,53 +25,6 @@
         td, th {
             border: 1px solid #9e9e9e;
         }
-        .pai_ming_img_modal{
-            position: fixed;
-            top: 5%;
-            left: 50%;
-            margin-left: -200px;
-            display: none;
-        }
-        .pai_ming_box{
-            position: relative;
-            background-image: url("assets/img/pai_ming.png");
-            background-position: 0 0;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            width: 400px;
-            height: 1000px;
-        }
-        .pai_ming_item_ul{
-            position: absolute;
-            width: 61%;
-            top: 30.5%;
-            left: 31%;
-            padding-left: 3%;
-        }
-        .pai_ming_item_ul li{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 3.3rem;
-        }
-        .pai_ming_item_ul li .count{
-            width: 35%;
-            text-align: left;
-            padding-left: 5%;
-        }
-        .pai_ming_item_ul li .wechat{
-            width: 54%;
-            text-align: center;
-        }
-
-        .show_img_btn{
-            cursor: pointer;
-            text-align: right;
-            display: inline-block;
-        }
-        .show_img_btn:hover{
-            color: red;
-        }
     </style>
 
 </head>
@@ -365,7 +318,6 @@
 
                         <div class="card-action"><h5 class="i18n" name="invitationRanking">邀请排名表</h5></div>
                         <div class="card-content">
-                            <p class="show_img_btn">查看图片</p>
                             <div class="table-responsive table-hover">
                                 <table class="table bordered striped centered highlight" id="rankingTable">
                                     <thead>
@@ -387,14 +339,6 @@
             </div>
         </div>
     </div>
-
-    <!--show invite img modal-->
-    <div class="pai_ming_img_modal">
-        <div class="pai_ming_box" id="pai_ming_img">
-            <ul class="pai_ming_item_ul"></ul>
-        </div>
-    </div>
-
 
     <!--loading-->
     <div class="preloader-wrapper active">
