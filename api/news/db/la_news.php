@@ -69,7 +69,11 @@ function category_list(){
  */
 function get_news_list($category){
     $db = new DB_COM();
-    $sql = "select title,author,utime,ctime,news_id from la_news WHERE category='$category' AND status = 1 order by ctime desc";
+    $sql = "select title,author,utime,ctime,news_id from la_news WHERE category='$category' AND status = 1";
+    if ($category==2){
+        $sql .= " limit 20";
+    }
+    $sql .=" order by ctime desc";
     $db->query($sql);
     $rows= $db->fetchAll();
     return $rows;
