@@ -161,9 +161,7 @@ $(function () {
                     search: false,//显示搜索
                     showColumns: false,//显示列选择
                     showRefresh: false,//显示刷新
-                    showExport: true,//显示导出其他格式
-                    exportTypes: ['csv', 'txt', 'xml'],//设置导出到格式
-                    clickToSelect: false,//点击
+                    showHeader:false,
                     columns: [{
                         field: "utime",//数据字段名
                         title: "时间",//表格th内容
