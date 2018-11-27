@@ -33,7 +33,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 ?>
 <div id="chat">
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?>(<?php echo $datetime; ?>)</p>
-    <?php if ($status != 1) { ?>
+
         <div class="backStatistics_box login_right_box">
             <a href="javascript:;" class="backStatistics login">登录</a>
             <span class="amount_box">
@@ -41,7 +41,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <span class="amount"></span>
             </span>
         </div>
-
+    <?php if ($status != 1) { ?>
         <div class="backStatistics_box">
             <a href="javascript:;" class="backStatistics">奖励统计</a>
         </div>
