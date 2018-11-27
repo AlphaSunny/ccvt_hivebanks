@@ -815,6 +815,15 @@ function GetAssetsReport(token, suc_func, error_func) {
     CallReportApi(api_url, post_data, suc_func, error_func);
 }
 
+//获取荣耀积分排名
+function GloryPoints(token,suc_func, error_func) {
+    var api_url = 'honor_score_ranking.php',
+        post_data = {
+            'token': token
+        };
+    CallReportApi(api_url, post_data, suc_func, error_func);
+}
+
 //获取每天用户增长趋势GetAmountLine
 function GetDayUserUp(token, day, suc_func, error_func) {
     var api_url = 'reg_daily.php',
