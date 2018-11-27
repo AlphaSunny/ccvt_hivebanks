@@ -137,7 +137,7 @@ $(function () {
 
     function GetGloryPointsChange(token, limit, offset, gloryPoints_change_url) {
         var tr = '';
-        $("#gloryPointsChange").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>loading...</span></td></tr>")
+        // $("#gloryPointsChange").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>loading...</span></td></tr>")
         AllRecord(token, limit, offset, gloryPoints_change_url, function (response) {
             if (response.errcode == '0') {
                 // var pageCount = Math.ceil(response.total / limit);
