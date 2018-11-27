@@ -4,6 +4,11 @@ ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
 
+$str = "abcde";
+echo mb_strlen($str);
+die;
+
+
 
 for($i=0;$i<100;$i++){
     $data['id'] = get_guid();
