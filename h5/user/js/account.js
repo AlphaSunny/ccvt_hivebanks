@@ -162,6 +162,7 @@ $(function () {
                     showColumns: false,//显示列选择
                     showRefresh: false,//显示刷新
                     showHeader:false,
+                    smartDisplay:true,
                     columns: [{
                         field: "utime",//数据字段名
                         title: "时间",//表格th内容
