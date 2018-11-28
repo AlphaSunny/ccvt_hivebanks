@@ -3,16 +3,16 @@ $(function () {
     var index = 0;
     var timer = "";
     var li = "", li_2 = "";
-    timer = setInterval(function () {
-        if (index >= 12) {
-            clearInterval(timer);
-            $("#first_box").remove();
-            GetGlory();
-        }
-        var str = h1_text.substr(index, 2);
-        index += 2;
-        $(".first_text").text(str);
-    }, 1000);
+    // timer = setInterval(function () {
+    //     if (index >= 12) {
+    //         clearInterval(timer);
+    //         $("#first_box").remove();
+    //         GetGlory();
+    //     }
+    //     var str = h1_text.substr(index, 2);
+    //     index += 2;
+    //     $(".first_text").text(str);
+    // }, 1000);
 
     function GetGlory() {
         $.ajax({
@@ -48,4 +48,5 @@ $(function () {
             }
         });
     }
+    GetGlory();
 });
