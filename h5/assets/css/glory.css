@@ -18,7 +18,7 @@ body {
 }
 
 /*first_box*/
-#first_box{
+#first_box {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -28,10 +28,29 @@ body {
     align-items: center;
     justify-content: center;
 }
-#first_box h1{
+
+#first_box h1 {
     font-size: 20rem;
+    animation: 1s first_text_move linear infinite;
 }
 
+@keyframes first_text_move {
+    0% {
+        color: #1d28ff;
+        text-shadow: 0 0 5px #22ff1a, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF, 0 0 40px #46d5ff, 0 0 70px #FF00DE, 0 0 80px #FF00DE, 0 0 100px #FF00DE;
+        transform: scale(0.5);
+    }
+    50% {
+        color: #6fffd6;
+        text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #3afff7, 0 0 40px #81ffb6, 0 0 70px #FF00DE, 0 0 80px #FF00DE, 0 0 100px #FF00DE;
+        transform: scale(1);
+    }
+    100% {
+        color: #2dfff3;
+        text-shadow: 0 0 2px #FFFFFF, 0 0 20px #6fffd6, 0 0 30px #FFFFFF, 0 0 40px #213dff, 0 0 70px #FF00DE, 0 0 80px #FF00DE, 0 0 100px #FF00DE;
+        transform: scale(1.2);
+    }
+}
 
 /*--------------------
 Leaderboard
@@ -71,24 +90,23 @@ Leaderboard
     color: #e1e1e1;
     padding: 12px 13px 18px;
     animation: 2s color_move linear infinite;
-    transition:all 2s;
+    transition: all 2s;
 }
 
 @keyframes color_move {
-    0%{
+    0% {
         color: #ffffff;
         /*transform:scale(0.5);*/
     }
-    50%{
+    50% {
         color: #cbff8d;
         /*transform:scale(0.75);*/
     }
-    100%{
+    100% {
         color: #70fff2;
         /*transform:scale(1);*/
     }
 }
-
 
 .leaderboard h1 svg {
     width: 25px;
@@ -428,7 +446,8 @@ table {
         width: 96%;
         top: 6%;
     }
-    .leaderboard_2{
+
+    .leaderboard_2 {
         top: 110%;
         margin-bottom: 10%;
     }
