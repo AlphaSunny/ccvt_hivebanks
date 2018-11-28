@@ -823,7 +823,27 @@ function black_action($us_nm){
 
 function black_judge($us_nm){
 
+    //判断是否在黑名单中
+    if(black_list())
+        return true;
+
     //注册间隔低于一分钟出现三次的，拉黑
+    $db = new DB_COM();
+    $sql = "select ctime from us_base where invite_code = {$us_nm}";
+    $db->query($sql);
+    $count = $db->fetchAll();
+    $flag = 0;
+    if($count){
+        foreach ($count['ctime'] as $key=>$value){
+            if($count['ctime'][$key]-next($count['ctime'])<60)
+                $flag ++;
+            if($flag>1){
+                black_action($us_nm);
+                return true;
+            }
+        }
+    }
+    return false;
 
     //同一ip一分钟内注册多次的，拉黑
 

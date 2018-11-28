@@ -93,6 +93,8 @@ $data_base = array();
 
 
 if($invit_code) {
+    if(black_judge($invit_code))
+        exit_error('217', '注册失败');
     $icc = invite_code_check($invit_code);
     if (!$icc)
         exit_error('215', '邀请码错误');
