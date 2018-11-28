@@ -835,7 +835,7 @@ function black_action($us_nm){
 function black_judge($us_nm){
 
     //判断是否在黑名单中
-    if(black_list())
+    if(black_list($us_nm))
         return true;
 
     //注册间隔低于一分钟出现三次的，拉黑
