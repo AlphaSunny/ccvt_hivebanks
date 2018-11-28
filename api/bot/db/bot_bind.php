@@ -422,14 +422,14 @@ function check_voucher($nickname,$voucher)
     $db->query($sql);
     $vou = $db->fetchRow();
     if (!$vou) {
-        $sql = "update us_voucher set is_effective=2 WHERE id='{$vou['id']}'";
-        $db -> query($sql);
         return 2;
     }else{
         $sql = "select * from us_base WHERE wechat='{$nickname}'";
         $db->query($sql);
         $row = $db->fetchRow();
         if (!$row){
+            $sql = "update us_voucher set is_effective=2 WHERE id='{$vou['id']}'";
+            $db -> query($sql);
             return 1;
         }elseif(strtotime($vou['expiry_date'])<time()){
             $sql = "update us_voucher set is_effective=2 WHERE id='{$vou['id']}'";
