@@ -17,6 +17,19 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+/*first_box*/
+#first_box{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /*--------------------
 Leaderboard
 --------------------*/
@@ -54,7 +67,25 @@ Leaderboard
     font-size: 18px;
     color: #e1e1e1;
     padding: 12px 13px 18px;
+    animation: 2s color_move linear infinite;
+    transition:all 2s;
 }
+
+@keyframes color_move {
+    0%{
+        color: #ffffff;
+        /*transform:scale(0.5);*/
+    }
+    50%{
+        color: #cbff8d;
+        /*transform:scale(0.75);*/
+    }
+    100%{
+        color: #70fff2;
+        /*transform:scale(1);*/
+    }
+}
+
 
 .leaderboard h1 svg {
     width: 25px;
@@ -99,8 +130,14 @@ Leaderboard
     border-radius: 20px;
     text-align: center;
 }
+
+.leaderboard_2 ol {
+    counter-reset: leaderboard_2 10;
+}
+
 .leaderboard_2 ol li::before {
-    content: counter(leaderboard);
+    counter-increment: leaderboard_2;
+    content: counter(leaderboard_2);
 }
 
 .leaderboard ol li div:first-child {
@@ -380,4 +417,15 @@ blockquote:before, blockquote:after, q:before, q:after {
 table {
     border-collapse: collapse;
     border-spacing: 0
+}
+
+@media screen and (max-width: 768px) {
+    .leaderboard {
+        width: 96%;
+        top: 6%;
+    }
+    .leaderboard_2{
+        top: 110%;
+        margin-bottom: 10%;
+    }
 }
