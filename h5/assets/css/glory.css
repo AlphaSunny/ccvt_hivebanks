@@ -145,7 +145,8 @@ Leaderboard
 }
 
 .leaderboard ol li div:last-child {
-    width: 55%;
+    width: 62%;
+    padding-right: 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
