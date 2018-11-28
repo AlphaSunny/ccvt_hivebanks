@@ -26,9 +26,8 @@ $(function () {
         url:"https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php",
         type:"GET",
         success:function (response) {
-            console.log(response);
             if(response.errcode == "0"){
-                var data = response.rows;
+                var data = JSON.parse(response.rows);
                 console.log(data);
                 $.each(data, function (i, val) {
                     console.log(val);
