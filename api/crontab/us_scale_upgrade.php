@@ -60,6 +60,15 @@ function scale_upgrade($us_id,$scale,$us_account){
             $db->Rollback($pInTrans);
             echo "修改用户等级失败";
         }
+
+        //返还50ccvt
+        $sql = "update us_base set scale=1 WHERE us_id='{$us_id}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            $db->Rollback($pInTrans);
+            echo "修改用户等级失败";
+        }
+
         $db->Commit($pInTrans);
 //        echo "升级完成&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$us_account."<br />";
     }
