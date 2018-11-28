@@ -39,14 +39,14 @@ function scale_upgrade($us_id,$scale,$us_account){
         $db = new DB_COM();
         $pInTrans = $db->StartTrans();  //开启事务
         //升级记录表
-        $data['change_id'] = get_guid();
-        $data['us_id'] = $us_id;
-        $data['before_scale'] = $us_scale;
-        $data['after_scale'] = 1;
-        $data['scale'] = $scale;
-        $data['utime'] = time();
-        $data['ctime'] = date('Y-m-d H:i:s');
-        $sql = $db->sqlInsert("us_scale_changes", $data);
+        $data2['change_id'] = get_guid();
+        $data2['us_id'] = $us_id;
+        $data2['before_scale'] = $us_scale;
+        $data2['after_scale'] = 1;
+        $data2['scale'] = $scale;
+        $data2['utime'] = time();
+        $data2['ctime'] = date('Y-m-d H:i:s');
+        $sql = $db->sqlInsert("us_scale_changes", $data2);
         $id = $db->query($sql);
         if (!$id){
             $db->Rollback($pInTrans);
@@ -60,6 +60,119 @@ function scale_upgrade($us_id,$scale,$us_account){
             $db->Rollback($pInTrans);
             echo "修改用户等级失败";
         }
+
+        //返还50ccvt
+        //ba减钱
+        $money = "50";
+        $unit = get_la_base_unit();
+        $sql = "select * from ba_base ORDER BY ctime asc limit 1";
+        $db->query($sql);
+        $rows = $db->fetchRow();
+        $sql = "update ba_base set base_amount=base_amount-'{$money}'*'{$unit}' WHERE ba_id='{$rows['ba_id']}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            $db->Rollback($pInTrans);
+            echo "ba减钱失败";
+        }
+
+        //返还50ccvt
+        $sql = "update us_base set base_amount=base_amount+'{$money}'*'{$unit}' WHERE us_id='{$us_id}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            $db->Rollback($pInTrans);
+            echo "us加钱失败";
+        }
+
+        $flag = "9";
+        $type = "up_retuen";
+        $why = "升级返还";
+
+        /******************************转账记录表***************************************************/
+        //增币记录   赠送者
+        $data['hash_id'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+        $prvs_hash = get_transfer_pre_hash($rows['ba_id']);
+        $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+        $data['credit_id'] = $rows['ba_id'];
+        $data['debit_id'] = $us_id;
+        $data['tx_amount'] = $money*$unit;
+        $data['credit_balance'] = get_ba_account($rows['ba_id'])-$data['tx_amount'];
+        $data['tx_hash'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+        $data['flag'] = $flag;
+        $data['transfer_type'] = 'ba-us';
+        $data['transfer_state'] = 1;
+        $data['tx_detail'] = $why;
+        $data['give_or_receive'] = 1;
+        $data['ctime'] = time();
+        $data['utime'] = date('Y-m-d H:i:s',time());
+        $sql = $db->sqlInsert("com_transfer_request", $data);
+        $id = $db->query($sql);
+        if (!$id){
+            $db->Rollback($pInTrans);
+        }
+
+        //接收者
+        $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+        $prvs_hash = get_transfer_pre_hash($us_id);
+        $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+        $dat['credit_id'] = $us_id;
+        $dat['debit_id'] = $rows['ba_id'];
+        $dat['tx_amount'] = $money*$unit;
+        $dat['credit_balance'] = get_us_account($us_id)+$dat['tx_amount'];
+        $dat['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+        $dat['flag'] = $flag;
+        $dat['transfer_type'] = 'ba-us';
+        $dat['transfer_state'] = 1;
+        $dat['tx_detail'] = $why;
+        $dat['give_or_receive'] = 2;
+        $dat['ctime'] = time();
+        $dat['utime'] = date('Y-m-d H:i:s',time());;
+        $sql = $db->sqlInsert("com_transfer_request", $dat);
+        $id = $db->query($sql);
+        if (!$id){
+            $db->Rollback($pInTrans);
+        }
+
+        /***********************资金变动记录表***********************************/
+        //us添加基准资产变动记录
+        $us_type = 'us_reg_send_balance';
+        $ctime = date('Y-m-d H:i:s');
+        $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_us['tx_id'] = $data['tx_hash'];
+        $prvs_hash = get_recharge_pre_hash($us_id);
+        $com_balance_us['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
+        $com_balance_us["credit_id"] = $us_id;
+        $com_balance_us["debit_id"] = $rows['ba_id'];
+        $com_balance_us["tx_type"] = $type;
+        $com_balance_us["tx_amount"] = $money*$unit;
+        $com_balance_us["credit_balance"] = get_us_account($us_id)+$com_balance_us["tx_amount"];
+        $com_balance_us["utime"] = time();
+        $com_balance_us["ctime"] = $ctime;
+
+        $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
+        if (!$db->query($sql)) {
+            $db->Rollback($pInTrans);
+            return false;
+        }
+
+        //ba添加基准资产变动记录
+        $us_type = 'ba_reg_send_balance';
+        $com_balance_ba['hash_id'] = hash('md5', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_ba['tx_id'] = $data['tx_hash'];
+        $prvs_hash = get_recharge_pre_hash($rows['ba_id']);
+        $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
+        $com_balance_ba["credit_id"] = $rows['ba_id'];
+        $com_balance_ba["debit_id"] = $us_id;
+        $com_balance_ba["tx_type"] = $type;
+        $com_balance_ba["tx_amount"] = $money*$unit;
+        $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id'])-$com_balance_ba["tx_amount"];
+        $com_balance_ba["utime"] = time();
+        $com_balance_ba["ctime"] = $ctime;
+
+        $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
+        if (!$db->query($sql)) {
+            $db->Rollback($pInTrans);
+        }
+
         $db->Commit($pInTrans);
 //        echo "升级完成&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$us_account."<br />";
     }
@@ -82,4 +195,52 @@ function get_us_base($us_id){
     $db->query($sql);
     $row = $db->fetchRow();
     return $row;
+}
+
+//======================================
+// 函数: 获取充值的前置hash
+// 参数: ba_id                 baID
+// 返回: hash_id               前置hashid
+//======================================
+function  get_recharge_pre_hash($ba_id)
+{
+    $db = new DB_COM();
+    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}' ORDER BY  ctime DESC LIMIT 1";
+    $hash_id = $db->getField($sql, 'hash_id');
+    if($hash_id == null)
+        return 0;
+    return $hash_id;
+}
+
+//======================================
+// 函数: 获取上传交易hash
+//======================================
+function get_transfer_pre_hash($credit_id){
+    $db = new DB_COM();
+    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
+    $hash_id = $db->getField($sql, 'hash_id');
+    if($hash_id == null)
+        return 0;
+    return $hash_id;
+}
+
+//获取用户余额
+function get_us_account($us_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from us_base WHERE us_id='{$us_id}' limit 1";
+    $db->query($sql);
+    $base_amount = $db -> getField($sql,'base_amount');
+    if($base_amount == null)
+        return 0;
+    return $base_amount;
+}
+//获取ba余额
+function get_ba_account($ba_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from ba_base WHERE ba_id='{$ba_id}' limit 1";
+    $db->query($sql);
+    $base_amount = $db -> getField($sql,'base_amount');
+    if($base_amount == null)
+        return 0;
+    return $base_amount;
 }

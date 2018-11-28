@@ -451,6 +451,14 @@ table {
         top: 110%;
         margin-bottom: 10%;
     }
+
+    .leaderboard ol li div:first-child {
+        width: 60%;
+    }
+
+    .leaderboard ol li div:last-child {
+        width: 40%;
+    }
 }
 
 /*动画背景*/
@@ -460,6 +468,7 @@ body {
     /*width: 100%;*/
     /*height: 100%;*/
 }
+
 .wrapper {
     position: absolute;
     top: 0;
@@ -467,6 +476,7 @@ body {
     width: 100%;
     height: 100%;
 }
+
 .particule {
     position: absolute;
 }
