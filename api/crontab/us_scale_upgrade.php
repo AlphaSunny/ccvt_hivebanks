@@ -91,7 +91,7 @@ function scale_upgrade($us_id,$scale,$us_account){
 
         /******************************转账记录表***************************************************/
         //增币记录   赠送者
-        $data['hash_id'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+        $data['hash_id'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
         $prvs_hash = get_transfer_pre_hash($rows['ba_id']);
         $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
         $data['credit_id'] = $rows['ba_id'];
@@ -115,7 +115,7 @@ function scale_upgrade($us_id,$scale,$us_account){
         echo 3;
 
         //接收者
-        $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+        $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
         $prvs_hash = get_transfer_pre_hash($us_id);
         $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
         $dat['credit_id'] = $us_id;
@@ -141,7 +141,7 @@ function scale_upgrade($us_id,$scale,$us_account){
         //us添加基准资产变动记录
         $us_type = 'us_reg_send_balance';
         $ctime = date('Y-m-d H:i:s');
-        $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+        $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
         $com_balance_us['tx_id'] = $data['tx_hash'];
         $prvs_hash = get_recharge_pre_hash($us_id);
         $com_balance_us['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
@@ -162,7 +162,7 @@ function scale_upgrade($us_id,$scale,$us_account){
         echo 5;
         //ba添加基准资产变动记录
         $us_type = 'ba_reg_send_balance';
-        $com_balance_ba['hash_id'] = hash('md5', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+        $com_balance_ba['hash_id'] = hash('md5', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
         $com_balance_ba['tx_id'] = $data['tx_hash'];
         $prvs_hash = get_recharge_pre_hash($rows['ba_id']);
         $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
