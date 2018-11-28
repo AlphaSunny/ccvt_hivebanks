@@ -23,12 +23,12 @@ Leaderboard
 .leaderboard {
     position: absolute;
     top: 10%;
-    left: 50%;
-    margin-left: -40%;
+    left: 5%;
+    /*margin-left: -40%;*/
     /*-webkit-transform: translate(-50%, -50%);*/
     /*transform: translate(-50%, -50%);*/
     /*width: 285px;*/
-    width: 80%;
+    width: 50%;
     /*height: 308px;*/
     /*height: 308px;*/
     background: -webkit-linear-gradient(top, #3a404d, #181c26);
@@ -37,7 +37,7 @@ Leaderboard
     box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
 }
 
-.leaderboard .title{
+.leaderboard .title {
     background: #fd7a6e;
     display: flex;
     align-items: center;
@@ -95,12 +95,20 @@ Leaderboard
     text-align: center;
 }
 
-.leaderboard ol li div{
-    width: 40%;
+.leaderboard ol li div:first-child {
+    width: 45%;
 }
-.leaderboard ol li  small{
-    width: 30%;
-    text-align: center!important;
+
+.leaderboard ol li div:last-child {
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.leaderboard ol li small {
+    /*width: 30%;*/
+    text-align: center !important;
 }
 
 .leaderboard ol li mark {
