@@ -16,8 +16,13 @@ if ($rows){
     foreach ($rows as $k=>$v){
         set_time_limit(0);
         $scale = $v['base_amount'];
-        //判断等级提升
-        scale_upgrade($v['us_id'],$scale,$v['us_account']);
+        $us_scale = get_us_base($v['us_id'])['scale'];
+        if ($us_scale!=1){
+            //判断等级提升
+            scale_upgrade($v['us_id'],$scale,$v['us_account']);
+        }else{
+            echo "已完成升级&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$v['us_account']."<br />";
+        }
     }
 }
 
