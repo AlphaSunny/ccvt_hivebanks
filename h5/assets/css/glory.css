@@ -23,18 +23,23 @@ Leaderboard
 .leaderboard {
     position: absolute;
     top: 10%;
-    left: 5%;
+    left: 2%;
     /*margin-left: -40%;*/
     /*-webkit-transform: translate(-50%, -50%);*/
     /*transform: translate(-50%, -50%);*/
     /*width: 285px;*/
-    width: 50%;
+    width: 46%;
     /*height: 308px;*/
     /*height: 308px;*/
     background: -webkit-linear-gradient(top, #3a404d, #181c26);
     background: linear-gradient(to bottom, #3a404d, #181c26);
     border-radius: 10px;
     box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
+}
+
+.leaderboard_2 {
+    left: unset;
+    right: 2%;
 }
 
 .leaderboard .title {
@@ -93,6 +98,9 @@ Leaderboard
     background: #fff;
     border-radius: 20px;
     text-align: center;
+}
+.leaderboard_2 ol li::before {
+    content: counter(leaderboard);
 }
 
 .leaderboard ol li div:first-child {

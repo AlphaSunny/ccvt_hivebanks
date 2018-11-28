@@ -10,6 +10,16 @@ $(function () {
         {"name": "edwin", "level": "1", "glory": "100"},
         {"name": "edwin", "level": "1", "glory": "100"},
         {"name": "edwin", "level": "1", "glory": "100"},
+        {"name": "edwin", "level": "1", "glory": "100"},
+        {"name": "edwin", "level": "1", "glory": "100"},
+        {"name": "edwin", "level": "1", "glory": "100"},
+        {"name": "edwin", "level": "1", "glory": "100"},
+        {"name": "edwin", "level": "1", "glory": "100"},
+        {"name": "edwin", "level": "1", "glory": "100"},
+        {"name": "edwin", "level": "1", "glory": "100"},
+        {"name": "edwin", "level": "1", "glory": "100"},
+        {"name": "edwin", "level": "1", "glory": "100"},
+        {"name": "edwin", "level": "1", "glory": "100"},
     ];
     var li = "";
     $.each(arr, function (i, val) {
