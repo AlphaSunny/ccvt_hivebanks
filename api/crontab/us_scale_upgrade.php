@@ -83,7 +83,7 @@ function scale_upgrade($us_id,$scale,$us_account){
             echo "us加钱失败";
         }
 
-        $flag = 9;
+        $flag = "9";
         $type = "up_retuen";
         $why = "升级返还";
 
@@ -108,7 +108,6 @@ function scale_upgrade($us_id,$scale,$us_account){
         $id = $db->query($sql);
         if (!$id){
             $db->Rollback($pInTrans);
-            return false;
         }
 
         //接收者
@@ -131,7 +130,6 @@ function scale_upgrade($us_id,$scale,$us_account){
         $id = $db->query($sql);
         if (!$id){
             $db->Rollback($pInTrans);
-            return false;
         }
 
         /***********************资金变动记录表***********************************/
