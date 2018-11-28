@@ -20,13 +20,14 @@ if ($rows){
         if ($us_scale!=1){
             //判断等级提升
             scale_upgrade($v['us_id'],$scale,$v['us_account']);
-        }else{
-            echo "已完成升级&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$v['us_account']."<br />";
         }
+//        else{
+//            echo "已完成升级&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$v['us_account']."<br />";
+//        }
     }
 }
 
-echo "OK";
+//echo "OK";
 
 function scale_upgrade($us_id,$scale,$us_account){
 
@@ -60,7 +61,7 @@ function scale_upgrade($us_id,$scale,$us_account){
             echo "修改用户等级失败";
         }
         $db->Commit($pInTrans);
-        echo "升级完成&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$us_account."<br />";
+//        echo "升级完成&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$us_account."<br />";
     }
 }
 
