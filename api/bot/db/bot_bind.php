@@ -418,17 +418,19 @@ function get_news()
 function check_voucher($nickname,$voucher)
 {
     $db = new DB_COM();
-    $sql = "select * from us_base WHERE wechat='{$nickname}'";
+    $sql = "select * from us_voucher WHERE coupon_code='{$voucher}'";
     $db->query($sql);
-    $row = $db->fetchRow();
-    if (!$row){
-        return 1;
+    $vou = $db->fetchRow();
+    if (!$vou) {
+        $sql = "update us_voucher set is_effective=2 WHERE id='{$vou['id']}'";
+        $db -> query($sql);
+        return 2;
     }else{
-        $sql = "select * from us_voucher WHERE coupon_code='{$voucher}'";
+        $sql = "select * from us_base WHERE wechat='{$nickname}'";
         $db->query($sql);
-        $vou = $db->fetchRow();
-        if (!$vou){
-            return 2;
+        $row = $db->fetchRow();
+        if (!$row){
+            return 1;
         }elseif(strtotime($vou['expiry_date'])<time()){
             $sql = "update us_voucher set is_effective=2 WHERE id='{$vou['id']}'";
             $db -> query($sql);

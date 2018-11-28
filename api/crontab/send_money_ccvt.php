@@ -59,7 +59,8 @@ if ($rows){
         $db->query($scale);
         $s = $db->fetchRow();
 
-        $give_account = $v['count'] >=5 ? $s['max_send'] : $v['count']*$s['one_send'];
+//        $give_account = $v['count'] >=5 ? $s['max_send'] : $v['count']*$s['one_send'];
+        $give_account = $v['count'] >=5 ? 50 : $v['count']*10;
 
         $sql = "update us_base set base_amount=base_amount+'{$give_account}'*'{$unit}' WHERE wechat='{$v['wechat']}'";
         $db -> query($sql);
