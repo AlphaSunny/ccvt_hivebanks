@@ -845,9 +845,11 @@ function black_judge($us_nm){
     $count = $db->fetchAll();
     $flag = 0;
     if($count){
-        foreach ($count as $key=>$value){var_dump(strtotime($value['ctime'])- strtotime(next($count)['ctime']));die;
-            if($value['ctime']- next($count)['ctime']<60)
+        foreach ($count as $key=>$value){var_dump(strtotime($value['ctime'])- strtotime(next($count)['ctime']));
+            if(strtotime($value['ctime'])- strtotime(next($count)['ctime'])<60)
                 $flag ++;
+
+            var_dump($flag);
             if($flag>1){
                 black_action($us_nm);
                 return true;
