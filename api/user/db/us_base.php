@@ -668,12 +668,12 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     $la_id = get_la_id();
     //赠送者
     $transfer['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
-    $prvs_hash = get_pre_hash($us_id);
+    $prvs_hash = get_transfer_pre_hash($us_id);
     $transfer['prvs_hash'] = $prvs_hash == 0 ? $transfer['hash_id'] : $prvs_hash;
     $transfer['credit_id'] = $us_id;
     $transfer['debit_id'] = $la_id;
     $transfer['tx_amount'] = $account*$unit;
-    $transfer['credit_balance'] = get_us_base_amount($transfer['credit_id'])-$transfer['tx_amount'];
+    $transfer['credit_balance'] = get_us_account($transfer['credit_id'])-$transfer['tx_amount'];
     $transfer['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $transfer['flag'] = $flag;
     $transfer['transfer_type'] = 'us-la';
@@ -691,7 +691,7 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
 
     //接收者(la)
     $dat['hash_id'] = hash('md5', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
-    $prvs_hash = get_pre_hash($la_id);
+    $prvs_hash = get_transfer_pre_hash($la_id);
     $dat['prvs_hash'] = $prvs_hash == 0 ? $dat['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $la_id;
     $dat['debit_id'] = $us_id;
@@ -725,7 +725,7 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     $com_balance_us["debit_id"] = $la_id;
     $com_balance_us["tx_type"] = $type;
     $com_balance_us["tx_amount"] = $account*$unit;
-    $com_balance_us["credit_balance"] = get_us_base_amount($us_id)-$com_balance_us["tx_amount"];
+    $com_balance_us["credit_balance"] = get_us_account($us_id)-$com_balance_us["tx_amount"];
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = date('Y-m-d H:i:s');
 
@@ -764,6 +764,7 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
 
 
 
+
 //获取la id
 function get_la_id(){
     $db = new DB_COM();
@@ -781,6 +782,16 @@ function get_la_base_amount($la_id){
     $amount = $db->getField($sql,'base_amount');
     return $amount;
 }
+
+//获取用户荣耀积分
+function get_us_integral($us_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$us_id}' limit 1";
+    $db->query($sql);
+    $amount = $db->getField($sql,'base_amount');
+    return $amount;
+}
+
 
 /**
  * @param $us_nm

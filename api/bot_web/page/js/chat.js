@@ -144,7 +144,7 @@ $(function () {
                 } else if (state == "2") {
                     //判断如果是在底部统计踩
                     if (chat == "bottom_cai") {
-                        bottom_cai_num -= parseInt(give_num);
+                        bottom_cai_num += parseInt(give_num);
                         _this_bottom_cai_button.text(bottom_cai_num);
                     }
 

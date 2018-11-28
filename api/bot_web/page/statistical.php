@@ -59,6 +59,10 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     $db->query($sql);
                     $all_send_ccvt = $db->getField($sql, 'all_send_ccvt'); //总赠送ccvt数量
 
+                    $sql = "select count(bot_ls_id) as count from bot_Iss_records WHERE send_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                    $db->query($sql);
+                    $count = $db->getField($sql, 'count'); //总赠送人数
+
                     $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='{$group_name}' AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}'";
                     $db->query($sql);
                     $all_message = $db->getField($sql, 'all_message'); //总聊天数量
@@ -72,7 +76,10 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                             <p>所属群:《<?php echo $group_name; ?>》</p>
                             <a href="<?php echo $url; ?>">查看聊天记录</a>
                         </div>
+                    </div>
+                    <div class="flex space-between font-size-14 sm_title_text_color">
                         <p class="font-size-14">时间:<?php echo $datetime; ?></p>
+                        <p class="font-size-14">今日奖励总人数:<?php echo $count; ?>人</p>
                     </div>
                     <div class="flex space-between font-size-14 sm_title_text_color">
                         <p>今日奖励总数量:<?php echo $all_send_ccvt; ?>(CCVT)</p>
@@ -143,8 +150,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                                     <!--踩按钮-->
                                     <button class="btn btn-default btn-sm cai_btn">踩👎&nbsp;
                                         <?php
-                                        $s_time = strtotime(date('Y-m-d 00:00:00'), time());
-                                        $e_time = strtotime(date('Y-m-d 23:59:59'), time());
+
                                         $sql = "select sum(tx_amount)/'{$unit}' as zan from us_glory_integral_change_log WHERE debit_id='{$v['us_id']}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
                                         $db->query($sql);
                                         $zan = $db->getField($sql, 'zan');

@@ -165,36 +165,9 @@ $(function () {
 
                 //邀请排名海报
                 var data = response.rows.gift_detail;
-                var invite_itme = "", wechat = "", count = "";
-                $.each(data, function (i, val) {
-                    if (i <= 9) {
-                        if (data[i].wechat == null) {
-                            wechat = "--"
-                        } else {
-                            wechat = data[i].wechat
-                        }
-                        if (data[i].count.length == "1") {
-                            count = "?"
-                        }
-                        if (data[i].count.length == "2") {
-                            count = "??"
-                        }
-                        if (data[i].count.length == "3") {
-                            count = "???"
-                        }
-                        invite_itme += "<li><span class='wechat'>" + wechat + "</span><span class='count'>" + count + "</span></li>";
-                    }
-                });
-                $(".pai_ming_item_ul").html(invite_itme);
 
                 DonutFun(us_register_count, ba_register_count, ca_register_count);
-                // var dataChartObj = {}, dataChart = [];
-                // dataChartObj.y = new Date().Format('yyyy-MM-dd'),
-                //     dataChartObj.u = sum_us_base_amount,
-                //     dataChartObj.b = sum_ba_base_amount,
-                //     dataChartObj.c = sum_ca_base_amount;
-                // dataChart.push(dataChartObj);
-                // LineFun(dataChart);
+
             }
         }, function (response) {
             LayerFun(response.errcode);
@@ -305,8 +278,35 @@ $(function () {
         });
     }
 
-    //show invite img
-    $(".show_img_btn").click(function () {
-        $(".pai_ming_img_modal").slideToggle("fast");
-    });
+    //荣耀积分
+    GloryPoints(token, function (response) {
+        if(response.errcode == "0"){
+            $('#gloryPointsTable').DataTable({
+                order: [[2, "desc"]],
+                destroy: true,
+                deferRender: true,
+                lengthMenu: [10, 20, 50, 70, 100],
+                searching: false,//是否显示搜索框
+                info: false,//是否显示表左下角文字
+                language: {
+                    paginate: {
+                        url: "dataTables.german.lang",
+                        first: "<<",
+                        previous: "<",
+                        next: ">",
+                        last: ">>",
+                        loadingRecords: "Please wait - loading..",
+                    }
+                },
+                data: response.rows,
+                columns: [
+                    {"data": "ranking"},
+                    {"data": "wechat"},
+                    {"data": "base_amount"}
+                ],
+            });
+        }
+    }, function (response) {
+
+    })
 });

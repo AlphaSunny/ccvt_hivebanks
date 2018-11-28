@@ -124,7 +124,8 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 
     <div style="margin-top: 50px; padding-left: 15px; padding-right: 15px">
         <?php
-
+        $s_time = strtotime(date('Y-m-d 00:00:00'), time());
+        $e_time = strtotime(date('Y-m-d 23:59:59'), time());
         $sql = "select bot_nickname,count(bot_message_id) as count,(select us_id from us_base where wechat=bot_nickname limit 1) as us_id from bot_message WHERE group_name='{$group_name}' AND (bot_content NOT LIKE '$tblPrefix%' OR bot_content NOT LIKE '$tblPrefix2%') AND (bot_nickname!='风赢小助手' OR bot_nickname!='小助手') AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}' group by `bot_nickname` order by count desc";
         $db->query($sql);
         $rows = $db->fetchAll();
@@ -136,7 +137,9 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
             <tr>
                 <th style="text-align: left">昵称</th>
                 <th>发言数</th>
+                <?php if ($status != 1) { ?>
                 <th>赞/踩</th>
+                <?php }?>
             </tr>
             </thead>
             <tbody>
@@ -147,44 +150,35 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <tr>
                     <td style="text-align: left"><?php echo $v['bot_nickname']; ?>:</td>
                     <td><?php echo $v['count']; ?></td>
-
+                    <?php if ($status != 1) { ?>
                     <td class="com_zan_cai_box">
                         <?php if ($v['us_id']!=NULL){ ?>
                         <button class="chat_zan_btn"><img src="img/zan.svg" alt=""><span class="bottom_zan_num">
                                 <?php
-                                $us_id = $_COOKIE['statistics_user_id'];
-                                if ($us_id) {
-                                    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-                                    $db->query($sql);
-                                    $all_am = $db->getField($sql, 'all_am');
-                                    if (!$all_am) {
-                                        $all_am = 0;
-                                    }
-                                    echo $all_am;
-                                }else{
-                                    echo 0;
+                                $sql = "select sum(tx_amount)/'{$unit}' as zan from us_glory_integral_change_log WHERE debit_id='{$v['us_id']}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                                $db->query($sql);
+                                $zan = $db->getField($sql, 'zan');
+                                if (!$zan) {
+                                    $zan = 0;
                                 }
+                                echo $zan;
                                 ?>
                             </span></button>&nbsp;|&nbsp;
                         <button class="chat_cai_btn"><img src="img/cai.svg" alt=""><span class="bottom_cai_num">
                                     <?php
-                                    $us_id = $_COOKIE['statistics_user_id'];
-                                    if ($us_id) {
-                                        $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                                        $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$v['us_id']}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
                                         $db->query($sql);
                                         $all_am = $db->getField($sql, 'all_am');
                                         if (!$all_am) {
                                             $all_am = 0;
                                         }
                                         echo $all_am;
-                                    }else{
-                                        echo 0;
-                                    }
                                     ?>
                                 </span></button>
                         <span class="us_id none"><?php echo $v['us_id'];?></span>
                         <?php }?>
                     </td>
+                    <?php }?>
 
                 </tr>
             <?php } ?>

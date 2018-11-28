@@ -31,7 +31,7 @@ $us_id = check_token($token);
 //金额
 $account = get_arg_str('GET','account');
 
-if ($ccvt_num>10000 || $ccvt_num<=0){
+if ($account>10000 || $account<=0){
     exit_error("150","金额错误");
 }
 
@@ -52,6 +52,7 @@ $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
 $rtn_ary['us_amount'] = get_us_account($us_id)/get_la_base_unit();
+$rtn_ary['glory_of_integral'] = get_us_integral($us_id)/get_la_base_unit();
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
