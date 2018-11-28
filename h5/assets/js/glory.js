@@ -1,26 +1,4 @@
 $(function () {
-    // var arr = [
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    //     {"name": "edwin", "level": "1", "glory": "100"},
-    // ];
     var li = "", li_2 = "";
     $.ajax({
         url: "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php",
