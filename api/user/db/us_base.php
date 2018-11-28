@@ -846,10 +846,10 @@ function black_judge($us_nm){
     $flag = 0;
     if($count){
         foreach ($count as $key=>$value){
-            var_dump($value['ctime']);
-            var_dump($count[$key+1]['ctime']);
-            var_dump(strtotime($value['ctime'])- strtotime(next($count)['ctime']));
-            if(strtotime($value['ctime'])- strtotime(next($count)['ctime'])<60)
+//            var_dump($value['ctime']);
+//            var_dump($count[$key+1]['ctime']);
+//            var_dump(strtotime($value['ctime'])- strtotime(next($count)['ctime']));
+            if(strtotime($value['ctime'])- strtotime($count[$key+1]['ctime'])<60)
                 $flag ++;
 
             var_dump($flag);
