@@ -9,6 +9,7 @@ $db = new DB_COM();
 $unit = get_la_base_unit();
 //用户
 $sql = "select us.us_account,us_as.base_amount/'{$unit}' as base_amount,us_scale from us_base as us LEFT JOIN us_asset as us_as on us.us_id=us_as.us_id where us.scale=1 ORDER BY us_as.base_amount DESC limit 20";
+echo $sql;die;
 $db->query($sql);
 $rows = $db->fetchAll();
 
