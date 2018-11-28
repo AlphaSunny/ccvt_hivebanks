@@ -107,6 +107,7 @@ function scale_upgrade($us_id,$scale,$us_account){
         $data['ctime'] = time();
         $data['utime'] = date('Y-m-d H:i:s',time());
         $sql = $db->sqlInsert("com_transfer_request", $data);
+        echo $sql;
         $id = $db->query($sql);
         if (!$id){
             $db->Rollback($pInTrans);
