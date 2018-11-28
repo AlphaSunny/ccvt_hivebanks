@@ -28,6 +28,7 @@ $(function () {
         success:function (response) {
             if(response.errcode == "0"){
                 var data = JSON.parse(response.rows);
+                console.log(response.rows);
                 console.log(data);
                 $.each(data, function (i, val) {
                     console.log(val);
