@@ -27,7 +27,8 @@ $(function () {
         type:"GET",
         success:function (response) {
             // if(response.errcode == "0"){
-                var data = JSON.parse(response.rows);
+            //     var data = JSON.parse(response.rows);
+                var data = response.rows;
                 console.log(response.rows);
                 console.log(data);
                 $.each(data, function (i, val) {
