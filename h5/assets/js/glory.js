@@ -26,7 +26,7 @@ $(function () {
         url:"https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php",
         type:"GET",
         success:function (response) {
-            if(response.errcode == "0"){
+            // if(response.errcode == "0"){
                 var data = JSON.parse(response.rows);
                 console.log(response.rows);
                 console.log(data);
@@ -52,7 +52,7 @@ $(function () {
                         $(".item_2").html(li_2);
                     }
                 });
-            }
+            // }
         },
         error:function () {
 
