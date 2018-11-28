@@ -74,6 +74,7 @@ function scale_upgrade($us_id,$scale,$us_account){
             $db->Rollback($pInTrans);
             echo "ba减钱失败";
         }
+        echo 1;
 
         //返还50ccvt
         $sql = "update us_base set base_amount=base_amount+'{$money}'*'{$unit}' WHERE us_id='{$us_id}'";
@@ -82,6 +83,7 @@ function scale_upgrade($us_id,$scale,$us_account){
             $db->Rollback($pInTrans);
             echo "us加钱失败";
         }
+        echo 2;
 
         $flag = "9";
         $type = "up_retuen";
@@ -109,6 +111,7 @@ function scale_upgrade($us_id,$scale,$us_account){
         if (!$id){
             $db->Rollback($pInTrans);
         }
+        echo 3;
 
         //接收者
         $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
@@ -131,6 +134,7 @@ function scale_upgrade($us_id,$scale,$us_account){
         if (!$id){
             $db->Rollback($pInTrans);
         }
+        echo 4;
 
         /***********************资金变动记录表***********************************/
         //us添加基准资产变动记录
@@ -154,6 +158,7 @@ function scale_upgrade($us_id,$scale,$us_account){
             return false;
         }
 
+        echo 5;
         //ba添加基准资产变动记录
         $us_type = 'ba_reg_send_balance';
         $com_balance_ba['hash_id'] = hash('md5', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
@@ -171,8 +176,8 @@ function scale_upgrade($us_id,$scale,$us_account){
         $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
         if (!$db->query($sql)) {
             $db->Rollback($pInTrans);
-            return false;
         }
+        echo 6;
 
         $db->Commit($pInTrans);
 //        echo "升级完成&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$us_account."<br />";
