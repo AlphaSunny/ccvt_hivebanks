@@ -59,6 +59,10 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     $db->query($sql);
                     $all_send_ccvt = $db->getField($sql, 'all_send_ccvt'); //总赠送ccvt数量
 
+                    $sql = "select count(bot_ls_id) as count from bot_Iss_records WHERE send_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                    $db->query($sql);
+                    $count = $db->getField($sql, 'count'); //总赠送人数
+
                     $sql = "select count(bot_message_id) as all_message from bot_message WHERE group_name='{$group_name}' AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}'";
                     $db->query($sql);
                     $all_message = $db->getField($sql, 'all_message'); //总聊天数量
@@ -75,7 +79,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     </div>
                     <div class="flex space-between font-size-14 sm_title_text_color">
                         <p class="font-size-14">时间:<?php echo $datetime; ?></p>
-                        <p class="font-size-14">今日奖励总人数:<?php echo $all_send_ccvt; ?></p>
+                        <p class="font-size-14">今日奖励总人数:<?php echo $count; ?>人</p>
                     </div>
                     <div class="flex space-between font-size-14 sm_title_text_color">
                         <p>今日奖励总数量:<?php echo $all_send_ccvt; ?>(CCVT)</p>
