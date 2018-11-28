@@ -28,7 +28,9 @@ $(function () {
         success:function (response) {
             if(response.errcode == "0"){
                 var data = response.rows;
+                console.log(data);
                 $.each(data, function (i, val) {
+                    console.log(val);
                     if (i <= 9) {
                         li += "<li class='wow bounceInRight' data-wow-delay=" + Number((i + 1) * 0.4) + 's' + ">" +
                             "<div>" + data[i].us_account + "</div>" +
