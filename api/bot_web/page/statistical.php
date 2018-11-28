@@ -73,6 +73,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                             <a href="<?php echo $url; ?>">查看聊天记录</a>
                         </div>
                         <p class="font-size-14">时间:<?php echo $datetime; ?></p>
+                        <p class="font-size-14">今日奖励总人数:<?php echo $all_send_ccvt; ?></p>
                     </div>
                     <div class="flex space-between font-size-14 sm_title_text_color">
                         <p>今日奖励总数量:<?php echo $all_send_ccvt; ?>(CCVT)</p>
