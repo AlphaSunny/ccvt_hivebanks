@@ -840,7 +840,7 @@ function black_judge($us_nm){
 
     //注册间隔低于一分钟出现三次的，拉黑
     $db = new DB_COM();
-    $sql = "select ctime from us_base where invite_code = {$us_nm}";
+    $sql = "select ctime from us_base where invite_code = {$us_nm} order by ctime desc";
     $db->query($sql);
     $count = $db->fetchAll();
     $flag = 0;
