@@ -20,14 +20,18 @@ GET参数
 
 php_begin();
 
-$args = array('qrcode');
-chk_empty_args('GET', $args);
+//$args = array('qrcode');
+//chk_empty_args('GET', $args);
 
 //二维码地址
 $qr_code = get_arg_str('GET','qrcode');
 
+//微信昵称
+$bot_name = get_arg_str('GET','bot_name');
+
 //信息
 $data['qrcode'] = $qr_code;
+$data['bot_name'] = $bot_name;
 $data['ctime'] = time();
 
 // 添加群组
