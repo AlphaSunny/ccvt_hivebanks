@@ -734,5 +734,13 @@ function get_transfer_pre_hash($credit_id){
     return $hash_id;
 }
 
+//======================================
+// 函数: 判断@机器人数量
+//======================================
+function check_black($nickname){
+    $db = new DB_COM();
+    $start = date('Y-m-d 00:00:00');
+    $end = date('Y-m-d H:i:s');
+}
 
 ?>
