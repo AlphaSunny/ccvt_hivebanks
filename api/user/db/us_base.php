@@ -848,7 +848,7 @@ function white_hat($us_nm){
     return false;
 }
 
-function black_judge($us_nm){
+function black_judge($us_nm,$reg_ip){
 
     //判断是否是白帽子
     if(white_hat($us_nm))
@@ -858,9 +858,26 @@ function black_judge($us_nm){
     if(black_list($us_nm))
         return true;
 
-    //注册间隔低于一分钟出现三次的，拉黑
+    //注册间隔低于一分钟且来自同一ip同一邀请码的，拉黑
     $db = new DB_COM();
-    $sql = "select ctime from us_base where invite_code = {$us_nm} order by ctime desc";
+    $sql = "select ctime,reg_ip from us_base where invite_code = {$us_nm} order by ctime desc";
+    $db->query($sql);
+    $count = $db->fetchAll();
+    if($count){
+        foreach ($count as $key=>$value){
+
+            if($key+1==count($count))
+                continue;
+            if(strtotime($value['ctime'])- strtotime($count[$key+1]['ctime'])<60 && $value['reg_ip'] == $count[$key+1]['reg_ip'])
+            {
+                black_action($us_nm);
+                return true;
+            }
+        }
+    }
+
+    //注册间隔低于一分钟，出现三次的，拉黑
+    $sql = "select ctime from us_base where reg_ip = {$reg_ip} order by ctime desc";
     $db->query($sql);
     $count = $db->fetchAll();
     $flag = 0;
@@ -870,18 +887,16 @@ function black_judge($us_nm){
             if($key+1==count($count))
                 continue;
             if(strtotime($value['ctime'])- strtotime($count[$key+1]['ctime'])<60)
-                $flag++;
-
-//            var_dump($flag);
-            if($flag>1){
+                $flag ++;
+            if($flag>2)
+            {
                 black_action($us_nm);
                 return true;
             }
         }
     }
+
+
     return false;
-
-    //同一ip一分钟内注册多次的，拉黑
-
 
 }
