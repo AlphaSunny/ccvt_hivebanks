@@ -1,58 +1,112 @@
-body{
-  background-color: linear-gradient(to right top, #8e44ad 0%, #3498db 100%)!important;
+body {
+    background-color: linear-gradient(to right top, #8e44ad 0%, #3498db 100%) !important;
 }
 
 html {
-  height:100%;
-  background: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
+    height: 100%;
+    background: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
 }
 
 nav {
-  /* max-width: 960px; */
-  background-color: #fff;
-  mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
-  /* margin: 0 auto; */
+    /* max-width: 960px; */
+    background-color: #fff;
+    mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
+    /* margin: 0 auto; */
 }
 
 nav ul {
-  /* text-align: center; */
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+    /* text-align: center; */
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
 }
 
 nav ul li {
-  display: inline-block;
+    display: inline-block;
 }
 
 nav ul li a {
-  padding: 18px;
-  font-family: "Open Sans";
-  text-transform:uppercase;
-  color: rgba(0, 35, 122, 0.5);
-  font-size: 18px;
-  text-decoration: none;
-  display: block;
+    padding: 18px;
+    font-family: "Open Sans";
+    text-transform: uppercase;
+    color: rgba(0, 35, 122, 0.5);
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
 }
 
 nav ul li a:hover {
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6); */
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(0, 35, 122, 0.7);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6); */
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(0, 35, 122, 0.7);
 }
 
-.margin-top-50{
-  margin-top: 50px;
+.margin-top-50 {
+    margin-top: 50px;
 }
 
-.margin-top-20{
-  margin-top: 20px;
+.margin-top-20 {
+    margin-top: 20px;
 }
-/* .content{
-  position: relative;
+
+/*==================演示==============*/
+/*解锁按钮*/
+
+.un_lock_btn_box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #0c0c0c;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.form-center{
-  position: absolute;
-  right: 50%;
-  left: 0;
-  margin: auto;
-} */
+
+.unlock_success{
+    display: none;
+}
+/**/
+.test_btn {
+    border: 1px solid #ffffff;
+    font-size: 16rem;
+    padding: 3% 10%;
+    color: #fff;
+    background: transparent;
+    border-radius: 10px;
+    outline: none;
+    transition: all .4s;
+    text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);
+}
+
+.test_btn:hover {
+    background: #043e4f;
+    box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.5);
+}
+
+/*进度条*/
+.progress_box{
+    width: 70%;
+    border: 1px solid #ffffff;
+    height: 4rem;
+    display: none;
+}
+.progress_inner{
+    width: 10%;
+    background: linear-gradient(to top right,#10ff0040,#32ff00);
+    height: 100%;
+    display: block;
+    transition: all 0.5s;
+}
+.progress_text{
+    color: #ffffff;
+    font-size: 3rem;
+}
+
+.unlock_success{
+    color: #ffffff;
+    font-size: 20rem;
+    text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);
+}
+/*==================演示==============*/

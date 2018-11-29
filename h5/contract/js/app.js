@@ -1,4 +1,4 @@
-App={
+App = {
     web3Provider: null,
     contracts: {},
     account: '0x0',
@@ -9,15 +9,15 @@ App={
     tokensAvailable: 750000,
     openingTime: '',
     ccvtLockInstance: '',
-    ccvtInstance:'',
+    ccvtInstance: '',
 
 
-    init: function() {
-        console.log("App initialized")
+    init: function () {
+        console.log("App initialized");
         return App.initWeb3();
     },
 
-    initWeb3: function() {
+    initWeb3: function () {
         if (typeof web3 !== 'undefined') {
             // If a web3 instance is already provided by Meta Mask.
             App.web3Provider = web3.currentProvider;
@@ -32,43 +32,42 @@ App={
         return App.initContracts();
     },
 
-    initContracts: function() {
-        $.getJSON("./js/CommunicationCreatesValueTokenLock.json", function(communicationCreatesValueTokenLock) {
+    initContracts: function () {
+        $.getJSON("./js/CommunicationCreatesValueTokenLock.json", function (communicationCreatesValueTokenLock) {
             App.contracts.CommunicationCreatesValueTokenLock = TruffleContract(communicationCreatesValueTokenLock);
             App.contracts.CommunicationCreatesValueTokenLock.setProvider(App.web3Provider);
-            App.contracts.CommunicationCreatesValueTokenLock.deployed().then(function(communicationCreatesValueTokenLock) {
+            App.contracts.CommunicationCreatesValueTokenLock.deployed().then(function (communicationCreatesValueTokenLock) {
                 console.log("CommunicationCreatesValueTokenLock address:", communicationCreatesValueTokenLock.address);
             });
-        }).done(function() {
-            $.getJSON("./js/CommunicationCreatesValueToken.json", function(communicationCreatesValueToken){
+        }).done(function () {
+            $.getJSON("./js/CommunicationCreatesValueToken.json", function (communicationCreatesValueToken) {
                 App.contracts.CommunicationCreatesValueToken = TruffleContract(communicationCreatesValueToken);
                 App.contracts.CommunicationCreatesValueToken.setProvider(App.web3Provider);
-                App.contracts.CommunicationCreatesValueToken.deployed().then(function(communicationCreatesValueToken) {
+                App.contracts.CommunicationCreatesValueToken.deployed().then(function (communicationCreatesValueToken) {
                     console.log("CommunicationCreatesValueToken Address:", communicationCreatesValueToken.address);
                 })
-            }).done( function () {
+            }).done(function () {
                     return App.render();
                 }
-
             )
             //App.listenForEvents();
         });
     },
 
-    listenForEvents: function() {
-        App.contracts.CommunicationCreatesValueTokenLock.deployed().then(function(instance) {
+    listenForEvents: function () {
+        App.contracts.CommunicationCreatesValueTokenLock.deployed().then(function (instance) {
             instance.Sell({}, {
                 fromBlock: 0,
                 toBlock: 'latest',
-            }).watch(function(error, event) {
+            }).watch(function (error, event) {
                 console.log("event triggered", event);
                 App.render();
             })
         })
     },
 
-    render: function() {
-        if( App.loading) {
+    render: function () {
+        if (App.loading) {
             return;
         }
         App.loading = true;
@@ -80,31 +79,31 @@ App={
         loader.show();
         content.hide();
 
-        web3.eth.getCoinbase(function(err, account) {
-            if(err == null) {
+        web3.eth.getCoinbase(function (err, account) {
+            if (err == null) {
                 App.account = account;
                 // $('#accountAddress').html("Your account: " + account );
                 $('#accountAddress').val(account);
 
             }
-        })
+        });
 
-        App.contracts.CommunicationCreatesValueTokenLock.deployed().then(function(instance) {
+        App.contracts.CommunicationCreatesValueTokenLock.deployed().then(function (instance) {
             App.ccvtLockInstance = instance;
             $('#lockAddress').val(App.ccvtLockInstance.address);
             $('#thisUnfreeze').val(App.ccvtLockInstance);
             return App.ccvtLockInstance.beneficiary();
-        }).then(function(beneficiary) {
+        }).then(function (beneficiary) {
             App.beneficiary = beneficiary;
             $('#beneficiary').val(beneficiary);
             return App.ccvtLockInstance.getPartReleaseAmount();
-        }).then(function(amount) {
+        }).then(function (amount) {
             $('#thisUnfreeze').val(amount);
             return App.ccvtLockInstance.totalFreeze();
-        }).then(function(totalFreeze){
+        }).then(function (totalFreeze) {
             $('#totalLock').val(totalFreeze);
             return App.ccvtLockInstance.openingTime();
-        }).then(function(openingTime) {
+        }).then(function (openingTime) {
             App.openingTime = openingTime;
             $('#releaseTime').val(openingTime);
             $('#time').val(timestampToTime(openingTime));
@@ -119,11 +118,11 @@ App={
 
             //输出下一次解封时间
             // Load token contract
-            App.contracts.CommunicationCreatesValueToken.deployed().then(function(instance) {
+            App.contracts.CommunicationCreatesValueToken.deployed().then(function (instance) {
                 App.ccvtInstance = instance;
                 $('#ccvtAddress').val(App.ccvtInstance.address);
                 return App.ccvtInstance.balanceOf(App.account);
-            }).then(function(balance) {
+            }).then(function (balance) {
                 $('#ccvt-balance').val(balance.toNumber());
                 return App.ccvtInstance.balanceOf(App.ccvtLockInstance.address);
                 //return App.ccvtInstance.balanceOf("0x71b8acd403fa33c25bdc63a3c61f653e70c052a8");
@@ -135,52 +134,45 @@ App={
     },
 
 
-
-
-    unfreeze: function() {
-        App.contracts.CommunicationCreatesValueTokenLock.deployed().then(function(instance) {
+    unfreeze: function () {
+        App.contracts.CommunicationCreatesValueTokenLock.deployed().then(function (instance) {
             return instance.release({
                 from: App.account,
                 gas: 500000
             });
-        }).then(function(result) {
+        }).then(function (result) {
             console.log(result);
-            console.log("Tokens release...")
-            $('form').trigger('reset')
+            console.log("Tokens release...");
+            $('form').trigger('reset');
         });
-    }
-
-
-}
+    },
+};
 
 function timestampToTime(timestamp) {
     var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
     var Y = date.getFullYear() + '-';
-    var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
     var D = date.getDate() + ' ';
     var h = date.getHours() + ':';
     var m = date.getMinutes() + ':';
     var s = date.getSeconds();
-    return Y+M+D+h+m+s;
+    return Y + M + D + h + m + s;
 }
 
 
-function getStage(startTime)
-{
-    let passTime = (new Date().getTime())/1000 - startTime;
-    let stage = parseInt(passTime/3600);
+function getStage(startTime) {
+    let passTime = (new Date().getTime()) / 1000 - startTime;
+    let stage = parseInt(passTime / 3600);
     return stage;
 }
 
-function getNextUnfreeze(openingTime, stage, interval)
-{
-    return parseInt(openingTime) + ( parseInt(stage)+1)*interval;
+function getNextUnfreeze(openingTime, stage, interval) {
+    return parseInt(openingTime) + (parseInt(stage) + 1) * interval;
 }
 
 
-
-$(function() {
-    $(window).load(function() {
+$(function () {
+    $(window).load(function () {
         App.init();
-    })
+    });
 });

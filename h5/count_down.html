@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上链倒计时</title>
+    <!--<link rel="stylesheet" href="assets/css/animate.css">-->
+</head>
+<style>
+    body {
+        background: #000000;
+        margin: 0;
+        padding: 0;
+    }
+
+    .count_box {
+        position: absolute;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 80%;
+        left: 50%;
+        margin-left: -40%;
+        height: 16rem;
+        top: 50%;
+        margin-top: -8rem;
+    }
+
+    .count_box h1 {
+        border: 1px solid #ffffff;
+        border-radius: 10px;
+        padding: 0 2%;
+        display: table-cell;
+        font-size: 12rem;
+        margin: 0;
+        text-align: center;
+        width: 240px;
+        animation: 2s h1_move linear infinite;
+        transition: all 2s;
+        text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);
+    }
+
+    /*@keyframes h1_move {*/
+    /*0%{*/
+    /*border-color: #ffffff;*/
+    /*border-width: 1px;*/
+    /*}*/
+    /*50%{*/
+    /*border-color: #84fffd;*/
+    /*border-width: 2px;*/
+    /*}*/
+    /*100%{*/
+    /*border-color: #ffffff;*/
+    /*border-width: 1px;*/
+    /*}*/
+    /*}*/
+
+    h2 {
+        font-size: 10rem;
+        text-shadow: -1px -1px rgba(197, 223, 248,0.8),-2px -2px rgba(197, 223, 248,0.8),-3px -3px rgba(197, 223, 248,0.8),-4px -4px rgba(197, 223, 248,0.8),-5px -5px rgba(197, 223, 248,0.8);
+    }
+
+    h2.active {
+        transition: all 5s;
+        animation: 5s h2_move linear infinite;
+    }
+
+    @keyframes h2_move {
+        0% {
+            color: #ffffff;
+            /*transform: rotateY(0deg);*/
+            transform: rotateX(0deg);
+        }
+        30% {
+            color: #d9ffd6;
+            transform: rotateX(45deg);
+            /*transform: rotateY(45deg);*/
+        }
+        60% {
+            color: #ffe0d3;
+            /*transform: rotateY(60deg);*/
+            transform: rotateX(360deg);
+        }
+        90% {
+            color: #c9d1ff;
+            transform: rotateX(45deg);
+            /*transform: rotateY(45deg);*/
+        }
+        100% {
+            color: #ffffff;
+            transform: rotateX(0deg);
+            /*transform: rotateY(0deg);*/
+        }
+    }
+
+    /*动画*/
+    .wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .particule {
+        position: absolute;
+    }
+</style>
+<body id="first_box">
+<div class="count_box">
+    <h1 class="days"></h1>
+    <h1 class="hours"></h1>
+    <h1 class="minutes"></h1>
+    <h1 class="seconds"></h1>
+    <h2 class="text_h2"></h2>
+</div>
+</body>
+<script src="assets/js/jquery.min.js"></script>
+<!--<script src="assets/js/wow.min.js"></script>-->
+<script src="assets/js/particle/anime.js"></script>
+<script>
+    var count_timer = "";
+
+    //倒计时
+    function TimeDown(endDateStr) {
+        //结束时间
+        var endDate = new Date(endDateStr);
+        //当前时间
+        var nowDate = new Date();
+        //相差的总秒数
+        var totalSeconds = parseInt((endDate - nowDate) / 1000);
+        //天数
+        var days = Math.floor(totalSeconds / (60 * 60 * 24));
+        //取模（余数）
+        var modulo = totalSeconds % (60 * 60 * 24);
+        //小时数
+        var hours = Math.floor(modulo / (60 * 60));
+        modulo = modulo % (60 * 60);
+        //分钟
+        var minutes = Math.floor(modulo / 60);
+        modulo = modulo % (60);
+        //秒
+        var seconds = modulo % 60;
+
+        // 倒计时60s
+        if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 60) {
+            $(".days, .hours,.minutes").remove();
+            $(".count_box").css("padding-left","13%");
+            $(".seconds").css({"font-size":"20rem","border":"unset"})
+        }
+
+        if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
+            clearInterval(count_timer);
+            $(".count_box").css("padding-left","0");
+            up_success();
+            var i = 0, str = "CCVT上链成功";
+            $("h1").remove();
+            var textTimer = setInterval(function () {
+                if ($(".text_h2").text() == str) {
+                    $(".text_h2").addClass("active");
+                    clearInterval(textTimer);
+                }
+                $(".text_h2").text(str.substring(0, i));
+                i++;
+            }, 400);
+
+        }
+
+        if (days < 10) {
+            $(".days").text("0" + days);
+        } else if (days <= 0) {
+            $(".days").text("00");
+            $(".hours").text("00");
+            $(".minutes").text("00");
+            $(".seconds").text("00");
+        } else {
+            $(".days").text(days);
+        }
+        if (hours < 10) {
+            $(".hours").text("0" + hours);
+        } else {
+            $(".hours").text(hours);
+        }
+        if (minutes < 10) {
+            $(".minutes").text("0" + minutes);
+        } else {
+            $(".minutes").text(minutes);
+        }
+        if (seconds < 10) {
+            $(".seconds").text("0" + seconds);
+        } else {
+            $(".seconds").text(seconds);
+        }
+    }
+
+    count_timer = setInterval(function () {
+        // TimeDown("2018-11-30 18:00");
+        TimeDown("2018-11-29 10:07");
+    }, 1000);
+
+    //上链成功
+    function up_success() {
+        var numberOfEls = 1000;
+        var duration = 1000;
+        var midScreenX = window.innerWidth / 2;
+        var midScreenY = window.innerHeight / 2;
+        var radius = Math.sqrt(midScreenX * midScreenX + midScreenY * midScreenY);
+        var fragment = document.createDocumentFragment();
+        var first_box = document.getElementById("first_box");
+
+        for (var i = 0; i < numberOfEls; i++) {
+            var hue = Math.round(360 / numberOfEls * i);
+            var angle = Math.random() * Math.PI * 2;
+            var el = document.createElement('div');
+            el.classList.add('particule');
+            el.style.backgroundColor = 'hsl(' + hue + ', 40%, 60%)';
+            el.style.width = '1px';
+            el.style.height = '1px';
+            anime({
+                targets: el,
+                width: ['1px', '10px'],
+                height: ['1px', '10px'],
+                left: [midScreenX + 'px', Math.cos(angle) * radius + midScreenX + 'px'],
+                top: [midScreenY + 'px', Math.sin(angle) * radius + midScreenY + 'px'],
+                delay: (duration / numberOfEls) * i,
+                duration: duration,
+                easing: 'easeInExpo',
+                loop: true
+            });
+            fragment.appendChild(el);
+        }
+
+        first_box.appendChild(fragment);
+    }
+
+</script>
+</html>
