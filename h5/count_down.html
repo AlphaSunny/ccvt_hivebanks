@@ -12,6 +12,12 @@
         padding: 0;
     }
 
+    .count_down_text {
+        color: #ffffff;
+        font-size: 2rem;
+        text-align: center;
+    }
+
     .count_box {
         position: absolute;
         color: #fff;
@@ -34,7 +40,7 @@
         font-size: 12rem;
         margin: 0;
         text-align: center;
-        width: 240px;
+        /*width: 240px;*/
         animation: 2s h1_move linear infinite;
         transition: all 2s;
         text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);
@@ -57,7 +63,7 @@
 
     h2 {
         font-size: 10rem;
-        text-shadow: -1px -1px rgba(197, 223, 248,0.8),-2px -2px rgba(197, 223, 248,0.8),-3px -3px rgba(197, 223, 248,0.8),-4px -4px rgba(197, 223, 248,0.8),-5px -5px rgba(197, 223, 248,0.8);
+        text-shadow: -1px -1px rgba(197, 223, 248, 0.8), -2px -2px rgba(197, 223, 248, 0.8), -3px -3px rgba(197, 223, 248, 0.8), -4px -4px rgba(197, 223, 248, 0.8), -5px -5px rgba(197, 223, 248, 0.8);
     }
 
     h2.active {
@@ -107,6 +113,7 @@
     }
 </style>
 <body id="first_box">
+<h1 class="count_down_text">CCVT正式上链倒计时</h1>
 <div class="count_box">
     <h1 class="days"></h1>
     <h1 class="hours"></h1>
@@ -144,14 +151,30 @@
 
         // 倒计时60s
         if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 60) {
+
             $(".days, .hours,.minutes").remove();
-            $(".count_box").css("padding-left","10%");
-            $(".seconds").css({"font-size":"20rem","border":"unset"})
+            $(".count_box").css("justify-content", "center");
+            $(".seconds").css({"font-size": "20rem", "border": "unset"})
+        }
+
+        // 倒计时30s
+        if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 30) {
+            $(".count_down_text").text("CCVT即将上链成功").css("font-size", "4rem");
+            $(".days, .hours,.minutes").remove();
+            $(".count_box").css("justify-content", "center");
+            $(".seconds").css({"font-size": "25rem", "border": "unset"})
+        }
+
+        // 倒计时10s
+        if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 10) {
+            $(".days, .hours,.minutes").remove();
+            $(".count_box").css("justify-content", "center");
+            $(".seconds").css({"font-size": "30rem", "border": "unset"})
         }
 
         if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
             clearInterval(count_timer);
-            $(".count_box").css("padding-left","0");
+            $(".count_box").css("padding-left", "0");
             up_success();
             var i = 0, str = "CCVT上链成功";
             $("h1").remove();
@@ -195,7 +218,7 @@
 
     count_timer = setInterval(function () {
         // TimeDown("2018-11-30 18:00");
-        TimeDown("2018-11-29 13:49");
+        TimeDown("2018-11-29 14:17");
     }, 1000);
 
     //上链成功
