@@ -1,6 +1,6 @@
 <?php
 require_once "../inc/common.php";
-//require_once "us_scale_upgrade.php";
+require_once "us_scale_upgrade.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
