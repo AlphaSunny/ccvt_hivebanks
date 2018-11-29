@@ -746,7 +746,7 @@ function check_black($nickname,$group_name){
        return 1;
     }else{
         $start = date('Y-m-d 00:00:00');
-        $sql = "select count(bot_message_id) as count from bot_message WHERE bot_nickname='{$nickname}' AND group_name='{$group_name}' AND bot_content LIKE '@Gavin%' AND bot_send_time>'{$start}'";
+        $sql = "select count(bot_message_id) as count from bot_message WHERE bot_nickname='{$nickname}' AND group_name='{$group_name}' AND bot_content LIKE '@风赢小助手%' AND bot_send_time>'{$start}'";
         $db->query($sql);
         $count = $db->getField($sql,'count');
         if ($count>5){
