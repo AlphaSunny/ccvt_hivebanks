@@ -868,7 +868,7 @@ function black_judge($us_nm){
 
             if($key+1==count($count))
                 continue;
-            if(strtotime($value['ctime'])- strtotime($count[$key+1]['ctime'])<60 && $value['reg_ip'] == $count[$key+1]['reg_ip'] &&$value!==NULL)
+            if(strtotime($value['ctime'])- strtotime($count[$key+1]['ctime'])<60 && $value['reg_ip'] == $count[$key+1]['reg_ip'] &&$value!=NULL)
             {
                 black_action($us_nm);
                 return true;
