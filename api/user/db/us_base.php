@@ -832,7 +832,27 @@ function black_action($us_nm){
 
 }
 
+/**
+ * @param $us_nm
+ * @return bool
+ * 判断是否是白帽子
+ */
+function white_hat($us_nm){
+    $db = DB_COM();
+
+    $sql = "select a.us_id from la_black_list a,us_base b where a.black_info = 'white_hat' and b.us_nm = '{$us_nm}' b.us_id=a.us_id";
+    $db->query($sql);
+    $res = $db->fetchRow();
+    if($res)
+        return true;
+    return false;
+}
+
 function black_judge($us_nm){
+
+    //判断是否是白帽子
+    if(white_hat($us_nm))
+        return false;
 
     //判断是否在黑名单中
     if(black_list($us_nm))
