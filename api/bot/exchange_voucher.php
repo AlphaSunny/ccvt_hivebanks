@@ -31,7 +31,7 @@ $voucher = get_arg_str('GET','voucher');
 //判断昵称和兑换码
 $check = check_voucher($nickname,$voucher);
 if ($check==1){
-    exit_error('101',"@".$nickname.",你的昵称未绑定账号,兑换码失效!");
+    exit_error('101',"@".$nickname.",你的昵称未绑定账号,兑换码已失效!");
 }elseif($check==2){
     exit_error('101',"@".$nickname.",兑换码不存在!");
 }elseif($check==3){

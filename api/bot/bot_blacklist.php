@@ -24,15 +24,9 @@ chk_empty_args('GET', $args);
 //群昵称
 $nickname = get_arg_str('GET','nickname');
 
-//判断是否超过限制
-$resule = check_black($nickname);
-if ($resule==1){
-    exit_error('101','已经被封');
-}
-
 
 // 处理
-$status = notice_records($data);
+$result = check_black($data);
 
 // 返回数据做成
 $rtn_ary = array();

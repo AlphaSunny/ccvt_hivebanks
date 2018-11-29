@@ -742,13 +742,14 @@ function check_black($nickname){
     $sql = "select * from bot_blacklist WHERE wechat='{$nickname}' ORDER BY ctime DESC limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
-    if ($row){
-        if ($row['end_time']>date('Y-m-d H:i:s')){
-            return 1;
-        }else{
-            return 2;
-        }
+    if ($row && $row['end_time']>date('Y-m-d H:i:s')){
+       return 1;
     }else{
+        $start = date('Y-m-d 00:00:00');
+        $end = date('Y-m-d H:i:s');
+        $sql = "select count(bot_message_id) as count from bot_message WHERE bot_nickname='{$nickname}' AND ctime";
+        $db->query($sql);
+        $count = $db->getField($sql,'count');
         return 2;
     }
 }
