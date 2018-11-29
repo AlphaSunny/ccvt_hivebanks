@@ -25,7 +25,10 @@ chk_empty_args('GET', $args);
 $nickname = get_arg_str('GET','nickname');
 
 //判断是否超过限制
-$rows = check_black($nickname);
+$resule = check_black($nickname);
+if ($resule==1){
+    exit_error('101','已经被封');
+}
 
 
 // 处理

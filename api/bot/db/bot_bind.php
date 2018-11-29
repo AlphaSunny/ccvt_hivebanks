@@ -735,12 +735,22 @@ function get_transfer_pre_hash($credit_id){
 }
 
 //======================================
-// 函数: 判断@机器人数量
+// 函数: 判断是否被拉入黑名单
 //======================================
 function check_black($nickname){
     $db = new DB_COM();
-    $start = date('Y-m-d 00:00:00');
-    $end = date('Y-m-d H:i:s');
+    $sql = "select * from bot_blacklist WHERE wechat='{$nickname}' ORDER BY ctime DESC limit 1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if ($row){
+        if ($row['end_time']>date('Y-m-d H:i:s')){
+            return 1;
+        }else{
+            return 2;
+        }
+    }else{
+        return 2;
+    }
 }
 
 ?>
