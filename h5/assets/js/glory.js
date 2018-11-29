@@ -1,22 +1,10 @@
 $(function () {
-    var h1_text = "首批创世用户升级荣耀等级";
-    var index = 0;
-    var timer = "";
     var li = "", li_2 = "";
-    // timer = setInterval(function () {
-    //     if (index >= 12) {
-    //         clearInterval(timer);
-    //         $("#first_box").remove();
-    //         GetGlory();
-    //     }
-    //     var str = h1_text.substr(index, 2);
-    //     index += 2;
-    //     $(".first_text").text(str);
-    // }, 1000);
 
     function GetGlory() {
         $.ajax({
-            url: "https://ccvt.io/api/crontab/get_scale_us_data.php",
+            // url: "https://ccvt.io/api/crontab/get_scale_us_data.php",
+            url: "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php",
             type: "GET",
             dataType: "jsonp",
             success: function (response) {
@@ -44,9 +32,41 @@ $(function () {
                 });
             },
             error: function () {
-
+                alert("排行榜获取失败");
             }
         });
     }
-    GetGlory();
+
+    function SetProgress(i) {
+        $(".progress_span").css("width", i + "%");
+        $(".progress_text").text(i + "%");
+    }
+
+    var i = Math.ceil(Math.random() * 10);
+
+    function doProgress() {
+        if (i > 100) {
+            $(".progress_span").css("width", "100%");
+            $(".progress_text").text(100 + "%");
+            $(".up_title").text("升级成功");
+
+            setTimeout(function () {
+                $(".up_title,#first_box").remove();
+                GetGlory();
+            },2000);
+        }
+        if (i <= 100) {
+            setTimeout(function () {
+                doProgress();
+            },500);
+            SetProgress(i);
+            i += Math.ceil(Math.random() * 20);
+        }
+    }
+
+    $(".first_text").click(function () {
+        doProgress();
+        $(this).remove();
+        $(".progress_box").css("display","block");
+    });
 });
