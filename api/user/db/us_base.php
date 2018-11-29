@@ -848,7 +848,7 @@ function white_hat($us_nm){
     return false;
 }
 
-function black_judge($us_nm,$reg_ip){
+function black_judge($us_nm){
 
     //判断是否是白帽子
     if(white_hat($us_nm))
@@ -875,27 +875,6 @@ function black_judge($us_nm,$reg_ip){
             }
         }
     }
-
-    //注册间隔低于一分钟，出现三次的，拉黑
-    $sql = "select ctime from us_base where reg_ip = {$reg_ip} order by ctime desc";
-    $db->query($sql);
-    $count = $db->fetchAll();
-    $flag = 0;
-    if($count){
-        foreach ($count as $key=>$value){
-
-            if($key+1==count($count))
-                continue;
-            if(strtotime($value['ctime'])- strtotime($count[$key+1]['ctime'])<60)
-                $flag ++;
-            if($flag>2)
-            {
-                black_action($us_nm);
-                return true;
-            }
-        }
-    }
-
 
     return false;
 
