@@ -840,7 +840,7 @@ function black_action($us_nm){
 function white_hat($us_nm){
     $db = new DB_COM();
 
-    $sql = "select a.us_id from la_black_list a,us_base b where a.black_info = 'white_hat' and b.us_nm = '{$us_nm}' b.us_id=a.us_id";
+    $sql = "select a.us_id from la_black_list a,us_base b where a.black_info = 'white_hat' and b.us_nm = '{$us_nm}' and b.us_id=a.us_id";
     $db->query($sql);
     $res = $db->fetchRow();
     if($res)
