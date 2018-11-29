@@ -714,9 +714,9 @@ function ActiveClick($this, btnText) {
  */
 window.onload = function () {
     $("header").css("background-image","url(assets/img/banner-1.jpg)");
-    if (!(document.readyState === 'complete')) {
+    if (document.readyState === 'loading') {
         document.body.style.overflow = "hidden";
-    }else {
+    }else if(document.readyState === 'interactive' || document.readyState === 'complete'){
         document.body.style.overflow = "auto";
         var loading = document.querySelector(".loading");
         loading.parentNode.removeChild(loading);
