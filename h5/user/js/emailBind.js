@@ -32,7 +32,7 @@ $(function () {
         }, function (response) {
             ShowLoading("hide");
             ActiveClick($this, btnText);
-            LayerFun(response.errcode);
+            LayerFun(response.errmsg);
         })
     });
     $('.GoEmailBtn').click(function () {
