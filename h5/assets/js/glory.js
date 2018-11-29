@@ -13,19 +13,11 @@ $(function () {
                     if (i <= 9) {
                         li += "<li class='wow bounceInRight' data-wow-delay=" + Number((i + 1) * 0.4) + 's' + ">" +
                             "<div>" + data[i].us_account + "</div>" +
-                            "<div>" +
-                            "<small>" + data[i].base_amount + "</small>" +
-                            "<small>" + data[i].scale + "</small>" +
-                            "</div>" +
                             "</li>";
                         $(".item").html(li);
                     } else if (10 <= i <= 19) {
                         li_2 += "<li class='wow bounceInLeft' data-wow-delay=" + Number((i + 1) * 0.4) + 's' + ">" +
                             "<div>" + data[i].us_account + "</div>" +
-                            "<div>" +
-                            "<small>" + data[i].base_amount + "</small>" +
-                            "<small>" + data[i].scale + "</small>" +
-                            "</div>" +
                             "</li>";
                         $(".item_2").html(li_2);
                     }
