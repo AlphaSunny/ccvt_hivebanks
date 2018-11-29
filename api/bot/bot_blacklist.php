@@ -18,15 +18,16 @@ GET参数
 
 php_begin();
 
-$args = array('nickname');
+$args = array('nickname','group_name');
 chk_empty_args('GET', $args);
 
 //群昵称
 $nickname = get_arg_str('GET','nickname');
-
+//群
+$group_name = get_arg_str('GET','group_name');
 
 // 处理
-$result = check_black($nickname);
+$result = check_black($nickname,$group_name);
 
 // 返回数据做成
 $rtn_ary = array();
