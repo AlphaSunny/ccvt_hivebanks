@@ -838,7 +838,7 @@ function black_action($us_nm){
  * 判断是否是白帽子
  */
 function white_hat($us_nm){
-    $db = DB_COM();
+    $db = new DB_COM();
 
     $sql = "select a.us_id from la_black_list a,us_base b where a.black_info = 'white_hat' and b.us_nm = '{$us_nm}' b.us_id=a.us_id";
     $db->query($sql);
