@@ -168,19 +168,22 @@ $(function () {
                         title: "时间",//表格th内容
                         align: "center",
                         valign: "middle",
-                        sortable: "true"//排序
+                        sortable: "true",//排序
+                        width:33+"%",
                     },{
                         field: "tx_amount",//数据字段名
                         title: "荣耀积分",//表格th内容
                         align: "center",
                         valign: "middle",
-                        sortable: "true"//排序
+                        sortable: "true",//排序
+                        width:33+"%",
                     },{
                         field: "tx_detail",//数据字段名
                         title: "变动类型",//表格th内容
                         align: "center",
                         valign: "middle",
-                        sortable: "true"//排序
+                        sortable: "true",//排序
+                        width:33+"%",
                     }, ],
                     data: data
                 });
