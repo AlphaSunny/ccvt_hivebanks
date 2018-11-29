@@ -16,7 +16,7 @@ $(function () {
 
     function GetGlory() {
         $.ajax({
-            url: "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php",
+            url: "https://ccvt.io/api/crontab/get_scale_us_data.php",
             type: "GET",
             dataType: "jsonp",
             success: function (response) {
