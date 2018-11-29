@@ -39,8 +39,8 @@ $(function () {
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");
 
-    //获取 statistics_user_token
-    var token = GetCookie("statistics_user_token");
+    //获取 user_token
+    var token = GetCookie("user_token");
     if (token) {
         $(".login").remove();
         $(".amount_box").fadeIn("fast");
@@ -51,7 +51,7 @@ $(function () {
 
     //点击退出
     $(".logOut").click(function () {
-       DelCookie("statistics_user_token");
+       DelCookie("user_token");
        DelCookie("statistics_user_id");
        window.location.reload();
     });

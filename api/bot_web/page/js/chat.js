@@ -31,7 +31,7 @@ $(function () {
     }
 
     //获取token
-    var token = GetCookie("statistics_user_token");
+    var token = GetCookie("user_token");
 
     //获取余额
     var user_amount = "";
