@@ -90,10 +90,9 @@ $pass_word      = get_arg_str('GET', 'pass_word');
 
 // 用户基本信息
 $data_base = array();
-$reg_ip = get_int_ip();
 
 if($invit_code) {
-    if(black_judge($invit_code,$reg_ip))
+    if(black_judge($invit_code))
         exit_error('217', '注册失败');
     $icc = invite_code_check($invit_code);
     if (!$icc)
