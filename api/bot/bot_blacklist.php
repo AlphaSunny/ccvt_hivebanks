@@ -26,13 +26,13 @@ $nickname = get_arg_str('GET','nickname');
 
 
 // 处理
-$result = check_black($data);
+$result = check_black($nickname);
 
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['status'] = $status;
+$rtn_ary['status'] = $result;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 

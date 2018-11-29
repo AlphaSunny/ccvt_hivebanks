@@ -746,11 +746,22 @@ function check_black($nickname){
        return 1;
     }else{
         $start = date('Y-m-d 00:00:00');
-        $end = date('Y-m-d H:i:s');
-        $sql = "select count(bot_message_id) as count from bot_message WHERE bot_nickname='{$nickname}' AND ctime";
+        $sql = "select count(bot_message_id) as count from bot_message WHERE bot_nickname='{$nickname}' AND bot_content LIKE '风赢小助手%' AND bot_send_time>'{$start}'";
         $db->query($sql);
         $count = $db->getField($sql,'count');
-        return 2;
+        if ($count>5){
+            //拉入黑名单
+            $data['wechat'] = $nickname;
+            $data['ctime'] = date('Y-m-d H:i:s');
+            $data['end_time'] = date('Y-m-d H:i:s',time()+7*24*60*60);
+            $sql = $db->sqlInsert("bot_blacklist", $data);
+            if (!$db->query($sql)) {
+                return false;
+            }
+            return 1;
+        }else{
+            return 2;
+        }
     }
 }
 
