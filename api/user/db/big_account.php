@@ -78,7 +78,7 @@ function reg_auto(){
         $BI_info_res = $db->query($sql);
 
 
-        if(!($res_pwd&&$res_phone&&$res_base&&$BI_info_res&&gift_ccvt($BI_info['us_id'],ba_us,50,'注册赠送',1)))
+        if(!($res_pwd&&$res_phone&&$res_base&&$BI_info_res&&gift_ccvt($BI_info['us_id'],'ba_us',50,'注册赠送',1)))
             die('2');
 
         die('1');
@@ -221,4 +221,19 @@ function get_pwd($length){
     return $res;
 
 }
+
+
+//======================================
+// 函数: 获取上传交易hash
+//======================================
+function get_transfer_pre_hash($credit_id){
+    $db = new DB_COM();
+    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
+    $hash_id = $db->getField($sql, 'hash_id');
+    if($hash_id == null)
+        return 0;
+    return $hash_id;
+}
+
+
 
