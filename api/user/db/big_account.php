@@ -13,7 +13,7 @@ function reg_auto(){
     $phones = $db->fetchAll();
 
     //判断有无注册信息
-    is_reg($phones);
+//    is_reg($phones);
 
     foreach ($phones as $k=>$v)
     {

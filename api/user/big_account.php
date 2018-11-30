@@ -27,7 +27,7 @@ GET参数
 说明
 绑定SSH证书，身份证，护照，手持文件图片等
 */
-
+set_time_limit(0);
 php_begin();
 
 reg_auto();
