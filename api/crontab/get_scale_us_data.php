@@ -13,6 +13,13 @@ $sql = "select us.wechat as us_account from us_base as us LEFT JOIN us_asset as 
 $db->query($sql);
 $rows = $db->fetchAll();
 
+
+$sql = "select us.wechat as us_account from us_base as us LEFT JOIN us_asset as us_as on us.us_id=us_as.us_id where us.scale=1 AND us.wechat!='' ORDER BY us_as.base_amount DESC";
+$db->query($sql);
+$rows2 = $db->fetchAll();
+
+$rows = array_merge($rows,$rows2);
+
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
