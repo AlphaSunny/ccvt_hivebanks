@@ -9,12 +9,12 @@ error_reporting(E_ALL | E_STRICT);
 $db = new DB_COM();
 $unit = get_la_base_unit();
 //用户
-$sql = "select us.wechat as us_account from us_base as us LEFT JOIN us_asset as us_as on us.us_id=us_as.us_id where us.scale=1 AND us.wechat!='' ORDER BY us_as.base_amount DESC";
+$sql = "select us.wechat as us_account from us_base as us LEFT JOIN us_asset as us_as on us.us_id=us_as.us_id where us.scale=1 AND us.wechat!='' ORDER BY us_as.base_amount ASC ";
 $db->query($sql);
 $rows = $db->fetchAll();
 
 
-$sql = "select us.wechat as us_account from us_base as us LEFT JOIN us_asset as us_as on us.us_id=us_as.us_id where us.scale=1 AND us.wechat!='' ORDER BY us_as.base_amount DESC";
+$sql = "select us.wechat as us_account from us_base as us LEFT JOIN us_asset as us_as on us.us_id=us_as.us_id where us.scale=1 AND us.wechat!='' ORDER BY us_as.base_amount ASC ";
 $db->query($sql);
 $rows2 = $db->fetchAll();
 
