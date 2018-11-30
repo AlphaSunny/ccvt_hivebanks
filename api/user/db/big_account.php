@@ -213,7 +213,7 @@ function get_pwd($length){
 
     $res = '';
     for ($i = 0 ; $i<$length;$i++){
-        $random = rand(0,35);
+        $random = rand(0,29);
         $res .= substr($string,$random,1);
     }
 
