@@ -8,6 +8,10 @@ $(function () {
     var length = "";
 
     function start() {
+        if(i == 0){
+            big_name(i);
+            i++;
+        }
         timer = setInterval(function () {
             big_name(i);
             i++;
@@ -33,7 +37,7 @@ $(function () {
     }
 
     function append_anme(i) {
-        li = "<li class='wow bounceInLeft'>" + arr_list[i] + "</li>";
+        li = "<li class='wow bounceInRight'>" + arr_list[i] + "</li>";
         $(".show_name>ul").prepend(li);
     }
 
