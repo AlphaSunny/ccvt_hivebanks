@@ -57,8 +57,8 @@ function reg_auto(){
         $base_info = array();
         $base_info['us_account'] = 'ccvt_'.$tmp_phone;
         $base_info['us_id'] = $bind_data['us_id'];
-        $base_infp['base_amount'] = 50;
-        $base_infp['security_level'] = 2;
+        $base_info['base_amount'] = 0;
+        $base_info['security_level'] = 2;
         $base_info['utime'] = time();
         $base_info['ctime'] = date('Y-m-d H:i:s' , time());
         $db->sqlInsert('us_base',$base_info);
