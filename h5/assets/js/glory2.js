@@ -24,7 +24,7 @@ $(function () {
             clearInterval(timer);
             return;
         }else {
-            h1 = "<h1 class='wow bounceInRight'>" + arr_list[i] + "</h1>";
+            h1 = "<h1 class='wow rotateIn'>" + arr_list[i] + "</h1>";
             $('.big_name').html(h1);
             setTimeout(function () {
                 append_anme(i);
@@ -44,11 +44,11 @@ $(function () {
         length = Math.floor(arr_list_new.length / 3);
         $.each(arr_list_new, function (i, val) {
             if (i < length) {
-                $(".name_one").append("<li class='wow bounceInLeft'>" + arr_list[i] + "</li>");
+                $(".name_one").append("<li class='wow rotateIn'>" + arr_list[i] + "</li>");
             } else if (length <= i && i < 2 * length) {
-                $(".name_two").append("<li class='wow bounceInLeft'>" + arr_list[i] + "</li>");
+                $(".name_two").append("<li class='wow rotateIn'>" + arr_list[i] + "</li>");
             } else {
-                $(".name_three").append("<li class='wow bounceInLeft'>" + arr_list[i] + "</li>");
+                $(".name_three").append("<li class='wow rotateIn'>" + arr_list[i] + "</li>");
             }
         });
 
