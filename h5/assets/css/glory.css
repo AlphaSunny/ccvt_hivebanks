@@ -11,8 +11,9 @@ body {
     min-height: 450px;
     height: 100vh;
     margin: 0;
-    background: -webkit-radial-gradient(ellipse farthest-corner at center top, #f39264 0%, #f2606f 100%);
-    background: radial-gradient(ellipse farthest-corner at center top, #f39264 0%, #f2606f 100%);
+    background: #000000;
+    /*background: -webkit-radial-gradient(ellipse farthest-corner at center top, #f39264 0%, #f2606f 100%);*/
+    /*background: radial-gradient(ellipse farthest-corner at center top, #f39264 0%, #f2606f 100%);*/
     color: #fff;
     font-family: 'Open Sans', sans-serif;
 }
@@ -45,7 +46,8 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse farthest-corner at center top, #f39264 0%, #f2606f 100%);
+    background: #000000;
+    /*background: radial-gradient(ellipse farthest-corner at center top, #f39264 0%, #f2606f 100%);*/
     z-index: 10;
     /*text-align: center;*/
     display: flex;
