@@ -18,8 +18,10 @@ function reg_auto(){
     foreach ($phones as $k=>$v)
     {
         $tmp_phone = $v['phone'];
-        var_dump($v);
-        var_dump($tmp_phone);die;
+        if(!$tmp_phone)
+            continue;
+//        var_dump($v);
+//        var_dump($tmp_phone);die;
         $sql = "select us_id from us_bind  where SUBSTR(bind_info,4,100) = {$tmp_phone}";
         $db->query($sql);
         if($db->fetchRow())
