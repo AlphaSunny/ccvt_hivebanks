@@ -80,7 +80,8 @@ function reg_auto(){
 
         if(!($res_pwd&&$res_phone&&$res_base&&$BI_info_res&&gift_ccvt($BI_info['us_id'],ba_us,50,'注册赠送',1)))
             die('2');
-        ;
+
+        die('1');
 
 
 
