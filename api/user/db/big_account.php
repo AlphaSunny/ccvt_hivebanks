@@ -263,3 +263,20 @@ function get_us_account($us_id){
 }
 
 
+//======================================
+// 函数: 获取充值的前置hash
+// 参数: ba_id                 baID
+// 返回: hash_id               前置hashid
+//======================================
+function  get_recharge_pre_hash($ba_id)
+{
+    $db = new DB_COM();
+    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}' ORDER BY  ctime DESC LIMIT 1";
+    $hash_id = $db->getField($sql, 'hash_id');
+    if($hash_id == null)
+        return 0;
+    return $hash_id;
+}
+
+
+
