@@ -1,4 +1,5 @@
 $(function () {
+    console.log(window.location.href);
     //get uuid
     var CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
 
