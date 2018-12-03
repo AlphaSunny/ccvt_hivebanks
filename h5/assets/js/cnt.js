@@ -30,6 +30,7 @@ $(function () {
     var uuid = (arr != null) ? unescape(arr[2]) : '';
     var ref = escape(document.referrer);
     var url = escape(window.location.href);
+    var src = window.location.href.substring(0, window.location.href.indexOf(window.location.pathname));
 
     //set cookie
     function SetCookie_UUID(name, value) {
@@ -40,7 +41,8 @@ $(function () {
         now.setTime(time);
         document.cookie = name + "=" + value + '; expires=' + now.toUTCString() + ';path=/';
     }
-    if(!uuid){
+
+    if (!uuid) {
         uuid = UUID();
         SetCookie_UUID("UUID", uuid);
     }
@@ -50,6 +52,6 @@ $(function () {
     } else {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET", "https://ccvt.io/api/plugin/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
+    xmlhttp.open("GET", src + "/plugin/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
     xmlhttp.send();
 });

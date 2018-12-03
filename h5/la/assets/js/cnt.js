@@ -31,7 +31,6 @@ $(function () {
     var ref = escape(document.referrer);
     var url = escape(window.location.href);
     var src = window.location.href.substring(0, window.location.href.indexOf(window.location.pathname));
-    console.log(src);
 
     //set cookie
     function SetCookie_UUID(name, value) {
