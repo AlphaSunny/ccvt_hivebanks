@@ -12,7 +12,7 @@ $db = new DB_COM();
 //    echo "发言数:".$v['count']."&nbsp;&nbsp;&nbsp;&nbsp;".$v['name']."<br />";
 //}
 
-for ($i=0;$i<10;$i++){
+for ($i=0;$i<=10;$i++){
     echo $i."<br />";
 }
 
