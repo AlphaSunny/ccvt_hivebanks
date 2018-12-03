@@ -243,10 +243,10 @@ function bot_alive($data){
 //返回： true               成功
 //        false             失败
 //======================================
-function get_qrcode()
+function get_qrcode($port,$us_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM bot_status limit 1";
+    $sql = "SELECT * FROM bot_status WHERE port='{$port}' OR us_id='{$us_id}'";
     $db -> query($sql);
     $row = $db -> fetchRow();
     if ($row){
