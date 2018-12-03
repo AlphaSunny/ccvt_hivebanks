@@ -29,9 +29,13 @@ $qr_code = get_arg_str('GET','qrcode');
 //微信昵称
 $bot_name = get_arg_str('GET','bot_name');
 
+//端口
+$port = get_arg_str('GET','port');
+
 //信息
 $data['qrcode'] = $qr_code;
 $data['bot_name'] = $bot_name;
+$data['port'] = $port;
 $data['ctime'] = time();
 
 // 添加群组

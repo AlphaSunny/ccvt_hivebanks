@@ -160,7 +160,7 @@ function search_bot_date()
 //======================================
 function bot_qrcode($data){
     $db = new DB_COM();
-    $sql = "select * from bot_status limit 1";
+    $sql = "select * from bot_status WHERE port='{$data['port']}'";
     $db -> query($sql);
     $info = $db->fetchRow();
     $time = time();
@@ -170,6 +170,7 @@ function bot_qrcode($data){
         return $db->affectedRows();
     }else{
         $date['ctime'] = time();
+        $date['port'] = $data['port'];
         $sql = $db->sqlInsert("bot_status", $date);
         $q_id = $db->query($sql);
         if ($q_id == 0)
