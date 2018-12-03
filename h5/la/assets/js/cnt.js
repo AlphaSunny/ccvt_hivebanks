@@ -40,7 +40,8 @@ $(function () {
         now.setTime(time);
         document.cookie = name + "=" + value + '; expires=' + now.toUTCString() + ';path=/';
     }
-    if(!uuid){
+
+    if (!uuid) {
         uuid = UUID();
         SetCookie_UUID("UUID", uuid);
     }
@@ -50,6 +51,6 @@ $(function () {
     } else {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET", ""+ url +"/api/plugin/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
+    xmlhttp.open("GET", url + "/api/plugin/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
     xmlhttp.send();
 });
