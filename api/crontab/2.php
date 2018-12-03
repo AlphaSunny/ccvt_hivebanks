@@ -12,6 +12,9 @@ $db = new DB_COM();
 //    echo "发言数:".$v['count']."&nbsp;&nbsp;&nbsp;&nbsp;".$v['name']."<br />";
 //}
 
+
+
+//等级规则数据
 for ($i=0;$i<=10;$i++){
     for ($j=1;$j<=10;$j++){
         $data['us_level'] = $i;
@@ -27,7 +30,7 @@ for ($i=0;$i<=10;$i++){
             $data['max_send'] = $j*$i*2*5;
         }
         $data['ctime'] = date('Y-m-d H:i:s');
-        $sql = $db->sqlInsert("bot_level_rules2", $data);
+        $sql = $db->sqlInsert("bot_level_rules", $data);
         $id = $db->query($sql);
     }
 }
