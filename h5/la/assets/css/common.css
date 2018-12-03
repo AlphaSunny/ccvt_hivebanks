@@ -1088,6 +1088,10 @@ ul.dropdown-menu.dropdown-messages li a div {
     width: 100%;
 }
 
+.width-49 {
+    width: 49%;
+}
+
 .width-50 {
     width: 50%;
 }
