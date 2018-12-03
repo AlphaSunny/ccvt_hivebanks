@@ -13,7 +13,17 @@ $db = new DB_COM();
 //}
 
 for ($i=0;$i<=10;$i++){
-    echo $i."<br />";
+    for ($j=1;$j<=10;$j++){
+        if ($i==0){
+            $data['us_level'] = $i;
+            $data['group_level'] = $j;
+            $data['one_send'] = $j;
+            $data['max_send'] = $j*5;
+            $data['ctime'] = date('Y-m-d H:i:s');
+            $sql = $db->sqlInsert("bot_level_rules2", $data);
+            $id = $db->query($sql);
+        }
+    }
 }
 
 ?>
