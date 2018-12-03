@@ -30,6 +30,7 @@ $(function () {
     var uuid = (arr != null) ? unescape(arr[2]) : '';
     var ref = escape(document.referrer);
     var url = escape(window.location.href);
+    var src = getRootPath();
 
     //set cookie
     function SetCookie_UUID(name, value) {
@@ -51,6 +52,6 @@ $(function () {
     } else {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET", url + "/api/plugin/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
+    xmlhttp.open("GET", src + "/api/plugin/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
     xmlhttp.send();
 });
