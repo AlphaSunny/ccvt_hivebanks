@@ -31,6 +31,7 @@ $(function () {
     var ref = escape(document.referrer);
     var url = escape(window.location.href);
     var src = getRootPath();
+    console.log(src);
 
     //set cookie
     function SetCookie_UUID(name, value) {
