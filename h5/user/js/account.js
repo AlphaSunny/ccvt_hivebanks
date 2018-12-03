@@ -252,7 +252,7 @@ $(function () {
         qrImg.src = "img/inviteImg.jpg";
         qrImg.onload = function () {
             content.drawImage(this, 0, 0, 568, 886);//设置宽高
-            content.drawImage(qrctx, 130, 560, 230, 100);//二维码位置 左/上/右/下
+            content.drawImage(qrctx, 130, 560, 230, 200);//二维码位置 左/上/右/下
             var base64 = canvas.toDataURL("images/png");//转成URL
             $("#base64Img").attr("src", base64);
             $(".inviteImgBox, #qrcode").remove();
