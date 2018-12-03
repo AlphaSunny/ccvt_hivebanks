@@ -30,7 +30,6 @@ $(function () {
     var uuid = (arr != null) ? unescape(arr[2]) : '';
     var ref = escape(document.referrer);
     var url = escape(window.location.href);
-    console.log(url);
 
     //set cookie
     function SetCookie_UUID(name, value) {
@@ -51,6 +50,6 @@ $(function () {
     } else {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET", "https://ccvt.io/api/plugin/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
+    xmlhttp.open("GET", ""+ url +"/api/plugin/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
     xmlhttp.send();
 });
