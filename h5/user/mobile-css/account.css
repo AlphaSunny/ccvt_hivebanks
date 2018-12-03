@@ -14,10 +14,10 @@
     margin-left: 0;
 }
 .innerInfo li:first-child{
-    display: block;
+    display: flex;
 }
 .innerInfo li:first-child>span{
-    display: block;
+    /*display: block;*/
 }
 .paymentBox .bank-top > span {
     font-size: 12px;
