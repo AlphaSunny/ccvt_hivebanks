@@ -30,7 +30,7 @@ $(function () {
     var uuid = (arr != null) ? unescape(arr[2]) : '';
     var ref = escape(document.referrer);
     var url = escape(window.location.href);
-    var src = getRootPath();
+    var src = window.location.href.substring(0, window.location.href.indexOf(window.location.pathname));
     console.log(src);
 
     //set cookie
