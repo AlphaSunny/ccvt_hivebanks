@@ -52,6 +52,6 @@ $(function () {
     } else {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET", src + "/plugin/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
+    xmlhttp.open("GET", src + "/api/plugin/cnt_action.php?referrer=" + ref + "&url=" + url + "&uuid=" + uuid, true);
     xmlhttp.send();
 });
