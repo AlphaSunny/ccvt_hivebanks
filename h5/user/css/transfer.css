@@ -6,6 +6,7 @@
     height: 35px;
     display: inline-block;
     line-height: 35px;
+    border-radius: 5px;
 }
 .transfer>ul>li>span{
     width: 20%;
