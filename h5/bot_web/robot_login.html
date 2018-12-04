@@ -105,6 +105,7 @@
     var us_id = GetCookie("robot_us_id");
     var url = getRootPath();
     var search_pory = "", port = "";
+
     function GetQr() {
         $.get({
             url: url + "/api/bot/get_qrcode.php?us_id=" + us_id,
@@ -112,8 +113,8 @@
             success: function (response) {
                 search_pory = response.rows.ip_address;
                 port = response.rows.port;
-                console.log(port);
-                $("#form").attr("action", "http://" + search_pory + "/search?port=" + port);
+                $("#port").val(port);
+                $("#form").attr("action", "http://" + search_pory + "/search");
                 if (response.rows.robot_alive == "1") {
                     $(".robot_qr,.form-box").remove();
                     $(".qr_box").html("<div>" +
