@@ -104,7 +104,7 @@
     GetCookie("robot_token");
     var us_id = GetCookie("robot_us_id");
     var url = getRootPath();
-    var search_pory = "", port = "";
+    var search_pory = "", port = "", robot_alive = "";
 
     function GetQr() {
         $.get({
@@ -113,6 +113,7 @@
             success: function (response) {
                 search_pory = response.rows.ip_address;
                 port = response.rows.port;
+                robot_alive = response.rows.robot_alive;
                 $("#port").val(port);
                 $("#form").attr("action", "http://" + search_pory + "/search");
                 if (response.rows.robot_alive == "1") {
@@ -133,6 +134,13 @@
     }
 
     GetQr();
+    var timer = setInterval(() => {
+        GetQr();
+        if (robot_alive == "1") {
+            clearInterval(timer);
+            window.location.reload();
+        }
+    }, 5000);
 
     $(".submit").click(function () {
         $("#form").submit();
