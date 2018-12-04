@@ -78,7 +78,7 @@ foreach ($ba_list as $k=>$value){
         $d['tx_hash'] = hash('md5', $value['ba_id'] . $lgn_type . get_ip() . time() . date('Y-m-d H:i:s'));
         $d['us_id'] = get_us_id($v['wechat']);
         $sql = $db->sqlInsert("bot_Iss_records", $d);
-        $id = $db->query($sql);
+        $db->query($sql);
 
 
 
