@@ -14,7 +14,7 @@ $(function () {
 
     //图形验证码
     GetImgCode();
-    $("#phone_imgCode").click(()=>{
+    $("#phone_imgCode").click(() => {
         GetImgCode();
     });
 
@@ -38,17 +38,15 @@ $(function () {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
 
-        RobotPhoneLogin(cellphone, country_code, pass_word_hash,cfm_code, function (response) {
+        RobotPhoneLogin(cellphone, country_code, pass_word_hash, cfm_code, function (response) {
             if (response.errcode == '0') {
                 layer.close(loading);
                 var token = response.token;
                 SetCookie('robot_token', token);
-                SetCookie('robot_username', cellphone);
+                SetCookie('robot_username', response.wechat);
+                SetCookie('robot_us_id', response.us_id);
                 layer.msg("success");
-                console.log(response);
-                // setTimeout(function () {
-                //     window.location.href = 'robot_login.html';
-                // }, 1000);
+                window.location.href = 'robot_login.html';
             }
         }, function (response) {
             layer.close(loading);
