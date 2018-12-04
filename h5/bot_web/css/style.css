@@ -3476,8 +3476,13 @@ p.sign.up {
     float: left;
 }
 
-.intl-tel-input{
+.intl-tel-input {
     width: 100%;
+}
+
+.cfm_code_box {
+    display: flex;
+    align-items: center;
 }
 
 .checkbox11 {
