@@ -134,13 +134,13 @@
     }
 
     GetQr();
-    var timer = setInterval(() => {
-        GetQr();
-        if (robot_alive == "1") {
-            clearInterval(timer);
-            window.location.reload();
-        }
-    }, 5000);
+    // var timer = setInterval(() => {
+    //     GetQr();
+    //     if (robot_alive == "1") {
+    //         clearInterval(timer);
+    //         window.location.reload();
+    //     }
+    // }, 5000);
 
     $(".submit").click(function () {
         $("#form").submit();
