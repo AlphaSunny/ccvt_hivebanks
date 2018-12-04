@@ -6,19 +6,7 @@
     margin-left: 0;
 }
 
-.innerInfo {
-    /*margin-left: 3rem;*/
-}
-
-.innerInfo li {
-    line-height: 35px;
-}
-
-.passUpdate .pass_ul_box {
-    margin-bottom: 0;
-}
-
-.passUpdate .pass_ul_box > li {
+.base_info li {
     line-height: 35px;
 }
 
