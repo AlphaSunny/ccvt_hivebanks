@@ -671,18 +671,22 @@ textarea::-ms-input-placeholder {
 }
 
 .flex.space-around {
+    display: flex;
     justify-content: space-around;
 }
 
 .flex.center {
+    display: flex;
     align-items: center;
 }
 
 .flex.justify-center {
+    display: flex;
     justify-content: center;
 }
 
 .flex.space-between.center {
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
