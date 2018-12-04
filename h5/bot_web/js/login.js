@@ -16,6 +16,7 @@ $(function () {
         var phone = $("#phone").val();
         var password = $("#password").val();
         var pass_word_hash = hex_sha1(password);
+        var country_code = $('.selected-dial-code').text().split("+")[1];
         if (phone.length <= 0) {
             layer.msg("请输入账号");
             return;
@@ -30,7 +31,7 @@ $(function () {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
 
-        RobotPhoneLogin(phone, pass_word_hash, function (response) {
+        RobotPhoneLogin(phone, country_code, pass_word_hash, function (response) {
             if (response.errcode == '0') {
                 layer.close(loading);
                 var token = response.token;

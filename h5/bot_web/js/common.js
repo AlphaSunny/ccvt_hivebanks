@@ -118,12 +118,14 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
         }
     });
 };
+
 //手机登录
-function RobotPhoneLogin(phone, pass_word_hash, suc_func, error_func) {
+function RobotPhoneLogin(phone, country_code, pass_word_hash, suc_func, error_func) {
     var api_url = "phone_login.php",
         post_data = {
             "email": phone,
-            "pass_word_hash": pass_word_hash
+            "country_code": country_code,
+            "pass_word_hash": pass_word_hash,
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
@@ -215,7 +217,7 @@ function AddTask(token, time, group_id, content, suc_func, error_func) {
 }
 
 //查看群成员列表
-function GetGroupMember(token, group_id,suc_func, error_func) {
+function GetGroupMember(token, group_id, suc_func, error_func) {
     var api_url = "group_members_list.php",
         post_data = {
             "token": token,
@@ -236,7 +238,7 @@ function GetNewsRecord(token, group_id, status, suc_func, error_func) {
 }
 
 //搜索获取统计列表
-function GetAmount(token, start_time, end_time,suc_func, error_func) {
+function GetAmount(token, start_time, end_time, suc_func, error_func) {
     var api_url = "iss_records_list.php",
         post_data = {
             "token": token,
