@@ -13,6 +13,8 @@ $(function () {
             });
             if(!is_pass_hash){
                 alert("未绑定资金密码");
+            }else {
+                alert("资金密码已绑定");
             }
         }
     }, function (response) {
