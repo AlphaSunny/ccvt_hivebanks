@@ -43,8 +43,8 @@ $(function () {
                 layer.close(loading);
                 var token = response.token;
                 SetCookie('robot_token', token);
-                layer.msg("success");
                 SetCookie('robot_username', cellphone);
+                layer.msg("success");
                 setTimeout(function () {
                     window.location.href = 'robot_login.html';
                 }, 1000);
