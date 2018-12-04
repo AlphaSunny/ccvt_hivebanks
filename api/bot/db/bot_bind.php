@@ -186,7 +186,7 @@ function bot_qrcode($data){
 //======================================
 function bot_alive($data){
     $db = new DB_COM();
-    $sql = "select * from bot_status limit 1";
+    $sql = "select * from bot_status WHERE port='{$data['port']}' limit 1";
     $db -> query($sql);
     $info = $db->fetchRow();
     $time = time();
