@@ -165,7 +165,7 @@ function bot_qrcode($data){
     $info = $db->fetchRow();
     $time = time();
     if ($info){
-        $sql = "update bot_status set qr_path='{$data['qrcode']}', ctime='{$time}',bot_name='{$data['bot_name']}' where id='{$info['id']}'";
+        $sql = "update bot_status set qr_path='{$data['qrcode']}', bot_name='{$data['bot_name']}' where id='{$info['id']}'";
         $db->query($sql);
         return $db->affectedRows();
     }else{
