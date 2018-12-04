@@ -107,7 +107,7 @@ if ($rows){
         /******************************转账记录表***************************************************/
         //赠送者
 
-        $data['hash_id'] = hash('md5', $ba_id . 4 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+        $data['hash_id'] = hash('md5', $ba_id . 4 . get_ip() . time() . rand(1000, 9999) . microtime());
         $data['prvs_hash'] = get_pre_hash($ba_id);
         $data['credit_id'] = $ba_id;
         $data['debit_id'] = $u_id;
@@ -134,7 +134,7 @@ if ($rows){
         $dat['credit_id'] = $u_id;
         $dat['debit_id'] = $ba_id;
         $dat['tx_amount'] = $give_account*$unit;
-        $dat['credit_balance'] = get_us_account($u_id)+$dat['tx_amount'];
+        $dat['credit_balance'] = get_us_account($u_id)+($give_account*$unit);
         $dat['tx_hash'] = hash('md5', $u_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
         $dat['flag'] = 4;
         $dat['transfer_type'] = 'ba-us';
@@ -154,14 +154,14 @@ if ($rows){
         //us添加基准资产变动记录
         $us_type = 'us_send_balance';
         $ctime = date('Y-m-d H:i:s');
-        $com_balance_us['hash_id'] = hash('md5', $d['us_id'] . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+        $com_balance_us['hash_id'] = hash('md5', $u_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
         $com_balance_us['tx_id'] = $d['tx_hash'];
-        $com_balance_us['prvs_hash'] = get_recharge_pre_hash($d['us_id']);
-        $com_balance_us["credit_id"] = $d['us_id'];
+        $com_balance_us['prvs_hash'] = get_recharge_pre_hash($u_id);
+        $com_balance_us["credit_id"] = $u_id;
         $com_balance_us["debit_id"] = $ba_id;
         $com_balance_us["tx_type"] = "ba_send";
         $com_balance_us["tx_amount"] = $give_account*$unit;
-        $com_balance_us["credit_balance"] = get_us_account($d['us_id'])+($give_account*$unit);
+        $com_balance_us["credit_balance"] = get_us_account($u_id)+($give_account*$unit);
         $com_balance_us["utime"] = time();
         $com_balance_us["ctime"] = $ctime;
 
@@ -173,11 +173,11 @@ if ($rows){
 
         //ba添加基准资产变动记录
         $us_type = 'ba_send_balance';
-        $com_balance_ba['hash_id'] = hash('md5', $ba_id. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+        $com_balance_ba['hash_id'] = hash('md5', $ba_id. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
         $com_balance_ba['tx_id'] = $d['tx_hash'];
         $com_balance_ba['prvs_hash'] = get_recharge_pre_hash($ba_id);
         $com_balance_ba["credit_id"] = $ba_id;
-        $com_balance_ba["debit_id"] = $d['us_id'];
+        $com_balance_ba["debit_id"] = $u_id;
         $com_balance_ba["tx_type"] = "ba_send";
         $com_balance_ba["tx_amount"] = $give_account*$unit;
         $com_balance_ba["credit_balance"] = $ba_account;
