@@ -118,15 +118,24 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
         }
     });
 };
-
-function RobotEmailLogin(email, pass_word_hash, suc_func, error_func) {
-    var api_url = "email_login.php",
+//手机登录
+function RobotPhoneLogin(phone, pass_word_hash, suc_func, error_func) {
+    var api_url = "phone_login.php",
         post_data = {
-            "email": email,
+            "email": phone,
             "pass_word_hash": pass_word_hash
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
+
+// function RobotEmailLogin(email, pass_word_hash, suc_func, error_func) {
+//     var api_url = "email_login.php",
+//         post_data = {
+//             "email": email,
+//             "pass_word_hash": pass_word_hash
+//         };
+//     CallRobotApi(api_url, post_data, suc_func, error_func);
+// }
 
 //编辑群主信息
 function EditGroup(token, group_name, del, flirt, group_id, suc_func, error_func) {
