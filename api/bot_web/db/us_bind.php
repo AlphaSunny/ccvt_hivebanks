@@ -9,7 +9,7 @@
 function get_us_id_by_variable($variable , $account)
 {
   $db = new DB_COM();
-  $sql = "SELECT us_id,bind_flag,bind_info FROM us_bind WHERE bind_name = '{$variable}' AND bind_info = '{$account}' AND bind_flag = '1' ORDER BY utime DESC LIMIT 1 ";
+  $sql = "SELECT bind.us_id,bind.bind_flag,bind.bind_info,base.wechat,base.us_account FROM us_bind as bind LEFT JOIN us_base as base on bind.us_id=base.us_id WHERE bind.bind_name = '{$variable}' AND bind.bind_info = '{$account}' AND bind.bind_flag = '1' ORDER BY bind.utime DESC LIMIT 1 ";
   $db -> query($sql);
   $row = $db -> fetchRow();
   return $row;

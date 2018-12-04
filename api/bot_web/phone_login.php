@@ -132,5 +132,8 @@ $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
 $rtn_ary['token'] = $token;
+$rtn_ary['us_id'] = $row['us_id'];
+$rtn_ary['us_account'] = $row['us_account'];
+$rtn_ary['wechat'] = $row['wechat'];
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
