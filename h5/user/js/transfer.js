@@ -22,5 +22,32 @@ $(function () {
 
     $(".exchange_confirm_btn").click(function () {
         window.location.href = "./fundPasswordBind.html?transfer_funPass=transfer_funPass";
+    });
+
+    //transfer
+    $(".transfer_btn").click(() => {
+        var payee = $("#payee").val();
+        var amount = $("#amount").val();
+        var fun_pass = $("#fun_pass").val();
+        if (payee.length <= 0) {
+            layer.msg("请输入首款账号");
+            return;
+        }
+        if (amount.length <= 0) {
+            layer.msg("请输入转账金额");
+            return;
+        }
+        if (fun_pass.length <= 0) {
+            layer.msg("请输入资金密码");
+            return;
+        }
+
+        layer.msg("即将开通转账功能");
+        //loading层
+        var loading = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+
+        layer.close(loading);
     })
 });
