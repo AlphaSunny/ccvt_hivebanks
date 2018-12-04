@@ -16,14 +16,10 @@ $(function () {
 
     // Icon link
     var link = $('<link rel="stylesheet" href="//at.alicdn.com/t/font_626151_31e2mobvpdu.css">');
-    // link.appendTo($('head')[1]);
-    // $('head').insertBefore(link,$('head')[0]);
     $('head').append(link);
 
     //favicon
     var link_icon = $("<link rel='shortcut icon' href='../favicon.ico' />");
-    // link_icon.appendTo($('head')[0]);
-    // $('head').insertBefore(link_icon,$('head')[1]);
     $('head').append(link_icon);
 
     //cnt.js
