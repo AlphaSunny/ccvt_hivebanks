@@ -47,6 +47,15 @@ $(function () {
         window.location.href = "withdraw.html";
     });
 
+    //transferBtn
+    $(".transferBtn").click(()=>{
+        if (base_amount <= 0) {
+            $('#noBalanceModal').modal('show');
+            return;
+        }
+        window.location.href = "transfer.html";
+    });
+
     //change username
     $('.modifyNameBtn').click(function () {
         var us_account = $('#nickName').val();
@@ -161,38 +170,36 @@ $(function () {
                     search: false,//显示搜索
                     showColumns: false,//显示列选择
                     showRefresh: false,//显示刷新
-                    showHeader:false,
-                    smartDisplay:true,
+                    showHeader: false,
+                    smartDisplay: true,
                     columns: [{
                         field: "utime",//数据字段名
                         title: "时间",//表格th内容
                         align: "center",
                         valign: "middle",
                         sortable: "true",//排序
-                        width:380,
-                    },{
+                        width: 380,
+                    }, {
                         field: "tx_amount",//数据字段名
                         title: "荣耀积分",//表格th内容
                         align: "center",
                         valign: "middle",
                         sortable: "true",//排序
-                        width:380,
-                    },{
+                        width: 380,
+                    }, {
                         field: "tx_detail",//数据字段名
                         title: "变动类型",//表格th内容
                         align: "center",
                         valign: "middle",
                         sortable: "true",//排序
-                        width:380,
-                    }, ],
+                        width: 380,
+                    },],
                     data: data
                 });
 
                 $(window).resize(function () {
                     $('#gloryPointsChange').bootstrapTable('resetView');
                 });
-
-
 
 
                 // $.each(data, function (i, val) {
