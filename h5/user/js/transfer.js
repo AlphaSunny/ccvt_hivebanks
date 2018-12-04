@@ -1,7 +1,7 @@
 $(function(){
     GetUsAccount();
-    var us_account = GetCookie('us_account');
-    $(".payNumber").val(us_account);
+    // var us_account = GetCookie('us_account');
+    // $(".payNumber").val(us_account);
     // Transfer in/out record
     var token = GetCookie('user_token'),
     limit = 0,offset = 5,
