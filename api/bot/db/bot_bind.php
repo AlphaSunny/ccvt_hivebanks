@@ -160,7 +160,7 @@ function search_bot_date()
 //======================================
 function bot_qrcode($data){
     $db = new DB_COM();
-    $sql = "select * from bot_status WHERE us_id='{$data['us_id']}'";
+    $sql = "select * from bot_status WHERE port='{$data['port']}'";
     $db -> query($sql);
     $info = $db->fetchRow();
     $time = time();
@@ -170,8 +170,7 @@ function bot_qrcode($data){
         return $db->affectedRows();
     }else{
         $date['ctime'] = time();
-//        $date['port'] = $data['port'];
-        $date['us_id'] = $data['us_id'];
+        $date['port'] = $data['port'];
         $sql = $db->sqlInsert("bot_status", $date);
         $q_id = $db->query($sql);
         if ($q_id == 0)
@@ -478,10 +477,14 @@ function us_voucher($nickname,$voucher)
 //
 // 返回: row           最新信息数组
 //======================================
-function temporary_group($group_name,$us_id)
+function temporary_group($group_name,$port)
 {
     $db = new DB_COM();
-    if ($us_id){
+    $sql = "select * from bot_stattus WHERE port='{$port}'";
+    $db->query($sql);
+    $bot_status = $db->fetchRow();
+    if ($bot_status){
+        $us_id = $bot_status['us_id'];
         $data['name'] = $group_name;
         $data['us_id'] = $us_id;
         $data['intime'] = time();

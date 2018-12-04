@@ -30,12 +30,12 @@ $qr_code = get_arg_str('GET','qrcode');
 $bot_name = get_arg_str('GET','bot_name');
 
 //端口
-$us_id = get_arg_str('GET','us_id');
+$port = get_arg_str('GET','port');
 
 //信息
 $data['qrcode'] = $qr_code;
 $data['bot_name'] = $bot_name;
-$data['us_id'] = $us_id;
+$data['port'] = $port;
 $data['ctime'] = time();
 
 // 添加群组
