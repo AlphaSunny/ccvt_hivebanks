@@ -120,10 +120,10 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
 };
 
 //手机登录
-function RobotPhoneLogin(phone, country_code, pass_word_hash, suc_func, error_func) {
+function RobotPhoneLogin(cellphone, country_code, pass_word_hash, suc_func, error_func) {
     var api_url = "phone_login.php",
         post_data = {
-            "email": phone,
+            "cellphone": cellphone,
             "country_code": country_code,
             "pass_word_hash": pass_word_hash,
         };
