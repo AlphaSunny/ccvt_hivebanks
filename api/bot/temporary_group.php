@@ -22,20 +22,19 @@ $args = array('group_name','port');
 chk_empty_args('GET', $args);
 
 //群昵称
-$nickname = get_arg_str('GET','nickname');
+$group_name = get_arg_str('GET','group_name');
 
-//信息
-$data['wechat'] = $nickname;
-$data['intime'] = time();
+//端口
+$port = get_arg_str('GET','port');
+
 
 // 处理
-$status = notice_records($data);
+$status = temporary_group($group_name,$port);
 
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['status'] = $status;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
