@@ -52,6 +52,7 @@ $(function () {
         }, function (response) {
             layer.close(loading);
             layer.msg(response.errmsg);
+            GetImgCode();
         })
 
         // RobotEmailLogin(email, pass_word_hash, function (response) {
