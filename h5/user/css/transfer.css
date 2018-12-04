@@ -11,6 +11,7 @@
 .transfer>ul>li>span{
     width: 20%;
     display: inline-block;
+    font-weight: 400;
 }
 .transferInfo{
     box-shadow: 0 2px 15px rgba(0,0,0,0.2);
