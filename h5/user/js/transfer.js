@@ -7,14 +7,12 @@ $(function () {
         if(response.errcode == "0"){
             var data = response.rows;
             $.each(data, function (i, val) {
-                if(data[i].bind_name == "pass_hash" && data[i].bind_flag == "1"){
-                    is_pass_hash = "is_pass_hash";
-                }
+                // if(data[i].bind_name == "pass_hash" && data[i].bind_flag == "1"){
+                //     is_pass_hash = "is_pass_hash";
+                // }
             });
             if(!is_pass_hash){
                 alert("未绑定资金密码");
-            }else {
-                alert("资金密码已绑定");
             }
         }
     }, function (response) {
