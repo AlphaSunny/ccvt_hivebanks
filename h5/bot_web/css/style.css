@@ -3476,6 +3476,10 @@ p.sign.up {
     float: left;
 }
 
+.intl-tel-input{
+    width: 100%;
+}
+
 .checkbox11 {
     padding-left: 27px;
     font-size: 1em;
