@@ -112,7 +112,7 @@
             success: function (response) {
                 search_pory = response.rows.ip_address;
                 port = response.rows.port;
-
+                console.log(port);
                 $("#form").attr("action", "http://" + search_pory + "/search?port=" + port);
                 if (response.rows.robot_alive == "1") {
                     $(".robot_qr,.form-box").remove();

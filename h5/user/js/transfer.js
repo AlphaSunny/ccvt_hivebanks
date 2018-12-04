@@ -2,6 +2,7 @@ $(function () {
     GetUsAccount();
     var token = GetCookie("user_token");
     var is_pass_hash = "";
+
     //get bind info
     BindingInformation(token, function (response) {
         if (response.errcode == "0") {
