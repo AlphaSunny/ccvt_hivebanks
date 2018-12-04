@@ -104,16 +104,16 @@
     GetCookie("robot_token");
     var us_id = GetCookie("robot_us_id");
     var url = getRootPath();
-    var search_pory = "";
-
+    var search_pory = "", port = "";
     function GetQr() {
         $.get({
             url: url + "/api/bot/get_qrcode.php?us_id=" + us_id,
             async: false,
             success: function (response) {
                 search_pory = response.rows.ip_address;
-                console.log(response.rows.port);
-                $("#form").attr("action", "http://" + search_pory + "/search?port=" + response.rows.port);
+                port = response.rows.port;
+
+                $("#form").attr("action", "http://" + search_pory + "/search?port=" + port);
                 if (response.rows.robot_alive == "1") {
                     $(".robot_qr,.form-box").remove();
                     $(".qr_box").html("<div>" +

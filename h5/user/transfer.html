@@ -94,12 +94,12 @@
                     <li><span class='i18n'name='password'>Password:</span><input type='password' class='form-control'></li>
                     <li><a href='javascript:;' class='btn btn-success i18n' name="determine">Enable</a></li>
                 </ul>
-                <div>
-                    <ul class='orderInformation'>
-                        <li class='p-margin-bottom-0'><span class='i18n' name='creationTime'>Creation Time:</span>&nbsp;&nbsp;<span class='time'></span></li>
-                        <li class='p-margin-bottom-0'><span class='i18n' name='serialNumber'>Serial Number:</span>&nbsp;&nbsp;<span>2018010121001001920516163130</span></li>
-                    </ul>
-                </div>
+                <!--<div>-->
+                    <!--<ul class='orderInformation'>-->
+                        <!--<li class='p-margin-bottom-0'><span class='i18n' name='creationTime'>Creation Time:</span>&nbsp;&nbsp;<span class='time'></span></li>-->
+                        <!--<li class='p-margin-bottom-0'><span class='i18n' name='serialNumber'>Serial Number:</span>&nbsp;&nbsp;<span>2018010121001001920516163130</span></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
             </div>
         </div>
     </div>
@@ -126,14 +126,7 @@
                             </tr>
                             </thead>
                             <tbody class="historyCode">
-                            <tr v-for='item in usChangeCodes'>
-                                <td>{{item.tx_hash}}</td>
-                                <td>{{item.chg_type}}</td>
-                                <td>{{item.chg_amount}}</td>
-                                <td>{{item.chg_balance}}</td>
-                                <td class="ctime">{{item.ctime}}</td>
-                                <!--<td><span><button class='btn btn-success btn-sm i18n' name='reselect'>Reselect</button></span></td>-->
-                            </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -143,50 +136,40 @@
     </div>
 </section>
 
-<!--footer-->
-<section class='sections footer'>
-    <div class='container'>
-
-        <div class='row left-row'>
-            <div class='col-md-7 col-sm-12'>
-                <div class='footerTL'>
-                    <ul class='flex center'>
-                        <li><a href='/' class='i18n' name='introduction'>Introduction</a></li>
-                        <li><a href='/' class='i18n' name='cashAgency'>Cash Agency</a></li>
-                        <li><a href='/' class='i18n' name='bitcoinAgency'>Bitcoin Agency</a></li>
-                        <li><a href='/' class='i18n' name='partners'>Partners</a></li>
-                        <li><a href='/' class='i18n' name='about'>About</a></li>
-                        <li><a href='/' class='i18n' name='contact'>Contact</a></li>
-                        <li><a href="faultReport.html" class="i18n" name="failureReport">fault report</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class='col-md-5 col-sm-12'>
-                <div class='footerTR flex space-between center'>
-                    <i class='iconfont icon-twitter'></i>
-                    <i class='iconfont icon-facebook'></i>
-                    <i class='iconfont icon-reddit'></i>
-                    <i class='iconfont icon-telegram'></i>
-                    <i class='iconfont icon-instagram'></i>
-                    <i class='iconfont icon-medium'></i>
-                    <i class='iconfont icon-weibo'></i>
-                    <i class='iconfont icon-qq'></i>
-                    <i class='iconfont icon-weixin'></i>
-                    <div>
-                        <select class="form-control input-sm" id="language">
-                            <option value="en">English</option>
-                            <option value="zh-CN">中文简体</option>
-                            <option value="ja">Japanese</option>
-                        </select>
+    <!--footer-->
+    <section class="sections footer">
+        <div class="container">
+            <div class="row left-row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="footerTR flex space-between center">
+                        <div class="footerIconBox">
+                            <a href="https://twitter.com/Hivebanks " data-toggle="tooltip" data-placement="top"
+                               title="hivebanks"><i class="iconfont icon-twitter"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i
+                                    class="iconfont icon-telegram"></i></a>
+                            <a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top"
+                               title="ccvt.io"><i class="iconfont icon-weibo"></i></a>
+                            <a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top"
+                               title="Hivebanks"><i class="iconfont icon-weixin"></i></a>
+                        </div>
+                        <div>
+                            <select class="form-control input-sm" id="language">
+                                <option value="en">English</option>
+                                <option value="zh-CN">中文简体</option>
+                                <option value="ja">Japanese</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="row footer-copyright">
+            <span>
+                <span class="i18n" name="version">©2018-2019 Powered by</span>
+                <a href="http://www.hivebanks.com">hivebanks</a>
+            </span>
+            </div>
         </div>
-        <div class='row footer-copyright'>
-            <p class='i18n' name='allRightsReserved'>©2018-2019 ccvt.io All Rights Reserved</p>
-        </div>
-    </div>
-</section>
+    </section>
 
 <div class='scrollup'>
     <a href='#'><i class='iconfont icon-top'></i></a>
@@ -199,8 +182,7 @@
 <script src='../assets/js/bootstrap.min.js'></script>
 <script src='../assets/js/layer/layer.js'></script>
 <script src='js/main.js'></script>
-<!--<script src='js/vue.js'></script>-->
-<script src='js/common.js'></script>
-<script src='js/transfer.js'></script>
+<!--<script src='js/common.js'></script>-->
+<!--<script src='js/transfer.js'></script>-->
 </body>
 </html>
