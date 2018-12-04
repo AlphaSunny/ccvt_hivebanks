@@ -12,9 +12,16 @@ $(function () {
         window.location.href = "robot_login.html";
     }
 
+    //图形验证码
+    GetImgCode();
+    $("#phone_imgCode").click(()=>{
+        GetImgCode();
+    });
+
     $(".loginBtn").click(function () {
         var cellphone = $("#phone").val();
         var password = $("#password").val();
+        var cfm_code = $("#cfm_code").val();
         var pass_word_hash = hex_sha1(password);
         var country_code = $('.selected-dial-code').text().split("+")[1];
         if (cellphone.length <= 0) {
@@ -31,7 +38,7 @@ $(function () {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
 
-        RobotPhoneLogin(cellphone, country_code, pass_word_hash, function (response) {
+        RobotPhoneLogin(cellphone, country_code, pass_word_hash,cfm_code, function (response) {
             if (response.errcode == '0') {
                 layer.close(loading);
                 var token = response.token;

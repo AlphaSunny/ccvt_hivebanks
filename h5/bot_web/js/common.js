@@ -55,17 +55,12 @@ function getRootPath() {
 
 var url = getRootPath();
 
-//Get failed error code prompt
-// function GetErrorCode(code) {
-//     $.getJSON(url + "/h5/assets/json/errcode.json", function (response) {
-//         $.each(response, function (i, val) {
-//             if (response[i].code == code) {
-//                 layer.msg('<p class="i18n" name="' + code + '">' + response[i].code_value + '</p>');
-//                 execI18n();
-//             }
-//         })
-//     })
-// }
+//获取图形验证码
+function GetImgCode() {
+    var src = config_api_url + '/api/inc/code.php';
+    // $('#email_imgCode').attr("src", src);
+    $('#phone_imgCode').attr("src", src);
+}
 
 //Get configuration file
 var config_api_url = '', config_h5_url = '', userLanguage = GetCookie('userLanguage');
@@ -120,12 +115,13 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
 };
 
 //手机登录
-function RobotPhoneLogin(cellphone, country_code, pass_word_hash, suc_func, error_func) {
+function RobotPhoneLogin(cellphone, country_code, pass_word_hash,cfm_code, suc_func, error_func) {
     var api_url = "phone_login.php",
         post_data = {
             "cellphone": cellphone,
             "country_code": country_code,
             "pass_word_hash": pass_word_hash,
+            "cfm_code": cfm_code,
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
