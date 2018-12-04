@@ -116,31 +116,25 @@
                 robot_alive = response.rows.robot_alive;
                 $("#port").val(port);
                 $("#form").attr("action", "http://" + search_pory + "/search");
-                if (response.rows.robot_alive == "1") {
-                    $(".robot_qr,.form-box").remove();
-                    $(".qr_box").html("<div>" +
-                        "<h1>微信机器人已登录，请勿重新登录。</h1>" +
-                        "<div class='flex center'>" +
-                        "<p>最近一次登录时间:<span class='login_time font-bold'>" + response.rows.login_time + "</span></p>" +
-                        "<p class='margin-left-2'>已登录运行时间:<span class='elapsed_time font-bold'>" + response.rows.elapsed_time + "</span></p>" +
-                        "<p class='margin-left-2'>已处理<span class='font-bold'>" + response.rows.count + "</span>条数据</p>" +
-                        "</div>" +
-                        "</div>")
-                } else {
-                    $("#qr_img").attr("src", response.rows.qr_path);
-                }
+                $("#qr_img").attr("src", response.rows.qr_path);
+                // if (response.rows.robot_alive == "1") {
+                //     $(".robot_qr,.form-box").remove();
+                //     $(".qr_box").html("<div>" +
+                //         "<h1>微信机器人已登录，请勿重新登录。</h1>" +
+                //         "<div class='flex center'>" +
+                //         "<p>最近一次登录时间:<span class='login_time font-bold'>" + response.rows.login_time + "</span></p>" +
+                //         "<p class='margin-left-2'>已登录运行时间:<span class='elapsed_time font-bold'>" + response.rows.elapsed_time + "</span></p>" +
+                //         "<p class='margin-left-2'>已处理<span class='font-bold'>" + response.rows.count + "</span>条数据</p>" +
+                //         "</div>" +
+                //         "</div>")
+                // } else {
+                //     $("#qr_img").attr("src", response.rows.qr_path);
+                // }
             }
         })
     }
 
     GetQr();
-    // var timer = setInterval(() => {
-    //     GetQr();
-    //     if (robot_alive == "1") {
-    //         clearInterval(timer);
-    //         window.location.reload();
-    //     }
-    // }, 5000);
 
 
     function Get_alive(){
@@ -159,8 +153,6 @@
                         "<p class='margin-left-2'>已处理<span class='font-bold'>" + response.rows.count + "</span>条数据</p>" +
                         "</div>" +
                         "</div>")
-                } else {
-                    $("#qr_img").attr("src", response.rows.qr_path);
                 }
             }
         })
@@ -173,14 +165,13 @@
         if(!robot_alive == "1"){
             timer = setTimeout(()=>{
                 is_login();
-            },300)
+            },500)
         }else {
             clearTimeout(timer);
             window.location.reload();
         }
     }
-    // is_login();
-
+    is_login();
 
     $(".submit").click(function () {
         $("#form").submit();
