@@ -82,6 +82,10 @@ foreach ($ba_list as $k=>$value){
 
 
 
+
+        if(!$db->Commit($pInTrans))
+            $db->Rollback($pInTrans);
+
         //us添加基准资产变动记录
         $us_type = 'us_send_balance';
         $ctime = date('Y-m-d H:i:s');
@@ -116,10 +120,6 @@ foreach ($ba_list as $k=>$value){
         $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
         $db->query($sql);
 
-
-
-            if(!$db->Commit($pInTrans))
-                $db->Rollback($pInTrans);
 
     }
     }
