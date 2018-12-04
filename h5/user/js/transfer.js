@@ -23,6 +23,6 @@ $(function () {
         $("#not_bind_funPass_modal").css("display","none");
     });
     $(".exchange_confirm_btn").click(function () {
-        window.location.href = "./fundPasswordBind.html?transfer_funPass= transfer_funPass";
+        window.location.href = "./fundPasswordBind.html?transfer_funPass=transfer_funPass";
     })
 });
