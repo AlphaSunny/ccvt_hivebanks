@@ -19,6 +19,7 @@ $(function () {
 
     //Get url parameter
     var wi_funPass = GetQueryString('wi_funPass');
+    var transfer_funPass = GetQueryString('transfer_funPass');
 
     //Get binding information
     BindingInformation(token, function (response) {
