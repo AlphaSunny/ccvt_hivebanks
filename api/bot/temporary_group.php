@@ -18,18 +18,18 @@ GET参数
 
 php_begin();
 
-$args = array('group_name','port');
+$args = array('group_name','us_id');
 chk_empty_args('GET', $args);
 
 //群昵称
 $group_name = get_arg_str('GET','group_name');
 
-//端口
-$port = get_arg_str('GET','port');
+//用户id
+$us_id = get_arg_str('GET','us_id');
 
 
 // 处理
-$status = temporary_group($group_name,$port);
+$status = temporary_group($group_name,$us_id);
 
 // 返回数据做成
 $rtn_ary = array();
