@@ -19,8 +19,8 @@ $(function () {
     link.appendTo($('head')[1]);
 
     //favicon
-    var link = $("<link rel='shortcut icon' href='../favicon.ico' />");
-    link.appendTo($('head')[0]);
+    var link_icon = $("<link rel='shortcut icon' href='../favicon.ico' />");
+    link_icon.appendTo($('head')[0]);
 
     //cnt.js
     var cnt = $("<script src='../assets/js/cnt.js'></script>");
