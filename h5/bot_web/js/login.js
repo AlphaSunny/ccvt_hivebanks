@@ -45,9 +45,10 @@ $(function () {
                 SetCookie('robot_token', token);
                 SetCookie('robot_username', cellphone);
                 layer.msg("success");
-                setTimeout(function () {
-                    window.location.href = 'robot_login.html';
-                }, 1000);
+                console.log(response);
+                // setTimeout(function () {
+                //     window.location.href = 'robot_login.html';
+                // }, 1000);
             }
         }, function (response) {
             layer.close(loading);
