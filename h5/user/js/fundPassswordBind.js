@@ -83,6 +83,11 @@ $(function () {
                 } else {
                     window.location.href = '../ba/BaWithdraw.html';
                 }
+                if (transfer_funPass !== 'transfer_funPass') {
+                    window.location.href = 'security.html';
+                } else {
+                    window.location.href = 'transfer.html';
+                }
             }
         }, function (response) {
             ShowLoading("hide");
