@@ -22,7 +22,6 @@ $db->query($sql);
 $ba_list = $db->fetchAll();
 foreach ($ba_list as $k=>$value){
 
-    $pInTrans = $db->StartTrans();  //开启事务
 
     //判断当前ba是否有余额
     $data = sel_ba_amout($value['ba_id'],$day_start,$day_end);
@@ -37,6 +36,8 @@ foreach ($ba_list as $k=>$value){
     $db->query($sql);
     $rows = $db->fetchAll();
     foreach ($rows as $a=>$v){
+
+        $pInTrans = $db->StartTrans();  //开启事务
         $result = get_us_id($v['wechat']);
         if ($result==0){
             continue;
