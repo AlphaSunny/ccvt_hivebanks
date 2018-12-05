@@ -478,22 +478,16 @@ function us_voucher($nickname,$voucher)
 //
 // 返回: row           最新信息数组
 //======================================
-function temporary_group($group_name,$port)
+function temporary_group($group_name,$us_id)
 {
     $db = new DB_COM();
-    $sql = "select * from bot_stattus WHERE port='{$port}'";
-    $db->query($sql);
-    $bot_status = $db->fetchRow();
-    if ($bot_status){
-        $us_id = $bot_status['us_id'];
-        $data['name'] = $group_name;
-        $data['us_id'] = $us_id;
-        $data['intime'] = time();
-        $sql = $db->sqlInsert("bot_temporary_group", $data);
-        $id = $db->query($sql);
-        if (!$id){
-            return false;
-        }
+    $data['name'] = $group_name;
+    $data['us_id'] = $us_id;
+    $data['intime'] = time();
+    $sql = $db->sqlInsert("bot_temporary_group", $data);
+    $id = $db->query($sql);
+    if (!$id){
+        return false;
     }
     return true;
 }
