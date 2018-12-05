@@ -221,7 +221,9 @@ p {
 p:last-child {
     margin-bottom: 0px;
 }
-
+a{
+    cursor: pointer;
+}
 /*.home-wrap h1,*/
 .transition {
     -webkit-transition: all 300ms linear;
