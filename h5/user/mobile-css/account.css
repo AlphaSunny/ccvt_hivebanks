@@ -2,14 +2,6 @@
     text-align: left;
 }
 
-.personInfo .account_num {
-    margin-bottom: 1rem;
-}
-
-.account_num_last {
-    margin-bottom: 0!important;
-}
-
 .account_num_first {
     display: block;
     padding: 3.5% 0 0 6%;

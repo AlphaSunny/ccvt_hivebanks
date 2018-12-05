@@ -8,6 +8,11 @@
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
+    margin-bottom: 1rem;
+}
+
+.account_num_last {
+    margin-bottom: 0 !important;
 }
 
 .account_num:hover {
