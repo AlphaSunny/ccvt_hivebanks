@@ -2,8 +2,8 @@
     text-align: left;
 }
 
-.personInfo .account_num {
-    margin-bottom: 2%;
+.personInfo .account_num :not(".account_num_last") {
+    margin-bottom: 1rem;
 }
 
 .account_num_first {
