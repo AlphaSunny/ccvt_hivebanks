@@ -1,13 +1,21 @@
 .phone_text_left {
     text-align: left;
 }
-.account_num_first{
-    display: block;
+
+.personInfo .account_num:not(.personInfo .account_num:last-child) {
+    margin-bottom: 2%;
 }
-.account_num_first p{
+
+.account_num_first {
+    display: block;
+    padding: 3.5% 0 0 6%;
+}
+
+.account_num_first p {
     margin: 0;
     text-align: left;
 }
+
 /*qr*/
 #inviteImg {
     width: 100%;
