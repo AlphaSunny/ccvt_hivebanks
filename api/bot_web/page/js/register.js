@@ -103,7 +103,7 @@ $(function () {
                 _this.text(count + "s").attr("disabled", true);
                 count--;
             } else {
-                _this.text("获取验证码").attr("disabled",false);
+                _this.text("获取验证码").attr("disabled", false);
                 clearInterval(timer);
                 GetImgCode();
             }
@@ -125,12 +125,16 @@ $(function () {
             layer.msg("请输入手机号码");
             return;
         }
-        if (again_pass_word.length <= 0) {
-            layer.msg("请输入确认密码");
+        if(!cellphone.test(/^[1-9]\d*$/)){
+            layer.msg("手机号码格式错误");
             return;
         }
         if (phoneCfmCode.length <= 0) {
             layer.msg("请输入图形验证码");
+            return;
+        }
+        if (sms_code.length <= 0) {
+            layer.msg("请输入短信验证码");
             return;
         }
         if (pass_word.length <= 0) {
@@ -145,10 +149,7 @@ $(function () {
             layer.msg("两次密码必须相同");
             return;
         }
-        if (sms_code.length <= 0) {
-            layer.msg("请输入短信验证码");
-            return;
-        }
+
         var $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
         RegShowLogin("show");
