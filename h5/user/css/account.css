@@ -21,9 +21,7 @@
 }
 
 .account_num:hover .btn {
-    background: transparent;
-    border: 1px solid #fff;
-    color: #fff;
+    background: #ffffff;
 }
 
 .account_num:hover .amount_num {
