@@ -160,7 +160,7 @@ function search_bot_date()
 //======================================
 function bot_qrcode($data){
     $db = new DB_COM();
-    $sql = "select * from bot_status WHERE port='{$data['port']}'";
+    $sql = "select * from bot_status WHERE us_id='{$data['us_id']}'";
     $db -> query($sql);
     $info = $db->fetchRow();
     $time = time();
@@ -170,7 +170,7 @@ function bot_qrcode($data){
         return $db->affectedRows();
     }else{
         $date['ctime'] = time();
-        $date['port'] = $data['port'];
+        $date['us_id'] = $data['us_id'];
         $sql = $db->sqlInsert("bot_status", $date);
         $q_id = $db->query($sql);
         if ($q_id == 0)
@@ -186,12 +186,12 @@ function bot_qrcode($data){
 //======================================
 function bot_alive($data){
     $db = new DB_COM();
-    $sql = "select * from bot_status WHERE port='{$data['port']}' limit 1";
+    $sql = "select * from bot_status WHERE us_id='{$data['us_id']}' limit 1";
     $db -> query($sql);
     $info = $db->fetchRow();
     $time = time();
     if ($info){
-        $sql = "update bot_status set robot_alive='{$data['robot_alive']}', ctime='{$time}' where id='{$info['id']}'";
+        $sql = "update bot_status set robot_alive='{$data['robot_alive']}', utime='{$time}' where id='{$info['id']}'";
         $db->query($sql);
         if ($db->affectedRows()){
             $sql = "select * from bot_log_login WHERE login_out_time=0 ORDER BY intime desc limit 1";
@@ -209,6 +209,7 @@ function bot_alive($data){
                 if (!$lo){
                     $d['login_in_time'] = $time;
                     $d['intime'] = $time;
+                    $d['us_id'] = $data['us_id'];
                     $sql = $db->sqlInsert("bot_log_login", $d);
                     $q_id = $db->query($sql);
                     if ($q_id == 0)

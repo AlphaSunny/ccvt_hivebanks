@@ -20,18 +20,18 @@ GET参数
 
 php_begin();
 
-$args = array('robot_alive','port');
+$args = array('robot_alive','us_id');
 chk_empty_args('GET', $args);
 
 //机器人登录状态
 $robot_alive = get_arg_str('GET','robot_alive');
 
 //端口
-$port = get_arg_str('GET','port');
+$us_id = get_arg_str('GET','us_id');
 
 //信息
 $data['robot_alive'] = $robot_alive;
-$data['port'] = $port;
+$data['us_id'] = $us_id;
 $data['ctime'] = time();
 
 // 添加群组
