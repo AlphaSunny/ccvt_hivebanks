@@ -1,7 +1,9 @@
 .phone_text_left {
     text-align: left;
 }
-
+.account_num_first{
+    display: inline-block;
+}
 /*qr*/
 #inviteImg {
     width: 100%;
