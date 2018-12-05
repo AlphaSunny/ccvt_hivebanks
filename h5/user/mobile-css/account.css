@@ -6,6 +6,7 @@
 }
 .account_num_first p{
     margin: 0;
+    text-align: left;
 }
 /*qr*/
 #inviteImg {
