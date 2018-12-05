@@ -257,12 +257,12 @@ $(function () {
         var content = canvas.getContext("2d");
         var qrImg = new Image();
         qrImg.crossOrigin = "*";
-        qrImg.src = "img/inviteImg.jpg?t=" + Math.random();
+        qrImg.src = "img/inviteImg.jpg";
         qrImg.onload = function () {
             content.drawImage(this, 0, 0, 568, 886);//设置宽高
             content.drawImage(qrctx, 133, 552, 146, 149);//二维码位置 左/上/右/下
             var base64 = canvas.toDataURL("images/png");//转成URL
-            $("#base64Img").attr("src", base64);
+            $("#base64Img").attr("src", base64 + "?t=" + Math.random());
             $(".inviteImgBox, #qrcode").remove();
         };
     });
