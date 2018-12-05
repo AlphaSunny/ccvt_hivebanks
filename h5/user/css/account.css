@@ -31,9 +31,9 @@
     text-align: center;
 }
 
-/*.account_num > div.info_first_box {*/
-    /*text-align: left;*/
-/*}*/
+.account_num > div.info_first_box {
+    text-align: left;
+}
 
 .account_num > div > p {
     font-size: 14px;
