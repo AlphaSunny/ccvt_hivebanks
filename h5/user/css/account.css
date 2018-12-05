@@ -20,6 +20,12 @@
     color: #ffffff;
 }
 
+.account_num:hover .btn {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
 .account_num:hover .amount_num {
     color: #ffffff !important;
 }
