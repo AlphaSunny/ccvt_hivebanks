@@ -125,7 +125,7 @@ $(function () {
             layer.msg("请输入手机号码");
             return;
         }
-        if(!cellphone.test(/^[1-9]\d*$/)){
+        if(!((/^[1-9]\d*$/).test(cellphone))){
             layer.msg("手机号码格式错误");
             return;
         }
