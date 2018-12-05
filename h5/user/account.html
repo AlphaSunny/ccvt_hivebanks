@@ -87,13 +87,16 @@
             <div class="col-md-6 col-sm-6">
                 <div class="account_num">
                     <div>
+                        <!--账户昵称-->
                         <p>
                             <span class="i18n" name="accountNickName"></span>
                             <span class="accNum us_account"></span>
-                            <a class="modify_us_id i18n" name="modify" data-toggle="modal" data-target="#modifyName">modify</a>
+                            <a class="modify_us_id i18n" name="modify" data-toggle="modal"
+                               data-target="#modifyName"></a>
                         </p>
-                        <p><span class="i18n" name="lastLoginTime">注册时间</span>:
-                            <span class="ctime">2018-09-15 15:37:47</span>
+                        <!--注册时间-->
+                        <p><span class="i18n" name="lastLoginTime"></span>:
+                            <span class="ctime"></span>
                         </p>
 
                     </div>
@@ -102,15 +105,17 @@
                             <!--<span>所在群</span>:<span>风赢科技</span>-->
                             <!--<span class="i18n" name="modify">修改</span>-->
                         </p>
+                        <!--微信昵称-->
                         <p>
-                            <span class="i18n" name="weChatGroupNickname">微信昵称</span>:<span class='wechat i18n font-size-14' name="unbound"></span>
+                            <span class="i18n" name="weChatGroupNickname"></span>:<span class='wechat i18n font-size-14'
+                                                                                        name="unbound"></span>
                             <span>
                                 <span class="weChatBindBtn i18n none" id="weChatBindBtn"
-                                data-toggle="modal" data-target="#weChatGroupName" name="bind">bind
+                                      data-toggle="modal" data-target="#weChatGroupName" name="bind">
                                 </span>
-                                    <span class="weChatBindBtn i18n none" id="weChatModifyBtn"
-                                            data-toggle="modal" data-target="#weChatGroupName" name="modify">modify
-                                    </span>
+                                    <a class="weChatBindBtn i18n none" id="weChatModifyBtn"
+                                       data-toggle="modal" data-target="#weChatGroupName" name="modify">
+                                    </a>
                             </span>
                         </p>
 
@@ -119,30 +124,33 @@
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="account_num">
+                    <!--账户余额-->
                     <div>
                         <p class="amount_num">
                             <span class="availableBalance glory_of_integral"></span>
-                            <span class="base_type">CCVT</span>
+                            <span class="base_type"></span>
                         </p>
-                        <p><span class="i18n" name="availableBalance">Available Balance</span>:</p>
+                        <p><span class="i18n" name="availableBalance"></span>:</p>
                     </div>
 
+                    <!--锁定余额-->
                     <div>
                         <p class="amount_num">
-                            <span class="lockBalance">5000</span>
-                            <span class="base_type">CCVT</span>
+                            <span class="lockBalance"></span>
+                            <span class="base_type"></span>
                         </p>
-                        <p><span class="i18n" name="lockBalance">Lock Balance</span></p>
+                        <p><span class="i18n" name="lockBalance"></span></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="account_num">
+                    <!--法币收款地址管理-->
                     <div>
-                        <p><span class="i18n" name="cashCollectionAddress">cashCollectionAddress</span>:</p>
+                        <p><span class="i18n" name="cashCollectionAddress"></span>:</p>
                         <p>
-                            <a href="addBankAddress.html" class="i18n font-size-14" name="add">add</a>
-                            <a href="manageBankList.html" class="i18n font-size-14" name="manage">manage</a></p>
+                            <a href="addBankAddress.html" class="i18n font-size-14" name="add"></a>
+                            <a href="manageBankList.html" class="i18n font-size-14" name="manage"></a></p>
                     </div>
 
                 </div>
@@ -153,61 +161,69 @@
             <div class="col-md-4 col-sm-6">
 
                 <div class="account_num">
+                    <!--荣耀积分-->
                     <div class="">
                         <p>
-                            <span class="amount_num">5000</span>
+                            <span class="amount_num"></span>
                         </p>
                         <p>
-                            <span class='i18n' name='gloryPoints'>Glory points</span>
-                            <span class="i18n" name="upgrade">提升</span></p>
-
+                            <span class='i18n' name='gloryPoints'></span>
+                            <span class="i18n" name="upgrade"></span></p>
                     </div>
+                    <!--荣耀等级-->
                     <div>
                         <p>
-                            <span class='levelText glory_level'>Lv.<span class='scale'>0</span></span>
+                            <span class='levelText glory_level'>Lv.<span class='scale'></span></span>
                         </p>
-                        <p class="flex space-between"><span class='i18n' name='gloryLevel'>Glory level</span></p>
+                        <p class="flex space-between"><span class='i18n' name='gloryLevel'></span></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="account_num">
+                    <!--充值-->
                     <div>
                         <p><i class="iconfont icon-recharge"></i></p>
-                        <p><a href="recharge.html" class="i18n" name="recharge">Recharge</a></p>
+                        <p><a href="recharge.html" class="i18n" name="recharge"></a></p>
                     </div>
+                    <!--提现-->
                     <div>
                         <p><i class="iconfont icon-svgwithdrawdeposit"></i>️</p>
-                        <p class="withdrawBtn"><span class="i18n" name="withdraw">Withdraw</span></p>
+                        <p class="withdrawBtn"><span class="i18n" name="withdraw"></span></p>
                     </div>
+                    <!--转账-->
                     <div>
                         <p><i class="iconfont icon-transfer"></i></p>
-                        <p class="transferBtn"><span class="i18n" name="transfer">transfer</span></p>
+                        <p class="transferBtn"><span class="i18n" name="transfer"></span></p>
                     </div>
+                    <!--兑换-->
                     <div>
                         <p><i class="iconfont icon-transfer"></i></p>
-                        <p class="exchange_btn"><span class="i18n" name="exchange">exchange</span></p>
+                        <p class="exchange_btn"><span class="i18n" name="exchange"></span></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="account_num">
+                    <!--邀请码-->
                     <div>
-                        <p><span class='us_nm'>101644</span></p>
+                        <p><span class='us_nm'></span></p>
                         <p>
-                            <span class='i18n' name='invitationCode'>Invitation code</span>
+                            <span class='i18n' name='invitationCode'></span>
                             <span class="i18n inviteBtn" name="invite" data-toggle="modal" data-target="#invite"></span>
                         </p>
                     </div>
+                    <!--安全等级-->
                     <div>
                         <p>
-                            <span class='levelText glory_level'>Lv.<span class='scale'>0</span></span>
+                            <span class='levelText glory_level'>Lv.<span class='scale'></span></span>
                         </p>
-                        <p><span class='i18n' name='securityLevel'>Security Level</span></p>
+                        <p><span class='i18n' name='securityLevel'></span></p>
                     </div>
+                    <!--安全中心-->
                     <div>
                         <p>🛡️</p>
-                        <p><a href="security.html" class="i18n" name="security">security</a></p>
+                        <p><a href="security.html" class="i18n" name="security"></a></p>
                     </div>
                 </div>
             </div>
@@ -235,20 +251,20 @@
                             <!--<span class="i18n" name="lastLoginTime">Last Login Time</span>:</span>&nbsp;<span-->
                             <!--class="ctime">2018-04-11 11:01:39</span></li>-->
                             <!--<li class="flex space-between center font-weight-400">-->
-                                    <!--<span>-->
-                                        <!--<span class="i18n" name="availableBalance">Available Balance</span>:&nbsp;-->
-                                    <!--</span>-->
-                                <!--<div>-->
-                                    <!--<span class="ty-color availableBalance">0.00000</span>-->
-                                    <!--<span class="base_type">BTC</span>-->
-                                <!--</div>-->
+                            <!--<span>-->
+                            <!--<span class="i18n" name="availableBalance">Available Balance</span>:&nbsp;-->
+                            <!--</span>-->
+                            <!--<div>-->
+                            <!--<span class="ty-color availableBalance">0.00000</span>-->
+                            <!--<span class="base_type">BTC</span>-->
+                            <!--</div>-->
                             <!--</li>-->
                             <!--<li class="flex space-between center font-weight-400"><span>-->
-                                    <!--<span class="i18n" name="lockBalance">Lock Balance</span>:&nbsp;</span>-->
-                                <!--<div>-->
-                                    <!--<span class="ty-color lockBalance">0.00000</span>-->
-                                    <!--<span class="base_type">BTC</span>-->
-                                <!--</div>-->
+                            <!--<span class="i18n" name="lockBalance">Lock Balance</span>:&nbsp;</span>-->
+                            <!--<div>-->
+                            <!--<span class="ty-color lockBalance">0.00000</span>-->
+                            <!--<span class="base_type">BTC</span>-->
+                            <!--</div>-->
                             <!--</li>-->
 
                             <li class="flex space-between center font-weight-400">
@@ -257,27 +273,27 @@
                             </li>
 
                             <!--<li class="flex space-between center font-weight-400">-->
-                                <!--<span class="i18n" name="security">Security Center</span>-->
-                                <!--<a href="security.html" class="i18n font-size-14" name="enter">Enter</a>-->
+                            <!--<span class="i18n" name="security">Security Center</span>-->
+                            <!--<a href="security.html" class="i18n font-size-14" name="enter">Enter</a>-->
                             <!--</li>-->
 
                             <li class="flex space-between center font-weight-400">
                                 <!--<button class="btn btn-sm btn-success" disabled="disabled" href="recharge.html">-->
-                                    <!--<i class="iconfont icon-recharge"></i>-->
-                                    <!--<span class="i18n" name="recharge">Recharge</span>-->
+                                <!--<i class="iconfont icon-recharge"></i>-->
+                                <!--<span class="i18n" name="recharge">Recharge</span>-->
                                 <!--</button>-->
                                 <!--<button class="btn btn-sm btn-success withdrawBtn" disabled="disabled"-->
-                                        <!--href="javascript:;">-->
-                                    <!--<i class="iconfont icon-svgwithdrawdeposit"></i>-->
-                                    <!--<span class="i18n" name="withdraw">Withdraw</span>-->
+                                <!--href="javascript:;">-->
+                                <!--<i class="iconfont icon-svgwithdrawdeposit"></i>-->
+                                <!--<span class="i18n" name="withdraw">Withdraw</span>-->
                                 <!--</button>-->
                                 <!--<button class="btn btn-sm btn-success transferBtn" href="javascript:;">-->
-                                    <!--<i class="iconfont icon-transfer"></i>-->
-                                    <!--<span class="i18n" name="transfer">transfer</span>-->
+                                <!--<i class="iconfont icon-transfer"></i>-->
+                                <!--<span class="i18n" name="transfer">transfer</span>-->
                                 <!--</button>-->
                                 <!--<button class="btn btn-sm btn-success exchange_btn">-->
-                                    <!--<i class="iconfont icon-transfer"></i>-->
-                                    <!--<span class="i18n" name="exchange">exchange</span>-->
+                                <!--<i class="iconfont icon-transfer"></i>-->
+                                <!--<span class="i18n" name="exchange">exchange</span>-->
                                 <!--</button>-->
                             </li>
                         </ul>
@@ -286,37 +302,37 @@
                     <div class="rightInfo base_info col-md-6 col-sm-12">
                         <ul>
                             <!--<li class='flex center space-between font-weight-400'>-->
-                                <!--<div><span class='i18n' name='securityLevel'>Security Level</span>:</div>-->
-                                <!--<div class='level'>-->
-                                    <!--<span class='levelText'>Lv.<span class='levelNum'>0</span></span>-->
-                                <!--</div>-->
+                            <!--<div><span class='i18n' name='securityLevel'>Security Level</span>:</div>-->
+                            <!--<div class='level'>-->
+                            <!--<span class='levelText'>Lv.<span class='levelNum'>0</span></span>-->
+                            <!--</div>-->
                             <!--</li>-->
 
                             <!--<li class='flex center space-between font-weight-400'>-->
-                                <!--<div><span class='i18n' name='gloryLevel'>Glory level</span>:</div>-->
-                                <!--<div class='level'>-->
-                                    <!--<span class='levelText'>Lv.<span class='scale'>0</span></span>-->
-                                <!--</div>-->
+                            <!--<div><span class='i18n' name='gloryLevel'>Glory level</span>:</div>-->
+                            <!--<div class='level'>-->
+                            <!--<span class='levelText'>Lv.<span class='scale'>0</span></span>-->
+                            <!--</div>-->
                             <!--</li>-->
 
                             <!--<li class='flex center space-between font-weight-400'>-->
-                                <!--<div><span class='i18n' name='gloryPoints'>Glory points</span>:</div>-->
-                                <!--<div class='level flex center'>-->
-                                    <!--<span class='glory_of_integral' data-toggle="tooltip" data-placement="top"-->
-                                          <!--title="100荣耀积分等于1荣耀等级">0</span>&nbsp;&nbsp;-->
-                                    <!--<a class="upgrade_btn btn btn-success btn-sm font-size-14 i18n" name="upgrade"-->
-                                       <!--data-toggle="tooltip" data-placement="top" title="使用余额转换荣耀积分">upgrade</a>-->
-                                <!--</div>-->
+                            <!--<div><span class='i18n' name='gloryPoints'>Glory points</span>:</div>-->
+                            <!--<div class='level flex center'>-->
+                            <!--<span class='glory_of_integral' data-toggle="tooltip" data-placement="top"-->
+                            <!--title="100荣耀积分等于1荣耀等级">0</span>&nbsp;&nbsp;-->
+                            <!--<a class="upgrade_btn btn btn-success btn-sm font-size-14 i18n" name="upgrade"-->
+                            <!--data-toggle="tooltip" data-placement="top" title="使用余额转换荣耀积分">upgrade</a>-->
+                            <!--</div>-->
                             <!--</li>-->
 
                             <!--<li class='flex center space-between font-weight-400'>-->
-                                <!--<div><span class='i18n' name='invitationCode'>Invitation code</span>:</div>-->
+                            <!--<div><span class='i18n' name='invitationCode'>Invitation code</span>:</div>-->
 
-                                <!--<div class='level flex center'>-->
-                                    <!--<span class='us_nm'></span>&nbsp;&nbsp;-->
-                                    <!--<button class="btn btn-success btn-sm i18n inviteBtn" name="invite"-->
-                                            <!--data-toggle="modal" data-target="#invite"></button>-->
-                                <!--</div>-->
+                            <!--<div class='level flex center'>-->
+                            <!--<span class='us_nm'></span>&nbsp;&nbsp;-->
+                            <!--<button class="btn btn-success btn-sm i18n inviteBtn" name="invite"-->
+                            <!--data-toggle="modal" data-target="#invite"></button>-->
+                            <!--</div>-->
                             <!--</li>-->
                             <!--<li class='flex center space-between font-weight-400'>-->
                             <!--<div><span class='i18n' name='weChatGroupNickname'>weChatGroupNickname</span>:</div>-->
@@ -331,22 +347,22 @@
                             <!--</div>-->
                             <!--</li>-->
                             <!--<li class='flex center space-between font-weight-400'>-->
-                                <!--<div><span class='' name=''>微信群</span>:</div>-->
-                                <!--<div class='flex center'>-->
-                                    <!--<span class='font-size-14'>ccvt创世首发群</span>&nbsp;&nbsp;-->
-                                    <!--<button class="btn btn-success btn-sm i18n" name="modify">modify-->
-                                    <!--</button>-->
-                                <!--</div>-->
+                            <!--<div><span class='' name=''>微信群</span>:</div>-->
+                            <!--<div class='flex center'>-->
+                            <!--<span class='font-size-14'>ccvt创世首发群</span>&nbsp;&nbsp;-->
+                            <!--<button class="btn btn-success btn-sm i18n" name="modify">modify-->
+                            <!--</button>-->
+                            <!--</div>-->
                             <!--</li>-->
 
                             <!--<li class="flex center space-between font-weight-400">-->
-                                <!--<div>-->
-                                    <!--<span class="i18n" name="cashCollectionAddress">cashCollectionAddress</span>:-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                    <!--<a href="addBankAddress.html" class="i18n font-size-14" name="add">add</a>-->
-                                    <!--<a href="manageBankList.html" class="i18n font-size-14" name="manage">manage</a>-->
-                                <!--</div>-->
+                            <!--<div>-->
+                            <!--<span class="i18n" name="cashCollectionAddress">cashCollectionAddress</span>:-->
+                            <!--</div>-->
+                            <!--<div>-->
+                            <!--<a href="addBankAddress.html" class="i18n font-size-14" name="add">add</a>-->
+                            <!--<a href="manageBankList.html" class="i18n font-size-14" name="manage">manage</a>-->
+                            <!--</div>-->
                             <!--</li>-->
                         </ul>
                     </div>
