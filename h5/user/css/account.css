@@ -1,3 +1,45 @@
+.account_num{
+    height: 6rem;
+    border-radius: 10px;
+    border: 1px solid #69cc99;
+    color: #000000;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+.row{
+    /*border: 2px solid #69cc99*/
+}
+.account_num:hover{
+    background: #69cc99;
+    color: #ffffff;
+}
+.account_num:hover .amount_num{
+    color: #ffffff!important;
+}
+.glory_level{
+    background: #00d290;
+    color: #fff;
+    padding: 1% 15%;
+    border-radius: 5px;
+}
+.account_num>div{
+    margin: 0 auto;
+    text-align: center;
+}
+.account_num>div>p{
+    font-size: 14px;
+}
+.account_num .amount_num{
+    color: #37cf95;
+    font-size: 1.2rem!important;
+}
+p{
+    font-size: 14px!important;
+    font-weight: 400;
+}
 .personInfo {
     width: 100%;
     border-radius: 8px;
