@@ -2,7 +2,7 @@
     text-align: left;
 }
 
-.personInfo .account_num:not(.personInfo .account_num:last-child) {
+.personInfo .account_num {
     margin-bottom: 2%;
 }
 
