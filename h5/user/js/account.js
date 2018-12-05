@@ -12,7 +12,6 @@ $(function () {
             SetCookie('us_level', data.us_level);
             SetCookie('us_account', data.us_account);
             base_amount = data.base_amount;
-            $(".us_account").text(data.us_account);
             $(".us_nm").text(data.us_nm);
             $('.ctime').text(data.ctime);
             $('.us_account').text(data.us_account);
