@@ -2,7 +2,10 @@
     text-align: left;
 }
 .account_num_first{
-    display: inline-block;
+    display: block;
+}
+.account_num_first p{
+    margin: 0;
 }
 /*qr*/
 #inviteImg {
