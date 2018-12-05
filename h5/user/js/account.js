@@ -2,8 +2,7 @@ $(function () {
     // token
     var token = GetCookie('user_token');
 
-    // $(".disabled_a").attr({"disabled": true, "href": "#"});
-    // $(".disabled_a").css({"pointer-events": "none", "color": "#9e9e9e"});
+    $(".disabled_a").attr("disabled", true).css("color", "#9e9e9e");
 
     // Basic user information
     var base_amount = '';
