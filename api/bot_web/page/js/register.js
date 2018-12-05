@@ -74,6 +74,10 @@ $(function () {
             layer.msg("请输入手机号码");
             return;
         }
+        if (!((/^[1-9]\d*$/).test(cellphone))) {
+            layer.msg("手机号码格式错误");
+            return;
+        }
         if (cfm_code.length <= 0) {
             layer.msg("请输入图形验证码");
             return;
@@ -125,7 +129,7 @@ $(function () {
             layer.msg("请输入手机号码");
             return;
         }
-        if(!((/^[1-9]\d*$/).test(cellphone))){
+        if (!((/^[1-9]\d*$/).test(cellphone))) {
             layer.msg("手机号码格式错误");
             return;
         }
