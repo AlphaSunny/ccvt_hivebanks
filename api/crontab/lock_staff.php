@@ -26,7 +26,7 @@ function lock_auto(){
         $db->query($sql);
         $res = $db->fetchRow();
         if($res){
-            if(!(ba_cut($tmp_amount)&&us_add($tmp_amount,$res['us_id'])&&log_info()))
+            if(!(ba_cut($tmp_amount)&&us_add($tmp_amount,$res['us_id'])&&log_info($tmp_phone)))
                 die($flag);
         }
         $flag ++;
@@ -54,6 +54,11 @@ function us_add($amount,$us_id){
     return false;
 
 }
-function log_info(){
-    return true;
+function log_info($phone){
+    $db = new DB_COM();
+    $sql = "update big_account_lock set is_lock = 1 where phone = $phone";
+    $db->query($sql);
+    if($db->affectedRows())
+        return true;
+    return false;
 }
