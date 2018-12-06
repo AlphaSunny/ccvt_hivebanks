@@ -100,13 +100,11 @@ function into_bot_status($us_id)
     $row = $db->fetchRow();
     if (!$row){
         $data['ctime'] = time();
-        $sql = "select port from bot_status ORDER BY ctime DESC limit 1";
-        $db->query($sql);
-        $port = $db->getField($sql,'port');
-        $port = $port ? $port+1 : 8000;
-        $data['port'] = $port;
-        $data['ip_address'] = "18.219.136.69:".$port;
+        $data['ip_address'] = "18.219.136.69:8000";
         $data['us_id'] = $us_id;
+        $sql = "select replace(bind_info,'86-','')bind_info from us_bind where us_id='{$us_id}' AND bind_name='cellphone'";
+        $db->query($sql);
+        $data['notice_phone'] = $db->getField($sql,'bind_info');
         $sql = $db->sqlInsert("bot_status", $data);
         $db->query($sql);
     }

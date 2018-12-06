@@ -522,6 +522,22 @@ function temporary_group($group_name,$us_id)
     return true;
 }
 
+//======================================
+// 函数: 获取发送短信的手机号
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function get_send_phone($us_id)
+{
+    $db = new DB_COM();
+    $sql = "select notice_phone from bot_status WHERE us_id='{$us_id}'";
+    $db->query($sql);
+    $row = $db->getField($sql,'notice_phone');
+    return $row;
+}
+
+
 
 
 //======================================
