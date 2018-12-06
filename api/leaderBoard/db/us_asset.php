@@ -33,7 +33,7 @@ function get_leaderboard($offset,$limit)
         if ($v['all_point_on']==null){
             $rows[$k]['all_point_on'] = 0;
         }
-        $rows[$k]['sorting'] = $offset+1;
+        $rows[$k]['sorting'] = $offset+$k+1;
     }
     return $rows;
 }
