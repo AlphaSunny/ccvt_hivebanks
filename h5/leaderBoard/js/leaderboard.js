@@ -2,63 +2,63 @@ $(function () {
     function Fun() {
         var tr = "", td = "";
         GetLeaderBoard(function (response) {
-            console.log(response);
+            if(response.errcode == "0"){
+                var data = response.rows;
+            }
         }, function (response) {
-
+            $.each(data, function (i, val) {
+                if (data[i].id == "1") {
+                    tr += "<tr>" +
+                        "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>" +
+                        "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
+                        "<td>" + data[i].base_amount + "</td>" +
+                        "<td>" +
+                        "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
+                        "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
+                        "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
+                        "<span class='cai_num'>200</span>" +
+                        "</td>" +
+                        "</tr>";
+                } else if (data[i].id == "2") {
+                    tr += "<tr>" +
+                        "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-second'></use></svg></td>" +
+                        "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
+                        "<td>" + data[i].base_amount + "</td>" +
+                        "<td>" +
+                        "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
+                        "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
+                        "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
+                        "<span class='cai_num'>100</span>" +
+                        "</td>" +
+                        "</tr>";
+                } else if (data[i].id == "3") {
+                    tr += "<tr>" +
+                        "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-third'></use></svg></td>" +
+                        "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
+                        "<td>" + data[i].base_amount + "</td>" +
+                        "<td>" +
+                        "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
+                        "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
+                        "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
+                        "<span class='cai_num'>100</span>" +
+                        "</td>" +
+                        "</tr>";
+                } else {
+                    tr += "<tr>" +
+                        "<td>" + data[i].id + "</td>" +
+                        "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
+                        "<td>" + data[i].base_amount + "</td>" +
+                        "<td>" +
+                        "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
+                        "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
+                        "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
+                        "<span class='cai_num'>100</span>" +
+                        "</td>" +
+                        "</tr>"
+                }
+            });
+            $("#leaderBoardBody").html(tr);
         });
-
-        // $.each(arr, function (i, val) {
-        //     if (arr[i].id == "1") {
-        //         tr += "<tr>" +
-        //             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>" +
-        //             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + arr[i].name + "</a></td>" +
-        //             "<td>" + arr[i].glory + "</td>" +
-        //             "<td>" +
-        //             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-        //             "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
-        //             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-        //             "<span class='cai_num'>200</span>" +
-        //             "</td>" +
-        //             "</tr>";
-        //     } else if (arr[i].id == "2") {
-        //         tr += "<tr>" +
-        //             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-second'></use></svg></td>" +
-        //             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + arr[i].name + "</a></td>" +
-        //             "<td>" + arr[i].glory + "</td>" +
-        //             "<td>" +
-        //             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-        //             "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
-        //             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-        //             "<span class='cai_num'>100</span>" +
-        //             "</td>" +
-        //             "</tr>";
-        //     } else if (arr[i].id == "3") {
-        //         tr += "<tr>" +
-        //             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-third'></use></svg></td>" +
-        //             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + arr[i].name + "</a></td>" +
-        //             "<td>" + arr[i].glory + "</td>" +
-        //             "<td>" +
-        //             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-        //             "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
-        //             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-        //             "<span class='cai_num'>100</span>" +
-        //             "</td>" +
-        //             "</tr>";
-        //     } else {
-        //         tr += "<tr>" +
-        //             "<td>" + arr[i].id + "</td>" +
-        //             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + arr[i].name + "</a></td>" +
-        //             "<td>" + arr[i].glory + "</td>" +
-        //             "<td>" +
-        //             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-        //             "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
-        //             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-        //             "<span class='cai_num'>100</span>" +
-        //             "</td>" +
-        //             "</tr>"
-        //     }
-        // });
-        // $("#leaderBoardBody").html(tr);
     }
 
     Fun();
