@@ -14,7 +14,7 @@ function GetCookie(name) {
     var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
     if (arr == null) {
-        window.location.href = 'login.html';
+        // window.location.href = 'login.html';
     }
 }
 
@@ -112,5 +112,14 @@ function CallLeaderBoardsApi(api_url, post_data, suc_func, error_func) {
 function GetLeaderBoard(suc_func, error_func) {
     var api_url = 'leaderboard.php',
         post_data = {};
+    CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
+}
+
+//get GetChatPerson
+function GetChatPerson(wechat, suc_func, error_func) {
+    var api_url = 'chat_person.php',
+        post_data = {
+            "wechat": wechat
+        };
     CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
 }

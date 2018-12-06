@@ -2,7 +2,7 @@ $(function () {
     function Fun() {
         var tr = "", td = "";
         GetLeaderBoard(function (response) {
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 var data = response.rows;
                 $.each(data, function (i, val) {
                     if (data[i].sorting == "1") {
@@ -65,7 +65,8 @@ $(function () {
     Fun();
 
     $(document).on("click", ".link_name", function () {
-        window.location.href = "chat_person.html";
+        var wechat = $(this).text();
+        window.location.href = "chat_person.html?wechat=" + wechat;
     });
 
     $(document).on("click", ".zan_icon,.cai_icon", function () {
