@@ -69,7 +69,7 @@ $(function () {
 
     //上一页
     $(".pre_btn").click(function () {
-        if (offset <= 10) {
+        if (offset < 10) {
             $(this).attr("disabled", true);
             return;
         }
