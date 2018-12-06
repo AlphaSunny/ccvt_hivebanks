@@ -7,7 +7,7 @@ $(function () {
             }
         }, function (response) {
             $.each(data, function (i, val) {
-                if (data[i].id == "1") {
+                if (data[i].sorting == "1") {
                     tr += "<tr>" +
                         "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>" +
                         "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
@@ -19,7 +19,7 @@ $(function () {
                         "<span class='cai_num'>200</span>" +
                         "</td>" +
                         "</tr>";
-                } else if (data[i].id == "2") {
+                } else if (data[i].sorting == "2") {
                     tr += "<tr>" +
                         "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-second'></use></svg></td>" +
                         "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
@@ -31,7 +31,7 @@ $(function () {
                         "<span class='cai_num'>100</span>" +
                         "</td>" +
                         "</tr>";
-                } else if (data[i].id == "3") {
+                } else if (data[i].sorting == "3") {
                     tr += "<tr>" +
                         "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-third'></use></svg></td>" +
                         "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
@@ -45,7 +45,7 @@ $(function () {
                         "</tr>";
                 } else {
                     tr += "<tr>" +
-                        "<td>" + data[i].id + "</td>" +
+                        "<td>" + data[i].sorting + "</td>" +
                         "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
                         "<td>" + data[i].base_amount + "</td>" +
                         "<td>" +
