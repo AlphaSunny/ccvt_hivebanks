@@ -70,12 +70,14 @@ $(function () {
     //上一页
     $(".pre_btn").click(function () {
         offset -= 10;
-        if (offset < 0) {
+        if (offset == 0) {
+            tr = "";
+            $(".next_btn").attr("disabled", false);
+            Fun(limit, offset);
             $(this).attr("disabled", true);
             return;
         }
         tr = "";
-
         $(".next_btn").attr("disabled", false);
         Fun(limit, offset);
     });
