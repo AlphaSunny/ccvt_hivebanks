@@ -1,7 +1,8 @@
 $(function () {
-    function Fun() {
-        var tr = "", td = "", limit = "10", offset = "0";
-        GetLeaderBoard(limit, offset,function (response) {
+    var tr = "", td = "", limit = "10", offset = "0";
+
+    function Fun(limit, offset) {
+        GetLeaderBoard(limit, offset, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
                 $.each(data, function (i, val) {
@@ -12,9 +13,9 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>"+ data[i].all_praise +"</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-                            "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
+                            "<span class='cai_num'>" + data[i].all_point_on + "</span>" +
                             "</td>" +
                             "</tr>";
                     } else if (data[i].sorting == "2") {
@@ -24,9 +25,9 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>"+ data[i].all_praise +"</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-                            "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
+                            "<span class='cai_num'>" + data[i].all_point_on + "</span>" +
                             "</td>" +
                             "</tr>";
                     } else if (data[i].sorting == "3") {
@@ -36,9 +37,9 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>"+ data[i].all_praise +"</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-                            "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
+                            "<span class='cai_num'>" + data[i].all_point_on + "</span>" +
                             "</td>" +
                             "</tr>";
                     } else {
@@ -48,9 +49,9 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>"+ data[i].all_praise +"</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-                            "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
+                            "<span class='cai_num'>" + data[i].all_point_on + "</span>" +
                             "</td>" +
                             "</tr>"
                     }
@@ -62,7 +63,15 @@ $(function () {
         });
     }
 
-    Fun();
+    Fun(limit, offset);
+
+    $(".pre_btn").click(function () {
+        if ($(this).attr("disabled")) {
+            console.log("disabled")
+        } else {
+            console.log("no_disabled");
+        }
+    });
 
     $(document).on("click", ".link_name", function () {
         var wechat = $(this).text();
