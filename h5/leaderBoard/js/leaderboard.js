@@ -12,9 +12,9 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>"+ data[i].praise +"</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-                            "<span class='cai_num'>200</span>" +
+                            "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
                             "</td>" +
                             "</tr>";
                     } else if (data[i].sorting == "2") {
@@ -24,9 +24,9 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>"+ data[i].praise +"</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-                            "<span class='cai_num'>100</span>" +
+                            "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
                             "</td>" +
                             "</tr>";
                     } else if (data[i].sorting == "3") {
@@ -36,9 +36,9 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>"+ data[i].praise +"</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-                            "<span class='cai_num'>100</span>" +
+                            "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
                             "</td>" +
                             "</tr>";
                     } else {
@@ -48,9 +48,9 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>100</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>"+ data[i].praise +"</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-                            "<span class='cai_num'>100</span>" +
+                            "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
                             "</td>" +
                             "</tr>"
                     }
