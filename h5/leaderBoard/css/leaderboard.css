@@ -70,11 +70,13 @@ button {
     cursor: pointer;
     outline: none;
 }
-button[disabled]{
+
+button[disabled] {
     border: 1px solid #9e9e9e;
     background: transparent;
 }
-button:not(button[disabled]):hover {
+
+button:hover:not(button[disabled]) {
     background: #ffffff;
     color: #000000;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.3);
@@ -184,13 +186,15 @@ button:not(button[disabled]):hover {
 }
 
 @media only screen and (max-width: 768px) {
-    .btn_box{
+    .btn_box {
         padding: 5%;
     }
-    .zan_icon,.cai_icon {
+
+    .zan_icon, .cai_icon {
         font-size: 1.2rem;
     }
-    th{
+
+    th {
         font-size: 1rem;
         font-weight: 400;
     }
