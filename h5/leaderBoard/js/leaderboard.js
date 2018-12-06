@@ -2,14 +2,11 @@ $(function () {
     var tr = "", limit = 10, offset = 0, total = "", page = 1;
 
     function Fun(limit, offset) {
-        if (Math.floor(offset / 10) == page) {
-            $(this).attr("disabled", true);
-        }
         GetLeaderBoard(limit, offset, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
                 total = response.total;
-                page = Math.floor(total / 10);
+                // page = Math.floor(total / 10);
                 $.each(data, function (i, val) {
                     if (data[i].sorting == "1") {
                         tr += "<tr>" +
@@ -84,6 +81,9 @@ $(function () {
 
     //下一页
     $(".next_btn").click(function () {
+        if (Math.floor(offset / 10) == Math.floor(total / 10)) {
+            $(this).attr("disabled", true);
+        }
         tr = "";
         $(".pre_btn").attr("disabled", false);
         offset += 10;
