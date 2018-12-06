@@ -74,6 +74,7 @@ $(function () {
         }
         tr = "";
         offset -= 10;
+        $(".next_btn").attr("disabled", false);
         Fun(limit, offset);
     });
 
