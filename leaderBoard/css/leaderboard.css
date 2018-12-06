@@ -1,0 +1,194 @@
+body {
+    background: #000000;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.glory_box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.table {
+    width: 100%;
+}
+
+.table a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.table th {
+    border-bottom: 1px solid #ffffff;
+}
+
+.table td {
+    border-bottom: 1px solid #333333;
+}
+
+th, td {
+    line-height: 3rem;
+    font-size: 1.1rem;
+}
+
+.table tr:hover td {
+    border-bottom: 1px solid #ffffff;
+    transition: all .3s;
+    animation: 1s td_line_move linear infinite;
+}
+
+@keyframes td_line_move {
+    0% {
+        border-bottom: 1px solid #1efff8;
+        text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);
+    }
+    50% {
+        border-bottom: 1px solid #9ef8ff;
+        text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);
+    }
+    100% {
+        border-bottom: 1px solid #fbf6ff;
+        text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);
+    }
+}
+
+td > svg {
+    font-size: 2rem;
+}
+
+.btn_box {
+    padding-top: 2%;
+}
+
+button {
+    background: transparent;
+    color: #fff;
+    padding: 1% 5%;
+    cursor: pointer;
+    outline: none;
+}
+
+button:hover {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.zan_icon, .cai_icon {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.zan_num, .cai_num {
+    font-size: 0.8rem;
+}
+
+/*customize-modal*/
+#customize_modal {
+    position: fixed;
+    top: 35%;
+    left: 25%;
+    width: 50%;
+    z-index: 999;
+    color: #000000;
+    display: none;
+}
+
+.customize_modal_mask {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+.customize_modal_content_head h3 {
+    border-bottom: 1px solid #eeeeee;
+    margin: 0;
+    text-align: center;
+}
+
+.customize_modal_content {
+    background: #ffffff;
+    padding: 5%;
+    border-radius: 10px;
+}
+
+.customize_modal_content_body {
+    margin-top: 5%;
+}
+
+.customize_modal_content_body p {
+    margin: 0;
+    font-size: 14px;
+    color: #9e9e9e;
+}
+
+.customize_modal_content_body input {
+    height: 2rem;
+    padding: 5px;
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+}
+
+.customize_modal_content_body input:focus {
+    border: 2px solid #00c566;
+}
+
+.customize_modal_content_footer {
+    margin-top: 5%;
+}
+
+.customize_modal_content_footer button {
+    width: 49%;
+    height: 2.5rem;
+    color: #ffffff;
+    border: unset;
+}
+
+.customize_modal_content_footer .customize_modal_cancel_btn {
+    background: #c50505;
+}
+
+.customize_modal_content_footer .customize_modal_cancel_btn:hover {
+    background: #ad0404;
+}
+
+.customize_modal_content_footer .customize_modal_confirm_btn {
+    background: #18c16f;
+}
+
+.customize_modal_content_footer .customize_modal_confirm_btn:hover {
+    background: #13a35d;
+}
+
+.customize_modal_content_body .black {
+    color: #000000;
+}
+
+@media only screen and (max-width: 768px) {
+    .btn_box{
+        padding: 5%;
+    }
+    .zan_icon,.cai_icon {
+        font-size: 1.2rem;
+    }
+    th{
+        font-size: 1rem;
+        font-weight: 400;
+    }
+}

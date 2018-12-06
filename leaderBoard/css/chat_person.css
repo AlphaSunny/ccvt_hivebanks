@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background: #ffffff !important;
+}
+
+#particles-js {
+    background: #ffffff !important;
+}
+
+.chat_title_box {
+    background: rgba(0, 0, 0, 1);
+    color: #fff;
+    text-align: center;
+    padding: 1% 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .chat_title_box h1{
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+}

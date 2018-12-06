@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>荣耀等级排行榜</title>
+    <!--<link rel="stylesheet" href="../../ccvt/h5/assets/css/animate.css">-->
+    <link rel="stylesheet" href="css/leaderboard.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!--<link rel="stylesheet" href="../user/css/common.css">-->
+    <script src="//at.alicdn.com/t/font_952938_73tq507wm05.js"></script>
+</head>
+<body>
+<div class="glory_box">
+    <div class="title_people">
+        <h1>CCVT荣耀排行榜</h1>
+    </div>
+    <div class="glory_table_box">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>排名</th>
+                <th>昵称</th>
+                <th>荣耀积分</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="leaderBoardBody"></tbody>
+        </table>
+        <div class="btn_box">
+            <div>
+                <button>上一页</button>&nbsp;&nbsp;
+                <span>1</span>&nbsp;&nbsp;
+                <button>下一页</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="particles-js"></div>
+
+<!--zan_cai_modal-->
+<div id="customize_modal" class="customize_modal">
+    <div class="customize_modal_mask"></div>
+    <div class="customize_modal_content">
+        <div class="customize_modal_content_head padding-bottom-2">
+            <h3 class="font-weight-400 zan_h3">点👍赞</h3>
+            <h3 class="font-weight-400 cai_h3">踩👎踩</h3>
+        </div>
+        <div class="customize_modal_content_body">
+            <input type="text" class="form-control voucher_input" placeholder="请输入数量">
+            <div class="zan_text_box">
+                <p class="zan_text">点赞功能将扣除对应数量的ccvt,对方将增加荣耀积分</p>
+                <p class="already_zan_text">
+                    <span>每日上线</span>:<span class="black"><span>10000</span> CCVT</span>
+                    <span>已赞</span>:<span class="black"><span>520</span> CCVT</span>
+                </p>
+            </div>
+            <div class="cai_text_box">
+                <p class="cai_text">踩功能将扣除对应数量的ccvt,对方将减少荣耀积分</p>
+                <p class="already_cai_text">
+                    <span>每日上线</span>:<span class="black"><span>10000</span> CCVT</span>
+                    <span>已踩</span>:<span class="black"><span>50</span> CCVT</span>
+                </p>
+            </div>
+
+        </div>
+        <div class="customize_modal_content_footer margin-top-5">
+            <button class="btn btn-danger customize_modal_cancel_btn">取消</button>
+            <button class="btn btn-success customize_modal_confirm_btn">确定</button>
+        </div>
+    </div>
+</div>
+
+<script src="../../ccvt/h5/assets/js/jquery-3.2.1.min.js"></script>
+<script src="js/particles.min.js"></script>
+<script src="js/app.js"></script>
+<!--<script src="assets/js/wow.min.js"></script>-->
+<!--<script src="../assets/particle/js/particles.js"></script>-->
+<!--<script src="../assets/particle/js/app.js"></script>-->
+<script src="js/leaderboard.js"></script>
+<script>
+    // new WOW().init();
+</script>
+</body>
+</html>
