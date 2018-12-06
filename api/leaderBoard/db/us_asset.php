@@ -27,6 +27,12 @@ function get_leaderboard($offset,$limit)
     $db->query($sql);
     $rows = $db->fetchAll();
     foreach ($rows as $k=>$v){
+        if ($v['all_praise']==null){
+            $rows[$k]['all_praise'] = 0;
+        }
+        if ($v['all_point_on']==null){
+            $rows[$k]['all_point_on'] = 0;
+        }
         $rows[$k]['sorting'] = $k+1;
     }
     return $rows;
