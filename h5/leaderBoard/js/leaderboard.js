@@ -69,12 +69,13 @@ $(function () {
 
     //上一页
     $(".pre_btn").click(function () {
-        if (offset < 10) {
+        offset -= 10;
+        if (offset <= 10) {
             $(this).attr("disabled", true);
             return;
         }
         tr = "";
-        offset -= 10;
+
         $(".next_btn").attr("disabled", false);
         Fun(limit, offset);
     });
