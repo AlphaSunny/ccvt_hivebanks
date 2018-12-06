@@ -18,7 +18,7 @@ $(function () {
             if (arr[i].id == "1") {
                 tr += "<tr>" +
                     "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>" +
-                    "<td><a href='javascript:;' class='link_name'>" + arr[i].name + "</a></td>" +
+                    "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + arr[i].name + "</a></td>" +
                     "<td>" + arr[i].glory + "</td>" +
                     "<td>" +
                     "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
@@ -30,7 +30,7 @@ $(function () {
             } else if (arr[i].id == "2") {
                 tr += "<tr>" +
                     "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-second'></use></svg></td>" +
-                    "<td><a href='javascript:;' class='link_name'>" + arr[i].name + "</a></td>" +
+                    "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + arr[i].name + "</a></td>" +
                     "<td>" + arr[i].glory + "</td>" +
                     "<td>" +
                     "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
@@ -42,7 +42,7 @@ $(function () {
             } else if (arr[i].id == "3") {
                 tr += "<tr>" +
                     "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-third'></use></svg></td>" +
-                    "<td><a href='javascript:;' class='link_name'>" + arr[i].name + "</a></td>" +
+                    "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + arr[i].name + "</a></td>" +
                     "<td>" + arr[i].glory + "</td>" +
                     "<td>" +
                     "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
@@ -54,7 +54,7 @@ $(function () {
             } else {
                 tr += "<tr>" +
                     "<td>" + arr[i].id + "</td>" +
-                    "<td><a href='javascript:;' class='link_name'>" + arr[i].name + "</a></td>" +
+                    "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + arr[i].name + "</a></td>" +
                     "<td>" + arr[i].glory + "</td>" +
                     "<td>" +
                     "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
