@@ -481,13 +481,18 @@ function us_voucher($nickname,$voucher)
 function temporary_group($group_name,$us_id)
 {
     $db = new DB_COM();
-    $data['name'] = $group_name;
-    $data['us_id'] = $us_id;
-    $data['intime'] = time();
-    $sql = $db->sqlInsert("bot_temporary_group", $data);
-    $id = $db->query($sql);
-    if (!$id){
-        return false;
+    $sql = "select * from bot_temporary_group WHERE us_id='{$us_id}' AND name='{$group_name}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if (!$row){
+        $data['name'] = $group_name;
+        $data['us_id'] = $us_id;
+        $data['intime'] = time();
+        $sql = $db->sqlInsert("bot_temporary_group", $data);
+        $id = $db->query($sql);
+        if (!$id){
+            return false;
+        }
     }
     return true;
 }
