@@ -38,7 +38,10 @@ $data['head_img']  = get_arg_str('GET', 'head_img');
 //$data['is_effective'] = get_is_effective($data['bot_content']);
 
 //存入群消息
-collect_message($data);
+$ruselt = collect_message($data);
+if (!$ruselt){
+    exit_error('139','失败');
+}
 exit_ok();
 
 
