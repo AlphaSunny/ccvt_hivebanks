@@ -2,6 +2,9 @@ $(function () {
     var tr = "", limit = 10, offset = 0, total = "", page = "";
 
     function Fun(limit, offset) {
+        if (Math.floor(offset / 10) == page) {
+            $(this).attr("disabled", true);
+        }
         GetLeaderBoard(limit, offset, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
@@ -81,10 +84,6 @@ $(function () {
 
     //下一页
     $(".next_btn").click(function () {
-        if (Math.floor(offset / 10) == page) {
-            $(this).attr("disabled", true);
-            return;
-        }
         tr = "";
         $(".pre_btn").attr("disabled", false);
         offset += 10;
