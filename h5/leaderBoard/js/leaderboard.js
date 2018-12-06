@@ -1,5 +1,5 @@
 $(function () {
-    var tr = "", limit = 10, offset = 0, total = "", page = "";
+    var tr = "", limit = 10, offset = 0, total = "", page = 1;
 
     function Fun(limit, offset) {
         if (Math.floor(offset / 10) == page) {
