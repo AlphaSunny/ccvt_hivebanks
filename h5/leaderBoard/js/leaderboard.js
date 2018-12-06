@@ -1,6 +1,6 @@
 $(function () {
     function Fun() {
-        var tr = "", td = "", limit = "0", offset = "10";
+        var tr = "", td = "", limit = "10", offset = "0";
         GetLeaderBoard(limit, offset,function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
