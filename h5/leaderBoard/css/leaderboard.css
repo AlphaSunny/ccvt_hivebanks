@@ -82,6 +82,7 @@ button[disabled]:hover{
     background: transparent;
     color: #9e9e9e;
     box-shadow: unset;
+    cursor: unset;
 }
 
 button:hover {
