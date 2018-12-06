@@ -27,7 +27,7 @@ function lock_auto(){
         $res = $db->fetchRow();
         if($res){
             if(!(ba_cut($tmp_amount)&&us_add($tmp_amount,$res['us_id'])&&log_info($tmp_phone)))
-                die($flag);
+                die($flag.'failed');
         }
         $flag ++;
     }
