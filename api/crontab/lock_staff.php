@@ -24,8 +24,9 @@ function lock_auto(){
         $tmp_amount = $v['amount'];
         $sql = "select us_id from us_bind  where SUBSTR(bind_info,4,100) = {$tmp_phone}";
         $db->query($sql);
-        if($db->fetchRow()){
-            if(!(ba_cut($tmp_amount)&&us_add()&&log_info()))
+        $res = $db->fetchRow();
+        if($res){
+            if(!(ba_cut($tmp_amount)&&us_add($tmp_amount,$res['us_id'])&&log_info()))
                 die($flag);
         }
         $flag ++;
