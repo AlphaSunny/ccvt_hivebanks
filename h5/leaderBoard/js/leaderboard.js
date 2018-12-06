@@ -12,7 +12,7 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>"+ data[i].praise +"</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>"+ data[i].all_praise +"</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
                             "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
                             "</td>" +
@@ -24,7 +24,7 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>"+ data[i].praise +"</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>"+ data[i].all_praise +"</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
                             "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
                             "</td>" +
@@ -36,7 +36,7 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>"+ data[i].praise +"</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>"+ data[i].all_praise +"</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
                             "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
                             "</td>" +
@@ -48,7 +48,7 @@ $(function () {
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                            "<span class='zan_num'>"+ data[i].praise +"</span>&nbsp;|&nbsp;" +
+                            "<span class='zan_num'>"+ data[i].all_praise +"</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
                             "<span class='cai_num'>"+ data[i].all_point_on +"</span>" +
                             "</td>" +
