@@ -1,5 +1,5 @@
 $(function () {
-    var tr = "", limit = "10", offset = "0", total = "";
+    var tr = "", limit = 10, offset = 0, total = "";
 
     function Fun(limit, offset) {
         GetLeaderBoard(limit, offset, function (response) {
