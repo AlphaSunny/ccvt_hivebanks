@@ -281,3 +281,34 @@ function get_group_type_list()
     $rows = $db -> fetchAll();
     return $rows;
 }
+
+//======================================
+// 函数: 判断微信机器人是否登录
+//
+// 返回: rows          最新信息数组
+//======================================
+function check_bot_login($us_id)
+{
+    $db = new DB_COM();
+    $sql = "select robot_alive from bot_status WHERE us_id='{$us_id}'";
+    $db -> query($sql);
+    $row = $db -> getField($sql,'robot_alive');
+    if ($row!=1){
+        return false;
+    }
+    return true;
+}
+
+//======================================
+// 函数: 获取临时群组列表
+//
+// 返回: rows          最新信息数组
+//======================================
+function get_group_temporary_list($us_id)
+{
+    $db = new DB_COM();
+    $sql = "select id,name from bot_temporary_group WHERE us_id='{$us_id}' AND is_apply=1";
+    $db -> query($sql);
+    $rows = $db -> fetchAll();
+    return $rows;
+}
