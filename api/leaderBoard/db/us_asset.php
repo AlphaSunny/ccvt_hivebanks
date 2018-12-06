@@ -23,7 +23,7 @@ function get_leaderboard($offset,$limit)
 {
     $db = new DB_COM();
     $unit = get_la_base_unit();
-    $sql = "SELECT a.base_amount/'{$unit}' as base_amount,b.us_account,b.wechat,b.us_id FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP' order by a.base_amount desc limit $offset , $limit";
+    $sql = "SELECT a.base_amount/'{$unit}' as base_amount,b.us_account,b.wechat FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP' order by a.base_amount desc limit $offset , $limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
