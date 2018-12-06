@@ -70,6 +70,7 @@ $(function () {
     //上一页
     $(".pre_btn").click(function () {
         offset -= 10;
+        $(".page").text(Math.floor(offset/10));
         if (offset == 0) {
             tr = "";
             $(".next_btn").attr("disabled", false);
@@ -85,6 +86,7 @@ $(function () {
     //下一页
     $(".next_btn").click(function () {
         offset += 10;
+        $(".page").text(Math.floor(offset/10));
         if (Math.floor(offset / 10) >= Math.floor(total / 10)) {
             $(this).attr("disabled", true);
         }
