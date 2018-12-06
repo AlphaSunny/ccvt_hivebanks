@@ -266,3 +266,18 @@ function glory_integral_list()
     $row = $db -> fetchAll();
     return $row;
 }
+
+
+//======================================
+// 函数: 获取群组类型列表
+//
+// 返回: rows          最新信息数组
+//======================================
+function get_group_type_list()
+{
+    $db = new DB_COM();
+    $sql = "select id,name from bot_group_type WHERE 1";
+    $db -> query($sql);
+    $rows = $db -> fetchAll();
+    return $rows;
+}
