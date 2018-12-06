@@ -81,12 +81,13 @@ $(function () {
 
     //下一页
     $(".next_btn").click(function () {
-        if (Math.floor(offset / 10) == Math.floor(total / 10)) {
+        offset += 10;
+        if (Math.floor(offset / 10) >= Math.floor(total / 10)) {
             $(this).attr("disabled", true);
         }
         tr = "";
         $(".pre_btn").attr("disabled", false);
-        offset += 10;
+
         Fun(limit, offset);
     });
 
