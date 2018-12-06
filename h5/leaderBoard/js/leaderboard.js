@@ -82,6 +82,7 @@ $(function () {
             $(this).attr("disabled", true);
             return;
         }
+        $(".pre_btn").attr("disabled", false);
         offset += 10;
         Fun(limit, offset);
     });
