@@ -58,7 +58,7 @@ $(function () {
                 $("#leaderBoardBody").html(tr);
             }
         }, function (response) {
-
+            alert(response.errmsg);
         });
     }
 
