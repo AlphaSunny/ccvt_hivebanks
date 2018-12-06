@@ -35,7 +35,7 @@ function lock_auto(){
 
 function ba_cut($amount){
     $db = new DB_COM();
-    $sql = "update ba_base set base_amount = base_amount - $amount*100000000 where  ba_id='6C69520E-E454-127B-F474-452E65A3EE75'";
+    $sql = "update ba_base set base_amount = base_amount - $amount where  ba_id='6C69520E-E454-127B-F474-452E65A3EE75'";
     $db->query($sql);
     $res = $db->affectedRows();
     if($res)
@@ -46,7 +46,7 @@ function ba_cut($amount){
 }
 function us_add($amount,$us_id){
     $db = new DB_COM();
-    $sql = "update us_base set lock_amount = lock_amount+$amount*100000000 where us_id='{$us_id}'";
+    $sql = "update us_base set lock_amount = lock_amount+$amount where us_id='{$us_id}'";
     $db->query($sql);
     if($db->affectedRows())
         return true;
