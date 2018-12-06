@@ -21,7 +21,7 @@ GET参数
 
 php_begin();
 
-$args = array('nickname','content','send_time','wechat','ba_id','group_name','type');
+$args = array('nickname','content','send_time','wechat','ba_id','group_name','type','us_id');
 chk_empty_args('GET', $args);
 
 //信息唯一值
@@ -32,6 +32,7 @@ $data['bot_send_time'] = get_arg_str('GET', 'send_time');
 $data['bot_create_time'] = time();
 $data['wechat'] = get_arg_str('GET','wechat');
 $data['ba_id']  = get_arg_str('GET', 'ba_id');
+$data['us_id']  = get_arg_str('GET', 'us_id');
 $data['group_name']  = get_arg_str('GET', 'group_name');
 $data['type']  = get_arg_str('GET', 'type');
 $data['head_img']  = get_arg_str('GET', 'head_img');
