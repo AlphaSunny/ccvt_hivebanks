@@ -1,5 +1,6 @@
 $(function () {
     var wechat = GetQueryString("wechat");
+    $(".person_name").text(wechat);
 
     GetChatPerson(wechat, function (response) {
         console.log(response);
