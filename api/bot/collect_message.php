@@ -38,7 +38,7 @@ $data['head_img']  = get_arg_str('GET', 'head_img');
 //$data['is_effective'] = get_is_effective($data['bot_content']);
 
 //存入群消息
-send_amount($data);
+collect_message($data);
 exit_ok();
 
 

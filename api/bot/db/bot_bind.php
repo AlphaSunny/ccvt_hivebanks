@@ -1,5 +1,30 @@
 <?php
 //======================================
+// 函数: 收集群聊消息
+// 参数: 无
+// 返回: $row        最新信息数组
+//======================================
+function collect_message($data) {
+    $db = new DB_COM();
+
+    $sql = "select bot_message_id from bot_message WHERE bot_nickname='{$data['bot_nickname']}' AND bot_content='{$data['bot_nickname']}' AND wechat='{$data['wechat']}' AND group_name='{$data['group_name']}' ORDER BY bot_create_time DESC limit 1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if (!$row){
+        return false;
+    }else{
+        //存储聊天记录
+        $sql = $db->sqlInsert("bot_message", $data);
+        $bot_message_id = $db->query($sql);
+        if (!$bot_message_id){
+            return false;
+        }
+    }
+    return true;
+
+}
+
+//======================================
 // 函数: 获取微信信息表中最后一个标识符
 // 参数: 无
 // 返回: $row        最新信息数组
