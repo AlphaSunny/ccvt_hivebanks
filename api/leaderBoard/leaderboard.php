@@ -25,6 +25,7 @@ php_begin();
 list($limit, $offset) = get_paging_arg('GET');
 // 获取当前用户的交易总记录
 $total = get_leaderboard_total();
+echo $total;
 // 交易记录数组
 $rows = get_leaderboard($offset,$limit);
 
