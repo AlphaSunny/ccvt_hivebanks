@@ -72,11 +72,6 @@ $.ajax({
         $('.ca_currency').text(ca_currency);
         SetCookie('ca_currency', ca_currency);
         SetCookie('benchmark_type', benchmark_type);
-        if (!userLanguage) {
-            SetCookie('userLanguage', data.userLanguage);
-        } else {
-            return;
-        }
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
 
