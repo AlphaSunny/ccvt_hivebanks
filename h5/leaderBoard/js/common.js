@@ -56,6 +56,33 @@ function getRootPath() {
 
 var url = getRootPath();
 
+//Get configuration file/Base currency type
+var config_api_url = '', config_h5_url = '';
+$.ajax({
+    url: url + "/h5/assets/json/config_url.json",
+    async: false,
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+        config_api_url = data.api_url;
+        config_h5_url = data.h5_url;
+        var benchmark_type = data.benchmark_type.toUpperCase();
+        var ca_currency = data.ca_currency.toUpperCase();
+        $('.base_type').text(benchmark_type);
+        $('.ca_currency').text(ca_currency);
+        SetCookie('ca_currency', ca_currency);
+        SetCookie('benchmark_type', benchmark_type);
+        if (!userLanguage) {
+            SetCookie('userLanguage', data.userLanguage);
+        } else {
+            return;
+        }
+    },
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+    }
+});
+
 // Call the API leaderBoard
 function CallLeaderBoardsApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/leaderBoard/';
