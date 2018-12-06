@@ -94,10 +94,10 @@
                 <h5 class='phoneTitle i18n' name='security'>Security</h5>
                 <p class='note i18n' name='note'>Please do not disclose SMS and verification code to anyone, including
                     customer service.</p>
-                <div class='leave-box flex center ty-color'>
+                <div class='leave-box flex center'>
                     <p class='i18n font-weight-400' name='securityLevel'>Security Level</p>:
-                    <div class='leave'>
-                        <span class='levelText'>Lv.<span class='levelNum'>0</span></span>
+                    <div class='level'>
+                        <span class='levelText'>Lv.<span class='levelNum'></span></span>
                     </div>
                 </div>
             </div>
@@ -146,6 +146,19 @@
                     <a href='googleBind.html' class='btn btn-success bind-btn googleBind i18n' name='bind' id='modifyBind'>Bind</a>
                     <!--<a href='javascript:;' class='btn btn-success googleModify modify bind-btn i18n' name='modify'-->
                        <!--id='googleModify'>Modify</a>-->
+                </div>
+
+                <!--login passpord-->
+                <div class='verify loginPasswordBox flex space-between center'>
+                    <div>
+                        <i class='iconfont icon-hash'></i>
+                        <i class='iconfont icon-gantanhao symbol redIcon loginPasswordIcon'></i>
+                    </div>
+                    <div class='thisInfoBox'>
+                        <p class='thisInfoP i18n' name="loginPassword"></p><span class='ty-color i18n loginPasswordTime' name='notBind'>Not Bind</span>
+                        <p class='i18n' name='securityBindInfo'>Used for security modifications</p>
+                    </div>
+                    <a href='reset.html' class='btn btn-success loginPasswordModify modify bind-btn i18n' name='modify' id='login_password'></a>
                 </div>
             </div>
 

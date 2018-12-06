@@ -18,13 +18,20 @@ GET参数
 
 php_begin();
 
+$args = array('us_id');
+chk_empty_args('GET', $args);
 
+//用户id
+$us_id = get_arg_str('GET','us_id');
+
+//查询手机号
+$phone = get_send_phone($us_id);
 
 //查询key_code
 $key_code = get_key_code();
 
 $url = 'http://agent_service.fnying.com/sms/bot_status.php';
-$post_data['cellphone']    = '15801075991';
+$post_data['cellphone']    = $phone;
 $post_data['key_code']     = $key_code;
 $o = "";
 foreach ( $post_data as $k => $v )

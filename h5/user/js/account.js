@@ -2,6 +2,8 @@ $(function () {
     // token
     var token = GetCookie('user_token');
 
+    $(".disabled_a").attr("disabled", true).css("color", "#9e9e9e");
+
     // Basic user information
     var base_amount = '';
     UserInformation(token, function (response) {
@@ -12,7 +14,6 @@ $(function () {
             SetCookie('us_level', data.us_level);
             SetCookie('us_account', data.us_account);
             base_amount = data.base_amount;
-            $(".us_account").text(data.us_account);
             $(".us_nm").text(data.us_nm);
             $('.ctime').text(data.ctime);
             $('.us_account').text(data.us_account);
@@ -48,7 +49,7 @@ $(function () {
     });
 
     //transferBtn
-    $(".transferBtn").click(()=>{
+    $(".transferBtn").click(() => {
         if (base_amount <= 0) {
             $('#noBalanceModal').modal('show');
             return;
@@ -238,6 +239,7 @@ $(function () {
     // }
 
     //invite
+    $(".invite_img").attr("src", "img/low_inviteImg.jpg?t=" + Math.random());
     $(".inviteBtn").click(function () {
         var url = getRootPath() + "/h5/user/register.html?invite=" + window.btoa($(".us_nm").text());
         $(".inviteInput").val(url);
@@ -256,7 +258,7 @@ $(function () {
         var content = canvas.getContext("2d");
         var qrImg = new Image();
         qrImg.crossOrigin = "*";
-        qrImg.src = "img/inviteImg.jpg";
+        qrImg.src = "img/inviteImg.jpg?t=" + Math.random();
         qrImg.onload = function () {
             content.drawImage(this, 0, 0, 568, 886);//设置宽高
             content.drawImage(qrctx, 133, 552, 146, 149);//二维码位置 左/上/右/下

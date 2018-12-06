@@ -1,41 +1,15 @@
-.innerInfo .accNum {
-    font-size: 12px;
+.phone_text_left {
+    text-align: left;
 }
-.icon-box{
-    display: none;
-}
-.innerInfo {
-    margin-left: 0 !important;
-}
-.personInfo,.leftInfo {
+
+.account_num_first {
     display: block;
+    padding: 3.5% 0 0 6%;
 }
-.innerInfo {
-    margin-left: 0;
-}
-.innerInfo li:first-child{
-    display: flex;
-}
-.innerInfo li:first-child>span{
-    /*display: block;*/
-}
-.paymentBox .bank-top > span {
-    font-size: 12px;
-}
-.payNote {
-    font-size: 12px;
-}
-.passUpdate {
-    margin-top: 2rem;
-}
-.paymentBox .form-group {
-    display: block;
-}
-.paymentBox .bank-top > span:first-child{
-    width: 28%;
-}
-i.iconfont.icon-zhanghu{
-    font-size: 2rem;
+
+.account_num_first p {
+    margin: 0;
+    text-align: left;
 }
 
 /*qr*/

@@ -45,6 +45,13 @@ $(function () {
                     $('.fundPasswordIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
                 }
 
+                //Whether the password login is bound
+                if (data[i].bind_name == 'password_login' && data[i].bind_flag == '1') {
+                    $('.loginPasswordTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
+                    $('.loginPasswordModify').fadeIn('fast');
+                    $('.loginPasswordIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
+                }
+
                 //Whether identity authentication is bound
                 if (data[i].bind_name == 'idPhoto' && data[i].bind_flag == '1') {
                     $('.authenticationTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');

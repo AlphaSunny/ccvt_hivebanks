@@ -11,14 +11,11 @@ header("Content-Type:application/json;charset=utf-8");
 
 php_begin();
 
-//端口
-$port = get_arg_str('GET','port');
-
 //用户id
 $us_id = get_arg_str('GET','us_id');
 
 //查询群组列表
-$rows = get_qrcode($port,$us_id);
+$rows = get_qrcode($us_id);
 
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';

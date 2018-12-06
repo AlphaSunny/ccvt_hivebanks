@@ -5,14 +5,19 @@
     display: inline-block;
     margin-bottom: 0;
 }
-.leave>progress{
+.level>progress{
     margin-left: 5%;
     margin-right: 5%;
 }
 .levelText{
     font-weight: bold;
 }
-
+.level{
+    background: #69cc99;
+    color: #fff;
+    padding: 0 1%;
+    border-radius: 5px;
+}
 .verify{
     /*display: none;*/
     padding: 25px 15px;

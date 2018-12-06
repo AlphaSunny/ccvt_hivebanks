@@ -1,5 +1,30 @@
 <?php
 //======================================
+// 函数: 收集群聊消息
+// 参数: 无
+// 返回: $row        最新信息数组
+//======================================
+function collect_message($data) {
+    $db = new DB_COM();
+    $time = time()-10;
+    $sql = "select bot_message_id from bot_message WHERE bot_nickname='{$data['bot_nickname']}' AND bot_content='{$data['bot_content']}' AND wechat='{$data['wechat']}' AND group_name='{$data['group_name']}' AND bot_create_time>'{$time}' limit 1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if ($row){
+        return false;
+    }else{
+        //存储聊天记录
+        $sql = $db->sqlInsert("bot_message", $data);
+        $bot_message_id = $db->query($sql);
+        if (!$bot_message_id){
+            return false;
+        }
+    }
+    return true;
+
+}
+
+//======================================
 // 函数: 获取微信信息表中最后一个标识符
 // 参数: 无
 // 返回: $row        最新信息数组
@@ -160,7 +185,7 @@ function search_bot_date()
 //======================================
 function bot_qrcode($data){
     $db = new DB_COM();
-    $sql = "select * from bot_status WHERE port='{$data['port']}'";
+    $sql = "select * from bot_status WHERE us_id='{$data['us_id']}'";
     $db -> query($sql);
     $info = $db->fetchRow();
     $time = time();
@@ -170,7 +195,7 @@ function bot_qrcode($data){
         return $db->affectedRows();
     }else{
         $date['ctime'] = time();
-        $date['port'] = $data['port'];
+        $date['us_id'] = $data['us_id'];
         $sql = $db->sqlInsert("bot_status", $date);
         $q_id = $db->query($sql);
         if ($q_id == 0)
@@ -186,12 +211,12 @@ function bot_qrcode($data){
 //======================================
 function bot_alive($data){
     $db = new DB_COM();
-    $sql = "select * from bot_status limit 1";
+    $sql = "select * from bot_status WHERE us_id='{$data['us_id']}' limit 1";
     $db -> query($sql);
     $info = $db->fetchRow();
     $time = time();
     if ($info){
-        $sql = "update bot_status set robot_alive='{$data['robot_alive']}', ctime='{$time}' where id='{$info['id']}'";
+        $sql = "update bot_status set robot_alive='{$data['robot_alive']}', utime='{$time}' where id='{$info['id']}'";
         $db->query($sql);
         if ($db->affectedRows()){
             $sql = "select * from bot_log_login WHERE login_out_time=0 ORDER BY intime desc limit 1";
@@ -209,6 +234,7 @@ function bot_alive($data){
                 if (!$lo){
                     $d['login_in_time'] = $time;
                     $d['intime'] = $time;
+                    $d['us_id'] = $data['us_id'];
                     $sql = $db->sqlInsert("bot_log_login", $d);
                     $q_id = $db->query($sql);
                     if ($q_id == 0)
@@ -243,10 +269,10 @@ function bot_alive($data){
 //返回： true               成功
 //        false             失败
 //======================================
-function get_qrcode($port,$us_id)
+function get_qrcode($us_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM bot_status WHERE port='{$port}' OR us_id='{$us_id}'";
+    $sql = "SELECT * FROM bot_status WHERE us_id='{$us_id}'";
     $db -> query($sql);
     $row = $db -> fetchRow();
     if ($row){
@@ -268,7 +294,7 @@ function get_qrcode($port,$us_id)
             $secs = $remain%60;
             $row['elapsed_time'] = $days."天".$hours."小时".$mins."分钟".$secs."秒";
 
-            $sql = "select count(bot_message_id) as count from bot_message WHERE bot_create_time>='{$t['login_in_time']}'";
+            $sql = "select count(bot_message_id) as count from bot_message WHERE us_id='{$us_id}' AND bot_create_time>='{$t['login_in_time']}'";
             $db->query($sql);
             $row['count'] = $db->getField($sql,'count');
         }
@@ -477,14 +503,13 @@ function us_voucher($nickname,$voucher)
 //
 // 返回: row           最新信息数组
 //======================================
-function temporary_group($group_name,$port)
+function temporary_group($group_name,$us_id)
 {
     $db = new DB_COM();
-    $sql = "select * from bot_stattus WHERE port='{$port}'";
+    $sql = "select * from bot_temporary_group WHERE us_id='{$us_id}' AND name='{$group_name}'";
     $db->query($sql);
-    $bot_status = $db->fetchRow();
-    if ($bot_status){
-        $us_id = $bot_status['us_id'];
+    $row = $db->fetchRow();
+    if (!$row){
         $data['name'] = $group_name;
         $data['us_id'] = $us_id;
         $data['intime'] = time();
@@ -496,6 +521,22 @@ function temporary_group($group_name,$port)
     }
     return true;
 }
+
+//======================================
+// 函数: 获取发送短信的手机号
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function get_send_phone($us_id)
+{
+    $db = new DB_COM();
+    $sql = "select notice_phone from bot_status WHERE us_id='{$us_id}'";
+    $db->query($sql);
+    $row = $db->getField($sql,'notice_phone');
+    return $row;
+}
+
 
 
 
