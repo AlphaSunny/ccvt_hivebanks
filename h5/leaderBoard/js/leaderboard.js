@@ -1,10 +1,11 @@
 $(function () {
-    var tr = "", td = "", limit = "10", offset = "0";
+    var tr = "", td = "", limit = "10", offset = "0", total = "";
 
     function Fun(limit, offset) {
         GetLeaderBoard(limit, offset, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
+                total = response.total;
                 $.each(data, function (i, val) {
                     if (data[i].sorting == "1") {
                         tr += "<tr>" +
@@ -65,12 +66,24 @@ $(function () {
 
     Fun(limit, offset);
 
+    //上一页
     $(".pre_btn").click(function () {
-        if ($(this).attr("disabled")) {
-            console.log("disabled")
-        } else {
-            console.log("no_disabled");
+        if (offset <= 0) {
+            $(this).attr("disabled", true);
+            return;
         }
+        offset -= 10;
+        Fun(limit, offset);
+    });
+
+    //下一页
+    $(".next_btn").click(function () {
+        if (offset >= total) {
+            $(this).attr("disabled", true);
+            return;
+        }
+        offset += 10;
+        Fun(limit, offset);
     });
 
     $(document).on("click", ".link_name", function () {
