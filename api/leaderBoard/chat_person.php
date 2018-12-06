@@ -7,7 +7,7 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 /*
-========================== 荣耀积分排行榜记录 ==========================
+========================== 聊天记录 ==========================
 GET参数
   limit                分页记录
   offset               分页偏移量
@@ -20,12 +20,16 @@ GET参数
 
 php_begin();
 
-// 取得分页参数
-list($limit, $offset) = get_paging_arg('GET');
-// 获取当前用户的交易总记录
-$total = get_leaderboard_total();
+$args = array('wechat');
+chk_empty_args('GET', $args);
+
+// 微信昵称
+$wechat = get_arg_str('GET', 'wechat');
+
+// 获取当前用户的聊天总记录
+$total = get_chat_total($wechat);
 // 交易记录数组
-$rows = get_leaderboard($offset,$limit);
+$rows = get_chat_list($wechat);
 
 // 返回数据做成
 $rtn_ary = array();
