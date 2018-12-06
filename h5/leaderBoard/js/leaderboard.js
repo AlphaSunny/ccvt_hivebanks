@@ -1,11 +1,12 @@
 $(function () {
-    var tr = "", limit = 10, offset = 0, total = "";
+    var tr = "", limit = 10, offset = 0, total = "", page = "";
 
     function Fun(limit, offset) {
         GetLeaderBoard(limit, offset, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
                 total = response.total;
+                page = Math.floor(total / 10);
                 $.each(data, function (i, val) {
                     if (data[i].sorting == "1") {
                         tr += "<tr>" +
@@ -81,7 +82,7 @@ $(function () {
     //下一页
     $(".next_btn").click(function () {
         offset += 10;
-        if (offset >= total) {
+        if (Math.floor(offset / 10) == page) {
             $(this).attr("disabled", true);
             return;
         }
