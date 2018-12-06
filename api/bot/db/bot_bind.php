@@ -8,6 +8,7 @@ function collect_message($data) {
     $db = new DB_COM();
     $time = time()-10;
     $sql = "select bot_message_id from bot_message WHERE bot_nickname='{$data['bot_nickname']}' AND bot_content='{$data['bot_nickname']}' AND wechat='{$data['wechat']}' AND group_name='{$data['group_name']}' AND bot_create_time>'{$time}' limit 1";
+    echo $sql;
     $db->query($sql);
     $row = $db->fetchRow();
     if (!$row){
