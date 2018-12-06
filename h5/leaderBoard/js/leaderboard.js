@@ -1,7 +1,7 @@
 $(function () {
     function Fun() {
-        var tr = "", td = "";
-        GetLeaderBoard(function (response) {
+        var tr = "", td = "", limit = "10", offset = "10";
+        GetLeaderBoard(limit, offset,function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
                 $.each(data, function (i, val) {

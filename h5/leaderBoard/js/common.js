@@ -109,9 +109,12 @@ function CallLeaderBoardsApi(api_url, post_data, suc_func, error_func) {
 }
 
 //get leaderBoard
-function GetLeaderBoard(suc_func, error_func) {
+function GetLeaderBoard(limit, offset, suc_func, error_func) {
     var api_url = 'leaderboard.php',
-        post_data = {};
+        post_data = {
+            "limit": limit,
+            "offset": offset,
+        };
     CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
 }
 
