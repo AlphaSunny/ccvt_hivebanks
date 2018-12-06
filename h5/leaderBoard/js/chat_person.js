@@ -6,7 +6,7 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows;
             if (data.length <= 0) {
-                $('.chat_content').html("<h1>暂无聊天内容</h1>")
+                $('.chat_content').html("<h1 style='text-align: center'>暂无聊天内容</h1>")
             }
         }
     }, function (response) {
