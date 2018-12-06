@@ -79,13 +79,13 @@ $(function () {
 
     //下一页
     $(".next_btn").click(function () {
+        offset += 10;
         if (offset >= total) {
             $(this).attr("disabled", true);
             return;
         }
         tr = "";
         $(".pre_btn").attr("disabled", false);
-        offset += 10;
         Fun(limit, offset);
     });
 
