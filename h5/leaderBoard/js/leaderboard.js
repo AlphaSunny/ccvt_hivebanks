@@ -18,7 +18,7 @@ $(function () {
                 $(".amount_box").fadeIn();
             }
         }, function (response) {
-            // alert(response.errmsg);
+            layer.msg(response.errmsg);
         })
     }
 
@@ -92,7 +92,7 @@ $(function () {
                 $("#leaderBoardBody").html(tr);
             }
         }, function (response) {
-            // alert(response.errmsg);
+            layer.msg(response.errmsg);
         });
     }
 
