@@ -39,7 +39,7 @@ function lock_auto(){
 
 function ba_cut($amount){
     $db = new DB_COM();
-    $sql = "update ba_base set base_amount = base_amount - $amount where  ba_id= BA_ID";
+    $sql = "update ba_base set base_amount = base_amount - $amount where  ba_id= '6C69520E-E454-127B-F474-452E65A3EE75'";
     $db->query($sql);
     $res = $db->affectedRows();
     if($res)
