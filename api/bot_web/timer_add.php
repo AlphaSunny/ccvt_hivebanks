@@ -33,7 +33,7 @@ if(count($tmparray)>2){
     exit_error('139','格式错误');
 }
 
-
+$time = $tmparray[0].":".($tmparray[1]<10 ? intval($tmparray[1]) : $tmparray[1]);
 
 // 群组id
 $group_id = get_arg_str('GET', 'group_id');
