@@ -13,7 +13,7 @@ $(function () {
     function GetUserInfoFun() {
         UserInformation(token, function (response) {
             if (response.errcode == "0") {
-                $(".login").remove();
+                // $(".login").remove();
                 $(".amount").text(response.rows.base_amount);
                 $(".amount_box").fadeIn();
             }
@@ -135,7 +135,7 @@ $(function () {
     });
 
     //登录
-    $(".login").click(function () {
+    $(".usLogin").click(function () {
         window.location.href = "../user/login.html?leaderBoard=leaderBoard";
     });
 
