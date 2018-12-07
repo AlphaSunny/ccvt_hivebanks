@@ -103,10 +103,6 @@ $(function () {
 
     Fun(limit, offset);
 
-    // setInterval(function () {
-    //     Fun(limit, offset);
-    // }, 30000);
-
     //上一页
     $(".pre_btn").click(function () {
         offset -= 50;
