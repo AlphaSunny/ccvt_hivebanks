@@ -26,7 +26,7 @@ $token = get_arg_str('GET', 'token',128);
 $timer_id = get_arg_str('GET', 'timer_id');
 
 //验证token
-$ba_id = check_token($token);
+$us_id = check_token($token);
 
 
 //修改群组
