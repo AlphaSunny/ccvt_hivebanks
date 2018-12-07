@@ -142,6 +142,7 @@ p.chat_item_name:after {
     }
 
     .search_box input {
+        width: 60%;
         font-size: 0.8rem;
         height: 1rem;
         border-radius: 0;
