@@ -98,7 +98,7 @@ $(function () {
 
         setTimeout(function () {
             Fun(limit, offset);
-        },20000)
+        },600000)
     }
 
     Fun(limit, offset);
