@@ -1,7 +1,12 @@
 $(function () {
     var token = GetCookie("user_token");
-    if (token) {
+    if (!token) {
+        $(".usAccount").remove();
+        $(".usLogin,.usRegister").fadeIn();
+    } else {
         GetUserInfoFun();
+        $(".usLogin,.usRegister").remove();
+        $(".usAccount").fadeIn();
     }
 
     //获取用户信息
@@ -13,7 +18,7 @@ $(function () {
                 $(".amount_box").fadeIn();
             }
         }, function (response) {
-            alert(response.errmsg);
+            // alert(response.errmsg);
         })
     }
 
@@ -79,7 +84,7 @@ $(function () {
                 $("#leaderBoardBody").html(tr);
             }
         }, function (response) {
-            alert(response.errmsg);
+            // alert(response.errmsg);
         });
     }
 

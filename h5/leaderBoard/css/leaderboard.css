@@ -4,7 +4,25 @@ body {
     margin: 0;
     padding: 0;
 }
-
+nav{
+    display: flex;
+    display: -webkit-flex;
+    display: -moz-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+nav ul{
+    margin: 0;
+    padding: 0;
+    display: flex!important;
+    align-items: center;
+    justify-content: space-between;
+    width: 5rem;
+}
+nav ul a{
+    color: #ffffff;
+}
 .login {
     cursor: pointer;
 }
