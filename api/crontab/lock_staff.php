@@ -29,7 +29,8 @@ function lock_auto(){
         $db->query($sql);
         $res = $db->fetchRow();
         if($res){
-            if(!(ba_cut($tmp_amount)&&us_add($tmp_amount,$res['us_id'])&&log_info($tmp_phone)))
+            if(!(ba_cut($tmp_amount)&&us_add($tmp_amount,$res['us_id'])&&log_info($tmp_phone)&&log_com_base($res['us_id'],$tmp_amount)
+            &&log_com_transfer($res['us_id'],$tmp_amount)))
                 die($flag.'failed');
         }
         $flag ++;
