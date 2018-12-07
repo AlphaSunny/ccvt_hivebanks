@@ -47,7 +47,7 @@ $content = $_REQUEST['content'];
 $data['time'] = $time;
 $data['content'] = $content;
 $data['intime'] = time();
-$data['ba_id'] = $ba_id;
+$data['us_id'] = $us_id;
 $data['group_id'] = $group_id;
 // 添加群组
 $row = add_timer($data);
