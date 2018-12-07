@@ -35,7 +35,6 @@ $(function () {
                 var data = response.rows;
                 total = response.total;
                 $.each(data, function (i, val) {
-                    console.log("666");
                     if (data[i].sorting == "1") {
                         tr += "<tr>" +
                             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>" +
