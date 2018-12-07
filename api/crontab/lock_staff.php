@@ -187,3 +187,16 @@ function get_ba_account($ba_id){
     return $base_amount;
 }
 
+
+
+//======================================
+// 函数: 获取上传交易hash
+//======================================
+function get_transfer_pre_hash($credit_id){
+    $db = new DB_COM();
+    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
+    $hash_id = $db->getField($sql, 'hash_id');
+    if($hash_id == null)
+        return 0;
+    return $hash_id;
+}
