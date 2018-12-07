@@ -138,24 +138,27 @@ $(function () {
     });
 
     //赞/踩
-    var give_us_id = "";
+    var give_us_id = "", _this_already_zan_num = "", _this_already_cai_num = "", amount = "";
     $(document).on("click", ".zan_icon,.cai_icon", function () {
         if (!token) {
             alert("操作之前请先登录!");
             return;
         }
+        amount = $(".amount").text();
         if ($(this).hasClass("zan_icon")) {
             $(".zan_h3").fadeIn("fast");
             $(".zan_text_box").fadeIn("fast");
             $(".cai_h3").fadeOut("fast");
             $(".cai_text_box").fadeOut("fast");
             $(".customize_modal_confirm_btn").addClass("zan_confirm").removeClass("cai_confirm");
+            _this_already_zan_num = $(this).siblings("zan_num").text();
         } else if ($(this).hasClass("cai_icon")) {
             $(".cai_h3").fadeIn("fast");
             $(".cai_text_box").fadeIn("fast");
             $(".zan_h3").fadeOut("fast");
             $(".zan_text_box").fadeOut("fast");
             $(".customize_modal_confirm_btn").addClass("cai_confirm").removeClass("zan_confirm");
+            _this_already_cai_num = $(this).siblings("cai_num").text();
         }
         $("#customize_modal").slideDown();
         give_us_id = $(this).siblings(".us_id").text();
@@ -183,16 +186,19 @@ $(function () {
     //赞--》踩--》
     function ConfirmZanCaiFun() {
         var index = layer.load(1, {
-            shade: [0.1,'#fff']
+            shade: [0.1, '#fff']
         });
         ConfirmZanCai(token, give_us_id, give_num, state, function (response) {
             $("#customize_modal").slideUp();
             layer.close(index);
             if (response.errcode == "0") {
+                $(".amount").text(amount -= give_num);
                 if (state == "1") {
+                    $(".zan_num").text(_this_already_zan_num += give_num);
                     layer.msg("点赞成功");
                 }
                 if (state == "2") {
+                    $(".zan_num").text(_this_already_cai_num += give_num);
                     layer.msg("踩成功");
                 }
             }
