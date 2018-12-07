@@ -144,6 +144,7 @@ p.chat_item_name:after {
     .search_box input {
         font-size: 0.8rem;
         height: 1rem;
+        border-radius: 0;
     }
 
     .search_icon {
