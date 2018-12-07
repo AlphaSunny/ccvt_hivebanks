@@ -1,4 +1,6 @@
 $(function () {
+    var token = GetCookie("user_token");
+
     var tr = "", limit = 10, offset = 0, total = "", page = 1;
 
     function Fun(limit, offset) {
@@ -70,10 +72,10 @@ $(function () {
     //上一页
     $(".pre_btn").click(function () {
         offset -= 10;
-        if(offset<=0){
+        if (offset <= 0) {
             $(".page").text(1);
         }
-        $(".page").text(Math.floor(offset/10)+1);
+        $(".page").text(Math.floor(offset / 10) + 1);
         if (offset == 0) {
             tr = "";
             $(".next_btn").attr("disabled", false);
@@ -89,7 +91,7 @@ $(function () {
     //下一页
     $(".next_btn").click(function () {
         offset += 10;
-        $(".page").text(Math.floor(offset/10)+1);
+        $(".page").text(Math.floor(offset / 10) + 1);
         if (Math.floor(offset / 10) >= Math.floor(total / 10)) {
             $(this).attr("disabled", true);
         }
@@ -99,12 +101,18 @@ $(function () {
         Fun(limit, offset);
     });
 
+    //查看聊天内容
     $(document).on("click", ".link_name", function () {
         var wechat = $(this).text();
         window.location.href = "chat_person.html?wechat=" + wechat;
     });
 
+    //赞/踩
     $(document).on("click", ".zan_icon,.cai_icon", function () {
+        if (!token) {
+            alert("操作之前请先登录!");
+            return;
+        }
         if ($(this).hasClass("zan_icon")) {
             $(".zan_h3").fadeIn("fast");
             $(".zan_text_box").fadeIn("fast");
