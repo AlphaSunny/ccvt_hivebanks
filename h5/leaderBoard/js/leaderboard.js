@@ -73,7 +73,7 @@ $(function () {
         if(offset<=0){
             $(".page").text(1);
         }
-        $(".page").text(Math.floor(offset/10));
+        $(".page").text(Math.floor(offset/10)+1);
         if (offset == 0) {
             tr = "";
             $(".next_btn").attr("disabled", false);
