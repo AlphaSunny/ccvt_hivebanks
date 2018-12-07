@@ -27,11 +27,7 @@ nav ul a {
     color: #ffffff;
 }
 
-.login {
-    cursor: pointer;
-}
-
-.login:hover {
+.usLogin:hover, .usRegister:hover, .usAccount:hover {
     color: #1E9FFF;
 }
 
@@ -246,6 +242,7 @@ button:hover {
         font-size: 1rem;
         font-weight: 400;
     }
+
     button {
         padding: 3% 6%;
     }
