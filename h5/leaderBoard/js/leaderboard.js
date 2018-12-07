@@ -169,7 +169,7 @@ $(function () {
             state = "1";
             ConfirmZanCaiFun();
         }
-        if($(this).hasClass("cai_confirm")){
+        if ($(this).hasClass("cai_confirm")) {
             state = "2";
             ConfirmZanCaiFun();
         }
@@ -182,10 +182,22 @@ $(function () {
 
     //赞--》踩--》
     function ConfirmZanCaiFun() {
+        var index = layer.load(1, {
+            shade: [0.1,'#fff']
+        });
         ConfirmZanCai(token, give_us_id, give_num, state, function (response) {
-            console.log(response);
+            $("#customize_modal").slideUp();
+            layer.close(index);
+            if (response.errcode == "0") {
+                if (state == "1") {
+                    layer.msg("点赞成功");
+                }
+                if (state == "2") {
+                    layer.msg("踩成功");
+                }
+            }
         }, function (response) {
-
+            layer.msg(response.errmsg);
         });
     }
 });
