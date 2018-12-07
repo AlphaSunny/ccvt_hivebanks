@@ -39,7 +39,7 @@ $(function () {
                         tr += "<tr>" +
                             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>" +
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].base_amount + "</td>" +
+                            // "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
@@ -52,7 +52,7 @@ $(function () {
                         tr += "<tr>" +
                             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-second'></use></svg></td>" +
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].base_amount + "</td>" +
+                            // "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
@@ -65,7 +65,7 @@ $(function () {
                         tr += "<tr>" +
                             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-third'></use></svg></td>" +
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].base_amount + "</td>" +
+                            // "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
@@ -78,7 +78,7 @@ $(function () {
                         tr += "<tr>" +
                             "<td>" + data[i].sorting + "</td>" +
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].base_amount + "</td>" +
+                            // "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
