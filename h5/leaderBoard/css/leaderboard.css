@@ -4,7 +4,8 @@ body {
     margin: 0;
     padding: 0;
 }
-nav{
+
+nav {
     display: flex;
     display: -webkit-flex;
     display: -moz-flex;
@@ -12,17 +13,20 @@ nav{
     justify-content: space-between;
     padding: 0 15px;
 }
-nav ul{
+
+nav ul {
     margin: 0;
     padding: 0;
-    display: flex!important;
+    display: flex !important;
     align-items: center;
     justify-content: space-between;
     width: 5rem;
 }
-nav ul a{
+
+nav ul a {
     color: #ffffff;
 }
+
 .login {
     cursor: pointer;
 }
@@ -225,6 +229,11 @@ button:hover {
 }
 
 @media only screen and (max-width: 768px) {
+    #customize_modal {
+        width: 98%;
+        left: 1%;
+    }
+
     .btn_box {
         padding: 5%;
     }
