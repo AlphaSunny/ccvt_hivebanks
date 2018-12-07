@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    var leaderBoard = GetQueryString("leaderBoard");
+
     function GetLoginCookie(name) {
         var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) return unescape(arr[2]);
@@ -122,7 +124,11 @@ $(document).ready(function () {
                 LayerFun('loginSuccessful');
                 var token = response.token;
                 SetCookie('user_token', token);
-                window.location.href = 'account.html';
+                if (!leaderBoard) {
+                    window.location.href = 'account.html';
+                }else {
+                    window.location.href = "../leaderBoard/leaderboard.html";
+                }
             }
         }, function (response) {
             ActiveClick($this, _text);

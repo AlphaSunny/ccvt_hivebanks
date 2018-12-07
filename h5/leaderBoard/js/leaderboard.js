@@ -1,5 +1,17 @@
 $(function () {
     var token = GetCookie("user_token");
+    if (token) {
+        GetUserInfoFun();
+    }
+
+    //获取用户信息
+    function GetUserInfoFun() {
+        UserInformation(token, function (response) {
+            console.log(response);
+        }, function (response) {
+            alert(response.errmsg);
+        })
+    }
 
     var tr = "", limit = 10, offset = 0, total = "", page = 1;
 
@@ -99,6 +111,11 @@ $(function () {
         $(".pre_btn").attr("disabled", false);
 
         Fun(limit, offset);
+    });
+
+    //登录
+    $(".login").click(function () {
+        window.location.href = "../user/login.html?leaderBoard=leaderBoard";
     });
 
     //查看聊天内容
