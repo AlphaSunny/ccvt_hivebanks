@@ -13,7 +13,7 @@ $db = new DB_COM();
 //}
 
 // 时间
-$time = "9:0:10";
+$time = "9:00:10";
 //把中文冒号替换英文冒号
 $time = str_replace('：', ':', $time);
 
