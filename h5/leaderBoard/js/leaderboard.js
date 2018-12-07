@@ -184,7 +184,7 @@ $(function () {
                     $(".max_give_like").text(response.rows.max_give_like);
                 }
                 if(state == "2"){
-                    $(".all_cai").text(response.rows.all_zan);
+                    $(".all_cai").text(response.rows.all_cai);
                     $(".max_give_no_like").text(response.rows.max_give_no_like);
                 }
             }
