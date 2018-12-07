@@ -130,6 +130,7 @@ $(function () {
     //查看聊天内容
     $(document).on("click", ".link_name", function () {
         var wechat = $(this).text();
+        console.log(encodeURI(wechat));
         window.location.href = "chat_person.html?wechat=" + encodeURI(wechat);
     });
 
