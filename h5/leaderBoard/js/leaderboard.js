@@ -9,7 +9,8 @@ $(function () {
         UserInformation(token, function (response) {
             if (response.errcode == "0") {
                 $(".login").remove();
-                $(".amount").text(response.rows.base_amount).fadeIn();
+                $(".amount").text(response.rows.base_amount);
+                $(".amount_box").fadeIn();
             }
         }, function (response) {
             alert(response.errmsg);
