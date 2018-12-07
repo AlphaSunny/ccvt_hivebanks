@@ -152,8 +152,8 @@ $(function () {
 
     $(document).on("click", ".message_icon", function () {
         var wechat = $(this).parents("tr").find(".link_name").text();
-        // $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat))).fadeIn();
-        window.location.href = "chat_person.html?wechat=" + encodeURI(encodeURI(wechat));
+        $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat))).fadeIn();
+        // window.location.href = "chat_person.html?wechat=" + encodeURI(encodeURI(wechat));
     });
 
     //赞/踩
