@@ -40,7 +40,11 @@ $rows = get_log_balance($us_id,$offset,$limit);
 $new_row = array();
 
 foreach ($rows as $row){
-    $row["tx_amount"] = $row["tx_amount"] / get_la_base_unit();
+    if ($row['tx_type']=='give_like' || $row['tx_type']=='ccvt_inte'){
+        $row["tx_amount"] = -($row["tx_amount"] / get_la_base_unit());
+    }else{
+        $row["tx_amount"] = $row["tx_amount"] / get_la_base_unit();
+    }
     $row["credit_balance"] = $row["credit_balance"] / get_la_base_unit();
     $new_row[] = $row;
 }
