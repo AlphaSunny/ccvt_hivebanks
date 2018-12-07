@@ -24,6 +24,16 @@ chk_empty_args('GET', $args);
 $token = get_arg_str('GET', 'token',128);
 // 时间
 $time = get_arg_str('GET', 'time');
+//把中文冒号替换英文冒号
+$time = str_replace('：', ':', $time);
+
+$tmparray = explode(':',$time);
+
+if(count($tmparray)>1){
+    exit_error('139','格式错误');
+}
+
+
 // 群组id
 $group_id = get_arg_str('GET', 'group_id');
 // 群组id

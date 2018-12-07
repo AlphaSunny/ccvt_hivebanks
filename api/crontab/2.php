@@ -12,26 +12,36 @@ $db = new DB_COM();
 //    echo "发言数:".$v['count']."&nbsp;&nbsp;&nbsp;&nbsp;".$v['name']."<br />";
 //}
 
+// 时间
+$time = "9:10";
+//把中文冒号替换英文冒号
+$time = str_replace('：', ':', $time);
+
+$tmparray = explode(':',$time);
+echo $tmparray;die;
+if(count($tmparray)>1){
+    exit_error('139','格式错误');
+}
 
 
 //等级规则数据
-for ($i=0;$i<=10;$i++){
-    for ($j=1;$j<=10;$j++){
-        $data['us_level'] = $i;
-        $data['group_level'] = $j;
-        if ($i==0){
-            $data['one_send'] = $j;
-            $data['max_send'] = $j*5;
-        }elseif ($i==1){
-            $data['one_send'] = $j*2;
-            $data['max_send'] = $j*2*5;
-        }else{
-            $data['one_send'] = $j*$i*2;
-            $data['max_send'] = $j*$i*2*5;
-        }
-        $data['ctime'] = date('Y-m-d H:i:s');
-        $sql = $db->sqlInsert("bot_level_rules", $data);
-        $id = $db->query($sql);
-    }
-}
+//for ($i=0;$i<=10;$i++){
+//    for ($j=1;$j<=10;$j++){
+//        $data['us_level'] = $i;
+//        $data['group_level'] = $j;
+//        if ($i==0){
+//            $data['one_send'] = $j;
+//            $data['max_send'] = $j*5;
+//        }elseif ($i==1){
+//            $data['one_send'] = $j*2;
+//            $data['max_send'] = $j*2*5;
+//        }else{
+//            $data['one_send'] = $j*$i*2;
+//            $data['max_send'] = $j*$i*2*5;
+//        }
+//        $data['ctime'] = date('Y-m-d H:i:s');
+//        $sql = $db->sqlInsert("bot_level_rules", $data);
+//        $id = $db->query($sql);
+//    }
+//}
 ?>
