@@ -127,7 +127,7 @@ function log_com_transfer($us_id,$amount){
     $data['flag'] = 11;
     $data['transfer_type'] = 'ba-us';
     $data['transfer_state'] = 1;
-    $data['tx_detail'] = 'big_account_lock';
+    $data['tx_detail'] = '分配计划';
     $data['give_or_receive'] = 1;
     $data['ctime'] = time();
     $data['utime'] = date('Y-m-d H:i:s',time());
@@ -144,7 +144,7 @@ function log_com_transfer($us_id,$amount){
     $dat['flag'] = 11;
     $dat['transfer_type'] = 'ba-us';
     $dat['transfer_state'] = 1;
-    $dat['tx_detail'] = 'big_account_lock';
+    $dat['tx_detail'] = '分配计划';
     $dat['give_or_receive'] = 2;
     $dat['ctime'] = time();
     $dat['utime'] = date('Y-m-d H:i:s',time());
