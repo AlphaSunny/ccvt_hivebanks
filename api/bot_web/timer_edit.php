@@ -26,18 +26,28 @@ $token = get_arg_str('GET', 'token',128);
 $timer_id = get_arg_str('GET', 'timer_id');
 // 时间
 $time = get_arg_str('GET', 'time');
+//把中文冒号替换英文冒号
+$time = str_replace('：', ':', $time);
+
+$tmparray = explode(':',$time);
+
+if(count($tmparray)>2){
+    exit_error('139','格式错误');
+}
+
+$time = $tmparray[0].":".($tmparray[1]<10 ? intval($tmparray[1]) : $tmparray[1]);
 // 群组id
 $group_id = get_arg_str('GET', 'group_id');
-// 群组id
+// 内容
 $content = $_REQUEST['content'];
 //验证token
-$ba_id = check_token($token);
+$us_id = check_token($token);
 
 
 $data['timer_id'] = $timer_id;
 $data['time'] = $time;
 $data['content'] = $content;
-$data['ba_id'] = $ba_id;
+$data['us_id'] = $us_id;
 //修改群组
 $row = save_timer($data);
 if (!$row){
