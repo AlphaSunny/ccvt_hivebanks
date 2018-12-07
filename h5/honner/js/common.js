@@ -108,9 +108,9 @@ function CallApi(api_url, post_data, suc_func, error_func) {
     });
 }
 
-// Call the API leaderBoard
+// Call the API honner
 function CallLeaderBoardsApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/api/leaderBoard/';
+    var api_site = config_api_url + '/api/honner/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -138,7 +138,7 @@ function CallLeaderBoardsApi(api_url, post_data, suc_func, error_func) {
     });
 }
 
-//get leaderBoard
+//get honner
 function GetLeaderBoard(limit, offset, suc_func, error_func) {
     var api_url = 'leaderboard.php',
         post_data = {

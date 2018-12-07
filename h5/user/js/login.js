@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var leaderBoard = GetQueryString("leaderBoard");
+    var leaderBoard = GetQueryString("honner");
 
     function GetLoginCookie(name) {
         var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
@@ -127,7 +127,7 @@ $(document).ready(function () {
                 if (!leaderBoard) {
                     window.location.href = 'account.html';
                 }else {
-                    window.location.href = "../leaderBoard/leaderboard.html";
+                    window.location.href = "../honner/honner.html";
                 }
             }
         }, function (response) {
@@ -299,7 +299,7 @@ $(document).ready(function () {
                 if (!leaderBoard) {
                     window.location.href = 'account.html';
                 }else {
-                    window.location.href = "../leaderBoard/leaderboard.html";
+                    window.location.href = "../honner/honner.html";
                 }
             }
         }, function (response) {
