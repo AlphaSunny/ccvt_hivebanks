@@ -5,7 +5,11 @@
  * Date: 2018/12/6
  * Time: 下午3:24
  */
-error_reporting(1);
+
+ini_set("display_errors", "On");
+error_reporting(E_ALL | E_STRICT);
+
+
 require_once '../inc/common.php';
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
