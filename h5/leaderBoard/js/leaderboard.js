@@ -151,14 +151,14 @@ $(function () {
             $(".cai_h3").fadeOut("fast");
             $(".cai_text_box").fadeOut("fast");
             $(".customize_modal_confirm_btn").addClass("zan_confirm").removeClass("cai_confirm");
-            _this_already_zan_num = $(this).siblings(".zan_num").text();
+            _this_already_zan_num = parseInt($(this).siblings(".zan_num").text());
         } else if ($(this).hasClass("cai_icon")) {
             $(".cai_h3").fadeIn("fast");
             $(".cai_text_box").fadeIn("fast");
             $(".zan_h3").fadeOut("fast");
             $(".zan_text_box").fadeOut("fast");
             $(".customize_modal_confirm_btn").addClass("cai_confirm").removeClass("zan_confirm");
-            _this_already_cai_num = $(this).siblings(".cai_num").text();
+            _this_already_cai_num = parseInt($(this).siblings(".cai_num").text());
         }
         $("#customize_modal").slideDown();
         give_us_id = $(this).siblings(".us_id").text();
@@ -167,7 +167,15 @@ $(function () {
     //确定点赞/cai
     var give_num = "", state = "";
     $(".customize_modal_confirm_btn").click(function () {
-        give_num = $(".zan_cai_input").val();
+        give_num = parse($(".zan_cai_input").val());
+        if (give_num.length <= 0) {
+            layer.msg("请输入数量");
+            return;
+        }
+        if (!(/^[1-9]\d*$/).test(give_num)) {
+            layer.msg("请输入正确的数值");
+            return;
+        }
         if ($(this).hasClass("zan_confirm")) {
             state = "1";
             ConfirmZanCaiFun();
