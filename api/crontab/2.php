@@ -18,7 +18,7 @@ $time = "9:10";
 $time = str_replace('：', ':', $time);
 
 $tmparray = explode(':',$time);
-echo $tmparray;die;
+print_r($tmparray);die;
 if(count($tmparray)>1){
     exit_error('139','格式错误');
 }
