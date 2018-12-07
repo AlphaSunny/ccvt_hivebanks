@@ -1,17 +1,17 @@
 <?php
 
-require_once '../../inc/common.php';
-require_once 'db/page.php';
+require_once '../inc/common.php';
+require_once 'db/us_asset.php';
 
 
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 /*
-========================== 点赞功能 ==========================
+========================== 点赞(踩)功能 ==========================
 GET参数
   token                用户token
-  us_id              点赞的用户id
+  us_id              点赞(踩)的用户id
 
 返回
   errcode = 0     请求成功
