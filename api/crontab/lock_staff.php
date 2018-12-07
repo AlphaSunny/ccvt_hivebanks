@@ -102,7 +102,7 @@ function log_com_base($us_id,$amount){
     $uata["ctime"] = $ctime;
     $uql = $db->sqlInsert("com_base_balance", $uata);
 
-    if($db->query($sql)&&$db->query($uata))
+    if($db->query($sql)&&$db->query($uql))
         return true;
     die('com_base');
     return false;
