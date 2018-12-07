@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
 }
+html, body{
+    overflow-y: auto;
+}
 
 html, body, #particles-js {
     /*background: #f2f5f5 !important;*/
