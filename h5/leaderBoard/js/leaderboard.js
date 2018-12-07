@@ -33,8 +33,8 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows;
                 total = response.total;
-                // page = Math.floor(total / 10);
                 $.each(data, function (i, val) {
+                    console.log("666");
                     if (data[i].sorting == "1") {
                         tr += "<tr>" +
                             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>" +
