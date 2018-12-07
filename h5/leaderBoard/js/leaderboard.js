@@ -25,7 +25,11 @@ $(function () {
     var tr = "", limit = 10, offset = 0, total = "", page = 1;
 
     function Fun(limit, offset) {
+        var index = layer.load(1, {
+            shade: [0.1, '#fff']
+        });
         GetLeaderBoard(limit, offset, function (response) {
+            layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
                 total = response.total;
