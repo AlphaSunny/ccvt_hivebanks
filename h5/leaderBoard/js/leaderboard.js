@@ -138,7 +138,7 @@ $(function () {
     });
 
     //赞/踩
-    var give_us_id = "", _this_already_zan_num = "", _this_already_cai_num = "", amount = "";
+    var give_us_id = "", _this_click_zan_num = "",_this_click_cai_num = "", _this_already_zan_num = "", _this_already_cai_num = "", amount = "";
     $(document).on("click", ".zan_icon,.cai_icon", function () {
         if (!token) {
             alert("操作之前请先登录!");
@@ -152,6 +152,7 @@ $(function () {
             $(".cai_text_box").fadeOut("fast");
             $(".customize_modal_confirm_btn").addClass("zan_confirm").removeClass("cai_confirm");
             _this_already_zan_num = parseInt($(this).siblings(".zan_num").text());
+            _this_click_zan_num = $(this).siblings(".zan_num");
         } else if ($(this).hasClass("cai_icon")) {
             $(".cai_h3").fadeIn("fast");
             $(".cai_text_box").fadeIn("fast");
@@ -159,6 +160,7 @@ $(function () {
             $(".zan_text_box").fadeOut("fast");
             $(".customize_modal_confirm_btn").addClass("cai_confirm").removeClass("zan_confirm");
             _this_already_cai_num = parseInt($(this).siblings(".cai_num").text());
+            _this_click_cai_num = $(this).siblings(".cai_num");
         }
         $("#customize_modal").slideDown();
         give_us_id = $(this).siblings(".us_id").text();
@@ -202,11 +204,11 @@ $(function () {
             if (response.errcode == "0") {
                 $(".amount").text(amount -= give_num);
                 if (state == "1") {
-                    $(".zan_num").text(_this_already_zan_num += give_num);
+                    _this_click_zan_num.text(_this_already_zan_num += give_num);
                     layer.msg("点赞成功");
                 }
                 if (state == "2") {
-                    $(".cai_num").text(_this_already_cai_num += give_num);
+                    _this_click_cai_num.text(_this_already_cai_num += give_num);
                     layer.msg("踩成功");
                 }
             }
