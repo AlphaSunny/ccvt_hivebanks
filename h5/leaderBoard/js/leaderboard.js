@@ -167,7 +167,6 @@ $(function () {
     //确定点赞/cai
     var give_num = "", state = "";
     $(".customize_modal_confirm_btn").click(function () {
-        give_num = parseInt($(".zan_cai_input").val());
         if (give_num.length <= 0) {
             layer.msg("请输入数量");
             return;
@@ -176,6 +175,7 @@ $(function () {
             layer.msg("请输入正确的数值");
             return;
         }
+        give_num = parseInt($(".zan_cai_input").val());
         if ($(this).hasClass("zan_confirm")) {
             state = "1";
             ConfirmZanCaiFun();
