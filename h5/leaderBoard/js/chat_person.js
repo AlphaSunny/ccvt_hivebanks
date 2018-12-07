@@ -65,6 +65,8 @@ $(function () {
     $(".close_icon").click(function () {
         $(".search_box").fadeOut();
         $(".title_search_box").fadeIn();
+        $(".search_input").val("");
+        GetWeChatFun(search_content);
     })
 
 
