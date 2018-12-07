@@ -43,6 +43,12 @@ nav ul a {
     color: #1E9FFF;
 }
 
+/*iframe*/
+iframe{
+    position: fixed;
+    z-index: 999;
+}
+
 .glory_box {
     position: absolute;
     width: 100%;

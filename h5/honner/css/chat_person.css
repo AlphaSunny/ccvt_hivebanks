@@ -4,7 +4,8 @@
 }
 
 html, body, #particles-js {
-    background: #f2f5f5 !important;
+    /*background: #f2f5f5 !important;*/
+    background: #000000;
 }
 
 .chat_content {
