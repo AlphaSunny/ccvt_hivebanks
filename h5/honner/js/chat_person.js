@@ -70,9 +70,9 @@ $(function () {
         GetWeChatFun(search_content);
     });
 
-    // $(document).on("click", ".close_page", function () {
-    //     console.log("999");
-    //     $("iframe").attr("display", "none");
-    // });
+    $(document).on("click", ".close_page", function () {
+        console.log("999");
+        $("iframe").attr("display", "none");
+    });
 
 });
