@@ -15,6 +15,7 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 define('UNIT','100000000');
+define('FLAG',8);
 define('BA_ID','6C69520E-E454-127B-F474-452E65A3EE75');
 lock_auto();
 
@@ -34,8 +35,8 @@ function lock_auto(){
         $db->query($sql);
         $res = $db->fetchRow();
         if($res){
-            if(!(ba_cut($tmp_amount)&&us_add($tmp_amount,$res['us_id'])&&log_info($tmp_phone)&&log_com_base($res['us_id'],$tmp_amount)
-            &&log_com_transfer($res['us_id'],$tmp_amount)))
+            if(!(ba_cut($tmp_amount)&&us_add($tmp_amount,$res['us_id'])&&log_com_base($res['us_id'],$tmp_amount)
+            &&log_com_transfer($res['us_id'],$tmp_amount))&&log_info($tmp_phone))
                 die($flag.'failed');
         }
         $flag ++;
@@ -45,7 +46,7 @@ function lock_auto(){
 
 function ba_cut($amount){
     $db = new DB_COM();
-    $sql = "update ba_base set base_amount = base_amount - $amount where  ba_id= '6C69520E-E454-127B-F474-452E65A3EE75'";
+    $sql = "update ba_base set base_amount = base_amount - $amount*".UNIT." where  ba_id= " .BA_ID;
     $db->query($sql);
     $res = $db->affectedRows();
     if($res)
@@ -57,7 +58,7 @@ function ba_cut($amount){
 }
 function us_add($amount,$us_id){
     $db = new DB_COM();
-    $sql = "update us_base set lock_amount = lock_amount+$amount where us_id='{$us_id}'";
+    $sql = "update us_base set lock_amount = lock_amount+ $amount * ".UNIT." where us_id='{$us_id}'";
     $db->query($sql);
     if($db->affectedRows())
         return true;
@@ -121,15 +122,15 @@ function log_com_base($us_id,$amount){
 function log_com_transfer($us_id,$amount){
 
     $db = new DB_COM();
-    $data['hash_id'] = hash('md5', BA_ID . 11 . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $data['hash_id'] = hash('md5', BA_ID . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash(BA_ID);
     $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = BA_ID;
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $amount*UNIT;
     $data['credit_balance'] = get_ba_account(BA_ID-$amount);
-    $data['tx_hash'] = hash('md5', BA_ID . 11 . get_ip() . mt() . date('Y-m-d H:i:s'));
-    $data['flag'] = 11;
+    $data['tx_hash'] = hash('md5', BA_ID . FLAG . get_ip() . mt() . date('Y-m-d H:i:s'));
+    $data['flag'] = FLAG;
     $data['transfer_type'] = 'ba-us';
     $data['transfer_state'] = 1;
     $data['tx_detail'] = '分配计划';
@@ -138,15 +139,15 @@ function log_com_transfer($us_id,$amount){
     $data['utime'] = date('Y-m-d H:i:s',time());
     $sql = $db->sqlInsert("com_transfer_request", $data);
 
-    $dat['hash_id'] = hash('md5', $us_id . 11 . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $dat['hash_id'] = hash('md5', $us_id . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($us_id);
     $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = BA_ID;
     $dat['tx_amount'] = $amount*UNIT;
     $dat['credit_balance'] = get_us_account($us_id)+$dat['tx_amount'];
-    $dat['tx_hash'] = hash('md5', $us_id . 11 . get_ip() . mt() . date('Y-m-d H:i:s'));
-    $dat['flag'] = 11;
+    $dat['tx_hash'] = hash('md5', $us_id . FLAG . get_ip() . mt() . date('Y-m-d H:i:s'));
+    $dat['flag'] = FLAG;
     $dat['transfer_type'] = 'ba-us';
     $dat['transfer_state'] = 1;
     $dat['tx_detail'] = '分配计划';
