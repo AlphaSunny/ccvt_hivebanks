@@ -168,3 +168,17 @@ function  get_recharge_pre_hash($ba_id)
         return 0;
     return $hash_id;
 }
+
+
+
+//获取ba余额
+function get_ba_account($ba_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from ba_base WHERE ba_id='{$ba_id}' limit 1";
+    $db->query($sql);
+    $base_amount = $db -> getField($sql,'base_amount');
+    if($base_amount == null)
+        return 0;
+    return $base_amount;
+}
+
