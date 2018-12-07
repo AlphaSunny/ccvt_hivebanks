@@ -14,7 +14,7 @@ $(function () {
                 $.each(data, function (i, val) {
                     if (data[i].type == "Text") {
                         li += "<li class='chat_item'>" +
-                            "<p class='chat_item_name'>" + data[i].bot_nickname + "</p>" +
+                            "<p class='chat_item_name'>" + data[i].bot_nickname.substr(0,1) + "</p>" +
                             "<div class='chat_item_content_box'>" +
                             "<p class='name'><span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;<span>" + data[i].bot_send_time + "</span></p>" +
                             "<p class='chat_item_content'>" + data[i].bot_content + "</p>" +
@@ -23,7 +23,7 @@ $(function () {
                     }
                     if (data[i].type == "Picture") {
                         li += "<li class='chat_item'>" +
-                            "<p class='chat_item_name'>" + data[i].bot_nickname + "</p>" +
+                            "<p class='chat_item_name'>" + data[i].bot_nickname.substring(0,1) + "</p>" +
                             "<div class='chat_item_content_box'>" +
                             "<p class='name'><span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;<span>" + data[i].bot_send_time + "</span></p>" +
                             "<p class='chat_item_content'><img src='" + data[i].bot_content + "' alt=''></p>" +
