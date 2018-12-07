@@ -1,5 +1,24 @@
 <?php
 
+
+//======================================
+// 函数: 检查查询是否是当前用户
+// 参数: account      账号
+//      variable      绑定name
+// 返回: row           最新信息数组
+//======================================
+function check_us_group($us_id,$group_id)
+{
+    $db = new DB_COM();
+    $sql = "SELECT us_id FROM bot_group WHERE id = '{$group_id}' limit 1";
+    $db -> query($sql);
+    $row = $db -> getField($sql,'us_id');
+    if ($row!=$us_id){
+        return false;
+    }
+    return true;
+}
+
 //======================================
 // 函数: 获取群组列表
 // 参数: account      账号
@@ -31,6 +50,9 @@ function check_group_name($ba_id,$group_name,$vail,$id='')
     $row = $db -> fetchRow();
     return $row;
 }
+
+
+
 //======================================
 // 函数: 添加群组
 // 参数: group_name      群组名称

@@ -24,7 +24,15 @@ chk_empty_args('GET', $args);
 // 用户token
 $token = get_arg_str('GET', 'token',128);
 //验证token
-check_token($token);
+$us_id = check_token($token);
+
+// 群组id
+$group_id = get_arg_str('GET', 'group_id');
+//判断查询的群是否属于当前用户
+$result = check_us_group($us_id,$group_id);
+if (!$result){
+    exit_error('139','非法操作');
+}
 
 // 群组id
 $group_id = get_arg_str('GET', 'group_id');
