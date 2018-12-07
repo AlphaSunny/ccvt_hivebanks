@@ -99,8 +99,8 @@ $(function () {
     Fun(limit, offset);
 
     setInterval(function () {
-
-    }, 600000);
+        Fun(limit, offset);
+    }, 1000);
 
     //上一页
     $(".pre_btn").click(function () {
