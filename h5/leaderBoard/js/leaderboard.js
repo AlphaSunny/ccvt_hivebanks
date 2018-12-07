@@ -206,14 +206,6 @@ $(function () {
             return;
         }
         ConfirmZanCaiFun();
-        // if ($(this).hasClass("zan_confirm")) {
-        //     state = "1";
-        //     ConfirmZanCaiFun();
-        // }
-        // if ($(this).hasClass("cai_confirm")) {
-        //     state = "2";
-        //     ConfirmZanCaiFun();
-        // }
     });
 
     //取消

@@ -77,6 +77,7 @@ $.ajax({
 
     }
 });
+
 // Call API common function
 function CallApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/user/';
@@ -148,10 +149,11 @@ function GetLeaderBoard(limit, offset, suc_func, error_func) {
 }
 
 //get GetChatPerson
-function GetChatPerson(wechat, suc_func, error_func) {
+function GetChatPerson(wechat, search_content, suc_func, error_func) {
     var api_url = 'chat_person.php',
         post_data = {
-            "wechat": wechat
+            "wechat": wechat,
+            "search_content": search_content
         };
     CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
 }
@@ -167,6 +169,7 @@ function ConfirmZanCai(token, give_us_id, give_num, state, suc_func, error_func)
         };
     CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
 }
+
 //already zan cai
 function AlreadyZanCaiNum(token, suc_func, error_func) {
     var api_url = 'praise_or_pointon_num.php',
@@ -175,6 +178,7 @@ function AlreadyZanCaiNum(token, suc_func, error_func) {
         };
     CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
 }
+
 // user information
 function UserInformation(token, suc_func, error_func) {
     var api_url = 'info_base.php',

@@ -9,28 +9,28 @@
     <link rel="stylesheet" href="../assets/js/layer/layer.css">
     <link rel="stylesheet" href="css/chat_person.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="//at.alicdn.com/t/font_952938_73tq507wm05.js"></script>
+    <script src="//at.alicdn.com/t/font_952938_j1fzzakgbk.js"></script>
 </head>
 <body>
 <div class="chat_title_box">
-    <h1><span class="person_name"></span>-聊天内容</h1>
-</div>
-<div class="chat_content">
-    <ul class="chat_item_ul">
-        <!--<li class="chat_item">-->
-            <!--<p class="chat_item_name">Edwin</p>-->
-            <!--<div class="chat_item_content_box">-->
-                <!--<p class="name"><span>edwin</span>&nbsp;&nbsp;<span>2018/9/9 12:00</span></p>-->
-                <!--<p class="chat_item_content">-->
-                    <!--你好世界！欢迎来到CCVT项目发布会现场-->
-                    <!--你好世界！欢迎来到CCVT项目发布会现场-->
-                    <!--你好世界！欢迎来到CCVT项目发布会现场-->
-                <!--</p>-->
-            <!--</div>-->
-        <!--</li>-->
-    </ul>
+    <div class="title_search_box">
+        <h1><span class="person_name"></span>-聊天内容</h1>
+        <p><svg class='icon search_icon' aria-hidden='true'><use xlink:href='#icon-search'></use></svg></p>
+    </div>
+
+    <!--搜索-->
+    <div class="search_box none">
+        <div class="input_box">
+            <svg class='icon close_icon' aria-hidden='true'><use xlink:href='#icon-close'></use></svg>
+            <input type="text" class="search_input" autofocus="autofocus">
+            <button class="search_btn">搜索</button>
+        </div>
+    </div>
 </div>
 
+<div class="chat_content">
+    <ul class="chat_item_ul"></ul>
+</div>
 
 <div id="particles-js"></div>
 
