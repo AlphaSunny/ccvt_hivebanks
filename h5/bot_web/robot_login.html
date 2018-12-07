@@ -90,14 +90,14 @@
                 <div class="success_box">
                     <h1>微信机器人已登录，请勿重新登录。</h1>
                     <div class='flex center'>
-                    <p>最近一次登录时间:<span class='login_time font-bold'></span></p>
-                    <p class='margin-left-2'>已登录运行时间:<span class='elapsed_time font-bold'></span></p>
-                    <p class='margin-left-2'>已处理<span class='font-bold count'></span>条数据</p>
-                    </div>
+                        <p>最近一次登录时间:<span class='login_time font-bold'></span></p>
+                        <p class='margin-left-2'>已登录运行时间:<span class='elapsed_time font-bold'></span></p>
+                        <p class='margin-left-2'>已处理<span class='font-bold count'></span>条数据</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 </main>
@@ -132,18 +132,15 @@
                     $(".login_time").text(response.rows.login_time);
                     $(".elapsed_time").text(response.rows.elapsed_time);
                     $(".count").text(response.rows.count);
-                    // $(".qr_box").html("<div>" +
-                    //     "<h1>微信机器人已登录，请勿重新登录。</h1>" +
-                    //     "<div class='flex center'>" +
-                    //     "<p>最近一次登录时间:<span class='login_time font-bold'>" + response.rows.login_time + "</span></p>" +
-                    //     "<p class='margin-left-2'>已登录运行时间:<span class='elapsed_time font-bold'>" + response.rows.elapsed_time + "</span></p>" +
-                    //     "<p class='margin-left-2'>已处理<span class='font-bold'>" + response.rows.count + "</span>条数据</p>" +
-                    //     "</div>" +
-                    //     "</div>"
-                    // )
                 }
             }
-        })
+        });
+
+        if (!robot_alive == "1") {
+            setTimeout(function () {
+                window.location.reload();
+            },10000);
+        }
     }
 
     GetQr();
