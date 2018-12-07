@@ -100,7 +100,7 @@ $(function () {
 
     setInterval(function () {
         Fun(limit, offset);
-    }, 60000);
+    }, 30000);
 
     //上一页
     $(".pre_btn").click(function () {
