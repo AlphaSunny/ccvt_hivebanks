@@ -135,7 +135,9 @@ table td{
     color: #ffffff!important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4)!important;
 }
-
+.success_box{
+    display: none;
+}
 /*qr_img*/
 #qr_img{
     margin: auto;
