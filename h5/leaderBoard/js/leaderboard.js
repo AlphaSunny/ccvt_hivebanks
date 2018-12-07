@@ -167,7 +167,7 @@ $(function () {
     //确定点赞/cai
     var give_num = "", state = "";
     $(".customize_modal_confirm_btn").click(function () {
-        give_num = parse($(".zan_cai_input").val());
+        give_num = parseInt($(".zan_cai_input").val());
         if (give_num.length <= 0) {
             layer.msg("请输入数量");
             return;
