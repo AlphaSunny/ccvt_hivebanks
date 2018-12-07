@@ -22,6 +22,9 @@ chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token',128);
+//验证token
+$us_id = check_token($token);
+
 // 时间
 $time = get_arg_str('GET', 'time');
 //把中文冒号替换英文冒号
@@ -37,10 +40,9 @@ $time = $tmparray[0].":".($tmparray[1]<10 ? intval($tmparray[1]) : $tmparray[1])
 
 // 群组id
 $group_id = get_arg_str('GET', 'group_id');
-// 群组id
+// 内容
 $content = $_REQUEST['content'];
-//验证token
-$ba_id = check_token($token);
+
 
 $data['time'] = $time;
 $data['content'] = $content;
