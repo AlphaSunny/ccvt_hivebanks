@@ -137,6 +137,10 @@ button:hover {
     overflow: hidden;
 }
 
+.message_icon {
+    cursor: pointer;
+}
+
 .zan_icon, .cai_icon {
     cursor: pointer;
     font-size: 1.5rem;
