@@ -21,7 +21,8 @@ $tmparray = explode(':',$time);
 print_r($tmparray);
 print_r($tmparray[0]);
 
-
+$time = $tmparray[0].":".$tmparray[1]<10 ? intval($tmparray[1]) : $tmparray[1];
+echo $time;
 
 
 //等级规则数据
