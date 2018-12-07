@@ -2,7 +2,7 @@ $(function () {
     var wechat = GetQueryString("wechat");
     $(".person_name").text(decodeURI(wechat));
 
-    GetChatPerson(wechat, function (response) {
+    GetChatPerson(decodeURI(wechat), function (response) {
         if (response.errcode == "0") {
             var data = response.rows;
             if (data.length <= 0) {
