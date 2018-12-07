@@ -368,7 +368,7 @@ function praise_or_pointon_num($us_id)
     $all_zan = $db->getField($sql,'all_am');
     if (!$all_zan){$all_zan=0;}
 
-    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND tx_detail='点踩'";
+    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND tx_detail='点踩'";
     $db->query($sql);
     $all_cai = $db->getField($sql,'all_am');
     if (!$all_cai){$all_cai=0;}

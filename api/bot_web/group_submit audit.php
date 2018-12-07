@@ -12,15 +12,14 @@ header("Content-Type:application/json;charset=utf-8");
 GET参数
   token                用户token
   group_id             群组id
-  group_type_id        
+  group_type_id        类型id
 
 返回
-  errcode = 0     请求成功
-  rows                 记录数组
+  errcode = 0          请求成功
 */
 
 php_begin();
-$args = array('token');
+$args = array('token','group_id','group_type_id');
 chk_empty_args('GET', $args);
 
 // 用户token
