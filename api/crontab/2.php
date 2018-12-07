@@ -18,10 +18,10 @@ $time = "9:05:10";
 $time = str_replace('：', ':', $time);
 
 $tmparray = explode(':',$time);
-print_r($tmparray);die;
-if(count($tmparray)>2){
-    exit_error('139','格式错误');
-}
+print_r($tmparray);
+print_r($tmparray[0]);
+
+
 
 
 //等级规则数据
