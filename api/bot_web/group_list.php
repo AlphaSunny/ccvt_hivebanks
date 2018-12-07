@@ -24,10 +24,10 @@ chk_empty_args('GET', $args);
 // 用户token
 $token = get_arg_str('GET', 'token',128);
 //验证token
-$ba_id = check_token($token);
+$us_id = check_token($token);
 
 // 交易记录数组
-$rows = get_group_list($ba_id);
+$rows = get_group_list($us_id);
 foreach ($rows as $k=>$v){
     $rows[$k]['del'] = $v['is_del']==1 ? "运行中" : "关闭";
     $rows[$k]['flirt'] = $v['is_flirt']==1 ? "运行中" : "关闭";

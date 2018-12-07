@@ -6,10 +6,10 @@
 //      variable      绑定name
 // 返回: row           最新信息数组
 //======================================
-function get_group_list($ba_id)
+function get_group_list($us_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM bot_group WHERE ba_id = '{$ba_id}'  ORDER BY intime ASC ";
+    $sql = "SELECT * FROM bot_group WHERE us_id = '{$us_id}' AND is_audit=2 AND is_test=1 ORDER BY intime ASC ";
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;
