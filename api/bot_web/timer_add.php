@@ -22,19 +22,32 @@ chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token',128);
+//验证token
+$us_id = check_token($token);
+
 // 时间
 $time = get_arg_str('GET', 'time');
+//把中文冒号替换英文冒号
+$time = str_replace('：', ':', $time);
+
+$tmparray = explode(':',$time);
+
+if(count($tmparray)>2){
+    exit_error('139','格式错误');
+}
+
+$time = $tmparray[0].":".($tmparray[1]<10 ? intval($tmparray[1]) : $tmparray[1]);
+
 // 群组id
 $group_id = get_arg_str('GET', 'group_id');
-// 群组id
+// 内容
 $content = $_REQUEST['content'];
-//验证token
-$ba_id = check_token($token);
+
 
 $data['time'] = $time;
 $data['content'] = $content;
 $data['intime'] = time();
-$data['ba_id'] = $ba_id;
+$data['us_id'] = $us_id;
 $data['group_id'] = $group_id;
 // 添加群组
 $row = add_timer($data);

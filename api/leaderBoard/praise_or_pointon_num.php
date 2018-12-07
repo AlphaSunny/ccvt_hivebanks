@@ -34,7 +34,6 @@ $rows = praise_or_pointon_num($us_id);
 
 $rows = array_merge($rows,get_praise_pointon_maxnum());
 
-print_r($rows);
 
 // 返回数据做成
 $rtn_ary = array();

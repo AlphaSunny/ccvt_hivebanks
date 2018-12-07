@@ -12,10 +12,15 @@ html, body, #particles-js {
 }
 
 .chat_title_box {
+    position: relative;
     background: rgba(0, 0, 0, 1);
     color: #fff;
     text-align: center;
-    padding: 1% 0;
+    height: 4rem;
+}
+
+.chat_title_box h1 {
+    line-height: 4rem;
 }
 
 .chat_item_name {
@@ -73,10 +78,86 @@ p.chat_item_name:after {
     overflow: auto;
 }
 
+/*搜索*/
+.search_box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    top: 0;
+    left: 0;
+    line-height: 4rem;
+}
+
+.search_box input {
+    border: unset;
+    background: transparent;
+    border-bottom: 2px solid #ffffff;
+    width: 50%;
+    outline: unset;
+    height: 2rem;
+    padding: 5px;
+    caret-color: #ffffff;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.search_box .search_btn {
+    width: 5rem;
+    height: 2rem;
+    border-radius: 5px;
+    background: transparent;
+    color: #ffffff;
+    outline: unset;
+    cursor: pointer;
+}
+
+.none {
+    display: none;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.search_icon {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.close_icon {
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 768px) {
+    .search_box {
+        line-height: 3rem;
+    }
+
+    .search_box input {
+        font-size: 0.8rem;
+        height: 1rem;
+    }
+
+    .search_icon {
+        font-size: 1.5rem;
+    }
+
+    .chat_title_box {
+        height: 3rem;
+    }
+
     .chat_title_box h1 {
         font-size: 1.5rem;
         font-weight: 400;
+        line-height: 3rem;
     }
 
     p.chat_item_name:after {

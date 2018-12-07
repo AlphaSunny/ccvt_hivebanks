@@ -138,41 +138,74 @@ $(function () {
     });
 
     //赞/踩
-    var give_us_id = "";
+    var give_us_id = "", state = "",
+        _this_click_zan_num = "",
+        _this_click_cai_num = "",
+        _this_already_zan_num = "",
+        _this_already_cai_num = "",
+        amount = "";
     $(document).on("click", ".zan_icon,.cai_icon", function () {
         if (!token) {
             alert("操作之前请先登录!");
             return;
         }
+        amount = $(".amount").text();
+        AlreadyZanCaiNumFun();
         if ($(this).hasClass("zan_icon")) {
             $(".zan_h3").fadeIn("fast");
             $(".zan_text_box").fadeIn("fast");
             $(".cai_h3").fadeOut("fast");
             $(".cai_text_box").fadeOut("fast");
             $(".customize_modal_confirm_btn").addClass("zan_confirm").removeClass("cai_confirm");
+            _this_already_zan_num = parseInt($(this).siblings(".zan_num").text());
+            _this_click_zan_num = $(this).siblings(".zan_num");
+            state = "1";
         } else if ($(this).hasClass("cai_icon")) {
             $(".cai_h3").fadeIn("fast");
             $(".cai_text_box").fadeIn("fast");
             $(".zan_h3").fadeOut("fast");
             $(".zan_text_box").fadeOut("fast");
             $(".customize_modal_confirm_btn").addClass("cai_confirm").removeClass("zan_confirm");
+            _this_already_cai_num = parseInt($(this).siblings(".cai_num").text());
+            _this_click_cai_num = $(this).siblings(".cai_num");
+            state = "2";
         }
         $("#customize_modal").slideDown();
         give_us_id = $(this).siblings(".us_id").text();
     });
 
+    //已经点赞和踩的次数
+    function AlreadyZanCaiNumFun() {
+        AlreadyZanCaiNum(token, function (response) {
+            if (response.errcode == "0") {
+                console.log(response);
+                if (state == "1") {
+                    $(".all_zan").text(response.rows.all_zan);
+                    $(".max_give_like").text(response.rows.max_give_like);
+                }
+                if (state == "2") {
+                    $(".all_cai").text(response.rows.all_cai);
+                    $(".max_give_no_like").text(response.rows.max_give_no_like);
+                }
+            }
+        }, function (response) {
+            layer.msg(response);
+        })
+    }
+
     //确定点赞/cai
-    var give_num = "", state = "";
+    var give_num = "";
     $(".customize_modal_confirm_btn").click(function () {
-        give_num = $(".zan_cai_input").val();
-        if ($(this).hasClass("zan_confirm")) {
-            state = "1";
-            ConfirmZanCaiFun();
+        give_num = Number($(".zan_cai_input").val());
+        if (give_num.length <= 0) {
+            layer.msg("请输入数量");
+            return;
         }
-        if($(this).hasClass("cai_confirm")){
-            state = "2";
-            ConfirmZanCaiFun();
+        if (!(/^[1-9]\d*$/).test(give_num)) {
+            layer.msg("请输入正确的数值");
+            return;
         }
+        ConfirmZanCaiFun();
     });
 
     //取消
@@ -182,10 +215,25 @@ $(function () {
 
     //赞--》踩--》
     function ConfirmZanCaiFun() {
+        var index = layer.load(1, {
+            shade: [0.1, '#fff']
+        });
         ConfirmZanCai(token, give_us_id, give_num, state, function (response) {
-            console.log(response);
+            $("#customize_modal").slideUp();
+            layer.close(index);
+            if (response.errcode == "0") {
+                $(".amount").text(amount -= give_num);
+                if (state == "1") {
+                    _this_click_zan_num.text(_this_already_zan_num += give_num);
+                    layer.msg("点赞成功");
+                }
+                if (state == "2") {
+                    _this_click_cai_num.text(_this_already_cai_num += give_num);
+                    layer.msg("踩成功");
+                }
+            }
         }, function (response) {
-
+            layer.msg(response.errmsg);
         });
     }
 });

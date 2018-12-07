@@ -66,7 +66,7 @@ function get_chat_list($data)
     $db = new DB_COM();
     $sql = "select b.bot_nickname,b.bot_content,b.bot_send_time,b.type,b.wechat,(select us_id from us_base WHERE wechat=b.wechat limit 1) as us_id from bot_message as b WHERE b.wechat='{$data['wechat']}'";
     if ($data['search_content']!=''){
-        $sql .= " and b.bot_content like '{$data['search_content']}%'";
+        $sql .= " and b.bot_content like '%{$data['search_content']}%'";
     }
     $sql .= " ORDER BY b.bot_create_time ASC ";
     $db->query($sql);
@@ -368,7 +368,7 @@ function praise_or_pointon_num($us_id)
     $all_zan = $db->getField($sql,'all_am');
     if (!$all_zan){$all_zan=0;}
 
-    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND tx_detail='点踩'";
+    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND tx_detail='点踩'";
     $db->query($sql);
     $all_cai = $db->getField($sql,'all_am');
     if (!$all_cai){$all_cai=0;}

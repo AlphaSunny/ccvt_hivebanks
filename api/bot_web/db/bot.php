@@ -6,10 +6,10 @@
 //      variable      绑定name
 // 返回: row           最新信息数组
 //======================================
-function get_group_list($ba_id)
+function get_group_list($us_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM bot_group WHERE ba_id = '{$ba_id}'  ORDER BY intime ASC ";
+    $sql = "SELECT * FROM bot_group WHERE us_id = '{$us_id}' AND is_audit=2 AND is_test=1 ORDER BY intime ASC ";
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;
@@ -114,10 +114,10 @@ function del_group($group_id)
 //      variable      绑定name
 // 返回: row           最新信息数组
 //======================================
-function get_timer_list($ba_id)
+function get_timer_list($us_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT t.id,t.time,t.content,t.is_del,g.name FROM bot_timer as t LEFT JOIN bot_group as g on t.group_id=g.id WHERE g.ba_id = '{$ba_id}' and t.is_del=0  ORDER BY t.intime ASC ";
+    $sql = "SELECT t.id,t.time,t.content,t.is_del,g.name FROM bot_timer as t LEFT JOIN bot_group as g on t.group_id=g.id WHERE g.us_id = '{$us_id}' and t.is_del=0  ORDER BY t.intime ASC ";
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;
@@ -311,4 +311,37 @@ function get_group_temporary_list($us_id)
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
+}
+
+
+//======================================
+// 函数: 判断群组是否已经提交过审核
+//
+// 返回: rows          最新信息数组
+//======================================
+function check_is_submit($group_id,$us_id)
+{
+    $db = new DB_COM();
+    $sql = "select is_apply,name from bot_temporary_group WHERE id='{$group_id}' AND us_id='{$us_id}' limit 1";
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    return $row;
+}
+
+//======================================
+// 函数: 提交过审核
+//
+// 返回: rows          最新信息数组
+//======================================
+function group_submit_audit($data)
+{
+    $db = new DB_COM();
+    $date['name'] = $data['group_name'];
+    $date['us_id'] = $data['us_id'];
+    $date['intime'] = time();
+    $sql = $db->sqlInsert("bot_group", $date);
+    $q_id = $db->query($sql);
+    if ($q_id == 0)
+        return false;
+    return true;
 }
