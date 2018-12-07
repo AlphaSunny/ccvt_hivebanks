@@ -105,12 +105,35 @@ function get_group_info($group_id)
 //
 // 返回: row           最新信息数组
 //======================================
-function get_group_members_list($group_id)
+function get_group_members_list($group_id,$status)
 {
     $db = new DB_COM();
     $sql = "SELECT name,group_name,group_id FROM bot_group_members WHERE group_id='{$group_id}'";
     $db -> query($sql);
     $row = $db -> fetchAll();
+    $end = time();
+    foreach ($row as $k=>$v) {
+        switch ($status){
+            case 1:
+                $start = strtotime(date('Y-m-d 00:00:00'));
+                break;
+            case 2:
+                $start = strtotime(date('Y-m-d 00:00:00', strtotime("-1 day")));
+                $end = strtotime(date('Y-m-d 23:59:59', strtotime("-1 day")));
+                break;
+            case 3:
+                $start = strtotime(date('Y-m-d 00:00:00', strtotime("-3 day")));
+                break;
+            case 4:
+                $start = strtotime(date('Y-m-d 00:00:00', strtotime("-7 day")));
+        }
+        $sql = "select count(bot_message_id) as count from bot_message WHERE wechat='{$v['name']}'";
+        if ($status!=-1){
+            $sql .= " AND bot_create_time between '{$start}' and '{$end}'";
+        }
+        $db->query($sql);
+        $row['chat_num'] = $db->getField($sql,'count');
+    }
     return $row;
 }
 
