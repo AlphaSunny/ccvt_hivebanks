@@ -6,7 +6,11 @@ $(function () {
 
     function GetWeChatFun(search_content) {
         var li = "";
+        var index = layer.load(1, {
+            shade: [0.1, '#fff']
+        });
         GetChatPerson(wechat, search_content, function (response) {
+            layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
                 if (data.length <= 0) {
