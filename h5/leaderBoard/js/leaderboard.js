@@ -177,13 +177,13 @@ $(function () {
     //已经点赞和踩的次数
     function AlreadyZanCaiNumFun() {
         AlreadyZanCaiNum(token, function (response) {
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 console.log(response);
-                if(state == "1"){
+                if (state == "1") {
                     $(".all_zan").text(response.rows.all_zan);
                     $(".max_give_like").text(response.rows.max_give_like);
                 }
-                if(state == "2"){
+                if (state == "2") {
                     $(".all_cai").text(response.rows.all_cai);
                     $(".max_give_no_like").text(response.rows.max_give_no_like);
                 }
