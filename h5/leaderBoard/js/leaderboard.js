@@ -206,7 +206,7 @@ $(function () {
                     layer.msg("点赞成功");
                 }
                 if (state == "2") {
-                    $(".zan_num").text(_this_already_cai_num += give_num);
+                    $(".cai_num").text(_this_already_cai_num += give_num);
                     layer.msg("踩成功");
                 }
             }
