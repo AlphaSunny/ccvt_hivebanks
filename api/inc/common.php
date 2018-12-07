@@ -553,10 +553,15 @@ function get_la_base_unit()
 function get_praise_pointon_maxnum()
 {
     $db = new DB_COM();
-    $sql = "SELECT option_value FROM com_option_config WHERE option_key IN ('max_give_like','max_give_no_like')";
+
+    $m_config = array();
+    $sql = "select option_key,option_value from com_option_config WHERE option_key IN ('max_give_like','max_give_no_like')";
     $db->query($sql);
-    $rows = $db->fetchAll();
-    return $rows;
+    $list = $db->fetchAll();
+    foreach($list as $item){
+        $m_config[$item['option_key']] = $item['option_value'];
+    }
+    return $m_config;
 }
 
 
