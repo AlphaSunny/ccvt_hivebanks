@@ -37,7 +37,7 @@ $(function () {
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
-                            "<span class='none'>"+ data[i].us_id +"</span>" +
+                            "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                             "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
@@ -50,7 +50,7 @@ $(function () {
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
-                            "<span class='none'>"+ data[i].us_id +"</span>" +
+                            "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                             "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
@@ -63,7 +63,7 @@ $(function () {
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
-                            "<span class='none'>"+ data[i].us_id +"</span>" +
+                            "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                             "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
@@ -76,7 +76,7 @@ $(function () {
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
-                            "<span class='none'>"+ data[i].us_id +"</span>" +
+                            "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                             "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
@@ -138,6 +138,7 @@ $(function () {
     });
 
     //赞/踩
+    var give_us_id = "";
     $(document).on("click", ".zan_icon,.cai_icon", function () {
         if (!token) {
             alert("操作之前请先登录!");
@@ -148,16 +149,43 @@ $(function () {
             $(".zan_text_box").fadeIn("fast");
             $(".cai_h3").fadeOut("fast");
             $(".cai_text_box").fadeOut("fast");
+            $(".customize_modal_confirm_btn").addClass("zan_confirm").removeClass("cai_confirm");
         } else if ($(this).hasClass("cai_icon")) {
             $(".cai_h3").fadeIn("fast");
             $(".cai_text_box").fadeIn("fast");
             $(".zan_h3").fadeOut("fast");
             $(".zan_text_box").fadeOut("fast");
+            $(".customize_modal_confirm_btn").addClass("cai_confirm").removeClass("zan_confirm");
         }
         $("#customize_modal").slideDown();
+        give_us_id = $(this).sibling(".us_id").text();
     });
 
+    //确定点赞/cai
+    var give_num = "", state = "";
+    $(".customize_modal_confirm_btn").click(function () {
+        give_num = $(".zan_cai_input").val();
+        if ($(this).hasClass("zan_confirm")) {
+            state = "1";
+            ConfirmZanCaiFun();
+        }
+        if($(this).hasClass("cai_confirm")){
+            state = "2";
+            ConfirmZanCaiFun();
+        }
+    });
+
+    //取消
     $(".customize_modal_cancel_btn").click(function () {
         $("#customize_modal").slideUp();
     });
+
+    //赞--》踩--》
+    function ConfirmZanCaiFun() {
+        ConfirmZanCai(token, give_us_id, give_num, state, function (response) {
+            console.log(response);
+        }, function (response) {
+
+        });
+    }
 });

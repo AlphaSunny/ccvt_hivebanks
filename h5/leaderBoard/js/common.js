@@ -156,6 +156,18 @@ function GetChatPerson(wechat, suc_func, error_func) {
     CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
 }
 
+//zan/cai
+function ConfirmZanCai(token, give_us_id, give_num, state, suc_func, error_func) {
+    var api_url = 'give_like.php',
+        post_data = {
+            "token": token,
+            "give_us_id": give_us_id,
+            "give_num": give_num,
+            "state": state
+        };
+    CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
+}
+
 // user information
 function UserInformation(token, suc_func, error_func) {
     var api_url = 'info_base.php',
