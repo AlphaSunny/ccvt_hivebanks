@@ -167,7 +167,14 @@ function ConfirmZanCai(token, give_us_id, give_num, state, suc_func, error_func)
         };
     CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
 }
-
+//already zan cai
+function AlreadyZanCaiNum(token, suc_func, error_func) {
+    var api_url = 'praise_or_pointon_num.php',
+        post_data = {
+            "token": token
+        };
+    CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
+}
 // user information
 function UserInformation(token, suc_func, error_func) {
     var api_url = 'info_base.php',

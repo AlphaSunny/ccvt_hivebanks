@@ -138,13 +138,19 @@ $(function () {
     });
 
     //赞/踩
-    var give_us_id = "", _this_click_zan_num = "",_this_click_cai_num = "", _this_already_zan_num = "", _this_already_cai_num = "", amount = "";
+    var give_us_id = "", state = "",
+        _this_click_zan_num = "",
+        _this_click_cai_num = "",
+        _this_already_zan_num = "",
+        _this_already_cai_num = "",
+        amount = "";
     $(document).on("click", ".zan_icon,.cai_icon", function () {
         if (!token) {
             alert("操作之前请先登录!");
             return;
         }
         amount = $(".amount").text();
+        AlreadyZanCaiNumFun();
         if ($(this).hasClass("zan_icon")) {
             $(".zan_h3").fadeIn("fast");
             $(".zan_text_box").fadeIn("fast");
@@ -153,6 +159,7 @@ $(function () {
             $(".customize_modal_confirm_btn").addClass("zan_confirm").removeClass("cai_confirm");
             _this_already_zan_num = parseInt($(this).siblings(".zan_num").text());
             _this_click_zan_num = $(this).siblings(".zan_num");
+            state = "1";
         } else if ($(this).hasClass("cai_icon")) {
             $(".cai_h3").fadeIn("fast");
             $(".cai_text_box").fadeIn("fast");
@@ -161,13 +168,25 @@ $(function () {
             $(".customize_modal_confirm_btn").addClass("cai_confirm").removeClass("zan_confirm");
             _this_already_cai_num = parseInt($(this).siblings(".cai_num").text());
             _this_click_cai_num = $(this).siblings(".cai_num");
+            state = "2";
         }
         $("#customize_modal").slideDown();
         give_us_id = $(this).siblings(".us_id").text();
     });
 
+    //已经点赞和踩的次数
+    function AlreadyZanCaiNumFun() {
+        AlreadyZanCaiNum(token, function (response) {
+            if(response.errcode == "0"){
+                console.log(response);
+            }
+        }, function (response) {
+            layer.msg(response);
+        })
+    }
+
     //确定点赞/cai
-    var give_num = "", state = "";
+    var give_num = "";
     $(".customize_modal_confirm_btn").click(function () {
         give_num = Number($(".zan_cai_input").val());
         if (give_num.length <= 0) {
@@ -178,14 +197,15 @@ $(function () {
             layer.msg("请输入正确的数值");
             return;
         }
-        if ($(this).hasClass("zan_confirm")) {
-            state = "1";
-            ConfirmZanCaiFun();
-        }
-        if ($(this).hasClass("cai_confirm")) {
-            state = "2";
-            ConfirmZanCaiFun();
-        }
+        ConfirmZanCaiFun();
+        // if ($(this).hasClass("zan_confirm")) {
+        //     state = "1";
+        //     ConfirmZanCaiFun();
+        // }
+        // if ($(this).hasClass("cai_confirm")) {
+        //     state = "2";
+        //     ConfirmZanCaiFun();
+        // }
     });
 
     //取消
