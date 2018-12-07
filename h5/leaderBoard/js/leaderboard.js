@@ -22,7 +22,7 @@ $(function () {
         })
     }
 
-    var tr = "", limit = 10, offset = 0, total = "", page = 1;
+    var tr = "", limit = 50, offset = 0, total = "", page = 1;
 
     function Fun(limit, offset) {
         var index = layer.load(1, {
@@ -104,11 +104,11 @@ $(function () {
 
     //上一页
     $(".pre_btn").click(function () {
-        offset -= 10;
+        offset -= 50;
         if (offset <= 0) {
             $(".page").text(1);
         }
-        $(".page").text(Math.floor(offset / 10) + 1);
+        $(".page").text(Math.floor(offset / limit) + 1);
         if (offset == 0) {
             tr = "";
             $(".next_btn").attr("disabled", false);
@@ -123,9 +123,9 @@ $(function () {
 
     //下一页
     $(".next_btn").click(function () {
-        offset += 10;
-        $(".page").text(Math.floor(offset / 10) + 1);
-        if (Math.floor(offset / 10) >= Math.floor(total / 10)) {
+        offset += 50;
+        $(".page").text(Math.floor(offset / limit) + 1);
+        if (Math.floor(offset / 10) >= Math.floor(total / limit)) {
             $(this).attr("disabled", true);
         }
         tr = "";
