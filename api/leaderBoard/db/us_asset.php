@@ -359,3 +359,17 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
     }
 }
 
+
+//======================================
+// 函数: 获取点赞最大值,已点赞多少,已踩多少
+//======================================
+function praise_or_pointon_num($us_id,$give_us_id)
+{
+    $db = new DB_COM();
+    $max = get_praise_pointon_maxnum();
+    print_r($max);die;
+    $sql = "SELECT max_give_like,max_give_no_like FROM bot_status limit 1";
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    return $row;
+}
