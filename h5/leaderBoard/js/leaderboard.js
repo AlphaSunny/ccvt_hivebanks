@@ -8,7 +8,8 @@ $(function () {
     function GetUserInfoFun() {
         UserInformation(token, function (response) {
             if (response.errcode == "0") {
-                $(".amount").text(response.rows.base_amount).removeClass("login");
+                $(".login").remove();
+                $(".amount").text(response.rows.base_amount).fadeIn();
             }
         }, function (response) {
             alert(response.errmsg);

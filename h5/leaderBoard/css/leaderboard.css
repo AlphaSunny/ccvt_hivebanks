@@ -116,6 +116,10 @@ button:hover {
     font-size: 0.8rem;
 }
 
+.none {
+    display: none;
+}
+
 /*customize-modal*/
 #customize_modal {
     position: fixed;
