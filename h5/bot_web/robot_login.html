@@ -78,7 +78,7 @@
                 <div class="form_box margin-top-2 text-center">
                     <form action="" method="get" id="form">
                         <div id="login_click">
-                            <input type="hidden" value="" id="port" name="port">
+                            <input type="hidden" value="" id="port" name="us_id">
                             <button class="btn btn-success submit">生成二维码</button>
                         </div>
                     </form>
@@ -112,9 +112,9 @@
             async: false,
             success: function (response) {
                 search_pory = response.rows.ip_address;
-                port = response.rows.port;
+                us_id = response.rows.us_id;
                 robot_alive = response.rows.robot_alive;
-                $("#port").val(port);
+                $("#port").val(us_id);
                 $("#form").attr("action", "http://" + search_pory + "/search");
                 $("#qr_img").attr("src", response.rows.qr_path);
                 if (response.rows.robot_alive == "1") {
