@@ -20,7 +20,7 @@ $time = str_replace('：', ':', $time);
 $tmparray = explode(':',$time);
 
 
-$time = $tmparray[0].":".$tmparray[1]<10 ? intval($tmparray[1]) : $tmparray[1];
+$time = $tmparray[0].":".($tmparray[1]<10 ? intval($tmparray[1]) : $tmparray[1]);
 echo $time;
 
 
