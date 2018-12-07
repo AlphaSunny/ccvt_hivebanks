@@ -47,6 +47,7 @@ function ba_cut($amount){
     {
         return true;
     }
+    die('ba_cut');
     return false;
 }
 function us_add($amount,$us_id){
@@ -55,6 +56,7 @@ function us_add($amount,$us_id){
     $db->query($sql);
     if($db->affectedRows())
         return true;
+    die('us_add');
     return false;
 
 }
@@ -64,6 +66,7 @@ function log_info($phone){
     $db->query($sql);
     if($db->affectedRows())
         return true;
+    die('log_info');
     return false;
 }
 
