@@ -236,6 +236,10 @@ button:hover {
 }
 
 @media only screen and (max-width: 768px) {
+    nav {
+        padding: 8px 15px;
+    }
+
     .nav_left a {
         width: 70%;
         display: flex;
