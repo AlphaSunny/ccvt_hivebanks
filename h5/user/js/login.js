@@ -296,7 +296,11 @@ $(document).ready(function () {
                 $('.phonePassword').val('');
                 var token = response.token;
                 SetCookie('user_token', token);
-                window.location.href = 'account.html';
+                if (!leaderBoard) {
+                    window.location.href = 'account.html';
+                }else {
+                    window.location.href = "../leaderBoard/leaderboard.html";
+                }
             }
         }, function (response) {
             GetImgCode();
