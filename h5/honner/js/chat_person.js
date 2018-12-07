@@ -71,7 +71,7 @@ $(function () {
     });
 
     $(document).on("click", ".close_page", function () {
-        console.log("999");
+        console.log("close_page");
         $("iframe").attr("display", "none");
     });
 
