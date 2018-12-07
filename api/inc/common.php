@@ -545,5 +545,19 @@ function get_la_base_unit()
 }
 
 
+//======================================
+// 函数: 获取点赞(点踩)最大值
+// 参数:
+// 返回:
+//======================================
+function get_praise_pointon_maxnum()
+{
+    $db = new DB_COM();
+    $sql = "SELECT option_value FROM com_option_config WHERE option_key IN ('max_give_like','max_give_no_like')";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    return $rows;
+}
+
 
 ?>
