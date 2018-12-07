@@ -26,10 +26,16 @@ chk_empty_args('GET', $args);
 // 微信昵称
 $wechat = get_arg_str('GET', 'wechat');
 
+// 搜索内容
+$search_content = get_arg_str('GET', 'search_content');
+
 // 获取当前用户的聊天总记录
-$total = get_chat_total($wechat);
+$data['wechat'] = $wechat;
+$data['search_content'] = $search_content;
+
+$total = get_chat_total($data);
 // 交易记录数组
-$rows = get_chat_list($wechat);
+$rows = get_chat_list($data);
 
 // 返回数据做成
 $rtn_ary = array();
