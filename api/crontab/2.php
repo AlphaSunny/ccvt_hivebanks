@@ -13,13 +13,13 @@ $db = new DB_COM();
 //}
 
 // 时间
-$time = "9:10:10";
+$time = "9:05:10";
 //把中文冒号替换英文冒号
 $time = str_replace('：', ':', $time);
 
 $tmparray = explode(':',$time);
 print_r($tmparray);die;
-if(count($tmparray)>1){
+if(count($tmparray)>2){
     exit_error('139','格式错误');
 }
 

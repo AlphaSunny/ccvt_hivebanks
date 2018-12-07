@@ -29,9 +29,10 @@ $time = str_replace('：', ':', $time);
 
 $tmparray = explode(':',$time);
 
-if(count($tmparray)>1){
+if(count($tmparray)>2){
     exit_error('139','格式错误');
 }
+
 
 
 // 群组id
