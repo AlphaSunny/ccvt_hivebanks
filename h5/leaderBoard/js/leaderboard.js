@@ -22,9 +22,10 @@ $(function () {
         })
     }
 
-    var tr = "", limit = 50, offset = 0, total = "", page = 1;
+    var limit = 50, offset = 0, total = "", page = 1;
 
     function Fun(limit, offset) {
+        var tr = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
