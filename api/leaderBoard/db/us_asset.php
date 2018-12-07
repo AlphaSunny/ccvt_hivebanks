@@ -69,7 +69,6 @@ function get_chat_list($data)
         $sql .= " and b.bot_content like '{$data['search_content']}%'";
     }
     $sql .= " ORDER BY b.bot_create_time ASC ";
-    echo $sql;
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
