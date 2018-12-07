@@ -25,21 +25,34 @@ chk_empty_args('GET', $args);
 // 用户token
 $token = get_arg_str('GET', 'token',128);
 //验证token
-$ba_id = check_token($token);
+$us_id = check_token($token);
 
-// 交易记录数组
-$rows = get_group_list($ba_id);
-foreach ($rows as $k=>$v){
-    $rows[$k]['del'] = $v['is_del']==1 ? "运行中" : "关闭";
-    $rows[$k]['flirt'] = $v['is_flirt']==1 ? "运行中" : "关闭";
+// 群组id
+$group_id = get_arg_str('GET', 'group_id');
+// 类型id
+$group_type_id = get_arg_str('GET', 'group_type_id');
+
+//判断是否已经提交过
+$result = check_is_submit($group_id,$us_id);
+if (!$result || $result['is_apply']==2){
+    exit_error('139','已经提交过');
+}
+
+$data['us_id'] = $us_id;
+$data['group_id'] = $group_id;
+$data['group_name'] = $result['name'];
+$data['group_type_id'] = $group_type_id;
+
+// 提交
+$audit = group_submit_audit($data);
+if (!$audit){
+    exit_error('139','提交失败');
 }
 
 // 返回数据做成
 $rtn_ary = array();
-//$rtn_ary['errcode'] = '0';
-//$rtn_ary['errmsg'] = '';
-//$rtn_ary['count'] = count($rows);
-$rtn_ary['data'] = $rows;
+$rtn_ary['errcode'] = '0';
+$rtn_ary['errmsg'] = '';
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
