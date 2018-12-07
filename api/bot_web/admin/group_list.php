@@ -19,13 +19,13 @@ GET参数
 */
 
 php_begin();
-$args = array('token');
-chk_empty_args('GET', $args);
+//$args = array('token');
+//chk_empty_args('GET', $args);
 
-// token
-$token = get_arg_str('GET', 'token',128);
-//验证token
-$la_id = la_user_check($token);
+//// token
+//$token = get_arg_str('GET', 'token',128);
+////验证token
+//$la_id = la_user_check($token);
 
 // 交易记录数组
 $rows = get_group_list();
