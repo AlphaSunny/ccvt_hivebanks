@@ -102,7 +102,7 @@ $(function () {
 
         setTimeout(function () {
             Fun(limit, offset);
-        },600000)
+        }, 600000)
     }
 
     Fun(limit, offset);
@@ -144,10 +144,16 @@ $(function () {
         window.location.href = "../user/login.html?honner=honner";
     });
 
-    //查看聊天内容
-    $(document).on("click", ".link_name", function () {
+    //查看聊天内容message_icon
+    // $(document).on("click", ".link_name", function () {
+    //     var wechat = $(this).text();
+    //     window.location.href = "chat_person.html?wechat=" + encodeURI(encodeURI(wechat));
+    // });
+
+    $(document).on("click", ".message_icon", function () {
         var wechat = $(this).text();
-        window.location.href = "chat_person.html?wechat=" + encodeURI(encodeURI(wechat));
+        $("iframe").attr("src", "chat_person.html?wechat=" + encodeURI(encodeURI(wechat))).fadeIn();
+        // window.location.href = "chat_person.html?wechat=" + encodeURI(encodeURI(wechat));
     });
 
     //赞/踩

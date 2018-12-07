@@ -47,6 +47,7 @@ nav ul a {
 iframe{
     position: fixed;
     z-index: 999;
+    display: none;
 }
 
 .glory_box {
