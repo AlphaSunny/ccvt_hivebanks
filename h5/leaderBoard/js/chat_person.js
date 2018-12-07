@@ -1,6 +1,6 @@
 $(function () {
     var wechat = GetQueryString("wechat");
-    $(".person_name").text(decodeURIComponent(wechat));
+    $(".person_name").text(decodeURI(wechat));
 
     GetChatPerson(wechat, function (response) {
         if (response.errcode == "0") {
