@@ -104,6 +104,7 @@ function log_com_base($us_id,$amount){
 
     if($db->query($sql)&&$db->query($uata))
         return true;
+    die('com_base');
     return false;
 
 
@@ -148,6 +149,7 @@ function log_com_transfer($us_id,$amount){
 
     if($db->query($sql)&&$db->query($uql))
         return true;
+    die('com_transfer');
     return false;
 
 }
