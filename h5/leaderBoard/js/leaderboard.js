@@ -131,6 +131,7 @@ $(function () {
     $(document).on("click", ".link_name", function () {
         var wechat = $(this).text();
         console.log(encodeURI(wechat));
+        return;
         window.location.href = "chat_person.html?wechat=" + encodeURI(wechat);
     });
 
