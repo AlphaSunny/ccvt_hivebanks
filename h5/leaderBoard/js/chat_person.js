@@ -1,8 +1,9 @@
 $(function () {
-    var wechat = GetQueryString("wechat");
-    $(".person_name").text(decodeURI(wechat));
+    var wechat_url = GetQueryString("wechat");
+    var wechat = decodeURI(wechat_url);
+    $(".person_name").text(wechat);
 
-    GetChatPerson(decodeURI(wechat), function (response) {
+    GetChatPerson(wechat, function (response) {
         if (response.errcode == "0") {
             var data = response.rows;
             if (data.length <= 0) {
