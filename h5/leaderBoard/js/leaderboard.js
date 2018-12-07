@@ -7,7 +7,9 @@ $(function () {
     //获取用户信息
     function GetUserInfoFun() {
         UserInformation(token, function (response) {
-            console.log(response);
+            if (response.errcode == "0") {
+                $(".amount").text(response.rows.base_amount).removeClass("login");
+            }
         }, function (response) {
             alert(response.errmsg);
         })
