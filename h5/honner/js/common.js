@@ -110,7 +110,7 @@ function CallApi(api_url, post_data, suc_func, error_func) {
 
 // Call the API honner
 function CallLeaderBoardsApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/api/honner/';
+    var api_site = config_api_url + '/api/leaderBoard/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
