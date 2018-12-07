@@ -94,13 +94,17 @@ $(function () {
         }, function (response) {
             layer.msg(response.errmsg);
         });
+
+        setTimeout(function () {
+            Fun(limit, offset);
+        },20000)
     }
 
     Fun(limit, offset);
 
-    setInterval(function () {
-        Fun(limit, offset);
-    }, 30000);
+    // setInterval(function () {
+    //     Fun(limit, offset);
+    // }, 30000);
 
     //上一页
     $(".pre_btn").click(function () {
