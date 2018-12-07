@@ -18,6 +18,11 @@ GET参数
 */
 
 php_begin();
+
+$max = get_praise_pointon_maxnum();
+print_r($max);die;
+
+
 $args = array('token','give_us_id');
 chk_empty_args('GET', $args);
 
