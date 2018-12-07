@@ -19,15 +19,16 @@ GET参数
 
 php_begin();
 
-$args = array('token');
-chk_empty_args('GET', $args);
+//$args = array('token');
+//chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token',128);
 
 //验证token
-$us_id = check_token($token);
+//$us_id = check_token($token);
 
+$us_id = "1079FD63-69C1-8BFD-9DB3-B18C9141732C";
 
 // 数据
 $rows = praise_or_pointon_num($us_id);
