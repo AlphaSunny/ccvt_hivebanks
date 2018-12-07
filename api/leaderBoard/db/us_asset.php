@@ -305,17 +305,6 @@ function get_us_base_amount($us_id){
 }
 
 
-//======================================
-// 函数: 获取点赞最大值
-//======================================
-function get_max_give_like()
-{
-    $db = new DB_COM();
-    $sql = "SELECT max_give_like,max_give_no_like FROM bot_status limit 1";
-    $db -> query($sql);
-    $row = $db -> fetchRow();
-    return $row;
-}
 
 
 //======================================
@@ -325,9 +314,9 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
 {
     $db = new DB_COM();
     if ($state==1){
-        $max = get_max_give_like()['max_give_like'];
+        $max = get_praise_pointon_maxnum()['max_give_like'];
     }elseif ($state==2){
-        $max = get_max_give_like()['max_give_no_like'];
+        $max = get_praise_pointon_maxnum()['max_give_no_like'];
     }
 
     $unit = get_la_base_unit();
@@ -361,15 +350,24 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
 
 
 //======================================
-// 函数: 获取点赞最大值,已点赞多少,已踩多少
+// 函数: 已点赞多少,已踩多少
 //======================================
-function praise_or_pointon_num($us_id,$give_us_id)
+function praise_or_pointon_num($us_id)
 {
     $db = new DB_COM();
-    $max = get_praise_pointon_maxnum();
-    print_r($max);die;
-    $sql = "SELECT max_give_like,max_give_no_like FROM bot_status limit 1";
-    $db -> query($sql);
-    $row = $db -> fetchRow();
-    return $row;
+    $unit = get_la_base_unit();
+    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND tx_detail='点赞'";
+    $db->query($sql);
+    $all_zan = $db->getField($sql,'all_am');
+    if (!$all_zan){$all_zan=0;}
+
+    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND tx_detail='点踩'";
+    $db->query($sql);
+    $all_cai = $db->getField($sql,'all_am');
+    if (!$all_cai){$all_cai=0;}
+
+    $rows = array();
+    $rows['all_zan'] = $all_zan;
+    $rows['all_cai'] = $all_cai;
+    return $rows;
 }

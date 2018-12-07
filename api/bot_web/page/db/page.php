@@ -237,18 +237,6 @@ function get_us_base_amount($us_id){
 }
 
 
-//======================================
-// 函数: 获取点赞最大值
-//======================================
-function get_max_give_like()
-{
-    $db = new DB_COM();
-    $sql = "SELECT max_give_like,max_give_no_like FROM bot_status limit 1";
-    $db -> query($sql);
-    $row = $db -> fetchRow();
-    return $row;
-}
-
 
 //======================================
 // 函数: 判断是否当日已经达到最大上限
@@ -257,9 +245,9 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
 {
     $db = new DB_COM();
     if ($state==1){
-        $max = get_max_give_like()['max_give_like'];
+        $max = get_praise_pointon_maxnum()['max_give_like'];
     }elseif ($state==2){
-        $max = get_max_give_like()['max_give_no_like'];
+        $max = get_praise_pointon_maxnum()['max_give_no_like'];
     }
 
     $unit = get_la_base_unit();

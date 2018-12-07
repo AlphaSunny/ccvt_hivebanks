@@ -19,32 +19,28 @@ GET参数
 
 php_begin();
 
-$max = get_praise_pointon_maxnum();
-print_r($max);die;
-
-
-$args = array('token','give_us_id');
+$args = array('token');
 chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token',128);
-// 用户id
-$give_us_id = get_arg_str('GET', 'give_us_id');
 
 //验证token
 $us_id = check_token($token);
 
 
 // 数据
-$row = praise_or_pointon_num($us_id,$give_us_id);
-if (!$row){
-    exit_error('103','赠送失败');
-}
+$rows = praise_or_pointon_num($us_id);
+
+$rows = array_merge($rows,get_praise_pointon_maxnum());
+
+print_r($rows);
 
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
+$rtn_ary['rows'] = $rows;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 

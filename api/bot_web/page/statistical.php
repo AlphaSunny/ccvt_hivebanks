@@ -187,20 +187,14 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                 <!--赞上限-->
                 <span class="zan_top">每日上限
                     <?php
-                    $sql = "SELECT max_give_like FROM bot_status limit 1";
-                    $db->query($sql);
-                    $row = $db->getField($sql, 'max_give_like');
-                    echo $row;
+                        echo get_praise_pointon_maxnum()['max_give_like'];
                     ?>ccvt
                 </span>
 
                 <!--踩上限-->
                 <span class="cai_top">每日上限
                     <?php
-                    $sql = "SELECT max_give_no_like FROM bot_status limit 1";
-                    $db->query($sql);
-                    $row = $db->getField($sql, 'max_give_no_like');
-                    echo $row;
+                    echo get_praise_pointon_maxnum()['max_give_no_like'];
                     ?>ccvt
                 </span>
 
