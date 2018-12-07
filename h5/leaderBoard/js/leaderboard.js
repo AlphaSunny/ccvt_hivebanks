@@ -94,6 +94,10 @@ $(function () {
 
     Fun(limit, offset);
 
+    setInterval(function () {
+
+    }, 600000);
+
     //上一页
     $(".pre_btn").click(function () {
         offset -= 10;
