@@ -37,6 +37,7 @@ $(function () {
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
+                            "<span class='none'>"+ data[i].us_id +"</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                             "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
@@ -49,6 +50,7 @@ $(function () {
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
+                            "<span class='none'>"+ data[i].us_id +"</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                             "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
@@ -61,6 +63,7 @@ $(function () {
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
+                            "<span class='none'>"+ data[i].us_id +"</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                             "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
@@ -73,6 +76,7 @@ $(function () {
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
                             "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
+                            "<span class='none'>"+ data[i].us_id +"</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                             "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
                             "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
