@@ -179,6 +179,14 @@ $(function () {
         AlreadyZanCaiNum(token, function (response) {
             if(response.errcode == "0"){
                 console.log(response);
+                if(state == "1"){
+                    $(".all_zan").text(response.rows.all_zan);
+                    $(".max_give_like").text(response.rows.max_give_like);
+                }
+                if(state == "2"){
+                    $(".all_cai").text(response.rows.all_zan);
+                    $(".max_give_no_like").text(response.rows.max_give_no_like);
+                }
             }
         }, function (response) {
             layer.msg(response);
