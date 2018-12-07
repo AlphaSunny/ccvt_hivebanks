@@ -130,7 +130,7 @@ $(function () {
     //查看聊天内容
     $(document).on("click", ".link_name", function () {
         var wechat = $(this).text();
-        window.location.href = "chat_person.html?wechat=" + wechat;
+        window.location.href = "chat_person.html?wechat=" + encodeURIComponent(wechat);
     });
 
     //赞/踩
