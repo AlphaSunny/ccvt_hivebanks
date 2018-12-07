@@ -158,7 +158,7 @@ $(function () {
             $(".customize_modal_confirm_btn").addClass("cai_confirm").removeClass("zan_confirm");
         }
         $("#customize_modal").slideDown();
-        give_us_id = $(this).sibling(".us_id").text();
+        give_us_id = $(this).siblings(".us_id").text();
     });
 
     //确定点赞/cai
