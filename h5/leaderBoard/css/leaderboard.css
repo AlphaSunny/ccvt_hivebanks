@@ -27,16 +27,17 @@ nav ul a {
     color: #ffffff;
 }
 
-/*.nav_left a{*/
-/*width: 70%;*/
-/*display: flex;*/
-/*display: -moz-flex;*/
-/*display: -o-flex;*/
-/*align-items: center;*/
-/*}*/
-/*.nav_left img{*/
-/*width: 100%;*/
-/*}*/
+.nav_left a {
+    width: 100%;
+    display: flex;
+    display: -moz-flex;
+    display: -o-flex;
+    align-items: center;
+}
+
+.nav_left img {
+    width: 80%;
+}
 
 .usLogin:hover, .usRegister:hover, .usAccount:hover {
     color: #1E9FFF;
