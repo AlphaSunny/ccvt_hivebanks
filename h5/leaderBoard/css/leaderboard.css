@@ -27,11 +27,18 @@ nav ul a {
     color: #ffffff;
 }
 
-.login {
-    cursor: pointer;
-}
+/*.nav_left a{*/
+/*width: 70%;*/
+/*display: flex;*/
+/*display: -moz-flex;*/
+/*display: -o-flex;*/
+/*align-items: center;*/
+/*}*/
+/*.nav_left img{*/
+/*width: 100%;*/
+/*}*/
 
-.login:hover {
+.usLogin:hover, .usRegister:hover, .usAccount:hover {
     color: #1E9FFF;
 }
 
@@ -229,6 +236,22 @@ button:hover {
 }
 
 @media only screen and (max-width: 768px) {
+    nav {
+        padding: 8px 15px;
+    }
+
+    .nav_left a {
+        width: 70%;
+        display: flex;
+        display: -moz-flex;
+        display: -o-flex;
+        align-items: center;
+    }
+
+    .nav_left img {
+        width: 100%;
+    }
+
     #customize_modal {
         width: 98%;
         left: 1%;
@@ -246,6 +269,7 @@ button:hover {
         font-size: 1rem;
         font-weight: 400;
     }
+
     button {
         padding: 3% 6%;
     }

@@ -11,6 +11,7 @@ header("Content-Type:application/json;charset=utf-8");
 ========================== 群组成员列表 ==========================
 GET参数
   token                用户token
+  status            0:所有 1:今日 2:昨天  3:3天内  4:七天内     发言数
 
 返回
   errcode = 0     请求成功
@@ -34,11 +35,14 @@ if (!$result){
     exit_error('139','非法操作');
 }
 
+// status
+$status = get_arg_str('GET', 'status');
+
 // 群组id
 $group_id = get_arg_str('GET', 'group_id');
 
 // 交易记录数组
-$rows = get_group_members_list($group_id);
+$rows = get_group_members_list($group_id,$status);
 
 // 返回数据做成
 $rtn_ary = array();

@@ -13,18 +13,19 @@ $(function () {
     function GetUserInfoFun() {
         UserInformation(token, function (response) {
             if (response.errcode == "0") {
-                $(".login").remove();
+                // $(".login").remove();
                 $(".amount").text(response.rows.base_amount);
                 $(".amount_box").fadeIn();
             }
         }, function (response) {
-            // alert(response.errmsg);
+            layer.msg(response.errmsg);
         })
     }
 
-    var tr = "", limit = 10, offset = 0, total = "", page = 1;
+    var limit = 50, offset = 0, total = "", page = 1;
 
     function Fun(limit, offset) {
+        var tr = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
@@ -33,13 +34,13 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows;
                 total = response.total;
-                // page = Math.floor(total / 10);
                 $.each(data, function (i, val) {
+                    console.log("666");
                     if (data[i].sorting == "1") {
                         tr += "<tr>" +
                             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>" +
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].base_amount + "</td>" +
+                            // "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
@@ -52,7 +53,7 @@ $(function () {
                         tr += "<tr>" +
                             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-second'></use></svg></td>" +
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].base_amount + "</td>" +
+                            // "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
@@ -65,7 +66,7 @@ $(function () {
                         tr += "<tr>" +
                             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-third'></use></svg></td>" +
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].base_amount + "</td>" +
+                            // "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
@@ -78,7 +79,7 @@ $(function () {
                         tr += "<tr>" +
                             "<td>" + data[i].sorting + "</td>" +
                             "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].base_amount + "</td>" +
+                            // "<td>" + data[i].base_amount + "</td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
@@ -92,23 +93,23 @@ $(function () {
                 $("#leaderBoardBody").html(tr);
             }
         }, function (response) {
-            // alert(response.errmsg);
+            layer.msg(response.errmsg);
         });
+
+        setTimeout(function () {
+            Fun(limit, offset);
+        },20000)
     }
 
     Fun(limit, offset);
 
-    setInterval(function () {
-
-    }, 600000);
-
     //上一页
     $(".pre_btn").click(function () {
-        offset -= 10;
+        offset -= 50;
         if (offset <= 0) {
             $(".page").text(1);
         }
-        $(".page").text(Math.floor(offset / 10) + 1);
+        $(".page").text(Math.floor(offset / limit) + 1);
         if (offset == 0) {
             tr = "";
             $(".next_btn").attr("disabled", false);
@@ -123,9 +124,9 @@ $(function () {
 
     //下一页
     $(".next_btn").click(function () {
-        offset += 10;
-        $(".page").text(Math.floor(offset / 10) + 1);
-        if (Math.floor(offset / 10) >= Math.floor(total / 10)) {
+        offset += 50;
+        $(".page").text(Math.floor(offset / limit) + 1);
+        if (Math.floor(offset / 10) >= Math.floor(total / limit)) {
             $(this).attr("disabled", true);
         }
         tr = "";
@@ -135,7 +136,7 @@ $(function () {
     });
 
     //登录
-    $(".login").click(function () {
+    $(".usLogin").click(function () {
         window.location.href = "../user/login.html?leaderBoard=leaderBoard";
     });
 
