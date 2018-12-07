@@ -68,7 +68,10 @@ $(function () {
         $(".search_input").val("");
         search_content = "";
         GetWeChatFun(search_content);
-    })
+    });
 
+    $(document).on("click", ".close_page", function () {
+        $("iframe").attr("display", "none");
+    });
 
 });

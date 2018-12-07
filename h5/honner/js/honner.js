@@ -156,9 +156,9 @@ $(function () {
         // window.location.href = "chat_person.html?wechat=" + encodeURI(encodeURI(wechat));
     });
     //关闭聊天内容close_page
-    $(document).on("click", ".close_page", function () {
-        $("iframe").attr("display", "none");
-    });
+    // $(document).on("click", ".close_page", function () {
+    //     $("iframe").attr("display", "none");
+    // });
 
     //赞/踩
     var give_us_id = "", state = "",
