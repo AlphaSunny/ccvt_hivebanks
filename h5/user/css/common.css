@@ -1103,6 +1103,10 @@ section.footer {
     color: #fff !important;
 }
 
+.page{
+    text-align: right;
+}
+
 .ui-pagination-container .ui-pagination-page-item{
     border: 1px solid #82ca9c!important;
     color: #82ca9c!important;
