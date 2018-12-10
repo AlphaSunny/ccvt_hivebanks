@@ -154,13 +154,13 @@ $(function () {
         $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat))).fadeIn();
     });
     //关闭聊天内容close_page
-    $(document).on("click", ".close_page", function () {
-        window.parent.close();
-        // var ele = $(".click_none");
-        // console.log(ele);
-        // console.log("close_page");
-        // $("iframe").fadeOut();
-    });
+    // $(document).on("click", ".close_page", function () {
+    //     window.parent.close();
+    //     // var ele = $(".click_none");
+    //     // console.log(ele);
+    //     // console.log("close_page");
+    //     // $("iframe").fadeOut();
+    // });
 
     // $(document).on("click", ".close_page", function () {
     //     //     console.log("-00000");
