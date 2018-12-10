@@ -43,6 +43,17 @@ $(function () {
                     count = 6;
                 }
 
+                if (offset == 0) {
+                    $(".top_start").text("1");
+                    $(".top_end").text(limit);
+                } else if (Math.floor(total / limit) != Math.floor(offset / limit)) {
+                    $(".top_start").text(offset + 1);
+                    $(".top_end").text(offset + limit);
+                } else {
+                    $(".top_start").text(offset + 1);
+                    $(".top_end").text(total);
+                }
+
                 $.each(data, function (i, val) {
                     if (data[i].sorting == "1") {
                         tr += "<tr>" +
