@@ -307,3 +307,7 @@ button:hover {
 p{
     margin: 0;
 }
+.top{
+    text-align: left;
+    padding-left: 15px;
+}
