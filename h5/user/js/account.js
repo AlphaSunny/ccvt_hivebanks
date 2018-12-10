@@ -100,11 +100,14 @@ $(function () {
                 console.log(totalPage);
                 console.log(typeof totalPage);
                 if (totalPage <= 1) {
-                    count = 1;
+                    // count = 1;
+                    console.log(1);
                 } else if (1 < totalPage <= 6) {
-                    count = totalPage;
+                    // count = totalPage;
+                    console.log("1-6");
                 } else {
-                    count = 6;
+                    // count = 6;
+                    console.log("6---")
                 }
 
                 var data = response.rows;
