@@ -89,19 +89,26 @@ $(function () {
     });
 
     // Login record query
-    var login_api_url = 'log_login.php', limit = 10, offset = 0, n = 0;
+    var login_api_url = 'log_login.php', limit = 10, offset = 0;
 
     function GetLoginCode(token, limit, offset, login_api_url) {
-        var tr = '', pageCount = '';
+        var tr = '', count = 1;
         $("#loginCode").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>loading...</span></td></tr>")
         AllRecord(token, limit, offset, login_api_url, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows;
-                if (data.length <= 0) {
-                    $('.eg').hide();
+                if (data == false) {
+                    GetDataEmpty('loginCode', '4');
+                    return;
                 }
-                pageCount = Math.ceil(response.total / limit);
-                $('.totalPage').text(pageCount);
+                var totalPage = Math.ceil(response.total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
                 for (var i = 0; i < data.length; i++) {
                     tr += '<tr>' +
                         '<td class="i18n" name="' + data[i].lgn_type + '">' + data[i].lgn_type.substr(0, 20) + '...' + '</td>' +
@@ -113,10 +120,18 @@ $(function () {
 
                 $('#loginCode').html(tr);
                 execI18n();
-                if (n == 0) {
-                    Page(pageCount);
-                }
-                n++;
+
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        GetLoginCode(token, limit, (current - 1) * limit, login_api_url);
+                    }
+                });
             }
 
         }, function (response) {
@@ -130,14 +145,14 @@ $(function () {
     GetLoginCode(token, limit, offset, login_api_url);
 
 //    Pagination
-    function Page(pageCount) {
-        $('.login_log_code').pagination({
-            pageCount: pageCount,
-            callback: function (api) {
-                offset = (api.getCurrent() - 1) * limit;
-                $('.currentPage').text(api.getCurrent());
-                GetLoginCode(token, limit, offset, login_api_url);
-            }
-        });
-    }
+//     function Page(pageCount) {
+//         $('.login_log_code').pagination({
+//             pageCount: pageCount,
+//             callback: function (api) {
+//                 offset = (api.getCurrent() - 1) * limit;
+//                 $('.currentPage').text(api.getCurrent());
+//                 GetLoginCode(token, limit, offset, login_api_url);
+//             }
+//         });
+//     }
 });
