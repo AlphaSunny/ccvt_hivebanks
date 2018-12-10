@@ -83,23 +83,20 @@ $(function () {
     });
 
     var limit = 10, offset = 0, n = 0, type = '2';
-    //trading status
-    // TradingStatus(token, limit, offset, type, function (response) {
-    //     if (response.errcode == '0') {
-    //
-    //     }
-    // }, function (response) {
-    //     // LayerFun(response.errcode);
-    // });
 
     //Account change record
     var account_change_url = 'log_balance.php';
 
     function GetAccountChange(token, limit, offset, account_change_url) {
-        var tr = '';
-        $("#accountChange").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>loading...</span></td></tr>")
+        var tr = '', total = "";
+        var index = layer.load(1, {
+            shade: [0.1, '#fff']
+        });
+        // $("#accountChange").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>loading...</span></td></tr>")
         AllRecord(token, limit, offset, account_change_url, function (response) {
+            layer.close(index);
             if (response.errcode == '0') {
+                total = response.total;
                 var pageCount = Math.ceil(response.total / limit);
                 $('.accountChange_totalPage').text(Math.ceil(response.total / limit));
                 var data = response.rows;
@@ -119,10 +116,24 @@ $(function () {
                 });
                 $('.accountChange').html(tr);
                 execI18n();
-                if (n == 0) {
-                    Page(pageCount);
-                }
-                n++;
+
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / 10,
+                    totalPage: pageCount,
+                    isShow: false,
+                    count: 6,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        $("#current").text(current);
+                        // Fun(limit, (current - 1) * limit);
+                        GetAccountChange(token, limit, (current - 1) * limit, account_change_url)
+                    }
+                });
+                // if (n == 0) {
+                //     Page(pageCount);
+                // }
+                // n++;
             }
         }, function (response) {
             GetDataFail('accountChange', '5');
@@ -131,16 +142,17 @@ $(function () {
     GetAccountChange(token, limit, offset, account_change_url);
 
     //account change Pagination
-    function Page(pageCount) {
-        $('.account_log_code').pagination({
-            pageCount: pageCount,
-            callback: function (api) {
-                offset = (api.getCurrent() - 1) * limit;
-                $('.account_currentPage').text(api.getCurrent());
-                GetAccountChange(token, limit, offset, account_change_url);
-            }
-        });
-    }
+
+    // function Page(pageCount) {
+    //     $('.account_log_code').pagination({
+    //         pageCount: pageCount,
+    //         callback: function (api) {
+    //             offset = (api.getCurrent() - 1) * limit;
+    //             $('.account_currentPage').text(api.getCurrent());
+    //             GetAccountChange(token, limit, offset, account_change_url);
+    //         }
+    //     });
+    // }
 
     // gloryPoints change code
     var gloryPoints_change_url = "us_integral_change_log.php";

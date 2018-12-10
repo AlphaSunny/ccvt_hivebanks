@@ -15,7 +15,8 @@
           href="mobile-css/common.css">
     <link rel="stylesheet" type="text/css" media="only screen and (max-device-width:767px)"
           href="mobile-css/account.css">
-    <link rel="stylesheet" type="text/css" href="css/pagination.css" media="screen">
+    <!--<link rel="stylesheet" type="text/css" href="css/pagination.css" media="screen">-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/jquery.pagination.css" media="screen">
 </head>
 <body>
 <!-- loading -->
@@ -452,15 +453,18 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <div class="accountChange_eg eg">
-                                <span class="font-size-14 i18n" name="total">total</span>:
-                                <span class="font-size-14 font-weight-400 accountChange_totalPage totalPage"></span>
-                                <span class="font-size-14 i18n" name="page">page</span>&nbsp;|
-                                <span class="font-size-14 i18n" name="current">current</span>
-                                <span class="account_currentPage currentPage font-size-14 font-weight-400">1</span>
-                                <span class="font-size-14 i18n" name="page">page</span>
-                                <div class="m-style M-box4 account_log_code"></div>
+                            <div>
+                                <div id="pagination" class="page"></div>
                             </div>
+                            <!--<div class="accountChange_eg eg">-->
+                                <!--<span class="font-size-14 i18n" name="total">total</span>:-->
+                                <!--<span class="font-size-14 font-weight-400 accountChange_totalPage totalPage"></span>-->
+                                <!--<span class="font-size-14 i18n" name="page">page</span>&nbsp;|-->
+                                <!--<span class="font-size-14 i18n" name="current">current</span>-->
+                                <!--<span class="account_currentPage currentPage font-size-14 font-weight-400">1</span>-->
+                                <!--<span class="font-size-14 i18n" name="page">page</span>-->
+                                <!--<div class="m-style M-box4 account_log_code"></div>-->
+                            <!--</div>-->
                         </div>
                     </div>
                 </div>
@@ -694,7 +698,8 @@
 <script src="../assets/js/layer/layer.js"></script>
 <script src="language/jquery.i18n.properties.js"></script>
 <script src="language/language.js"></script>
-<script src="../assets/js/pagination.js"></script>
+<!--<script src="../assets/js/pagination.js"></script>-->
+<script src="../assets/js/jquery.pagination.min.js"></script>
 <script src="../assets/js/clipboard.min.js"></script>
 <script src="../assets/js/jquery.qrcode.min.js"></script>
 <script src="js/common.js"></script>
