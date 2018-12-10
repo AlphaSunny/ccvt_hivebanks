@@ -107,7 +107,6 @@ $(function () {
                 }
                 $.each(data, function (i, val) {
                     tr += '<tr>' +
-                        // '<td><span title="' + data[i].hash_id + '">' + data[i].hash_id.substr(0, 20) + '...' + '</span></td>' +
                         '<td><span>' + data[i].ctime + '</span></td>' +
                         '<td><span>' + data[i].tx_amount + '</span></td>' +
                         '<td><span>' + data[i].credit_balance + '</span></td>' +
@@ -126,14 +125,9 @@ $(function () {
                     nextPageText: ">>",
                     callback: function (current) {
                         $("#current").text(current);
-                        // Fun(limit, (current - 1) * limit);
                         GetAccountChange(token, limit, (current - 1) * limit, account_change_url)
                     }
                 });
-                // if (n == 0) {
-                //     Page(pageCount);
-                // }
-                // n++;
             }
         }, function (response) {
             GetDataFail('accountChange', '5');
@@ -141,29 +135,14 @@ $(function () {
     };
     GetAccountChange(token, limit, offset, account_change_url);
 
-    //account change Pagination
-
-    // function Page(pageCount) {
-    //     $('.account_log_code').pagination({
-    //         pageCount: pageCount,
-    //         callback: function (api) {
-    //             offset = (api.getCurrent() - 1) * limit;
-    //             $('.account_currentPage').text(api.getCurrent());
-    //             GetAccountChange(token, limit, offset, account_change_url);
-    //         }
-    //     });
-    // }
 
     // gloryPoints change code
     var gloryPoints_change_url = "us_integral_change_log.php";
 
     function GetGloryPointsChange(token, limit, offset, gloryPoints_change_url) {
         var tr = '';
-        // $("#gloryPointsChange").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>loading...</span></td></tr>")
         AllRecord(token, limit, offset, gloryPoints_change_url, function (response) {
             if (response.errcode == '0') {
-                // var pageCount = Math.ceil(response.total / limit);
-                // $('.gloryPoints_totalPage').text(Math.ceil(response.total / limit));
                 var data = response.rows;
                 if (data == false) {
                     $('.gloryPoints_eg').hide();
