@@ -152,8 +152,10 @@ $(function () {
             if (response.errcode == '0') {
                 var data = response.rows;
                 var totalPage = Math.ceil(response.rows.length / limit_glory);
+                console.log(totalPage);
                 if (totalPage <= 1) {
                     count = 1;
+                    console.log(count);
                 } else if (1 < totalPage && totalPage <= 6) {
                     count = totalPage;
                 } else {
