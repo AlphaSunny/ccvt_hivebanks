@@ -72,7 +72,8 @@ $(function () {
 
     $(document).on("click", ".close_page", function () {
         console.log("close_page");
-        $("iframe").attr("display", "none");
+        // $("iframe").attr("display", "none");
+        $("body, html").attr("display", "none");
     });
 
 });
