@@ -97,7 +97,6 @@ $(function () {
             if (response.errcode == '0') {
                 var total = response.total;
                 var totalPage = Math.ceil(total / limit);
-                console.log(typeof totalPage);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (1 < totalPage && totalPage <= 6) {
@@ -153,6 +152,7 @@ $(function () {
             if (response.errcode == '0') {
                 var data = response.rows;
                 var totalPage = Math.ceil(response.rows.length / limit_glory);
+                console.log(totalPage);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (1 < totalPage && totalPage <= 6) {
@@ -170,7 +170,7 @@ $(function () {
                         '<td><span>' + data[i].utime + '</span></td>' +
                         '<td><span>' + data[i].tx_amount + '</span></td>' +
                         '<td><span class="" name="' + data[i].tx_detail + '">' + data[i].tx_detail + '</span></td>' +
-                        '</tr>'
+                        '</tr>';
                 });
                 $('#gloryPointsChange').html(tr);
                 execI18n();
