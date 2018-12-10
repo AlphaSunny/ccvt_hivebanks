@@ -147,7 +147,7 @@ $(function () {
     var limit_glory = 10, offset_glory = 0;
 
     function GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url) {
-        var tr = '', count = "";
+        var tr = '', count = 1;
         AllRecord(token, limit_glory, offset_glory, gloryPoints_change_url, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows;
@@ -165,6 +165,7 @@ $(function () {
                     return;
                 }
 
+                console.log(data);
                 $.each(data, function (i, val) {
                     tr += '<tr>' +
                         '<td><span>' + data[i].utime + '</span></td>' +
