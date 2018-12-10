@@ -26,7 +26,7 @@ $search_content = get_arg_str('GET', 'search_content');
 // 取得分页参数
 list($limit, $offset) = get_paging_arg('GET');
 // 获取当前用户的交易总记录
-$total = get_leaderboard_total();
+$total = get_leaderboard_total($search_content);
 // 交易记录数组
 $rows = get_leaderboard($offset,$limit,$search_content);
 
