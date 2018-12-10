@@ -298,9 +298,11 @@ button:hover {
 
 /*page*/
 .ui-pagination-page-item{
-    border: unset;
+    display: inline-block;
+    border: unset!important;
     width: 2rem;
     height: 2rem;
+    padding: 0!important;
 }
 
 /*button {*/
