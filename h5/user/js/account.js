@@ -179,7 +179,7 @@ $(function () {
                     currentPage: (limit_glory + offset_glory) / limit_glory,
                     totalPage: totalPage,
                     isShow: false,
-                    count: count,
+                    count: 3,
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
