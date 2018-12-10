@@ -1,6 +1,6 @@
 $(function () {
     var token = GetCookie('la_token');
-    var base_currency = GetCookie('base_currency');
+    var base_currency = GetCookie('benchmark_type');
 
     //Get ba information
     var limit = 10, offset = 0, n = 0;

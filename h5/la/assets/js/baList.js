@@ -34,7 +34,7 @@ $(function () {
                         "data": "ba_id",
                         className: "ba_id jump",
                     },
-                    {"data": "ba_type"},
+                    {"data": "ba_type",className:"ba_type"},
                     {"data": "ba_level"},
                     {"data": "security_level"},
                     {"data": "ctime"}
