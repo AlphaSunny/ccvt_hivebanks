@@ -35,6 +35,9 @@ $(function () {
                 var data = response.rows;
                 total = response.total;
                 if(offset == 0){
+                    $(".top_start").text(Math.floor(total/limit));
+                    $(".top_end").text(limit);
+                }else {
                     $(".top_start").text(total/total);
                     $(".top_end").text(limit);
                 }
