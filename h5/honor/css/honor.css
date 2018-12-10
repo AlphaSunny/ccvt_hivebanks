@@ -97,15 +97,15 @@ th, td {
 @keyframes td_line_move {
     0% {
         border-bottom: 1px solid #1efff8;
-        text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);
+        text-shadow: 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8);
     }
     50% {
         border-bottom: 1px solid #9ef8ff;
-        text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);
+        text-shadow: 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8);
     }
     100% {
         border-bottom: 1px solid #fbf6ff;
-        text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);
+        text-shadow: 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8);
     }
 }
 
