@@ -121,18 +121,18 @@ $(function () {
                 $('.accountChange').html(tr);
                 execI18n();
 
-                $("#pagination").pagination({
-                    currentPage: (limit + offset) / limit,
-                    totalPage: totalPage,
-                    isShow: false,
-                    count: count,
-                    prevPageText: "<<",
-                    nextPageText: ">>",
-                    callback: function (current) {
-                        // $("#current").text(current);
-                        GetAccountChange(token, limit, (current - 1) * limit, account_change_url)
-                    }
-                });
+                // $("#pagination").pagination({
+                //     currentPage: (limit + offset) / limit,
+                //     totalPage: totalPage,
+                //     isShow: false,
+                //     count: count,
+                //     prevPageText: "<<",
+                //     nextPageText: ">>",
+                //     callback: function (current) {
+                //         // $("#current").text(current);
+                //         GetAccountChange(token, limit, (current - 1) * limit, account_change_url)
+                //     }
+                // });
             }
         }, function (response) {
             GetDataFail('accountChange', '5');
