@@ -35,19 +35,15 @@ $(function () {
                 var data = response.rows;
                 total = response.total;
 
-                if (Math.floor(total / limit) == Math.floor(offset / limit)) {
-                    console.log(Math.floor(total / limit));
-                    console.log(Math.floor(offset / limit));
-                    $(".top_end").text(total);
-                    $(".top_start").text(offset + 1);
-                }
-
                 if (offset == 0) {
                     $(".top_start").text("1");
                     $(".top_end").text(limit);
-                } else {
+                } else if (Math.floor(total / limit) != Math.floor(offset / limit)) {
                     $(".top_start").text(offset + 1);
                     $(".top_end").text(offset + limit);
+                } else {
+                    $(".top_start").text(offset + 1);
+                    $(".top_end").text(total);
                 }
 
                 $.each(data, function (i, val) {
