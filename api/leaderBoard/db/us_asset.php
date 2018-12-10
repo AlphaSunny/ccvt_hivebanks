@@ -43,7 +43,7 @@ function get_leaderboard($offset,$limit,$search_content)
         $rows[$k]['sorting'] = $offset+$k+1;
     }
 
-print_r($rows);
+//print_r($rows);
     $found_key = array_search($search_content, array_column($rows, 'wechat'));
     print_r($found_key);die;
 
