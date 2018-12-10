@@ -106,21 +106,6 @@ $(function () {
                     }
                 });
                 $("#leaderBoardBody").html(tr);
-
-                //显示页码
-                $("#pagination2").pagination({
-                    currentPage: 1,
-                    totalPage: Math.ceil(total / limit),
-                    isShow: false,
-                    count: 6,
-                    prevPageText: "<<",
-                    nextPageText: ">>",
-                    callback: function (current) {
-                        $("#current2").text(current);
-                        console.log(current);
-                        Fun(limit, (current-1) * limit);
-                    }
-                });
             }
         }, function (response) {
             layer.msg(response.errmsg);
@@ -133,37 +118,51 @@ $(function () {
 
     Fun(limit, offset);
 
+    //显示页码
+    $("#pagination2").pagination({
+        currentPage: 1,
+        totalPage: Math.ceil(total / limit),
+        isShow: false,
+        count: 6,
+        prevPageText: "<<",
+        nextPageText: ">>",
+        callback: function (current) {
+            $("#current2").text(current);
+            console.log(current);
+            Fun(limit, (current-1) * limit);
+        }
+    });
     //上一页
-    $(".pre_btn").click(function () {
-        offset -= limit;
-        if (offset <= 0) {
-            $(".page").text(1);
-        }
-        $(".page").text(Math.floor(offset / limit) + 1);
-        if (offset == 0) {
-            // tr = "";
-            $(".next_btn").attr("disabled", false);
-            Fun(limit, offset);
-            $(this).attr("disabled", true);
-            return;
-        }
-        // tr = "";
-        $(".next_btn").attr("disabled", false);
-        Fun(limit, offset);
-    });
-
-    //下一页
-    $(".next_btn").click(function () {
-        offset += limit;
-        $(".page").text(Math.floor(offset / limit) + 1);
-        if (Math.floor(offset / limit) >= Math.floor(total / limit)) {
-            $(this).attr("disabled", true);
-        }
-        // tr = "";
-        $(".pre_btn").attr("disabled", false);
-
-        Fun(limit, offset);
-    });
+    // $(".pre_btn").click(function () {
+    //     offset -= limit;
+    //     if (offset <= 0) {
+    //         $(".page").text(1);
+    //     }
+    //     $(".page").text(Math.floor(offset / limit) + 1);
+    //     if (offset == 0) {
+    //         // tr = "";
+    //         $(".next_btn").attr("disabled", false);
+    //         Fun(limit, offset);
+    //         $(this).attr("disabled", true);
+    //         return;
+    //     }
+    //     // tr = "";
+    //     $(".next_btn").attr("disabled", false);
+    //     Fun(limit, offset);
+    // });
+    //
+    // //下一页
+    // $(".next_btn").click(function () {
+    //     offset += limit;
+    //     $(".page").text(Math.floor(offset / limit) + 1);
+    //     if (Math.floor(offset / limit) >= Math.floor(total / limit)) {
+    //         $(this).attr("disabled", true);
+    //     }
+    //     // tr = "";
+    //     $(".pre_btn").attr("disabled", false);
+    //
+    //     Fun(limit, offset);
+    // });
 
     //登录
     $(".usLogin").click(function () {
