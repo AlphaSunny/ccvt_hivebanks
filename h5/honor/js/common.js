@@ -108,7 +108,7 @@ function CallApi(api_url, post_data, suc_func, error_func) {
     });
 }
 
-// Call the API honner
+// Call the API honor
 function CallLeaderBoardsApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/leaderBoard/';
     post_data = post_data || {};
@@ -138,7 +138,7 @@ function CallLeaderBoardsApi(api_url, post_data, suc_func, error_func) {
     });
 }
 
-//get honner
+//get honor
 function GetLeaderBoard(limit, offset, search_content, suc_func, error_func) {
     var api_url = 'leaderboard.php',
         post_data = {

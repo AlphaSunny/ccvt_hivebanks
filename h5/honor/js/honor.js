@@ -142,7 +142,7 @@ $(function () {
 
     //登录
     $(".usLogin").click(function () {
-        window.location.href = "../user/login.html?honner=honner";
+        window.location.href = "../user/login.html?honor=honor";
     });
 
     //显示聊天内容
