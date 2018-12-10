@@ -155,11 +155,13 @@ $(function () {
                 console.log(totalPage);
                 if (totalPage <= 1) {
                     count = 1;
-                    console.log(count);
+                    console.log("1");
                 } else if (1 < totalPage && totalPage <= 6) {
                     count = totalPage;
+                    console.log("1-6");
                 } else {
                     count = 6;
+                    console.log("6---");
                 }
                 if (data == false) {
                     GetDataEmpty('gloryPointsChange', '3');
@@ -177,15 +179,13 @@ $(function () {
 
                 $("#pagination_glory").pagination({
                     currentPage: (limit_glory + offset_glory) / limit_glory,
-                    // currentPage: 1,
                     totalPage: totalPage,
                     isShow: false,
                     count: count,
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        // $("#current").text(current);
-                        GetGloryPointsChange(token, limit_glory, (offset_glory - 1) * limit_glory, gloryPoints_change_url);
+                        GetGloryPointsChange(token, limit_glory, (current - 1) * limit_glory, gloryPoints_change_url);
                     }
                 });
             }
