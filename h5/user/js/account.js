@@ -155,7 +155,7 @@ $(function () {
                 console.log(totalPage);
                 if (totalPage <= 1) {
                     count = 1;
-                    console.log("1");
+                    console.log("---1");
                 } else if (1 < totalPage && totalPage <= 6) {
                     count = totalPage;
                     console.log("1-6");
@@ -176,7 +176,7 @@ $(function () {
                 });
                 $('#gloryPointsChange').html(tr);
                 execI18n();
-                console.log((limit_glory + offset_glory) / limit_glory);
+
                 $("#pagination_glory").pagination({
                     currentPage: (limit_glory + offset_glory) / limit_glory,
                     totalPage: totalPage,
