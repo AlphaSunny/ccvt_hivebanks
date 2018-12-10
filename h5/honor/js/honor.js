@@ -22,7 +22,7 @@ $(function () {
         })
     }
 
-    var limit = 50, offset = 0, total = "", search_content = "";
+    var limit = 5, offset = 0, total = "", search_content = "";
 
     function HonorFun(limit, offset, search_content) {
         var tr = "", count = "", totalPage = "";
