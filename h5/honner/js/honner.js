@@ -47,7 +47,9 @@ $(function () {
                     $(".top_end").text(limit);
                 } else {
                     $(".top_start").text(offset += 1);
+                    console.log(offset);
                     $(".top_end").text(offset += limit);
+                    console.log(offset);
                 }
 
                 $.each(data, function (i, val) {
