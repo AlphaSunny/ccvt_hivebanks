@@ -148,11 +148,15 @@ $(function () {
 
     function GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url) {
         var tr = '', count = 1;
+        var index = layer.load(1, {
+            shade: [0.1, '#fff']
+        });
         AllRecord(token, limit_glory, offset_glory, gloryPoints_change_url, function (response) {
+            layer.close(index);
             if (response.errcode == '0') {
                 var data = response.rows;
-                console.log(response.rows.length);
-                var totalPage = Math.ceil(response.rows.length / limit_glory);
+                var total = response.total;
+                var totalPage = Math.ceil(total / limit_glory);
                 console.log(totalPage);
                 if (totalPage <= 1) {
                     count = 1;
