@@ -109,7 +109,7 @@ $(function () {
 
                 //显示页码
                 $("#pagination").pagination({
-                    currentPage: (limit + offset) / 10,
+                    currentPage: (limit + offset) / limit,
                     totalPage: Math.ceil(total / limit),
                     isShow: false,
                     count: 6,

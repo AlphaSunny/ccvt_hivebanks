@@ -117,7 +117,7 @@ $(function () {
                 execI18n();
 
                 $("#pagination").pagination({
-                    currentPage: (limit + offset) / 10,
+                    currentPage: (limit + offset) / limit,
                     totalPage: pageCount,
                     isShow: false,
                     count: 6,
@@ -208,7 +208,7 @@ $(function () {
                 execI18n();
 
                 $("#pagination_glory").pagination({
-                    currentPage: (limit_glory + offset_glory) / 10,
+                    currentPage: (limit_glory + offset_glory) / limit_glory,
                     totalPage: totalPage,
                     isShow: false,
                     count: 6,
