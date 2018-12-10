@@ -185,7 +185,7 @@ $(function () {
                     nextPageText: ">>",
                     callback: function (current) {
                         // $("#current").text(current);
-                        GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url);
+                        GetGloryPointsChange(token, limit_glory, (offset_glory - 1) * limit_glory, gloryPoints_change_url);
                     }
                 });
             }
@@ -193,7 +193,6 @@ $(function () {
             GetDataFail('gloryPointsChange', '5');
         });
     };
-
     GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url);
 
 
