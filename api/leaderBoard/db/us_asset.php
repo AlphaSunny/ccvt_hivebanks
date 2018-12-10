@@ -26,10 +26,36 @@ function get_leaderboard($offset,$limit,$search_content)
 {
     $db = new DB_COM();
     $unit = get_la_base_unit();
+    if ($search_content){
+        $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞') as all_praise,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩') as all_point_on FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP'";
+        $db->query($sql);
+        $row1 = $db->fetchAll();
+        foreach ($row1 as $k=>$v){
+            $row1[$k]['sorting'] = $k+1;
+        }
+
+        $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞') as all_praise,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩') as all_point_on FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP' and b.wechat like '%{$search_content}%'";
+        $db->query($sql);
+        $row2 = $db->fetchAll();
+        if ($row2){
+            foreach ($row1 as $a=>$b){
+                foreach ($row2 as $k=>$v){
+                    if ($v['us_id']==$b['us_id']){
+                        $row2[$k]['sorting'] = $b['sorting'];
+                    }
+                }
+            }
+            print_r($row2);die;
+        }else{
+            $rows = array();
+        }
+
+    }
+    die;
     $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞') as all_praise,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩') as all_point_on FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP'";
-//    if ($search_content!=''){
-//        $sql .= " and b.wechat like '%{$search_content}%'";
-//    }
+    if ($search_content!=''){
+        $sql .= " and b.wechat like '%{$search_content}%'";
+    }
     $sql .= " order by a.base_amount desc limit $offset , $limit";
     $db->query($sql);
     $rows = $db->fetchAll();
@@ -43,9 +69,6 @@ function get_leaderboard($offset,$limit,$search_content)
         $rows[$k]['sorting'] = $offset+$k+1;
     }
 
-//print_r($rows);
-    $found_key = array_search($search_content, array_column($rows, 'wechat'));
-    print_r($found_key);die;
 
     return $rows;
 }
