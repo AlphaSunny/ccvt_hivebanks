@@ -25,7 +25,7 @@ $(function () {
     var limit = 50, offset = 0, total = "";
 
     function Fun(limit, offset) {
-        var tr = "";
+        var tr = "", li = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
@@ -106,6 +106,13 @@ $(function () {
                     }
                 });
                 $("#leaderBoardBody").html(tr);
+
+                //显示页码
+                var num_btn_list = Math.floor(total/limit);
+                $.each(num_btn_list, function (i, val) {
+                    li+="<li><a href='javascript:;' class='num_btn'>"+ i+1 +"</a></li>";
+                });
+                $(".pre_btn").insertAfter(li);
             }
         }, function (response) {
             layer.msg(response.errmsg);
