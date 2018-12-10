@@ -176,8 +176,9 @@ $(function () {
                 execI18n();
 
                 $("#pagination_glory").pagination({
-                    currentPage: (limit_glory + offset_glory) / limit_glory,
-                    totalPage: totalPage,
+                    // currentPage: (limit_glory + offset_glory) / limit_glory,
+                    currentPage: 1,
+                    totalPage: 3,
                     isShow: false,
                     count: 3,
                     prevPageText: "<<",
