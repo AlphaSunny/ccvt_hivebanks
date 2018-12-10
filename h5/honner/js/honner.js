@@ -106,6 +106,21 @@ $(function () {
                     }
                 });
                 $("#leaderBoardBody").html(tr);
+
+                //显示页码
+                $("#pagination2").pagination({
+                    currentPage: (limit + offset) / 10,
+                    totalPage: Math.ceil(total / limit),
+                    isShow: false,
+                    count: 6,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        $("#current2").text(current);
+                        console.log(current);
+                        Fun(limit, (current - 1) * limit);
+                    }
+                });
             }
         }, function (response) {
             layer.msg(response.errmsg);
@@ -118,20 +133,6 @@ $(function () {
 
     Fun(limit, offset);
 
-    //显示页码
-    $("#pagination2").pagination({
-        currentPage: 1,
-        totalPage: Math.ceil(total / limit),
-        isShow: false,
-        count: 6,
-        prevPageText: "<<",
-        nextPageText: ">>",
-        callback: function (current) {
-            $("#current2").text(current);
-            console.log(current);
-            Fun(limit, (current-1) * limit);
-        }
-    });
     //上一页
     // $(".pre_btn").click(function () {
     //     offset -= limit;
