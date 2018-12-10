@@ -97,17 +97,13 @@ $(function () {
             if (response.errcode == '0') {
                 var total = response.total;
                 var totalPage = Math.ceil(total / limit);
-                console.log(totalPage);
                 console.log(typeof totalPage);
                 if (totalPage <= 1) {
                     count = 1;
-                    console.log(1);
                 } else if (1 < totalPage && totalPage <= 6) {
                     count = totalPage;
-                    console.log("1-6");
                 } else {
                     count = 6;
-                    console.log("6---")
                 }
 
                 var data = response.rows;
@@ -159,10 +155,10 @@ $(function () {
                 var totalPage = Math.ceil(response.rows.length / limit_glory);
                 if (totalPage <= 1) {
                     count = 1;
-                } else if (1 < totalPage <= 6) {
+                } else if (1 < totalPage && totalPage <= 6) {
                     count = totalPage;
                 } else {
-                    count == 6;
+                    count = 6;
                 }
                 if (data = false) {
                     GetDataEmpty('gloryPointsChange', '3');
