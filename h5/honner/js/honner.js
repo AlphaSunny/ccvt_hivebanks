@@ -108,7 +108,7 @@ $(function () {
                 $("#leaderBoardBody").html(tr);
 
                 //显示页码
-                $("#pagination2").pagination({
+                $("#pagination").pagination({
                     currentPage: (limit + offset) / 10,
                     totalPage: Math.ceil(total / limit),
                     isShow: false,
@@ -116,8 +116,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        $("#current2").text(current);
-                        console.log(current);
+                        $("#current").text(current);
                         Fun(limit, (current - 1) * limit);
                     }
                 });
@@ -132,38 +131,6 @@ $(function () {
     }
 
     Fun(limit, offset);
-
-    //上一页
-    // $(".pre_btn").click(function () {
-    //     offset -= limit;
-    //     if (offset <= 0) {
-    //         $(".page").text(1);
-    //     }
-    //     $(".page").text(Math.floor(offset / limit) + 1);
-    //     if (offset == 0) {
-    //         // tr = "";
-    //         $(".next_btn").attr("disabled", false);
-    //         Fun(limit, offset);
-    //         $(this).attr("disabled", true);
-    //         return;
-    //     }
-    //     // tr = "";
-    //     $(".next_btn").attr("disabled", false);
-    //     Fun(limit, offset);
-    // });
-    //
-    // //下一页
-    // $(".next_btn").click(function () {
-    //     offset += limit;
-    //     $(".page").text(Math.floor(offset / limit) + 1);
-    //     if (Math.floor(offset / limit) >= Math.floor(total / limit)) {
-    //         $(this).attr("disabled", true);
-    //     }
-    //     // tr = "";
-    //     $(".pre_btn").attr("disabled", false);
-    //
-    //     Fun(limit, offset);
-    // });
 
     //登录
     $(".usLogin").click(function () {
