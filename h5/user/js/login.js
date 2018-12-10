@@ -127,7 +127,7 @@ $(document).ready(function () {
                 if (!leaderBoard) {
                     window.location.href = 'account.html';
                 }else {
-                    window.location.href = "../honner/honner.html";
+                    window.location.href = "../honner/honor.html";
                 }
             }
         }, function (response) {
@@ -299,7 +299,7 @@ $(document).ready(function () {
                 if (!leaderBoard) {
                     window.location.href = 'account.html';
                 }else {
-                    window.location.href = "../honner/honner.html";
+                    window.location.href = "../honner/honor.html";
                 }
             }
         }, function (response) {

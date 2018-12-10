@@ -22,14 +22,14 @@ $(function () {
         })
     }
 
-    var limit = 50, offset = 0, total = "";
+    var limit = 50, offset = 0, total = "",search_content = "";
 
-    function Fun(limit, offset) {
+    function HonorFun(limit, offset,search_content) {
         var tr = "", count = "", totalPage = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
-        GetLeaderBoard(limit, offset, function (response) {
+        GetLeaderBoard(limit, offset,search_content, function (response) {
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
@@ -125,7 +125,7 @@ $(function () {
                     nextPageText: ">>",
                     callback: function (current) {
                         $("#current").text(current);
-                        Fun(limit, (current - 1) * limit);
+                        HonorFun(limit, (current - 1) * limit,search_content);
                     }
                 });
             }
@@ -134,11 +134,11 @@ $(function () {
         });
 
         setTimeout(function () {
-            Fun(limit, offset);
+            HonorFun(limit, offset,search_content);
         }, 600000)
     }
 
-    Fun(limit, offset);
+    HonorFun(limit, offset,search_content);
 
     //登录
     $(".usLogin").click(function () {
