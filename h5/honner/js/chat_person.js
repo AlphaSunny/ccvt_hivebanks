@@ -74,7 +74,8 @@ $(function () {
         var ele = $(".click_none");
         console.log(ele);
         console.log("close_page");
-        $("iframe").attr("display", "none");
+        // $("iframe").attr("display", "none");
+        $("iframe").fadeOut();
         // $("body, html").attr("display", "none");
     });
 
