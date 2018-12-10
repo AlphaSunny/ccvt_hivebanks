@@ -28,9 +28,11 @@ $token = get_arg_str('GET', 'token',100);
 // 验证token
 $us_id = check_token($token);
 
+// 取得分页参数
+list($limit, $offset) = get_paging_arg('GET');
 
 //数据
-$rows = us_integral_change_log($us_id);
+$rows = us_integral_change_log($offset,$limit,$us_id);
 
 // 返回数据做成
 $rtn_ary = array();
