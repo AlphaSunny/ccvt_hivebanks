@@ -27,9 +27,9 @@ function get_leaderboard($offset,$limit,$search_content)
     $db = new DB_COM();
     $unit = get_la_base_unit();
     $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞') as all_praise,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩') as all_point_on FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP'";
-    if ($search_content!=''){
-        $sql .= " and b.wechat like '%{$search_content}%'";
-    }
+//    if ($search_content!=''){
+//        $sql .= " and b.wechat like '%{$search_content}%'";
+//    }
     $sql .= " order by a.base_amount desc limit $offset , $limit";
     $db->query($sql);
     $rows = $db->fetchAll();
