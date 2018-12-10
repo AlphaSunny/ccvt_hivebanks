@@ -38,7 +38,7 @@ $(function () {
                     $(".top_start").text(Math.floor(total/limit));
                     $(".top_end").text(limit);
                 }else {
-                    $(".top_start").text(offset++);
+                    $(".top_start").text(offset+=1);
                     $(".top_end").text(limit);
                 }
 
