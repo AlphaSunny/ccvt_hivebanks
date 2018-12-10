@@ -17,7 +17,6 @@ $ba_info = get_ba_base_info();
 $sql = "select * from bot_group WHERE is_audit=2 AND is_test=1 AND is_give_ccvt=1";
 $db->query($sql);
 $groups = $db->fetchAll();
-print_r($groups);die;
 if ($groups){
     $pInTrans = $db->StartTrans();  //开启事务
     $ba_account = 0;
