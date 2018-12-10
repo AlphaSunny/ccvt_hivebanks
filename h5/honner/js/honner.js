@@ -108,7 +108,7 @@ $(function () {
                 $("#leaderBoardBody").html(tr);
 
                 //显示页码
-                var num_btn_list = Math.floor(total/limit);
+                var num_btn_list = Math.ceil(total/limit);
                 console.log(num_btn_list);
                 $.each(num_btn_list, function (i, val) {
                     li+="<li><a href='javascript:;' class='num_btn'>"+ i+1 +"</a></li>";
