@@ -55,6 +55,7 @@ iframe {
     z-index: 101;
     left: 1%;
     top: 3%;
+    cursor: pointer;
     display: none;
 }
 
