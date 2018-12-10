@@ -1078,12 +1078,7 @@ section.footer {
 }
 
 .prv, .next {
-    /*width: 30px;*/
-    /*height: 30px;*/
-    /*float: left;*/
     text-align: center;
-    /*line-height: 30px;*/
-    /*border: 1px solid #ddd;*/
     cursor: pointer;
 }
 
@@ -1106,6 +1101,14 @@ section.footer {
 .activP {
     background-color: #367fa9 !important;
     color: #fff !important;
+}
+
+.ui-pagination-container .ui-pagination-page-item{
+    border: 1px solid #82ca9c!important;
+    color: #82ca9c;
+}
+.ui-pagination-container .ui-pagination-page-item.active{
+    background: #82ca9c;
 }
 
 /*margin-padding-width*/
