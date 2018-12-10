@@ -144,7 +144,7 @@ $(function () {
     // gloryPoints change code
     var gloryPoints_change_url = "us_integral_change_log.php";
 
-    var limit_glory = 10, offset_glory = 0;
+    var limit_glory = 3, offset_glory = 0;
 
     function GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url) {
         var tr = '', count = 1;
@@ -170,7 +170,6 @@ $(function () {
                         '<td><span class="" name="' + data[i].tx_detail + '">' + data[i].tx_detail + '</span></td>' +
                         '</tr>';
                 });
-                console.log(tr);
                 $('#gloryPointsChange').html(tr);
                 execI18n();
 
