@@ -22,7 +22,7 @@ $(function () {
         })
     }
 
-    var limit = 50, offset = 0, total = "", page = 1;
+    var limit = 50, offset = 0, total = "";
 
     function Fun(limit, offset) {
         var tr = "";
@@ -34,6 +34,11 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows;
                 total = response.total;
+                if(offset == 0){
+                    $(".top_start").text(total/total);
+                    $(".top_end").text(total);
+                }
+
                 $.each(data, function (i, val) {
                     if (data[i].sorting == "1") {
                         tr += "<tr>" +
