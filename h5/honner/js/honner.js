@@ -109,10 +109,10 @@ $(function () {
 
                 //显示页码
                 var num_btn_list = Math.ceil(total/limit);
-                $.each(num_btn_list, function (i, val) {
-                    li+="<li><a href='javascript:;' class='num_btn'>"+ i+1 +"</a></li>";
-                });
-                $(".pagination").append(li);
+                // $.each(num_btn_list, function (i, val) {
+                //     li+="<li><a href='javascript:;' class='num_btn'>"+ i+1 +"</a></li>";
+                // });
+                // $(".pagination").append(li);
             }
         }, function (response) {
             layer.msg(response.errmsg);
