@@ -8,9 +8,9 @@
 function  get_leaderboard_total($search_content)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM us_asset";
+    $sql = "SELECT * FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP'";
     if ($search_content!=''){
-        $sql .= " where wechat like '%{$search_content}%'";
+        $sql .= " and b.wechat like '%{$search_content}%'";
     }
     $db -> query($sql);
     $count = $db -> affectedRows();
