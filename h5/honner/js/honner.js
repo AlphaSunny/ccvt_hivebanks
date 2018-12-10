@@ -36,7 +36,7 @@ $(function () {
                 total = response.total;
                 if(offset == 0){
                     $(".top_start").text(total/total);
-                    $(".top_end").text(total);
+                    $(".top_end").text(limit);
                 }
 
                 $.each(data, function (i, val) {
