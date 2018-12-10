@@ -22,7 +22,7 @@ $(function () {
         })
     }
 
-    var limit = 50, offset = 0, total = "";
+    var limit = 10, offset = 0, total = "";
 
     function Fun(limit, offset) {
         var tr = "", li = "";
@@ -108,11 +108,19 @@ $(function () {
                 $("#leaderBoardBody").html(tr);
 
                 //显示页码
-                var num_btn_list = Math.ceil(total/limit);
-                // $.each(num_btn_list, function (i, val) {
-                //     li+="<li><a href='javascript:;' class='num_btn'>"+ i+1 +"</a></li>";
-                // });
-                // $(".pagination").append(li);
+                $("#pagination2").pagination({
+                    currentPage: 1,
+                    totalPage: Math.ceil(total / limit),
+                    isShow: false,
+                    count: 6,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        $("#current2").text(current);
+                        console.log(current);
+                        Fun(limit, (current-1) * limit);
+                    }
+                });
             }
         }, function (response) {
             layer.msg(response.errmsg);
