@@ -22,14 +22,14 @@ $(function () {
         })
     }
 
-    var limit = 50, offset = 0, total = "",search_content = "";
+    var limit = 50, offset = 0, total = "", search_content = "";
 
-    function HonorFun(limit, offset,search_content) {
+    function HonorFun(limit, offset, search_content) {
         var tr = "", count = "", totalPage = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
-        GetLeaderBoard(limit, offset,search_content, function (response) {
+        GetLeaderBoard(limit, offset, search_content, function (response) {
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
@@ -125,7 +125,7 @@ $(function () {
                     nextPageText: ">>",
                     callback: function (current) {
                         $("#current").text(current);
-                        HonorFun(limit, (current - 1) * limit,search_content);
+                        HonorFun(limit, (current - 1) * limit, search_content);
                     }
                 });
             }
@@ -134,11 +134,21 @@ $(function () {
         });
 
         setTimeout(function () {
-            HonorFun(limit, offset,search_content);
+            HonorFun(limit, offset, search_content);
         }, 600000)
     }
 
-    HonorFun(limit, offset,search_content);
+    HonorFun(limit, offset, search_content);
+
+    //搜索
+    $(".search_icon").click(function () {
+        search_content = $(".search_input").val();
+        if (search_content.length <= 0) {
+            layer.msg("请输入搜索内容");
+            return;
+        }
+        HonorFun(limit, offset, search_content);
+    });
 
     //登录
     $(".usLogin").click(function () {
