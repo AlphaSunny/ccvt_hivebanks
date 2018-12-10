@@ -93,8 +93,12 @@ $(function () {
 
     function GetLoginCode(token, limit, offset, login_api_url) {
         var tr = '', count = 1;
+        var index = layer.load(1, {
+            shade: [0.1, '#fff']
+        });
         $("#loginCode").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>loading...</span></td></tr>")
         AllRecord(token, limit, offset, login_api_url, function (response) {
+            layer.close(index);
             if (response.errcode == '0') {
                 var data = response.rows;
                 if (data == false) {
@@ -143,16 +147,4 @@ $(function () {
         });
     };
     GetLoginCode(token, limit, offset, login_api_url);
-
-//    Pagination
-//     function Page(pageCount) {
-//         $('.login_log_code').pagination({
-//             pageCount: pageCount,
-//             callback: function (api) {
-//                 offset = (api.getCurrent() - 1) * limit;
-//                 $('.currentPage').text(api.getCurrent());
-//                 GetLoginCode(token, limit, offset, login_api_url);
-//             }
-//         });
-//     }
 });
