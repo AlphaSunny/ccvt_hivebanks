@@ -9,8 +9,8 @@ error_reporting(E_ALL | E_STRICT);
 //$day_start = strtotime(date('Y-m-d 08:00:00')); //早上八点
 //$day_end = strtotime(date('Y-m-d 22:00:00'));    //晚上十点
 
-$day_start = strtotime(date('Y-m-d 08:00:00')); //早上八点
-$day_end = strtotime(date('Y-m-d 22:00:00'));    //晚上十点
+$day_start = strtotime(date('2018-12-09 08:00:00')); //早上八点
+$day_end = strtotime(date('2018-12-09 22:00:00'));    //晚上十点
 
 $db = new DB_COM();
 
@@ -28,6 +28,7 @@ if ($groups){
         $sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$b['name']}' AND type='Text' AND CHAR_LENGTH(bot_content)>=5 AND is_effective='0' AND bot_content not LIKE '@风赢小助手%' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
         $db->query($sql);
         $rows = $db->fetchAll();
+        print_r($rows);die;
         if ($rows){
             foreach ($rows as $k=>$v){
                 set_time_limit(0);
