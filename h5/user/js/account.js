@@ -155,13 +155,13 @@ $(function () {
                 var data = response.rows;
                 var totalPage = Math.ceil(response.rows.length / limit_glory);
                 if (totalPage <= 1) {
-                    count == 1;
+                    count = 1;
                 } else if (1 < totalPage <= 6) {
-                    count == totalPage;
+                    count = totalPage;
                 } else {
                     count == 6;
                 }
-                if (data == false) {
+                if (data = false) {
                     GetDataEmpty('gloryPointsChange', '3');
                     return;
                 }
