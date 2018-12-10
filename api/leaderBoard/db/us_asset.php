@@ -45,7 +45,7 @@ function get_leaderboard($offset,$limit,$search_content)
                     }
                 }
             }
-            $rows = $row2;
+            $rows = array_slice($row2,$offset,$limit);
         }else{
             $rows = array();
         }
@@ -66,7 +66,7 @@ function get_leaderboard($offset,$limit,$search_content)
             $rows[$k]['all_point_on'] = 0;
         }
     }
-    
+
     return $rows;
 }
 
