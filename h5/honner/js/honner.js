@@ -112,7 +112,7 @@ $(function () {
                 $.each(num_btn_list, function (i, val) {
                     li+="<li><a href='javascript:;' class='num_btn'>"+ i+1 +"</a></li>";
                 });
-                $(".pre_btn").append(li);
+                $(".pagination").append(li);
             }
         }, function (response) {
             layer.msg(response.errmsg);
