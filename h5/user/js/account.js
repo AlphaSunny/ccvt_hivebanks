@@ -129,7 +129,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        $("#current").text(current);
+                        // $("#current").text(current);
                         GetAccountChange(token, limit, (current - 1) * limit, account_change_url)
                     }
                 });
@@ -144,7 +144,7 @@ $(function () {
     // gloryPoints change code
     var gloryPoints_change_url = "us_integral_change_log.php";
 
-    var limit_glory = 10, offset_glory = 0;
+    var limit_glory = 3, offset_glory = 0;
 
     function GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url) {
         var tr = '', count = 1;
@@ -152,8 +152,10 @@ $(function () {
             if (response.errcode == '0') {
                 var data = response.rows;
                 var totalPage = Math.ceil(response.rows.length / limit_glory);
+                console.log(totalPage);
                 if (totalPage <= 1) {
                     count = 1;
+                    console.log(count);
                 } else if (1 < totalPage && totalPage <= 6) {
                     count = totalPage;
                 } else {
@@ -181,7 +183,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        $("#current").text(current);
+                        // $("#current").text(current);
                         GetAccountChange(token, limit_glory, (current - 1) * limit, account_change_url)
                     }
                 });

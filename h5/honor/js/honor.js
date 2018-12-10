@@ -124,7 +124,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        $("#current").text(current);
+                        // $("#current").text(current);
                         HonorFun(limit, (current - 1) * limit, search_content);
                     }
                 });
