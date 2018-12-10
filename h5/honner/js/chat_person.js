@@ -74,8 +74,8 @@ $(function () {
         var ele = $(".click_none");
         console.log(ele);
         console.log("close_page");
-        // $("iframe").attr("display", "none");
-        $("body, html").attr("display", "none");
+        $("iframe").attr("display", "none");
+        // $("body, html").attr("display", "none");
     });
 
 });
