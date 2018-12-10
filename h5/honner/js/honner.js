@@ -22,7 +22,7 @@ $(function () {
         })
     }
 
-    var limit = 50, offset = 0, total = "";
+    var limit = 10, offset = 0, total = "";
 
     function Fun(limit, offset) {
         var tr = "";
@@ -116,7 +116,7 @@ $(function () {
 
     //上一页
     $(".pre_btn").click(function () {
-        offset -= 50;
+        offset -= limit;
         if (offset <= 0) {
             $(".page").text(1);
         }
@@ -135,7 +135,7 @@ $(function () {
 
     //下一页
     $(".next_btn").click(function () {
-        offset += 50;
+        offset += limit;
         $(".page").text(Math.floor(offset / limit) + 1);
         if (Math.floor(offset / 10) >= Math.floor(total / limit)) {
             $(this).attr("disabled", true);
