@@ -25,7 +25,7 @@ $(function () {
     var limit = 50, offset = 0, total = "";
 
     function Fun(limit, offset) {
-        var tr = "", li = "";
+        var tr = "", count = "", totalPage = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
@@ -34,16 +34,13 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows;
                 total = response.total;
-
-                if (offset == 0) {
-                    $(".top_start").text("1");
-                    $(".top_end").text(limit);
-                } else if (Math.floor(total / limit) != Math.floor(offset / limit)) {
-                    $(".top_start").text(offset + 1);
-                    $(".top_end").text(offset + limit);
+                totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (totalPage > 1 && totalPage <= 6) {
+                    count = totalPage;
                 } else {
-                    $(".top_start").text(offset + 1);
-                    $(".top_end").text(total);
+                    count = 6;
                 }
 
                 $.each(data, function (i, val) {
@@ -110,9 +107,9 @@ $(function () {
                 //显示页码
                 $("#pagination").pagination({
                     currentPage: (limit + offset) / limit,
-                    totalPage: Math.ceil(total / limit),
+                    totalPage: totalPage,
                     isShow: false,
-                    count: 6,
+                    count: count,
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
