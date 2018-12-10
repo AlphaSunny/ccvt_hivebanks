@@ -144,7 +144,7 @@ $(function () {
     // gloryPoints change code
     var gloryPoints_change_url = "us_integral_change_log.php";
 
-    var limit_glory = 10, offset_glory = 0;
+    var limit_glory = 5, offset_glory = 0;
 
     function GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url) {
         var tr = '', count = 1;
