@@ -102,7 +102,7 @@ $(function () {
                 if (totalPage <= 1) {
                     // count = 1;
                     console.log(1);
-                } else if (1 < totalPage <= 6) {
+                } else if (1 < totalPage && totalPage <= 6) {
                     // count = totalPage;
                     console.log("1-6");
                 } else {
