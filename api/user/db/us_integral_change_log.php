@@ -23,7 +23,7 @@ function  us_integral_change_log($offset,$limit,$us_id)
 {  
     $db = new DB_COM();
     $unit = get_la_base_unit();
-    $sql = "select tx_amount/'{$unit}' as tx_amount,utime,tx_detail from us_glory_integral_change_log WHERE debit_id='{$us_id}' limit $offset , $limit";
+    $sql = "select tx_amount/'{$unit}' as tx_amount,utime,tx_detail from us_glory_integral_change_log WHERE debit_id='{$us_id}' ORDER BY utime DESC limit $offset , $limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
