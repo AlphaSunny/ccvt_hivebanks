@@ -143,31 +143,16 @@ $(function () {
         window.location.href = "../user/login.html?honner=honner";
     });
 
-    //查看聊天内容message_icon
-    // $(document).on("click", ".link_name", function () {
-    //     var wechat = $(this).text();
-    //     window.location.href = "chat_person.html?wechat=" + encodeURI(encodeURI(wechat));
-    // });
     //显示聊天内容
     $(document).on("click", ".message_icon", function () {
         var wechat = $(this).parents("tr").find(".link_name").text();
         $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat))).fadeIn();
     });
+
     //关闭聊天内容close_page
     $(document).on("click", ".close_page", function () {
-        console.log($("#iframe"));
         $("#iframe").fadeOut();
-    //     window.parent.close();
-    //     // var ele = $(".click_none");
-    //     // console.log(ele);
-    //     // console.log("close_page");
-    //     // $("iframe").fadeOut();
     });
-
-    // $(document).on("click", ".close_page", function () {
-    //     //     console.log("-00000");
-    //     //     $("iframe").attr("display", "none");
-    //     // });
 
     //赞/踩
     var give_us_id = "", state = "",
