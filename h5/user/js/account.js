@@ -204,7 +204,7 @@ $(function () {
                         '<td><span class="" name="' + data[i].tx_detail + '">' + data[i].tx_detail + '</span></td>' +
                         '</tr>'
                 });
-                $('.gloryPointsChange').html(tr);
+                $('#gloryPointsChange').html(tr);
                 execI18n();
 
                 $("#pagination_glory").pagination({
