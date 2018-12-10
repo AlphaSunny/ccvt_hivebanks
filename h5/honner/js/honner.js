@@ -34,12 +34,14 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows;
                 total = response.total;
+                if ((offset += limit) >= total) {
+                    $(".top_end").text(total);
+                    $(".top_start").text(offset += 1);
+                }
+
                 if (offset == 0) {
                     $(".top_start").text("1");
                     $(".top_end").text(limit);
-                } else if ((offset += limit) >= total) {
-                    $(".top_end").text(total);
-                    $(".top_start").text(offset += 1);
                 } else {
                     $(".top_end").text(offset += limit);
                     $(".top_start").text(offset += 1);
