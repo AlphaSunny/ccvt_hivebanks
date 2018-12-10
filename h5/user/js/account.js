@@ -88,7 +88,7 @@ $(function () {
     var account_change_url = 'log_balance.php';
 
     function GetAccountChange(token, limit, offset, account_change_url) {
-        var tr = '', count = "";
+        var tr = '', count = 1;
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
@@ -127,7 +127,7 @@ $(function () {
                     currentPage: (limit + offset) / limit,
                     totalPage: totalPage,
                     isShow: false,
-                    count: 6,
+                    count: count,
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
