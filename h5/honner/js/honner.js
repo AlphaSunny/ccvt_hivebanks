@@ -147,11 +147,12 @@ $(function () {
     $(document).on("click", ".message_icon", function () {
         var wechat = $(this).parents("tr").find(".link_name").text();
         $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat))).fadeIn();
+        $(".close_page").fadeIn();
     });
 
     //关闭聊天内容close_page
     $(document).on("click", ".close_page", function () {
-        $("#iframe").fadeOut();
+        $("#iframe,.close_page").fadeOut();
     });
 
     //赞/踩
