@@ -297,6 +297,12 @@ button:hover {
 }
 
 /*page*/
+.ui-pagination-page-item{
+    border: unset;
+    width: 2rem;
+    height: 2rem;
+}
+
 /*button {*/
     /*display: inline-block;*/
     /*padding: 6px 12px;*/
