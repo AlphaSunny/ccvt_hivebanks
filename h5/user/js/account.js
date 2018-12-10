@@ -151,8 +151,8 @@ $(function () {
         AllRecord(token, limit_glory, offset_glory, gloryPoints_change_url, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows;
+                console.log(response);
                 var totalPage = Math.ceil(response.rows.length / limit_glory);
-                console.log(totalPage);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (1 < totalPage && totalPage <= 6) {
