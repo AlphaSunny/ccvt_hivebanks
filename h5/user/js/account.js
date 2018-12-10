@@ -176,7 +176,7 @@ $(function () {
                 });
                 $('#gloryPointsChange').html(tr);
                 execI18n();
-
+                console.log((limit_glory + offset_glory) / limit_glory);
                 $("#pagination_glory").pagination({
                     currentPage: (limit_glory + offset_glory) / limit_glory,
                     totalPage: totalPage,
