@@ -129,7 +129,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        $("#current").text(current);
+                        // $("#current").text(current);
                         GetAccountChange(token, limit, (current - 1) * limit, account_change_url)
                     }
                 });
@@ -183,7 +183,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        $("#current").text(current);
+                        // $("#current").text(current);
                         GetAccountChange(token, limit_glory, (current - 1) * limit, account_change_url)
                     }
                 });
