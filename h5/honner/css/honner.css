@@ -46,8 +46,15 @@ nav ul a {
 /*iframe*/
 iframe {
     position: fixed;
-    z-index: 999;
+    z-index: 100;
     display: none;
+}
+
+.close_page {
+    position: fixed;
+    z-index: 101;
+    left: 1%;
+    top: 3%;
 }
 
 .glory_box {
