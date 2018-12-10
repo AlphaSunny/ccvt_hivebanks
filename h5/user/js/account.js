@@ -176,11 +176,11 @@ $(function () {
                 execI18n();
 
                 $("#pagination_glory").pagination({
-                    // currentPage: (limit_glory + offset_glory) / limit_glory,
-                    currentPage: 1,
-                    totalPage: 3,
+                    currentPage: (limit_glory + offset_glory) / limit_glory,
+                    // currentPage: 1,
+                    totalPage: totalPage,
                     isShow: false,
-                    count: 3,
+                    count: count,
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
