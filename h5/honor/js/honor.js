@@ -38,13 +38,10 @@ $(function () {
                 console.log(totalPage);
                 if (totalPage <= 1) {
                     count = 1;
-                    console.log("---1");
                 } else if (totalPage > 1 && totalPage <= 6) {
                     count = totalPage;
-                    console.log("1-6");
                 } else {
                     count = 6;
-                    console.log("6----");
                 }
 
                 if (offset == 0) {
