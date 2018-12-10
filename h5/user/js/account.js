@@ -127,7 +127,7 @@ $(function () {
                     currentPage: (limit + offset) / limit,
                     totalPage: totalPage,
                     isShow: false,
-                    count: count,
+                    count: 6,
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
