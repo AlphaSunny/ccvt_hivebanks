@@ -9,9 +9,6 @@ error_reporting(E_ALL | E_STRICT);
 $day_start = strtotime(date('Y-m-d 08:00:00')); //早上八点
 $day_end = strtotime(date('Y-m-d 22:00:00'));    //晚上十点
 
-//$day_start = strtotime(date('2018-11-09 00:00:00')); //早上八点
-//$day_end = strtotime(date('2018-11-09 22:00:00'));    //晚上十点
-
 $db = new DB_COM();
 
 //群聊微信用户及发言数
