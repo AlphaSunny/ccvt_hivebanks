@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
 }
-html, body{
+
+html, body {
     overflow-y: auto;
 }
 
@@ -86,7 +87,7 @@ p.chat_item_name:after {
     overflow: auto;
 }
 
-.chat_item_content img{
+.chat_item_content img {
     width: 100%;
 }
 
@@ -152,16 +153,21 @@ p.chat_item_name:after {
     .chat_content {
         padding-top: 15%;
     }
+
     .search_box {
         line-height: 3rem;
     }
 
     .search_box input {
-        width: 60%;
+        width: 50%;
         font-size: 0.8rem;
         height: 1rem;
         border-radius: 0;
         border-bottom-width: 1px;
+    }
+
+    .search_box .search_btn {
+        width: 4rem;
     }
 
     .search_icon {
