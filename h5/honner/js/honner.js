@@ -38,8 +38,8 @@ $(function () {
                     $(".top_start").text("1");
                     $(".top_end").text(limit);
                 } else {
-                    $(".top_start").text(offset += 1);
                     $(".top_end").text(offset += limit);
+                    $(".top_start").text(offset += 1);
                 }
 
                 $.each(data, function (i, val) {
