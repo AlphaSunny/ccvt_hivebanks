@@ -88,22 +88,26 @@ $(function () {
     var account_change_url = 'log_balance.php';
 
     function GetAccountChange(token, limit, offset, account_change_url) {
-        var tr = '', total = "";
+        var tr = '', count = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
-        // $("#accountChange").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>loading...</span></td></tr>")
         AllRecord(token, limit, offset, account_change_url, function (response) {
             layer.close(index);
             if (response.errcode == '0') {
-                total = response.total;
-                var pageCount = Math.ceil(response.total / limit);
-                $('.accountChange_totalPage').text(Math.ceil(response.total / limit));
+                var total = response.total;
+                var totalPage = Math.ceil(total / limit);
                 var data = response.rows;
                 if (data == false) {
-                    $('.accountChange_eg').hide();
                     GetDataEmpty('accountChange', '5');
                     return;
+                }
+                if (totalPage <= 1) {
+                    count = 1;
+                }else if(1<totalPage<=6){
+                    count = totalPage;
+                }else {
+                    count = 6;
                 }
                 $.each(data, function (i, val) {
                     tr += '<tr>' +
@@ -118,9 +122,9 @@ $(function () {
 
                 $("#pagination").pagination({
                     currentPage: (limit + offset) / limit,
-                    totalPage: pageCount,
+                    totalPage: totalPage,
                     isShow: false,
-                    count: 6,
+                    count: count,
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
