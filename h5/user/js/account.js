@@ -151,7 +151,6 @@ $(function () {
         AllRecord(token, limit_glory, offset_glory, gloryPoints_change_url, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows;
-                console.log(data);
                 var totalPage = Math.ceil(response.rows.length / limit_glory);
                 if (totalPage <= 1) {
                     count = 1;
@@ -160,7 +159,7 @@ $(function () {
                 } else {
                     count = 6;
                 }
-                if (data = false) {
+                if (data == false) {
                     GetDataEmpty('gloryPointsChange', '3');
                     return;
                 }
