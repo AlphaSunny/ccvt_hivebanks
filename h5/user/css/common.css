@@ -1109,6 +1109,7 @@ section.footer {
 }
 .ui-pagination-container .ui-pagination-page-item.active{
     background: #82ca9c!important;
+    color: #ffffff!important;
 }
 
 /*margin-padding-width*/
