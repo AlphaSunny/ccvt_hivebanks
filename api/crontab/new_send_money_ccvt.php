@@ -38,7 +38,6 @@ if ($groups){
                 if ($send){
                     $db->Rollback($pInTrans);
                     echo $v['wechat']."已增过币";
-                    echo "<br />";
                     continue;
                 }
 
