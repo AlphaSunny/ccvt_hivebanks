@@ -154,8 +154,9 @@ $(function () {
         $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat))).fadeIn();
     });
     //关闭聊天内容close_page
-    $(document).on("click", ".close_page", function () {
+    $(document).on("click", ".body", function () {
         console.log($("#iframe"));
+        $("#iframe").fadeOut();
     //     window.parent.close();
     //     // var ele = $(".click_none");
     //     // console.log(ele);
