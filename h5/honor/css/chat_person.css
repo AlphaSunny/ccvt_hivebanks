@@ -24,6 +24,7 @@ html, body, #particles-js {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 1;
 }
 
 .chat_title_box h1 {
