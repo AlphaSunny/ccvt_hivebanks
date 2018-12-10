@@ -172,6 +172,7 @@ $(function () {
                         '<td><span class="" name="' + data[i].tx_detail + '">' + data[i].tx_detail + '</span></td>' +
                         '</tr>';
                 });
+                console.log(tr);
                 $('#gloryPointsChange').html(tr);
                 execI18n();
 
@@ -187,10 +188,6 @@ $(function () {
                         GetAccountChange(token, limit_glory, (current - 1) * limit, account_change_url)
                     }
                 });
-                // if (n == 0) {
-                //     GloryPointsPage(pageCount);
-                // }
-                // n++;
             }
         }, function (response) {
             GetDataFail('gloryPointsChange', '5');
@@ -199,18 +196,6 @@ $(function () {
 
     GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url);
 
-    // gloryPoints change Pagination
-
-    // function GloryPointsPage(pageCount) {
-    //     $('.gloryPoints_log_code').pagination({
-    //         pageCount: pageCount,
-    //         callback: function (api) {
-    //             offset = (api.getCurrent() - 1) * limit;
-    //             $('.gloryPoints_currentPage').text(api.getCurrent());
-    //             GetGloryPointsChange(token, limit, offset, account_change_url);
-    //         }
-    //     });
-    // }
 
     //invite
     $(".invite_img").attr("src", "img/low_inviteImg.jpg?t=" + Math.random());
