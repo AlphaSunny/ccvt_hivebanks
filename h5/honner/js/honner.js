@@ -38,7 +38,7 @@ $(function () {
                     $(".top_start").text(Math.floor(total/limit));
                     $(".top_end").text(limit);
                 }else {
-                    $(".top_start").text(total/total);
+                    $(".top_start").text(limit++);
                     $(".top_end").text(limit);
                 }
 
@@ -122,13 +122,13 @@ $(function () {
         }
         $(".page").text(Math.floor(offset / limit) + 1);
         if (offset == 0) {
-            tr = "";
+            // tr = "";
             $(".next_btn").attr("disabled", false);
             Fun(limit, offset);
             $(this).attr("disabled", true);
             return;
         }
-        tr = "";
+        // tr = "";
         $(".next_btn").attr("disabled", false);
         Fun(limit, offset);
     });
@@ -140,7 +140,7 @@ $(function () {
         if (Math.floor(offset / 10) >= Math.floor(total / limit)) {
             $(this).attr("disabled", true);
         }
-        tr = "";
+        // tr = "";
         $(".pre_btn").attr("disabled", false);
 
         Fun(limit, offset);
