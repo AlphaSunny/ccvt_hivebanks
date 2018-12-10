@@ -39,17 +39,15 @@ $(function () {
                     console.log(Math.floor(total / limit));
                     console.log(Math.floor(offset / limit));
                     $(".top_end").text(total);
-                    $(".top_start").text(offset += 1);
+                    $(".top_start").text(offset + 1);
                 }
 
                 if (offset == 0) {
                     $(".top_start").text("1");
                     $(".top_end").text(limit);
                 } else {
-                    $(".top_start").text(offset += 1);
-                    console.log(offset);
-                    $(".top_end").text(offset += limit);
-                    console.log(offset);
+                    $(".top_start").text(offset + 1);
+                    $(".top_end").text(offset + limit);
                 }
 
                 $.each(data, function (i, val) {
