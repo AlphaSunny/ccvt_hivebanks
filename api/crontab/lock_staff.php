@@ -66,7 +66,7 @@ function us_add($amount,$us_id){
     return false;
 
 }
-function    log_info($phone){
+function  log_info($phone){
     $db = new DB_COM();
     $sql = "update big_account_lock set is_lock = 1 where phone = $phone";
     $db->query($sql);
@@ -106,7 +106,7 @@ function log_com_base($us_id,$amount){
     $uata['debit_id']= BA_ID;
     $uata['tx_type'] = 'big_us_lock';
     $uata["tx_amount"] = $amount*UNIT;
-    $uata["credit_balance"] = get_ba_account(BA_ID)-($amount*UNIT);
+    $uata["credit_balance"] = get_us_account($us_id)+($amount*UNIT);
     $uata["utime"] = time();
     $uata["ctime"] = $ctime;
     $uql = $db->sqlInsert("com_base_balance", $uata);
@@ -145,7 +145,7 @@ function log_com_transfer($us_id,$amount){
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = BA_ID;
     $dat['tx_amount'] = $amount*UNIT;
-    $dat['credit_balance'] = get_us_account($us_id)+$dat['tx_amount'];
+    $dat['credit_balance'] = get_us_account($us_id)+$dat['tx_amount']*UNIT;
     $dat['tx_hash'] = hash('md5', $us_id . FLAG . get_ip() . mt() . date('Y-m-d H:i:s'));
     $dat['flag'] = FLAG;
     $dat['transfer_type'] = 'ba-us';
