@@ -35,7 +35,7 @@ $(function () {
                 var data = response.rows;
                 total = response.total;
 
-                if ((offset + limit) >= total) {
+                if (Math.floor(total / offset) == 1) {
                     $(".top_end").text(total);
                     $(".top_start").text(offset += 1);
                 }
