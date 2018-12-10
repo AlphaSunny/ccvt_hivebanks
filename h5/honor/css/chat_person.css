@@ -16,11 +16,13 @@ html, body, #particles-js {
 }
 
 .chat_title_box {
-    position: relative;
     background: rgba(0, 0, 0, 1);
     color: #fff;
     text-align: center;
     height: 4rem;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .chat_title_box h1 {
