@@ -17,7 +17,6 @@ $ba_info = get_ba_base_info();
 $sql = "select * from bot_group WHERE is_audit=2 AND is_test=1 AND is_give_ccvt=1";
 $db->query($sql);
 $groups = $db->fetchAll();
-print_r($groups);die;
 if ($groups){
     $pInTrans = $db->StartTrans();  //开启事务
     $ba_account = 0;
@@ -26,6 +25,7 @@ if ($groups){
         $sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$b['name']}' AND type='Text' AND CHAR_LENGTH(bot_content)>=5 AND is_effective='0' AND bot_content not LIKE '@风赢小助手%' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
         $db->query($sql);
         $rows = $db->fetchAll();
+        print_r($rows);
         if ($rows){
             foreach ($rows as $k=>$v){
                 set_time_limit(0);
