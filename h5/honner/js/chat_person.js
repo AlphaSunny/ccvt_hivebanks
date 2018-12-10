@@ -70,13 +70,13 @@ $(function () {
         GetWeChatFun(search_content);
     });
 
-    $(document).on("click", ".close_page", function () {
-        var ele = $(".click_none");
-        console.log(ele);
-        console.log("close_page");
-        // $("iframe").attr("display", "none");
-        $("iframe").fadeOut();
-        // $("body, html").attr("display", "none");
-    });
+    // $(document).on("click", ".close_page", function () {
+    //     var ele = $(".click_none");
+    //     console.log(ele);
+    //     console.log("close_page");
+    //     // $("iframe").attr("display", "none");
+    //     $("iframe").fadeOut();
+    //     // $("body, html").attr("display", "none");
+    // });
 
 });
