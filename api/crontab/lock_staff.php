@@ -36,7 +36,7 @@ function lock_auto(){
         $res = $db->fetchRow();
         if($res){
             if(!(ba_cut($tmp_amount)&&us_add($tmp_amount,$res['us_id'])&&log_com_base($res['us_id'],$tmp_amount)
-            &&log_com_transfer($res['us_id'],$tmp_amount))&&log_info($tmp_phone))
+            &&log_com_transfer($res['us_id'],$tmp_amount)&&log_info($tmp_phone)))
                 die($flag.'failed');
         }
         $flag ++;
@@ -66,7 +66,7 @@ function us_add($amount,$us_id){
     return false;
 
 }
-function  log_info($phone){
+function log_info($phone){
     $db = new DB_COM();
     $sql = "update big_account_lock set is_lock = 1 where phone = $phone";
     $db->query($sql);
