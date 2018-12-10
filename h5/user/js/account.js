@@ -98,17 +98,19 @@ $(function () {
                 var total = response.total;
                 var totalPage = Math.ceil(total / limit);
                 console.log(totalPage);
-                var data = response.rows;
-                if (data == false) {
-                    GetDataEmpty('accountChange', '5');
-                    return;
-                }
+                console.log(typeof totalPage);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (1 < totalPage <= 6) {
                     count = totalPage;
                 } else {
                     count = 6;
+                }
+
+                var data = response.rows;
+                if (data == false) {
+                    GetDataEmpty('accountChange', '5');
+                    return;
                 }
                 $.each(data, function (i, val) {
                     tr += '<tr>' +
