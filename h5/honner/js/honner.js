@@ -22,7 +22,7 @@ $(function () {
         })
     }
 
-    var limit = 24, offset = 0, total = "";
+    var limit = 50, offset = 0, total = "";
 
     function Fun(limit, offset) {
         var tr = "";
