@@ -141,7 +141,7 @@ $(function () {
     $(".next_btn").click(function () {
         offset += limit;
         $(".page").text(Math.floor(offset / limit) + 1);
-        if (Math.floor(offset / 10) >= Math.floor(total / limit)) {
+        if (Math.floor(offset / limit) >= Math.floor(total / limit)) {
             $(this).attr("disabled", true);
         }
         // tr = "";
