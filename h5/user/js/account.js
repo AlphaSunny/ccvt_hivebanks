@@ -140,65 +140,27 @@ $(function () {
     var gloryPoints_change_url = "us_integral_change_log.php";
 
     var limit_glory = 10, offset_glory = 0;
+
     function GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url) {
-        var tr = '';
+        var tr = '', count = "";
         AllRecord(token, limit_glory, offset_glory, gloryPoints_change_url, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows;
-                var totalPage = response.rows.length;
+                var totalPage = Math.ceil(response.rows.length / limit_glory);
+                if (totalPage <= 1) {
+                    count == 1;
+                } else if (1 < totalPage <= 6) {
+                    count == totalPage;
+                } else {
+                    count == 6;
+                }
                 if (data == false) {
-                    // $('.gloryPoints_eg').hide();
                     GetDataEmpty('gloryPointsChange', '3');
                     return;
                 }
 
-                // $('#gloryPointsChange').bootstrapTable({
-                //     // method: 'get',
-                //     cache: false,
-                //     height: 500,//表格高度
-                //     striped: true,//显示条纹
-                //     pagination: true,//显示分页
-                //     pageSize: 10,//默认显示多少条数据
-                //     pageNumber: 1,
-                //     pageList: [10, 20, 30],//显示多少条数据
-                //     search: false,//显示搜索
-                //     showColumns: false,//显示列选择
-                //     showRefresh: false,//显示刷新
-                //     showHeader: false,
-                //     smartDisplay: true,
-                //     columns: [{
-                //         field: "utime",//数据字段名
-                //         title: "时间",//表格th内容
-                //         align: "center",
-                //         valign: "middle",
-                //         sortable: "true",//排序
-                //         width: 380,
-                //     }, {
-                //         field: "tx_amount",//数据字段名
-                //         title: "荣耀积分",//表格th内容
-                //         align: "center",
-                //         valign: "middle",
-                //         sortable: "true",//排序
-                //         width: 380,
-                //     }, {
-                //         field: "tx_detail",//数据字段名
-                //         title: "变动类型",//表格th内容
-                //         align: "center",
-                //         valign: "middle",
-                //         sortable: "true",//排序
-                //         width: 380,
-                //     },],
-                //     data: data
-                // });
-                //
-                // $(window).resize(function () {
-                //     $('#gloryPointsChange').bootstrapTable('resetView');
-                // });
-
-
                 $.each(data, function (i, val) {
                     tr += '<tr>' +
-                        // '<td><span title="' + data[i].hash_id + '">' + data[i].hash_id.substr(0, 20) + '...' + '</span></td>' +
                         '<td><span>' + data[i].utime + '</span></td>' +
                         '<td><span>' + data[i].tx_amount + '</span></td>' +
                         '<td><span class="" name="' + data[i].tx_detail + '">' + data[i].tx_detail + '</span></td>' +
@@ -211,7 +173,7 @@ $(function () {
                     currentPage: (limit_glory + offset_glory) / limit_glory,
                     totalPage: totalPage,
                     isShow: false,
-                    count: 6,
+                    count: count,
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
