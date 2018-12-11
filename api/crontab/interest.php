@@ -21,6 +21,7 @@ interest_auto();
 
 
 function interest_auto(){
+    $db = new DB_COM();
     //获取利息用户
     $data = us_get();
     $flag = 1;
@@ -30,7 +31,10 @@ function interest_auto(){
         $phone = $v['phone'];
         $us_id = $v['us_id'];
         $amount = $v['amount'];
-
+        $sql = "select us_id from us_bind  where SUBSTR(bind_info,4,100) = {$phone}";
+        $db->query($sql);
+        $res = $db->fetchRow();
+        $us_id = $res['us_id'];
         if(!(ba_cut($amount)&&us_add($amount,$us_id)&&log_interest($amount,$us_id)&&log_base($amount,$us_id)&&log_transfer($amount,$us_id)))
             die('failed'.$flag);
         $flag++;
