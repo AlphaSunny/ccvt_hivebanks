@@ -309,11 +309,20 @@ var target = document.getElementById("mySpin");
 var spinner = new Spinner(opts);
 
 //show loading
+var index_loading = "";
+
 function ShowLoading(type) {
     if (type == "show") {
-        spinner.spin(target);
+        index_loading = layer.load(1, {
+            shade: [0.1, '#fff']
+        });
+    } else if (type == "hide") {
+        layer.close(index_loading);
     }
-    if (type == "hide") {
-        spinner.spin();
-    }
+    // if (type == "show") {
+    //     spinner.spin(target);
+    // }
+    // if (type == "hide") {
+    //     spinner.spin();
+    // }
 }
