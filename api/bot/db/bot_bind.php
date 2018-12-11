@@ -437,6 +437,25 @@ function get_news()
 }
 
 //======================================
+// 函数: 获取最新的未推送的一个话题
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function get_topic()
+{
+    $db = new DB_COM();
+    $sql = "select * from bot_topic WHERE is_send=1 ORDER BY rand() limit 1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if ($row){
+        $sql = "update bot_topic set is_send=2 WHERE id='{$row['id']}'";
+        $db->query($sql);
+    }
+    return $row;
+}
+
+//======================================
 // 函数: 判断兑换正确
 // 参数:
 //

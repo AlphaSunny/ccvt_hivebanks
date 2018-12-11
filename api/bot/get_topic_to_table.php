@@ -11,7 +11,7 @@ header("Content-Type:application/json;charset=utf-8");
 
 php_begin();
 
-$args = array('name','type');
+$args = array("name","type");
 chk_empty_args('POST', $args);
 
 $data['name'] = get_arg_str('POST','name');
