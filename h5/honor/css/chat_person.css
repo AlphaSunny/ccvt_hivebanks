@@ -185,11 +185,11 @@ p.chat_item_name:after {
     }
 
     p.chat_item_name:after {
-        right: -32%;
+        right: -25%;
         top: 50%;
     }
 
     .chat_item_content_box {
-        padding-left: 3%;
+        padding-left: 2%;
     }
 }
