@@ -22,7 +22,7 @@ lock_auto();
 
 function lock_auto(){
 
-    die('what do you want?');
+//    die('what do you want?');
     $db = new DB_COM();
     $sql = 'select phone,amount from big_account_lock ';
     $db->query($sql);
@@ -32,7 +32,8 @@ function lock_auto(){
     {
         $tmp_phone = $v['phone'];
         $tmp_amount = $v['amount'];
-        $sql = "select us_id from us_bind  where SUBSTR(bind_info,4,100) = {$tmp_phone}";
+//        $sql = "select us_id from us_bind  where SUBSTR(bind_info,4,100) = {$tmp_phone}";
+        $sql = "select us_id from us_bind  where SUBSTR(bind_info,4,100) = '15363972936'";
         $db->query($sql);
         $res = $db->fetchRow();
         if($res){
@@ -41,6 +42,7 @@ function lock_auto(){
                 die($flag.'failed');
         }
         $flag ++;
+        die('hexiaohu');
     }
     die($flag.'success');
 }
