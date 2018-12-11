@@ -196,6 +196,11 @@ button:hover {
     color: #ffffff;
 }
 
+.icon_grade {
+    font-size: 1.8rem;
+    vertical-align: middle;
+}
+
 /*customize-modal*/
 #customize_modal {
     position: fixed;
