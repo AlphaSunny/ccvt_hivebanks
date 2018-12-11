@@ -442,15 +442,33 @@ function get_news()
 //
 // 返回: row           最新信息数组
 //======================================
-function get_topic()
+function get_topic($group_name,$ask)
 {
     $db = new DB_COM();
-    $sql = "select * from bot_topic WHERE is_send=1 ORDER BY rand() limit 1";
-    $db->query($sql);
-    $row = $db->fetchRow();
-    if ($row){
-        $sql = "update bot_topic set is_send=2 WHERE id='{$row['id']}'";
+    if ($ask=="话题" || $ask== "今日话题"){
+        $start = date('Y-m-d 05:00:00');
+        $sql = "select * from bot_topic WHERE is_send=2 AND group_name='{$group_name}' AND send_time>'{$start}' ORDER BY ctime DESC limit 1";
         $db->query($sql);
+        $row = $db->fetchRow();
+        if (!$row){
+            $sql = "select * from bot_topic WHERE is_send=1  ORDER BY ctime ASC limit 1";
+            $db->query($sql);
+            $row = $db->fetchRow();
+            if ($row){
+                $send_time = date('Y-m-d H:i:s');
+                $sql = "update bot_topic set is_send=2,group_name='{$group_name}',send_time='{$send_time}' WHERE id='{$row['id']}'";
+                $db->query($sql);
+            }
+        }
+    }elseif($ask=="最新话题"){
+        $sql = "select * from bot_topic WHERE is_send=1  ORDER BY ctime ASC limit 1";
+        $db->query($sql);
+        $new = $db->fetchRow();
+        if ($new){
+            $send_time = date('Y-m-d H:i:s');
+            $sql = "update bot_topic set is_send=2,group_name='{$group_name}',send_time='{$send_time}' WHERE id='{$new['id']}'";
+            $db->query($sql);
+        }
     }
     return $row;
 }

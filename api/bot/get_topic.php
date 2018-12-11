@@ -11,8 +11,14 @@ header("Content-Type:application/json;charset=utf-8");
 
 php_begin();
 
+//群名
+$group_name = get_arg_str('GET','group_name');
+
+//问题
+$ask = get_arg_str('GET','ask');
+
 //获取最新文章
-$rows = get_topic();
+$rows = get_topic($group_name,$ask);
 
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
