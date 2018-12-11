@@ -291,6 +291,14 @@ function get_us_base_info_by_token($us_id)
     }
     $row['glory_of_integral'] = $glory_of_integral;
 
+    $sql = "select bind_info from us_bind WHERE us_id='{$us_id}' AND bind_type='text' AND bind_name='group'";
+    $db->query($sql);
+    $group_id = $db->getField($sql,'bind_info');
+    if (!$group_id){
+        $group_id = 0;
+    }
+    $row['group_id'] = $group_id;
+
     return $row;
 }
 //======================================
