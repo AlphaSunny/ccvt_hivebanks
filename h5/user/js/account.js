@@ -339,5 +339,10 @@ $(function () {
         }, function (response) {
             layer.msg(response.errmsg);
         })
+    });
+    
+    $(".weChatGroupBtn").click(function () {
+        var group_id = $("input[type='radio']:checked").val();
+        console.log(group_id);
     })
 });
