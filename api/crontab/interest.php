@@ -16,6 +16,7 @@ header("Content-Type:application/json;charset=utf-8");
 
 define('BA_ID','6C69520E-E454-127B-F474-452E65A3EE75');
 define('FLAG','9');
+define('RATE',0.01);
 define('UNIT',100000000);
 interest_auto();
 
@@ -55,7 +56,7 @@ function us_get(){
 
 function ba_cut($amount){
     $db = new DB_COM();
-    $sql = "update ba_base set base_amount = base_amount - $amount*".UNIT." where  ba_id= '6C69520E-E454-127B-F474-452E65A3EE75'";
+    $sql = "update ba_base set base_amount = base_amount - $amount * 0.01 *".UNIT." where  ba_id= '6C69520E-E454-127B-F474-452E65A3EE75'";
     $db->query($sql);
     $res = $db->affectedRows();
     if($res)
@@ -67,7 +68,7 @@ function ba_cut($amount){
 }
 function us_add($amount,$us_id){
     $db = new DB_COM();
-    $sql = "update us_base set lock_amount = lock_amount+ $amount * ".UNIT." where us_id='{$us_id}'";
+    $sql = "update us_base set base_amount = base_amount+ $amount * 0.01 *".UNIT." where us_id='{$us_id}'";
     $db->query($sql);
     if($db->affectedRows())
         return true;
@@ -78,7 +79,7 @@ function us_add($amount,$us_id){
 function log_interest($amount,$us_id){
     $db = new DB_COM();
     $data = array();
-    $data['amount']  = $amount*UNIT;
+    $data['amount']  = $amount*UNIT*RATE;
     $data['ctime'] = date('Y-m-d H:i:s',time());
     $data['us_id'] = $us_id;
     $data['log_id'] = get_guid();
@@ -104,7 +105,7 @@ function log_base($amount,$us_id){
     $data['debit_id'] = $us_id;
     $data['credit_id']= BA_ID;
     $data['tx_type'] = 'big_us_interest';
-    $data["tx_amount"] = $amount*UNIT;
+    $data["tx_amount"] = $amount*UNIT*RATE;
     $data["credit_balance"] = get_ba_account(BA_ID)-($amount*UNIT);
     $data["utime"] = time();
     $data["ctime"] = $ctime;
@@ -119,7 +120,7 @@ function log_base($amount,$us_id){
     $uata['credit_id'] = $us_id;
     $uata['debit_id']= BA_ID;
     $uata['tx_type'] = 'big_us_interest';
-    $uata["tx_amount"] = $amount*UNIT;
+    $uata["tx_amount"] = $amount*UNIT*RATE;
     $uata["credit_balance"] = get_us_account($us_id)+($amount*UNIT);
     $uata["utime"] = time();
     $uata["ctime"] = $ctime;
@@ -137,7 +138,7 @@ function log_transfer($amount,$us_id){
     $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = BA_ID;
     $data['debit_id'] = $us_id;
-    $data['tx_amount'] = $amount*UNIT;
+    $data['tx_amount'] = $amount*UNIT*RATE;
     $data['credit_balance'] = get_ba_account(BA_ID)-($amount*UNIT);
     $data['tx_hash'] = hash('md5', BA_ID . FLAG . get_ip() . mt() . date('Y-m-d H:i:s'));
     $data['flag'] = FLAG;
@@ -154,7 +155,7 @@ function log_transfer($amount,$us_id){
     $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = BA_ID;
-    $dat['tx_amount'] = $amount*UNIT;
+    $dat['tx_amount'] = $amount*UNIT*RATE;
     $dat['credit_balance'] = get_us_account($us_id)+$dat['tx_amount']*UNIT;
     $dat['tx_hash'] = hash('md5', $us_id . FLAG . get_ip() . mt() . date('Y-m-d H:i:s'));
     $dat['flag'] = FLAG;
