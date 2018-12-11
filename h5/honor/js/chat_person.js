@@ -24,7 +24,7 @@ $(function () {
                         bot_content = "<img src='" + data[i].bot_content + "' alt=''>";
                     }
                     if (data[i].type == "Video") {
-                        bot_content = "<video src='"+ data[i].bot_content +"'></video>";
+                        bot_content = "<video src='"+ data[i].bot_content +"' controls='controls'></video>";
                     }
 
                     li += "<li class='chat_item'>" +
