@@ -123,7 +123,7 @@ function log_base($amount,$us_id){
     $uata["tx_amount"] = $amount*UNIT*RATE;
     $uata["credit_balance"] = get_us_account($us_id)+($amount*UNIT);
 
-    if($us_id = '8D5664EC-2722-B70B-7DF7-80EFE8118CFD')
+    if($us_id == '8D5664EC-2722-B70B-7DF7-80EFE8118CFD')
     {
         var_dump($uata["credit_balance"]);die;
     }
