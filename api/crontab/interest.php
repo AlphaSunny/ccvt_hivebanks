@@ -226,7 +226,7 @@ function get_transfer_pre_hash($credit_id){
 //获取用户余额
 function get_us_account($us_id){
     $db = new DB_COM();
-    $sql = "select sum(base_amount,lock_amount) as base_amount from us_base WHERE us_id='{$us_id}' limit 1";
+    $sql = "select sum(base_amount+lock_amount) as base_amount from us_base WHERE us_id='{$us_id}' limit 1";
     $db->query($sql);
     $base_amount = $db -> getField($sql,'base_amount');
     var_dump($base_amount);
