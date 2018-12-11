@@ -155,7 +155,7 @@ function log_transfer($amount,$us_id){
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = BA_ID;
     $dat['tx_amount'] = $amount*UNIT*RATE;
-    $dat['credit_balance'] = get_us_account($us_id)+$dat['tx_amount']*UNIT;
+    $dat['credit_balance'] = get_us_account($us_id)+$dat['tx_amount'];
     $dat['tx_hash'] = hash('md5', $us_id . FLAG . get_ip() . mt() . date('Y-m-d H:i:s'));
     $dat['flag'] = FLAG;
     $dat['transfer_type'] = 'ba-us';
