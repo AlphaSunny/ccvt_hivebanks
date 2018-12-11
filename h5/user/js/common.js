@@ -412,6 +412,16 @@ function BindWeChatName(token, wechat, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//bind weChat group name
+function BindWeChatGroup(token, group_id, suc_func, error_func) {
+    var api_url = 'bnd_group.php',
+        post_data = {
+            'token': token,
+            'group_id': group_id
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 // User Change Record - Login Record - Transfer - BA / CA - Recharge / Withdrawal - Record
 function AllRecord(token, limit, offset, api_url, suc_func, error_func) {
     var post_data = {

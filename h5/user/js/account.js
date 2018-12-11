@@ -347,6 +347,10 @@ $(function () {
     
     $(".weChatGroupBtn").click(function () {
         var group_id = $("input[type='radio']:checked").val();
-        console.log(group_id);
+        BindWeChatGroup(token, group_id, function (response) {
+            console.log(response);
+        }, function (response) {
+            layer.msg(response.errmsg);
+        })
     })
 });
