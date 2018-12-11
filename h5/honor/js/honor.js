@@ -151,13 +151,14 @@ $(function () {
     });
     $(".search_input").focus(function () {
         $(this).keyup(function (e) {
-            if(e.keyCode == "8"){
+            if (e.keyCode == "8") {
                 console.log(e.target.value);
+                var value = e.target.value;
+                if (value == "") {
+                    HonorFun(limit, offset, search_content);
+                }
             }
         })
-        // $(".search_input").bind("input","propertychange", function () {
-        //
-        // });
     });
 
     //登录
