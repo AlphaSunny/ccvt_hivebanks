@@ -328,7 +328,7 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows;
                 $("#weChatGroup").modal("show");
-                $.each(data, function () {
+                $.each(data, function (i, val) {
                     li += "<li class='font-weight-400 margin-bottom-1'>" +
                         "<input type='radio' name='weChatGroup' value='" + data[i].id + "'>" +
                         "<span class='margin-left-1'>" + data[i].group_name + "</span>" +
