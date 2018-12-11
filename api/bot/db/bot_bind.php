@@ -446,7 +446,7 @@ function get_topic($group_name,$ask)
 {
     $db = new DB_COM();
     if ($ask=="话题" || $ask== "今日话题"){
-        $start = date('Y-m-d 05:00:00');
+        $start = date('Y-m-d 00:00:00');
         $sql = "select * from bot_topic WHERE is_send=2 AND group_name='{$group_name}' AND send_time>'{$start}' ORDER BY ctime DESC limit 1";
         $db->query($sql);
         $row = $db->fetchRow();
