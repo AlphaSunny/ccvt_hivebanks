@@ -58,7 +58,7 @@ $(function () {
                     if (data[i].scale <= 0) {
                         scale = "";
                     } else {
-                        scale = "<svg class='icon' aria-hidden='true'><use xlink:href='#icon-v"+ data[i].scale +"'></use></svg>";
+                        scale = "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v"+ data[i].scale +"'></use></svg>";
                     }
                     if (data[i].sorting == "1") {
                         sorting = "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>";
