@@ -152,6 +152,12 @@ p.chat_item_name:after {
     cursor: pointer;
 }
 
+.none_weChat {
+    text-align: center;
+    padding: 5%;
+    color: #9e9e9e;
+}
+
 @media only screen and (max-width: 768px) {
     .chat_content {
         padding-top: 15%;
