@@ -6,11 +6,8 @@ error_reporting(E_ALL | E_STRICT);
 
 
 
-//$day_start = strtotime(date('Y-m-d 08:00:00')); //早上八点
-//$day_end = strtotime(date('Y-m-d 22:00:00'));    //晚上十点
-
-$day_start = strtotime(date('2018-12-10 08:00:00')); //早上八点
-$day_end = strtotime(date('2018-12-10 22:00:00'));    //晚上十点
+$day_start = strtotime(date('Y-m-d 08:00:00')); //早上八点
+$day_end = strtotime(date('Y-m-d 22:00:00'));    //晚上十点
 
 $db = new DB_COM();
 
@@ -34,6 +31,12 @@ if ($groups){
                 //判断用户表是否有这个微信
                 $u_id = get_us_id($v['wechat']);
                 if (!$u_id){
+                    continue;
+                }
+
+                //判断当前用户绑定的是否是这个群
+                $us_group = get_us_bind_group_id($u_id);
+                if (!$us_group || $us_group!=$b['id']){
                     continue;
                 }
                 //判断今日是否已经增过币
@@ -236,6 +239,7 @@ function get_ba_base_info(){
     $row = $db->fetchRow();
     return $row;
 }
+
 //获取us_id
 function get_us_id($wechat){
     $db = new DB_COM();
@@ -245,6 +249,16 @@ function get_us_id($wechat){
     if($us_id == null)
         return 0;
     return $us_id;
+}
+//用户绑定群id
+function get_us_bind_group_id($us_id){
+    $db = new DB_COM();
+    $sql = "select bind_info from us_bind WHERE us_id='{$us_id}' AND bind_name='group' limit 1";
+    $db->query($sql);
+    $group_id = $db -> getField($sql,'bind_info');
+    if($group_id == null)
+        return 0;
+    return $group_id;
 }
 //获取用户等级
 function get_us_scale($us_id){

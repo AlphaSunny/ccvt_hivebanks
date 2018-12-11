@@ -198,6 +198,22 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
         return false;
     }
 
+    //默认绑定新手群
+    $vail = 'group';
+    $us_bind['bind_id'] = get_guid();
+    $us_bind['us_id'] = $us_id;
+    $us_bind['bind_type'] = 'text';
+    $us_bind['bind_name'] = $vail;
+    $us_bind['bind_info'] = 4;
+    $us_bind['bind_flag'] = 1;
+    $us_bind['utime'] = time();
+    $us_bind['ctime'] = date('Y-m-d H:i:s');
+    $sql = $db->sqlInsert("us_bind", $us_bind);
+    if (!$db->query($sql)) {
+        $db->Rollback($pInTrans);
+        return false;
+    }
+
     $db->Commit($pInTrans);
     return true;
 
