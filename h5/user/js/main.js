@@ -311,9 +311,13 @@ var spinner = new Spinner(opts);
 //show loading
 function ShowLoading(type) {
     if (type == "show") {
-        spinner.spin(target);
+        var index = layer.load(1, {
+            shade: [0.1, '#fff']
+        });
+        // spinner.spin(target);
     }
     if (type == "hide") {
-        spinner.spin();
+        layer.close(index);
+        // spinner.spin();
     }
 }

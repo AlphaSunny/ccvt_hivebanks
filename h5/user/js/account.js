@@ -346,9 +346,14 @@ $(function () {
     });
     
     $(".weChatGroupBtn").click(function () {
+        ShowLoading("show");
         var group_id = $("input[type='radio']:checked").val();
         BindWeChatGroup(token, group_id, function (response) {
-            console.log(response);
+            ShowLoading("hide");
+            if(response.errcode == "0"){
+                $(".group_name").text(response.group_name);
+                $("#weChatGroup").modal("hide");
+            }
         }, function (response) {
             layer.msg(response.errmsg);
         })
