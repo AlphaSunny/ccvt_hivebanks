@@ -79,6 +79,10 @@ p {
     padding: 15px 0;
 }
 
+.modify_us_id{
+    color: #2a7abc;
+}
+
 i.iconfont.icon-zhanghu {
     font-size: 3rem;
 }
