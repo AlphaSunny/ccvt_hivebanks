@@ -125,7 +125,7 @@ function log_base($amount,$us_id){
 
     if($us_id == '8D5664EC-2722-B70B-7DF7-80EFE8118CFD')
     {
-        var_dump($uata["credit_balance"]);die;
+//        var_dump($uata["credit_balance"]);die;
     }
     $uata["utime"] = time();
     $uata["ctime"] = $ctime;
@@ -229,7 +229,7 @@ function get_us_account($us_id){
     $sql = "select sum(base_amount+lock_amount) as base_amount from us_base WHERE us_id='{$us_id}' limit 1";
     $db->query($sql);
     $base_amount = $db -> getField($sql,'base_amount');
-    var_dump($base_amount);
+//    var_dump($base_amount);
     if($base_amount == null)
         return 0;
     return $base_amount;
