@@ -626,6 +626,15 @@ function TransformCCVT(token, account, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//weChat group
+function WeChatGroupList(token, suc_func, error_func) {
+    var api_url = 'group_list.php',
+        post_data = {
+            'token': token
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //Login failure countdown
 function CountDown(count, ErrorNum, LoginBtn, input, LoginError) {
     var counts = count;

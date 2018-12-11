@@ -324,4 +324,13 @@ $(function () {
             ShowLoading("hide");
         })
     });
+
+    //bind/modify weChat group
+    $(".bind_weChat_group,.modify_weChat_group").click(function () {
+        WeChatGroupList(token, function (response) {
+            console.log(response);
+        }, function (response) {
+            layer.msg(response.errmsg);
+        })
+    })
 });
