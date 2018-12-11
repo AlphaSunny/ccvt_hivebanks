@@ -73,14 +73,16 @@ p.chat_item_name:after {
 
 .chat_item_content_box {
     padding-left: 0.8%;
-    max-width: 75%;
+    /*max-width: 75%;*/
+    max-width: 14rem;
 }
 
 .chat_item_content {
     background: #ffffff;
     display: inline-block;
     line-height: 1.5rem;
-    /*max-width: 100%;*/
+    max-width: 14rem;
+    /*width: 100%;*/
     border-right: 5px;
     padding: 2% 2% 2% 10px;
     border-radius: 5px;
