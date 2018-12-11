@@ -48,6 +48,10 @@ iframe {
     position: fixed;
     z-index: 100;
     display: none;
+    width: 90%;
+    margin-left: 5%;
+    height: 90%;
+    margin-top: 5%;
 }
 
 .close_page {
