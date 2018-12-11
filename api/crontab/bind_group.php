@@ -10,7 +10,6 @@ $db = new DB_COM();
 $sql = "select us_id,wechat from us_base WHERE wechat!=''";
 $db->query($sql);
 $rows = $db->fetchAll();
-print_r($rows);die;
 if ($rows){
     $pInTrans = $db->StartTrans();  //开启事务
     foreach ($rows as $k=>$v){
