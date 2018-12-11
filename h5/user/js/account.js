@@ -155,11 +155,9 @@ $(function () {
 
     function GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url) {
         var tr = '', count = 1;
-        var index = layer.load(1, {
-            shade: [0.1, '#fff']
-        });
+        ShowLoading("show");
         AllRecord(token, limit_glory, offset_glory, gloryPoints_change_url, function (response) {
-            layer.close(index);
+            ShowLoading("hide");
             if (response.errcode == '0') {
                 var data = response.rows;
                 var total = response.total;
@@ -342,7 +340,7 @@ $(function () {
             layer.msg(response.errmsg);
         })
     });
-    
+
     $(".weChatGroupBtn").click(function () {
         ShowLoading("show");
         var group_id = $("input[type='radio']:checked").val();
