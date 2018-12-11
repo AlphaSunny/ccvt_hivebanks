@@ -5,7 +5,7 @@ $(function () {
     $(".person_name").text(wechat);
 
     function GetWeChatFun(search_content) {
-        var li = "";
+        var li = "", bot_content = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
@@ -17,24 +17,23 @@ $(function () {
                     $('.chat_content').html("<h1 style='text-align: center;color:#ffffff'>暂无聊天内容</h1>")
                 }
                 $.each(data, function (i, val) {
-                    if (data[i].type == "Text") {
-                        li += "<li class='chat_item'>" +
-                            "<p class='chat_item_name'>" + data[i].bot_nickname.substr(0, 1) + "</p>" +
-                            "<div class='chat_item_content_box'>" +
-                            "<p class='name'><span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;<span>" + data[i].bot_send_time + "</span></p>" +
-                            "<p class='chat_item_content'>" + data[i].bot_content + "</p>" +
-                            "</div>" +
-                            "</li>";
+                    if (data[i].type == "Text" || data[i].type == "Sharing") {
+                        bot_content = "<span>"+ data[i].bot_content +"</span>";
                     }
                     if (data[i].type == "Picture") {
-                        li += "<li class='chat_item'>" +
-                            "<p class='chat_item_name'>" + data[i].bot_nickname.substr(0, 1) + "</p>" +
-                            "<div class='chat_item_content_box'>" +
-                            "<p class='name'><span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;<span>" + data[i].bot_send_time + "</span></p>" +
-                            "<p class='chat_item_content'><img src='" + data[i].bot_content + "' alt=''></p>" +
-                            "</div>" +
-                            "</li>";
+                        bot_content = "<img src='" + data[i].bot_content + "' alt=''>";
                     }
+                    if (data[i].type == "Video") {
+                        bot_content = "<video src='"+ data[i].bot_content +"'></video>";
+                    }
+
+                    li += "<li class='chat_item'>" +
+                        "<p class='chat_item_name'>" + data[i].bot_nickname.substr(0, 1) + "</p>" +
+                        "<div class='chat_item_content_box'>" +
+                        "<p class='name'><span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;<span>" + data[i].bot_send_time + "</span></p>" +
+                        "<p class='chat_item_content'>"+ bot_content +"</p>" +
+                        "</div>" +
+                        "</li>";
                 });
                 $(".chat_item_ul").html(li);
             }
