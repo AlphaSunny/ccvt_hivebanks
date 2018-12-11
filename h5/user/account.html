@@ -88,12 +88,19 @@
                     <div class="account_num account_num_first">
                         <div class="info_first_box">
                             <!--账户昵称-->
-                            <p>
-                                <span class="i18n" name="accountNickName"></span>：
-                                <span class="accNum us_account"></span>
-                                <button class="btn btn-success btn-sm modify_us_id i18n" name="modify" data-toggle="modal"
-                                      data-target="#modifyName"></button>
-                            </p>
+                            <div>
+                                <span class="i18n" name="accountNickName"></span>
+                                <div class="flex align-center space-between">
+                                    <span class="accNum us_account"></span>
+                                    <button class="btn btn-success btn-sm modify_us_id i18n" name="modify" data-toggle="modal" data-target="#modifyName"></button>
+                                </div>
+                            </div>
+                            <!--<p>-->
+                            <!--<span class="i18n" name="accountNickName"></span>：-->
+                            <!---->
+                            <!--<button class="btn btn-success btn-sm modify_us_id i18n" name="modify" data-toggle="modal"-->
+                            <!--data-target="#modifyName"></button>-->
+                            <!--</p>-->
                             <!--注册时间-->
                             <p><span class="i18n" name="lastLoginTime"></span>：
                                 <span class="ctime"></span>
@@ -104,7 +111,8 @@
                             <p>
                                 <span>所在群</span>：<span>风赢科技</span>
                                 <button class="btn btn-success btn-sm i18n none bind_weChat_group" name="bind"></button>
-                                <button class=" btn btn-success btn-sm i18n none modify_weChat_group" name="modify"></button>
+                                <button class=" btn btn-success btn-sm i18n none modify_weChat_group"
+                                        name="modify"></button>
                             </p>
                             <!--微信昵称-->
                             <p>
