@@ -25,16 +25,18 @@ function  get_leaderboard_total($search_content)
 function get_leaderboard($offset,$limit,$search_content)
 {
     $db = new DB_COM();
+    $s_time = strtotime(date('Y-m-d 00:00:00'), time());
+    $e_time = strtotime(date('Y-m-d 23:59:59'), time());
     $unit = get_la_base_unit();
     if ($search_content){
-        $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞') as all_praise,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩') as all_point_on FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP'";
+        $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_praise,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_point_on FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP'";
         $db->query($sql);
         $row1 = $db->fetchAll();
         foreach ($row1 as $k=>$v){
             $row1[$k]['sorting'] = $k+1;
         }
 
-        $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞') as all_praise,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩') as all_point_on FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP' and b.wechat like '%{$search_content}%'";
+        $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_praise,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_point_on FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP' and b.wechat like '%{$search_content}%'";
         $db->query($sql);
         $row2 = $db->fetchAll();
         if ($row2){
@@ -51,7 +53,7 @@ function get_leaderboard($offset,$limit,$search_content)
         }
 
     }else{
-        $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞') as all_praise,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩') as all_point_on FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP' order by a.base_amount desc limit $offset , $limit";
+        $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_praise,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_point_on FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP' order by a.base_amount desc limit $offset , $limit";
         $db->query($sql);
         $rows = $db->fetchAll();
         foreach ($rows as $k=>$v){
