@@ -332,8 +332,8 @@ $(function () {
                 $("#weChatGroup").modal("show");
                 $.each(data, function (i, val) {
                     li += "<li class='font-weight-400 margin-bottom-2'>" +
-                        "<input type='radio' name='weChatGroup' value='" + data[i].id + "'>" +
-                        "<span class='margin-left-1'>" + data[i].group_name + "</span>" +
+                        "<input type='radio' id='item_"+ data[i].id +"' name='weChatGroup' value='" + data[i].id + "'>" +
+                        "<label for='item_"+ data[i].id +"' class='margin-left-1'>" + data[i].group_name + "</label>" +
                         "</li>";
                 });
                 $(".weChatGroutItem").html(li);
