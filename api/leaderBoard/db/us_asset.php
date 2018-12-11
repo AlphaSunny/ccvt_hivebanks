@@ -396,13 +396,15 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
 function praise_or_pointon_num($us_id)
 {
     $db = new DB_COM();
+    $s_time = strtotime(date('Y-m-d 00:00:00'), time());
+    $e_time = strtotime(date('Y-m-d 23:59:59'), time());
     $unit = get_la_base_unit();
-    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND tx_detail='点赞'";
+    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND tx_detail='点赞' AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
     $db->query($sql);
     $all_zan = $db->getField($sql,'all_am');
     if (!$all_zan){$all_zan=0;}
 
-    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND tx_detail='点踩'";
+    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND tx_detail='点踩' AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
     $db->query($sql);
     $all_cai = $db->getField($sql,'all_am');
     if (!$all_cai){$all_cai=0;}
