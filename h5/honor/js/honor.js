@@ -142,7 +142,7 @@ $(function () {
     });
 
     //关闭聊天内容close_page
-    $(document).on("click", ".close_page", function () {
+    $(".close_page").click(function () {
         $("#iframe,.close_page").fadeOut();
     });
 
