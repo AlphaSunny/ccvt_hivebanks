@@ -166,16 +166,12 @@ $(function () {
                 var data = response.rows;
                 var total = response.total;
                 var totalPage = Math.ceil(total / limit_glory);
-                console.log(totalPage);
                 if (totalPage <= 1) {
                     count = 1;
-                    console.log("---1");
                 } else if (1 < totalPage && totalPage <= 6) {
                     count = totalPage;
-                    console.log("1-6");
                 } else {
                     count = 6;
-                    console.log("6---");
                 }
                 if (data == false) {
                     GetDataEmpty('gloryPointsChange', '3');
@@ -328,7 +324,9 @@ $(function () {
     //bind/modify weChat group
     $(".bind_weChat_group,.modify_weChat_group").click(function () {
         WeChatGroupList(token, function (response) {
-            console.log(response);
+            if(response.errcode == "0"){
+                $("#weChatGroup").modal("show");
+            }
         }, function (response) {
             layer.msg(response.errmsg);
         })
