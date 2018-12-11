@@ -103,7 +103,7 @@ $(function () {
 
         setTimeout(function () {
             HonorFun(limit, offset, search_content);
-        }, 600000)
+        }, 10000)
     }
 
     HonorFun(limit, offset, search_content);
