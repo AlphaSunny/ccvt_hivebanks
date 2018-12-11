@@ -35,6 +35,7 @@ function interest_auto(){
         $db->query($sql);
         $res = $db->fetchRow();
         $us_id = $res['us_id'];
+
         if(!(ba_cut($amount)&&us_add($amount,$us_id)&&log_interest($amount,$us_id)&&log_base($amount,$us_id)&&log_transfer($amount,$us_id)))
             die('failed'.$flag);
         $flag++;
@@ -121,6 +122,11 @@ function log_base($amount,$us_id){
     $uata['tx_type'] = 'big_us_interest';
     $uata["tx_amount"] = $amount*UNIT*RATE;
     $uata["credit_balance"] = get_us_account($us_id)+($amount*UNIT);
+
+    if($us_id = '8D5664EC-2722-B70B-7DF7-80EFE8118CFD')
+    {
+        var_dump($uata["credit_balance"]);die;
+    }
     $uata["utime"] = time();
     $uata["ctime"] = $ctime;
     $uql = $db->sqlInsert("com_base_balance", $uata);
@@ -223,6 +229,7 @@ function get_us_account($us_id){
     $sql = "select base_amount from us_base WHERE us_id='{$us_id}' limit 1";
     $db->query($sql);
     $base_amount = $db -> getField($sql,'base_amount');
+    var_dump($base_amount);
     if($base_amount == null)
         return 0;
     return $base_amount;
