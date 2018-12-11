@@ -20,7 +20,7 @@ nav ul {
     display: flex !important;
     align-items: center;
     justify-content: space-between;
-    width: 15rem;
+    width: 5rem;
 }
 
 nav ul a {
