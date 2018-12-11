@@ -15,19 +15,19 @@
     margin-bottom: 0 !important;
 }
 
-.account_num:hover {
-    background: #69cc99;
-    color: #ffffff;
-}
+/*.account_num:hover {*/
+    /*background: #69cc99;*/
+    /*color: #ffffff;*/
+/*}*/
 
-.account_num:hover .btn {
-    border:1px solid #ffffff;
-    color: #ffffff;
-}
+/*.account_num:hover .btn {*/
+    /*border:1px solid #ffffff;*/
+    /*color: #ffffff;*/
+/*}*/
 
-.account_num:hover .amount_num {
-    color: #ffffff !important;
-}
+/*.account_num:hover .amount_num {*/
+    /*color: #ffffff !important;*/
+/*}*/
 
 .glory_level {
     background: #00d290;
