@@ -324,7 +324,11 @@ $(function () {
     //bind/modify weChat group
     $(".bind_weChat_group,.modify_weChat_group").click(function () {
         var li = "";
+        var index = layer.load(1, {
+            shade: [0.1, '#fff']
+        });
         WeChatGroupList(token, function (response) {
+            layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
                 $("#weChatGroup").modal("show");
