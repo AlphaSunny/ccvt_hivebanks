@@ -315,4 +315,9 @@ $(function () {
             ShowLoading("hide");
         })
     });
+
+    //modal
+    $(".modify_us_id").click(()=>{
+        $("#modifyName").modal("show");
+    })
 });
