@@ -81,7 +81,7 @@ p.chat_item_name:after {
     line-height: 1.5rem;
     max-width: 100%;
     border-right: 5px;
-    padding: 2% 2% 2% 3%;
+    padding: 2% 2% 2% 10px;
     border-radius: 5px;
     font-size: 14px;
     overflow: auto;
