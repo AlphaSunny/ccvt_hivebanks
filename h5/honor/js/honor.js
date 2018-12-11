@@ -25,7 +25,7 @@ $(function () {
     var limit = 50, offset = 0, total = "", search_content = "";
 
     function HonorFun(limit, offset, search_content) {
-        var tr = "", count = "", totalPage = "";
+        var tr = "",scale = "", count = "", totalPage = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
@@ -55,11 +55,16 @@ $(function () {
                 }
 
                 $.each(data, function (i, val) {
+                    if(data[i].scale<=0){
+                        scale = "";
+                    }else {
+                        scale = data[i].scale;
+                    }
                     if (data[i].sorting == "1") {
                         tr += "<tr>" +
                             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>" +
-                            "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].scale + "</td>" +
+                            "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + scale + "</a></td>" +
+                            // "<td>" + data[i].scale + "</td>" +
                             "<td><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
@@ -72,8 +77,8 @@ $(function () {
                     } else if (data[i].sorting == "2") {
                         tr += "<tr>" +
                             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-second'></use></svg></td>" +
-                            "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].scale + "</td>" +
+                            "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + scale + "</a></td>" +
+                            // "<td>" + data[i].scale + "</td>" +
                             "<td><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
@@ -86,8 +91,8 @@ $(function () {
                     } else if (data[i].sorting == "3") {
                         tr += "<tr>" +
                             "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-third'></use></svg></td>" +
-                            "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].scale + "</td>" +
+                            "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + scale + "</a></td>" +
+                            // "<td>" + data[i].scale + "</td>" +
                             "<td><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
@@ -100,8 +105,8 @@ $(function () {
                     } else {
                         tr += "<tr>" +
                             "<td>" + data[i].sorting + "</td>" +
-                            "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "</a></td>" +
-                            "<td>" + data[i].scale + "</td>" +
+                            "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + scale + "</a></td>" +
+                            // "<td>" + data[i].scale + "</td>" +
                             "<td><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                             "<td>" +
                             "<span class='none us_id'>" + data[i].us_id + "</span>" +
