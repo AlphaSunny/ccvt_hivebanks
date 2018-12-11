@@ -23,7 +23,7 @@ interest_auto();
 function interest_auto(){
     $db = new DB_COM();
     //获取利息用户
-    $data = us_get();
+    $data = us_get();var_dump($data);die;
     $flag = 1;
     //发放利息===BA扣除利息====US增加利息====利息记录表====COMBASE记录表====COMTRANSFER记录表
     foreach ($data as $k=>$v)
