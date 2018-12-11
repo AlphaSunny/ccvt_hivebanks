@@ -460,7 +460,7 @@ function get_topic($group_name,$ask)
                 $db->query($sql);
             }
         }
-    }elseif($ask=="最新话题"){
+    }elseif($ask=="最新话题" || $ask=="换个话题"){
         $sql = "select * from bot_topic WHERE is_send=1  ORDER BY ctime ASC limit 1";
         $db->query($sql);
         $row = $db->fetchRow();
