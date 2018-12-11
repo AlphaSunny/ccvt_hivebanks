@@ -83,7 +83,7 @@ function log_interest($amount,$us_id){
     $data['us_id'] = $us_id;
     $data['log_id'] = get_guid();
     $data['interest_type'] = 'big_us_interest';
-    $sql = $db->sqlInsert('big_us_interest',$data);
+    $sql = $db->sqlInsert('big_account_interest',$data);
     if(!($db->query($sql)))
         die('log_interest');
     return true;
