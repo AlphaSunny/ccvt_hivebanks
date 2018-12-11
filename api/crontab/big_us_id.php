@@ -20,7 +20,7 @@ us_id();
 
 function us_id(){
     $db = new DB_COM();
-    $sql = 'select phone from big_us_lock';
+    $sql = 'select phone from big_account_lock';
     $db->query($sql);
     $res = $db->fetchAll();
     $flag = 1;
