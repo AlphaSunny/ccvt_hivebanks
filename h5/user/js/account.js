@@ -136,7 +136,6 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        // $("#current").text(current);
                         GetAccountChange(token, limit, (current - 1) * limit, account_change_url)
                     }
                 });
@@ -320,11 +319,13 @@ $(function () {
     //bind/modify weChat group
     $(".bind_weChat_group,.modify_weChat_group").click(function () {
         var li = "";
-        var index = layer.load(1, {
-            shade: [0.1, '#fff']
-        });
+        // var index = layer.load(1, {
+        //     shade: [0.1, '#fff']
+        // });
+        ShowLoading("show");
         WeChatGroupList(token, function (response) {
-            layer.close(index);
+            // layer.close(index);
+            ShowLoading("hide");
             if (response.errcode == "0") {
                 var data = response.rows;
                 $("#weChatGroup").modal("show");
