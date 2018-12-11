@@ -6,7 +6,7 @@ $(function () {
     } else {
         GetUserInfoFun();
         $(".usLogin,.usRegister").remove();
-        $(".usAccount").fadeIn();
+        $(".usAccount,.amount_li").fadeIn();
     }
 
     //获取用户信息
