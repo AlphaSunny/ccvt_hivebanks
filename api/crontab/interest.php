@@ -106,7 +106,7 @@ function log_base($amount,$us_id){
     $data['credit_id']= BA_ID;
     $data['tx_type'] = 'big_us_interest';
     $data["tx_amount"] = $amount*UNIT*RATE;
-    $data["credit_balance"] = get_ba_account(BA_ID)-($amount*UNIT);
+    $data["credit_balance"] = get_ba_account(BA_ID)-($amount*UNIT*RATE);
     $data["utime"] = time();
     $data["ctime"] = $ctime;
     $sql = $db->sqlInsert("com_base_balance", $data);
@@ -121,7 +121,7 @@ function log_base($amount,$us_id){
     $uata['debit_id']= BA_ID;
     $uata['tx_type'] = 'big_us_interest';
     $uata["tx_amount"] = $amount*UNIT*RATE;
-    $uata["credit_balance"] = get_us_account($us_id)+($amount*UNIT);
+    $uata["credit_balance"] = get_us_account($us_id)+($amount*UNIT*RATE);
 
     if($us_id == '8D5664EC-2722-B70B-7DF7-80EFE8118CFD')
     {
@@ -144,7 +144,7 @@ function log_transfer($amount,$us_id){
     $data['credit_id'] = BA_ID;
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $amount*UNIT*RATE;
-    $data['credit_balance'] = get_ba_account(BA_ID)-($amount*UNIT);
+    $data['credit_balance'] = get_ba_account(BA_ID)-($amount*UNIT*RATE);
     $data['tx_hash'] = hash('md5', BA_ID . FLAG . get_ip() . mt() . date('Y-m-d H:i:s'));
     $data['flag'] = FLAG;
     $data['transfer_type'] = 'ba-us';
@@ -226,7 +226,7 @@ function get_transfer_pre_hash($credit_id){
 //获取用户余额
 function get_us_account($us_id){
     $db = new DB_COM();
-    $sql = "select base_amount from us_base WHERE us_id='{$us_id}' limit 1";
+    $sql = "select sum(base_amount,lock_amount) as base_amount from us_base WHERE us_id='{$us_id}' limit 1";
     $db->query($sql);
     $base_amount = $db -> getField($sql,'base_amount');
     var_dump($base_amount);
