@@ -57,5 +57,6 @@ if(!$we){
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
+
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
