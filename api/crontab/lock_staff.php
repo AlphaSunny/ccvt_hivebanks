@@ -30,10 +30,11 @@ function lock_auto(){
     $flag = 1;
     foreach($bInfo as $k=>$v)
     {
+        if($v['phone'] != '15363972936')
+            continue;
         $tmp_phone = $v['phone'];
         $tmp_amount = $v['amount'];
-//        $sql = "select us_id from us_bind  where SUBSTR(bind_info,4,100) = {$tmp_phone}";
-        $sql = "select us_id from us_bind  where SUBSTR(bind_info,4,100) = '15363972936'";
+        $sql = "select us_id from us_bind  where SUBSTR(bind_info,4,100) = {$tmp_phone}";
         $db->query($sql);
         $res = $db->fetchRow();
         if($res){
