@@ -152,9 +152,8 @@ $(function () {
     $(".search_input").focus(function () {
         $(this).keyup(function (e) {
             if (e.keyCode == "8") {
-                console.log(e.target.value);
-                var value = e.target.value;
-                if (value == "") {
+                var search_content = e.target.value;
+                if (search_content == "") {
                     HonorFun(limit, offset, search_content);
                 }
             }
