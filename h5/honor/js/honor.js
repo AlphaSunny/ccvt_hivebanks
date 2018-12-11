@@ -35,7 +35,6 @@ $(function () {
                 var data = response.rows;
                 total = response.total;
                 totalPage = Math.ceil(total / limit);
-                console.log(totalPage);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (totalPage > 1 && totalPage <= 6) {
