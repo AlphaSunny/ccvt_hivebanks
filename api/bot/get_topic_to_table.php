@@ -14,8 +14,8 @@ php_begin();
 $args = array('name','type');
 chk_empty_args('GET', $args);
 
-$data['name'] = get_arg_str('GET','name');
-$data['type'] = get_arg_str('GET','type');
+$data['name'] = get_arg_str('POST','name');
+$data['type'] = get_arg_str('POST','type');
 $data['ctime'] = time();
 //存入数据库
 $rows = to_topic_table($data);
