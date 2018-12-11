@@ -5,10 +5,10 @@
 
 html, body {
     overflow-y: auto;
+    background: #eeeeee;
 }
 
-html, body, #particles-js {
-    /*background: #f2f5f5 !important;*/
+#particles-js {
     background: #000000;
 }
 
@@ -17,7 +17,8 @@ html, body, #particles-js {
 }
 
 .chat_title_box {
-    background: rgba(0, 0, 0, 1);
+    /*background: rgba(0, 0, 0, 1);*/
+    background: #9e9e9e;
     color: #fff;
     text-align: center;
     height: 4rem;
@@ -79,7 +80,7 @@ p.chat_item_name:after {
     background: #ffffff;
     display: inline-block;
     line-height: 1.5rem;
-    max-width: 100%;
+    /*max-width: 100%;*/
     border-right: 5px;
     padding: 2% 2% 2% 10px;
     border-radius: 5px;

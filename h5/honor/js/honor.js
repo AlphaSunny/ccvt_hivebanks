@@ -7,6 +7,7 @@ $(function () {
         GetUserInfoFun();
         $(".usLogin,.usRegister").remove();
         $(".usAccount,.amount_li").fadeIn();
+        $("nav ul").css("width", "15rem");
     }
 
     //获取用户信息
@@ -58,7 +59,7 @@ $(function () {
                     if (data[i].scale <= 0) {
                         scale = "";
                     } else {
-                        scale = "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v"+ data[i].scale +"'></use></svg>";
+                        scale = "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
                     }
                     if (data[i].sorting == "1") {
                         sorting = "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>";
@@ -71,7 +72,7 @@ $(function () {
                     }
                     tr += "<tr>" +
                         sorting +
-                        "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "&nbsp;"+ scale + "</a></td>" +
+                        "<td><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "&nbsp;" + scale + "</a></td>" +
                         "<td><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                         "<td>" +
                         "<span class='none us_id'>" + data[i].us_id + "</span>" +
