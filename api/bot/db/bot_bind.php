@@ -469,6 +469,8 @@ function get_topic($group_name,$ask)
             $sql = "update bot_topic set is_send=2,group_name='{$group_name}',send_time='{$send_time}' WHERE id='{$row['id']}'";
             $db->query($sql);
         }
+    }else{
+        $row =array();
     }
     return $row;
 }
