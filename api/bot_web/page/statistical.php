@@ -55,11 +55,11 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                     <?php
                     $unit = get_la_base_unit();
 
-                    $sql = "select sum(amount)/'{$unit}' as all_send_ccvt from bot_Iss_records WHERE send_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                    $sql = "select sum(amount)/'{$unit}' as all_send_ccvt from bot_Iss_records WHERE group_name='{$group_name}' AND send_time BETWEEN '{$day_start}' AND '{$day_end}'";
                     $db->query($sql);
                     $all_send_ccvt = $db->getField($sql, 'all_send_ccvt'); //总赠送ccvt数量
 
-                    $sql = "select count(bot_ls_id) as count from bot_Iss_records WHERE send_time BETWEEN '{$day_start}' AND '{$day_end}'";
+                    $sql = "select count(bot_ls_id) as count from bot_Iss_records WHERE group_name='{$group_name}' AND send_time BETWEEN '{$day_start}' AND '{$day_end}'";
                     $db->query($sql);
                     $count = $db->getField($sql, 'count'); //总赠送人数
 
@@ -99,7 +99,7 @@ $url = $data['api_url'] . "/api/bot_web/page/chat.php?datetime=" . base64_encode
                         </thead>
                         <tbody>
                         <?php
-                        $sql = "select us_id,wechat,amount,num,send_time,bot_create_time from bot_Iss_records WHERE send_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY num DESC ";
+                        $sql = "select us_id,wechat,amount,num,send_time,bot_create_time from bot_Iss_records WHERE group_name='{$group_name}' AND send_time BETWEEN '{$day_start}' AND '{$day_end}' ORDER BY num DESC ";
                         $db->query($sql);
                         $list = $db->fetchAll();
                         foreach ($list as $k => $v) {
