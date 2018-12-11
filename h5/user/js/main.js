@@ -310,15 +310,10 @@ var spinner = new Spinner(opts);
 
 //show loading
 function ShowLoading(type) {
-    var index = "";
     if (type == "show") {
-        index = layer.load(1, {
-            shade: [0.1, '#fff']
-        });
-        // spinner.spin(target);
+        spinner.spin(target);
     }
     if (type == "hide") {
-        layer.close(index);
-        // spinner.spin();
+        spinner.spin();
     }
 }
