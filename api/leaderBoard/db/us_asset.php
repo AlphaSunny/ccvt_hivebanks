@@ -36,6 +36,8 @@ function get_leaderboard($offset,$limit,$search_content)
             $row1[$k]['sorting'] = $k+1;
         }
 
+        print_r($row1);
+
         $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_praise,(select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_point_on FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP' and b.wechat like '%{$search_content}%'";
         $db->query($sql);
         $row2 = $db->fetchAll();
@@ -47,6 +49,7 @@ function get_leaderboard($offset,$limit,$search_content)
                     }
                 }
             }
+            print_r($row2);
             $rows = array_slice($row2,$offset,$limit);
         }else{
             $rows = array();
