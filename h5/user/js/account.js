@@ -98,9 +98,13 @@ $(function () {
 
     function GetAccountChange(token, limit, offset, account_change_url) {
         var tr = '', count = 1;
-        ShowLoading("show");
+        // ShowLoading("show");
+        var index = layer.load(1, {
+                shade: [0.1, '#fff']
+            });
         AllRecord(token, limit, offset, account_change_url, function (response) {
-            ShowLoading("hide");
+            // ShowLoading("hide");
+            layer.close(index);
             if (response.errcode == '0') {
                 var total = response.total;
                 var totalPage = Math.ceil(total / limit);
