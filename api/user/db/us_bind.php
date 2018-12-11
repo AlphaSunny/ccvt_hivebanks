@@ -265,3 +265,55 @@ function bind_wechat($data){
 
     }
 }
+
+//======================================
+// 函数: 判断群组是否存在
+// 参数: $data    数据信息
+//======================================
+function check_group_is_are($group_id){
+    $db = new DB_COM();
+    $sql = "select * from bot_group WHERE id='{$group_id}' AND is_audit=2 AND is_test=1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    return $row;
+}
+
+//======================================
+// 函数: 绑定群
+// 参数: $data    数据信息
+//======================================
+function bind_group($data){
+    $db = new DB_COM();
+    $sql = "select * from us_bind WHERE us_id='{$data['us_id']}' AND bind_name='{$data['bind_name']}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if ($row){
+        if ($row['bind_info']==$data['bind_info']){
+            return true;
+        }else{
+            $sql = "update us_bind set bind_info='{$data['bind_info']}',utime='{$data['utime']}' WHERE bind_id='{$row['bind_id']}'";
+            $db->query($sql);
+            $count = $db -> affectedRows();
+            return $count;
+        }
+    }else{
+        $sql = $db->sqlInsert("us_bind", $data);
+        $q_id = $db->query($sql);
+        if ($q_id == 0){
+            return false;
+        }
+        return true;
+
+    }
+}
+//======================================
+// 函数: 获取群列表和类型列表
+// 参数: $data    数据信息
+//======================================
+function group_and_type_list(){
+    $db = new DB_COM();
+    $sql = "select a.id,a.name,b.name from bot_group as a LEFT JOIN bot_group_type as b on a.group_type=b.id WHERE a.is_audit=2 AND a.is_test=1";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    return $rows;
+}

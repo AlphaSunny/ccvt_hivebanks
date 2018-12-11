@@ -25,9 +25,9 @@ function  get_log_balance_total($us_id)
 //======================================
 function get_log_balance($us_id,$offset,$limit)
 {
-  $db = new DB_COM();
-  $sql = "SELECT * FROM com_base_balance WHERE credit_id = '{$us_id}' order by ctime desc limit $offset , $limit";//fzg:hash_id=>credit_id
-  $db->query($sql);
-  $rows = $db->fetchAll();
-  return $rows;
+    $db = new DB_COM();
+    $sql = "SELECT * FROM com_base_balance WHERE credit_id = '{$us_id}' order by ctime desc limit $offset , $limit";//fzg:hash_id=>credit_id
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    return $rows;
 }
