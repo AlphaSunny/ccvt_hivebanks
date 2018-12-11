@@ -98,12 +98,8 @@ $(function () {
 
     function GetAccountChange(token, limit, offset, account_change_url) {
         var tr = '', count = 1;
-        // var index = layer.load(1, {
-        //     shade: [0.1, '#fff']
-        // });
         ShowLoading("show");
         AllRecord(token, limit, offset, account_change_url, function (response) {
-            // layer.close(index);
             ShowLoading("hide");
             if (response.errcode == '0') {
                 var total = response.total;
@@ -335,7 +331,7 @@ $(function () {
                 var data = response.rows;
                 $("#weChatGroup").modal("show");
                 $.each(data, function (i, val) {
-                    li += "<li class='font-weight-400 margin-bottom-1'>" +
+                    li += "<li class='font-weight-400 margin-bottom-2'>" +
                         "<input type='radio' name='weChatGroup' value='" + data[i].id + "'>" +
                         "<span class='margin-left-1'>" + data[i].group_name + "</span>" +
                         "</li>";
