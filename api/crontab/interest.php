@@ -30,7 +30,6 @@ function interest_auto(){
     foreach ($data as $k=>$v)
     {
         $phone = $v['phone'];
-        $us_id = $v['us_id'];
         $amount = $v['amount'];
         $sql = "select us_id from us_bind  where SUBSTR(bind_info,4,100) = {$phone}";
         $db->query($sql);
