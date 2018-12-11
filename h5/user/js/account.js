@@ -99,12 +99,8 @@ $(function () {
     function GetAccountChange(token, limit, offset, account_change_url) {
         var tr = '', count = 1;
         ShowLoading("show");
-        // var index = layer.load(1, {
-        //         shade: [0.1, '#fff']
-        //     });
         AllRecord(token, limit, offset, account_change_url, function (response) {
             ShowLoading("hide");
-            // layer.close(index);
             if (response.errcode == '0') {
                 var total = response.total;
                 var totalPage = Math.ceil(total / limit);
@@ -323,12 +319,8 @@ $(function () {
     //bind/modify weChat group
     $(".bind_weChat_group,.modify_weChat_group").click(function () {
         var li = "";
-        // var index = layer.load(1, {
-        //     shade: [0.1, '#fff']
-        // });
         ShowLoading("show");
         WeChatGroupList(token, function (response) {
-            // layer.close(index);
             ShowLoading("hide");
             if (response.errcode == "0") {
                 var data = response.rows;
