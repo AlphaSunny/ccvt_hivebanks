@@ -90,7 +90,7 @@ p.chat_item_name:after {
     overflow: auto;
 }
 
-.chat_item_content img {
+.chat_item_content img, .chat_item_content video {
     width: 100%;
 }
 
