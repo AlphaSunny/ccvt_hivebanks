@@ -332,6 +332,10 @@ button:hover {
     .search_input {
         width: 94%;
     }
+
+    .close_page {
+        top: 2%;
+    }
 }
 
 /*page*/
