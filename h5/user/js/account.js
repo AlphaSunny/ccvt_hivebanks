@@ -323,9 +323,18 @@ $(function () {
 
     //bind/modify weChat group
     $(".bind_weChat_group,.modify_weChat_group").click(function () {
+        var li = "";
         WeChatGroupList(token, function (response) {
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
+                var data = response.rows;
                 $("#weChatGroup").modal("show");
+                $.each(data, function () {
+                    li += "<li class='font-weight-400 margin-bottom-1'>" +
+                        "<input type='radio' name='weChatGroup' value='" + data[i].id + "'>" +
+                        "<span class='margin-left-1'>" + data[i].group_name + "</span>" +
+                        "</li>";
+                });
+                $(".weChatGroutItem").html(li);
             }
         }, function (response) {
             layer.msg(response.errmsg);
