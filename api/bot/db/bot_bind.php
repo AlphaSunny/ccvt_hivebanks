@@ -835,5 +835,17 @@ function check_black($nickname,$group_name){
         }
     }
 }
+//======================================
+// 函数: 获取话题,存入话题表
+//======================================
+function to_topic_table($data){
+    $db = new DB_COM();
+    $sql = $db->sqlInsert("bot_topic", $data);
+    if (!$db->query($sql)) {
+        return false;
+    }
+    return true;
+}
+
 
 ?>
