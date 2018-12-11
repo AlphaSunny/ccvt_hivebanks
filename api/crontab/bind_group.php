@@ -7,7 +7,7 @@ error_reporting(E_ALL | E_STRICT);
 
 $db = new DB_COM();
 
-$sql = "select * from us_base WHERE wechat!=''";
+$sql = "select us_id,wechat from us_base WHERE wechat!=''";
 $db->query($sql);
 $rows = $db->fetchAll();
 print_r($rows);die;
