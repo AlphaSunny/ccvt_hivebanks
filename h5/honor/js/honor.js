@@ -153,7 +153,7 @@ $(function () {
     $(".search_input").focus(function () {
         $(this).keyup(function (e) {
             if(e.keyCode == "8"){
-                console.log(e.target.val());
+                console.log(e.target.value);
             }
         })
         // $(".search_input").bind("input","propertychange", function () {
