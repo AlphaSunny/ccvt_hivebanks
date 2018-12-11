@@ -31,6 +31,15 @@ $(function () {
                 $("#weChatModifyBtn").remove();
                 $("#weChatBindBtn").fadeIn("fast");
             }
+
+            if (data.group_name) {
+                $(".group_name").text(data.group_name).removeClass("i18n");
+                $("#bind_weChat_group").remove();
+                $("#modify_weChat_group").fadeIn("fast");
+            } else {
+                $("#modify_weChat_group").remove();
+                $("#bind_weChat_group").fadeIn("fast");
+            }
         }
     }, function (response) {
         layer.msg(response.errcode);
