@@ -22,6 +22,7 @@ lock_auto();
 
 function lock_auto(){
 
+    die('what do you want?');
     $db = new DB_COM();
     $sql = 'select phone,amount from big_account_lock ';
     $db->query($sql);
