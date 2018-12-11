@@ -25,7 +25,7 @@ if ($groups){
     $ba_account = 0;
     foreach ($groups as $a=>$b){
         set_time_limit(0);
-        $sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$b['name']}' AND type='Text' AND CHAR_LENGTH(bot_content)>=5 AND is_effective='0' AND bot_content not LIKE '@风赢小助手%' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
+        $sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$b['name']}' AND type='Text' AND CHAR_LENGTH(bot_content)>=5 AND is_effective='0' AND bot_content not LIKE '@AI大白~%' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
         $db->query($sql);
         $rows = $db->fetchAll();
         if ($rows){
