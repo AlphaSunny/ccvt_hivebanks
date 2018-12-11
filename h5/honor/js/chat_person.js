@@ -31,7 +31,7 @@ $(function () {
                         "<p class='chat_item_name'>" + data[i].bot_nickname.substr(0, 1) + "</p>" +
                         "<div class='chat_item_content_box'>" +
                         "<p class='name'><span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;<span>" + data[i].bot_send_time + "</span></p>" +
-                        "<p class='chat_item_content'>"+ bot_content +"</p>" +
+                        "<div class='chat_item_content'>"+ bot_content +"</div>" +
                         "</div>" +
                         "</li>";
                 });
