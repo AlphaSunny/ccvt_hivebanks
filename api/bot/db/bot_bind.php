@@ -463,10 +463,10 @@ function get_topic($group_name,$ask)
     }elseif($ask=="最新话题"){
         $sql = "select * from bot_topic WHERE is_send=1  ORDER BY ctime ASC limit 1";
         $db->query($sql);
-        $new = $db->fetchRow();
-        if ($new){
+        $row = $db->fetchRow();
+        if ($row){
             $send_time = date('Y-m-d H:i:s');
-            $sql = "update bot_topic set is_send=2,group_name='{$group_name}',send_time='{$send_time}' WHERE id='{$new['id']}'";
+            $sql = "update bot_topic set is_send=2,group_name='{$group_name}',send_time='{$send_time}' WHERE id='{$row['id']}'";
             $db->query($sql);
         }
     }
