@@ -150,6 +150,16 @@ $(function () {
         }
         HonorFun(limit, offset, search_content);
     });
+    $(".search_input").focus(function () {
+        $(this).keyup(function (e) {
+            if(e.keyCode == "8"){
+                console.log(e.key);
+            }
+        })
+        // $(".search_input").bind("input","propertychange", function () {
+        //
+        // });
+    });
 
     //登录
     $(".usLogin").click(function () {
