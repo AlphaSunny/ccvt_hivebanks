@@ -72,24 +72,6 @@ die;
 
 
 
-
-//聊天奖励
-
-$sql = "select * from bot_Iss_records WHERE 1";
-$db->query($sql);
-$bot_rows = $db->fetchAll();
-if ($bot_rows){
-    foreach ($bot_rows as $c=>$d){
-        set_time_limit(0);
-        $send_money = $d['amount']/get_la_base_unit();
-        into_transfer($d['us_id'],$send_money,$d['send_time'],4,'聊天奖励','ba_send');
-    }
-}else{
-    echo "聊天奖励没有数据可以操作";
-    die();
-}
-
-
 echo "ok";
 
 
