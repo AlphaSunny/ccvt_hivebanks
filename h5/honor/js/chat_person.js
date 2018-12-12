@@ -36,7 +36,8 @@ $(function () {
                         "</li>";
                 });
                 $(".chat_item_ul").html(li);
-                console.log($("#chat_item_ul").height());
+
+                //默认在最底部
                 var height = $("#chat_item_ul").height();
                 $('html,body').scrollTop(height);
             }
@@ -71,18 +72,4 @@ $(function () {
         search_content = "";
         GetWeChatFun(search_content);
     });
-
-    //默认在最底部
-    // var x = 0;
-    // $("#chat_content").scroll(function () {
-    //     console.log(x+=1);
-    //     var height = $(".chat_item_ul")[0].scrollHeight;
-    //     console.log(height);
-    // });
-
-
-    // $("#chat_content").scrollTop(3000+"px");
-// console.log(document.body.clientHeight);
-// console.log(document.body.offsetHeight);
-// console.log($("body").height());
 });
