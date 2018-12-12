@@ -60,7 +60,7 @@ foreach ($bot_rows as $k=>$v){
 
 $qunliao = array_sum(array_map(function($val){return $val['send_money'];}, $bot_rows));
 
-echo "邀请:".$qunliao/$unit."<br />";
+echo "群聊:".$qunliao/$unit."<br />";
 
 //点赞(点踩)(ccvt兑换积分)
 $sql = "select credit_id as us_id,utime as ctime,tx_amount as send_money,tx_detail as detail,state as flag from us_glory_integral_change_log WHERE credit_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
@@ -84,7 +84,7 @@ foreach ($glory as $k=>$v){
 
 $diancai = array_sum(array_map(function($val){return $val['send_money'];}, $glory));
 
-echo "邀请:".$diancai/$unit."<br />";
+echo "赞踩:".$diancai/$unit."<br />";
 
 //兑换码兑换
 $sql = "select us_id,amount*'{$unit}' as send_money,exchange_time as ctime from us_voucher WHERE us_id!=0 AND is_effective=2 AND us_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
@@ -99,7 +99,7 @@ foreach ($voucher as $k=>$v){
 
 $duihuan = array_sum(array_map(function($val){return $val['send_money'];}, $voucher));
 
-echo "邀请:".$duihuan/$unit."<br />";
+echo "兑换码兑换:".$duihuan/$unit."<br />";
 
 //ba调账(活动奖励啥的)
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=3 AND give_or_receive=2 and (`credit_id`='C8DC1099-D680-B12F-98AF-4054992F7B07' or debit_id='C8DC1099-D680-B12F-98AF-4054992F7B07')";
@@ -112,7 +112,7 @@ foreach ($tiaozhang as $k=>$v){
 
 $tiaozh = array_sum(array_map(function($val){return $val['send_money'];}, $tiaozhang));
 
-echo "邀请:".$tiaozh/$unit."<br />";
+echo "ba调账:".$tiaozh/$unit."<br />";
 
 //升级返还
 $sql = "select us_id,ctime from us_scale_changes WHERE us_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
@@ -128,7 +128,7 @@ foreach ($scale_changes as $k=>$v){
 
 $shengji = array_sum(array_map(function($val){return $val['send_money'];}, $scale_changes));
 
-echo "邀请:".$shengji/$unit."<br />";
+echo "升级返还:".$shengji/$unit."<br />";
 
 die;
 //锁仓(锁仓余额)
