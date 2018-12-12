@@ -103,6 +103,7 @@ foreach ($scale_changes as $k=>$v){
     $scale_changes[$k]['transfer_type'] = "ba-us";
 }
 
+print_r($scale_changes);die;
 
 //锁仓(锁仓余额)
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=10 AND give_or_receive=2";
