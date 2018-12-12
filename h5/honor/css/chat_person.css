@@ -145,7 +145,7 @@ p.chat_item_name:after {
 .search_icon {
     position: absolute;
     top: 20%;
-    right: 35%;
+    left: 5%;
     font-size: 2rem;
     cursor: pointer;
 }
