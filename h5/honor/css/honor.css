@@ -67,7 +67,7 @@ iframe {
     position: fixed;
     z-index: 101;
     left: 92%;
-    top: 18%;
+    top: 9%;
     cursor: pointer;
     display: none;
 }
