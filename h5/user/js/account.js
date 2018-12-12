@@ -207,6 +207,7 @@ $(function () {
     //invite
     $(".invite_img").attr("src", "img/low_inviteImg.jpg?t=" + Math.random());
     $(".inviteBtn").click(function () {
+        ShowLoading("show");
         var url = getRootPath() + "/h5/user/register.html?invite=" + window.btoa($(".us_nm").text());
         $(".inviteInput").val(url);
 
@@ -231,6 +232,7 @@ $(function () {
             var base64 = canvas.toDataURL("images/png");//转成URL
             $("#base64Img").attr("src", base64).fadeIn(500);
             $(".inviteImgBox, #qrcode").remove();
+            ShowLoading("hide");
         };
     });
 
