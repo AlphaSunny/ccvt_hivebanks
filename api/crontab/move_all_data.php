@@ -9,7 +9,7 @@ $db = new DB_COM();
 $unit = get_la_base_unit();
 
 //注册
-$sql = "select us_id,ctime from us_base WHERE 1";
+$sql = "select us_id,ctime from us_base WHERE us_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
 $db->query($sql);
 $reg_user = $db->fetchAll();
 foreach ($reg_user as $k=>$v){
@@ -29,7 +29,7 @@ foreach ($reg_user as $k=>$v){
 }
 
 //邀请
-$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
+$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0 AND b.us_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
 $db->query($sql);
 $invite_rows = $db->fetchAll();
 foreach ($invite_rows as $k=>$v){
@@ -41,7 +41,7 @@ foreach ($invite_rows as $k=>$v){
 }
 
 //群聊奖励
-$sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where 1";
+$sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where us_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
 $db->query($sql);
 $bot_rows = $db->fetchAll();
 foreach ($bot_rows as $k=>$v){
@@ -52,7 +52,7 @@ foreach ($bot_rows as $k=>$v){
 }
 
 //点赞(点踩)(ccvt兑换积分)
-$sql = "select credit_id as us_id,utime as ctime,tx_amount as send_money,tx_detail as detail,state as flag from us_glory_integral_change_log WHERE 1";
+$sql = "select credit_id as us_id,utime as ctime,tx_amount as send_money,tx_detail as detail,state as flag from us_glory_integral_change_log WHERE credit_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
 $db->query($sql);
 $glory = $db->fetchAll();
 foreach ($glory as $k=>$v){
@@ -72,7 +72,7 @@ foreach ($glory as $k=>$v){
 }
 
 //兑换码兑换
-$sql = "select us_id,amount*'{$unit}' as send_money,exchange_time as ctime from us_voucher WHERE us_id!=0 AND is_effective=2";
+$sql = "select us_id,amount*'{$unit}' as send_money,exchange_time as ctime from us_voucher WHERE us_id!=0 AND is_effective=2 AND us_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
 $db->query($sql);
 $voucher = $db->fetchAll();
 foreach ($voucher as $k=>$v){
@@ -83,7 +83,7 @@ foreach ($voucher as $k=>$v){
 }
 
 //ba调账(活动奖励啥的)
-$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=3 AND give_or_receive=2";
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=3 AND give_or_receive=2 and (`credit_id`='C8DC1099-D680-B12F-98AF-4054992F7B07' or debit_id='C8DC1099-D680-B12F-98AF-4054992F7B07')";
 $db->query($sql);
 $tiaozhang = $db->fetchAll();
 foreach ($tiaozhang as $k=>$v){
@@ -92,7 +92,7 @@ foreach ($tiaozhang as $k=>$v){
 }
 
 //升级返还
-$sql = "select us_id,ctime from us_scale_changes WHERE 1";
+$sql = "select us_id,ctime from us_scale_changes WHERE us_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
 $db->query($sql);
 $scale_changes = $db->fetchAll();
 foreach ($scale_changes as $k=>$v){
@@ -105,7 +105,7 @@ foreach ($scale_changes as $k=>$v){
 
 
 //锁仓(锁仓余额)
-$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=10 AND give_or_receive=2";
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=10 AND give_or_receive=2 AND credit_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
 $db->query($sql);
 $suocang = $db->fetchAll();
 foreach ($suocang as $k=>$v){
@@ -116,6 +116,9 @@ foreach ($suocang as $k=>$v){
 
 $list = array_merge($reg_user,$invite_rows,$bot_rows,$glory,$voucher,$tiaozhang,$scale_changes,$suocang);
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
+print_r(json_encode($list,true));
+die;
+
 $ba_id = get_ba_id();
 $la_id = get_la_id();
 foreach ($list as $k=>$v){
