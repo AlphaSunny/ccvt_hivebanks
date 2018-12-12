@@ -3,6 +3,10 @@ input[type="radio"], label {
     margin-top: 0 !important;
 }
 
+.group_list {
+    background: #ffffff;
+}
+
 .list-group-item {
     line-height: 3rem;
     cursor: pointer;
