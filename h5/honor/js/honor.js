@@ -137,8 +137,8 @@ $(function () {
     //显示聊天内容
     $(document).on("click", ".message_icon", function () {
         var wechat = $(this).parents("tr").find(".link_name").text();
-        $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat))).fadeIn();
-        $(".close_page").fadeIn();
+        $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)));
+        $(".close_page,.mask").fadeIn();
     });
 
     //关闭聊天内容close_page
