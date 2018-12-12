@@ -10,7 +10,7 @@ function GetWeChatGroupFun() {
                 li += "<li class='list-group-item row'>" +
                     "<div class='col-md-6 col-sm-6'>" +
                     "<input type='radio' name ='weChatGroup' id=" + data[i].id + " value=" + data[i].id + ">" +
-                    "<label for=" + data[i].id + ">" + data[i].name + "</label>" +
+                    "<label class='margin-left-1' for=" + data[i].id + ">" + data[i].name + "</label>" +
                     "</div>" +
                     "</li>";
                 });
