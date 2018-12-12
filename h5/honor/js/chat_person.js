@@ -70,8 +70,8 @@ $(function () {
     });
 
     //默认在最底部
-    $("#chat_content").scroll(function () {
-        var height = $("#chat_content")[0].scrollHeight;
+    $(".chat_item_ul").scroll(function () {
+        var height = $(".chat_item_ul")[0].scrollHeight;
         console.log(height);
     });
 
