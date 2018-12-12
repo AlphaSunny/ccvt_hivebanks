@@ -5,6 +5,7 @@ input[type="radio"], label {
 
 .list-group-item {
     line-height: 3rem;
+    cursor: pointer;
 }
 
 .list_group {
