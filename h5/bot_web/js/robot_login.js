@@ -22,7 +22,7 @@ function GetWeChatGroupFun() {
                 li += "<li class='list-group-item row'>" +
                     "<div class='col-md-5 col-sm-12 padding-left-2'>" +
                     // "<input type='radio' name ='weChatGroup' id=" + data[i].id + " value=" + data[i].id + ">" +
-                    "<p class='margin-left-1'>" + data[i].name + "</p>" +
+                    "<p class='margin-left-1 group_name' name="+ data[i].id +">" + data[i].name + "</p>" +
                     "</div>" +
                     "<div class='col-md-5 col-sm-12'>" +
                     "<select name='type_select' id='type_select' class='form-control'>"+ option +"</select>" +
@@ -36,3 +36,13 @@ function GetWeChatGroupFun() {
         layer.msg(response);
     });
 }
+
+$(function () {
+   //添加
+   $(document).on("click",".add_group_btn", function () {
+       var group_id = $(this).parents(".list-group-item").find(".group_name").attr("name");
+       var group_type_id = $(this).parents(".list-group-item").find("select").val();
+       console.log(group_id);
+       console.log(group_type_id);
+   })
+});
