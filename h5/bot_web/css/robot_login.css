@@ -6,3 +6,8 @@ input[type="radio"], label {
 .list-group-item {
     line-height: 3rem;
 }
+
+.list_group {
+    height: 40rem;
+    overflow-y: auto;
+}
