@@ -103,7 +103,6 @@ foreach ($scale_changes as $k=>$v){
     $scale_changes[$k]['transfer_type'] = "ba-us";
 }
 
-print_r($scale_changes);die;
 
 //锁仓(锁仓余额)
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=10 AND give_or_receive=2";
@@ -141,6 +140,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
             echo "us锁仓错误";
+            file_put_contents("fail.log","us锁仓错误"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
         }
     }else{
         if ($transfer_type=='us-la'){
@@ -151,6 +151,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
+            file_put_contents("fail.log","us加钱(减钱)错误"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
             echo "us加钱(减钱)错误";
         }
     }
@@ -161,6 +162,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
+            file_put_contents("fail.log","ba减钱错误"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
             echo "ba减钱错误";
         }
     }else{
@@ -169,6 +171,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $db->query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
+            file_put_contents("fail.log","la加钱错误"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
             echo "la加钱错误";
         }
     }
@@ -195,6 +198,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $id = $db->query($sql);
         if (!$id){
             $db->Rollback($pInTrans);
+            file_put_contents("fail.log","转账记录表错误"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
             echo $us_id."转账记录表错误";
         }
 
@@ -218,6 +222,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $id = $db->query($sql);
         if (!$id){
             $db->Rollback($pInTrans);
+            file_put_contents("fail.log","转账记录表错误"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
             echo $us_id."转账记录表错误";
         }
     }elseif ($transfer_type=='us-la'){
@@ -241,6 +246,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $id = $db->query($sql);
         if (!$id){
             $db->Rollback($pInTrans);
+            file_put_contents("fail.log","转账记录表错误"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
             echo $us_id."转账记录表错误";
         }
 
@@ -264,6 +270,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $id = $db->query($sql);
         if (!$id){
             $db->Rollback($pInTrans);
+            file_put_contents("fail.log","转账记录表错误"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
             echo $la_id."转账记录表错误";
         }
     }
@@ -286,6 +293,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
         if (!$db->query($sql)) {
             $db->Rollback($pInTrans);
+            file_put_contents("fail.log","资金变动记录表"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
             echo $us_id."资金变动记录表";
         }
 
@@ -304,6 +312,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
         if (!$db->query($sql)) {
             $db->Rollback($pInTrans);
+            file_put_contents("fail.log","资金变动记录表"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
             echo $ba_id."资金变动记录表";
         }
     }elseif ($transfer_type=='us-la'){
@@ -322,6 +331,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
         if (!$db->query($sql)) {
             $db->Rollback($pInTrans);
+            file_put_contents("fail.log","资金变动记录表"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
             echo $us_id."资金变动记录表";
         }
 
@@ -341,6 +351,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
         if (!$db->query($sql)) {
             $db->Rollback($pInTrans);
+            file_put_contents("fail.log","资金变动记录表"."--".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
             echo $la_id."资金变动记录表";
         }
     }
