@@ -113,7 +113,7 @@ foreach ($suocang as $k=>$v){
     $suocang[$k]['transfer_type'] = "ba-us";
 }
 
-print_r($suocang);die;
+print_r(json_encode($suocang,true));die;
 
 
 $list = array_merge($reg_user,$invite_rows,$bot_rows,$voucher,$glory,$tiaozhang,$scale_changes,$suocang);
