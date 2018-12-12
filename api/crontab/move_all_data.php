@@ -139,7 +139,6 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     if ($flag==10){
         //锁仓
         $sql = "update us_base set lock_amount=lock_amount+'{$send_money}' WHERE us_id='{$us_id}'";
-        echo $sql;die;
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
@@ -365,7 +364,7 @@ function get_ba_base_amount($ba_id){
 //获取us余额
 function get_us_base_amount($us_id){
     $db = new DB_COM();
-    $sql = "select base_amount+lock_amount from us_base WHERE us_id='{$us_id}'";
+    $sql = "select (base_amount+lock_amount) as base_amount from us_base WHERE us_id='{$us_id}'";
     $db->query($sql);
     $amount = $db->getField($sql,'base_amount');
     return $amount;
