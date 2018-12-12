@@ -14,6 +14,7 @@ function GetWeChatGroupFun() {
                     "</div>" +
                     "</li>";
                 });
+            $(".list_group").html(li);
         }
     }, function (response) {
         layer.msg(response);
