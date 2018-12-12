@@ -76,10 +76,10 @@ $sql = "select us_id,amount*'{$unit}' as send_money,exchange_time as ctime from 
 $db->query($sql);
 $voucher = $db->fetchAll();
 foreach ($voucher as $k=>$v){
-    $invite_rows[$k]['flag'] = 7;
-    $invite_rows[$k]['detail'] = "兑换码兑换";
-    $invite_rows[$k]['type'] = "voucher";
-    $invite_rows[$k]['transfer_type'] = "ba-us";
+    $voucher[$k]['flag'] = 7;
+    $voucher[$k]['detail'] = "兑换码兑换";
+    $voucher[$k]['type'] = "voucher";
+    $voucher[$k]['transfer_type'] = "ba-us";
 }
 
 //ba调账(活动奖励啥的)
@@ -114,7 +114,7 @@ foreach ($suocang as $k=>$v){
 }
 
 
-$list = array_merge($reg_user,$invite_rows,$bot_rows,$glory,$invite_rows,$tiaozhang,$scale_changes,$suocang);
+$list = array_merge($reg_user,$invite_rows,$bot_rows,$voucher,$glory,$tiaozhang,$scale_changes,$suocang);
 echo count($list);
 print_r($list);die();
 
