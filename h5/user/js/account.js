@@ -312,6 +312,11 @@ $(function () {
             ShowLoading("hide");
             return
         }
+        if (!(/^[1-9]\d*$/.test(account))) {
+            layer.msg("请输入正确的金额数量", {icon: 0});
+            ShowLoading("hide");
+            return
+        }
         TransformCCVT(token, account, function (response) {
             $(".transform_ccvt_input").val("");
             layer.msg("提交成功", {icon: 1});
