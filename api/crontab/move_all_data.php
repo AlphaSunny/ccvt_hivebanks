@@ -87,10 +87,12 @@ $diancai = array_sum(array_map(function($val){return $val['send_money'];}, $glor
 echo "赞踩:".$diancai/$unit."<br />";
 
 //兑换码兑换
-$sql = "select us_id,amount*'{$unit}' as send_money,exchange_time as ctime from us_voucher WHERE us_id!=0 AND is_effective=2 AND us_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
+$sql = "select us_id,amount as send_money,exchange_time as ctime from us_voucher WHERE us_id!=0 AND is_effective=2 AND us_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
+
 $db->query($sql);
 $voucher = $db->fetchAll();
 foreach ($voucher as $k=>$v){
+    $voucher[$k]['send_money'] = $v['send_money']*$unit;
     $voucher[$k]['flag'] = 7;
     $voucher[$k]['detail'] = "兑换码兑换";
     $voucher[$k]['type'] = "voucher";
