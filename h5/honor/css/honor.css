@@ -381,6 +381,6 @@ p {
     font-size: 2rem;
 }
 
-.top .top_start, .top .top_end {
+.top .top_start, .top .top_mid, .top .top_end {
     font-size: 1.5rem;
 }
