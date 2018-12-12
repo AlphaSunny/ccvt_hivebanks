@@ -79,6 +79,6 @@ $(function () {
 
 
     // $("#chat_content").scrollTop(3000+"px");
-console.log($("#chat_item_ul").height());
+console.log($("#chat_item_ul").offsetHeight);
     $('html,body').animate({scrollTop:'999999999999999999999px'},500);
 });
