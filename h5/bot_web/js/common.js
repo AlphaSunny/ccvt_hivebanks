@@ -113,7 +113,7 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
         }
     });
 };
-
+//新机器人后台
 //手机登录
 function RobotPhoneLogin(cellphone, country_code, pass_word_hash,cfm_code, suc_func, error_func) {
     var api_url = "phone_login.php",
@@ -134,6 +134,16 @@ function RobotPhoneLogin(cellphone, country_code, pass_word_hash,cfm_code, suc_f
 //         };
 //     CallRobotApi(api_url, post_data, suc_func, error_func);
 // }
+
+//获取群列表
+function GetWeChatGroup(token, suc_func, error_func) {
+    var api_url = "group_temporary.php",
+        post_data = {
+            "token": token
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 
 //编辑群主信息
 function EditGroup(token, group_name, del, flirt, group_id, suc_func, error_func) {
