@@ -384,3 +384,7 @@ p {
 .top .top_start, .top .top_mid, .top .top_end {
     font-size: 1.5rem;
 }
+
+.top .top_start {
+    margin-left: 0.5%;
+}
