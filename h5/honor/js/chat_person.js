@@ -80,6 +80,6 @@ $(function () {
 
     // $("#chat_content").scrollTop(3000+"px");
 console.log($("#chat_item_ul")[0].offsetHeight);
-    $("#chat_item_ul").scrollTop("300px");
+    $("body").scrollTop("300px");
 //     window.scroll(0,document.body.scrollHeight)
 });
