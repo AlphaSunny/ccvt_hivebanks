@@ -114,7 +114,7 @@ foreach ($suocang as $k=>$v){
 }
 
 
-$list = array_merge($reg_user,$invite_rows,$bot_rows,$glory,$voucher,$glory,$tiaozhang,$scale_changes,$suocang);
+$list = array_merge($reg_user,$invite_rows,$bot_rows,$glory,$voucher,$tiaozhang,$scale_changes,$suocang);
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 print_r(count($list));die;
 $ba_id = get_ba_id();
