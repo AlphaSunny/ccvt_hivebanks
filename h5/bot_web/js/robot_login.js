@@ -8,7 +8,7 @@ function GetWeChatGroupFun() {
             var data = response.rows;
             $.each(data, function (i, val) {
                 li += "<li class='list-group-item row'>" +
-                    "<div class='col-md-6 col-sm-6'>" +
+                    "<div>" +
                     "<input type='radio' name ='weChatGroup' id=" + data[i].id + " value=" + data[i].id + ">" +
                     "<label class='margin-left-1' for=" + data[i].id + ">" + data[i].name + "</label>" +
                     "</div>" +
