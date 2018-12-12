@@ -113,6 +113,8 @@ foreach ($suocang as $k=>$v){
     $suocang[$k]['transfer_type'] = "ba-us";
 }
 
+print_r($suocang);die;
+
 
 $list = array_merge($reg_user,$invite_rows,$bot_rows,$voucher,$glory,$tiaozhang,$scale_changes,$suocang);
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
@@ -146,9 +148,9 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
     }else{
         if ($transfer_type=='us-la'){
-            $send_money = "-".$send_money;
+            $jian_send_money = "-".$send_money;
         }
-        $sql = "update us_base set base_amount=base_amount+'{$send_money}' WHERE us_id='{$us_id}'";
+        $sql = "update us_base set base_amount=base_amount+'{$jian_send_money}' WHERE us_id='{$us_id}'";
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
