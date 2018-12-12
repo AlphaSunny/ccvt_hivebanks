@@ -152,3 +152,8 @@ table td{
 .dropdown i{
     font-size: 2rem;
 }
+
+/*margin*/
+.margin-left-1{
+    margin-left: 1%;
+}
