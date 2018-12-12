@@ -68,4 +68,7 @@ $(function () {
         search_content = "";
         GetWeChatFun(search_content);
     });
+
+    //默认在最底部
+    $(".chat_content").scrollTop($(".chat_content")[0].scrollHeight);
 });
