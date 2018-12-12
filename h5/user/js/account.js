@@ -80,7 +80,7 @@ $(function () {
                 layer.msg("成功",{icon:1});
                 $('#modifyName').modal('hide');
                 ShowLoading("hide");
-                LayerFun('modifySuccess');
+                // LayerFun('modifySuccess');
                 $('.us_account').text(response.us_account);
                 SetCookie('us_account', response.us_account);
                 return;
