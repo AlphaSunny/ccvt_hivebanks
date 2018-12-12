@@ -71,5 +71,6 @@ $(function () {
 
     //默认在最底部
     $("#chat_content").scrollTop($("#chat_content").prop("scrollHeight"));
+    console.log($("#chat_content").prop("scrollHeight"));
     // window.scroll(0,document.body.scrollHeight)
 });
