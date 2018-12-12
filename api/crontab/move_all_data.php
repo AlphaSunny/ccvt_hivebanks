@@ -113,21 +113,16 @@ foreach ($suocang as $k=>$v){
     $suocang[$k]['transfer_type'] = "ba-us";
 }
 
-print_r(json_encode($suocang,true));die;
 
-
-$list = array_merge($reg_user,$invite_rows,$bot_rows,$voucher,$glory,$tiaozhang,$scale_changes,$suocang);
+$list = $suocang;
+//$list = array_merge($reg_user,$invite_rows,$bot_rows,$voucher,$glory,$tiaozhang,$scale_changes,$suocang);
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
-echo count($list);die;
 $ba_id = get_ba_id();
 $la_id = get_la_id();
 foreach ($list as $k=>$v){
     set_time_limit(0);
     into_transfer($v['us_id'],$v['send_money'],$v['ctime'],$v['flag'],$v['detail'],$v['type'],$v['transfer_type'],$ba_id,$la_id);
 }
-
-
-
 
 
 echo "ok";
