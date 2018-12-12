@@ -190,8 +190,8 @@ button:hover {
 
 .search_icon {
     position: absolute;
-    /*top: 16%;*/
-    /*right: 1%;*/
+    top: 16%;
+    right: 1%;
     font-size: 1.5rem;
     cursor: pointer;
 }
@@ -345,11 +345,6 @@ button:hover {
 
     .table_top {
         padding-left: 15px;
-    }
-
-    .search_icon {
-        top: 20%;
-        right: 5%;
     }
 
     .search_input {
