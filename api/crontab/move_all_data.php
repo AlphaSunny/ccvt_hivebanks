@@ -131,7 +131,6 @@ $shengji = array_sum(array_map(function($val){return $val['send_money'];}, $scal
 
 echo "升级返还:".$shengji/$unit."<br />";
 
-die;
 //锁仓(锁仓余额)
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=10 AND give_or_receive=2 AND credit_id='C8DC1099-D680-B12F-98AF-4054992F7B07'";
 $db->query($sql);
