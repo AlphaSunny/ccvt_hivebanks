@@ -66,10 +66,12 @@ p.chat_item_name:after {
     padding: 0 10px;
 
 }
-
-.chat_item:not(:last-child) {
+.chat_item{
     margin-bottom: 5%;
 }
+/*.chat_item:not(:last-child) {*/
+/*margin-bottom: 5%;*/
+/*}*/
 
 .chat_item_content_box {
     padding-left: 0.8%;
