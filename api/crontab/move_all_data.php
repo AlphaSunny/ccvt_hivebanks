@@ -116,11 +116,15 @@ foreach ($suocang as $k=>$v){
 
 $list = array_merge($reg_user,$invite_rows,$bot_rows,$voucher,$glory,$tiaozhang,$scale_changes,$suocang);
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
+
+echo count($list);die;
 $ba_id = get_ba_id();
 $la_id = get_la_id();
 foreach ($list as $k=>$v){
     into_transfer($v['us_id'],$v['send_money'],$v['ctime'],$v['flag'],$v['detail'],$v['type'],$v['transfer_type'],$ba_id,$la_id);
 }
+
+
 
 
 
