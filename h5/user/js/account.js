@@ -327,8 +327,8 @@ $(function () {
                 $("#weChatGroup").modal("show");
                 $.each(data, function (i, val) {
                     li += "<li class='font-weight-400 margin-bottom-2'>" +
-                        "<input type='radio' id='item_"+ data[i].id +"' name='weChatGroup' value='" + data[i].id + "'>" +
-                        "<label for='item_"+ data[i].id +"' class='margin-left-1'>" + data[i].group_name + "</label>" +
+                        "<input type='radio' id='item_" + data[i].id + "' name='weChatGroup' value='" + data[i].id + "'>" +
+                        "<label for='item_" + data[i].id + "' class='margin-left-1'>" + data[i].group_name + "</label>" +
                         "</li>";
                 });
                 $(".weChatGroutItem").html(li);
@@ -339,11 +339,15 @@ $(function () {
     });
 
     $(".weChatGroupBtn").click(function () {
-        ShowLoading("show");
         var group_id = $("input[type='radio']:checked").val();
+        if (!group_id) {
+            layer.msg("请选择群", {icon: 0});
+            return;
+        }
+        ShowLoading("show");
         BindWeChatGroup(token, group_id, function (response) {
             ShowLoading("hide");
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 $(".group_name").text(response.group_name);
                 $("#weChatGroup").modal("hide");
             }
