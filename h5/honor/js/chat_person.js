@@ -36,6 +36,7 @@ $(function () {
                         "</li>";
                 });
                 $(".chat_item_ul").html(li);
+                console.log($("#chat_item_ul").height());
                 $('html,body').animate({scrollTop: "9999999999"}, 500);
             }
         }, function (response) {
