@@ -6,4 +6,11 @@ function GetWeChatGroupFun(){
     }, function (response) {
         layer.msg(response);
     });
+
+    //获取群类型
+    GetWeChatGroupType(token, function (response) {
+        console.log(response);
+    }, function (response) {
+        layer.msg(response);
+    });
 }
