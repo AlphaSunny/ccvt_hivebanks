@@ -72,7 +72,7 @@ $(function () {
     //默认在最底部
     var height = $("#chat_content").prop("scrollHeight");
 
-    $("#chat_content").scrollTop(height);
+    $("#chat_content").scrollTop(9999999999);
     console.log(height);
     // window.scroll(0,document.body.scrollHeight)
 });
