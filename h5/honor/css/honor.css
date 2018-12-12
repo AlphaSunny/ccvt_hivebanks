@@ -90,6 +90,7 @@ iframe {
 
 .table th {
     border-bottom: 1px solid #ffffff;
+    width: 25%;
 }
 
 .table td {
@@ -333,6 +334,7 @@ button:hover {
     th {
         font-size: 1rem;
         font-weight: 400;
+        width: unset;
     }
 
     td {
@@ -357,6 +359,9 @@ button:hover {
         background: rgba(255, 255, 255, 0.6);
         border-radius: 100%;
         padding: 2%;
+    }
+    .message_icon{
+        font-size: 1.5rem;
     }
 }
 
