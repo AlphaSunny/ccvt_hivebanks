@@ -9,43 +9,47 @@ $db = new DB_COM();
 $unit = get_la_base_unit();
 
 //注册
-//$sql = "select us_id,ctime from us_base WHERE 1";
-//$db->query($sql);
-//$reg_user = $db->fetchAll();
-//foreach ($reg_user as $k=>$v){
-//    if ($v['ctime']<'2018-10-01 00:00:00'){
-//        $send_money = "1000"*$unit;
-//    }elseif($v['ctime']>='2018-10-01 00:00:00' and $v['ctime']<'2018-10-07 23:59:59'){
-//        $send_money = "500"*$unit;
-//    }else{
-//        $send_money = "50"*$unit;
-//    }
-//    $reg_user[$k]['send_money'] = $send_money;
-//    $reg_user[$k]['flag'] = 1;
-//    $reg_user[$k]['detail'] = "注册赠送";
-//    $reg_user[$k]['type'] = "reg_send";
-//}
+$sql = "select us_id,ctime from us_base WHERE 1";
+$db->query($sql);
+$reg_user = $db->fetchAll();
+foreach ($reg_user as $k=>$v){
+    if ($v['ctime']<'2018-10-01 00:00:00'){
+        $send_money = "1000"*$unit;
+    }elseif($v['ctime']>='2018-10-01 00:00:00' and $v['ctime']<'2018-10-07 23:59:59'){
+        $send_money = "500"*$unit;
+    }else{
+        $send_money = "50"*$unit;
+    }
+    $reg_user[$k]['send_money'] = $send_money;
+    $reg_user[$k]['flag'] = 1;
+    $reg_user[$k]['detail'] = "注册赠送";
+    $reg_user[$k]['type'] = "reg_send";
+    $reg_user[$k]['type'] = "reg_send";
+    $reg_user[$k]['transfer_type'] = "ba-us";
+}
 
 //邀请
-//$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
-//$db->query($sql);
-//$invite_rows = $db->fetchAll();
-//foreach ($invite_rows as $k=>$v){
-//    $invite_rows[$k]['send_money'] = "50"*$unit;
-//    $invite_rows[$k]['flag'] = 2;
-//    $invite_rows[$k]['detail'] = "邀请赠送";
-//    $invite_rows[$k]['type'] = "invite_send";
-//}
+$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
+$db->query($sql);
+$invite_rows = $db->fetchAll();
+foreach ($invite_rows as $k=>$v){
+    $invite_rows[$k]['send_money'] = "50"*$unit;
+    $invite_rows[$k]['flag'] = 2;
+    $invite_rows[$k]['detail'] = "邀请赠送";
+    $invite_rows[$k]['type'] = "invite_send";
+    $invite_rows[$k]['transfer_type'] = "ba-us";
+}
 
 //群聊奖励
-//$sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where 1";
-//$db->query($sql);
-//$bot_rows = $db->fetchAll();
-//foreach ($bot_rows as $k=>$v){
-//    $bot_rows[$k]['flag'] = 4;
-//    $bot_rows[$k]['detail'] = "聊天奖励";
-//    $bot_rows[$k]['type'] = "ba_send";
-//}
+$sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where 1";
+$db->query($sql);
+$bot_rows = $db->fetchAll();
+foreach ($bot_rows as $k=>$v){
+    $bot_rows[$k]['flag'] = 4;
+    $bot_rows[$k]['detail'] = "聊天奖励";
+    $bot_rows[$k]['type'] = "ba_send";
+    $bot_rows[$k]['transfer_type'] = "ba-us";
+}
 
 //点赞(点踩)(ccvt兑换积分)
 $sql = "select credit_id as us_id,utime as ctime,tx_amount as send_money,tx_detail as detail,state as flag from us_glory_integral_change_log WHERE 1";
@@ -64,10 +68,38 @@ foreach ($glory as $k=>$v){
     }
     $glory[$k]['flag'] = $flag;
     $glory[$k]['type'] = $type;
+    $glory[$k]['transfer_type'] = "us-la";
 }
-print_r($glory);
-echo count($glory);
-die;
+
+//兑换码兑换
+$sql = "select us_id,amount*'{$unit}' as send_money,exchange_time as ctime from us_voucher WHERE us_id!=0 AND is_effective=2";
+$db->query($sql);
+$voucher = $db->fetchAll();
+foreach ($voucher as $k=>$v){
+    $invite_rows[$k]['flag'] = 7;
+    $invite_rows[$k]['detail'] = "兑换码兑换";
+    $invite_rows[$k]['type'] = "voucher";
+    $invite_rows[$k]['transfer_type'] = "ba-us";
+}
+
+//ba调账(活动奖励啥的)
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request WHERE flag=3 AND give_or_receive=2";
+$db->query($sql);
+$tiaozhang = $db->fetchAll();
+foreach ($tiaozhang as $k=>$v){
+    $tiaozhang[$k]['type'] = "ba_tran";
+    $tiaozhang[$k]['transfer_type'] = "ba-us";
+}
+
+
+//锁仓(锁仓余额)
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request WHERE flag=10 AND give_or_receive=2";
+$db->query($sql);
+$suocang = $db->fetchAll();
+foreach ($suocang as $k=>$v){
+    $suocang[$k]['type'] = "big_us_lock";
+    $suocang[$k]['transfer_type'] = "ba-us";
+}
 
 
 
