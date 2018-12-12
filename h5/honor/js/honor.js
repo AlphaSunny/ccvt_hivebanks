@@ -139,11 +139,13 @@ $(function () {
         var wechat = $(this).parents("tr").find(".link_name").text();
         $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)));
         $(".close_page,.mask").fadeIn();
+        $("html, body").css("overflow","hidden")
     });
 
     //关闭聊天内容close_page
     $(".close_page").click(function () {
         $(".mask,.close_page").fadeOut();
+        $("html, body").css("overflow","unset");
     });
 
     //赞/踩
