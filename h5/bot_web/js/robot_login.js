@@ -21,8 +21,8 @@ function GetWeChatGroupFun() {
             $.each(data, function (i, val) {
                 li += "<li class='list-group-item row'>" +
                     "<div class='col-md-5 col-sm-12 padding-left-2'>" +
-                    "<input type='radio' name ='weChatGroup' id=" + data[i].id + " value=" + data[i].id + ">" +
-                    "<label class='margin-left-1' for=" + data[i].id + ">" + data[i].name + "</label>" +
+                    // "<input type='radio' name ='weChatGroup' id=" + data[i].id + " value=" + data[i].id + ">" +
+                    "<p class='margin-left-1'>" + data[i].name + "</p>" +
                     "</div>" +
                     "<div class='col-md-5 col-sm-12'>" +
                     "<select name='type_select' id='type_select' class='form-control'>"+ option +"</select>" +
