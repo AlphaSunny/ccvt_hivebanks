@@ -27,7 +27,7 @@ function GetWeChatGroupFun() {
                     "<div class='col-md-5 col-sm-12'>" +
                     "<select name='type_select' id='type_select' class='form-control'>"+ option +"</select>" +
                     "</div>" +
-                    "<div class='col-md-2 col-sm-12'><button class='btn btn-success btn-sm add_group_btn'> 添加</button></div>" +
+                    "<div class='col-md-2 col-sm-12 text-right'><button class='btn btn-success btn-sm add_group_btn'> 添加</button></div>" +
                     "</li>";
                 });
             $(".list_group").html(li);
