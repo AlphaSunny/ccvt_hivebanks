@@ -18,20 +18,20 @@ $(function () {
                 }
                 $.each(data, function (i, val) {
                     if (data[i].type == "Text" || data[i].type == "Sharing") {
-                        bot_content = "<span>"+ data[i].bot_content +"</span>";
+                        bot_content = "<span>" + data[i].bot_content + "</span>";
                     }
                     if (data[i].type == "Picture") {
                         bot_content = "<img src='" + data[i].bot_content + "' alt=''>";
                     }
                     if (data[i].type == "Video") {
-                        bot_content = "<video src='"+ data[i].bot_content +"' controls='controls'></video>";
+                        bot_content = "<video src='" + data[i].bot_content + "' controls='controls'></video>";
                     }
 
                     li += "<li class='chat_item'>" +
                         "<p class='chat_item_name'>" + data[i].bot_nickname.substr(0, 1) + "</p>" +
                         "<div class='chat_item_content_box'>" +
                         "<p class='name'><span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;<span>" + data[i].bot_send_time + "</span></p>" +
-                        "<div class='chat_item_content'>"+ bot_content +"</div>" +
+                        "<div class='chat_item_content'>" + bot_content + "</div>" +
                         "</div>" +
                         "</li>";
                 });
@@ -82,5 +82,5 @@ $(function () {
 // console.log(document.body.clientHeight);
 // console.log(document.body.offsetHeight);
 // console.log($("body").height());
-    $('html,body').animate({scrollTop:"999999999px"},100);
+    $('html,body').animate({scrollTop: "9999999999"}, 100);
 });
