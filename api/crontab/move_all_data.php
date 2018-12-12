@@ -6,17 +6,19 @@ error_reporting(E_ALL | E_STRICT);
 
 $db = new DB_COM();
 
+$unit = get_la_base_unit();
+
 //注册
 //$sql = "select us_id,ctime from us_base WHERE 1";
 //$db->query($sql);
 //$reg_user = $db->fetchAll();
 //foreach ($reg_user as $k=>$v){
 //    if ($v['ctime']<'2018-10-01 00:00:00'){
-//        $send_money = "1000";
+//        $send_money = "1000"*$unit;
 //    }elseif($v['ctime']>='2018-10-01 00:00:00' and $v['ctime']<'2018-10-07 23:59:59'){
-//        $send_money = "500";
+//        $send_money = "500"*$unit;
 //    }else{
-//        $send_money = "50";
+//        $send_money = "50"*$unit;
 //    }
 //    $reg_user[$k]['send_money'] = $send_money;
 //    $reg_user[$k]['flag'] = 1;
@@ -25,19 +27,28 @@ $db = new DB_COM();
 //}
 
 //邀请
-$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
-$db->query($sql);
-$invite_rows = $db->fetchAll();
-foreach ($invite_rows as $k=>$v){
-    $invite_rows[$k]['send_money'] = "50";
-    $invite_rows[$k]['flag'] = 2;
-    $invite_rows[$k]['detail'] = "邀请赠送";
-    $invite_rows[$k]['type'] = "invite_send";
-}
-print_r($invite_rows);
-echo count($invite_rows);
-die;
+//$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
+//$db->query($sql);
+//$invite_rows = $db->fetchAll();
+//foreach ($invite_rows as $k=>$v){
+//    $invite_rows[$k]['send_money'] = "50"*$unit;
+//    $invite_rows[$k]['flag'] = 2;
+//    $invite_rows[$k]['detail'] = "邀请赠送";
+//    $invite_rows[$k]['type'] = "invite_send";
+//}
 
+//群聊奖励
+$sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where 1";
+$db->query($sql);
+$bot_rows = $db->fetchAll();
+foreach ($bot_rows as $k=>$v){
+    $bot_rows[$k]['flag'] = 4;
+    $bot_rows[$k]['detail'] = "聊天奖励";
+    $bot_rows[$k]['type'] = "ba_send";
+}
+print_r($bot_rows);
+echo count($bot_rows);
+die;
 
 
 
