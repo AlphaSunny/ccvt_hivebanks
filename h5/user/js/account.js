@@ -353,7 +353,7 @@ $(function () {
                 $("#weChatGroup").modal("hide");
             }
         }, function (response) {
-            layer.msg(response.errmsg);
+            layer.msg(response.errmsg,{icon: 2});
         })
     })
 });
