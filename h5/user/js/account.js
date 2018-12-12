@@ -280,18 +280,20 @@ $(function () {
         ShowLoading("show");
         var voucher = $(".voucher_input").val();
         if (voucher.length <= 0) {
-            LayerFun("pleaseInputExchangeCode");
+            // LayerFun("pleaseInputExchangeCode");
+            layer.msg("请输入兑换码",{icon:0});
             ShowLoading("hide");
             return
         }
         Exchange(token, voucher, function (response) {
             $(".voucher_input").val("");
-            LayerFun("submitSuccess");
+            layer.msg("提交成功",{icon:1});
+            // LayerFun("submitSuccess");
             $(".availableBalance").text(response.us_amount);
             $("#exchange_modal").fadeOut();
             ShowLoading("hide");
         }, function (response) {
-            layer.msg(response.errmsg);
+            layer.msg(response.errmsg,{icon:2});
             ShowLoading("hide");
         })
     });
