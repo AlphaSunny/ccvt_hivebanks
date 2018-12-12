@@ -1,7 +1,7 @@
-*, input, label, p {
-    margin: 0;
-    padding: 0;
+input[type="radio"], label {
+    margin: 0 !important;
 }
-.list-group-item{
+
+.list-group-item {
     line-height: 3rem;
 }
