@@ -113,7 +113,7 @@
     GetCookie("robot_token");
     var us_id = GetCookie("robot_us_id");
     var url = getRootPath();
-    var search_pory = "", port = "", robot_alive = "";
+    var search_pory = "", robot_alive = "", timer = "";
 
     function GetQr() {
         $.get({
@@ -136,11 +136,13 @@
             }
         });
 
-        if (!robot_alive == "1") {
-            setTimeout(function () {
-                // window.location.reload();
+        if (robot_alive != "1") {
+            timer = setTimeout(function () {
                 GetQr();
             },10000);
+        }else {
+            clearTimeout(timer);
+            return;
         }
     }
 
