@@ -38,17 +38,37 @@ $unit = get_la_base_unit();
 //}
 
 //群聊奖励
-$sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where 1";
+//$sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where 1";
+//$db->query($sql);
+//$bot_rows = $db->fetchAll();
+//foreach ($bot_rows as $k=>$v){
+//    $bot_rows[$k]['flag'] = 4;
+//    $bot_rows[$k]['detail'] = "聊天奖励";
+//    $bot_rows[$k]['type'] = "ba_send";
+//}
+
+//点赞(点踩)(ccvt兑换积分)
+$sql = "select credit_id as us_id,utime as ctime,tx_amount as send_money,tx_detail as detail,state as flag from us_glory_integral_change_log WHERE 1";
 $db->query($sql);
-$bot_rows = $db->fetchAll();
-foreach ($bot_rows as $k=>$v){
-    $bot_rows[$k]['flag'] = 4;
-    $bot_rows[$k]['detail'] = "聊天奖励";
-    $bot_rows[$k]['type'] = "ba_send";
+$glory = $db->fetchAll();
+foreach ($glory as $k=>$v){
+    if ($v['flag']==1 && $v['detail']=="点赞"){
+        $flag = 5;
+        $type = "give_like";
+    }elseif ($v['flag']==1 && $v['detail']=="ccvt兑换积分"){
+        $flag = 8;
+        $type = "ccvt_inte";
+    }elseif ($v['flag']==2){
+        $flag = 6;
+        $type = "give_like";
+    }
+    $glory[$k]['flag'] = $flag;
+    $glory[$k]['type'] = $type;
 }
-print_r($bot_rows);
-echo count($bot_rows);
+print_r($glory);
+echo count($glory);
 die;
+
 
 
 
