@@ -237,16 +237,18 @@ $(function () {
         layer.msg("copy success")
     });
 
-    //bind weChat group
+    //bind weChat name
     $(".bindWeChatBtn").click(function () {
         var wechat = $("#weChatName").val();
         if (wechat.length <= 0) {
-            LayerFun("pleaseEnterNickname");
+            layer.msg("请输入微信昵称",{icon:0});
+            // LayerFun("pleaseEnterNickname");
             return;
         }
         ShowLoading("show");
         BindWeChatName(token, wechat, function (response) {
             if (response.errcode == "0") {
+                layer.msg("成功",{icon:1});
                 ShowLoading("hide");
                 $("#weChatGroupName").modal("hide");
                 LayerFun("bindSuccess");
@@ -256,7 +258,8 @@ $(function () {
             }
         }, function (response) {
             ShowLoading("hide");
-            LayerFun(response.errcode);
+            layer.msg(response.errmsg,{icon:2});
+            // LayerFun(response.errcode);
         })
     });
 
