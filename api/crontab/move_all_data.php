@@ -83,7 +83,7 @@ foreach ($voucher as $k=>$v){
 }
 
 //ba调账(活动奖励啥的)
-$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request WHERE flag=3 AND give_or_receive=2";
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=3 AND give_or_receive=2";
 $db->query($sql);
 $tiaozhang = $db->fetchAll();
 foreach ($tiaozhang as $k=>$v){
@@ -105,7 +105,7 @@ foreach ($scale_changes as $k=>$v){
 
 
 //锁仓(锁仓余额)
-$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request WHERE flag=10 AND give_or_receive=2";
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=10 AND give_or_receive=2";
 $db->query($sql);
 $suocang = $db->fetchAll();
 foreach ($suocang as $k=>$v){
