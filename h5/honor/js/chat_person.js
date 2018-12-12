@@ -70,5 +70,6 @@ $(function () {
     });
 
     //默认在最底部
-    $(".chat_content").scrollTop($(".chat_content")[0].scrollHeight);
+    // $(".chat_content").scrollTop($(".chat_content")[0].scrollHeight);
+    window.scroll(0,document.body.scrollHeight)
 });
