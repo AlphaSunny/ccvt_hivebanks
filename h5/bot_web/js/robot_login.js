@@ -55,7 +55,7 @@ $(function () {
         var group_type_id = $(this).parents(".list-group-item").find("select").val();
         var group_name = $(this).parents(".list-group-item").find(".group_name").text();
 
-        layer.confirm('是否添加' + group_name, {
+        layer.confirm('是否添加《' + group_name + '》', {
             btn: ['确定', '取消'] //按钮
         }, function () {
             SubmitAddGroupFun(group_id, group_type_id);
