@@ -98,8 +98,6 @@ foreach ($voucher as $k=>$v){
     $voucher[$k]['transfer_type'] = "ba-us";
 }
 
-print_r($voucher);
-
 $duihuan = array_sum(array_map(function($val){return $val['send_money'];}, $voucher));
 
 echo "兑换码兑换:".$duihuan/$unit."<br />";
