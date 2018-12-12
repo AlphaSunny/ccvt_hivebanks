@@ -91,6 +91,18 @@ foreach ($tiaozhang as $k=>$v){
     $tiaozhang[$k]['transfer_type'] = "ba-us";
 }
 
+//升级返还
+$sql = "select us_id,ctime from us_scale_changes WHERE 1";
+$db->query($sql);
+$scale_changes = $db->fetchAll();
+foreach ($scale_changes as $k=>$v){
+    $scale_changes[$k]['send_money'] = "50"*$unit;
+    $scale_changes[$k]['flag'] = 9;
+    $scale_changes[$k]['detail'] = "升级返还";
+    $scale_changes[$k]['type'] = "up_retuen";
+    $scale_changes[$k]['transfer_type'] = "ba-us";
+}
+
 
 //锁仓(锁仓余额)
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request WHERE flag=10 AND give_or_receive=2";
@@ -101,6 +113,10 @@ foreach ($suocang as $k=>$v){
     $suocang[$k]['transfer_type'] = "ba-us";
 }
 
+
+$list = array_merge($reg_user,$invite_rows,$bot_rows,$glory,$invite_rows,$tiaozhang,$scale_changes,$suocang);
+echo count($list);
+print_r($list);die();
 
 
 
