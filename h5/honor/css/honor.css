@@ -377,6 +377,10 @@ p {
     padding-right: 15px;
 }
 
-.top {
+.top .pm_icon {
+    font-size: 2rem;
+}
 
+.top .top_start, .top .top_end {
+    font-size: 1.5rem;
 }
