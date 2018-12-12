@@ -117,11 +117,11 @@ foreach ($suocang as $k=>$v){
 $list = array_merge($reg_user,$invite_rows,$bot_rows,$glory,$voucher,$tiaozhang,$scale_changes,$suocang);
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
-foreach ($list as $k=>$v){
-    $list[$k]['send_money'] = $v['send_money']/$unit;
-}
-print_r(json_encode($list,true));
-die;
+//foreach ($list as $k=>$v){
+//    $list[$k]['send_money'] = $v['send_money']/$unit;
+//}
+//print_r(json_encode($list,true));
+//die;
 
 $ba_id = get_ba_id();
 $la_id = get_la_id();
