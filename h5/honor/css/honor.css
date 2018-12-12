@@ -51,6 +51,7 @@ nav ul a {
     height: 100%;
     display: none;
     z-index: 100;
+    background: #000000;
 }
 iframe {
     /*position: fixed;*/
