@@ -116,9 +116,11 @@ foreach ($suocang as $k=>$v){
 
 $list = array_merge($reg_user,$invite_rows,$bot_rows,$voucher,$glory,$tiaozhang,$scale_changes,$suocang);
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
-//echo count($list)."<br />";
-print_r(json_encode($list,true));
-die();
+$ba_id = get_ba_id();
+$la_id = get_la_id();
+foreach ($list as $k=>$v){
+    into_transfer($v['us_id'],$v['send_money'],$v['ctime'],$v['flag'],$v['detail'],$v['type'],$v['transfer_type'],$ba_id,$la_id);
+}
 
 
 
@@ -126,115 +128,210 @@ echo "ok";
 
 
 
-function into_transfer($us_id,$send_money,$time,$flag,$detail,$type){
+function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_type,$ba_id,$la_id){
     $db = new DB_COM();
-    $unit = get_la_base_unit();
-    //us加钱
-    $sql = "update us_base set base_amount=base_amount+'{$send_money}'*'{$unit}' WHERE us_id='{$us_id}'";
+    $pInTrans = $db->StartTrans();  //开启事务
+    //us加钱(减钱)
+    if ($transfer_type=='us-la'){
+        $send_money = "-".$send_money;
+    }
+    $sql = "update us_base set base_amount=base_amount+'{$send_money}' WHERE us_id='{$us_id}'";
     $db -> query($sql);
     if (!$db->affectedRows()){
-        echo "us加钱错误";
-        die;
+        $db->Rollback($pInTrans);
+        echo "us加钱(减钱)错误";
     }
 
-    //ba减钱
-    $ba_id = get_ba_id();
-
-
-    $sql = "update ba_base set base_amount=base_amount-'{$send_money}'*'{$unit}' WHERE ba_id='{$ba_id}'";
-    $db -> query($sql);
-    if (!$db->affectedRows()){
-        echo "ba减钱错误";
-        die;
+    if ($transfer_type!='us-la'){
+        //ba减钱
+        $sql = "update ba_base set base_amount=base_amount-'{$send_money}' WHERE ba_id='{$ba_id}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            $db->Rollback($pInTrans);
+            echo "ba减钱错误";
+        }
+    }else{
+        //la加钱
+        $sql = "update la_base set base_amount=base_amount+'{$send_money}' limit 1";
+        $db->query($sql);
+        if (!$db->affectedRows()){
+            $db->Rollback($pInTrans);
+            echo "la加钱错误";
+        }
     }
 
 /******************************转账记录表***************************************************/
-    //赠送者
-    $data['hash_id'] = hash('md5', $ba_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
-    $prvs_hash = get_pre_hash($ba_id);
-    $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
-    $data['credit_id'] = $ba_id;
-    $data['debit_id'] = $us_id;
-    $data['tx_amount'] = $send_money*$unit;
-    $data['credit_balance'] = get_ba_base_amount($data['credit_id']);
-    $data['tx_hash'] = hash('md5', $ba_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
-    $data['flag'] = $flag;
-    $data['transfer_type'] = 'ba-us';
-    $data['transfer_state'] = 1;
-    $data['tx_detail'] = $detail;
-    $data['give_or_receive'] = 1;
-    $data['ctime'] = strtotime($time);
-    $data['utime'] = $time;
-    $sql = $db->sqlInsert("com_transfer_request", $data);
-    $id = $db->query($sql);
-    if (!$id){
-        echo $us_id."错误";
-        die();
-    }
+    if ($transfer_type=='ba-us'){
+        //赠送者
+        $data['hash_id'] = hash('md5', $ba_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+        $prvs_hash = get_pre_hash($ba_id);
+        $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+        $data['credit_id'] = $ba_id;
+        $data['debit_id'] = $us_id;
+        $data['tx_amount'] = $send_money;
+        $data['credit_balance'] = get_ba_base_amount($data['credit_id']);
+        $data['tx_hash'] = hash('md5', $ba_id . $flag . get_ip() . time() . microtime());
+        $data['flag'] = $flag;
+        $data['transfer_type'] = $transfer_type;
+        $data['transfer_state'] = 1;
+        $data['tx_detail'] = $detail;
+        $data['give_or_receive'] = 1;
+        $data['ctime'] = strtotime($time);
+        $data['utime'] = $time;
+        $sql = $db->sqlInsert("com_transfer_request", $data);
+        $id = $db->query($sql);
+        if (!$id){
+            $db->Rollback($pInTrans);
+            echo $us_id."转账记录表错误";
+        }
 
-    //接收者
-    $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
-    $prvs_hash = get_pre_hash($us_id);
-    $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
-    $dat['credit_id'] = $us_id;
-    $dat['debit_id'] = $ba_id;
-    $dat['tx_amount'] = $send_money*$unit;
-    $dat['credit_balance'] = get_us_base_amount($us_id);
-    $dat['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
-    $dat['flag'] = $flag;
-    $dat['transfer_type'] = 'ba-us';
-    $dat['transfer_state'] = 1;
-    $dat['tx_detail'] = $detail;
-    $dat['give_or_receive'] = 2;
-    $dat['ctime'] = strtotime($time);
-    $dat['utime'] = $time;
-    $sql = $db->sqlInsert("com_transfer_request", $dat);
-    $id = $db->query($sql);
-    if (!$id){
-        echo $us_id."错误";
-        die();
-    }
+        //接收者
+        $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+        $prvs_hash = get_pre_hash($us_id);
+        $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+        $dat['credit_id'] = $us_id;
+        $dat['debit_id'] = $ba_id;
+        $dat['tx_amount'] = $send_money;
+        $dat['credit_balance'] = get_us_base_amount($us_id);
+        $dat['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . microtime());
+        $dat['flag'] = $flag;
+        $dat['transfer_type'] = $transfer_type;
+        $dat['transfer_state'] = 1;
+        $dat['tx_detail'] = $detail;
+        $dat['give_or_receive'] = 2;
+        $dat['ctime'] = strtotime($time);
+        $dat['utime'] = $time;
+        $sql = $db->sqlInsert("com_transfer_request", $dat);
+        $id = $db->query($sql);
+        if (!$id){
+            $db->Rollback($pInTrans);
+            echo $us_id."转账记录表错误";
+        }
+    }elseif ($transfer_type=='us-la'){
+        //赠送者
+        $transfer['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+        $prvs_hash = get_pre_hash($us_id);
+        $transfer['prvs_hash'] = $prvs_hash == 0 ? $transfer['hash_id'] : $prvs_hash;
+        $transfer['credit_id'] = $us_id;
+        $transfer['debit_id'] = $la_id;
+        $transfer['tx_amount'] = $send_money;
+        $transfer['credit_balance'] = get_us_base_amount($us_id)-$send_money;
+        $transfer['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . microtime());
+        $transfer['flag'] = $flag;
+        $transfer['transfer_type'] = $transfer_type;
+        $transfer['transfer_state'] = 1;
+        $transfer['tx_detail'] = $detail;
+        $transfer['give_or_receive'] = 1;
+        $transfer['ctime'] = time();
+        $transfer['utime'] = date('Y-m-d H:i:s');
+        $sql = $db->sqlInsert("com_transfer_request", $transfer);
+        $id = $db->query($sql);
+        if (!$id){
+            $db->Rollback($pInTrans);
+            echo $us_id."转账记录表错误";
+        }
 
+        //接收者(la)
+        $dat['hash_id'] = hash('md5', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+        $prvs_hash = get_pre_hash($la_id);
+        $dat['prvs_hash'] = $prvs_hash == 0 ? $dat['hash_id'] : $prvs_hash;
+        $dat['credit_id'] = $la_id;
+        $dat['debit_id'] = $us_id;
+        $dat['tx_amount'] = $send_money;
+        $dat['credit_balance'] = get_la_base_amount($la_id)+$send_money;
+        $dat['tx_hash'] = hash('md5', $la_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+        $dat['flag'] = $flag;
+        $dat['transfer_type'] = 'us-la';
+        $dat['transfer_state'] = 1;
+        $dat['tx_detail'] = $detail;
+        $dat['give_or_receive'] = 2;
+        $dat['ctime'] = time();
+        $dat['utime'] = date('Y-m-d H:i:s');
+        $sql = $db->sqlInsert("com_transfer_request", $dat);
+        $id = $db->query($sql);
+        if (!$id){
+            $db->Rollback($pInTrans);
+            echo $la_id."转账记录表错误";
+        }
+    }
 
     /***********************资金变动记录表***********************************/
+    if ($transfer_type=='ba-us'){
+        //us添加基准资产变动记录
+        $com_balance_us['hash_id'] = hash('md5', $us_id . $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_us['tx_id'] = $dat['tx_hash'];
+        $prvs_hash = get_recharge_pre_hash($us_id);
+        $com_balance_us['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;
+        $com_balance_us["credit_id"] = $us_id;
+        $com_balance_us["debit_id"] = $ba_id;
+        $com_balance_us["tx_type"] = $type;
+        $com_balance_us["tx_amount"] = $send_money;
+        $com_balance_us["credit_balance"] = get_us_base_amount($us_id);
+        $com_balance_us["utime"] = strtotime($time);
+        $com_balance_us["ctime"] = $time;
 
-    //us添加基准资产变动记录
-    $us_type = 'us_get_balance';
-    $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
-    $com_balance_us['tx_id'] = $dat['tx_hash'];
-    $prvs_hash = get_recharge_pre_hash($us_id);
-    $com_balance_us['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;
-    $com_balance_us["credit_id"] = $us_id;
-    $com_balance_us["debit_id"] = $ba_id;
-    $com_balance_us["tx_type"] = $type;
-    $com_balance_us["tx_amount"] = $send_money*$unit;
-    $com_balance_us["credit_balance"] = get_us_base_amount($us_id);
-    $com_balance_us["utime"] = strtotime($time);
-    $com_balance_us["ctime"] = $time;
+        $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
+        if (!$db->query($sql)) {
+            $db->Rollback($pInTrans);
+            echo $us_id."资金变动记录表";
+        }
 
-    $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
-    if (!$db->query($sql)) {
-        return false;
+       //ba添加基准资产变动记录
+        $com_balance_ba['hash_id'] = hash('md5', $ba_id. $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_ba['tx_id'] = $data['tx_hash'];
+        $prvs_hash = get_recharge_pre_hash($ba_id);
+        $com_balance_ba['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;
+        $com_balance_ba["credit_id"] = $ba_id;
+        $com_balance_ba["debit_id"] = $us_id;
+        $com_balance_ba["tx_type"] = $type;
+        $com_balance_ba["tx_amount"] = $send_money;
+        $com_balance_ba["credit_balance"] = get_ba_base_amount($ba_id);
+        $com_balance_ba["utime"] = strtotime($time);
+        $com_balance_ba["ctime"] = $time;
+        $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
+        if (!$db->query($sql)) {
+            $db->Rollback($pInTrans);
+            echo $ba_id."资金变动记录表";
+        }
+    }elseif ($transfer_type=='us-la'){
+        //us添加基准资产变动记录
+        $com_balance_us['hash_id'] = hash('md5', $us_id . $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_us['tx_id'] = $transfer['tx_hash'];
+        $prvs_hash = get_recharge_pre_hash($us_id);
+        $com_balance_us['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;
+        $com_balance_us["credit_id"] = $us_id;
+        $com_balance_us["debit_id"] = $la_id;
+        $com_balance_us["tx_type"] = $type;
+        $com_balance_us["tx_amount"] = $send_money;
+        $com_balance_us["credit_balance"] = get_us_base_amount($us_id)-$send_money;
+        $com_balance_us["utime"] = time();
+        $com_balance_us["ctime"] = date('Y-m-d H:i:s');
+        $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
+        if (!$db->query($sql)) {
+            $db->Rollback($pInTrans);
+            echo $us_id."资金变动记录表";
+        }
+
+        //la添加基准资产变动记录
+        $com_balance_ba['hash_id'] = hash('md5', $la_id. $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_ba['tx_id'] = $dat['tx_hash'];
+        $prvs_hash = get_recharge_pre_hash($la_id);
+        $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
+        $com_balance_ba["credit_id"] = $la_id;
+        $com_balance_ba["debit_id"] = $us_id;
+        $com_balance_ba["tx_type"] = $type;
+        $com_balance_ba["tx_amount"] = $send_money;
+        $com_balance_ba["credit_balance"] = get_la_base_amount($la_id)+$send_money;
+        $com_balance_ba["utime"] = time();
+        $com_balance_ba["ctime"] = date('Y-m-d H:i:s');
+
+        $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
+        if (!$db->query($sql)) {
+            $db->Rollback($pInTrans);
+            echo $la_id."资金变动记录表";
+        }
     }
-
-   //ba添加基准资产变动记录
-    $us_type = 'ba_give_balance';
-    $com_balance_ba['hash_id'] = hash('md5', $ba_id. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
-    $com_balance_ba['tx_id'] = $data['tx_hash'];
-    $prvs_hash = get_recharge_pre_hash($ba_id);
-    $com_balance_ba['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;
-    $com_balance_ba["credit_id"] = $ba_id;
-    $com_balance_ba["debit_id"] = $us_id;
-    $com_balance_ba["tx_type"] = $type;
-    $com_balance_ba["tx_amount"] = $send_money*$unit;
-    $com_balance_ba["credit_balance"] = get_ba_base_amount($ba_id);
-    $com_balance_ba["utime"] = strtotime($time);
-    $com_balance_ba["ctime"] = $time;
-
-    $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
-    if (!$db->query($sql)) {
-        return false;
-    }
+    $db->Commit($pInTrans);
 }
 
 
@@ -289,12 +386,30 @@ function  get_recharge_pre_hash($ba_id)
 
 function get_ba_id(){
     $db = new DB_COM();
-    $sql = "select ba_id from ba_base limit 1";
+    $sql = "select ba_id from ba_base ORDER BY ctime ASC limit 1";
     $ba_id = $db->getField($sql,'ba_id');
     if ($ba_id==null){
         return 0;
     }
     return $ba_id;
+}
+
+//获取la id
+function get_la_id(){
+    $db = new DB_COM();
+    $sql = "select id from la_base limit 1";
+    $db->query($sql);
+    $id = $db->getField($sql,'id');
+    return $id;
+}
+
+//获取la余额
+function get_la_base_amount($la_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from la_base WHERE id='{$la_id}'";
+    $db->query($sql);
+    $amount = $db->getField($sql,'base_amount');
+    return $amount;
 }
 
 function get_us_id($invite_code){
