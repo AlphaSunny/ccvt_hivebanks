@@ -70,12 +70,14 @@ $(function () {
     $('.modifyNameBtn').click(function () {
         var us_account = $('#nickName').val();
         if (us_account.length <= 0) {
-            LayerFun('pleaseEnterNickname');
+            layer.msg("请输入昵称",{icon:0});
+            // LayerFun('pleaseEnterNickname');
             return;
         }
         ShowLoading("show");
         ModifyNickName(token, us_account, function (response) {
             if (response.errcode == '0') {
+                layer.msg("成功",{icon:1});
                 $('#modifyName').modal('hide');
                 ShowLoading("hide");
                 LayerFun('modifySuccess');
@@ -85,8 +87,9 @@ $(function () {
             }
         }, function (response) {
             ShowLoading("hide");
-            LayerFun('modifyFail');
-            LayerFun(response.errcode);
+            layer.msg(response.errmsg,{icon:2});
+            // LayerFun('modifyFail');
+            // LayerFun(response.errcode);
             return;
         });
     });
