@@ -142,9 +142,10 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
     }else{
         if ($transfer_type=='us-la'){
-            $jian_send_money = "-".$send_money;
+            $sql = "update us_base set base_amount=base_amount-'{$send_money}' WHERE us_id='{$us_id}'";
+        }else{
+            $sql = "update us_base set base_amount=base_amount+'{$send_money}' WHERE us_id='{$us_id}'";
         }
-        $sql = "update us_base set base_amount=base_amount+'{$jian_send_money}' WHERE us_id='{$us_id}'";
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
