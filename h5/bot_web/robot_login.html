@@ -138,7 +138,9 @@
 
         if (robot_alive != "1") {
             timer = setTimeout(function () {
+                console.log("1");
                 GetQr();
+                console.log("2");
             },10000);
         }else {
             clearTimeout(timer);
