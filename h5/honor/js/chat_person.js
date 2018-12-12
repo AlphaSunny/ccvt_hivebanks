@@ -36,6 +36,7 @@ $(function () {
                         "</li>";
                 });
                 $(".chat_item_ul").html(li);
+                $('html,body').animate({scrollTop: "9999999999"}, 500);
             }
         }, function (response) {
             layer.msg(response.errmsg);
@@ -82,5 +83,4 @@ $(function () {
 // console.log(document.body.clientHeight);
 // console.log(document.body.offsetHeight);
 // console.log($("body").height());
-    $('html,body').animate({scrollTop: "9999999999"}, 500);
 });
