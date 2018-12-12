@@ -116,7 +116,7 @@ foreach ($suocang as $k=>$v){
 
 $list = array_merge($reg_user,$invite_rows,$bot_rows,$voucher,$glory,$tiaozhang,$scale_changes,$suocang);
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
-echo count($list)."<br />";
+//echo count($list)."<br />";
 print_r(json_encode($list,true));
 die();
 
