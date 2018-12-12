@@ -70,9 +70,13 @@ $(function () {
     });
 
     //默认在最底部
-    var height = $("#chat_content")[0].scrollHeight;
+    $(window).scroll(function () {
+        var height = $("#chat_content")[0].scrollHeight;
+        console.log(height);
+    });
+
 
     $("#chat_content").scrollTop(9999999999);
-    console.log(height);
+
     // window.scroll(0,document.body.scrollHeight)
 });
