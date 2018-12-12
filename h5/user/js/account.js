@@ -70,14 +70,14 @@ $(function () {
     $('.modifyNameBtn').click(function () {
         var us_account = $('#nickName').val();
         if (us_account.length <= 0) {
-            layer.msg("请输入昵称",{icon:0});
+            layer.msg("请输入昵称", {icon: 0});
             // LayerFun('pleaseEnterNickname');
             return;
         }
         ShowLoading("show");
         ModifyNickName(token, us_account, function (response) {
             if (response.errcode == '0') {
-                layer.msg("修改成功",{icon:1});
+                layer.msg("修改成功", {icon: 1});
                 $('#modifyName').modal('hide');
                 ShowLoading("hide");
                 // LayerFun('modifySuccess');
@@ -87,7 +87,7 @@ $(function () {
             }
         }, function (response) {
             ShowLoading("hide");
-            layer.msg(response.errmsg,{icon:2});
+            layer.msg(response.errmsg, {icon: 2});
             // LayerFun('modifyFail');
             // LayerFun(response.errcode);
             return;
@@ -244,14 +244,14 @@ $(function () {
     $(".bindWeChatBtn").click(function () {
         var wechat = $("#weChatName").val();
         if (wechat.length <= 0) {
-            layer.msg("请输入微信昵称",{icon:0});
+            layer.msg("请输入微信昵称", {icon: 0});
             // LayerFun("pleaseEnterNickname");
             return;
         }
         ShowLoading("show");
         BindWeChatName(token, wechat, function (response) {
             if (response.errcode == "0") {
-                layer.msg("成功",{icon:1});
+                layer.msg("成功", {icon: 1});
                 ShowLoading("hide");
                 $("#weChatGroupName").modal("hide");
                 LayerFun("bindSuccess");
@@ -261,7 +261,7 @@ $(function () {
             }
         }, function (response) {
             ShowLoading("hide");
-            layer.msg(response.errmsg,{icon:2});
+            layer.msg(response.errmsg, {icon: 2});
             // LayerFun(response.errcode);
         })
     });
@@ -281,19 +281,19 @@ $(function () {
         var voucher = $(".voucher_input").val();
         if (voucher.length <= 0) {
             // LayerFun("pleaseInputExchangeCode");
-            layer.msg("请输入兑换码",{icon:0});
+            layer.msg("请输入兑换码", {icon: 0});
             ShowLoading("hide");
             return
         }
         Exchange(token, voucher, function (response) {
             $(".voucher_input").val("");
-            layer.msg("提交成功",{icon:1});
+            layer.msg("提交成功", {icon: 1});
             // LayerFun("submitSuccess");
             $(".availableBalance").text(response.us_amount);
             $("#exchange_modal").fadeOut();
             ShowLoading("hide");
         }, function (response) {
-            layer.msg(response.errmsg,{icon:2});
+            layer.msg(response.errmsg, {icon: 2});
             ShowLoading("hide");
         })
     });
@@ -307,19 +307,21 @@ $(function () {
         ShowLoading("show");
         var account = $(".transform_ccvt_input").val();
         if (account.length <= 0) {
-            LayerFun("pleaseInputChangeAmount");
+            // LayerFun("pleaseInputChangeAmount");
+            layer.msg("请输入金额数量", {icon: 0});
             ShowLoading("hide");
             return
         }
         TransformCCVT(token, account, function (response) {
             $(".transform_ccvt_input").val("");
-            LayerFun("submitSuccess");
+            layer.msg("提交成功", {icon: 1});
+            // LayerFun("submitSuccess");
             $(".availableBalance").text(response.us_amount);
             $(".glory_of_integral").text(response.glory_of_integral);
             $("#transform_ccvt").fadeOut();
             ShowLoading("hide");
         }, function (response) {
-            layer.msg(response.errmsg);
+            layer.msg(response.errmsg, {icon: 2});
             ShowLoading("hide");
         })
     });
@@ -361,7 +363,7 @@ $(function () {
                 $("#weChatGroup").modal("hide");
             }
         }, function (response) {
-            layer.msg(response.errmsg,{icon: 2});
+            layer.msg(response.errmsg, {icon: 2});
         })
     })
 });
