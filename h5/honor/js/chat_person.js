@@ -70,15 +70,15 @@ $(function () {
     });
 
     //默认在最底部
-    var x = 0;
-    $("#chat_content").scroll(function () {
-        console.log(x+=1);
-        var height = $(".chat_item_ul")[0].scrollHeight;
-        console.log(height);
-    });
+    // var x = 0;
+    // $("#chat_content").scroll(function () {
+    //     console.log(x+=1);
+    //     var height = $(".chat_item_ul")[0].scrollHeight;
+    //     console.log(height);
+    // });
 
 
-    $("#chat_content").scrollTop(9999999999);
+    $("#chat_content").scrollTop(3000+"px");
 
     // window.scroll(0,document.body.scrollHeight)
 });
