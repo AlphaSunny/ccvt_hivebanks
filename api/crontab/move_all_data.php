@@ -114,7 +114,7 @@ foreach ($suocang as $k=>$v){
 }
 
 
-$list = array_merge($reg_user,$invite_rows,$bot_rows,$voucher,$glory,$tiaozhang,$scale_changes,$suocang);
+$list = array_merge($voucher,$glory,$tiaozhang,$scale_changes,$suocang);
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 $ba_id = get_ba_id();
 $la_id = get_la_id();
@@ -135,6 +135,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     if ($flag==10){
         //锁仓
         $sql = "update us_base set lock_amount=lock_amount+'{$send_money}' WHERE us_id='{$us_id}'";
+        echo $sql;
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
