@@ -190,8 +190,8 @@ button:hover {
 
 .search_icon {
     position: absolute;
-    top: 16%;
-    right: 1%;
+    /*top: 16%;*/
+    /*right: 1%;*/
     font-size: 1.5rem;
     cursor: pointer;
 }
