@@ -7,68 +7,40 @@ error_reporting(E_ALL | E_STRICT);
 $db = new DB_COM();
 
 //注册
-$sql = "select us_id,ctime from us_base WHERE 1";
-$db->query($sql);
-$reg_user = $db->fetchAll();
-foreach ($reg_user as $k=>$v){
-    if ($v['ctime']<'2018-10-01 00:00:00'){
-        $send_money = "1000";
-    }elseif($v['ctime']>='2018-10-01 00:00:00' and $v['ctime']<'2018-10-07 23:59:59'){
-        $send_money = "500";
-    }else{
-        $send_money = "50";
-    }
-    $reg_user[$k]['send_money'] = $send_money;
-    $reg_user[$k]['flag'] = 1;
-    $reg_user[$k]['detail'] = "注册赠送";
-    $reg_user[$k]['type'] = "reg_send";
-}
-print_r($reg_user);die();
-
-
-//用户
-$sql = "select * from us_base where 1 ORDER BY ctime ASC ";
-$db->query($sql);
-$rows = $db->fetchAll();
-if ($rows){
-    foreach ($rows as $k=>$v){
-        set_time_limit(0);
-        $sql = "select * from com_transfer_request WHERE debit_id='{$v['us_id']}' AND transfer_type='ba-us' AND flag=1";
-        $db->query($sql);
-        $row = $db->fetchRow();
-        if (!$row){
-            if ($v['ctime']<'2018-10-01 00:00:00'){
-                $send_money = "1000";
-            }elseif($v['ctime']>='2018-10-01 00:00:00' and $v['ctime']<'2018-10-07 23:59:59'){
-                $send_money = "500";
-            }else{
-                $send_money = "50";
-            }
-            into_transfer($v['us_id'],$send_money,$v['ctime'],1,'注册赠送','reg_send');
-        }
-    }
-}else{
-    echo "注册赠送没有数据可以操作";
-    die();
-}
-
+//$sql = "select us_id,ctime from us_base WHERE 1";
+//$db->query($sql);
+//$reg_user = $db->fetchAll();
+//foreach ($reg_user as $k=>$v){
+//    if ($v['ctime']<'2018-10-01 00:00:00'){
+//        $send_money = "1000";
+//    }elseif($v['ctime']>='2018-10-01 00:00:00' and $v['ctime']<'2018-10-07 23:59:59'){
+//        $send_money = "500";
+//    }else{
+//        $send_money = "50";
+//    }
+//    $reg_user[$k]['send_money'] = $send_money;
+//    $reg_user[$k]['flag'] = 1;
+//    $reg_user[$k]['detail'] = "注册赠送";
+//    $reg_user[$k]['type'] = "reg_send";
+//}
 
 //邀请
-
-$sql = "select * from us_base WHERE invite_code!=0";
+$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
 $db->query($sql);
 $invite_rows = $db->fetchAll();
-if ($invite_rows){
-    foreach ($invite_rows as $a=>$b){
-        set_time_limit(0);
-        $invite_us_id = get_us_id($b['invite_code']);
-        $send_money = "50";
-        into_transfer($invite_us_id,$send_money,$b['ctime'],2,'邀请赠送','invite_send');
-    }
-}else{
-    echo "邀请赠送没有数据可以操作";
-    die();
+foreach ($invite_rows as $k=>$v){
+    $invite_rows[$k]['send_money'] = "50";
+    $invite_rows[$k]['flag'] = 2;
+    $invite_rows[$k]['detail'] = "邀请赠送";
+    $invite_rows[$k]['type'] = "invite_send";
 }
+print_r($invite_rows);
+echo count($invite_rows);
+die;
+
+
+
+
 
 //聊天奖励
 
