@@ -348,6 +348,7 @@ $(function () {
         BindWeChatGroup(token, group_id, function (response) {
             ShowLoading("hide");
             if (response.errcode == "0") {
+                layer.msg("成功", {icon: 1});
                 $(".group_name").text(response.group_name);
                 $("#weChatGroup").modal("hide");
             }
