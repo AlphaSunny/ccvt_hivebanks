@@ -81,6 +81,6 @@ $(function () {
     // $("#chat_content").scrollTop(3000+"px");
 console.log($("#chat_item_ul").clientHeight);
 console.log($("#chat_item_ul").offsetHeight);
-console.log($("#chat_item_ul").height);
+console.log($("#chat_item_ul").height());
     $('html,body').animate({scrollTop:'100%'},500);
 });
