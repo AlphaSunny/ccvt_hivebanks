@@ -82,5 +82,5 @@ $(function () {
 // console.log(document.body.clientHeight);
 // console.log(document.body.offsetHeight);
 // console.log($("body").height());
-    $('html,body').animate({scrollTop: "9999999999"}, 100);
+    $('html,body').animate({scrollTop: "9999999999"}, 500);
 });
