@@ -143,7 +143,7 @@ $(function () {
 
     //关闭聊天内容close_page
     $(".close_page").click(function () {
-        $("#iframe,.close_page").fadeOut();
+        $(".mask,.close_page").fadeOut();
     });
 
     //赞/踩
