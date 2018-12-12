@@ -115,7 +115,7 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
 };
 //新机器人后台
 //手机登录
-function RobotPhoneLogin(cellphone, country_code, pass_word_hash,cfm_code, suc_func, error_func) {
+function RobotPhoneLogin(cellphone, country_code, pass_word_hash, cfm_code, suc_func, error_func) {
     var api_url = "phone_login.php",
         post_data = {
             "cellphone": cellphone,
@@ -153,6 +153,19 @@ function GetWeChatGroupType(token, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//添加群
+function SubmitAddGroup(token, group_id, group_type_id, suc_func, error_func) {
+    var api_url = "group_submit_audit.php",
+        post_data = {
+            "token": token,
+            "group_id": group_id,
+            "group_type_id": group_type_id
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+
+//==========
 
 //编辑群主信息
 function EditGroup(token, group_name, del, flirt, group_id, suc_func, error_func) {

@@ -42,7 +42,18 @@ $(function () {
    $(document).on("click",".add_group_btn", function () {
        var group_id = $(this).parents(".list-group-item").find(".group_name").attr("name");
        var group_type_id = $(this).parents(".list-group-item").find("select").val();
-       console.log(group_id);
-       console.log(group_type_id);
+       SubmitAddGroup(token, group_id, group_type_id, function (response) {
+           if(response.errcode == "0"){
+               layer.confirm('是否添加', {
+                   btn: ['确定','取消'] //按钮
+               }, function(){
+                   layer.msg('提交成功', {icon: 1});
+               }, function(){
+
+               });
+           }
+       }, function (response) {
+            layer.msg(response.errmsg);
+       })
    })
 });
