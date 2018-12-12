@@ -20,13 +20,14 @@ function GetWeChatGroupFun() {
             var data = response.rows;
             $.each(data, function (i, val) {
                 li += "<li class='list-group-item row'>" +
-                    "<div class='col-md-6 col-sm-6 padding-left-2'>" +
+                    "<div class='col-md-5 col-sm-12 padding-left-2'>" +
                     "<input type='radio' name ='weChatGroup' id=" + data[i].id + " value=" + data[i].id + ">" +
                     "<label class='margin-left-1' for=" + data[i].id + ">" + data[i].name + "</label>" +
                     "</div>" +
-                    "<div class='col-md-6 col-sm-6'>" +
+                    "<div class='col-md-5 col-sm-12'>" +
                     "<select name='type_select' id='type_select' class='form-control'>"+ option +"</select>" +
                     "</div>" +
+                    "<div class='col-md-2 col-sm-12'><button class='btn btn-success btn-sm add_group_btn'> 添加</button></div>" +
                     "</li>";
                 });
             $(".list_group").html(li);
