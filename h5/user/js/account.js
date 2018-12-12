@@ -77,7 +77,7 @@ $(function () {
         ShowLoading("show");
         ModifyNickName(token, us_account, function (response) {
             if (response.errcode == '0') {
-                layer.msg("成功",{icon:1});
+                layer.msg("修改成功",{icon:1});
                 $('#modifyName').modal('hide');
                 ShowLoading("hide");
                 // LayerFun('modifySuccess');
