@@ -71,7 +71,7 @@ $(function () {
 
     //默认在最底部
     var x = 0;
-    $(".chat_item_ul").scroll(function () {
+    $("#chat_item_ul").scroll(function () {
         console.log(x+=1);
         var height = $(".chat_item_ul")[0].scrollHeight;
         console.log(height);
