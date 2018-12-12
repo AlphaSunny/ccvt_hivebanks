@@ -135,14 +135,24 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     $db = new DB_COM();
     $pInTrans = $db->StartTrans();  //开启事务
     //us加钱(减钱)
-    if ($transfer_type=='us-la'){
-        $send_money = "-".$send_money;
-    }
-    $sql = "update us_base set base_amount=base_amount+'{$send_money}' WHERE us_id='{$us_id}'";
-    $db -> query($sql);
-    if (!$db->affectedRows()){
-        $db->Rollback($pInTrans);
-        echo "us加钱(减钱)错误";
+    if ($flag==10){
+        //锁仓
+        $sql = "update us_base set lock_amount=lock_amount+'{$send_money}' WHERE us_id='{$us_id}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            $db->Rollback($pInTrans);
+            echo "us锁仓错误";
+        }
+    }else{
+        if ($transfer_type=='us-la'){
+            $send_money = "-".$send_money;
+        }
+        $sql = "update us_base set base_amount=base_amount+'{$send_money}' WHERE us_id='{$us_id}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            $db->Rollback($pInTrans);
+            echo "us加钱(减钱)错误";
+        }
     }
 
     if ($transfer_type!='us-la'){
@@ -353,7 +363,7 @@ function get_ba_base_amount($ba_id){
 //获取us余额
 function get_us_base_amount($us_id){
     $db = new DB_COM();
-    $sql = "select base_amount from us_base WHERE us_id='{$us_id}'";
+    $sql = "select base_amount+lock_amount from us_base WHERE us_id='{$us_id}'";
     $db->query($sql);
     $amount = $db->getField($sql,'base_amount');
     return $amount;
