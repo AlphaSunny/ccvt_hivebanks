@@ -117,7 +117,6 @@ foreach ($suocang as $k=>$v){
 $list = array_merge($reg_user,$invite_rows,$bot_rows,$voucher,$glory,$tiaozhang,$scale_changes,$suocang);
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
-echo count($list);die;
 $ba_id = get_ba_id();
 $la_id = get_la_id();
 foreach ($list as $k=>$v){
@@ -226,8 +225,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $transfer['transfer_state'] = 1;
         $transfer['tx_detail'] = $detail;
         $transfer['give_or_receive'] = 1;
-        $transfer['ctime'] = time();
-        $transfer['utime'] = date('Y-m-d H:i:s');
+        $transfer['ctime'] = strtotime($time);
+        $transfer['utime'] = $time;
         $sql = $db->sqlInsert("com_transfer_request", $transfer);
         $id = $db->query($sql);
         if (!$id){
@@ -236,21 +235,21 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
 
         //接收者(la)
-        $dat['hash_id'] = hash('md5', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+        $dat['hash_id'] = hash('md5', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
         $prvs_hash = get_pre_hash($la_id);
         $dat['prvs_hash'] = $prvs_hash == 0 ? $dat['hash_id'] : $prvs_hash;
         $dat['credit_id'] = $la_id;
         $dat['debit_id'] = $us_id;
         $dat['tx_amount'] = $send_money;
         $dat['credit_balance'] = get_la_base_amount($la_id)+$send_money;
-        $dat['tx_hash'] = hash('md5', $la_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+        $dat['tx_hash'] = hash('md5', $la_id . $flag . get_ip() . time() . microtime());
         $dat['flag'] = $flag;
-        $dat['transfer_type'] = 'us-la';
+        $dat['transfer_type'] = $transfer_type;
         $dat['transfer_state'] = 1;
         $dat['tx_detail'] = $detail;
         $dat['give_or_receive'] = 2;
-        $dat['ctime'] = time();
-        $dat['utime'] = date('Y-m-d H:i:s');
+        $dat['ctime'] = strtotime($time);
+        $dat['utime'] = $time;
         $sql = $db->sqlInsert("com_transfer_request", $dat);
         $id = $db->query($sql);
         if (!$id){
@@ -308,8 +307,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_us["tx_type"] = $type;
         $com_balance_us["tx_amount"] = $send_money;
         $com_balance_us["credit_balance"] = get_us_base_amount($us_id)-$send_money;
-        $com_balance_us["utime"] = time();
-        $com_balance_us["ctime"] = date('Y-m-d H:i:s');
+        $com_balance_us["utime"] = strtotime($time);
+        $com_balance_us["ctime"] = $time;
         $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
         if (!$db->query($sql)) {
             $db->Rollback($pInTrans);
@@ -326,8 +325,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_ba["tx_type"] = $type;
         $com_balance_ba["tx_amount"] = $send_money;
         $com_balance_ba["credit_balance"] = get_la_base_amount($la_id)+$send_money;
-        $com_balance_ba["utime"] = time();
-        $com_balance_ba["ctime"] = date('Y-m-d H:i:s');
+        $com_balance_ba["utime"] = strtotime($time);
+        $com_balance_ba["ctime"] = $time;
 
         $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
         if (!$db->query($sql)) {
