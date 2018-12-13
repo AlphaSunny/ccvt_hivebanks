@@ -15,14 +15,14 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 define('UNIT','100000000');
-define('FLAG',8);
+define('FLAG',10);
 define('BA_ID','6C69520E-E454-127B-F474-452E65A3EE75');
 lock_auto();
 
 
 function lock_auto(){
 
-//    die('what do you want?');
+    die('what do you want?');
     $db = new DB_COM();
     $sql = 'select phone,amount from big_account_lock ';
     $db->query($sql);
