@@ -16,7 +16,7 @@ $(function () {
 
     function GetNewsRecordFun(status) {
         $("#chatRecordTable").DataTable({
-            "ajax":url + "/api/bot_web/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
+            "ajax":url + "/api/bot_web/admin/group_message_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id + "&status=" + status,
             destroy:true,
             "deferRender":true,
             "columns": [
