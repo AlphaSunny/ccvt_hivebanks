@@ -25,6 +25,21 @@ $(function () {
     //     }]
     // });
 
+    //获取群列表
+    var is_audit = "";
+
+    function GetGroupListFun() {
+        GetGroupList(token, is_audit, function (response) {
+            if(response.errcode == "0"){
+                var data = response.rows;
+                console.log(data);
+            }
+        }, function (response) {
+            layer.msg(response.errmsg);
+        })
+    }
+
+    GetGroupListFun();
     //编辑对应的群主-弹出编辑框
     var group_id = "";
     $(document).on("click", ".editBtn", function () {
