@@ -1,5 +1,5 @@
 $(function () {
-    var token = GetCookie("robot_token");
+    var token = GetCookie("total_robot_token");
 
     // function GetGroupListFun() {
     var url = getRootPath();
