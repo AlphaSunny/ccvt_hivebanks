@@ -102,6 +102,7 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
+                GetGroupListFun();
             }
         }, function (response) {
             layer.close(loading);
