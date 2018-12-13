@@ -22,7 +22,7 @@ lock_auto();
 
 function lock_auto(){
 
-    die('what do you want?');
+//    die('what do you want?');
     $db = new DB_COM();
     $sql = 'select phone,amount from big_account_lock ';
     $db->query($sql);
@@ -30,7 +30,7 @@ function lock_auto(){
     $flag = 1;
     foreach($bInfo as $k=>$v)
     {
-        if($v['phone'] != '15363972936')
+        if($v['phone'] != '13735891094')
             continue;
         $tmp_phone = $v['phone'];
         $tmp_amount = $v['amount'];
@@ -43,7 +43,7 @@ function lock_auto(){
                 die($flag.'failed');
         }
         $flag ++;
-        die('hexiaohu');
+        die('XMRSB');
     }
     die($flag.'success');
 }
