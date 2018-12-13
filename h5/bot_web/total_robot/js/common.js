@@ -134,6 +134,18 @@ function GetGroupList(token, is_audit, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//审核群列表
+function ReviewGroup(token, review_group_id, review_is_audit, why, suc_func, error_func) {
+    var api_url = 'group_audit.php',
+        post_data = {
+            'token': token,
+            'group_id': review_group_id,
+            'is_audit': review_is_audit,
+            'why': why
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 //编辑群信息
 function EditGroup(token, group_name, admin_del, group_id, suc_func, error_func) {
     var api_url = "group_edit.php",
@@ -181,4 +193,17 @@ function ActiveClick($this, btnText) {
     btnText = btnText ? btnText : "确认";
     $this.attr('data-clickStatus', 1);
     $this.html(btnText);
+}
+
+//loading
+var loading = "";
+function ShowLoading(type) {
+    if(type == "show"){
+        loading = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+    }
+    if(type == "hide"){
+        layer.close();
+    }
 }
