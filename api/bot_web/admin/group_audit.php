@@ -48,7 +48,7 @@ $date['why'] = $why;
 //修改群组
 $row = audit_group($date);
 if (!$row){
-    exit_error('109','修改失败');
+    exit_error('109','失败');
 }
 
 // 返回数据做成

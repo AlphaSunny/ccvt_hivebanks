@@ -346,33 +346,16 @@ function get_group_temporary_list($us_id)
 
 
 //======================================
-// 函数: 判断群组是否已经提交过审核
-//
-// 返回: rows          最新信息数组
-//======================================
-function check_is_submit($group_id,$us_id)
-{
-    $db = new DB_COM();
-    $sql = "select is_apply,name from bot_temporary_group WHERE id='{$group_id}' AND us_id='{$us_id}' limit 1";
-    $db -> query($sql);
-    $row = $db -> fetchRow();
-    return $row;
-}
-
-//======================================
 // 函数: 提交过审核
 //
 // 返回: rows          最新信息数组
 //======================================
-function group_submit_audit($data)
+function audit_group($date)
 {
     $db = new DB_COM();
-    $date['name'] = $data['group_name'];
-    $date['us_id'] = $data['us_id'];
-    $date['intime'] = time();
-    $sql = $db->sqlInsert("bot_group", $date);
-    $q_id = $db->query($sql);
-    if ($q_id == 0)
-        return false;
-    return true;
+    $time = time();
+    $sql = "update bot_group set is_audit = '{$date['is_audit']}',why='{$date['why']}',uptime='{$time}' where id='{$date['group_id']}' ";
+    $db->query($sql);
+    return $db->affectedRows();
 }
+
