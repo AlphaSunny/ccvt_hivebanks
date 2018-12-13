@@ -78,7 +78,10 @@
     border-color: #009988;
     color: #009988;
 }
-
+.page-item.active .page-link{
+    background-color: #009688;
+    border-color: #009688;
+}
 /*flex*/
 .flex {
     display: flex;
