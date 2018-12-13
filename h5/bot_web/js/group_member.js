@@ -20,7 +20,7 @@ $(function () {
     });
 
     //获取群成员列表
-    var limit = 10, offset = 0, status = "";
+    var limit = 10, offset = 0, status = "-1";
 
     function GetGroupMemberFun() {
         GetGroupMember(token, group_id,limit, offset,status, function (response) {
