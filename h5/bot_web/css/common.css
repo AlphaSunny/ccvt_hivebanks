@@ -161,9 +161,10 @@ table {
 
 table td {
     text-align: center;
+    vertical-align: middle!important;
 }
 table .th_top{
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #dddddd!important;
 }
 .switch:focus {
     outline: none !important;
