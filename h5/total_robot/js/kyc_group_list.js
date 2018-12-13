@@ -26,7 +26,7 @@ $(function () {
     // });
 
     //获取群列表
-    var is_audit = "";
+    var is_audit = "1";
 
     function GetGroupListFun() {
         GetGroupList(token, is_audit, function (response) {
