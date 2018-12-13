@@ -36,7 +36,7 @@ function interest_auto(){
         $res = $db->fetchRow();
         $us_id = $res['us_id'];
 
-        if(!(ba_cut($amount)&&us_add($amount,$us_id)&&log_interest($amount,$us_id)&&log_base($amount,$us_id)&&log_transfer($amount,$us_id)))
+        if(!(ba_cut($amount)&&log_base($amount,$us_id)&&log_transfer($amount,$us_id)&&us_add($amount,$us_id)&&log_interest($amount,$us_id)))
             die('failed'.$flag);
         $flag++;
     }
