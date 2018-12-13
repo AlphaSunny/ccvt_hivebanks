@@ -10,37 +10,25 @@ header("Content-Type:application/json;charset=utf-8");
 /*
 ========================== 群组编辑 ==========================
 GET参数
-  token                用户token
-  group_name          群组名称
+  token                token
 
 返回
   errcode = 0     请求成功
 */
 
 php_begin();
-$args = array('token','group_name','del','flirt','group_id');
+$args = array('token','admin_del','group_id');
 chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token',128);
 // 群组id
 $group_id = get_arg_str('GET', 'group_id');
-// 群组名称
-$group_name = get_arg_str('GET', 'group_name');
 //验证token
-$ba_id = check_token($token);
-
-$vail = 'edit';
-//判断名称是否已添加
-$is_name = check_group_name($ba_id,$group_name,$vail,$group_id);
-if ($is_name){
-    exit_error('109','名称已存在');
-}
+$la_id = la_user_check($token);
 
 $date['group_id'] = $group_id;
-$date['name'] = $group_name;
-$date['is_del'] = get_arg_str('GET', 'del');
-$date['is_flirt'] = get_arg_str('GET', 'flirt');
+$date['is_admin_del'] = get_arg_str('GET', 'admin_del');
 //修改群组
 $row = save_group($date);
 if (!$row){
