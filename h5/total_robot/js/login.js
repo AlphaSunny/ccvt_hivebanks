@@ -7,7 +7,6 @@ $(function () {
     var total_robot_token = GetLoginCookie("total_robot_token");
     if (total_robot_token) {
         window.location.href = 'kyc_group_list.html';
-        alert("已登录");
     }
     $('#login_btn').click(function () {
         var _this = $(this), _text = $(this).text();
@@ -32,7 +31,6 @@ $(function () {
                 // LayerFun('loginSuccessful');
                 layer.msg("登录成功");
                 SetCookie('total_robot_token', response.token);
-                alert("登录成功");
                 // SetCookie('la_name', response.rows.user_info.user);
                 window.location.href = 'kyc_group_list.html';
             }
