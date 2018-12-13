@@ -4,17 +4,17 @@ $(function () {
     var url = getRootPath();
     var table = $("#taskListTable").DataTable({
         "ajax": url + "/api/bot_web/timer_list.php?token=" + encodeURIComponent(token),
-        "deferRender":true,
+        "deferRender": true,
         "columns": [
             {"data": "id", "class": "id"},
             {"data": "time", "class": "time"},
             {"data": "content", "class": "content"},
             {"data": "name", "class": "name"},
         ],
-        "columnDefs":[{
-            "targets":[4],
-            "data":null,
-            "render":function () {
+        "columnDefs": [{
+            "targets": [4],
+            "data": null,
+            "render": function () {
                 return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                     "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>"
             }
@@ -44,16 +44,28 @@ $(function () {
     // }
     // GetTaskListFun();
 
-    //删除任务
+    //确定删除任务
     var timer_id = "";
     $(document).on("click", ".delBtn", function () {
         timer_id = $(this).parents("tr[role='row']").find(".id").text();
         layer.confirm('确定删除该条数据？', {
             btn: ['取消', '确认'] //按钮
-        },function () {
-            console.log("123");
+        }, function () {
+            DelTaskFun();
         })
     });
+
+    //删除任务
+    function DelTaskFun() {
+        DelTask(token, timer_id, function (response) {
+            if (response.errcode == "0") {
+                layer.msg('删除成功', {icon: 1});
+                table.ajax.reload();
+            }
+        }, function (response) {
+            layer.msg('删除失败', {icon: 2});
+        })
+    }
 
     //确认删除
     // $(document).on("click", ".layui-layer-btn1", function () {
