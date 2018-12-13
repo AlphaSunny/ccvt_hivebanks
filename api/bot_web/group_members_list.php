@@ -52,10 +52,10 @@ $rows = get_group_members_list($group_id,$status,$offset,$limit);
 
 // 返回数据做成
 $rtn_ary = array();
-//$rtn_ary['errcode'] = '0';
-//$rtn_ary['errmsg'] = '';
+$rtn_ary['errcode'] = '0';
+$rtn_ary['errmsg'] = '';
 //$rtn_ary['count'] = count($rows);
-$rtn_ary['data'] = $rows;
+$rtn_ary['rows'] = $rows;
 $rtn_ary['total'] = $total;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);

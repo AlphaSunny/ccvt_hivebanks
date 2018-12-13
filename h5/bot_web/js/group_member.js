@@ -23,14 +23,18 @@ $(function () {
     var limit = 10, offset = 0, status = "-1";
 
     function GetGroupMemberFun() {
-        GetGroupMember(token, group_id,limit, offset,status, function (response) {
-                var data = response.data, tr = "";
-                $.each(data, function (i, val) {
-                    tr += "<tr>" +
-                        "<td>" + data[i].name + "</td>" +
-                        "</tr>"
-                });
-                $("#groupMember").html(tr);
+        var tr = "";
+        GetGroupMember(token, group_id, limit, offset, status, function (response) {
+           if(response.errcode == "0"){
+               var data = response.rows;
+               $.each(data, function (i, val) {
+                   console.log(data);
+                   tr += "<tr>" +
+                       "<td>" + data[i].name + "</td>" +
+                       "</tr>"
+               });
+               $("#groupMember").html(tr);
+           }
         }, function (response) {
             layer.msg(response.errmsg);
         })
