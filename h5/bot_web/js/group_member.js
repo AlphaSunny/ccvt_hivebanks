@@ -23,9 +23,11 @@ $(function () {
     var limit = 10, offset = 0, status = "-1";
 
     function GetGroupMemberFun() {
+        var tr = "";
         GetGroupMember(token, group_id,limit, offset,status, function (response) {
-                var data = response.data, tr = "";
+                var data = response.data;
                 $.each(data, function (i, val) {
+                    console.log(data);
                     tr += "<tr>" +
                         "<td>" + data[i].name + "</td>" +
                         "</tr>"
