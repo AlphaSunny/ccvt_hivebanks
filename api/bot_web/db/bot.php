@@ -139,9 +139,10 @@ function get_group_members_list($group_id,$status,$offset,$limit)
                 break;
             case 4:
                 $start = strtotime(date('Y-m-d 00:00:00', strtotime("-7 day")));
+                break;
         }
         $sql = "select count(bot_message_id) as count from bot_message WHERE wechat='{$v['name']}'";
-        if ($status!=-1){
+        if ($status!=-1 || $status!=''){
             $sql .= " AND bot_create_time between '{$start}' and '{$end}'";
         }
         $db->query($sql);
