@@ -25,6 +25,7 @@ $(function () {
     function GetGroupMemberFun() {
         var tr = "";
         GetGroupMember(token, group_id,limit, offset,status, function (response) {
+            console.log(response);
                 var data = response.data;
                 $.each(data, function (i, val) {
                     console.log(data);
