@@ -100,15 +100,28 @@ function get_group_info($group_id)
 }
 
 //======================================
+// 函数: 获取群组成员列表总数
+// 参数:
+// 返回: count        记录总数
+//======================================
+function  get_group_members_list_total($group_id)
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM bot_group_members WHERE group_id='{$group_id}'";
+    $db -> query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+//======================================
 // 函数: 获取群组成员列表
 // 参数: group_id      群组id
 //
 // 返回: row           最新信息数组
 //======================================
-function get_group_members_list($group_id,$status)
+function get_group_members_list($group_id,$status,$offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "SELECT name,group_name,group_id FROM bot_group_members WHERE group_id='{$group_id}'";
+    $sql = "SELECT name,group_name,group_id FROM bot_group_members WHERE group_id='{$group_id}' limit $offset , $limit";
     $db -> query($sql);
     $row = $db -> fetchAll();
     $end = time();

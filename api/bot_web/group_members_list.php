@@ -35,14 +35,20 @@ if (!$result){
     exit_error('139','非法操作');
 }
 
+// 取得分页参数
+list($limit, $offset) = get_paging_arg('GET');
+
 // status
 $status = get_arg_str('GET', 'status');
 
 // 群组id
 $group_id = get_arg_str('GET', 'group_id');
 
+// 获取总记录
+$total = get_group_members_list_total($group_id);
+
 // 交易记录数组
-$rows = get_group_members_list($group_id,$status);
+$rows = get_group_members_list($group_id,$status,$offset,$limit);
 
 // 返回数据做成
 $rtn_ary = array();
@@ -50,6 +56,7 @@ $rtn_ary = array();
 //$rtn_ary['errmsg'] = '';
 //$rtn_ary['count'] = count($rows);
 $rtn_ary['data'] = $rows;
+$rtn_ary['total'] = $total;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
