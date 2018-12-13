@@ -25,28 +25,6 @@ $(function () {
         }]
     });
 
-    // GetGroupList(token, function (response) {
-    //     if (response.errcode == "0") {
-    //         var data = response.rows, tr = "";
-    //         $.each(data, function (i, val) {
-    //             tr += "<tr class='text-center trItem'>" +
-    //                 "<td class='groupName' name=" + data[i].id + ">" + data[i].name + "</td>" +
-    //                 "<td class='is_del' name=" + data[i].is_del + ">" + data[i].del + "</td>" +
-    //                 "<td class='is_flirt' name=" + data[i].is_flirt + ">" + data[i].flirt + "</td>" +
-    //                 "<td>" +
-    //                 "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-    //                 "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>" +
-    //                 "</td>" +
-    //                 "</tr>"
-    //         });
-    //         $("#groupListTable").html(tr);
-    //     }
-    // }, function (response) {
-    //     layer.msg(response.errmsg);
-    // });
-    // }
-    // GetGroupListFun();
-
     //编辑对应的群主-弹出编辑框
     var group_id = "";
     $(document).on("click", ".editBtn", function () {

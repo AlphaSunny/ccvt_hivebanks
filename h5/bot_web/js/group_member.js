@@ -6,8 +6,9 @@ $(function () {
     var group_id = GetQueryString("group_id");
 
     var url = getRootPath();
+    var status = "-1";
     $('#groupMemberTable').DataTable({
-        "ajax": url + "/api/bot_web/group_members_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id,
+        "ajax": url + "/api/bot_web/group_members_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id+ "&status=" + status,
         "deferRender":true,
         "columns": [
             {"data": "name"}
