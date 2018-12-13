@@ -204,6 +204,6 @@ function ShowLoading(type) {
         });
     }
     if(type == "hide"){
-        layer.close();
+        layer.close(loading);
     }
 }
