@@ -2707,43 +2707,43 @@ fieldset:disabled a.btn {
     pointer-events: none;
 }
 
-.btn-primary {
-    color: #FFF;
-    background-color: #009688;
-    border-color: #009688;
-}
+/*.btn-primary {*/
+    /*color: #FFF;*/
+    /*background-color: #009688;*/
+    /*border-color: #009688;*/
+/*}*/
 
-.btn-primary:hover {
-    color: #FFF;
-    background-color: #007065;
-    border-color: #08535f;
-    /*border-color: #00635a;*/
-}
+/*.btn-primary:hover {*/
+    /*color: #FFF;*/
+    /*background-color: #007065;*/
+    /*border-color: #08535f;*/
+    /*!*border-color: #00635a;*!*/
+/*}*/
 
-.btn-primary:focus, .btn-primary.focus {
-    -webkit-box-shadow: 0 0 0 0 rgba(0, 150, 136, 0.5);
-    box-shadow: 0 0 0 0 rgba(0, 150, 136, 0.5);
-}
+/*.btn-primary:focus, .btn-primary.focus {*/
+    /*-webkit-box-shadow: 0 0 0 0 rgba(0, 150, 136, 0.5);*/
+    /*box-shadow: 0 0 0 0 rgba(0, 150, 136, 0.5);*/
+/*}*/
 
-.btn-primary.disabled, .btn-primary:disabled {
-    color: #FFF;
-    background-color: #009688;
-    border-color: #009688;
-}
+/*.btn-primary.disabled, .btn-primary:disabled {*/
+    /*color: #FFF;*/
+    /*background-color: #009688;*/
+    /*border-color: #009688;*/
+/*}*/
 
-.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
-.show > .btn-primary.dropdown-toggle {
-    color: #FFF;
-    /*background-color: #00635a;*/
-    background-color: #08535f;
-    border-color: #00564e;
-}
+/*.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,*/
+/*.show > .btn-primary.dropdown-toggle {*/
+    /*color: #FFF;*/
+    /*!*background-color: #00635a;*!*/
+    /*background-color: #08535f;*/
+    /*border-color: #00564e;*/
+/*}*/
 
-.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
-.show > .btn-primary.dropdown-toggle:focus {
-    -webkit-box-shadow: 0 0 0 0 rgba(0, 150, 136, 0.5);
-    box-shadow: 0 0 0 0 rgba(0, 150, 136, 0.5);
-}
+/*.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,*/
+/*.show > .btn-primary.dropdown-toggle:focus {*/
+    /*-webkit-box-shadow: 0 0 0 0 rgba(0, 150, 136, 0.5);*/
+    /*box-shadow: 0 0 0 0 rgba(0, 150, 136, 0.5);*/
+/*}*/
 
 .btn-secondary {
     color: #FFF;
