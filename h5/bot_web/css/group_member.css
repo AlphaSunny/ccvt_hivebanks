@@ -1,4 +1,4 @@
 th, td {
-    border-left: none;
-    border-right: none;
+    border-left: none!important;
+    border-right: none!important;
 }
