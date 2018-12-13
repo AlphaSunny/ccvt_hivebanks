@@ -92,6 +92,10 @@
     align-items: center;
 }
 
+.flex.space-between {
+    justify-content: space-between;
+}
+
 .inline-block {
     display: inline-block;
 }
