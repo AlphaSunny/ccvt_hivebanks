@@ -68,6 +68,7 @@ $(function () {
     var review_is_audit = "", review_group_id = "", why = "";
     $(document).on("click",".review_btn", function () {
         review_group_id = $(this).parents("tr").find(".id").text();//获取群id
+        console.log(review_group_id);return;
         if ($(this).hasClass("ok_Btn")) {
             review_is_audit = "2";
             ShowLoading("show");
