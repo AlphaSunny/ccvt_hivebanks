@@ -59,8 +59,8 @@ $(function () {
     //编辑对应的群主-弹出编辑框
     var group_id = "";
     $(document).on("click", ".editBtn", function () {
-        $(".addSubBtn").addClass("none");
-        $(".editSubBtn").removeClass("none");
+        // $(".addSubBtn").addClass("none");
+        // $(".editSubBtn").removeClass("none");
         group_id = $(this).parents("tr").find(".id").text();//获取群id
         var group_name = $(this).parents("tr").find(".name").text();//获取群名称
         var is_del = $(this).parents("tr").find(".is_del").text();//获取是否运行状态
