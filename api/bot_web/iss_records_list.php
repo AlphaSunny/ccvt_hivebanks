@@ -24,7 +24,7 @@ chk_empty_args('GET', $args);
 // 用户token
 $token = get_arg_str('GET', 'token',128);
 //验证token
-$ba_id = check_token($token);
+$us_id = check_token($token);
 
 // 时间
 $start_time = get_arg_str('GET', 'start_time');
@@ -33,10 +33,17 @@ $end_time = get_arg_str('GET', 'end_time');
 //昵称
 $nickname = get_arg_str('GET', 'nickname');
 
-$da['ba_id'] = $ba_id;
+// 取得分页参数
+list($limit, $offset) = get_paging_arg('GET');
+
+
+$da['us_id'] = $us_id;
 $da['start_time'] = $start_time;
 $da['end_time'] = $end_time;
 $da['nickname'] = $nickname;
+
+// 获取总记录
+$total = get_iss_record_total($da);
 
 // 交易记录数组
 $rows = iss_records_list($da);
@@ -44,10 +51,9 @@ $rows = iss_records_list($da);
 
 // 返回数据做成
 $rtn_ary = array();
-//$rtn_ary['errcode'] = '0';
-//$rtn_ary['errmsg'] = '';
-//$rtn_ary['count'] = count($rows);
-$rtn_ary['data'] = $rows['rows'];
+$rtn_ary['errcode'] = '0';
+$rtn_ary['errmsg'] = '';
+$rtn_ary['rows'] = $rows['rows'];
 $rtn_ary['all_amount'] = $rows['all_amount'];
 $rtn_ary['all_chat'] = $rows['all_chat'];
 $rtn_str = json_encode($rtn_ary);

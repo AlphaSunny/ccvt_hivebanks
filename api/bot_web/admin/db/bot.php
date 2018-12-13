@@ -103,7 +103,7 @@ function  get_group_members_list_total($group_id)
 //
 // 返回: row           最新信息数组
 //======================================
-function get_group_members_list($group_id,$status)
+function get_group_members_list($group_id,$status,$offset,$limit)
 {
     $db = new DB_COM();
     $sql = "SELECT name,group_name,group_id FROM bot_group_members WHERE group_id='{$group_id}' limit $offset , $limit";
