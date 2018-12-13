@@ -198,8 +198,11 @@ table td {
 }
 
 /*none*/
-.none {
+td.none {
     display: none !important;
+}
+.none{
+    display: none;
 }
 
 .dropdown i {
