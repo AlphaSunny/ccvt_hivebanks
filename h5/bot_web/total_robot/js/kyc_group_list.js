@@ -68,7 +68,7 @@ $(function () {
         if ($(this).hasClass("ok_Btn")) {
             is_audit = "2";
             ShowLoading("show");
-            ReviewGroupFun(group_id, is_audit,why);
+            ReviewGroupFun(group_id, is_audit, why);
         }
         if ($(this).hasClass("refuse_Btn")) {
             $("#reviewModal").modal("show");
@@ -78,11 +78,11 @@ $(function () {
             why = $(".review_text").text();
             $("#reviewModal").modal("hide");
             ShowLoading("show");
-            ReviewGroupFun(group_id, is_audit,why);
+            ReviewGroupFun(group_id, is_audit, why);
         }
     });
 
-    function ReviewGroupFun() {
+    function ReviewGroupFun(group_id, is_audit, why) {
         ReviewGroup(token, group_id, is_audit, why, function (response) {
             ShowLoading("hide");
             if (response.errcode == "0") {
