@@ -50,20 +50,22 @@ $(function () {
         timer_id = $(this).parents("tr[role='row']").find(".id").text();
         layer.confirm('确定删除该条数据？', {
             btn: ['取消', '确认'] //按钮
+        },function () {
+            console.log("123");
         })
     });
 
     //确认删除
-    $(document).on("click", ".layui-layer-btn1", function () {
-        DelTask(token, timer_id, function (response) {
-            if (response.errcode == "0") {
-                layer.msg('删除成功', {icon: 1});
-                table.ajax.reload();
-            }
-        }, function (response) {
-            layer.msg('删除失败', {icon: 2});
-        })
-    });
+    // $(document).on("click", ".layui-layer-btn1", function () {
+    //     DelTask(token, timer_id, function (response) {
+    //         if (response.errcode == "0") {
+    //             layer.msg('删除成功', {icon: 1});
+    //             table.ajax.reload();
+    //         }
+    //     }, function (response) {
+    //         layer.msg('删除失败', {icon: 2});
+    //     })
+    // });
 
     //编辑任务
     $(document).on("click", ".editBtn", function () {
