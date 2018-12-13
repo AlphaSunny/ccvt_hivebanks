@@ -171,7 +171,7 @@ function log_transfer($amount,$us_id){
     $dat['ctime'] = time();
     $dat['utime'] = date('Y-m-d H:i:s',time());
     $uql = $db->sqlInsert("com_transfer_request", $dat);
-
+    var_dump($db->query($uql));die;
     if($db->query($sql)&&$db->query($uql))
         return true;
     die('com_transfer');
