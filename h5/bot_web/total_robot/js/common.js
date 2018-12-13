@@ -134,6 +134,18 @@ function GetGroupList(token, is_audit, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//编辑群信息
+function EditGroup(token, group_name, admin_del, group_id, suc_func, error_func) {
+    var api_url = "group_edit.php",
+        post_data = {
+            "token": token,
+            "group_name": group_name,
+            "admin_del": admin_del,
+            "group_id": group_id
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 /**
  * Disable button
  * @param $this Button object

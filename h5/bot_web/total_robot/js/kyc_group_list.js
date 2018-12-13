@@ -46,9 +46,8 @@ $(function () {
                         opt = "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil'></i>编辑</button>" +
                                         "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye'></i>详情</button>"
                     }
-                    console.log(opt);
                     tr+="<tr>" +
-                        "<td class='id'>"+ data[i].id +"</td>" +
+                        "<td class='id none'>"+ data[i].id +"</td>" +
                         "<td class='name'>"+ data[i].name +" "+ data[i].scale +"</td>" +
                         "<td class='del'>"+ data[i].del +"</td>" +
                         "<td class='is_del none'>"+ data[i].is_del +"</td>" +
@@ -69,20 +68,15 @@ $(function () {
     $(document).on("click", ".editBtn", function () {
         $(".addSubBtn").addClass("none");
         $(".editSubBtn").removeClass("none");
-        group_id = $(this).parents("tr[role='row']").find(".id").text();//获取群id
-        var group_name = $(this).parents("tr[role='row']").find(".name").text();//获取群名称
-        var is_del = $(this).parents("tr[role='row']").find(".is_del").text();//获取是否运行状态
-        var is_flirt = $(this).parents("tr[role='row']").find(".is_flirt").text();//获取是否开启调戏功能
+        group_id = $(this).parents("tr").find(".id").text();//获取群id
+        var group_name = $(this).parents("tr").find(".name").text();//获取群名称
+        var is_del = $(this).parents("tr").find(".is_del").text();//获取是否运行状态
         if (is_del == "1") {
             $("#runSwitch").addClass("active").val("1");
         } else {
             $("#runSwitch").removeClass("active").val("2");
         }
-        if (is_flirt == "1") {
-            $("#trickSwitch").addClass("active").val("1");
-        } else {
-            $("#trickSwitch").removeClass("active").val("2");
-        }
+
         $("#groupName").val(group_name);
         $("#editGroupModal").modal("show");
     });
@@ -95,24 +89,16 @@ $(function () {
             $(this).addClass("active").val("1");
         }
     });
-    $("#trickSwitch").on("change", function () {
-        if ($(this).val() == "1") {
-            $(this).removeClass("active").val("2");
-        } else {
-            $(this).addClass("active").val("1");
-        }
-    });
 
     //提交编辑
     $(".editSubBtn").click(function () {
-        var del = $("#runSwitch").val();
-        var flirt = $("#trickSwitch").val();
+        var admin_del = $("#runSwitch").val();
         var group_name = $("#groupName").val();
         //loading
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        EditGroup(token, group_name, del, flirt, group_id, function (response) {
+        EditGroup(token, group_name, admin_del, group_id, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
