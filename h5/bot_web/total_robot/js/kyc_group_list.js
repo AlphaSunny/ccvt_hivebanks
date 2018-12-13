@@ -38,7 +38,7 @@ $(function () {
                         opt = "<button class='btn btn-primary btn-sm ok_Btn review_btn'><i class='fa fa-check'></i>通过</button>" +
                             "<button class='btn btn-sm btn-danger refuse_Btn review_btn margin-left-5'><i class='fa fa-times'></i>拒绝</button>";
                     } else if (data[i].is_audit == 3) {
-                        opt = "<button class='btn btn-success btn-sm ref_ok_Btn'><i class='fa fa-check'></i>重新通过</button>";
+                        opt = "<button class='btn btn-success btn-sm review_btn ref_ok_Btn'><i class='fa fa-check'></i>重新通过</button>";
                     } else {
                         opt = "<button class='btn btn-success btn-sm editBtn'><i class='fa fa-pencil'></i>编辑</button>" +
                             "<button class='btn btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye'></i>详情</button>"
@@ -65,7 +65,7 @@ $(function () {
     var review_group_id = "", refuse_group_id = "";
     $(document).on("click", ".review_btn", function () {
         var is_audit = "", why = "";
-        if ($(this).hasClass("ok_Btn")) {
+        if ($(this).hasClass("ok_Btn") || $(this).hasClass("ref_ok_Btn")) {
             is_audit = "2";
             review_group_id = $(this).parents("tr").find(".id").text();//获取群id
             ShowLoading("show");
