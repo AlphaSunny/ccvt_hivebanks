@@ -73,6 +73,9 @@ $(function () {
     //查看某一段/天
     $(".click_day").click(function () {
         status = $(this).attr("name");
+        loading = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
         GetGroupMemberFun(token, limit, offset, status);
     })
 
