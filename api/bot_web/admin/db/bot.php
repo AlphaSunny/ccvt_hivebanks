@@ -11,7 +11,7 @@ function get_group_list($is_audit)
 {
     $db = new DB_COM();
     $sql = "SELECT * FROM bot_group";
-    if ($is_audit){
+    if ($is_audit!=''){
         $sql .= " where is_audit='{$is_audit}'";
     }
     $sql .= " ORDER BY intime DESC";
