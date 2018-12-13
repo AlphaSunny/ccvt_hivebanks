@@ -328,6 +328,36 @@ function get_group_type_list()
 }
 
 //======================================
+// 函数: 添加群组类型
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function group_type_add($data)
+{
+    $db = new DB_COM();
+    $sql = $db->sqlInsert("bot_group_type", $data);
+    $q_id = $db->query($sql);
+    if ($q_id == 0)
+        return false;
+    return true;
+}
+
+//======================================
+// 函数: 修改群组类型
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function group_type_edit($date)
+{
+    $db = new DB_COM();
+    $sql = "update bot_group_type set name = '{$date['name']}' , utime='{$date['utime']}' where id='{$date['id']}' ";
+    $db->query($sql);
+    return $db->affectedRows();
+}
+
+//======================================
 // 函数: 判断微信机器人是否登录
 //
 // 返回: rows          最新信息数组
