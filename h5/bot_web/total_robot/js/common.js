@@ -114,40 +114,6 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
     });
 };
 
-// Call API common function
-function CallRobotBoxWebApi(api_url, post_data, suc_func, error_func) {
-
-    var api_site = config_api_url + '/api/bot_web/';
-
-    post_data = post_data || {};
-    suc_func = suc_func || function () {
-    };
-    error_func = error_func || function () {
-    };
-
-    $.ajax({
-        url: api_site + api_url,
-        dataType: "jsonp",
-        data: post_data,
-        success: function (response) {
-            // console.log(response);
-            // API return failed
-            if (response.errcode != 0) {
-                error_func(response);
-            } else {
-                // Successfully process data
-                suc_func(response);
-            }
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            // API error exception
-            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
-            // Exception handling
-            error_func(response);
-        }
-    });
-};
-
 //LA_LOGIN
 function LaLogin(user, pass_word_hash, suc_func, error_func) {
     var api_url = 'login.php',
@@ -165,7 +131,7 @@ function GetGroupList(token, is_audit, suc_func, error_func) {
             'token': token,
             'is_audit': is_audit
         };
-    CallRobotBoxWebApi(api_url, post_data, suc_func, error_func);
+    CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
 /**

@@ -29,11 +29,10 @@ $(function () {
     var is_audit = "1";
 
     function GetGroupListFun() {
-        var tr = "";
+        var tr = "", opt = "";
         GetGroupList(token, is_audit, function (response) {
             if(response.errcode == "0"){
                 var data = response.rows;
-                console.log(data);
                 $.each(data, function (i, val) {
                     tr+="<tr>" +
                         "<td class='id'>"+ data[i].id +"</td>" +
