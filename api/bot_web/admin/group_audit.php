@@ -31,9 +31,6 @@ $group_id = get_arg_str('GET', 'group_id');
 // 审核 2:成功  3:失败
 $is_audit= get_arg_str('GET', 'is_audit');
 
-if ($is_audit!=2 || $is_audit!=3){
-    exit_error('139','传值错误');
-}
 
 // 失败原因
 $why = get_arg_str('GET', 'why');
