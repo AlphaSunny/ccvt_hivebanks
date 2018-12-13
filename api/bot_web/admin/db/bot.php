@@ -159,10 +159,10 @@ function del_group($group_id)
 //      variable      绑定name
 // 返回: row           最新信息数组
 //======================================
-function get_timer_list($us_id)
+function get_timer_list()
 {
     $db = new DB_COM();
-    $sql = "SELECT t.id,t.time,t.content,t.is_del,g.name FROM bot_timer as t LEFT JOIN bot_group as g on t.group_id=g.id WHERE g.us_id = '{$us_id}' and t.is_del=0  ORDER BY t.intime ASC ";
+    $sql = "SELECT t.id,t.time,t.content,t.is_del,g.name FROM bot_timer as t LEFT JOIN bot_group as g on t.group_id=g.id WHERE  t.is_del=0  ORDER BY t.intime ASC ";
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;
