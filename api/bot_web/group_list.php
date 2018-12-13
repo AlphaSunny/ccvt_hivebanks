@@ -29,8 +29,13 @@ $us_id = check_token($token);
 // 交易记录数组
 $rows = get_group_list($us_id);
 foreach ($rows as $k=>$v){
-    $rows[$k]['del'] = $v['is_del']==1 ? "运行中" : "关闭";
-    $rows[$k]['flirt'] = $v['is_flirt']==1 ? "运行中" : "关闭";
+    if ($v['is_audit']==2){
+        $rows[$k]['del'] = $v['is_del']==1 ? "运行中" : "关闭";
+        $rows[$k]['flirt'] = $v['is_flirt']==1 ? "运行中" : "关闭";
+    }else{
+        $rows[$k]['del'] = "关闭";
+        $rows[$k]['flirt'] = "关闭";
+    }
 }
 
 // 返回数据做成
