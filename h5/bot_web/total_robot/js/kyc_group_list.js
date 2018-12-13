@@ -29,10 +29,21 @@ $(function () {
     var is_audit = "1";
 
     function GetGroupListFun() {
+        var tr = "";
         GetGroupList(token, is_audit, function (response) {
             if(response.errcode == "0"){
                 var data = response.rows;
                 console.log(data);
+                $.each(data, function (i, val) {
+                    tr+="<tr>" +
+                        "<td class='id'>"+ data[i].id +"</td>" +
+                        "<td class='name'>"+ data[i].name +"</td>" +
+                        "<td class='del'>"+ data[i].del +"</td>" +
+                        "<td class='is_del none'>"+ data[i].is_del +"</td>" +
+                        "<td class='flirt'>"+ data[i].flirt +"</td>" +
+                        "<td class='is_flirt'>"+ data[i].is_flirt +"</td>" +
+                        "</tr>"
+                })
             }
         }, function (response) {
             layer.msg(response.errmsg);
