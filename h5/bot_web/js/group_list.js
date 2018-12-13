@@ -2,27 +2,35 @@ $(function () {
     var token = GetCookie("robot_token");
 
     // function GetGroupListFun() {
-    var url = getRootPath();
-    var table = $("#groupMasterListTable").DataTable({
-        "ajax": url + "/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
-        destroy: true,
-        "deferRender": true,
-        "columns": [
-            {"data": "id", "class": "id"},
-            {"data": "name", "class": "name"},
-            {"data": "del", "class": "del"},
-            {"data": "is_del", "class": "is_del none"},
-            {"data": "flirt", "class": "flirt"},
-            {"data": "is_flirt", "class": "is_flirt none"},
-        ],
-        "columnDefs": [{
-            "targets": 6,
-            "data": null,
-            "render": function () {
-                return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-                    "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"
-            }
-        }]
+        // var url = getRootPath();
+        // var table = $("#groupMasterListTable").DataTable({
+        //     "ajax": url + "/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
+        //     destroy: true,
+        //     "deferRender": true,
+        //     "columns": [
+        //         {"data": "id", "class": "id"},
+        //         {"data": "name", "class": "name"},
+        //         {"data": "del", "class": "del"},
+        //         {"data": "is_del", "class": "is_del none"},
+        //         {"data": "flirt", "class": "flirt"},
+        //         {"data": "is_flirt", "class": "is_flirt none"},
+        //     ],
+        //     "columnDefs": [{
+        //         "targets": 6,
+        //         "data": null,
+        //         "render": function () {
+        //             return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+        //                 "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"
+        //         }
+        //     }]
+        // });
+    // }
+
+    //获取群列表
+    GetGroupList(token, function (response) {
+        console.log(response);
+    }, function (response) {
+        layer.msg(response.errmsg);
     });
 
     //编辑对应的群主-弹出编辑框
