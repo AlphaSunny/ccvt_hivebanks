@@ -27,7 +27,7 @@ $(function () {
     // }
 
     //获取群列表
-    function GetGroupList() {
+    function GetGroupListFun() {
         var tr = "", opt = "";
         GetGroupList(token, function (response) {
             if (response.errcode == "0") {
@@ -58,7 +58,7 @@ $(function () {
         });
     }
 
-    GetGroupList();
+    GetGroupListFun();
 
 
     //编辑对应的群主-弹出编辑框
@@ -113,7 +113,7 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
-                GetGroupList();
+                GetGroupListFun();
             }
         }, function (response) {
             layer.close(loading);
