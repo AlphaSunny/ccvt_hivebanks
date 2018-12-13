@@ -42,6 +42,7 @@ $(function () {
                     console.log(data);
                     tr += "<tr>" +
                         "<td>" + data[i].name + "</td>" +
+                        "<td>" + data[i].chat_num + "</td>" +
                         "</tr>"
                 });
                 $("#groupMember").html(tr);
