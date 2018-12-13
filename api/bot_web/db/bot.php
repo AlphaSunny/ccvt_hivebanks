@@ -141,13 +141,14 @@ function get_group_members_list($group_id,$status,$offset,$limit)
                 $start = strtotime(date('Y-m-d 00:00:00', strtotime("-7 day")));
                 break;
         }
-        $sql = "select count(bot_message_id) as count from bot_message WHERE wechat='{$v['name']}'";
+        $sql = "select count(bot_message_id) as count from bot_message WHERE wechat='{$v['name']}' AND group_name='{$v['group_name']}'";
         if ($status!=-1){
             $sql .= " AND bot_create_time between '{$start}' and '{$end}'";
         }
         $db->query($sql);
         $row[$k]['chat_num'] = $db->getField($sql,'count');
     }
+    array_multisort(array_column($row,'chat_num'),SORT_DESC,$row);
     return $row;
 }
 
