@@ -50,7 +50,7 @@ $(function () {
                         "<td class='id none'>"+ data[i].id +"</td>" +
                         "<td class='name'>"+ data[i].name +" "+ data[i].scale +"</td>" +
                         "<td class='del'>"+ data[i].del +"</td>" +
-                        "<td class='is_del none'>"+ data[i].is_del +"</td>" +
+                        "<td class='is_admin_del none'>"+ data[i].is_admin_del +"</td>" +
                         "<td class='audit'>"+ data[i].audit +"</td>" +
                         "<td class='opt'>"+ opt +"</td>" +
                         "</tr>"
@@ -70,8 +70,8 @@ $(function () {
         $(".editSubBtn").removeClass("none");
         group_id = $(this).parents("tr").find(".id").text();//获取群id
         var group_name = $(this).parents("tr").find(".name").text();//获取群名称
-        var is_del = $(this).parents("tr").find(".is_del").text();//获取是否运行状态
-        if (is_del == "1") {
+        var is_admin_del = $(this).parents("tr").find(".is_admin_del").text();//获取是否运行状态
+        if (is_admin_del == "1") {
             $("#runSwitch").addClass("active").val("1");
         } else {
             $("#runSwitch").removeClass("active").val("2");
