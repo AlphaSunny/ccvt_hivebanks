@@ -1,6 +1,6 @@
 $(function () {
     //token
-    var token = GetCookie("robot_token");
+    var token = GetCookie("total_robot_token");
 
     //group_id
     var group_id = GetQueryString("group_id");
