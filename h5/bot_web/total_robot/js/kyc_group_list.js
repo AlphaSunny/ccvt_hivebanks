@@ -36,7 +36,7 @@ $(function () {
                 $.each(data, function (i, val) {
                     if(data[i].is_audit == 1){
                         console.log("1");
-                        opt = "<button class='btn-success btn-sm ok_Btn'><i class='fa fa-check'></i>通过</button>" +
+                        opt = "<button class='btn-primary btn-sm ok_Btn'><i class='fa fa-check'></i>通过</button>" +
                             "<button class='btn-sm btn-danger refuse_Btn margin-left-5'><i class='fa fa-times'></i>拒绝</button>";
                     }else if(data[i].is_audit == 3){
                         console.log("3");
