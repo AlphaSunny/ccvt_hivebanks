@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>群主列表</title>
+    <title>群详情</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../../assets/js/layer/layer.css">
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="css/group_member.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -91,17 +92,17 @@
     <ul class="app-menu">
         <!--<li><a class="app-menu__item" href="robot_login.html"><i class="app-menu__icon fa fa-dashboard"></i><span-->
         <!--class="app-menu__label">机器人登录</span></a></li>-->
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
-                class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">审核</span><i
-                class="treeview-indicator fa fa-angle-right"></i></a>
-            <ul class="treeview-menu">
-                <li><a class="treeview-item" rel="nofollow" href="kyc_group_list.html"><i class="icon fa fa-circle-o"></i>群审核</a></li>
-                <!--<li><a class="treeview-item" href="task_list.html" rel="noopener"><i class="icon fa fa-circle-o"></i>任务列表</a>-->
-                <!--<li><a class="treeview-item" href="give_like.html" rel="noopener"><i class="icon fa fa-circle-o"></i>点赞列表</a>-->
-                </li>
-                <!--<li><a class="treeview-item" href="ui-cards.html"><i class="icon fa fa-circle-o"></i> Cards</a></li>-->
-                <!--<li><a class="treeview-item" href="widgets.html"><i class="icon fa fa-circle-o"></i> Widgets</a></li>-->
-            </ul>
+        <li>
+            <a class="app-menu__item" href="kyc_group_list.html">
+                <i class="app-menu__icon fa fa-dashboard"></i>
+                <span class="app-menu__label">群审核</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item" href="give_like.html">
+                <i class="app-menu__icon fa fa-dashboard"></i>
+                <span class="app-menu__label">任务管理</span>
+            </a>
         </li>
         <!--<li><a class="app-menu__item" href="send_amount.html"><i class="app-menu__icon fa fa-th-list"></i><span-->
                 <!--class="app-menu__label">奖励统计列表</span></a></li>-->
@@ -158,34 +159,45 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i>群审核</h1>
-            <p>群审核</p>
+            <h1><i class="fa fa-th-list"></i>群详情</h1>
+            <p>群详情</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
             <li class="breadcrumb-item">首页</li>
-            <li class="breadcrumb-item active"><a href="#">群审核</a></li>
+            <li class="breadcrumb-item active"><a href="#">群详情</a></li>
         </ul>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
-                <!--<button class="btn btn-success margin-bottom-2 addGroupBtn">添加信息</button>-->
+                <h1 class="group_name"></h1>
+                <div class="flex center space-between">
+                    <div>
+                        <a href="javascript:;" class="btn btn-success click_day" name="-1">全部</a>
+                        <a href="javascript:;" class="btn btn-success click_day" name="1">今天</a>
+                        <a href="javascript:;" class="btn btn-success click_day" name="2">昨天</a>
+                        <a href="javascript:;" class="btn btn-success click_day" name="3">3天内</a>
+                        <a href="javascript:;" class="btn btn-success click_day" name="4">7天内</a>
+                    </div>
+                    <div><a href="javascript:;" class="btn btn-success lookChatCode">查看聊天记录</a></div>
+                </div>
+
                 <div class="tile-body table-responsive">
-                    <table class="table table-hover table-bordered" id="groupMasterListTable">
+                    <table class="table table-hover table-bordered" id="groupMemberTable">
                         <thead>
                         <tr class="text-center">
-                            <!--<th>id</th>-->
-                            <th>群名称</th>
-                            <th>运行状态</th>
-                            <th>审核状态</th>
-                            <th class="operating">操作</th>
+                            <th>群昵称</th>
+                            <th>聊天数</th>
                         </tr>
                         </thead>
-                        <tbody id="groupListTable">
+                        <tbody id="groupMember">
 
                         </tbody>
                     </table>
+                    <div>
+                        <div id="pagination" class="page"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -261,6 +273,6 @@
 <script src="../../assets/js/pace.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script src="../js/main.js"></script>
-<script type="text/javascript" src="js/kyc_group_list.js"></script>
+<script type="text/javascript" src="js/group_member.js"></script>
 </body>
 </html>
