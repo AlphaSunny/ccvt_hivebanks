@@ -26,7 +26,7 @@ $(function () {
     // });
 
     //获取群列表
-    var is_audit = "1";
+    var is_audit = "";
 
     function GetGroupListFun() {
         var tr = "", opt = "";
@@ -34,13 +34,16 @@ $(function () {
             if(response.errcode == "0"){
                 var data = response.rows;
                 $.each(data, function (i, val) {
+                    if(data[i].is_audit == 1){
+                        opt = "<button class='btn-success btn-sm ok_Btn'><i class='fa fa-check'></i>通过</button>" +
+                            "<button class='btn-sm btn-info refuse_Btn margin-left-5'><i class='fa fa-times'></i>拒绝</button>"
+                    }
                     tr+="<tr>" +
                         "<td class='id'>"+ data[i].id +"</td>" +
-                        "<td class='name'>"+ data[i].name +"</td>" +
+                        "<td class='name'>"+ data[i].name +" "+ data[i].scale +"</td>" +
                         "<td class='del'>"+ data[i].del +"</td>" +
                         "<td class='is_del none'>"+ data[i].is_del +"</td>" +
-                        "<td class='flirt'>"+ data[i].flirt +"</td>" +
-                        "<td class='is_flirt'>"+ data[i].is_flirt +"</td>" +
+                        "<td class='audit'>"+ data[i].audit +"</td>" +
                         "</tr>"
                 })
             }
