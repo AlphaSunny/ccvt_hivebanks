@@ -35,11 +35,14 @@ $(function () {
                 var data = response.rows;
                 $.each(data, function (i, val) {
                     if(data[i].is_audit == 1){
+                        console.log("1");
                         opt = "<button class='btn-success btn-sm ok_Btn'><i class='fa fa-check'></i>通过</button>" +
                             "<button class='btn-sm btn-info refuse_Btn margin-left-5'><i class='fa fa-times'></i>拒绝</button>";
                     }if(data[i].is_audit == 3){
+                        console.log("3");
                         opt = "<button class='btn-success btn-sm ref_ok_Btn'><i class='fa fa-check'></i>重新通过</button>";
                     }else{
+                        console.log("2");
                         opt = "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                                         "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"
                     }
