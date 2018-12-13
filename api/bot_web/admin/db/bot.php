@@ -15,7 +15,6 @@ function get_group_list($is_audit)
         $sql .= " where is_audit='{$is_audit}'";
     }
     $sql .= " ORDER BY intime DESC";
-    echo $sql;
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;
