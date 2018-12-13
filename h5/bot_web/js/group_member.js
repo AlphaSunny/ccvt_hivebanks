@@ -22,11 +22,12 @@ $(function () {
     //获取群成员列表
     var limit = 10, offset = 0, status = "-1";
 
-    function GetGroupMemberFun() {
-        var tr = "";
+    function GetGroupMemberFun(token,limit, offset,status) {
+        var tr = "",totalPage = "";
         GetGroupMember(token, group_id, limit, offset, status, function (response) {
            if(response.errcode == "0"){
                var data = response.rows;
+               totalPage = response.total;
                $.each(data, function (i, val) {
                    console.log(data);
                    tr += "<tr>" +
@@ -34,12 +35,24 @@ $(function () {
                        "</tr>"
                });
                $("#groupMember").html(tr);
+
+               $("#pagination").pagination({
+                   currentPage: (limit + offset) / limit,
+                   totalPage: totalPage,
+                   isShow: false,
+                   count: count,
+                   prevPageText: "<<",
+                   nextPageText: ">>",
+                   callback: function (current) {
+                       GetGroupMemberFun(token, limit, (current - 1) * limit)
+                   }
+               });
            }
         }, function (response) {
             layer.msg(response.errmsg);
         })
     }
 
-    GetGroupMemberFun();
+    GetGroupMemberFun(token,limit, offset,status);
 
 });
