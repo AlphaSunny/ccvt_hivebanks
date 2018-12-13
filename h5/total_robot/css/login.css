@@ -6,7 +6,6 @@
 body, html {
     position: relative;
     background: #333333;
-    color: #ffffff;
 }
 
 .login_box {
@@ -16,6 +15,7 @@ body, html {
     border-radius: 10px;
     height: 35rem;
     margin-top: 25%;
+    color: #ffffff;
 }
 
 .login_box input {
