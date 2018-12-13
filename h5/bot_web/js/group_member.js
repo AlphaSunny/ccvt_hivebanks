@@ -4,6 +4,9 @@ $(function () {
 
     //获取对应id
     var group_id = GetQueryString("group_id");
+    var _group_name = GetQueryString("group_name");
+    var group_name = decodeURI(_group_name);
+    console.log(group_name);
 
     // var url = getRootPath();
     // $('#groupMemberTable').DataTable({
