@@ -34,8 +34,15 @@ $la_id = la_user_check($token);
 // 交易记录数组
 $rows = get_group_list($is_audit);
 foreach ($rows as $k=>$v){
-    $rows[$k]['del'] = $v['is_del']==1 ? "运行中" : "关闭";
-    $rows[$k]['flirt'] = $v['is_flirt']==1 ? "运行中" : "关闭";
+    $rows[$k]['del'] = $v['is_admin_del']==1 ? "运行中" : "关闭";
+    if ($v['is_audit']==1){
+        $audit = "待审核";
+    }elseif ($v['is_audit']==2){
+        $audit = "审核成功";
+    }else{
+        $audit = "审核未通过";
+    }
+    $rows[$k]['audit'] = $audit;
 }
 
 // 返回数据做成
