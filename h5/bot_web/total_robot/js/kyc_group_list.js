@@ -65,6 +65,7 @@ $(function () {
     $(document).on("click", ".review_btn", function () {
         var is_audit = "", why = "";
         var group_id = $(this).parents("tr").find(".id").text();//获取群id
+        console.log(group_id);
         if ($(this).hasClass("ok_Btn")) {
             is_audit = "2";
             ShowLoading("show");
@@ -72,12 +73,14 @@ $(function () {
         }
         if ($(this).hasClass("refuse_Btn")) {
             $("#reviewModal").modal("show");
+            console.log(group_id);
         }
         if ($(this).hasClass("now")) {
             is_audit = "3";
             why = $(".review_text").text();
             $("#reviewModal").modal("hide");
             ShowLoading("show");
+            console.log(group_id);
             ReviewGroupFun(group_id, is_audit, why);
         }
     });
