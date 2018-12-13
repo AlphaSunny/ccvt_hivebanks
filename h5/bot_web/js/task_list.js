@@ -49,7 +49,7 @@ $(function () {
     $(document).on("click", ".delBtn", function () {
         timer_id = $(this).parents("tr[role='row']").find(".id").text();
         layer.confirm('确定删除该条数据？', {
-            btn: ['取消', '确认'] //按钮
+            btn: ['确认', '取消'] //按钮
         }, function () {
             DelTaskFun();
         })
