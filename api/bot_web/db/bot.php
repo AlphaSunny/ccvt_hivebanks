@@ -28,7 +28,7 @@ function check_us_group($us_id,$group_id)
 function get_group_list($us_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM bot_group WHERE us_id = '{$us_id}' AND is_audit=2 AND is_test=1 ORDER BY intime ASC ";
+    $sql = "SELECT g,id,g.name,g.us_id,g.is_del,g.is_flirt,g.is_audit,g.why,g.scale,g.is_give_ccvt,g.group_type,t.name as group_type_name FROM bot_group as g LEFT JOIN bot_group_type as t on g.group_type=t.id WHERE g.us_id = '{$us_id}' AND g.is_test=1 ORDER BY g.intime ASC ";
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;
@@ -367,7 +367,7 @@ function check_bot_login($us_id)
 function get_group_temporary_list($us_id)
 {
     $db = new DB_COM();
-    $sql = "select id,name,is_apply from bot_temporary_group WHERE us_id='{$us_id}'";
+    $sql = "select id,name from bot_temporary_group WHERE us_id='{$us_id}'";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
