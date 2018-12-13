@@ -27,6 +27,9 @@
 .margin-top-2{
     margin-top: 2%;
 }
+.margin-bottom-10{
+    margin-bottom: 10%;
+}
 
 /*font-weight*/
 .font-bold{
@@ -159,6 +162,9 @@ table td{
 }
 .margin-top-2{
     margin-top: 2%;
+}
+.margin-bottom-5{
+    margin-bottom: 5%;
 }
 
 /*padding*/

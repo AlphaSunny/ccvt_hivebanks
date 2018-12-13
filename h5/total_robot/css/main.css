@@ -2716,7 +2716,8 @@ fieldset:disabled a.btn {
 .btn-primary:hover {
     color: #FFF;
     background-color: #007065;
-    border-color: #00635a;
+    border-color: #08535f;
+    /*border-color: #00635a;*/
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2733,7 +2734,8 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
     color: #FFF;
-    background-color: #00635a;
+    /*background-color: #00635a;*/
+    background-color: #08535f;
     border-color: #00564e;
 }
 
@@ -5263,7 +5265,8 @@ input[type="button"].btn-block {
 .badge-primary[href]:hover, .badge-primary[href]:focus {
     color: #FFF;
     text-decoration: none;
-    background-color: #00635a;
+    /*background-color: #00635a;*/
+    background-color: #08535f;
 }
 
 .badge-secondary {
@@ -6567,7 +6570,8 @@ button.close {
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-    background-color: #00635a !important;
+    /*background-color: #00635a !important;*/
+    background-color: #08535f !important;
 }
 
 .bg-secondary {
@@ -9896,7 +9900,8 @@ button.bg-dark:focus {
 }
 
 a.text-primary:hover, a.text-primary:focus {
-    color: #00635a !important;
+    /*color: #00635a !important;*/
+    color: #08535f !important;
 }
 
 .text-secondary {
@@ -11479,7 +11484,8 @@ body.stop-scrolling {
 }
 
 .sweet-alert button:active {
-    background-color: #00635a;
+    /*background-color: #00635a;*/
+    background-color: #08535f;
 }
 
 .sweet-alert button.cancel {
@@ -14072,12 +14078,14 @@ be a descendant of the grid when it is being dragged.
 
 ::-moz-selection {
     color: #FFF;
-    background-color: #00635a;
+    /*background-color: #00635a;*/
+    background-color: #08535f;
 }
 
 ::selection {
     color: #FFF;
-    background-color: #00635a;
+    /*background-color: #00635a;*/
+    background-color: #08535f;
 }
 
 @media (min-width: 768px) {
@@ -14180,7 +14188,8 @@ be a descendant of the grid when it is being dragged.
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    background-color: #009688;
+    /*background-color: #009688;*/
+    background-color: #08535f;
     z-index: 1030;
     padding-right: 15px;
 }
@@ -14217,7 +14226,8 @@ be a descendant of the grid when it is being dragged.
         flex: 0 0 auto;
         display: block;
         width: 230px;
-        background-color: #007d71;
+        /*background-color: #007d71;*/
+        background-color: #08535f;
     }
 }
 
@@ -14251,7 +14261,8 @@ be a descendant of the grid when it is being dragged.
 
 .app-sidebar__toggle:focus, .app-sidebar__toggle:hover {
     color: #fff;
-    background-color: #00635a;
+    /*background-color: #00635a;*/
+    background-color: #08535f;
     text-decoration: none;
 }
 
