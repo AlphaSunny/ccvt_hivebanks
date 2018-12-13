@@ -135,11 +135,11 @@ function GetGroupList(token, is_audit, suc_func, error_func) {
 }
 
 //审核群列表
-function ReviewGroup(token, group_id, is_audit, why, suc_func, error_func) {
+function ReviewGroup(token, review_group_id, is_audit, why, suc_func, error_func) {
     var api_url = 'group_audit.php',
         post_data = {
             'token': token,
-            'group_id': group_id,
+            'group_id': review_group_id,
             'is_audit': is_audit,
             'why': why
         };
