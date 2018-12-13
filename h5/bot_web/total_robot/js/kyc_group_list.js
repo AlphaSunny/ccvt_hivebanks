@@ -66,12 +66,12 @@ $(function () {
 
     //审核群列表
     $(document).on("click", ".review_btn", function () {
-        var is_audit = "", group_id = "", why = "";
-        group_id = $(this).parents("tr").find(".id").text();//获取群id
+        var is_audit = "", why = "";
+        var group_id = $(this).parents("tr").find(".id").text();//获取群id
         if ($(this).hasClass("ok_Btn")) {
             is_audit = "2";
             ShowLoading("show");
-            ReviewGroupFun(group_id, is_audit);
+            ReviewGroupFun(group_id, is_audit,why);
         }
         if ($(this).hasClass("refuse_Btn")) {
             $("#reviewModal").modal("show");
@@ -81,7 +81,7 @@ $(function () {
             why = $(".review_text").text();
             $("#reviewModal").modal("hide");
             ShowLoading("show");
-            ReviewGroupFun(group_id, is_audit);
+            ReviewGroupFun(group_id, is_audit,why);
         }
     });
 
