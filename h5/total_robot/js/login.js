@@ -6,7 +6,7 @@ $(function () {
 
     var total_robot_token = GetLoginCookie("total_robot_token");
     if (total_robot_token) {
-        // window.location.href = "config.html";
+        window.location.href = 'kyc_group_list.html';
         alert("已登录");
     }
     $('#login_btn').click(function () {
