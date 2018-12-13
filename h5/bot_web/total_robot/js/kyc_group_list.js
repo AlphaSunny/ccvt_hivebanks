@@ -65,30 +65,28 @@ $(function () {
     GetGroupListFun();
 
     //审核群列表
-    var review_is_audit = "", review_group_id = "", why = "";
-    $(document).on("click",".review_btn", function () {
-        review_group_id = $(this).parents("tr").find(".id").text();//获取群id
+    $(document).on("click", ".review_btn", function () {
+        var is_audit = "", group_id = "", why = "";
+        group_id = $(this).parents("tr").find(".id").text();//获取群id
         if ($(this).hasClass("ok_Btn")) {
-            review_is_audit = "2";
+            is_audit = "2";
             ShowLoading("show");
-            ReviewGroupFun();
+            ReviewGroupFun(group_id, is_audit);
         }
         if ($(this).hasClass("refuse_Btn")) {
             $("#reviewModal").modal("show");
         }
         if ($(this).hasClass("now")) {
-            review_is_audit = "3";
+            is_audit = "3";
             why = $(".review_text").text();
             $("#reviewModal").modal("hide");
             ShowLoading("show");
-            ReviewGroupFun();
+            ReviewGroupFun(group_id, is_audit);
         }
     });
 
     function ReviewGroupFun() {
-        console.log(review_group_id);
-        return;
-        ReviewGroup(token, review_group_id, review_is_audit, why, function (response) {
+        ReviewGroup(token, group_id, is_audit, why, function (response) {
             ShowLoading("hide");
             if (response.errcode == "0") {
                 layer.msg("处理成功", {icon: 1});
