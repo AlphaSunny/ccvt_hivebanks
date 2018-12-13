@@ -60,12 +60,13 @@
 }
 
 .btn-success {
-    background: #009988;
-    border-color: #009988
+    background: #009988 !important;
+    border-color: #009988 !important;
 }
-.btn-success:hover{
-    background: #018273;
-    border-color: #018273
+
+.btn-success:hover {
+    background: #018273 !important;
+    border-color: #018273 !important;
 }
 
 /*flex*/
