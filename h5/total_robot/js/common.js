@@ -124,6 +124,8 @@ function LaLogin(user, pass_word_hash, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//获取群列表
+
 /**
  * Disable button
  * @param $this Button object
