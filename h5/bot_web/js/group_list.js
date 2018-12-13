@@ -161,9 +161,8 @@ $(function () {
 
     //进入详情查看
     $(document).on("click", ".infoBtn", function () {
-        var group_id = $(this).parents("tr[role='row']").find(".id").text();
-        var group_name = $(this).parents("tr[role='row']").find(".name").text();
-        console.log(group_name);
+        var group_id = $(this).parents("tr").find(".id").text();
+        var group_name = $(this).parents("tr").find(".name").text();
         window.location.href = "group_member.html?group_id=" + group_id + "&group_name=" + encodeURI(encodeURI(group_name));
     })
 });

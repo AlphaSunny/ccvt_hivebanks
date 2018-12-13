@@ -159,14 +159,12 @@ table {
     width: 100% !important;
 }
 
-table .operating {
-    width: 18%;
-}
-
 table td {
     text-align: center;
 }
-
+table .th_top{
+    border-top: 1px solid #dddddd;
+}
 .switch:focus {
     outline: none !important;
 }
