@@ -146,6 +146,7 @@ function get_group_members_list($group_id,$status,$offset,$limit)
             $sql .= " AND bot_create_time between '{$start}' and '{$end}'";
         }
         $sql .= " limit $offset , $limit";
+        echo $sql;
         $db->query($sql);
         $row[$k]['chat_num'] = $db->getField($sql,'count');
     }
