@@ -401,7 +401,16 @@ function group_submit_audit($data)
     $date['intime'] = time();
     $sql = $db->sqlInsert("bot_group", $date);
     $q_id = $db->query($sql);
-    if ($q_id == 0)
+    if ($q_id){
+        //改变临时表
+        $time = time();
+        $sql = "update bot_temporary_group set is_apply=2,uptime='{$time}' WHERE id='{$data['group_id']}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            return false;
+        }
+    }else{
         return false;
+    }
     return true;
 }
