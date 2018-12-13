@@ -70,4 +70,10 @@ $(function () {
 
     GetGroupMemberFun(token, limit, offset, status);
 
+    //查看某一段/天
+    $(".click_day").click(function () {
+        status = $(this).attr("name");
+        console.log(status);
+    })
+
 });
