@@ -37,7 +37,7 @@ $(function () {
                     if(data[i].is_audit == 1){
                         console.log("1");
                         opt = "<button class='btn-success btn-sm ok_Btn'><i class='fa fa-check'></i>通过</button>" +
-                            "<button class='btn-sm btn-info refuse_Btn margin-left-5'><i class='fa fa-times'></i>拒绝</button>";
+                            "<button class='btn-sm btn-danger refuse_Btn margin-left-5'><i class='fa fa-times'></i>拒绝</button>";
                     }else if(data[i].is_audit == 3){
                         console.log("3");
                         opt = "<button class='btn-success btn-sm ref_ok_Btn'><i class='fa fa-check'></i>重新通过</button>";
