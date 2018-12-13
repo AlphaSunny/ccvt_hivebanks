@@ -133,6 +133,6 @@ $(function () {
         var group_id = $(this).parents("tr[role='row']").find(".id").text();
         var group_name = $(this).parents("tr[role='row']").find(".name").text();
         console.log(group_name);
-        window.location.href = "group_member.html?group_id=" + group_id + "group_name=" + encodeURI(encodeURI(group_name));
+        window.location.href = "group_member.html?group_id=" + group_id + "&group_name=" + encodeURI(encodeURI(group_name));
     })
 });
