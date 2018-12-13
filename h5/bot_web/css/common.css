@@ -60,6 +60,7 @@
 /*btn*/
 .btn {
     cursor: pointer;
+    outline: none;
 }
 
 .btn-success {

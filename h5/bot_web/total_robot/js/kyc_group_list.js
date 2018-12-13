@@ -36,15 +36,15 @@ $(function () {
                 $.each(data, function (i, val) {
                     if (data[i].is_audit == 1) {
                         console.log("1");
-                        opt = "<button class='btn-primary btn-sm ok_Btn review_btn'><i class='fa fa-check'></i>通过</button>" +
-                            "<button class='btn-sm btn-danger refuse_Btn review_btn margin-left-5'><i class='fa fa-times'></i>拒绝</button>";
+                        opt = "<button class='btn btn-primary btn-sm ok_Btn review_btn'><i class='fa fa-check'></i>通过</button>" +
+                            "<button class='btn btn-sm btn-danger refuse_Btn review_btn margin-left-5'><i class='fa fa-times'></i>拒绝</button>";
                     } else if (data[i].is_audit == 3) {
                         console.log("3");
-                        opt = "<button class='btn-success btn-sm ref_ok_Btn'><i class='fa fa-check'></i>重新通过</button>";
+                        opt = "<button class='btn btn-success btn-sm ref_ok_Btn'><i class='fa fa-check'></i>重新通过</button>";
                     } else {
                         console.log("2");
-                        opt = "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil'></i>编辑</button>" +
-                            "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye'></i>详情</button>"
+                        opt = "<button class='btn btn-success btn-sm editBtn'><i class='fa fa-pencil'></i>编辑</button>" +
+                            "<button class='btn btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye'></i>详情</button>"
                     }
                     tr += "<tr>" +
                         "<td class='id none'>" + data[i].id + "</td>" +
