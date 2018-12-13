@@ -102,8 +102,6 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
-                table.ajax.reload();
-
             }
         }, function (response) {
             layer.close(loading);
