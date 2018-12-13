@@ -39,7 +39,6 @@ $(function () {
                     count = 6;
                 }
                 $.each(data, function (i, val) {
-                    console.log(data);
                     tr += "<tr>" +
                         "<td>" + data[i].name + "</td>" +
                         "<td>" + data[i].chat_num + "</td>" +
