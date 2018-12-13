@@ -398,6 +398,7 @@ function group_submit_audit($data)
     $db = new DB_COM();
     $date['name'] = $data['group_name'];
     $date['us_id'] = $data['us_id'];
+    $date['group_type'] = $data['group_type_id'];
     $date['intime'] = time();
     $sql = $db->sqlInsert("bot_group", $date);
     $q_id = $db->query($sql);
