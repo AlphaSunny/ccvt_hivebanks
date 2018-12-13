@@ -51,7 +51,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        GetGroupMemberFun(token, limit, (current - 1) * limit)
+                        GetGroupMemberFun(token, limit, (current - 1) * limit,status)
                     }
                 });
             }
