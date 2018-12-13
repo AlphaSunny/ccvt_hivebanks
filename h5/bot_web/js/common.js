@@ -245,13 +245,14 @@ function AddTask(token, time, group_id, content, suc_func, error_func) {
 }
 
 //查看群成员列表
-function GetGroupMember(token, group_id, limit, offset, suc_func, error_func) {
+function GetGroupMember(token, group_id, limit, offset, status, suc_func, error_func) {
     var api_url = "group_members_list.php",
         post_data = {
             "token": token,
             "group_id": group_id,
             "limit": limit,
-            "offset": offset
+            "offset": offset,
+            "status": status
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }

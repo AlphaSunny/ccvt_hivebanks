@@ -21,10 +21,10 @@ $(function () {
     });
 
     //获取群成员列表
-    var limit = 10, offset = 0;
+    var limit = 10, offset = 0, status = "-1";
 
     function GetGroupMemberFun() {
-        GetGroupMember(token, group_id,limit, offset, function (response) {
+        GetGroupMember(token, group_id,limit, offset,status, function (response) {
             console.log(response);
             if (response.errcode == "0") {
                 var data = response.rows, tr = "";
