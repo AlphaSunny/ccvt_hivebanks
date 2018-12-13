@@ -22,37 +22,44 @@ $(function () {
     //获取群成员列表
     var limit = 10, offset = 0, status = "-1";
 
-    function GetGroupMemberFun(token,limit, offset,status) {
-        var tr = "",totalPage = "";
+    function GetGroupMemberFun(token, limit, offset, status) {
+        var tr = "", totalPage = "", count = "";
         GetGroupMember(token, group_id, limit, offset, status, function (response) {
-           if(response.errcode == "0"){
-               var data = response.rows;
-               totalPage = response.total;
-               $.each(data, function (i, val) {
-                   console.log(data);
-                   tr += "<tr>" +
-                       "<td>" + data[i].name + "</td>" +
-                       "</tr>"
-               });
-               $("#groupMember").html(tr);
+            if (response.errcode == "0") {
+                var data = response.rows;
+                totalPage = response.total;
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+                $.each(data, function (i, val) {
+                    console.log(data);
+                    tr += "<tr>" +
+                        "<td>" + data[i].name + "</td>" +
+                        "</tr>"
+                });
+                $("#groupMember").html(tr);
 
-               $("#pagination").pagination({
-                   currentPage: (limit + offset) / limit,
-                   totalPage: totalPage,
-                   isShow: false,
-                   count: count,
-                   prevPageText: "<<",
-                   nextPageText: ">>",
-                   callback: function (current) {
-                       GetGroupMemberFun(token, limit, (current - 1) * limit)
-                   }
-               });
-           }
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        GetGroupMemberFun(token, limit, (current - 1) * limit)
+                    }
+                });
+            }
         }, function (response) {
             layer.msg(response.errmsg);
         })
     }
 
-    GetGroupMemberFun(token,limit, offset,status);
+    GetGroupMemberFun(token, limit, offset, status);
 
 });
