@@ -14517,6 +14517,7 @@ be a descendant of the grid when it is being dragged.
     transition: border-left-color 0.3s ease,
     background-color 0.3s ease;
     color: #fff;
+    background: #192429;
 }
 
 .app-menu__item.active, .app-menu__item:hover, .app-menu__item:focus {
