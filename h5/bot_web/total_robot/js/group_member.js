@@ -1,6 +1,6 @@
 $(function () {
     //获取token
-    var token = GetCookie("robot_token");
+    var token = GetCookie("total_robot_token");
 
     //获取对应id
     var group_id = GetQueryString("group_id");
