@@ -142,7 +142,7 @@ function get_group_members_list($group_id,$status,$offset,$limit)
                 break;
         }
         $sql = "select count(bot_message_id) as count from bot_message WHERE wechat='{$v['name']}'";
-        if ($status!=-1 || $status!=''){
+        if ($status!=-1){
             $sql .= " AND bot_create_time between '{$start}' and '{$end}'";
         }
         $sql .= " limit $offset , $limit";
