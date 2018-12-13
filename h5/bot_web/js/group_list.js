@@ -2,59 +2,64 @@ $(function () {
     var token = GetCookie("robot_token");
 
     // function GetGroupListFun() {
-        // var url = getRootPath();
-        // var table = $("#groupMasterListTable").DataTable({
-        //     "ajax": url + "/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
-        //     destroy: true,
-        //     "deferRender": true,
-        //     "columns": [
-        //         {"data": "id", "class": "id"},
-        //         {"data": "name", "class": "name"},
-        //         {"data": "del", "class": "del"},
-        //         {"data": "is_del", "class": "is_del none"},
-        //         {"data": "flirt", "class": "flirt"},
-        //         {"data": "is_flirt", "class": "is_flirt none"},
-        //     ],
-        //     "columnDefs": [{
-        //         "targets": 6,
-        //         "data": null,
-        //         "render": function () {
-        //             return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-        //                 "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"
-        //         }
-        //     }]
-        // });
+    // var url = getRootPath();
+    // var table = $("#groupMasterListTable").DataTable({
+    //     "ajax": url + "/api/bot_web/group_list.php?token=" + encodeURIComponent(token),
+    //     destroy: true,
+    //     "deferRender": true,
+    //     "columns": [
+    //         {"data": "id", "class": "id"},
+    //         {"data": "name", "class": "name"},
+    //         {"data": "del", "class": "del"},
+    //         {"data": "is_del", "class": "is_del none"},
+    //         {"data": "flirt", "class": "flirt"},
+    //         {"data": "is_flirt", "class": "is_flirt none"},
+    //     ],
+    //     "columnDefs": [{
+    //         "targets": 6,
+    //         "data": null,
+    //         "render": function () {
+    //             return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+    //                 "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"
+    //         }
+    //     }]
+    // });
     // }
 
     //获取群列表
-    var tr = "", opt = "";
-    GetGroupList(token, function (response) {
-        if(response.errcode == "0"){
-            var data = response.rows;
-            $.each(data, function (i, val) {
-                if(data[i].is_audit == "1"){
-                    opt = "审核中";
-                }else if(data[i].is_audit == "3"){
-                    opt = "未通过";
-                }else {
-                    opt = "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-                        "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>";
-                }
-                tr+="<tr>" +
-                    "<td class='id'>"+ data[i].id +"</td>" +
-                    "<td class='name'>"+ data[i].name +"</td>" +
-                    "<td>"+ data[i].del +"</td>" +
-                    "<td class='none is_del'>"+ data[i].is_del +"</td>" +
-                    "<td>"+ data[i].flirt +"</td>" +
-                    "<td class='none is_flirt'>"+ data[i].is_flirt +"</td>" +
-                    "<td class='opt'>"+ opt +"</td>" +
-                    "</tr>";
-            });
-            $("#groupListTable").html(tr);
-        }
-    }, function (response) {
-        layer.msg(response.errmsg);
-    });
+    function GetGroupList() {
+        var tr = "", opt = "";
+        GetGroupList(token, function (response) {
+            if (response.errcode == "0") {
+                var data = response.rows;
+                $.each(data, function (i, val) {
+                    if (data[i].is_audit == "1") {
+                        opt = "审核中";
+                    } else if (data[i].is_audit == "3") {
+                        opt = "未通过";
+                    } else {
+                        opt = "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+                            "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>";
+                    }
+                    tr += "<tr>" +
+                        "<td class='id'>" + data[i].id + "</td>" +
+                        "<td class='name'>" + data[i].name + "</td>" +
+                        "<td>" + data[i].del + "</td>" +
+                        "<td class='none is_del'>" + data[i].is_del + "</td>" +
+                        "<td>" + data[i].flirt + "</td>" +
+                        "<td class='none is_flirt'>" + data[i].is_flirt + "</td>" +
+                        "<td class='opt'>" + opt + "</td>" +
+                        "</tr>";
+                });
+                $("#groupListTable").html(tr);
+            }
+        }, function (response) {
+            layer.msg(response.errmsg);
+        });
+    }
+
+    GetGroupList();
+
 
     //编辑对应的群主-弹出编辑框
     var group_id = "";
@@ -108,8 +113,7 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
-                table.ajax.reload();
-
+                GetGroupList();
             }
         }, function (response) {
             layer.close(loading);
@@ -133,31 +137,31 @@ $(function () {
     // });
 
     //确认提交添加信息
-    $(".addSubBtn").click(function () {
-        //获取群名称
-        var group_name = $("#groupName").val();
-
-        //获取运行状态
-        var del = $("#runSwitch").val();
-
-        //获取调戏状态
-        var flirt = $("#trickSwitch").val();
-        //loading
-        var loading = layer.load(1, {
-            shade: [0.1, '#fff'] //0.1透明度的白色背景
-        });
-        AddGroup(token, group_name, del, flirt, function (response) {
-            if (response.errcode == "0") {
-                layer.close(loading);
-                $("#editGroupModal").modal("hide");
-                table.ajax.reload();
-            }
-        }, function (response) {
-            layer.close(loading);
-            $("#editGroupModal").modal("hide");
-            layer.msg(response.errmsg);
-        })
-    });
+    // $(".addSubBtn").click(function () {
+    //     //获取群名称
+    //     var group_name = $("#groupName").val();
+    //
+    //     //获取运行状态
+    //     var del = $("#runSwitch").val();
+    //
+    //     //获取调戏状态
+    //     var flirt = $("#trickSwitch").val();
+    //     //loading
+    //     var loading = layer.load(1, {
+    //         shade: [0.1, '#fff'] //0.1透明度的白色背景
+    //     });
+    //     AddGroup(token, group_name, del, flirt, function (response) {
+    //         if (response.errcode == "0") {
+    //             layer.close(loading);
+    //             $("#editGroupModal").modal("hide");
+    //             table.ajax.reload();
+    //         }
+    //     }, function (response) {
+    //         layer.close(loading);
+    //         $("#editGroupModal").modal("hide");
+    //         layer.msg(response.errmsg);
+    //     })
+    // });
 
     //进入详情查看
     $(document).on("click", ".infoBtn", function () {
