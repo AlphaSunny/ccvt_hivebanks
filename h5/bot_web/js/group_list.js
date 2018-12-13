@@ -119,18 +119,18 @@ $(function () {
     });
 
     //添加消息
-    $(".addGroupBtn").click(function () {
-        //更改默认值
-        $("#myModalLabel").text("添加群信息");
-        $("#groupName").removeAttr("readonly");
-        $(".addSubBtn").removeClass("none");
-        $(".editSubBtn").addClass("none");
-        //初始化添加的内容
-        $("#groupName").val("");
-        $("#runSwitch,#trickSwitch").addClass("active").val("1");
-        //显示添加信息框
-        $("#editGroupModal").modal("show");
-    });
+    // $(".addGroupBtn").click(function () {
+    //     //更改默认值
+    //     $("#myModalLabel").text("添加群信息");
+    //     $("#groupName").removeAttr("readonly");
+    //     $(".addSubBtn").removeClass("none");
+    //     $(".editSubBtn").addClass("none");
+    //     //初始化添加的内容
+    //     $("#groupName").val("");
+    //     $("#runSwitch,#trickSwitch").addClass("active").val("1");
+    //     //显示添加信息框
+    //     $("#editGroupModal").modal("show");
+    // });
 
     //确认提交添加信息
     $(".addSubBtn").click(function () {
