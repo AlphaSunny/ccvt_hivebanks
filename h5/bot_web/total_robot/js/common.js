@@ -207,6 +207,10 @@ function ActiveClick($this, btnText) {
     $this.html(btnText);
 }
 
+window.onload=function () {
+    $(".loading").fadeOut(300);
+};
+
 //loading
 var loading = "";
 function ShowLoading(type) {
