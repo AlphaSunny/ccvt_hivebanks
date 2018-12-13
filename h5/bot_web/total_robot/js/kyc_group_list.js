@@ -86,8 +86,9 @@ $(function () {
     });
 
     function ReviewGroupFun() {
+        console.log(review_group_id);
+        return;
         ReviewGroup(token, review_group_id, review_is_audit, why, function (response) {
-            console.log(review_group_id);
             ShowLoading("hide");
             if (response.errcode == "0") {
                 layer.msg("处理成功", {icon: 1});
