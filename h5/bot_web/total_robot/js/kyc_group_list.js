@@ -68,7 +68,6 @@ $(function () {
     var review_is_audit = "", review_group_id = "", why = "";
     $(document).on("click",".review_btn", function () {
         review_group_id = $(this).parents("tr").find(".id").text();//获取群id
-        console.log(review_group_id);return;
         if ($(this).hasClass("ok_Btn")) {
             review_is_audit = "2";
             ShowLoading("show");
@@ -88,6 +87,7 @@ $(function () {
 
     function ReviewGroupFun() {
         ReviewGroup(token, review_group_id, review_is_audit, why, function (response) {
+            console.log(review_group_id);
             ShowLoading("hide");
             if (response.errcode == "0") {
                 layer.msg("处理成功", {icon: 1});
