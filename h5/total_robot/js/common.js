@@ -275,3 +275,40 @@ function GetAmount(token, start_time, end_time, suc_func, error_func) {
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
+
+/**
+ * Disable button
+ * @param $this Button object
+ * @param btnText Button text content defaults to "in process"
+ * @return {boolean}
+ */
+function DisableClick($this, btnText) {
+    if (!$this) {
+        console.warn("$this Can not be empty");
+        return true;
+    }
+    var status = Number($this.attr('data-clickStatus') || 1);
+    if (status == 0) {
+        return true;
+    }
+
+    btnText = btnText ? btnText : "loading...";
+    $this.attr('data-clickStatus', 0);
+    $this.html(btnText);
+    return false;
+}
+
+/**
+ * Activation button
+ * @param $this Button object
+ * @param btnText Button text content defaults to "in process"
+ */
+function ActiveClick($this, btnText) {
+    if (!$this) {
+        console.warn("$this Can not be empty");
+        return;
+    }
+    btnText = btnText ? btnText : "确认";
+    $this.attr('data-clickStatus', 1);
+    $this.html(btnText);
+}
