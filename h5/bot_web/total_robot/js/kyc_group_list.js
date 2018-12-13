@@ -83,6 +83,7 @@ $(function () {
     });
 
     function ReviewGroupFun(group_id, is_audit, why) {
+        console.log(group_id);
         ReviewGroup(token, group_id, is_audit, why, function (response) {
             ShowLoading("hide");
             if (response.errcode == "0") {
