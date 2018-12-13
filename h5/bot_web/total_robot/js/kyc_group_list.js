@@ -43,8 +43,8 @@ $(function () {
                         opt = "<button class='btn-success btn-sm ref_ok_Btn'><i class='fa fa-check'></i>重新通过</button>";
                     }else{
                         console.log("2");
-                        opt = "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-                                        "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"
+                        opt = "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil'></i>编辑</button>" +
+                                        "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye'></i>详情</button>"
                     }
                     console.log(opt);
                     tr+="<tr>" +
