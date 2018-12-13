@@ -15,7 +15,7 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 define('BA_ID','6C69520E-E454-127B-F474-452E65A3EE75');
-define('FLAG','9');
+define('FLAG','11');
 define('RATE',0.01);
 define('UNIT',100000000);
 interest_auto();
