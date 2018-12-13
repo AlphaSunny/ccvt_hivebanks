@@ -367,7 +367,7 @@ function check_bot_login($us_id)
 function get_group_temporary_list($us_id)
 {
     $db = new DB_COM();
-    $sql = "select id,name from bot_temporary_group WHERE us_id='{$us_id}' AND is_apply=1";
+    $sql = "select id,name,is_apply from bot_temporary_group WHERE us_id='{$us_id}'";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
