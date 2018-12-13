@@ -9,7 +9,7 @@ $(function () {
         // window.location.href = "config.html";
         alert("已登录");
     }
-    $('.loginBtn').click(function () {
+    $('.login_btn').click(function () {
         var _this = $(this), _text = $(this).text();
         var user = $('#user').val(),
             password = $('#password').val(),
