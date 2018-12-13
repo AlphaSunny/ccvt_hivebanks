@@ -7,10 +7,14 @@
 //      variable      绑定name
 // 返回: row           最新信息数组
 //======================================
-function get_group_list()
+function get_group_list($is_audit)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM bot_group ORDER BY intime ASC ";
+    $sql = "SELECT * FROM bot_group";
+    if ($is_audit){
+        $sql .= " where is_audit='{$is_audit}'";
+    }
+    $sql .= " ORDER BY intime DESC";
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;

@@ -24,11 +24,15 @@ chk_empty_args('GET', $args);
 
 // token
 $token = get_arg_str('GET', 'token',128);
+
+// 审核状态
+$is_audit = get_arg_str('GET', 'is_audit');
+
 //验证token
 $la_id = la_user_check($token);
 
 // 交易记录数组
-$rows = get_group_list();
+$rows = get_group_list($is_audit);
 foreach ($rows as $k=>$v){
     $rows[$k]['del'] = $v['is_del']==1 ? "运行中" : "关闭";
     $rows[$k]['flirt'] = $v['is_flirt']==1 ? "运行中" : "关闭";
