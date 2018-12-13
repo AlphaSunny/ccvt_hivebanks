@@ -47,7 +47,7 @@ $(function () {
                     "<td class='none is_del'>"+ data[i].is_del +"</td>" +
                     "<td>"+ data[i].flirt +"</td>" +
                     "<td class='none is_flirt'>"+ data[i].is_flirt +"</td>" +
-                    "<td class='opt'>+ opt +</td>" +
+                    "<td class='opt'>"+ opt +"</td>" +
                     "</tr>";
             });
             $("#groupListTable").html(tr);
