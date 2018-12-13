@@ -24,16 +24,17 @@ $(function () {
 
     function GetGroupMemberFun() {
         var tr = "";
-        GetGroupMember(token, group_id,limit, offset,status, function (response) {
-            console.log(response);
-                var data = response.data;
-                $.each(data, function (i, val) {
-                    console.log(data);
-                    tr += "<tr>" +
-                        "<td>" + data[i].name + "</td>" +
-                        "</tr>"
-                });
-                $("#groupMember").html(tr);
+        GetGroupMember(token, group_id, limit, offset, status, function (response) {
+           if(response.errcode == "0"){
+               var data = response.rows;
+               $.each(data, function (i, val) {
+                   console.log(data);
+                   tr += "<tr>" +
+                       "<td>" + data[i].name + "</td>" +
+                       "</tr>"
+               });
+               $("#groupMember").html(tr);
+           }
         }, function (response) {
             layer.msg(response.errmsg);
         })
