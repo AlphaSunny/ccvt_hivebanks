@@ -278,3 +278,7 @@ function GetAmount(token, start_time, end_time, suc_func, error_func) {
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
+
+window.onload=function () {
+  $(".loading").fadeOut(300);
+};

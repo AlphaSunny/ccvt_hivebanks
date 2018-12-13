@@ -3,7 +3,7 @@
     margin: 0;
 }
 
-.dropdown-menu>li>a{
+.dropdown-menu > li > a {
     line-height: 2.5;
 }
 
@@ -24,12 +24,12 @@
     margin-left: 5%;
 }
 
-.margin-top-2{
+.margin-top-2 {
     margin-top: 2%;
 }
 
 /*font-weight*/
-.font-bold{
+.font-bold {
     font-weight: bold;
 }
 
@@ -51,7 +51,7 @@
     align-items: center;
 }
 
-.inline-block{
+.inline-block {
     display: inline-block;
 }
 
@@ -69,8 +69,8 @@
     -webkit-appearance: none;
     user-select: none;
     outline: none;
-    margin-left: 2%!important;
-    margin-right: 2%!important;
+    margin-left: 2% !important;
+    margin-right: 2% !important;
     cursor: pointer;
 }
 
@@ -103,17 +103,19 @@ input[type=checkbox] {
     margin: unset;
 }
 
-textarea#content{
+textarea#content {
     width: 100%;
 }
 
-table{
-    width: 100%!important;
+table {
+    width: 100% !important;
 }
-table .operating{
+
+table .operating {
     width: 18%;
 }
-table td{
+
+table td {
     text-align: center;
 }
 
@@ -121,54 +123,78 @@ table td{
     outline: none !important;
 }
 
-.treeview-menu li{
+.treeview-menu li {
     line-height: 2.5rem;
 }
 
 /*chat record*/
-.weChatBtn{
-    background: transparent!important;
-    color: #000000!important;
+.weChatBtn {
+    background: transparent !important;
+    color: #000000 !important;
 }
-.weChatBtn.activeWeChatBtn{
-    background: #138496!important;
-    color: #ffffff!important;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4)!important;
+
+.weChatBtn.activeWeChatBtn {
+    background: #138496 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4) !important;
 }
-.success_box{
+
+.success_box {
     display: none;
 }
+
 /*qr_img*/
-#qr_img{
+#qr_img {
     margin: auto;
     width: 20%;
 }
 
 /*none*/
-.none{
-    display: none!important;
+.none {
+    display: none !important;
 }
 
-.dropdown i{
+.dropdown i {
     font-size: 2rem;
 }
 
 /*margin*/
-.margin-left-1{
+.margin-left-1 {
     margin-left: 1%;
 }
-.margin-top-2{
+
+.margin-top-2 {
     margin-top: 2%;
 }
 
 /*padding*/
-.padding-1{
+.padding-1 {
     padding: 1%;
 }
-.padding-left-2{
+
+.padding-left-2 {
     padding-left: 2%;
 }
 
-#pagination{
+#pagination {
     text-align: right;
+}
+
+/*loading*/
+.loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #333333;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading img {
+    width: 5rem;
+    height: 5rem;
 }
