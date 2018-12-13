@@ -356,6 +356,19 @@ function group_type_edit($date)
     $db->query($sql);
     return $db->affectedRows();
 }
+//======================================
+// 函数: 删除群组类型
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function group_type_del($date)
+{
+    $db = new DB_COM();
+    $sql = "update bot_group_type set is_del = 2 , utime='{$date['utime']}' where id='{$date['id']}' ";
+    $db->query($sql);
+    return $db->affectedRows();
+}
 
 //======================================
 // 函数: 判断微信机器人是否登录
