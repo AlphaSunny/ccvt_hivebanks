@@ -62,26 +62,25 @@ $(function () {
     GetGroupListFun();
 
     //审核群列表
-    var review_group_id = "";
+    var review_group_id = "",refuse_group_id = "";
     $(document).on("click", ".review_btn", function () {
         var is_audit = "", why = "";
-        review_group_id = $(this).parents("tr").find(".id").text();//获取群id
-        console.log(review_group_id);
         if ($(this).hasClass("ok_Btn")) {
             is_audit = "2";
+            review_group_id = $(this).parents("tr").find(".id").text();//获取群id
             ShowLoading("show");
             ReviewGroupFun(review_group_id, is_audit, why);
         }
         if ($(this).hasClass("refuse_Btn")) {
             $("#reviewModal").modal("show");
-            console.log(review_group_id);
+            refuse_group_id = $(this).parents("tr").find(".id").text();//获取群id
         }
         if ($(this).hasClass("now")) {
             is_audit = "3";
+            review_group_id = refuse_group_id;
             why = $(".review_text").text();
             $("#reviewModal").modal("hide");
             ShowLoading("show");
-            console.log(review_group_id);
             ReviewGroupFun(review_group_id, is_audit, why);
         }
     });
