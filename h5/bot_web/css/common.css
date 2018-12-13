@@ -69,6 +69,16 @@
     border-color: #018273 !important;
 }
 
+.ui-pagination-container .ui-pagination-page-item.active {
+    background: #009988;
+    border-color: #009988;
+}
+
+.ui-pagination-container .ui-pagination-page-item:hover {
+    border-color: #009988;
+    color: #009988;
+}
+
 /*flex*/
 .flex {
     display: flex;
