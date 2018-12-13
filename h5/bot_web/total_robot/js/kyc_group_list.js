@@ -46,13 +46,14 @@ $(function () {
                         opt = "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                                         "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"
                     }
+                    console.log(opt);
                     tr+="<tr>" +
                         "<td class='id'>"+ data[i].id +"</td>" +
                         "<td class='name'>"+ data[i].name +" "+ data[i].scale +"</td>" +
                         "<td class='del'>"+ data[i].del +"</td>" +
                         "<td class='is_del none'>"+ data[i].is_del +"</td>" +
                         "<td class='audit'>"+ data[i].audit +"</td>" +
-                        "<td class='audit'>"+ opt +"</td>" +
+                        "<td class='opt'>"+ opt +"</td>" +
                         "</tr>"
                 });
                 $("#groupListTable").html(tr);
