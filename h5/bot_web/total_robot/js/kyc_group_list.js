@@ -62,7 +62,7 @@ $(function () {
     GetGroupListFun();
 
     //审核群列表
-    var review_group_id = "",refuse_group_id = "";
+    var review_group_id = "", refuse_group_id = "";
     $(document).on("click", ".review_btn", function () {
         var is_audit = "", why = "";
         if ($(this).hasClass("ok_Btn")) {
@@ -86,10 +86,10 @@ $(function () {
     });
 
     function ReviewGroupFun(group_id, is_audit, why) {
-        console.log(group_id);
         ReviewGroup(token, review_group_id, is_audit, why, function (response) {
             ShowLoading("hide");
             if (response.errcode == "0") {
+                GetGroupListFun();
                 layer.msg("处理成功", {icon: 1});
             }
         }, function (response) {
