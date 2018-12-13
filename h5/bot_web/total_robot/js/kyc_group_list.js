@@ -66,7 +66,7 @@ $(function () {
 
     //审核群列表
     var review_is_audit = "", review_group_id = "", why = "";
-    $(".review_btn").click(function () {
+    $(document).on("click",".review_btn", function () {
         review_group_id = $(this).parents("tr").find(".id").text();//获取群id
         if ($(this).hasClass("ok_Btn")) {
             review_is_audit = "2";
