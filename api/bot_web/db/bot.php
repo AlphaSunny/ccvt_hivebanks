@@ -121,7 +121,7 @@ function  get_group_members_list_total($group_id)
 function get_group_members_list($group_id,$status,$offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "SELECT name,group_name,group_id FROM bot_group_members WHERE group_id='{$group_id}' limit $offset , $limit";
+    $sql = "SELECT name,group_name,group_id FROM bot_group_members WHERE group_id='{$group_id}'";
     $db -> query($sql);
     $row = $db -> fetchAll();
     $end = time();
@@ -145,6 +145,7 @@ function get_group_members_list($group_id,$status,$offset,$limit)
         if ($status!=-1 || $status!=''){
             $sql .= " AND bot_create_time between '{$start}' and '{$end}'";
         }
+        $sql .= " limit $offset , $limit";
         $db->query($sql);
         $row[$k]['chat_num'] = $db->getField($sql,'count');
     }
