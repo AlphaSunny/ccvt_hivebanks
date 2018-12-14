@@ -259,7 +259,7 @@ function DeleteGroupType(token, type_id, suc_func, error_func) {
 
 //编辑群类型
 function EditGroupType(token, type_id, name, suc_func, error_func) {
-    var api_url = "group_type_del.php",
+    var api_url = "group_type_edit.php",
         post_data = {
             "token": token,
             "type_id": type_id,
