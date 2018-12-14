@@ -310,7 +310,7 @@ function iss_records_list($da,$offset,$limit)
 
     if ($da['nickname']){
         $nickname = $da['nickname'];
-        $sql .=" and wechat LIKE '$nickname%'";
+        $sql .=" and wechat LIKE '%$nickname%'";
     }
     $sql .= " order by bot_create_time desc limit $offset , $limit";
     $db->query($sql);
