@@ -90,7 +90,7 @@ $(function () {
     //群定编辑群类型
     $(".modify_group_type_btn").click(function () {
         var type_id = _this_type_id;
-        var name = _this_name;
+        var name = $("#modifyGroupTypeInput").val();
         ShowLoading("show");
         EditGroupType(token, type_id, name, function (response) {
             ShowLoading("hide");
