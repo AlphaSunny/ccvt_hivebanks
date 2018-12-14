@@ -170,6 +170,37 @@ function GetGroupMember(token, group_id, limit, offset, status, suc_func, error_
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//获取任务列表
+function GetTaskList(token, suc_func, error_func) {
+    var api_url = "timer_list.php",
+        post_data = {
+            "token": token
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+//编辑任务信息
+// function EditTask(token, timer_id, time, content, suc_func, error_func) {
+//     var api_url = "timer_edit.php",
+//         post_data = {
+//             "token": token,
+//             "timer_id": timer_id,
+//             "time": time,
+//             "content": content
+//         };
+//     CallRobotApi(api_url, post_data, suc_func, error_func);
+// }
+
+//删除任务信息
+// function DelTask(token, timer_id, suc_func, error_func) {
+//     var api_url = "timer_del.php",
+//         post_data = {
+//             "token": token,
+//             "timer_id": timer_id
+//         };
+//     CallRobotApi(api_url, post_data, suc_func, error_func);
+// }
+
 /**
  * Disable button
  * @param $this Button object
