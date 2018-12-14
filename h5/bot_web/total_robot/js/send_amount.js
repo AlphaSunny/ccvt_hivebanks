@@ -23,7 +23,8 @@ $(function () {
                     count = 6;
                 }
                 if (data.length <= 0) {
-                    tr = "<tr><td colspan='4'>暂无数据</td></tr>"
+                    tr = "<tr><td colspan='4'>暂无数据</td></tr>";
+                    console.log(tr);
                 } else {
                     $.each(data, function (i, val) {
                         tr += "<tr>" +
