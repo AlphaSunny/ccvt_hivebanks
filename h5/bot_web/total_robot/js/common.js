@@ -228,6 +228,15 @@ function GetAmount(token, start_time, end_time, nickname, limit, offset, suc_fun
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//获取群类型
+function GetGroupTypeAdmin(token, suc_func, error_func) {
+    var api_url = "iss_records_list.php",
+        post_data = {
+            "token": token
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 /**
  * Disable button
  * @param $this Button object
