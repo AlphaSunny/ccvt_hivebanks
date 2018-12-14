@@ -23,9 +23,12 @@
     <!-- Navbar Right Menu-->
     <ul class="app-nav">
         <!-- User Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-twitter"
+                                                                             aria-hidden="true"></i></a></li>
+        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-facebook"
+                                                                             aria-hidden="true"></i></a></li>
+        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+        </li>
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
                 class="fa fa-user fa-lg"></i></a>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
@@ -42,8 +45,8 @@
 <aside class="app-sidebar">
     <div class="app-sidebar__user">
         <!--<img class="app-sidebar__user-avatar"-->
-                                        <!--src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"-->
-                                        <!--alt="User Image">-->
+        <!--src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"-->
+        <!--alt="User Image">-->
         <div>
             <p class="app-sidebar__user-name robot_username"></p>
             <!--<p class="app-sidebar__user-designation">Frontend Developer</p>-->
@@ -102,13 +105,14 @@
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
-                <!--<div class="margin-bottom-2">-->
+                <div class="margin-bottom-2">
+                    <button class="btn btn-info addGroupType" data-toggle="modal" data-target="#addGroupType">添加</button>
                     <!--<p>时间筛选:</p>-->
                     <!--<button class="btn btn-info weChatBtn activeWeChatBtn" title="1">今日</button>-->
                     <!--<button class="btn btn-info weChatBtn" title="2">昨日</button>-->
                     <!--<button class="btn btn-info weChatBtn" title="3">近3天</button>-->
                     <!--<button class="btn btn-info weChatBtn" title="4">近7天</button>-->
-                <!--</div>-->
+                </div>
                 <div class="tile-body table-responsive">
                     <table class="table table-hover table-bordered table_border_none" id="chatRecordTable">
                         <thead>
@@ -117,28 +121,46 @@
                             <th>操作</th>
                         </tr>
                         </thead>
-                        <tbody id="groupType">
-
-                        </tbody>
+                        <tbody id="groupType"></tbody>
                     </table>
-                    <!--<div>-->
-                        <!--<div id="pagination" class="page"></div>-->
-                    <!--</div>-->
                 </div>
             </div>
         </div>
     </div>
-
 </main>
-<!-- Essential javascripts for application to work-->
+
+<!--add group type modal-->
+<div class="modal fade" id="addGroupType" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="reviewModalLabel">添加群类型</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="GroupTypeInput" class="col-sm-2 control-label">群类型</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="GroupTypeInput">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary review_btn now">立即提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="../../assets/js/jquery-3.2.1.min.js"></script>
 <script src="../js/popper.min.js"></script>
 <script src="../../assets/js/bootstrap.min.js"></script>
 <script src="../../assets/js/layer/layer.js"></script>
 <script src="../../assets/js/pace.min.js"></script>
-<!--<script src="../../assets/js/jquery.pagination.min.js"></script>-->
-<!--<script type="text/javascript" src="../../assets/js/jquery.dataTables.min.js"></script>-->
-<!--<script type="text/javascript" src="../../assets/js/dataTables.bootstrap.min.js"></script>-->
 <script type="text/javascript" src="js/common.js"></script>
 <script src="../js/main.js"></script>
 <script type="text/javascript" src="js/group_type.js"></script>
