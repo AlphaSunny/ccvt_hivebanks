@@ -24,10 +24,8 @@ $(function () {
                 }
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
-                    console.log(data.length);
                 } else {
                     $.each(data, function (i, val) {
-                        console.log(data.length);
                         tr += "<tr>" +
                             "<td class='wechat'>" + data[i].wechat + "</td>" +
                             "<td class='amount'>" + data[i].amount + "</td>" +
@@ -35,8 +33,9 @@ $(function () {
                             "<td class='send_time'>" + data[i].send_time + "</td>" +
                             "</tr>";
                     });
-                    $("#sendBody").html(tr);
                 }
+                $("#sendBody").html(tr);
+
                 $("#pagination").pagination({
                     currentPage: (limit + offset) / limit,
                     totalPage: totalPage,
