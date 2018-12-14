@@ -34,7 +34,7 @@ list($limit, $offset) = get_paging_arg('GET');
 $total = get_glory_integral_total();
 
 // 交易记录数组
-$rows = glory_integral_list();
+$rows = glory_integral_list($offset,$limit);
 
 // 返回数据做成
 $rtn_ary = array();

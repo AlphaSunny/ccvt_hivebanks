@@ -349,11 +349,11 @@ function  get_glory_integral_total()
 //
 // 返回: row           最新信息数组
 //======================================
-function glory_integral_list()
+function glory_integral_list($offset,$limit)
 {
     $db = new DB_COM();
     $unit = get_la_base_unit();
-    $sql = "SELECT a.credit_id,a.debit_id,a.tx_amount/'{$unit}' as tx_amount,a.ctime,a.utime,b.us_account as give_account,c.us_account as receive_account FROM us_glory_integral_change_log as a LEFT JOIN us_base as b ON a.credit_id=b.us_id LEFT JOIN us_base as c ON a.debit_id=c.us_id ORDER BY a.ctime DESC";
+    $sql = "SELECT a.credit_id,a.debit_id,a.tx_amount/'{$unit}' as tx_amount,a.ctime,a.utime,b.us_account as give_account,c.us_account as receive_account FROM us_glory_integral_change_log as a LEFT JOIN us_base as b ON a.credit_id=b.us_id LEFT JOIN us_base as c ON a.debit_id=c.us_id ORDER BY a.ctime DESC limit $offset , $limit";
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;
