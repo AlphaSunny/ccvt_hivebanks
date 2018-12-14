@@ -5,11 +5,18 @@ $(function () {
     var limit = 10, offset = 0;
 
     function GiveLikeListFun(token, limit, offset) {
-        var tr = "";
+        var tr = "",totalPage = "", count = "";
         GiveLikeList(token, limit, offset, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
-                var totalPage = Math.floor(response.total / limit);
+                totalPage = Math.floor(response.total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>"
                 } else {
