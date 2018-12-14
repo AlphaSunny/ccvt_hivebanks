@@ -2659,7 +2659,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .btn {
-    display: inline-block;
+    /*display: inline-block;*/
     font-weight: 700;
     text-align: center;
     white-space: nowrap;
