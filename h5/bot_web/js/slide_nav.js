@@ -8,8 +8,8 @@ $.ajax({
         $.each(res, function (i, val) {
             li+="<li>" +
                 "<a class='app-menu__item' href="+ res[i].href +"></a>" +
-                "<i class='app-menu__icon fa "+ data[i].fa_icon +"'></i>" +
-                "<span class='app-menu__label'>"+ data[i].name +"</span>" +
+                "<i class='app-menu__icon fa "+ res[i].fa_icon +"'></i>" +
+                "<span class='app-menu__label'>"+ res[i].name +"</span>" +
                 "</li>"
         });
         $(".app-menu").html(li);
