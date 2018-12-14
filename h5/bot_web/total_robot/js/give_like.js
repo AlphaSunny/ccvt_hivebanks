@@ -31,6 +31,7 @@ $(function () {
                     })
                 }
                 $("#giveLike").html(tr);
+
                 $("#pagination").pagination({
                     currentPage: (limit + offset) / limit,
                     totalPage: totalPage,
@@ -49,6 +50,5 @@ $(function () {
             layer.msg(response.errmsg, {icon: 2});
         });
     }
-
     GiveLikeListFun(token, limit, offset);
 });
