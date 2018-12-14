@@ -247,6 +247,16 @@ function AddGroupType(token, name, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//删除群类型
+function DeleteGroupType(token, type_id, suc_func, error_func) {
+    var api_url = "group_type_add.php",
+        post_data = {
+            "token": token,
+            "type_id": type_id
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 /**
  * Disable button
  * @param $this Button object

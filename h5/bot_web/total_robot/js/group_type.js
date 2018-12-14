@@ -16,7 +16,7 @@ $(function () {
                 else {
                     $.each(data, function (i, val) {
                         tr += "<tr>" +
-                            "<td class=" + data[i].id + ">" + data[i].name + "</td>" +
+                            "<td class='id' name=" + data[i].id + ">" + data[i].name + "</td>" +
                             "<td>" +
                             "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                             "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
@@ -47,6 +47,22 @@ $(function () {
         }, function (response) {
             ShowLoading("hide");
             $("#addGroupType").modal("hide");
+            layer.msg(response.errmsg, {icon: 2});
+        })
+    });
+
+    //删除群
+    $(".delBtn").click(function () {
+        var type_id = $(this).parents("tr").find(".id").attr("name");
+        ShowLoading("show");
+        DeleteGroupType(token, type_id, function (response) {
+            ShowLoading("hide");
+            if (response.errcode == "0") {
+                layer.msg("删除成功", {icon: 1});
+                GetGroupTypeAdminFun();
+            }
+        }, function (response) {
+            ShowLoading("hide");
             layer.msg(response.errmsg, {icon: 2});
         })
     })
