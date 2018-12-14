@@ -46,7 +46,7 @@ $da['nickname'] = $nickname;
 $total = get_iss_record_total($da);
 
 // 交易记录数组
-$rows = iss_records_list($da);
+$rows = iss_records_list($da,$offset,$limit);
 
 
 // 返回数据做成

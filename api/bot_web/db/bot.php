@@ -278,17 +278,14 @@ function get_message_list($group_id,$status)
 }
 
 //======================================
-// 函数: 查询聊天奖励列表
-// 参数: timer_id    任务id
-//
-// 返回: row           最新信息数组
+// 函数: 获取天奖励列表总数
+// 参数:
+// 返回: count        记录总数
 //======================================
-function iss_records_list($da)
+function  get_iss_record_total($da)
 {
     $db = new DB_COM();
-    $unit = get_la_base_unit();
-
-    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE ba_id = '{$da['ba_id']}'";
+    $sql = "SELECT * FROM bot_Iss_records WHERE bot_us_id = '{$da['us_id']}'";
     if ($da['start_time'] && !$da['end_time']){
         $sql .= " and send_time>'{$da['start_time']}'";
     }elseif (!$da['start_time'] && $da['end_time']){
@@ -301,7 +298,35 @@ function iss_records_list($da)
         $nickname = $da['nickname'];
         $sql .=" and wechat LIKE '$nickname%'";
     }
-    $sql .= " order by bot_create_time desc";
+    $db -> query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+//======================================
+// 函数: 查询聊天奖励列表
+// 参数: timer_id    任务id
+//
+// 返回: row           最新信息数组
+//======================================
+function iss_records_list($da,$offset,$limit)
+{
+    $db = new DB_COM();
+    $unit = get_la_base_unit();
+
+    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE ba_id = '{$da['us_id']}'";
+    if ($da['start_time'] && !$da['end_time']){
+        $sql .= " and send_time>'{$da['start_time']}'";
+    }elseif (!$da['start_time'] && $da['end_time']){
+        $sql .= " and send_time<'{$da['end_time']}'";
+    }elseif ($da['start_time'] && $da['end_time']){
+        $sql .= " and send_time between '{$da['start_time']}' and '{$da['end_time']}'";
+    }
+
+    if ($da['nickname']){
+        $nickname = $da['nickname'];
+        $sql .=" and wechat LIKE '$nickname%'";
+    }
+    $sql .= " order by bot_create_time desc limit $offset , $limit";
     $db->query($sql);
     $data = array();
     $rows = $db -> fetchAll();
