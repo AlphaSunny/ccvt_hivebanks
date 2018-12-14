@@ -39,12 +39,14 @@ $(function () {
         ShowLoading("show");
         AddGroupType(token, name, function (response) {
             ShowLoading("hide");
+            $("#addGroupType").modal("hide");
             if (response.errcode == "0") {
                 layer.msg("添加成功", {icon: 1});
                 GetGroupTypeAdminFun();
             }
         }, function (response) {
             ShowLoading("hide");
+            $("#addGroupType").modal("hide");
             layer.msg(response.errmsg, {icon: 2});
         })
     })
