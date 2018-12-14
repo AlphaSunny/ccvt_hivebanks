@@ -152,14 +152,14 @@ $(function () {
                     option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
                 });
                 $("#selectGroupName").html(option);
+                $(".addSubBtn").removeClass("none");
+                $(".editSubBtn").addClass("none");
+                $("#groupName").fadeOut("fast");
+                $("#editTaskModal").modal("show");
             }
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2});
         });
-        $(".addSubBtn").removeClass("none");
-        $(".editSubBtn").addClass("none");
-        $("#groupName").fadeOut("fast");
-        $("#editTaskModal").modal("show");
     });
 
     //确认添加信息
