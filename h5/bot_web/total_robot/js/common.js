@@ -257,6 +257,17 @@ function DeleteGroupType(token, type_id, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//编辑群类型
+function EditGroupType(token, type_id, name, suc_func, error_func) {
+    var api_url = "group_type_del.php",
+        post_data = {
+            "token": token,
+            "type_id": type_id,
+            "name": name,
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 /**
  * Disable button
  * @param $this Button object

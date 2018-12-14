@@ -77,4 +77,29 @@ $(function () {
             layer.msg(response.errmsg, {icon: 2});
         })
     }
+
+    //编辑群类型
+    var _this_type_id = "", _this_name = "";
+    $(document).on("click", ".editBtn", function () {
+        _this_type_id = $(this).parents("tr").find(".id").attr("name");
+        _this_name = $(this).parents("tr").find(".id").text();
+        $("#modifyGroupTypeInput").val(_this_name);
+        $("#modifyGroupType").modal("show");
+    });
+
+    //群定编辑群类型
+    $(".modify_group_type_btn").click(function () {
+        var type_id = _this_type_id;
+        var name = _this_name;
+        ShowLoading("show");
+        EditGroupType(token, type_id, name, function (response) {
+            ShowLoading("hide");
+            if (response.errcode == "0") {
+                layer.msg("编辑成功", {icon: 1});
+            }
+        }, function (response) {
+            ShowLoading("hide");
+            layer.msg(response.errmsg, {icon: 2});
+        })
+    })
 });
