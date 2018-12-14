@@ -130,13 +130,15 @@ $(function () {
     //添加信息
     $(".addTaskBtn").click(function () {
         GetGroupList(token, function (response) {
-
+            if (response.errcode == "0") {
+                var data = response.data, option = "";
+                $.each(data, function (i, val) {
+                    option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
+                });
+                $("#selectGroupName").html(option);
+            }
         }, function (response) {
-            var data = response.data, option = "";
-            $.each(data, function (i, val) {
-                option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
-            });
-            $("#selectGroupName").html(option);
+            layer.msg(response.errmsg, {icon: 2});
         });
         $(".addSubBtn").removeClass("none");
         $(".editSubBtn").addClass("none");
