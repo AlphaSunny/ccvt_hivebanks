@@ -388,7 +388,6 @@ function group_type_edit($date)
 {
     $db = new DB_COM();
     $sql = "update bot_group_type set name = '{$date['name']}' , utime='{$date['utime']}' where id='{$date['id']}' ";
-    echo $sql;
     $db->query($sql);
     return $db->affectedRows();
 }
