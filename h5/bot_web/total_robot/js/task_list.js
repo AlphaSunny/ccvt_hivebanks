@@ -53,20 +53,20 @@ $(function () {
                 var data = response.rows;
                 if(!data){
                     tr="<tr><td colspan='4'>暂无数据</td></tr>";
-                    return;
+                }else {
+                    $.each(data, function (i, val) {
+                        tr += "<tr>" +
+                            "<td class='id none'>" + data[i].id + "</td>" +
+                            "<td class='time'>" + data[i].time + "</td>" +
+                            "<td class='content'>" + data[i].content + "</td>" +
+                            "<td class='name'>" + data[i].name + "</td>" +
+                            "<td>" +
+                            // "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+                            "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
+                            "</td>" +
+                            "</tr>"
+                    });
                 }
-                $.each(data, function (i, val) {
-                    tr += "<tr>" +
-                        "<td class='id none'>" + data[i].id + "</td>" +
-                        "<td class='time'>" + data[i].time + "</td>" +
-                        "<td class='content'>" + data[i].content + "</td>" +
-                        "<td class='name'>" + data[i].name + "</td>" +
-                        "<td>" +
-                        // "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-                        "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
-                        "</td>" +
-                        "</tr>"
-                });
                 $("#groupListTable").html(tr);
             }
         }, function (response) {
