@@ -263,6 +263,32 @@ function get_message_list($group_id,$status)
 }
 
 //======================================
+// 函数: 获取天奖励列表总数
+// 参数:
+// 返回: count        记录总数
+//======================================
+function  get_iss_record_total($da)
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM bot_Iss_records WHERE bot_us_id = '{$da['us_id']}'";
+    if ($da['start_time'] && !$da['end_time']){
+        $sql .= " and send_time>'{$da['start_time']}'";
+    }elseif (!$da['start_time'] && $da['end_time']){
+        $sql .= " and send_time<'{$da['end_time']}'";
+    }elseif ($da['start_time'] && $da['end_time']){
+        $sql .= " and send_time between '{$da['start_time']}' and '{$da['end_time']}'";
+    }
+
+    if ($da['nickname']){
+        $nickname = $da['nickname'];
+        $sql .=" and wechat LIKE '$nickname%'";
+    }
+    $db -> query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+
+//======================================
 // 函数: 查询任务信息
 // 参数: timer_id    任务id
 //
@@ -273,7 +299,7 @@ function iss_records_list($da)
     $db = new DB_COM();
     $unit = get_la_base_unit();
 
-    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE ba_id = '{$da['ba_id']}'";
+    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE bot_us_id = '{$da['us_id']}'";
     if ($da['start_time'] && !$da['end_time']){
         $sql .= " and send_time>'{$da['start_time']}'";
     }elseif (!$da['start_time'] && $da['end_time']){

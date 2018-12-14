@@ -313,7 +313,7 @@ function iss_records_list($da,$offset,$limit)
     $db = new DB_COM();
     $unit = get_la_base_unit();
 
-    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE ba_id = '{$da['us_id']}'";
+    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE bot_us_id = '{$da['us_id']}'";
     if ($da['start_time'] && !$da['end_time']){
         $sql .= " and send_time>'{$da['start_time']}'";
     }elseif (!$da['start_time'] && $da['end_time']){
