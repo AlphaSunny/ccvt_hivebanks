@@ -90,7 +90,7 @@ function save_group($date)
             $db->query($sql);
         }
     }
-    return $db->affectedRows();
+    return true;
 }
 
 //======================================
