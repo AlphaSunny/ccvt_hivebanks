@@ -27,7 +27,6 @@ $(function () {
         // });
         var tr = "";
         GetNewsRecord(token, group_id, status, function (response) {
-            console.log(response);
             if (response.errcode == "0") {
                 var data = response.rows;
                 if (data.length <= 0) {
@@ -42,6 +41,20 @@ $(function () {
                     })
                 }
                 $("#chatRecordT").html(tr);
+                // $("#pagination").pagination({
+                //     currentPage: (limit + offset) / limit,
+                //     totalPage: totalPage,
+                //     isShow: false,
+                //     count: count,
+                //     prevPageText: "<<",
+                //     nextPageText: ">>",
+                //     callback: function (current) {
+                //         GetGroupMemberFun(token, limit, (current - 1) * limit, status);
+                //         loading = layer.load(1, {
+                //             shade: [0.1, '#fff'] //0.1透明度的白色背景
+                //         });
+                //     }
+                // });
             }
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2});
