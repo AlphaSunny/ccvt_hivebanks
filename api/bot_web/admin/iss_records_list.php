@@ -60,6 +60,7 @@ $rtn_ary['errmsg'] = '';
 $rtn_ary['rows'] = $rows['rows'];
 $rtn_ary['all_amount'] = $rows['all_amount'];
 $rtn_ary['all_chat'] = $rows['all_chat'];
+$rtn_ary['total'] = $total;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
