@@ -42,7 +42,7 @@ $(function () {
                             "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>";
                     }
 
-                    if (data[i].group_manager_name.length <= 0) {
+                    if (data[i].group_manager_name == null) {
                         group_manager_name = "点击编辑按钮填写群主";
                     } else {
                         group_manager_name = data[i].group_manager_name;
