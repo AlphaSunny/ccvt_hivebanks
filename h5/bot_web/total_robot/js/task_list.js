@@ -51,11 +51,9 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows;
                 console.log(data);
-                if(!data){
-                    tr="<tr><td colspan='4'>暂无数据</td></tr>";
-                    console.log("none");
-                }else {
-                    console.log("data");
+                if (data.length <= 0) {
+                    tr = "<tr><td colspan='4'>暂无数据</td></tr>";
+                } else {
                     $.each(data, function (i, val) {
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
