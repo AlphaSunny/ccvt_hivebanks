@@ -24,9 +24,10 @@ $(function () {
                 }
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
-                    console.log(tr);
+                    console.log(data.length);
                 } else {
                     $.each(data, function (i, val) {
+                        console.log(data.length);
                         tr += "<tr>" +
                             "<td class='wechat'>" + data[i].wechat + "</td>" +
                             "<td class='amount'>" + data[i].amount + "</td>" +
@@ -65,7 +66,6 @@ $(function () {
         start_time = $("#startTime").val();
         end_time = $("#endTime").val();
         nickname = $("#nickname").val();
-        console.log(nickname);
         GetAmountFun(start_time, end_time, nickname, limit, offset);
     });
 
