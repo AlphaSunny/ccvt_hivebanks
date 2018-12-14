@@ -50,6 +50,7 @@ $(function () {
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
+                console.log(data);
                 if(!data){
                     tr="<tr><td colspan='4'>暂无数据</td></tr>";
                     console.log("none");
