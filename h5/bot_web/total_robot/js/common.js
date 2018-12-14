@@ -170,6 +170,17 @@ function GetGroupMember(token, group_id, limit, offset, status, suc_func, error_
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//获取聊天记录
+function GetNewsRecord(token, group_id, status, suc_func, error_func) {
+    var api_url = "group_message_list.php",
+        post_data = {
+            "token": token,
+            "group_id": group_id,
+            "status": status
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 //获取任务列表
 function GetTaskList(token, suc_func, error_func) {
     var api_url = "timer_list.php",
