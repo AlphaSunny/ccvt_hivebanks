@@ -268,6 +268,14 @@ function EditGroupType(token, type_id, name, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//踩-赞记录
+function GiveLikeList(token, suc_func, error_func) {
+    var api_url = "glory_integral_list.php",
+        post_data = {
+            "token": token
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
 /**
  * Disable button
  * @param $this Button object
