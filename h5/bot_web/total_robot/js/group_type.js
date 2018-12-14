@@ -94,11 +94,14 @@ $(function () {
         ShowLoading("show");
         EditGroupType(token, type_id, name, function (response) {
             ShowLoading("hide");
+            $("#modifyGroupType").modal("hide");
             if (response.errcode == "0") {
+                GetGroupTypeAdminFun();
                 layer.msg("编辑成功", {icon: 1});
             }
         }, function (response) {
             ShowLoading("hide");
+            $("#modifyGroupType").modal("hide");
             layer.msg(response.errmsg, {icon: 2});
         })
     })
