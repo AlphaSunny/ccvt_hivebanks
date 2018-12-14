@@ -56,7 +56,7 @@ $(function () {
         var type_id = $(this).parents("tr").find(".id").attr("name");
         var name = $(this).parents("tr").find(".id").text();
         layer.confirm('群定要删除' + name + "类型?", {
-            btn: ['群定', '取消'] //按钮
+            btn: ['确定', '取消'] //按钮
         }, function () {
             DeleteGroupConfirmFun(type_id);
         }, function () {
