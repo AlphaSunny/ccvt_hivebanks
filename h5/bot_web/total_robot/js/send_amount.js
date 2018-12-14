@@ -32,7 +32,8 @@ $(function () {
                             "<td class='num'>" + data[i].num + "</td>" +
                             "<td class='send_time'>" + data[i].send_time + "</td>" +
                             "</tr>";
-                    })
+                    });
+                    $("#sendBody").html(tr);
                 }
                 $("#pagination").pagination({
                     currentPage: (limit + offset) / limit,
