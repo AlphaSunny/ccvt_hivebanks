@@ -35,6 +35,7 @@
 .margin-top-2 {
     margin-top: 2%;
 }
+
 .margin-bottom-10 {
     margin-bottom: 10%;
 }
@@ -82,10 +83,12 @@
     border-color: #009988;
     color: #009988;
 }
-.page-item.active .page-link{
+
+.page-item.active .page-link {
     background-color: #009688;
     border-color: #009688;
 }
+
 /*flex*/
 .flex {
     display: flex;
@@ -165,11 +168,13 @@ table {
 
 table td {
     text-align: center;
-    vertical-align: middle!important;
+    vertical-align: middle !important;
 }
-table .th_top{
-    border-top: 1px solid #dddddd!important;
+
+table .th_top {
+    border-top: 1px solid #dddddd !important;
 }
+
 .switch:focus {
     outline: none !important;
 }
@@ -204,8 +209,14 @@ table .th_top{
 td.none {
     display: none !important;
 }
-.none{
+
+.none {
     display: none;
+}
+
+.table_border_none th, .table_border_none td {
+    border-left: none !important;
+    border-right: none !important;
 }
 
 .dropdown i {
