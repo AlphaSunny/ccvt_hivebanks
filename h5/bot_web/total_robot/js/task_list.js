@@ -46,25 +46,28 @@ $(function () {
     // GetTaskListFun();
 
     //获取任务列表
-    var tr = "";
-    GetTaskList(token, function (response) {
-        if(response.errcode == "0"){
-            var data = response.rows;
-            $.each(data, function (i, val) {
-                tr+="<tr>" +
-                    "<td class='time'></td>" +
-                    "<td class='content'></td>" +
-                    "<td class='name'></td>" +
-                    "<td>" +
-                    "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-                    "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
-                    "</td>" +
-                    "</tr>"
-            })
-        }
-    }, function (response) {
-        layer.msg(response.errmsg, {icon: 2})
-    });
+    function GetTaskListFun() {
+        var tr = "";
+        GetTaskList(token, function (response) {
+            if(response.errcode == "0"){
+                var data = response.rows;
+                $.each(data, function (i, val) {
+                    tr+="<tr>" +
+                        "<td class='time'></td>" +
+                        "<td class='content'></td>" +
+                        "<td class='name'></td>" +
+                        "<td>" +
+                        "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+                        "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
+                        "</td>" +
+                        "</tr>"
+                })
+            }
+        }, function (response) {
+            layer.msg(response.errmsg, {icon: 2})
+        });
+    }
+    GetTaskListFun();
 
     //确定删除任务
     var timer_id = "";
@@ -82,31 +85,19 @@ $(function () {
         DelTask(token, timer_id, function (response) {
             if (response.errcode == "0") {
                 layer.msg('删除成功', {icon: 1});
-                table.ajax.reload();
+                GetTaskListFun();
             }
         }, function (response) {
             layer.msg('删除失败', {icon: 2});
         })
     }
 
-    //确认删除
-    // $(document).on("click", ".layui-layer-btn1", function () {
-    //     DelTask(token, timer_id, function (response) {
-    //         if (response.errcode == "0") {
-    //             layer.msg('删除成功', {icon: 1});
-    //             table.ajax.reload();
-    //         }
-    //     }, function (response) {
-    //         layer.msg('删除失败', {icon: 2});
-    //     })
-    // });
-
     //编辑任务
     $(document).on("click", ".editBtn", function () {
-        var group_name = $(this).parents("tr[role='row']").find(".name").text();
-        var time = $(this).parents("tr[role='row']").find(".time").text();
-        var content = $(this).parents("tr[role='row']").find(".content").text();
-        var task_id = $(this).parents("tr[role='row']").find(".id").text();
+        var group_name = $(this).parents("tr").find(".name").text();
+        var time = $(this).parents("tr").find(".time").text();
+        var content = $(this).parents("tr").find(".content").text();
+        var task_id = $(this).parents("tr").find(".id").text();
         $("#selectGroupName").fadeOut("fast");
         $("#timer_id").val(task_id);
         $("#groupName").val(group_name);
@@ -187,7 +178,7 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editTaskModal").modal("hide");
-                table.ajax.reload();
+                GetTaskListFun();
             }
         }, function (response) {
             layer.close(loading);
