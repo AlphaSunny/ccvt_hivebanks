@@ -29,7 +29,7 @@ $(function () {
     var is_audit = "";
 
     function GetGroupListFun() {
-        var tr = "", opt = "";
+        var tr = "", opt = "", group_manager_name = "";
         GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
@@ -46,9 +46,16 @@ $(function () {
                             opt = "<button class='btn btn-success btn-sm editBtn'><i class='fa fa-pencil'></i>编辑</button>" +
                                 "<button class='btn btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye'></i>详情</button>"
                         }
+                        if (data[i].group_manager_name == null) {
+                            group_manager_name = "点击编辑按钮填写群主";
+                        } else {
+                            group_manager_name = data[i].group_manager_name;
+                        }
+
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
                             "<td class='name'>" + data[i].name + " " + data[i].scale + "</td>" +
+                            "<td class='group_manager_name'>" + group_manager_name + "</td>" +
                             "<td class='del'>" + data[i].del + "</td>" +
                             "<td class='is_admin_del none'>" + data[i].is_admin_del + "</td>" +
                             "<td class='audit'>" + data[i].audit + "</td>" +
