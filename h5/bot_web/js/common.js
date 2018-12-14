@@ -79,6 +79,7 @@ $.ajax({
     error: function (XMLHttpRequest, textStatus, errorThrown) {
     }
 });
+
 function CallRobotApi(api_url, post_data, suc_func, error_func) {
 
     var api_site = config_api_url + '/api/bot_web/admin/';
@@ -111,6 +112,7 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
         }
     });
 };
+
 // Call API common function
 function CallRobotApi(api_url, post_data, suc_func, error_func) {
 
@@ -255,10 +257,11 @@ function DelTask(token, timer_id, suc_func, error_func) {
 }
 
 //获取群主列表
-function GetGroupList(token, suc_func, error_func) {
+function GetGroupList(token, is_audit, suc_func, error_func) {
     var api_url = "group_list.php",
         post_data = {
-            "token": token
+            "token": token,
+            "is_audit": is_audit
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
@@ -310,6 +313,6 @@ function GetAmount(token, start_time, end_time, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
-window.onload=function () {
-  $(".loading").fadeOut(300);
+window.onload = function () {
+    $(".loading").fadeOut(300);
 };
