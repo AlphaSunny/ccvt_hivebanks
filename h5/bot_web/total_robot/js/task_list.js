@@ -75,7 +75,7 @@ $(function () {
     //确定删除任务
     var timer_id = "";
     $(document).on("click", ".delBtn", function () {
-        timer_id = $(this).parents("tr[role='row']").find(".id").text();
+        timer_id = $(this).parents("tr").find(".id").text();
         layer.confirm('确定删除该条数据？', {
             btn: ['确认', '取消'] //按钮
         }, function () {
@@ -144,53 +144,53 @@ $(function () {
     });
 
     //添加信息
-    $(".addTaskBtn").click(function () {
-        GetGroupList(token, function (response) {
-            if (response.errcode == "0") {
-                var data = response.data, option = "";
-                $.each(data, function (i, val) {
-                    option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
-                });
-                $("#selectGroupName").html(option);
-                $(".addSubBtn").removeClass("none");
-                $(".editSubBtn").addClass("none");
-                $("#groupName").fadeOut("fast");
-                $("#editTaskModal").modal("show");
-            }
-        }, function (response) {
-            layer.msg(response.errmsg, {icon: 2});
-        });
-    });
-
-    //确认添加信息
-    $(".addSubBtn").click(function () {
-        var time = $("#time").val();
-        var content = $("#content").val();
-        var group_id = $("#selectGroupName").val();
-        if (time.length <= 0) {
-            layer.msg("请输入时间");
-            return;
-        }
-        if (content.length <= 0) {
-            layer.msg("请输入内容");
-            return;
-        }
-        //loading
-        var loading = layer.load(1, {
-            shade: [0.1, '#fff'] //0.1透明度的白色背景
-        });
-        AddTask(token, time, group_id, content, function (response) {
-            if (response.errcode == "0") {
-                layer.close(loading);
-                $("#editTaskModal").modal("hide");
-                GetTaskListFun();
-            }
-        }, function (response) {
-            layer.close(loading);
-            $("#editTaskModal").modal("hide");
-            layer.msg(response.errmsg);
-        })
-    });
+    // $(".addTaskBtn").click(function () {
+    //     GetGroupList(token, function (response) {
+    //         if (response.errcode == "0") {
+    //             var data = response.data, option = "";
+    //             $.each(data, function (i, val) {
+    //                 option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
+    //             });
+    //             $("#selectGroupName").html(option);
+    //             $(".addSubBtn").removeClass("none");
+    //             $(".editSubBtn").addClass("none");
+    //             $("#groupName").fadeOut("fast");
+    //             $("#editTaskModal").modal("show");
+    //         }
+    //     }, function (response) {
+    //         layer.msg(response.errmsg, {icon: 2});
+    //     });
+    // });
+    //
+    // //确认添加信息
+    // $(".addSubBtn").click(function () {
+    //     var time = $("#time").val();
+    //     var content = $("#content").val();
+    //     var group_id = $("#selectGroupName").val();
+    //     if (time.length <= 0) {
+    //         layer.msg("请输入时间");
+    //         return;
+    //     }
+    //     if (content.length <= 0) {
+    //         layer.msg("请输入内容");
+    //         return;
+    //     }
+    //     //loading
+    //     var loading = layer.load(1, {
+    //         shade: [0.1, '#fff'] //0.1透明度的白色背景
+    //     });
+    //     AddTask(token, time, group_id, content, function (response) {
+    //         if (response.errcode == "0") {
+    //             layer.close(loading);
+    //             $("#editTaskModal").modal("hide");
+    //             GetTaskListFun();
+    //         }
+    //     }, function (response) {
+    //         layer.close(loading);
+    //         $("#editTaskModal").modal("hide");
+    //         layer.msg(response.errmsg);
+    //     })
+    // });
 
 
 });
