@@ -166,6 +166,10 @@ table {
     width: 100% !important;
 }
 
+table th {
+    width: 33%;
+}
+
 table td {
     text-align: center;
     vertical-align: middle !important;
