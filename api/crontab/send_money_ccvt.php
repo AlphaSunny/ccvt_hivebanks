@@ -11,182 +11,184 @@ $day_end = strtotime(date('Y-m-d 22:00:00'));    //晚上十点
 
 $db = new DB_COM();
 
-//群聊微信用户及发言数
-$group_name = "风赢科技绝密小分队";
-$sql = "select ba_id from bot_group where name='{$group_name}'";
+//获取ba信息
+$ba_info = get_ba_base_info();
+//查询所有能送ccvt的群组
+$sql = "select * from bot_group WHERE is_audit=2 AND is_test=1 AND is_give_ccvt=1";
 $db->query($sql);
-$ba_id = $db->getField($sql,'ba_id');
-//判断ba是否存在
-$sql = "select * from ba_base where ba_id='{$ba_id}'";
-$db->query($sql);
-$ba_base = $db->fetchRow();
-if (!$ba_base){
-    echo "ba不存在";
-    die;
-}
-$sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$group_name}' AND type='Text' AND CHAR_LENGTH(bot_content)>=5 AND is_effective='0' AND bot_content not LIKE '@AI大白~%' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
-$db->query($sql);
-$rows = $db->fetchAll();
-if ($rows){
-    $ba_account = 0;
+$groups = $db->fetchAll();
+if ($groups){
     $pInTrans = $db->StartTrans();  //开启事务
-    foreach ($rows as $k=>$v){
-        //判断用户表是否有这个微信
-        $result = get_us_id($v['wechat']);
-        if (!$result){
-            continue;
+    $ba_account = 0;
+    foreach ($groups as $a=>$b){
+        set_time_limit(0);
+        $sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$b['name']}' AND type='Text' AND CHAR_LENGTH(bot_content)>=5 AND is_effective='0' AND bot_content not LIKE '@AI大白~%' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
+        $db->query($sql);
+        $rows = $db->fetchAll();
+        if ($rows){
+            foreach ($rows as $k=>$v){
+                set_time_limit(0);
+                //判断用户表是否有这个微信
+                $u_id = get_us_id($v['wechat']);
+                if (!$u_id){
+                    continue;
+                }
+
+                //判断当前用户绑定的是否是这个群
+                $us_group = get_us_bind_group_id($u_id);
+                if (!$us_group || $us_group!=$b['id']){
+                    continue;
+                }
+                //判断今日是否已经增过币
+                $send = send_money_if($ba_info['ba_id'],$v['wechat']);
+                if ($send){
+                    $db->Rollback($pInTrans);
+                    echo $v['wechat']."已增过币";
+                    continue;
+                }
+
+                //送币
+                $unit = get_la_base_unit();
+                //获取等级(用户等级和群组等级对应)
+                $sca = get_us_scale($u_id);      //用户等级
+                $scale = "select * from bot_level_rules WHERE us_level='{$sca}' AND group_level='{$b['scale']}' limit 1";
+                $db->query($scale);
+                $s = $db->fetchRow();
+
+                $give_account = $v['count'] >=5 ? $s['max_send'] : $v['count']*$s['one_send'];
+
+                $sql = "update us_base set base_amount=base_amount+'{$give_account}'*'{$unit}' WHERE us_id='{$u_id}'";
+                $db -> query($sql);
+                if (!$db->affectedRows()){
+                    $db->Rollback($pInTrans);
+                    echo "us修改余额失败";
+                    break;
+                }
+
+                //ba减钱
+                $sql = "update ba_base set base_amount=base_amount-'{$give_account}'*'{$unit}' WHERE ba_id='{$ba_info['ba_id']}'";
+                $db -> query($sql);
+                if (!$db->affectedRows()){
+                    $db->Rollback($pInTrans);
+                    echo "ba修改余额失败";
+                    break;
+                }
+
+                //增币记录
+                $d['bot_ls_id'] = get_guid();
+                $d['ba_id'] = $ba_info['ba_id'];
+                $d['wechat'] = $v['wechat'];
+                $d['num'] = $v['count'];
+                $d['amount'] = $give_account*$unit;
+                $d['is_replacement'] = 0;
+                $d['send_time'] = date('Y-m-d H:i:s',time());
+                $d['bot_create_time'] = time();
+                $lgn_type = 'phone';
+                $d['tx_hash'] = hash('md5', $ba_info['ba_id'] . $lgn_type . get_ip() . time() . date('Y-m-d H:i:s'));
+                $d['us_id'] = $u_id;
+                $d['group_name'] = $b['name'];
+                $d['bot_us_id'] = $b['us_id'];
+                $sql = $db->sqlInsert("bot_Iss_records", $d);
+                $id = $db->query($sql);
+                if (!$id){
+                    $db->Rollback($pInTrans);
+                    echo "添加记录失败";
+                    break;
+                }
+
+                if ($ba_account==0){
+                    $ba_account = $ba_info['base_amount']-($give_account*$unit);
+                }else{
+                    $ba_account = $ba_account-($give_account*$unit);
+                }
+                /******************************转账记录表***************************************************/
+                //赠送者
+
+                $data['hash_id'] = hash('md5', $ba_info['ba_id'] . 4 . get_ip() . time() . rand(1000, 9999) . microtime());
+                $data['prvs_hash'] = get_pre_hash($ba_info['ba_id']);
+                $data['credit_id'] = $ba_info['ba_id'];
+                $data['debit_id'] = $u_id;
+                $data['tx_amount'] = $give_account*$unit;
+                $data['credit_balance'] = $ba_account;
+                $data['tx_hash'] = hash('md5', $ba_info['ba_id'] . 4 . get_ip() . time() . microtime());
+                $data['flag'] = 4;
+                $data['transfer_type'] = 'ba-us';
+                $data['transfer_state'] = 1;
+                $data['tx_detail'] = "聊天奖励";
+                $data['give_or_receive'] = 1;
+                $data['ctime'] = time();
+                $data['utime'] = date('Y-m-d H:i:s',time());
+                $sql = $db->sqlInsert("com_transfer_request", $data);
+                $id = $db->query($sql);
+                if (!$id){
+                    $db->Rollback($pInTrans);
+                    break;
+                }
+                //接收者
+                $dat['hash_id'] = hash('md5', $u_id . 4 . get_ip() . time() . rand(1000, 9999) . microtime());
+                $prvs_hash = get_pre_hash($u_id);
+                $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+                $dat['credit_id'] = $u_id;
+                $dat['debit_id'] = $ba_info['ba_id'];
+                $dat['tx_amount'] = $give_account*$unit;
+                $dat['credit_balance'] = get_us_account($u_id)+($give_account*$unit);
+                $dat['tx_hash'] = hash('md5', $u_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
+                $dat['flag'] = 4;
+                $dat['transfer_type'] = 'ba-us';
+                $dat['transfer_state'] = 1;
+                $dat['tx_detail'] = "聊天奖励";
+                $dat['give_or_receive'] = 2;
+                $dat['ctime'] = time();
+                $dat['utime'] = date('Y-m-d H:i:s',time());
+                $sql = $db->sqlInsert("com_transfer_request", $dat);
+                $id = $db->query($sql);
+                if (!$id){
+                    $db->Rollback($pInTrans);
+                    break;
+                }
+
+                /***********************资金变动记录表***********************************/
+                //us添加基准资产变动记录
+                $us_type = 'us_send_balance';
+                $ctime = date('Y-m-d H:i:s');
+                $com_balance_us['hash_id'] = hash('md5', $u_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
+                $com_balance_us['tx_id'] = $d['tx_hash'];
+                $com_balance_us['prvs_hash'] = get_recharge_pre_hash($u_id);
+                $com_balance_us["credit_id"] = $u_id;
+                $com_balance_us["debit_id"] = $ba_info['ba_id'];
+                $com_balance_us["tx_type"] = "ba_send";
+                $com_balance_us["tx_amount"] = $give_account*$unit;
+                $com_balance_us["credit_balance"] = get_us_account($u_id)+($give_account*$unit);
+                $com_balance_us["utime"] = time();
+                $com_balance_us["ctime"] = $ctime;
+
+                $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
+                if (!$db->query($sql)) {
+                    $db->Rollback($pInTrans);
+                    break;
+                }
+
+                //ba添加基准资产变动记录
+                $us_type = 'ba_send_balance';
+                $com_balance_ba['hash_id'] = hash('md5', $ba_info['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
+                $com_balance_ba['tx_id'] = $d['tx_hash'];
+                $com_balance_ba['prvs_hash'] = get_recharge_pre_hash($ba_info['ba_id']);
+                $com_balance_ba["credit_id"] = $ba_info['ba_id'];
+                $com_balance_ba["debit_id"] = $u_id;
+                $com_balance_ba["tx_type"] = "ba_send";
+                $com_balance_ba["tx_amount"] = $give_account*$unit;
+                $com_balance_ba["credit_balance"] = $ba_account;
+                $com_balance_ba["utime"] = time();
+                $com_balance_ba["ctime"] = $ctime;
+
+                $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
+                if (!$db->query($sql)) {
+                    $db->Rollback($pInTrans);
+                    break;
+                }
+
+            }
         }
-        //判断今日是否已经增过币
-        $send = send_money_if($ba_id,$v['wechat']);
-        if ($send){
-            $db->Rollback($pInTrans);
-            echo $v['wechat']."已增过币";
-            echo "<br />";
-            continue;
-        }
-
-        //用户id
-        $u_id = get_us_id($v['wechat']);
-
-        //送币
-        $unit = get_la_base_unit();
-        //获取等级
-        $sca = get_us_scale($u_id);
-        $scale = "select * from us_scale WHERE scale='{$sca}' limit 1";
-        $db->query($scale);
-        $s = $db->fetchRow();
-
-        $give_account = $v['count'] >=5 ? $s['max_send'] : $v['count']*$s['one_send'];
-//        $give_account = $v['count'] >=5 ? 50 : $v['count']*10;
-
-        $sql = "update us_base set base_amount=base_amount+'{$give_account}'*'{$unit}' WHERE wechat='{$v['wechat']}'";
-        $db -> query($sql);
-        if (!$db->affectedRows()){
-            $db->Rollback($pInTrans);
-            echo "us修改余额失败";
-            continue;
-        }
-
-        //ba减钱
-        $sql = "update ba_base set base_amount=base_amount-'{$give_account}'*'{$unit}' WHERE ba_id='{$ba_id}'";
-        $db -> query($sql);
-        if (!$db->affectedRows()){
-            $db->Rollback($pInTrans);
-            echo "ba修改余额失败";
-            continue;
-        }
-
-        //增币记录
-        $d['bot_ls_id'] = get_guid();
-        $d['ba_id'] = $ba_id;
-        $d['wechat'] = $v['wechat'];
-        $d['num'] = $v['count'];
-        $d['amount'] = $give_account*$unit;
-        $d['is_replacement'] = 0;
-        $d['send_time'] = date('Y-m-d H:i:s',time());
-        $d['bot_create_time'] = time();
-        $lgn_type = 'phone';
-        $d['tx_hash'] = hash('md5', $ba_id . $lgn_type . get_ip() . time() . date('Y-m-d H:i:s'));
-        $d['us_id'] = $u_id;
-        $sql = $db->sqlInsert("bot_Iss_records", $d);
-        $id = $db->query($sql);
-        if (!$id){
-            $db->Rollback($pInTrans);
-            echo "添加记录失败";
-            continue;
-        }
-
-        if ($ba_account==0){
-            $ba_account = get_ba_base_amount($ba_id)-($give_account*$unit);
-        }else{
-            $ba_account = $ba_account-($give_account*$unit);
-        }
-        /******************************转账记录表***************************************************/
-        //赠送者
-
-        $data['hash_id'] = hash('md5', $ba_id . 4 . get_ip() . time() . rand(1000, 9999) . microtime());
-        $data['prvs_hash'] = get_pre_hash($ba_id);
-        $data['credit_id'] = $ba_id;
-        $data['debit_id'] = $u_id;
-        $data['tx_amount'] = $give_account*$unit;
-        $data['credit_balance'] = $ba_account;
-        $data['tx_hash'] = hash('md5', $ba_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
-        $data['flag'] = 4;
-        $data['transfer_type'] = 'ba-us';
-        $data['transfer_state'] = 1;
-        $data['tx_detail'] = "聊天奖励";
-        $data['give_or_receive'] = 1;
-        $data['ctime'] = time();
-        $data['utime'] = date('Y-m-d H:i:s',time());
-        $sql = $db->sqlInsert("com_transfer_request", $data);
-        $id = $db->query($sql);
-        if (!$id){
-            $db->Rollback($pInTrans);
-            continue;
-        }
-        //接收者
-        $dat['hash_id'] = hash('md5', $u_id . 4 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
-        $prvs_hash = get_pre_hash($u_id);
-        $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
-        $dat['credit_id'] = $u_id;
-        $dat['debit_id'] = $ba_id;
-        $dat['tx_amount'] = $give_account*$unit;
-        $dat['credit_balance'] = get_us_account($u_id)+($give_account*$unit);
-        $dat['tx_hash'] = hash('md5', $u_id . 4 . get_ip() . time() . date('Y-m-d H:i:s'));
-        $dat['flag'] = 4;
-        $dat['transfer_type'] = 'ba-us';
-        $dat['transfer_state'] = 1;
-        $dat['tx_detail'] = "聊天奖励";
-        $dat['give_or_receive'] = 2;
-        $dat['ctime'] = time();
-        $dat['utime'] = date('Y-m-d H:i:s',time());
-        $sql = $db->sqlInsert("com_transfer_request", $dat);
-        $id = $db->query($sql);
-        if (!$id){
-            $db->Rollback($pInTrans);
-            continue;
-        }
-
-        /***********************资金变动记录表***********************************/
-        //us添加基准资产变动记录
-        $us_type = 'us_send_balance';
-        $ctime = date('Y-m-d H:i:s');
-        $com_balance_us['hash_id'] = hash('md5', $u_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
-        $com_balance_us['tx_id'] = $d['tx_hash'];
-        $com_balance_us['prvs_hash'] = get_recharge_pre_hash($u_id);
-        $com_balance_us["credit_id"] = $u_id;
-        $com_balance_us["debit_id"] = $ba_id;
-        $com_balance_us["tx_type"] = "ba_send";
-        $com_balance_us["tx_amount"] = $give_account*$unit;
-        $com_balance_us["credit_balance"] = get_us_account($u_id)+($give_account*$unit);
-        $com_balance_us["utime"] = time();
-        $com_balance_us["ctime"] = $ctime;
-
-        $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
-        if (!$db->query($sql)) {
-            $db->Rollback($pInTrans);
-            continue;
-        }
-
-        //ba添加基准资产变动记录
-        $us_type = 'ba_send_balance';
-        $com_balance_ba['hash_id'] = hash('md5', $ba_id. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
-        $com_balance_ba['tx_id'] = $d['tx_hash'];
-        $com_balance_ba['prvs_hash'] = get_recharge_pre_hash($ba_id);
-        $com_balance_ba["credit_id"] = $ba_id;
-        $com_balance_ba["debit_id"] = $u_id;
-        $com_balance_ba["tx_type"] = "ba_send";
-        $com_balance_ba["tx_amount"] = $give_account*$unit;
-        $com_balance_ba["credit_balance"] = $ba_account;
-        $com_balance_ba["utime"] = time();
-        $com_balance_ba["ctime"] = $ctime;
-
-        $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
-        if (!$db->query($sql)) {
-            $db->Rollback($pInTrans);
-            continue;
-        }
-
     }
     $db->Commit($pInTrans);
 }
@@ -230,14 +232,15 @@ function send_money_if($ba_id,$wechat){
     $rows = $db->fetchRow();
     return $rows;
 }
-//获取ba余额
-function get_ba_base_amount($ba_id){
+//获取ba信息
+function get_ba_base_info(){
     $db = new DB_COM();
-    $sql = "select base_amount from ba_base WHERE ba_id='{$ba_id}'";
+    $sql = "select * from ba_base ORDER BY ctime asc limit 1";
     $db->query($sql);
-    $amount = $db->getField($sql,'base_amount');
-    return $amount;
+    $row = $db->fetchRow();
+    return $row;
 }
+
 //获取us_id
 function get_us_id($wechat){
     $db = new DB_COM();
@@ -248,7 +251,17 @@ function get_us_id($wechat){
         return 0;
     return $us_id;
 }
-//获取等级
+//用户绑定群id
+function get_us_bind_group_id($us_id){
+    $db = new DB_COM();
+    $sql = "select bind_info from us_bind WHERE us_id='{$us_id}' AND bind_name='group' limit 1";
+    $db->query($sql);
+    $group_id = $db -> getField($sql,'bind_info');
+    if($group_id == null)
+        return 0;
+    return $group_id;
+}
+//获取用户等级
 function get_us_scale($us_id){
     $db = new DB_COM();
     $sql = "select scale from us_base WHERE us_id='{$us_id}' limit 1";
