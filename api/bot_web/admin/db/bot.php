@@ -356,7 +356,7 @@ function glory_integral_list()
 function get_group_type_list()
 {
     $db = new DB_COM();
-    $sql = "select id,name from bot_group_type WHERE 1";
+    $sql = "select id,name from bot_group_type WHERE is_del=1";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
