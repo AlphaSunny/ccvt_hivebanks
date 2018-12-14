@@ -36,12 +36,15 @@ $(function () {
     //添加群
     $(".add_group_type_btn").click(function () {
         var name = $("#groupTypeInput").val();
+        ShowLoading("show");
         AddGroupType(token, name, function (response) {
+            ShowLoading("hide");
             if (response.errcode == "0") {
                 layer.msg("添加成功", {icon: 1});
                 GetGroupTypeAdminFun();
             }
         }, function (response) {
+            ShowLoading("hide");
             layer.msg(response.errmsg, {icon: 2});
         })
     })

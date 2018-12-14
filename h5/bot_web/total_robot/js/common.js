@@ -238,10 +238,11 @@ function GetGroupTypeAdmin(token, suc_func, error_func) {
 }
 
 //添加群类型
-function AddGroupType(token, suc_func, error_func) {
+function AddGroupType(token, name, suc_func, error_func) {
     var api_url = "group_type_add.php",
         post_data = {
-            "token": token
+            "token": token,
+            "name": name
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
