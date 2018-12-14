@@ -43,7 +43,7 @@ $(function () {
                     }
 
                     if (data[i].group_manager_name == null) {
-                        group_manager_name = "点击编辑按钮填写群主";
+                        group_manager_name = "--";
                     } else {
                         group_manager_name = data[i].group_manager_name;
                     }
@@ -89,8 +89,13 @@ $(function () {
         } else {
             $("#trickSwitch").removeClass("active").val("2");
         }
+
+        if(group_manager_name == "--"){
+            $("#group_manager_name").val("");
+        }else {
+            $("#group_manager_name").val(group_manager_name);
+        }
         $("#groupName").val(group_name);
-        $("#group_manager_name").val(group_manager_name);
         $("#editGroupModal").modal("show");
     });
 

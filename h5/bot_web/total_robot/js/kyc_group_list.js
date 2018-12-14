@@ -47,7 +47,7 @@ $(function () {
                                 "<button class='btn btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye'></i>详情</button>"
                         }
                         if (data[i].group_manager_name == null) {
-                            group_manager_name = "点击编辑按钮填写群主";
+                            group_manager_name = "--";
                         } else {
                             group_manager_name = data[i].group_manager_name;
                         }
