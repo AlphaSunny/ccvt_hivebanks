@@ -53,6 +53,7 @@ $(function () {
                 var data = response.rows;
                 if(!data){
                     tr="<tr><td colspan='4'>暂无数据</td></tr>";
+                    console.log(tr);
                 }else {
                     $.each(data, function (i, val) {
                         tr += "<tr>" +
