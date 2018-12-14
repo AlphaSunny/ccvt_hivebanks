@@ -54,6 +54,18 @@ $(function () {
     //删除群
     $(document).on("click", ".delBtn", function () {
         var type_id = $(this).parents("tr").find(".id").attr("name");
+        var name = $(this).parents("tr").find(".id").text();
+        layer.confirm('群定要删除' + name + "类型?", {
+            btn: ['群定', '取消'] //按钮
+        }, function () {
+            DeleteGroupConfirmFun(type_id);
+        }, function () {
+
+        });
+    });
+
+    //确定删除
+    function DeleteGroupConfirmFun(type_id) {
         ShowLoading("show");
         DeleteGroupType(token, type_id, function (response) {
             ShowLoading("hide");
@@ -65,5 +77,5 @@ $(function () {
             ShowLoading("hide");
             layer.msg(response.errmsg, {icon: 2});
         })
-    })
+    }
 });
