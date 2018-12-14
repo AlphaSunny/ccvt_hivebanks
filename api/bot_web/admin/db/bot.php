@@ -294,7 +294,7 @@ function  get_iss_record_total($da)
 //
 // 返回: row           最新信息数组
 //======================================
-function iss_records_list($da)
+function iss_records_list($da,$offset,$limit)
 {
     $db = new DB_COM();
     $unit = get_la_base_unit();
@@ -312,7 +312,7 @@ function iss_records_list($da)
         $nickname = $da['nickname'];
         $sql .=" and wechat LIKE '$nickname%'";
     }
-    $sql .= " order by bot_create_time desc";
+    $sql .= " order by bot_create_time desc limit $offset , $limit";
     $db->query($sql);
     $data = array();
     $rows = $db -> fetchAll();
