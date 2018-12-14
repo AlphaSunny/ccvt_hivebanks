@@ -331,7 +331,19 @@ function iss_records_list($da,$offset,$limit)
     return $data;
 }
 
-
+//======================================
+// 函数: 获取积分记录列表总数
+// 参数:
+// 返回: count        记录总数
+//======================================
+function  get_glory_integral_total()
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM us_glory_integral_change_log as a LEFT JOIN us_base as b ON a.credit_id=b.us_id LEFT JOIN us_base as c ON a.debit_id=c.us_id ORDER BY a.ctime DESC";
+    $db -> query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
 //======================================
 // 函数: 获取积分记录
 //
