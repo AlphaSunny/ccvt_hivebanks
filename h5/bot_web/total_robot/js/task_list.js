@@ -51,6 +51,9 @@ $(function () {
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
+                if(!data){
+                    tr="<tr><td colspan='4'>暂无数据</td></tr>";
+                }
                 $.each(data, function (i, val) {
                     tr += "<tr>" +
                         "<td class='id none'>" + data[i].id + "</td>" +
