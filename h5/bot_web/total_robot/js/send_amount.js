@@ -10,6 +10,10 @@ $(function () {
         var tr = "";
         GetAmount(token, start_time, end_time, nickname, limit, offset, function (response) {
             console.log(response);
+            if(response.errcode == "0"){
+                $(".all_amount").text(response.all_amount);
+                $(".all_chat").text(response.all_chat);
+            }
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2});
         });
