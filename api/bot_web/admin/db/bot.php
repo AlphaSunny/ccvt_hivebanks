@@ -270,7 +270,7 @@ function get_message_list($group_id,$status)
 function  get_iss_record_total($da)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM bot_Iss_records WHERE bot_us_id = '{$da['us_id']}'";
+    $sql = "SELECT * FROM bot_Iss_records 1";
     if ($da['start_time'] && !$da['end_time']){
         $sql .= " and send_time>'{$da['start_time']}'";
     }elseif (!$da['start_time'] && $da['end_time']){
@@ -299,7 +299,7 @@ function iss_records_list($da)
     $db = new DB_COM();
     $unit = get_la_base_unit();
 
-    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE bot_us_id = '{$da['us_id']}'";
+    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE 1";
     if ($da['start_time'] && !$da['end_time']){
         $sql .= " and send_time>'{$da['start_time']}'";
     }elseif (!$da['start_time'] && $da['end_time']){
