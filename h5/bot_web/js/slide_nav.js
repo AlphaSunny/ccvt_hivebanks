@@ -6,7 +6,7 @@ $.ajax({
     success: function (res) {
         console.log(res);
         $.each(res, function (i, val) {
-            li+="<li>" +
+            li+="<li class='treeview-item'>" +
                 "<a class='app-menu__item' href="+ res[i].href +"></a>" +
                 "<i class='app-menu__icon fa "+ res[i].fa_icon +"'></i>" +
                 "<span class='app-menu__label'>"+ res[i].name +"</span>" +
