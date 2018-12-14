@@ -249,7 +249,7 @@ function AddGroupType(token, name, suc_func, error_func) {
 
 //删除群类型
 function DeleteGroupType(token, type_id, suc_func, error_func) {
-    var api_url = "group_type_add.php",
+    var api_url = "group_type_del.php",
         post_data = {
             "token": token,
             "type_id": type_id
