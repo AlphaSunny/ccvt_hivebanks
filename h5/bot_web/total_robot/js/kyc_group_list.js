@@ -153,7 +153,7 @@ $(function () {
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        EditGroup(token, group_name, admin_del, group_id, function (response) {
+        EditGroup(token, group_name, admin_del,group_manager_name, group_id, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");

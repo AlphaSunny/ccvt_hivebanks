@@ -147,12 +147,13 @@ function ReviewGroup(token, review_group_id, is_audit, why, suc_func, error_func
 }
 
 //编辑群信息
-function EditGroup(token, group_name, admin_del, group_id, suc_func, error_func) {
+function EditGroup(token, group_name, admin_del,group_manager_name, group_id, suc_func, error_func) {
     var api_url = "group_edit.php",
         post_data = {
             "token": token,
             "group_name": group_name,
             "admin_del": admin_del,
+            "group_manager_name": group_manager_name,
             "group_id": group_id
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
