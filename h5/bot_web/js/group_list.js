@@ -28,8 +28,8 @@ $(function () {
 
     //获取群列表
     function GetGroupListFun() {
-        var tr = "", opt = "",is_audit = "";
-        GetGroupList(token,is_audit, function (response) {
+        var tr = "", opt = "", is_audit = "", group_manager_name = "";
+        GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
                 $.each(data, function (i, val) {
@@ -41,9 +41,17 @@ $(function () {
                         opt = "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                             "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>";
                     }
+
+                    if (data[i].group_manager_name == "") {
+                        group_manager_name = "点击编辑按钮填写群主";
+                    }else {
+                        group_manager_name = data[i].group_manager_name;
+                    }
+
                     tr += "<tr>" +
                         "<td class='id'>" + data[i].id + "</td>" +
                         "<td class='name'>" + data[i].name + "</td>" +
+                        "<td class='group_manager_name'>group_manager_name</td>" +
                         "<td>" + data[i].del + "</td>" +
                         "<td class='none is_del'>" + data[i].is_del + "</td>" +
                         "<td>" + data[i].flirt + "</td>" +
@@ -68,6 +76,7 @@ $(function () {
         // $(".editSubBtn").removeClass("none");
         group_id = $(this).parents("tr").find(".id").text();//获取群id
         var group_name = $(this).parents("tr").find(".name").text();//获取群名称
+        var group_manager_name = $(this).parents("tr").find(".group_manager_name").text();//获取群主
         var is_del = $(this).parents("tr").find(".is_del").text();//获取是否运行状态
         var is_flirt = $(this).parents("tr").find(".is_flirt").text();//获取是否开启调戏功能
         if (is_del == "1") {
@@ -109,7 +118,7 @@ $(function () {
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        EditGroup(token, group_name, del, flirt, group_id, function (response) {
+        EditGroup(token, group_name,group_manager_name, del, flirt, group_id, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
