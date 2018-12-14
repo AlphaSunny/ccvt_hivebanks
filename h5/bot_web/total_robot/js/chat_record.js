@@ -25,8 +25,24 @@ $(function () {
         //         {"data": "bot_send_time", "class": "bot_send_time"}
         //     ],
         // });
+        var tr = "";
         GetNewsRecord(token, group_id, status, function (response) {
             console.log(response);
+            if (response.errcode == "0") {
+                var data = response.rows;
+                if (data.length <= 0) {
+                    tr="<tr><td colspan='3'>暂无数据</td></tr>"
+                }else {
+                    $.each(data,function (i, val) {
+                        tr+="<tr>" +
+                            "<td>"+ data[i].bot_nickname +"</td>" +
+                            "<td>"+ data[i].bot_content +"</td>" +
+                            "<td>"+ data[i].bot_send_time +"</td>" +
+                            "</tr>"
+                    })
+                }
+                $("#chatRecordT").html(tr);
+            }
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2});
         });
