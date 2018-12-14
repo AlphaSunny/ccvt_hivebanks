@@ -28,8 +28,8 @@ $(function () {
 
     //获取群列表
     function GetGroupListFun() {
-        var tr = "", opt = "";
-        GetGroupList(token, function (response) {
+        var tr = "", opt = "",is_audit = "";
+        GetGroupList(token,is_audit, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
                 $.each(data, function (i, val) {
