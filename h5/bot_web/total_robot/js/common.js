@@ -157,6 +157,7 @@ function EditGroup(token, group_name, admin_del, group_id, suc_func, error_func)
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
+
 //查看群成员列表
 function GetGroupMember(token, group_id, limit, offset, status, suc_func, error_func) {
     var api_url = "group_members_list.php",
@@ -212,6 +213,17 @@ function DelTask(token, timer_id, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//搜索获取统计列表
+function GetAmount(token, start_time, end_time, suc_func, error_func) {
+    var api_url = "iss_records_list.php",
+        post_data = {
+            "token": token,
+            "start_time": start_time,
+            "end_time": end_time
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 /**
  * Disable button
  * @param $this Button object
@@ -249,19 +261,20 @@ function ActiveClick($this, btnText) {
     $this.html(btnText);
 }
 
-window.onload=function () {
+window.onload = function () {
     $(".loading").fadeOut(300);
 };
 
 //loading
 var loading = "";
+
 function ShowLoading(type) {
-    if(type == "show"){
+    if (type == "show") {
         loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
     }
-    if(type == "hide"){
+    if (type == "hide") {
         layer.close(loading);
     }
 }
