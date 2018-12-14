@@ -4,12 +4,12 @@ $(function () {
 
 
     // var url = getRootPath();
-    var limit = 10, offset = 0;
+    var limit = 10, offset = 0, loading = "";
 
     function GetAmountFun(start_time, end_time, nickname, limit, offset) {
         var tr = "", totalPage = "", count = "";
         GetAmount(token, start_time, end_time, nickname, limit, offset, function (response) {
-            console.log(response);
+            layer.close(loading);
             if (response.errcode == "0") {
                 $(".all_amount").text(response.all_amount);
                 $(".all_chat").text(response.all_chat);
@@ -48,6 +48,7 @@ $(function () {
                 });
             }
         }, function (response) {
+            layer.close(loading);
             layer.msg(response.errmsg, {icon: 2});
         });
     }
