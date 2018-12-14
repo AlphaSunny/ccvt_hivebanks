@@ -61,7 +61,8 @@ $(function () {
                         "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
                         "</td>" +
                         "</tr>"
-                })
+                });
+                $("#groupListTable").html(tr);
             }
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2})
