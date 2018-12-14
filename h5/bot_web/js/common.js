@@ -226,7 +226,7 @@ function AddGroup(token, group_name, del, flirt, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
-//获取任务列表
+//获取定时任务
 function GetTaskList(token, suc_func, error_func) {
     var api_url = "timer_list.php",
         post_data = {

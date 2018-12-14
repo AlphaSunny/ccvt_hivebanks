@@ -44,7 +44,7 @@ $(function () {
     // }
     // GetTaskListFun();
 
-    //获取任务列表
+    //获取定时任务
     function GetTaskListFun() {
         var tr = "";
         GetTaskList(token, function (response) {
