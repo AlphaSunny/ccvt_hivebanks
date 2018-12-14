@@ -33,25 +33,29 @@ $(function () {
         GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
-                $.each(data, function (i, val) {
-                    if (data[i].is_audit == 1) {
-                        opt = "<button class='btn btn-primary btn-sm ok_Btn review_btn'><i class='fa fa-check'></i>通过</button>" +
-                            "<button class='btn btn-sm btn-danger refuse_Btn review_btn margin-left-5'><i class='fa fa-times'></i>拒绝</button>";
-                    } else if (data[i].is_audit == 3) {
-                        opt = "<button class='btn btn-success btn-sm review_btn ref_ok_Btn'><i class='fa fa-check'></i>重新通过</button>";
-                    } else {
-                        opt = "<button class='btn btn-success btn-sm editBtn'><i class='fa fa-pencil'></i>编辑</button>" +
-                            "<button class='btn btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye'></i>详情</button>"
-                    }
-                    tr += "<tr>" +
-                        "<td class='id none'>" + data[i].id + "</td>" +
-                        "<td class='name'>" + data[i].name + " " + data[i].scale + "</td>" +
-                        "<td class='del'>" + data[i].del + "</td>" +
-                        "<td class='is_admin_del none'>" + data[i].is_admin_del + "</td>" +
-                        "<td class='audit'>" + data[i].audit + "</td>" +
-                        "<td class='opt'>" + opt + "</td>" +
-                        "</tr>"
-                });
+                if (data.length <= 0) {
+                    tr = "<tr><td colspan='4'>暂无数据</td></tr>";
+                } else {
+                    $.each(data, function (i, val) {
+                        if (data[i].is_audit == 1) {
+                            opt = "<button class='btn btn-primary btn-sm ok_Btn review_btn'><i class='fa fa-check'></i>通过</button>" +
+                                "<button class='btn btn-sm btn-danger refuse_Btn review_btn margin-left-5'><i class='fa fa-times'></i>拒绝</button>";
+                        } else if (data[i].is_audit == 3) {
+                            opt = "<button class='btn btn-success btn-sm review_btn ref_ok_Btn'><i class='fa fa-check'></i>重新通过</button>";
+                        } else {
+                            opt = "<button class='btn btn-success btn-sm editBtn'><i class='fa fa-pencil'></i>编辑</button>" +
+                                "<button class='btn btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye'></i>详情</button>"
+                        }
+                        tr += "<tr>" +
+                            "<td class='id none'>" + data[i].id + "</td>" +
+                            "<td class='name'>" + data[i].name + " " + data[i].scale + "</td>" +
+                            "<td class='del'>" + data[i].del + "</td>" +
+                            "<td class='is_admin_del none'>" + data[i].is_admin_del + "</td>" +
+                            "<td class='audit'>" + data[i].audit + "</td>" +
+                            "<td class='opt'>" + opt + "</td>" +
+                            "</tr>"
+                    });
+                }
                 $("#groupListTable").html(tr);
             }
         }, function (response) {
