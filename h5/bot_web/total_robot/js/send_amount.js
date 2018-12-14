@@ -66,6 +66,9 @@ $(function () {
         end_time = $("#endTime").val();
         nickname = $("#nickname").val();
         GetAmountFun(start_time, end_time, nickname, limit, offset);
+        loading = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
     });
 
     //Set time
