@@ -220,6 +220,7 @@ function GetAmount(token, start_time, end_time, nickname, limit, offset, suc_fun
             "token": token,
             "start_time": start_time,
             "end_time": end_time,
+            "nickname": nickname,
             "limit": limit,
             "offset": offset
         };
