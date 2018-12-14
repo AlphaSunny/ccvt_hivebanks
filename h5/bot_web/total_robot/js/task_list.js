@@ -3,7 +3,7 @@ $(function () {
 
     var url = getRootPath();
     var table = $("#taskListTable").DataTable({
-        "ajax": url + "/api/bot_web/timer_list.php?token=" + encodeURIComponent(token),
+        "ajax": url + "/api/bot_web/admin/timer_list.php?token=" + encodeURIComponent(token),
         "deferRender": true,
         "columns": [
             {"data": "id", "class": "id"},
