@@ -9,6 +9,7 @@ $(function () {
         GiveLikeList(token, limit, offset, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
+                var totalPage = Math.floor(response.total / limit);
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>"
                 } else {
