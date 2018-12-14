@@ -24,7 +24,7 @@ chk_empty_args('GET', $args);
 // 用户token
 $token = get_arg_str('GET', 'token',128);
 //验证token
-$ba_id = check_token($token);
+$us_id = check_token($token);
 
 // 交易记录数组
 $rows = glory_integral_list();
