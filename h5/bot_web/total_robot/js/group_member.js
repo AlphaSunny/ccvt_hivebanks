@@ -22,7 +22,7 @@ $(function () {
             layer.close(loading);
             if (response.errcode == "0") {
                 var data = response.rows;
-                totalPage = response.total;
+                totalPage = Math.floor(response.total / limit);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (1 < totalPage && totalPage <= 6) {
@@ -46,9 +46,9 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        GetGroupMemberFun(token, limit, (current - 1) * limit,status);
+                        GetGroupMemberFun(token, limit, (current - 1) * limit, status);
                         loading = layer.load(1, {
-                            shade: [0.1,'#fff'] //0.1透明度的白色背景
+                            shade: [0.1, '#fff'] //0.1透明度的白色背景
                         });
                     }
                 });
@@ -65,7 +65,7 @@ $(function () {
     $(".click_day").click(function () {
         status = $(this).attr("name");
         loading = layer.load(1, {
-            shade: [0.1,'#fff'] //0.1透明度的白色背景
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
         GetGroupMemberFun(token, limit, offset, status);
     })
