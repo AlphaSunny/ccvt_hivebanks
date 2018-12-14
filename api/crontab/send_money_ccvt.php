@@ -193,6 +193,9 @@ if ($groups){
     $db->Commit($pInTrans);
 }
 
+//给群主反40%
+
+
 echo "OK!";
 
 
