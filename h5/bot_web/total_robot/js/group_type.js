@@ -34,7 +34,7 @@ $(function () {
     GetGroupTypeAdminFun();
 
     //添加群
-    $(".add_group_type_btn").click(function (i, val) {
+    $(".add_group_type_btn").click(function () {
         var name = $("#groupTypeInput").val();
         AddGroupType(token, name, function (response) {
             if (response.errcode == "0") {
