@@ -7,6 +7,7 @@ $(function () {
     function GiveLikeListFun(token, limit, offset) {
         var tr = "",totalPage = "", count = "";
         GiveLikeList(token, limit, offset, function (response) {
+            ShowLoading("hide");
             if (response.errcode == "0") {
                 var data = response.rows;
                 totalPage = Math.floor(response.total / limit);
@@ -39,13 +40,12 @@ $(function () {
                     nextPageText: ">>",
                     callback: function (current) {
                         GiveLikeListFun(token, limit, (current - 1) * limit);
-                        loading = layer.load(1, {
-                            shade: [0.1, '#fff'] //0.1透明度的白色背景
-                        });
+                        ShowLoading("show");
                     }
                 });
             }
         }, function (response) {
+            ShowLoading("hide");
             layer.msg(response.errmsg, {icon: 2});
         });
     }
