@@ -90,6 +90,7 @@ $(function () {
             $("#trickSwitch").removeClass("active").val("2");
         }
         $("#groupName").val(group_name);
+        $("#group_manager_name").val(group_manager_name);
         $("#editGroupModal").modal("show");
     });
 
