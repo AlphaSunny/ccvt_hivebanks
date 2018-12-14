@@ -1,6 +1,5 @@
 $(function () {
     var token = GetCookie("total_robot_token");
-    console.log(token);
 
     // var url = getRootPath();
     // var table = $("#taskListTable").DataTable({
@@ -53,8 +52,9 @@ $(function () {
                 var data = response.rows;
                 if(!data){
                     tr="<tr><td colspan='4'>暂无数据</td></tr>";
-                    console.log(tr);
+                    console.log("none");
                 }else {
+                    console.log("data");
                     $.each(data, function (i, val) {
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
