@@ -166,7 +166,7 @@ table {
     width: 100% !important;
 }
 
-table th {
+.width-33 {
     width: 33%;
 }
 
