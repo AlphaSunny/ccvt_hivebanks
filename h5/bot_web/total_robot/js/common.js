@@ -272,7 +272,9 @@ function EditGroupType(token, type_id, name, suc_func, error_func) {
 function GiveLikeList(token, limit, offset, suc_func, error_func) {
     var api_url = "glory_integral_list.php",
         post_data = {
-            "token": token
+            "token": token,
+            "limit": limit,
+            "offset": offset
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
