@@ -44,14 +44,14 @@ $(function () {
 
                     if (data[i].group_manager_name == "") {
                         group_manager_name = "点击编辑按钮填写群主";
-                    }else {
+                    } else {
                         group_manager_name = data[i].group_manager_name;
                     }
 
                     tr += "<tr>" +
                         "<td class='id'>" + data[i].id + "</td>" +
                         "<td class='name'>" + data[i].name + "</td>" +
-                        "<td class='group_manager_name'>group_manager_name</td>" +
+                        "<td class='group_manager_name'>" + group_manager_name + "</td>" +
                         "<td>" + data[i].del + "</td>" +
                         "<td class='none is_del'>" + data[i].is_del + "</td>" +
                         "<td>" + data[i].flirt + "</td>" +
@@ -120,7 +120,7 @@ $(function () {
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        EditGroup(token, group_name,group_manager_name, del, flirt, group_id, function (response) {
+        EditGroup(token, group_name, group_manager_name, del, flirt, group_id, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
