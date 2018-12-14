@@ -25,12 +25,14 @@ $(function () {
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>"
                 } else {
-                    tr += "<tr>" +
-                        "<td class='wechat'>" + data[i].wechat + "</td>" +
-                        "<td class='amount'>" + data[i].amount + "</td>" +
-                        "<td class='num'>" + data[i].num + "</td>" +
-                        "<td class='send_time'>" + data[i].send_time + "</td>" +
-                        "</tr>"
+                    $.each(data, function (i, val) {
+                        tr += "<tr>" +
+                            "<td class='wechat'>" + data[i].wechat + "</td>" +
+                            "<td class='amount'>" + data[i].amount + "</td>" +
+                            "<td class='num'>" + data[i].num + "</td>" +
+                            "<td class='send_time'>" + data[i].send_time + "</td>" +
+                            "</tr>";
+                    })
                 }
                 $("#pagination").pagination({
                     currentPage: (limit + offset) / limit,
