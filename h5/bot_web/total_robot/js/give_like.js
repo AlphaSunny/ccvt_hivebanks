@@ -5,27 +5,32 @@ $(function () {
 
     var url = getRootPath();
 
-    // function GetAmount(start_time, end_time, nickname) {
-        $.ajax({
-            "url": url + "/api/bot_web/admin/glory_integral_list.php?token=" + encodeURIComponent(token),
-            "type": "GET",
-            success: function (data) {
-                // $(".all_amount").text(data.all_amount);
-                // $(".all_chat").text(data.all_chat);
-                $('#giveLikeTable').DataTable({
-                    order: [[3, "desc"]],
-                    destroy: true,
-                    deferRender: true,
-                    data: data.data,
-                    columns: [
-                        {"data": "give_account"},
-                        {"data": "receive_account"},
-                        {"data": "tx_amount"},
-                        {"data": "utime"}
-                    ],
-                });
-            }
-        });
+    // function GiveLikeListFun(start_time, end_time, nickname) {
+    //     GiveLikeList(function (response) {
+    //
+    //     }, function (response) {
+    //         layer.msg(response.errmsg, {icon: 2});
+    //     });
+            $.ajax({
+                "url": url + "/api/bot_web/admin/glory_integral_list.php?token=" + encodeURIComponent(token),
+                "type": "GET",
+                success: function (data) {
+                    // $(".all_amount").text(data.all_amount);
+                    // $(".all_chat").text(data.all_chat);
+                    $('#giveLikeTable').DataTable({
+                        order: [[3, "desc"]],
+                        destroy: true,
+                        deferRender: true,
+                        data: data.data,
+                        columns: [
+                            {"data": "give_account"},
+                            {"data": "receive_account"},
+                            {"data": "tx_amount"},
+                            {"data": "utime"}
+                        ],
+                    });
+                }
+            });
     // }
 
     // var start_time = "", end_time = "", nickname = "";
