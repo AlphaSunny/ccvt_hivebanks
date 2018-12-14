@@ -13,30 +13,24 @@ $(function () {
             if(response.errcode == "0"){
                 $(".all_amount").text(response.all_amount);
                 $(".all_chat").text(response.all_chat);
+                // $("#pagination").pagination({
+                //     currentPage: (limit + offset) / limit,
+                //     totalPage: totalPage,
+                //     isShow: false,
+                //     count: count,
+                //     prevPageText: "<<",
+                //     nextPageText: ">>",
+                //     callback: function (current) {
+                //         GetGroupMemberFun(token, limit, (current - 1) * limit, status);
+                //         loading = layer.load(1, {
+                //             shade: [0.1, '#fff'] //0.1透明度的白色背景
+                //         });
+                //     }
+                // });
             }
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2});
         });
-        // $.ajax({
-        //     "url": url + "/api/bot_web/admin/iss_records_list.php?token=" + encodeURIComponent(token) + "&start_time=" + start_time + "&end_time=" + end_time + "&nickname=" + nickname,
-        //     "type": "GET",
-        //     success: function (data) {
-        //         $(".all_amount").text(data.all_amount);
-        //         $(".all_chat").text(data.all_chat);
-        //         $('#sendAmountTable').DataTable({
-        //             order: [[3, "desc"]],
-        //             destroy: true,
-        //             deferRender: true,
-        //             data: data.data,
-        //             columns: [
-        //                 {"data": "wechat"},
-        //                 {"data": "amount"},
-        //                 {"data": "num"},
-        //                 {"data": "send_time"}
-        //             ],
-        //         });
-        //     }
-        // });
     }
 
     var start_time = "", end_time = "", nickname = "";
