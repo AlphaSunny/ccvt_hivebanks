@@ -230,7 +230,7 @@ function GetAmount(token, start_time, end_time, nickname, limit, offset, suc_fun
 
 //获取群类型
 function GetGroupTypeAdmin(token, suc_func, error_func) {
-    var api_url = "iss_records_list.php",
+    var api_url = "group_type.php",
         post_data = {
             "token": token
         };
