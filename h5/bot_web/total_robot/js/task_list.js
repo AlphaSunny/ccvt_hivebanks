@@ -1,5 +1,6 @@
 $(function () {
     var token = GetCookie("total_robot_token");
+    console.log(token);
 
     var url = getRootPath();
     var table = $("#taskListTable").DataTable({
