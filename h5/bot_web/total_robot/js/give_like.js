@@ -7,7 +7,7 @@ $(function () {
 
     // function GetAmount(start_time, end_time, nickname) {
         $.ajax({
-            "url": url + "/api/bot_web/glory_integral_list.php?token=" + encodeURIComponent(token),
+            "url": url + "/api/bot_web/admin/glory_integral_list.php?token=" + encodeURIComponent(token),
             "type": "GET",
             success: function (data) {
                 // $(".all_amount").text(data.all_amount);
