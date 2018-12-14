@@ -3,9 +3,8 @@ $(function () {
     var token = GetCookie("total_robot_token");
 
     //获取群类型
-    var tr = "";
-
     function GetGroupTypeAdminFun() {
+        var tr = "";
         GetGroupTypeAdmin(token, function (response) {
             if (response.errcode == "0") {
                 console.log(response);
