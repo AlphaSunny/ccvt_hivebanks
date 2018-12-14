@@ -147,7 +147,7 @@ function ReviewGroup(token, review_group_id, is_audit, why, suc_func, error_func
 }
 
 //编辑群信息
-function EditGroup(token, group_name, admin_del,group_manager_name, group_id, suc_func, error_func) {
+function EditGroup(token, group_name, admin_del, group_manager_name, group_id, suc_func, error_func) {
     var api_url = "group_edit.php",
         post_data = {
             "token": token,
@@ -231,6 +231,15 @@ function GetAmount(token, start_time, end_time, nickname, limit, offset, suc_fun
 //获取群类型
 function GetGroupTypeAdmin(token, suc_func, error_func) {
     var api_url = "group_type.php",
+        post_data = {
+            "token": token
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+//添加群类型
+function AddGroupType(token, suc_func, error_func) {
+    var api_url = "group_type_add.php",
         post_data = {
             "token": token
         };
