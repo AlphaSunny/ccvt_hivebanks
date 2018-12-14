@@ -52,7 +52,7 @@ $(function () {
     });
 
     //删除群
-    $(".delBtn").click(function () {
+    $(document).on("click", ".delBtn", function () {
         var type_id = $(this).parents("tr").find(".id").attr("name");
         ShowLoading("show");
         DeleteGroupType(token, type_id, function (response) {
