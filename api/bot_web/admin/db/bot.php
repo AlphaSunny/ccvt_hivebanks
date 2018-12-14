@@ -65,7 +65,7 @@ function save_group($date)
 {
     $db = new DB_COM();
     $time = time();
-    $sql = "update bot_group set is_admin_del = '{$date['is_admin_del']}',uptime='{$time}' where id='{$date['group_id']}' ";
+    $sql = "update bot_group set is_admin_del = '{$date['is_admin_del']}',group_manager_name='{$date['group_manager_name']}',uptime='{$time}' where id='{$date['group_id']}' ";
     $db->query($sql);
     return $db->affectedRows();
 }

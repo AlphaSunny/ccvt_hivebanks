@@ -27,6 +27,9 @@ $token = get_arg_str('GET', 'token',128);
 $group_id = get_arg_str('GET', 'group_id');
 // 群组名称
 $group_name = get_arg_str('GET', 'group_name');
+
+// 群主名称
+$group_manager_name = get_arg_str('GET', 'group_manager_name');
 //验证token
 $ba_id = check_token($token);
 
@@ -41,6 +44,7 @@ $date['group_id'] = $group_id;
 $date['name'] = $group_name;
 $date['is_del'] = get_arg_str('GET', 'del');
 $date['is_flirt'] = get_arg_str('GET', 'flirt');
+$date['group_manager_name'] = $group_manager_name;
 //修改群组
 $row = save_group($date);
 if (!$row){
