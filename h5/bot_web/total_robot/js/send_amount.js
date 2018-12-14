@@ -6,27 +6,46 @@ $(function () {
     // var url = getRootPath();
     var limit = 10, offset = 0;
 
-    function GetAmountFun(start_time, end_time, nickname) {
-        var tr = "";
+    function GetAmountFun(start_time, end_time, nickname, limit, offset) {
+        var tr = "", totalPage = "", count = "";
         GetAmount(token, start_time, end_time, nickname, limit, offset, function (response) {
             console.log(response);
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 $(".all_amount").text(response.all_amount);
                 $(".all_chat").text(response.all_chat);
-                // $("#pagination").pagination({
-                //     currentPage: (limit + offset) / limit,
-                //     totalPage: totalPage,
-                //     isShow: false,
-                //     count: count,
-                //     prevPageText: "<<",
-                //     nextPageText: ">>",
-                //     callback: function (current) {
-                //         GetGroupMemberFun(token, limit, (current - 1) * limit, status);
-                //         loading = layer.load(1, {
-                //             shade: [0.1, '#fff'] //0.1透明度的白色背景
-                //         });
-                //     }
-                // });
+                var data = response.rows;
+                totalPage = Math.floor(response.total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+                if (data.length <= 0) {
+                    tr = "<tr><td colspan='4'>暂无数据</td></tr>"
+                } else {
+                    tr += "<tr>" +
+                        "<td class='wechat'>" + data[i].wechat + "</td>" +
+                        "<td class='amount'>" + data[i].amount + "</td>" +
+                        "<td class='num'>" + data[i].num + "</td>" +
+                        "<td class='send_time'>" + data[i].send_time + "</td>" +
+                        "</tr>"
+                }
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        GetAmountFun(start_time, end_time, nickname, limit, (current - 1) * limit);
+                        loading = layer.load(1, {
+                            shade: [0.1, '#fff'] //0.1透明度的白色背景
+                        });
+                    }
+                });
             }
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2});
@@ -34,7 +53,7 @@ $(function () {
     }
 
     var start_time = "", end_time = "", nickname = "";
-    GetAmountFun(start_time, end_time, nickname);
+    GetAmountFun(start_time, end_time, nickname, limit, offset);
 
 
     $(".searchBtn").click(function () {
