@@ -255,8 +255,8 @@ $(function () {
             // show img
             $("#upload_img").attr("src", objUrl);
         }
-        src = UpLoadImg(formData);
         ShowLoading("show");
+        src = UpLoadImg(formData);
     });
 
     //选择日期
