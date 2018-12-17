@@ -160,10 +160,8 @@ $(function () {
             processData: false,
             success: function (response) {
                 var data = JSON.parse(response);
-                console.log(data);
                 if (data.errcode == '0') {
                     src = data.url;
-                    console.log(src);
                 }
             },
             error: function (response) {
@@ -178,7 +176,6 @@ $(function () {
     GetKeyCode(token, function (response) {
         if (response.errcode == '0') {
             key_code = response.key_code;
-            console.log(key_code);
         }
     }, function (response) {
         LayerFun(response.errcode);
@@ -188,12 +185,14 @@ $(function () {
     $("#file").on("change", function () {
         var formData = new FormData($("#upload_image")[0]);
         formData.append("key_code", key_code);
-        var src = UpLoadImg(formData);
-        console.log(src);
         var _this_file = this.files[0];
         var _this_size = this.files[0].size;
-        console.log(_this_file);
-        console.log(_this_size);
+        if (_this_size > 500000) {
+            layer.msg("图片不能大于500KB", {icon: 0});
+            return;
+        }
+        var src = UpLoadImg(formData);
+        console.log(src);
     });
 
     //确认添加信息
