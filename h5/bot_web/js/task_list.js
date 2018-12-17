@@ -245,7 +245,7 @@ $(function () {
             tx_content_arr.push($(this).val());
         });
         if (tx_content_arr.length == 1) {
-            tx_content = tx_content_arr
+            tx_content = tx_content_arr[0];
         }else {
             tx_content = tx_content_arr.join("-");
         }
