@@ -224,6 +224,7 @@ $(function () {
             is_checked = 1;
         }else {
             $("input[type='checkbox']").attr("checked", false);
+            is_checked = 0;
         }
 
     });
