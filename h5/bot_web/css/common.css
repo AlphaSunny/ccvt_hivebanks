@@ -182,6 +182,10 @@ table {
     justify-content: space-between;
 }
 
+.day_label {
+    padding-top: unset;
+}
+
 .width-33 {
     width: 33%;
 }
