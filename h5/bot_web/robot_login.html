@@ -12,7 +12,8 @@
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/robot_login.css">
 </head>
 <body class="app sidebar-mini rtl">
@@ -40,22 +41,7 @@
             <p class="app-sidebar__user-name robot_username"></p>
         </div>
     </div>
-    <ul class="app-menu">
-        <li><a class="app-menu__item" href="robot_login.html"><i class="app-menu__icon fa fa-dashboard"></i><span
-                class="app-menu__label">机器人登录</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
-                class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">群管理</span><i
-                class="treeview-indicator fa fa-angle-right"></i></a>
-            <ul class="treeview-menu">
-                <li><a class="treeview-item" href="group_list.html"><i class="icon fa fa-circle-o"></i>群列表</a></li>
-                <li><a class="treeview-item" href="task_list.html" rel="noopener"><i class="icon fa fa-circle-o"></i>定时任务</a>
-                <li><a class="treeview-item" href="give_like.html" rel="noopener"><i class="icon fa fa-circle-o"></i>点赞列表</a>
-                </li>
-            </ul>
-        </li>
-        <li><a class="app-menu__item" href="send_amount.html"><i class="app-menu__icon fa fa-th-list"></i><span
-                class="app-menu__label">奖励统计列表</span></a></li>
-    </ul>
+    <ul class="app-menu"></ul>
 </aside>
 <main class="app-content">
     <div class="app-title">
@@ -110,13 +96,14 @@
     </div>
 </main>
 
-<script src="../assets/js/jquery-3.2.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/layer/layer.js"></script>
-<script src="../assets/js/pace.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/js/layer/layer.js"></script>
+<script type="text/javascript" src="../assets/js/pace.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script src="js/main.js"></script>
+<script type="text/javascript" src="js/slide_nav.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/robot_login.js"></script>
 <script type="text/javascript">
     GetCookie("robot_token");
@@ -150,8 +137,8 @@
                 console.log("1");
                 GetQr();
                 console.log("2");
-            },1000);
-        }else {
+            }, 1000);
+        } else {
             clearTimeout(timer);
             GetWeChatGroupFun();
             return;
