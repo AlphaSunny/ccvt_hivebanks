@@ -18,5 +18,10 @@
     "name": "奖励统计列表",
     "href": "send_amount.html",
     "fa_icon": "fa-th-list"
+  },
+  {
+    "name": "AI关键字管理",
+    "href": "keyword.html",
+    "fa_icon": "fa-th-list"
   }
 ]
