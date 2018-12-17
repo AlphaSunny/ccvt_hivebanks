@@ -225,9 +225,16 @@ $(function () {
         if (is_checked == 0) {
             $(".checkbox_input").attr("checked", true);
             is_checked = 1;
-        }else {
+        } else {
             $(".checkbox_input").attr("checked", false);
             is_checked = 0;
+        }
+    });
+    $(".checkbox_input").on("change", function () {
+        if ($(this).attr("checked", false)) {
+            $(this).attr("checked", true)
+        } else {
+            $(this).attr("checked", false)
         }
     });
 
