@@ -133,7 +133,7 @@ $(function () {
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        EditTask(token, timer_id, time, content, send_type, tx_content,type, function (response) {
+        EditTask(token, timer_id, time, content, send_type, tx_content, type, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 // GetTaskListFun();
@@ -210,7 +210,7 @@ $(function () {
             },
             error: function (response) {
                 ShowLoading("hide");
-                layer.msg(response.msg);
+                layer.msg(response.msg, {icon: 2});
             }
         });
         return src;
@@ -324,7 +324,7 @@ $(function () {
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        AddTask(token, time, group_id, content, send_type, tx_content,type, function (response) {
+        AddTask(token, time, group_id, content, send_type, tx_content, type, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editTaskModal").modal("hide");
