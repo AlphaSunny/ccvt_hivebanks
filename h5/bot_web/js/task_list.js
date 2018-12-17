@@ -220,12 +220,14 @@ $(function () {
     });
 
     //选择日期
+    var is_checked = 0;
     $("#allday").on("change", function () {
-        if ($(".checkbox_input").attr("checked", false)) {
+        if (is_checked == 0) {
             $(".checkbox_input").attr("checked", true);
-        }
-        if ($(".checkbox_input").attr("checked", true)) {
+            is_checked = 1;
+        }else {
             $(".checkbox_input").attr("checked", false);
+            is_checked = 0;
         }
     });
 
