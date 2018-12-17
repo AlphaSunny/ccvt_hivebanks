@@ -149,6 +149,7 @@ $(function () {
 
     //选择图片
     $("#upload_image").on("change",function () {
+        console.log("change");
         var formDate = new FormData($("#upload_image")[0]);
         console.log(formDate);
     });
