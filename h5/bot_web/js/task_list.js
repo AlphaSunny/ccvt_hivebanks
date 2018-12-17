@@ -202,6 +202,7 @@ $(function () {
     }
 
     //选择图片
+    var src = "";
     $("#file").on("change", function () {
         var formData = new FormData($("#upload_image")[0]);
         formData.append("file", this.files[0]);
@@ -216,7 +217,7 @@ $(function () {
             layer.msg("图片不能大于500KB", {icon: 0});
             return;
         }
-        var src = UpLoadImg(formData);
+        src = UpLoadImg(formData);
     });
 
     //选择日期
@@ -237,15 +238,19 @@ $(function () {
 
     //确认添加信息
     $(".addSubBtn").click(function () {
-        var tx_content = "", tx_content_arr = [];
+        var content = "", tx_content = "", tx_content_arr = [];
         var time = $("#time").val();
-        var content = $("#content").val();
         var group_id = $("#selectGroupName").val();
         var tx_content_list = $(".checkbox_input:checked");
         $.each(tx_content_list, function (i, val) {
             tx_content_arr.push($(this).val());
         });
-        tx_content = tx_content_arr.join("-");
+        if (tx_content_arr.length == 1) {
+            tx_content = tx_content_arr
+        }else {
+            tx_content = tx_content_arr.join("-");
+        }
+
         if (tx_content_arr.length <= 0) {
             layer.msg("请选择日期", {icon: 0});
             return;
@@ -254,10 +259,26 @@ $(function () {
             layer.msg("请输入时间", {icon: 0});
             return;
         }
-        if (content.length <= 0) {
-            layer.msg("请输入内容", {icon: 0});
-            return;
+
+        //文本内容判断
+        if ($("#text").attr("checked", true)) {
+            content = $("#content").val();
+            if (content.length <= 0) {
+                layer.msg("请输入内容", {icon: 0});
+                return;
+            }
         }
+
+        //图片内容判断
+        if ($("#image").attr("checked", true)) {
+            content = src;
+            if (!src) {
+                layer.msg("请选择图片", {icon: 0});
+                return;
+            }
+        }
+
+        return;
         //loading
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
