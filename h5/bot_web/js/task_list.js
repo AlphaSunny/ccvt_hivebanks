@@ -97,8 +97,13 @@ $(function () {
         } else {
             tx_content = tx_content_arr.join("-");
         }
+        if (tx_content_arr.length <= 0) {
+            layer.msg("请选择日期", {icon: 0});
+            return;
+        }
+
         if (time.length <= 0) {
-            layer.msg("请输入时间");
+            layer.msg("请输入时间", {icon: 0});
             return;
         }
         //文本内容判断
