@@ -137,10 +137,10 @@ $(function () {
 
     //选择文本或者图片
     $("input[type='radio']").change(function () {
-        if($("#text:checked")){
+        if($(this).hasClass("text")){
             console.log("1");
         }
-        if($("#image:checked")){
+        if($(this).hasClass("image")){
             console.log("2");
         }
 
