@@ -178,6 +178,7 @@ $(function () {
     GetKeyCode(token, function (response) {
         if (response.errcode == '0') {
             key_code = response.key_code;
+            console.log(key_code);
         }
     }, function (response) {
         LayerFun(response.errcode);
@@ -186,13 +187,13 @@ $(function () {
     //选择图片
     $("#file").on("change", function () {
         var formData = new FormData($("#upload_image")[0]);
+        formData.append("key_code", key_code);
+        var src = UpLoadImg(formData);
+        console.log(src);
         var _this_file = this.files[0];
         var _this_size = this.files[0].size;
         console.log(_this_file);
         console.log(_this_size);
-        formData.append("key_code", key_code);
-        var src = UpLoadImg(formData);
-        console.log(src);
     });
 
     //确认添加信息
