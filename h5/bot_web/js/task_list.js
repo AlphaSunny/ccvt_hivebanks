@@ -245,14 +245,17 @@ $(function () {
         $.each(tx_content_list, function (i, val) {
             tx_content_arr.push($(this).val());
         });
-        console.log(tx_content_arr.length);
-        return;
+        tx_content = tx_content_arr.join("-");
+        if (tx_content_arr.length <= 0) {
+            layer.msg("请选择日期", {icon: 0});
+            return;
+        }
         if (time.length <= 0) {
-            layer.msg("请输入时间");
+            layer.msg("请输入时间", {icon: 0});
             return;
         }
         if (content.length <= 0) {
-            layer.msg("请输入内容");
+            layer.msg("请输入内容", {icon: 0});
             return;
         }
         //loading
