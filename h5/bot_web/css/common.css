@@ -175,6 +175,10 @@ input[type=checkbox] {
     opacity: 0;
 }
 
+.upload-btn {
+    cursor: pointer;
+}
+
 textarea#content {
     width: 100%;
 }
