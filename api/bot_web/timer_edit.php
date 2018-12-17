@@ -49,12 +49,16 @@ $send_type = get_arg_str('GET', 'send_type');
 // 闹钟
 $tx_content = get_arg_str('GET', 'tx_content');
 
+// 1:每日  2：周几  3：某个日期
+$type = get_arg_str('GET', 'type');
+
 $data['timer_id'] = $timer_id;
 $data['time'] = $time;
 $data['content'] = $content;
 $data['us_id'] = $us_id;
 $data['send_type'] = $send_type;
 $data['tx_content'] = $tx_content;
+$data['type'] = $type;
 //修改群组
 $row = save_timer($data);
 if (!$row){
