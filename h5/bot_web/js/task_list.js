@@ -244,9 +244,11 @@ $(function () {
         var time = $("#time").val();
         var content = $("#content").val();
         var group_id = $("#selectGroupName").val();
-        var tx_content = $(".checkbox_input:checked").attr("id");
-        console.log(tx_content);
-        console.log(send_type);
+        var tx_content_list = $(".checkbox_input:checked");
+        $.each(tx_content_list, function (i, val) {
+            console.log(val);
+        });
+
         return;
         if (time.length <= 0) {
             layer.msg("请输入时间");
