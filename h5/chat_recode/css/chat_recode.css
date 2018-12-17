@@ -1,0 +1,9 @@
+#chat_recode{
+    background: #000000;
+    text-align: center;
+    color: #ffffff;
+}
+#chat_recode h1{
+    font-weight: 400;
+    font-size: 2rem;
+}
