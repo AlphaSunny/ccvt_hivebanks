@@ -162,6 +162,7 @@ $(function () {
                 var data = JSON.parse(response);
                 if (data.errcode == '0') {
                     src = data.url;
+                    console.log(src);
                 }
             },
             error: function (response) {
