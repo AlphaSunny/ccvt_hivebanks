@@ -118,7 +118,7 @@ $(function () {
     //添加信息
     $(".addTaskBtn").click(function () {
         var is_audit = "2";
-        GetGroupList(token,is_audit, function (response) {
+        GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows, option = "";
                 $.each(data, function (i, val) {
@@ -137,25 +137,49 @@ $(function () {
 
     //选择文本或者图片
     $("input[type='radio']").change(function () {
-        if($(this).hasClass("text")){
+        if ($(this).hasClass("text")) {
             $(".content_image").fadeOut(300);
             $(".content_text").fadeIn(300);
         }
-        if($(this).hasClass("image")){
+        if ($(this).hasClass("image")) {
             $(".content_text").fadeOut(300);
             $(".content_image").fadeIn(300);
         }
     });
 
+    //上传文件到服务器
+    function UpLoadImg(formData) {
+        var src = '';
+        $.ajax({
+            url: url + '/api/plugin/upload_file.php',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                var data = JSON.parse(response);
+                if (data.errcode == '0') {
+                    src = data.url;
+                }
+            },
+            error: function (response) {
+                layer.msg(response.msg);
+            }
+        });
+        return src;
+    }
+
     //选择图片
-    $("#file").on("change",function () {
-        console.log("change");
+    $("#file").on("change", function () {
         var formDate = new FormData($("#upload_image")[0]);
-        console.log(formDate);
         var _this_file = this.files[0];
         var _this_size = this.files[0].size;
         console.log(_this_file);
         console.log(_this_size);
+        var src = UpLoadImg(formDate);
+        console.log(src);
     });
 
     //确认添加信息
