@@ -221,6 +221,7 @@ $(function () {
     $("#allday").click(function () {
         if(is_checked == 0){
             $("input[type='checkbox']").attr("checked", true);
+            is_checked = 1;
         }else {
             $("input[type='checkbox']").attr("checked", false);
         }
