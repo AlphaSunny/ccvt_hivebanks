@@ -231,7 +231,7 @@ function SubmitAddGroup(token, group_id, group_type_id, suc_func, error_func) {
 //==========
 
 //编辑群主信息
-function EditGroup(token, group_name,group_manager_name, del, flirt, group_id, suc_func, error_func) {
+function EditGroup(token, group_name, group_manager_name, del, flirt, group_id, suc_func, error_func) {
     var api_url = "group_edit.php",
         post_data = {
             "token": token,
@@ -298,13 +298,15 @@ function GetGroupList(token, is_audit, suc_func, error_func) {
 }
 
 //添加任务信息
-function AddTask(token, time, group_id, content, suc_func, error_func) {
+function AddTask(token, time, group_id, content, send_type, tx_content, suc_func, error_func) {
     var api_url = "timer_add.php",
         post_data = {
             "token": token,
             "time": time,
             "group_id": group_id,
-            "content": content
+            "content": content,
+            "send_type": send_type,
+            "tx_content": tx_content
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
