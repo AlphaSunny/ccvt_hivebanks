@@ -225,7 +225,10 @@ $(function () {
             $(this).attr("checked", true);
             if($("input[type='checkbox']").attr("checked", false)){
                 $("input[type='checkbox']").attr("checked", true);
-            }else {
+            }
+        }else {
+            $(this).attr("checked", false);
+            if($("input[type='checkbox']").attr("checked", true)){
                 $("input[type='checkbox']").attr("checked", false);
             }
         }
