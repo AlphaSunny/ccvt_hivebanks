@@ -67,18 +67,6 @@ $(function () {
         })
     }
 
-    //确认删除
-    // $(document).on("click", ".layui-layer-btn1", function () {
-    //     DelTask(token, timer_id, function (response) {
-    //         if (response.errcode == "0") {
-    //             layer.msg('删除成功', {icon: 1});
-    //             table.ajax.reload();
-    //         }
-    //     }, function (response) {
-    //         layer.msg('删除失败', {icon: 2});
-    //     })
-    // });
-
     //编辑任务
     $(document).on("click", ".editBtn", function () {
         var group_name = $(this).parents("tr[role='row']").find(".name").text();
