@@ -11,13 +11,14 @@ header("Content-Type:application/json;charset=utf-8");
 ========================== 任务添加 ==========================
 GET参数
   token                用户token
+  send_type        1:纯文本  2：图片（不能大于500k）
 
 返回
   errcode = 0     请求成功
 */
 
 php_begin();
-$args = array('token','time','group_id','content');
+$args = array('token','time','group_id','content','send_type');
 chk_empty_args('GET', $args);
 
 // 用户token
@@ -43,12 +44,20 @@ $group_id = get_arg_str('GET', 'group_id');
 // 内容
 $content = $_REQUEST['content'];
 
+// 发送类型
+$send_type = get_arg_str('GET', 'send_type');
+
+// 闹钟
+$tx_content = get_arg_str('GET', 'tx_content');
+
 
 $data['time'] = $time;
 $data['content'] = $content;
 $data['intime'] = time();
 $data['us_id'] = $us_id;
 $data['group_id'] = $group_id;
+$data['send_type'] = $send_type;
+$data['tx_content'] = $tx_content;
 // 添加群组
 $row = add_timer($data);
 if (!$row){

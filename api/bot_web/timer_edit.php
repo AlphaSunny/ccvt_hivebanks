@@ -17,7 +17,7 @@ GET参数
 */
 
 php_begin();
-$args = array('token','timer_id','time','content');
+$args = array('token','timer_id','time','content','send_type');
 chk_empty_args('GET', $args);
 
 // 用户token
@@ -43,11 +43,18 @@ $content = $_REQUEST['content'];
 //验证token
 $us_id = check_token($token);
 
+// 发送类型
+$send_type = get_arg_str('GET', 'send_type');
+
+// 闹钟
+$tx_content = get_arg_str('GET', 'tx_content');
 
 $data['timer_id'] = $timer_id;
 $data['time'] = $time;
 $data['content'] = $content;
 $data['us_id'] = $us_id;
+$data['send_type'] = $send_type;
+$data['tx_content'] = $tx_content;
 //修改群组
 $row = save_timer($data);
 if (!$row){
