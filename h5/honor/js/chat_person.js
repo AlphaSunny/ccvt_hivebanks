@@ -39,7 +39,9 @@ $(function () {
 
                 //默认在最底部
                 // var height = $("#chat_item_ul").height();
-                $('html,body').scrollTop(999999999);
+                // $("body, html").animate({scrollTop: bottom}, 500);
+                var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                $('html,body').scrollTop(height);
             }
         }, function (response) {
             layer.msg(response.errmsg);
