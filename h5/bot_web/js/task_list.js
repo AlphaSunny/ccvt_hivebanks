@@ -139,9 +139,11 @@ $(function () {
     $("input[type='radio']").change(function () {
         if($(this).hasClass("text")){
             $(".content_image").fadeOut(300);
+            $(".content_text").fadeIn(300);
         }
         if($(this).hasClass("image")){
             $(".content_text").fadeOut(300);
+            $(".content_image").fadeIn(300);
         }
     });
 
