@@ -138,14 +138,14 @@ $(function () {
     //选择文本或者图片
     $("input[type='radio']").change(function () {
         if ($(this).hasClass("text")) {
-            $(this).attr("checked",true);
-            $("#image").attr("checked",false);
+            $(this).attr("checked", true);
+            $("#image").attr("checked", false);
             $(".content_image").fadeOut(300);
             $(".content_text").fadeIn(300);
         }
         if ($(this).hasClass("image")) {
-            $(this).attr("checked",true);
-            $("#text").attr("checked",false);
+            $(this).attr("checked", true);
+            $("#text").attr("checked", false);
             $(".content_text").fadeOut(300);
             $(".content_image").fadeIn(300);
         }
@@ -216,6 +216,16 @@ $(function () {
         var src = UpLoadImg(formData);
     });
 
+    //选择日期
+    var is_checked = 0;
+    $("#allday").click(function () {
+        if(is_checked == 0){
+            $("input[type='checkbox']").attr("checked", true);
+        }else {
+            $("input[type='checkbox']").attr("checked", false);
+        }
+
+    });
 
 
     //确认添加信息
