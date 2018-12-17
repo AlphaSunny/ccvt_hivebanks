@@ -154,6 +154,12 @@
     transition: left 0.3s;
 }
 
+.change_type_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 input[type=checkbox] {
     margin: unset;
 }
