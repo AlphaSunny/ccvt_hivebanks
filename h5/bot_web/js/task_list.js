@@ -220,16 +220,15 @@ $(function () {
     });
 
     //选择日期
-    var is_checked = 0;
     $("#allday").click(function () {
-        if(is_checked == 0){
-            $("input[type='checkbox']").attr("checked", true);
-            is_checked = 1;
-        }else {
-            $("input[type='checkbox']").attr("checked", false);
-            is_checked = 0;
+        if ($(this).attr("checked", false)) {
+            $(this).attr("checked", true);
+            if($("input[type='checkbox']").attr("checked", false)){
+                $("input[type='checkbox']").attr("checked", true);
+            }else {
+                $("input[type='checkbox']").attr("checked", false);
+            }
         }
-
     });
 
 
@@ -254,7 +253,7 @@ $(function () {
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        AddTask(token, time, group_id, content,send_type,tx_content, function (response) {
+        AddTask(token, time, group_id, content, send_type, tx_content, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editTaskModal").modal("hide");
