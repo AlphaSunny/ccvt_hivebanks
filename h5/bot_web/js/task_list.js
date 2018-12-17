@@ -151,7 +151,9 @@ $(function () {
         var formDate = new FormData($("#upload_image")[0]);
         console.log(formDate);
         var _this_file = this.files[0];
+        var _this_size = this.files[0].size;
         console.log(_this_file);
+        console.log(_this_size);
     });
 
     //确认添加信息
