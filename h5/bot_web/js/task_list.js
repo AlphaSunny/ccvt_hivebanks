@@ -185,11 +185,28 @@ $(function () {
         LayerFun(response.errcode);
     });
 
+    //获取本地图片地址并显示
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+
     //选择图片
     $("#file").on("change", function () {
         var formData = new FormData($("#upload_image")[0]);
         formData.append("key_code", key_code);
-        var _this_file = this.files[0];
+        var objUrl = getObjectURL(this.files[0]);
+        if (objUrl) {
+            // show img
+            $("#upload_img").attr("src", objUrl);
+        }
         var _this_size = this.files[0].size;
         if (_this_size > 500000) {
             layer.msg("图片不能大于500KB", {icon: 0});
@@ -198,6 +215,8 @@ $(function () {
         var src = UpLoadImg(formData);
         console.log(src);
     });
+
+
 
     //确认添加信息
     $(".addSubBtn").click(function () {
