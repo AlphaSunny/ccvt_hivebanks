@@ -2,6 +2,7 @@ $(function () {
     //token
     var token = GetCookie('user_token');
     var id = getCookie('us_id');
+    var url = getRootPath();
     GetUsAccount();
 
     //Get binding information, whether to bind
@@ -198,7 +199,7 @@ $(function () {
     function UpLoadImg(formData) {
         var src = '';
         $.ajax({
-            url: 'https://ccvt_test.fnying.com/api/plugin/upload_file.php',
+            url: url + '/api/plugin/upload_file.php',
             type: 'POST',
             data: formData,
             async: false,
