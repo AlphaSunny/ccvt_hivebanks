@@ -140,7 +140,6 @@ $(function () {
     $("input[type='radio']").change(function () {
         if ($(this).hasClass("text")) {
             send_type = 1;
-            console.log(send_type);
             $(this).attr("checked", true);
             $("#image").attr("checked", false);
             $(".content_image").fadeOut(300);
@@ -149,7 +148,6 @@ $(function () {
         }
         if ($(this).hasClass("image")) {
             send_type = 2;
-            console.log(send_type);
             $(this).attr("checked", true);
             $("#text").attr("checked", false);
             $(".content_text").fadeOut(300);
@@ -262,7 +260,7 @@ $(function () {
         }
 
         //文本内容判断
-        if ($("#text").attr("checked", true)) {
+        if (send_type == 1) {
             content = $("#content").val();
             if (content.length <= 0) {
                 layer.msg("请输入内容", {icon: 0});
@@ -271,7 +269,7 @@ $(function () {
         }
 
         //图片内容判断
-        if ($("#image").attr("checked", true)) {
+        if (send_type == 2) {
             console.log("img");
             content = src;
             if (!src) {
