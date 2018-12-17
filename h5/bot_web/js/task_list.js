@@ -138,12 +138,10 @@ $(function () {
     //选择文本或者图片
     $("input[type='radio']").change(function () {
         if($(this).hasClass("text")){
-            console.log("1");
             $(".content_image").fadeOut(300);
         }
         if($(this).hasClass("image")){
             $(".content_text").fadeOut(300);
-            console.log("2");
         }
     });
 
@@ -152,6 +150,8 @@ $(function () {
         console.log("change");
         var formDate = new FormData($("#upload_image")[0]);
         console.log(formDate);
+        var _this_file = $(this).files[0];
+        console.log(_this_file);
     });
 
     //确认添加信息
