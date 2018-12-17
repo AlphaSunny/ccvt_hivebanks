@@ -172,6 +172,10 @@ table {
     width: 100% !important;
 }
 
+#upload_img {
+    width: 100%;
+}
+
 .width-33 {
     width: 33%;
 }
