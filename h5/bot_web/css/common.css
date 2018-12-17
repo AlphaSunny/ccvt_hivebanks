@@ -183,7 +183,7 @@ table {
 }
 
 .day_label {
-    padding-top: unset;
+    padding-top: unset!important;
 }
 
 .width-33 {
