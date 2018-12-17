@@ -185,13 +185,13 @@ $(function () {
 
     //选择图片
     $("#file").on("change", function () {
-        var formDate = new FormData($("#upload_image")[0]);
+        var formData = new FormData($("#upload_image")[0]);
         var _this_file = this.files[0];
         var _this_size = this.files[0].size;
         console.log(_this_file);
         console.log(_this_size);
         formData.append("key_code", key_code);
-        var src = UpLoadImg(formDate);
+        var src = UpLoadImg(formData);
         console.log(src);
     });
 
