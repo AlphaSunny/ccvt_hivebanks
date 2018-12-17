@@ -164,6 +164,17 @@ input[type=checkbox] {
     margin: unset;
 }
 
+.upload_file_box {
+    position: relative;
+}
+
+#file {
+    width: 100%;
+    position: absolute;
+    height: 2.5rem;
+    opacity: 0;
+}
+
 textarea#content {
     width: 100%;
 }
@@ -183,7 +194,7 @@ table {
 }
 
 .day_label {
-    padding-top: unset!important;
+    padding-top: unset !important;
 }
 
 .width-33 {
