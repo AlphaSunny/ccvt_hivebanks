@@ -166,6 +166,7 @@ input[type=checkbox] {
 
 .upload_file_box {
     position: relative;
+    text-align: center;
 }
 
 #file {
