@@ -233,26 +233,20 @@ $(function () {
             is_checked = 0;
         }
     });
-    // $(".checkbox_input").on("change", function () {
-    //     if ($(this).prop("checked", false)) {
-    //         $(this).prop("checked", true)
-    //     } else {
-    //         $(this).prop("checked", false)
-    //     }
     });
 
 
     //确认添加信息
     $(".addSubBtn").click(function () {
-        var tx_content = "";
+        var tx_content = "", tx_content_arr = [];
         var time = $("#time").val();
         var content = $("#content").val();
         var group_id = $("#selectGroupName").val();
         var tx_content_list = $(".checkbox_input:checked");
         $.each(tx_content_list, function (i, val) {
-            tx_content+=tx_content_list[i].attr("id");
+            tx_content_arr.push($(this).val());
         });
-        console.log(tx_content);
+        console.log(tx_content_arr);
 
         return;
         if (time.length <= 0) {
