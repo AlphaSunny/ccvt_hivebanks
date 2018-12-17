@@ -351,7 +351,7 @@ function storage_members($data)
             $sql = $db->sqlInsert("bot_memeber_change_record",$date);
             $db->query($sql);
         }else{
-            $sql = "update bot_group_members set is_check=2 WHERE member_id='{$row['member_id']}'";
+            $sql = "update bot_group_members set is_check=2 WHERE group_id='{$data['group_id']}' AND name='{$data['name']}' AND intime<'{$time}'";
             $db->query($sql);
         }
     }
