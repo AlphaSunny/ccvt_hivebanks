@@ -140,6 +140,7 @@ $(function () {
     $("input[type='radio']").change(function () {
         if ($(this).hasClass("text")) {
             send_type = 1;
+            console.log(send_type);
             $(this).attr("checked", true);
             $("#image").attr("checked", false);
             $(".content_image").fadeOut(300);
@@ -148,6 +149,7 @@ $(function () {
         }
         if ($(this).hasClass("image")) {
             send_type = 2;
+            console.log(send_type);
             $(this).attr("checked", true);
             $("#text").attr("checked", false);
             $(".content_text").fadeOut(300);
