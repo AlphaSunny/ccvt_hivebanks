@@ -367,7 +367,7 @@ function del_storage_members($group_id)
 {
     $db = new DB_COM();
     $time = time()-2*60;
-    $sql = "select * from bot_group_members WHERE group_id='{$group_id}' AND intime<'{$time}' AND is_check=2";
+    $sql = "select * from bot_group_members WHERE group_id='{$group_id}' AND intime<'{$time}' AND is_check=1";
     $db->query($sql);
     $rows = $db->fetchAll();
     if ($rows){
