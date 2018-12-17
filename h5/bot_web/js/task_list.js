@@ -143,6 +143,7 @@ $(function () {
             $(this).attr("checked", true);
             $("#image").attr("checked", false);
             $(".content_image").fadeOut(300);
+            $(".upload_img_box").fadeOut(300);
             $(".content_text").fadeIn(300);
         }
         if ($(this).hasClass("image")) {
@@ -151,6 +152,7 @@ $(function () {
             $("#text").attr("checked", false);
             $(".content_text").fadeOut(300);
             $(".content_image").fadeIn(300);
+            $(".upload_img_box").fadeIn(300);
         }
     });
 
@@ -223,9 +225,6 @@ $(function () {
     //选择日期
     var is_checked = 0;
     $("#allday").on("change", function () {
-        // $(".checkbox_input:checked").each(function (i, val) {
-        //     $(this).prop("checked",!$(this).prop(".checkbox_input"))
-        // });
         if (is_checked == 0) {
             $(".checkbox_input").prop("checked", true);
             is_checked = 1;
@@ -278,7 +277,6 @@ $(function () {
             }
         }
 
-        return;
         //loading
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
