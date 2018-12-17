@@ -191,6 +191,7 @@ $(function () {
 
     //上传文件到服务器
     function UpLoadImg(formData) {
+        ShowLoading("show");
         var src = '';
         $.ajax({
             url: url + '/api/plugin/upload_file.php',
@@ -255,7 +256,6 @@ $(function () {
             // show img
             $("#upload_img").attr("src", objUrl);
         }
-        ShowLoading("show");
         src = UpLoadImg(formData);
     });
 
