@@ -86,8 +86,17 @@ $(function () {
     //确认编辑
     $(".editSubBtn").click(function () {
         var timer_id = $("#timer_id").val();
+        var content = "", tx_content = "", tx_content_arr = [];
         var time = $("#time").val();
-        var content = $("#content").val();
+        var tx_content_list = $(".checkbox_input:checked");
+        $.each(tx_content_list, function (i, val) {
+            tx_content_arr.push($(this).val());
+        });
+        if (tx_content_arr.length == 1) {
+            tx_content = tx_content_arr[0];
+        } else {
+            tx_content = tx_content_arr.join("-");
+        }
         if (time.length <= 0) {
             layer.msg("请输入时间");
             return;
@@ -113,7 +122,7 @@ $(function () {
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        EditTask(token, timer_id, time, content, function (response) {
+        EditTask(token, timer_id, time, content, send_type, tx_content, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 // GetTaskListFun();
@@ -259,7 +268,7 @@ $(function () {
         });
         if (tx_content_arr.length == 1) {
             tx_content = tx_content_arr[0];
-        }else {
+        } else {
             tx_content = tx_content_arr.join("-");
         }
 
