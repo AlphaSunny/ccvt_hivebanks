@@ -333,6 +333,23 @@ function storage_members($data)
 //    }
 
     $db = new DB_COM();
+    $time = time()-2*60;
+    $sql = "select * from bot_group_members WHERE group_id='{$data['group_id']}' AND name='{$data['name']}' AND intime<'{$time}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if (!$row){
+        //新用户
+        $date['name'] = $data['name'];
+        $date['group_id'] = $data['group_id'];
+        $date['group_name'] = $data['group_name'];
+        $date['ctime'] = date('Y-m-d H:i:s');
+        $date['type'] = 1;
+        $sql = $db->sqlInsert("bot_memeber_change_record",$date);
+        $db->query($sql);
+    }else{
+        $sql = "update bot_group_members set is_check=2 WHERE member_id='{$row['member_id']}'";
+        $db->query($sql);
+    }
     $sql = $db->sqlInsert("bot_group_members", $data);
     $q_id = $db->query($sql);
     if ($q_id == 0)
@@ -349,7 +366,23 @@ function storage_members($data)
 function del_storage_members($group_id)
 {
     $db = new DB_COM();
-    $sql = "DELETE from bot_group_members where group_id='{$group_id}'";
+    $time = time()-2*60;
+    $sql = "select * from bot_group_members WHERE group_id='{$group_id}' AND intime<'{$time}' AND is_check=2";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    if ($rows){
+        foreach ($rows as $k=>$v){
+            //修改名称或退出
+            $date['name'] = $v['name'];
+            $date['group_id'] = $v['group_id'];
+            $date['group_name'] = $v['group_name'];
+            $date['ctime'] = date('Y-m-d H:i:s');
+            $date['type'] = 2;
+            $sql = $db->sqlInsert("bot_memeber_change_record",$date);
+            $db->query($sql);
+        }
+    }
+    $sql = "DELETE from bot_group_members where group_id='{$group_id}' AND intime<'{$time}'";
     $res = $db->query($sql);
     if($res)
         return true;
