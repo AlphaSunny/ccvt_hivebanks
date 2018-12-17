@@ -222,16 +222,16 @@ $(function () {
     //选择日期
     var is_checked = 0;
     $("#allday").on("change", function () {
-        $(".checkbox_input:checked").each(function (i, val) {
-            $(this).prop("checked",!$(this).prop(".checkbox_input"))
-        });
-        // if (is_checked == 0) {
-        //     $(".checkbox_input").prop("checked", true);
-        //     is_checked = 1;
-        // } else {
-        //     $(".checkbox_input").prop("checked", false);
-        //     is_checked = 0;
-        // }
+        // $(".checkbox_input:checked").each(function (i, val) {
+        //     $(this).prop("checked",!$(this).prop(".checkbox_input"))
+        // });
+        if (is_checked == 0) {
+            $(".checkbox_input").prop("checked", true);
+            is_checked = 1;
+        } else {
+            $(".checkbox_input").prop("checked", false);
+            is_checked = 0;
+        }
     });
     // $(".checkbox_input").on("change", function () {
     //     if ($(this).prop("checked", false)) {
