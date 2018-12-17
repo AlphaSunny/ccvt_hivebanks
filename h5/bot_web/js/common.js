@@ -359,6 +359,20 @@ function GetKeyCode(token, suc_func, error_func) {
     CallLaConfigApi(api_url, post_data, suc_func, error_func);
 }
 
+//loading
+var loading = "";
+
+function ShowLoading(type) {
+    if (type == "show") {
+        loading = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+    }
+    if (type == "hide") {
+        layer.close(loading);
+    }
+}
+
 window.onload = function () {
     $(".loading").fadeOut(300);
 };

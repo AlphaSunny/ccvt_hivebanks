@@ -201,12 +201,14 @@ $(function () {
             contentType: false,
             processData: false,
             success: function (response) {
+                ShowLoading("hide");
                 var data = JSON.parse(response);
                 if (data.errcode == '0') {
                     src = data.url;
                 }
             },
             error: function (response) {
+                ShowLoading("hide");
                 layer.msg(response.msg);
             }
         });
@@ -254,6 +256,7 @@ $(function () {
             $("#upload_img").attr("src", objUrl);
         }
         src = UpLoadImg(formData);
+        ShowLoading("show");
     });
 
     //选择日期
