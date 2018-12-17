@@ -176,6 +176,12 @@ table {
     width: 100%;
 }
 
+.checkbox_input_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .width-33 {
     width: 33%;
 }
