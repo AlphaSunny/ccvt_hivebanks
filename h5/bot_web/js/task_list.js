@@ -139,11 +139,18 @@ $(function () {
     $("input[type='radio']").change(function () {
         if($(this).hasClass("text")){
             console.log("1");
+            $(".content_image").fadeOut(300);
         }
         if($(this).hasClass("image")){
+            $(".content_text").fadeOut(300);
             console.log("2");
         }
+    });
 
+    //选择图片
+    $("#upload_image").on("change",function () {
+        var formDate = new FormData($("#upload_image")[0]);
+        console.log(formDate);
     });
 
     //确认添加信息
