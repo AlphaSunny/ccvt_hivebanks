@@ -241,13 +241,15 @@ $(function () {
 
     //确认添加信息
     $(".addSubBtn").click(function () {
+        var tx_content = "";
         var time = $("#time").val();
         var content = $("#content").val();
         var group_id = $("#selectGroupName").val();
         var tx_content_list = $(".checkbox_input:checked");
         $.each(tx_content_list, function (i, val) {
-            console.log(val);
+            tx_content+=tx_content_list[i].attr("id");
         });
+        console.log(tx_content);
 
         return;
         if (time.length <= 0) {
