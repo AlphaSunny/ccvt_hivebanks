@@ -221,16 +221,11 @@ $(function () {
 
     //选择日期
     $("#allday").on("change", function () {
-        if ($(this).attr("checked", false)) {
-            $(this).attr("checked", true);
-            if($(".checkbox_input").attr("checked", false)){
-                $(".checkbox_input").attr("checked", true);
-            }
-        }else {
-            $(this).attr("checked", false);
-            if($(".checkbox_input").attr("checked", true)){
-                $(".checkbox_input").attr("checked", false);
-            }
+        if ($(".checkbox_input").attr("checked", false)) {
+            $(".checkbox_input").attr("checked", true);
+        }
+        if ($(".checkbox_input").attr("checked", true)) {
+            $(".checkbox_input").attr("checked", false);
         }
     });
 
