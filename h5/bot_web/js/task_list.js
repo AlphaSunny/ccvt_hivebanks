@@ -92,9 +92,22 @@ $(function () {
             layer.msg("请输入时间");
             return;
         }
-        if (content.length <= 0) {
-            layer.msg("请输入内容");
-            return;
+        //文本内容判断
+        if (send_type == 1) {
+            content = $("#content").val();
+            if (content.length <= 0) {
+                layer.msg("请输入内容", {icon: 0});
+                return;
+            }
+        }
+
+        //图片内容判断
+        if (send_type == 2) {
+            content = src;
+            if (!src) {
+                layer.msg("请选择图片", {icon: 0});
+                return;
+            }
         }
         //loading
         var loading = layer.load(1, {
@@ -270,7 +283,6 @@ $(function () {
 
         //图片内容判断
         if (send_type == 2) {
-            console.log("img");
             content = src;
             if (!src) {
                 layer.msg("请选择图片", {icon: 0});
