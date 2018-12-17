@@ -270,6 +270,7 @@ $(function () {
 
         //图片内容判断
         if ($("#image").attr("checked", true)) {
+            console.log("img");
             content = src;
             if (!src) {
                 layer.msg("请选择图片", {icon: 0});
