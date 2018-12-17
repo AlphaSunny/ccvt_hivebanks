@@ -222,20 +222,23 @@ $(function () {
     //选择日期
     var is_checked = 0;
     $("#allday").on("change", function () {
-        if (is_checked == 0) {
-            $(".checkbox_input").attr("checked", true);
-            is_checked = 1;
-        } else {
-            $(".checkbox_input").attr("checked", false);
-            is_checked = 0;
-        }
+        $(".checkbox_input:checked").each(function (i, val) {
+            $(this).prop("checked",!$(this).prop(".checkbox_input"))
+        });
+        // if (is_checked == 0) {
+        //     $(".checkbox_input").prop("checked", true);
+        //     is_checked = 1;
+        // } else {
+        //     $(".checkbox_input").prop("checked", false);
+        //     is_checked = 0;
+        // }
     });
-    $(".checkbox_input").on("change", function () {
-        if ($(this).attr("checked", false)) {
-            $(this).attr("checked", true)
-        } else {
-            $(this).attr("checked", false)
-        }
+    // $(".checkbox_input").on("change", function () {
+    //     if ($(this).prop("checked", false)) {
+    //         $(this).prop("checked", true)
+    //     } else {
+    //         $(this).prop("checked", false)
+    //     }
     });
 
 
