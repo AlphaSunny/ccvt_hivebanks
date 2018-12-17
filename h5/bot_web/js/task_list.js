@@ -245,8 +245,7 @@ $(function () {
         $.each(tx_content_list, function (i, val) {
             tx_content_arr.push($(this).val());
         });
-        console.log(tx_content_arr);
-        console.log(tx_content_arr.join("-"));
+        console.log(tx_content_arr.length);
         return;
         if (time.length <= 0) {
             layer.msg("请输入时间");
