@@ -173,6 +173,16 @@ $(function () {
         return src;
     }
 
+    //get key_code
+    var key_code = "";
+    GetKeyCode(token, function (response) {
+        if (response.errcode == '0') {
+            key_code = response.key_code;
+        }
+    }, function (response) {
+        LayerFun(response.errcode);
+    });
+
     //选择图片
     $("#file").on("change", function () {
         var formDate = new FormData($("#upload_image")[0]);
@@ -180,6 +190,7 @@ $(function () {
         var _this_size = this.files[0].size;
         console.log(_this_file);
         console.log(_this_size);
+        formData.append("key_code", key_code);
         var src = UpLoadImg(formDate);
         console.log(src);
     });

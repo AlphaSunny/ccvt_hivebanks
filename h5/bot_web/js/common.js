@@ -113,6 +113,36 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
     });
 };
 
+// Call the API LA configuration function
+function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
+    var api_site = config_api_url + '/api/la/admin/configure/';
+    post_data = post_data || {};
+    suc_func = suc_func || function () {
+    };
+    error_func = error_func || function () {
+    };
+    $.ajax({
+        url: api_site + api_url,
+        dataType: "jsonp",
+        data: post_data,
+        success: function (response) {
+            // API return failed
+            if (response.errcode != 0) {
+                error_func(response);
+            } else {
+                // Successfully process data
+                suc_func(response);
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            // API error exception
+            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            // Exception handling
+            error_func(response);
+        }
+    });
+}
+
 // Call API common function
 function CallRobotApi(api_url, post_data, suc_func, error_func) {
 
@@ -312,6 +342,15 @@ function GetAmount(token, start_time, end_time, suc_func, error_func) {
             "end_time": end_time
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+//获取key code
+function GetKeyCode(token, suc_func, error_func) {
+    var api_url = 'get_key_code.php',
+        post_data = {
+            'token': token
+        };
+    CallLaConfigApi(api_url, post_data, suc_func, error_func);
 }
 
 window.onload = function () {
