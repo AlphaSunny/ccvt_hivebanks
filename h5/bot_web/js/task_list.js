@@ -150,7 +150,7 @@ $(function () {
         console.log("change");
         var formDate = new FormData($("#upload_image")[0]);
         console.log(formDate);
-        var _this_file = $(this).files[0];
+        var _this_file = this.files[0];
         console.log(_this_file);
     });
 
