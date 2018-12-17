@@ -218,7 +218,6 @@ function save_timer($date)
     $db = new DB_COM();
     $time = time();
     $sql = "update bot_timer set time = '{$date['time']}' , content = '{$date['content']}',send_type='{$date['send_type']}', type='{$date['type']}',uptime='{$time}' where id='{$date['timer_id']}' ";
-    echo $sql;die;
     $db->query($sql);
     return $db->affectedRows();
 }
