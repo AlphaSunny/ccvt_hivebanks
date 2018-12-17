@@ -136,14 +136,17 @@ $(function () {
     });
 
     //选择文本或者图片
+    var send_type = "";
     $("input[type='radio']").change(function () {
         if ($(this).hasClass("text")) {
+            send_type = 1;
             $(this).attr("checked", true);
             $("#image").attr("checked", false);
             $(".content_image").fadeOut(300);
             $(".content_text").fadeIn(300);
         }
         if ($(this).hasClass("image")) {
+            send_type = 2;
             $(this).attr("checked", true);
             $("#text").attr("checked", false);
             $(".content_text").fadeOut(300);
@@ -235,6 +238,10 @@ $(function () {
         var time = $("#time").val();
         var content = $("#content").val();
         var group_id = $("#selectGroupName").val();
+        var tx_content = $(".checkbox_input:checked").attr("id");
+        console.log(tx_content);
+        console.log(send_type);
+        return;
         if (time.length <= 0) {
             layer.msg("请输入时间");
             return;
@@ -247,7 +254,7 @@ $(function () {
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        AddTask(token, time, group_id, content, function (response) {
+        AddTask(token, time, group_id, content,send_type,tx_content, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editTaskModal").modal("hide");
