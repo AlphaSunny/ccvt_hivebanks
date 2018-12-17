@@ -136,7 +136,7 @@ $(function () {
     });
 
     //选择文本或者图片
-    var send_type = "";
+    var send_type = 1;
     $("input[type='radio']").change(function () {
         if ($(this).hasClass("text")) {
             send_type = 1;
