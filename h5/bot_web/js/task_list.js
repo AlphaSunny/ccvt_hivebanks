@@ -223,13 +223,13 @@ $(function () {
     $("#allday").click(function () {
         if ($(this).attr("checked", false)) {
             $(this).attr("checked", true);
-            if($("input[type='checkbox']").attr("checked", false)){
-                $("input[type='checkbox']").attr("checked", true);
+            if($(".checkbox_input").attr("checked", false)){
+                $(".checkbox_input").attr("checked", true);
             }
         }else {
             $(this).attr("checked", false);
-            if($("input[type='checkbox']").attr("checked", true)){
-                $("input[type='checkbox']").attr("checked", false);
+            if($(".checkbox_input").attr("checked", true)){
+                $(".checkbox_input").attr("checked", false);
             }
         }
     });
