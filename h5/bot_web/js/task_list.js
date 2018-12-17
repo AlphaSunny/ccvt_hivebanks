@@ -201,6 +201,7 @@ $(function () {
     //选择图片
     $("#file").on("change", function () {
         var formData = new FormData($("#upload_image")[0]);
+        formData.append("file", this.files[0]);
         formData.append("key_code", key_code);
         var objUrl = getObjectURL(this.files[0]);
         if (objUrl) {
@@ -213,7 +214,6 @@ $(function () {
             return;
         }
         var src = UpLoadImg(formData);
-        console.log(src);
     });
 
 
