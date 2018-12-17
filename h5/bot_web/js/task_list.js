@@ -220,7 +220,7 @@ $(function () {
     });
 
     //选择日期
-    $("#allday").click(function () {
+    $("#allday").on("change", function () {
         if ($(this).attr("checked", false)) {
             $(this).attr("checked", true);
             if($(".checkbox_input").attr("checked", false)){
