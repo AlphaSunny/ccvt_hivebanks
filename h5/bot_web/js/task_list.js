@@ -135,6 +135,17 @@ $(function () {
         });
     });
 
+    //选择文本或者图片
+    $("input[type='radio']").change(function () {
+        if($("#text:checked")){
+            console.log("1");
+        }
+        if($("#image:checked")){
+            console.log("2");
+        }
+
+    });
+
     //确认添加信息
     $(".addSubBtn").click(function () {
         var time = $("#time").val();
