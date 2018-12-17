@@ -68,6 +68,7 @@ $(function () {
     }
 
     //编辑任务
+    var type = "";
     $(document).on("click", ".editBtn", function () {
         var group_name = $(this).parents("tr[role='row']").find(".name").text();
         var time = $(this).parents("tr[role='row']").find(".time").text();
@@ -96,6 +97,11 @@ $(function () {
             tx_content = tx_content_arr[0];
         } else {
             tx_content = tx_content_arr.join("-");
+        }
+        if (tx_content_arr.length <= 6) {
+            type = 2;
+        } else {
+            type = 1;
         }
         if (tx_content_arr.length <= 0) {
             layer.msg("请选择日期", {icon: 0});
@@ -127,7 +133,7 @@ $(function () {
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        EditTask(token, timer_id, time, content, send_type, tx_content, function (response) {
+        EditTask(token, timer_id, time, content, send_type, tx_content,type, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 // GetTaskListFun();
@@ -277,6 +283,12 @@ $(function () {
             tx_content = tx_content_arr.join("-");
         }
 
+        if (tx_content_arr.length <= 6) {
+            type = 2;
+        } else {
+            type = 1;
+        }
+
         if (tx_content_arr.length <= 0) {
             layer.msg("请选择日期", {icon: 0});
             return;
@@ -308,7 +320,7 @@ $(function () {
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        AddTask(token, time, group_id, content, send_type, tx_content, function (response) {
+        AddTask(token, time, group_id, content, send_type, tx_content,type, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editTaskModal").modal("hide");
