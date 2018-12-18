@@ -23,14 +23,21 @@ $(function () {
         })
     }
 
-    var limit = 50, offset = 0, total = "", search_content = "";
+    //获取荣耀排行榜
+    var limit = 50, offset = 0, group_id = "all", total = "", search_content = "";
 
-    function HonorFun(limit, offset, search_content) {
+    //选择群
+    $("#title").on("change", function () {
+        group_id = $(this).val();
+        console.log(group_id);
+    });
+
+    function HonorFun(limit, offset, search_content, group_id) {
         var tr = "", sorting = "", scale = "", count = "", totalPage = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
-        GetLeaderBoard(limit, offset, search_content, function (response) {
+        GetLeaderBoard(limit, offset, search_content, group_id, function (response) {
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
@@ -94,7 +101,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        HonorFun(limit, (current - 1) * limit, search_content);
+                        HonorFun(limit, (current - 1) * limit, search_content, group_id);
                     }
                 });
             }
@@ -103,11 +110,11 @@ $(function () {
         });
 
         setTimeout(function () {
-            HonorFun(limit, offset, search_content);
+            HonorFun(limit, offset, search_content, group_id);
         }, 300000)
     }
 
-    HonorFun(limit, offset, search_content);
+    HonorFun(limit, offset, search_content, group_id);
 
     //获取群列表
     var option = "<option value='all'>全部</option>";
