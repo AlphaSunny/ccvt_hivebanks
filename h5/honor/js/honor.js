@@ -161,18 +161,19 @@ $(function () {
         window.location.href = "../user/login.html?honor=honor";
     });
 
-    //显示聊天内容
+    //显示个人聊天内容
     $(document).on("click", ".message_icon", function () {
         var wechat = $(this).parents("tr").find(".link_name").text();
-        console.log(wechat);
-        $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)));
+        var group_id = " ", group_name = " ";
+        $("iframe").attr("src", "./chat_person.html?wechat" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         $(".close_page,.mask").fadeIn();
         $("html, body").css("overflow", "hidden")
     });
 
     //显示群聊内容
     $(document).on("click", ".look_chat_recode_btn", function () {
-        $("iframe").attr("src", "./chat_person.html?group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
+        var wechat = " ";
+        $("iframe").attr("src", "./chat_person.html?wechat" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         $(".close_page,.mask").fadeIn();
         $("html, body").css("overflow", "hidden")
     });
