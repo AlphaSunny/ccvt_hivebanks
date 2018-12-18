@@ -83,7 +83,7 @@ $(function () {
         var tx_content = $(this).parents("tr").find(".tx_content").text();
 
         if (type == 1) {
-            $("input[type='radio']").prop("checked", true);
+            $("input[type='checkbox']").prop("checked", true);
         } else {
             tx_content_arr = tx_content.split("-");
             $.each(tx_content_arr,function (i, val) {
