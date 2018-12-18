@@ -72,7 +72,7 @@ $(function () {
     }
 
     //编辑任务
-    var type = "";
+    var type = "", tx_content_arr = [];
     $(document).on("click", ".editBtn", function () {
         var group_name = $(this).parents("tr").find(".name").text();
         var time = $(this).parents("tr").find(".time").text();
@@ -85,10 +85,8 @@ $(function () {
         if (type == 1) {
             $("input[type='radio']").prop("checked", true);
         } else {
-            console.log(tx_content.split("-"));
-            console.log(tx_content.split(""));
-            console.log(tx_content.split(","));
-            $("#" + tx_content).prop("checked", true);
+            tx_content_arr = tx_content.split("-");
+            $("#" + tx_content_arr[i]).prop("checked", true);
         }
 
         $("#selectGroupName").fadeOut("fast");
