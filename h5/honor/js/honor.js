@@ -164,7 +164,7 @@ $(function () {
     //显示个人聊天内容
     $(document).on("click", ".message_icon", function () {
         var wechat = $(this).parents("tr").find(".link_name").text();
-        var group_id = " ", group_name = " ";
+        var group_id = null, group_name = null;
         $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         $(".close_page,.mask").fadeIn();
         $("html, body").css("overflow", "hidden")
@@ -172,7 +172,7 @@ $(function () {
 
     //显示群聊内容
     $(document).on("click", ".look_chat_recode_btn", function () {
-        var wechat = " ";
+        var wechat = null;
         $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         $(".close_page,.mask").fadeIn();
         $("html, body").css("overflow", "hidden")
