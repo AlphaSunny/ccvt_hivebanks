@@ -4,14 +4,6 @@ $(function () {
     var group_name = decodeURI(GetQueryString("group_name"));
     var search_content = "";
 
-    console.log("wechat" + wechat);
-    console.log("group_id" + group_id);
-    console.log("group_name" + group_name);
-    console.log(wechat.length);
-    console.log(group_id.length);
-    console.log(group_id == "null");
-
-    return;
     //如果是群聊内容
     if (wechat == "null") {
         wechat = " ";
