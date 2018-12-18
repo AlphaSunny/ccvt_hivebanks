@@ -9,19 +9,21 @@ $(function () {
     console.log(group_name);
 
     //如果是个人聊天内容
-    if(wechat){
+    if (wechat) {
         group_id = " ";
         $(".person_name").text(wechat);
+        GetWeChatFun(wechat, group_id, search_content);
     }
 
     //如果是群聊内容
-    if(group_id){
+    if (group_id) {
         wechat = " ";
         $(".person_name").text(group_name);
+        GetWeChatFun(wechat, group_id, search_content);
     }
 
 
-    function GetWeChatFun(search_content) {
+    function GetWeChatFun(wechat, group_id, search_content) {
         var li = "", bot_content = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
@@ -62,8 +64,6 @@ $(function () {
         })
     }
 
-    GetWeChatFun(search_content);
-
     //显示搜索
     $(".search_icon").click(function () {
         $(".title_search_box").fadeOut();
@@ -77,7 +77,7 @@ $(function () {
             layer.msg("请输入搜索内容");
             return;
         }
-        GetWeChatFun(search_content);
+        GetWeChatFun(wechat, group_id, search_content);
     });
 
     //隐藏搜索
