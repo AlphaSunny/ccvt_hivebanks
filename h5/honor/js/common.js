@@ -188,3 +188,10 @@ function UserInformation(token, suc_func, error_func) {
         };
     CallApi(api_url, post_data, suc_func, error_func);
 };
+
+//获取群列表
+function GetGroupList(suc_func, error_func) {
+    var api_url = 'group_list.php',
+        post_data = {};
+    CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
+}

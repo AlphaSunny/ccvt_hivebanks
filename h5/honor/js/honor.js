@@ -109,6 +109,20 @@ $(function () {
 
     HonorFun(limit, offset, search_content);
 
+    //获取群列表
+    var option = "";
+    GetGroupList(function (response) {
+        if (response.errcode == "0") {
+            var data = response.rows;
+            $.each(data, function (i, val) {
+                option+="<option value="+ data[i].id +">"+ data[i].name +"</option>"
+            });
+            $("#title").html(option);
+        }
+    }, function (response) {
+        layer.msg(response.errmsg, {icon: 2});
+    });
+
     //搜索
     $(".search_icon").click(function () {
         search_content = $(".search_input").val();
@@ -139,13 +153,13 @@ $(function () {
         var wechat = $(this).parents("tr").find(".link_name").text();
         $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)));
         $(".close_page,.mask").fadeIn();
-        $("html, body").css("overflow","hidden")
+        $("html, body").css("overflow", "hidden")
     });
 
     //关闭聊天内容close_page
     $(".close_page").click(function () {
         $(".mask,.close_page").fadeOut();
-        $("html, body").css("overflow","unset");
+        $("html, body").css("overflow", "unset");
     });
 
     //赞/踩
