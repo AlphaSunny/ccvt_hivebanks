@@ -166,7 +166,7 @@ $(function () {
         var wechat = $(this).parents("tr").find(".link_name").text();
         var group_id = " ", group_name = " ";
         console.log(wechat);
-        $("iframe").attr("src", "./chat_person.html?wechat" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
+        $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         $(".close_page,.mask").fadeIn();
         $("html, body").css("overflow", "hidden")
     });
@@ -174,7 +174,7 @@ $(function () {
     //显示群聊内容
     $(document).on("click", ".look_chat_recode_btn", function () {
         var wechat = " ";
-        $("iframe").attr("src", "./chat_person.html?wechat" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
+        $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         $(".close_page,.mask").fadeIn();
         $("html, body").css("overflow", "hidden")
     });
