@@ -9,6 +9,7 @@ $(function () {
     console.log("group_name" + group_name);
     console.log(wechat.length);
     console.log(group_id.length);
+    console.log(group_id == null);
 
     return;
     //如果是群聊内容
