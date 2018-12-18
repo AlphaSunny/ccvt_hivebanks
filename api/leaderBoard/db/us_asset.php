@@ -136,6 +136,7 @@ function get_chat_list($data)
     if ($data['search_content']!=''){
         $sql .= " and b.bot_content like '%{$data['search_content']}%'";
     }
+    echo $data['group_id'];
     if ($data['group_id']!='' || $data['group_id']!='all' || $data['group_id']!=' '){
         $sql .= " and b.group_id='{$data['group_id']}'";
     }
