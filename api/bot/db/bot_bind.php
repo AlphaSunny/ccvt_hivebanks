@@ -147,7 +147,7 @@ function statistics_amount_list()
 function search_timer()
 {
     $db = new DB_COM();
-    $sql = "SELECT a.id,a.time,a.content,a.group_id,a.tx_content,a.send_type,a.type,a.send_address FROM bot_timer as a LEFT JOIN bot_group as b on a.group_id=b.id WHERE a.is_del=0  ORDER BY a.intime asc";
+    $sql = "SELECT a.id,a.time,a.content,a.group_id,a.tx_content,a.send_type,a.type FROM bot_timer as a LEFT JOIN bot_group as b on a.group_id=b.id WHERE a.is_del=0  ORDER BY a.intime asc";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
