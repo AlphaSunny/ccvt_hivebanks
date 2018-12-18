@@ -3,9 +3,6 @@ $(function () {
     var invite_code = GetQueryString("invite_code");
     var wechat = GetQueryString("wechat");
     var group_id = GetQueryString("group_id");
-    console.log(wechat == null);
-    console.log(group_id == "");
-    console.log(invite_code == "null");
 
     if (invite_code) {
         $(".emailInvitCode,.phoneInvitCode").val(invite_code);
@@ -129,7 +126,7 @@ $(function () {
 
         var $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
-        EmailRegister(email, pass_word, pass_word_hash, invit_code, function (response) {
+        EmailRegister(email, pass_word, pass_word_hash, invit_code, wechat, group_id, function (response) {
             ActiveClick($this, btnText);
             if (response.errcode == '0') {
                 $('.email').val('');
@@ -289,7 +286,7 @@ $(function () {
         }
         var $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
-        PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_hash, invit_code, function (response) {
+        PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_hash, invit_code, wechat, group_id, function (response) {
             ActiveClick($this, btnText);
             if (response.errcode == '0') {
                 $('.phone').val('');

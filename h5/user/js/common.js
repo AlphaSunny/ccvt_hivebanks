@@ -292,19 +292,21 @@ function GetImgCode() {
 }
 
 // email registration
-function EmailRegister(email, pass_word, pass_word_hash, invit_code, suc_func, error_func) {
+function EmailRegister(email, pass_word, pass_word_hash, invit_code, wechat, group_id, suc_func, error_func) {
     var api_url = 'reg_email.php',
         post_data = {
             'email': email,
             'pass_word_hash': pass_word_hash,
             'pass_word': pass_word,
-            'invit_code': invit_code
+            'invit_code': invit_code,
+            'wechat': wechat,
+            'group_id': group_id
         };
     CallApi(api_url, post_data, suc_func, error_func);
 };
 
 //Mobile phone registration processing
-function PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_hash, invit_code, suc_func, error_func) {
+function PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_hash, invit_code, wechat, group_id, suc_func, error_func) {
     var api_url = 'reg_phone.php',
         post_data = {
             'country_code': country_code,
@@ -312,7 +314,9 @@ function PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_h
             'sms_code': sms_code,
             'pass_word': pass_word,
             'pass_word_hash': pass_word_hash,
-            'invit_code': invit_code
+            'invit_code': invit_code,
+            'wechat': wechat,
+            'group_id': group_id
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
@@ -686,7 +690,7 @@ function Get_News_List(suc_func, error_func) {
 function GetNewsInfo(news_id, suc_func, error_func) {
     var api_url = 'news_detail.php',
         post_data = {
-            "news_id" : news_id
+            "news_id": news_id
         };
     CallNewsApi(api_url, post_data, suc_func, error_func);
 }
@@ -732,10 +736,10 @@ function ActiveClick($this, btnText) {
  * Initialization page loading loading
  */
 window.onload = function () {
-    $("header").css("background-image","url(assets/img/banner-1.jpg)");
+    $("header").css("background-image", "url(assets/img/banner-1.jpg)");
     if (document.readyState === 'loading') {
         document.body.style.overflow = "hidden";
-    }else if(document.readyState === 'interactive' || document.readyState === 'complete'){
+    } else if (document.readyState === 'interactive' || document.readyState === 'complete') {
         document.body.style.overflow = "auto";
         var loading = document.querySelector(".loading");
         loading.parentNode.removeChild(loading);
