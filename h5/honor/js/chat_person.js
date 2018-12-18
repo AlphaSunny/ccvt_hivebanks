@@ -10,19 +10,18 @@ $(function () {
     console.log(wechat.length);
     console.log(group_id.length);
     console.log(group_id == "null");
-    console.log(group_id == "");
 
     return;
     //如果是群聊内容
     if (wechat == "null") {
         wechat = " ";
         $(".person_name").text(group_name);
-        GetWeChatFun(wechat, group_id, search_content);
     }else {//如果是个人聊天内容
         group_id = " ";
         $(".person_name").text(wechat);
-        GetWeChatFun(wechat, group_id, search_content);
     }
+
+    GetWeChatFun(wechat, group_id, search_content);
 
     function GetWeChatFun(wechat, group_id, search_content) {
         var li = "", bot_content = "";
