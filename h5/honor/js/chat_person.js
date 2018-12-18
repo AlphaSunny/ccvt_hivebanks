@@ -8,13 +8,13 @@ $(function () {
 
     //如果是个人聊天内容
     if(wechat){
-        group_id = "";
+        group_id = " ";
         $(".person_name").text(wechat);
     }
 
     //如果是群聊内容
     if(group_id){
-        wechat = "";
+        wechat = " ";
         $(".person_name").text(group_name);
     }
 
