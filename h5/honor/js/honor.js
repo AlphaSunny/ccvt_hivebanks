@@ -30,7 +30,6 @@ $(function () {
     $("#title").on("change", function () {
         group_id = $(this).val();
         group_name = $(this).children("option:selected").text();
-        console.log(group_name);
         HonorFun(limit, offset, search_content, group_id);
         if (group_id != "all") {
             $(".look_chat_recode_btn").fadeIn();
@@ -172,8 +171,7 @@ $(function () {
 
     //显示群聊内容
     $(document).on("click", ".look_chat_recode_btn", function () {
-        console.log(group_name);
-        $("iframe").attr("src", "./chat_person.html?group_id=" + encodeURI(encodeURI(group_id))) + "&group_name=" + encodeURI(encodeURI(group_name));
+        $("iframe").attr("src", "./chat_person.html?group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         $(".close_page,.mask").fadeIn();
         $("html, body").css("overflow", "hidden")
     });
