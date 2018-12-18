@@ -22,8 +22,8 @@ define('RATE',0.01);
 define('UNIT',100000000);
 define('CTIME',date('Y-m-d H:i:s',$d));
 define('UTIME',$d);
-interest_auto();
 var_dump(CTIME);die;
+interest_auto();
 
 function interest_auto(){
     $db = new DB_COM();
