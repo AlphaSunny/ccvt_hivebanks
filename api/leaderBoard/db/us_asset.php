@@ -112,7 +112,7 @@ function  get_chat_total($data)
     if ($data['search_content']!=''){
         $sql .= " and bot_content like '{$data['search_content']}%'";
     }
-    if (isset($data['group_id'])){
+    if (intval($data['group_id'])!=''){
         $sql .= " and group_id='{$data['group_id']}'";
     }
     $db -> query($sql);
