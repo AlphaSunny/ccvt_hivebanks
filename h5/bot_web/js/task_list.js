@@ -91,6 +91,13 @@ $(function () {
             });
         }
 
+        console.log(send_type);
+        if(send_type == 1){
+            $("#text").prop("checked", true);
+        }else {
+            $("#image").prop("checked", true);
+        }
+
         $("#selectGroupName").fadeOut("fast");
         $("#timer_id").val(task_id);
         $("#groupName").val(group_name);
