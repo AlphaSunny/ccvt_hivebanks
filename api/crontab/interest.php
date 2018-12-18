@@ -161,7 +161,7 @@ function log_transfer($amount,$us_id){
     $data['ctime'] = CTIME;
     $data['utime'] = UTIME;
     $sql = $db->sqlInsert("com_transfer_request", $data);
-    echo '1';
+    echo '8';
     $dat['hash_id'] = hash('md5', $us_id . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($us_id);
     $dat['prvs_hash'] = $prvs_hash == 0 ? $dat['hash_id'] : $prvs_hash;
@@ -177,7 +177,7 @@ function log_transfer($amount,$us_id){
     $dat['give_or_receive'] = 2;
     $dat['ctime'] = CTIME;
     $dat['utime'] = UTIME;
-    $uql = $db->sqlInsert("com_transfer_request", $dat);echo '1';
+    $uql = $db->sqlInsert("com_transfer_request", $dat);echo '9';
 //    var_dump($data);
 //    var_dump($db->query($uql));die;
     if($db->query($sql)&&$db->query($uql))
