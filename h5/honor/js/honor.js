@@ -30,6 +30,11 @@ $(function () {
     $("#title").on("change", function () {
         group_id = $(this).val();
         HonorFun(limit, offset, search_content, group_id);
+        if(group_id != "all"){
+            $(".look_chat_recode_btn").fadeIn();
+        }else {
+            $(".look_chat_recode_btn").fadeOut();
+        }
     });
 
     function HonorFun(limit, offset, search_content, group_id) {
