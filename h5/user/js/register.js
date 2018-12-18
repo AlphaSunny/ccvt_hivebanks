@@ -101,22 +101,30 @@ $(function () {
             invit_code = $('.emailInvitCode').val();
 
         if (email.length <= 0) {
-            LayerFun('emailNotEmpty');
+            // LayerFun('emailNotEmpty');
+            layer.msg("请输入账号", {icon: 0});
             $('.email_tips').fadeIn();
             return;
         }
+        if (!IsEmail(email)) {
+            layer.msg("邮箱格式错误", {icon: 0});
+            return;
+        }
         if (pass_word.length <= 0) {
-            LayerFun('passNotEmpty');
+            // LayerFun('passNotEmpty');
+            layer.msg("请输入密码", {icon: 0});
             $('.password_tips').fadeIn();
             return;
         }
         if (againEmailPassword.length <= 0) {
-            LayerFun('confirmPasswordNotEmpty');
+            // LayerFun('confirmPasswordNotEmpty');
+            layer.msg("请输入确认密码", {icon: 0});
             $('.emailAgainPassword_tips').fadeIn();
             return;
         }
         if (pass_word != againEmailPassword) {
-            LayerFun('TwoPassword');
+            // LayerFun('TwoPassword');
+            layer.msg("两次密码必须相同", {icon: 0});
             $('.emailSamePassword_tips').fadeIn();
             return;
         }
@@ -144,7 +152,8 @@ $(function () {
                 $('#alreadyRegister').modal('show');
             }
             GetImgCode();
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            layer.msg(response.errmsg, {icon: 2});
             return;
         });
     });
@@ -229,11 +238,13 @@ $(function () {
         var bind_type = '1', $this = $(this), cfm_code = $('.phoneCfmCode').val();
         if ($(".phone").val().length <= 0) {
             $('.phone_tips').fadeIn().siblings('span').hide();
-            LayerFun('phoneNotEmpty');
+            // LayerFun('phoneNotEmpty');
+            layer.msg("请输入账号", {icon: 0});
             return;
         }
         if (cfm_code.length <= 0) {
-            LayerFun('codeNotEmpty');
+            // LayerFun('codeNotEmpty');
+            layer.msg("请输入图形验证码", {icon: 0});
             $('.phoneCode_tips').fadeIn();
             return;
         }
@@ -255,32 +266,38 @@ $(function () {
             pass_word_hash = hex_sha1(pass_word),
             invit_code = $('.phoneInvitCode').val();
         if (cellphone.length <= 0) {
-            LayerFun('phoneNotEmpty');
+            // LayerFun('phoneNotEmpty');
+            layer.msg("请输入账号", {icon: 0});
             $('.phone_tips').fadeIn();
             return;
         }
         if (pass_word.length <= 0) {
-            LayerFun('passNotEmpty');
+            // LayerFun('passNotEmpty');
+            layer.msg("请输入密码", {icon: 0});
             $('.PhonePassword_tips').fadeIn();
             return;
         }
         if (again_pass_word.length <= 0) {
-            LayerFun('confirmPasswordNotEmpty');
+            // LayerFun('confirmPasswordNotEmpty');
+            layer.msg("请输入确认密码", {icon: 0});
             $('.phoneAgainPassword_tips').fadeIn();
             return;
         }
         if (phoneCfmCode.length <= 0) {
-            LayerFun('codeNotEmpty');
+            // LayerFun('codeNotEmpty');
+            layer.msg("请输入图形验证码", {icon: 0});
             $('.phoneCode_tips').fadeIn();
             return;
         }
         if (pass_word != again_pass_word) {
-            LayerFun('TwoPassword');
+            // LayerFun('TwoPassword');
+            layer.msg("两次密码必须相同", {icon: 0});
             $('.phoneSamePassword_tips').fadeIn();
             return;
         }
         if (sms_code.length <= 0) {
-            LayerFun('codeNotEmpty');
+            // LayerFun('codeNotEmpty');
+            layer.msg("请输入短信验证码", {icon: 0});
             $('.phoneSmsCode_tips').fadeIn();
             return;
         }
@@ -308,7 +325,8 @@ $(function () {
                 $('.phoneCode_expired').fadeIn('fast');
             }
             GetImgCode();
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            layer.msg(response.errmsg, {icon: 2});
             return;
         });
     });
