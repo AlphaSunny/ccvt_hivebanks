@@ -33,6 +33,7 @@ $data['bot_create_time'] = time();
 $data['wechat'] = get_arg_str('GET','wechat');
 $data['ba_id']  = get_arg_str('GET', 'ba_id');
 $data['us_id']  = get_arg_str('GET', 'us_id');
+$data['group_id']  = get_arg_str('GET', 'group_id');
 $data['group_name']  = get_arg_str('GET', 'group_name');
 $data['type']  = get_arg_str('GET', 'type');
 $data['head_img']  = get_arg_str('GET', 'head_img');
