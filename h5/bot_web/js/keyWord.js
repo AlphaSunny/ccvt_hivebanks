@@ -1,7 +1,16 @@
 $(function () {
 
     //编辑-添加-显示弹框
-    $(".edit_key_word_btn,.add_key_word_btn").click(function () {
-        $("#keiWordModal").modal("show");
+    $(".add_key_word_btn").click(function () {
+        $("#myModalLabel").text("添加AI关键字");
+        $("#keyWordModal").modal("show");
+    });
+    $(".edit_key_word_btn").click(function () {
+        var key_word = $(this).parents("tr").find(".key_word").text();
+        var key_word_content = $(this).parents("tr").find(".key_word_content").text();
+        $("#myModalLabel").text("编辑AI关键字");
+        $("#key_word").val(key_word);
+        $("#key_word_content").val(key_word_content);
+        $("#keyWordModal").modal("show");
     })
 });
