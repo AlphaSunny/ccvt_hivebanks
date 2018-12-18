@@ -165,7 +165,6 @@ $(function () {
     $(document).on("click", ".message_icon", function () {
         var wechat = $(this).parents("tr").find(".link_name").text();
         var group_id = " ", group_name = " ";
-        console.log(wechat);
         $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         $(".close_page,.mask").fadeIn();
         $("html, body").css("overflow", "hidden")

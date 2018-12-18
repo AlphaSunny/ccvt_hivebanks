@@ -4,7 +4,6 @@ $(function () {
     var group_name = decodeURI(GetQueryString("group_name"));
     var search_content = "";
 
-    console.log(GetQueryString("wechat"));
     console.log("wechat" + wechat);
     console.log("group_id" + group_id);
     console.log("group_name" + group_name);
@@ -13,14 +12,14 @@ $(function () {
 
     return;
     //如果是个人聊天内容
-    if (wechat.length > 0) {
+    if (wechat.length != " ") {
         group_id = " ";
         $(".person_name").text(wechat);
         GetWeChatFun(wechat, group_id, search_content);
     }
 
     //如果是群聊内容
-    if (group_id.length > 0) {
+    if (group_id.length != " ") {
         wechat = " ";
         $(".person_name").text(group_name);
         GetWeChatFun(wechat, group_id, search_content);
