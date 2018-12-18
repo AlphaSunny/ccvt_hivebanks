@@ -34,6 +34,8 @@ $(function () {
             shade: [0.1, '#fff']
         });
         GetChatPerson(wechat, group_id, search_content, function (response) {
+            console.log(wechat);
+            console.log(group_id);
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
