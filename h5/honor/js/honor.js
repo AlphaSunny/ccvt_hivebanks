@@ -168,6 +168,13 @@ $(function () {
         $("html, body").css("overflow", "hidden")
     });
 
+    //显示群聊内容
+    $(document).on("click", ".look_chat_recode_btn", function () {
+        $("iframe").attr("src", "./chat_person.html?group_id=" + encodeURI(encodeURI(group_id)));
+        $(".close_page,.mask").fadeIn();
+        $("html, body").css("overflow", "hidden")
+    });
+
     //关闭聊天内容close_page
     $(".close_page").click(function () {
         $(".mask,.close_page").fadeOut();

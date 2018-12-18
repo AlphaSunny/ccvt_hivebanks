@@ -151,11 +151,12 @@ function GetLeaderBoard(limit, offset, search_content, group_id, suc_func, error
 }
 
 //get GetChatPerson
-function GetChatPerson(wechat, search_content, suc_func, error_func) {
+function GetChatPerson(wechat, search_content,group_id, suc_func, error_func) {
     var api_url = 'chat_person.php',
         post_data = {
             "wechat": wechat,
-            "search_content": search_content
+            "search_content": search_content,
+            "group_id": group_id
         };
     CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
 }

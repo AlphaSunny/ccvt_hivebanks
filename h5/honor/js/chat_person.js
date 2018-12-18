@@ -1,15 +1,27 @@
 $(function () {
     var wechat_url = GetQueryString("wechat");
     var wechat = decodeURI(wechat_url);
+    var group_id_url = GetQueryString("group_id");
+    var group_id = decodeURI(group_id_url);
     var search_content = "";
-    $(".person_name").text(wechat);
+
+    //如果是个人聊天内容
+    if(wechat){
+        $(".person_name").text(wechat);
+    }
+
+    //如果是群聊内容
+    if(group_id){
+        $(".person_name").text(group_id);
+    }
+
 
     function GetWeChatFun(search_content) {
         var li = "", bot_content = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
-        GetChatPerson(wechat, search_content, function (response) {
+        GetChatPerson(wechat, search_content, group_id, function (response) {
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
