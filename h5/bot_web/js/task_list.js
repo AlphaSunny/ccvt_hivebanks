@@ -82,7 +82,7 @@ $(function () {
         var type = $(this).parents("tr").find(".type").text();
         var tx_content = $(this).parents("tr").find(".tx_content").text();
 
-        if (send_type == 1) {
+        if (type == 1) {
             $("input[type='radio']").prop("checked", true);
         } else {
             $("#" + tx_content).prop("checked", true);
