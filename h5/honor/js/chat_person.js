@@ -11,16 +11,14 @@ $(function () {
     console.log(group_id.length);
 
     return;
-    //如果是个人聊天内容
-    if (wechat != null) {
-        console.log("微信名");
-        group_id = " ";
-        $(".person_name").text(wechat);
-        GetWeChatFun(wechat, group_id, search_content);
-    }else {//如果是群聊内容
-        console.log("微信群");
+    //如果是群聊内容
+    if (wechat == null) {
         wechat = " ";
         $(".person_name").text(group_name);
+        GetWeChatFun(wechat, group_id, search_content);
+    }else {//如果是个人聊天内容
+        group_id = " ";
+        $(".person_name").text(wechat);
         GetWeChatFun(wechat, group_id, search_content);
     }
 
