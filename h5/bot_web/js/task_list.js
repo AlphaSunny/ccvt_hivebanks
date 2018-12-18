@@ -25,6 +25,7 @@ $(function () {
 
     function GetTaskListFun() {
         GetTaskList(token, function (response) {
+            console.log(response);
             if (response.errcode == "0") {
                 var data = response.rows, tr = "";
                 $.each(data, function (i, val) {
