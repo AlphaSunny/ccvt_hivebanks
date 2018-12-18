@@ -422,3 +422,18 @@ function praise_or_pointon_num($us_id)
     $rows['all_cai'] = $all_cai;
     return $rows;
 }
+
+//======================================
+// 函数: 获取群组列表
+// 参数: account      账号
+//      variable      绑定name
+// 返回: row           最新信息数组
+//======================================
+function get_group_list()
+{
+    $db = new DB_COM();
+    $sql = "SELECT id,name FROM bot_group WHERE is_test=1 AND is_audit=2 AND is_admin_del=1 ORDER BY intime ASC ";
+    $db -> query($sql);
+    $row = $db -> fetchAll();
+    return $row;
+}
