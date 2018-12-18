@@ -28,7 +28,7 @@ $(function () {
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
-        GetChatPerson(wechat, search_content, group_id, function (response) {
+        GetChatPerson(wechat, group_id, search_content, function (response) {
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
