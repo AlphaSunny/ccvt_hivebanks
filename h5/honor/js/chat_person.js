@@ -4,6 +4,7 @@ $(function () {
     var group_name = decodeURI(GetQueryString("group_name"));
     var search_content = "";
 
+    console.log(GetQueryString("wechat"));
     console.log("wechat" + wechat);
     console.log("group_id" + group_id);
     console.log("group_name" + group_name);
