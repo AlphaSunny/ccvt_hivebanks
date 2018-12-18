@@ -33,7 +33,8 @@ $(function () {
                         "<td class='content' name=" + data[i].id + ">" + data[i].content + "</td>" +
                         "<td class='name'>" + data[i].name + "</td>" +
                         "<td>" +
-                        "<span class='none type'>"+ data[i].type +"</span><span class='none send_type'>"+ data[i].send_type +"</span><button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+                        "<span class='none type'>" + data[i].type + "</span><span class='none send_type'>" + data[i].send_type + "</span><span class='none tx_content'>" + data[i].tx_content + "</span>" +
+                        "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                         "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
                         "</td>" +
                         "</tr>";
@@ -44,6 +45,7 @@ $(function () {
             layer.msg(response.errmsg);
         });
     }
+
     GetTaskListFun();
 
     //确定删除任务
@@ -77,7 +79,15 @@ $(function () {
         var content = $(this).parents("tr").find(".content").text();
         var task_id = $(this).parents("tr").find(".id").text();
         var send_type = $(this).parents("tr").find(".send_type").text();
-        console.log(send_type);
+        var type = $(this).parents("tr").find(".type").text();
+        var tx_content = $(this).parents("tr").find(".tx_content").text();
+
+        if (send_type == 1) {
+            $("input[type='radio']").prop("checked", true);
+        } else {
+            $("#" + tx_content).prop("checked", true);
+        }
+
         $("#selectGroupName").fadeOut("fast");
         $("#timer_id").val(task_id);
         $("#groupName").val(group_name);
