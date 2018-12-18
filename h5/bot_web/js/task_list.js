@@ -343,7 +343,7 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editTaskModal").modal("hide");
-                table.ajax.reload();
+                GetTaskListFun();
             }
         }, function (response) {
             layer.close(loading);
