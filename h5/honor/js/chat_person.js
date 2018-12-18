@@ -10,9 +10,9 @@ $(function () {
     console.log(wechat.length);
     console.log(group_id.length);
 
+    return;
     //如果是个人聊天内容
     if (wechat.length > 0) {
-        console.log('wechat');
         group_id = " ";
         $(".person_name").text(wechat);
         GetWeChatFun(wechat, group_id, search_content);
@@ -20,7 +20,6 @@ $(function () {
 
     //如果是群聊内容
     if (group_id.length > 0) {
-        console.log('group-id');
         wechat = " ";
         $(".person_name").text(group_name);
         GetWeChatFun(wechat, group_id, search_content);
