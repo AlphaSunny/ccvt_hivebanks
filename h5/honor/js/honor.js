@@ -30,6 +30,7 @@ $(function () {
     $("#title").on("change", function () {
         group_id = $(this).val();
         group_name = $(this).text();
+        console.log(group_name);
         HonorFun(limit, offset, search_content, group_id);
         if (group_id != "all") {
             $(".look_chat_recode_btn").fadeIn();
