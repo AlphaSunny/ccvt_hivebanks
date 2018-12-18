@@ -15,7 +15,7 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 $d=mktime(20, 00, 00, 12, 28, 2018);
-
+var_dump($d);die;
 define('BA_ID','6C69520E-E454-127B-F474-452E65A3EE75');
 define('FLAG','11');
 define('RATE',0.01);
