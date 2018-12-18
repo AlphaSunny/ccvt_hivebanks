@@ -1,10 +1,12 @@
 $(function () {
-    var wechat_url = GetQueryString("wechat");
-    var wechat = decodeURI(wechat_url);
-    var group_id_url = GetQueryString("group_id");
-    var group_id = decodeURI(group_id_url);
+    var wechat = decodeURI(GetQueryString("wechat"));
+    var group_id = decodeURI(GetQueryString("group_id"));
     var group_name = decodeURI(GetQueryString("group_name"));
     var search_content = "";
+
+    console.log(wechat);
+    console.log(group_id);
+    console.log(group_name);
 
     //如果是个人聊天内容
     if(wechat){
