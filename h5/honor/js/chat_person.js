@@ -24,6 +24,9 @@ $(function () {
 
 
     function GetWeChatFun(wechat, group_id, search_content) {
+        console.log(wechat);
+        console.log(group_id);
+        console.log(group_name);
         var li = "", bot_content = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
