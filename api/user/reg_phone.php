@@ -88,6 +88,12 @@ $invit_code     = get_arg_str('GET', 'invit_code');
 //原始密码
 $pass_word      = get_arg_str('GET', 'pass_word');
 
+//wechat
+$wechat      = get_arg_str('GET', 'wechat');
+
+//群组
+$group_id      = get_arg_str('GET', 'group_id');
+
 // 用户基本信息
 $data_base = array();
 
@@ -99,6 +105,9 @@ if($invit_code) {
         exit_error('215', '邀请码错误');
     $data_base['invite_code'] = $invit_code;
 }
+
+//微信昵称
+
 
 
 // 用户绑定信息
@@ -191,7 +200,7 @@ if(($rec['limt_time'] + 29*60) < $timestamp){
 //绑定信息写入数据库
 $data_base['us_account'] = "ccvt_".$cellphone;
 $data_base['reg_ip'] = get_int_ip();
-$ret = ins_base_user_reg_base_info($data_base);
+$ret = ins_base_user_reg_base_info($data_base,$group_id);
 $bind_phone = ins_bind_user_reg_bind_info($data_bind);
 $bind_pass = ins_bind_user_reg_bind_info($data_bind_pass);
 //已使用的验证码消除使用权限

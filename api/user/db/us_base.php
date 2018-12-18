@@ -37,7 +37,7 @@ function get_invite_code_us($invite_check){
 // 返回: true         创建成功
 //       false        创建失败
 //======================================
-function ins_base_user_reg_base_info($data_base)
+function ins_base_user_reg_base_info($data_base,$group_id)
 {
     $data_base['base_amount'] = 0;
     $data_base['lock_amount'] =0;
@@ -51,12 +51,10 @@ function ins_base_user_reg_base_info($data_base)
     if ($q_id == 0)
         return false;
 
-    //2018年 10.1-10.7注册送500ccvt
-//    $array = array('2018-10-01','2018-10-02','2018-10-03','2018-10-04','2018-10-05','2018-10-06','2018-10-07');
-//    $now = date('Y-m-d');
-//    if(in_array($now,$array)){
-//        send_to_us_ccvt($data_base['us_id'],'reg_send','500');
-//    }
+    //绑定微信
+    if (isset($wechat)){
+
+    }
 
 
     //注册获取50ccvt
