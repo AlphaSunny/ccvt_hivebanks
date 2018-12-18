@@ -106,7 +106,7 @@ function  get_chat_total($data)
 {
     $db = new DB_COM();
     $sql = "SELECT bot_message_id FROM bot_message WHERE 1";
-    if ($data['wechat']!='' ||$data['wechat']!='null'){
+    if ($data['wechat']!='' ||$data['wechat']!=null){
         $sql .= " and wechat='{$data['wechat']}'";
     }
     if ($data['search_content']!=''){
