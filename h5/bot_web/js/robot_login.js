@@ -16,7 +16,7 @@ function GetWeChatGroupFun() {
     });
 
     //获取群列表
-    function GetWeChatGroupFun (){
+    function GetWeChatGroupFun() {
         GetWeChatGroup(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
@@ -33,9 +33,10 @@ function GetWeChatGroupFun() {
                         "</li>";
                 });
                 $(".list_group").html(li);
+                $(".list_group_box").fadeIn(300);
             }
         }, function (response) {
-            layer.msg(response);
+            layer.msg(response.errmsg, {icon: 2});
         });
     }
 }
@@ -58,7 +59,7 @@ $(function () {
         var group_type_id = $(this).parents(".list-group-item").find("select").val();
         var group_name = $(this).parents(".list-group-item").find(".group_name").text();
 
-        if(!group_type_id){
+        if (!group_type_id) {
 
         }
 
