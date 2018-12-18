@@ -85,6 +85,7 @@ $(function () {
         if (type == 1) {
             $("input[type='radio']").prop("checked", true);
         } else {
+            console.log(tx_content.split("-"));
             $("#" + tx_content).prop("checked", true);
         }
 
