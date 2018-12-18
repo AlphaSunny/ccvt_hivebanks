@@ -17,16 +17,12 @@ $(function () {
         group_id = " ";
         $(".person_name").text(wechat);
         GetWeChatFun(wechat, group_id, search_content);
-    }
-
-    //如果是群聊内容
-    if (group_id != null) {
+    }else {//如果是群聊内容
         console.log("微信群");
         wechat = " ";
         $(".person_name").text(group_name);
         GetWeChatFun(wechat, group_id, search_content);
     }
-
 
     function GetWeChatFun(wechat, group_id, search_content) {
         var li = "", bot_content = "";
