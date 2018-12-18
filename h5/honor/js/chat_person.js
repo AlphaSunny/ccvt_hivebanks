@@ -9,7 +9,7 @@ $(function () {
     console.log(group_name);
 
     //如果是个人聊天内容
-    if (wechat) {
+    if (wechat != null) {
         console.log('wechat');
         group_id = " ";
         $(".person_name").text(wechat);
@@ -17,7 +17,7 @@ $(function () {
     }
 
     //如果是群聊内容
-    if (group_id) {
+    if (group_id != null) {
         console.log('group-id');
         wechat = " ";
         $(".person_name").text(group_name);
