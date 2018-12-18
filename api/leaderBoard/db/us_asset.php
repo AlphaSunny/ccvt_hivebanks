@@ -77,6 +77,7 @@ function get_leaderboard($offset,$limit,$search_content,$group_id)
             $sql .= " and bind.bind_name='group' and bind.bind_info='{$group_id}'";
         }
         $sql .= " order by a.base_amount desc limit $offset , $limit";
+        echo $sql;
         $db->query($sql);
         $rows = $db->fetchAll();
         foreach ($rows as $k=>$v){
