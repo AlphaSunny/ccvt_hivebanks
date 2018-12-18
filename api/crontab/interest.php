@@ -22,7 +22,7 @@ define('RATE',0.01);
 define('UNIT',100000000);
 define('CTIME',date('Y-m-d H:i:s',$d));
 define('UTIME',$d);
-var_dump(CTIME);die;
+
 interest_auto();
 
 function interest_auto(){
