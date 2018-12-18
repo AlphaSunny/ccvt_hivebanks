@@ -173,7 +173,8 @@ $(function () {
                 // GetTaskListFun();
                 $("#editTaskModal").modal("hide");
                 // window.location.reload();
-                table.ajax.reload();
+                // table.ajax.reload();
+                GetTaskListFun();
             }
         }, function (response) {
             layer.close(loading);
