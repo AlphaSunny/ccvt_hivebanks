@@ -5,12 +5,15 @@
 // 参数:
 // 返回: count        记录总数
 //======================================
-function  get_leaderboard_total($search_content)
+function  get_leaderboard_total($search_content,$group_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP'";
+    $sql = "SELECT a.asset_id FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id LEFT JOIN us_bind as bind ON b.us_id=bind.us_id WHERE a.asset_id = 'GLOP' AND a.base_amount>=0";
     if ($search_content!=''){
         $sql .= " and b.wechat like '%{$search_content}%'";
+    }
+    if ($group_id!="all"){
+        $sql .= " and bind.bind_name='group' and bind.bind_info='{$group_id}'";
     }
     $db -> query($sql);
     $count = $db -> affectedRows();
@@ -22,7 +25,7 @@ function  get_leaderboard_total($search_content)
 // 参数: $offset    $limit
 // 返回: rows             用户登录信息数组
 //======================================
-function get_leaderboard($offset,$limit,$search_content)
+function get_leaderboard($offset,$limit,$search_content,$group_id)
 {
     $db = new DB_COM();
     $s_time = strtotime(date('Y-m-d 00:00:00'), time());
@@ -32,7 +35,11 @@ function get_leaderboard($offset,$limit,$search_content)
         $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,
           (select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_praise,
           (select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_point_on 
-          FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP' AND a.base_amount>=0 order by a.base_amount desc";
+          FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id LEFT JOIN us_bind as bind ON b.us_id=bind.us_id WHERE a.asset_id = 'GLOP' AND a.base_amount>=0";
+        if ($group_id!="all"){
+            $sql .= " and bind.bind_name='group' and bind.bind_info='{$group_id}'";
+        }
+        $sql .= " order by a.base_amount desc";
         $db->query($sql);
         $row1 = $db->fetchAll();
         foreach ($row1 as $k=>$v){
@@ -42,7 +49,11 @@ function get_leaderboard($offset,$limit,$search_content)
         $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,
            (select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_praise,
            (select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_point_on 
-           FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP' AND a.base_amount>=0 and b.wechat like '%{$search_content}%' order by a.base_amount desc";
+           FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id LEFT JOIN us_bind as bind ON b.us_id=bind.us_id WHERE a.asset_id = 'GLOP' AND a.base_amount>=0 and b.wechat like '%{$search_content}%'";
+        if ($group_id!="all"){
+            $sql .= " and bind.bind_name='group' and bind.bind_info='{$group_id}'";
+        }
+        $sql .= " order by a.base_amount desc";
         $db->query($sql);
         $row2 = $db->fetchAll();
         if ($row2){
@@ -61,7 +72,11 @@ function get_leaderboard($offset,$limit,$search_content)
         $sql = "SELECT b.us_account,b.wechat,b.us_id,b.scale,
            (select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点赞' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_praise,
            (select sum(tx_amount/'{$unit}') from us_glory_integral_change_log WHERE debit_id=a.us_id AND tx_detail='点踩' AND ctime BETWEEN '{$s_time}' AND '{$e_time}') as all_point_on 
-           FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id WHERE a.asset_id = 'GLOP' AND a.base_amount>=0 order by a.base_amount desc limit $offset , $limit";
+           FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id LEFT JOIN us_bind as bind ON b.us_id=bind.us_id WHERE a.asset_id = 'GLOP' AND a.base_amount>=0";
+        if ($group_id!="all"){
+            $sql .= " and bind.bind_name='group' and bind.bind_info='{$group_id}'";
+        }
+        $sql .= " order by a.base_amount desc limit $offset , $limit";
         $db->query($sql);
         $rows = $db->fetchAll();
         foreach ($rows as $k=>$v){
