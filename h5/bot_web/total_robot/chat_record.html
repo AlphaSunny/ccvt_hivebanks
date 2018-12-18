@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/js/layer/layer.css">
-    <!--<link rel="stylesheet" href="../../assets/css/jquery.pagination.css">-->
     <link rel="stylesheet" href="../css/common.css">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -23,9 +22,12 @@
     <!-- Navbar Right Menu-->
     <ul class="app-nav">
         <!-- User Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-twitter"
+                                                                             aria-hidden="true"></i></a></li>
+        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-facebook"
+                                                                             aria-hidden="true"></i></a></li>
+        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+        </li>
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
                 class="fa fa-user fa-lg"></i></a>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
@@ -42,55 +44,14 @@
 <aside class="app-sidebar">
     <div class="app-sidebar__user">
         <!--<img class="app-sidebar__user-avatar"-->
-                                        <!--src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"-->
-                                        <!--alt="User Image">-->
+        <!--src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"-->
+        <!--alt="User Image">-->
         <div>
             <p class="app-sidebar__user-name robot_username"></p>
             <!--<p class="app-sidebar__user-designation">Frontend Developer</p>-->
         </div>
     </div>
-    <ul class="app-menu">
-        <li>
-            <a class="app-menu__item active" href="kyc_group_list.html">
-                <i class="app-menu__icon fa fa-dashboard"></i>
-                <span class="app-menu__label">群审核</span>
-            </a>
-        </li>
-        <li>
-            <a class="app-menu__item" href="task_list.html">
-                <i class="app-menu__icon fa fa-dashboard"></i>
-                <span class="app-menu__label">任务管理</span>
-            </a>
-        </li>
-        <li>
-            <a class="app-menu__item" href="send_amount.html">
-                <i class="app-menu__icon fa fa-dashboard"></i>
-                <span class="app-menu__label">奖励统计</span>
-            </a>
-        </li>
-        <li>
-            <a class="app-menu__item active" href="group_type.html">
-                <i class="app-menu__icon fa fa-dashboard"></i>
-                <span class="app-menu__label">群类型管理</span>
-            </a>
-        </li>
-        <li>
-            <a class="app-menu__item" href="give_like.html">
-                <i class="app-menu__icon fa fa-dashboard"></i>
-                <span class="app-menu__label">踩-赞记录</span>
-            </a>
-        </li>
-        <!--<li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview">-->
-        <!--<i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">审核</span><i-->
-        <!--class="treeview-indicator fa fa-angle-right"></i></a>-->
-        <!--<ul class="treeview-menu">-->
-        <!--<li><a class="treeview-item" rel="nofollow" href="kyc_group_list.html"><i class="icon fa fa-circle-o"></i>群审核</a></li>-->
-        <!--&lt;!&ndash;<li><a class="treeview-item" href="task_list.html" rel="noopener"><i class="icon fa fa-circle-o"></i>定时任务</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;<li><a class="treeview-item" href="give_like.html" rel="noopener"><i class="icon fa fa-circle-o"></i>点赞列表</a>&ndash;&gt;-->
-        <!--</li>-->
-        <!--<li><a class="treeview-item" href="ui-cards.html"><i class="icon fa fa-circle-o"></i> Cards</a></li>-->
-        <!--<li><a class="treeview-item" href="widgets.html"><i class="icon fa fa-circle-o"></i> Widgets</a></li>-->
-    </ul>
+    <ul class="app-menu"></ul>
 </aside>
 <main class="app-content">
     <div class="app-title">
@@ -129,25 +90,21 @@
                         </tbody>
                     </table>
                     <!--<div>-->
-                        <!--<div id="pagination" class="page"></div>-->
+                    <!--<div id="pagination" class="page"></div>-->
                     <!--</div>-->
                 </div>
             </div>
         </div>
     </div>
-
 </main>
-<!-- Essential javascripts for application to work-->
-<script src="../../assets/js/jquery-3.2.1.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../../assets/js/bootstrap.min.js"></script>
-<script src="../../assets/js/layer/layer.js"></script>
-<script src="../../assets/js/pace.min.js"></script>
-<!--<script src="../../assets/js/jquery.pagination.min.js"></script>-->
-<!--<script type="text/javascript" src="../../assets/js/jquery.dataTables.min.js"></script>-->
-<!--<script type="text/javascript" src="../../assets/js/dataTables.bootstrap.min.js"></script>-->
+<script type="text/javascript" src="../../assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/popper.min.js"></script>
+<script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../assets/js/layer/layer.js"></script>
+<script type="text/javascript" src="../../assets/js/pace.min.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script src="../js/main.js"></script>
+<script type="text/javascript" src="js/slide_nav.js"></script>
 <script type="text/javascript" src="js/chat_record.js"></script>
 </body>
 </html>
