@@ -112,7 +112,7 @@ function  get_chat_total($data)
     if ($data['search_content']!=''){
         $sql .= " and bot_content like '{$data['search_content']}%'";
     }
-    if ($data['group_id']!='' || $data['group_id']!='all'){
+    if (isset($data['group_id'])){
         $sql .= " and group_id='{$data['group_id']}'";
     }
     $db -> query($sql);
@@ -137,7 +137,7 @@ function get_chat_list($data)
         $sql .= " and b.bot_content like '%{$data['search_content']}%'";
     }
     echo $data['group_id'];
-    if ($data['group_id']!='' || $data['group_id']!='all' || $data['group_id']!=' '){
+    if (isset($data['group_id'])){
         $sql .= " and b.group_id='{$data['group_id']}'";
     }
     $sql .= " ORDER BY b.bot_create_time asc";
