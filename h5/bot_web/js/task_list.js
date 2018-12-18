@@ -10,8 +10,8 @@ $(function () {
             {"data": "time", "class": "time"},
             {"data": "content", "class": "content"},
             {"data": "name", "class": "name"},
-            {"data": "type", "class": "type none"},
-            {"data": "send_type", "class": "send_type none"},
+            {"data": "type", "class": "type,none"},
+            {"data": "send_type", "class": "send_type,none"},
         ],
         "columnDefs": [{
             "targets": [4],
