@@ -4,16 +4,17 @@ $(function () {
     var group_id_url = GetQueryString("group_id");
     var group_id = decodeURI(group_id_url);
     var group_name = decodeURI(GetQueryString("group_name"));
-    console.log(group_name);
     var search_content = "";
 
     //如果是个人聊天内容
     if(wechat){
+        group_id = "";
         $(".person_name").text(wechat);
     }
 
     //如果是群聊内容
     if(group_id){
+        wechat = "";
         $(".person_name").text(group_name);
     }
 
