@@ -170,16 +170,14 @@ $(function () {
         EditTask(token, timer_id, time, content, send_type, tx_content, type, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
-                // GetTaskListFun();
                 $("#editTaskModal").modal("hide");
-                // window.location.reload();
-                // table.ajax.reload();
+                layer.msg("修改成功", {icon: 1});
                 GetTaskListFun();
             }
         }, function (response) {
             layer.close(loading);
             $("#editTaskModal").modal("hide");
-            layer.msg(response.errmsg);
+            layer.msg(response.errmsg, {icon: 2});
         })
     });
 
