@@ -50,6 +50,7 @@ function interest_auto(){
 function us_get(){
     $db = new DB_COM();
     $sql = "select * from big_account_lock";
+    echo '1';
     $res = $db->query($sql);
     $res = $db->fetchAll();
     if($res)
@@ -61,6 +62,7 @@ function us_get(){
 function ba_cut($amount){
     $db = new DB_COM();
     $sql = "update ba_base set base_amount = base_amount - $amount * 0.01 *".UNIT." where  ba_id= '6C69520E-E454-127B-F474-452E65A3EE75'";
+    echo '1';
     $db->query($sql);
     $res = $db->affectedRows();
     if($res)
@@ -72,7 +74,7 @@ function ba_cut($amount){
 }
 function us_add($amount,$us_id){
     $db = new DB_COM();
-    $sql = "update us_base set base_amount = base_amount+ $amount * 0.01 *".UNIT." where us_id='{$us_id}'";
+    $sql = "update us_base set base_amount = base_amount+ $amount * 0.01 *".UNIT." where us_id='{$us_id}'";echo '1';
     $db->query($sql);
     if($db->affectedRows())
         return true;
@@ -88,7 +90,7 @@ function log_interest($amount,$us_id){
     $data['us_id'] = $us_id;
     $data['log_id'] = get_guid();
     $data['interest_type'] = 'big_us_interest';
-    $sql = $db->sqlInsert('big_account_interest',$data);
+    $sql = $db->sqlInsert('big_account_interest',$data);echo '1';
     if(!($db->query($sql)))
         die('log_interest');
     return true;
@@ -114,7 +116,7 @@ function log_base($amount,$us_id){
     $data["utime"] = UTIME;
     $data["ctime"] = CTIME;
     $sql = $db->sqlInsert("com_base_balance", $data);
-
+    echo '1';
     $uata = array();
     $uata['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . mt() . rand(1000, 9999) . $ctime);
     $uata['tx_id'] = hash('md5', BA_ID  . 'phone' . get_ip() . mt() . date('Y-m-d H:i:s'));;
@@ -134,7 +136,7 @@ function log_base($amount,$us_id){
     $uata["utime"] = UTIME;
     $uata["ctime"] = CTIME;
     $uql = $db->sqlInsert("com_base_balance", $uata);
-
+    echo '1';
     if($db->query($sql)&&$db->query($uql))
         return true;
     die('com_base');
@@ -158,7 +160,7 @@ function log_transfer($amount,$us_id){
     $data['ctime'] = CTIME;
     $data['utime'] = UTIME;
     $sql = $db->sqlInsert("com_transfer_request", $data);
-
+    echo '1';
     $dat['hash_id'] = hash('md5', $us_id . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($us_id);
     $dat['prvs_hash'] = $prvs_hash == 0 ? $dat['hash_id'] : $prvs_hash;
@@ -174,7 +176,7 @@ function log_transfer($amount,$us_id){
     $dat['give_or_receive'] = 2;
     $dat['ctime'] = CTIME;
     $dat['utime'] = UTIME;
-    $uql = $db->sqlInsert("com_transfer_request", $dat);
+    $uql = $db->sqlInsert("com_transfer_request", $dat);echo '1';
 //    var_dump($data);
 //    var_dump($db->query($uql));die;
     if($db->query($sql)&&$db->query($uql))
@@ -194,6 +196,7 @@ function  get_recharge_pre_hash($ba_id)
 {
     $db = new DB_COM();
     $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}' and tx_type = 'ba_send' ORDER BY  ctime DESC LIMIT 1";
+    
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;
