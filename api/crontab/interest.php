@@ -75,7 +75,7 @@ function ba_cut($amount){
 }
 function us_add($amount,$us_id){
     $db = new DB_COM();
-    $sql = "update us_base set base_amount = base_amount+ $amount * 0.01 *".UNIT." where us_id='{$us_id}'";echo 'shi';
+    $sql = "update us_base set base_amount = base_amount+ $amount * 0.01 *".UNIT." where us_id='{$us_id}'";echo $sql;
     $db->query($sql);
     if($db->affectedRows())
         return true;
