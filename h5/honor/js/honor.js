@@ -29,7 +29,7 @@ $(function () {
     //选择群
     $("#title").on("change", function () {
         group_id = $(this).val();
-        group_name = $(this).text();
+        group_name = $(this).children("option:selected").text();
         console.log(group_name);
         HonorFun(limit, offset, search_content, group_id);
         if (group_id != "all") {
