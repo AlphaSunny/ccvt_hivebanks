@@ -12,7 +12,7 @@ $(function () {
 
     return;
     //如果是群聊内容
-    if (wechat == null) {
+    if (wechat == "null") {
         wechat = " ";
         $(".person_name").text(group_name);
         GetWeChatFun(wechat, group_id, search_content);
