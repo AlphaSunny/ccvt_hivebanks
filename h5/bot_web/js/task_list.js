@@ -86,7 +86,9 @@ $(function () {
             $("input[type='radio']").prop("checked", true);
         } else {
             tx_content_arr = tx_content.split("-");
-            $("#" + tx_content_arr[i]).prop("checked", true);
+            $.each(tx_content_arr,function (i, val) {
+                $("#" + tx_content_arr[i]).prop("checked", true);
+            });
         }
 
         $("#selectGroupName").fadeOut("fast");
