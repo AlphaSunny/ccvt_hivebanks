@@ -31,6 +31,55 @@ function ins_bind_user_reg_bind_info($data_bind)
     return false;
   return true;
 }
+
+//======================================
+// 函数: 创建用户绑定微信,绑定群
+// 参数: data_bind          绑定信息数组
+// 返回： true               成功
+//        false             失败
+//======================================
+function ins_bind_user_reg_weixin_group_info($us_id,$wechat,$group_id)
+{
+    $db = new DB_COM();
+    if (isset($wechat)){
+        //绑定微信号
+        $vail = 'wechat';
+        $data['bind_id'] = get_guid();
+        $data['us_id'] = $us_id;
+        $data['bind_type'] = 'text';
+        $data['bind_name'] = $vail;
+        $data['bind_info'] = $wechat;
+        $data['bind_flag'] = 1;
+        $data['utime'] = time();
+        $data['ctime'] = date('Y-m-d H:i:s');
+        $sql = $db->sqlInsert("us_bind", $data);
+        $q_id = $db->query($sql);
+        if ($q_id == 0){
+            return false;
+        }
+    }
+
+
+    if (intval($group_id)==''){
+        $group_id = 4;
+    }
+    //绑定群(如果没有,默认绑定新手群)
+    $vail_group = 'group';
+    $us_bind['bind_id'] = get_guid();
+    $us_bind['us_id'] = $us_id;
+    $us_bind['bind_type'] = 'text';
+    $us_bind['bind_name'] = $vail_group;
+    $us_bind['bind_info'] = $group_id;
+    $us_bind['bind_flag'] = 1;
+    $us_bind['utime'] = time();
+    $us_bind['ctime'] = date('Y-m-d H:i:s');
+    $sql = $db->sqlInsert("us_bind", $us_bind);
+    if (!$db->query($sql)) {
+        return false;
+    }
+
+
+}
 //======================================
 // 函数: 获取用户绑定信息
 // 参数: token            用户token
@@ -222,9 +271,12 @@ function ins_google_bind($bind_data){
 // 函数: 检查微信是否数据库已经存储
 // 参数: wechat               wechat
 //======================================
-function check_wechat_is_bind($us_id,$wechat){
+function check_wechat_is_bind($us_id='',$wechat){
     $db = new DB_COM();
-    $sql = "SELECT * FROM us_base WHERE wechat = '{$wechat}' AND us_id!='{$us_id}'";
+    $sql = "SELECT * FROM us_base WHERE wechat = '{$wechat}'";
+    if ($us_id!=''){
+        $sql .= " AND us_id!='{$us_id}'";
+    }
     $db->query($sql);
     $row = $db->fetchRow();
     return $row;

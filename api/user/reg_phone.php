@@ -106,9 +106,6 @@ if($invit_code) {
     $data_base['invite_code'] = $invit_code;
 }
 
-//微信昵称
-
-
 
 // 用户绑定信息
 $data_bind = array();
@@ -131,6 +128,14 @@ if($score <= 3){
 }
 if(us_can_reg_or_not()["option_value"] != 1)
     exit_error("121","当前la未开通注册");
+
+//微信昵称
+if($wechat){
+    if (check_wechat_is_bind($wechat)){
+        exit_error('119','微信昵称已存在!');
+    }
+    $data_base['wechat'] = $wechat;
+}
 
 $variable= 'cellphone';
 $variable_code = 'phone_code';
@@ -202,6 +207,7 @@ $data_base['us_account'] = "ccvt_".$cellphone;
 $data_base['reg_ip'] = get_int_ip();
 $ret = ins_base_user_reg_base_info($data_base,$group_id);
 $bind_phone = ins_bind_user_reg_bind_info($data_bind);
+$bind_phone = ins_bind_user_reg_weixin_group_info($us_id,$wechat,$group_id);
 $bind_pass = ins_bind_user_reg_bind_info($data_bind_pass);
 //已使用的验证码消除使用权限
 $userd_salt =  upd_us_log_bind_variable($variable_code , $cellphone_num);

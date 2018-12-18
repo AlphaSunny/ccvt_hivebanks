@@ -51,11 +51,6 @@ function ins_base_user_reg_base_info($data_base,$group_id)
     if ($q_id == 0)
         return false;
 
-    //绑定微信
-    if (isset($wechat)){
-
-    }
-
 
     //注册获取50ccvt
     send_to_us_ccvt($data_base['us_id'],'reg_send','50','注册赠送','1');
@@ -196,22 +191,6 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $com_balance_ba["ctime"] = $ctime;
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
-    if (!$db->query($sql)) {
-        $db->Rollback($pInTrans);
-        return false;
-    }
-
-    //默认绑定新手群
-    $vail = 'group';
-    $us_bind['bind_id'] = get_guid();
-    $us_bind['us_id'] = $us_id;
-    $us_bind['bind_type'] = 'text';
-    $us_bind['bind_name'] = $vail;
-    $us_bind['bind_info'] = 4;
-    $us_bind['bind_flag'] = 1;
-    $us_bind['utime'] = time();
-    $us_bind['ctime'] = date('Y-m-d H:i:s');
-    $sql = $db->sqlInsert("us_bind", $us_bind);
     if (!$db->query($sql)) {
         $db->Rollback($pInTrans);
         return false;
