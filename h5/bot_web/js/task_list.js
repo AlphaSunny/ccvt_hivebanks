@@ -76,6 +76,8 @@ $(function () {
         var time = $(this).parents("tr[role='row']").find(".time").text();
         var content = $(this).parents("tr[role='row']").find(".content").text();
         var task_id = $(this).parents("tr[role='row']").find(".id").text();
+        var send_type = $(this).parents("tr[role='row']").find(".send_type").text();
+        console.log(send_type);
         $("#selectGroupName").fadeOut("fast");
         $("#timer_id").val(task_id);
         $("#groupName").val(group_name);
