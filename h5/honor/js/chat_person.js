@@ -12,14 +12,14 @@ $(function () {
 
     return;
     //如果是个人聊天内容
-    if (wechat.length != " ") {
+    if (wechat != " ") {
         group_id = " ";
         $(".person_name").text(wechat);
         GetWeChatFun(wechat, group_id, search_content);
     }
 
     //如果是群聊内容
-    if (group_id.length != " ") {
+    if (group_id != " ") {
         wechat = " ";
         $(".person_name").text(group_name);
         GetWeChatFun(wechat, group_id, search_content);
