@@ -26,21 +26,21 @@ $(function () {
     function GetTaskListFun() {
         GetTaskList(token, function (response) {
             console.log(response);
-            if (response.errcode == "0") {
-                var data = response.rows, tr = "";
-                $.each(data, function (i, val) {
-                    tr += "<tr class='text-center trItem'>" +
-                        "<td class='time'>" + data[i].time + "</td>" +
-                        "<td class='content' name=" + data[i].id + ">" + data[i].content + "</td>" +
-                        "<td class='name'>" + data[i].name + "</td>" +
-                        "<td>" +
-                        "<span class='none type'>"+ data[i].type +"</span><span class='none send_type'>"+ data[i].send_type +"</span><button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-                        "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
-                        "</td>" +
-                        "</tr>";
-                });
-                $("#groupListTable").html(tr);
-            }
+            // if (response.errcode == "0") {
+            //     var data = response.rows, tr = "";
+            //     $.each(data, function (i, val) {
+            //         tr += "<tr class='text-center trItem'>" +
+            //             "<td class='time'>" + data[i].time + "</td>" +
+            //             "<td class='content' name=" + data[i].id + ">" + data[i].content + "</td>" +
+            //             "<td class='name'>" + data[i].name + "</td>" +
+            //             "<td>" +
+            //             "<span class='none type'>"+ data[i].type +"</span><span class='none send_type'>"+ data[i].send_type +"</span><button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+            //             "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
+            //             "</td>" +
+            //             "</tr>";
+            //     });
+            //     $("#groupListTable").html(tr);
+            // }
         }, function (response) {
             layer.msg(response.errmsg);
         });
