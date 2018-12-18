@@ -3,9 +3,9 @@ $(function () {
     var invite_code = GetQueryString("invite_code");
     var wechat = GetQueryString("wechat");
     var group_id = GetQueryString("group_id");
-    console.log(wechat);
-    console.log(group_id);
-    console.log(invite_code);
+    console.log(wechat == null);
+    console.log(group_id == "");
+    console.log(invite_code == "null");
 
     if (invite_code) {
         $(".emailInvitCode,.phoneInvitCode").val(invite_code);
