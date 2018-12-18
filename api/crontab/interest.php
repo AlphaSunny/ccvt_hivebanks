@@ -18,6 +18,8 @@ define('BA_ID','6C69520E-E454-127B-F474-452E65A3EE75');
 define('FLAG','11');
 define('RATE',0.01);
 define('UNIT',100000000);
+define('CTIME','2018-12-28 20:00:00');
+define('UTIME','1545998400');
 interest_auto();
 
 
@@ -80,7 +82,7 @@ function log_interest($amount,$us_id){
     $db = new DB_COM();
     $data = array();
     $data['amount']  = $amount*UNIT*RATE;
-    $data['ctime'] = date('Y-m-d H:i:s',time());
+    $data['ctime'] = CTIME;
     $data['us_id'] = $us_id;
     $data['log_id'] = get_guid();
     $data['interest_type'] = 'big_us_interest';
@@ -107,8 +109,8 @@ function log_base($amount,$us_id){
     $data['tx_type'] = 'big_us_interest';
     $data["tx_amount"] = $amount*UNIT*RATE;
     $data["credit_balance"] = get_ba_account(BA_ID)-($amount*UNIT*RATE);
-    $data["utime"] = time();
-    $data["ctime"] = $ctime;
+    $data["utime"] = UTIME;
+    $data["ctime"] = CTIME;
     $sql = $db->sqlInsert("com_base_balance", $data);
 
     $uata = array();
@@ -127,8 +129,8 @@ function log_base($amount,$us_id){
     {
 //        var_dump($uata["credit_balance"]);die;
     }
-    $uata["utime"] = time();
-    $uata["ctime"] = $ctime;
+    $uata["utime"] = UTIME;
+    $uata["ctime"] = CTIME;
     $uql = $db->sqlInsert("com_base_balance", $uata);
 
     if($db->query($sql)&&$db->query($uql))
@@ -151,8 +153,8 @@ function log_transfer($amount,$us_id){
     $data['transfer_state'] = 1;
     $data['tx_detail'] = '锁仓利息';
     $data['give_or_receive'] = 1;
-    $data['ctime'] = time();
-    $data['utime'] = date('Y-m-d H:i:s',time());
+    $data['ctime'] = CTIME;
+    $data['utime'] = UTIME;
     $sql = $db->sqlInsert("com_transfer_request", $data);
 
     $dat['hash_id'] = hash('md5', $us_id . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
@@ -168,8 +170,8 @@ function log_transfer($amount,$us_id){
     $dat['transfer_state'] = 1;
     $dat['tx_detail'] = '锁仓利息';
     $dat['give_or_receive'] = 2;
-    $dat['ctime'] = time();
-    $dat['utime'] = date('Y-m-d H:i:s',time());
+    $dat['ctime'] = CTIME;
+    $dat['utime'] = UTIME;
     $uql = $db->sqlInsert("com_transfer_request", $dat);
 //    var_dump($data);
 //    var_dump($db->query($uql));die;
