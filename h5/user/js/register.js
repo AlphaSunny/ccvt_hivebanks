@@ -1,9 +1,14 @@
 $(function () {
     //get invite
-    var str = window.location.search.split("=")[1];
-    if (str) {
-        var invite = window.atob(str);
-        $(".emailInvitCode,.phoneInvitCode").val(invite);
+    var invite_code = GetQueryString("invite_code");
+    var wechat = GetQueryString("wechat");
+    var group_id = GetQueryString("group_id");
+
+    if (invite_code) {
+        $(".emailInvitCode,.phoneInvitCode").val(invite_code);
+    }
+    if (wechat) {
+        $(".phoneWeChatName").val(wechat).fadeIn();
     }
 
     //Whether to allow registration

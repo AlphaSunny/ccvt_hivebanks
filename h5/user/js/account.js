@@ -208,7 +208,7 @@ $(function () {
     $(".invite_img").attr("src", "img/low_inviteImg.jpg?t=" + Math.random());
     $(".inviteBtn").click(function () {
         ShowLoading("show");
-        var url = getRootPath() + "/h5/user/register.html?invite=" + window.btoa($(".us_nm").text());
+        var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
         $(".inviteInput").val(url);
 
         $('#qrcode').qrcode({
