@@ -21,7 +21,7 @@ GET参数
 
 php_begin();
 
-$args = array('nickname','content','send_time','wechat','ba_id','group_name','type','us_id');
+$args = array('nickname','content','send_time','wechat','group_name','type','us_id');
 chk_empty_args('GET', $args);
 
 //信息唯一值
