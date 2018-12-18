@@ -4,6 +4,7 @@ $(function () {
     var group_id_url = GetQueryString("group_id");
     var group_id = decodeURI(group_id_url);
     var group_name = decodeURI(GetQueryString("group_name"));
+    console.log(group_name);
     var search_content = "";
 
     //如果是个人聊天内容
