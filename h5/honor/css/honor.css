@@ -189,6 +189,23 @@ button:hover {
     position: relative;
 }
 
+#title{
+    background: transparent;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    height: 2rem;
+    line-height: 2rem;
+}
+
+.look_chat_recode_btn{
+    color: #9e9e9e;
+    font-size: 14px;
+}
+.look_chat_recode_btn:hover{
+    color: #ffffff;
+}
+
 .search_icon {
     position: absolute;
     top: 16%;
