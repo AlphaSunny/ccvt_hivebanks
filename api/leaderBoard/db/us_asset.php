@@ -105,9 +105,15 @@ function get_leaderboard($offset,$limit,$search_content,$group_id)
 function  get_chat_total($data)
 {
     $db = new DB_COM();
-    $sql = "SELECT bot_message_id FROM bot_message WHERE wechat='{$data['wechat']}'";
+    $sql = "SELECT bot_message_id FROM bot_message WHERE 1";
+    if ($data['wechat']!=''){
+        $sql .= " and wechat='{$data['wechat']}'";
+    }
     if ($data['search_content']!=''){
         $sql .= " and bot_content like '{$data['search_content']}%'";
+    }
+    if ($data['group_id']!='' || $data['group_id']!='all'){
+        $sql .= " and group_id='{$data['group_id']}'";
     }
     $db -> query($sql);
     $count = $db -> affectedRows();
@@ -115,16 +121,23 @@ function  get_chat_total($data)
 }
 
 //======================================
-// 函数: 获取荣耀积分记录
+// 函数: 获取聊天记录
 // 参数:
-// 返回: rows             用户登录信息数组
+// 返回: rows             数组
 //======================================
 function get_chat_list($data)
 {
     $db = new DB_COM();
-    $sql = "select b.bot_nickname,b.bot_content,b.bot_send_time,b.type,b.wechat,(select us_id from us_base WHERE wechat=b.wechat limit 1) as us_id from bot_message as b WHERE b.wechat='{$data['wechat']}'";
+    $sql = "select b.bot_nickname,b.bot_content,b.bot_send_time,b.type,b.wechat,
+           (select us_id from us_base WHERE wechat=b.wechat limit 1) as us_id from bot_message as b WHERE 1";
+    if ($data['wechat']!=''){
+        $sql .= " and b.wechat='{$data['wechat']}'";
+    }
     if ($data['search_content']!=''){
         $sql .= " and b.bot_content like '%{$data['search_content']}%'";
+    }
+    if ($data['group_id']!='' || $data['group_id']!='all'){
+        $sql .= " and b.group_id='{$data['group_id']}'";
     }
     $sql .= " ORDER BY b.bot_create_time asc";
     $db->query($sql);

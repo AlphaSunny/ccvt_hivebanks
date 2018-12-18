@@ -20,11 +20,14 @@ GET参数
 
 php_begin();
 
-$args = array('wechat');
-chk_empty_args('GET', $args);
+//$args = array('wechat');
+//chk_empty_args('GET', $args);
 
 // 微信昵称
 $wechat = get_arg_str('GET', 'wechat');
+
+// 群id
+$group_id = get_arg_str('GET', 'group_id');
 
 // 搜索内容
 $search_content = get_arg_str('GET', 'search_content');
@@ -32,6 +35,7 @@ $search_content = get_arg_str('GET', 'search_content');
 // 获取当前用户的聊天总记录
 $data['wechat'] = $wechat;
 $data['search_content'] = $search_content;
+$data['group_id'] = $group_id;
 
 $total = get_chat_total($data);
 // 交易记录数组
