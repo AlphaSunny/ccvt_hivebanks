@@ -24,15 +24,16 @@ $(function () {
     }
 
     //获取荣耀排行榜
-    var limit = 50, offset = 0, group_id = "all", total = "", search_content = "";
+    var limit = 50, offset = 0, group_id = "all", group_name = "", total = "", search_content = "";
 
     //选择群
     $("#title").on("change", function () {
         group_id = $(this).val();
+        group_name = $(this).text();
         HonorFun(limit, offset, search_content, group_id);
-        if(group_id != "all"){
+        if (group_id != "all") {
             $(".look_chat_recode_btn").fadeIn();
-        }else {
+        } else {
             $(".look_chat_recode_btn").fadeOut();
         }
     });
@@ -170,7 +171,7 @@ $(function () {
 
     //显示群聊内容
     $(document).on("click", ".look_chat_recode_btn", function () {
-        $("iframe").attr("src", "./chat_person.html?group_id=" + encodeURI(encodeURI(group_id)));
+        $("iframe").attr("src", "./chat_person.html?group_id=" + encodeURI(encodeURI(group_id))) + "&group_name=" + encodeURI(encodeURI(group_name));
         $(".close_page,.mask").fadeIn();
         $("html, body").css("overflow", "hidden")
     });
