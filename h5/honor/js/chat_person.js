@@ -40,9 +40,9 @@ $(function () {
                 //默认在最底部
                 // var height = $("#chat_item_ul").height();
                 // $("body, html").animate({scrollTop: bottom}, 500);
-                var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                console.log(height);
-                $('html,body').scrollTop(height);
+                // var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                // console.log(height);
+                $('html,body').scrollTop(999999999);
             }
         }, function (response) {
             layer.msg(response.errmsg);
