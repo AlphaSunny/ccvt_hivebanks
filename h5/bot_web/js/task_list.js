@@ -86,26 +86,26 @@ $(function () {
             $("input[type='checkbox']").prop("checked", true);
         } else {
             tx_content_arr = tx_content.split("-");
-            $.each(tx_content_arr,function (i, val) {
+            $.each(tx_content_arr, function (i, val) {
                 $("#" + tx_content_arr[i]).prop("checked", true);
             });
         }
 
-        console.log(send_type);
-        if(send_type == 1){
+        if (send_type == 1) {//文本
             $("#text").prop("checked", true);
             $(this).attr("checked", true);
             $("#image").attr("checked", false);
             $(".content_image").fadeOut(300);
             $(".upload_img_box").fadeOut(300);
             $(".content_text").fadeIn(300);
-        }else {
+        } else {//图片
             $("#image").prop("checked", true);
             $(this).attr("checked", true);
             $("#text").attr("checked", false);
             $(".content_text").fadeOut(300);
             $(".content_image").fadeIn(300);
             $(".upload_img_box").fadeIn(300);
+            $("#upload_image").attr("src", content);
         }
 
         $("#selectGroupName").fadeOut("fast");
