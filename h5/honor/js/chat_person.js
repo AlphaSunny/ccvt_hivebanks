@@ -7,6 +7,8 @@ $(function () {
     console.log("wechat" + wechat);
     console.log("group_id" + group_id);
     console.log("group_name" + group_name);
+    console.log(wechat.length);
+    console.log(group_id.length);
 
     //如果是个人聊天内容
     if (wechat.length > 0) {
