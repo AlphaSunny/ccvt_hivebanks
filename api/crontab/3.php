@@ -16,6 +16,10 @@ foreach ($rows as $k=>$v){
         $sql = "update bot_message set group_id='{$group_id}' WHERE bot_message_id='{$v['bot_message_id']}'";
         $db->query($sql);
     }
+    if ($v['group_name']=='WindWin Tec Family'){
+        $sql = "update bot_message set group_id=1 WHERE bot_message_id='{$v['bot_message_id']}'";
+        $db->query($sql);
+    }
 }
 
 echo "OK";
