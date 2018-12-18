@@ -24,10 +24,10 @@ function invite_code_check($invite_check){
 function get_invite_code_us($invite_check){
 
     $db = new DB_COM();
-    $sql = "select us_id from us_base where us_nm='{$invite_check}'";
+    $sql = "select us_id,invite_code from us_base where us_nm='{$invite_check}'";
     $db->query($sql);
     $rows = $db->fetchRow();
-    return $rows['us_id'];
+    return $rows;
 
 }
 
@@ -63,7 +63,12 @@ function ins_base_user_reg_base_info($data_base)
     send_to_us_ccvt($data_base['us_id'],'reg_send','50','注册赠送','1');
     //邀请人获取50ccvt
     if (isset($data_base['invite_code'])){
-        send_to_us_ccvt(get_invite_code_us($data_base['invite_code']),'invite_send','50','邀请赠送','2');
+        send_to_us_ccvt(get_invite_code_us($data_base['invite_code'])['us_id'],'invite_send','50','邀请赠送','2');
+        //父级赠送20ccvt
+        $father_invite_code = get_invite_code_us($data_base['invite_code'])['invite_code'];
+        if ($father_invite_code!=0){
+            send_to_us_ccvt(get_invite_code_us($father_invite_code)['us_id'],'two_invite_send','20','二级邀请赠送','2');
+        }
     }
 
 
