@@ -106,7 +106,7 @@ function  get_chat_total($data)
 {
     $db = new DB_COM();
     $sql = "SELECT bot_message_id FROM bot_message WHERE 1";
-    if ($data['wechat']!='' ||$data['wechat']!=null){
+    if ($data['wechat']!=''){
         $sql .= " and wechat='{$data['wechat']}'";
     }
     if ($data['search_content']!=''){
@@ -140,7 +140,6 @@ function get_chat_list($data)
         $sql .= " and b.group_id='{$data['group_id']}'";
     }
     $sql .= " ORDER BY b.bot_create_time asc";
-    echo $sql;
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
