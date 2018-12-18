@@ -136,7 +136,7 @@ function get_chat_list($data)
     if ($data['search_content']!=''){
         $sql .= " and b.bot_content like '%{$data['search_content']}%'";
     }
-    if (isset($data['group_id']) || $data['group_id']!=null){
+    if (intval($data['group_id'])!=''){
         $sql .= " and b.group_id='{$data['group_id']}'";
     }
     $sql .= " ORDER BY b.bot_create_time asc";
