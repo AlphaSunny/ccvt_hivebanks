@@ -94,8 +94,18 @@ $(function () {
         console.log(send_type);
         if(send_type == 1){
             $("#text").prop("checked", true);
+            $(this).attr("checked", true);
+            $("#image").attr("checked", false);
+            $(".content_image").fadeOut(300);
+            $(".upload_img_box").fadeOut(300);
+            $(".content_text").fadeIn(300);
         }else {
             $("#image").prop("checked", true);
+            $(this).attr("checked", true);
+            $("#text").attr("checked", false);
+            $(".content_text").fadeOut(300);
+            $(".content_image").fadeIn(300);
+            $(".upload_img_box").fadeIn(300);
         }
 
         $("#selectGroupName").fadeOut("fast");
