@@ -158,8 +158,8 @@ function log_transfer($amount,$us_id){
     $data['transfer_state'] = 1;
     $data['tx_detail'] = '锁仓利息';
     $data['give_or_receive'] = 1;
-    $data['ctime'] = CTIME;
-    $data['utime'] = UTIME;
+    $data['ctime'] = UTIME;
+    $data['utime'] = CTIME;
     $sql = $db->sqlInsert("com_transfer_request", $data);
     echo '8';
     $dat['hash_id'] = hash('md5', $us_id . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
@@ -175,10 +175,9 @@ function log_transfer($amount,$us_id){
     $dat['transfer_state'] = 1;
     $dat['tx_detail'] = '锁仓利息';
     $dat['give_or_receive'] = 2;
-    $dat['ctime'] = CTIME;
-    $dat['utime'] = UTIME;
-    $uql = $db->sqlInsert("com_transfer_request", $dat);echo $uql;
-    $uql = $db->sqlInsert("com_transfer_request", $dat);echo $sql;
+    $dat['ctime'] = UTIME;
+    $dat['utime'] = CTIME;
+    $uql = $db->sqlInsert("com_transfer_request", $dat);
 //    var_dump($data);
 //    var_dump($db->query($uql));die;
     if($db->query($sql)&&$db->query($uql))
