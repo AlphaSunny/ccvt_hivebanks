@@ -81,7 +81,7 @@ $(function () {
         var send_type = $(this).parents("tr").find(".send_type").text();
         var type = $(this).parents("tr").find(".type").text();
         var tx_content = $(this).parents("tr").find(".tx_content").text();
-
+        console.log(content);
         if (type == 1) {
             $("input[type='checkbox']").prop("checked", true);
         } else {
