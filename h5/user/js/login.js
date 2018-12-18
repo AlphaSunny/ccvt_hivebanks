@@ -93,21 +93,25 @@ $(document).ready(function () {
 
         if (email.length <= 0) {
             $('.email_tips').fadeIn().siblings('span').fadeOut();
-            LayerFun('emailNotEmpty');
+            // LayerFun('emailNotEmpty');
+            layer.msg("请输入账号", {icon: 0});
             return;
         }
         if (!IsEmail(email)) {
             $('.emailErrorTips').fadeIn().siblings('span').fadeOut();
-            LayerFun('emailBad');
+            // LayerFun('emailBad');
+            layer.msg("邮箱格式错误", {icon: 0});
             return;
         }
         if (emailPassword.length <= 0) {
             $('.password_tips').fadeIn().siblings('span').hide();
-            LayerFun('passwordNotEmpty');
+            // LayerFun('passwordNotEmpty');
+            layer.msg("请输入密码", {icon: 0});
             return;
         }
         if (user_token) {
-            LayerFun('noMoreAccount');
+            // LayerFun('noMoreAccount');
+            layer.msg("已登录！请前往账户中心", {icon: 0});
             return;
         }
 
@@ -121,12 +125,13 @@ $(document).ready(function () {
                 $('.email').val('');
                 $('.emailPassword').val('');
                 $('.emailCfmCode').val('');
-                LayerFun('loginSuccessful');
+                // LayerFun('loginSuccessful');
+                layer.msg("登录成功", {icon: 1});
                 var token = response.token;
                 SetCookie('user_token', token);
                 if (!leaderBoard) {
                     window.location.href = 'account.html';
-                }else {
+                } else {
                     window.location.href = "../honor/honor.html";
                 }
             }
@@ -152,7 +157,8 @@ $(document).ready(function () {
                 $('.emailAuditFail').fadeIn('fast');//not approved
             }
             GetImgCode();
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            layer.msg(response.errmsg, {icon: 0});
             return;
         });
     });
@@ -260,12 +266,14 @@ $(document).ready(function () {
             phonePassword = $(".phonePassword").val(),
             pass_word_hash = hex_sha1(phonePassword);
         if (cellphone.length <= 0) {
-            LayerFun('phoneNotEmpty');
+            // LayerFun('phoneNotEmpty');
+            layer.msg("请输入账号", {icon: 0});
             $('.phone_tips').fadeIn().siblings('span').hide();
             return;
         }
         if (cfm_code.length <= 0) {
-            LayerFun('codeNotEmpty');
+            // LayerFun('codeNotEmpty');
+            layer.msg("请输入图形验证码", {icon: 0});
             $('.phoneImgCode_tips').fadeIn().siblings('span').hide();
             return;
         }
@@ -276,12 +284,14 @@ $(document).ready(function () {
         // }
 
         if (phonePassword.length <= 0) {
-            LayerFun('passwordNotEmpty');
+            // LayerFun('passwordNotEmpty');
+            layer.msg("请输入密码", {icon: 0});
             $('.Phonepassword_tips').fadeIn().siblings('span').hide();
             return;
         }
         if (user_token) {
-            LayerFun('noMoreAccount');
+            // LayerFun('noMoreAccount');
+            layer.msg("已登录，请前往账户中心", {icon: 0});
             return;
         }
 
@@ -298,7 +308,7 @@ $(document).ready(function () {
                 SetCookie('user_token', token);
                 if (!leaderBoard) {
                     window.location.href = 'account.html';
-                }else {
+                } else {
                     window.location.href = "../honor/honor.html";
                 }
             }
@@ -322,7 +332,8 @@ $(document).ready(function () {
             if (response.errcode == '118') {
                 $('.phoneAuditFail').fadeIn('fast');//not approved
             }
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            layer.msg(response.errmsg, {icon: 0});
             return;
         });
     });
