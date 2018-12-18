@@ -1,50 +1,50 @@
 $(function () {
     var token = GetCookie("robot_token");
 
-    var url = getRootPath();
-    var table = $("#taskListTable").DataTable({
-        "ajax": url + "/api/bot_web/timer_list.php?token=" + encodeURIComponent(token),
-        "deferRender": true,
-        "columns": [
-            {"data": "id", "class": "id"},
-            {"data": "time", "class": "time"},
-            {"data": "content", "class": "content"},
-            {"data": "name", "class": "name"},
-            {"data": "type", "class": "type,none"},
-            {"data": "send_type", "class": "send_type,none"},
-        ],
-        "columnDefs": [{
-            "targets": [4],
-            "data": null,
-            "render": function () {
-                return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-                    "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>"
-            }
-        }]
-    });
-
-    // function GetTaskListFun() {
-    //     GetTaskList(token, function (response) {
-    //         if (response.errcode == "0") {
-    //             var data = response.rows, tr = "";
-    //             $.each(data, function (i, val) {
-    //                 tr += "<tr class='text-center trItem'>" +
-    //                     "<td class='time'>" + data[i].time + "</td>" +
-    //                     "<td class='content' name=" + data[i].id + ">" + data[i].content + "</td>" +
-    //                     "<td class='name'>" + data[i].name + "</td>" +
-    //                     "<td>" +
-    //                     "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-    //                     "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
-    //                     "</td>" +
-    //                     "</tr>";
-    //             });
-    //             $("#groupListTable").html(tr);
+    // var url = getRootPath();
+    // var table = $("#taskListTable").DataTable({
+    //     "ajax": url + "/api/bot_web/timer_list.php?token=" + encodeURIComponent(token),
+    //     "deferRender": true,
+    //     "columns": [
+    //         {"data": "id", "class": "id"},
+    //         {"data": "time", "class": "time"},
+    //         {"data": "content", "class": "content"},
+    //         {"data": "name", "class": "name"},
+    //         {"data": "type", "class": "type"},
+    //         {"data": "send_type", "class": "send_type"},
+    //     ],
+    //     "columnDefs": [{
+    //         "targets": [4],
+    //         "data": null,
+    //         "render": function () {
+    //             return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+    //                 "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>"
     //         }
-    //     }, function (response) {
-    //         layer.msg(response.errmsg);
-    //     });
-    // }
-    // GetTaskListFun();
+    //     }]
+    // });
+
+    function GetTaskListFun() {
+        GetTaskList(token, function (response) {
+            if (response.errcode == "0") {
+                var data = response.rows, tr = "";
+                $.each(data, function (i, val) {
+                    tr += "<tr class='text-center trItem'>" +
+                        "<td class='time'>" + data[i].time + "</td>" +
+                        "<td class='content' name=" + data[i].id + ">" + data[i].content + "</td>" +
+                        "<td class='name'>" + data[i].name + "</td>" +
+                        "<td>" +
+                        "<span class='none type'>"+ data[i].type +"</span><span class='none send_type'>"+ data[i].send_type +"</span><button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+                        "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
+                        "</td>" +
+                        "</tr>";
+                });
+                $("#groupListTable").html(tr);
+            }
+        }, function (response) {
+            layer.msg(response.errmsg);
+        });
+    }
+    GetTaskListFun();
 
     //确定删除任务
     var timer_id = "";
