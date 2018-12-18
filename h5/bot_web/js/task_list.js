@@ -72,11 +72,11 @@ $(function () {
     //编辑任务
     var type = "";
     $(document).on("click", ".editBtn", function () {
-        var group_name = $(this).parents("tr[role='row']").find(".name").text();
-        var time = $(this).parents("tr[role='row']").find(".time").text();
-        var content = $(this).parents("tr[role='row']").find(".content").text();
-        var task_id = $(this).parents("tr[role='row']").find(".id").text();
-        var send_type = $(this).parents("tr[role='row']").find(".send_type").text();
+        var group_name = $(this).parents("tr").find(".name").text();
+        var time = $(this).parents("tr").find(".time").text();
+        var content = $(this).parents("tr").find(".content").text();
+        var task_id = $(this).parents("tr").find(".id").text();
+        var send_type = $(this).parents("tr").find(".send_type").text();
         console.log(send_type);
         $("#selectGroupName").fadeOut("fast");
         $("#timer_id").val(task_id);
