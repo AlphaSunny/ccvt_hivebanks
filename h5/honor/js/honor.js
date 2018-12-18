@@ -115,7 +115,8 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows;
             $.each(data, function (i, val) {
-                option+="<option value="+ data[i].id +">"+ data[i].name +"</option>"
+                option += "<option value='all'>全部</option>" +
+                    "<option value=" + data[i].id + ">" + data[i].name + "</option>";
             });
             $("#title").html(option);
         }
