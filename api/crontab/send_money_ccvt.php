@@ -86,6 +86,7 @@ if ($groups){
                 $lgn_type = 'phone';
                 $d['tx_hash'] = hash('md5', $ba_info['ba_id'] . $lgn_type . get_ip() . time() . date('Y-m-d H:i:s'));
                 $d['us_id'] = $u_id;
+                $d['group_id'] = $b['id'];
                 $d['group_name'] = $b['name'];
                 $d['bot_us_id'] = $b['us_id'];
                 $sql = $db->sqlInsert("bot_Iss_records", $d);
@@ -194,6 +195,8 @@ if ($groups){
 }
 
 //给群主反40%
+$sql = "";
+
 
 
 echo "OK!";
