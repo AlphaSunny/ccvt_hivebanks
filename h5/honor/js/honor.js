@@ -172,6 +172,7 @@ $(function () {
 
     //显示群聊内容
     $(document).on("click", ".look_chat_recode_btn", function () {
+        console.log(group_name);
         $("iframe").attr("src", "./chat_person.html?group_id=" + encodeURI(encodeURI(group_id))) + "&group_name=" + encodeURI(encodeURI(group_name));
         $(".close_page,.mask").fadeIn();
         $("html, body").css("overflow", "hidden")
