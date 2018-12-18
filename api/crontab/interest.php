@@ -14,12 +14,14 @@ require_once '../inc/common.php';
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
+$d=mktime(20, 00, 00, 12, 28, 2018);
+
 define('BA_ID','6C69520E-E454-127B-F474-452E65A3EE75');
 define('FLAG','11');
 define('RATE',0.01);
 define('UNIT',100000000);
-define('CTIME','2018-12-28 20:00:00');
-define('UTIME','1545998400');
+define('CTIME',date('Y-m-d H:i:s',$d));
+define('UTIME',$d);
 interest_auto();
 
 
