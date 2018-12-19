@@ -35,6 +35,14 @@ nav ul a {
     color: #ffffff;
 }
 
+.navbar-toggle{
+    background: transparent;
+    outline: none;
+}
+.navbar-toggle .icon-bar{
+    background: #ffffff;
+}
+
 .amount_li {
     padding: 15px 0;
 }
