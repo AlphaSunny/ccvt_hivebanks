@@ -8,7 +8,8 @@ $(function () {
         $(".emailInvitCode,.phoneInvitCode").val(invite_code);
     }
     if (wechat) {
-        $(".phoneWeChatName").val(wechat).fadeIn();
+        $(".phoneWeChatName").val(wechat);
+        $(".phoneWeChatName_li").fadeIn();
     }
 
     //Whether to allow registration
