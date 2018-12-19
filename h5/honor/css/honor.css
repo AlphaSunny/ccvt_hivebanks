@@ -386,6 +386,14 @@ button:hover {
     .message_icon {
         font-size: 1.5rem;
     }
+
+    .weChatName, .weChatName a {
+        line-height: 12px;
+    }
+
+    .weChatName a {
+        font-size: 12px;
+    }
 }
 
 /*page*/
