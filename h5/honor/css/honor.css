@@ -35,16 +35,23 @@ nav ul a {
     color: #ffffff;
 }
 
-.navbar-toggle{
+.navbar-toggle {
     background: transparent;
     outline: none;
 }
-.navbar-toggle .icon-bar{
+
+.navbar-toggle .icon-bar {
     background: #ffffff;
 }
-.phone_show{
+
+.phone_show {
     display: none;
 }
+
+.phone_none {
+    display: block;
+}
+
 .amount_li {
     padding: 15px 0;
 }
@@ -449,17 +456,24 @@ li.none {
         text-align: left;
         width: 100%;
     }
-    .title_h1{
+
+    .title_h1 {
         font-size: 2rem;
         display: inline-block;
         width: 50%;
     }
-    .title_pm{
+
+    .title_pm {
         display: inline-block;
         width: 40%;
     }
-    .phone_none{
-        display: none!important;
+
+    .phone_show {
+        display: block !important;
+    }
+
+    .phone_none {
+        display: none !important;
     }
 }
 
