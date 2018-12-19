@@ -42,7 +42,9 @@ nav ul a {
 .navbar-toggle .icon-bar{
     background: #ffffff;
 }
-
+.phone_show{
+    display: none;
+}
 .amount_li {
     padding: 15px 0;
 }
@@ -455,6 +457,9 @@ li.none {
     .title_pm{
         display: inline-block;
         width: 40%;
+    }
+    .phone_none{
+        display: none!important;
     }
 }
 
