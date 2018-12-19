@@ -32,6 +32,11 @@ $(function () {
         GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
+                if (data.length <= 0) {
+                    tr="<tr><td colspan='6' class='text-center'>暂无数据</td></tr>";
+                    $("#groupListTable").html(tr);
+                    return;
+                }
                 $.each(data, function (i, val) {
                     if (data[i].is_audit == "1") {
                         opt = "审核中";
@@ -90,9 +95,9 @@ $(function () {
             $("#trickSwitch").removeClass("active").val("2");
         }
 
-        if(group_manager_name == "--"){
+        if (group_manager_name == "--") {
             $("#group_manager_name").val("");
-        }else {
+        } else {
             $("#group_manager_name").val(group_manager_name);
         }
         $("#groupName").val(group_name);
