@@ -129,6 +129,7 @@ td > svg {
 
 .btn_box {
     padding-top: 2%;
+    text-align: center;
 }
 
 button {
@@ -408,6 +409,7 @@ button:hover {
     width: 2rem;
     height: 2rem;
     padding: 0 !important;
+    line-height: 2rem;
 }
 
 p {
