@@ -30,19 +30,19 @@ $(function () {
                     }
 
                     if (data[i].send_address == "1") {
-                        send_address == "开启";
+                        send_address = "开启";
                     } else {
-                        send_address == "关闭";
+                        send_address = "关闭";
                     }
                     if (data[i].bind_account_notice == "1") {
-                        bind_account_notice == "开启";
+                        bind_account_notice = "开启";
                     } else {
-                        bind_account_notice == "关闭";
+                        bind_account_notice = "关闭";
                     }
                     if (data[i].is_welcome == "1") {
-                        is_welcome == "开启";
+                        is_welcome = "开启";
                     } else {
-                        is_welcome == "关闭";
+                        is_welcome = "关闭";
                     }
 
                     tr += "<tr>" +
