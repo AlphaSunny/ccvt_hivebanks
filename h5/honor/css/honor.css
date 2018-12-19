@@ -482,8 +482,14 @@ li.none {
         width: 40%;
     }
 
+    .navbar-header {
+        display: flex;
+        align-items: center;
+    }
+
     .phone_show {
         display: block !important;
+        width: 100%;
     }
 
     .phone_none {
