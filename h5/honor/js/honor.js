@@ -143,7 +143,7 @@ $(function () {
             layer.msg("请输入搜索内容");
             return;
         }
-        HonorFun(limit, offset, search_content);
+        HonorFun(limit, offset, search_content, group_id);
     });
     $(".search_input").focus(function () {
         $(this).keyup(function (e) {
