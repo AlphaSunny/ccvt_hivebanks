@@ -182,7 +182,7 @@ button:hover {
 }
 
 .none {
-    display: none;
+    display: none!important;
 }
 
 .search_box {
