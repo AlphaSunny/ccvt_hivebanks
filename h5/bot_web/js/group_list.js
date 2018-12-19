@@ -62,30 +62,32 @@ $(function () {
         var send_address = $(this).parents("tr").find(".send_address").text();//获取是否开启早八晚十推送
         var bind_account_notice = $(this).parents("tr").find(".bind_account_notice").text();//获取是否开启未绑定ccvt通知
         var is_welcome = $(this).parents("tr").find(".is_welcome").text();//获取是否开启新人入群通知
-        if (is_del == "1") {
+        if (is_del == "1") {//运行状态
             $("#runSwitch").addClass("active").val("1");
         } else {
             $("#runSwitch").removeClass("active").val("2");
         }
-        if (is_flirt == "1") {
+        if (is_flirt == "1") {//调戏状态
             $("#trickSwitch").addClass("active").val("1");
         } else {
             $("#trickSwitch").removeClass("active").val("2");
         }
-        if (send_address == "1") {
+        if (send_address == "1") {//是否开启早晚推送
             $("#pushSwitch").addClass("active").val("1");
         } else {
             $("#pushSwitch").removeClass("active").val("2");
         }
-        if (bind_account_notice == "1") {
+        if (bind_account_notice == "1") {//是否开启未绑定ccvt提示
             $("#bindSwitch").addClass("active").val("1");
         } else {
             $("#bindSwitch").removeClass("active").val("2");
         }
-        if (is_welcome == "1") {
+        if (is_welcome == "1") {//是否开启欢迎
             $("#welcomeSwitch").addClass("active").val("1");
+            $(".welcomeTextBox").removeClass("none");
         } else {
             $("#welcomeSwitch").removeClass("active").val("2");
+            $(".welcomeTextBox").addClass("none");
         }
 
         $("#groupName").val(group_name);
@@ -93,20 +95,24 @@ $(function () {
     });
 
     //监听开关按钮状态
-    $("#runSwitch").on("change", function () {
-        if ($(this).val() == "1") {
-            $(this).removeClass("active").val("2");
-        } else {
-            $(this).addClass("active").val("1");
-        }
+    $(".switch").on("change", function () {
+        console.log($(this).attr("id"));
     });
-    $("#trickSwitch").on("change", function () {
-        if ($(this).val() == "1") {
-            $(this).removeClass("active").val("2");
-        } else {
-            $(this).addClass("active").val("1");
-        }
-    });
+
+    // $("#runSwitch").on("change", function () {
+    //     if ($(this).val() == "1") {
+    //         $(this).removeClass("active").val("2");
+    //     } else {
+    //         $(this).addClass("active").val("1");
+    //     }
+    // });
+    // $("#trickSwitch").on("change", function () {
+    //     if ($(this).val() == "1") {
+    //         $(this).removeClass("active").val("2");
+    //     } else {
+    //         $(this).addClass("active").val("1");
+    //     }
+    // });
 
     //提交编辑
     $(".editSubBtn").click(function () {
