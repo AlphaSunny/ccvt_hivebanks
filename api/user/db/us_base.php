@@ -894,6 +894,26 @@ function black_judge($us_nm){
 
 }
 
+//======================================
+// 函数: 判断资金密码
+// 参数: account          账号
+// 返回:
+//======================================
+function check_pass_hash($us_id,$pass_hash)
+{
+    $db = new DB_COM();
+    $sql = "SELECT bind_info FROM us_bind where us_id = '{$us_id}' AND bind_name='pass_hash' limit 1";
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    if (!$row){
+        return false;
+    }else{
+        if ($row['bind_info']!=$pass_hash){
+            return false;
+        }
+    }
+    return true;
+}
 
 //======================================
 // 函数: 判断是否存在ccvt用户账号

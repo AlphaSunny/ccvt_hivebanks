@@ -17,15 +17,23 @@ GET参数
 */
 
 php_begin();
-$args = array('token','account','ccvt_num');
+$args = array('token','account','ccvt_num','pass_hash');
 chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token');
 $ccvt_num = get_arg_str('GET', 'ccvt_num');
 $account = get_arg_str('GET', 'account');
+//资金密码哈希
+$pass_hash = get_arg_str('GET', 'pass_hash');
 //验证token
 $us_id = check_token($token);
+
+//验证哈希密码
+$check_pass_hash = check_pass_hash($us_id,$pass_hash);
+if (!$check_pass_hash){
+    exit_error("150","资金密码错误");
+}
 
 //判断是否有此账号
 $is_account = check_us_account($account);
