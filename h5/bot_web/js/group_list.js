@@ -104,6 +104,7 @@ $(function () {
     });
 
     function SwitchChangeFun(id) {
+        console.log(id);
         if ($("#" + id).val() == "1") {
             $("#" + id).removeClass("active").val("2");
             if (id == "welcomeSwitch") {
