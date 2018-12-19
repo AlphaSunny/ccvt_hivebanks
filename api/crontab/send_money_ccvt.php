@@ -200,6 +200,7 @@ $ba_info = get_ba_base_info();
 $start = strtotime(date('2018-12-11 00:00:00'));
 $end = strtotime(date('2018-12-11 23:59:59'));
 $sql = "select sum(amount)/'{$unit}' as all_amount,bot_us_id from bot_Iss_records WHERE send_time BETWEEN '{$start}' AND '{$end}' GROUP BY bot_us_id";
+echo $sql;die;
 $db->query($sql);
 $grous = $db->fetchAll();
 print_r($grous);die;
