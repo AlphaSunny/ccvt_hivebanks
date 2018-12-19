@@ -16,7 +16,6 @@ function  get_leaderboard_total($search_content,$group_id)
     if ($group_id!="all"){
         $sql .= " and bind.bind_info='{$group_id}'";
     }
-    echo $sql;
     $db -> query($sql);
     $count = $db -> affectedRows();
     return $count;
@@ -79,6 +78,7 @@ function get_leaderboard($offset,$limit,$search_content,$group_id)
             $sql .= " and bind.bind_info='{$group_id}'";
         }
         $sql .= " order by a.base_amount desc limit $offset , $limit";
+        echo $sql;die;
         $db->query($sql);
         $rows = $db->fetchAll();
         foreach ($rows as $k=>$v){
