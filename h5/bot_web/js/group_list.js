@@ -135,6 +135,7 @@ $(function () {
         EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
+                layer.msg("提交成功", {icon: 1});
                 $("#editGroupModal").modal("hide");
                 GetGroupListFun();
             }
