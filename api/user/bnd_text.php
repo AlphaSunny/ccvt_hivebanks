@@ -191,7 +191,7 @@ if ($text_type == 'ipAddre') {
 // 绑内容是否存在
 $ret_bind = check_bind_info($data_bind);
 if ($ret_bind) {
-    exit_error('105', 'The binding already exists please try again！');
+    exit_error('105', 'The binding already exists please try again22222！');
 }
 
 // 信息绑定
