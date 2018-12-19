@@ -193,7 +193,12 @@ button:hover {
 .select_box {
     float: left;
 }
-
+.table-responsive{
+    border: unset;
+}
+.table>thead>tr>th{
+    border-bottom: unset;
+}
 #title {
     background: transparent;
     color: #fff;
