@@ -202,7 +202,6 @@ $end = strtotime(date('2018-12-11 23:59:59'));
 $sql = "select sum(amount)/'{$unit}' as all_amount,bot_us_id from bot_Iss_records WHERE bot_create_time BETWEEN '{$start}' AND '{$end}' GROUP BY bot_us_id";
 $db->query($sql);
 $grous = $db->fetchAll();
-print_r($grous);die;
 if ($grous){
     $pInTrans = $db->StartTrans();  //开启事务
     $ba_account = 0;
@@ -211,6 +210,7 @@ if ($grous){
             $u_id = $v['bot_us_id'];
             //修改余额
             $give_account = round($v['all_amount']*0.4);
+            echo $give_account;die;
             $sql = "update us_base set base_amount=base_amount+'{$give_account}' WHERE us_id='{$u_id}'";
             $db -> query($sql);
             if (!$db->affectedRows()){
