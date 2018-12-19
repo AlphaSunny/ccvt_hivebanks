@@ -1,32 +1,14 @@
 $(function () {
     var token = GetCookie("robot_token");
-
-    // var url = getRootPath();
-    // var table = $("#taskListTable").DataTable({
-    //     "ajax": url + "/api/bot_web/timer_list.php?token=" + encodeURIComponent(token),
-    //     "deferRender": true,
-    //     "columns": [
-    //         {"data": "id", "class": "id"},
-    //         {"data": "time", "class": "time"},
-    //         {"data": "content", "class": "content"},
-    //         {"data": "name", "class": "name"},
-    //         {"data": "type", "class": "type"},
-    //         {"data": "send_type", "class": "send_type"},
-    //     ],
-    //     "columnDefs": [{
-    //         "targets": [4],
-    //         "data": null,
-    //         "render": function () {
-    //             return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-    //                 "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>"
-    //         }
-    //     }]
-    // });
-
     function GetTaskListFun() {
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows, tr = "";
+                if (data.length <= 0) {
+                    tr="<tr><td colspan='4' class='text-center'>暂无数据</td></tr>";
+                    $("#taskList").html(tr);
+                    return;
+                }
                 $.each(data, function (i, val) {
                     tr += "<tr class='text-center trItem'>" +
                         "<td class='time'>" + data[i].time + "</td>" +
@@ -39,7 +21,7 @@ $(function () {
                         "</td>" +
                         "</tr>";
                 });
-                $("#groupListTable").html(tr);
+                $("#taskList").html(tr);
             }
         }, function (response) {
             layer.msg(response.errmsg);
