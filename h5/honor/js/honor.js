@@ -80,11 +80,11 @@ $(function () {
                     } else if (data[i].sorting == "3") {
                         sorting = "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-third'></use></svg></td>";
                     } else {
-                        sorting = "<td>" + data[i].sorting + "</td>";
+                        sorting = "<td class='sorting text-center'>" + data[i].sorting + "</td>";
                     }
                     tr += "<tr>" +
                         sorting +
-                        "<td class='weChatName'><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "&nbsp;" + scale + "</a></td>" +
+                        "<td class='weChatName'>" + data[i].wechat + "&nbsp;" + scale + "</td>" +
                         "<td class='text-center'><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                         "<td class='text-center'>" +
                         "<span class='none us_id'>" + data[i].us_id + "</span>" +
