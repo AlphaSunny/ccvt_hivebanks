@@ -25,14 +25,11 @@ chk_empty_args('GET', $args);
 $token = get_arg_str('GET', 'token',128);
 // 群组id
 $group_id = get_arg_str('GET', 'group_id');
-// 群主名称
-$group_manager_name = get_arg_str('GET', 'group_manager_name');
 //验证token
 $la_id = la_user_check($token);
 
 $date['group_id'] = $group_id;
 $date['is_admin_del'] = get_arg_str('GET', 'admin_del');
-$date['group_manager_name'] = $group_manager_name;
 //修改群组
 $row = save_group($date);
 if (!$row){

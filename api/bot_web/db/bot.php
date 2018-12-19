@@ -79,16 +79,10 @@ function save_group($date)
 {
     $db = new DB_COM();
     $time = time();
-    $sql = "update bot_group set name = '{$date['name']}' , is_del = '{$date['is_del']}', is_flirt = '{$date['is_flirt']}',group_manager_name='{$date['group_manager_name']}',uptime='{$time}' where id='{$date['group_id']}' ";
+    $sql = "update bot_group set name = '{$date['name']}' , is_del = '{$date['is_del']}', is_flirt = '{$date['is_flirt']}',uptime='{$time}' where id='{$date['group_id']}' ";
     $db->query($sql);
-    if ($db->affectedRows()){
-        $sql = "select us_nm from us_base WHERE wechat='{$date['group_manager_name']}'";
-        $db->query($sql);
-        $us_nm = $db->getField($sql,'us_nm');
-        if ($us_nm){
-            $sql = "update bot_group set invite_code='{$us_nm}',uptime='{$time}' WHERE id='{$date['group_id']}'";
-            $db->query($sql);
-        }
+    if (!$db->affectedRows()){
+        return false;
     }
     return true;
 }
