@@ -359,6 +359,10 @@ button:hover {
         width: unset;
     }
 
+    th.name_th {
+        width: 30%
+    }
+
     td {
         font-size: 14px;
         line-height: 1rem;
@@ -388,13 +392,8 @@ button:hover {
         font-size: 1.5rem;
     }
 
-    /*.weChatName, .weChatName a {*/
-        /*line-height: 12px;*/
-    /*}*/
-
-    .weChatName{
+    .weChatName {
         text-align: left;
-        width: 30%;
     }
 }
 
