@@ -281,7 +281,7 @@ if ($grous){
             $us_type = 'us_send_balance';
             $ctime = date('Y-m-d H:i:s');
             $com_balance_us['hash_id'] = hash('md5', $u_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
-            $com_balance_us['tx_id'] = $d['tx_hash'];
+            $com_balance_us['tx_id'] = $com_balance_us['hash_id'];
             $com_balance_us['prvs_hash'] = get_recharge_pre_hash($u_id);
             $com_balance_us["credit_id"] = $u_id;
             $com_balance_us["debit_id"] = $ba_info['ba_id'];
@@ -300,7 +300,7 @@ if ($grous){
             //ba添加基准资产变动记录
             $us_type = 'ba_send_balance';
             $com_balance_ba['hash_id'] = hash('md5', $ba_info['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
-            $com_balance_ba['tx_id'] = $d['tx_hash'];
+            $com_balance_ba['tx_id'] = $com_balance_ba['hash_id'];
             $com_balance_ba['prvs_hash'] = get_recharge_pre_hash($ba_info['ba_id']);
             $com_balance_ba["credit_id"] = $ba_info['ba_id'];
             $com_balance_ba["debit_id"] = $u_id;
