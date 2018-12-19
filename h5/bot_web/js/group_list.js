@@ -116,9 +116,9 @@ $(function () {
         var group_name = $("#groupName").val();
         var del = $("#runSwitch").val();
         var flirt = $("#trickSwitch").val();
-        var send_address = $("#send_address").val();
-        var bind_account_notice = $("#bind_account_notice").val();
-        var is_welcome = $("#is_welcome").val();
+        var send_address = $("#pushSwitch").val();
+        var bind_account_notice = $("#bindSwitch").val();
+        var is_welcome = $("#welcomeSwitch").val();
         var welcome = $("#welcome").val();
         //loading
         var loading = layer.load(1, {
