@@ -392,9 +392,9 @@ button:hover {
         /*line-height: 12px;*/
     /*}*/
 
-    /*.weChatName a {*/
-        /*font-size: 12px;*/
-    /*}*/
+    .weChatName{
+        text-align: left;
+    }
 }
 
 /*page*/
