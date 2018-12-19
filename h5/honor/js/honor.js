@@ -46,6 +46,9 @@ $(function () {
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
+                if (data.length <= 0) {
+                    tr="<tr><td colspan='3'>暂无数据</td></tr>"
+                }
                 total = response.total;
                 totalPage = Math.ceil(total / limit);
                 if (totalPage <= 1) {
