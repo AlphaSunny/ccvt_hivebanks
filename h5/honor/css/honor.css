@@ -54,6 +54,7 @@ nav ul a {
 
 .phone_show ul {
     text-align: right;
+    margin-bottom: 0;
 }
 
 .phone_show ul li {
@@ -469,6 +470,7 @@ li.none {
         font-size: 2rem;
         display: inline-block;
         width: 50%;
+        margin-top: 3%;
     }
 
     .title_pm {
