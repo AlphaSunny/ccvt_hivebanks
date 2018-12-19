@@ -111,14 +111,18 @@ $(function () {
 
     //提交编辑
     $(".editSubBtn").click(function () {
+        var group_name = $("#groupName").val();
         var del = $("#runSwitch").val();
         var flirt = $("#trickSwitch").val();
-        var group_name = $("#groupName").val();
+        var send_address = $("#send_address").val();
+        var bind_account_notice = $("#bind_account_notice").val();
+        var is_welcome = $("#is_welcome").val();
+        var welcome = $("#welcome").val();
         //loading
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        EditGroup(token, group_name, del, flirt, group_id, function (response) {
+        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
