@@ -12,7 +12,6 @@ $(function () {
                     $("#groupListTable").html(tr);
                     return;
                 }
-                $("#welcomeText").val(response.welcome);
                 $.each(data, function (i, val) {
                     if (data[i].is_audit == "1") {
                         opt = "审核中";
@@ -40,6 +39,7 @@ $(function () {
                         "<td class='none send_address'>" + data[i].send_address + "</td>" +
                         "<td class='none bind_account_notice'>" + data[i].bind_account_notice + "</td>" +
                         "<td class='none is_welcome'>" + data[i].is_welcome + "</td>" +
+                        "<td class='none welcome'>" + data[i].welcome + "</td>" +
                         "<td class='opt'>" + opt + "</td>" +
                         "</tr>";
                 });
@@ -63,6 +63,7 @@ $(function () {
         var send_address = $(this).parents("tr").find(".send_address").text();//获取是否开启早八晚十推送
         var bind_account_notice = $(this).parents("tr").find(".bind_account_notice").text();//获取是否开启未绑定ccvt通知
         var is_welcome = $(this).parents("tr").find(".is_welcome").text();//获取是否开启新人入群通知
+        var welcome = $(this).parents("tr").find(".welcome").text();//获取欢迎语
         if (is_del == "1") {//运行状态
             $("#runSwitch").addClass("active").val("1");
         } else {
@@ -85,6 +86,7 @@ $(function () {
         }
         if (is_welcome == "1") {//是否开启欢迎
             $("#welcomeSwitch").addClass("active").val("1");
+            $("#welcomeText").val(welcome);
             $(".welcomeTextBox").removeClass("none");
         } else {
             $("#welcomeSwitch").removeClass("active").val("2");
