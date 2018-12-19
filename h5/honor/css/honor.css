@@ -360,7 +360,8 @@ button:hover {
     }
 
     td {
-        font-size: 1rem;
+        font-size: 14px;
+        line-height: 1rem;
     }
 
     button {
@@ -387,13 +388,13 @@ button:hover {
         font-size: 1.5rem;
     }
 
-    .weChatName, .weChatName a {
-        line-height: 12px;
-    }
+    /*.weChatName, .weChatName a {*/
+        /*line-height: 12px;*/
+    /*}*/
 
-    .weChatName a {
-        font-size: 12px;
-    }
+    /*.weChatName a {*/
+        /*font-size: 12px;*/
+    /*}*/
 }
 
 /*page*/
