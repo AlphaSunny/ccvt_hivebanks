@@ -8,7 +8,7 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows;
                 if (data.length <= 0) {
-                    tr="<tr><td colspan='5' class='text-center'>暂无数据</td></tr>";
+                    tr = "<tr><td colspan='5' class='text-center'>暂无数据</td></tr>";
                     $("#groupListTable").html(tr);
                     return;
                 }
@@ -30,8 +30,8 @@ $(function () {
 
                     tr += "<tr>" +
                         "<td class='id none'>" + data[i].id + "</td>" +
-                        "<td class='name'>" + data[i].name +"</td>" +
-                        "<td class='group_type_name'>" + data[i].group_type_name +"</td>" +
+                        "<td class='name'>" + data[i].name + "</td>" +
+                        "<td class='group_type_name'>" + data[i].group_type_name + "</td>" +
                         "<td>" + data[i].del + "</td>" +
                         "<td>" + data[i].flirt + "</td>" +
                         "<td class='none is_del'>" + data[i].is_del + "</td>" +
@@ -96,8 +96,17 @@ $(function () {
 
     //监听开关按钮状态
     $(".switch").on("change", function () {
-        console.log($(this).attr("id"));
+        var id = $(this).attr("id");
+        SwitchChangeFun(id);
     });
+
+    function SwitchChangeFun(id) {
+        if ($("#" + id).val() == "1") {
+            $("#" + id).removeClass("active").val("2");
+        } else {
+            $("#" + id).addClass("active").val("1");
+        }
+    }
 
     // $("#runSwitch").on("change", function () {
     //     if ($(this).val() == "1") {
