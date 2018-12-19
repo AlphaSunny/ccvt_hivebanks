@@ -79,7 +79,10 @@ function save_group($date)
 {
     $db = new DB_COM();
     $time = time();
-    $sql = "update bot_group set name = '{$date['name']}' , is_del = '{$date['is_del']}', is_flirt = '{$date['is_flirt']}',uptime='{$time}' where id='{$date['group_id']}' ";
+    $sql = "update bot_group set name = '{$date['name']}' , 
+         is_del = '{$date['is_del']}', is_flirt = '{$date['is_flirt']}',send_address = '{$date['send_address']}',bind_account_notice='{$date['bind_account_notice']}',
+         is_welcome = '{$date['is_welcome']}',welcome = '{$date['welcome']}',
+         uptime='{$time}' where id='{$date['group_id']}' ";
     $db->query($sql);
     if (!$db->affectedRows()){
         return false;
