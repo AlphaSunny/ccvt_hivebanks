@@ -389,6 +389,10 @@ button:hover {
     .search_input {
         width: 100%;
     }
+    .search_icon {
+        top: 60%;
+        right: 3%;
+    }
 
     .close_page {
         top: 94%;
