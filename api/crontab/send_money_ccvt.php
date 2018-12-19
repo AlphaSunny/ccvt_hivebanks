@@ -10,7 +10,7 @@ $day_start = strtotime(date('Y-m-d 08:00:00')); //早上八点
 $day_end = strtotime(date('Y-m-d 22:00:00'));    //晚上十点
 
 $db = new DB_COM();
-
+$unit = get_la_base_unit();
 //获取ba信息
 $ba_info = get_ba_base_info();
 //查询所有能送ccvt的群组
@@ -48,7 +48,7 @@ $ba_info = get_ba_base_info();
 //                }
 //
 //                //送币
-//                $unit = get_la_base_unit();
+//
 //                //获取等级(用户等级和群组等级对应)
 //                $sca = get_us_scale($u_id);      //用户等级
 //                $scale = "select * from bot_level_rules WHERE us_level='{$sca}' AND group_level='{$b['scale']}' limit 1";
