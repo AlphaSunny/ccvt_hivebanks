@@ -458,7 +458,6 @@ li.none {
 
     #title {
         width: 80%;
-        margin-bottom: 5%;
     }
 
     #title, .search_input {
@@ -468,6 +467,7 @@ li.none {
     .select_box {
         text-align: left;
         width: 100%;
+        margin-bottom: 5%;
     }
 
     .title_h1 {
