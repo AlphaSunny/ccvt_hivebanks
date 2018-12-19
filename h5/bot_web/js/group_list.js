@@ -12,6 +12,7 @@ $(function () {
                     $("#groupListTable").html(tr);
                     return;
                 }
+                $("#welcomeText").val(response.welcome);
                 $.each(data, function (i, val) {
                     if (data[i].is_audit == "1") {
                         opt = "审核中";
@@ -107,21 +108,6 @@ $(function () {
             $("#" + id).addClass("active").val("1");
         }
     }
-
-    // $("#runSwitch").on("change", function () {
-    //     if ($(this).val() == "1") {
-    //         $(this).removeClass("active").val("2");
-    //     } else {
-    //         $(this).addClass("active").val("1");
-    //     }
-    // });
-    // $("#trickSwitch").on("change", function () {
-    //     if ($(this).val() == "1") {
-    //         $(this).removeClass("active").val("2");
-    //     } else {
-    //         $(this).addClass("active").val("1");
-    //     }
-    // });
 
     //提交编辑
     $(".editSubBtn").click(function () {
