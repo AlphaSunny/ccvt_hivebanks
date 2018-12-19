@@ -11,7 +11,7 @@ $(function () {
                     bind_type = "<td><span class='i18n' name='fileBind'></span></td>";
                     bind_name = "<td><span class='i18n' name='idPhoto'>" + data[i].bind_name + "</span></td>";
                     bind_info = "<td>" +
-                        "<a href='javascript:;' class='look i18n' name='look'>" + bind_info + "</a>" +
+                        "<a href='javascript:;' class='look i18n' name='look'></a>" +
                         "<span class='none idPhotoSrc bind_info'>" + data[i].bind_info + "</span>" +
                         "</td>"
                 } else if (data[i].bind_type == 'text' && data[i].bind_name == 'idNum') {
