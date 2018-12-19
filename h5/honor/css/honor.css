@@ -7,25 +7,29 @@ body {
 }
 
 /*nav {*/
-    /*display: flex;*/
-    /*display: -webkit-flex;*/
-    /*display: -moz-flex;*/
-    /*align-items: center;*/
-    /*justify-content: space-between;*/
-    /*padding: 0 15px;*/
+/*display: flex;*/
+/*display: -webkit-flex;*/
+/*display: -moz-flex;*/
+/*align-items: center;*/
+/*justify-content: space-between;*/
+/*padding: 0 15px;*/
 /*}*/
 
 /*nav ul {*/
-    /*margin: 0;*/
-    /*padding: 0;*/
-    /*display: flex !important;*/
-    /*align-items: center;*/
-    /*justify-content: space-between;*/
-    /*width: 5rem;*/
+/*margin: 0;*/
+/*padding: 0;*/
+/*display: flex !important;*/
+/*align-items: center;*/
+/*justify-content: space-between;*/
+/*width: 5rem;*/
 /*}*/
 
 nav ul a {
     color: #ffffff;
+}
+
+.amount_li {
+    padding: 15px 0;
 }
 
 .nav_left a {
@@ -184,8 +188,9 @@ button:hover {
 .none {
     display: none;
 }
-li.none{
-    display: none!important;
+
+li.none {
+    display: none !important;
 }
 
 .search_box {
