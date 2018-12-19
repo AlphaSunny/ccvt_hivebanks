@@ -325,6 +325,7 @@ $(function () {
             // LayerFun("submitSuccess");
             $(".availableBalance").text(response.us_amount);
             $(".glory_of_integral").text(response.glory_of_integral);
+            GetAccountChange(token, limit, offset, account_change_url);
             $("#transform_ccvt").fadeOut();
             ShowLoading("hide");
         }, function (response) {
