@@ -52,6 +52,14 @@ nav ul a {
     display: block;
 }
 
+.phone_show ul {
+    text-align: right;
+}
+
+.phone_show ul li {
+    display: inline-block;
+}
+
 .amount_li {
     padding: 15px 0;
 }
