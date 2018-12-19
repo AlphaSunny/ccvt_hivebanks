@@ -439,6 +439,15 @@ li.none {
         text-align: left;
         width: 100%;
     }
+    .title_h1{
+        font-size: 2rem;
+        display: inline-block;
+        width: 50%;
+    }
+    .title_pm{
+        display: inline-block;
+        width: 40%;
+    }
 }
 
 /*page*/
