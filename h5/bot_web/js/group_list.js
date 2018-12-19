@@ -105,6 +105,11 @@ $(function () {
 
     function SwitchChangeFun(id) {
         if ($("#" + id).val() == "1") {
+            if (id == "welcomeSwitch") {
+                $("#welcomeText").addClass("none");
+            } else {
+                $("#welcomeText").removeClass("none");
+            }
             $("#" + id).removeClass("active").val("2");
         } else {
             $("#" + id).addClass("active").val("1");
