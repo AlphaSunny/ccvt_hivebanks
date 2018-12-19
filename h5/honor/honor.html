@@ -34,41 +34,51 @@
         </ul>
     </div>
 </nav>
-<div class="glory_box">
-    <div class="title_people">
-        <h1>CCVT荣耀排行榜</h1>
-        <!--<p class="none amount_box"><span class="amount"></span>&nbsp;&nbsp;<span class="base_type"></span></p>-->
-    </div>
-    <div class="table_top">
-        <p class="top"><svg class='icon pm_icon' aria-hidden='true'><use xlink:href='#icon-pm_top'></use></svg><span class="top_start"></span><span class="top_mid">-</span><span class="top_end"></span></p>
-        <div class="search_box">
-            <div class="select_box">
-                <select name="title" id="title"></select><span class="caret"></span>
-                <a href="javascript:;" class="look_chat_recode_btn none">聊天记录</a>
+<div class="glory_box container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="title_people">
+                <h1>CCVT荣耀排行榜</h1>
             </div>
-            <div>
-                <input type="text" class="search_input" placeholder="昵称搜索">
-                <svg class='icon search_icon' aria-hidden='true'><use xlink:href='#icon-search'></use></svg>
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <div class="table_top">
+                <p class="top"><svg class='icon pm_icon' aria-hidden='true'><use xlink:href='#icon-pm_top'></use></svg><span class="top_start"></span><span class="top_mid">-</span><span class="top_end"></span></p>
+                <div class="search_box">
+                    <div class="select_box">
+                        <select name="title" id="title"></select><span class="caret"></span>
+                        <a href="javascript:;" class="look_chat_recode_btn none">聊天记录</a>
+                    </div>
+                    <div>
+                        <input type="text" class="search_input" placeholder="昵称搜索">
+                        <svg class='icon search_icon' aria-hidden='true'><use xlink:href='#icon-search'></use></svg>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="glory_table_box table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>排名</th>
-                <th class="name_th">昵称</th>
-                <!--<th>荣耀等级</th>-->
-                <th class="chat_th">聊天内容</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody id="leaderBoardBody"></tbody>
-        </table>
-        <div class="btn_box">
-            <div>
-                <div class="box">
-                    <div id="pagination" class="page"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="glory_table_box table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th class="name_th">昵称</th>
+                        <!--<th>荣耀等级</th>-->
+                        <th class="chat_th">聊天内容</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="leaderBoardBody"></tbody>
+                </table>
+                <div class="btn_box">
+                    <div>
+                        <div class="box">
+                            <div id="pagination" class="page"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
