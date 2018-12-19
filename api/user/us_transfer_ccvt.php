@@ -17,7 +17,7 @@ GET参数
 */
 
 php_begin();
-$args = array('token','account','why','ccvt_num');
+$args = array('token','account','ccvt_num');
 chk_empty_args('GET', $args);
 
 // 用户token
