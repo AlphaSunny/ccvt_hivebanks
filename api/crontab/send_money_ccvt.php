@@ -195,7 +195,23 @@ if ($groups){
 }
 
 //给群主反40%
-$sql = "";
+$start = strtotime(date('Y-m-d 00:00:00'));
+$end = strtotime(date('Y-m-d 23:59:59'));
+$sql = "select sum(amount)/'{$unit}' as all_amount,group_id from bot_Iss_records WHERE send_time BETWEEN '{$start}' AND '{$end}' GROUP BY group_id";
+$db->query($sql);
+$grous = $db->fetchAll();
+if ($grous){
+    foreach ($grous as $k=>$v){
+        //查出群主
+        $sql = "select u.us_id from bot_group as b INNER JOIN us_base as u on b.invite_code=u.us_nm WHERE b.id='{$v['group_id']}'";
+        $db->query($sql);
+        $us = $db->fetchRow();
+        if ($us){
+            //修改余额
+
+        }
+    }
+}
 
 
 
