@@ -150,7 +150,7 @@ $(function () {
             if (e.keyCode == "8") {
                 var search_content = e.target.value;
                 if (search_content == "") {
-                    HonorFun(limit, offset, search_content);
+                    HonorFun(limit, offset, search_content, group_id);
                 }
             }
         })
