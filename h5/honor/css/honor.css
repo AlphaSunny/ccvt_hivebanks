@@ -363,6 +363,10 @@ button:hover {
         width: 30%
     }
 
+    th.chat_th {
+        width: 20%;
+    }
+
     td {
         font-size: 14px;
         line-height: 1rem;
