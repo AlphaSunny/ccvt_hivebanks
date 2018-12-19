@@ -105,14 +105,15 @@ $(function () {
 
     function SwitchChangeFun(id) {
         if ($("#" + id).val() == "1") {
-            if (id == "welcomeSwitch") {
-                $("#welcomeTextBox").addClass("none");
-            } else {
-                $("#welcomeTextBox").removeClass("none");
-            }
             $("#" + id).removeClass("active").val("2");
         } else {
             $("#" + id).addClass("active").val("1");
+        }
+
+        if (id == "welcomeSwitch") {
+            $("#welcomeTextBox").addClass("none");
+        } else {
+            $("#welcomeTextBox").removeClass("none");
         }
     }
 
