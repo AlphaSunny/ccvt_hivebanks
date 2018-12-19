@@ -56,7 +56,7 @@ $(function () {
                     tr += "<tr>" +
                         "<td class='id'>" + data[i].id + "</td>" +
                         "<td class='name'>" + data[i].name + "</td>" +
-                        "<td class='group_manager_name'>" + group_manager_name + "</td>" +
+                        // "<td class='group_manager_name'>" + group_manager_name + "</td>" +
                         "<td>" + data[i].del + "</td>" +
                         "<td class='none is_del'>" + data[i].is_del + "</td>" +
                         "<td>" + data[i].flirt + "</td>" +
@@ -81,7 +81,7 @@ $(function () {
         // $(".editSubBtn").removeClass("none");
         group_id = $(this).parents("tr").find(".id").text();//获取群id
         var group_name = $(this).parents("tr").find(".name").text();//获取群名称
-        var group_manager_name = $(this).parents("tr").find(".group_manager_name").text();//获取群主
+        // var group_manager_name = $(this).parents("tr").find(".group_manager_name").text();//获取群主
         var is_del = $(this).parents("tr").find(".is_del").text();//获取是否运行状态
         var is_flirt = $(this).parents("tr").find(".is_flirt").text();//获取是否开启调戏功能
         if (is_del == "1") {
@@ -95,11 +95,6 @@ $(function () {
             $("#trickSwitch").removeClass("active").val("2");
         }
 
-        if (group_manager_name == "--") {
-            $("#group_manager_name").val("");
-        } else {
-            $("#group_manager_name").val(group_manager_name);
-        }
         $("#groupName").val(group_name);
         $("#editGroupModal").modal("show");
     });
@@ -125,12 +120,12 @@ $(function () {
         var del = $("#runSwitch").val();
         var flirt = $("#trickSwitch").val();
         var group_name = $("#groupName").val();
-        var group_manager_name = $("#group_manager_name").val();
+        // var group_manager_name = $("#group_manager_name").val();
         //loading
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        EditGroup(token, group_name, group_manager_name, del, flirt, group_id, function (response) {
+        EditGroup(token, group_name, del, flirt, group_id, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
