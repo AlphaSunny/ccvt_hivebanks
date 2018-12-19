@@ -77,11 +77,11 @@ $(function () {
                         scale = "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
                     }
                     if (data[i].sorting == "1") {
-                        sorting = "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>";
+                        sorting = "<td class='text-center'><svg class='icon' aria-hidden='true'><use xlink:href='#icon-first'></use></svg></td>";
                     } else if (data[i].sorting == "2") {
-                        sorting = "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-second'></use></svg></td>";
+                        sorting = "<td class='text-center'><svg class='icon' aria-hidden='true'><use xlink:href='#icon-second'></use></svg></td>";
                     } else if (data[i].sorting == "3") {
-                        sorting = "<td><svg class='icon' aria-hidden='true'><use xlink:href='#icon-third'></use></svg></td>";
+                        sorting = "<td class='text-center'><svg class='icon' aria-hidden='true'><use xlink:href='#icon-third'></use></svg></td>";
                     } else {
                         sorting = "<td class='sorting text-center'>" + data[i].sorting + "</td>";
                     }
