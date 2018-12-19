@@ -108,11 +108,12 @@ $(function () {
             $("#" + id).removeClass("active").val("2");
             if (id == "welcomeSwitch") {
                 $("#welcomeTextBox").addClass("none");
-            } else {
-                $("#welcomeTextBox").removeClass("none");
             }
         } else {
             $("#" + id).addClass("active").val("1");
+            if (id == "welcomeSwitch") {
+                $("#welcomeTextBox").removeClass("none");
+            }
         }
     }
 
