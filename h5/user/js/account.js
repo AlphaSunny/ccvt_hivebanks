@@ -101,7 +101,6 @@ $(function () {
 
     function GetAccountChange(token, limit, offset, account_change_url) {
         var tr = '', count = 1;
-        ShowLoading("show");
         AllRecord(token, limit, offset, account_change_url, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
@@ -139,7 +138,8 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        GetAccountChange(token, limit, (current - 1) * limit, account_change_url)
+                        GetAccountChange(token, limit, (current - 1) * limit, account_change_url);
+                        ShowLoading("show");
                     }
                 });
             }
@@ -157,7 +157,6 @@ $(function () {
 
     function GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url) {
         var tr = '', count = 1;
-        ShowLoading("show");
         AllRecord(token, limit_glory, offset_glory, gloryPoints_change_url, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
@@ -194,6 +193,7 @@ $(function () {
                     nextPageText: ">>",
                     callback: function (current) {
                         GetGloryPointsChange(token, limit_glory, (current - 1) * limit_glory, gloryPoints_change_url);
+                        ShowLoading("show");
                     }
                 });
             }
