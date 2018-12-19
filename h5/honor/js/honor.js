@@ -2,7 +2,7 @@ $(function () {
     var token = GetCookie("user_token");
     if (!token) {
         $(".usAccount").remove();
-        $(".usLogin,.usRegister").fadeIn();
+        $(".usLogin,.usRegister").removeClass("none");
     } else {
         GetUserInfoFun();
         $(".usLogin,.usRegister").remove();
