@@ -86,7 +86,7 @@ $(function () {
                     tr += "<tr>" +
                         sorting +
                         "<td class='weChatName'><a href='javascript:;' title='查看聊天内容' class='link_name'>" + data[i].wechat + "&nbsp;" + scale + "</a></td>" +
-                        "<td><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
+                        "<td class='text-center'><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                         "<td>" +
                         "<span class='none us_id'>" + data[i].us_id + "</span>" +
                         "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
