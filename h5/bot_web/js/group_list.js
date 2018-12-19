@@ -33,9 +33,12 @@ $(function () {
                         "<td class='name'>" + data[i].name +"</td>" +
                         "<td class='group_type_name'>" + data[i].group_type_name +"</td>" +
                         "<td>" + data[i].del + "</td>" +
-                        "<td class='none is_del'>" + data[i].is_del + "</td>" +
                         "<td>" + data[i].flirt + "</td>" +
+                        "<td class='none is_del'>" + data[i].is_del + "</td>" +
                         "<td class='none is_flirt'>" + data[i].is_flirt + "</td>" +
+                        "<td class='none send_address'>" + data[i].send_address + "</td>" +
+                        "<td class='none bind_account_notice'>" + data[i].bind_account_notice + "</td>" +
+                        "<td class='none is_welcome'>" + data[i].is_welcome + "</td>" +
                         "<td class='opt'>" + opt + "</td>" +
                         "</tr>";
                 });
@@ -56,6 +59,9 @@ $(function () {
         var group_name = $(this).parents("tr").find(".name").text();//获取群名称
         var is_del = $(this).parents("tr").find(".is_del").text();//获取是否运行状态
         var is_flirt = $(this).parents("tr").find(".is_flirt").text();//获取是否开启调戏功能
+        var send_address = $(this).parents("tr").find(".send_address").text();//获取是否开启早八晚十推送
+        var bind_account_notice = $(this).parents("tr").find(".bind_account_notice").text();//获取是否开启未绑定ccvt通知
+        var is_welcome = $(this).parents("tr").find(".is_welcome").text();//获取是否开启新人入群通知
         if (is_del == "1") {
             $("#runSwitch").addClass("active").val("1");
         } else {
@@ -65,6 +71,21 @@ $(function () {
             $("#trickSwitch").addClass("active").val("1");
         } else {
             $("#trickSwitch").removeClass("active").val("2");
+        }
+        if (send_address == "1") {
+            $("#pushSwitch").addClass("active").val("1");
+        } else {
+            $("#pushSwitch").removeClass("active").val("2");
+        }
+        if (bind_account_notice == "1") {
+            $("#bindSwitch").addClass("active").val("1");
+        } else {
+            $("#bindSwitch").removeClass("active").val("2");
+        }
+        if (is_welcome == "1") {
+            $("#welcomeSwitch").addClass("active").val("1");
+        } else {
+            $("#welcomeSwitch").removeClass("active").val("2");
         }
 
         $("#groupName").val(group_name);
