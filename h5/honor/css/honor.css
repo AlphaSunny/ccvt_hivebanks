@@ -421,6 +421,7 @@ button:hover {
 
     .select_box {
         text-align: left;
+        width: 100%;
     }
 }
 
