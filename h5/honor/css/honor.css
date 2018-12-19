@@ -23,9 +23,14 @@ body {
 /*justify-content: space-between;*/
 /*width: 5rem;*/
 /*}*/
-.navbar-brand{
-    padding: 8px!important;
+.navbar {
+    margin-bottom: 0 !important;
 }
+
+.navbar-brand {
+    padding: 8px !important;
+}
+
 nav ul a {
     color: #ffffff;
 }
