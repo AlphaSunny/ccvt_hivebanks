@@ -30,7 +30,7 @@ $(function () {
 
                     tr += "<tr>" +
                         "<td class='id'>" + data[i].id + "</td>" +
-                        "<td class='name'>" + data[i].name + "</td>" +
+                        "<td class='name'>" + data[i].name + (data[i].group_type_name) +"</td>" +
                         "<td>" + data[i].del + "</td>" +
                         "<td class='none is_del'>" + data[i].is_del + "</td>" +
                         "<td>" + data[i].flirt + "</td>" +
