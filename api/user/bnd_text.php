@@ -69,7 +69,7 @@ if ($text_type == 'email') {
     // 绑内容是否存在
     $ret_bind = check_bind_info($data_bind);
     if ($ret_bind) {
-        exit_error('105', 'The binding already exists please try again！');
+        exit_error('105', 'The binding already exists please try again1！');
     }
     $is_email = isEmail($text);
     if (!$is_email) {
@@ -112,7 +112,7 @@ if ($text_type == 'idNum') {
     // 绑内容是否存在
     $ret_bind = check_bind_info($data_bind);
     if ($ret_bind) {
-        exit_error('105', 'The binding already exists please try again！');
+        exit_error('105', 'The binding already exists please try again2！');
     }
     //判断idNUm是否正确
     $rec = is_idcard($text);
@@ -138,7 +138,7 @@ if ($text_type == 'cellphone') {
     // 绑内容是否存在
     $ret_bind = check_bind_info($data_bind);
     if ($ret_bind) {
-        exit_error('105', 'The binding already exists please try again！');
+        exit_error('105', 'The binding already exists please try again3！');
     }
     $phone = explode('-', $text)[1];
     $ret = isPhone($phone);
@@ -191,7 +191,7 @@ if ($text_type == 'ipAddre') {
 // 绑内容是否存在
 $ret_bind = check_bind_info($data_bind);
 if ($ret_bind) {
-    exit_error('105', 'The binding already exists please try again22222！');
+    exit_error('105', 'The binding already exists please try again4！');
 }
 
 // 信息绑定
