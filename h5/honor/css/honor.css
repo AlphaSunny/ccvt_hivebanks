@@ -90,17 +90,17 @@ iframe {
 
 .table th {
     border-bottom: 1px solid #ffffff;
-    width: 25%;
+    /*width: 25%;*/
 }
 
 .table td {
     border-bottom: 1px solid #333333;
 }
 
-th, td {
-    line-height: 3rem;
-    font-size: 1.1rem;
-}
+/*th, td {*/
+    /*line-height: 3rem;*/
+    /*font-size: 1.1rem;*/
+/*}*/
 
 .table tr:hover td {
     border-bottom: 1px solid #ffffff;
