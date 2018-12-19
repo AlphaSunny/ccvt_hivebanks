@@ -3,7 +3,8 @@ $(function () {
 
     //获取群列表
     function GetGroupListFun() {
-        var tr = "", opt = "", is_audit = "", group_manager_name = "";
+        var tr = "", opt = "", is_audit = "", group_manager_name = "",
+            send_address = "", bind_account_notice = "", is_welcome = "";
         GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
@@ -28,12 +29,31 @@ $(function () {
                         group_manager_name = data[i].group_manager_name;
                     }
 
+                    if (data[i].send_address == "1") {
+                        send_address == "开启";
+                    } else {
+                        send_address == "关闭";
+                    }
+                    if (data[i].bind_account_notice == "1") {
+                        bind_account_notice == "开启";
+                    } else {
+                        bind_account_notice == "关闭";
+                    }
+                    if (data[i].is_welcome == "1") {
+                        is_welcome == "开启";
+                    } else {
+                        is_welcome == "关闭";
+                    }
+
                     tr += "<tr>" +
                         "<td class='id none'>" + data[i].id + "</td>" +
                         "<td class='name'>" + data[i].name + "</td>" +
                         "<td class='group_type_name'>" + data[i].group_type_name + "</td>" +
                         "<td>" + data[i].del + "</td>" +
                         "<td>" + data[i].flirt + "</td>" +
+                        "<td>" + send_address + "</td>" +
+                        "<td>" + bind_account_notice + "</td>" +
+                        "<td>" + is_welcome + "</td>" +
                         "<td class='none is_del'>" + data[i].is_del + "</td>" +
                         "<td class='none is_flirt'>" + data[i].is_flirt + "</td>" +
                         "<td class='none send_address'>" + data[i].send_address + "</td>" +
