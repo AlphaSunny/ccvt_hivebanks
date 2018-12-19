@@ -208,8 +208,9 @@ if ($grous){
     foreach ($grous as $k=>$v){
         if ($v['bot_us_id']!='' || $v['bot_us_id']!=NULL){
             $u_id = $v['bot_us_id'];
+            echo $v['all_amount']."<br />";
             //修改余额
-            $give_account = round($v['all_amount']*0.4);
+            $give_account = round($v['all_amount']*0.4)*$unit;
             echo $give_account;die;
             $sql = "update us_base set base_amount=base_amount+'{$give_account}' WHERE us_id='{$u_id}'";
             $db -> query($sql);
