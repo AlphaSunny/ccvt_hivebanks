@@ -428,6 +428,9 @@ function group_submit_audit($data)
     $date['us_id'] = $data['us_id'];
     $date['group_type'] = $data['group_type_id'];
     $date['intime'] = time();
+    $sql = "select us_nm from us_base WHERE us_id='{$data['us_id']}'";
+    $db->query($sql);
+    $data['invite_code'] = $db->getField($sql,'us_nm');
     $sql = $db->sqlInsert("bot_group", $date);
     $q_id = $db->query($sql);
     if ($q_id){
