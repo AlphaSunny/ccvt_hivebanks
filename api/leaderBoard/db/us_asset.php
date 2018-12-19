@@ -16,6 +16,7 @@ function  get_leaderboard_total($search_content,$group_id)
     if ($group_id!="all"){
         $sql .= " and bind.bind_info='{$group_id}'";
     }
+    echo $sql;
     $db -> query($sql);
     $count = $db -> affectedRows();
     return $count;
