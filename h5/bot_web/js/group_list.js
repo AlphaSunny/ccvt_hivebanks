@@ -109,13 +109,13 @@ $(function () {
             $("#" + id).removeClass("active").val("2");
             if (id == "welcomeSwitch") {
                 console.log("true 1");
-                $("#welcomeTextBox").addClass("none");
+                $(".welcomeTextBox").addClass("none");
             }
         } else {
             $("#" + id).addClass("active").val("1");
             if (id == "welcomeSwitch") {
                 console.log("true 2");
-                $("#welcomeTextBox").removeClass("none");
+                $(".welcomeTextBox").removeClass("none");
             }
         }
     }
