@@ -242,6 +242,7 @@ $(function () {
         }
 
         var formData = new FormData($("#form0")[0]);
+        formData.append("file", this.files[0]);
         formData.append("key_code", key_code);
         src1 = UpLoadImg(formData);
     });
@@ -253,6 +254,7 @@ $(function () {
             $("#idNegative").attr("src", objUrl);
         }
         var formData = new FormData($("#form1")[0]);
+        formData.append("file", this.files[0]);
         formData.append("key_code", key_code);
         src2 = UpLoadImg(formData);
     });
