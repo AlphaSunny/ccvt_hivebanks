@@ -26,28 +26,41 @@ $(function () {
 
     //transfer
     $(".transfer_btn").click(() => {
-        var payee = $("#payee").val();
-        var amount = $("#amount").val();
-        var fun_pass = $("#fun_pass").val();
-        if (payee.length <= 0) {
-            layer.msg("请输入首款账号");
+        var account = $("#payee").val();
+        var ccvt_num = $("#amount").val();
+        var pass_hash = hex_sha1($("#fun_pass").val());
+        if (account.length <= 0) {
+            layer.msg("请输入收款账号");
             return;
         }
-        if (amount.length <= 0) {
+        if (ccvt_num.length <= 0) {
             layer.msg("请输入转账金额");
             return;
         }
-        if (fun_pass.length <= 0) {
+        if (pass_hash.length <= 0) {
             layer.msg("请输入资金密码");
             return;
         }
 
-        layer.msg("即将开通转账功能");
-        //loading层
-        var loading = layer.load(1, {
-            shade: [0.1, '#fff'] //0.1透明度的白色背景
-        });
+        //是否确认转账
+        layer.confirm('是否确定向' + account + '转账?', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            TransferCCVTFun(token, account, ccvt_num, pass_hash);
+        }, function () {
 
-        layer.close(loading);
-    })
+        });
+    });
+
+    function TransferCCVTFun(token, account, ccvt_num, pass_hash) {
+        ShowLoading("show");
+        TransferCCVT(token, account, ccvt_num, pass_hash, function (response) {
+            ShowLoading("hide");
+            layer.msg("转账成功", {icon: 1});
+            window.location.href = "account.html";
+        }, function (response) {
+            ShowLoading("hide");
+            layer.msg(response.errmsg, {icon: 2});
+        });
+    }
 });
