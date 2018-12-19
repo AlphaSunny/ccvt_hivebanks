@@ -104,7 +104,6 @@ $(function () {
     });
 
     function SwitchChangeFun(id) {
-        console.log(id);
         if ($("#" + id).val() == "1") {
             $("#" + id).removeClass("active").val("2");
             if (id == "welcomeSwitch") {
@@ -128,7 +127,7 @@ $(function () {
         var send_address = $("#pushSwitch").val();
         var bind_account_notice = $("#bindSwitch").val();
         var is_welcome = $("#welcomeSwitch").val();
-        var welcome = $("#welcome").val();
+        var welcome = $("#welcomeText").val();
         //loading
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
