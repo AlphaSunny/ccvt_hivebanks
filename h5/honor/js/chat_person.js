@@ -119,7 +119,8 @@ $(function () {
     });
 
     $("#chat_box").scroll(function () {
-        console.log("s");
+        var height = $(this).scrollTop();
+        console.log(height);
     })
 
     // function layerContentFun(li) {
