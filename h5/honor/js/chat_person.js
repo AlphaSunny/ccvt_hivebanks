@@ -76,14 +76,29 @@ $(function () {
                         "</li>";
                 });
                 $(".chat_item_ul").html(li);
+                // layerContentFun(li);
+
 
                 //默认在最底部
+                var bottom = $(document).containHeight;
+                var bottom2 = $("#chat_box").containHeight;
+                console.log(bottom);
+                console.log(bottom2);
+                // $("#chat_box").scrollTop("100%");
                 $("#chat_content").scrollTop($("#chat_content")[0].scrollHeight);
+                // $('html,body').scrollTop(999999999);
             }
         }, function (response) {
             layer.msg(response.errmsg);
         })
     }
+
+    //滚动监听
+    $("#chat_content").scroll(function () {
+        console.log("scroll");
+        var height = $(document).scrollTop();
+        console.log(height);
+    });
 
     //显示搜索
     $(".search_icon").click(function () {
@@ -110,7 +125,7 @@ $(function () {
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
-    $("#chat_content").scroll(function () {
+    $("#chat_box").scroll(function () {
         var height = $(this).scrollTop();
         console.log(height);
         if(height<=0){
