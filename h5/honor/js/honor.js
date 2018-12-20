@@ -187,17 +187,20 @@ $(function () {
     });
 
     //滚动监听
-    var iframe = $("#iframe").contentWindow;
-    console.log(iframe);
-
-    $("#iframe").contents().scroll(function () {
-        console.log("scroll");
-    });
-    iframe.scroll(function () {
-        console.log("scroll contentWindow");
-        // var height = $(window).scrollTo();
-        // console.log(height);
-    });
+    window.document.getElementById("iframe").contentWindow.onscroll=function () {
+      console.log("scroll");
+    };
+    // var iframe = $("#iframe").contentWindow;
+    // console.log(iframe);
+    //
+    // $("#iframe").contents().scroll(function () {
+    //     console.log("scroll");
+    // });
+    // iframe.scroll(function () {
+    //     console.log("scroll contentWindow");
+    //     // var height = $(window).scrollTo();
+    //     // console.log(height);
+    // });
 
     //赞/踩
     var give_us_id = "", state = "",
