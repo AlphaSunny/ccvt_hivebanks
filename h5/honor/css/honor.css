@@ -460,6 +460,10 @@ li.none {
         display: block;
     }
 
+    .nick_name_search_icon {
+        position: unset;
+    }
+
     /*.close_page {*/
     /*top: 94%;*/
     /*left: 45%;*/
