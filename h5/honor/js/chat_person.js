@@ -91,6 +91,7 @@ $(function () {
             layer.msg("请输入搜索内容");
             return;
         }
+        offset = 0;
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
