@@ -227,7 +227,7 @@ li.none {
 }
 
 .search_box {
-    text-align: right;
+    /*text-align: right;*/
     position: relative;
 }
 
