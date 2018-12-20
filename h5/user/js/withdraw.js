@@ -186,8 +186,8 @@ $(function () {
                     '<td>' + data[i].asset_id + '</td>' +
                     '<td>' + data[i].base_amount + '</td>' +
                     '<td>' + data[i].tx_time + '</td>' +
-                    '<td>' + data[i].transfer_tx_hash + '</td>' +
                     ba_state +
+                    '<td>' + data[i].transfer_tx_hash + '</td>' +
                     '</tr>'
             });
             $("#baWithdrawCodesTable").html(tr);
