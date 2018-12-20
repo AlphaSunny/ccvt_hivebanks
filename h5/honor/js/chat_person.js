@@ -34,7 +34,7 @@ $(function () {
     });
 
 
-    var limit = 50, offset = 0;
+    var limit = 50, offset = 0,pre_height = "";
 
     function GetWeChatFun(wechat, group_id, search_content, limit, offset) {
         var bot_content = "",li = "";
@@ -69,8 +69,8 @@ $(function () {
                         "</div>" +
                         "</li>";
                 });
-                var pre_height = $("#chat_content")[0].scrollHeight;
-                console.log($("#chat_content")[0].scrollHeight);
+                // var pre_height = $("#chat_content")[0].scrollHeight;
+                // console.log($("#chat_content")[0].scrollHeight);
 
                 $(".chat_item_ul").prepend(li);
 
@@ -116,6 +116,7 @@ $(function () {
     //scroll
     $("#chat_box").scroll(function () {
         var height = $(this).scrollTop();
+        console.log(height);
         if (height <= 0) {
             offset += limit;
             GetWeChatFun(wechat, group_id, search_content, limit, offset);
