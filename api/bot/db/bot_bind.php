@@ -884,22 +884,22 @@ function get_transfer_pre_hash($credit_id){
 //======================================
 // 函数: 判断是否被拉入黑名单
 //======================================
-function check_black($nickname,$group_name){
+function check_black($nickname,$group_id){
     $db = new DB_COM();
-    $sql = "select * from bot_blacklist WHERE wechat='{$nickname}' AND group_name='{$group_name}' ORDER BY ctime DESC limit 1";
+    $sql = "select * from bot_blacklist WHERE wechat='{$nickname}' AND group_id='{$group_id}' ORDER BY ctime DESC limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
     if ($row && $row['end_time']>date('Y-m-d H:i:s')){
        return 1;
     }else{
         $start = date('Y-m-d 00:00:00');
-        $sql = "select count(bot_message_id) as count from bot_message WHERE bot_nickname='{$nickname}' AND group_name='{$group_name}' AND bot_content LIKE '@AI大白~%' AND bot_send_time>'{$start}'";
+        $sql = "select count(bot_message_id) as count from bot_message WHERE bot_nickname='{$nickname}' AND group_id='{$group_id}' AND bot_content LIKE '@AI大白~%' AND bot_send_time>'{$start}'";
         $db->query($sql);
         $count = $db->getField($sql,'count');
         if ($count>5){
             //拉入黑名单
             $data['wechat'] = $nickname;
-            $data['group_name'] = $group_name;
+            $data['group_id'] = $group_id;
             $data['ctime'] = date('Y-m-d H:i:s');
             $data['end_time'] = date('Y-m-d H:i:s',time()+7*24*60*60);
             $sql = $db->sqlInsert("bot_blacklist", $data);
