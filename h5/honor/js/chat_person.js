@@ -130,7 +130,7 @@ $(function () {
             '</div>'
         });
 
-        $(document).bind("scroll", ".chat_box", function () {
+        $(".chat_box").bind("scroll", function () {
             console.log('scroll');
         })
 
