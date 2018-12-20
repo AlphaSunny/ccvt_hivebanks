@@ -32,8 +32,10 @@ $(function () {
                 var data = response.rows;
                 var total = response.total;
                 if (total <= limit + offset) {
+                    console.log("没有数据了");
                     $(".none_weChat").text("下拉刷新加载更多内容");
                 } else {
+                    console.log("还有");
                     $(".none_weChat").text("暂无更多聊天内容");
                 }
 
