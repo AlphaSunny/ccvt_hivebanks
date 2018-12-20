@@ -80,7 +80,9 @@ $(function () {
 
 
                 //默认在最底部
-                // $('#chat_content').scrollTop(999999999);
+                var bottom = $(document).scrollHeight();
+                console.log(bottom);
+                $('#chat_content').scrollTop(999999999);
                 // $('html,body').scrollTop(999999999);
             }
         }, function (response) {
