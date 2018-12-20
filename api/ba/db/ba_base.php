@@ -285,7 +285,7 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     $ctime = date('Y-m-d H:i:s');
     $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_us['tx_id'] = $data['tx_hash'];
-    $prvs_hash = get_recharge_pre_hash($us_id);
+    $prvs_hash = get_recharge_pre_hash_ba($us_id);
     $com_balance_us['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
     $com_balance_us["credit_id"] = $us_id;
     $com_balance_us["debit_id"] = $rows['ba_id'];
@@ -305,7 +305,7 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     $us_type = 'ba_reg_send_balance';
     $com_balance_ba['hash_id'] = hash('md5', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_ba['tx_id'] = $data['tx_hash'];
-    $prvs_hash = get_recharge_pre_hash($rows['ba_id']);
+    $prvs_hash = get_recharge_pre_hash_ba($rows['ba_id']);
     $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_ba['hash_id'] : $prvs_hash;
     $com_balance_ba["credit_id"] = $rows['ba_id'];
     $com_balance_ba["debit_id"] = $us_id;
@@ -353,10 +353,10 @@ function get_ba_account($ba_id){
 // 参数: ba_id                 baID
 // 返回: hash_id               前置hashid
 //======================================
-function  get_recharge_pre_hash($ba_id)
+function  get_recharge_pre_hash_ba($ba_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}' and tx_type = 'ba_in' ORDER BY  ctime DESC LIMIT 1";
+    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}' ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;
@@ -366,7 +366,7 @@ function  get_recharge_pre_hash($ba_id)
 //======================================
 // 函数: 获取上传交易hash
 //======================================
-function get_transfer_pre_hash($credit_id){
+function get_transfer_pre_hash_ba($credit_id){
     $db = new DB_COM();
     $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
