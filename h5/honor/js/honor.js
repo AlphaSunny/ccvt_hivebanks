@@ -188,11 +188,16 @@ $(function () {
 
     //滚动监听
     var iframe = $("#iframe").contentWindow;
-    iframe.scroll(function () {
+    console.log(iframe);
+
+    $("#iframe").contents().scroll(function () {
         console.log("scroll");
-        // var height = $(window).scrollTo();
-        // console.log(height);
     });
+    // iframe.scroll(function () {
+    //     console.log("scroll");
+    //     // var height = $(window).scrollTo();
+    //     // console.log(height);
+    // });
 
     //赞/踩
     var give_us_id = "", state = "",
