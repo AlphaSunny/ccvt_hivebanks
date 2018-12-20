@@ -58,12 +58,12 @@ $(function () {
 
     GetWeChatFun(wechat, group_id, search_content, limit, offset);
 
-    // //滚动监听
-    // $("iframe").scroll(function () {
-    //     console.log("scroll");
-    //     var height = $(window).scrollTo();
-    //     console.log(height);
-    // });
+    //滚动监听
+    $(document).scroll(function () {
+        console.log("scroll");
+        // var height = $(window).scrollTo();
+        // console.log(height);
+    });
 
     //显示搜索
     $(".search_icon").click(function () {
