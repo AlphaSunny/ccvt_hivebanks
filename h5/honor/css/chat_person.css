@@ -167,10 +167,6 @@ p.chat_item_name:after {
         padding-top: 15%;
     }
 
-    .search_box {
-        /*line-height: 4rem;*/
-    }
-
     .search_box .chat_search_input {
         width: 50%;
         font-size: 0.8rem;
