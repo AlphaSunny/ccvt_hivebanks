@@ -84,13 +84,13 @@ $(function () {
     });
 
     //Manually add an address
-    $('.manualAddAddress').click(function () {
-        if (cellphone == 'cellphone') {
-            $('#smsPhoneCode').modal('show');
-        } else {
-            $('#goBindPhoto').modal('show');
-        }
-    });
+    // $('.manualAddAddress').click(function () {
+    //     if (cellphone == 'cellphone') {
+    //         $('#smsPhoneCode').modal('show');
+    //     } else {
+    //         $('#goBindPhoto').modal('show');
+    //     }
+    // });
 
     //Confirm add address
     $('.addAddressBtn').click(function () {
