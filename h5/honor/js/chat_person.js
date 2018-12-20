@@ -78,7 +78,7 @@ $(function () {
                 if ($(".chat_item_ul").children("li").length <= 0) {
                     $(".chat_item_ul").html(li);
                 } else {
-                    $(".chat_item_ul").insertBefore(li,$(".chat_item_ul").firstChild("li"));
+                    $(".chat_item_ul").insertBefore(li, $(".chat_item_ul").firstChild("li"));
                 }
 
 
@@ -121,6 +121,8 @@ $(function () {
         console.log(height);
         if (height <= 0) {
             console.log("到顶了");
+            offset += 50;
+            GetWeChatFun(wechat, group_id, search_content, limit, offset);
         }
     })
 
