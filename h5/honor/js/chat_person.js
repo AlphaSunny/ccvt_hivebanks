@@ -77,9 +77,11 @@ $(function () {
                 });
                 if ($(".chat_item_ul").children("li").length <= 0) {
                     console.log("第一次插入li标签");
+                    console.log(li);
                     $(".chat_item_ul").html(li);
                 } else {
                     console.log("第2次插入li标签");
+                    console.log(li);
                     $(".chat_item_ul").insertBefore(li, $(".chat_item_ul").find("li").eq(0));
                 }
 
