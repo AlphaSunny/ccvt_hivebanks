@@ -71,8 +71,8 @@ $(function () {
                         "</div>" +
                         "</li>";
                 });
-                // $(".chat_item_ul").html(li);
-                layerContentFun(li);
+                $(".chat_item_ul").html(li);
+                // layerContentFun(li);
 
 
                 //默认在最底部
