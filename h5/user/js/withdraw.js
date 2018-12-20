@@ -168,7 +168,7 @@ $(function () {
     // BA withdrawal record
     var limit = 0, offset = 5,
         ba_api_url = 'log_ba_withdraw.php',
-        tr = '', ba_tx_hash_arr = [];
+        tr = '', ba_tx_hash_arr = [], ba_state = "";
     AllRecord(token, limit, offset, ba_api_url, function (response) {
         if (response.errcode == '0') {
             var data = response.rows;
@@ -177,15 +177,21 @@ $(function () {
                 return;
             }
             $.each(data, function (i, val) {
+                if(data[i].state = "1"){
+                    ba_state = "<td class='i18n' name='processed'>已处理</td>"
+                }else {
+                    ba_state = "<td class='i18n' name='unProcessed'>未处理</td>"
+                }
                 tr += '<tr>' +
                     '<td>' + data[i].asset_id + '</td>' +
                     '<td>' + data[i].base_amount + '</td>' +
                     '<td>' + data[i].tx_time + '</td>' +
                     '<td>' + data[i].transfer_tx_hash + '</td>' +
-                    '<td>' + data[i].transfer_tx_hash + '</td>' +
+                    ba_state +
                     '</tr>'
             });
             $("#baWithdrawCodesTable").html(tr);
+            execI18n();
         }
     }, function (response) {
         GetDataFail('baWithdrawCodesTable', '4');
