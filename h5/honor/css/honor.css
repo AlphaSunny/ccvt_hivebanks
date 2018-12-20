@@ -101,12 +101,12 @@ iframe {
 }
 
 /*.close_page {*/
-    /*position: fixed;*/
-    /*z-index: 101;*/
-    /*left: 92%;*/
-    /*top: 12%;*/
-    /*cursor: pointer;*/
-    /*!*display: none;*!*/
+/*position: fixed;*/
+/*z-index: 101;*/
+/*left: 92%;*/
+/*top: 12%;*/
+/*cursor: pointer;*/
+/*!*display: none;*!*/
 /*}*/
 
 .glory_box {
@@ -262,11 +262,11 @@ li.none {
 }
 
 /*.search_icon {*/
-    /*position: absolute;*/
-    /*top: 32%;*/
-    /*right: 1%;*/
-    /*font-size: 2rem;*/
-    /*cursor: pointer;*/
+/*position: absolute;*/
+/*top: 32%;*/
+/*right: 1%;*/
+/*font-size: 2rem;*/
+/*cursor: pointer;*/
 /*}*/
 
 .search_input {
@@ -373,6 +373,10 @@ li.none {
     color: #000000;
 }
 
+.nick_name_search_icon {
+    position: relative;
+}
+
 @media only screen and (max-width: 768px) {
     nav {
         padding: 8px 15px;
@@ -438,18 +442,19 @@ li.none {
         top: 33%;
         right: 3%;
     }
-    .nick_name_search{
+
+    .nick_name_search {
 
     }
-    /*.close_page {*/
-        /*top: 94%;*/
-        /*left: 45%;*/
-        /*background: rgba(255, 255, 255, 0.6);*/
-        /*border-radius: 100%;*/
-        /*padding: 1%;*/
-        /*font-size: 3rem;*/
-    /*}*/
 
+    /*.close_page {*/
+    /*top: 94%;*/
+    /*left: 45%;*/
+    /*background: rgba(255, 255, 255, 0.6);*/
+    /*border-radius: 100%;*/
+    /*padding: 1%;*/
+    /*font-size: 3rem;*/
+    /*}*/
     .message_icon {
         font-size: 2rem;
     }
