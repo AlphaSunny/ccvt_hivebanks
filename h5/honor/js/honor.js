@@ -139,7 +139,7 @@ $(function () {
     });
 
     //搜索
-    $(".search_icon").click(function () {
+    $(".nick_name_search").click(function () {
         search_content = $(".search_input").val();
         if (search_content.length <= 0) {
             layer.msg("请输入搜索内容");
