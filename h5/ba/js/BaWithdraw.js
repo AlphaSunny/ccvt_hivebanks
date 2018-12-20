@@ -83,6 +83,17 @@ $(function () {
         LayerFun(response.errcode);
     });
 
+
+    // 用户输入地址的正则判断
+    $('.withdrawAddressInput').focus(function () {
+        $('.address_check').fadeOut('fast');
+    });
+    $('.withdrawAddressInput').blur(function () {
+        var ethAddress = $('.email').val();
+        if (ethAddress.length == 0)
+            $('.address_check').fadeIn('fast').siblings('span').fadeOut('fast');
+    })
+
     //Manually add an address
     // $('.manualAddAddress').click(function () {
     //     if (cellphone == 'cellphone') {
