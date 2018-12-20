@@ -87,7 +87,7 @@ $(function () {
     });
 
     //进行搜索
-    $(".search_btn").click(function () {
+    $(".chat_search_btn").click(function () {
         search_content = $(".chat_search_input").val();
         if (search_content.length <= 0) {
             layer.msg("请输入搜索内容");
