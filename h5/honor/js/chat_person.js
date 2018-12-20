@@ -59,7 +59,7 @@ $(function () {
     GetWeChatFun(wechat, group_id, search_content, limit, offset);
 
     //滚动监听
-    $(window).scroll(function () {
+    $("iframe").scroll(function () {
         console.log("scroll");
         var height = $(window).scrollTo();
         console.log(height);
