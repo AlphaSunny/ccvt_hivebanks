@@ -182,7 +182,7 @@ $(function () {
 
     //关闭聊天内容close_page
     $(".close_page").click(function () {
-        $(".mask,.close_page").fadeOut();
+        $("#chat_box").fadeOut();
         $("html, body").css("overflow", "unset");
     });
 
