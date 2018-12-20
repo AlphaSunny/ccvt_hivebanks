@@ -54,7 +54,7 @@ p.chat_item_name:after {
     height: 0.5rem;
     background: #ffffff;
     right: -32%;
-    top: 50%;
+    top: 53%;
     transform: rotate(45deg);
 }
 
@@ -82,7 +82,7 @@ p.chat_item_name:after {
 /*}*/
 
 .chat_item_content_box {
-    padding-left: 0.8%;
+    padding-left: 0.5%;
     /*max-width: 75%;*/
     max-width: 14rem;
 }
@@ -215,11 +215,11 @@ p.chat_item_name:after {
 
     p.chat_item_name:after {
         right: -25%;
-        top: 50%;
+        top: 53%;
     }
 
     .chat_item_content_box {
-        padding-left: 2%;
+        padding-left: 1.5%;
     }
 
     .none_weChat {
