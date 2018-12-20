@@ -930,12 +930,12 @@ function to_topic_table($data){
 function get_answer($ask,$group_id){
     $db = new DB_COM();
     //先查询总后台设置的
-    $sql = "select answer,send_type from bot_key_words WHERE is_admin=2 AND is_del=0 AND ask like '%{$ask}%' ORDER BY rand() limit 1";
+    $sql = "select id,answer,send_type from bot_key_words WHERE is_admin=2 AND is_del=0 AND ask like '%{$ask}%' ORDER BY rand() limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
     if (!$row){
         //查询当前群的问题
-        $sql = "select answer,send_type from bot_key_words WHERE is_admin=1 AND group_id='{$group_id}' AND is_del=0 AND ask like '%{$ask}%' ORDER BY rand() limit 1 ";
+        $sql = "select id,answer,send_type from bot_key_words WHERE is_admin=1 AND group_id='{$group_id}' AND is_del=0 AND ask like '%{$ask}%' ORDER BY rand() limit 1 ";
         $db->query($sql);
         $row = $db->fetchRow();
     }
