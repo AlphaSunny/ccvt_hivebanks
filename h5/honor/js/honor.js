@@ -187,7 +187,8 @@ $(function () {
     });
 
     //滚动监听
-    $("#iframe").scroll(function () {
+    var iframe = $("#iframe").contentWindow;
+    iframe.scroll(function () {
         console.log("scroll");
         // var height = $(window).scrollTo();
         // console.log(height);
