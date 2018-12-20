@@ -183,7 +183,7 @@ p.chat_item_name:after {
     .search_box input {
         width: 50%;
         font-size: 0.8rem;
-        height: 1rem;
+        height: 3rem;
         border-radius: 0;
         border-bottom-width: 1px;
     }
@@ -203,9 +203,9 @@ p.chat_item_name:after {
     }
 
     .chat_title_box h1 {
-        font-size: 1rem;
+        font-size: 2rem;
         font-weight: 400;
-        line-height: 3rem;
+        line-height: 4rem;
     }
 
     p.chat_item_name:after {

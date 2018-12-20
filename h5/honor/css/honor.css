@@ -423,7 +423,7 @@ li.none {
     }
 
     button {
-        padding: 3% 6%;
+        /*padding: 3% 6%;*/
     }
 
     .table_top {
@@ -435,7 +435,7 @@ li.none {
     }
 
     .search_icon {
-        top: 70%;
+        top: 33%;
         right: 3%;
     }
 
