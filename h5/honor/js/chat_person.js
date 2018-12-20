@@ -82,7 +82,7 @@ $(function () {
                 //默认在最底部
                 var bottom = $("#chat_box").scrollHeight;
                 console.log(bottom);
-                $('#chat_content').scrollTop(999999999);
+                $(document).scrollTop(999999999);
                 // $('html,body').scrollTop(999999999);
             }
         }, function (response) {
