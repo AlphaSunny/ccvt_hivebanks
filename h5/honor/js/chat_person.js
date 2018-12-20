@@ -23,6 +23,7 @@ $(function () {
         group_id = null;
         group_name = null;
         $(".person_name").text(wechat);
+        GetWeChatFun(wechat, group_id, search_content, limit, offset);
         // $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         // $(".close_page,.mask").fadeIn();
         // $("html, body").css("overflow", "hidden")
@@ -32,6 +33,7 @@ $(function () {
     $(document).on("click", ".look_chat_recode_btn", function () {
         wechat = null;
         $(".person_name").text(group_name);
+        GetWeChatFun(wechat, group_id, search_content, limit, offset);
         // $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         // $(".close_page,.mask").fadeIn();
         // $("html, body").css("overflow", "hidden")
@@ -46,6 +48,7 @@ $(function () {
             shade: [0.1, '#fff']
         });
         GetChatPerson(wechat, group_id, search_content, limit, offset, function (response) {
+            $("#chat_box").fadeIn(300);
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
@@ -83,8 +86,6 @@ $(function () {
             layer.msg(response.errmsg);
         })
     }
-
-    GetWeChatFun(wechat, group_id, search_content, limit, offset);
 
     //滚动监听
     $("#chat_content").scroll(function () {

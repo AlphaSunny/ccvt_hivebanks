@@ -223,6 +223,7 @@ p.chat_item_name:after {
 }
 
 #chat_box {
+    display: none;
     background: #eeeeee;
     position: fixed;
     top: 0;
