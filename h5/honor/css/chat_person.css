@@ -25,6 +25,7 @@
 
 .chat_title_box h1 {
     line-height: 4rem;
+    margin: 0;
 }
 
 .chat_item_name {
