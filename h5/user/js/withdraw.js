@@ -184,6 +184,7 @@ $(function () {
                     '<td>' + data[i].tx_time + '</td>' +
                     '</tr>'
             });
+            $("#baWithdrawCodesTable").html(tr);
         }
     }, function (response) {
         GetDataFail('baWithdrawCodesTable', '4');
