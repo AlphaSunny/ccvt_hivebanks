@@ -263,9 +263,9 @@ li.none {
 
 .search_icon {
     position: absolute;
-    top: 22%;
+    top: 32%;
     right: 1%;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
 }
 
