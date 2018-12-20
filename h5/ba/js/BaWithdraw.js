@@ -89,8 +89,12 @@ $(function () {
         $('.address_check').fadeOut('fast');
     });
     $('.withdrawAddressInput').blur(function () {
-        var ethAddress = $('.email').val();
+        var ethAddress = $('.withdrawAddressInput').val();
         if (ethAddress.length == 0)
+        {
+            $('.address_check').fadeIn('fast');
+        }
+        else if(!ethAddressCheck(ethAddress))
         {
             $('.address_check').fadeIn('fast');
         }
