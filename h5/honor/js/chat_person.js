@@ -8,14 +8,14 @@ $(function () {
     if (wechat == "null") {
         wechat = " ";
         $(".person_name").text(group_name);
-    }else {//如果是个人聊天内容
+    } else {//如果是个人聊天内容
         group_id = " ";
         $(".person_name").text(wechat);
     }
 
-    GetWeChatFun(wechat, group_id, search_content);
+    var limit = 10, offset = 0;
 
-    function GetWeChatFun(wechat, group_id, search_content) {
+    function GetWeChatFun(wechat, group_id, search_content, limit, offset) {
         var li = "", bot_content = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
@@ -56,6 +56,8 @@ $(function () {
         })
     }
 
+    GetWeChatFun(wechat, group_id, search_content, limit, offset);
+
     //显示搜索
     $(".search_icon").click(function () {
         $(".title_search_box").fadeOut();
@@ -69,7 +71,7 @@ $(function () {
             layer.msg("请输入搜索内容");
             return;
         }
-        GetWeChatFun(wechat, group_id, search_content);
+        GetWeChatFun(wechat, group_id, search_content,limit, offset);
     });
 
     //隐藏搜索
@@ -78,6 +80,6 @@ $(function () {
         $(".title_search_box").fadeIn();
         $(".search_input").val("");
         search_content = "";
-        GetWeChatFun(search_content);
+        GetWeChatFun(wechat, group_id, search_content,limit, offset);
     });
 });
