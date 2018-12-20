@@ -134,4 +134,8 @@ $(function () {
             '</div>'
         });
     }
+
+    $(".chat_box").scroll(function () {
+        console.log('scroll');
+    })
 });
