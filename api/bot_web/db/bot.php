@@ -458,7 +458,7 @@ function group_submit_audit($data)
 function get_key_words_list_total($us_id)
 {
     $db = new DB_COM();
-    $sql = "select * from bot_key_words WHERE us_id='{$us_id}' AND is_del=1";
+    $sql = "select * from bot_key_words WHERE us_id='{$us_id}' AND is_del=0";
     $db -> query($sql);
     $count = $db -> affectedRows();
     return $count;
@@ -502,7 +502,20 @@ function add_key_words($data)
 function save_key_words($data)
 {
     $db = new DB_COM();
-    $sql = "update bot_timer set ask = '{$data['ask']}' , answer = '{$data['answer']}',send_type='{$data['send_type']}', group_id='{$data['group_id']}',utime='{$data['utime']}' where id='{$data['id']}' ";
+    $sql = "update bot_key_words set ask = '{$data['ask']}' , answer = '{$data['answer']}',send_type='{$data['send_type']}', group_id='{$data['group_id']}',utime='{$data['utime']}' where id='{$data['id']}' ";
+    $db->query($sql);
+    return $db->affectedRows();
+}
+//======================================
+// 函数: 删除关键词
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function del_key_words($key_id)
+{
+    $db = new DB_COM();
+    $sql = "update bot_key_words set is_del = 1  where id='{$key_id}' ";
     $db->query($sql);
     return $db->affectedRows();
 }
