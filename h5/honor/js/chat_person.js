@@ -49,7 +49,8 @@ $(function () {
                 $(".chat_item_ul").html(li);
 
                 //默认在最底部
-                $('html,body').scrollTop(999999999);
+                $('#chat_content').scrollTop(999999999);
+                // $('html,body').scrollTop(999999999);
             }
         }, function (response) {
             layer.msg(response.errmsg);
