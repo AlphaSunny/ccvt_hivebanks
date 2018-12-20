@@ -1,40 +1,6 @@
 $(function () {
-    // var wechat = decodeURI(GetQueryString("wechat"));
-    // var group_id = decodeURI(GetQueryString("group_id"));
-    // var group_name = decodeURI(GetQueryString("group_name"));
-    var wechat = "";
-    var group_id = "";
-    var group_name = "";
-    var search_content = "";
 
-    //如果是群聊内容
-    if (wechat == "null") {
-        wechat = " ";
-        $(".person_name").text(group_name);
-    } else {//如果是个人聊天内容
-        group_id = " ";
-        $(".person_name").text(wechat);
-    }
-
-
-    //显示个人聊天内容
-    $(document).on("click", ".message_icon", function () {
-        wechat = $(this).parents("tr").find(".wechat").text();
-        group_id = null;
-        group_name = null;
-        $(".person_name").text(wechat);
-        GetWeChatFun(wechat, group_id, search_content, limit, offset);
-    });
-
-    //显示群聊内容
-    $(document).on("click", ".look_chat_recode_btn", function () {
-        wechat = null;
-        $(".person_name").text(group_name);
-        GetWeChatFun(wechat, group_id, search_content, limit, offset);
-    });
-
-
-    var limit = 50, offset = 0, pre_height = "";
+    var limit = 50, offset = 0, search_content = "";
 
     function GetWeChatFun(wechat, group_id, search_content, limit, offset) {
         var bot_content = "", li = "";
@@ -50,12 +16,9 @@ $(function () {
                 var total = response.total;
                 if (total <= limit + offset) {
                     $(".none_weChat").text("下拉刷新加载更多内容");
-                }else {
+                } else {
                     $(".none_weChat").text("暂无更多聊天内容");
                 }
-                // if (data.length <= 0) {
-                //     $('.chat_content').html("<h1 style='text-align: center;color:#ffffff'>暂无聊天内容</h1>")
-                // }
                 $.each(data, function (i, val) {
                     if (data[i].type == "Text" || data[i].type == "Sharing") {
                         bot_content = "<span>" + data[i].bot_content + "</span>";
@@ -121,7 +84,6 @@ $(function () {
     //scroll
     $("#chat_box").scroll(function () {
         var pre_height = $(this).scrollTop();
-        // console.log("pre_height" + pre_height);
         if (pre_height <= 0) {
             offset += limit;
             GetWeChatFun(wechat, group_id, search_content, limit, offset);
