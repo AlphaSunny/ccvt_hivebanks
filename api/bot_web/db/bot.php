@@ -449,3 +449,30 @@ function group_submit_audit($data)
     }
     return true;
 }
+
+//======================================
+// 函数: 获取关键词总数
+//
+// 返回: rows          最新信息数组
+//======================================
+function get_key_words_list_total($us_id)
+{
+    $db = new DB_COM();
+    $sql = "select * from bot_key_words WHERE us_id='{$us_id}' AND is_del=1";
+    $db -> query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+//======================================
+// 函数: 获取关键词列表
+//
+// 返回: rows          最新信息数组
+//======================================
+function get_key_words_list($us_id,$offset,$limit)
+{
+    $db = new DB_COM();
+    $sql = "select * from bot_key_words WHERE us_id='{$us_id}' AND is_del=1 limit $offset , $limit";
+    $db -> query($sql);
+    $rows = $db -> fetchAll();
+    return $rows;
+}
