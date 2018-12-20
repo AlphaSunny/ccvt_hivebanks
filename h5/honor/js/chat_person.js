@@ -71,11 +71,11 @@ $(function () {
                 });
 
                 $(".chat_item_ul").prepend(li);
+                console.log($("#chat_content")[0].scrollHeight);
 
                 //默认在最底部
                 if(offset == 0){
                     $("#chat_box").scrollTop($("#chat_content")[0].scrollHeight);
-                    console.log($("#chat_content")[0].scrollHeight);
                 }
             }
         }, function (response) {
