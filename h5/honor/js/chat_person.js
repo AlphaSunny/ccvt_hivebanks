@@ -118,7 +118,8 @@ $(function () {
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
-    $("#chat_content").scroll(function () {
+    //scroll
+    $("#chat_box").scroll(function () {
         var height = $(this).scrollTop();
         console.log(height);
         if(height<=0){
