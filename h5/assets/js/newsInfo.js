@@ -67,9 +67,11 @@ $(function () {
 
     //get news info
     function GetNewsInfoFun(news_id) {
-        ShowLoading("show");
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
         GetNewsInfo(news_id, function (response) {
-            ShowLoading("hide");
+            layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
                 $(".title").text(data[0].title);
@@ -83,7 +85,7 @@ $(function () {
                 }
             }
         }, function (response) {
-            ShowLoading("hide");
+            layer.close(index);
             layer.msg(response.errmsg);
         });
     }
