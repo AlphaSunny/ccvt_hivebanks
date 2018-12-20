@@ -36,6 +36,11 @@ $(function () {
                 } else {
                     $(".none_weChat").text("暂无更多聊天内容");
                 }
+
+                if (data.length <= 0 && offset <= 0) {
+                    $('.chat_content').html("<h1 style='text-align: center;color:#ffffff'>暂无聊天内容</h1>")
+                }
+
                 $.each(data, function (i, val) {
                     if (data[i].type == "Text" || data[i].type == "Sharing") {
                         bot_content = "<span>" + data[i].bot_content + "</span>";
