@@ -121,6 +121,9 @@ $(function () {
     $("#chat_box").scroll(function () {
         var height = $(this).scrollTop();
         console.log(height);
+        if(height<=0){
+            console.log("到顶了");
+        }
     })
 
     // function layerContentFun(li) {
