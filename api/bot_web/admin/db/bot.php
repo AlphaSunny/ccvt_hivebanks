@@ -412,47 +412,70 @@ function group_type_del($date)
 }
 
 //======================================
-// 函数: 判断微信机器人是否登录
+// 函数: 获取关键词总数
 //
 // 返回: rows          最新信息数组
 //======================================
-function check_bot_login($us_id)
+function get_key_words_list_total()
 {
     $db = new DB_COM();
-    $sql = "select robot_alive from bot_status WHERE us_id='{$us_id}'";
+    $sql = "select * from bot_key_words WHERE  is_del=0";
     $db -> query($sql);
-    $row = $db -> getField($sql,'robot_alive');
-    if ($row!=1){
-        return false;
-    }
-    return true;
+    $count = $db -> affectedRows();
+    return $count;
 }
-
 //======================================
-// 函数: 获取临时群组列表
+// 函数: 获取关键词列表
 //
 // 返回: rows          最新信息数组
 //======================================
-function get_group_temporary_list($us_id)
+function get_key_words_list($offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "select id,name from bot_temporary_group WHERE us_id='{$us_id}' AND is_apply=1";
+    $sql = "select k.*,g.name as group_name from bot_key_words as k LEFT JOIN bot_group as g on k.group_id=g.id WHERE  k.is_del=1 limit $offset , $limit";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
 }
-
-
 //======================================
-// 函数: 提交过审核
+// 函数: 添加关键词
+// 参数:
 //
-// 返回: rows          最新信息数组
+// 返回: row           最新信息数组
 //======================================
-function audit_group($date)
+function add_key_words($data)
 {
     $db = new DB_COM();
-    $time = time();
-    $sql = "update bot_group set is_audit = '{$date['is_audit']}',why='{$date['why']}',uptime='{$time}' where id='{$date['group_id']}' ";
+    $sql = $db->sqlInsert("bot_key_words", $data);
+    $q_id = $db->query($sql);
+    if ($q_id == 0)
+        return false;
+    return true;
+}
+
+//======================================
+// 函数: 修改关键词
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function save_key_words($data)
+{
+    $db = new DB_COM();
+    $sql = "update bot_key_words set ask = '{$data['ask']}' , answer = '{$data['answer']}',send_type='{$data['send_type']}',utime='{$data['utime']}' where id='{$data['id']}' ";
+    $db->query($sql);
+    return $db->affectedRows();
+}
+//======================================
+// 函数: 删除关键词
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function del_key_words($key_id)
+{
+    $db = new DB_COM();
+    $sql = "update bot_key_words set is_del = 1  where id='{$key_id}' ";
     $db->query($sql);
     return $db->affectedRows();
 }

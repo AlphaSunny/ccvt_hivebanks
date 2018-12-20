@@ -1,7 +1,8 @@
 <?php
 
-require_once '../inc/common.php';
+require_once '../../inc/common.php';
 require_once 'db/bot.php';
+require_once 'db/la_admin.php';
 
 
 header("cache-control:no-cache,must-revalidate");
@@ -24,14 +25,14 @@ chk_empty_args('GET', $args);
 // 用户token
 $token = get_arg_str('GET', 'token',128);
 //验证token
-$us_id = check_token($token);
+$la_id = la_user_check($token);
 // 取得分页参数
 list($limit, $offset) = get_paging_arg('GET');
 
 // 获取总记录
-$total = get_key_words_list_total($us_id);
+$total = get_key_words_list_total();
 // 交易记录数组
-$rows = get_key_words_list($us_id,$offset,$limit);
+$rows = get_key_words_list($offset,$limit);
 
 // 返回数据做成
 $rtn_ary = array();
