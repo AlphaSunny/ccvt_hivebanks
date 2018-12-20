@@ -125,7 +125,7 @@ function  get_chat_total($data)
 // 参数:
 // 返回: rows             数组
 //======================================
-function get_chat_list($data)
+function get_chat_list($data,$offset,$limit)
 {
     $db = new DB_COM();
     $sql = "select b.bot_nickname,b.bot_content,b.bot_send_time,b.type,b.wechat,
@@ -139,7 +139,7 @@ function get_chat_list($data)
     if (intval($data['group_id'])!=''){
         $sql .= " and b.group_id='{$data['group_id']}'";
     }
-    $sql .= " ORDER BY b.bot_create_time asc";
+    $sql .= " ORDER BY b.bot_create_time asc limit $offset , $limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;

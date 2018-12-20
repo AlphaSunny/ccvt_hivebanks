@@ -32,6 +32,8 @@ $group_id = get_arg_str('GET', 'group_id');
 // 搜索内容
 $search_content = get_arg_str('GET', 'search_content');
 
+// 取得分页参数
+list($limit, $offset) = get_paging_arg('GET');
 // 获取当前用户的聊天总记录
 $data['wechat'] = $wechat;
 $data['search_content'] = $search_content;
@@ -39,7 +41,7 @@ $data['group_id'] = $group_id;
 
 $total = get_chat_total($data);
 // 交易记录数组
-$rows = get_chat_list($data);
+$rows = get_chat_list($data,$offset,$limit);
 
 // 返回数据做成
 $rtn_ary = array();
