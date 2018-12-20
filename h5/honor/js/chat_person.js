@@ -60,7 +60,7 @@ $(function () {
 
     //滚动监听
     $(window).scroll(function () {
-        var height = $(document).scrollTo();
+        var height = $(window).scrollTo();
         console.log(height);
     });
 
