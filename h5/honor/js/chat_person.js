@@ -60,7 +60,8 @@ $(function () {
 
     //滚动监听
     $(window).scroll(function () {
-
+        var height = $(document).scrollTo();
+        console.log(height);
     });
 
     //显示搜索

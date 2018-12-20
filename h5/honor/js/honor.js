@@ -166,7 +166,6 @@ $(function () {
     //显示个人聊天内容
     $(document).on("click", ".message_icon", function () {
         var wechat = $(this).parents("tr").find(".wechat").text();
-        console.log(wechat);
         var group_id = null, group_name = null;
         $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         $(".close_page,.mask").fadeIn();
