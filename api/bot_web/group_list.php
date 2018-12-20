@@ -31,8 +31,8 @@ $rows = get_group_list($us_id);
 foreach ($rows as $k=>$v){
     $is_login = check_bot_login($us_id);
     if (!$is_login){
-        $rows[$k]['del'] = "关闭";
-        $rows[$k]['flirt'] = "关闭";
+        $rows[$k]['del'] = "未登录";
+        $rows[$k]['flirt'] = "未登录";
     }else{
         if ($v['is_audit']==2){
             $rows[$k]['del'] = $v['is_del']==1 ? "运行中" : "关闭";
