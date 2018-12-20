@@ -175,7 +175,7 @@ p.chat_item_name:after {
         border-bottom-width: 1px;
     }
 
-    .search_box .search_btn {
+    .chat_search_box .chat_search_btn {
         width: 4rem;
     }
 
