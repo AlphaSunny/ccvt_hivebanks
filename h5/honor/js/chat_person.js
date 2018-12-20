@@ -69,8 +69,8 @@ $(function () {
                         "</div>" +
                         "</li>";
                 });
-                // var pre_height = $("#chat_content")[0].scrollHeight;
-                // console.log($("#chat_content")[0].scrollHeight);
+                var pre_height = $("#chat_content")[0].scrollHeight;
+                console.log($("#chat_content")[0].scrollHeight);
 
                 $(".chat_item_ul").prepend(li);
                 var now_height = $("#chat_content")[0].scrollHeight;
@@ -115,7 +115,7 @@ $(function () {
     //scroll
     $("#chat_box").scroll(function () {
         var pre_height = $(this).scrollTop();
-        console.log("pre_height" + pre_height);
+        // console.log("pre_height" + pre_height);
         if (pre_height <= 0) {
             offset += limit;
             GetWeChatFun(wechat, group_id, search_content, limit, offset);
