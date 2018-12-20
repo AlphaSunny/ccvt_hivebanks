@@ -24,9 +24,6 @@ $(function () {
         group_name = null;
         $(".person_name").text(wechat);
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
-        // $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
-        // $(".close_page,.mask").fadeIn();
-        // $("html, body").css("overflow", "hidden")
     });
 
     //显示群聊内容
@@ -34,9 +31,6 @@ $(function () {
         wechat = null;
         $(".person_name").text(group_name);
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
-        // $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
-        // $(".close_page,.mask").fadeIn();
-        // $("html, body").css("overflow", "hidden")
     });
 
 
@@ -75,20 +69,13 @@ $(function () {
                         "</div>" +
                         "</li>";
                 });
-                // if ($(".chat_item_ul").children("li").length <= 0) {
-                //     console.log("第一次插入li标签");
-                //     console.log(li);
-                //     $(".chat_item_ul").html(li);
-                // } else {
-                //     console.log("第2次插入li标签");
-                //     console.log(li);
-                //     $(".chat_item_ul").prepend(li);
-                // }
+
                 $(".chat_item_ul").prepend(li);
 
-
                 //默认在最底部
-                $("#chat_box").scrollTop($("#chat_content")[0].scrollHeight);
+                if(offset == 0){
+                    $("#chat_box").scrollTop($("#chat_content")[0].scrollHeight);
+                }
             }
         }, function (response) {
             layer.msg(response.errmsg);
@@ -125,41 +112,8 @@ $(function () {
         var height = $(this).scrollTop();
         console.log(height);
         if (height <= 0) {
-            console.log("到顶了");
-            offset += 50;
+            offset += limit;
             GetWeChatFun(wechat, group_id, search_content, limit, offset);
         }
     })
-
-    // function layerContentFun(li) {
-    //
-    //     layer.open({
-    //         type: 1,
-    //         skin: 'layui-layer-rim chat_box', //加上边框
-    //         area: ['80%', '90%'], //宽高
-    //         content: '<div class="chat_content" id="chat_content">\n' +
-    //         '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
-    //         '    <ul class="chat_item_ul" id="chat_item_ul">' + li + '</ul>\n' +
-    //         '</div>'
-    //     });
-    //
-    //     $("#chat_content").scroll(function () {
-    //         console.log('scroll');
-    //     })
-    //
-    //
-    //     // layer.open({
-    //     //     type: 1,
-    //     //     title: false,
-    //     //     closeBtn: 0,
-    //     //     shadeClose: true,
-    //     //     skin: 'chat_box',
-    //     //     content: '<div class="chat_content" id="chat_content">\n' +
-    //     //     '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
-    //     //     '    <ul class="chat_item_ul" id="chat_item_ul">'+ li +'</ul>\n' +
-    //     //     '</div>'
-    //     // });
-    // }
-
-
 });
