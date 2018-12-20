@@ -69,10 +69,12 @@ $(function () {
                         "</div>" +
                         "</li>";
                 });
+                var pre_height = $("#chat_content")[0].scrollHeight;
+                console.log($("#chat_content")[0].scrollHeight);
 
                 $(".chat_item_ul").prepend(li);
-                var pre_height = $("#chat_content")[0].scrollHeight;
-                    console.log($("#chat_content")[0].scrollHeight);
+
+
 
                 //默认在最底部
                 if(offset == 0){
@@ -114,7 +116,6 @@ $(function () {
     //scroll
     $("#chat_box").scroll(function () {
         var height = $(this).scrollTop();
-        console.log(height);
         if (height <= 0) {
             offset += limit;
             GetWeChatFun(wechat, group_id, search_content, limit, offset);
