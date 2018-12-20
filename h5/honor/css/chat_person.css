@@ -121,12 +121,13 @@ p.chat_item_name:after {
 
 .chat_search_box .chat_search_btn {
     width: 5rem;
-    height: 2rem;
+    height: 4rem;
     border-radius: 5px;
     background: transparent;
     color: #ffffff;
     outline: unset;
     cursor: pointer;
+    line-height: 4rem;
 }
 
 .none {
@@ -169,7 +170,7 @@ p.chat_item_name:after {
     }
 
     .chat_search_box .chat_search_input {
-        width: 50%;
+        width: 75%;
         font-size: 0.8rem;
         height: 3rem;
         border-radius: 0;
@@ -178,6 +179,8 @@ p.chat_item_name:after {
 
     .chat_search_box .chat_search_btn {
         width: 4rem;
+        height: 3rem;
+        line-height: 3rem;
     }
 
     .chat_title_box {
