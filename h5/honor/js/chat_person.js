@@ -71,6 +71,7 @@ $(function () {
                 });
 
                 $(".chat_item_ul").prepend(li);
+                console.log(li.height());
 
                 //默认在最底部
                 if(offset == 0){
