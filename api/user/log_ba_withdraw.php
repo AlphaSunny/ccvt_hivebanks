@@ -58,7 +58,13 @@ foreach ($rows as $row){
     $new_row["asset_id"] = $row["asset_id"];
     $new_row["base_amount"] = $row["base_amount"] /  get_la_base_unit();
     $data = json_decode($row["tx_detail"],true);
-    $new_row["transfer_tx_hash"] = $data["transfer_tx_hash"];
+    if(isset($data['transfer_tx_hash']))
+    {
+        $new_row["transfer_tx_hash"] = $data["transfer_tx_hash"];
+    } else
+    {
+        $new_row["transfer_tx_hash"] = '';
+    }
     $new_rows[] = $new_row;
 }
 // 返回数据做成
