@@ -456,6 +456,10 @@ li.none {
         position: absolute;
     }
 
+    .index_search_box {
+        display: block;
+    }
+
     /*.close_page {*/
     /*top: 94%;*/
     /*left: 45%;*/
