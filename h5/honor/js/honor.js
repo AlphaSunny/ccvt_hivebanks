@@ -204,11 +204,10 @@ $(function () {
 
     // 获取iframe里面的window对象
     var frameWidow = document.getElementById('iframe').contentWindow;
-    console.log(frameWidow);
 // 然后监听scroll事件
-    frameWidow.scroll(function(){
+    frameWidow.scroll=function(){
         console.log("scroll");
-    });
+    };
 
     frameWidow.addEventListener("scroll", function () {
         console.log("scroll");
