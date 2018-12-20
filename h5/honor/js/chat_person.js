@@ -43,7 +43,7 @@ $(function () {
     var limit = 50, offset = 0;
 
     function GetWeChatFun(wechat, group_id, search_content, limit, offset) {
-        var li = "", bot_content = "";
+        var bot_content = "",li = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
@@ -76,8 +76,10 @@ $(function () {
                         "</li>";
                 });
                 if ($(".chat_item_ul").children("li").length <= 0) {
+                    console.log("第一次插入li标签");
                     $(".chat_item_ul").html(li);
                 } else {
+                    console.log("第2次插入li标签");
                     $(".chat_item_ul").insertBefore(li, $(".chat_item_ul").firstChild("li"));
                 }
 
