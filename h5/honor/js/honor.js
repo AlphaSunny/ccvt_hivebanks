@@ -187,9 +187,12 @@ $(function () {
     });
 
     //滚动监听
-    window.document.getElementById("iframe").contentWindow.onscroll=function () {
-      console.log("scroll");
-    };
+    $($("#iframe")[0].contentWindow).scroll(function () {
+        console.log("scroll");
+    });
+    // window.document.getElementById("iframe").contentWindow.onscroll=function () {
+    //   console.log("scroll");
+    // };
     // var iframe = $("#iframe").contentWindow;
     // console.log(iframe);
     //
