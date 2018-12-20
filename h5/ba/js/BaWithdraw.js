@@ -97,8 +97,9 @@ $(function () {
         else if(!ethAddressCheck(ethAddress))
         {
             $('.address_check').fadeIn('fast');
+        } else {
+            $('.address_check').fadeOut('fast');
         }
-
     })
 
     //Manually add an address
