@@ -168,7 +168,7 @@ p.chat_item_name:after {
     }
 
     .search_box {
-        line-height: 4rem;
+        /*line-height: 4rem;*/
     }
 
     .search_box .chat_search_input {
