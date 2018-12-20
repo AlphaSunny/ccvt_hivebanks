@@ -198,6 +198,10 @@ $(function () {
         console.log("scroll");
     });
 
+    $("#iframe").scroll(function () {
+       console.log("scroll");
+    });
+
     //赞/踩
     var give_us_id = "", state = "",
         _this_click_zan_num = "",
