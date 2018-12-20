@@ -75,15 +75,16 @@ $(function () {
                         "</div>" +
                         "</li>";
                 });
-                if ($(".chat_item_ul").children("li").length <= 0) {
-                    console.log("第一次插入li标签");
-                    console.log(li);
-                    $(".chat_item_ul").html(li);
-                } else {
-                    console.log("第2次插入li标签");
-                    console.log(li);
-                    $(".chat_item_ul").prepend(li);
-                }
+                // if ($(".chat_item_ul").children("li").length <= 0) {
+                //     console.log("第一次插入li标签");
+                //     console.log(li);
+                //     $(".chat_item_ul").html(li);
+                // } else {
+                //     console.log("第2次插入li标签");
+                //     console.log(li);
+                //     $(".chat_item_ul").prepend(li);
+                // }
+                $(".chat_item_ul").prepend(li);
 
 
                 //默认在最底部
