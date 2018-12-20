@@ -118,35 +118,35 @@ $(function () {
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
-    function layerContentFun(li) {
-
-        layer.open({
-            type: 1,
-            skin: 'layui-layer-rim chat_box', //加上边框
-            area: ['80%', '90%'], //宽高
-            content: '<div class="chat_content" id="chat_content">\n' +
-            '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
-            '    <ul class="chat_item_ul" id="chat_item_ul">' + li + '</ul>\n' +
-            '</div>'
-        });
-
-        $("#chat_content").scroll(function () {
-            console.log('scroll');
-        })
-
-
-        // layer.open({
-        //     type: 1,
-        //     title: false,
-        //     closeBtn: 0,
-        //     shadeClose: true,
-        //     skin: 'chat_box',
-        //     content: '<div class="chat_content" id="chat_content">\n' +
-        //     '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
-        //     '    <ul class="chat_item_ul" id="chat_item_ul">'+ li +'</ul>\n' +
-        //     '</div>'
-        // });
-    }
+    // function layerContentFun(li) {
+    //
+    //     layer.open({
+    //         type: 1,
+    //         skin: 'layui-layer-rim chat_box', //加上边框
+    //         area: ['80%', '90%'], //宽高
+    //         content: '<div class="chat_content" id="chat_content">\n' +
+    //         '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
+    //         '    <ul class="chat_item_ul" id="chat_item_ul">' + li + '</ul>\n' +
+    //         '</div>'
+    //     });
+    //
+    //     $("#chat_content").scroll(function () {
+    //         console.log('scroll');
+    //     })
+    //
+    //
+    //     // layer.open({
+    //     //     type: 1,
+    //     //     title: false,
+    //     //     closeBtn: 0,
+    //     //     shadeClose: true,
+    //     //     skin: 'chat_box',
+    //     //     content: '<div class="chat_content" id="chat_content">\n' +
+    //     //     '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
+    //     //     '    <ul class="chat_item_ul" id="chat_item_ul">'+ li +'</ul>\n' +
+    //     //     '</div>'
+    //     // });
+    // }
 
 
 });
