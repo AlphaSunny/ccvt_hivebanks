@@ -377,7 +377,8 @@ li.none {
     position: relative;
     text-align: right;
 }
-.nick_name_search{
+
+.nick_name_search {
     font-size: 2rem;
     position: absolute;
     right: 1%;
@@ -449,6 +450,7 @@ li.none {
         font-size: 2rem;
         top: 70%;
         left: 90%;
+        position: absolute;
     }
 
     /*.close_page {*/
