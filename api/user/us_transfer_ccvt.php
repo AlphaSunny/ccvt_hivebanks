@@ -41,8 +41,10 @@ if (!$is_account){
     exit_error("149","账号不存在");
 }
 
-if ($ccvt_num>30000 || $ccvt_num<=0){
-    exit_error("150","转账金额不能错误");
+if ($ccvt_num>30000){
+    exit_error("150","最大转账30000");
+}elseif ($ccvt_num<=0){
+    exit_error("150","转账金额错误");
 }
 
 //判断余额
