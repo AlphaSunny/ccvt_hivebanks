@@ -1,12 +1,12 @@
-* {
-    margin: 0;
-    padding: 0;
-}
+/** {*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+/*}*/
 
-html, body {
-    overflow-y: auto;
-    background: #eeeeee;
-}
+/*html, body {*/
+    /*overflow-y: auto;*/
+    /*background: #eeeeee;*/
+/*}*/
 
 #particles-js {
     background: #000000;
