@@ -20,7 +20,8 @@ $(function () {
     //显示个人聊天内容
     $(document).on("click", ".message_icon", function () {
         wechat = $(this).parents("tr").find(".wechat").text();
-        group_id = null; group_name = null;
+        group_id = null;
+        group_name = null;
         $(".person_name").text(wechat);
         // $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         // $(".close_page,.mask").fadeIn();
@@ -35,8 +36,6 @@ $(function () {
         // $(".close_page,.mask").fadeIn();
         // $("html, body").css("overflow", "hidden")
     });
-
-
 
 
     var limit = 50, offset = 0;
@@ -107,7 +106,7 @@ $(function () {
             layer.msg("请输入搜索内容");
             return;
         }
-        GetWeChatFun(wechat, group_id, search_content,limit, offset);
+        GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
     //隐藏搜索
@@ -116,7 +115,7 @@ $(function () {
         $(".title_search_box").fadeIn();
         $(".search_input").val("");
         search_content = "";
-        GetWeChatFun(wechat, group_id, search_content,limit, offset);
+        GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
     function layerContentFun(li) {
@@ -127,15 +126,13 @@ $(function () {
             area: ['80%', '90%'], //宽高
             content: '<div class="chat_content" id="chat_content">\n' +
             '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
-            '    <ul class="chat_item_ul" id="chat_item_ul">'+ li +'</ul>\n' +
+            '    <ul class="chat_item_ul" id="chat_item_ul">' + li + '</ul>\n' +
             '</div>'
         });
 
-        $(".chat_box").scroll(function () {
+        $(document).on("scroll", ".chat_box", function () {
             console.log('scroll');
         })
-
-
 
 
         // layer.open({

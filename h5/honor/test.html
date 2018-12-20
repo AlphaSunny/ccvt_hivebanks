@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #box{
+        height: 100px;
+        overflow: auto;
+        border: 1px solid #000000;
+    }
+</style>
+<body>
+<div id="box">
+    <ul>
+        <li>321</li>
+        <li>32123213</li>
+        <li>32123213123213</li>
+        <li>3212323</li>
+        <li>3212323ewqewqeqw</li>
+        <li>3212323ewqewqeqwddasdas</li>
+        <li>3212323ewqew</li>
+        <li>3212323ewqewdaD发发多少</li>
+        <li>321</li>
+        <li>32123213</li>
+        <li>32123213123213</li>
+        <li>3212323</li>
+        <li>3212323ewqewqeqw</li>
+        <li>3212323ewqewqeqwddasdas</li>
+        <li>3212323ewqew</li>
+        <li>3212323ewqewdaD发发多少</li>
+    </ul>
+</div>
+<script src="../assets/js/jquery-3.2.1.min.js"></script>
+<script>
+    $("#box").scroll(function () {
+        var height = $(this).scrollTop();
+        console.log("scroll");
+        console.log(height);
+    })
+</script>
+</body>
+</html>
