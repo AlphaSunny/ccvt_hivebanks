@@ -13,7 +13,7 @@ $(function () {
         $(".person_name").text(wechat);
     }
 
-    var limit = 10, offset = 0;
+    var limit = 50, offset = 0;
 
     function GetWeChatFun(wechat, group_id, search_content, limit, offset) {
         var li = "", bot_content = "";
