@@ -185,7 +185,7 @@ p.chat_item_name:after {
         line-height: 4rem;
     }
 
-    .search_box input {
+    .search_box .chat_search_input {
         width: 50%;
         font-size: 0.8rem;
         height: 3rem;
