@@ -140,7 +140,8 @@ input[type="color"],
 }
 
 .customize_modal_content_body {
-    height: 3rem;
+    /*height: 3rem;*/
+    height: auto;
 }
 
 .customize_modal_content_footer button {

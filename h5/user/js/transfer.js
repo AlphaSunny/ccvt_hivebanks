@@ -56,11 +56,16 @@ $(function () {
         ShowLoading("show");
         TransferCCVT(token, account, ccvt_num, pass_hash, function (response) {
             ShowLoading("hide");
-            layer.msg("转账成功", {icon: 1});
-            window.location.href = "account.html";
+            $(".transfer_account").text(account);
+            $(".transfer_amount").text(ccvt_num);
+            $("#transfer_success_modal").fadeIn(300);
         }, function (response) {
             ShowLoading("hide");
             layer.msg(response.errmsg, {icon: 2});
         });
     }
+
+    $(".transform_ccvt_confirm_btn").click(()=>{
+        window.location.href = "account.html";
+    })
 });
