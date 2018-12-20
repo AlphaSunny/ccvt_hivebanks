@@ -177,7 +177,7 @@ $(function () {
                 return;
             }
             $.each(data, function (i, val) {
-                if(data[i].state = "1"){
+                if(data[i].state == "1"){
                     ba_state = "<td class='i18n' name='processed'></td>"
                 }else {
                     ba_state = "<td class='i18n' name='unProcessed'></td>"
