@@ -100,14 +100,14 @@ iframe {
     margin-top: 5%;
 }
 
-.close_page {
-    position: fixed;
-    z-index: 101;
-    left: 92%;
-    top: 12%;
-    cursor: pointer;
-    /*display: none;*/
-}
+/*.close_page {*/
+    /*position: fixed;*/
+    /*z-index: 101;*/
+    /*left: 92%;*/
+    /*top: 12%;*/
+    /*cursor: pointer;*/
+    /*!*display: none;*!*/
+/*}*/
 
 .glory_box {
     position: absolute;
