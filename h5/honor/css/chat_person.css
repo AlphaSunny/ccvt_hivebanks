@@ -17,16 +17,10 @@
 }
 
 .chat_title_box {
-    /*background: rgba(0, 0, 0, 1);*/
     background: #9e9e9e;
     color: #fff;
     text-align: center;
     height: 4rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
 }
 
 .chat_title_box h1 {
@@ -221,6 +215,8 @@ p.chat_item_name:after {
 #chat_box{
     background: red;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 98%;
     height: 80%;
     margin-left: 1%;
