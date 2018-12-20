@@ -178,10 +178,11 @@ $(function () {
             }
             $.each(data, function (i, val) {
                 tr += '<tr>' +
-                    '<td>' + data[i].transfer_tx_hash + '</td>' +
                     '<td>' + data[i].asset_id + '</td>' +
                     '<td>' + data[i].base_amount + '</td>' +
                     '<td>' + data[i].tx_time + '</td>' +
+                    '<td>' + data[i].transfer_tx_hash + '</td>' +
+                    '<td>' + data[i].transfer_tx_hash + '</td>' +
                     '</tr>'
             });
             $("#baWithdrawCodesTable").html(tr);
