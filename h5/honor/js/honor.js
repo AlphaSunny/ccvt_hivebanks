@@ -202,6 +202,13 @@ $(function () {
        console.log("scroll");
     });
 
+    // 获取iframe里面的window对象
+    var frameWidow = document.getElementById('iframe').contentWindow;
+// 然后监听scroll事件
+    $(frameWidow).scroll(function(){
+        console.log("scroll");
+    });
+
     //赞/踩
     var give_us_id = "", state = "",
         _this_click_zan_num = "",
