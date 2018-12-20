@@ -173,7 +173,7 @@ $(function () {
         if (response.errcode == '0') {
             var data = response.rows;
             if (data == false) {
-                GetDataEmpty('baWithdrawCodesTable', '4');
+                GetDataEmpty('baWithdrawCodesTable', '5');
                 return;
             }
             $.each(data, function (i, val) {
@@ -198,7 +198,7 @@ $(function () {
         if (response.errcode == '0') {
             var data = response.rows;
             if (data == false) {
-                GetDataEmpty('caWithdrawCodesTable', '4');
+                GetDataEmpty('caWithdrawCodesTable', '5');
                 return;
             }
             $.each(data, function (i, val) {
