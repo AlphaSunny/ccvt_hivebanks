@@ -187,10 +187,10 @@ $(function () {
     });
 
     //滚动监听
-    $("iframe").scroll(function () {
+    $("#iframe").scroll(function () {
         console.log("scroll");
-        var height = $(window).scrollTo();
-        console.log(height);
+        // var height = $(window).scrollTo();
+        // console.log(height);
     });
 
     //赞/踩
