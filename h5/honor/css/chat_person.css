@@ -121,11 +121,13 @@ p.chat_item_name:after {
     border-bottom: 2px solid #ffffff;
     width: 50%;
     outline: unset;
-    height: 2rem;
+    height: 4rem;
     padding: 5px;
     caret-color: #ffffff;
     color: #ffffff;
     font-size: 1.2rem;
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
 }
 
 .search_box .search_btn {
