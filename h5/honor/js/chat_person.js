@@ -83,7 +83,7 @@ $(function () {
     //显示搜索
     $(".chat_search_icon").click(function () {
         $(".title_search_box").fadeOut();
-        $(".search_box").fadeIn();
+        $(".chat_search_box").fadeIn();
     });
 
     //进行搜索
