@@ -82,7 +82,7 @@ p.chat_item_name:after {
     display: inline-block;
     line-height: 1.5rem;
     /*max-width: 14rem;*/
-    width: 100%;
+    max-width: 100%;
     border-right: 5px;
     padding: 3% 3% 3% 4%;
     border-radius: 5px;
