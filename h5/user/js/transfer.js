@@ -56,6 +56,7 @@ $(function () {
         ShowLoading("show");
         TransferCCVT(token, account, ccvt_num, pass_hash, function (response) {
             ShowLoading("hide");
+            layer.closeAll('dialog');
             $(".transfer_account").text(account);
             $(".transfer_amount").text(ccvt_num);
             $("#transfer_success_modal").fadeIn(300);
