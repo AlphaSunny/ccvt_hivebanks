@@ -61,7 +61,7 @@ $(function () {
     //滚动监听
     $("body,html").scroll(function () {
         console.log("scroll");
-        var height = $(document).scrollTo();
+        var height = $(document).scrollTop();
         console.log(height);
     });
 
