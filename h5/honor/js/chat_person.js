@@ -72,7 +72,9 @@ $(function () {
                         "</div>" +
                         "</li>";
                 });
-                $(".chat_item_ul").html(li);
+                // $(".chat_item_ul").html(li);
+                layerContentFun(li);
+
 
                 //默认在最底部
                 // $('#chat_content').scrollTop(999999999);
@@ -116,4 +118,20 @@ $(function () {
         search_content = "";
         GetWeChatFun(wechat, group_id, search_content,limit, offset);
     });
+
+    function layerContentFun(li) {
+        //页面层-自定义
+
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            shadeClose: true,
+            skin: 'chat_box',
+            content: '<div class="chat_content" id="chat_content">\n' +
+            '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
+            '    <ul class="chat_item_ul" id="chat_item_ul">"+ li +"</ul>\n' +
+            '</div>'
+        });
+    }
 });
