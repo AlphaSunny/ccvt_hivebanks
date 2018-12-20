@@ -87,7 +87,7 @@ $(function () {
                     }
                     tr += "<tr>" +
                         sorting +
-                        "<td class='weChatName'>" + data[i].wechat + "&nbsp;" + scale + "</td>" +
+                        "<td class='weChatName'><span class='wechat'>" + data[i].wechat + "</span>&nbsp;" + scale + "</td>" +
                         "<td class='text-center'><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                         "<td class='text-center'>" +
                         "<span class='none us_id'>" + data[i].us_id + "</span>" +
@@ -165,7 +165,8 @@ $(function () {
 
     //显示个人聊天内容
     $(document).on("click", ".message_icon", function () {
-        var wechat = $(this).parents("tr").find(".link_name").text();
+        var wechat = $(this).parents("tr").find(".wechat").text();
+        console.log(wechat);
         var group_id = null, group_name = null;
         $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
         $(".close_page,.mask").fadeIn();

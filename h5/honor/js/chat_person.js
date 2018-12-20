@@ -58,6 +58,11 @@ $(function () {
 
     GetWeChatFun(wechat, group_id, search_content, limit, offset);
 
+    //滚动监听
+    $(window).scroll(function () {
+
+    });
+
     //显示搜索
     $(".search_icon").click(function () {
         $(".title_search_box").fadeOut();
