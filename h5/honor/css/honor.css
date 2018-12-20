@@ -93,24 +93,6 @@ nav ul a {
     z-index: -1;
 }
 
-iframe {
-    /*position: fixed;*/
-    /*z-index: 100;*/
-    width: 90%;
-    margin-left: 5%;
-    height: 90%;
-    margin-top: 5%;
-}
-
-/*.close_page {*/
-/*position: fixed;*/
-/*z-index: 101;*/
-/*left: 92%;*/
-/*top: 12%;*/
-/*cursor: pointer;*/
-/*!*display: none;*!*/
-/*}*/
-
 .glory_box {
     position: absolute;
     width: 100%;

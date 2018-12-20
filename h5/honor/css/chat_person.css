@@ -61,13 +61,13 @@ p.chat_item_name:after {
 
 }
 
-.chat_item {
-    margin-bottom: 5%;
-}
-
-/*.chat_item:not(:last-child) {*/
-/*margin-bottom: 5%;*/
+/*.chat_item {*/
+    /*margin-bottom: 5%;*/
 /*}*/
+
+.chat_item:not(:last-child) {
+margin-bottom: 5%;
+}
 
 .chat_item_content_box {
     padding-left: 0.5%;
