@@ -93,13 +93,6 @@ $(function () {
         })
     }
 
-    //滚动监听
-    $("#chat_content").scroll(function () {
-        console.log("scroll");
-        var height = $(document).scrollTop();
-        console.log(height);
-    });
-
     //显示搜索
     $(".search_icon").click(function () {
         $(".title_search_box").fadeOut();
@@ -125,7 +118,7 @@ $(function () {
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
-    $("#chat_box").scroll(function () {
+    $("#chat_content").scroll(function () {
         var height = $(this).scrollTop();
         console.log(height);
         if(height<=0){
