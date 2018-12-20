@@ -159,7 +159,6 @@ p.chat_item_name:after {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    line-height: 4rem;
 }
 
 @media only screen and (max-width: 768px) {
@@ -184,7 +183,8 @@ p.chat_item_name:after {
     }
 
     .chat_title_box {
-        height: 4rem;
+        height: 5rem;
+        line-height: 5rem;
     }
 
     .chat_title_box h1 {
