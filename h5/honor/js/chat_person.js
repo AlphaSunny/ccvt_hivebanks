@@ -49,6 +49,7 @@ $(function () {
         });
         GetChatPerson(wechat, group_id, search_content, limit, offset, function (response) {
             $("#chat_box").fadeIn(300);
+            $("html, body").css("overflow", "hidden");
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
