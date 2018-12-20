@@ -108,8 +108,8 @@ $(function () {
 
     //scroll
     $("#chat_box").scroll(function () {
-        var pre_height = $(this).scrollTop();
-        if (pre_height <= 0) {
+        var height = $(this).scrollTop();
+        if (height <= 0) {
             offset += limit;
             GetWeChatFun(wechat, group_id, search_content, limit, offset);
         }
