@@ -42,11 +42,7 @@ function IsEmail(s) {
     return patrn.exec(s);
 }
 
-//Ethereum address check
-function ethAddressCheck(str) {
-    var regex = /^0x[a-fA-F0-9]{40}$/;
-    return regex.exec(str);
-}
+
 
 
 function getRootPath() {
