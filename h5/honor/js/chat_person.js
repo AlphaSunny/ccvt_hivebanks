@@ -74,7 +74,7 @@ $(function () {
     }
 
     //显示搜索
-    $(".search_icon").click(function () {
+    $(".chat_search_icon").click(function () {
         $(".title_search_box").fadeOut();
         $(".search_box").fadeIn();
     });
