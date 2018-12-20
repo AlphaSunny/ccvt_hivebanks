@@ -118,6 +118,10 @@ $(function () {
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
+    $("#chat_box").scroll(function () {
+        console.log("s");
+    })
+
     // function layerContentFun(li) {
     //
     //     layer.open({
