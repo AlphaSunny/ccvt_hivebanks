@@ -206,7 +206,7 @@ $(function () {
     var frameWidow = document.getElementById('iframe').contentWindow;
     console.log(frameWidow);
 // 然后监听scroll事件
-    $(frameWidow).scroll(function(){
+    frameWidow.scroll(function(){
         console.log("scroll");
     });
 
