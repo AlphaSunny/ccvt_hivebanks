@@ -37,7 +37,7 @@ function get_invite_code_us($invite_check){
 // 返回: true         创建成功
 //       false        创建失败
 //======================================
-function ins_base_user_reg_base_info($data_base,$group_id)
+function ins_base_user_reg_base_info($data_base)
 {
     $data_base['base_amount'] = 0;
     $data_base['lock_amount'] =0;

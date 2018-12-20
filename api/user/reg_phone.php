@@ -205,7 +205,7 @@ if(($rec['limt_time'] + 29*60) < $timestamp){
 //绑定信息写入数据库
 $data_base['us_account'] = "ccvt_".$cellphone;
 $data_base['reg_ip'] = get_int_ip();
-$ret = ins_base_user_reg_base_info($data_base,$group_id);
+$ret = ins_base_user_reg_base_info($data_base);
 $bind_phone = ins_bind_user_reg_bind_info($data_bind);
 $bind_phone = ins_bind_user_reg_weixin_group_info($us_id,$wechat,$group_id);
 $bind_pass = ins_bind_user_reg_bind_info($data_bind_pass);
