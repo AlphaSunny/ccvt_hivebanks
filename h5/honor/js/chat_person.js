@@ -120,8 +120,6 @@ $(function () {
     });
 
     function layerContentFun(li) {
-        //页面层-自定义
-//页面层
 
         layer.open({
             type: 1,
@@ -132,6 +130,10 @@ $(function () {
             '    <ul class="chat_item_ul" id="chat_item_ul">'+ li +'</ul>\n' +
             '</div>'
         });
+
+        $(".chat_box").scroll(function () {
+            console.log('scroll');
+        })
 
 
 
@@ -149,7 +151,5 @@ $(function () {
         // });
     }
 
-    $(".chat_box").scroll(function () {
-        console.log('scroll');
-    })
+
 });
