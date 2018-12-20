@@ -95,6 +95,7 @@ p.chat_item_name:after {
     border-radius: 5px;
     font-size: 14px;
     overflow: auto;
+    color: #000000;
 }
 
 .chat_item_content img, .chat_item_content video {
