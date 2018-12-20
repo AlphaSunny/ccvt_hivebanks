@@ -1,6 +1,23 @@
 $(function () {
+    var wechat = "", group_id = "", group_name = "", limit = 50, offset = 0, search_content = "";
 
-    var limit = 50, offset = 0, search_content = "";
+    //显示个人聊天内容
+    $(document).on("click", ".message_icon", function () {
+        wechat = $(this).parents("tr").find(".wechat").text();
+        group_id = null;
+        group_name = null;
+        $(".person_name").text(wechat);
+        GetWeChatFun(wechat, group_id, search_content, limit, offset);
+    });
+
+    //显示群聊内容
+    $(document).on("click", ".look_chat_recode_btn", function () {
+        wechat = null;
+        group_id = $("#title").val();
+        group_name = $("#title").text();
+        $(".person_name").text(group_name);
+        GetWeChatFun(wechat, group_id, search_content, limit, offset);
+    });
 
     function GetWeChatFun(wechat, group_id, search_content, limit, offset) {
         var bot_content = "", li = "";
