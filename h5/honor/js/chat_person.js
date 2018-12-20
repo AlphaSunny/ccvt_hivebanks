@@ -80,7 +80,7 @@ $(function () {
                     $(".chat_item_ul").html(li);
                 } else {
                     console.log("第2次插入li标签");
-                    $(".chat_item_ul").insertBefore(li, $(".chat_item_ul").firstChild("li"));
+                    $(".chat_item_ul").insertBefore(li, $(".chat_item_ul").find("li").eq(0));
                 }
 
 
