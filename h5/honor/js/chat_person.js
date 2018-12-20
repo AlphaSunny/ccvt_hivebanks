@@ -80,7 +80,7 @@ $(function () {
 
 
                 //默认在最底部
-                var bottom = $("#chat_box").scrollHeight;
+                var bottom = $(document).scrollHeight;
                 console.log(bottom);
                 $(document).scrollTop(999999999);
                 // $('html,body').scrollTop(999999999);
