@@ -35,11 +35,19 @@ function GetQueryString(name) {
     return null;
 }
 
+//正则验证
 // Email format check
 function IsEmail(s) {
     var patrn = /^(?:\w+\.?)*\w+@(?:\w+\.)*\w+$/;
     return patrn.exec(s);
 }
+
+//Ethereum address check
+function ethAddressCheck(str) {
+    var regex = /^0x[a-fA-F0-9]{40}$/;
+    return regex.exec(str);
+}
+
 
 function getRootPath() {
     //Get current URL
