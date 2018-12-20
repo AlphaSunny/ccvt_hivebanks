@@ -78,7 +78,7 @@ $(function () {
 
                 //默认在最底部
                 // $('#chat_content').scrollTop(999999999);
-                $('html,body').scrollTop(999999999);
+                // $('html,body').scrollTop(999999999);
             }
         }, function (response) {
             layer.msg(response.errmsg);
@@ -121,18 +121,30 @@ $(function () {
 
     function layerContentFun(li) {
         //页面层-自定义
+//页面层
 
         layer.open({
             type: 1,
-            title: false,
-            closeBtn: 0,
-            shadeClose: true,
-            skin: 'chat_box',
+            skin: 'layui-layer-rim chat_box', //加上边框
+            area: ['420px', 'auto'], //宽高
             content: '<div class="chat_content" id="chat_content">\n' +
             '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
             '    <ul class="chat_item_ul" id="chat_item_ul">'+ li +'</ul>\n' +
             '</div>'
         });
+
+
+        // layer.open({
+        //     type: 1,
+        //     title: false,
+        //     closeBtn: 0,
+        //     shadeClose: true,
+        //     skin: 'chat_box',
+        //     content: '<div class="chat_content" id="chat_content">\n' +
+        //     '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
+        //     '    <ul class="chat_item_ul" id="chat_item_ul">'+ li +'</ul>\n' +
+        //     '</div>'
+        // });
     }
 
     $(".chat_box").scroll(function () {
