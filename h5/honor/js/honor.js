@@ -186,33 +186,6 @@ $(function () {
         $("html, body").css("overflow", "unset");
     });
 
-    //滚动监听
-    $($("#iframe")[0].contentWindow).scroll(function () {
-        console.log("scroll");
-    });
-    window.document.getElementById("iframe").contentWindow.onscroll=function () {
-      console.log("scroll");
-    };
-
-    $("#iframe").contents().scroll(function () {
-        console.log("scroll");
-    });
-
-    $("#iframe").scroll(function () {
-       console.log("scroll");
-    });
-
-    // 获取iframe里面的window对象
-    var frameWidow = document.getElementById('iframe').contentWindow;
-// 然后监听scroll事件
-    frameWidow.scroll=function(){
-        console.log("scroll");
-    };
-
-    frameWidow.addEventListener("scroll", function () {
-        console.log("scroll");
-    });
-
     //赞/踩
     var give_us_id = "", state = "",
         _this_click_zan_num = "",
