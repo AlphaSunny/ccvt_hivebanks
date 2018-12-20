@@ -226,9 +226,11 @@ li.none {
     display: none !important;
 }
 
-.search_box {
-    /*text-align: right;*/
+.index_search_box {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .select_box {
@@ -376,6 +378,7 @@ li.none {
 .nick_name_search_icon {
     position: relative;
     text-align: right;
+    width: 100%;
 }
 
 .nick_name_search {
