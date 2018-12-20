@@ -47,6 +47,12 @@ $(function () {
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
+                var total = response.total;
+                if (total <= limit + offset) {
+                    $(".none_weChat").text("下拉刷新加载更多内容");
+                }else {
+                    $(".none_weChat").text("暂无更多聊天内容");
+                }
                 if (data.length <= 0) {
                     $('.chat_content').html("<h1 style='text-align: center;color:#ffffff'>暂无聊天内容</h1>")
                 }
