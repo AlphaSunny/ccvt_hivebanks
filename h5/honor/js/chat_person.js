@@ -75,18 +75,15 @@ $(function () {
                         "</div>" +
                         "</li>";
                 });
-                $(".chat_item_ul").html(li);
-                // layerContentFun(li);
+                if ($(".chat_item_ul").children("li").length <= 0) {
+                    $(".chat_item_ul").html(li);
+                } else {
+                    $(".chat_item_ul").insertBefore(li,$(".chat_item_ul").firstChild("li"));
+                }
 
 
                 //默认在最底部
-                var bottom = $(document).containHeight;
-                var bottom2 = $("#chat_box").containHeight;
-                console.log(bottom);
-                console.log(bottom2);
-                // $("#chat_box").scrollTop("100%");
                 $("#chat_box").scrollTop($("#chat_content")[0].scrollHeight);
-                // $('html,body').scrollTop(999999999);
             }
         }, function (response) {
             layer.msg(response.errmsg);
@@ -122,7 +119,7 @@ $(function () {
     $("#chat_box").scroll(function () {
         var height = $(this).scrollTop();
         console.log(height);
-        if(height<=0){
+        if (height <= 0) {
             console.log("到顶了");
         }
     })
