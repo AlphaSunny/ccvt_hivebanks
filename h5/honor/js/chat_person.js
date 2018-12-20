@@ -99,7 +99,7 @@ $(function () {
 
     //隐藏搜索
     $(".close_icon").click(function () {
-        $(".search_box").fadeOut();
+        $(".chat_search_box").fadeOut();
         $(".title_search_box").fadeIn();
         $(".search_input").val("");
         search_content = "";
