@@ -126,7 +126,7 @@ $(function () {
         layer.open({
             type: 1,
             skin: 'layui-layer-rim chat_box', //加上边框
-            area: ['420px', '90%'], //宽高
+            area: ['80%', '90%'], //宽高
             content: '<div class="chat_content" id="chat_content">\n' +
             '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
             '    <ul class="chat_item_ul" id="chat_item_ul">'+ li +'</ul>\n' +
