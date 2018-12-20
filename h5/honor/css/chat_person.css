@@ -143,6 +143,7 @@ p.chat_item_name:after {
 
 .chat_search_icon {
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .close_icon {
