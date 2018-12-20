@@ -91,7 +91,10 @@ $(function () {
     $('.withdrawAddressInput').blur(function () {
         var ethAddress = $('.email').val();
         if (ethAddress.length == 0)
-            $('.address_check').fadeIn('fast').siblings('span').fadeOut('fast');
+        {
+            $('.address_check').fadeIn('fast');
+        }
+
     })
 
     //Manually add an address
