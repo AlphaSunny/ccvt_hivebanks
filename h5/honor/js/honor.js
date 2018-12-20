@@ -190,20 +190,13 @@ $(function () {
     $($("#iframe")[0].contentWindow).scroll(function () {
         console.log("scroll");
     });
-    // window.document.getElementById("iframe").contentWindow.onscroll=function () {
-    //   console.log("scroll");
-    // };
-    // var iframe = $("#iframe").contentWindow;
-    // console.log(iframe);
-    //
-    // $("#iframe").contents().scroll(function () {
-    //     console.log("scroll");
-    // });
-    // iframe.scroll(function () {
-    //     console.log("scroll contentWindow");
-    //     // var height = $(window).scrollTo();
-    //     // console.log(height);
-    // });
+    window.document.getElementById("iframe").contentWindow.onscroll=function () {
+      console.log("scroll");
+    };
+
+    $("#iframe").contents().scroll(function () {
+        console.log("scroll");
+    });
 
     //赞/踩
     var give_us_id = "", state = "",
