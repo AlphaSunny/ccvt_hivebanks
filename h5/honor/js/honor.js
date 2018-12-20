@@ -354,12 +354,12 @@ $(function () {
 
     //进行搜索
     $(".search_btn").click(function () {
-        search_content = $(".chat_search_input").val();
-        if (search_content.length <= 0) {
+        chat_search_content = $(".chat_search_input").val();
+        if (chat_search_content.length <= 0) {
             layer.msg("请输入搜索内容");
             return;
         }
-        GetWeChatFun(wechat, group_id, search_content, chat_limit, chat_offset);
+        GetWeChatFun(wechat, group_id, chat_search_content, chat_limit, chat_offset);
     });
 
     //隐藏搜索
@@ -367,8 +367,8 @@ $(function () {
         $(".search_box").fadeOut();
         $(".title_search_box").fadeIn();
         $(".search_input").val("");
-        search_content = "";
-        GetWeChatFun(wechat, group_id, search_content, chat_limit, chat_offset);
+        chat_search_content = "";
+        GetWeChatFun(wechat, group_id, chat_search_content, chat_limit, chat_offset);
     });
 
     //scroll
@@ -376,7 +376,7 @@ $(function () {
         var pre_height = $(this).scrollTop();
         if (pre_height <= 0) {
             offset += limit;
-            GetWeChatFun(wechat, group_id, search_content, chat_limit, chat_offset);
+            GetWeChatFun(wechat, group_id, chat_search_content, chat_limit, chat_offset);
         }
     })
 });
