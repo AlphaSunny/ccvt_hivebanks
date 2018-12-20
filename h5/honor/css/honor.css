@@ -375,6 +375,7 @@ li.none {
 
 .nick_name_search_icon {
     position: relative;
+    text-align: right;
 }
 
 @media only screen and (max-width: 768px) {
