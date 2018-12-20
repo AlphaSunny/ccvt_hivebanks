@@ -462,6 +462,7 @@ li.none {
 
     .nick_name_search_icon {
         position: unset;
+        width: 100%;
     }
 
     /*.close_page {*/
