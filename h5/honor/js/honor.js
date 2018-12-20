@@ -22,6 +22,9 @@ $(function () {
         })
     }
 
+    //显示聊天记录
+    var chat_limit = 50, chat_offset = 0, chat_search_content = "";
+
     //获取荣耀排行榜
     var limit = 50, offset = 0, group_id = "all", group_name = "", total = "", search_content = "";
 
@@ -279,24 +282,22 @@ $(function () {
         group_id = null;
         group_name = null;
         $(".person_name").text(wechat);
-        GetWeChatFun(wechat, group_id, search_content, limit, offset);
+        GetWeChatFun(wechat, group_id, chat_search_content, chat_limit, chat_offset);
     });
 
     //显示群聊内容
     $(document).on("click", ".look_chat_recode_btn", function () {
         wechat = null;
         $(".person_name").text(group_name);
-        GetWeChatFun(wechat, group_id, search_content, limit, offset);
+        GetWeChatFun(wechat, group_id, chat_search_content, chat_limit, chat_offset);
     });
 
-    var chat_limit = 50, chat_offset = 0, search_content = "";
-
-    function GetWeChatFun(wechat, group_id, search_content, chat_limit, chat_offset) {
+    function GetWeChatFun(wechat, group_id, chat_search_content, chat_limit, chat_offset) {
         var bot_content = "", li = "";
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
-        GetChatPerson(wechat, group_id, search_content, chat_limit, chat_offset, function (response) {
+        GetChatPerson(wechat, group_id, chat_search_content, chat_limit, chat_offset, function (response) {
             $("#chat_box").fadeIn(300);
             $("html, body").css("overflow", "hidden");
             layer.close(index);
