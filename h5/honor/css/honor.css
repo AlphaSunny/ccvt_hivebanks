@@ -106,7 +106,7 @@ iframe {
     left: 92%;
     top: 12%;
     cursor: pointer;
-    display: none;
+    /*display: none;*/
 }
 
 .glory_box {
