@@ -1046,7 +1046,7 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why)
     $com_balance_ba["debit_id"] = $us_id;
     $com_balance_ba["tx_type"] = "us_us_transfer_in";
     $com_balance_ba["tx_amount"] = $money*$unit;
-    $com_balance_ba["credit_balance"] = get_ba_account($trans_us_id)+$com_balance_ba["tx_amount"];
+    $com_balance_ba["credit_balance"] = get_us_account($trans_us_id)+$com_balance_ba["tx_amount"];
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
