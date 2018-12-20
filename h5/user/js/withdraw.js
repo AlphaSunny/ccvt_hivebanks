@@ -178,9 +178,9 @@ $(function () {
             }
             $.each(data, function (i, val) {
                 if(data[i].state = "1"){
-                    ba_state = "<td class='i18n' name='processed'>已处理</td>"
+                    ba_state = "<td class='i18n' name='processed'></td>"
                 }else {
-                    ba_state = "<td class='i18n' name='unProcessed'>未处理</td>"
+                    ba_state = "<td class='i18n' name='unProcessed'></td>"
                 }
                 tr += '<tr>' +
                     '<td>' + data[i].asset_id + '</td>' +
