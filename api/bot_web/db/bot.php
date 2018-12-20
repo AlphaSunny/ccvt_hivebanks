@@ -476,3 +476,33 @@ function get_key_words_list($us_id,$offset,$limit)
     $rows = $db -> fetchAll();
     return $rows;
 }
+
+//======================================
+// 函数: 添加关键词
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function add_key_words($data)
+{
+    $db = new DB_COM();
+    $sql = $db->sqlInsert("bot_key_words", $data);
+    $q_id = $db->query($sql);
+    if ($q_id == 0)
+        return false;
+    return true;
+}
+
+//======================================
+// 函数: 修改关键词
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function save_key_words($data)
+{
+    $db = new DB_COM();
+    $sql = "update bot_timer set ask = '{$data['ask']}' , answer = '{$data['answer']}',send_type='{$data['send_type']}', group_id='{$data['group_id']}',utime='{$data['utime']}' where id='{$data['id']}' ";
+    $db->query($sql);
+    return $db->affectedRows();
+}
