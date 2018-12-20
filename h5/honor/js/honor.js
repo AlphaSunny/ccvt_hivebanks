@@ -193,11 +193,11 @@ $(function () {
     $("#iframe").contents().scroll(function () {
         console.log("scroll");
     });
-    // iframe.scroll(function () {
-    //     console.log("scroll");
-    //     // var height = $(window).scrollTo();
-    //     // console.log(height);
-    // });
+    iframe.scroll(function () {
+        console.log("scroll contentWindow");
+        // var height = $(window).scrollTo();
+        // console.log(height);
+    });
 
     //赞/踩
     var give_us_id = "", state = "",
