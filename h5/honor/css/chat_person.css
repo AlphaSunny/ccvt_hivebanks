@@ -220,5 +220,6 @@ p.chat_item_name:after {
 #chat_box{
     background: red;
     position: fixed;
-
+    width: 98%;
+    margin-left: 1%;
 }
