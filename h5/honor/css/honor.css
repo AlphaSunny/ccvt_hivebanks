@@ -377,6 +377,12 @@ li.none {
     position: relative;
     text-align: right;
 }
+.nick_name_search{
+    font-size: 2rem;
+    position: absolute;
+    right: 1%;
+    top: 10%;
+}
 
 @media only screen and (max-width: 768px) {
     nav {
