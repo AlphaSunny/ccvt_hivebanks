@@ -84,7 +84,7 @@ $(function () {
             }
         }, function (response) {
             ShowLoading("hide");
-            return;
+            layer.msg(response.errmsg);
         });
     }
 
@@ -121,6 +121,6 @@ $(function () {
             $(".new_nav_box").html(div);
         }
     }, function (response) {
-        return;
+        layer.msg(response.errmsg);
     });
 });
