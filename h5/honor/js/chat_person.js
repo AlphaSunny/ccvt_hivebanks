@@ -84,7 +84,8 @@ $(function () {
                 var bottom2 = $("#chat_box").containHeight;
                 console.log(bottom);
                 console.log(bottom2);
-                $("#chat_box").scrollTop("100%");
+                // $("#chat_box").scrollTop("100%");
+                $("#chat_box").scrollTop($("#chat_box")[0].scrollHeight);
                 // $('html,body').scrollTop(999999999);
             }
         }, function (response) {
