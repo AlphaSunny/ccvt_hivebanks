@@ -59,10 +59,10 @@ $(function () {
     GetWeChatFun(wechat, group_id, search_content, limit, offset);
 
     //滚动监听
-    $(document).scroll(function () {
+    $(window).scroll(function () {
         console.log("scroll");
-        // var height = $(window).scrollTo();
-        // console.log(height);
+        var height = $(document).scrollTo();
+        console.log(height);
     });
 
     //显示搜索
