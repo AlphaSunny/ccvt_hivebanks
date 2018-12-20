@@ -140,13 +140,9 @@ p.chat_item_name:after {
     overflow: hidden;
 }
 
-/*.chat_search_icon {*/
-    /*position: absolute;*/
-    /*top: 20%;*/
-    /*left: 5%;*/
-    /*font-size: 2rem;*/
-    /*cursor: pointer;*/
-/*}*/
+.chat_search_icon {
+    font-size: 2rem;
+}
 
 .close_icon {
     cursor: pointer;
@@ -184,12 +180,6 @@ p.chat_item_name:after {
 
     .search_box .search_btn {
         width: 4rem;
-    }
-
-    .chat_search_icon {
-        font-size: 1.5rem;
-        top: 20%;
-        right: 5%;
     }
 
     .chat_title_box {
