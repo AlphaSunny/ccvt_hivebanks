@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/jquery.pagination.css">
     <link rel="stylesheet" href="../assets/js/layer/layer.css">
+    <link rel="stylesheet" href="css/chat_person.css">
     <link rel="stylesheet" href="css/honor.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="//at.alicdn.com/t/font_952938_fwvbk5alre.js"></script>
@@ -112,6 +113,29 @@
 </div>
 
 
+<div id="chat_box">
+    <div class="chat_title_box">
+        <div class="title_search_box">
+            <h1><span class="person_name"></span>-聊天内容</h1>
+            <p><svg class='icon search_icon' aria-hidden='true'><use xlink:href='#icon-search'></use></svg></p>
+        </div>
+
+        <!--搜索-->
+        <div class="search_box none">
+            <div class="input_box">
+                <svg class='icon close_icon' aria-hidden='true'><use xlink:href='#icon-close'></use></svg>
+                <input type="text" class="search_input" autofocus="autofocus" placeholder="请输入关键字/词搜索">
+                <button class="search_btn">搜索</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat_content" id="chat_content">
+        <div class="none_weChat"><span>暂无更多聊天内容</span></div>
+        <ul class="chat_item_ul" id="chat_item_ul"></ul>
+    </div>
+</div>
+
 <div id="particles-js"></div>
 
 <!--zan_cai_modal-->
@@ -156,5 +180,6 @@
 <script src="js/app.js"></script>
 <script src="js/common.js"></script>
 <script src="js/honor.js"></script>
+<script src="js/chat_person.js"></script>
 </body>
 </html>

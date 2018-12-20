@@ -163,22 +163,22 @@ $(function () {
         window.location.href = "../user/login.html?honor=honor";
     });
 
-    //显示个人聊天内容
-    $(document).on("click", ".message_icon", function () {
-        var wechat = $(this).parents("tr").find(".wechat").text();
-        var group_id = null, group_name = null;
-        $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
-        $(".close_page,.mask").fadeIn();
-        $("html, body").css("overflow", "hidden")
-    });
-
-    //显示群聊内容
-    $(document).on("click", ".look_chat_recode_btn", function () {
-        var wechat = null;
-        $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
-        $(".close_page,.mask").fadeIn();
-        $("html, body").css("overflow", "hidden")
-    });
+    // //显示个人聊天内容
+    // $(document).on("click", ".message_icon", function () {
+    //     var wechat = $(this).parents("tr").find(".wechat").text();
+    //     var group_id = null, group_name = null;
+    //     $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
+    //     $(".close_page,.mask").fadeIn();
+    //     $("html, body").css("overflow", "hidden")
+    // });
+    //
+    // //显示群聊内容
+    // $(document).on("click", ".look_chat_recode_btn", function () {
+    //     var wechat = null;
+    //     $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
+    //     $(".close_page,.mask").fadeIn();
+    //     $("html, body").css("overflow", "hidden")
+    // });
 
     //关闭聊天内容close_page
     $(".close_page").click(function () {

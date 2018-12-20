@@ -1,7 +1,10 @@
 $(function () {
-    var wechat = decodeURI(GetQueryString("wechat"));
-    var group_id = decodeURI(GetQueryString("group_id"));
-    var group_name = decodeURI(GetQueryString("group_name"));
+    // var wechat = decodeURI(GetQueryString("wechat"));
+    // var group_id = decodeURI(GetQueryString("group_id"));
+    // var group_name = decodeURI(GetQueryString("group_name"));
+    var wechat = "";
+    var group_id = "";
+    var group_name = "";
     var search_content = "";
 
     //如果是群聊内容
@@ -12,6 +15,29 @@ $(function () {
         group_id = " ";
         $(".person_name").text(wechat);
     }
+
+
+    //显示个人聊天内容
+    $(document).on("click", ".message_icon", function () {
+        wechat = $(this).parents("tr").find(".wechat").text();
+        group_id = null; group_name = null;
+        $(".person_name").text(wechat);
+        // $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
+        // $(".close_page,.mask").fadeIn();
+        // $("html, body").css("overflow", "hidden")
+    });
+
+    //显示群聊内容
+    $(document).on("click", ".look_chat_recode_btn", function () {
+        wechat = null;
+        $(".person_name").text(group_name);
+        // $("iframe").attr("src", "./chat_person.html?wechat=" + encodeURI(encodeURI(wechat)) + "&group_id=" + encodeURI(encodeURI(group_id)) + "&group_name=" + encodeURI(encodeURI(group_name)));
+        // $(".close_page,.mask").fadeIn();
+        // $("html, body").css("overflow", "hidden")
+    });
+
+
+
 
     var limit = 50, offset = 0;
 
@@ -49,8 +75,8 @@ $(function () {
                 $(".chat_item_ul").html(li);
 
                 //默认在最底部
-                $('#chat_content').scrollTop(999999999);
-                // $('html,body').scrollTop(999999999);
+                // $('#chat_content').scrollTop(999999999);
+                $('html,body').scrollTop(999999999);
             }
         }, function (response) {
             layer.msg(response.errmsg);
