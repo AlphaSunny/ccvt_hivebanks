@@ -130,7 +130,7 @@ $(function () {
             skin: 'chat_box',
             content: '<div class="chat_content" id="chat_content">\n' +
             '    <div class="none_weChat"><span>暂无更多聊天内容</span></div>\n' +
-            '    <ul class="chat_item_ul" id="chat_item_ul">"+ li +"</ul>\n' +
+            '    <ul class="chat_item_ul" id="chat_item_ul">'+ li +'</ul>\n' +
             '</div>'
         });
     }
