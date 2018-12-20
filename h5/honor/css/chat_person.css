@@ -214,7 +214,7 @@ p.chat_item_name:after {
 }
 
 #chat_box{
-    background: red;
+    background: #eeeeee;
     position: fixed;
     top: 0;
     left: 0;
