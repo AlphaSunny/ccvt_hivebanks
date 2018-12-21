@@ -24,7 +24,6 @@ $(function () {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
                 } else {
                     $.each(data, function (i, val) {
-                        console.log(val);
                         tr += "<tr>" +
                             "<td class='wechat'>" + data[i].wechat + "</td>" +
                             "<td class='amount'>" + data[i].amount + "</td>" +
