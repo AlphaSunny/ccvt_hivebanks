@@ -13,7 +13,8 @@ function curl_get($url){
     return $output;
 }
 
-$url = "https://ccvt_test.fnying.com/api/bot/search_statistical.php?group_name=%E6%B5%8B%E8%AF%952&datetime=2018-12-21";
+
+$url = urlencode("https://ccvt_test.fnying.com/api/bot/search_statistical.php?group_name=%E6%B5%8B%E8%AF%952&datetime=2018-12-21");
 $result = curl_get($url);
 print_r($result);
 
