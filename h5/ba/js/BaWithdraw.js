@@ -110,26 +110,26 @@ $(function () {
     // });
 
     //Confirm add address
-    $('.addAddressBtn').click(function () {
-        var bit_address = $('.bit_address').val(), pass_word_hash = hex_sha1($('#password').val());
-        ShowLoading("show");
-        ConfirmAddAddress(token, bit_type, bit_address, pass_word_hash, function (response) {
-            if (response.errcode == '0') {
-                ShowLoading("hide");
-                LayerFun('addAddressSuccess');
-                $('#addAddress').modal('hide');
-                $('.withdrawAddressInput').val(response.rows);
-            }
-        }, function (response) {
-            ShowLoading("hide");
-            if (response.errcode == '120') {
-                LayerFun('passwordError');
-                return;
-            }
-            LayerFun(response.errcode);
-            return;
-        })
-    });
+    // $('.addAddressBtn').click(function () {
+    //     var bit_address = $('.bit_address').val(), pass_word_hash = hex_sha1($('#password').val());
+    //     ShowLoading("show");
+    //     ConfirmAddAddress(token, bit_type, bit_address, pass_word_hash, function (response) {
+    //         if (response.errcode == '0') {
+    //             ShowLoading("hide");
+    //             LayerFun('addAddressSuccess');
+    //             $('#addAddress').modal('hide');
+    //             $('.withdrawAddressInput').val(response.rows);
+    //         }
+    //     }, function (response) {
+    //         ShowLoading("hide");
+    //         if (response.errcode == '120') {
+    //             LayerFun('passwordError');
+    //             return;
+    //         }
+    //         LayerFun(response.errcode);
+    //         return;
+    //     })
+    // });
 
     //Click to lock the amount of cash
     var base_amount = '', bit_amount = '', bit_address = '';
@@ -143,6 +143,12 @@ $(function () {
         }
         if (bit_address.length <= 0) {
             LayerFun('widthAddressNotEmpty');
+            return;
+        }
+
+        if (!ethAddressCheck(bit_address)) {
+            $('.address_check').fadeIn('fast');
+            layer.msg("请输入正确的地址");
             return;
         }
         if (base_amount.length <= 0) {
