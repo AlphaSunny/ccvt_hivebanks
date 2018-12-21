@@ -60,7 +60,7 @@ $(function () {
         var time = $(this).parents("tr").find(".time").text();
         var content = $(this).parents("tr").find(".content").text();
         var task_id = $(this).parents("tr").find(".content").attr("name");
-        var send_type = $(this).parents("tr").find(".send_type").text();
+        send_type = $(this).parents("tr").find(".send_type").text();
         var type = $(this).parents("tr").find(".type").text();
         var tx_content = $(this).parents("tr").find(".tx_content").text();
         console.log(task_id);

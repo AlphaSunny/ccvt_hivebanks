@@ -85,7 +85,7 @@ $(function () {
     $(document).on("click", ".editBtn", function () {
         var ask = $(this).parents("tr").find(".ask").text();
         var answer = $(this).parents("tr").find(".answer").text();
-        var send_type = $(this).parents("tr").find(".send_type").text();
+        send_type = $(this).parents("tr").find(".send_type").text();
         $("#myModalLabel").text("编辑AI关键字");
         $("#key_word").val(ask);
 
