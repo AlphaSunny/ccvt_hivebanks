@@ -67,25 +67,25 @@ $(function () {
         $("#myModalLabel").text("添加AI关键字");
         $(".addSubBtn").removeClass("none");
         $(".editSubBtn").addClass("none");
-        var is_audit = "2";
-        GetGroupListFun(is_audit);
+        // var is_audit = "2";
+        // GetGroupListFun(is_audit);
         $("#keyWordModal").modal("show");
     });
 
     //获取群列表
-    function GetGroupListFun(is_audit) {
-        GetGroupList(token, is_audit, function (response) {
-            if (response.errcode == "0") {
-                var data = response.rows, option = "";
-                $.each(data, function (i, val) {
-                    option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
-                });
-                $("#selectGroupName").html(option);
-            }
-        }, function (response) {
-            layer.msg(response.errmsg, {icon: 2});
-        });
-    }
+    // function GetGroupListFun(is_audit) {
+    //     GetGroupList(token, is_audit, function (response) {
+    //         if (response.errcode == "0") {
+    //             var data = response.rows, option = "";
+    //             $.each(data, function (i, val) {
+    //                 option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
+    //             });
+    //             $("#selectGroupName").html(option);
+    //         }
+    //     }, function (response) {
+    //         layer.msg(response.errmsg, {icon: 2});
+    //     });
+    // }
 
     //选择文本或者图片
     var send_type = 1;
@@ -181,7 +181,6 @@ $(function () {
     //添加关键字
     $(".addSubBtn").click(function () {
         var ask = $("#key_word").val();
-        var group_id = $("#selectGroupName").val();
         var answer = "";
         //文本内容判断
         if (send_type == 1) {
@@ -201,7 +200,7 @@ $(function () {
             }
         }
         ShowLoading("show");
-        AddKeyWord(token, ask, answer, send_type, group_id, function (response) {
+        AddKeyWord(token, ask, answer, send_type, function (response) {
             if (response.errcode == "0") {
                 layer.msg("添加成功", {icon: 1});
                 $("#keyWordModal").modal("hide");
@@ -244,15 +243,12 @@ $(function () {
             $(".upload_img_box").fadeIn(300);
             $("#upload_img").attr("src", answer);
         }
-        var is_audit = "2";
-        GetGroupListFun(is_audit);
         $("#keyWordModal").modal("show");
     });
 
     //确认编辑
     $(".editSubBtn").click(function () {
         var ask = $("#key_word").val();
-        var group_id = $("#selectGroupName").val();
         var answer = "";
         //文本内容判断
         if (send_type == 1) {
@@ -272,7 +268,7 @@ $(function () {
             }
         }
         ShowLoading("show");
-        EditKeyWord(token, ask, answer, send_type, group_id, key_id, function (response) {
+        EditKeyWord(token, ask, answer, send_type, key_id, function (response) {
             if (response.errcode == "0") {
                 layer.msg("修改成功", {icon: 1});
                 $("#keyWordModal").modal("hide");
