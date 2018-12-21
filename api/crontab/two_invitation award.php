@@ -25,7 +25,7 @@ $rows = $db->fetchAll();
 foreach ($rows as $k=>$v){
     $sql = "select count(us_id) as count from us_base WHERE invite_code in (select us_nm from us_base WHERE invite_code='{$v['us_nm']}' GROUP BY us_nm)";
     $db->query($sql);
-    $data = $db->fetchAll();
+    $data = $db->fetchRow();
     print_r($data);die;
 
 }
