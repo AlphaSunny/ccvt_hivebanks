@@ -31,6 +31,7 @@ $(function () {
                         "<td class='answer'>" + data[i].answer + "</td>" +
                         "<td class='group_name'>" + data[i].group_name + "</td>" +
                         "<td class='ctime'>" + data[i].ctime + "</td>" +
+                        "<td class='send_type none'>" + data[i].send_type + "</td>" +
                         "<td>" +
                         "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                         "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
@@ -84,6 +85,25 @@ $(function () {
     $(document).on("click", ".editBtn", function () {
         var ask = $(this).parents("tr").find(".ask").text();
         var answer = $(this).parents("tr").find(".answer").text();
+        var send_type = $(this).parents("tr").find(".send_type").text();
+
+        if (send_type == 1) {//文本
+            $("#text").prop("checked", true);
+            $(this).attr("checked", true);
+            $("#image").attr("checked", false);
+            $(".content_image").fadeOut(300);
+            $(".upload_img_box").fadeOut(300);
+            $(".content_text").fadeIn(300);
+        } else {//图片
+            $("#image").prop("checked", true);
+            $(this).attr("checked", true);
+            $("#text").attr("checked", false);
+            $(".content_text").fadeOut(300);
+            $(".content_image").fadeIn(300);
+            $(".upload_img_box").fadeIn(300);
+            $("#upload_img").attr("src", content);
+        }
+
         $("#myModalLabel").text("编辑AI关键字");
         $("#key_word").val(ask);
         $("#key_word_content").val(answer);
