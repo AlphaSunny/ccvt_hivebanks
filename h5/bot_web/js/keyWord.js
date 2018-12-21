@@ -32,6 +32,7 @@ $(function () {
                         "<td class='group_name'>" + data[i].group_name + "</td>" +
                         "<td class='ctime'>" + data[i].ctime + "</td>" +
                         "<td class='send_type none'>" + data[i].send_type + "</td>" +
+                        "<td class='id none'>" + data[i].id + "</td>" +
                         "<td>" +
                         "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                         "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
@@ -217,10 +218,12 @@ $(function () {
     });
 
     // 编辑-
+    var key_id = "";
     $(document).on("click", ".editBtn", function () {
         var ask = $(this).parents("tr").find(".ask").text();
         var answer = $(this).parents("tr").find(".answer").text();
         send_type = $(this).parents("tr").find(".send_type").text();
+        key_id = $(this).parents("tr").find(".id").text();
         $("#myModalLabel").text("编辑AI关键字");
         $(".editSubBtn").fadeIn(300);
         $(".addSubBtn").fadeOut(300);
@@ -247,4 +250,41 @@ $(function () {
         GetGroupListFun(is_audit);
         $("#keyWordModal").modal("show");
     });
+
+    //确认编辑
+    $(".editSubBtn").click(function () {
+        var ask = $("#key_word").val();
+        var group_id = $("#selectGroupName").val();
+        var answer = "";
+        //文本内容判断
+        if (send_type == 1) {
+            answer = $("#key_word_content").val();
+            if (answer.length <= 0) {
+                layer.msg("请输入内容", {icon: 0});
+                return;
+            }
+        }
+
+        //图片内容判断
+        if (send_type == 2) {
+            answer = src;
+            if (!src) {
+                layer.msg("请选择图片", {icon: 0});
+                return;
+            }
+        }
+        ShowLoading("show");
+        EditKeyWord(token, ask, answer, send_type, group_id, key_id, function (response) {
+            if (response.errcode == "0") {
+                layer.msg("添加成功", {icon: 1});
+                $("#keyWordModal").modal("hide");
+                ShowLoading("hide");
+                GetKeyWordListFun(limit, offset);
+            }
+        }, function (response) {
+            $("#keyWordModal").modal("hide");
+            ShowLoading("hide");
+            layer.msg(response.errmsg, {icon: 0});
+        })
+    })
 });
