@@ -185,8 +185,8 @@ $(function () {
                 tr += '<tr>' +
                     '<td>' + data[i].asset_id + '</td>' +
                     '<td>' + data[i].base_amount + '</td>' +
-                    '<td>' + data[i].tx_time + '</td>' +
                     '<td title=' + data[i].address + '>' + data[i].address.substr(0, 20) + '</td>' +
+                    '<td>' + data[i].tx_time + '</td>' +
                     ba_state +
                     '<td>' + data[i].transfer_tx_hash + '</td>' +
                     '</tr>'
