@@ -26,9 +26,18 @@ $(function () {
                 }
 
                 $.each(data, function (i, val) {
-                    console.log(val);
+                    tr += "<tr>" +
+                        "<td class='ask' name=" + data[i].id + ">" + data[i].ask + "</td>" +
+                        "<td class='answer'>" + data[i].answer + "</td>" +
+                        "<td class='group_name'>" + data[i].group_name + "</td>" +
+                        "<td class='ctime'>" + data[i].ctime + "</td>" +
+                        "<td>" +
+                        "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+                        "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
+                        "</td>" +
+                        "</tr>"
                 });
-
+                $("#keyWord").html(tr);
                 $("#pagination").pagination({
                     currentPage: (limit + offset) / limit,
                     totalPage: totalPage,
