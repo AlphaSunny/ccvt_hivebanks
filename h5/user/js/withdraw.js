@@ -177,15 +177,16 @@ $(function () {
                 return;
             }
             $.each(data, function (i, val) {
-                if(data[i].state == "1"){
+                if (data[i].state == "1") {
                     ba_state = "<td class='i18n' name='processed'></td>"
-                }else {
+                } else {
                     ba_state = "<td class='i18n' name='unProcessed'></td>"
                 }
                 tr += '<tr>' +
                     '<td>' + data[i].asset_id + '</td>' +
                     '<td>' + data[i].base_amount + '</td>' +
                     '<td>' + data[i].tx_time + '</td>' +
+                    '<td title=' + data[i].address + '>' + data[i].address.substr(0, 20) + '</td>' +
                     ba_state +
                     '<td>' + data[i].transfer_tx_hash + '</td>' +
                     '</tr>'

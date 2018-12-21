@@ -81,12 +81,12 @@ $(function () {
     });
 
     // 编辑-
-    $(".edit_key_word_btn").click(function () {
-        var key_word = $(this).parents("tr").find(".key_word").text();
-        var key_word_content = $(this).parents("tr").find(".key_word_content").text();
+    $(".editBtn").click(function () {
+        var ask = $(this).parents("tr").find(".ask").text();
+        var answer = $(this).parents("tr").find(".answer").text();
         $("#myModalLabel").text("编辑AI关键字");
-        $("#key_word").val(key_word);
-        $("#key_word_content").val(key_word_content);
+        $("#key_word").val(ask);
+        $("#key_word_content").val(answer);
         $("#keyWordModal").modal("show");
     });
 
