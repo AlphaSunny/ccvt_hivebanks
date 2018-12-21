@@ -5,7 +5,7 @@ $(function () {
     var limit = 10, offset = 0;
 
     function GetKeyWordListFun(limit, offset) {
-        var tr = "";
+        var tr = "", totalPage = "", count = "";
         GetKeyWordList(token, limit, offset, function (response) {
             if (response.errcode == '0') {
                 console.log(response);
@@ -14,9 +14,34 @@ $(function () {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
                     return;
                 }
+
+                totalPage = Math.floor(response.total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+
                 $.each(data, function (i, val) {
                     console.log(val);
-                })
+                });
+
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        GetGroupMemberFun(token, limit, (current - 1) * limit, status);
+                        loading = layer.load(1, {
+                            shade: [0.1, '#fff'] //0.1透明度的白色背景
+                        });
+                    }
+                });
             }
 
         }, function (response) {
