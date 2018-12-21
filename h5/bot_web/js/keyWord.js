@@ -54,5 +54,96 @@ $(function () {
         $("#key_word").val(key_word);
         $("#key_word_content").val(key_word_content);
         $("#keyWordModal").modal("show");
-    })
+    });
+
+    //选择文本或者图片
+    var send_type = 1;
+    $("input[type='radio']").change(function () {
+        if ($(this).hasClass("text")) {
+            send_type = 1;
+            $(this).attr("checked", true);
+            $("#image").attr("checked", false);
+            $(".content_image").fadeOut(300);
+            $(".upload_img_box").fadeOut(300);
+            $(".content_text").fadeIn(300);
+        }
+        if ($(this).hasClass("image")) {
+            send_type = 2;
+            $(this).attr("checked", true);
+            $("#text").attr("checked", false);
+            $(".content_text").fadeOut(300);
+            $(".content_image").fadeIn(300);
+            $(".upload_img_box").fadeIn(300);
+        }
+    });
+
+    //上传文件到服务器
+    function UpLoadImg(formData) {
+        ShowLoading("show");
+        var src = '';
+        $.ajax({
+            url: url + '/api/plugin/upload_file.php',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                ShowLoading("hide");
+                var data = JSON.parse(response);
+                if (data.errcode == '0') {
+                    src = data.url;
+                }
+            },
+            error: function (response) {
+                ShowLoading("hide");
+                layer.msg(response.msg, {icon: 2});
+            }
+        });
+        return src;
+    }
+
+    //get key_code
+    var key_code = "";
+    GetKeyCode(token, function (response) {
+        if (response.errcode == '0') {
+            key_code = response.key_code;
+        }
+    }, function (response) {
+        LayerFun(response.errcode);
+    });
+
+    //获取本地图片地址并显示
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+
+    //选择图片
+    var src = "";
+    $("#file").on("change", function () {
+        var formData = new FormData($("#upload_image")[0]);
+        var objUrl = getObjectURL(this.files[0]);
+        formData.append("file", this.files[0]);
+        formData.append("key_code", key_code);
+        var _this_size = this.files[0].size;
+        if (_this_size > 500000) {
+            layer.msg("图片不能大于500KB", {icon: 0});
+            return;
+        }
+
+        if (objUrl) {
+            // show img
+            $("#upload_img").attr("src", objUrl);
+        }
+        src = UpLoadImg(formData);
+    });
 });
