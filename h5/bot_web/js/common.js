@@ -362,6 +362,17 @@ function GetKeyCode(token, suc_func, error_func) {
     CallLaConfigApi(api_url, post_data, suc_func, error_func);
 }
 
+//获取ai关键字
+function GetKeyWordList(token, limit, offset, suc_func, error_func) {
+    var api_url = 'key_words_list.php',
+        post_data = {
+            'token': token,
+            'limit': limit,
+            'offset': offset
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 //loading
 var loading = "";
 

@@ -1,4 +1,21 @@
 $(function () {
+    var token = GetCookie('robot_token');
+
+    //获取关键字列表
+    var limit = 10, offset = 0;
+
+    function GetKeyWordListFun(limit, offset) {
+        GetKeyWordList(token, limit, offset, function (response) {
+            if (response.errcode == '0') {
+                console.log(response);
+            }
+
+        }, function (response) {
+            layer.msg(response.errmsg, {icon: 2});
+        })
+    }
+
+    GetKeyWordListFun(limit, offset);
 
     //添加-显示弹框
     $(".add_key_word_btn").click(function () {
