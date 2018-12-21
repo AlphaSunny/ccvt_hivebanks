@@ -81,7 +81,7 @@ $(function () {
     });
 
     // 编辑-
-    $(".editBtn").click(function () {
+    $(document).on("click", ".editBtn", function () {
         var ask = $(this).parents("tr").find(".ask").text();
         var answer = $(this).parents("tr").find(".answer").text();
         $("#myModalLabel").text("编辑AI关键字");
