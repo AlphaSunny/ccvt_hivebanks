@@ -19,7 +19,7 @@ $db = new DB_COM();
 //    }
 //}
 
-$sql = "select * from us_base WHERE us_nm='101608'";
+$sql = "select * from us_base WHERE 1";
 $db->query($sql);
 $rows = $db->fetchAll();
 foreach ($rows as $k=>$v){
