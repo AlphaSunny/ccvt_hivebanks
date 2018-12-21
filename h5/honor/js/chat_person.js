@@ -66,7 +66,12 @@ $(function () {
                 var pre_height = $("#chat_content")[0].scrollHeight;
                 // console.log($("#chat_content")[0].scrollHeight);
 
-                $(".chat_item_ul").prepend(li);
+                if (offset <= 0) {
+                    $(".chat_item_ul").html(li);
+                }else {
+                    $(".chat_item_ul").prepend(li);
+                }
+
                 var now_height = $("#chat_content")[0].scrollHeight;
                 // console.log("now_height=" + now_height);
                 //默认在最底部
