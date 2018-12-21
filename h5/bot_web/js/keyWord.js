@@ -101,7 +101,7 @@ $(function () {
             $(".content_text").fadeOut(300);
             $(".content_image").fadeIn(300);
             $(".upload_img_box").fadeIn(300);
-            $("#upload_img").attr("src", content);
+            $("#upload_img").attr("src", answer);
         }
 
         $("#myModalLabel").text("编辑AI关键字");
