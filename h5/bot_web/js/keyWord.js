@@ -94,6 +94,7 @@ $(function () {
             $(".content_image").fadeOut(300);
             $(".upload_img_box").fadeOut(300);
             $(".content_text").fadeIn(300);
+            $("#key_word_content").text(answer);
         } else {//图片
             $("#image").prop("checked", true);
             $(this).attr("checked", true);
@@ -106,7 +107,6 @@ $(function () {
 
         $("#myModalLabel").text("编辑AI关键字");
         $("#key_word").val(ask);
-        $("#key_word_content").val(answer);
         $("#keyWordModal").modal("show");
     });
 
