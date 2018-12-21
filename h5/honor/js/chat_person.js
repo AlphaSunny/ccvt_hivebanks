@@ -14,7 +14,7 @@ $(function () {
     $(document).on("click", ".look_chat_recode_btn", function () {
         wechat = null;
         group_id = $("#title").val();
-        group_name = $("#title").text();
+        group_name = $("#title option:selected").text();
         $(".person_name").text(group_name);
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
