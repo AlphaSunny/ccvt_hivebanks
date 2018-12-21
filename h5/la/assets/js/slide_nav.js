@@ -7,10 +7,10 @@ $.ajax({
         console.log(response);
         $.each(response, function (i, val) {
             // console.log(response[i]);
-            if(response[i].second_nav){
-                if(response[i].second_nav[i].third_nav){
-                    console.log("3");
-                }
+            if(this.second_nav){
+                $.each(this.second_nav, function (j, vaj) {
+                    console.log(vaj);
+                });
                 console.log("2");
             }
             console.log("1")
