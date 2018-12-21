@@ -305,6 +305,7 @@ $(function () {
         DelKeyWord(token, key_id, function (response) {
             if (response.errcode == "0") {
                 layer.msg("删除成功", {icon: 1});
+                GetKeyWordListFun(limit, offset);
             }
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2})
