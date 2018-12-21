@@ -80,6 +80,36 @@ $.ajax({
     }
 });
 
+// Call the API LA configuration function
+function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
+    var api_site = config_api_url + '/api/la/admin/configure/';
+    post_data = post_data || {};
+    suc_func = suc_func || function () {
+    };
+    error_func = error_func || function () {
+    };
+    $.ajax({
+        url: api_site + api_url,
+        dataType: "jsonp",
+        data: post_data,
+        success: function (response) {
+            // API return failed
+            if (response.errcode != 0) {
+                error_func(response);
+            } else {
+                // Successfully process data
+                suc_func(response);
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            // API error exception
+            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            // Exception handling
+            error_func(response);
+        }
+    });
+}
+
 // Call API common function
 function CallRobotApi(api_url, post_data, suc_func, error_func) {
 
@@ -275,6 +305,63 @@ function GiveLikeList(token, limit, offset, suc_func, error_func) {
             "token": token,
             "limit": limit,
             "offset": offset
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+//获取key code
+function GetKeyCode(token, suc_func, error_func) {
+    var api_url = 'get_key_code.php',
+        post_data = {
+            'token': token
+        };
+    CallLaConfigApi(api_url, post_data, suc_func, error_func);
+}
+
+//获取ai关键字
+function GetKeyWordList(token, limit, offset, suc_func, error_func) {
+    var api_url = 'key_words_list.php',
+        post_data = {
+            'token': token,
+            'limit': limit,
+            'offset': offset
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+//添加ai关键字
+function AddKeyWord(token, ask, answer, send_type, group_id, suc_func, error_func) {
+    var api_url = 'key_words_add.php',
+        post_data = {
+            'token': token,
+            'ask': ask,
+            'answer': answer,
+            'send_type': send_type,
+            'group_id': group_id
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+//编辑ai关键字
+function EditKeyWord(token, ask, answer, send_type, group_id, key_id, suc_func, error_func) {
+    var api_url = 'key_words_edit.php',
+        post_data = {
+            'token': token,
+            'ask': ask,
+            'answer': answer,
+            'send_type': send_type,
+            'group_id': group_id,
+            'key_id': key_id
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+//删除ai关键字
+function DelKeyWord(token, key_id, suc_func, error_func) {
+    var api_url = 'key_words_del.php',
+        post_data = {
+            'token': token,
+            'key_id': key_id
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }

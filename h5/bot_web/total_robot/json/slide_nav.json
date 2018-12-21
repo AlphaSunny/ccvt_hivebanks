@@ -23,5 +23,10 @@
     "name": "踩-赞记录",
     "href": "give_like.html",
     "fa_icon": "fa-file-word-o"
+  },
+  {
+    "name": "AI关键字管理",
+    "href": "key_word.html",
+    "fa_icon": "fa-file-word-o"
   }
 ]
