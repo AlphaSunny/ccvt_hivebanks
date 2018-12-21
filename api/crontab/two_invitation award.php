@@ -8,9 +8,10 @@ $db = new DB_COM();
 $sql = "select * from us_base WHERE invite_code!=0";
 $db->query($sql);
 $rows = $db->fetchAll();
-echo count($rows);die;
 foreach ($rows as $k=>$v){
-
+    $sql = "select us_id from us_base WHERE us_nm=(select invite_code from us_base WHERE us_nm='{$v['invite_code']}')";
+    echo $sql;die;
+    $db->query($sql);
     into_transfer($v['u_id']);
 }
 
