@@ -4,6 +4,7 @@ ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
 //二级邀请补发
+$db = new DB_COM();
 $sql = "select * from us_base WHERE invite_code!=0";
 $db->query($sql);
 $rows = $db->fetchAll();
