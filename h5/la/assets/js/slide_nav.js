@@ -9,7 +9,7 @@ $.ajax({
             // console.log(response[i]);
             if(this.second_nav){
                 $.each(this.second_nav, function (j, vaj) {
-                    console.log(vaj);
+                    console.log("3");
                 });
                 console.log("2");
             }
