@@ -7,6 +7,7 @@ $(function () {
     function GetKeyWordListFun(limit, offset) {
         var tr = "", totalPage = "", count = "";
         GetKeyWordList(token, limit, offset, function (response) {
+            ShowLoading("hide");
             if (response.errcode == '0') {
                 console.log(response);
                 var data = response.rows;
@@ -36,15 +37,14 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        GetGroupMemberFun(token, limit, (current - 1) * limit, status);
-                        loading = layer.load(1, {
-                            shade: [0.1, '#fff'] //0.1透明度的白色背景
-                        });
+                        GetKeyWordListFun(limit, (current - 1) * limit);
+                        ShowLoading("show");
                     }
                 });
             }
 
         }, function (response) {
+            ShowLoading("hide");
             layer.msg(response.errmsg, {icon: 2});
         })
     }
