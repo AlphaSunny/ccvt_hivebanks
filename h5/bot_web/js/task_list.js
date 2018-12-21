@@ -1,11 +1,12 @@
 $(function () {
     var token = GetCookie("robot_token");
+
     function GetTaskListFun() {
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows, tr = "";
                 if (data.length <= 0) {
-                    tr="<tr><td colspan='4' class='text-center'>暂无数据</td></tr>";
+                    tr = "<tr><td colspan='4' class='text-center'>暂无数据</td></tr>";
                     $("#taskList").html(tr);
                     return;
                 }
@@ -33,7 +34,7 @@ $(function () {
     //确定删除任务
     var timer_id = "";
     $(document).on("click", ".delBtn", function () {
-        timer_id = $(this).parents("tr[role='row']").find(".id").text();
+        timer_id = $(this).parents("tr").find(".content").attr("name");
         layer.confirm('确定删除该条数据？', {
             btn: ['确认', '取消'] //按钮
         }, function () {
