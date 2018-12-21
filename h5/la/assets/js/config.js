@@ -60,7 +60,7 @@ $(function () {
 
     //get open server
     function GetOpenServerFun(key_code) {
-        var getOpenServerUrl = "http://agent_service.fnying.com/action/get_common_config.php",
+        var getOpenServerUrl = "https://agent_service.fnying.com/action/get_common_config.php",
             getOpenServerData = {"key_code": key_code};
         $.get(getOpenServerUrl, getOpenServerData, function (response) {
             if(response.errcode == "0"){
