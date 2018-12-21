@@ -26,9 +26,12 @@ foreach ($rows as $k=>$v){
     $sql = "select count(us_id) as count from us_base WHERE invite_code in (select us_nm from us_base WHERE invite_code='{$v['us_nm']}' GROUP BY us_nm)";
     $db->query($sql);
     $data = $db->fetchRow();
-    echo $data['count'];die;
-    $time = date('Y-m-d H:i:s');
-    into_transfer($v['us_id'],'20'*get_la_base_unit(),$time,'2',"二级邀请赠送","two_invite_send","ba-us",$ba_id);
+
+    if ($data['count']>0){
+        $time = date('Y-m-d H:i:s');
+        into_transfer($v['us_id'],$data['count']*get_la_base_unit(),$time,'2',"二级邀请赠送","two_invite_send","ba-us",$ba_id);
+    }
+
 
 }
 
