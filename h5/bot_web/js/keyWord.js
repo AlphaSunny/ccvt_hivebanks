@@ -62,8 +62,10 @@ $(function () {
     GetKeyWordListFun(limit, offset);
 
     //添加-显示弹框
-    $(document).on("click", ".add_key_word_btn,.editBtn", function () {
+    $(".add_key_word_btn").click(function () {
         $("#myModalLabel").text("添加AI关键字");
+        $(".addSubBtn").fadeIn(300);
+        $(".editSubBtn").fadeOut(300);
         var is_audit = "2";
         GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
@@ -78,34 +80,6 @@ $(function () {
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2});
         });
-        $("#keyWordModal").modal("show");
-    });
-
-    // 编辑-
-    $(document).on("click", ".editBtn", function () {
-        var ask = $(this).parents("tr").find(".ask").text();
-        var answer = $(this).parents("tr").find(".answer").text();
-        send_type = $(this).parents("tr").find(".send_type").text();
-        $("#myModalLabel").text("编辑AI关键字");
-        $("#key_word").val(ask);
-
-        if (send_type == 1) {//文本
-            $("#text").prop("checked", true);
-            $(this).attr("checked", true);
-            $("#image").attr("checked", false);
-            $(".content_image").fadeOut(300);
-            $(".upload_img_box").fadeOut(300);
-            $(".content_text").fadeIn(300);
-            $("#key_word_content").text(answer);
-        } else {//图片
-            $("#image").prop("checked", true);
-            $(this).attr("checked", true);
-            $("#text").attr("checked", false);
-            $(".content_text").fadeOut(300);
-            $(".content_image").fadeIn(300);
-            $(".upload_img_box").fadeIn(300);
-            $("#upload_img").attr("src", answer);
-        }
         $("#keyWordModal").modal("show");
     });
 
@@ -235,5 +209,35 @@ $(function () {
             ShowLoading("hide");
             layer.msg(response.errmsg, {icon: 0});
         })
+    });
+
+    // 编辑-
+    $(document).on("click", ".editBtn", function () {
+        var ask = $(this).parents("tr").find(".ask").text();
+        var answer = $(this).parents("tr").find(".answer").text();
+        send_type = $(this).parents("tr").find(".send_type").text();
+        $("#myModalLabel").text("编辑AI关键字");
+        $(".editSubBtn").fadeIn(300);
+        $(".addSubBtn").fadeOut(300);
+        $("#key_word").val(ask);
+
+        if (send_type == 1) {//文本
+            $("#text").prop("checked", true);
+            $(this).attr("checked", true);
+            $("#image").attr("checked", false);
+            $(".content_image").fadeOut(300);
+            $(".upload_img_box").fadeOut(300);
+            $(".content_text").fadeIn(300);
+            $("#key_word_content").text(answer);
+        } else {//图片
+            $("#image").prop("checked", true);
+            $(this).attr("checked", true);
+            $("#text").attr("checked", false);
+            $(".content_text").fadeOut(300);
+            $(".content_image").fadeIn(300);
+            $(".upload_img_box").fadeIn(300);
+            $("#upload_img").attr("src", answer);
+        }
+        $("#keyWordModal").modal("show");
     });
 });
