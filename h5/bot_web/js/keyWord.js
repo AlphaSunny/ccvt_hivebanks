@@ -169,14 +169,17 @@ $(function () {
                 return;
             }
         }
+        ShowLoading("show");
         AddKeyWord(token, ask, answer, send_type, group_id, function (response) {
             if (response.errcode == "0") {
                 layer.msg("添加成功", {icon: 1});
                 $("#keyWordModal").modal("hide");
+                ShowLoading("hide");
                 GetKeyWordListFun(limit, offset);
             }
         }, function (response) {
             $("#keyWordModal").modal("hide");
+            ShowLoading("hide");
             layer.msg(response.errmsg, {icon: 0});
         })
     });
