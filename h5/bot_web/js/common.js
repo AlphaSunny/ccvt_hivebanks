@@ -386,6 +386,20 @@ function AddKeyWord(token, ask, answer, send_type, group_id, suc_func, error_fun
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//编辑ai关键字
+function EditKeyWord(token, ask, answer, send_type, group_id,key_id, suc_func, error_func) {
+    var api_url = 'key_words_edit.php',
+        post_data = {
+            'token': token,
+            'ask': ask,
+            'answer': answer,
+            'send_type': send_type,
+            'group_id': group_id,
+            'key_id': key_id
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 //loading
 var loading = "";
 

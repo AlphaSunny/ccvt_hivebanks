@@ -276,7 +276,7 @@ $(function () {
         ShowLoading("show");
         EditKeyWord(token, ask, answer, send_type, group_id, key_id, function (response) {
             if (response.errcode == "0") {
-                layer.msg("添加成功", {icon: 1});
+                layer.msg("修改成功", {icon: 1});
                 $("#keyWordModal").modal("hide");
                 ShowLoading("hide");
                 GetKeyWordListFun(limit, offset);
