@@ -13,9 +13,10 @@ function curl_get($url){
     return $output;
 }
 
-$url = "https://ccvt_test.fnying.com/api/bot/search_statistical.php?";
-$g = urlencode("group_name=测试2&datetime=2018-12-21");
-$url = $url.$g;
+$url = "https://ccvt_test.fnying.com/api/bot/search_statistical.php";
+$group_name = urlencode("测试2");
+$datetime = urlencode("2018-12-21");
+$url = $url."?group_name='".$group_name."'&datetime=".$datetime;
 echo $url;
 $result = curl_get($url);
 print_r($result);
