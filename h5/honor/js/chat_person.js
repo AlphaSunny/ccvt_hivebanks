@@ -30,6 +30,7 @@ $(function () {
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
+                console.log(data.length);
                 var total = response.total;
                 if (total <= limit + offset) {
                     console.log("没有数据了");
