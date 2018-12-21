@@ -1,0 +1,119 @@
+[
+  {
+    "name": "config",
+    "href": "config.html",
+    "icon": "fa-dashboard"
+  },
+  {
+    "name": "charts",
+    "href": "report.html",
+    "icon": "fa-bar-chart-o"
+  },
+  {
+    "name": "management",
+    "href": "javascript:;",
+    "icon": "fa-sitemap",
+    "second_nav": [
+      {
+        "name": "userList",
+        "href": "userList.html"
+      },
+      {
+        "name": "bitCoinAgencyList",
+        "href": "baList.html"
+      },
+      {
+        "name": "cashAgencyList",
+        "href": "caList.html"
+      }
+    ]
+  },
+  {
+    "name": "transaction",
+    "href": "javascript:;",
+    "icon": "fa-btc",
+    "second_nav": [
+      {
+        "name": "rewardGifts",
+        "href": "rewardTransferList.html"
+      },
+      {
+        "name": "userTransactionRecode",
+        "href": "userTransferList.html"
+      },
+      {
+        "name": "bitCoinAgencyRechargeRecord",
+        "href": "baRechargeList.html"
+      },
+      {
+        "name": "bitCoinAgencyWithdrawRecord",
+        "href": "baWithdrawList.html"
+      },
+      {
+        "name": "cashAgencyRechargeRecord",
+        "href": "caRechargeList.html"
+      },
+      {
+        "name": "cashAgencyWithdrawRecord",
+        "href": "caWithdrawList.html"
+      }
+    ]
+  },
+  {
+    "name": "kyc",
+    "href": "javascript:;",
+    "icon": "fa-lock",
+    "second_nav": [
+      {
+        "name": "userKyc",
+        "href": "userKyc.html"
+      },
+      {
+        "name": "baKyc",
+        "href": "javascript:;",
+        "third_nav": [
+          {
+            "name": "bindKyc",
+            "href": "baBindKyc.html"
+          },
+          {
+            "name": "registrationReviewList",
+            "href": "baRegisterKyc.html"
+          },
+          {
+            "name": "withdrawAddressReviewList",
+            "href": "baWithdrawAddressKyc.html"
+          }
+        ]
+      },
+      {
+        "name": "caKyc",
+        "href": "javascript:;",
+        "third_nav": [
+          {
+            "name": "bindKyc",
+            "href": "caBindKyc.html"
+          },
+          {
+            "name": "registrationReviewList",
+            "href": "caRegisterKyc.html"
+          },
+          {
+            "name": "withdrawAddressReviewList",
+            "href": "caWithdrawAddressKyc.html"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "declarationList",
+    "href": "failureReport.html",
+    "icon": "fa-file-text-o"
+  },
+  {
+    "name": "pressReleases",
+    "href": "pressReleases.html",
+    "icon": "fa-plus"
+  }
+]
