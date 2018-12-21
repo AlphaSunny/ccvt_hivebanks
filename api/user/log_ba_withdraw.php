@@ -59,6 +59,7 @@ foreach ($rows as $row){
     $new_row["base_amount"] = $row["base_amount"] /  get_la_base_unit();
     $new_row["state"] = $row["qa_flag"];
     $data = json_decode($row["tx_detail"],true);
+    $new_row["address"] = $data["bit_address"];
     if(isset($data['transfer_tx_hash']))
     {
         $new_row["transfer_tx_hash"] = $data["transfer_tx_hash"];
