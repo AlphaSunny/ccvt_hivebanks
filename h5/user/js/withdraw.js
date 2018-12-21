@@ -188,7 +188,7 @@ $(function () {
                     '<td title=' + data[i].address + '>' + data[i].address.substr(0, 20) + '</td>' +
                     '<td>' + data[i].tx_time + '</td>' +
                     ba_state +
-                    '<td>' + data[i].transfer_tx_hash + '</td>' +
+                    '<td title='+ data[i].transfer_tx_hash +'>' + data[i].transfer_tx_hash.substr(0, 20) + '</td>' +
                     '</tr>'
             });
             $("#baWithdrawCodesTable").html(tr);
