@@ -100,6 +100,8 @@ if(!$check_pass){
     exit_error('116',pow(2,$row_fail['count_error']));
   } 
 }
+// 登陆密码正确删除log_fail表中该用户的所有数据
+$delect_us_log_fail = delect_us_log_login_fail($row['us_id']);
 
 $timestamp += 2*60*60;
 $des = new Des();
