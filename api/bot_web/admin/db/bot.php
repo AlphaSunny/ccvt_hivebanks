@@ -432,7 +432,7 @@ function get_key_words_list_total()
 function get_key_words_list($offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "select k.*,g.name as group_name from bot_key_words as k LEFT JOIN bot_group as g on k.group_id=g.id WHERE  k.is_del=1 limit $offset , $limit";
+    $sql = "select k.*,g.name as group_name from bot_key_words as k LEFT JOIN bot_group as g on k.group_id=g.id WHERE  k.is_del=0 limit $offset , $limit";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
