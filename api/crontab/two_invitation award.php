@@ -23,7 +23,7 @@ $sql = "select * from us_base WHERE us_nm='101655'";
 $db->query($sql);
 $rows = $db->fetchAll();
 foreach ($rows as $k=>$v){
-    $sql = "select count(us_id) from us_base WHERE invite_code in (select us_nm from us_base WHERE invite_code='{$v['us_nm']}' GROUP BY us_nm)";
+    $sql = "select count(us_id) as count from us_base WHERE invite_code in (select us_nm from us_base WHERE invite_code='{$v['us_nm']}' GROUP BY us_nm)";
     $db->query($sql);
     $data = $db->fetchAll();
     print_r($data);die;
