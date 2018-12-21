@@ -472,7 +472,7 @@ function get_key_words_list($us_id,$offset,$limit)
 {
     $db = new DB_COM();
     $sql = "select k.*,g.name as group_name from bot_key_words as k INNER JOIN bot_group as g on k.group_id=g.id WHERE k.us_id='{$us_id}' AND k.is_del=1 limit $offset , $limit";
-    echo $sql;
+    echo $sql;die;
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
