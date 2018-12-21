@@ -6,19 +6,30 @@ error_reporting(E_ALL | E_STRICT);
 //二级邀请补发
 $ba_id = get_ba_base_info()['ba_id'];
 $db = new DB_COM();
-$sql = "select * from us_base WHERE invite_code!=0";
+//$sql = "select * from us_base WHERE invite_code!=0";
+//$db->query($sql);
+//$rows = $db->fetchAll();
+//foreach ($rows as $k=>$v){
+//    $sql = "select us_id from us_base WHERE us_nm=(select invite_code from us_base WHERE us_nm='{$v['invite_code']}')";
+//    $db->query($sql);
+//    $us_id = $db->getField($sql,'us_id');
+//    if ($us_id){
+//        $time = date('Y-m-d H:i:s');
+//        into_transfer($us_id,'20'*get_la_base_unit(),$time,'2',"二级邀请赠送","two_invite_send","ba-us",$ba_id);
+//    }
+//}
+
+$sql = "select * from us_base WHERE um='101655'";
 $db->query($sql);
 $rows = $db->fetchAll();
 foreach ($rows as $k=>$v){
-    $sql = "select us_id from us_base WHERE us_nm=(select invite_code from us_base WHERE us_nm='{$v['invite_code']}')";
+    $sql = "select * from us_base WHERE invite_code='{$v['us_nm']}' GROUP BY um";
     $db->query($sql);
-    $us_id = $db->getField($sql,'us_id');
-    if ($us_id){
-        $time = date('Y-m-d H:i:s');
-        into_transfer($us_id,'20'*get_la_base_unit(),$time,'2',"二级邀请赠送","two_invite_send","ba-us",$ba_id);
-    }
+    $data = $db->fetchAll();
+    print_r($data);die;
 
 }
+
 echo "OK!";
 
 
