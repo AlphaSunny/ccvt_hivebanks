@@ -81,8 +81,6 @@ $(function () {
                     option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
                 });
                 $("#selectGroupName").html(option);
-                $(".addSubBtn").removeClass("none");
-                $(".editSubBtn").addClass("none");
             }
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2});

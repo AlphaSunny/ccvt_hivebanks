@@ -80,39 +80,6 @@ $.ajax({
     }
 });
 
-function CallRobotApi(api_url, post_data, suc_func, error_func) {
-
-    var api_site = config_api_url + '/api/bot_web/admin/';
-
-    post_data = post_data || {};
-    suc_func = suc_func || function () {
-    };
-    error_func = error_func || function () {
-    };
-
-    $.ajax({
-        url: api_site + api_url,
-        dataType: "jsonp",
-        data: post_data,
-        success: function (response) {
-            // console.log(response);
-            // API return failed
-            if (response.errcode != 0) {
-                error_func(response);
-            } else {
-                // Successfully process data
-                suc_func(response);
-            }
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            // API error exception
-            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
-            // Exception handling
-            error_func(response);
-        }
-    });
-};
-
 // Call the API LA configuration function
 function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/la/admin/configure/';

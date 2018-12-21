@@ -65,8 +65,8 @@ $(function () {
     //添加-显示弹框
     $(".add_key_word_btn").click(function () {
         $("#myModalLabel").text("添加AI关键字");
-        // $(".addSubBtn").removeClass("none");
-        // $(".editSubBtn").addClass("none");
+        $(".addSubBtn").removeClass("none");
+        $(".editSubBtn").addClass("none");
         var is_audit = "2";
         GetGroupListFun(is_audit);
         $("#keyWordModal").modal("show");
@@ -81,8 +81,6 @@ $(function () {
                     option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
                 });
                 $("#selectGroupName").html(option);
-                $(".addSubBtn").removeClass("none");
-                $(".editSubBtn").addClass("none");
             }
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2});
@@ -225,8 +223,8 @@ $(function () {
         send_type = $(this).parents("tr").find(".send_type").text();
         key_id = $(this).parents("tr").find(".id").text();
         $("#myModalLabel").text("编辑AI关键字");
-        // $(".editSubBtn").removeClass("none");
-        // $(".addSubBtn").addClass("none");
+        $(".editSubBtn").removeClass("none");
+        $(".addSubBtn").addClass("none");
         $("#key_word").val(ask);
 
         if (send_type == 1) {//文本
