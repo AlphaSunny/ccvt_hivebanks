@@ -67,6 +67,12 @@ $(function () {
         $(".addSubBtn").fadeIn(300);
         $(".editSubBtn").fadeOut(300);
         var is_audit = "2";
+        GetGroupListFun(is_audit);
+        $("#keyWordModal").modal("show");
+    });
+
+    //获取群列表
+    function GetGroupListFun(is_audit) {
         GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows, option = "";
@@ -80,8 +86,7 @@ $(function () {
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2});
         });
-        $("#keyWordModal").modal("show");
-    });
+    }
 
     //选择文本或者图片
     var send_type = 1;
@@ -238,6 +243,8 @@ $(function () {
             $(".upload_img_box").fadeIn(300);
             $("#upload_img").attr("src", answer);
         }
+        var is_audit = "2";
+        GetGroupListFun(is_audit);
         $("#keyWordModal").modal("show");
     });
 });
