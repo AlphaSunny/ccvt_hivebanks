@@ -14,9 +14,8 @@ function curl_get($url){
 }
 
 $url = "https://ccvt_test.fnying.com/api/bot/search_statistical.php";
-$group_name = urlencode("测试2");
-$datetime = urlencode("2018-12-21");
-$url = $url."?group_name='".$group_name."'&datetime=".$datetime;
+$datetime = base64_encode("2018-12-21");
+$url = $url."?group_name=测试2&datetime=".$datetime;
 echo $url;
 $result = curl_get($url);
 print_r($result);
