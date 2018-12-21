@@ -310,12 +310,15 @@ function GetNewsRecord(token, group_id, status, suc_func, error_func) {
 }
 
 //搜索获取统计列表
-function GetAmount(token, start_time, end_time, suc_func, error_func) {
+function GetAmount(token, start_time, end_time,nickname,limit, offset, suc_func, error_func) {
     var api_url = "iss_records_list.php",
         post_data = {
             "token": token,
             "start_time": start_time,
-            "end_time": end_time
+            "end_time": end_time,
+            "nickname": nickname,
+            "limit": limit,
+            "offset": offset
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
