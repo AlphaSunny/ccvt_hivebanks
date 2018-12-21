@@ -19,11 +19,11 @@ $db = new DB_COM();
 //    }
 //}
 
-$sql = "select * from us_base WHERE um='101655'";
+$sql = "select * from us_base WHERE us_nm='101655'";
 $db->query($sql);
 $rows = $db->fetchAll();
 foreach ($rows as $k=>$v){
-    $sql = "select * from us_base WHERE invite_code='{$v['us_nm']}' GROUP BY um";
+    $sql = "select us_nm from us_base WHERE invite_code='{$v['us_nm']}' GROUP BY us_nm";
     $db->query($sql);
     $data = $db->fetchAll();
     print_r($data);die;
