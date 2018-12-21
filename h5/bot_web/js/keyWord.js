@@ -170,11 +170,13 @@ $(function () {
             }
         }
         AddKeyWord(token, ask, answer, send_type, group_id, function (response) {
-            if(response.errcode == "0"){
-                console.log(response);
+            if (response.errcode == "0") {
+                layer.msg("添加成功", {icon: 1});
+                $("#keyWordModal").modal("hide");
                 GetKeyWordListFun(limit, offset);
             }
         }, function (response) {
+            $("#keyWordModal").modal("hide");
             layer.msg(response.errmsg, {icon: 0});
         })
     });
