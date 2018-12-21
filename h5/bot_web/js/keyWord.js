@@ -62,7 +62,7 @@ $(function () {
     GetKeyWordListFun(limit, offset);
 
     //添加-显示弹框
-    $(".add_key_word_btn").click(function () {
+    $(document).on("click", ".add_key_word_btn,.editBtn", function () {
         $("#myModalLabel").text("添加AI关键字");
         var is_audit = "2";
         GetGroupList(token, is_audit, function (response) {
