@@ -86,6 +86,8 @@ $(function () {
         var ask = $(this).parents("tr").find(".ask").text();
         var answer = $(this).parents("tr").find(".answer").text();
         var send_type = $(this).parents("tr").find(".send_type").text();
+        $("#myModalLabel").text("编辑AI关键字");
+        $("#key_word").val(ask);
 
         if (send_type == 1) {//文本
             $("#text").prop("checked", true);
@@ -104,9 +106,6 @@ $(function () {
             $(".upload_img_box").fadeIn(300);
             $("#upload_img").attr("src", answer);
         }
-
-        $("#myModalLabel").text("编辑AI关键字");
-        $("#key_word").val(ask);
         $("#keyWordModal").modal("show");
     });
 
