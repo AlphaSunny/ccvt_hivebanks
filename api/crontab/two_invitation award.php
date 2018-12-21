@@ -29,7 +29,7 @@ foreach ($rows as $k=>$v){
 
     if ($data['count']>0){
         $time = date('Y-m-d H:i:s');
-        into_transfer($v['us_id'],$data['count']*get_la_base_unit(),$time,'2',"二级邀请赠送","two_invite_send","ba-us",$ba_id);
+        into_transfer($v['us_id'],$data['count']*"20"*get_la_base_unit(),$time,'2',"二级邀请赠送","two_invite_send","ba-us",$ba_id);
     }
 
 
