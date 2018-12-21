@@ -85,10 +85,10 @@ $(function () {
 
 
     // 用户输入地址的正则判断
-    // $('.withdrawAddressInput').focus(function () {
-    //     $('.address_check').fadeOut('fast');
-    // });
-    $('.withdrawAddressInput').bind("input, porpertychange", function () {
+    $('.withdrawAddressInput').focus(function () {
+        $('.address_check').fadeOut('fast');
+    });
+    $('.withdrawAddressInput').blur(function () {
         var ethAddress = $('.withdrawAddressInput').val();
         if (ethAddress.length == 0) {
             $('.address_check').fadeIn('fast');
