@@ -387,7 +387,7 @@ function AddKeyWord(token, ask, answer, send_type, group_id, suc_func, error_fun
 }
 
 //编辑ai关键字
-function EditKeyWord(token, ask, answer, send_type, group_id,key_id, suc_func, error_func) {
+function EditKeyWord(token, ask, answer, send_type, group_id, key_id, suc_func, error_func) {
     var api_url = 'key_words_edit.php',
         post_data = {
             'token': token,
@@ -395,6 +395,16 @@ function EditKeyWord(token, ask, answer, send_type, group_id,key_id, suc_func, e
             'answer': answer,
             'send_type': send_type,
             'group_id': group_id,
+            'key_id': key_id
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
+//删除ai关键字
+function DelKeyWord(token, key_id, suc_func, error_func) {
+    var api_url = 'key_words_del.php',
+        post_data = {
+            'token': token,
             'key_id': key_id
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);

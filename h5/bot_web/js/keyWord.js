@@ -286,5 +286,28 @@ $(function () {
             ShowLoading("hide");
             layer.msg(response.errmsg, {icon: 0});
         })
-    })
+    });
+
+    //删除关键词
+    $(document).on("click", ".delBtn", function () {
+        var key_id = $(this).parents("tr").find(".id").text();
+        layer.confirm('确定删除？', {
+            title: "重要提示",
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            DelKeyWordFun(key_id);
+        }, function () {
+        });
+    });
+
+    //确认删除关键词
+    function DelKeyWordFun(key_id) {
+        DelKeyWord(token, key_id, function (response) {
+            if (response.errcode == "0") {
+                layer.msg("删除成功", {icon: 1});
+            }
+        }, function (response) {
+            layer.msg(response.errmsg, {icon: 2})
+        })
+    }
 });
