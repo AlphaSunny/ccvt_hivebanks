@@ -85,22 +85,20 @@ $(function () {
 
 
     // 用户输入地址的正则判断
-    $('.withdrawAddressInput').focus(function () {
-        $('.address_check').fadeOut('fast');
-    });
-    $('.withdrawAddressInput').blur(function () {
+    // $('.withdrawAddressInput').focus(function () {
+    //     $('.address_check').fadeOut('fast');
+    // });
+    $('.withdrawAddressInput').bind("input, porpertychange", function () {
         var ethAddress = $('.withdrawAddressInput').val();
-        if (ethAddress.length == 0)
-        {
+        if (ethAddress.length == 0) {
             $('.address_check').fadeIn('fast');
         }
-        else if(!ethAddressCheck(ethAddress))
-        {
+        else if (!ethAddressCheck(ethAddress)) {
             $('.address_check').fadeIn('fast');
         } else {
             $('.address_check').fadeOut('fast');
         }
-    })
+    });
 
     //Manually add an address
     // $('.manualAddAddress').click(function () {
@@ -221,7 +219,8 @@ $(function () {
     }
 
     $('.phoneCodeBtn').click(function () {
-        var $this = $(this), cfm_code = $("#addressPhoneCode").val(), bind_type = '5', phoneArr = phone_bind_info.split('-'),
+        var $this = $(this), cfm_code = $("#addressPhoneCode").val(), bind_type = '5',
+            phoneArr = phone_bind_info.split('-'),
             country_code = phoneArr[0], cellphone = phoneArr[1];
         setTime($this);
         ShowLoading("show");
