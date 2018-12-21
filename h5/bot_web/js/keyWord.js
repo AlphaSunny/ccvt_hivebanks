@@ -146,36 +146,36 @@ $(function () {
         }
         src = UpLoadImg(formData);
     });
-});
 
-//添加关键字
-$(".addSubBtn").click(function () {
-    var ask = $("#key_word").val();
-    var group_id = $("#selectGroupName").val();
-    var answer = "";
-    //文本内容判断
-    if (send_type == 1) {
-        answer = $("#key_word_content").val();
-        if (answer.length <= 0) {
-            layer.msg("请输入内容", {icon: 0});
-            return;
+    //添加关键字
+    $(".addSubBtn").click(function () {
+        var ask = $("#key_word").val();
+        var group_id = $("#selectGroupName").val();
+        var answer = "";
+        //文本内容判断
+        if (send_type == 1) {
+            answer = $("#key_word_content").val();
+            if (answer.length <= 0) {
+                layer.msg("请输入内容", {icon: 0});
+                return;
+            }
         }
-    }
 
-    //图片内容判断
-    if (send_type == 2) {
-        answer = src;
-        if (!src) {
-            layer.msg("请选择图片", {icon: 0});
-            return;
+        //图片内容判断
+        if (send_type == 2) {
+            answer = src;
+            if (!src) {
+                layer.msg("请选择图片", {icon: 0});
+                return;
+            }
         }
-    }
-    AddKeyWord(token, ask, answer, send_type, group_id, function (response) {
-        if(response.errcode == "0"){
-            console.log(response);
-            GetKeyWordListFun(limit, offset);
-        }
-    }, function (response) {
-        layer.msg(response.errmsg, {icon: 0});
-    })
+        AddKeyWord(token, ask, answer, send_type, group_id, function (response) {
+            if(response.errcode == "0"){
+                console.log(response);
+                GetKeyWordListFun(limit, offset);
+            }
+        }, function (response) {
+            layer.msg(response.errmsg, {icon: 0});
+        })
+    });
 });
