@@ -293,7 +293,7 @@ function DelTask(token, timer_id, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
-//获取群主列表
+//获取群列表
 function GetGroupList(token, is_audit, suc_func, error_func) {
     var api_url = "group_list.php",
         post_data = {

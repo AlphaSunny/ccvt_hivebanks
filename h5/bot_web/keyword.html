@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/js/layer/layer.css">
+    <link rel="stylesheet" href="../assets/css/jquery.pagination.css">
     <link rel="stylesheet" href="css/common.css">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -106,6 +107,14 @@
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
+                        <label for="groupName" class="col-sm-2 control-label">群名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="timer_id" class="none">
+                            <input type="text" readonly class="form-control" id="groupName">
+                            <select class="form-control" id="selectGroupName"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="key_word" class="col-sm-2 control-label">关键字</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" value="关键字" id="key_word">
@@ -134,8 +143,7 @@
 <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../assets/js/layer/layer.js"></script>
 <script type="text/javascript" src="../assets/js/pace.min.js"></script>
-<script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.pagination.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/slide_nav.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
