@@ -213,7 +213,7 @@ $(function () {
             render: "canvas",
             text: url,
             width: 95,
-            height: 95
+            height: 90
         });
         //设置邀请图片
         var qrImg = new Image();
