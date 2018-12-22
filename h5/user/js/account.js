@@ -228,17 +228,20 @@ $(function () {
     // $(".invite_img").attr("src", "img/inviteImg.jpg?t=" + Math.random());
     $(".inviteBtn").click(function () {
         ShowLoading("show");
-        //找到邀请图片
-        // var invite_img = $("#base64Img");
+        //设置邀请图片
         var qrImg = new Image();
         qrImg.crossOrigin = "*";
         qrImg.src = "img/inviteImg.jpg?t=" + Math.random();
         //找到画布
         var canvas = $("#inviteImg")[0];
         var ctx = canvas.getContext("2d");
+        //找到二维码
+        var qr = $("#qrcode canvas")[0];
+        //图片加载完成时
         qrImg.onload = function () {
             ShowLoading("hide");
             ctx.drawImage(qrImg,0, 0, 533, 800);
+            ctx.drawImage(qr,0, 0, 533, 800);
         };
 
         // var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
