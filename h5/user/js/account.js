@@ -213,8 +213,8 @@ $(function () {
 
         $('#qrcode').qrcode({
             text: url,
-            width: 300,
-            height: 300
+            width: 400,
+            height: 400
         });
 
         //get canvas qr
