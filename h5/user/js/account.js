@@ -229,10 +229,11 @@ $(function () {
     $(".inviteBtn").click(function () {
         ShowLoading("show");
         //找到邀请图片
-        var invite_img = $(".invite_img");
+        var invite_img = $("#base64Img");
         //找到画布
         var canvas = $("#inviteImg")[0];
         var ctx = canvas.getContext("2d");
+        console.log(invite_img);
         console.log(ctx);
         invite_img.onload = function () {
             ShowLoading("hide");
