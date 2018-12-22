@@ -233,6 +233,7 @@ $(function () {
         //找到画布
         var canvas = $("#inviteImg")[0];
         var ctx = canvas.getContext("2d");
+        console.log(ctx);
         invite_img.onload = function () {
             ShowLoading("hide");
             console.log(invite_img);
