@@ -227,7 +227,7 @@ $(function () {
         //图片加载完成时
         qrImg.onload = function () {
             ctx.drawImage(qrImg,0, 0, 533, 800);
-            ctx.drawImage(qr,65, 580);
+            ctx.drawImage(qr,65, 590);
             var base64 = canvas.toDataURL("images/png");//转换URL
             $("#base64Img").attr("src", base64);
             $(".inviteImgBox").remove();
