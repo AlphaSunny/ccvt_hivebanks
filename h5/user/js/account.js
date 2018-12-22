@@ -238,7 +238,7 @@ $(function () {
         var ctx = canvas.getContext("2d");
         qrImg.onload = function () {
             ShowLoading("hide");
-            ctx.drawImage(0, 0, 533, 800);
+            ctx.drawImage(qrImg,0, 0, 533, 800);
         };
 
         // var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
