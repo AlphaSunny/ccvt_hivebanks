@@ -203,17 +203,7 @@ $(function () {
     };
     GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url);
 
-
-    // $('#qrcode1').qrcode({
-    //     render: "canvas",
-    //     text: getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text(),
-    //     foreground: "#C00",
-    //     background: "#FFF",
-    //     width: 100,
-    //     height: 100
-    // });
-
-    //显示二维码
+    //设置生成二维码
     var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
     $(".inviteInput").val(url);
     $('#qrcode').qrcode({
@@ -224,8 +214,6 @@ $(function () {
     });
 
     //invite
-
-    // $(".invite_img").attr("src", "img/inviteImg.jpg?t=" + Math.random());
     $(".inviteBtn").click(function () {
         ShowLoading("show");
         //设置邀请图片
@@ -239,9 +227,12 @@ $(function () {
         var qr = $("#qrcode canvas")[0];
         //图片加载完成时
         qrImg.onload = function () {
-            ShowLoading("hide");
             ctx.drawImage(qrImg,0, 0, 533, 800);
             ctx.drawImage(qr,0, 0);
+            var base64 = ctx.toDataURL("images/png");//转换URL
+            $("#base64Img").attr("src", base64);
+            $(".inviteImgBox, #qrcode").remove();
+            ShowLoading("hide");
         };
 
         // var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
