@@ -203,19 +203,18 @@ $(function () {
     };
     GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url);
 
-    //设置生成二维码
-    var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
-    $(".inviteInput").val(url);
-    $('#qrcode').qrcode({
-        render: "canvas",
-        text: url,
-        width: 100,
-        height: 100
-    });
-
     //invite
     $(".inviteBtn").click(function () {
         ShowLoading("show");
+        //设置生成二维码
+        var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
+        $(".inviteInput").val(url);
+        $('#qrcode').qrcode({
+            render: "canvas",
+            text: url,
+            width: 100,
+            height: 100
+        });
         //设置邀请图片
         var qrImg = new Image();
         qrImg.crossOrigin = "*";
