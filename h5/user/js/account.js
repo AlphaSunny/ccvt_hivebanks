@@ -204,6 +204,15 @@ $(function () {
     GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url);
 
 
+    $('#qrcode1').qrcode({
+        render: "canvas",
+        text: getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text(),
+        foreground: "#C00",
+        background: "#FFF",
+        width: 400,
+        height: 400
+    });
+
     //invite
     $(".invite_img").attr("src", "img/low_inviteImg.jpg?t=" + Math.random());
     $(".inviteBtn").click(function () {
@@ -214,10 +223,8 @@ $(function () {
         $('#qrcode1').qrcode({
             render: "canvas",
             text: url,
-            foreground: "#C00",
-            background: "#FFF",
-            width: 400,
-            height: 400
+            width: 200,
+            height: 200
         });
 
         //get canvas qr
