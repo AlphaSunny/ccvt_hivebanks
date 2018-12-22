@@ -212,7 +212,10 @@ $(function () {
         $(".inviteInput").val(url);
 
         $('#qrcode1').qrcode({
+            render: "canvas",
             text: url,
+            foreground: "#C00",
+            background: "#FFF",
             width: 400,
             height: 400
         });
