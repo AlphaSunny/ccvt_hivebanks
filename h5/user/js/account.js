@@ -229,15 +229,16 @@ $(function () {
     $(".inviteBtn").click(function () {
         ShowLoading("show");
         //找到邀请图片
-        var invite_img = $("#base64Img");
+        // var invite_img = $("#base64Img");
+        var qrImg = new Image();
+        qrImg.crossOrigin = "*";
+        qrImg.src = "img/inviteImg.jpg?t=" + Math.random();
         //找到画布
         var canvas = $("#inviteImg")[0];
         var ctx = canvas.getContext("2d");
-        console.log(invite_img);
-        console.log(ctx);
-        invite_img.onload = function () {
+        qrImg.onload = function () {
             ShowLoading("hide");
-            console.log(invite_img);
+            console.log(qrImg);
         };
 
         // var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
