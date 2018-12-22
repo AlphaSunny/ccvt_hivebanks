@@ -214,7 +214,7 @@ $(function () {
     });
 
     //invite
-    $(".invite_img").attr("src", "img/inviteImg.jpg?t=" + Math.random());
+    // $(".invite_img").attr("src", "img/inviteImg.jpg?t=" + Math.random());
     $(".inviteBtn").click(function () {
         ShowLoading("show");
         var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
@@ -234,6 +234,7 @@ $(function () {
         var canvas = $("#inviteImg")[0];
         var content = canvas.getContext("2d");
         var invite_img = $(".invite_img");
+        console.log(invite_img);
         // var qrImg = new Image();
         // qrImg.crossOrigin = "*";
         // qrImg.src = "img/inviteImg.jpg?t=" + Math.random();
