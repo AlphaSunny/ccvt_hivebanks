@@ -204,48 +204,69 @@ $(function () {
     GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url);
 
 
-    $('#qrcode1').qrcode({
+    // $('#qrcode1').qrcode({
+    //     render: "canvas",
+    //     text: getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text(),
+    //     foreground: "#C00",
+    //     background: "#FFF",
+    //     width: 100,
+    //     height: 100
+    // });
+
+    //显示二维码
+    var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
+    $(".inviteInput").val(url);
+    $('#qrcode').qrcode({
         render: "canvas",
-        text: getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text(),
-        foreground: "#C00",
-        background: "#FFF",
+        text: url,
         width: 100,
         height: 100
     });
 
     //invite
+
     // $(".invite_img").attr("src", "img/inviteImg.jpg?t=" + Math.random());
     $(".inviteBtn").click(function () {
         ShowLoading("show");
-        var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
-        $(".inviteInput").val(url);
+        //找到邀请图片
+        var invite_img = $(".invite_img");
+        //找到画布
+        var canvas = $("#inviteImg")[0];
+        var ctx = canvas.getContext("2d");
+        invite_img.onload = function () {
+            ShowLoading("hide");
+            console.log(invite_img);
+        };
 
-        $('#qrcode').qrcode({
-            render: "canvas",
-            text: url,
-            width: 100,
-            height: 100
-        });
+        // var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
+        // $(".inviteInput").val(url);
+        //
+        // $('#qrcode').qrcode({
+        //     render: "canvas",
+        //     text: url,
+        //     width: 100,
+        //     height: 100
+        // });
 
         //get canvas qr
-        var qrctx = $("#qrcode canvas")[0];
-
-        //canvas invite img
-        var canvas = $("#inviteImg")[0];
-        var content = canvas.getContext("2d");
-        var invite_img = $(".invite_img");
-        console.log(invite_img);
-        // var qrImg = new Image();
-        // qrImg.crossOrigin = "*";
-        // qrImg.src = "img/inviteImg.jpg?t=" + Math.random();
-        invite_img.onload = function () {
-            content.drawImage(invite_img, 0, 0, 533, 800);//左边距/上边距/宽高
-            content.drawImage(qrctx, 100, 650);//二维码位置 左/上
-            // var base64 = canvas.toDataURL("images/png");//转成URL
-            // $("#base64Img").attr("src", base64).fadeIn(500);
-            // $(".inviteImgBox, #qrcode").remove();
-            ShowLoading("hide");
-        };
+        // var qrctx = $("#qrcode canvas")[0];
+        //
+        // //canvas invite img
+        // var canvas = $("#inviteImg")[0];
+        // var content = canvas.getContext("2d");
+        // var invite_img = $(".invite_img");
+        // console.log(invite_img);
+        // // var qrImg = new Image();
+        // // qrImg.crossOrigin = "*";
+        // // qrImg.src = "img/inviteImg.jpg?t=" + Math.random();
+        // invite_img.onload = function () {
+        //     content.drawImage(invite_img, 0, 0, 533, 800);//左边距/上边距/宽高
+        //     content.drawImage(qrctx, 100, 650);//二维码位置 左/上
+        //     // var base64 = canvas.toDataURL("images/png");//转成URL
+        //     // $("#base64Img").attr("src", base64).fadeIn(500);
+        //     // $(".inviteImgBox, #qrcode").remove();
+        //     ShowLoading("hide");
+        // };
     });
 
     //copy invite address
