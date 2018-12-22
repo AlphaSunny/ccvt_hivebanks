@@ -209,8 +209,8 @@ $(function () {
         text: getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text(),
         foreground: "#C00",
         background: "#FFF",
-        width: 400,
-        height: 400
+        width: 100,
+        height: 100
     });
 
     //invite
