@@ -220,7 +220,7 @@ $(function () {
         var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
         $(".inviteInput").val(url);
 
-        $('#qrcode1').qrcode({
+        $('#qrcode').qrcode({
             render: "canvas",
             text: url,
             width: 200,
