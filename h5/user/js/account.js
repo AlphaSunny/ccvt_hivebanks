@@ -214,7 +214,7 @@ $(function () {
     });
 
     //invite
-    $(".invite_img").attr("src", "img/low_inviteImg.jpg?t=" + Math.random());
+    $(".invite_img").attr("src", "img/inviteImg.jpg?t=" + Math.random());
     $(".inviteBtn").click(function () {
         ShowLoading("show");
         var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
@@ -233,11 +233,12 @@ $(function () {
         //canvas invite img
         var canvas = $("#inviteImg")[0];
         var content = canvas.getContext("2d");
-        var qrImg = new Image();
-        qrImg.crossOrigin = "*";
-        qrImg.src = "img/inviteImg.jpg?t=" + Math.random();
-        qrImg.onload = function () {
-            content.drawImage(this, 0, 0, 533, 800);//设置宽高
+        var invite_img = $(".invite_img");
+        // var qrImg = new Image();
+        // qrImg.crossOrigin = "*";
+        // qrImg.src = "img/inviteImg.jpg?t=" + Math.random();
+        invite_img.onload = function () {
+            content.drawImage(invite_img, 0, 0, 533, 800);//设置宽高
             content.drawImage(qrctx, 100, 650);//二维码位置 左/上
             // var base64 = canvas.toDataURL("images/png");//转成URL
             // $("#base64Img").attr("src", base64).fadeIn(500);
