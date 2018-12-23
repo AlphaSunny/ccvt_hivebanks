@@ -106,7 +106,7 @@ p.chat_item_name:after {
 .chat_search_box .chat_search_input {
     border: unset;
     background: transparent;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid #000000;
     width: 50%;
     outline: unset;
     height: 3.5rem;
