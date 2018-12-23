@@ -46,17 +46,10 @@ $(function () {
                 if (data.length <= 0 && offset <= 0) {
                     console.log(data.length + "ggg");
                     $(".no_more_chat").fadeIn();
-                    // $(".chat_content").css("height", "100%");
                     $(".none_weChat,.chat_item_ul").fadeOut();
                 } else {
                     $(".no_more_chat").fadeOut();
-                    // $(".chat_content").css("height", "auto");
                     $(".none_weChat,.chat_item_ul").fadeIn();
-                }
-                if (data.length <= 9) {
-                    // $('.chat_content').css("height", "100%");
-                }else {
-                    // $('.chat_content').css("height", "auto");
                 }
 
                 $.each(data, function (i, val) {
