@@ -99,7 +99,7 @@ $(function () {
     });
 
     //进行搜索
-    $(".chat_search_input").on("input porpertychange", function () {
+    $(".chat_search_input").change("input porpertychange", function () {
         console.log("输入框在变");
     });
 
