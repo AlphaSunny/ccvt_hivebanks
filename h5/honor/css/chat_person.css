@@ -127,7 +127,8 @@ p.chat_item_name:after {
     height: 4rem;
     border-radius: 5px;
     background: transparent;
-    color: #ffffff;
+    /*color: #ffffff;*/
+    color: #000000;
     outline: unset;
     cursor: pointer;
     line-height: 4rem;
