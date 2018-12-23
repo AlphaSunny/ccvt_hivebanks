@@ -52,6 +52,8 @@ $(function () {
                 }
                 if (data.length <= 9) {
                     $('.chat_content').css("height", "100%");
+                }else {
+                    $('.chat_content').css("height", "auto");
                 }
 
                 $.each(data, function (i, val) {
