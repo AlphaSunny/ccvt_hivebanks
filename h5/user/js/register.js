@@ -1,4 +1,18 @@
 $(function () {
+    //判断当前是否登录
+    function GetLoginCookie(name) {
+        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        if (arr != null) {
+            return unescape(arr[2]);
+        } else {
+            return null;
+        }
+    }
+    var user_token = GetLoginCookie('user_token');
+    if (user_token) {
+        window.location.href = "account.html";
+    }
+
     //get invite
     var invite_code = GetQueryString("invite_code");
     var wechat = GetQueryString("wechat");
