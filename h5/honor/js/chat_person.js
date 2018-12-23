@@ -107,7 +107,7 @@ $(function () {
     $(".close_icon").click(function () {
         $(".chat_search_box").fadeOut();
         $(".title_search_box").fadeIn();
-        $(".search_input").val("");
+        $(".chat_search_input").val("");
         search_content = "";
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
