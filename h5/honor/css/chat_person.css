@@ -61,6 +61,7 @@ p.chat_item_name:after {
     display: flex;
     align-items: flex-start;
     padding: 0 10px;
+    margin-bottom: 5%;
 
 }
 
@@ -68,9 +69,9 @@ p.chat_item_name:after {
 /*margin-bottom: 5%;*/
 /*}*/
 
-.chat_item:not(:last-child) {
-    margin-bottom: 5%;
-}
+/*.chat_item:not(:last-child) {*/
+    /*margin-bottom: 5%;*/
+/*}*/
 
 .chat_item_content_box {
     padding-left: 0.5%;
