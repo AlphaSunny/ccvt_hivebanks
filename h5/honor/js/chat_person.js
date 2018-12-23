@@ -38,7 +38,6 @@ $(function () {
                 if (total <= limit + offset) {
                     $(".none_weChat").text("暂无更多聊天内容");
                     is_content = 0;
-                    console.log(is_content);
                 } else {
                     $(".none_weChat").text("下拉刷新加载更多内容");
                 }
@@ -99,7 +98,7 @@ $(function () {
     });
 
     //进行搜索
-    $(".chat_search_input").change("input porpertychange", function () {
+    $(".chat_search_input").bind("input porpertychange", function () {
         console.log("输入框在变");
     });
 
@@ -125,7 +124,6 @@ $(function () {
     //scroll
     $("#chat_box").scroll(function () {
         if (is_content == 0) {
-            console.log(is_content);
             return;
         }
         var height = $(this).scrollTop();
