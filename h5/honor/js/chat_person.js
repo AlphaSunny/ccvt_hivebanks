@@ -21,6 +21,8 @@ $(function () {
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
+    var is_content = 1;
+
     function GetWeChatFun(wechat, group_id, search_content, limit, offset) {
         var bot_content = "", li = "";
         var index = layer.load(1, {
@@ -32,20 +34,18 @@ $(function () {
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
-                console.log(data.length);
                 var total = response.total;
                 if (total <= limit + offset) {
-                    console.log("没有数据了");
                     $(".none_weChat").text("暂无更多聊天内容");
+                    is_content = 0;
                 } else {
-                    console.log("还有");
                     $(".none_weChat").text("下拉刷新加载更多内容");
                 }
 
                 if (data.length <= 0 && offset <= 0) {
                     $('.chat_content').html("<h1 style='text-align: center;color:#ffffff'>暂无聊天内容</h1>").css("height", "100%");
                 }
-                if(total <= 9){
+                if (total <= 9) {
                     $('.chat_content').css("height", "100%");
                 }
 
@@ -73,7 +73,7 @@ $(function () {
 
                 if (offset <= 0) {
                     $(".chat_item_ul").html(li);
-                }else {
+                } else {
                     $(".chat_item_ul").prepend(li);
                 }
 
@@ -119,6 +119,9 @@ $(function () {
 
     //scroll
     $("#chat_box").scroll(function () {
+        if(is_content == 0){
+            return;
+        }
         var height = $(this).scrollTop();
         if (height <= 0) {
             offset += limit;
