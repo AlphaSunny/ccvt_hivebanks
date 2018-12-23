@@ -34,7 +34,6 @@ $(function () {
             layer.close(index);
             if (response.errcode == "0") {
                 var data = response.rows;
-                console.log(data.length);
                 var total = response.total;
                 if (total <= limit + offset) {
                     $(".none_weChat").text("暂无更多聊天内容");
@@ -44,7 +43,6 @@ $(function () {
                 }
 
                 if (data.length <= 0 && offset <= 0) {
-                    console.log(data.length + "ggg");
                     $(".no_more_chat").fadeIn();
                     $(".none_weChat,.chat_item_ul").fadeOut();
                 } else {
@@ -72,7 +70,6 @@ $(function () {
                         "</li>";
                 });
                 var pre_height = $("#chat_content")[0].scrollHeight;
-                // console.log($("#chat_content")[0].scrollHeight);
 
                 if (offset <= 0) {
                     $(".chat_item_ul").html(li);
@@ -81,7 +78,6 @@ $(function () {
                 }
 
                 var now_height = $("#chat_content")[0].scrollHeight;
-                // console.log("now_height=" + now_height);
                 //默认在最底部
                 if (offset == 0) {
                     $("#chat_box").scrollTop($("#chat_content")[0].scrollHeight);
@@ -102,18 +98,7 @@ $(function () {
 
     //进行搜索
     $(".chat_search_input").bind("input porpertychange", function () {
-        console.log("输入框在变");
         search_content = $(".chat_search_input").val();
-        offset = 0;
-        GetWeChatFun(wechat, group_id, search_content, limit, offset);
-    });
-
-    $(".chat_search_btn").click(function () {
-        search_content = $(".chat_search_input").val();
-        if (search_content.length <= 0) {
-            layer.msg("请输入搜索内容");
-            return;
-        }
         offset = 0;
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
