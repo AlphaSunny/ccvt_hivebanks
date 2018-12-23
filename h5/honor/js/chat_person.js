@@ -43,7 +43,7 @@ $(function () {
                 }
 
                 if (data.length <= 0 && offset <= 0) {
-                    $('.chat_content').html("<h1 style='text-align: center;color:#ffffff'>暂无聊天内容</h1>").css("height", "100%");
+                    $('.chat_content').html("<h1 style='text-align: center;color:#000000'>暂无聊天内容</h1>").css("height", "100%");
                 }
                 if (total <= 9) {
                     $('.chat_content').css("height", "100%");
