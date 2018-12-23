@@ -7,6 +7,7 @@ $(function () {
         group_id = null;
         group_name = null;
         $(".person_name").text(wechat);
+        offset = 0;
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
@@ -16,6 +17,7 @@ $(function () {
         group_id = $("#title").val();
         group_name = $("#title option:selected").text();
         $(".person_name").text(group_name);
+        offset = 0;
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
