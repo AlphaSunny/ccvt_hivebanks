@@ -116,7 +116,7 @@ p.chat_item_name:after {
     height: 3.5rem;
     padding: 5px;
     caret-color: #ffffff;
-    color: #ffffff;
+    color: #000000;
     font-size: 1.6rem;
     border-bottom-left-radius: unset;
     border-bottom-right-radius: unset;
