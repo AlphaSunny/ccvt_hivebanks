@@ -186,7 +186,7 @@ p.chat_item_name:after {
         height: 3rem;
         border-radius: 0;
         border-bottom-width: 1px;
-        color: white;
+        color: #000000;
     }
 
     .chat_search_box .chat_search_btn {
