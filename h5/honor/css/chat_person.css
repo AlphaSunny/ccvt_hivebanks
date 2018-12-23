@@ -62,12 +62,7 @@ p.chat_item_name:after {
     align-items: flex-start;
     padding: 0 10px;
     margin-bottom: 5%;
-
 }
-
-/*.chat_item {*/
-/*margin-bottom: 5%;*/
-/*}*/
 
 /*.chat_item:not(:last-child) {*/
     /*margin-bottom: 5%;*/
