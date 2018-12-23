@@ -99,6 +99,10 @@ $(function () {
     });
 
     //进行搜索
+    $(".chat_search_input").on("input", "porpertychange", function () {
+        console.log("输入框在变");
+    });
+
     $(".chat_search_btn").click(function () {
         search_content = $(".chat_search_input").val();
         if (search_content.length <= 0) {
@@ -120,7 +124,7 @@ $(function () {
 
     //scroll
     $("#chat_box").scroll(function () {
-        if(is_content == 0){
+        if (is_content == 0) {
             console.log(is_content);
             return;
         }
