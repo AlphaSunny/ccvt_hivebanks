@@ -100,6 +100,9 @@ $(function () {
     //进行搜索
     $(".chat_search_input").bind("input porpertychange", function () {
         console.log("输入框在变");
+        search_content = $(".chat_search_input").val();
+        offset = 0;
+        GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
     $(".chat_search_btn").click(function () {
