@@ -57,14 +57,14 @@ if ($bit_type != BASE_CURRENCY){
 }
 
 $us_row = get_us_base_info($us_id);
-if ($us_row["base_amount"] < $base_amount * get_la_base_unit())
+if ($us_row["base_amount"] < ($base_amount + 500) * get_la_base_unit())
     exit_error("127", "用户余额不足");
 
 
 $data = array();
 $data["us_id"] = $us_id;
 $data["ba_id"] = $ba_id;
-$data["base_amount"] = $base_amount * get_la_base_unit();
+$data["base_amount"] = ($base_amount + 500) * get_la_base_unit();
 $data["tx_type"] = "2";
 $data["bit_amount"] = $bit_amount;
 $data["tx_time"] = time();
