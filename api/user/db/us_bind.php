@@ -78,6 +78,8 @@ function ins_bind_user_reg_weixin_group_info($us_id,$wechat,$group_id)
         return false;
     }
 
+    return true;
+
 
 }
 //======================================

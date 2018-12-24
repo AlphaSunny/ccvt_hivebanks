@@ -207,7 +207,7 @@ $data_base['us_account'] = "ccvt_".$cellphone;
 $data_base['reg_ip'] = get_int_ip();
 $ret = ins_base_user_reg_base_info($data_base);
 $bind_phone = ins_bind_user_reg_bind_info($data_bind);
-$bind_phone = ins_bind_user_reg_weixin_group_info($us_id,$wechat,$group_id);
+$bind_weixin_group = ins_bind_user_reg_weixin_group_info($us_id,$wechat,$group_id);
 $bind_pass = ins_bind_user_reg_bind_info($data_bind_pass);
 //已使用的验证码消除使用权限
 $userd_salt =  upd_us_log_bind_variable($variable_code , $cellphone_num);
@@ -216,7 +216,7 @@ if(!$userd_salt){
 }
 
 // 判断用户绑定信息和用户基本信息是否都写入成功
-if($ret && $bind_phone && $bind_pass)
+if($ret && $bind_phone && $bind_pass && $bind_weixin_group)
 {
   exit_ok();
 }else{
