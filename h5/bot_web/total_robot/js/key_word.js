@@ -5,7 +5,7 @@ $(function () {
     var limit = 10, offset = 0;
 
     function GetKeyWordListFun(limit, offset) {
-        var tr = "", totalPage = "", count = "";
+        var tr = "", totalPage = "", count = "", weekDay = "";
         GetKeyWordList(token, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
@@ -25,11 +25,13 @@ $(function () {
                 }
 
                 $.each(data, function (i, val) {
+                    var weekDay_arr = "";
+                    weekDay_arr = data[i].tx_content.split("-");
+                    console.log(weekDay_arr);
                     tr += "<tr>" +
                         "<td class='ask' name=" + data[i].id + ">" + data[i].ask + "</td>" +
                         "<td class='answer'>" + data[i].answer + "</td>" +
-                        // "<td class='group_name'>" + data[i].group_name + "</td>" +
-                        "<td class='ctime'>" + data[i].ctime + "</td>" +
+                        "<td class='ctime'>" + weekDay + "<span>" + data[i].ctime + "</span></td>" +
                         "<td class='send_type none'>" + data[i].send_type + "</td>" +
                         "<td class='id none'>" + data[i].id + "</td>" +
                         "<td>" +
