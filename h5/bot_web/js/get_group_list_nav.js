@@ -1,9 +1,26 @@
 $(function () {
     var token = GetCookie("robot_token"), is_audit = "";
 
-    GetGroupList(token, is_audit, function (response) {
-        console.log(response);
-    }, function (response) {
-        layer.msg("请稍后再试");
-    })
+    function GetGroupListNav() {
+        var li = "";
+        GetGroupList(token, is_audit, function (response) {
+            if (response.errcode == "0") {
+                var data = response.rows;
+                $.each(data, function () {
+                    li += "<li>" +
+                        "<a class='app-menu__item' href='javascript:;'>" +
+                        "<i class='app-menu__icon fa-circle-thin'></i>" +
+                        "<span class='app-menu__label'>" + data[i].name + "</span>" +
+                        "</a>" +
+                        "</li>"
+                });
+                $(".app-menu").append(li);
+            }
+        }, function (response) {
+            layer.msg("请稍后再试");
+        })
+    }
+
+    GetGroupListNav();
+
 });
