@@ -78,18 +78,35 @@ $(function () {
         }
     }
 
-    // $(document).on("click", ".to_group_link", function () {
-    //     var group_name = $(this).text();
-    //     var is_admin_del = $(this).attr("is_admin_del"),//总后台是否开启群运行
-    //         id = $(this).attr("id"),//群id
-    //         is_del = $(this).attr("is_del"),//是否开启运行状态
-    //         is_flirt = $(this).attr("is_flirt"),//是否开启调戏状态
-    //         is_welcome = $(this).attr("is_welcome"),//是否开启欢迎语
-    //         bind_account_notice = $(this).attr("bind_account_notice"),//是否开启未绑定ccvt通知
-    //         send_address = $(this).attr("send_address"),//是否开启早八晚十推送
-    //         welcome = $(this).attr("welcome");//是否开启早八晚十推送
-    //     window.location.href = "group_info.html?group_name=" + encodeURI(encodeURI(group_name)) + "&is_admin_del=" + encodeURI(is_admin_del) + "&id=" + encodeURI(id) + "&is_del=" + encodeURI(is_del) + "&is_flirt=" + encodeURI(is_flirt) + "&is_welcome=" + encodeURI(is_welcome) + "&bind_account_notice=" + encodeURI(bind_account_notice) + "&send_address=" + encodeURI(send_address) + "&welcome=" + encodeURI(encodeURI(welcome));
-    // });
+    //打开关闭编辑面板
+    $(".edit_group").click(function () {
+        $("form").slideToggle(300);
+    });
+
+    //提交编辑
+    $(".editSubBtn").click(function () {
+        var group_name = $("#groupName").val();
+        var del = $("#runSwitch").val();
+        var flirt = $("#trickSwitch").val();
+        var send_address = $("#pushSwitch").val();
+        var bind_account_notice = $("#bindSwitch").val();
+        var is_welcome = $("#welcomeSwitch").val();
+        var welcome = $("#welcomeText").val();
+        //loading
+        var loading = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, function (response) {
+            if (response.errcode == "0") {
+                layer.close(loading);
+                layer.msg("提交成功", {icon: 1});
+            }
+        }, function (response) {
+            layer.close(loading);
+            $("#editGroupModal").modal("hide");
+            layer.msg(response.errmsg);
+        })
+    });
 
     //监听开关按钮状态
     $(".switch").on("change", function () {
