@@ -54,12 +54,12 @@ $(function () {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
                 } else {
                     $.each(data, function (i, val) {
-                        var weekDay_arr = data[i].tx_content.split("-");
-                        if (weekDay_arr.length > 1) {
-                            $.each(weekDay_arr, function (j, val) {
-                                weekDay += "#" + weekDay_arr[i]
-                            })
-                        }
+                        // var weekDay_arr = data[i].tx_content.split("-");
+                        // if (weekDay_arr.length > 1) {
+                        //     $.each(weekDay_arr, function (j, val) {
+                        //         weekDay += "#" + weekDay_arr[i]
+                        //     })
+                        // }
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
                             "<td class='time'>" + weekDay + data[i].time + "</td>" +
