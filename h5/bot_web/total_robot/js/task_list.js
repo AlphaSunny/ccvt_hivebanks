@@ -54,6 +54,9 @@ $(function () {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
                 } else {
                     $.each(data, function (i, val) {
+                        console.log(data[i].tx_content);
+                        var weekDay_arr = data[i].tx_content.split("-");
+                        console.log(weekDay_arr);
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
                             "<td class='time'>" + data[i].time + "</td>" +
