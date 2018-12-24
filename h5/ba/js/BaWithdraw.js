@@ -132,7 +132,7 @@ $(function () {
             layer.msg("提现金额不能少于最小提现额度", {icon: 2});
             return;
         }
-        if (base_amount >= max_amount) {
+        if (base_amount > max_amount) {
             // LayerFun('notLagAmount');
             layer.msg("提现金额不能大于最大提现额度", {icon: 2});
             return;
