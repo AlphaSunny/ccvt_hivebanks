@@ -55,7 +55,7 @@ $(function () {
                 } else {
                     $.each(data, function (i, val) {
                         var reg = new RegExp("monday");
-                        console.log(reg.test(data[i].tx_content));
+                        console.log(reg.exec(data[i].tx_content));
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
                             "<td class='time'>" + data[i].tx_content + data[i].time + "</td>" +
