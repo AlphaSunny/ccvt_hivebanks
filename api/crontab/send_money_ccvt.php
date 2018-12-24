@@ -205,6 +205,7 @@ if ($grous){
     $pInTrans = $db->StartTrans();  //开启事务
     $ba_account = 0;
     foreach ($grous as $k=>$v){
+        set_time_limit(0);
         if ($v['bot_us_id']!='' || $v['bot_us_id']!=NULL){
             $u_id = $v['bot_us_id'];
             //修改余额

@@ -398,10 +398,18 @@ function check_bot_login($us_id)
 function get_group_temporary_list($us_id)
 {
     $db = new DB_COM();
-    $sql = "select id,name from bot_temporary_group WHERE us_id='{$us_id}' AND is_apply=1";
-    $db -> query($sql);
-    $rows = $db -> fetchAll();
-    return $rows;
+    //判断只能提交一个群
+    $sql = "select * from bot_group WHERE us_id='{$us_id}'";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    if (!$rows){
+        $sql = "select id,name from bot_temporary_group WHERE us_id='{$us_id}' AND is_apply=1";
+        $db -> query($sql);
+        $rows = $db -> fetchAll();
+        return $rows;
+    }
+    return [];
+
 }
 
 
@@ -413,7 +421,8 @@ function get_group_temporary_list($us_id)
 function check_is_submit($group_id,$us_id)
 {
     $db = new DB_COM();
-    $sql = "select is_apply,name from bot_temporary_group WHERE id='{$group_id}' AND us_id='{$us_id}' limit 1";
+//    $sql = "select is_apply,name from bot_temporary_group WHERE id='{$group_id}' AND us_id='{$us_id}' limit 1";
+    $sql = "select is_apply,name from bot_temporary_group WHERE us_id='{$us_id}' limit 1";
     $db -> query($sql);
     $row = $db -> fetchRow();
     return $row;
