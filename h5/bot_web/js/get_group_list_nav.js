@@ -27,6 +27,6 @@ $(function () {
     var is_group_member  = window.location.href;
     console.log(is_group_member);
     var reg = new RegExp("group_member.html");
-    reg.exec(is_group_member);
+    console.log(reg.exec(is_group_member))
 
 });
