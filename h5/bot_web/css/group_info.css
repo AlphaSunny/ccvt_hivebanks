@@ -1,0 +1,11 @@
+.edit_group{
+    text-align: right;
+    background: #d9edf7;
+    padding: 2%;
+    cursor: pointer;
+    color: #31708f;
+}
+.edit_group:hover{
+    background: #c4e3f3;
+    color: #31708f;
+}
