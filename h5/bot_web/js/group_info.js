@@ -2,20 +2,58 @@ $(function () {
     //获取token
     var token = GetCookie("robot_token");
 
+    //获取url参数
+    var is_admin_del = decodeURI(GetQueryString(is_admin_del)), id = decodeURI(GetQueryString(id)),
+        is_del = decodeURI(GetQueryString(is_del)), is_flirt = decodeURI(GetQueryString(is_flirt)),
+        send_address = decodeURI(GetQueryString(send_address)),
+        bind_account_notice = decodeURI(GetQueryString(bind_account_notice)),
+        is_welcome = decodeURI(GetQueryString(is_welcome)), welcome = decodeURI(GetQueryString(welcome));
+    var is_group_info = window.location.href;
+    var reg = new RegExp("group_info.html");
+    if (reg.test(is_group_info)) {
+        if (is_admin_del == "1") {//运行状态
+            $("#runSwitch").addClass("active").val("1");
+            $("#trickSwitch").addClass("active").val("1");
+        } else {
+            $("#runSwitch").removeClass("active").val("2");
+            $("#trickSwitch").addClass("active").val("2");
+        }
+
+        if (is_del == "1") {//运行状态
+            $("#runSwitch").addClass("active").val("1");
+        } else {
+            $("#runSwitch").removeClass("active").val("2");
+        }
+        if (is_flirt == "1") {//调戏状态
+            $("#trickSwitch").addClass("active").val("1");
+        } else {
+            $("#trickSwitch").removeClass("active").val("2");
+        }
+        if (send_address == "1") {//是否开启早晚推送
+            $("#pushSwitch").addClass("active").val("1");
+        } else {
+            $("#pushSwitch").removeClass("active").val("2");
+        }
+        if (bind_account_notice == "1") {//是否开启未绑定ccvt提示
+            $("#bindSwitch").addClass("active").val("1");
+        } else {
+            $("#bindSwitch").removeClass("active").val("2");
+        }
+        if (is_welcome == "1") {//是否开启欢迎
+            $("#welcomeSwitch").addClass("active").val("1");
+            $("#welcomeText").val(welcome);
+            $(".welcomeTextBox").removeClass("none");
+        } else {
+            $("#welcomeSwitch").removeClass("active").val("2");
+            $(".welcomeTextBox").addClass("none");
+        }
+    }
+
     //获取对应id
     var group_id = GetQueryString("group_id");
     var _group_name = GetQueryString("group_name");
     var group_name = decodeURI(_group_name);
     $(".group_name").text(group_name);
-
-    // var url = getRootPath();
-    // $('#groupMemberTable').DataTable({
-    //     "ajax": url + "/api/bot_web/group_members_list.php?token=" + encodeURIComponent(token) + "&group_id=" + group_id+ "&status=" + status,
-    //     "deferRender":true,
-    //     "columns": [
-    //         {"data": "name"}
-    //     ]
-    // });
 
     //查看聊天记录
     $(".lookChatCode").click(function () {

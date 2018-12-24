@@ -15,7 +15,7 @@ $(function () {
                         "</li>"
                 });
                 $(".app-menu").append(li);
-                Check_is_group();
+                // Check_is_group();
             }
         }, function (response) {
             layer.msg("请稍后再试");
@@ -24,63 +24,18 @@ $(function () {
 
     GetGroupListNav();
 
-    //检查是否是group_member页面
-    function Check_is_group() {
-        var is_group_member = window.location.href;
-        var reg = new RegExp("group_info.html");
-        if (reg.test(is_group_member)) {
-            var is_admin_del = $(".to_group_link").attr("is_admin_del"),//总后台是否开启群运行
-                id = $(".to_group_link").attr("id"),//群id
-                is_del = $(".to_group_link").attr("is_del"),//是否开启运行状态
-                is_flirt = $(".to_group_link").attr("is_flirt"),//是否开启调戏状态
-                is_welcome = $(".to_group_link").attr("is_welcome"),//是否开启欢迎语
-                bind_account_notice = $(".to_group_link").attr("bind_account_notice"),//是否开启未绑定ccvt通知
-                send_address = $(".to_group_link").attr("send_address"),//是否开启早八晚十推送
-                welcome = $(".to_group_link").attr("welcome");//是否开启早八晚十推送
-            console.log(is_admin_del);
-            console.log(id);
-            if (is_admin_del == "1") {//运行状态
-                $("#runSwitch").addClass("active").val("1");
-                $("#trickSwitch").addClass("active").val("1");
-            } else {
-                $("#runSwitch").removeClass("active").val("2");
-                $("#trickSwitch").addClass("active").val("2");
-            }
-
-            if (is_del == "1") {//运行状态
-                $("#runSwitch").addClass("active").val("1");
-            } else {
-                $("#runSwitch").removeClass("active").val("2");
-            }
-            if (is_flirt == "1") {//调戏状态
-                $("#trickSwitch").addClass("active").val("1");
-            } else {
-                $("#trickSwitch").removeClass("active").val("2");
-            }
-            if (send_address == "1") {//是否开启早晚推送
-                $("#pushSwitch").addClass("active").val("1");
-            } else {
-                $("#pushSwitch").removeClass("active").val("2");
-            }
-            if (bind_account_notice == "1") {//是否开启未绑定ccvt提示
-                $("#bindSwitch").addClass("active").val("1");
-            } else {
-                $("#bindSwitch").removeClass("active").val("2");
-            }
-            if (is_welcome == "1") {//是否开启欢迎
-                $("#welcomeSwitch").addClass("active").val("1");
-                $("#welcomeText").val(welcome);
-                $(".welcomeTextBox").removeClass("none");
-            } else {
-                $("#welcomeSwitch").removeClass("active").val("2");
-                $(".welcomeTextBox").addClass("none");
-            }
-        }
-    }
-
-    // $(document).on("click", ".to_group_link", function () {
-
-    // });
+    $(document).on("click", ".to_group_link", function () {
+        var group_name = $(this).text();
+        var is_admin_del = $(this).attr("is_admin_del"),//总后台是否开启群运行
+            id = $(this).attr("id"),//群id
+            is_del = $(this).attr("is_del"),//是否开启运行状态
+            is_flirt = $(this).attr("is_flirt"),//是否开启调戏状态
+            is_welcome = $(this).attr("is_welcome"),//是否开启欢迎语
+            bind_account_notice = $(this).attr("bind_account_notice"),//是否开启未绑定ccvt通知
+            send_address = $(this).attr("send_address"),//是否开启早八晚十推送
+            welcome = $(this).attr("welcome");//是否开启早八晚十推送
+        window.location.href = "group_info.html?group_name=" + encodeURI(encodeURI(group_name)) + "&is_admin_del=" + encodeURI(is_admin_del) + "&id=" + encodeURI(id) + "&is_del=" + encodeURI(is_del) + "&is_flirt=" + encodeURI(is_flirt) + "&is_welcome=" + encodeURI(is_welcome) + "&bind_account_notice=" + encodeURI(bind_account_notice) + "&send_address=" + encodeURI(send_address) + "&welcome=" + encodeURI(encodeURI(welcome));
+    });
 
     //监听开关按钮状态
     $(".switch").on("change", function () {
