@@ -15,6 +15,8 @@ require_once '../inc/common.php';
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
+if(!$_REQUEST['us_nm'])
+    die('请输入邀请码');
 $us_nm = $_REQUEST['us_nm'];
 
 $db = new DB_COM();
