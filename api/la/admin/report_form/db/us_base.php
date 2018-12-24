@@ -102,7 +102,7 @@ and ctime>'2018-11-26' group by credit_id  order by amount desc;";
         $res = $db->fetchAll();
         foreach ($res as $k=>$v)
         {
-            switch ($v['bind_type'])
+            switch ($v['bind_name'])
             {
                 case 'phone':
                     $res_origin[$key]['cellphone'] = substr($v['bind_info'],3);
