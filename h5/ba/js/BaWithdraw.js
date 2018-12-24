@@ -154,7 +154,7 @@ $(function () {
 
         CfmFundPass(token, cfm_fundPass, function (response) {
             if (response.errcode == '0') {
-                LockWithdraw(token, ba_id, base_amount, bit_type, bit_amount, us_level, bit_address, function (response) {
+                LockWithdraw(token, ba_id, bit_type, bit_amount, us_level, bit_address, function (response) {
                     if (response.errcode == '0') {
                         LayerFun('waitingPro');
                         window.location.href = 'BaWithdrawInfo.html';

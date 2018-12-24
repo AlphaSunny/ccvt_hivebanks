@@ -793,12 +793,11 @@ function LockAmount(token, ba_id, base_amount, bit_amount, bit_type, us_level, s
 };
 
 //Lock withdrawal request
-function LockWithdraw(token, ba_id, base_amount, bit_type, bit_amount, us_level, bit_address, suc_func, error_func) {
+function LockWithdraw(token, ba_id, bit_type, bit_amount, us_level, bit_address, suc_func, error_func) {
     var api_url = 'us_withdraw_quest.php',
         post_data = {
             'token': token,
             'ba_id': ba_id,
-            'base_amount': base_amount,
             'bit_amount': bit_amount,
             'bit_type': bit_type,
             'bit_address': bit_address,
