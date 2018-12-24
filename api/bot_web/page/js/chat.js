@@ -195,6 +195,11 @@ $(function () {
     //scroll top
     $(window).scroll(function () {
         var height = $(window).scrollTop();
+        if (height > 0) {
+            $("#chat .title").css("border-bottom", "1px solid #dadada");
+        } else {
+            $("#chat .title").css("border-bottom", "unset");
+        }
         if (height >= 300) {
             $("#top").fadeIn("fast");
         } else {
