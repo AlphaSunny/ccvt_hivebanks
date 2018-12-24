@@ -234,7 +234,7 @@ $(function () {
 
     function GetCaWithdrawCodeFun(limit_ca, offset_ca) {
         var tr = "", totalPage = "", count = "", ba_state = "";
-        AllRecord(token, limit_ca, offset_ca, ba_api_url, function (response) {
+        AllRecord(token, limit_ca, offset_ca, ca_api_url, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
                 var data = response.rows;
