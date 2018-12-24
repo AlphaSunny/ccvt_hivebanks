@@ -1,6 +1,6 @@
 $(function () {
     var token = GetCookie("robot_token"), is_audit = "", send_address = "", bind_account_notice = "", is_welcome = "",
-        welcome = "", group_name = "", is_admin_del = "", is_del = "", is_flirt = "";
+        welcome = "", group_name = "", is_admin_del = "", is_del = "", is_flirt = "", group_id = "";
 
     function GetGroupListNav() {
         var li = "";
@@ -15,6 +15,7 @@ $(function () {
                 is_del = data[0].is_del;
                 is_flirt = data[0].is_flirt;
                 group_name = data[0].group_name;
+                group_id = data[0].id;
                 $.each(data, function (i, val) {
                     li += "<li>" +
                         "<a class='app-menu__item to_group_link' id='" + data[i].id + "' is_admin_del='" + data[i].is_admin_del + "' is_del='" + data[i].is_del + "' is_flirt='" + data[i].is_flirt + "' is_give_ccvt='" + data[i].is_give_ccvt + "' bind_account_notice='" + data[i].bind_account_notice + "' is_welcome='" + data[i].is_welcome + "' send_address='" + data[i].send_address + "' welcome='" + data[i].welcome + "' href='group_info.html'>" +
