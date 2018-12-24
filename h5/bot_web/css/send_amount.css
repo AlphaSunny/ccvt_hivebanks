@@ -12,6 +12,10 @@
     font-size: 1.8rem;
 }
 
+.three_col p span:last-child {
+    border-top: 1px solid #ffffff;
+}
+
 .one_red {
     background: #f31111d9;
 }
