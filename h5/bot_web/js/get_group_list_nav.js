@@ -15,6 +15,7 @@ $(function () {
                         "</li>"
                 });
                 $(".app-menu").append(li);
+                Check_is_group();
             }
         }, function (response) {
             layer.msg("请稍后再试");
@@ -24,7 +25,7 @@ $(function () {
     GetGroupListNav();
 
     //检查是否是group_member页面
-    // $(document).on("click", ".to_group_link", function () {
+    function Check_is_group() {
         var is_group_member = window.location.href;
         var reg = new RegExp("group_info.html");
         if (reg.test(is_group_member)) {
@@ -75,6 +76,10 @@ $(function () {
                 $(".welcomeTextBox").addClass("none");
             }
         }
+    }
+
+    // $(document).on("click", ".to_group_link", function () {
+
     // });
 
     //监听开关按钮状态
