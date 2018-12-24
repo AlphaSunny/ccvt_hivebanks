@@ -29,10 +29,7 @@ $(function () {
             is_del = $(this).attr("is_del"), is_flirt = $(this).attr("is_flirt"),
             bind_account_notice = $(this).attr("bind_account_notice"), send_address = $(this).attr("send_address"),
             is_welcome = $(this).attr("is_welcome");
-        console.log(encodeURI(id));
-        console.log(encodeURI(encodeURI(id)));
-        return;
-        window.location.href = "group_member.html?id=" + id + "&is_admin_del=" + is_admin_del + "&is_del=" + is_del + "&is_flirt=" + is_flirt + is_del + "&bind_account_notice=" + bind_account_notice + "&send_address=" + send_address + bind_account_notice + "&is_welcome=" + is_welcome;
+        window.location.href = "group_member.html?id=" + encodeURI(id) + "&is_admin_del=" + encodeURI(is_admin_del) + "&is_del=" + encodeURI(is_del) + "&is_flirt=" + encodeURI(is_flirt) + "&bind_account_notice=" + encodeURI(bind_account_notice) + "&send_address=" + encodeURI(send_address) + "&is_welcome=" + encodeURI(is_welcome);
     })
 
 });
