@@ -33,7 +33,7 @@ $type = get_arg_str('GET','type');
 $qa_id = get_arg_str('GET','qa_id');
 $transfer_tx_hash = get_arg_str('GET','transfer_tx_hash');
 
-
+// token解析
 
 $key = Config::TOKEN_KEY;
 $des = new Des();
