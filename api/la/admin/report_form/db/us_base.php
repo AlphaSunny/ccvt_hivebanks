@@ -136,6 +136,7 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
     }
     return $res_origin;
 
+//-----按照邀请人头算
 //    $sql = "select a.invite_code,count(a.us_id) as count,
 //(select us_account as us_account from us_base where us_nm=a.invite_code) as us_account,
 //(select base_amount/(select unit from la_base limit 1) as us_account from us_base where us_nm=a.invite_code) as base_amount,
