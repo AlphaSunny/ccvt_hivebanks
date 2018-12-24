@@ -2,6 +2,8 @@ $(function () {
     var token = GetCookie("robot_token"), is_audit = "", send_address = "", bind_account_notice = "", is_welcome = "",
         welcome = "", group_name = "", is_admin_del = "", is_del = "", is_flirt = "", group_id = "";
 
+    var limit = 10, offset = 0, status = "-1", loading = "";
+
     function GetGroupListNav() {
         var li = "";
         GetGroupList(token, is_audit, function (response) {
@@ -39,6 +41,7 @@ $(function () {
         var is_group_info = window.location.href;
         var reg = new RegExp("group_info.html");
         if (reg.test(is_group_info)) {
+            GetGroupMemberFun(token, limit, offset, status);
             $(".group_name").text(group_name);
             if (is_admin_del == "1") {//运行状态
                 $("#runSwitch").addClass("active").val("1");
@@ -134,5 +137,60 @@ $(function () {
     $(".lookChatCode").click(function () {
         window.location.href = "chat_record.html?group_id=" + group_id;
     });
+
+
+
+    //获取群成员列表
+    function GetGroupMemberFun(token, limit, offset, status) {
+        var tr = "", totalPage = "", count = "";
+        GetGroupMember(token, group_id, limit, offset, status, function (response) {
+            layer.close(loading);
+            if (response.errcode == "0") {
+                var data = response.rows;
+                totalPage = Math.floor(response.total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+                $.each(data, function (i, val) {
+                    tr += "<tr>" +
+                        "<td>" + data[i].name + "</td>" +
+                        "<td>" + data[i].chat_num + "</td>" +
+                        "</tr>"
+                });
+                $("#groupMember").html(tr);
+
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        GetGroupMemberFun(token, limit, (current - 1) * limit, status);
+                        loading = layer.load(1, {
+                            shade: [0.1, '#fff'] //0.1透明度的白色背景
+                        });
+                    }
+                });
+            }
+        }, function (response) {
+            layer.close(loading);
+            layer.msg(response.errmsg);
+        })
+    }
+
+    //查看某一段/天
+    $(".click_day").click(function () {
+        status = $(this).attr("name");
+        loading = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+        GetGroupMemberFun(token, limit, offset, status);
+    })
 
 });
