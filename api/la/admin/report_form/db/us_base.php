@@ -97,7 +97,7 @@ function gift_detail(){
 (select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='cellphone' limit 1) as phone,
 (select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='wechat' limit 1) as wechat,
 (select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='email' limit 1) as email
-from us_base as a where invite_code!=0 group by invite_code order by count desc; ";
+from us_base as a where invite_code!=0 and a.ctime>'2018-12-20' group by invite_code order by count desc; ";
     $db->query($sql);
     $rows = $db->fetchAll();
     foreach ($rows as $k=>$v)
