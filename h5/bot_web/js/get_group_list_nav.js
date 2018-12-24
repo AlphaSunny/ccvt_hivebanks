@@ -6,7 +6,7 @@ $(function () {
         GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
-                $.each(data, function () {
+                $.each(data, function (i, val) {
                     li += "<li>" +
                         "<a class='app-menu__item' href='javascript:;'>" +
                         "<i class='app-menu__icon fa-circle-thin'></i>" +
