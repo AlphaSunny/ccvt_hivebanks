@@ -51,12 +51,6 @@ $(function () {
         }
     }
 
-    //获取对应id
-    // var group_id = GetQueryString("group_id");
-    // var _group_name = GetQueryString("group_name");
-    // var group_name = decodeURI(_group_name);
-    // $(".group_name").text(group_name);
-
     //查看聊天记录
     $(".lookChatCode").click(function () {
         window.location.href = "chat_record.html?group_id=" + group_name;
@@ -108,7 +102,7 @@ $(function () {
         })
     }
 
-    GetGroupMemberFun(token, limit, offset, status);
+    // GetGroupMemberFun(token, limit, offset, status);
 
     //查看某一段/天
     $(".click_day").click(function () {
