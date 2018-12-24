@@ -1,0 +1,11 @@
+.three_col{
+    height: 7rem;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 7rem;
+    color: #ffffff;
+    font-size: 2rem;
+}
+.one_red{
+    background: #f31111d9;
+}
