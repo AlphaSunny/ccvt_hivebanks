@@ -29,14 +29,14 @@ $(function () {
         var is_group_member = window.location.href;
         var reg = new RegExp("group_info.html");
         if (reg.test(is_group_member)) {
-            var is_admin_del = $(this).attr("is_admin_del"),//总后台是否开启群运行
-                id = $(this).attr("id"),//群id
-                is_del = $(this).attr("is_del"),//是否开启运行状态
-                is_flirt = $(this).attr("is_flirt"),//是否开启调戏状态
-                is_welcome = $(this).attr("is_welcome"),//是否开启欢迎语
-                bind_account_notice = $(this).attr("bind_account_notice"),//是否开启未绑定ccvt通知
-                send_address = $(this).attr("send_address"),//是否开启早八晚十推送
-                welcome = $(this).attr("welcome");//是否开启早八晚十推送
+            var is_admin_del = $(".to_group_link").attr("is_admin_del"),//总后台是否开启群运行
+                id = $(".to_group_link").attr("id"),//群id
+                is_del = $(".to_group_link").attr("is_del"),//是否开启运行状态
+                is_flirt = $(".to_group_link").attr("is_flirt"),//是否开启调戏状态
+                is_welcome = $(".to_group_link").attr("is_welcome"),//是否开启欢迎语
+                bind_account_notice = $(".to_group_link").attr("bind_account_notice"),//是否开启未绑定ccvt通知
+                send_address = $(".to_group_link").attr("send_address"),//是否开启早八晚十推送
+                welcome = $(".to_group_link").attr("welcome");//是否开启早八晚十推送
             console.log(is_admin_del);
             console.log(id);
             if (is_admin_del == "1") {//运行状态
