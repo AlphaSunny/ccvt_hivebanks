@@ -12,8 +12,6 @@ $(function () {
     var is_group_info = window.location.href;
     var reg = new RegExp("group_info.html");
     if (reg.test(is_group_info)) {
-
-        console.log(bind_account_notice);
         $(".group_name").text(group_name);
         if (is_admin_del == "1") {//运行状态
             $("#runSwitch").addClass("active").val("1");
