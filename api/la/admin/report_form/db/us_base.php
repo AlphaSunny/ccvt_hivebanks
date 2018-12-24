@@ -97,7 +97,7 @@ and ctime>'2018-11-26' group by credit_id  order by amount desc;";
     foreach ($res_origin as $key=>$value)
     {
         $us_id = $value['id'];
-        $sql = "select a.bind_info,a.bind_name,b.us_account from us_bind a ,us_base b where a.us_id = '{$us_id}'";
+        $sql = "select a.bind_info,a.bind_name from us_bind a   where a.us_id = '{$us_id}'";
         $res = $db->query($sql);
         $res = $db->fetchAll();
         foreach ($res as $k=>$v)
@@ -114,9 +114,9 @@ and ctime>'2018-11-26' group by credit_id  order by amount desc;";
                     $res_origin[$key]['email'] = $v['bind_info'];
                     break;
             }
-
         }
 
+//        $sql_base = "select "
         $res_origin[$key]['us_account'] = $res['us_account'];
         $res_origin[$key]['rank'] = $key+1;
 
