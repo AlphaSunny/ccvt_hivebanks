@@ -39,6 +39,8 @@ $bit_address = get_arg_str('GET', 'bit_address');
 $bit_type = get_arg_str('GET', 'bit_type');
 $us_level = get_arg_str('GET', 'us_level');
 $token = get_arg_str('GET', 'token', 128);
+
+
 //验证token
 $us_id = check_token($token);
 
@@ -57,6 +59,8 @@ if ($bit_type != BASE_CURRENCY){
 $us_row = get_us_base_info($us_id);
 if ($us_row["base_amount"] < $base_amount * get_la_base_unit())
     exit_error("127", "用户余额不足");
+
+
 $data = array();
 $data["us_id"] = $us_id;
 $data["ba_id"] = $ba_id;

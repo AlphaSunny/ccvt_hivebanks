@@ -37,12 +37,13 @@ $us_id = check_token($token);
 
 if (BASE_CURRENCY == $bit_type){
     $rows = ba_get_base_ba_settting_rate_ba_id($bit_type);
-    $data['min_amount'] = "0";
-    $data['max_amount'] = $rows["base_amount"];
+    $ba_id = $rows["ba_id"];
+    $ba_info = get_ba_settting_withdraw_rate_ba_id($ba_id);
+    $data['min_amount'] = $ba_info["min_amount"];
+    $data['max_amount'] = $ba_info["max_amount"];
     $data['base_rate'] = 1;
     $data['set_time'] = "无限制";
     $data['us_level'] = 0;
-    $ba_id = $rows["ba_id"];
 }else {
     // 分配ba
     $ba_id = us_get_ba_settting_rate_ba_id($bit_type);
