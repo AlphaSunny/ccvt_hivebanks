@@ -2,11 +2,6 @@ $(function () {
     //获取token
     var token = GetCookie("robot_token");
 
-    //查看聊天记录
-    // $(".lookChatCode").click(function () {
-    //     window.location.href = "chat_record.html?group_id=" + group_name;
-    // });
-
     //获取群成员列表
     var limit = 10, offset = 0, status = "-1", loading = "";
 
@@ -53,7 +48,7 @@ $(function () {
         })
     }
 
-    // GetGroupMemberFun(token, limit, offset, status);
+    GetGroupMemberFun(token, limit, offset, status);
 
     //查看某一段/天
     $(".click_day").click(function () {

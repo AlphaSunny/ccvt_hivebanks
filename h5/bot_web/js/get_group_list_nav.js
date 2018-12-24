@@ -130,4 +130,9 @@ $(function () {
         }
     }
 
+    //查看聊天记录
+    $(".lookChatCode").click(function () {
+        window.location.href = "chat_record.html?group_id=" + group_id;
+    });
+
 });
