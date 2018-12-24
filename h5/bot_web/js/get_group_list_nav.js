@@ -8,7 +8,7 @@ $(function () {
                 var data = response.rows;
                 $.each(data, function (i, val) {
                     li += "<li>" +
-                        "<a class='app-menu__item' href='javascript:;'>" +
+                        "<a class='app-menu__item' href='group_member.js'>" +
                         "<i class='app-menu__icon fa fa-circle-o'></i>" +
                         "<span class='app-menu__label'>" + data[i].name + "</span>" +
                         "</a>" +
