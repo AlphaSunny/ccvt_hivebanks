@@ -23,8 +23,8 @@ $(function () {
                 } else {
                     count = 6;
                 }
-                console.log("da");
                 $.each(data, function (i, val) {
+                    console.log(data[i].tx_content);
                     var weekDay_arr = data[i].tx_content.split("-");
                     console.log(weekDay_arr);
                     console.log(i);
