@@ -8,6 +8,7 @@ $(function () {
             return null;
         }
     }
+
     var user_token = GetLoginCookie('user_token');
     if (user_token) {
         window.location.href = "account.html";
@@ -18,7 +19,7 @@ $(function () {
     var wechat = GetQueryString("wechat");
     var group_id = GetQueryString("group_id");
 
-    if (invite_code) {
+    if (invite_code.length > 0 && invite_code != 0) {
         $(".emailInvitCode,.phoneInvitCode").val(invite_code);
     }
     if (wechat) {
