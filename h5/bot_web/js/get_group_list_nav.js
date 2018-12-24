@@ -86,7 +86,6 @@ $(function () {
 
     //提交编辑
     $(".editSubBtn").click(function () {
-        var group_name = $("#groupName").val();
         var del = $("#runSwitch").val();
         var flirt = $("#trickSwitch").val();
         var send_address = $("#pushSwitch").val();
