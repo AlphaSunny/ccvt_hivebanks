@@ -9,7 +9,7 @@ $(function () {
                 $.each(data, function (i, val) {
                     li += "<li>" +
                         "<a class='app-menu__item' href='javascript:;'>" +
-                        "<i class='app-menu__icon fa-circle-thin'></i>" +
+                        "<i class='app-menu__icon fa fa-circle-thin'></i>" +
                         "<span class='app-menu__label'>" + data[i].name + "</span>" +
                         "</a>" +
                         "</li>"
