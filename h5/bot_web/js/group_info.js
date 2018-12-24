@@ -13,6 +13,7 @@ $(function () {
     var reg = new RegExp("group_info.html");
     if (reg.test(is_group_info)) {
         console.log(reg.test(is_group_info));
+        console.log("into");
         $(".group_name").text(group_name);
         if (is_admin_del == "1") {//运行状态
             $("#runSwitch").addClass("active").val("1");
