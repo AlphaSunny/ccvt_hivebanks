@@ -123,7 +123,7 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
         $res_base = $db->query($sql_base);
         $res_base = $db->fetchRow();
         $res_origin[$key]['us_account'] = $res_base['us_account'];
-        $res_origin[$key]['base_amount'] = intval($res_base['base_amount']);
+        $res_origin[$key]['base_amount'] = intval($res_origin[$key]['base_amount']);
         $res_origin[$key]['invite_code'] = $res_base['invite_code'];
         $invite_code = $res_origin[$key]['invite_code'];
         $sql_num = "select count(us_id) as count from us_base where invite_code = {$invite_code}";
