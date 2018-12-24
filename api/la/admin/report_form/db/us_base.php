@@ -100,6 +100,7 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
         $sql = "select a.bind_info,a.bind_name from us_bind a   where a.us_id = '{$us_id}'";
         $res = $db->query($sql);
         $res = $db->fetchAll();
+
         foreach ($res as $k=>$v)
         {
             switch ($v['bind_name'])
@@ -116,14 +117,19 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
             }
         }
 
-//        $sql_base = "select "
-//        $res_origin[$key]['us_account'] = $res['us_account'];
+
         $res_origin[$key]['rank'] = $key+1;
         $sql_base = "select us_account,us_nm as invite_code from us_base where us_id='{$us_id}'";
         $res_base = $db->query($sql_base);
         $res_base = $db->fetchRow();
         $res_origin[$key]['us_account'] = $res_base['us_account'];
         $res_origin[$key]['invite_code'] = $res_base['invite_code'];
+        $invite_code = $res_origin[$key]['invite_code'];
+        $sql_num = "select count(us_id) as count from us_base where invite_code = {$invite_code}";
+        $res_num = $db->query($sql_num);
+        $res_num = $db->fetchRow();
+        $res_origin[$key]['count'] = $res_num['count'];
+
 
 
     }
