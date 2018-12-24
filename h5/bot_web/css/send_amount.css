@@ -7,6 +7,11 @@
     font-size: 2rem;
 }
 
+.three_col p {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
 .one_red {
     background: #f31111d9;
 }
