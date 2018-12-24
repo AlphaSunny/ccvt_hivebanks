@@ -54,8 +54,8 @@ $(function () {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
                 } else {
                     $.each(data, function (i, val) {
-                        var reg = new RegExp("monday");
-                        console.log(reg.exec(data[i].tx_content));
+                        // var reg = new RegExp("monday");
+                        // console.log(reg.exec(data[i].tx_content));
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
                             "<td class='time'>" + data[i].tx_content + data[i].time + "</td>" +
