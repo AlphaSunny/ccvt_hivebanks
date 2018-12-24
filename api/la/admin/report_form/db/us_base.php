@@ -117,7 +117,7 @@ and ctime>'2018-11-26' group by credit_id  order by amount desc;";
         }
 
 //        $sql_base = "select "
-        $res_origin[$key]['us_account'] = $res['us_account'];
+//        $res_origin[$key]['us_account'] = $res['us_account'];
         $res_origin[$key]['rank'] = $key+1;
 
     }
