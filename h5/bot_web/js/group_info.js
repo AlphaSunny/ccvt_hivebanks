@@ -51,6 +51,11 @@ $(function () {
         }
     }
 
+    //打开关闭编辑面板
+    $(".edit_group").click(function () {
+        $("form").slideToggle(300);
+    });
+
     //查看聊天记录
     $(".lookChatCode").click(function () {
         window.location.href = "chat_record.html?group_id=" + group_name;
