@@ -185,7 +185,7 @@ $(function () {
                     count = 6;
                 }
                 if (data == false) {
-                    GetDataEmpty('baWithdrawCodesTable', '5');
+                    GetDataEmpty('baWithdrawCodesTable', '6');
                     return;
                 }
                 $.each(data, function (i, val) {
@@ -220,7 +220,7 @@ $(function () {
             }
         }, function (response) {
             ShowLoading("hide");
-            GetDataFail('baWithdrawCodesTable', '4');
+            GetDataFail('baWithdrawCodesTable', '6');
             if (response.errcode == '114') {
                 window.location.href = 'login.html';
             }
