@@ -8,7 +8,7 @@ $(function () {
                 var data = response.rows;
                 $.each(data, function (i, val) {
                     li += "<li>" +
-                        "<a class='app-menu__item to_group_link' id='" + data[i].id + "' is_admin_del='" + data[i].is_admin_del + "' id_del = '" + data[i].is_del + "' is_flirt='" + data[i].is_flirt + "' bind_account_notice='" + data[i].bind_account_notice + "' send_address='" + data[i].send_address + "' is_welcome='" + data[i].is_welcome + "' href='javascript:;'>" +
+                        "<a class='app-menu__item to_group_link' href='javascript:;'>" +
                         "<i class='app-menu__icon fa fa-circle-o'></i>" +
                         "<span class='app-menu__label'>" + data[i].name + "</span>" +
                         "</a>" +
@@ -23,13 +23,8 @@ $(function () {
 
     GetGroupListNav();
 
-    //前往群
-    $(document).on("click", ".to_group_link", function () {
-        var id = $(this).attr("id"), is_admin_del = $(this).attr("is_admin_del"),
-            is_del = $(this).attr("is_del"), is_flirt = $(this).attr("is_flirt"),
-            bind_account_notice = $(this).attr("bind_account_notice"), send_address = $(this).attr("send_address"),
-            is_welcome = $(this).attr("is_welcome");
-        window.location.href = "group_member.html?id=" + encodeURI(id) + "&is_admin_del=" + encodeURI(is_admin_del) + "&is_del=" + encodeURI(is_del) + "&is_flirt=" + encodeURI(is_flirt) + "&bind_account_notice=" + encodeURI(bind_account_notice) + "&send_address=" + encodeURI(send_address) + "&is_welcome=" + encodeURI(is_welcome);
-    })
+    //是否是group_member页面
+    var is_group_member  = window.location.href;
+    console.log(is_group_member);
 
 });
