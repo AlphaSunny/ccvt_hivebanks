@@ -6,8 +6,9 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport'
           content='width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'>
-    <title class='i18n' name='userAccountWithdraw'>User account withdraw</title>
+    <title class='i18n' name='userAccountWithdraw'></title>
     <link rel='stylesheet' href='../assets/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='../assets/css/jquery.pagination.css'>
     <link rel='stylesheet' href='css/common.css'>
     <link rel='stylesheet' type='text/css' media='only screen and (max-device-width:767px)'
           href='mobile-css/common.css'>
@@ -206,10 +207,11 @@
                                 <th class="i18n" name="tradingHash"></th>
                             </tr>
                             </thead>
-                            <tbody id="baWithdrawCodesTable" class='baWithdrawCodes'>
-
-                            </tbody>
+                            <tbody id="baWithdrawCodesTable" class='baWithdrawCodes'></tbody>
                         </table>
+                        <div>
+                            <div id="pagination_ba" class="page"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -229,10 +231,11 @@
                                 <th class="i18n" name="tradingHash">Trading Hash</th>
                             </tr>
                             </thead>
-                            <tbody id="caWithdrawCodesTable" class='caWithdrawCodes'>
-
-                            </tbody>
+                            <tbody id="caWithdrawCodesTable" class='caWithdrawCodes'></tbody>
                         </table>
+                        <div>
+                            <div id="pagination_ca" class="page"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -309,7 +312,8 @@
 </div>
 
 <script src='../assets/js/jquery-3.2.1.min.js'></script>
-<script src="../assets/js/spin.min.js"></script>
+<script src='../assets/js/jquery.pagination.min.js'></script>
+<!--<script src="../assets/js/spin.min.js"></script>-->
 <script src='language/jquery.i18n.properties.js'></script>
 <script src='language/language.js'></script>
 <script src='../assets/js/bootstrap.min.js'></script>
