@@ -79,7 +79,6 @@ $(function () {
         //监听开关按钮状态
         $(".switch").on("change", function () {
             var id = $(this).attr("id");
-            console.log(id);
             SwitchChangeFun(id);
         });
 
