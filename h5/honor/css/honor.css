@@ -6,23 +6,6 @@ body {
     position: relative;
 }
 
-/*nav {*/
-/*display: flex;*/
-/*display: -webkit-flex;*/
-/*display: -moz-flex;*/
-/*align-items: center;*/
-/*justify-content: space-between;*/
-/*padding: 0 15px;*/
-/*}*/
-
-/*nav ul {*/
-/*margin: 0;*/
-/*padding: 0;*/
-/*display: flex !important;*/
-/*align-items: center;*/
-/*justify-content: space-between;*/
-/*width: 5rem;*/
-/*}*/
 .navbar {
     margin-bottom: 0 !important;
 }
@@ -231,11 +214,14 @@ li.none {
 
 #title {
     background: transparent;
-    color: #fff;
     font-size: 1rem;
     outline: none;
     height: 2.5rem;
     line-height: 2rem;
+}
+
+#title > option:checked {
+    color: #ffffff;
 }
 
 .look_chat_recode_btn {
@@ -246,14 +232,6 @@ li.none {
 .look_chat_recode_btn:hover {
     color: #ffffff;
 }
-
-/*.search_icon {*/
-/*position: absolute;*/
-/*top: 32%;*/
-/*right: 1%;*/
-/*font-size: 2rem;*/
-/*cursor: pointer;*/
-/*}*/
 
 .search_input {
     background: transparent;
