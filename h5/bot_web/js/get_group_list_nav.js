@@ -8,7 +8,7 @@ $(function () {
                 var data = response.rows;
                 $.each(data, function (i, val) {
                     li += "<li>" +
-                        "<a class='app-menu__item to_group_link' id='" + data[i].id + "' is_admin_del='" + data[i].is_admin_del + "' is_del='" + data[i].is_del + "' is_flirt='" + data[i].is_flirt + "' is_give_ccvt='" + data[i].is_give_ccvt + "' is_welcome='" + data[i].is_welcome + "' send_address='" + data[i].send_address + "' welcome='" + data[i].welcome + "' href='javascript:;'>" +
+                        "<a class='app-menu__item to_group_link' id='" + data[i].id + "' is_admin_del='" + data[i].is_admin_del + "' is_del='" + data[i].is_del + "' is_flirt='" + data[i].is_flirt + "' is_give_ccvt='" + data[i].is_give_ccvt + "' bind_account_notice='"+ data[i].bind_account_notice +"' is_welcome='" + data[i].is_welcome + "' send_address='" + data[i].send_address + "' welcome='" + data[i].welcome + "' href='javascript:;'>" +
                         "<i class='app-menu__icon fa fa-circle-o'></i>" +
                         "<span class='app-menu__label'>" + data[i].name + "</span>" +
                         "</a>" +
