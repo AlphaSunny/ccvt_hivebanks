@@ -8,7 +8,7 @@ $(function () {
                 var data = response.rows;
                 $.each(data, function (i, val) {
                     li += "<li>" +
-                        "<a class='app-menu__item to_group_link' id='" + data[i].id + "' is_admin_del='" + data[i].is_admin_del + "' is_del='" + data[i].is_del + "' is_flirt='" + data[i].is_flirt + "' is_give_ccvt='" + data[i].is_give_ccvt + "' is_welcome='" + data[i].is_welcome + "' send_address='" + data[i].send_address + "' href='group_info.html'>" +
+                        "<a class='app-menu__item to_group_link' id='" + data[i].id + "' is_admin_del='" + data[i].is_admin_del + "' is_del='" + data[i].is_del + "' is_flirt='" + data[i].is_flirt + "' is_give_ccvt='" + data[i].is_give_ccvt + "' is_welcome='" + data[i].is_welcome + "' send_address='" + data[i].send_address + "' welcome='"+ data[i].welcome +"' href='group_info.html'>" +
                         "<i class='app-menu__icon fa fa-circle-o'></i>" +
                         "<span class='app-menu__label'>" + data[i].name + "</span>" +
                         "</a>" +
@@ -34,7 +34,8 @@ $(function () {
                 is_flirt = $(this).attr("is_flirt"),//是否开启调戏状态
                 is_welcome = $(this).attr("is_welcome"),//是否开启欢迎语
                 bind_account_notice = $(this).attr("bind_account_notice"),//是否开启未绑定ccvt通知
-                send_address = $(this).attr("send_address");//是否开启早八晚十推送
+                send_address = $(this).attr("send_address"),//是否开启早八晚十推送
+                welcome = $(this).attr("welcome");//是否开启早八晚十推送
             console.log(is_admin_del);
             console.log(id);
             if (is_admin_del == "1") {//运行状态
