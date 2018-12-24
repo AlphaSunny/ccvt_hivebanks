@@ -73,17 +73,12 @@
                 <div id="edit_group" class="margin-bottom-5">
                     <p class="edit_group">编辑</p>
                     <form class="form-horizontal none edit_group_form">
-                        <!--<div class="form-group">-->
-                            <!--<label for="groupName" class="col-sm-3 control-label">群名称</label>-->
-                            <!--<div class="col-sm-9">-->
-                                <!--<input type="text" readonly class="form-control" id="groupName">-->
-                            <!--</div>-->
-                        <!--</div>-->
                         <div class="form-group">
                             <label for="runSwitch" class="col-sm-3 control-label">运行状态</label>
                             <div class="col-sm-9 flex center">
                                 <span>关</span>
-                                <input id="runSwitch" class="switch runSwitch switch-anim margin-left-2 margin-right-2" type="checkbox" value="2">
+                                <input id="runSwitch" class="switch runSwitch switch-anim margin-left-2 margin-right-2"
+                                       type="checkbox" value="2">
                                 <span>开</span>
                             </div>
                         </div>
@@ -91,7 +86,9 @@
                             <label for="trickSwitch" class="col-sm-3 control-label">调戏状态</label>
                             <div class="col-sm-9 flex center">
                                 <span>关</span>
-                                <input id="trickSwitch" class="switch trickSwitch switch-anim margin-left-2 margin-right-2" type="checkbox" value="2">
+                                <input id="trickSwitch"
+                                       class="switch trickSwitch switch-anim margin-left-2 margin-right-2"
+                                       type="checkbox" value="2">
                                 <span>开</span>
                             </div>
                         </div>
@@ -99,7 +96,9 @@
                             <label for="pushSwitch" class="col-sm-3 control-label">推送当天统计</label>
                             <div class="col-sm-9 flex center">
                                 <span>关</span>
-                                <input id="pushSwitch" class="switch pushSwitch switch-anim margin-left-2 margin-right-2" type="checkbox" value="2">
+                                <input id="pushSwitch"
+                                       class="switch pushSwitch switch-anim margin-left-2 margin-right-2"
+                                       type="checkbox" value="2">
                                 <span>开</span>
                             </div>
                         </div>
@@ -107,7 +106,9 @@
                             <label for="bindSwitch" class="col-sm-3 control-label">未绑定通知</label>
                             <div class="col-sm-9 flex center">
                                 <span>关</span>
-                                <input id="bindSwitch" class="switch bindSwitch switch-anim margin-left-2 margin-right-2" type="checkbox" value="2">
+                                <input id="bindSwitch"
+                                       class="switch bindSwitch switch-anim margin-left-2 margin-right-2"
+                                       type="checkbox" value="2">
                                 <span>开</span>
                             </div>
                         </div>
@@ -115,14 +116,17 @@
                             <label for="welcomeSwitch" class="col-sm-3 control-label">新人欢迎</label>
                             <div class="col-sm-9 flex center">
                                 <span>关</span>
-                                <input id="welcomeSwitch" class="switch welcomeSwitch switch-anim margin-left-2 margin-right-2" type="checkbox" value="2">
+                                <input id="welcomeSwitch"
+                                       class="switch welcomeSwitch switch-anim margin-left-2 margin-right-2"
+                                       type="checkbox" value="2">
                                 <span>开</span>
                             </div>
                         </div>
                         <div class="form-group welcomeTextBox none">
                             <label for="welcomeText" class="col-sm-3 control-label">欢迎语</label>
                             <div class="col-sm-9 flex center">
-                                <textarea name="welcomeText" class="form-control" id="welcomeText" cols="30" rows="6"></textarea>
+                                <textarea name="welcomeText" class="form-control" id="welcomeText" cols="30"
+                                          rows="6"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -130,7 +134,7 @@
                         </div>
                     </form>
                 </div>
-                <div>群活跃度-</div>
+                <h2>群活跃度</h2>
                 <div class="flex center space-between">
                     <div>
                         <a href="javascript:;" class="btn btn-success click_day" name="-1">全部</a>
@@ -140,7 +144,7 @@
                         <a href="javascript:;" class="btn btn-success click_day" name="4">7天内</a>
                     </div>
                     <div><a href="javascript:;" class="btn btn-success lookChatCode">查看聊天记录</a></div>
-            </div>
+                </div>
                 <div class="tile-body table-responsive">
                     <table class="table table-hover table-bordered table_border_none" id="groupMemberTable">
                         <thead>
@@ -157,6 +161,7 @@
                         <div id="pagination" class="page"></div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </main>
