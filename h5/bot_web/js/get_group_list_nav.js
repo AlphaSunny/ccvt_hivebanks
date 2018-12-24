@@ -35,6 +35,8 @@ $(function () {
                 is_welcome = $(this).attr("is_welcome"),//是否开启欢迎语
                 bind_account_notice = $(this).attr("bind_account_notice"),//是否开启未绑定ccvt通知
                 send_address = $(this).attr("send_address");//是否开启早八晚十推送
+            console.log(is_admin_del);
+            console.log(id);
             if (is_admin_del == "1") {//运行状态
                 $("#runSwitch").addClass("active").val("1");
                 $("#trickSwitch").addClass("active").val("1");
