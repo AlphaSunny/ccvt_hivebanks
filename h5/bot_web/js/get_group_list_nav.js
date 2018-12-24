@@ -14,7 +14,7 @@ $(function () {
                 is_admin_del = data[0].is_admin_del;
                 is_del = data[0].is_del;
                 is_flirt = data[0].is_flirt;
-                group_name = data[0].group_name;
+                group_name = data[0].name;
                 group_id = data[0].id;
                 $.each(data, function (i, val) {
                     li += "<li>" +
