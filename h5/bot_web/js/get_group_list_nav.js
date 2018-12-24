@@ -8,7 +8,7 @@ $(function () {
                 var data = response.rows;
                 $.each(data, function (i, val) {
                     li += "<li>" +
-                        "<a class='app-menu__item to_group_link' href='group_member.html'>" +
+                        "<a class='app-menu__item to_group_link' id='" + data[i].id + "' is_admin_del='"+ data[i].is_admin_del +"' is_del='"+ data[i].is_del +"' is_flirt='"+ data[i].is_flirt +"' is_give_ccvt='"+ data[i].is_give_ccvt +"' is_welcome='"+ data[i].is_welcome +"' send_address='"+ data[i].send_address +"' href='group_member.html'>" +
                         "<i class='app-menu__icon fa fa-circle-o'></i>" +
                         "<span class='app-menu__label'>" + data[i].name + "</span>" +
                         "</a>" +
@@ -23,11 +23,10 @@ $(function () {
 
     GetGroupListNav();
 
-    //是否是group_member页面
-    var is_group_member  = window.location.href;
-    console.log(is_group_member);
-    var reg = new RegExp("group_member.html");
-    console.log(reg.exec(is_group_member));
-    console.log(reg.test(is_group_member))
-
+    //检查是否是group_member页面
+        var is_group_member = window.location.href;
+        var reg = new RegExp("group_member.html");
+        if (reg.test(is_group_member)) {
+            var is_admin_del = $(this)
+        }
 });
