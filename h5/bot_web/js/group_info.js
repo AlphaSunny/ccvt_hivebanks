@@ -5,7 +5,7 @@ $(function () {
     //获取url参数
     var is_admin_del = decodeURI(GetQueryString("is_admin_del")), id = decodeURI(GetQueryString("id")),
         is_del = decodeURI(GetQueryString("is_del")), is_flirt = decodeURI(GetQueryString("is_flirt")),
-        send_address = decodeURI(GetQueryString("send_address")), group_name = encodeURI(GetQueryString("group_name")),
+        send_address = decodeURI(GetQueryString("send_address")), group_name = decodeURI(GetQueryString("group_name")),
         bind_account_notice = decodeURI(GetQueryString("bind_account_notice")),
         is_welcome = decodeURI(GetQueryString("is_welcome")), welcome = decodeURI(GetQueryString("welcome"));
     //是否为当前页面
