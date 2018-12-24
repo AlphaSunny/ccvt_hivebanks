@@ -89,22 +89,54 @@ function gift_data(){
 function gift_detail(){
 
     $db = new DB_COM();
-
-    $sql = "select a.invite_code,count(a.us_id) as count,
-(select us_account as us_account from us_base where us_nm=a.invite_code) as us_account,
-(select base_amount/(select unit from la_base limit 1) as us_account from us_base where us_nm=a.invite_code) as base_amount,
-(select us_id from us_base where us_nm=a.invite_code) as id,
-(select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='cellphone' limit 1) as phone,
-(select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='wechat' limit 1) as wechat,
-(select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='email' limit 1) as email
-from us_base as a where invite_code!=0 and a.ctime>'2018-12-20' group by invite_code order by count desc; ";
-    $db->query($sql);
-    $rows = $db->fetchAll();
-    foreach ($rows as $k=>$v)
+    $sql_origin = "select sum(tx_amount)/100000000 as amount,credit_id as id
+from com_base_balance  where tx_type in ('two_invite_send','reg_send') and debit_id = '6C69520E-E454-127B-F474-452E65A3EE75' 
+and ctime>'2018-11-26' group by credit_id  order by amount desc;";
+    $res_origin  = $db->query($sql_origin);
+    $res_origin  = $db->fetchAll();
+    foreach ($res_origin as $key=>$value)
     {
-        $rows[$k]['rank'] = $k+1;
+        $us_id = $value['id'];
+        $sql = "select a.bind_info,a.bind_name,b.us_account from us_bind a ,us_base b where a.us_id = '{$us_id}'";
+        $res = $db->query($sql);
+        $res = $db->fetchAll();
+        foreach ($res as $k=>$v)
+        {
+            switch ($v['bind_type'])
+            {
+                case 'phone':
+                    $res_origin[$key]['cellphone'] = substr($v['bind_info'],3);
+                    break;
+                case 'wechat':
+                    $res_origin[$key]['wechat'] = $v['bind_info'];
+                    break;
+                case 'email':
+                    $res_origin[$key]['email'] = $v['bind_info'];
+                    break;
+            }
+            $res_origin[$key]['us_account'] = $v['us_account'];
+            $res_origin[$key]['rank'] = $key+1;
+
+        }
+
     }
-    return $rows;
+    return $res_origin;
+
+//    $sql = "select a.invite_code,count(a.us_id) as count,
+//(select us_account as us_account from us_base where us_nm=a.invite_code) as us_account,
+//(select base_amount/(select unit from la_base limit 1) as us_account from us_base where us_nm=a.invite_code) as base_amount,
+//(select us_id from us_base where us_nm=a.invite_code) as id,
+//(select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='cellphone' limit 1) as phone,
+//(select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='wechat' limit 1) as wechat,
+//(select bind_info from us_bind where us_id=id and bind_type='text' and bind_name='email' limit 1) as email
+//from us_base as a where invite_code!=0 and a.ctime>'2018-12-20' group by invite_code order by count desc; ";
+//    $db->query($sql);
+//    $rows = $db->fetchAll();
+//    foreach ($rows as $k=>$v)
+//    {
+//        $rows[$k]['rank'] = $k+1;
+//    }
+//    return $rows;
 }
 
 /**
