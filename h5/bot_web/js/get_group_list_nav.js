@@ -36,6 +36,7 @@ $(function () {
 
     GetGroupListNav();
 
+    //是否为当前页面
     function check_is_group() {
         //是否为当前页面
         var is_group_info = window.location.href;
