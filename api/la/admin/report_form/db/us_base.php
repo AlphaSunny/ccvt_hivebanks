@@ -119,7 +119,7 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
 //        $sql_base = "select "
 //        $res_origin[$key]['us_account'] = $res['us_account'];
         $res_origin[$key]['rank'] = $key+1;
-        $sql_base = "select us_account,us_nm as invite_code from us_base where us_id={$us_id}";
+        $sql_base = "select us_account,us_nm as invite_code from us_base where us_id='{$us_id}'";
         $res_base = $db->query($sql_base);
         $res_base = $db->fetchRow();
         $res_origin[$key]['us_account'] = $res_base['us_account'];
