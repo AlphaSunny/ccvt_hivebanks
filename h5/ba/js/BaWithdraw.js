@@ -100,37 +100,6 @@ $(function () {
         }
     });
 
-    //Manually add an address
-    // $('.manualAddAddress').click(function () {
-    //     if (cellphone == 'cellphone') {
-    //         $('#smsPhoneCode').modal('show');
-    //     } else {
-    //         $('#goBindPhoto').modal('show');
-    //     }
-    // });
-
-    //Confirm add address
-    // $('.addAddressBtn').click(function () {
-    //     var bit_address = $('.bit_address').val(), pass_word_hash = hex_sha1($('#password').val());
-    //     ShowLoading("show");
-    //     ConfirmAddAddress(token, bit_type, bit_address, pass_word_hash, function (response) {
-    //         if (response.errcode == '0') {
-    //             ShowLoading("hide");
-    //             LayerFun('addAddressSuccess');
-    //             $('#addAddress').modal('hide');
-    //             $('.withdrawAddressInput').val(response.rows);
-    //         }
-    //     }, function (response) {
-    //         ShowLoading("hide");
-    //         if (response.errcode == '120') {
-    //             LayerFun('passwordError');
-    //             return;
-    //         }
-    //         LayerFun(response.errcode);
-    //         return;
-    //     })
-    // });
-
     //Click to lock the amount of cash
     var base_amount = '', bit_amount = '', bit_address = '';
     $('.lockWithdrawAmount').click(function () {
@@ -138,29 +107,34 @@ $(function () {
         base_amount = $('.base_amount_input').val();
         bit_address = $('.withdrawAddressInput').val();
         if (us_base_amount < min_amount) {
-            LayerFun('notBalance');
+            // LayerFun('notBalance');
+            layer.msg("没有足够的余额", {icon: 2});
             return;
         }
         if (bit_address.length <= 0) {
-            LayerFun('widthAddressNotEmpty');
+            // LayerFun('widthAddressNotEmpty');
+            layer.msg("请输入提现地址", {icon: 2});
             return;
         }
 
         if (!ethAddressCheck(bit_address)) {
             $('.address_check').fadeIn('fast');
-            layer.msg("请输入正确的地址");
+            layer.msg("请输入正确的地址", {icon: 2});
             return;
         }
         if (base_amount.length <= 0) {
-            LayerFun('widthAmountNotEmpty');
+            // LayerFun('widthAmountNotEmpty');
+            layer.msg("请输入提现金额", {icon: 2});
             return;
         }
-        if (base_amount <= min_amount) {
-            LayerFun('notSmallAmount');
+        if (base_amount < min_amount) {
+            // LayerFun('notSmallAmount');
+            layer.msg("提现金额不能少于最小提现额度", {icon: 2});
             return;
         }
         if (base_amount >= max_amount) {
-            LayerFun('notLagAmount');
+            // LayerFun('notLagAmount');
+            layer.msg("提现金额不能大于最大提现额度", {icon: 2});
             return;
         }
         if (fundPass != 'pass_hash') {
