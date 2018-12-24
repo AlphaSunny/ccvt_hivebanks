@@ -27,6 +27,7 @@ $(function () {
                 $.each(data, function (i, val) {
                     var weekDay_arr = data[i].tx_content.split("-");
                     console.log(weekDay_arr);
+                    console.log(i);
                     tr += "<tr>" +
                         "<td class='ask' name=" + data[i].id + ">" + data[i].ask + "</td>" +
                         "<td class='answer'>" + data[i].answer + "</td>" +
