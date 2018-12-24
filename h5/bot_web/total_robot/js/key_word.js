@@ -9,7 +9,6 @@ $(function () {
         GetKeyWordList(token, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
-                console.log(response);
                 var data = response.rows;
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
@@ -29,7 +28,7 @@ $(function () {
                     tr += "<tr>" +
                         "<td class='ask' name=" + data[i].id + ">" + data[i].ask + "</td>" +
                         "<td class='answer'>" + data[i].answer + "</td>" +
-                        "<td class='group_name'>" + data[i].group_name + "</td>" +
+                        // "<td class='group_name'>" + data[i].group_name + "</td>" +
                         "<td class='ctime'>" + data[i].ctime + "</td>" +
                         "<td class='send_type none'>" + data[i].send_type + "</td>" +
                         "<td class='id none'>" + data[i].id + "</td>" +
