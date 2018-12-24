@@ -46,7 +46,7 @@ $(function () {
 
     //获取定时任务
     function GetTaskListFun() {
-        var tr = "",weekDay = "";
+        var tr = "", weekDay = "";
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
@@ -57,7 +57,7 @@ $(function () {
                         var weekDay_arr = data[i].tx_content.split("-");
                         if (weekDay_arr.length > 1) {
                             $.each(weekDay_arr, function (j, val) {
-
+                                weekDay += "#" + weekDay_arr[i]
                             })
                         }
                         tr += "<tr>" +
