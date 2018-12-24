@@ -24,7 +24,7 @@ $(function () {
     GetGroupListNav();
 
     //是否是group_member页面
-    var is_group_member  = window.location.pathname;
+    var is_group_member  = window.location.href;
     console.log(is_group_member);
     var reg = new RegExp("group_member.html");
     console.log(reg.exec(is_group_member));
