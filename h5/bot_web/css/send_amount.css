@@ -27,6 +27,10 @@
 .one_green {
     background: #4daf17e3;
 }
+.one_green:hover{
+    background: #429414e3;
+    transition: all 0.3s;
+}
 
 .one_blue {
     background: #3b3bcce3;
