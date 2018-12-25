@@ -1,30 +1,6 @@
 $(function () {
     var token = GetCookie("total_robot_token");
 
-    // function GetGroupListFun() {
-    // var url = getRootPath();
-    // var table = $("#groupMasterListTable").DataTable({
-    //     "ajax": url + "/api/bot_web/admin/group_list.php?token=" + encodeURIComponent(token),
-    //     destroy: true,
-    //     "deferRender": true,
-    //     "columns": [
-    //         {"data": "id", "class": "id"},
-    //         {"data": "name", "class": "name"},
-    //         {"data": "del", "class": "del"},
-    //         {"data": "is_del", "class": "is_del none"},
-    //         {"data": "flirt", "class": "flirt"},
-    //         {"data": "is_flirt", "class": "is_flirt none"},
-    //     ],
-    //     "columnDefs": [{
-    //         "targets": 6,
-    //         "data": null,
-    //         "render": function () {
-    //             return "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-    //                 "<button class='btn-sm btn-info infoBtn margin-left-5'><i class='fa fa-eye' aria-hidden='true'></i>详情</button>"
-    //         }
-    //     }]
-    // });
-
     //获取群列表
     var is_audit = "";
 
@@ -171,6 +147,6 @@ $(function () {
     $(document).on("click", ".infoBtn", function () {
         var group_id = $(this).parents("tr").find(".id").text();
         var group_name = $(this).parents("tr").find(".name").text();
-        window.location.href = "group_info.html?group_id=" + group_id + "&group_name=" + encodeURI(encodeURI(group_name));
+        window.location.href = "group_member.html?group_id=" + group_id + "&group_name=" + encodeURI(encodeURI(group_name));
     })
 });
