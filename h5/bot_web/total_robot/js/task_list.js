@@ -59,24 +59,24 @@ $(function () {
                         if (one_arr.indexOf("sunday")) {
                             one_arr[one_arr.indexOf("sunday")] = "星期日";
                         }
-                        if (one_arr.indexOf("monday")) {
-                            one_arr[one_arr.indexOf("monday")] = "星期一";
-                        }
-                        if (one_arr.indexOf("tuesday")) {
-                            one_arr[one_arr.indexOf("tuesday")] = "星期二";
-                        }
-                        if (one_arr.indexOf("wednesday")) {
-                            one_arr[one_arr.indexOf("wednesday")] = "星期三";
-                        }
-                        if (one_arr.indexOf("thursday")) {
-                            one_arr[one_arr.indexOf("thursday")] = "星期四";
-                        }
-                        if (one_arr.indexOf("friday")) {
-                            one_arr[one_arr.indexOf("friday")] = "星期五";
-                        }
-                        if (one_arr.indexOf("saturday")) {
-                            one_arr[one_arr.indexOf("saturday")] = "星期六";
-                        }
+                        // if (one_arr.indexOf("monday")) {
+                        //     one_arr[one_arr.indexOf("monday")] = "星期一";
+                        // }
+                        // if (one_arr.indexOf("tuesday")) {
+                        //     one_arr[one_arr.indexOf("tuesday")] = "星期二";
+                        // }
+                        // if (one_arr.indexOf("wednesday")) {
+                        //     one_arr[one_arr.indexOf("wednesday")] = "星期三";
+                        // }
+                        // if (one_arr.indexOf("thursday")) {
+                        //     one_arr[one_arr.indexOf("thursday")] = "星期四";
+                        // }
+                        // if (one_arr.indexOf("friday")) {
+                        //     one_arr[one_arr.indexOf("friday")] = "星期五";
+                        // }
+                        // if (one_arr.indexOf("saturday")) {
+                        //     one_arr[one_arr.indexOf("saturday")] = "星期六";
+                        // }
 
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
