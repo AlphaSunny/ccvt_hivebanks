@@ -182,7 +182,8 @@ $(function () {
             alert("操作之前请先登录!");
             return;
         }
-        amount = Number($(".amount").text());
+        // amount = Number($(".amount").text());
+        amount = $(".amount").text();
         console.log(amount);
         AlreadyZanCaiNumFun();
         if ($(this).hasClass("zan_icon")) {
