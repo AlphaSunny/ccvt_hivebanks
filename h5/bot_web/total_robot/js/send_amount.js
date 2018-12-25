@@ -19,9 +19,9 @@ $(function () {
     // var url = getRootPath();
     var limit = 10, offset = 0, loading = "";
 
-    function GetAmountFun(start_time, end_time, nickname, limit, offset) {
+    function GetAmountFun(group_id, start_time, end_time, nickname, limit, offset) {
         var tr = "", totalPage = "", count = "";
-        GetAmount(token, start_time, end_time, nickname, limit, offset, function (response) {
+        GetAmount(token, group_id,start_time, end_time, nickname, limit, offset, function (response) {
             layer.close(loading);
             if (response.errcode == "0") {
                 $(".all_amount").text(response.all_amount);
@@ -70,9 +70,13 @@ $(function () {
         });
     }
 
-    var start_time = "", end_time = "", nickname = "";
-    GetAmountFun(start_time, end_time, nickname, limit, offset);
+    var group_id = $("#group_select").val(), start_time = "", end_time = "", nickname = "";
+    GetAmountFun(group_id, start_time, end_time, nickname, limit, offset);
 
+    $("#group_select").change(function () {
+       console.log($("#group_select").text());
+       console.log($("#group_select option:selected").text());
+    });
 
     $(".searchBtn").click(function () {
         start_time = $("#startTime").val();
