@@ -183,6 +183,7 @@ $(function () {
             return;
         }
         amount = parseInt($(".amount").text());
+        console.log(amount);
         AlreadyZanCaiNumFun();
         if ($(this).hasClass("zan_icon")) {
             $(".zan_h3").fadeIn("fast");
