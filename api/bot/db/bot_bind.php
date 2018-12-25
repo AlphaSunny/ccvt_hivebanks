@@ -941,6 +941,19 @@ function get_answer($ask,$group_id){
     }
     return $row;
 }
+//======================================
+// 函数: 判断微信昵称是否存在数据库
+//======================================
+function wechat_is_bind($wechat){
+    $db = new DB_COM();
+    $sql = "select * from us_base WHERE wechat='{$wechat}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if (!$row) {
+        return false;
+    }
+    return true;
+}
 
 
 ?>
