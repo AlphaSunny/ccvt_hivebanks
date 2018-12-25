@@ -70,7 +70,7 @@ $(function () {
         });
     }
 
-    var group_id = $("#group_select").val(), start_time = "", end_time = "", nickname = "";
+    var group_id = $("#group_select option:selected").val(), start_time = "", end_time = "", nickname = "";
     console.log(group_id);
     GetAmountFun(group_id, start_time, end_time, nickname, limit, offset);
 
