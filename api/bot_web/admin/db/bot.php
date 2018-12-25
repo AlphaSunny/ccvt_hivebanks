@@ -302,7 +302,7 @@ function iss_records_list($da,$offset,$limit)
     $db = new DB_COM();
     $unit = get_la_base_unit();
 
-    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE 1";
+    $sql = "SELECT bot_ls_id,us_id,ba_id,wechat,num,amount/'{$unit}' as amount,send_time FROM bot_Iss_records WHERE group_id='{$da['group_id']}'";
     if ($da['start_time'] && !$da['end_time']){
         $sql .= " and send_time>'{$da['start_time']}'";
     }elseif (!$da['start_time'] && $da['end_time']){
@@ -320,8 +320,47 @@ function iss_records_list($da,$offset,$limit)
     $data = array();
     $rows = $db -> fetchAll();
     $data['rows'] = $rows;
-    $data['all_amount'] = array_sum(array_map(function($val){return $val['amount'];}, $rows));
-    $data['all_chat'] = array_sum(array_map(function($val){return $val['num'];}, $rows));
+    $sql = "SELECT sum(amount/'{$unit}') as amount,sum(num) as num FROM bot_Iss_records WHERE group_id = '{$da['group_id']}'";
+    if ($da['start_time'] && !$da['end_time']){
+        $sql .= " and send_time>'{$da['start_time']}'";
+    }elseif (!$da['start_time'] && $da['end_time']){
+        $sql .= " and send_time<'{$da['end_time']}'";
+    }elseif ($da['start_time'] && $da['end_time']){
+        $sql .= " and send_time between '{$da['start_time']}' and '{$da['end_time']}'";
+    }
+    $sql .= " group by group_id";
+    $db->query($sql);
+    $ss = $db->fetchRow();
+    $data['all_amount'] = $ss['amount'] ? $ss['amount'] : 0;
+    $data['all_chat'] = $ss['num'] ? $ss['num'] : 0;
+
+    //群主返现金额
+    $sql = "select us_id from bot_group WHERE id='{$da['group_id']}'";
+    $db->query($sql);
+    $us_id = $db->getField($sql,'us_id');
+    $sql = "select sum(tx_amount/'{$unit}') as all_cashback from com_base_balance WHERE credit_id='{$us_id}' AND tx_type='group_cashback'";
+    if ($da['start_time'] && !$da['end_time']){
+        $sql .= " and ctime>'{$da['start_time']}'";
+    }elseif (!$da['start_time'] && $da['end_time']){
+        $sql .= " and ctime<'{$da['end_time']}'";
+    }elseif ($da['start_time'] && $da['end_time']){
+        $sql .= " and ctime between '{$da['start_time']}' and '{$da['end_time']}'";
+    }
+    $db->query($sql);
+    $all_cashback = $db->fetchRow();
+    $data['all_cashback'] = $all_cashback['all_cashback'] ? $all_cashback['all_cashback'] : 0;
+
+    //总绑定人数
+    $sql = "select count(bind_id) as count from us_bind WHERE bind_name='group' AND bind_info='{$da['group_id']}'";
+    if ($da['start_time'] && !$da['end_time']){
+        $sql .= " and ctime>'{$da['start_time']}'";
+    }elseif (!$da['start_time'] && $da['end_time']){
+        $sql .= " and ctime<'{$da['end_time']}'";
+    }elseif ($da['start_time'] && $da['end_time']){
+        $sql .= " and ctime between '{$da['start_time']}' and '{$da['end_time']}'";
+    }
+    $db->query($sql);
+    $data['all_bind_count'] = $db->getField($sql,'count');
     return $data;
 }
 
