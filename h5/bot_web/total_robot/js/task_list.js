@@ -61,13 +61,13 @@ $(function () {
                             one_arr[one_arr.indexOf("sunday")] = "星期日";
                         }
                         if (one_arr.indexOf("monday")) {
-                            one_arr.indexOf("monday").replace("星期一");
+                            one_arr[one_arr.indexOf("sunday")] = "星期一";
                         }
                         if (one_arr.indexOf("tuesday")) {
-                            one_arr.indexOf("tuesday").replace("星期二");
+                            one_arr[one_arr.indexOf("sunday")] = "星期二";
                         }
                         if (one_arr.indexOf("wednesday")) {
-                            one_arr.indexOf("wednesday").replace("星期三");
+                            one_arr[one_arr.indexOf("sunday")] = "星期三";
                         }
                         // console.log(one_arr);
                         tr += "<tr>" +
