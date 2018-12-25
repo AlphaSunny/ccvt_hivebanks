@@ -245,10 +245,11 @@ function DelTask(token, timer_id, suc_func, error_func) {
 }
 
 //搜索获取统计列表
-function GetAmount(token, start_time, end_time, nickname, limit, offset, suc_func, error_func) {
+function GetAmount(token,group_id, start_time, end_time, nickname, limit, offset, suc_func, error_func) {
     var api_url = "iss_records_list.php",
         post_data = {
             "token": token,
+            "group_id": group_id,
             "start_time": start_time,
             "end_time": end_time,
             "nickname": nickname,

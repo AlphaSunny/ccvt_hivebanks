@@ -58,7 +58,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        GetAmountFun(token,group_id, start_time, end_time, nickname, limit, (current - 1) * limit);
+                        GetAmountFun(token, group_id, start_time, end_time, nickname, limit, (current - 1) * limit);
                         loading = layer.load(1, {
                             shade: [0.1, '#fff'] //0.1透明度的白色背景
                         });
@@ -72,18 +72,18 @@ $(function () {
     }
 
     var start_time = "", end_time = "", nickname = "";
-    GetAmountFun(token,group_id, start_time, end_time, nickname, limit, offset);
+    GetAmountFun(token, group_id, start_time, end_time, nickname, limit, offset);
 
     $("#group_select").change(function () {
         group_id = $("#group_select option:selected").val();
-        GetAmountFun(token,group_id, start_time, end_time, nickname, limit, offset);
+        GetAmountFun(token, group_id, start_time, end_time, nickname, limit, offset);
     });
 
     $(".searchBtn").click(function () {
         start_time = $("#startTime").val();
         end_time = $("#endTime").val();
         nickname = $("#nickname").val();
-        GetAmountFun(token,group_id, start_time, end_time, nickname, limit, offset);
+        GetAmountFun(token, group_id, start_time, end_time, nickname, limit, offset);
         loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
