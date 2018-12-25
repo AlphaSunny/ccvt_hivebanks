@@ -72,7 +72,8 @@ $(function () {
                         // console.log(one_arr);
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
-                            "<td class='time'>" + data[i].tx_content + data[i].time + "</td>" +
+                            // "<td class='time'>" + data[i].tx_content + data[i].time + "</td>" +
+                            "<td class='time'>" + one_arr.join("-") + data[i].time + "</td>" +
                             "<td class='content'>" + data[i].content + "</td>" +
                             "<td class='name'>" + data[i].name + "</td>" +
                             "<td>" +
