@@ -57,6 +57,7 @@ $(function () {
                 } else {
                     $.each(data, function (i, val) {
                         weekDay=data[i].tx_content.replace(reg,"星期一","星期二");
+                        console.log(weekDay);
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
                             "<td class='time'>" + data[i].tx_content + data[i].time + "</td>" +
