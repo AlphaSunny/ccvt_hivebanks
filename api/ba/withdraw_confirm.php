@@ -33,17 +33,21 @@ $type = get_arg_str('GET','type');
 $qa_id = get_arg_str('GET','qa_id');
 $transfer_tx_hash = get_arg_str('GET','transfer_tx_hash');
 
-$key = Config::TOKEN_KEY;
-$des = new Des();
-$decryption_code = $des -> decrypt($token, $key);
-$now_time = time();
-$code_conf =  explode(',',$decryption_code);
+// token解析
+$ba_id = check_token($token);
+
+
+//$key = Config::TOKEN_KEY;
+//$des = new Des();
+//$decryption_code = $des -> decrypt($token, $key);
+//$now_time = time();
+//$code_conf =  explode(',',$decryption_code);
 // 获取token中的需求信息
-$ba_id = $code_conf[0];
-$timestamp = $code_conf[1];
-if($timestamp < $now_time){
-    exit_error('114','Token timeout please retrieve!');
-}
+
+//$timestamp = $code_conf[1];
+//if($timestamp < $now_time){
+//    exit_error('114','Token timeout please retrieve!');
+//}
 if ($type == '1') {
     $qa_flag = "1";
 }elseif ($type == '2'){
@@ -52,18 +56,18 @@ if ($type == '1') {
     exit_error(1,"非法参数");
 }
 //根据qa_id获取订单信息
-$rows = sel_withdraw_ba_base_amount_info($qa_id);
-if (!$rows)
+$row = sel_withdraw_ba_base_amount_info($qa_id);
+if (!$row)
     exit_error('128',"该订单不存在");
-if ($rows["qa_flag"] == 1)
+if ($row["qa_flag"] == 1)
     exit_error('129',"该订单已处理");
-elseif ($rows["qa_flag"] == 2)
+elseif ($row["qa_flag"] == 2)
     exit_error('130',"该订单已拒绝");
 
 //成功，拒绝
 if ($type == "2"){
     //返回用的base_amount,减去lock_amount
-    if (!upd_refuse_us_base_amount_info($rows["us_id"],$rows["base_amount"],$rows["$base_amount"]))
+    if (!upd_refuse_us_base_amount_info($row["us_id"],$row["base_amount"],$row["$base_amount"]))
         exit_error('101',"更新失败");
     exit_ok();
 }
@@ -72,7 +76,7 @@ if ($type == "2"){
 //    exit_error(1,"订单异常");
 //获取ba基本用户信息
 
-withdraw_confirm($rows,$transfer_tx_hash);
+withdraw_confirm($row,$transfer_tx_hash);
 
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';

@@ -46,17 +46,22 @@ $(function () {
 
     //获取定时任务
     function GetTaskListFun() {
-        var tr = "";
+        var tr = "", weekDay = "";
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
+                var reg = /\b(sunday|cat|monday|tuesday|wednesday|thursday|friday|saturday)\b/g;
+
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
                 } else {
                     $.each(data, function (i, val) {
+                        console.log(data[i].tx_content.split("-"));
+                        weekDay=data[i].tx_content.split("-").replace(reg,"星期一","星期二");
+                        console.log(weekDay);
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
-                            "<td class='time'>" + data[i].time + "</td>" +
+                            "<td class='time'>" + data[i].tx_content + data[i].time + "</td>" +
                             "<td class='content'>" + data[i].content + "</td>" +
                             "<td class='name'>" + data[i].name + "</td>" +
                             "<td>" +

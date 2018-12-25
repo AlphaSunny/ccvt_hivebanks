@@ -25,9 +25,12 @@
     <!-- Navbar Right Menu-->
     <ul class="app-nav">
         <!-- User Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-twitter"
+                                                                             aria-hidden="true"></i></a></li>
+        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-facebook"
+                                                                             aria-hidden="true"></i></a></li>
+        <li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+        </li>
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
                 class="fa fa-user fa-lg"></i></a>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
@@ -63,13 +66,34 @@
         <div class="col-md-12">
             <div class="tile">
                 <div class="col-md-12 col-sm-12">
-                    <div class="row">
-                        <div class="col-md-4 one_red three_col">总奖励数:<span class="all_amount"></span></div>
-                        <div class="margin-left-5 one_green three_col col-md-4">总发言数:<span class="all_chat"></span></div>
-                        <div class="margin-left-5 one_blue three_col col-md-4">群主奖励:<span class="all_chat"></span></div>
+                    <div class="row margin-bottom-5">
+                        <div class="col-md-4">
+                            <div class="three_col one_red flex center space-center">
+                                <p>
+                                    <span><span class="all_amount"></span>CCVT</span><br>
+                                    <span>总奖励数</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="three_col one_green flex center space-center">
+                                <p>
+                                    <span><span class="all_chat"></span>条</span><br>
+                                    <span>总发言数</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="three_col one_blue flex center space-center">
+                                <p>
+                                    <span><span class="all_chat"></span>CCVT</span><br>
+                                    <span>群主奖励</span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="">
-                        <h3>条件搜索:</h3>
+                    <h3>奖励明细</h3>
+                    <div class="flex center">
                         <div class="form-group form-group-sm inline-block">
                             <label for="startTime" class="control-label">用户昵称</label>
                             <input type="text" class="form-control" id="nickname">
@@ -92,10 +116,10 @@
                     <table class="table table-hover table-bordered" id="sendAmountTable">
                         <thead>
                         <tr class="text-center">
-                            <th>群昵称</th>
-                            <th>获得(CCVT)</th>
-                            <th>发言数</th>
-                            <th>奖励时间</th>
+                            <th class="th_top">群昵称</th>
+                            <th class="th_top">获得(CCVT)</th>
+                            <th class="th_top">发言数</th>
+                            <th class="th_top">奖励时间</th>
                         </tr>
                         </thead>
                         <tbody id="sendBody">

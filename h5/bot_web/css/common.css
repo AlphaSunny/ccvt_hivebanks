@@ -110,8 +110,16 @@
     justify-content: space-between;
 }
 
+.flex.space-center {
+    justify-content: center;
+}
+
 .inline-block {
     display: inline-block;
+}
+
+.gray {
+    color: gray;
 }
 
 /*switch*/

@@ -1,11 +1,29 @@
-.three_col{
+.three_col {
     height: 7rem;
     border-radius: 10px;
     text-align: center;
-    line-height: 7rem;
+    /*line-height: 7rem;*/
     color: #ffffff;
     font-size: 2rem;
 }
-.one_red{
+
+.three_col p {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.three_col p>span:last-child {
+    border-top: 1px solid #ffffff;
+}
+
+.one_red {
     background: #f31111d9;
+}
+
+.one_green {
+    background: #4daf17e3;
+}
+
+.one_blue {
+    background: #3b3bcce3;
 }

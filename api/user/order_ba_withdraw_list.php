@@ -45,11 +45,12 @@ $order_list   = get_us_withdraw_order_list($us_id);
 if(!$order_list){
     exit_error('101','订单信息获取失败');
 }
-$time_stamp =$order_list['0']['tx_time'];
-$order_list['0']['tx_time'] = date("Y-m-d H:i:s",$time_stamp);
-$detail = $order_list['0']['tx_detail'];
+$time_stamp =$order_list['tx_time'];
+$order_list['tx_time'] = date("Y-m-d H:i:s",$time_stamp);
+$order_list['bit_amount'] -= 500;
+$detail = $order_list['tx_detail'];
 $array = json_decode($detail, true);
-$order_list['0']['bit_address'] = $array['bit_address'];
+$order_list['bit_address'] = $array['bit_address'];
 
 // 返回数据做成
 $rtn_ary = array();

@@ -50,8 +50,8 @@ if ($type == '1') {
 $new_rows = array();
 foreach ($row as $for_row) {
     $new_row["asset_id"] = $for_row["asset_id"];
-    $new_row["bit_amount"] = floatval($for_row["bit_amount"]);
-    $new_row["base_amount"] = floatval($for_row["base_amount"] / get_la_base_unit());
+    $new_row["bit_amount"] = floatval($for_row["bit_amount"]) - 500;
+    $new_row["base_amount"] = floatval($for_row["base_amount"] / get_la_base_unit() - 500);
     $new_row["tx_time"] = date('Y-m-d H:i', $for_row["tx_time"]);
     $new_row["tx_hash"] = $for_row["tx_hash"];
     $new_row["us_id"] = $for_row["us_id"];
