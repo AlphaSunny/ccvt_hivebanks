@@ -2,6 +2,19 @@ $(function () {
     //获取token
     var token = GetCookie("total_robot_token");
 
+    //获取群
+    var is_audit = "2";
+    GetGroupList(token, is_audit, function (response) {
+        if (response.errcode == "0") {
+            var data = response.rows, option = "";
+            $.each(data, function (i, val) {
+                option += "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
+            });
+            $("#group_select").html(option);
+        }
+    }, function (response) {
+        layer.msg(response.errmsg, {icon: 2});
+    });
 
     // var url = getRootPath();
     var limit = 10, offset = 0, loading = "";
