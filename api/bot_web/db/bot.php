@@ -362,8 +362,8 @@ function iss_records_list($da,$offset,$limit)
         $sql .= " and ctime between '{$da['start_time']}' and '{$da['end_time']}'";
     }
     $db->query($sql);
-    $all_cashback = $db->getField($sql,'all_cashback');
-    $data['all_cashback'] = $all_cashback ? $all_cashback : 0;
+    $all_cashback = $db->fetchRow();
+    $data['all_cashback'] = $all_cashback['all_cashback'] ? $all_cashback['all_cashback'] : 0;
 
     //总绑定人数
     $sql = "select count(bind_id) as count from us_bind WHERE bind_name='group' AND bind_info in (select id from bot_group WHERE us_id='{$da['us_id']}')";
