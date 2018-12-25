@@ -182,7 +182,7 @@ $(function () {
             alert("操作之前请先登录!");
             return;
         }
-        amount = Number($(".amount").text());
+        amount = Number($(".pc_amount").text());
         AlreadyZanCaiNumFun();
         if ($(this).hasClass("zan_icon")) {
             $(".zan_h3").fadeIn("fast");
