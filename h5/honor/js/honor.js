@@ -15,7 +15,6 @@ $(function () {
             if (response.errcode == "0") {
                 // $(".login").remove();
                 $(".amount").text(response.rows.base_amount);
-                console.log(response.rows.base_amount);
                 $(".amount_box").fadeIn();
             }
         }, function (response) {
@@ -184,7 +183,7 @@ $(function () {
             return;
         }
         // amount = Number($(".amount").text());
-        amount = $(".amount").text();
+        amount = $(".amount").html();
         console.log(amount);
         AlreadyZanCaiNumFun();
         if ($(this).hasClass("zan_icon")) {
