@@ -56,6 +56,7 @@ $(function () {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
                 } else {
                     $.each(data, function (i, val) {
+                        console.log(data[i].tx_content.split("-"));
                         weekDay=data[i].tx_content.split("-").replace(reg,"星期一","星期二");
                         console.log(weekDay);
                         tr += "<tr>" +
