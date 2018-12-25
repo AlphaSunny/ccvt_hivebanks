@@ -75,6 +75,9 @@ $(function () {
                         if (one_arr.indexOf("friday")) {
                             one_arr[one_arr.indexOf("friday")] = "星期五";
                         }
+                        if (one_arr.indexOf("saturday")) {
+                            one_arr[one_arr.indexOf("saturday")] = "星期六";
+                        }
 
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
