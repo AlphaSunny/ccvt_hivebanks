@@ -237,6 +237,15 @@ function get_us_base_amount($us_id){
 }
 
 
+//获取us可用余额
+function get_us_base_true_amount($us_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from us_base WHERE us_id='{$us_id}'";
+    $db->query($sql);
+    $amount = $db->getField($sql,'base_amount');
+    return $amount;
+}
+
 
 //======================================
 // 函数: 判断是否当日已经达到最大上限
@@ -251,7 +260,7 @@ function check_max_give($us_id,$give_num,$state,$give_us_id)
     }
 
     $unit = get_la_base_unit();
-    $base_amount = get_us_base_amount($us_id)/$unit;
+    $base_amount = get_us_base_true_amount($us_id)/$unit;
     if ($give_num>$base_amount){
         return 4;
         false;
