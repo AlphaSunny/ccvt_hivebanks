@@ -337,8 +337,22 @@ function iss_records_list($da,$offset,$limit)
     $data = array();
     $rows = $db -> fetchAll();
     $data['rows'] = $rows;
-    $data['all_amount'] = array_sum(array_map(function($val){return $val['amount'];}, $rows));
-    $data['all_chat'] = array_sum(array_map(function($val){return $val['num'];}, $rows));
+    $sql = "SELECT sum(amount/'{$unit}') as amount,num FROM bot_Iss_records WHERE bot_us_id = '{$da['us_id']}'";
+    if ($da['start_time'] && !$da['end_time']){
+        $sql .= " and send_time>'{$da['start_time']}'";
+    }elseif (!$da['start_time'] && $da['end_time']){
+        $sql .= " and send_time<'{$da['end_time']}'";
+    }elseif ($da['start_time'] && $da['end_time']){
+        $sql .= " and send_time between '{$da['start_time']}' and '{$da['end_time']}'";
+    }
+    $sql .= " group by bot_us_id";
+    $db->query($sql);
+    $ss = $db->fetchRow();
+    $data['all_amount'] = $ss['amount'];
+    $data['all_chat'] = $ss['num'];
+//    $data['all_amount'] = array_sum(array_map(function($val){return $val['amount'];}, $rows));
+//    $data['all_chat'] = array_sum(array_map(function($val){return $val['num'];}, $rows));
+    //群主返现金额
     return $data;
 }
 
