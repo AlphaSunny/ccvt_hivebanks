@@ -273,7 +273,7 @@ function get_message_list($group_id,$status)
 function  get_iss_record_total($da)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM bot_Iss_records WHERE 1";
+    $sql = "SELECT * FROM bot_Iss_records WHERE group_id='{$da['group_id']}'";
     if ($da['start_time'] && !$da['end_time']){
         $sql .= " and send_time>'{$da['start_time']}'";
     }elseif (!$da['start_time'] && $da['end_time']){
