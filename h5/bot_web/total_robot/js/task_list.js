@@ -50,7 +50,6 @@ $(function () {
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
-                var reg = /\b(sunday|monday|tuesday|wednesday|thursday|friday|saturday)\b/g;
 
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
