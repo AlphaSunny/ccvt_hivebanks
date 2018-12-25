@@ -47,7 +47,7 @@ if(!$order_list){
 }
 $time_stamp =$order_list['0']['tx_time'];
 $order_list['0']['tx_time'] = date("Y-m-d H:i:s",$time_stamp);
-$order_list['bit_amount']  -= 500;
+print_r($order_list);
 $detail = $order_list['0']['tx_detail'];
 $array = json_decode($detail, true);
 $order_list['0']['bit_address'] = $array['bit_address'];
