@@ -15,6 +15,7 @@ $unit = get_la_base_unit();
 $ba_info = get_ba_base_info();
 //查询所有能送ccvt的群组
 $sql = "select * from bot_group LEFT WHERE is_audit=2 AND is_test=1 AND is_give_ccvt=1";
+echo $sql;die;
 $db->query($sql);
 $groups = $db->fetchAll();
 if ($groups){
