@@ -8,6 +8,7 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows, option = "";
             $.each(data, function (i, val) {
+                group_id = data[0].id;
                 option += "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
             });
             $("#group_select").html(option);
@@ -17,11 +18,11 @@ $(function () {
     });
 
     // var url = getRootPath();
-    var limit = 10, offset = 0, loading = "";
+    var limit = 10, offset = 0, loading = "", group_id = "";
 
     function GetAmountFun(group_id, start_time, end_time, nickname, limit, offset) {
         var tr = "", totalPage = "", count = "";
-        GetAmount(token, group_id,start_time, end_time, nickname, limit, offset, function (response) {
+        GetAmount(token, group_id, start_time, end_time, nickname, limit, offset, function (response) {
             layer.close(loading);
             if (response.errcode == "0") {
                 $(".all_amount").text(response.all_amount);
@@ -70,13 +71,12 @@ $(function () {
         });
     }
 
-    var group_id = $("#group_select option:selected").val(), start_time = "", end_time = "", nickname = "";
-    console.log(group_id);
+    var start_time = "", end_time = "", nickname = "";
     GetAmountFun(group_id, start_time, end_time, nickname, limit, offset);
 
     $("#group_select").change(function () {
-       var group_id = $("#group_select option:selected").val();
-       console.log(group_id);
+        group_id = $("#group_select option:selected").val();
+        GetAmountFun(group_id, start_time, end_time, nickname, limit, offset);
     });
 
     $(".searchBtn").click(function () {
