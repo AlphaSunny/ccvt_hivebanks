@@ -182,7 +182,7 @@ $(function () {
             alert("操作之前请先登录!");
             return;
         }
-        amount = $(".amount").text();
+        amount = parseInt($(".amount").text());
         AlreadyZanCaiNumFun();
         if ($(this).hasClass("zan_icon")) {
             $(".zan_h3").fadeIn("fast");
@@ -211,7 +211,6 @@ $(function () {
     function AlreadyZanCaiNumFun() {
         AlreadyZanCaiNum(token, function (response) {
             if (response.errcode == "0") {
-                console.log(response);
                 if (state == "1") {
                     $(".all_zan").text(response.rows.all_zan);
                     $(".max_give_like").text(response.rows.max_give_like);
