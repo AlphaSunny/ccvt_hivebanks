@@ -245,7 +245,7 @@ function DelTask(token, timer_id, suc_func, error_func) {
 }
 
 //搜索获取统计列表
-function GetAmount(token,group_id, start_time, end_time, nickname, limit, offset, suc_func, error_func) {
+function GetAmount(token, group_id, start_time, end_time, nickname, limit, offset, suc_func, error_func) {
     var api_url = "iss_records_list.php",
         post_data = {
             "token": token,
@@ -338,7 +338,7 @@ function AddKeyWord(token, ask, answer, send_type, suc_func, error_func) {
             'ask': ask,
             'answer': answer,
             'send_type': send_type
-    };
+        };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 

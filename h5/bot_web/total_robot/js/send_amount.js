@@ -26,6 +26,8 @@ $(function () {
             layer.close(loading);
             if (response.errcode == "0") {
                 $(".all_amount").text(response.all_amount);
+                $(".all_cashback").text(response.all_cashback);
+                $(".all_bind_count").text(response.all_bind_count);
                 $(".all_chat").text(response.all_chat);
                 var data = response.rows;
                 totalPage = Math.floor(response.total / limit);
