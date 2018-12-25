@@ -50,13 +50,13 @@ $(function () {
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
-                var reg = /\b(sunday|cat|monday|tuesday|wednesday|thursday|friday)\b/g;
+                var reg = /\b(sunday|cat|monday|tuesday|wednesday|thursday|friday|saturday)\b/g;
 
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
                 } else {
                     $.each(data, function (i, val) {
-                        weekDay=data[i].tx_content.replace(reg,"星期一","星期二");
+                        weekDay=data[i].tx_content.split("-").replace(reg,"星期一","星期二");
                         console.log(weekDay);
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
