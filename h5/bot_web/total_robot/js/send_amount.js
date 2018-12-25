@@ -8,7 +8,6 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows, option = "";
             $.each(data, function (i, val) {
-                group_id = data[0].id;
                 option += "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
             });
             $("#group_select").html(option);
