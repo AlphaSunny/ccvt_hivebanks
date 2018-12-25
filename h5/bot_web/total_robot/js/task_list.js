@@ -63,7 +63,7 @@ $(function () {
                         if(one_arr.indexOf("monday")){
                             one_arr.indexOf("monday").replace("星期一");
                         }
-
+                        console.log(one_arr);
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
                             "<td class='time'>" + data[i].tx_content + data[i].time + "</td>" +
