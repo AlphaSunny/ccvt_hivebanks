@@ -58,10 +58,11 @@ $(function () {
                     $.each(data, function (i, val) {
                         var one_arr = data[i].tx_content.split("-");
                         if(one_arr.indexOf("sunday")){
-                            one_arr.indexOf("sunday").replace("星期日");
+                            console.log(this);
+                            // one_arr.indexOf("sunday").replace("星期日");
                         }
                         if(one_arr.indexOf("monday")){
-                            one_arr.indexOf("monday").replace("星期一");
+                            // one_arr.indexOf("monday").replace("星期一");
                         }
                         console.log(one_arr);
                         tr += "<tr>" +
