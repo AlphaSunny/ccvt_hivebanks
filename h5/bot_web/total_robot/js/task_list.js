@@ -81,7 +81,7 @@ $(function () {
                         if(data[i].send_type == 1){
                             content = "<span>"+ data[i].content +"</span>";
                         }else {
-                            content = "<img src='"+ data[i].content +"'/>";
+                            content = "<img class='task_img' src='"+ data[i].content +"'/>";
                         }
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +

@@ -275,6 +275,10 @@ td.none {
     font-size: 2rem;
 }
 
+.task_img {
+    width: 100%;
+}
+
 /*loading*/
 .loading {
     position: fixed;
