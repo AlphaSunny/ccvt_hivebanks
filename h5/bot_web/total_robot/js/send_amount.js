@@ -75,7 +75,6 @@ $(function () {
     GetAmountFun(group_id, start_time, end_time, nickname, limit, offset);
 
     $("#group_select").change(function () {
-       console.log($("#group_select option:selected").val());
        var group_id = $("#group_select option:selected").val();
        console.log(group_id);
     });
