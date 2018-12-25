@@ -229,6 +229,7 @@ $(function () {
     var give_num = "";
     $(".customize_modal_confirm_btn").click(function () {
         give_num = Number($(".zan_cai_input").val());
+        console.log(typeof give_num);
         if (give_num.length <= 0) {
             layer.msg("请输入数量");
             return;
@@ -254,6 +255,7 @@ $(function () {
             $("#customize_modal").slideUp();
             layer.close(index);
             if (response.errcode == "0") {
+                console.log(typeof amount);
                 $(".amount").text(amount -= give_num);
                 if (state == "1") {
                     _this_click_zan_num.text(_this_already_zan_num += give_num);
