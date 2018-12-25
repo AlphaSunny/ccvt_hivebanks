@@ -57,14 +57,14 @@ $(function () {
                 } else {
                     $.each(data, function (i, val) {
                         var one_arr = data[i].tx_content.split("-");
-                        console.log(one_arr.indexOf("sunday"));
                         if (one_arr.indexOf("sunday")) {
                             one_arr[one_arr.indexOf("sunday")] = "星期日";
-                            console.log(one_arr);
-                            // one_arr.indexOf("sunday").replace("星期日");
                         }
                         if (one_arr.indexOf("monday")) {
-                            // one_arr.indexOf("monday").replace("星期一");
+                            one_arr.indexOf("monday").replace("星期一");
+                        }
+                        if (one_arr.indexOf("tuesday")) {
+                            one_arr.indexOf("tuesday").replace("星期二");
                         }
                         // console.log(one_arr);
                         tr += "<tr>" +
