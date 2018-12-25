@@ -353,7 +353,31 @@ function iss_records_list($da,$offset,$limit)
 //    $data['all_amount'] = array_sum(array_map(function($val){return $val['amount'];}, $rows));
 //    $data['all_chat'] = array_sum(array_map(function($val){return $val['num'];}, $rows));
     //群主返现金额
+    $sql = "select sum(tx_amount/'{$unit}') as all_cashback from com_base_balance WHERE credit_id='{$da['us_id']}' AND tx_type='group_cashback'";
+    if ($da['start_time'] && !$da['end_time']){
+        $sql .= " and ctime>'{$da['start_time']}'";
+    }elseif (!$da['start_time'] && $da['end_time']){
+        $sql .= " and ctime<'{$da['end_time']}'";
+    }elseif ($da['start_time'] && $da['end_time']){
+        $sql .= " and ctime between '{$da['start_time']}' and '{$da['end_time']}'";
+    }
+    $db->query($sql);
+    $all_cashback = $db->getField($sql,'all_cashback');
+    $data['all_cashback'] = $all_cashback ? $all_cashback : 0;
+
+    //总绑定人数
+    $sql = "select count(bind_id) as count from us_bind WHERE bind_name='group' AND bind_info in (select id from bot_group WHERE us_id='{$da['us_id']}')";
+    if ($da['start_time'] && !$da['end_time']){
+        $sql .= " and ctime>'{$da['start_time']}'";
+    }elseif (!$da['start_time'] && $da['end_time']){
+        $sql .= " and ctime<'{$da['end_time']}'";
+    }elseif ($da['start_time'] && $da['end_time']){
+        $sql .= " and ctime between '{$da['start_time']}' and '{$da['end_time']}'";
+    }
+    $db->query($sql);
+    $data['all_bind_count'] = $db->getField($sql,'all_cashback');
     return $data;
+
 }
 
 
