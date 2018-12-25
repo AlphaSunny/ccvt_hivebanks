@@ -63,7 +63,7 @@ $(function () {
         start_time = $("#startTime").val();
         end_time = $("#endTime").val();
         nickname = $("#nickname").val();
-        GetAmount(start_time, end_time, nickname);
+        GetAmountFun(start_time, end_time, nickname, limit, offset);
     });
 
     //Set time
