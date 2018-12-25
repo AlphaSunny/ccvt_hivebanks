@@ -257,6 +257,7 @@ $(function () {
                 console.log(typeof amount);
                 console.log(typeof give_num);
                 var amount_total = amount -= give_num;
+                console.log(amount_total);
                 $(".amount").text(amount_total);
                 if (state == "1") {
                     _this_click_zan_num.text(_this_already_zan_num += give_num);
