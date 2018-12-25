@@ -36,8 +36,8 @@ function sel_withdraw_ba_base_amount_info($qa_id)
     $db = new DB_COM();
     $sql = "SELECT * FROM us_ba_withdraw_request WHERE qa_id = '{$qa_id}' limit 1";
     $db->query($sql);
-    $rows = $db->fetchRow();
-    return $rows;
+    $row = $db->fetchRow();
+    return $row;
 }
 
 //======================================
