@@ -14,10 +14,22 @@
     <!--<link rel="stylesheet" href="assets/css/ionicons.min.css"/>-->
     <link rel="stylesheet" href="assets/css/styles.css"/>
 </head>
+<style>
+    iframe.snow {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        overflow: hidden;
+    }
+</style>
 <body>
 <!-- loading -->
 <iframe src="user/loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0"
-        marginwidth="0"
+        marginwidth="0" scrolling="no"></iframe>
+<iframe src="snow/index.html" class="snow" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"
         scrolling="no"></iframe>
 <nav id="topNav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -49,7 +61,8 @@
                 <!--<li><a href="javascript:;" class="i18n baLogin font-weight-400" name="ba_enter"></a></li>-->
                 <li><a href="user/login.html" class="i18n usLogin font-weight-400" name="login"></a></li>
                 <li><a href="user/register.html" class="i18n usRegister font-weight-400" name="register"></a></li>
-                <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a></li>
+                <li class="accountNone"><a href="javascript:;" class="i18n toAccountBtn alreadyLogin" name="account">Account</a>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <span id="language">中文简体</span>
@@ -345,5 +358,11 @@
 <script src="assets/language/language.js"></script>
 <script src="user/js/common.js"></script>
 <script src="user/js/index.js"></script>
+<script>
+    //close
+    $(".close_img").click(function () {
+        $("iframe.snow").remove();
+    })
+</script>
 </body>
 </html>
