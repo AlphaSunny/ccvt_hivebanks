@@ -24,6 +24,7 @@ if ($groups){
         set_time_limit(0);
         //查询机器人昵称
         $sql = "select bot_name from bot_status WHERE us_id='{$b['us_id']}'";
+        echo $sql;die;
         $db->query($sql);
         $bot_name = $db->getField($sql,'bot_name');
         $sql = "select wechat,count(bot_message_id) as count from bot_message where group_id='{$b['id']}' AND type='Text' AND CHAR_LENGTH(bot_content)>=5 AND is_effective='0' AND bot_content not LIKE '%@{$bot_name}%' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
