@@ -157,8 +157,8 @@ $(function () {
                             },
                             target: 1
                         },
-                        {"data": "invite_code"},
                         {"data": "count"},
+                        {"data": "sub_count"},
                         {"data": "base_amount"}
                     ],
                 });
