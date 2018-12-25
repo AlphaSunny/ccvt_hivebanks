@@ -256,7 +256,7 @@ $(function () {
             if (response.errcode == "0") {
                 console.log(typeof amount);
                 console.log(typeof give_num);
-                var amount_total = give_num;
+                var amount_total = (amount - give_num);
                 console.log(amount_total);
                 $(".amount").text(amount_total);
                 if (state == "1") {
