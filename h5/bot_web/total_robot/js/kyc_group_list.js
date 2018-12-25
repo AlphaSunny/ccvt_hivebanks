@@ -31,7 +31,6 @@ $(function () {
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
                             "<td class='name'>" + data[i].name + " " + data[i].scale + "</td>" +
-                            "<td class='group_manager_name'>" + group_manager_name + "</td>" +
                             "<td class='del'>" + data[i].del + "</td>" +
                             "<td class='is_admin_del none'>" + data[i].is_admin_del + "</td>" +
                             "<td class='audit'>" + data[i].audit + "</td>" +
