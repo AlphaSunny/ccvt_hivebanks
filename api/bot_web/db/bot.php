@@ -363,6 +363,7 @@ function iss_records_list($da,$offset,$limit)
     }
     $db->query($sql);
     $all_cashback = $db->fetchRow();
+    print_r($all_cashback);
     $data['all_cashback'] = $all_cashback['all_cashback'] ? $all_cashback['all_cashback'] : 0;
 
     //总绑定人数
