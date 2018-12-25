@@ -48,7 +48,7 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows;
                 if (data.length <= 0) {
-                    tr="<tr><td colspan='4' class='text-center'>暂无数据</td></tr>"
+                    tr = "<tr><td colspan='4' class='text-center'>暂无数据</td></tr>"
                 }
                 total = response.total;
                 totalPage = Math.ceil(total / limit);
@@ -182,9 +182,7 @@ $(function () {
             alert("操作之前请先登录!");
             return;
         }
-        // amount = Number($(".amount").text());
-        amount = $(".amount").html();
-        console.log(amount);
+        amount = Number($(".amount").text());
         AlreadyZanCaiNumFun();
         if ($(this).hasClass("zan_icon")) {
             $(".zan_h3").fadeIn("fast");
@@ -256,13 +254,7 @@ $(function () {
             $("#customize_modal").slideUp();
             layer.close(index);
             if (response.errcode == "0") {
-                console.log(typeof amount);
-                console.log(typeof give_num);
-                console.log(amount);
-                console.log(give_num);
-                var amount_total = (amount - give_num);
-                console.log(amount_total);
-                $(".amount").text(amount_total);
+                $(".pc_amount,.phone_amount").text(amount -= give_num);
                 if (state == "1") {
                     _this_click_zan_num.text(_this_already_zan_num += give_num);
                     layer.msg("点赞成功");
