@@ -59,6 +59,7 @@ $(function () {
                         var one_arr = data[i].tx_content.split("-");
                         if (one_arr.indexOf("sunday")) {
                             one_arr[one_arr.indexOf("sunday")] = "星期日";
+                            console.log(one_arr);
                             // one_arr.indexOf("sunday").replace("星期日");
                         }
                         if (one_arr.indexOf("monday")) {
