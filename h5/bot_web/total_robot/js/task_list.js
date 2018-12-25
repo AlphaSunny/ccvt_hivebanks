@@ -46,7 +46,7 @@ $(function () {
 
     //获取定时任务
     function GetTaskListFun() {
-        var tr = "", weekDay = "";
+        var tr = "",content = "";
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
@@ -78,11 +78,16 @@ $(function () {
                             one_arr[one_arr.indexOf("saturday")] = "星期六";
                         }
 
+                        if(data[i].send_type == 1){
+                            content = "<span>"+ data[i].content +"</span>";
+                        }else {
+                            content = "<img src='"+ data[i].content +"'/>";
+                        }
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
                             // "<td class='time'>" + data[i].tx_content + data[i].time + "</td>" +
                             "<td class='time'>" + one_arr.join("#") + data[i].time + "</td>" +
-                            "<td class='content'>" + data[i].content + "</td>" +
+                            "<td class='content'>" + content + "</td>" +
                             "<td class='name'>" + data[i].name + "</td>" +
                             "<td>" +
                             // "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
