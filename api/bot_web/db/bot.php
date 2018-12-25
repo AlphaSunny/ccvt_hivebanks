@@ -346,6 +346,7 @@ function iss_records_list($da,$offset,$limit)
         $sql .= " and send_time between '{$da['start_time']}' and '{$da['end_time']}'";
     }
     $sql .= " group by bot_us_id";
+    echo $sql;die;
     $db->query($sql);
     $ss = $db->fetchRow();
     $data['all_amount'] = $ss['amount'];
