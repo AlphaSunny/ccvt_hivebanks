@@ -57,11 +57,11 @@ $(function () {
                 } else {
                     $.each(data, function (i, val) {
                         var one_arr = data[i].tx_content.split("-");
-                        if(one_arr.indexOf("sunday")){
-                            console.log(this);
+                        if (one_arr.indexOf("sunday")) {
+                            one_arr[one_arr.indexOf("sunday")] = "星期日";
                             // one_arr.indexOf("sunday").replace("星期日");
                         }
-                        if(one_arr.indexOf("monday")){
+                        if (one_arr.indexOf("monday")) {
                             // one_arr.indexOf("monday").replace("星期一");
                         }
                         // console.log(one_arr);
