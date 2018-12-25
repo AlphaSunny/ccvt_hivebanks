@@ -256,8 +256,8 @@ $(function () {
             if (response.errcode == "0") {
                 console.log(typeof amount);
                 console.log(typeof give_num);
-                // $(".amount").text(amount -= give_num);
-                $(".amount").text("你啊");
+                var amount_total = amount -= give_num;
+                $(".amount").text(amount_total);
                 if (state == "1") {
                     _this_click_zan_num.text(_this_already_zan_num += give_num);
                     layer.msg("点赞成功");
