@@ -375,7 +375,7 @@ function iss_records_list($da,$offset,$limit)
         $sql .= " and ctime between '{$da['start_time']}' and '{$da['end_time']}'";
     }
     $db->query($sql);
-    $data['all_bind_count'] = $db->getField($sql,'all_cashback');
+    $data['all_bind_count'] = $db->getField($sql,'count');
     return $data;
 
 }
