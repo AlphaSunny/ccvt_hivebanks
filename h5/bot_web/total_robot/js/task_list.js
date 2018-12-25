@@ -66,6 +66,9 @@ $(function () {
                         if (one_arr.indexOf("tuesday")) {
                             one_arr.indexOf("tuesday").replace("星期二");
                         }
+                        if (one_arr.indexOf("wednesday")) {
+                            one_arr.indexOf("wednesday").replace("星期三");
+                        }
                         // console.log(one_arr);
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
