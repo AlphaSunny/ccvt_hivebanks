@@ -1,6 +1,7 @@
 $(function () {
     //Get token
     var token = GetCookie('la_token');
+    var url = getRootPath();
 
     //get url this_news_id
     var news_id = GetQueryString("this_news_id");
@@ -46,7 +47,7 @@ $(function () {
                 formData.append('key_code', key_code);
                 $.ajax({
                     // url: 'http://agent_service.fnying.com/upload_file/upload.php',
-                    url: 'https://ccvt_test.fnying.com/api/plugin/upload_file.php',
+                    url: url + '/api/plugin/upload_file.php',
                     type: 'POST',
                     data: formData,
                     processData: false,
