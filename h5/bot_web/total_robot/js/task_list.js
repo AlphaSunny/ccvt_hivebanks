@@ -50,12 +50,13 @@ $(function () {
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
+                var reg = /\b(sunday|cat|monday|tuesday|wednesday|thursday|friday)\b/g;
+
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
                 } else {
                     $.each(data, function (i, val) {
-                        // var reg = new RegExp("monday");
-                        // console.log(reg.exec(data[i].tx_content));
+                        weekDay=data[i].tx_content.replace(reg,"星期一","星期二");
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
                             "<td class='time'>" + data[i].tx_content + data[i].time + "</td>" +
