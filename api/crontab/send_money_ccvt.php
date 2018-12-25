@@ -14,7 +14,7 @@ $unit = get_la_base_unit();
 //获取ba信息
 $ba_info = get_ba_base_info();
 //查询所有能送ccvt的群组
-$sql = "select * from bot_group WHERE is_audit=2 AND is_test=1 AND is_give_ccvt=1";
+$sql = "select * from bot_group LEFT WHERE is_audit=2 AND is_test=1 AND is_give_ccvt=1";
 $db->query($sql);
 $groups = $db->fetchAll();
 if ($groups){
@@ -22,7 +22,12 @@ if ($groups){
     $ba_account = 0;
     foreach ($groups as $a=>$b){
         set_time_limit(0);
-        $sql = "select wechat,count(bot_message_id) as count from bot_message where group_name='{$b['name']}' AND type='Text' AND CHAR_LENGTH(bot_content)>=5 AND is_effective='0' AND bot_content not LIKE '@AI大白~%' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
+        //查询机器人昵称
+        $sql = "select bot_name from bot_status WHERE us_id='{$b['us_id']}'";
+        $db->query($sql);
+        $bot_name = $db->getField($sql,'bot_name');
+        $sql = "select wechat,count(bot_message_id) as count from bot_message where group_id='{$b['id']}' AND type='Text' AND CHAR_LENGTH(bot_content)>=5 AND is_effective='0' AND bot_content not LIKE '%@{$bot_name}%' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
+        echo $sql;die;
         $db->query($sql);
         $rows = $db->fetchAll();
         if ($rows){
