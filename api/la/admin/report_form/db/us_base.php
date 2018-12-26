@@ -99,12 +99,7 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
     foreach ($res_origin as $key=>$value)
     {
         $us_id = $value['id'];
-        if(in_black_list($us_id)){
-            $res_origin[$key]['wechat'] == 'SB';
-            unset($res_origin[$key]);
-//            var_dump($res_origin);
-
-        }
+        
         $sql = "select a.bind_info,a.bind_name from us_bind a   where a.us_id = '{$us_id}'";
         $res = $db->query($sql);
         $res = $db->fetchAll();
