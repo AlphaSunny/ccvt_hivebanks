@@ -4,6 +4,7 @@ $(function () {
 
     // var limit = 10, offset = 0, status = "-1", loading = "";
 
+    var token = GetCookie("robot_token")
     function GetGroupListNav() {
         var li = "";
         GetGroupList(token, is_audit, function (response) {

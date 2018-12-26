@@ -1,4 +1,5 @@
 $(function () {
+    var token = GetCookie("robot_token")
     var group_id = decodeURI(GetQueryString("id")), is_admin_del = decodeURI(GetQueryString("is_admin_del")),
         is_del = decodeURI(GetQueryString("is_del")), is_flirt = decodeURI(GetQueryString("is_flirt")),
         is_give_ccvt = decodeURI(GetQueryString("is_give_ccvt")),
