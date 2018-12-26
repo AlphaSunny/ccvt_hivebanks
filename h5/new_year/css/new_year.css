@@ -1,0 +1,112 @@
+body {
+    background: unset;
+}
+
+.navbar-default.affix {
+    background: #df0031;
+}
+
+.title {
+    color: #df0031;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6), 2px 2px #fbf8f7;
+}
+
+h4.title:after {
+    content: "";
+    border: 1px solid #d4d2a9;
+    width: 0;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    animation: colorMove 3s linear infinite;
+}
+
+@keyframes colorMove {
+    0% {
+        width: 0;
+        border-color: #520011;
+    }
+
+    30% {
+        width: 30%;
+        border-color: #960021;
+    }
+
+    60% {
+        width: 60%;
+        border-color: #c1002b;
+    }
+
+    100% {
+        width: 100%;
+        border-color: #f60036;
+    }
+}
+
+/*one*/
+.bg-primary {
+    background: url("../img/new_year.jpg") no-repeat 100%;
+    background-attachment: fixed;
+    color: #df0031;
+}
+
+#one .text-primary {
+    color: #df0031;
+}
+
+#one .text-faded {
+    color: #000000;
+}
+
+.svgBox {
+    border: 1px solid #df0031;
+    /*background: #df00002b;*/
+}
+
+.svgBox:hover {
+    /*background: #df0031;*/
+    background: #df0031bf;
+    color: #1E9FFF;
+}
+
+/*two*/
+#two {
+    background: #df0031;
+}
+
+#two .text-primary {
+    color: #ffffff;
+}
+
+.bg-dark {
+    background: url("../img/new_year2.jpg") no-repeat 100% fixed;
+}
+
+/*last*/
+#last {
+    background: #232323;
+}
+
+#last .text-primary {
+    color: #df0031;
+}
+
+.form-control {
+    background: transparent;
+    border: 1px solid #df003191;
+}
+
+.form-control:focus {
+    background-color: unset;
+    border-color: #df0031;
+}
+
+.btn.btn-primary {
+    border: 1px solid #df003191;
+    color: #ffffff;
+}
+
+.btn.btn-primary:hover {
+    color: #df0031;
+    border-color: #ffffff;
+}
