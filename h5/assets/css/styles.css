@@ -817,11 +817,12 @@ li.round_border:after {
 }
 
 .title {
-    background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #da8b9f 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #e6a1b3 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+    /*background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #da8b9f 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #e6a1b3 70%, #f7acbc 80%, #ffd400 90%, #3498db);*/
     -webkit-background-clip: text;
-    color: transparent;
+    color: #ffffff;
     animation: colorMove 3s linear infinite;
     background-size: 200% 100%;
+    text-shadow: 1px 1px rgba(0,0,0,0.6), 2px 2px #e0c592;
 }
 
 h4.title {
