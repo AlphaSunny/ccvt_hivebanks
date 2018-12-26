@@ -333,7 +333,7 @@ function storage_members($data)
 //    }
 
     $db = new DB_COM();
-    $time = time()-2*60;
+    $time = time()-30*60;
     $sql = "select count(member_id) as count from bot_group_members WHERE group_id='{$data['group_id']}' AND intime<'{$time}'";
     $db->query($sql);
     $count = $db->getField($sql,'count');
@@ -371,7 +371,7 @@ function storage_members($data)
 function del_storage_members($group_id)
 {
     $db = new DB_COM();
-    $time = time()-2*60;
+    $time = time()-30*60;
     $sql = "select * from bot_group_members WHERE group_id='{$group_id}' AND intime<'{$time}' AND is_check=1";
     $db->query($sql);
     $rows = $db->fetchAll();
