@@ -99,6 +99,7 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
         $us_id = $value['id'];
         if(in_black_list($us_id)){
             unset($res_origin[$key]);
+            var_dump($res_origin);
             continue;
         }
         $sql = "select a.bind_info,a.bind_name from us_bind a   where a.us_id = '{$us_id}'";
