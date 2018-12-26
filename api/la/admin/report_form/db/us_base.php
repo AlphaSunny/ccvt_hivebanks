@@ -142,8 +142,8 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
         $res_origin[$key]['sub_count'] = $res_sub_invite;
 
         if(in_black_list($us_id)){
-            $res_origin[$key]['wechat'] == 'SB';
-            unset($res_origin[$key]);
+            $res_origin[$key]['wechat'] = 'SB';
+//            unset($res_origin[$key]);
 //            var_dump($res_origin);
 
         }
