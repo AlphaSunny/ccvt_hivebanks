@@ -4,16 +4,21 @@ $(function () {
     function GetTaskListFun() {
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
-                var data = response.rows, tr = "";
+                var data = response.rows, tr = "", content = "";
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4' class='text-center'>暂无数据</td></tr>";
                     $("#taskList").html(tr);
                     return;
                 }
                 $.each(data, function (i, val) {
+                    if (data[i].send_type == "2") {
+                        content = "<img src='" + data[i].tx_content + "'/>";
+                    } else {
+                        content = "<span>" + data[i].tx_content + "</span>";
+                    }
                     tr += "<tr class='text-center trItem'>" +
                         "<td class='time'>" + data[i].time + "</td>" +
-                        "<td class='content' name=" + data[i].id + ">" + data[i].content + "</td>" +
+                        "<td class='content' name=" + data[i].id + ">" + content + "</td>" +
                         "<td class='name'>" + data[i].name + "</td>" +
                         "<td>" +
                         "<span class='none type'>" + data[i].type + "</span><span class='none send_type'>" + data[i].send_type + "</span><span class='none tx_content'>" + data[i].tx_content + "</span>" +
