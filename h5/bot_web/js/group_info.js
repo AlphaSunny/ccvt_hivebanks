@@ -1,5 +1,5 @@
 $(function () {
-    var token = GetCookie("robot_token")
+    var token = GetCookie("robot_token");
     var group_id = decodeURI(GetQueryString("id")), is_admin_del = decodeURI(GetQueryString("is_admin_del")),
         is_del = decodeURI(GetQueryString("is_del")), is_flirt = decodeURI(GetQueryString("is_flirt")),
         is_give_ccvt = decodeURI(GetQueryString("is_give_ccvt")),
@@ -67,6 +67,12 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 layer.msg("提交成功", {icon: 1});
+                replaceParamVal("is_del",del);
+                replaceParamVal("is_flirt",flirt);
+                replaceParamVal("send_address",send_address);
+                replaceParamVal("bind_account_notice",bind_account_notice);
+                replaceParamVal("is_welcome",is_welcome);
+                replaceParamVal("welcome",welcome);
             }
         }, function (response) {
             layer.close(loading);
@@ -91,7 +97,6 @@ $(function () {
         } else {
             $("#" + id).addClass("active").val("1");
             if (id == "welcomeSwitch") {
-                console.log("true 2");
                 $(".welcomeTextBox").removeClass("none");
             }
         }

@@ -33,6 +33,14 @@ function GetQueryString(name) {
     if (r != null) return unescape(r[2]);
     return null;
 }
+// modify URL parameters
+function replaceParamVal(paramName,replaceWith) {
+    var oUrl = this.location.href.toString();
+    var re=eval('/('+ paramName+'=)([^&]*)/gi');
+    var nUrl = oUrl.replace(re,paramName+'='+replaceWith);
+    this.location = nUrl;
+    window.location.href=nUrl
+}
 
 // Email format check
 function IsEmail(s) {
