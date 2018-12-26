@@ -94,14 +94,14 @@ from com_base_balance  where tx_type in ('two_invite_send','reg_send') and debit
 and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
     $res_origin  = $db->query($sql_origin);
     $res_origin  = $db->fetchAll();
-//    var_dump($res_origin);
+    var_dump(count($res_origin));
 //    die;
     foreach ($res_origin as $key=>$value)
     {
         $us_id = $value['id'];
         if(in_black_list($us_id)){
             unset($res_origin[$key]);
-            var_dump($res_origin);
+//            var_dump($res_origin);
             continue;
         }
         $sql = "select a.bind_info,a.bind_name from us_bind a   where a.us_id = '{$us_id}'";
@@ -143,6 +143,7 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
 
 
     }
+    var_dump(count($res_origin));
     return $res_origin;
 
 //-----按照邀请人头算
