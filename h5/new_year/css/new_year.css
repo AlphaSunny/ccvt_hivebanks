@@ -84,6 +84,39 @@ h4.title:after {
     background: url("../img/new_year2.jpg") no-repeat 100% fixed;
 }
 
+/*three*/
+li.round_border:after {
+    content: "";
+    border: 2px dashed #9e9e9e;
+    width: 16rem;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    left: 220%;
+    animation: dashedMove 3s linear infinite;
+    transition-duration: 10s;
+}
+
+@keyframes dashedMove {
+    0% {
+        width: 5rem;
+        border-color: #df0031;
+        opacity: 0.3;
+    }
+
+    50% {
+        width: 10rem;
+        border-color: #df0031;
+        opacity: 0.6;
+    }
+
+    100% {
+        width: 16rem;
+        border-color: #df0031;
+        opacity: 1;
+    }
+}
+
 /*last*/
 #last {
     background: #232323;
