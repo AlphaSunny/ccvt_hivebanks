@@ -32,6 +32,7 @@ $(function () {
                     tr += "<tr>" +
                         "<td class='ask' name=" + data[i].id + ">" + data[i].ask + "</td>" +
                         "<td class='answer'>" + answer + "</td>" +
+                        "<td class='answer'>" + data[i].group_name + "</td>" +
                         "<td class='ctime'>" + data[i].ctime + "</span></td>" +
                         "<td class='send_type none'>" + data[i].send_type + "</td>" +
                         "<td class='id none'>" + data[i].id + "</td>" +
