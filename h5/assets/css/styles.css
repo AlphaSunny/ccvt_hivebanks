@@ -830,27 +830,27 @@ h4.title {
     margin-top: 5%;
 }
 
-@keyframes colorMove {
-    0% {
-        background-position: 0 0;
-    }
-
-    /*30%{*/
-    /*background: linear-gradient(to right, yellow, pink);*/
-    /*-webkit-background-clip: text;*/
-    /*color: transparent;*/
+/*@keyframes colorMove {*/
+    /*0% {*/
+        /*background-position: 0 0;*/
     /*}*/
 
-    /*60%{*/
-    /*background: linear-gradient(to right, green, darkblue);*/
-    /*-webkit-background-clip: text;*/
-    /*color: transparent;*/
-    /*}*/
+    /*!*30%{*!*/
+    /*!*background: linear-gradient(to right, yellow, pink);*!*/
+    /*!*-webkit-background-clip: text;*!*/
+    /*!*color: transparent;*!*/
+    /*!*}*!*/
 
-    100% {
-        background-position: -100% 0;
-    }
-}
+    /*!*60%{*!*/
+    /*!*background: linear-gradient(to right, green, darkblue);*!*/
+    /*!*-webkit-background-clip: text;*!*/
+    /*!*color: transparent;*!*/
+    /*!*}*!*/
+
+    /*100% {*/
+        /*background-position: -100% 0;*/
+    /*}*/
+/*}*/
 
 .accountNone {
     display: none !important;
