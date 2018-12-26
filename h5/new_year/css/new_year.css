@@ -66,9 +66,11 @@ h4.title:after {
 .svgBox:hover {
     /*background: #df0031;*/
     background: #df0031bf;
-    color: #1E9FFF;
+    color: #ffffff;
 }
-
+.svgBox:hover .svgText{
+    color: #ffffff;
+}
 /*two*/
 #two {
     background: #df0031;
