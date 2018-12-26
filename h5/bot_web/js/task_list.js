@@ -10,6 +10,30 @@ $(function () {
                     $("#taskList").html(tr);
                     return;
                 }
+
+                var one_arr = data[i].tx_content.split("-");
+                if (one_arr.indexOf("sunday") != -1) {
+                    one_arr[one_arr.indexOf("sunday")] = "星期日";
+                }
+                if (one_arr.indexOf("monday") != -1) {
+                    one_arr[one_arr.indexOf("monday")] = "星期一";
+                }
+                if (one_arr.indexOf("tuesday") != -1) {
+                    one_arr[one_arr.indexOf("tuesday")] = "星期二";
+                }
+                if (one_arr.indexOf("wednesday") != -1) {
+                    one_arr[one_arr.indexOf("wednesday")] = "星期三";
+                }
+                if (one_arr.indexOf("thursday") != -1) {
+                    one_arr[one_arr.indexOf("thursday")] = "星期四";
+                }
+                if (one_arr.indexOf("friday") != -1) {
+                    one_arr[one_arr.indexOf("friday")] = "星期五";
+                }
+                if (one_arr.indexOf("saturday") != -1) {
+                    one_arr[one_arr.indexOf("saturday")] = "星期六";
+                }
+
                 $.each(data, function (i, val) {
                     if (data[i].send_type == "2") {
                         content = "<img src='" + data[i].content + "'/>";
@@ -17,7 +41,8 @@ $(function () {
                         content = "<span>" + data[i].content + "</span>";
                     }
                     tr += "<tr class='text-center trItem'>" +
-                        "<td class='time'>" + data[i].time + "</td>" +
+                        // "<td class='time'>" + data[i].time + "</td>" +
+                        "<td class='time'>" + one_arr.join("#") + data[i].time + "</td>" +
                         "<td class='content' name=" + data[i].id + ">" + content + "</td>" +
                         "<td class='name'>" + data[i].name + "</td>" +
                         "<td>" +

@@ -53,6 +53,8 @@ $(function () {
 
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
+                    $("#taskList").html(tr);
+                    return;
                 } else {
                     $.each(data, function (i, val) {
                         var one_arr = data[i].tx_content.split("-");
@@ -96,7 +98,7 @@ $(function () {
                             "</tr>"
                     });
                 }
-                $("#groupListTable").html(tr);
+                $("#taskList").html(tr);
             }
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2})
