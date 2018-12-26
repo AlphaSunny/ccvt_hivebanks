@@ -253,6 +253,7 @@ function bot_alive($data){
             return false;
 
         $d['login_in_time'] = $time;
+        $d['us_id'] = $data['us_id'];
         $d['intime'] = $time;
         $sql = $db->sqlInsert("bot_log_login", $d);
         $q_id = $db->query($sql);
