@@ -118,7 +118,7 @@ $(function () {
             return;
         }
         var height = $(this).scrollTop();
-        if (height <= 0) {
+        if (height <= 5) {
             offset += limit;
             GetWeChatFun(wechat, group_id, search_content, limit, offset);
         }

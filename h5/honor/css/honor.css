@@ -219,7 +219,7 @@ li.none {
     color: #ffffff;
 }
 
-#title option{
+#title option {
     background: black;
 }
 
@@ -435,6 +435,10 @@ li.none {
     /*padding: 1%;*/
     /*font-size: 3rem;*/
     /*}*/
+    .close_page {
+        cursor: pointer;
+    }
+
     .message_icon {
         font-size: 2rem;
     }
