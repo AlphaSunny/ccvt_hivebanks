@@ -90,7 +90,7 @@ function gift_detail(){
 
     $db = new DB_COM();
     $sql_origin = "select sum(tx_amount)/100000000 as base_amount,credit_id as id
-from com_base_balance  where tx_type in ('two_invite_send','reg_send') and debit_id = '6C69520E-E454-127B-F474-452E65A3EE75' 
+from com_base_balance  where tx_type in ('two_invite_send','invite_send') and debit_id = '6C69520E-E454-127B-F474-452E65A3EE75' 
 and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
     $res_origin  = $db->query($sql_origin);
     $res_origin  = $db->fetchAll();
