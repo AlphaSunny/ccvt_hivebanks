@@ -68,9 +68,11 @@ h4.title:after {
     background: #df0031bf;
     color: #ffffff;
 }
-.svgBox:hover .svgText{
+
+.svgBox:hover .svgText {
     color: #ffffff;
 }
+
 /*two*/
 #two {
     background: #df0031;
@@ -82,6 +84,10 @@ h4.title:after {
 
 .bg-dark {
     background: url("../img/new_year2.jpg") no-repeat 100% fixed;
+}
+
+.bg-dark aside {
+    background: rgba(0,0,0,0.5);
 }
 
 /*three*/
