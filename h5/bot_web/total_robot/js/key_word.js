@@ -27,7 +27,7 @@ $(function () {
                     if (data[i].send_type == "1") {
                         answer = "<span>" + data[i].answer + "</span>";
                     } else {
-                        answer = "<img src='" + data[i].answer + "'/>";
+                        answer = "<div class='answer_img_box' style='width: 10rem'><img src='" + data[i].answer + "'/></div>";
                     }
                     tr += "<tr>" +
                         "<td class='ask' name=" + data[i].id + ">" + data[i].ask + "</td>" +
