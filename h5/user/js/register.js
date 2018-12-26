@@ -18,10 +18,10 @@ $(function () {
     var invite_code = GetQueryString("invite_code");
     var wechat = GetQueryString("wechat");
     var group_id = GetQueryString("group_id");
-
-    if (invite_code.length > 0 && invite_code != 0) {
+    if(invite_code){
         $(".emailInvitCode,.phoneInvitCode").val(invite_code);
     }
+
     if (wechat) {
         $(".phoneWeChatName").val(wechat);
         $(".phoneWeChatName_li").fadeIn();
