@@ -67,12 +67,12 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 layer.msg("提交成功", {icon: 1});
-                replaceParamVal("is_del",del);
-                replaceParamVal("is_flirt",flirt);
-                replaceParamVal("send_address",send_address);
-                replaceParamVal("bind_account_notice",bind_account_notice);
-                replaceParamVal("is_welcome",is_welcome);
-                replaceParamVal("welcome",welcome);
+                // replaceParamVal("is_del",del);
+                // replaceParamVal("is_flirt",flirt);
+                // replaceParamVal("send_address",send_address);
+                // replaceParamVal("bind_account_notice",bind_account_notice);
+                // replaceParamVal("is_welcome",is_welcome);
+                // replaceParamVal("welcome",welcome);
             }
         }, function (response) {
             layer.close(loading);
