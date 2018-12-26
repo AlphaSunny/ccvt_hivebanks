@@ -97,6 +97,10 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
     foreach ($res_origin as $key=>$value)
     {
         $us_id = $value['id'];
+        if(in_black_list($us_id)){
+            unset($res_origin[$key]);
+            continue;
+        }
         $sql = "select a.bind_info,a.bind_name from us_bind a   where a.us_id = '{$us_id}'";
         $res = $db->query($sql);
         $res = $db->fetchAll();
@@ -156,6 +160,14 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
 //    return $rows;
 }
 
+function in_black_list($us_id){
+    $db = new DB_COM();
+    $sql = "select us_id from la_black_list where us_id = '{$us_id}' and black_info = 'invite_invalid'";
+    $db->query($sql);
+    if($db->fetchRow())
+        return true;
+    return false;
+}
 /**
  * @param $day
  * @return array
