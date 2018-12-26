@@ -63,14 +63,14 @@ $(function () {
         if (response.errcode == '0') {
             var data = response.rows;
             $.each(data, function (i, val) {
-                if (data[i].bind_type == 'file' && data[i].bind_name == 'idPhoto') {
+                if (data[i].bind_type == 'file' && data[i].bind_name == 'idPhoto' && data[i].bind_flag == "1") {
                     us_bind_type_file = 'file';
                     us_bind_name_idPhoto = 'idPhoto';
                 }
-                if (data[i].bind_name = 'name') {
+                if (data[i].bind_type == 'text' && data[i].bind_name == 'name' && data[i].bind_flag == "1") {
                     us_bind_type_name = 'name'
                 }
-                if (data[i].bind_name = 'idNum') {
+                if (data[i].bind_type == 'text' && data[i].bind_name == 'idNum' && data[i].bind_flag == "1") {
                     us_bind_type_idNum = 'idNum'
                 }
             });
