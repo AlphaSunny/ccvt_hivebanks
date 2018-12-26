@@ -12,9 +12,9 @@ $(function () {
                 }
                 $.each(data, function (i, val) {
                     if (data[i].send_type == "2") {
-                        content = "<img src='" + data[i].tx_content + "'/>";
+                        content = "<img src='" + data[i].content + "'/>";
                     } else {
-                        content = "<span>" + data[i].tx_content + "</span>";
+                        content = "<span>" + data[i].content + "</span>";
                     }
                     tr += "<tr class='text-center trItem'>" +
                         "<td class='time'>" + data[i].time + "</td>" +
