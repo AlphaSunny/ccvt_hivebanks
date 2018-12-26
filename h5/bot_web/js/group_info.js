@@ -1,14 +1,17 @@
 $(function () {
     var token = GetCookie("robot_token");
-    var group_id = decodeURI(GetQueryString("id")), is_admin_del = decodeURI(GetQueryString("is_admin_del")),
-        is_del = decodeURI(GetQueryString("is_del")), is_flirt = decodeURI(GetQueryString("is_flirt")),
-        is_give_ccvt = decodeURI(GetQueryString("is_give_ccvt")),
-        bind_account_notice = decodeURI(GetQueryString("bind_account_notice")),
-        is_welcome = decodeURI(GetQueryString("is_welcome")), welcome = decodeURI(GetQueryString("welcome")),
-        send_address = decodeURI(GetQueryString("send_address")),
-        group_name = decodeURI(GetQueryString("group_name"));
+    var group_id = decodeURI(GetQueryString("id")), group_name = decodeURI(GetQueryString("group_name"));
 
-    $(".group_name").text(group_name);
+    var is_admin_del = GetCookie("is_admin_del"),
+        is_del = GetCookie("is_del"),
+        is_flirt = GetCookie("is_flirt"),
+        send_address = GetCookie("send_address"),
+        bind_account_notice = GetCookie("bind_account_notice"),
+        is_welcome = GetCookie("is_welcome"),
+        welcome = GetCookie("welcome");
+
+    $
+    (".group_name").text(group_name);
     if (is_admin_del == "1") {//运行状态
         $("#runSwitch").addClass("active").val("1");
         $("#trickSwitch").addClass("active").val("1");
@@ -67,12 +70,13 @@ $(function () {
             if (response.errcode == "0") {
                 layer.close(loading);
                 layer.msg("提交成功", {icon: 1});
-                // replaceParamVal("is_del",del);
-                // replaceParamVal("is_flirt",flirt);
-                // replaceParamVal("send_address",send_address);
-                // replaceParamVal("bind_account_notice",bind_account_notice);
-                // replaceParamVal("is_welcome",is_welcome);
-                // replaceParamVal("welcome",welcome);
+                SetCookie("is_admin_del", is_admin_del);
+                SetCookie("is_del", is_del);
+                SetCookie("is_flirt", is_flirt);
+                SetCookie("send_address", send_address);
+                SetCookie("bind_account_notice", bind_account_notice);
+                SetCookie("is_welcome", is_welcome);
+                SetCookie("welcome", welcome);
             }
         }, function (response) {
             layer.close(loading);
@@ -109,6 +113,7 @@ $(function () {
 
     //获取群成员列表
     var limit = 10, offset = 0, status = "-1", loading = "";
+
     function GetGroupMemberFun(token, limit, offset, status) {
         var tr = "", totalPage = "", count = "";
         GetGroupMember(token, group_id, limit, offset, status, function (response) {

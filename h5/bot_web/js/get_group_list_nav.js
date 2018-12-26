@@ -4,7 +4,8 @@ $(function () {
 
     // var limit = 10, offset = 0, status = "-1", loading = "";
 
-    var token = GetCookie("robot_token"),is_audit = "";
+    var token = GetCookie("robot_token"), is_audit = "";
+
     function GetGroupListNav() {
         var li = "";
         GetGroupList(token, is_audit, function (response) {
@@ -44,7 +45,16 @@ $(function () {
             is_give_ccvt = $(this).attr("is_give_ccvt"), bind_account_notice = $(this).attr("bind_account_notice"),
             is_welcome = $(this).attr("is_welcome"), welcome = $(this).attr("welcome"),
             send_address = $(this).attr("send_address"), group_name = $(this).attr("group_name");
-        window.location.href = "group_info.html?id=" + encodeURI(id) + "&is_admin_del=" + encodeURI(is_admin_del) + "&is_del=" + encodeURI(is_del) + "&is_flirt=" + encodeURI(is_flirt) + "&is_give_ccvt=" + encodeURI(is_give_ccvt) + "&bind_account_notice=" + encodeURI(bind_account_notice) + "&is_welcome=" + encodeURI(is_welcome) + "&welcome=" + encodeURI(encodeURI(welcome)) + "&send_address=" + encodeURI(send_address) + "&group_name=" + encodeURI(encodeURI(group_name));
+        SetCookie("is_admin_del", is_admin_del);
+        SetCookie("is_del", is_del);
+        SetCookie("is_flirt", is_flirt);
+        SetCookie("send_address", send_address);
+        SetCookie("bind_account_notice", bind_account_notice);
+        SetCookie("is_welcome", is_welcome);
+        SetCookie("welcome", welcome);
+        window.location.href = "group_info.html?id=" + encodeURI(id) + "&group_name=" + encodeURI(encodeURI(group_name));
+
+        // window.location.href = "group_info.html?id=" + encodeURI(id) + "&is_admin_del=" + encodeURI(is_admin_del) + "&is_del=" + encodeURI(is_del) + "&is_flirt=" + encodeURI(is_flirt) + "&is_give_ccvt=" + encodeURI(is_give_ccvt) + "&bind_account_notice=" + encodeURI(bind_account_notice) + "&is_welcome=" + encodeURI(is_welcome) + "&welcome=" + encodeURI(encodeURI(welcome)) + "&send_address=" + encodeURI(send_address) + "&group_name=" + encodeURI(encodeURI(group_name));
     });
 
     //是否为当前页面
