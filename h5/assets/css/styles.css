@@ -828,6 +828,8 @@ h4.title {
     font-size: 26px;
     margin-top: 5%;
     position: relative;
+    display: inline-block;
+    padding-bottom: 1%;
 }
 
 h4.title:after {
