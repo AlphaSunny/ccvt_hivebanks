@@ -28,10 +28,9 @@ $(function () {
                             group_manager_name = data[i].group_manager_name;
                         }
 
-                        // icon-v1
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
-                            "<td class='name'><span>" + data[i].name + "</span><svg class='icon'><use xlink:href='#icon-" + data[i].scale + "'></use></svg>" +
+                            "<td class='name'><span>" + data[i].name + "</span><svg class='icon'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>" +
                             "</td>" +
                             "<td class='del'>" + data[i].del + "</td>" +
                             "<td class='is_admin_del none'>" + data[i].is_admin_del + "</td>" +
