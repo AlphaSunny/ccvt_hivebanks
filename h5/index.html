@@ -8,29 +8,15 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
     <meta name="keywords" content="CCVT, ccvt, hivebanks cctv"/>
-    <link href="snow_css/jq22.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="./favicon.ico"/>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="assets/css/animate.min.css"/>
     <link rel="stylesheet" href="assets/css/styles.css"/>
 </head>
-<style>
-    iframe.snow {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 10;
-        overflow: hidden;
-    }
-</style>
 <body>
 <!-- loading -->
 <iframe src="user/loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0"
         marginwidth="0" scrolling="no"></iframe>
-<iframe src="snow/index.html" class="snow" id="snow" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"
-        scrolling="no"></iframe>
 <nav id="topNav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -356,15 +342,5 @@
 <script src="assets/language/language.js"></script>
 <script src="user/js/common.js"></script>
 <script src="user/js/index.js"></script>
-<script src="snow_js/snow.js"></script>
-<script type="text/javascript">
-    createSnow('', 200);
-    var snow = document.getElementById("snow");
-    snow.onload=function () {
-        snow.contentDocument.onclick=function () {
-            snow.remove();
-        }
-    }
-</script>
 </body>
 </html>
