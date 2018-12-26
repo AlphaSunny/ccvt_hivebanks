@@ -10,8 +10,7 @@ $(function () {
         is_welcome = GetCookie("is_welcome"),
         welcome = GetCookie("welcome");
 
-    $
-    (".group_name").text(group_name);
+    $(".group_name").text(group_name);
     if (is_admin_del == "1") {//运行状态
         $("#runSwitch").addClass("active").val("1");
         $("#trickSwitch").addClass("active").val("1");
