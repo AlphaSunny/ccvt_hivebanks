@@ -28,9 +28,11 @@ $(function () {
                             group_manager_name = data[i].group_manager_name;
                         }
 
+                        // icon-v1
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
-                            "<td class='name'>" + data[i].name + " " + data[i].scale + "</td>" +
+                            "<td class='name'><span>" + data[i].name + "</span><svg class='icon'><use xlink:href='#icon-" + data[i].scale + "'></use></svg>" +
+                            "</td>" +
                             "<td class='del'>" + data[i].del + "</td>" +
                             "<td class='is_admin_del none'>" + data[i].is_admin_del + "</td>" +
                             "<td class='audit'>" + data[i].audit + "</td>" +
@@ -100,9 +102,9 @@ $(function () {
             $("#runSwitch").removeClass("active").val("2");
         }
 
-        if(group_manager_name == "--"){
+        if (group_manager_name == "--") {
             $("#group_manager_name").val("");
-        }else {
+        } else {
             $("#group_manager_name").val(group_manager_name);
         }
         $("#groupName").val(group_name);
@@ -129,7 +131,7 @@ $(function () {
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        EditGroup(token, group_name, admin_del,group_manager_name, group_id, function (response) {
+        EditGroup(token, group_name, admin_del, group_manager_name, group_id, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editGroupModal").modal("hide");
