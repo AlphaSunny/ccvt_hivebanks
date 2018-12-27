@@ -1,7 +1,8 @@
 $(function () {
     // var url = "test.json";
-    var url_path = window.location.hostname;
-    var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
+    // var url_path = window.location.hostname;
+    // var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
+    var url = "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php";
     var letter_arr = [], one_list = [], two_list = [], type_one = "1", type_two = "2";
     var text_timer = "";
     $.ajax({
@@ -98,7 +99,6 @@ $(function () {
 
     //文字特效
     function particleAlphabetFun() {
-        console.log("123");
         var particleAlphabet = {
             Particle: function (x, y) {
                 this.x = x;
