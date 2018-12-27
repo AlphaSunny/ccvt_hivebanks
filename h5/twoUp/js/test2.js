@@ -202,6 +202,6 @@ $(function () {
             }
         };
         // window.onload = particleAlphabet.init;
-        particleAlphabet.init;
+        new particleAlphabet.init;
     }
 });
