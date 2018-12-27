@@ -1,8 +1,7 @@
 $(function () {
     // var url = "test.json";
-    var url = window.location.hostname;
-    console.log(url);
-    var url = "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php";
+    var url_path = window.location.hostname;
+    var url = url_path + "/api/crontab/get_scale_us_data.php";
     var letter_arr = [], one_list = [], two_list = [], type_one = "1", type_two = "2";
     var text_timer = "";
     $.ajax({
@@ -13,14 +12,11 @@ $(function () {
             var data = res.all_list;
             one_list = res.one_list;
             two_list = res.two_list;
-            console.log(one_list.length);
-            console.log(two_list.length);
+            // console.log(one_list.length);
+            // console.log(two_list.length);
             $.each(data, function (i, val) {
                 letter_arr.push(data[i].wechat);
             });
-            // console.log(letter_arr);
-            // particleAlphabet.init;
-            // window.onload = particleAlphabet.init;
             particleAlphabetFun();
         }
     });
@@ -69,10 +65,10 @@ $(function () {
                 $(".level_one_ul_box ul:nth-child(1)").append("<li class=''>" + one_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
                 // $(".level_two_ul_box ul:nth-child(1)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             } else if (j >= item && j < item * 2) {
-                $(".level_one_ul_box ul:nth-child(2)").append("<li class=''>"+ one_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
+                $(".level_one_ul_box ul:nth-child(2)").append("<li class=''>" + one_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
                 // $(".level_two_ul_box ul:nth-child(2)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             } else {
-                $(".level_one_ul_box ul:nth-child(3)").append("<li class=''>"+ one_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
+                $(".level_one_ul_box ul:nth-child(3)").append("<li class=''>" + one_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
                 // $(".level_two_ul_box ul:nth-child(3)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             }
         });
