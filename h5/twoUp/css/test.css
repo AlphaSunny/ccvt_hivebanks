@@ -38,10 +38,11 @@ h1 {
 
 .already_up_box {
     color: #ffffff;
-    display: flex;
+    /*display: flex;*/
     align-items: flex-start;
     justify-content: space-around;
     padding-top: 5%;
+    display: none;
 }
 
 .inner_box {
