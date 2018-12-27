@@ -1,3 +1,6 @@
+var arr = ["红", "哥", "很", "忙", "红哥很忙超级忙"];
+var str = arr.join("|");
+console.log(str);
 var S = {
     init: function () {
         var action = window.location.href, i = action.indexOf('?a=');
@@ -6,7 +9,8 @@ var S = {
         if (i !== -1) {
             S.UI.simulate(decodeURI(action).substring(i + 3));
         } else {
-            S.UI.simulate('Shape|Shifter|Type|to start|#rectangle|#countdown 3||');
+            // S.UI.simulate('Shape|Shifter|Type|to start|#rectangle|#countdown 3||');
+            S.UI.simulate(str + '|#countdown');
         }
         S.Drawing.loop(function () {
             S.Shape.render();
@@ -14,7 +18,7 @@ var S = {
     }
 };
 S.Drawing = (function () {
-    var canvas, context, renderFn
+    var canvas, context, renderFn;
     requestFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
         window.setTimeout(callback, 1000 / 60);
     };
@@ -41,7 +45,7 @@ S.Drawing = (function () {
         }, drawCircle: function (p, c) {
             context.fillStyle = c.render();
             context.beginPath();
-            context.arc(p.x, p.y, p.z, 0, 2 * Math.PI, true);
+            context.arc(p.x, p.y, p.z, 0, 8 * Math.PI, true);
             context.closePath();
             context.fill();
         }
@@ -102,19 +106,21 @@ S.UI = (function () {
             value = getValue(current);
             switch (action) {
                 case 'countdown':
-                    value = parseInt(value) || 10;
-                    value = value > 0 ? value : 10;
-                    timedAction(function (index) {
-                        if (index === 0) {
-                            if (sequence.length === 0) {
-                                S.Shape.switchShape(S.ShapeBuilder.letter(''));
-                            } else {
-                                performAction(sequence);
-                            }
-                        } else {
-                            S.Shape.switchShape(S.ShapeBuilder.letter(index), true);
-                        }
-                    }, 1000, value, true);
+                    console.log("666");
+                    // window.location.href = "https://ccvt.io";
+                    // value = parseInt(value) || 10;
+                    // value = value > 0 ? value : 10;
+                    // timedAction(function (index) {
+                    //     if (index === 0) {
+                    //         if (sequence.length === 0) {
+                    //             S.Shape.switchShape(S.ShapeBuilder.letter(''));
+                    //         } else {
+                    //             performAction(sequence);
+                    //         }
+                    //     } else {
+                    //         S.Shape.switchShape(S.ShapeBuilder.letter(index), true);
+                    //     }
+                    // }, 1000, value, true);
                     break;
                 case 'rectangle':
                     value = value && value.split('x');
@@ -143,7 +149,7 @@ S.UI = (function () {
                 default:
                     S.Shape.switchShape(S.ShapeBuilder.letter(current[0] === cmd ? 'What?' : current));
             }
-        }, 2000, sequence.length);
+        }, 2500, sequence.length);
     }
 
     function checkInputWidth(e) {
@@ -264,7 +270,8 @@ S.Color = function (r, g, b, a) {
 };
 S.Color.prototype = {
     render: function () {
-        return 'rgba(' + this.r + ',' + +this.g + ',' + this.b + ',' + this.a + ')';
+        // return 'rgba(' + this.r + ',' + +this.g + ',' + this.b + ',' + this.a + ')';
+        return 'rgba(0,0,0,0.8)';
     }
 };
 S.Dot = function (x, y) {
@@ -335,7 +342,7 @@ S.Dot.prototype = {
         this._update();
         this._draw();
     }
-}
+};
 S.ShapeBuilder = (function () {
     var gap = 13, shapeCanvas = document.createElement('canvas'), shapeContext = shapeCanvas.getContext('2d'),
         fontSize = 500, fontFamily = 'Avenir, Helvetica Neue, Helvetica, Arial, sans-serif';
@@ -393,7 +400,7 @@ S.ShapeBuilder = (function () {
             };
             image.onerror = function () {
                 callback(S.ShapeBuilder.letter('What?'));
-            }
+            };
             image.src = url;
         }, circle: function (d) {
             var r = Math.max(0, d) / 2;
