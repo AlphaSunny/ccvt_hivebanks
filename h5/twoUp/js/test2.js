@@ -1,9 +1,7 @@
 $(function () {
     // var url = "test.json";
     var url_path = window.location.hostname;
-    console.log(url_path);
     var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
-    console.log(url);
     var letter_arr = [], one_list = [], two_list = [], type_one = "1", type_two = "2";
     var text_timer = "";
     $.ajax({
@@ -14,8 +12,6 @@ $(function () {
             var data = res.all_list;
             one_list = res.one_list;
             two_list = res.two_list;
-            // console.log(one_list.length);
-            // console.log(two_list.length);
             $.each(data, function (i, val) {
                 letter_arr.push(data[i].wechat);
             });
@@ -102,6 +98,7 @@ $(function () {
 
     //文字特效
     function particleAlphabetFun() {
+        console.log("123");
         var particleAlphabet = {
             Particle: function (x, y) {
                 this.x = x;
