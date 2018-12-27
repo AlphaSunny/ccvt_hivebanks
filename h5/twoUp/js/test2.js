@@ -201,6 +201,7 @@ $(function () {
                 particleAlphabet.animateParticles();
             }
         };
-        window.onload = particleAlphabet.init;
+        // window.onload = particleAlphabet.init;
+        particleAlphabet.init;
     }
 });
