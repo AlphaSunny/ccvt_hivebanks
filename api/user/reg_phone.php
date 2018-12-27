@@ -130,7 +130,7 @@ if(us_can_reg_or_not()["option_value"] != 1)
     exit_error("121","当前la未开通注册");
 
 //微信昵称
-if($wechat){
+if($wechat && $wechat!='null'){
     if (check_wechat_is_bind($wechat)){
         exit_error('119','微信昵称已存在!');
     }
