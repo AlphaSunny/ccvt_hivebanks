@@ -1,8 +1,8 @@
 $(function () {
     // var url = "test.json";
-    // var url_path = window.location.hostname;
-    // var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
-    var url = "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php";
+    var url_path = window.location.hostname;
+    var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
+    // var url = "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php";
     var letter_arr = [], one_list = [], two_list = [], type_one = "1", type_two = "2";
     var text_timer = "";
     $.ajax({
@@ -79,13 +79,13 @@ $(function () {
         $.each(two_list, function (j, val) {
             if (j < item) {
                 // $(".level_one_ul_box ul:nth-child(1)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
-                $(".level_two_ul_box ul:nth-child(1)").append("<li class=''>" + j + two_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
+                $(".level_two_ul_box ul:nth-child(1)").append("<li class=''>" + two_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             } else if (j >= item && j < item * 2) {
                 // $(".level_one_ul_box ul:nth-child(2)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
-                $(".level_two_ul_box ul:nth-child(2)").append("<li class=''>" + j + two_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
+                $(".level_two_ul_box ul:nth-child(2)").append("<li class=''>" + two_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             } else {
                 // $(".level_one_ul_box ul:nth-child(3)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
-                $(".level_two_ul_box ul:nth-child(3)").append("<li class=''>" + j + two_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
+                $(".level_two_ul_box ul:nth-child(3)").append("<li class=''>" + two_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             }
         })
     }
@@ -201,7 +201,6 @@ $(function () {
                 particleAlphabet.animateParticles();
             }
         };
-        // window.onload = particleAlphabet.init;
         new particleAlphabet.init;
     }
 });
