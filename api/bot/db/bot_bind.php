@@ -956,5 +956,21 @@ function wechat_is_bind($wechat){
     return true;
 }
 
+//======================================
+// 函数: 机器人单聊开关
+//======================================
+function get_chat_switch($us_id){
+    $db = new DB_COM();
+    $sql = "select * from bot_status WHERE us_id='{$us_id}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if ($row){
+        $switch = $row['single_chat_switch'];
+    }else{
+        $switch = 2;
+    }
+    return $switch;
+}
+
 
 ?>
