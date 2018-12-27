@@ -61,13 +61,13 @@ $(function () {
     function ListOne() {
         $.each(one_list, function (j, val) {
             if (j < item) {
-                $(".level_one_ul_box ul:nth-child(1)").append("<li class=''>" + one_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
+                $(".level_one_ul_box ul:nth-child(1)").append("<li class=''><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
                 // $(".level_two_ul_box ul:nth-child(1)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             } else if (j >= item && j < item * 2) {
-                $(".level_one_ul_box ul:nth-child(2)").append("<li class=''>" + one_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
+                $(".level_one_ul_box ul:nth-child(2)").append("<li class=''><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
                 // $(".level_two_ul_box ul:nth-child(2)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             } else {
-                $(".level_one_ul_box ul:nth-child(3)").append("<li class=''>" + one_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
+                $(".level_one_ul_box ul:nth-child(3)").append("<li class=''><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
                 // $(".level_two_ul_box ul:nth-child(3)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             }
         });
@@ -79,13 +79,13 @@ $(function () {
         $.each(two_list, function (j, val) {
             if (j < item) {
                 // $(".level_one_ul_box ul:nth-child(1)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
-                $(".level_two_ul_box ul:nth-child(1)").append("<li class=''>" + two_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
+                $(".level_two_ul_box ul:nth-child(1)").append("<li class=''><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
             } else if (j >= item && j < item * 2) {
                 // $(".level_one_ul_box ul:nth-child(2)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
-                $(".level_two_ul_box ul:nth-child(2)").append("<li class=''>" + two_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
+                $(".level_two_ul_box ul:nth-child(2)").append("<li class=''><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
             } else {
                 // $(".level_one_ul_box ul:nth-child(3)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
-                $(".level_two_ul_box ul:nth-child(3)").append("<li class=''>" + two_list[j].wechat + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
+                $(".level_two_ul_box ul:nth-child(3)").append("<li class=''><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
             }
         })
     }
