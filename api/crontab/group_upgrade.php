@@ -21,7 +21,7 @@ foreach ($group_rows as $k=>$v){
     $group_rows[$k]['us_one_scale_count'] = $db->getField($sql,'count');
 }
 
-print_r($group_rows);die;
+print_r(json_encode($group_rows));die;
 
 
 
