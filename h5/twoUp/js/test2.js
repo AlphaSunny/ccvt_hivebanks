@@ -1,6 +1,6 @@
 $(function () {
     // var url = "test.json";
-    var url = window.location.pathname;
+    var url = window.location.hostname;
     console.log(url);
     var url = "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php";
     var letter_arr = [], one_list = [], two_list = [], type_one = "1", type_two = "2";
