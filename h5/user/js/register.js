@@ -23,7 +23,6 @@ $(function () {
     }
 
     if (wechat && wechat != "null") {
-        console.log(wechat);
         $(".phoneWeChatName").val(wechat);
         $(".phoneWeChatName_li").fadeIn();
     }
