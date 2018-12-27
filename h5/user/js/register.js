@@ -23,6 +23,7 @@ $(function () {
     }
 
     if (wechat) {
+        console.log(wechat);
         $(".phoneWeChatName").val(wechat);
         $(".phoneWeChatName_li").fadeIn();
     }
