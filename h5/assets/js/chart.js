@@ -36,16 +36,16 @@ require('./scales/scale.time')(Chart);
 // Loading built-in plugins
 var plugins = require('./plugins');
 for (var k in plugins) {
-	if (plugins.hasOwnProperty(k)) {
-		Chart.plugins.register(plugins[k]);
-	}
+    if (plugins.hasOwnProperty(k)) {
+        Chart.plugins.register(plugins[k]);
+    }
 }
 
 Chart.platform.initialize();
 
 module.exports = Chart;
 if (typeof window !== 'undefined') {
-	window.Chart = Chart;
+    window.Chart = Chart;
 }
 
 // DEPRECATIONS
@@ -112,20 +112,20 @@ Chart.layoutService = Chart.layouts;
  * @todo remove at version 3
  */
 Chart.helpers.each(
-	[
-		'Bar',
-		'Bubble',
-		'Doughnut',
-		'Line',
-		'PolarArea',
-		'Radar',
-		'Scatter'
-	],
-	function(klass) {
-		Chart[klass] = function(ctx, cfg) {
-			return new Chart(ctx, Chart.helpers.merge(cfg || {}, {
-				type: klass.charAt(0).toLowerCase() + klass.slice(1)
-			}));
-		};
-	}
+    [
+        'Bar',
+        'Bubble',
+        'Doughnut',
+        'Line',
+        'PolarArea',
+        'Radar',
+        'Scatter'
+    ],
+    function(klass) {
+        Chart[klass] = function(ctx, cfg) {
+            return new Chart(ctx, Chart.helpers.merge(cfg || {}, {
+                type: klass.charAt(0).toLowerCase() + klass.slice(1)
+            }));
+        };
+    }
 );
