@@ -38,6 +38,12 @@ if ($groups){
                     continue;
                 }
 
+                //判断用户是否积分为负数,
+                $glory_integral = check_glory_integral($u_id);
+                if ($glory_integral==1){
+                    continue;
+                }
+
                 //判断当前用户绑定的是否是这个群
                 $us_group = get_us_bind_group_id($u_id);
                 if (!$us_group || $us_group!=$b['id']){
@@ -328,6 +334,20 @@ if ($grous){
 
 echo "OK!";
 
+//判断用户积分是否为负数
+function check_glory_integral($us_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$us_id}' limit 1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    $status = 0;
+    if ($row){
+        if ($row['base_amount']<0){
+            $status = 1;
+        }
+    }
+    return $status;
+}
 
 //查询ba是否有余额且ba的余额是否够今日增送的额度
 function sel_ba_amout($ba_id,$day_start,$day_end){

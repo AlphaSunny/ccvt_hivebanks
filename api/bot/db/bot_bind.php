@@ -426,14 +426,30 @@ function check_chat_time($group_name)
 function notice_records($data)
 {
     $db = new DB_COM();
+    $start = strtotime(date('Y-m-d 00:00:00'));
+    $end = strtotime(date('Y-m-d 23:59:59'));
     $sql = "select * from us_base WHERE wechat='{$data['wechat']}' limit 1";
     $db->query($sql);
     $wechat = $db->fetchRow();
     if ($wechat){
-        $status = 1;
+        $sql = "select * from bot_notice_records WHERE wechat='{$data['wechat']}' AND intime BETWEEN '{$start}' AND '{$end}'";
+        $db->query($sql);
+        $row = $db->fetchRow();
+        if ($row) {
+            $status = 1;
+        }else{
+            //判断荣耀积分是否为负数
+            $sql = "select base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$wechat['us_id']}' limit 1";
+            $db->query($sql);
+            $glory_integral = $db->fetchRow();
+            if ($glory_integral && $glory_integral['base_amount']<0){
+                $status = 3;
+            }else{
+                $status = 1;
+            }
+        }
+
     }else{
-        $start = strtotime(date('Y-m-d 00:00:00'));
-        $end = strtotime(date('Y-m-d 23:59:59'));
         $sql = "select * from bot_notice_records WHERE wechat='{$data['wechat']}' AND intime BETWEEN '{$start}' AND '{$end}'";
         $db->query($sql);
         $row = $db->fetchRow();
