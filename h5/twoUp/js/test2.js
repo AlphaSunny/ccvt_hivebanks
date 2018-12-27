@@ -202,5 +202,6 @@ $(function () {
             }
         };
         new particleAlphabet.init;
+        // particleAlphabet.init;//本地测试用
     }
 });
