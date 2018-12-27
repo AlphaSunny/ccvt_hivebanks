@@ -41,7 +41,7 @@ function ins_bind_user_reg_bind_info($data_bind)
 function ins_bind_user_reg_weixin_group_info($us_id,$wechat,$group_id)
 {
     $db = new DB_COM();
-    if (isset($wechat)){
+    if ($wechat && $wechat!='null'){
         //绑定微信号
         $vail = 'wechat';
         $data['bind_id'] = get_guid();
