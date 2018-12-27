@@ -1,6 +1,7 @@
 $(function () {
     // var url = "test.json";
     var url_path = window.location.hostname;
+    console.log(url_path);
     var url = url_path + "/api/crontab/get_scale_us_data.php";
     var letter_arr = [], one_list = [], two_list = [], type_one = "1", type_two = "2";
     var text_timer = "";
