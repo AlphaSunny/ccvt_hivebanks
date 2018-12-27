@@ -3,6 +3,7 @@ require_once "../inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
+die;
 //if (time()<1543579200){
 //    die;
 //}
