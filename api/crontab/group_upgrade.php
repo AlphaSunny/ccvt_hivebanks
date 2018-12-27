@@ -4,37 +4,25 @@ ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
 
-//等级提升程序(每次只能升一级)
+//群等级提升程序(每次只能升一级)
 
 
 $db = new DB_COM();
-$unit = get_la_base_unit();
-//0-1
-$sql = "select us_id,us_nm,us_account,base_amount/'{$unit}' as base_amount,(select wechat from us_base where us_id=a.us_id) as wechat from us_asset as a where asset_id='GLOP' AND base_amount/'{$unit}' >= 100 and us_id not in (select us_id from us_base where scale=1) order by base_amount desc";
+//群
+$sql = "select id,name from bot_group WHERE scale=1";
 $db->query($sql);
-$one_rows = $db->fetchAll();
-foreach ($one_rows as $k=>$v){
-    set_time_limit(0);
-    //判断等级提升
-    $us_scale = get_us_base($v['us_id'])['scale'];
-    if ($us_scale!=1){
-        scale_upgrade($v['us_id'],0,1,$v['base_amount']);
-    }
+$group_rows = $db->fetchAll();
+foreach ($group_rows as $k=>$v){
+    $sql = "select count(*) as count from us_bind where bind_name='group' and bind_info='{$v['id']}'";
+    $db->query($sql);
+    $group_rows[$k]['bind_count'] = $db->getField($sql,'count');
+    $sql = "select count(*) as count from us_base WHERE scale=1 AND us_id in (select us_id from us_bind WHERE bind_name='group' AND bind_info='{$v['id']}')";
+    $db->query($sql);
+    $group_rows[$k]['us_one_scale_count'] = $db->getField($sql,'count');
 }
 
+print_r($group_rows);die;
 
-//1-2
-$sql = "select us_id,us_nm,us_account,base_amount/'{$unit}' as base_amount,(select wechat from us_base where us_id=a.us_id) as wechat from us_asset as a where asset_id='GLOP' and  base_amount/'{$unit}' >= 300 and us_id in (select us_id from us_base where scale=1) order by base_amount desc";
-$db->query($sql);
-$two_rows = $db->fetchAll();
-foreach ($two_rows as $k=>$v){
-    set_time_limit(0);
-    //判断等级提升
-    $us_scale = get_us_base($v['us_id'])['scale'];
-    if ($us_scale!=2){
-        scale_upgrade($v['us_id'],1,2,$v['base_amount']);
-    }
-}
 
 
 echo "OK";
