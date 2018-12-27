@@ -26,7 +26,7 @@ $(function () {
     //一级列表
     function level_one() {
         var length = one_list.length;
-        one_ul_item = Math.floor(length / item);
+        one_ul_item = Math.ceil(length / item);
         CreateOneUl(one_ul_item);
     }
 
@@ -34,7 +34,7 @@ $(function () {
     function level_two() {
         var length = two_list.length;
         console.log(length);
-        two_ul_item = Math.floor(length / item);
+        two_ul_item = Math.ceil(length / item);
         console.log(two_ul_item);
         CreateTwoUl(two_ul_item);
     }
