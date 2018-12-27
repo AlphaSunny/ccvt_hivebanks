@@ -22,7 +22,7 @@ $(function () {
         $(".emailInvitCode,.phoneInvitCode").val(invite_code);
     }
 
-    if (wechat) {
+    if (wechat && wechat != "null") {
         console.log(wechat);
         $(".phoneWeChatName").val(wechat);
         $(".phoneWeChatName_li").fadeIn();
