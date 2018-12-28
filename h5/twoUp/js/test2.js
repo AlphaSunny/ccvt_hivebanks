@@ -5,9 +5,11 @@ $(function () {
     var text_timer = "", item_one = "", item_two = "", ul_num = 3;
 
     //判断当前时间
-    var curr_time = "", nex_time = "2018-12-28 14:22";
+    var curr_time = "", next_time = "2018-12-28 14:26", end_time = "";
     setInterval(function () {
-        var num = parseInt((nex_time - curr_time) / 1000);
+        curr_time = new Date;
+        end_time = new Date(next_time);
+        var num = parseInt((end_time - curr_time) / 1000);
         console.log(num);
         if (num <= 0) {
             $(".upload_text").text("升级成功");
