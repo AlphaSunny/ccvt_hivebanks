@@ -190,20 +190,14 @@
         }
 
         if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
-            clearInterval(count_timer);
-            var i = 0, str = "二次解锁成功";
-            $("h1").remove();
-            var textTimer = setInterval(function () {
-                if ($(".text_h2").text() == str) {
-                    clearInterval(textTimer);
-                    $(".text_h2").addClass("active");
-                    $("#three-container").css("display", "block");
-                    TwoUp();
-                }
-                $(".text_h2").text(str.substring(0, i));
-                i++;
-            }, 400);
-
+            clearInterval(count_timer);//清楚定时器
+            var bool = oneMinCountDown();//判断是否过了一分钟误差
+            if (bool) {
+                //已经升级成功直接跳转排名
+                window.location.href = "../twoUp/index.html?ok=ok";
+            } else {
+                twoSuccess();//显示二次升级成功
+            }
         }
 
         if (days < 10) {
@@ -235,8 +229,24 @@
 
     count_timer = setInterval(function () {
         // TimeDown("2018-12-28 20:00");
-        TimeDown("2018-12-28 14:26");
+        TimeDown("2018-12-28 14:55");
     }, 1000);
+
+    //二次解锁成功
+    function twoSuccess() {
+        var i = 0, str = "二次解锁成功";
+        $("h1").remove();
+        var textTimer = setInterval(function () {
+            if ($(".text_h2").text() == str) {
+                clearInterval(textTimer);
+                $(".text_h2").addClass("active");
+                $("#three-container").css("display", "block");
+                TwoUp();
+            }
+            $(".text_h2").text(str.substring(0, i));
+            i++;
+        }, 400);
+    }
 
     //即将进行二次荣耀等级升级
     function TwoUp() {
@@ -253,5 +263,22 @@
             window.location.href = "../twoUp/index.html";
         }, 5000);
     }
+
+    //一分钟
+    // var oneMinTimer = "";
+    //
+    function oneMinCountDown() {
+        var one_end_time = new Date("2018-12-28 14:56");
+        var one_now_time = new Date();
+        var curr_num = parseInt((one_end_time - one_now_time) / 1000);
+        console.log(curr_num);
+        if (curr_num <= 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 </script>
 </html>

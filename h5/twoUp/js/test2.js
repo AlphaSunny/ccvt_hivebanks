@@ -1,12 +1,15 @@
 $(function () {
     var url_path = window.location.hostname;
+    var ok_url = window.location.search;
+    console.log(ok_url);
     var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
     var letter_arr = [], one_list = [], two_list = [];
     var text_timer = "", item_one = "", item_two = "", ul_num = 3;
 
     //判断当前时间
-    var curr_time = "", next_time = "2018-12-28 14:26", end_time = "";
-    var time_timer = setInterval(function () {
+    var curr_time = "", next_time = "2018-12-28 14:55", end_time = "", time_timer = "";
+
+    function timeIsOk() {
         curr_time = new Date;
         end_time = new Date(next_time);
         var num = parseInt((end_time - curr_time) / 1000);
@@ -18,6 +21,10 @@ $(function () {
                 AJAX_Start();
             }, 3000);
         }
+    }
+
+    time_timer = setInterval(function () {
+        timeIsOk();
     }, 1000);
 
     //开始执行
