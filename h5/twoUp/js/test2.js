@@ -25,7 +25,7 @@ $(function () {
         end_time = new Date(next_time);
         var num = parseInt((end_time - curr_time) / 1000);
 
-        if (num > 0) {
+        if (num < 0) {
             console.log("没有OK。没有过期");
             setTimeout(function () {
                 $(".upload_text").text("升级成功");
