@@ -4,13 +4,16 @@ $(function () {
     var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
     // var url = "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php";
     var letter_arr = [], one_list = [], two_list = [], type_one = "1", type_two = "2";
-    var text_timer = "";
+    var text_timer = "", item = "";
     $.ajax({
         type: "GET",
         url: url,
         dataType: "jsonp",
         success: function (res) {
             var data = res.all_list;
+            var length = res.all_list.length;
+            item = Math.floor(length / 6);
+            console.log(item);
             one_list = res.one_list;
             two_list = res.two_list;
             $(".one_level_num").text(one_list.length);
@@ -23,7 +26,7 @@ $(function () {
     });
 
     var level_one_ul_box = "", level_two_ul_box = "";
-    var item = 19, one_ul_item = "", two_ul_item = "";
+    var one_ul_item = "", two_ul_item = "";
 
     //一级列表
     function level_one() {
