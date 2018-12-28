@@ -36,7 +36,7 @@ function scale_upgrade($group_id,$before_scale,$after_scale,$bind_count,$one_sca
         $data2['us_one_scale_count'] = $one_scale_user_count;
         $data2['utime'] = time();
         $data2['ctime'] = date('Y-m-d H:i:s');
-        $sql = $db->sqlInsert("bot_group_changes", $data2);
+        $sql = $db->sqlInsert("bot_group_scale_changes", $data2);
         $id = $db->query($sql);
         if (!$id){
             $db->Rollback($pInTrans);
