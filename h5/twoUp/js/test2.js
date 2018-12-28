@@ -35,6 +35,7 @@ $(function () {
             }, 3000);
         }else {
             console.log("没有OK。过期了");
+            $(".loading,.upload_text").remove();
             AJAX_Start();
         }
 
