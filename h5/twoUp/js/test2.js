@@ -210,7 +210,7 @@ $(function () {
 
     //文字随机效果
     function textRandom() {
-        var li_list = $(".show_name").find("li");
+        var li_list = $(".already_up_box").find("li");
         console.log(li_list);
     }
 });
