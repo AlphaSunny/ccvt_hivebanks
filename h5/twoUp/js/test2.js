@@ -24,6 +24,7 @@ $(function () {
         curr_time = new Date();
         end_time = new Date(next_time);
         var num = parseInt((end_time - curr_time) / 1000);
+        console.log(end_time - curr_time);
         console.log(num);
 
         if (num > 0) {
