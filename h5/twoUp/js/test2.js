@@ -13,6 +13,7 @@ $(function () {
             var data = res.all_list;
             var length = res.all_list.length;
             item = Math.floor(length / 6);
+            console.log(length);
             console.log(item);
             one_list = res.one_list;
             two_list = res.two_list;
