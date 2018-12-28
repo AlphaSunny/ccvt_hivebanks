@@ -957,6 +957,16 @@ h4.title:after {
     display: none;
 }
 
+/*chart box*/
+.big_bg {
+    background: url("../img/chart_bg.jpg") no-repeat 100% fixed;
+}
+
+.chart_text li {
+    color: black;
+    list-style: none;
+}
+
 @media screen and (max-width: 768px) {
     .navbar-header > .navbar-brand {
         padding: 6px 0 6px 15px !important;
