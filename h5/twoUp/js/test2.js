@@ -21,7 +21,7 @@ $(function () {
     var curr_time = "", next_time = "2018-12-28 16:00", end_time = "";
 
     function timeIsOk() {
-        curr_time = new Date;
+        curr_time = new Date();
         end_time = new Date(next_time);
         var num = parseInt((end_time - curr_time) / 1000);
         console.log(num);
