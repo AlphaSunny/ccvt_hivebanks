@@ -18,11 +18,11 @@ $(function () {
 
     Start();
     //判断当前时间
-    var curr_time = "", next_time = "2018-12-28 16:00", end_time = "";
+    var next_time = "2018-12-28 16:47";
 
     function timeIsOk() {
-        curr_time = new Date();
-        end_time = new Date(next_time);
+        var curr_time = new Date();
+        var end_time = new Date(next_time);
         var num = parseInt((end_time - curr_time) / 1000);
         console.log(end_time);
         console.log(curr_time);
