@@ -13,7 +13,7 @@
 .upload_text{
     color: #ffffff;
     position: absolute;
-    width: 4rem;
+    width: 6rem;
     height: 2rem;
     text-align: center;
     display: flex;
@@ -22,7 +22,7 @@
     top: 50%;
     margin-top: -1rem;
     left: 50%;
-    margin-left: -2rem;
+    margin-left: -3rem;
 }
 
 .loader {
