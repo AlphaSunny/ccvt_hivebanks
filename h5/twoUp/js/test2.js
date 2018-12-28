@@ -89,7 +89,8 @@ $(function () {
                 // $(".level_one_ul_box ul:nth-child(3)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
                 $(".level_two_ul_box ul:nth-child(3)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
             }
-        })
+        });
+        textRandom();
     }
 
 
@@ -205,5 +206,11 @@ $(function () {
         };
         new particleAlphabet.init;
         // particleAlphabet.init;//本地测试用
+    }
+
+    //文字随机效果
+    function textRandom() {
+        var li_list = $(".show_name").find("li");
+        console.log(li_list);
     }
 });
