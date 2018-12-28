@@ -12,7 +12,7 @@ $(function () {
         success: function (res) {
             var data = res.all_list;
             var length = res.all_list.length;
-            item = Math.floor(length / 6);
+            item = Math.ceil(length / 6);
             console.log(length);
             console.log(item);
             one_list = res.one_list;
