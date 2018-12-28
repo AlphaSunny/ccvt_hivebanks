@@ -96,7 +96,7 @@ $(function () {
     function Prepend(val) {
         setTimeout(function () {
             $(".show_name_ul").prepend("<li class='wow bounceInRight'>" + val + "</li>");
-        }, 2000);
+        }, 100);
     }
 
     //文字特效
@@ -132,7 +132,7 @@ $(function () {
                 text_timer = setInterval(function () {
                     particleAlphabet.changeLetter();
                     particleAlphabet.getPixels(particleAlphabet.tmpCanvas, particleAlphabet.tmpCtx);
-                }, 2000);//变换时间
+                }, 100);//变换时间
 
                 particleAlphabet.makeParticles(6000);//文字粒子多少
                 particleAlphabet.animate();
