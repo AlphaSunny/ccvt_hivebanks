@@ -4,7 +4,7 @@ ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
 
-die;
+
 //等级提升程序(每次只能升一级)
 
 
@@ -17,10 +17,10 @@ $one_rows = $db->fetchAll();
 foreach ($one_rows as $k=>$v){
     set_time_limit(0);
     //判断等级提升
-    $us_scale = get_us_base($v['us_id'])['scale'];
-    if ($us_scale!=1){
-        scale_upgrade($v['us_id'],0,1,$v['base_amount']);
-    }
+//    $us_scale = get_us_base($v['us_id'])['scale'];
+//    if ($us_scale!=1){
+//        scale_upgrade($v['us_id'],0,1,$v['base_amount']);
+//    }
 }
 
 
@@ -31,11 +31,14 @@ $two_rows = $db->fetchAll();
 foreach ($two_rows as $k=>$v){
     set_time_limit(0);
     //判断等级提升
-    $us_scale = get_us_base($v['us_id'])['scale'];
-    if ($us_scale!=2){
-        scale_upgrade($v['us_id'],1,2,$v['base_amount']);
-    }
+//    $us_scale = get_us_base($v['us_id'])['scale'];
+//    if ($us_scale!=2){
+//        scale_upgrade($v['us_id'],1,2,$v['base_amount']);
+//    }
 }
+
+echo "一级:".count($one_rows)."<br />";
+echo "二级:".count($two_rows);
 
 
 echo "OK";
