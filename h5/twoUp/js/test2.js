@@ -20,7 +20,7 @@ $(function () {
     //判断当前时间
     function timeIsOk() {
         var curr_time = new Date();
-        var end_time = new Date("2018-12-28 18:06");
+        var end_time = new Date("2018-12-28 20:01");
         var num = parseInt((end_time - curr_time) / 1000);
 
         if (num > 0) {
