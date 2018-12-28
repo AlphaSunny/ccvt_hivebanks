@@ -10,7 +10,6 @@ $(function () {
         curr_time = new Date;
         end_time = new Date(next_time);
         var num = parseInt((end_time - curr_time) / 1000);
-        console.log(num);
         if (num <= 0) {
             clearInterval(time_timer);
             $(".upload_text").text("升级成功");
