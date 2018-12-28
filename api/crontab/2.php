@@ -6,11 +6,10 @@
 //$redis->select(0);//选择数据库2
 //$redis->set( "testKey" , "Hello Redis"); //设置测试key
 //echo $redis->get("testKey");//输出value
-echo 222;
 
 ini_set('default_socket_timeout', -1);
 $ip = "18.219.17.238";
-$port = 6379;
+$port = '6379';
 $redis = new Redis();
 
 $redis->pconnect($ip, $port, 1);
