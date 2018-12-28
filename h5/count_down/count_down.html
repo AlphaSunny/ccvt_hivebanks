@@ -132,6 +132,7 @@
     <h1 class="minutes"></h1>
     <h1 class="seconds"></h1>
     <h2 class="text_h2"></h2>
+    <h2 class="text_h3"></h2>
 </div>
 <canvas id="three-container"></canvas>
 
@@ -232,16 +233,16 @@
     }
 
     count_timer = setInterval(function () {
-        TimeDown("2018-12-28 09:38");
-        // TimeDown("2018-12-28 20:00");
+        TimeDown("2018-12-28 20:00");
     }, 1000);
 
     //即将进行二次荣耀等级升级
     function TwoUp() {
         setTimeout(function () {
-            $(".text_h2").text("即将进行二次荣耀等级升级").css("font-size","6rem");
+            $(".text_h2").remove();
+            $(".text_h3").css("font-size","6rem").text("即将进行二次荣耀等级升级");
             JumpUp();
-        }, 8000);
+        }, 6000);
     }
 
     //跳转升级页面

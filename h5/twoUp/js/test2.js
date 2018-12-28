@@ -4,24 +4,42 @@ $(function () {
     var letter_arr = [], one_list = [], two_list = [];
     var text_timer = "", item_one = "", item_two = "", ul_num = 3;
 
-    $.ajax({
-        type: "GET",
-        url: url,
-        dataType: "jsonp",
-        success: function (res) {
-            var data = res.all_list;
-            one_list = res.one_list;
-            two_list = res.two_list;
-            item_one = Math.ceil(one_list.length / ul_num);
-            item_two = Math.ceil(two_list.length / ul_num);
-            $(".one_level_num").text(one_list.length);
-            $(".two_level_num").text(two_list.length);
-            $.each(data, function (i, val) {
-                letter_arr.push(data[i].wechat);
-            });
-            particleAlphabetFun();
+    //判断当前时间
+    var curr_time = "", nex_time = "2018-12-28 20:00";
+    setInterval(function () {
+        var num = parseInt((nex_time - curr_time) / 1000);
+        console.log(num);
+        if (num <= 0) {
+            $(".upload_text").text("升级成功");
+            setTimeout(function () {
+                $(".loading,.upload_text").remove();
+                AJAX_Start();
+            }, 3000);
         }
-    });
+    }, 1000);
+
+    //开始执行
+    function AJAX_Start() {
+        $.ajax({
+            type: "GET",
+            url: url,
+            dataType: "jsonp",
+            success: function (res) {
+                var data = res.all_list;
+                one_list = res.one_list;
+                two_list = res.two_list;
+                item_one = Math.ceil(one_list.length / ul_num);
+                item_two = Math.ceil(two_list.length / ul_num);
+                $(".one_level_num").text(one_list.length);
+                $(".two_level_num").text(two_list.length);
+                $.each(data, function (i, val) {
+                    letter_arr.push(data[i].wechat);
+                });
+                particleAlphabetFun();
+            }
+        });
+    }
+
 
     var level_one_ul_box = "", level_two_ul_box = "";
 
