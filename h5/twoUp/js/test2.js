@@ -26,14 +26,14 @@ $(function () {
         var num = parseInt((end_time - curr_time) / 1000);
 
         if (num > 0) {
-            // console.log("没有OK。没有过期");
+            console.log("没有OK。没有过期");
             setTimeout(function () {
                 $(".upload_text").text("升级成功");
                 $(".loading,.upload_text").remove();
                 AJAX_Start("no_guo");
             }, 3000);
         } else {
-            // console.log("没有OK。过期了");
+            console.log("没有OK。过期了");
             $(".loading,.upload_text").remove();
             AJAX_Start("guo");
         }
