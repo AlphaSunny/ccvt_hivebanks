@@ -7,7 +7,6 @@ $(function () {
 
     //判断是否在规定时间内
     function Start() {
-        // timeIsOk();
         if (ok_url == "ok") {
             console.log("有OK ，过期了");
             $(".loading,.upload_text").remove();
@@ -19,7 +18,7 @@ $(function () {
 
     Start();
     //判断当前时间
-    var curr_time = "", next_time = "2018-12-28 15:48", end_time = "";
+    var curr_time = "", next_time = "2018-12-28 15:55", end_time = "";
 
     function timeIsOk() {
         curr_time = new Date;
@@ -29,7 +28,7 @@ $(function () {
         if (num > 0) {
             // console.log("没有OK。没有过期");
             setTimeout(function () {
-                // $(".upload_text").text("升级成功");
+                $(".upload_text").text("升级成功");
                 $(".loading,.upload_text").remove();
                 AJAX_Start("no_guo");
             }, 3000);
