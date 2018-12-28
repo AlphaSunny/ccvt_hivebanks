@@ -213,7 +213,7 @@ $(function () {
         var li_list = $(".already_up_box").find("li");
         setInterval(function () {
             var num = sum(1, 100);
-            li_list.eq(num).css({"transform": "scale(1.2)"});
+            li_list.eq(num).css({"transform": "scale(1.5)", "transition": "all 1s"});
         }, 1000);
     }
 
