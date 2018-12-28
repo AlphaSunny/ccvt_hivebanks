@@ -19,7 +19,7 @@ $(function () {
 
     Start();
     //判断当前时间
-    var curr_time = "", next_time = "2018-12-28 20:00", end_time = "", time_timer = "";
+    var curr_time = "", next_time = "2018-12-28 15:05", end_time = "", time_timer = "";
 
     function timeIsOk() {
         curr_time = new Date;
