@@ -5,7 +5,7 @@ $(function () {
     var text_timer = "", item_one = "", item_two = "", ul_num = 3;
 
     //判断当前时间
-    var curr_time = "", nex_time = "2018-12-28 20:00";
+    var curr_time = "", nex_time = "2018-12-28 14:22";
     setInterval(function () {
         var num = parseInt((nex_time - curr_time) / 1000);
         console.log(num);
