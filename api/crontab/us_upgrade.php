@@ -41,7 +41,7 @@ echo "一级:".count($one_rows)."<br />";
 echo "二级:".count($two_rows);
 
 
-echo "OK";
+//echo "OK";
 
 function scale_upgrade($us_id,$before_scale,$after_scale,$scale){
         $db = new DB_COM();
