@@ -19,7 +19,7 @@ $(function () {
 
     Start();
     //判断当前时间
-    var curr_time = "", next_time = "2018-12-28 15:05", end_time = "", time_timer = "";
+    var curr_time = "", next_time = "2018-12-28 15:05", end_time = "";
 
     function timeIsOk() {
         curr_time = new Date;
@@ -27,26 +27,17 @@ $(function () {
         var num = parseInt((end_time - curr_time) / 1000);
 
         if (num > 0) {
-            console.log("没有OK。没有过期");
+            // console.log("没有OK。没有过期");
             setTimeout(function () {
-                $(".upload_text").text("升级成功");
+                // $(".upload_text").text("升级成功");
                 $(".loading,.upload_text").remove();
                 AJAX_Start();
             }, 3000);
         }else {
-            console.log("没有OK。过期了");
+            // console.log("没有OK。过期了");
             $(".loading,.upload_text").remove();
             AJAX_Start();
         }
-
-        // if (num <= 0) {
-        //     // clearInterval(time_timer);
-        //     setTimeout(function () {
-        //         // $(".upload_text").text("升级成功");
-        //         $(".loading,.upload_text").remove();
-        //         AJAX_Start();
-        //     }, 3000);
-        // }
     }
 
     //开始执行
@@ -124,7 +115,7 @@ $(function () {
     function Prepend(val) {
         setTimeout(function () {
             $(".show_name_ul").prepend("<li class='wow bounceInRight'>" + val + "</li>");
-        }, 100);
+        }, 1000);
     }
 
     //文字特效
@@ -160,7 +151,7 @@ $(function () {
                 text_timer = setInterval(function () {
                     particleAlphabet.changeLetter();
                     particleAlphabet.getPixels(particleAlphabet.tmpCanvas, particleAlphabet.tmpCtx);
-                }, 100);//变换时间
+                }, 1000);//变换时间
 
                 particleAlphabet.makeParticles(6000);//文字粒子多少
                 particleAlphabet.animate();
