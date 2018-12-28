@@ -11,7 +11,7 @@ $(function () {
         if (ok_url == "ok") {
             console.log("有OK ，过期了");
             $(".loading,.upload_text").remove();
-            AJAX_Start();
+            AJAX_Start("guo");
         } else {
             timeIsOk();
         }
@@ -31,17 +31,17 @@ $(function () {
             setTimeout(function () {
                 // $(".upload_text").text("升级成功");
                 $(".loading,.upload_text").remove();
-                AJAX_Start();
+                AJAX_Start("no_guo");
             }, 3000);
-        }else {
+        } else {
             // console.log("没有OK。过期了");
             $(".loading,.upload_text").remove();
-            AJAX_Start();
+            AJAX_Start("guo");
         }
     }
 
     //开始执行
-    function AJAX_Start() {
+    function AJAX_Start(type) {
         $.ajax({
             type: "GET",
             url: url,
@@ -57,7 +57,11 @@ $(function () {
                 $.each(data, function (i, val) {
                     letter_arr.push(data[i].wechat);
                 });
-                particleAlphabetFun();
+                if (type != "guo"){
+                    particleAlphabetFun();
+                }else {
+                    level_one();
+                }
             }
         });
     }
