@@ -177,7 +177,7 @@ $(function () {
         _this_already_zan_num = "",
         _this_already_cai_num = "",
         amount = "";
-    $(document).on("click", ".zan_icon", function () {
+    $(document).on("click", ".zan_icon,.zan_icon", function () {
         if (!token) {
             alert("操作之前请先登录!");
             return;
