@@ -13,6 +13,8 @@ $(function () {
             var data = res.all_list;
             one_list = res.one_list;
             two_list = res.two_list;
+            $(".one_level_num").text(one_list.length);
+            $(".two_level_num").text(two_list.length);
             $.each(data, function (i, val) {
                 letter_arr.push(data[i].wechat);
             });
