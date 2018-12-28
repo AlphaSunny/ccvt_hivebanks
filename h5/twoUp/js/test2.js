@@ -25,9 +25,9 @@ $(function () {
         var end_time = new Date(next_time);
         var num = parseInt((end_time - curr_time) / 1000);
         console.log(end_time);
-        console.log(curr_time);
-        console.log(end_time - curr_time);
-        console.log(num);
+        // console.log(curr_time);
+        // console.log(end_time - curr_time);
+        // console.log(num);
 
         if (num > 0) {
             console.log("没有OK。没有过期");
