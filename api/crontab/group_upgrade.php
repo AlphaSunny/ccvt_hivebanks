@@ -24,6 +24,7 @@ foreach ($group_rows as $k=>$v){
 
 echo "OK";
 
+//升级程序
 function scale_upgrade($group_id,$before_scale,$after_scale,$bind_count,$one_scale_user_count){
         $db = new DB_COM();
         $pInTrans = $db->StartTrans();  //开启事务
