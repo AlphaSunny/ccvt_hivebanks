@@ -9,16 +9,12 @@ error_reporting(E_ALL | E_STRICT);
 
 $db = new DB_COM();
 //群
-$sql = "select id,name from bot_group WHERE scale=1";
+$sql = "select id,name from bot_group as gr where gr.scale=1 and (select count(*) from us_bind where bind_name='group' and bind_info=gr.id)>=10 
+and (select count(*) from us_base where scale=1 and us_id in (select us_id from us_bind where bind_name='group' and bind_info=gr.id))>=2;";
 $db->query($sql);
 $group_rows = $db->fetchAll();
 foreach ($group_rows as $k=>$v){
-    $sql = "select count(*) as count from us_bind where bind_name='group' and bind_info='{$v['id']}'";
-    $db->query($sql);
-    $group_rows[$k]['bind_count'] = $db->getField($sql,'count');
-    $sql = "select count(*) as count from us_base WHERE scale=1 AND us_id in (select us_id from us_bind WHERE bind_name='group' AND bind_info='{$v['id']}')";
-    $db->query($sql);
-    $group_rows[$k]['us_one_scale_count'] = $db->getField($sql,'count');
+   
 }
 
 print_r(json_encode($group_rows));die;
