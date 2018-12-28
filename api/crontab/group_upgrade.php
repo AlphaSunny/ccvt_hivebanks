@@ -14,11 +14,11 @@ from bot_group as gr where gr.scale=1 and (select count(*) from us_bind where bi
 and (select count(*) from us_base where scale=1 and us_id in (select us_id from us_bind where bind_name='group' and bind_info=gr.id))>=2;";
 $db->query($sql);
 $group_rows = $db->fetchAll();
-//foreach ($group_rows as $k=>$v){
-//    scale_upgrade($v['id'],1,2,$v['bind_count'],$v['one_scale_user_count']);
-//}
+foreach ($group_rows as $k=>$v){
+    scale_upgrade($v['id'],1,2,$v['bind_count'],$v['one_scale_user_count']);
+}
 
-print_r(json_encode($group_rows));die;
+//print_r(json_encode($group_rows));die;
 
 
 
@@ -29,37 +29,28 @@ function scale_upgrade($group_id,$before_scale,$after_scale,$bind_count,$one_sca
         $pInTrans = $db->StartTrans();  //开启事务
         //升级记录表
         $data2['change_id'] = get_guid();
-        $data2['us_id'] = $us_id;
+        $data2['group_id'] = $group_id;
         $data2['before_scale'] = $before_scale;
         $data2['after_scale'] = $after_scale;
-        $data2['scale'] = $scale;
+        $data2['bind_count'] = $bind_count;
+        $data2['us_one_scale_count'] = $one_scale_user_count;
         $data2['utime'] = time();
         $data2['ctime'] = date('Y-m-d H:i:s');
-        $sql = $db->sqlInsert("us_scale_changes", $data2);
+        $sql = $db->sqlInsert("bot_group_changes", $data2);
         $id = $db->query($sql);
         if (!$id){
             $db->Rollback($pInTrans);
             echo "添加记录失败";
         }
 
-        //修改用户等级
-        $sql = "update us_base set scale='{$after_scale}' WHERE us_id='{$us_id}'";
+        //修改群等级
+        $sql = "update bot_group set scale='{$after_scale}' WHERE id='{$group_id}'";
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
-            echo "修改用户等级失败";
+            echo "修改群等级失败";
         }
 
         $db->Commit($pInTrans);
 }
 
-
-
-//获取用户信息
-function get_us_base($us_id){
-    $db = new DB_COM();
-    $sql = "select * from us_base WHERE us_id='{$us_id}'";
-    $db->query($sql);
-    $row = $db->fetchRow();
-    return $row;
-}
