@@ -176,7 +176,7 @@
 
         // 倒计时30s
         if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 30) {
-            $(".count_down_text").text("二次解锁即将成功").css("font-size", "4rem");
+            $(".count_down_text").text("二次解锁即将成功");
             $(".days, .hours,.minutes").remove();
             $(".count_box").css("justify-content", "center");
             $(".seconds").css({"font-size": "25rem", "border": "unset"})
