@@ -1,10 +1,9 @@
 $(function () {
-    // var url = "test.json";
     var url_path = window.location.hostname;
     var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
-    // var url = "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php";
-    var letter_arr = [], one_list = [], two_list = [], type_one = "1", type_two = "2";
+    var letter_arr = [], one_list = [], two_list = [];
     var text_timer = "", item_one = "", item_two = "", ul_num = 3;
+
     $.ajax({
         type: "GET",
         url: url,
@@ -25,13 +24,9 @@ $(function () {
     });
 
     var level_one_ul_box = "", level_two_ul_box = "";
-    var one_ul_item = "", two_ul_item = "";
 
     //一级列表
     function level_one() {
-        // var length = one_list.length;
-        // one_ul_item = Math.ceil(length / item_one);
-        // CreateOneUl(one_ul_item);
         for (var i = 0; i < ul_num; i++) {
             level_one_ul_box += "<ul></ul>";
         }
@@ -41,9 +36,6 @@ $(function () {
 
     //2级列表
     function level_two() {
-        // var length = two_list.length;
-        // two_ul_item = Math.ceil(length / item_two);
-        // CreateTwoUl(ul_num);
         for (var i = 0; i < ul_num; i++) {
             level_two_ul_box += "<ul></ul>";
         }
@@ -51,36 +43,15 @@ $(function () {
         ListTwo();
     }
 
-    //生成一级对应数量的ul
-    function CreateOneUl(length) {
-        // for (var i = 0; i < length; i++) {
-        //     level_one_ul_box += "<ul></ul>";
-        // }
-        // $(".level_one_ul_box").html(level_one_ul_box);
-        // ListOne();
-    }
-
-    //生成2级对应数量的ul
-    function CreateTwoUl(length) {
-        // for (var i = 0; i < length; i++) {
-        //     level_two_ul_box += "<ul></ul>";
-        // }
-        // $(".level_two_ul_box").html(level_two_ul_box);
-        // ListTwo();
-    }
-
     //生成列表
     function ListOne() {
         $.each(one_list, function (j, val) {
             if (j < item_one) {
                 $(".level_one_ul_box ul:nth-child(1)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
-                // $(".level_two_ul_box ul:nth-child(1)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             } else if (j >= item_one && j < item_one * 2) {
                 $(".level_one_ul_box ul:nth-child(2)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
-                // $(".level_two_ul_box ul:nth-child(2)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             } else {
                 $(".level_one_ul_box ul:nth-child(3)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
-                // $(".level_two_ul_box ul:nth-child(3)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             }
         });
         level_two();
@@ -90,13 +61,10 @@ $(function () {
     function ListTwo() {
         $.each(two_list, function (j, val) {
             if (j < item_two) {
-                // $(".level_one_ul_box ul:nth-child(1)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
                 $(".level_two_ul_box ul:nth-child(1)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
             } else if (j >= item_two && j < item_two * 2) {
-                // $(".level_one_ul_box ul:nth-child(2)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
                 $(".level_two_ul_box ul:nth-child(2)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
             } else {
-                // $(".level_one_ul_box ul:nth-child(3)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
                 $(".level_two_ul_box ul:nth-child(3)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
             }
         });

@@ -196,6 +196,7 @@
                     clearInterval(textTimer);
                     $(".text_h2").addClass("active");
                     $("#three-container").css("display", "block");
+                    TwoUp();
                 }
                 $(".text_h2").text(str.substring(0, i));
                 i++;
@@ -235,5 +236,12 @@
         // TimeDown("2018-12-28 20:00");
     }, 1000);
 
+    //即将进行二次荣耀等级升级
+    function TwoUp() {
+        setTimeout(function () {
+            $(".text_h2").text("即将进行二次荣耀等级升级");
+            window.location.href = "../twoUp/index.html";
+        }, 5000);
+    }
 </script>
 </html>
