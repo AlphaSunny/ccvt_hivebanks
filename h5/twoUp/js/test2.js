@@ -29,34 +29,44 @@ $(function () {
 
     //一级列表
     function level_one() {
-        var length = one_list.length;
-        one_ul_item = Math.ceil(length / item_one);
-        CreateOneUl(one_ul_item);
-    }
-
-    //2级列表
-    function level_two() {
-        var length = two_list.length;
-        two_ul_item = Math.ceil(length / item_two);
-        CreateTwoUl(two_ul_item);
-    }
-
-    //生成一级对应数量的ul
-    function CreateOneUl(length) {
-        for (var i = 0; i < length; i++) {
+        // var length = one_list.length;
+        // one_ul_item = Math.ceil(length / item_one);
+        // CreateOneUl(one_ul_item);
+        for (var i = 0; i < ul_num; i++) {
             level_one_ul_box += "<ul></ul>";
         }
         $(".level_one_ul_box").html(level_one_ul_box);
         ListOne();
     }
 
-    //生成2级对应数量的ul
-    function CreateTwoUl(length) {
-        for (var i = 0; i < length; i++) {
+    //2级列表
+    function level_two() {
+        // var length = two_list.length;
+        // two_ul_item = Math.ceil(length / item_two);
+        // CreateTwoUl(ul_num);
+        for (var i = 0; i < ul_num; i++) {
             level_two_ul_box += "<ul></ul>";
         }
         $(".level_two_ul_box").html(level_two_ul_box);
         ListTwo();
+    }
+
+    //生成一级对应数量的ul
+    function CreateOneUl(length) {
+        // for (var i = 0; i < length; i++) {
+        //     level_one_ul_box += "<ul></ul>";
+        // }
+        // $(".level_one_ul_box").html(level_one_ul_box);
+        // ListOne();
+    }
+
+    //生成2级对应数量的ul
+    function CreateTwoUl(length) {
+        // for (var i = 0; i < length; i++) {
+        //     level_two_ul_box += "<ul></ul>";
+        // }
+        // $(".level_two_ul_box").html(level_two_ul_box);
+        // ListTwo();
     }
 
     //生成列表
