@@ -8,7 +8,7 @@
 //echo $redis->get("testKey");//输出value
 echo 222;
 
-
+ini_set('default_socket_timeout', -1);
 $ip = "18.219.17.238";
 $port = 6379;
 $redis = new Redis();
