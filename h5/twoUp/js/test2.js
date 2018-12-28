@@ -212,5 +212,6 @@ $(function () {
     function textRandom() {
         var li_list = $(".already_up_box").find("li");
         console.log(li_list);
+        console.log(li_list.eq(1));
     }
 });
