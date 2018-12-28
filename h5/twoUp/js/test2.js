@@ -234,7 +234,7 @@ $(function () {
     function textRandom() {
         var li_list = $(".already_up_box").find("li");
         setInterval(function () {
-            var num = sum(1, 100);
+            var num = sum(1, 200);
             li_list.eq(num).css({"transform": "scale(1.5)", "transition": "all 1s"});
             setTimeout(function () {
                 li_list.eq(num).css({"transform": "unset", "transition": "all 1s"});
