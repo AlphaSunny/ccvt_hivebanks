@@ -61,7 +61,7 @@ $(function () {
     function ListOne() {
         $.each(one_list, function (j, val) {
             if (j < item) {
-                $(".level_one_ul_box ul:nth-child(1)").append("<li class=''><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
+                $(".level_one_ul_box ul:nth-child(1)").append("<li class='wow slideInRight' data-wow-delay='1000ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
                 // $(".level_two_ul_box ul:nth-child(1)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             } else if (j >= item && j < item * 2) {
                 $(".level_one_ul_box ul:nth-child(2)").append("<li class=''><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");

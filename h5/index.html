@@ -332,8 +332,10 @@
     </div>
 </div>
 
-<!--myChart-->
-<canvas id="myChart" width="400" height="400" style="display: none"></canvas>
+<!--chart-->
+<div id="canvas-holder" style="width:40%">
+    <canvas id="chart-area"></canvas>
+</div>
 
 <!--scripts loaded here -->
 <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -343,34 +345,54 @@
 <script src="assets/js/wow.js"></script>
 <script src="assets/language/jquery.i18n.properties.js"></script>
 <script src="assets/language/language.js"></script>
-<script src="assets/js/chart.js"></script>
+<script src="assets/chart/Chart.js"></script>
+<script src="assets/chart/utils.js"></script>
 <script src="user/js/common.js"></script>
 <script src="user/js/index.js"></script>
 <script type="text/javascript">
-    var ctx = $("#myChart").get(0).getContext("2d");
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: [
-            {
-                value: 300,
-                color:"#F7464A",
-                highlight: "#FF5A5E",
-                label: "Red"
-            },
-            {
-                value: 50,
-                color: "#46BFBD",
-                highlight: "#5AD3D1",
-                label: "Green"
-            },
-            {
-                value: 100,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "Yellow"
-            }
-        ]
-    });
+    var config = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    50530427,
+                    22557,
+                    84000,
+                    8000,
+                    29960,
+                    80400,
+                    16250000,
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                    window.chartColors.yellow,
+                    window.chartColors.green,
+                    window.chartColors.blue,
+                    window.chartColors.gold,
+                    window.chartColors.pink,
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                '市值管理',
+                '荣耀燃烧',
+                '注册奖励',
+                '邀请奖励',
+                '聊天奖励',
+                '活动奖励',
+                '锁仓奖励'
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById('chart-area').getContext('2d');
+        window.myPie = new Chart(ctx, config);
+    };
 </script>
 </body>
 </html>
