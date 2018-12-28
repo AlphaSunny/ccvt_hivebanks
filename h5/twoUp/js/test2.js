@@ -4,7 +4,7 @@ $(function () {
     var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
     // var url = "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php";
     var letter_arr = [], one_list = [], two_list = [], type_one = "1", type_two = "2";
-    var text_timer = "", item_one = "", item_two = "", ul_num = "";
+    var text_timer = "", item_one = "", item_two = "", ul_num = 3;
     $.ajax({
         type: "GET",
         url: url,
