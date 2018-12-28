@@ -7,34 +7,43 @@ $(function () {
 
     //判断是否在规定时间内
     function Start() {
-        if (ok_url != "ok") {
+        // timeIsOk();
+        if (ok_url == "ok") {
+            $(".loading,.upload_text").remove();
+            AJAX_Start();
+        } else {
+            timeIsOk();
+        }
+    }
+
+    Start();
+    //判断当前时间
+    var curr_time = "", next_time = "2018-12-28 15:05", end_time = "", time_timer = "";
+
+    function timeIsOk() {
+        curr_time = new Date;
+        end_time = new Date(next_time);
+        var num = parseInt((end_time - curr_time) / 1000);
+
+        if (num > 0) {
             setTimeout(function () {
                 $(".upload_text").text("升级成功");
                 $(".loading,.upload_text").remove();
                 AJAX_Start();
             }, 3000);
-        } else {
-            $(".loading,.upload_text").remove();
+        }else {
             AJAX_Start();
         }
+
+        // if (num <= 0) {
+        //     // clearInterval(time_timer);
+        //     setTimeout(function () {
+        //         // $(".upload_text").text("升级成功");
+        //         $(".loading,.upload_text").remove();
+        //         AJAX_Start();
+        //     }, 3000);
+        // }
     }
-    Start();
-    //判断当前时间
-    // var curr_time = "", next_time = "2018-12-28 15:05", end_time = "", time_timer = "";
-    //
-    // function timeIsOk() {
-    //     curr_time = new Date;
-    //     end_time = new Date(next_time);
-    //     var num = parseInt((end_time - curr_time) / 1000);
-    //     if (num <= 0) {
-    //         clearInterval(time_timer);
-    //         setTimeout(function () {
-    //             $(".upload_text").text("升级成功");
-    //             $(".loading,.upload_text").remove();
-    //             AJAX_Start();
-    //         }, 3000);
-    //     }
-    // }
 
     //开始执行
     function AJAX_Start() {
