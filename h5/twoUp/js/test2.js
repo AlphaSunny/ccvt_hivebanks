@@ -60,6 +60,9 @@ $(function () {
                 if (type != "guo"){
                     particleAlphabetFun();
                 }else {
+                    $("body,html").addClass('bg_black');
+                    $("#text,.show_name").remove();
+                    $(".already_up_box").css("display", "flex");
                     level_one();
                 }
             }
