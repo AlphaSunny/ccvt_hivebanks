@@ -240,6 +240,13 @@
     function TwoUp() {
         setTimeout(function () {
             $(".text_h2").text("即将进行二次荣耀等级升级");
+            JumpUp();
+        }, 5000);
+    }
+
+    //跳转升级页面
+    function JumpUp() {
+        setTimeout(function () {
             window.location.href = "../twoUp/index.html";
         }, 5000);
     }
