@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>上链倒计时</title>
-    <link rel="stylesheet" href="assets/count_down/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <style>
     body {
@@ -77,28 +77,23 @@
     @keyframes h2_move {
         0% {
             color: #ffffff;
-            /*transform: rotateY(0deg);*/
             transform: rotateX(0deg);
         }
         30% {
             color: #d9ffd6;
             transform: rotateX(45deg);
-            /*transform: rotateY(45deg);*/
         }
         60% {
             color: #ffe0d3;
-            /*transform: rotateY(60deg);*/
             transform: rotateX(360deg);
         }
         90% {
             color: #c9d1ff;
             transform: rotateX(45deg);
-            /*transform: rotateY(45deg);*/
         }
         100% {
             color: #ffffff;
             transform: rotateX(0deg);
-            /*transform: rotateY(0deg);*/
         }
     }
 
@@ -128,22 +123,13 @@
     <h1 class="seconds"></h1>
     <h2 class="text_h2"></h2>
 </div>
-<div class="bg_line" id="three-container"></div>
+<canvas id="three-container"></canvas>
 
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r80/three.min.js'></script>
-<script src='assets/count_down/js/bas.min.1.1.3.js'></script>
-<script src='assets/count_down/js/three_post.js'></script>
-<script src='assets/count_down/js/OrbitControls.js'></script>
-<script src='assets/count_down/js/LuminosityHighPassShader.js'></script>
-<script src='assets/count_down/js/UnrealBloomPass.js'></script>
-<script src='assets/count_down/js/1b4e36af86e7ae4e4d4f8a3dc.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js'></script>
-<script src="assets/count_down/js/index.js"></script>
-<script src="assets/js/jquery.min.js"></script>
+<script src="../assets/js/jquery.min.js"></script>
+<script src='js/dat.gui.min.js'></script>
+<script src="js/index.js"></script>
 </body>
-<!--<script src="assets/js/wow.min.js"></script>-->
-<!--<script src="assets/js/particle/anime.js"></script>-->
 <script>
     var count_timer = "";
 
