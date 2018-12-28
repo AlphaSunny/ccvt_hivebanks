@@ -64,10 +64,10 @@ $(function () {
     //生成列表
     function ListOne() {
         $.each(one_list, function (j, val) {
-            if (j < item) {
+            if (j < item_one) {
                 $(".level_one_ul_box ul:nth-child(1)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
                 // $(".level_two_ul_box ul:nth-child(1)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
-            } else if (j >= item && j < item * 2) {
+            } else if (j >= item_one && j < item_one * 2) {
                 $(".level_one_ul_box ul:nth-child(2)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
                 // $(".level_two_ul_box ul:nth-child(2)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv2'></use></svg></li>");
             } else {
@@ -81,10 +81,10 @@ $(function () {
     //生成列表
     function ListTwo() {
         $.each(two_list, function (j, val) {
-            if (j < item) {
+            if (j < item_two) {
                 // $(".level_one_ul_box ul:nth-child(1)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
                 $(".level_two_ul_box ul:nth-child(1)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
-            } else if (j >= item && j < item * 2) {
+            } else if (j >= item_two && j < item_two * 2) {
                 // $(".level_one_ul_box ul:nth-child(2)").append("<li class=''>" + j + letter_arr[j] + "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg></li>");
                 $(".level_two_ul_box ul:nth-child(2)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
             } else {
