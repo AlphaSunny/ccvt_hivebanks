@@ -963,8 +963,55 @@ h4.title:after {
 }
 
 .chart_text li {
-    color: black;
+    color: #ffffff;
     list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+.chart_text li div {
+    width: 4rem;
+    height: 2rem;
+    /*background: red;*/
+}
+
+.szgl {
+    background: #5aaf33;
+}
+
+.scjl {
+    background: #3771ca;
+}
+
+.zcjl {
+    background: #479bdb;
+}
+
+.yqjl {
+    background: #fd7603;
+}
+
+.hdjl {
+    background: #ffbe00;
+}
+
+.ltjl {
+    background: #a5a5a5;
+}
+
+.ryrs {
+    background: #045e95;
+}
+
+#chart_box {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.chart_text li p {
+    margin: 0;
+    margin-left: 5%;
 }
 
 @media screen and (max-width: 768px) {
