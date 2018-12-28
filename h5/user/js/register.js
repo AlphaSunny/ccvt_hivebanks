@@ -18,7 +18,7 @@ $(function () {
     var invite_code = GetQueryString("invite_code");
     var wechat = decodeURI(GetQueryString("wechat"));
     var group_id = GetQueryString("group_id");
-    if (invite_code && invite_code == 0) {
+    if (invite_code && invite_code != 0) {
         $(".emailInvitCode,.phoneInvitCode").val(invite_code);
     }
 
