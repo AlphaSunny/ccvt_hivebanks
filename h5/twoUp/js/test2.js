@@ -4,19 +4,17 @@ $(function () {
     var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
     // var url = "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php";
     var letter_arr = [], one_list = [], two_list = [], type_one = "1", type_two = "2";
-    var text_timer = "", item = "";
+    var text_timer = "", item_one = "", item_two = "";
     $.ajax({
         type: "GET",
         url: url,
         dataType: "jsonp",
         success: function (res) {
             var data = res.all_list;
-            var length = res.all_list.length;
-            item = Math.ceil(length / 6);
-            console.log(length);
-            console.log(item);
             one_list = res.one_list;
             two_list = res.two_list;
+            item_one = Math.ceil(one_list.length / 3);
+            item_two = Math.ceil(two_list.length / 3);
             $(".one_level_num").text(one_list.length);
             $(".two_level_num").text(two_list.length);
             $.each(data, function (i, val) {
@@ -32,7 +30,7 @@ $(function () {
     //一级列表
     function level_one() {
         var length = one_list.length;
-        one_ul_item = Math.ceil(length / item);
+        one_ul_item = Math.ceil(length / item_one);
         CreateOneUl(one_ul_item);
     }
 
@@ -40,7 +38,7 @@ $(function () {
     function level_two() {
         var length = two_list.length;
         console.log(length);
-        two_ul_item = Math.ceil(length / item);
+        two_ul_item = Math.ceil(length / item_two);
         console.log(two_ul_item);
         CreateTwoUl(two_ul_item);
     }
