@@ -4,6 +4,8 @@ ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
 
+
+die;
 //等级提升程序(每次只能升一级)
 
 $db = new DB_COM();
