@@ -6,7 +6,7 @@
 //$redis->select(0);//选择数据库2
 //$redis->set( "testKey" , "Hello Redis"); //设置测试key
 //echo $redis->get("testKey");//输出value
-
+echo 222;
 
 
 $ip = "18.219.17.238";
