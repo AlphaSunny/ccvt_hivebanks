@@ -1,6 +1,6 @@
 $(function () {
     var url_path = window.location.hostname;
-    var ok_url = window.location.search;
+    var ok_url = window.location.search.split("=")[1];
     console.log(ok_url);
     var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
     var letter_arr = [], one_list = [], two_list = [];
