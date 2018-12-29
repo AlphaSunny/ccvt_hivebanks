@@ -60,7 +60,7 @@ $(function () {
 
     //get open server
     function GetOpenServerFun(key_code) {
-        var getOpenServerUrl = "https://ccvt_test.fnying.com/api/plugin/get_common_config.php",
+        var getOpenServerUrl = "https://ccvt.io/api/plugin/get_common_config.php",
             getOpenServerData = {"key_code": key_code};
         $.get(getOpenServerUrl, getOpenServerData, function (response) {
             if(response.errcode == "0"){
