@@ -16,6 +16,8 @@ GET参数
 说明
 */
 
+exit_error("101","系统维护");
+
 php_begin();
 $args = array('token','account','ccvt_num','pass_hash');
 chk_empty_args('GET', $args);
