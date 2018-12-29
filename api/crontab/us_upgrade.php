@@ -10,6 +10,21 @@ die;
 
 $db = new DB_COM();
 $unit = get_la_base_unit();
+
+//1-2
+$sql = "select us_id,us_nm,us_account,base_amount/'{$unit}' as base_amount,(select wechat from us_base where us_id=a.us_id) as wechat from us_asset as a where asset_id='GLOP' and  base_amount/'{$unit}' >= 300 and us_id in (select us_id from us_base where scale=1) order by base_amount desc";
+$db->query($sql);
+$two_rows = $db->fetchAll();
+foreach ($two_rows as $k=>$v){
+    set_time_limit(0);
+    //判断等级提升
+    $us_scale = get_us_base($v['us_id'])['scale'];
+    if ($us_scale!=2){
+        scale_upgrade($v['us_id'],1,2,$v['base_amount']);
+    }
+}
+
+
 //0-1
 $sql = "select us_id,us_nm,us_account,base_amount/'{$unit}' as base_amount,(select wechat from us_base where us_id=a.us_id) as wechat from us_asset as a where asset_id='GLOP' AND base_amount/'{$unit}' >= 100 and us_id not in (select us_id from us_base where scale=1) order by base_amount desc";
 $db->query($sql);
@@ -24,18 +39,7 @@ foreach ($one_rows as $k=>$v){
 }
 
 
-//1-2
-$sql = "select us_id,us_nm,us_account,base_amount/'{$unit}' as base_amount,(select wechat from us_base where us_id=a.us_id) as wechat from us_asset as a where asset_id='GLOP' and  base_amount/'{$unit}' >= 300 and us_id in (select us_id from us_base where scale=1) order by base_amount desc";
-$db->query($sql);
-$two_rows = $db->fetchAll();
-foreach ($two_rows as $k=>$v){
-    set_time_limit(0);
-    //判断等级提升
-    $us_scale = get_us_base($v['us_id'])['scale'];
-    if ($us_scale!=2){
-        scale_upgrade($v['us_id'],1,2,$v['base_amount']);
-    }
-}
+
 
 
 
