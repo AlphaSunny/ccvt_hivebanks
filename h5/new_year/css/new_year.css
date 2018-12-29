@@ -84,6 +84,7 @@ h4.title:after {
 
 .bg-dark {
     background: url("../img/new_year2.jpg") no-repeat 100% fixed;
+    background-size: 100%;
 }
 
 .bg-dark aside {
@@ -152,9 +153,11 @@ li.round_border:after {
     color: #df0031;
     border-color: #ffffff;
 }
-.whyBox:hover{
+
+.whyBox:hover {
     background: #f30026;
 }
+
 .whyBox:hover p, .whyBox:hover h3 {
     color: #ffffff;
 }
