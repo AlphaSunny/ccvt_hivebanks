@@ -4,7 +4,7 @@ body {
 
 .navbar-default.affix {
     /*background: #df0031;*/
-    background: linear-gradient(to right,#830018,#d00023,#830018);
+    background: linear-gradient(to right, #830018, #d00023, #830018);
 }
 
 .title {
@@ -51,7 +51,7 @@ h4.title:after {
     color: #df0031;
 }
 
-#one .text-primary .bg-dark .text-primary{
+#one .text-primary .bg-dark .text-primary {
     color: #df0031;
 }
 
@@ -76,7 +76,7 @@ h4.title:after {
 
 /*two*/
 #two {
-    background: linear-gradient(to bottom,#830018,#d00023,#830018);
+    background: linear-gradient(to bottom, #830018, #d00023, #830018);
 }
 
 #two .text-primary {
@@ -156,7 +156,7 @@ li.round_border:after {
 }
 
 .whyBox:hover {
-    background: #f30026;
+    background: linear-gradient(to right,#830018, #d00023);
 }
 
 .whyBox:hover p, .whyBox:hover h3 {
