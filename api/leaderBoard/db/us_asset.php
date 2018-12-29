@@ -468,8 +468,15 @@ function praise_or_pointon_num($us_id)
 function get_group_list()
 {
     $db = new DB_COM();
-    $sql = "SELECT id,name FROM bot_group WHERE is_test=1 AND is_audit=2 AND is_admin_del=1 ORDER BY scale DESC ";
+    $sql = "SELECT id,name,scale,(select count(*) from us_bind where bind_name='group' and bind_info=id ) as bind_count FROM bot_group  WHERE is_test=1 AND is_audit=2 AND is_admin_del=1 ORDER BY scale DESC,bind_count desc;";
     $db -> query($sql);
     $row = $db -> fetchAll();
+    if ($row){
+        foreach ($row as $k=>$v){
+            if ($v['bind_count']==0){
+                unset($row[$k]);
+            }
+        }
+    }
     return $row;
 }
