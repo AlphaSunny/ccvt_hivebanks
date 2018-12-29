@@ -1,5 +1,6 @@
 body {
     background: unset;
+    overflow: hidden;
 }
 iframe{
     position: fixed;
