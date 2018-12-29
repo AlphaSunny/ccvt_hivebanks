@@ -54,16 +54,18 @@ h4.title:after {
 }
 
 /*one*/
-.one_bg{
+.one_bg {
     background: url("../img/new_year.jpg") no-repeat 100% fixed;
 }
+
 .bg-primary {
     background: rgba(0, 0, 0, 0.5);
     color: #df0031;
 }
 
-#one .text-primary, .bg-dark .text-primary {
-    color: #df0031;
+#one .text-primary, .bg-dark .text-primary, #last .text-primary {
+    /*color: #df0031;*/
+    color: #ffffff;
 }
 
 #one .text-faded {
@@ -98,10 +100,12 @@ h4.title:after {
 #two .text-primary {
     color: #ffffff;
 }
-.three_bg{
+
+.three_bg {
     background: url("../img/new_year2.jpg") no-repeat 100% fixed;
     background-size: 100%;
 }
+
 .bg-dark {
     background: rgba(0, 0, 0, 0.5);
 }
@@ -150,7 +154,7 @@ li.round_border:after {
 }
 
 #last .text-primary {
-    color: #df0031;
+    /*color: #df0031;*/
 }
 
 .form-control {
@@ -175,7 +179,7 @@ li.round_border:after {
 
 .whyBox:hover {
     /*background: linear-gradient(to right, #830018, #d00023);*/
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .whyBox:hover p, .whyBox:hover h3 {
