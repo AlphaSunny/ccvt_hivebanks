@@ -54,9 +54,12 @@ h4.title:after {
 }
 
 /*one*/
-.bg-primary {
+.one_bg{
     background: url("../img/new_year.jpg") no-repeat 100%;
     background-attachment: fixed;
+}
+#one {
+    background: rgba(0, 0, 0, 0.5);
     color: #df0031;
 }
 
