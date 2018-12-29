@@ -427,7 +427,7 @@ li.none {
         width: 100%;
     }
 
-    .close_page:hover {
+    svg.icon.close_page {
         cursor: pointer;
     }
 
