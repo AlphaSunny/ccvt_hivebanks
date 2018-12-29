@@ -152,3 +152,6 @@ li.round_border:after {
     color: #df0031;
     border-color: #ffffff;
 }
+.whyBox:hover p{
+    color: #ffffff;
+}
