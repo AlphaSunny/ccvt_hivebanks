@@ -86,7 +86,6 @@ h4.title:after {
 /*two*/
 #two {
     background: rgba(0, 0, 0, 0.5);
-    /*background: linear-gradient(to bottom, #830018, #d00023, #830018);*/
 }
 
 .two_bg {
@@ -97,10 +96,12 @@ h4.title:after {
 #two .text-primary {
     color: #ffffff;
 }
-
-.bg-dark {
+.three_bg{
     background: url("../img/new_year2.jpg") no-repeat 100% fixed;
     background-size: 100%;
+}
+.bg-dark {
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .bg-dark aside {
