@@ -18,8 +18,8 @@ iframe {
 }
 
 .title {
-    color: #df0031;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.6), 2px 2px #fbf8f7;
+    color: #ffffff;
+    text-shadow: 1px 1px #830018, 2px 2px #d00023;
 }
 
 h4.title:after {
