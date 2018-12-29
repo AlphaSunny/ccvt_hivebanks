@@ -17,6 +17,10 @@ iframe {
     background: linear-gradient(to right, #830018, #d00023, #830018);
 }
 
+header {
+    background-image: url('../img/ccvt_banner.jpg');
+}
+
 .title {
     color: #ffffff;
     text-shadow: 1px 1px #830018, 2px 2px #d00023;
