@@ -128,8 +128,7 @@ function  get_chat_total($data)
 function get_chat_list($data,$offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "select b.bot_nickname,b.bot_content,b.bot_send_time,b.type,b.wechat,
-           (select us_id from us_base WHERE wechat=b.wechat limit 1) as us_id from bot_message as b WHERE 1";
+    $sql = "select b.bot_nickname,b.bot_content,b.bot_send_time,b.type,b.wechat,(select us_id from us_base WHERE wechat=b.wechat limit 1) as us_id from bot_message as b WHERE 1";
     if ($data['wechat']!=''){
         $sql .= " and b.wechat='{$data['wechat']}'";
     }
@@ -139,7 +138,7 @@ function get_chat_list($data,$offset,$limit)
     if (intval($data['group_id'])!=''){
         $sql .= " and b.group_id='{$data['group_id']}'";
     }
-    $sql .= " ORDER BY b.bot_create_time asc limit $offset , $limit";
+    $sql .= " ORDER BY b.bot_create_time desc limit $offset , $limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
