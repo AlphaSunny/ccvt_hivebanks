@@ -468,7 +468,7 @@ function praise_or_pointon_num($us_id)
 function get_group_list()
 {
     $db = new DB_COM();
-    $sql = "SELECT id,name FROM bot_group WHERE is_test=1 AND is_audit=2 AND is_admin_del=1 ORDER BY intime ASC ";
+    $sql = "SELECT id,name FROM bot_group WHERE is_test=1 AND is_audit=2 AND is_admin_del=1 ORDER BY scale ASC ";
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;
