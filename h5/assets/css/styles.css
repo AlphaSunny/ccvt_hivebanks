@@ -345,7 +345,12 @@ header {
     width: 100%;
     background-color: #c9c9c9;
     /*background-images: url('../assets/Life-of-Pix-free-stock-photos-Slate-Stone-Xeromatic-1440x953.jpg');*/
-    background-image: url('../img/low_img/low_banner_new2.jpg');
+    /*background-image: url('../img/low_img/low_banner_new2.jpg');*/
+    /*background-image: url('../../new_year/img/2019_banner_01_low.jpg');*/
+    /*background-image: url('../../new_year/img/2019_banner-03.jpg');*/
+    /*background-image: url('../../new_year/img/b_5bd1346f08e78.jpg');*/
+    /*background-image: url('../../new_year/img/400081500_banner.jpg');*/
+    background-image: url('../../new_year/img/500694474_banner.jpg');
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;

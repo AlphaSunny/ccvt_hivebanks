@@ -126,6 +126,7 @@ li.round_border:after {
 /*last*/
 #last {
     background: #232323;
+    /*background: url("../img/a_5c1f57df22e08.jpg");*/
 }
 
 #last .text-primary {
