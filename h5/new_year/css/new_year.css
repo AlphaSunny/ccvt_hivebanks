@@ -1,7 +1,13 @@
 body {
     background: unset;
 }
-
+iframe{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
 .navbar-default.affix {
     /*background: #df0031;*/
     background: linear-gradient(to right, #830018, #d00023, #830018);
