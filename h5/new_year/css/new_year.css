@@ -1,6 +1,7 @@
 body {
     background: unset;
     overflow: hidden;
+    background: linear-gradient(to bottom, #830018, #d00023, #830018);
 }
 
 iframe {
