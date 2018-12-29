@@ -23,7 +23,7 @@ function  get_leaderboard_total($search_content,$group_id)
 
 //======================================
 // 函数: 获取荣耀积分记录
-// 参数: $offset    $limit
+// 参数: $offset  $limit
 // 返回: rows             用户登录信息数组
 //======================================
 function get_leaderboard($offset,$limit,$search_content,$group_id)
