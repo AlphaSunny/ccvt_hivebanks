@@ -35,22 +35,22 @@ h4.title:after {
 @keyframes colorMove {
     0% {
         width: 0;
-        border-color: #520011;
+        border-color: #3f3f3f;
     }
 
     30% {
         width: 30%;
-        border-color: #960021;
+        border-color: #828282;
     }
 
     60% {
         width: 60%;
-        border-color: #c1002b;
+        border-color: #cdcdcd;
     }
 
     100% {
         width: 100%;
-        border-color: #f60036;
+        border-color: #ffffff;
     }
 }
 
