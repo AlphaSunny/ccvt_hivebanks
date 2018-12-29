@@ -87,7 +87,7 @@ h4.title:after {
 }
 
 .bg-dark aside {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 /*three*/
@@ -152,6 +152,7 @@ li.round_border:after {
     color: #df0031;
     border-color: #ffffff;
 }
-.whyBox:hover p{
+
+.whyBox:hover p, .whyBox:hover h3 {
     color: #ffffff;
 }
