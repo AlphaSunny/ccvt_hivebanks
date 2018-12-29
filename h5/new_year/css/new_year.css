@@ -50,7 +50,7 @@ h4.title:after {
     color: #df0031;
 }
 
-#one .text-primary {
+#one .text-primary .bg-dark .text-primary{
     color: #df0031;
 }
 
