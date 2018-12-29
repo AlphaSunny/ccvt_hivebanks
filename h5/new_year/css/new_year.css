@@ -76,7 +76,7 @@ h4.title:after {
 
 /*two*/
 #two {
-    background: #df0031;
+    background: linear-gradient(to bottom,#830018,#d00023,#830018);
 }
 
 #two .text-primary {
