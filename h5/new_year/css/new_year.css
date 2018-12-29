@@ -60,7 +60,7 @@ h4.title:after {
 
 .bg-primary {
     background: rgba(0, 0, 0, 0.5);
-    color: #df0031;
+    color: #eeeeee;
 }
 
 #one .text-primary, .bg-dark .text-primary, #last .text-primary {
@@ -69,7 +69,7 @@ h4.title:after {
 }
 
 #one .text-faded {
-    color: #000000;
+    color: #eeeeee;
 }
 
 .svgBox {
