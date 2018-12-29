@@ -7,5 +7,5 @@
  */
 
 $key_code = $_REQUEST['key_code'];
-$url = "https://agent_service.fnying.com/action/get_common_config.php?key_code=$key_code";
+$url = "http://agent_service.fnying.com/action/get_common_config.php?key_code=$key_code";
 die(file_get_contents($url));
