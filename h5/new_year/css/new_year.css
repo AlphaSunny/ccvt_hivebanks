@@ -99,7 +99,7 @@ h4.title:after {
 
 .two_bg {
     background: url("../img/new_year02.jpg") no-repeat 100% fixed;
-    /*background-size: 100%;*/
+    background-size: cover;
 }
 
 #two .text-primary {
@@ -108,7 +108,7 @@ h4.title:after {
 
 .three_bg {
     background: url("../img/new_year03.jpg") no-repeat 100% fixed;
-    background-size: 100%;
+    background-size: cover;
 }
 
 .bg-dark {
