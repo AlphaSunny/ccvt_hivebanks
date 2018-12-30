@@ -60,7 +60,7 @@ h4.title:after {
 
 /*one*/
 .one_bg {
-    background: url("../img/new_year.jpg") no-repeat 100% fixed;
+    background: url("../img/new_year01.jpg") no-repeat 100% fixed;
 }
 
 .bg-primary {
@@ -98,7 +98,7 @@ h4.title:after {
 }
 
 .two_bg {
-    background: url("../img/last_banner.jpg") no-repeat 100% fixed;
+    background: url("../img/new_year02.jpg") no-repeat 100% fixed;
     background-size: 100%;
 }
 
@@ -107,7 +107,7 @@ h4.title:after {
 }
 
 .three_bg {
-    background: url("../img/new_year2.jpg") no-repeat 100% fixed;
+    background: url("../img/new_year03.jpg") no-repeat 100% fixed;
     background-size: 100%;
 }
 

@@ -13,6 +13,7 @@ body {
     background-color: #282828;
     color: #d3d3d3;
     webkit-tap-highlight-color: #222;
+    overflow: hidden;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus {
@@ -343,7 +344,7 @@ header {
     text-align: center;
     color: #fff;
     width: 100%;
-    background-image: url('../img/500694474_banner.jpg');
+    background-image: url('../img/ccvt_banner.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
