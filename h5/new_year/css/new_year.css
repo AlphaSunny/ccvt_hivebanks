@@ -99,7 +99,7 @@ h4.title:after {
 
 .two_bg {
     background: url("../img/new_year02.jpg") no-repeat 100% fixed;
-    background-size: 100%;
+    /*background-size: 100%;*/
 }
 
 #two .text-primary {
