@@ -474,7 +474,9 @@ function check_is_submit($group_id,$us_id)
 function group_submit_audit($data)
 {
     $db = new DB_COM();
-    $date['name'] = $data['group_name'];
+    $sql = "select name from bot_temporary_group WHERE id='{$data['group_id']}'";
+    $db->query($sql);
+    $date['name'] = $db->getField($sql,'name');
     $date['us_id'] = $data['us_id'];
     $date['group_type'] = $data['group_type_id'];
     $date['intime'] = time();

@@ -40,7 +40,7 @@ if (!$result || $result['is_apply']==2){
 
 $data['us_id'] = $us_id;
 $data['group_id'] = $group_id;
-$data['group_name'] = $result['name'];
+//$data['group_name'] = $result['name'];
 $data['group_type_id'] = $group_type_id;
 
 // 提交
