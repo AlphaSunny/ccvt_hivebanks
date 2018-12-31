@@ -157,6 +157,21 @@ function del_group($group_id)
 
 
 //======================================
+// 函数: 审核群组
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function audit_group($date)
+{
+    $db = new DB_COM();
+    $time = time();
+    $sql = "update bot_group set is_audit = 2, why='{$date['why']}',uptime='{$time}' where id='{$date['group_id']}' ";
+    $db->query($sql);
+    return $db->affectedRows();
+}
+
+//======================================
 // 函数: 获取任务列表
 // 参数: account      账号
 //      variable      绑定name
