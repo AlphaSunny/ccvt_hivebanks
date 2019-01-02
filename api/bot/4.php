@@ -2,11 +2,11 @@
 require_once '../inc/common.php';
 php_begin();
 
-$args = array("content");
+$args = array("data");
 chk_empty_args('POST', $args);
 $data = array();
 
-$content  = $_POST['content'];
+$content  = $_POST['data'];
 
 
 $db = new DB_COM();
