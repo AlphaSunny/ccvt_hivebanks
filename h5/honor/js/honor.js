@@ -94,13 +94,13 @@ $(function () {
                         "<span class='none us_id'>" + data[i].us_id + "</span>" +
                         "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                         "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
-                        "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" ;
-                        if(data[i].us_id == '8D5664EC-2722-B70B-7DF7-80EFE8118CFD') {
-                            tr += "<span class='cai_num'>0</span>" ;
-                        }else{
-                            tr += "<span class='cai_num'>" + data[i].all_point_on + "</span>" ;
-                        }
-                        tr +=
+                        "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>";
+                    if (data[i].us_id == '8D5664EC-2722-B70B-7DF7-80EFE8118CFD') {
+                        tr += "<span class='cai_num'>0</span>";
+                    } else {
+                        tr += "<span class='cai_num'>" + data[i].all_point_on + "</span>";
+                    }
+                    tr +=
                         "</td>" +
                         "</tr>"
                 });
@@ -134,9 +134,10 @@ $(function () {
     var option = "<option value='all'>全部</option>";
     GetGroupList(function (response) {
         if (response.errcode == "0") {
-            var data = response.rows;
+            var data = response.rows, scale = "";
             $.each(data, function (i, val) {
-                option += "<option value=" + data[i].id + ">" + data[i].name + "<svg class='icon' aria-hidden='true'><use xlink:href='#icon-gv" + data[i].scale + "'></use></svg></option>";
+                scale = "<svg class='icon' aria-hidden='true'><use xlink:href='#icon-gv" + data[i].scale + "'></use></svg>";
+                option += "<option value=" + data[i].id + ">" + data[i].name + scale + "</option>";
             });
             $("#title").html(option);
         }
