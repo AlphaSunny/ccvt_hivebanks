@@ -41,7 +41,8 @@ if ($count>0){
 //批量插入
 $sql= "insert into bot_group_members (member_id,name,group_id,group_name,intime) values ";
 foreach ($members as $k=>$value){
-    $sql .= "('".get_guid()."','".$value."','".$json['group_id']."','".$json['group_name']."','".time()."'),";
+    $values = str_replace("'"," ",$value);
+    $sql .= "('".get_guid()."','".$values."','".$json['group_id']."','".$json['group_name']."','".time()."'),";
 }
 $sql = substr($sql,0,strlen($sql)-1);
 $q_id = $db->query($sql);
