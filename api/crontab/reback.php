@@ -14,6 +14,7 @@ require_once '../inc/common.php';
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
+set_time_limit(0);
 define('BA_ID','6C69520E-E454-127B-F474-452E65A3EE75');
 define('FLAG','12');
 define('UNIT',100000000);
@@ -83,7 +84,7 @@ function ba_cut($amount){
 function log_base($amount,$us_id){
     $db = new DB_COM();
     $data = array();
-    $us_type = 'big_us_interest';
+    $us_type = 'give_like_back';
     $ctime = date('Y-m-d H:i:s');
 
     $data['hash_id'] = hash('md5', BA_ID . $us_type . get_ip() . mt() . rand(1000, 9999) . $ctime);
