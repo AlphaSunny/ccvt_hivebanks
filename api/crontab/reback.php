@@ -42,6 +42,16 @@ function reback()
 
 
 
+function us_add($amount,$us_id){
+    $db = new DB_COM();
+    $sql = "update us_base set base_amount = base_amount+ $amount  *".UNIT." where us_id='{$us_id}'";
+    $db->query($sql);
+    if($db->affectedRows())
+        return true;
+    die('us_add');
+    return false;
+}
+
 function ba_cut($amount){
     $db = new DB_COM();
     $sql = "update ba_base set base_amount = base_amount - $amount * ".UNIT." where  ba_id= '6C69520E-E454-127B-F474-452E65A3EE75'";
