@@ -27,13 +27,19 @@ function reback()
     $flag = 1;
     $db = new DB_COM();
     $day = date('Y-m-d',strtotime(time(),'-1'));
-    $sql = "select tx_amount/100000000 as amount,credit_id as us_id from com_base_balance where tx_amount/100000000 <= 20 and tx_type = 'give_like' and substr(ctime,1,10) = '2019-01-02' and debit_id ='50D2910C-6C38-344F-9D30-3289F945C2A6'";
+    $sql = "select tx_amount/100000000 as amount,credit_id as us_id from com_base_balance where tx_amount/100000000 <= 20 and tx_type = 'give_like' and substr(ctime,1,10) = '2019-01-02' and debit_id ='50D2910C-6C38-344F-9D30-3289F945C2A6' order by ctime desc";
     $db->query($sql);
     $res_one = $db->fetchAll();
+    $counter = array();//前n次点赞/踩总和小于等于100
     foreach ($res_one as $k => $v)
     {
+
         $amount = $v['amount'];
         $us_id = $v['us_id'];
+        $counter[$us_id] =+ $amount;
+
+        if($counter[$us_id]>12)
+            continue;
         if(!(ba_cut($amount)&&log_base($amount,$us_id)&&log_transfer($amount,$us_id)&&us_add($amount,$us_id)))
             die('failed'.$flag);
         $flag++;
