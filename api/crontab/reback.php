@@ -20,7 +20,7 @@ define('UNIT',100000000);
 define('CTIME',date('Y-m-d H:i:s',time()));
 define('UTIME',time());
 //intlcal_set_time_zone('Asia\shanghai');
-
+reback();
 function reback()
 {
     $flag = 1;
