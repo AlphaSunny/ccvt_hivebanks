@@ -42,7 +42,7 @@ function reback()
             $counter[$us_id] = $v['amount'];
         }
 
-        if($counter[$us_id]>22){
+        if($counter[$us_id]>12){
             $counter[$us_id] -= $amount;
             continue;
         }
