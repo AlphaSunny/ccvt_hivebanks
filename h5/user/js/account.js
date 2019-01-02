@@ -375,7 +375,7 @@ $(function () {
     });
 
     //show help_img
-    $(".help_icon").hover(function () {
+    $(".help_icon").click(function () {
         $(".help_img_box").slideToggle();
     })
 });
