@@ -2,9 +2,9 @@
 require_once '../inc/common.php';
 php_begin();
 
-//$content  = file_get_contents("php://input");
+$content  = file_get_contents("php://input");
 
-$content = $_POST['content'];
+//$content = $_POST['content'];
 
 
 $db = new DB_COM();
