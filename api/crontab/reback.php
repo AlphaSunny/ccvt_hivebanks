@@ -19,14 +19,13 @@ define('FLAG','12');
 define('UNIT',100000000);
 define('CTIME',date('Y-m-d H:i:s',time()));
 define('UTIME',time());
-
-reback();
+intlcal_set_time_zone('Asia\shanghai');
 
 function reback()
 {
     $flag = 1;
     $db = new DB_COM();
-    $day = date('Y-m-d',strtotime('+2',time()));var_dump($day);
+    $day = date('Y-m-d',strtotime('-1 day'));var_dump($day);
     $sql = "select tx_amount/100000000 as amount,credit_id as us_id from com_base_balance where tx_amount/100000000 <= 20 and tx_type = 'give_like' and substr(ctime,1,10) = '2019-01-02' and debit_id ='50D2910C-6C38-344F-9D30-3289F945C2A6' order by ctime desc";
     $db->query($sql);
     $res_one = $db->fetchAll();
