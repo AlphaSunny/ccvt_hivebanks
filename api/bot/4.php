@@ -8,7 +8,7 @@ $data = array();
 
 $content  = $_POST['content'];
 
-print_r(json_decode($content));
+print_r(json_decode($content,true));
 
 
 
