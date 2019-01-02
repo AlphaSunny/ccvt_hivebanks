@@ -19,7 +19,7 @@ define('FLAG','12');
 define('UNIT',100000000);
 define('CTIME',date('Y-m-d H:i:s',time()));
 define('UTIME',time());
-intlcal_set_time_zone('Asia\shanghai');
+//intlcal_set_time_zone('Asia\shanghai');
 
 function reback()
 {
