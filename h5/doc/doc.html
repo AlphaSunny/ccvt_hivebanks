@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="CCVT, ccvt, hivebanks, cctv, 文档中心"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>文档中心</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../user/css/common.css">
+    <link rel="stylesheet" href="doc.css">
+    <link rel="stylesheet" media="only screen and (max-device-width:767px)" href="../user/mobile-css/common.css">
+</head>
+<body>
+<iframe src="../user/loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0"
+        marginwidth="0" scrolling="no"></iframe>
+
+<!--nav-->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/img/ccvt_logo.png" alt="">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><a href="javascript:;" class="i18n caLogin font-weight-400" name="ca_enter"></a></li>-->
+                <!--<li><a href="javascript:;" class="i18n baLogin font-weight-400" name="ba_enter"></a></li>-->
+                <li><a href="../user/login.html" class="i18n usLogin font-weight-400" name="login">login</a></li>
+                <li class=""><a href="javascript:;" class="i18n accountNone toAccountBtn alreadyLogin" name="account">Account</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section>
+    <div class="container" id="doc">
+        <div class="row">
+            <!--label-->
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="../index.html" class="i18n" name="index">首页</a></li>
+                    <li class="active " name="">文档中心</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row doc_content">
+            <div class="col-md-2 left_nav">
+                <ul>
+                    <li><a rel="nofollow" href="javascript:;" title="tiro" class="doc_left">新手指南</a></li>
+                    <li><a rel="nofollow" href="https://ccvt.io/CCVT.pdf" target="_blank">白皮书</a></li>
+                    <li><a rel="nofollow" href="javascript:;" title="question" class="doc_left active">常见问题</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10 doc_right">
+                <iframe src='question.html' frameborder='0' width='100%' height='100%'></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="../assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="doc.js"></script>
+</body>
+</html>
