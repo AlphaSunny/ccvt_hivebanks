@@ -42,7 +42,7 @@ function reback()
             $counter[$us_id] = $v['amount'];
         }
 
-        if($counter[$us_id]>11){
+        if($counter[$us_id]>100){
             $counter[$us_id] -= $amount;
             continue;
         }
@@ -52,7 +52,7 @@ function reback()
             die('failed'.$flag);
         $flag++;
         var_dump($flag);
-        var_dump($counter);
+//        var_dump($counter);
     }
 }
 
