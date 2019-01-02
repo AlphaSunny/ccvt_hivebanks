@@ -20,6 +20,7 @@ $db->query($sql);
 $count = $db->getField($sql,'count');
 if ($count>0){
     foreach ($members as $k=>$v){
+        $v = str_replace("'"," ",$v);
         $sql = "select * from bot_group_members WHERE group_id='{$json['group_id']}' AND name='{$v}' AND intime<'{$time}'";
         $db->query($sql);
         $row = $db->fetchRow();
