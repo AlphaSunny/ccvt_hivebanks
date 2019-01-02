@@ -2,23 +2,19 @@
 require_once '../inc/common.php';
 php_begin();
 
-$args = array("content");
-chk_empty_args('POST', $args);
-$data = array();
+//$content  = file_get_contents("php://input");
 
-$content  = $_POST['content'];
+$content = $_POST['content'];
 
 
 $db = new DB_COM();
 
 $json = json_decode($content,true);
 
-$members = explode(" ", $json['members']);
-
-print_r($members);die;
+$members = explode(",", $json['members']);
 
 
-$time = time()-30*60;
+$time = time()-5*60;
 $sql = "select count(member_id) as count from bot_group_members WHERE group_id='{$json['group_id']}' AND intime<'{$time}'";
 $db->query($sql);
 $count = $db->getField($sql,'count');
@@ -29,7 +25,7 @@ if ($count>0){
         $row = $db->fetchRow();
         if (!$row){
             //新用户
-            $date['name'] = $json['name'];
+            $date['name'] = $v;
             $date['group_id'] = $json['group_id'];
             $date['group_name'] = $json['group_name'];
             $date['ctime'] = date('Y-m-d H:i:s');
@@ -37,19 +33,29 @@ if ($count>0){
             $sql = $db->sqlInsert("bot_memeber_change_record",$date);
             $db->query($sql);
         }else{
-            $sql = "update bot_group_members set is_check=2 WHERE group_id='{$data['group_id']}' AND name='{$data['name']}' AND intime<'{$time}'";
+            $sql = "update bot_group_members set is_check=2 WHERE group_id='{$json['group_id']}' AND name='{$v}' AND intime<'{$time}'";
             $db->query($sql);
         }
     }
 }
-$sql = $db->sqlInsert("bot_group_members", $data);
+//批量插入
+$sql= "insert into bot_group_members (member_id,name,group_id,group_name,intime) values ";
+foreach ($members as $k=>$value){
+    $sql .= "('".get_guid()."','".$value."','".$json['group_id']."','".$json['group_name']."','".time()."'),";
+}
+$sql = substr($sql,0,strlen($sql)-1);
+echo $sql;die;
 $q_id = $db->query($sql);
 if ($q_id == 0)
-    return false;
-return true;
+    exit_error('125','错误');
 
 
-print_r(json_decode($content,true));
+// 返回数据做成
+$rtn_ary = array();
+$rtn_ary['errcode'] = '0';
+$rtn_ary['errmsg'] = '';
+$rtn_str = json_encode($rtn_ary);
+php_end($rtn_str);
 
 
 
