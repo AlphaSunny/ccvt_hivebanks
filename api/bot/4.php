@@ -17,6 +17,7 @@ $sql = "select count(member_id) as count from bot_group_members WHERE group_id='
 $db->query($sql);
 $count = $db->getField($sql,'count');
 if ($count>0){
+    echo 222;die;
     foreach ($members as $k=>$v){
         $sql = "select * from bot_group_members WHERE group_id='{$json['group_id']}' AND name='{$v}' AND intime<'{$time}'";
         $db->query($sql);
