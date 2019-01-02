@@ -12,10 +12,6 @@
     position: relative;
 }
 
-.help_icon {
-    cursor: pointer;
-}
-
 .help_img_box {
     position: absolute;
     width: 100%;

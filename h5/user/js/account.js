@@ -375,7 +375,10 @@ $(function () {
     });
 
     //show help_img
-    $(".help_icon").click(function () {
-        $(".help_img_box").slideToggle();
+    $(".help_icon").mouseenter(function () {
+        $(".help_img_box").slideDown();
+    });
+    $(".help_icon").mouseleave(function () {
+        $(".help_img_box").slideUp();
     })
 });
