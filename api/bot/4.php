@@ -5,7 +5,7 @@ php_begin();
 //$args = array("content");
 //chk_empty_args('POST', $args);
 //$data = array();
-
+echo 222;die;
 
 $content  = get_arg_str('POST', 'content', 999999999);
 print_r($content);
