@@ -134,11 +134,10 @@ $(function () {
     var option = "<option value='all'>全部</option>";
     GetGroupList(function (response) {
         if (response.errcode == "0") {
-            var data = response.rows, scale = "";
+            var data = response.rows;
             $.each(data, function (i, val) {
-                scale = "<svg class='icon' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
                 console.log(scale);
-                option += "<option value=" + data[i].id + ">" + data[i].name + data[i].scale + "</option>";
+                option += "<option value=" + data[i].id + ">" + 'LV.' + data[i].scale + data[i].name + "</option>";
             });
             $("#title").html(option);
         }
