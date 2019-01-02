@@ -32,6 +32,10 @@ h1.title {
     line-height: 1.6;
 }
 
+.newsInfo_content {
+    overflow-x: auto;
+}
+
 .contentInfo_time {
     color: #4f6d8c;
 }
@@ -42,7 +46,7 @@ h1.title {
 }
 
 .accountNone {
-    display: none!important;
+    display: none !important;
 }
 
 @media screen and (max-width: 768px) {
