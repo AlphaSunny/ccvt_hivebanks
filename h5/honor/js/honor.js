@@ -138,7 +138,7 @@ $(function () {
             $.each(data, function (i, val) {
                 scale = "<svg class='icon' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
                 console.log(scale);
-                option += "<option value=" + data[i].id + ">" + data[i].name + scale + "</option>";
+                option += "<option value=" + data[i].id + ">" + data[i].name + data[i].scale + "</option>";
             });
             $("#title").html(option);
         }
