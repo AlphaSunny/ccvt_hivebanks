@@ -136,7 +136,7 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows;
             $.each(data, function (i, val) {
-                option += "<option value=" + data[i].id + ">'LV.&nbsp;'" + data[i].scale + data[i].name + "</option>";
+                option += "<option value=" + data[i].id + ">LV." + data[i].scale + "&nbsp;" + data[i].name + "</option>";
             });
             $("#title").html(option);
         }
