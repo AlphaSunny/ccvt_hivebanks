@@ -9,14 +9,27 @@
     justify-content: center;
     transition: all 0.3s;
     margin-bottom: 1rem;
+    position: relative;
+}
+
+.help_img_box {
+    position: absolute;
+    width: 100%;
+    z-index: 999;
+}
+
+.help_img_box img {
+    width: 100%;
 }
 
 .account_num_last {
     margin-bottom: 0 !important;
 }
-input[name="weChatGroup"]{
+
+input[name="weChatGroup"] {
     margin: 0;
 }
+
 .glory_level {
     background: #00d290;
     color: #fff;
@@ -67,7 +80,7 @@ p {
     padding: 15px 0;
 }
 
-.weChatBindBtn{
+.weChatBindBtn {
     color: #2a7abc;
 }
 
