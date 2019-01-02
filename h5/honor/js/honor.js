@@ -136,7 +136,7 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows;
             $.each(data, function (i, val) {
-                option += "<option value=" + data[i].id + ">" + data[i].name + "</option>";
+                option += "<option value=" + data[i].id + ">" + data[i].name + "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-gv" + data[i].scale + "'></use></svg></option>";
             });
             $("#title").html(option);
         }
