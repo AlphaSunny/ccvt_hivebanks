@@ -46,7 +46,6 @@ foreach ($members as $k=>$value){
     $sql .= "('".get_guid()."','".$value."','".$json['group_id']."','".$json['group_name']."','".time()."'),";
 }
 $sql = substr($sql,0,strlen($sql)-1);
-echo $sql;die;
 $q_id = $db->query($sql);
 if ($q_id == 0)
     exit_error('125','错误');
