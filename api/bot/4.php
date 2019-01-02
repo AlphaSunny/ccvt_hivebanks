@@ -2,11 +2,7 @@
 require_once '../inc/common.php';
 php_begin();
 
-$args = array("textmod");
-chk_empty_args('POST', $args);
-$data = array();
-
-$content  = $_POST['textmod'];
+$content  = file_get_contents("php://input");
 
 
 $db = new DB_COM();
