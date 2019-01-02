@@ -13,7 +13,7 @@ $db = new DB_COM();
 
 $json = json_decode($content,true);
 
-$members = explode(" ", $json['members']);
+$members = explode(",", $json['members']);
 
 print_r($members);die;
 
