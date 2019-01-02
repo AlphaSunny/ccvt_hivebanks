@@ -226,8 +226,8 @@ $(function () {
         var qr = $("#qrcode canvas")[0];
         //图片加载完成时
         qrImg.onload = function () {
-            ctx.drawImage(qrImg,0, 0, 533, 800);
-            ctx.drawImage(qr,65, 588);
+            ctx.drawImage(qrImg, 0, 0, 533, 800);
+            ctx.drawImage(qr, 65, 588);
             var base64 = canvas.toDataURL("images/png");//转换URL
             $("#base64Img").attr("src", base64);
             $(".inviteImgBox").remove();
@@ -372,5 +372,10 @@ $(function () {
         }, function (response) {
             layer.msg(response.errmsg, {icon: 2});
         })
+    });
+
+    //show help_img
+    $(".help_icon").hover(function () {
+        $(".help_img_box").slideToggle();
     })
 });
