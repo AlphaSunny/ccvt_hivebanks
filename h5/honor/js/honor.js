@@ -136,7 +136,7 @@ $(function () {
         if (response.errcode == "0") {
             var data = response.rows, scale = "";
             $.each(data, function (i, val) {
-                scale = "<svg class='icon' aria-hidden='true'><use xlink:href='#icon-gv" + data[i].scale + "'></use></svg>";
+                scale = "<svg class='icon' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
                 console.log(scale);
                 option += "<option value=" + data[i].id + ">" + data[i].name + scale + "</option>";
             });
