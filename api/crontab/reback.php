@@ -42,8 +42,10 @@ function reback()
             $counter[$us_id] = $v['amount'];
         }
 
-        if($counter[$us_id]>22)
+        if($counter[$us_id]>22){
+            $counter[$us_id] -= $amount;
             continue;
+        }
 
 
         if(!(ba_cut($amount)&&log_base($amount,$us_id)&&log_transfer($amount,$us_id)&&us_add($amount,$us_id)))
