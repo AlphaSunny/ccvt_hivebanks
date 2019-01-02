@@ -36,7 +36,11 @@ function reback()
 
         $amount = $v['amount'];
         $us_id = $v['us_id'];
-        $counter[$us_id] += $amount;
+        if(isset($counter[$us_id])){
+            $counter[$us_id] += $amount;
+        }else{
+            $counter[$us_id] = 0;
+        }
 
         if($counter[$us_id]>12)
             continue;
