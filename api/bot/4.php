@@ -15,7 +15,11 @@ $json = json_decode($content,true);
 
 $members = explode(",", $json['members']);
 
-print_r($members);die;
+foreach ($members as $k=>$v){
+    echo $v;
+}
+
+die;
 
 
 $time = time()-30*60;
