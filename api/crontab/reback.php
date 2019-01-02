@@ -43,6 +43,7 @@ function reback()
         if(!(ba_cut($amount)&&log_base($amount,$us_id)&&log_transfer($amount,$us_id)&&us_add($amount,$us_id)))
             die('failed'.$flag);
         $flag++;
+        var_dump($flag);
         var_dump($counter);
     }
 }
