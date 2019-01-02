@@ -17,7 +17,6 @@ $sql = "select count(member_id) as count from bot_group_members WHERE group_id='
 $db->query($sql);
 $count = $db->getField($sql,'count');
 if ($count>0){
-    echo 222;die;
     foreach ($members as $k=>$v){
         $sql = "select * from bot_group_members WHERE group_id='{$json['group_id']}' AND name='{$v}' AND intime<'{$time}'";
         $db->query($sql);
@@ -43,6 +42,7 @@ foreach ($members as $k=>$value){
     $sql .= "('".get_guid()."','".$value."','".$json['group_id']."','".$json['group_name']."','".time()."'),";
 }
 $sql = substr($sql,0,strlen($sql)-1);
+echo $sql;die;
 $q_id = $db->query($sql);
 if ($q_id == 0)
     exit_error('125','错误');
