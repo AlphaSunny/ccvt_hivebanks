@@ -1,6 +1,5 @@
 <?php
 
-php_begin();
 
 //$args = array("content");
 //chk_empty_args('POST', $args);
