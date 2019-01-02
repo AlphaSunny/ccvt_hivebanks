@@ -13,6 +13,10 @@
     text-align: left;
 }
 
+.help_img_box {
+    left: 0;
+}
+
 /*qr*/
 #inviteImg {
     width: 100%;
