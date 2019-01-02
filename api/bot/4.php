@@ -7,8 +7,6 @@ php_begin();
 //$data = array();
 echo 222;die;
 
-$content  = get_arg_str('POST', 'content', 999999999);
-print_r($content);
 
 
 
