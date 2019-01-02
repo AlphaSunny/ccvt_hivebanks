@@ -45,6 +45,7 @@ $sql= "insert into bot_group_members (member_id,name,group_id,group_name,intime)
 foreach ($members as $k=>$value){
     $sql .= "('".get_guid()."','".$value."','".$json['group_id']."','".$json['group_name']."','".time()."'),";
 }
+echo $sql;die;
 $q_id = $db->query($sql);
 if ($q_id == 0)
     exit_error('125','错误');
