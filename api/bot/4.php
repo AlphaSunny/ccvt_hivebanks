@@ -8,6 +8,8 @@ $data = array();
 
 $content  = get_arg_str('POST', 'content', 999999999);
 print_r($content);
+echo $content['group_id'];
+echo $content['method']
 
 
 
