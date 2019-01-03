@@ -34,9 +34,13 @@ $(function () {
 
     //文档中心
     $(".doc_left").click(function () {
+        var iframe = "";
         $(this).addClass("active").parent("li").siblings("li").children("a").removeClass("active");
         var src_name = $(this).attr("title");
-        var iframe = "<iframe src='"+ src_name +".html' frameborder='0' width='100%' height='100%'></iframe>";
+        if(src_name == "tiro"){
+            iframe = "<iframe src='../"+ src_name +".html' frameborder='0' width='100%' height='100%'></iframe>";
+        }
+        iframe = "<iframe src='"+ src_name +".html' frameborder='0' width='100%' height='100%'></iframe>";
         $(".doc_right").html("");
         $(".doc_right").append(iframe);
     })
