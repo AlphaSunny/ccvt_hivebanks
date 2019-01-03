@@ -29,7 +29,7 @@ function reback()
     $day = date('Y-m-d',strtotime('-1 day'));var_dump($day);
     $sql = "select  debit_id,tx_amount/100000000 as amount,credit_id as us_id  from us_glory_integral_change_log where 
 tx_amount/100000000 <=30 and tx_detail != 'ccvt兑换积分' and substr(utime,1,10) = '2019-01-03' 
-and credit_id != debit_id  order by utime desc";
+and credit_id != debit_id  order by utime asc";
 
     $db->query($sql);
     $res_one = $db->fetchAll();var_dump($res_one);
