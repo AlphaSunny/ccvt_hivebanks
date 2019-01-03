@@ -20,29 +20,28 @@ GET参数
 
 php_begin();
 
-//$args = array('name','group_name','group_id');
-//chk_empty_args('GET', $args);
+$args = array('name','group_name','group_id');
+chk_empty_args('GET', $args);
 
-$content  = file_get_contents("php://input");
+//$name_json = json_decode($_REQUEST['name_json']);
 
 //信息
-//$data['member_id'] = get_guid();
-//$data['content'] = get_arg_str('GET','name');
-//$data['group_id'] = get_arg_str('GET','group_id');
-//$data['group_name'] = get_arg_str('GET','group_name');
-//$data['intime'] = time();
+$data['member_id'] = get_guid();
+$data['name'] = get_arg_str('GET','name');
+$data['group_id'] = get_arg_str('GET','group_id');
+$data['group_name'] = get_arg_str('GET','group_name');
+$data['intime'] = time();
 
-$array = json_decode($content,true);
 // 更新群组成员
-//$row = storage_members($array);
-//if (!$row){
-//    exit_error('109','失败');
-//}
+$row = storage_members($data);
+if (!$row){
+    exit_error('109','失败');
+}
 
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
-$rtn_ary['errmsg'] = $array;
+$rtn_ary['errmsg'] = '';
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
