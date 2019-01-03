@@ -27,12 +27,22 @@ function reback()
     $flag = 1;
     $db = new DB_COM();
     $day = date('Y-m-d',strtotime('-1 day'));var_dump($day);
-    $sql = "select tx_amount/100000000 as amount,credit_id as us_id from com_base_balance where tx_amount/100000000 <= 50 and tx_type = 'give_like' and substr(ctime,1,10) = '$day' and debit_id ='50D2910C-6C38-344F-9D30-3289F945C2A6' order by ctime desc";
+    $sql = "select  debit_id,tx_amount/100000000 as amount,credit_id as us_id  from us_glory_integral_change_log where 
+tx_amount/100000000 <=30 and tx_detail != 'ccvt兑换积分' and substr(utime,1,10) = '2019-01-03' 
+and credit_id != debit_id  order by utime desc";
+
     $db->query($sql);
     $res_one = $db->fetchAll();var_dump($res_one);
     $counter = array();//前n次点赞/踩总和小于等于100
+    $distinct = array();//只能奖励一次
     foreach ($res_one as $k => $v)
     {
+
+        $debit_id = $v['debit_id'];
+        
+        if(in_array($distinct,$debit_id))
+            continue;
+        $distinct[] = $debit_id;
 
         $amount = $v['amount'];
         $us_id = $v['us_id'];
