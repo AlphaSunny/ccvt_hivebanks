@@ -81,6 +81,9 @@ $(function () {
                 SetCookie("is_welcome", is_welcome);
                 SetCookie("welcome", welcome);
                 SetCookie("group_name", group_name);
+                $(".group_name").text(group_name);
+                $("#group_name").val(group_name);
+                GetGroupListNav();
             }
         }, function (response) {
             layer.close(loading);

@@ -1,3 +1,36 @@
+function GetGroupListNav() {
+    var li = "";
+    GetGroupList(token, is_audit, function (response) {
+        if (response.errcode == "0") {
+            var data = response.rows;
+            // send_address = data[0].send_address;
+            // bind_account_notice = data[0].bind_account_notice;
+            // is_welcome = data[0].is_welcome;
+            // welcome = data[0].welcome;
+            // is_admin_del = data[0].is_admin_del;
+            // is_del = data[0].is_del;
+            // is_flirt = data[0].is_flirt;
+            // group_name = data[0].name;
+            // group_id = data[0].id;
+            $.each(data, function (i, val) {
+                li += "<li>" +
+                    "<a class='app-menu__item to_group_link' id='" + data[i].id + "' is_admin_del='" + data[i].is_admin_del + "' is_del='" + data[i].is_del + "' is_flirt='" + data[i].is_flirt + "' is_give_ccvt='" + data[i].is_give_ccvt + "' bind_account_notice='" + data[i].bind_account_notice + "' is_welcome='" + data[i].is_welcome + "' send_address='" + data[i].send_address + "' welcome='" + data[i].welcome + "' group_name='" + data[i].name + "' href='javascript:;'>" +
+                    // "<a class='app-menu__item to_group_link' id='" + data[i].id + "' href='javascript:;'>" +
+                    "<i class='app-menu__icon fa fa-circle-o'></i>" +
+                    "<span class='app-menu__label'>" + data[i].name + "</span>" +
+                    "</a>" +
+                    "</li>"
+            });
+            $(".app-menu").append(li);
+            // check_is_group();
+        }
+    }, function (response) {
+        layer.msg("请稍后再试");
+    })
+}
+
+GetGroupListNav();
+
 $(function () {
     // var token = GetCookie("robot_token"), is_audit = "", send_address = "", bind_account_notice = "", is_welcome = "",
     //     welcome = "", group_name = "", is_admin_del = "", is_del = "", is_flirt = "", group_id = "";
@@ -6,38 +39,7 @@ $(function () {
 
     var token = GetCookie("robot_token"), is_audit = "";
 
-    function GetGroupListNav() {
-        var li = "";
-        GetGroupList(token, is_audit, function (response) {
-            if (response.errcode == "0") {
-                var data = response.rows;
-                // send_address = data[0].send_address;
-                // bind_account_notice = data[0].bind_account_notice;
-                // is_welcome = data[0].is_welcome;
-                // welcome = data[0].welcome;
-                // is_admin_del = data[0].is_admin_del;
-                // is_del = data[0].is_del;
-                // is_flirt = data[0].is_flirt;
-                // group_name = data[0].name;
-                // group_id = data[0].id;
-                $.each(data, function (i, val) {
-                    li += "<li>" +
-                        "<a class='app-menu__item to_group_link' id='" + data[i].id + "' is_admin_del='" + data[i].is_admin_del + "' is_del='" + data[i].is_del + "' is_flirt='" + data[i].is_flirt + "' is_give_ccvt='" + data[i].is_give_ccvt + "' bind_account_notice='" + data[i].bind_account_notice + "' is_welcome='" + data[i].is_welcome + "' send_address='" + data[i].send_address + "' welcome='" + data[i].welcome + "' group_name='" + data[i].name + "' href='javascript:;'>" +
-                        // "<a class='app-menu__item to_group_link' id='" + data[i].id + "' href='javascript:;'>" +
-                        "<i class='app-menu__icon fa fa-circle-o'></i>" +
-                        "<span class='app-menu__label'>" + data[i].name + "</span>" +
-                        "</a>" +
-                        "</li>"
-                });
-                $(".app-menu").append(li);
-                // check_is_group();
-            }
-        }, function (response) {
-            layer.msg("请稍后再试");
-        })
-    }
 
-    GetGroupListNav();
 
     //跳转到群详情
     $(document).on("click", ".to_group_link", function () {
