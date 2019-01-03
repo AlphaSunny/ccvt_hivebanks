@@ -37,11 +37,12 @@ $(function () {
         var iframe = "";
         $(this).addClass("active").parent("li").siblings("li").children("a").removeClass("active");
         var src_name = $(this).attr("title");
-        if(src_name == "tiro"){
-            iframe = "<iframe src='../newsInfo.html?news_id=33A98FD6-E026-DA5E-0C2B-4CD21E30C8F7' frameborder='0' width='100%' height='100%'></iframe>";
-        }else{
-            iframe = "<iframe src='"+ src_name +".html' frameborder='0' width='100%' height='100%'></iframe>";
-        }
+        iframe = "<iframe src='"+ src_name +".html' frameborder='0' width='100%' height='100%'></iframe>";
+        // if(src_name == "tiro"){
+        //     iframe = "<iframe src='../newsInfo.html?news_id=33A98FD6-E026-DA5E-0C2B-4CD21E30C8F7' frameborder='0' width='100%' height='100%'></iframe>";
+        // }else{
+        //     iframe = "<iframe src='"+ src_name +".html' frameborder='0' width='100%' height='100%'></iframe>";
+        // }
         $(".doc_right").html("");
         $(".doc_right").append(iframe);
     })
