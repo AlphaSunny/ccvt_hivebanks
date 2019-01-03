@@ -20,17 +20,20 @@ $db->query($sql);
 $count = $db->getField($sql,'count');
 if ($count>0){
     foreach ($members as $k=>$v){
+        $v = str_replace("'"," ",$v);
         $sql = "select * from bot_group_members WHERE group_id='{$json['group_id']}' AND name='{$v}' AND intime<'{$time}'";
+        echo $sql;
         $db->query($sql);
         $row = $db->fetchRow();
         if (!$row){
             //新用户
-            $date['name'] = $v;
+            $date['name'] = ".$v.";
             $date['group_id'] = $json['group_id'];
             $date['group_name'] = $json['group_name'];
             $date['ctime'] = date('Y-m-d H:i:s');
             $date['type'] = 1;
             $sql = $db->sqlInsert("bot_memeber_change_record",$date);
+            echo $sql;
             $db->query($sql);
         }else{
             $sql = "update bot_group_members set is_check=2 WHERE group_id='{$json['group_id']}' AND name='{$v}' AND intime<'{$time}'";
@@ -41,10 +44,10 @@ if ($count>0){
 //批量插入
 $sql= "insert into bot_group_members (member_id,name,group_id,group_name,intime) values ";
 foreach ($members as $k=>$value){
-    $sql .= "('".get_guid()."','".$value."','".$json['group_id']."','".$json['group_name']."','".time()."'),";
+    $values = str_replace("'"," ",$value);
+    $sql .= "('".get_guid()."','".$values."','".$json['group_id']."','".$json['group_name']."','".time()."'),";
 }
 $sql = substr($sql,0,strlen($sql)-1);
-echo $sql;die;
 $q_id = $db->query($sql);
 if ($q_id == 0)
     exit_error('125','错误');
