@@ -32,18 +32,17 @@ $content  = file_get_contents("php://input");
 //$data['group_name'] = get_arg_str('GET','group_name');
 //$data['intime'] = time();
 
-//$array = json_decode($content,true);
-//print_r($array);
-//// 更新群组成员
-//$row = storage_members($array);
-//if (!$row){
-//    exit_error('109','失败');
-//}
+$array = json_decode($content,true);
+// 更新群组成员
+$row = storage_members($array);
+if (!$row){
+    exit_error('109','失败');
+}
 
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
-$rtn_ary['errmsg'] = $content;
+$rtn_ary['errmsg'] = '';
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
