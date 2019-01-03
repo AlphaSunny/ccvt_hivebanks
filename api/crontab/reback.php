@@ -16,7 +16,7 @@ header("Content-Type:application/json;charset=utf-8");
 
 set_time_limit(0);
 define('BA_ID','6C69520E-E454-127B-F474-452E65A3EE75');
-define('FLAG','12');
+define('FLAG','14');
 define('UNIT',100000000);
 define('CTIME',date('Y-m-d H:i:s',time()));
 define('UTIME',time());
