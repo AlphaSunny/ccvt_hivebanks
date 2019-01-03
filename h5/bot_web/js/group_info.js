@@ -74,8 +74,8 @@ $(function () {
                 layer.close(loading);
                 layer.msg("提交成功", {icon: 1});
                 SetCookie("is_admin_del", is_admin_del);
-                SetCookie("is_del", is_del);
-                SetCookie("is_flirt", is_flirt);
+                SetCookie("is_del", del);
+                SetCookie("is_flirt", flirt);
                 SetCookie("send_address", send_address);
                 SetCookie("bind_account_notice", bind_account_notice);
                 SetCookie("is_welcome", is_welcome);
