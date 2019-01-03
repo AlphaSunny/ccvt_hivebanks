@@ -1,3 +1,4 @@
+var token = GetCookie("robot_token"), is_audit = "";
 function GetGroupListNav() {
     var li = "";
     GetGroupList(token, is_audit, function (response) {
@@ -37,7 +38,7 @@ $(function () {
 
     // var limit = 10, offset = 0, status = "-1", loading = "";
 
-    var token = GetCookie("robot_token"), is_audit = "";
+
 
 
 
