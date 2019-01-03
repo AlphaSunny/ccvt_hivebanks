@@ -33,6 +33,7 @@ $content  = file_get_contents("php://input");
 //$data['intime'] = time();
 
 $array = json_decode($content,true);
+print_r($array);
 // 更新群组成员
 $row = storage_members($array);
 if (!$row){

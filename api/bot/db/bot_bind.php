@@ -363,6 +363,7 @@ function storage_members($data)
         $sql .= "('".get_guid()."','".$values."','".$data['group_id']."','".$data['group_name']."','".time()."'),";
     }
     $sql = substr($sql,0,strlen($sql)-1);
+    echo $sql;
     $q_id = $db->query($sql);
     if ($q_id == 0)
         return false;
