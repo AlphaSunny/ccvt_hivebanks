@@ -22,7 +22,8 @@ $(function () {
                 // group_id = data[0].id;
                 $.each(data, function (i, val) {
                     li += "<li>" +
-                        "<a class='app-menu__item to_group_link' id='" + data[i].id + "' is_admin_del='" + data[i].is_admin_del + "' is_del='" + data[i].is_del + "' is_flirt='" + data[i].is_flirt + "' is_give_ccvt='" + data[i].is_give_ccvt + "' bind_account_notice='" + data[i].bind_account_notice + "' is_welcome='" + data[i].is_welcome + "' send_address='" + data[i].send_address + "' welcome='" + data[i].welcome + "' group_name='" + data[i].name + "' href='javascript:;'>" +
+                        // "<a class='app-menu__item to_group_link' id='" + data[i].id + "' is_admin_del='" + data[i].is_admin_del + "' is_del='" + data[i].is_del + "' is_flirt='" + data[i].is_flirt + "' is_give_ccvt='" + data[i].is_give_ccvt + "' bind_account_notice='" + data[i].bind_account_notice + "' is_welcome='" + data[i].is_welcome + "' send_address='" + data[i].send_address + "' welcome='" + data[i].welcome + "' group_name='" + data[i].name + "' href='javascript:;'>" +
+                        "<a class='app-menu__item to_group_link' id='" + data[i].id + "' href='javascript:;'>" +
                         "<i class='app-menu__icon fa fa-circle-o'></i>" +
                         "<span class='app-menu__label'>" + data[i].name + "</span>" +
                         "</a>" +
@@ -52,7 +53,9 @@ $(function () {
         SetCookie("bind_account_notice", bind_account_notice);
         SetCookie("is_welcome", is_welcome);
         SetCookie("welcome", welcome);
-        window.location.href = "group_info.html?id=" + encodeURI(id) + "&group_name=" + encodeURI(encodeURI(group_name));
+        SetCookie("group_name", group_name);
+        // window.location.href = "group_info.html?id=" + encodeURI(id) + "&group_name=" + encodeURI(encodeURI(group_name));
+        window.location.href = "group_info.html?id=" + encodeURI(id);
 
         // window.location.href = "group_info.html?id=" + encodeURI(id) + "&is_admin_del=" + encodeURI(is_admin_del) + "&is_del=" + encodeURI(is_del) + "&is_flirt=" + encodeURI(is_flirt) + "&is_give_ccvt=" + encodeURI(is_give_ccvt) + "&bind_account_notice=" + encodeURI(bind_account_notice) + "&is_welcome=" + encodeURI(is_welcome) + "&welcome=" + encodeURI(encodeURI(welcome)) + "&send_address=" + encodeURI(send_address) + "&group_name=" + encodeURI(encodeURI(group_name));
     });

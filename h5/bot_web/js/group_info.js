@@ -1,6 +1,7 @@
 $(function () {
     var token = GetCookie("robot_token");
-    var group_id = decodeURI(GetQueryString("id")), group_name = decodeURI(GetQueryString("group_name"));
+    var group_id = decodeURI(GetQueryString("id"));
+    // group_name = decodeURI(GetQueryString("group_name"));
 
     var is_admin_del = GetCookie("is_admin_del"),
         is_del = GetCookie("is_del"),
@@ -8,7 +9,8 @@ $(function () {
         send_address = GetCookie("send_address"),
         bind_account_notice = GetCookie("bind_account_notice"),
         is_welcome = GetCookie("is_welcome"),
-        welcome = GetCookie("welcome");
+        welcome = GetCookie("welcome"),
+        group_name = GetCookie("group_name");
 
     $(".group_name").text(group_name);
     $("#group_name").val(group_name);
@@ -78,6 +80,7 @@ $(function () {
                 SetCookie("bind_account_notice", bind_account_notice);
                 SetCookie("is_welcome", is_welcome);
                 SetCookie("welcome", welcome);
+                SetCookie("group_name", group_name);
             }
         }, function (response) {
             layer.close(loading);
