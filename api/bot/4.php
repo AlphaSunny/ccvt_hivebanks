@@ -27,7 +27,7 @@ if ($count>0){
         $row = $db->fetchRow();
         if (!$row){
             //新用户
-            $date['name'] = $v;
+            $date['name'] = ".$v.";
             $date['group_id'] = $json['group_id'];
             $date['group_name'] = $json['group_name'];
             $date['ctime'] = date('Y-m-d H:i:s');
