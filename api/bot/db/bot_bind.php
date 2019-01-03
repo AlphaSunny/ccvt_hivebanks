@@ -328,35 +328,41 @@ function get_key_code()
 function storage_members($data)
 {
     //插入数据
-//    $sql= "insert into bot_group_members (member_id,name,group_id,group_name,intime) values ";
-//    foreach (json_decode($data['name']) as $k=>$value){
-//        $sql .= "('".get_guid()."','".$value."','".$data['group_id']."','".$data['group_name']."','".time()."'),";
-//    }
-
+    $members = explode(",", $data['members']);
     $db = new DB_COM();
-    $time = time()-30*60;
+    $time = time()-10*60;
     $sql = "select count(member_id) as count from bot_group_members WHERE group_id='{$data['group_id']}' AND intime<'{$time}'";
     $db->query($sql);
     $count = $db->getField($sql,'count');
     if ($count>0){
-        $sql = "select * from bot_group_members WHERE group_id='{$data['group_id']}' AND name='{$data['name']}' AND intime<'{$time}'";
-        $db->query($sql);
-        $row = $db->fetchRow();
-        if (!$row){
-            //新用户
-            $date['name'] = $data['name'];
-            $date['group_id'] = $data['group_id'];
-            $date['group_name'] = $data['group_name'];
-            $date['ctime'] = date('Y-m-d H:i:s');
-            $date['type'] = 1;
-            $sql = $db->sqlInsert("bot_memeber_change_record",$date);
+        foreach ($members as $k=>$v){
+            set_time_limit(0);
+            $v = str_replace("'"," ",$v);
+            $sql = "select * from bot_group_members WHERE group_id='{$data['group_id']}' AND name='{$v}' AND intime<'{$time}'";
             $db->query($sql);
-        }else{
-            $sql = "update bot_group_members set is_check=2 WHERE group_id='{$data['group_id']}' AND name='{$data['name']}' AND intime<'{$time}'";
-            $db->query($sql);
+            $row = $db->fetchRow();
+            if (!$row){
+                //新用户
+                $date['name'] = ".$v.";
+                $date['group_id'] = $data['group_id'];
+                $date['group_name'] = $data['group_name'];
+                $date['ctime'] = date('Y-m-d H:i:s');
+                $date['type'] = 1;
+                $sql = $db->sqlInsert("bot_memeber_change_record",$date);
+                $db->query($sql);
+            }else{
+                $sql = "update bot_group_members set is_check=2 WHERE group_id='{$data['group_id']}' AND name='{$v}' AND intime<'{$time}'";
+                $db->query($sql);
+            }
         }
     }
-    $sql = $db->sqlInsert("bot_group_members", $data);
+    //批量插入
+    $sql= "insert into bot_group_members (member_id,name,group_id,group_name,intime) values ";
+    foreach ($members as $k=>$value){
+        $values = str_replace("'"," ",$value);
+        $sql .= "('".get_guid()."','".$values."','".$data['group_id']."','".$data['group_name']."','".time()."'),";
+    }
+    $sql = substr($sql,0,strlen($sql)-1);
     $q_id = $db->query($sql);
     if ($q_id == 0)
         return false;
@@ -372,12 +378,13 @@ function storage_members($data)
 function del_storage_members($group_id)
 {
     $db = new DB_COM();
-    $time = time()-30*60;
+    $time = time()-10*60;
     $sql = "select * from bot_group_members WHERE group_id='{$group_id}' AND intime<'{$time}' AND is_check=1";
     $db->query($sql);
     $rows = $db->fetchAll();
     if ($rows){
         foreach ($rows as $k=>$v){
+            set_time_limit(0);
             //修改名称或退出
             $date['name'] = $v['name'];
             $date['group_id'] = $v['group_id'];
