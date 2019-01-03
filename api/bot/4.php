@@ -22,6 +22,7 @@ if ($count>0){
     foreach ($members as $k=>$v){
         $v = str_replace("'"," ",$v);
         $sql = "select * from bot_group_members WHERE group_id='{$json['group_id']}' AND name='{$v}' AND intime<'{$time}'";
+        echo $sql;
         $db->query($sql);
         $row = $db->fetchRow();
         if (!$row){
@@ -32,6 +33,7 @@ if ($count>0){
             $date['ctime'] = date('Y-m-d H:i:s');
             $date['type'] = 1;
             $sql = $db->sqlInsert("bot_memeber_change_record",$date);
+            echo $sql;
             $db->query($sql);
         }else{
             $sql = "update bot_group_members set is_check=2 WHERE group_id='{$json['group_id']}' AND name='{$v}' AND intime<'{$time}'";
