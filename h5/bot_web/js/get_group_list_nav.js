@@ -22,7 +22,7 @@ function GetGroupListNav() {
                     "</a>" +
                     "</li>"
             });
-            $(".app-menu").append(li);
+            $(".app-menu").html(li);
             // check_is_group();
         }
     }, function (response) {
