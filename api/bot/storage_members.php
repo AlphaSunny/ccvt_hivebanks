@@ -34,15 +34,15 @@ $content  = file_get_contents("php://input");
 
 $array = json_decode($content,true);
 // 更新群组成员
-$row = storage_members($array);
-if (!$row){
-    exit_error('109','失败');
-}
+//$row = storage_members($array);
+//if (!$row){
+//    exit_error('109','失败');
+//}
 
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
-$rtn_ary['errmsg'] = '';
+$rtn_ary['errmsg'] = $array;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
