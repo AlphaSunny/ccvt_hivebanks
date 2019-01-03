@@ -10,7 +10,7 @@ $(function () {
         is_welcome = GetCookie("is_welcome"),
         welcome = GetCookie("welcome");
 
-    $(".group_name").text(group_name);
+    $(".group_name","#group_name").text(group_name);
     if (is_admin_del == "1") {//运行状态
         $("#runSwitch").addClass("active").val("1");
         $("#trickSwitch").addClass("active").val("1");
@@ -61,6 +61,7 @@ $(function () {
         var bind_account_notice = $("#bindSwitch").val();
         var is_welcome = $("#welcomeSwitch").val();
         var welcome = $("#welcomeText").val();
+        var group_name = $("#group_name").val();
         //loading
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
