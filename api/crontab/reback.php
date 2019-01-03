@@ -39,8 +39,8 @@ and credit_id != debit_id  order by utime desc";
     {
 
         $debit_id = $v['debit_id'];
-        
-        if(in_array($distinct,$debit_id))
+
+        if(in_array($debit_id,$distinct))
             continue;
         $distinct[] = $debit_id;
 
