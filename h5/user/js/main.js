@@ -172,7 +172,8 @@ function GetPhoneCodeFun(bind_type, $this, cfm_code) {
     }
     GetPhoneCode(cellphone, country_code, bind_type, cfm_code, function (response) {
         if (response.errcode == '0') {
-            LayerFun('sendSuccess');
+            // LayerFun('sendSuccess');
+            layer.msg("发送成功", {icon: 1});
         }
     }, function (response) {
         clearInterval(timer);
@@ -188,7 +189,7 @@ function GetPhoneCodeFun(bind_type, $this, cfm_code) {
 var countdown = 60;
 
 function setTime($this) {
-    $('.sixty').text(countdown + "s").fadeIn('fast').css('color', '#fff');
+    $('.sixty').text(countdown + "s").fadeIn('fast').css('color', 'red');
     $('.getCodeText').fadeOut();
     $this.attr("disabled", true);
     timer = setInterval(function () {
