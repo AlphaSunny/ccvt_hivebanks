@@ -360,8 +360,19 @@ $(function () {
             LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
             return;
         }
+        var api_url = 'set_ba_bit_type.php';
+        SetAgentType(api_url, token, option_key, option_value, function (response) {
+            if (response.errcode == '0') {
+                // $('#uploadImgModal').modal('close');
+                LayerFun('setSuccessfully');
+                GetBaTypeFun();
+            }
+        }, function (response) {
+            LayerFun('setupFailed');
+            LayerFun(response.errmsg);
+        })
         // $('#uploadImgModal').modal('open');
-        $('.baseBaTypeBtnConfirm').removeClass('ca');
+        // $('.baseBaTypeBtnConfirm').removeClass('ca');
     });
 
     //Delete BA proxy type
@@ -427,8 +438,19 @@ $(function () {
             LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
             return;
         }
+        var api_url = 'set_ca_channel.php';
+        SetAgentType(api_url, token, option_key, option_value, function (response) {
+            if (response.errcode == '0') {
+                // $('#uploadImgModal').modal('close');
+                LayerFun('setSuccessfully');
+                GetCaTypeFun();
+            }
+        }, function (response) {
+            LayerFun('setupFailed');
+            LayerFun(response.errmsg);
+        })
         // $('#uploadImgModal').modal('open');
-        $('.baseBaTypeBtnConfirm').addClass('ca');
+        // $('.baseBaTypeBtnConfirm').addClass('ca');
     });
 
     //Delete the CA proxy type
@@ -450,38 +472,38 @@ $(function () {
     });
 
     //Upload image to determine BA/CA
-    $('.baseBaTypeBtnConfirm').click(function () {
-        var api_url = '';
+    // $('.baseBaTypeBtnConfirm').click(function () {
+    //     var api_url = '';
         // if (option_src == '') {
         //     LayerFun('pleaseUploadAnImageOfTheSelectedType');
         //     return;
         // }
-        if ($(this).hasClass('ca')) {
-            api_url = 'set_ca_channel.php';
-            SetAgentType(api_url, token, option_key, option_value, function (response) {
-                if (response.errcode == '0') {
-                    $('#uploadImgModal').modal('close');
-                    LayerFun('setSuccessfully');
-                    GetCaTypeFun();
-                }
-            }, function (response) {
-                LayerFun('setupFailed');
-                LayerFun(response.errcode);
-            })
-        } else {
-            api_url = 'set_ba_bit_type.php';
-            SetAgentType(api_url, token, option_key, option_value, function (response) {
-                if (response.errcode == '0') {
-                    $('#uploadImgModal').modal('close');
-                    LayerFun('setSuccessfully');
-                    GetBaTypeFun();
-                }
-            }, function (response) {
-                LayerFun('setupFailed');
-                LayerFun(response.errcode);
-            })
-        }
-    });
+        // if ($(this).hasClass('ca')) {
+            // api_url = 'set_ca_channel.php';
+            // SetAgentType(api_url, token, option_key, option_value, function (response) {
+            //     if (response.errcode == '0') {
+            //         $('#uploadImgModal').modal('close');
+            //         LayerFun('setSuccessfully');
+            //         GetCaTypeFun();
+            //     }
+            // }, function (response) {
+            //     LayerFun('setupFailed');
+            //     LayerFun(response.errcode);
+            // })
+        // } else {
+        //     api_url = 'set_ba_bit_type.php';
+        //     SetAgentType(api_url, token, option_key, option_value, function (response) {
+        //         if (response.errcode == '0') {
+        //             $('#uploadImgModal').modal('close');
+        //             LayerFun('setSuccessfully');
+        //             GetBaTypeFun();
+        //         }
+        //     }, function (response) {
+        //         LayerFun('setupFailed');
+        //         LayerFun(response.errcode);
+        //     })
+        // }
+    // });
 
     //Upload image cancel
     $('.uploadImgRow .cancel').click(function () {
