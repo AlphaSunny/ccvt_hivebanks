@@ -442,8 +442,10 @@ $(function () {
     GetCaTypeFun();
 
     //Select CA proxy type
+    var name = "";
     $('.baseCaTypeBox li').click(function () {
-        var liVal = $(this).text(), name = $(this).attr('title');
+        var liVal = $(this).text();
+        name = $(this).attr('title');
         $('.baseCaTypeInput').val(liVal);
         $('.baseCaTypeInput').attr('name', name);
         $(this).addClass('baseLiActive').siblings().removeClass('baseLiActive');
@@ -451,7 +453,7 @@ $(function () {
 
     //Set the CA proxy type
     $('.baseCaTypeBtn').click(function () {
-        option_key = $('.baseCaTypeInput').val();
+        option_key = name;
         option_value = $('.baseCaTypeInput').val();
         if (option_key.length <= 0) {
             // LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
