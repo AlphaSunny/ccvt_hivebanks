@@ -299,7 +299,7 @@ function GetImgCode() {
 function GetWeChatName(code,suc_func, error_func) {
     var api_url = 'get_code_wechat.php',
         post_data = {
-            'email': code
+            'code': code
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
