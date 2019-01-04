@@ -16,7 +16,7 @@ $(function () {
 
     //get invite
     var invite_code = GetQueryString("invite_code");
-    var code = decodeURI(GetQueryString("code"));
+    var code = GetQueryString("code");
     var group_id = GetQueryString("group_id");
     if (invite_code && invite_code != 0) {
         $(".emailInvitCode,.phoneInvitCode").val(invite_code);
