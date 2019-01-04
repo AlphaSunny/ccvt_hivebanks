@@ -369,7 +369,8 @@ function storage_members($data)
 
     $members = explode(",", $data['members']);
 
-    $time = time()-10*60;
+//    $time = time()-10*60;
+    $time = time()-10;
     $sql = "select count(member_id) as count from bot_group_members WHERE group_id='{$data['group_id']}' AND intime<'{$time}'";
     $db->query($sql);
     $count = $db->getField($sql,'count');
