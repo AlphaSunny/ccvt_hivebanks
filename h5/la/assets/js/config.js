@@ -360,7 +360,7 @@ $(function () {
             LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
             return;
         }
-        $('#uploadImgModal').modal('open');
+        // $('#uploadImgModal').modal('open');
         $('.baseBaTypeBtnConfirm').removeClass('ca');
     });
 
@@ -427,7 +427,7 @@ $(function () {
             LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
             return;
         }
-        $('#uploadImgModal').modal('open');
+        // $('#uploadImgModal').modal('open');
         $('.baseBaTypeBtnConfirm').addClass('ca');
     });
 
@@ -452,13 +452,13 @@ $(function () {
     //Upload image to determine BA/CA
     $('.baseBaTypeBtnConfirm').click(function () {
         var api_url = '';
-        if (option_src == '') {
-            LayerFun('pleaseUploadAnImageOfTheSelectedType');
-            return;
-        }
+        // if (option_src == '') {
+        //     LayerFun('pleaseUploadAnImageOfTheSelectedType');
+        //     return;
+        // }
         if ($(this).hasClass('ca')) {
             api_url = 'set_ca_channel.php';
-            SetAgentType(api_url, token, option_key, option_value, option_src, function (response) {
+            SetAgentType(api_url, token, option_key, option_value, function (response) {
                 if (response.errcode == '0') {
                     $('#uploadImgModal').modal('close');
                     LayerFun('setSuccessfully');
@@ -470,7 +470,7 @@ $(function () {
             })
         } else {
             api_url = 'set_ba_bit_type.php';
-            SetAgentType(api_url, token, option_key, option_value, option_src, function (response) {
+            SetAgentType(api_url, token, option_key, option_value, function (response) {
                 if (response.errcode == '0') {
                     $('#uploadImgModal').modal('close');
                     LayerFun('setSuccessfully');
@@ -489,58 +489,58 @@ $(function () {
     });
 
     //Upload image
-    $('#uploadFile').on('change', function () {
-        var objUrl = getObjectURL(this.files[0]);
-        if (objUrl) {
-            // Modify the address attribute of the picture here
-            $(".uploadImgSrc").attr("src", objUrl);
-        }
-
-        var formData = new FormData($("#uploadForm")[0]);
-        formData.append("key_code", key_code);
-        option_src = UpLoadImg(formData);
-    });
+    // $('#uploadFile').on('change', function () {
+    //     var objUrl = getObjectURL(this.files[0]);
+    //     if (objUrl) {
+    //         // Modify the address attribute of the picture here
+    //         $(".uploadImgSrc").attr("src", objUrl);
+    //     }
+    //
+    //     var formData = new FormData($("#uploadForm")[0]);
+    //     formData.append("key_code", key_code);
+    //     option_src = UpLoadImg(formData);
+    // });
 
     //Select an image to display
-    function getObjectURL(file) {
-        var url = null;
-        if (window.createObjectURL != undefined) { // basic
-            url = window.createObjectURL(file);
-        } else if (window.URL != undefined) { // mozilla(firefox)
-            url = window.URL.createObjectURL(file);
-        } else if (window.webkitURL != undefined) { // webkit or chrome
-            url = window.webkitURL.createObjectURL(file);
-        }
-        return url;
-    }
+    // function getObjectURL(file) {
+    //     var url = null;
+    //     if (window.createObjectURL != undefined) { // basic
+    //         url = window.createObjectURL(file);
+    //     } else if (window.URL != undefined) { // mozilla(firefox)
+    //         url = window.URL.createObjectURL(file);
+    //     } else if (window.webkitURL != undefined) { // webkit or chrome
+    //         url = window.webkitURL.createObjectURL(file);
+    //     }
+    //     return url;
+    // }
 
-    function UpLoadImg(formData) {
-        var src = '';
-        $.ajax({
-            url: 'http://agent_service.fnying.com/upload_file/upload.php',
-            type: 'POST',
-            data: formData,
-            async: false,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                var data = JSON.parse(response);
-                if (data.errcode == '0') {
-                    src = data.url;
-                }
-                if (data.errcode == "1") {
-                    layer.msg('<span class="i18n" name="notOpenUpload"></span>');
-                    execI18n();
-                    return;
-                }
-            },
-            error: function (response) {
-                layer.msg(response.msg);
-            }
-        });
-        return src;
-    }
+    // function UpLoadImg(formData) {
+    //     var src = '';
+    //     $.ajax({
+    //         url: 'http://agent_service.fnying.com/upload_file/upload.php',
+    //         type: 'POST',
+    //         data: formData,
+    //         async: false,
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         success: function (response) {
+    //             var data = JSON.parse(response);
+    //             if (data.errcode == '0') {
+    //                 src = data.url;
+    //             }
+    //             if (data.errcode == "1") {
+    //                 layer.msg('<span class="i18n" name="notOpenUpload"></span>');
+    //                 execI18n();
+    //                 return;
+    //             }
+    //         },
+    //         error: function (response) {
+    //             layer.msg(response.msg);
+    //         }
+    //     });
+    //     return src;
+    // }
 
     //init modal
     $('#uploadImgModal').modal({

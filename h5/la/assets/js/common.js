@@ -787,12 +787,12 @@ function GetAgentType(api_url, token, suc_func, error_func) {
 }
 
 //set ba type
-function SetAgentType(api_url, token, option_key, option_value, option_src, suc_func, error_func) {
+function SetAgentType(api_url, token, option_key, option_value, suc_func, error_func) {
     var post_data = {
         'token': token,
         'option_key': option_key,
-        'option_value': option_value,
-        'option_src': option_src
+        'option_value': option_value
+        // 'option_src': option_src
     };
     CallLaConfigApi(api_url, post_data, suc_func, error_func)
 }
