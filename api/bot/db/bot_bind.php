@@ -1061,6 +1061,7 @@ function audit_group($group_id,$count){
 function get_exclusive_code($wechat){
     $db = new DB_COM();
     $sql = "select * from bot_exclusive_code WHERE wechat='{$wechat}'";
+    echo $sql;die;
     $db->query($sql);
     $row = $db->fetchRow();
     if ($row){
