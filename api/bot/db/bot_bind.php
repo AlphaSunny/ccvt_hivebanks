@@ -1055,4 +1055,27 @@ function audit_group($group_id,$count){
     return true;
 }
 
+//======================================
+// 函数: 获取专属注册微信昵称code
+//======================================
+function get_exclusive_code($wechat){
+    $db = new DB_COM();
+    $sql = "select * from bot_exclusive_code WHERE wechat='{$wechat}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if ($row){
+        $code = $row['code'];
+    }else{
+        $date['wechat'] = $wechat;
+        $date['ctime'] = date('Y-m-d H:i:s');
+        $sql = "select code from bot_exclusive_code ORDER BY ctime desc limit 1";
+        $db->query($sql);
+        $last_code = $db->getField($sql,'code');
+        $code = $last_code ? $last_code : "10000";
+        $date['code'] = $code;
+        $db->sqlInsert("bot_blacklist", $date);
+    }
+    return $code;
+}
+
 ?>

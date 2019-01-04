@@ -1061,3 +1061,17 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why)
 
 
 }
+
+//======================================
+// 函数: 根据code获取微信号
+// 参数: code          code
+// 返回:
+//======================================
+function  get_code_wechat($code)
+{
+    $db = new DB_COM();
+    $sql = "select wechat from bot_exclusive_code WHERE code='{$code}' limit 1";
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    return $row;
+}
