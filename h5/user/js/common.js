@@ -295,6 +295,15 @@ function GetImgCode() {
     $('#phone_imgCode').attr("src", src);
 }
 
+//get wechat name
+function GetWeChatName(code,suc_func, error_func) {
+    var api_url = 'get_code_wechat.php',
+        post_data = {
+            'email': code
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 // email registration
 function EmailRegister(email, pass_word, pass_word_hash, invit_code, wechat, group_id, suc_func, error_func) {
     var api_url = 'reg_email.php',

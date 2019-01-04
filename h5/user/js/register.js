@@ -16,15 +16,21 @@ $(function () {
 
     //get invite
     var invite_code = GetQueryString("invite_code");
-    var wechat = decodeURI(GetQueryString("wechat"));
+    var code = decodeURI(GetQueryString("code"));
     var group_id = GetQueryString("group_id");
     if (invite_code && invite_code != 0) {
         $(".emailInvitCode,.phoneInvitCode").val(invite_code);
     }
 
-    if (wechat && wechat != "null") {
-        $(".phoneWeChatName").val(wechat);
-        $(".phoneWeChatName_li").fadeIn();
+    if (code && code != "null") {
+        GetWeChatName(code, function (response) {
+            if (response.errcode == "0") {
+                $(".phoneWeChatName").val(response.wechat);
+                $(".phoneWeChatName_li").fadeIn();
+            }
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        });
     }
 
     //Whether to allow registration
