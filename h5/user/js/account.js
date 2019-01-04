@@ -42,7 +42,7 @@ $(function () {
             }
         }
     }, function (response) {
-        layer.msg(response.errcode);
+        ErrorPrompt(response.errmsg);
         if (response.errcode == '114') {
             window.location.href = 'login.html';
         }
@@ -70,14 +70,14 @@ $(function () {
     $('.modifyNameBtn').click(function () {
         var us_account = $('#nickName').val();
         if (us_account.length <= 0) {
-            layer.msg("请输入昵称", {icon: 0});
+            WranPrompt("请输入昵称");
             // LayerFun('pleaseEnterNickname');
             return;
         }
         ShowLoading("show");
         ModifyNickName(token, us_account, function (response) {
             if (response.errcode == '0') {
-                layer.msg("修改成功", {icon: 1});
+                SuccessPrompt("修改成功");
                 $('#modifyName').modal('hide');
                 ShowLoading("hide");
                 // LayerFun('modifySuccess');
@@ -87,7 +87,7 @@ $(function () {
             }
         }, function (response) {
             ShowLoading("hide");
-            layer.msg(response.errmsg, {icon: 2});
+            ErrorPrompt(response.errmsg);
             // LayerFun('modifyFail');
             // LayerFun(response.errcode);
             return;
@@ -238,31 +238,31 @@ $(function () {
     //copy invite address
     $('.copy_invite_address').click(function () {
         new ClipboardJS('.copy_invite_address');
-        layer.msg("copy success")
+        // layer.msg("copy success")
+        SuccessPrompt("复制成功");
     });
 
     //bind weChat name
     $(".bindWeChatBtn").click(function () {
         var wechat = $("#weChatName").val();
         if (wechat.length <= 0) {
-            layer.msg("请输入微信昵称", {icon: 0});
+            WranPrompt("请输入微信昵称");
             // LayerFun("pleaseEnterNickname");
             return;
         }
         ShowLoading("show");
         BindWeChatName(token, wechat, function (response) {
             if (response.errcode == "0") {
-                layer.msg("成功", {icon: 1});
+                SuccessPrompt("提交成功");
                 ShowLoading("hide");
                 $("#weChatGroupName").modal("hide");
-                LayerFun("bindSuccess");
                 $(".wechat").text(response.new_wechat).removeClass("i18n");
                 $("#weChatBindBtn").remove();
                 $("#weChatModifyBtn").fadeIn("fast");
             }
         }, function (response) {
             ShowLoading("hide");
-            layer.msg(response.errmsg, {icon: 2});
+            ErrorPrompt(response.errmsg);
             // LayerFun(response.errcode);
         })
     });
@@ -282,19 +282,19 @@ $(function () {
         var voucher = $(".voucher_input").val();
         if (voucher.length <= 0) {
             // LayerFun("pleaseInputExchangeCode");
-            layer.msg("请输入兑换码", {icon: 0});
+            WranPrompt("请输入兑换码");
             ShowLoading("hide");
             return
         }
         Exchange(token, voucher, function (response) {
             $(".voucher_input").val("");
-            layer.msg("提交成功", {icon: 1});
+            SuccessPrompt("提交成功");
             // LayerFun("submitSuccess");
             $(".availableBalance").text(response.us_amount);
             $("#exchange_modal").fadeOut();
             ShowLoading("hide");
         }, function (response) {
-            layer.msg(response.errmsg, {icon: 2});
+            ErrorPrompt(response.errmsg);
             ShowLoading("hide");
         })
     });
@@ -309,18 +309,18 @@ $(function () {
         var account = $(".transform_ccvt_input").val();
         if (account.length <= 0) {
             // LayerFun("pleaseInputChangeAmount");
-            layer.msg("请输入金额数量", {icon: 0});
+            WranPrompt("请输入金额数量");
             ShowLoading("hide");
             return
         }
         if (!(/^[1-9]\d*$/.test(account))) {
-            layer.msg("请输入正确的金额数量", {icon: 0});
+            WranPrompt("请输入正确的金额数量");
             ShowLoading("hide");
             return
         }
         TransformCCVT(token, account, function (response) {
             $(".transform_ccvt_input").val("");
-            layer.msg("提交成功", {icon: 1});
+            SuccessPrompt("提交成功");
             // LayerFun("submitSuccess");
             $(".availableBalance").text(response.us_amount);
             $(".glory_of_integral").text(response.glory_of_integral);
@@ -328,7 +328,7 @@ $(function () {
             $("#transform_ccvt").fadeOut();
             ShowLoading("hide");
         }, function (response) {
-            layer.msg(response.errmsg, {icon: 2});
+            ErrorPrompt(response.errmsg);
             ShowLoading("hide");
         })
     });
@@ -351,26 +351,26 @@ $(function () {
                 $(".weChatGroutItem").html(li);
             }
         }, function (response) {
-            layer.msg(response.errmsg);
+            ErrorPrompt(response.errmsg);
         })
     });
 
     $(".weChatGroupBtn").click(function () {
         var group_id = $("input[type='radio']:checked").val();
         if (!group_id) {
-            layer.msg("请选择群", {icon: 0});
+            WranPrompt("请选择群");
             return;
         }
         ShowLoading("show");
         BindWeChatGroup(token, group_id, function (response) {
             ShowLoading("hide");
             if (response.errcode == "0") {
-                layer.msg("成功", {icon: 1});
+                SuccessPrompt("提交成功");
                 $(".group_name").text(response.group_name);
                 $("#weChatGroup").modal("hide");
             }
         }, function (response) {
-            layer.msg(response.errmsg, {icon: 2});
+            ErrorPrompt(response.errmsg);
         })
     });
 

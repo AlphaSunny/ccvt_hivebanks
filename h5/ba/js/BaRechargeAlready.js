@@ -54,7 +54,8 @@ $(function () {
             }
         }, function (response) {
             GetDataFail('rechargePendingTable', '6');
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
             return;
         });
     }
