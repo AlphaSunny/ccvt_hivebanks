@@ -16,37 +16,66 @@ $(function () {
         return;
     });
     //Get a list of user refill pending orders
-    var api_url = 'log_us_recharge.php', type = '1', tr = '';
-    RechargeWithdrawCodeQuery(token, api_url, type, function (response) {
-        if (response.errcode == '0') {
-            var data = response.rows;
-            if(data == false){
-                GetDataEmpty('rechargePendingTable', '6');
-                return;
+    var api_url = 'log_us_recharge.php', type = '1';
+
+    function RechargeWithdrawCodeQueryFun(limit, offset) {
+        var tr = '', count = 1;
+        RechargeWithdrawCodeQuery(token, api_url, type, function (response) {
+            if (response.errcode == '0') {
+                var data = response.rows;
+                var total = response.total;
+                var totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+                if (data == false) {
+                    GetDataEmpty('rechargePendingTable', '6');
+                    return;
+                }
+                $.each(data, function (i, val) {
+                    tr += '<tr class="rechargePendingList">' +
+                        '<td><span>' + data[i].us_id + '</span></td>' +
+                        '<td><span>' + data[i].base_amount + '</span></td>' +
+                        '<td><span>' + data[i].asset_id + '</span>/<span>' + base_type + '</span></td>' +
+                        '<td><span>' + data[i].bit_address + '</span></td>' +
+                        '<td><span>' + data[i].tx_time + '</span></td>' +
+                        '<td>' +
+                        '<a class="btn btn-success btn-sm confirmBtn">' +
+                        '<span class="i18n" name="handle">handle</span>' +
+                        '</a>' +
+                        '<span class="qa_id none">' + data[i].qa_id + '</span>' +
+                        '</td>' +
+                        '</tr>'
+                });
+                $('#rechargePendingTable').html(tr);
+                execI18n();
+
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        RechargeWithdrawCodeQueryFun(limit, (current - 1) * limit);
+                        ShowLoading("show");
+                    }
+                });
             }
-            $.each(data, function (i, val) {
-                tr += '<tr class="rechargePendingList">' +
-                    '<td><span>' + data[i].us_id + '</span></td>' +
-                    '<td><span>' + data[i].base_amount + '</span></td>' +
-                    '<td><span>' + data[i].asset_id + '</span>/<span>' + base_type + '</span></td>' +
-                    '<td><span>' + data[i].bit_address + '</span></td>' +
-                    '<td><span>' + data[i].tx_time + '</span></td>' +
-                    '<td>' +
-                    '<a class="btn btn-success btn-sm confirmBtn">' +
-                    '<span class="i18n" name="handle">handle</span>' +
-                    '</a>' +
-                    '<span class="qa_id none">' + data[i].qa_id + '</span>' +
-                    '</td>' +
-                    '</tr>'
-            });
-            $('#rechargePendingTable').html(tr);
-            execI18n();
-        }
-    }, function (response) {
-        GetDataFail('rechargePendingTable', '6');
-        LayerFun(response.errcode);
-        return;
-    });
+        }, function (response) {
+            GetDataFail('rechargePendingTable', '6');
+            LayerFun(response.errcode);
+            return;
+        });
+    }
+
+    RechargeWithdrawCodeQueryFun(limit, offset);
+
 
     //Cash withdrawal confirmation processing
     var qa_id = '', _this = '';

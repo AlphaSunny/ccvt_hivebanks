@@ -543,6 +543,20 @@ textarea::-ms-input-placeholder {
     margin-bottom: 0;
 }
 
+/*page*/
+.page{
+    text-align: right;
+}
+
+.ui-pagination-container .ui-pagination-page-item{
+    border: 1px solid #82ca9c!important;
+    color: #82ca9c!important;
+}
+.ui-pagination-container .ui-pagination-page-item.active{
+    background: #82ca9c!important;
+    color: #ffffff!important;
+}
+
 /*table*/
 .table {
     width: 100%;
