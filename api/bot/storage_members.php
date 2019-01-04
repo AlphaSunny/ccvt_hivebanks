@@ -23,9 +23,8 @@ php_begin();
 //$args = array('name','group_name','group_id');
 //chk_empty_args('GET', $args);
 
-//$content  = file_get_contents("php://input");
+$content  = file_get_contents("php://input");
 
-$content = $_POST;
 
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
