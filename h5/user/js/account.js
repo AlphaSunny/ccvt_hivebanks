@@ -385,6 +385,7 @@ $(function () {
     //login robot
     $(".robotBtn").click(function () {
         var url = getRootPath();
-        window.location.href = url + "/h5/bot_web/login.html";
+        // window.location.href = url + "/h5/bot_web/login.html";
+        window.open(url + "/h5/bot_web/login.html");
     })
 });
