@@ -1073,7 +1073,7 @@ function get_exclusive_code($wechat){
         $last_code = $db->getField($sql,'code');
         $code = $last_code ? $last_code : "10000";
         $date['code'] = $code;
-        $db->sqlInsert("bot_blacklist", $date);
+        $db->sqlInsert("bot_exclusive_code", $date);
     }
     return $code;
 }
