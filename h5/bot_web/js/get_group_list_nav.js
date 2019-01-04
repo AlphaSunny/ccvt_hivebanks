@@ -22,6 +22,7 @@ function GetGroupListNav() {
                     "</a>" +
                     "</li>"
             });
+            $(".app-menu .last").nextAll().remove();
             $(".app-menu").append(li);
             // check_is_group();
         }
