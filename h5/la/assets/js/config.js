@@ -6,7 +6,8 @@ $(function () {
     $('.setApiBtn').click(function () {
         var api_key = $('#api_key').val();
         if (api_key.length <= 0) {
-            LayerFun('inputCannotBeEmpty');
+            // LayerFun('inputCannotBeEmpty');
+            WranPrompt("请输入内容");
             return;
         }
         $(".preloader-wrapper").addClass("active");
@@ -14,15 +15,17 @@ $(function () {
             if (response.errcode == '0') {
                 $(".preloader-wrapper").removeClass("active");
                 $('#api_key').val(' ');
-                LayerFun('setSuccessfully');
+                // LayerFun('setSuccessfully');
+                SuccessPrompt("设置成功");
                 execI18n();
                 $('.api_key_value').text(response.option_value);
             }
         }, function (response) {
             $(".preloader-wrapper").removeClass("active");
-            LayerFun(response.errcode);
-            LayerFun('updateFailed');
-            execI18n();
+            // LayerFun(response.errcode);
+            // LayerFun('updateFailed');
+            // execI18n();
+            ErrorPrompt(response.errmsg);
             return;
         })
     });
@@ -39,7 +42,8 @@ $(function () {
             $('.api_key_value').text(data.api_key);
         }
     }, function (response) {
-        LayerFun(response.errcode);
+        // LayerFun(response.errcode);
+        ErrorPrompt(response.errmsg);
         if (response.errcode == "114") {
             DelCookie("la_token");
             window.location.href = "login.html";
@@ -55,7 +59,8 @@ $(function () {
             GetOpenServerFun(key_code);
         }
     }, function (response) {
-        LayerFun(response.errcode);
+        // LayerFun(response.errcode);
+        ErrorPrompt(response.errmsg);
     });
 
     //get open server
@@ -106,10 +111,12 @@ $(function () {
         var key_code = $("input[type='radio']:checked").parent().siblings().children("input[type='text']").val();
         if (type == false) {
             LayerFun("pleaseSelectOpenServer");
+            WranPrompt("请选择需要开通的服务");
             return;
         }
         if (key_code.length <= 0) {
-            LayerFun("pleaseInputKey");
+            // LayerFun("pleaseInputKey");
+            WranPrompt("请输入KEY");
             return;
         }
 
@@ -121,7 +128,8 @@ $(function () {
                     $(".radioFile").attr("disabled", true);
                 }
             }, function (response) {
-                layer.msg(response.errmsg);
+                // layer.msg(response.errmsg);
+                ErrorPrompt(response.errmsg);
             });
         }
         if (type == '2') {
@@ -132,7 +140,8 @@ $(function () {
                     $(".radioSms").attr("disabled", true);
                 }
             }, function (response) {
-                layer.msg(response.errmsg);
+                // layer.msg(response.errmsg);
+                ErrorPrompt(response.errmsg);
             });
         }
         if (type == '3') {
@@ -143,7 +152,8 @@ $(function () {
                     $(".radioEmail").attr("disabled", true);
                 }
             }, function (response) {
-                layer.msg(response.errmsg);
+                // layer.msg(response.errmsg);
+                ErrorPrompt(response.errmsg);
             });
         }
     });
@@ -219,7 +229,8 @@ $(function () {
     function SetSwitchFun(type, status, _this, typeSwitch) {
         SetSwitch(token, type, status, function (response) {
             if (response.errcode == '0') {
-                LayerFun('setSuccessfully');
+                // LayerFun('setSuccessfully');
+                SuccessPrompt("设置成功");
                 if (typeSwitch == 'on') {
                     SetSwitchStyleSuc(_this);
                     return;
@@ -230,7 +241,8 @@ $(function () {
                 }
             }
         }, function (response) {
-            LayerFun('setupFailed');
+            // LayerFun('setupFailed');
+            ErrorPrompt(response.errmsg);
             if (typeSwitch == 'on') {
                 SetSwitchStyleFail(_this);
                 return;
@@ -239,7 +251,6 @@ $(function () {
                 SetSwitchStyleSuc(_this);
                 return;
             }
-            LayerFun(response.errcode);
             return;
         });
     }
@@ -304,13 +315,15 @@ $(function () {
         SetPermission(token, pid, real_name, pass_word_hash, user, function (response) {
             if (response.errcode == '0') {
                 $(".preloader-wrapper").removeClass("active");
-                LayerFun('setSuccessfully');
+                // LayerFun('setSuccessfully');
+                SuccessPrompt("设置成功");
                 return;
             }
         }, function (response) {
             $(".preloader-wrapper").removeClass("active");
-            LayerFun('setupFailed');
-            LayerFun(response.errcode);
+            // LayerFun('setupFailed');
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
             return;
         })
     });
@@ -333,7 +346,8 @@ $(function () {
                 $('.alreadyAddBaTypeBox').html(li);
             }
         }, function (response) {
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
             if (response.errcode == "114") {
                 DelCookie("la_token");
                 window.location.href = "login.html";
@@ -357,19 +371,22 @@ $(function () {
         option_key = $('.baseBaTypeInput').val();
         option_value = $('.baseBaTypeInput').val();
         if (option_key.length <= 0) {
-            LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
+            // LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
+            WranPrompt("请选择或者手动输入允许的代理类型");
             return;
         }
         var api_url = 'set_ba_bit_type.php';
         SetAgentType(api_url, token, option_key, option_value, function (response) {
             if (response.errcode == '0') {
                 // $('#uploadImgModal').modal('close');
-                LayerFun('setSuccessfully');
+                // LayerFun('setSuccessfully');
+                SuccessPrompt("设置成功");
                 GetBaTypeFun();
             }
         }, function (response) {
-            LayerFun('setupFailed');
-            LayerFun(response.errmsg);
+            // LayerFun('setupFailed');
+            ErrorPrompt(response.errmsg);
+            // LayerFun(response.errmsg);
         })
         // $('#uploadImgModal').modal('open');
         // $('.baseBaTypeBtnConfirm').removeClass('ca');
@@ -383,13 +400,14 @@ $(function () {
         DeleteAgentType(api_url, token, option_key, function (response) {
             if (response.errcode == '0') {
                 _this.remove();
-                LayerFun('successfullyDeleted');
+                // LayerFun('successfullyDeleted');
+                SuccessPrompt("删除成功");
                 return;
             }
         }, function (response) {
-            LayerFun('failedToDelete');
-            return;
-            LayerFun(response.errcode);
+            // LayerFun('failedToDelete');
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
             return;
         })
     });
@@ -412,7 +430,8 @@ $(function () {
                 $('.alreadyAddCaTypeBox').html(li);
             }
         }, function (response) {
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
             if (response.errcode == "114") {
                 DelCookie("la_token");
                 window.location.href = "login.html";
@@ -435,19 +454,23 @@ $(function () {
         option_key = $('.baseCaTypeInput').val();
         option_value = $('.baseCaTypeInput').val();
         if (option_key.length <= 0) {
-            LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
+            // LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
+            WranPrompt("请选择或者手动输入允许的代理类型");
             return;
         }
         var api_url = 'set_ca_channel.php';
         SetAgentType(api_url, token, option_key, option_value, function (response) {
             if (response.errcode == '0') {
                 // $('#uploadImgModal').modal('close');
-                LayerFun('setSuccessfully');
+                // LayerFun('setSuccessfully');
+                SuccessPrompt("设置成功");
                 GetCaTypeFun();
             }
         }, function (response) {
-            LayerFun('setupFailed');
-            LayerFun(response.errmsg);
+            // LayerFun('setupFailed');
+            // LayerFun(response.errmsg);
+            ErrorPrompt(response.errmsg);
+            return;
         })
         // $('#uploadImgModal').modal('open');
         // $('.baseBaTypeBtnConfirm').addClass('ca');
@@ -461,13 +484,15 @@ $(function () {
         DeleteAgentType(api_url, token, option_key, function (response) {
             if (response.errcode == '0') {
                 _this.remove();
-                LayerFun('successfullyDeleted');
+                // LayerFun('successfullyDeleted');
+                SuccessPrompt("删除成功");
                 return;
             }
         }, function (response) {
-            LayerFun('failedToDelete');
+            // LayerFun('failedToDelete');
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
             return;
-            LayerFun(response.errcode);
         })
     });
 
