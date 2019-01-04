@@ -380,5 +380,11 @@ $(function () {
     });
     $(".help_icon").mouseleave(function () {
         $(".help_img_box").slideUp();
+    });
+
+    //login robot
+    $(".robotBtn").click(function () {
+        var url = getRootPath();
+        window.location.href = url + "/h5/bot_web/login.html";
     })
 });
