@@ -457,6 +457,7 @@ $(function () {
         option_value = $('.baseCaTypeInput').val();
         if (option_key.length <= 0) {
             // LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
+
             WranPrompt("请选择或者手动输入允许的代理类型");
             return;
         }
