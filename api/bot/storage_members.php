@@ -26,13 +26,6 @@ php_begin();
 $content  = file_get_contents("php://input");
 
 
-$rtn_ary = array();
-$rtn_ary['errcode'] = '0';
-$rtn_ary['errmsg'] = $content;
-$rtn_str = json_encode($rtn_ary);
-php_end($rtn_str);
-
-
 //信息
 //$data['member_id'] = get_guid();
 //$data['content'] = get_arg_str('GET','name');

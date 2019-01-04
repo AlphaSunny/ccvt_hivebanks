@@ -369,8 +369,7 @@ function storage_members($data)
 
     $members = explode(",", $data['members']);
 
-//    $time = time()-10*60;
-    $time = time()-10;
+    $time = time()-10*60;
     $sql = "select count(member_id) as count from bot_group_members WHERE group_id='{$data['group_id']}' AND intime<'{$time}'";
     $db->query($sql);
     $count = $db->getField($sql,'count');
@@ -378,7 +377,6 @@ function storage_members($data)
         foreach ($members as $k=>$v){
             $v = str_replace("'"," ",$v);
             $sql = "select * from bot_group_members WHERE group_id='{$data['group_id']}' AND name='{$v}' AND intime<'{$time}'";
-            echo $sql;
             $db->query($sql);
             $row = $db->fetchRow();
             if (!$row){
@@ -389,7 +387,6 @@ function storage_members($data)
                 $date['ctime'] = date('Y-m-d H:i:s');
                 $date['type'] = 1;
                 $sql = $db->sqlInsert("bot_memeber_change_record",$date);
-                echo $sql;
                 $db->query($sql);
             }else{
                 $sql = "update bot_group_members set is_check=2 WHERE group_id='{$data['group_id']}' AND name='{$v}' AND intime<'{$time}'";
@@ -419,8 +416,7 @@ function storage_members($data)
 function del_storage_members($group_id)
 {
     $db = new DB_COM();
-//    $time = time()-30*60;
-    $time = time()-10;
+    $time = time()-10*60;
     $sql = "select * from bot_group_members WHERE group_id='{$group_id}' AND intime<'{$time}' AND is_check=1";
     $db->query($sql);
     $rows = $db->fetchAll();
