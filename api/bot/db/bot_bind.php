@@ -160,7 +160,7 @@ function search_timer()
 function search_bot_group()
 {
     $db = new DB_COM();
-    $sql = "SELECT id,name,ba_id,is_del,is_flirt,us_id,is_test,is_admin_del,invite_code,send_address,bind_account_notice,is_welcome,welcome FROM bot_group WHERE is_del=1 AND is_audit=2 AND is_admin_del=1 ORDER BY intime asc";
+    $sql = "SELECT id,name,ba_id,is_del,is_flirt,us_id,is_test,is_admin_del,invite_code,send_address,bind_account_notice,is_welcome,welcome,exclusive_switch FROM bot_group WHERE is_del=1 AND is_audit=2 AND is_admin_del=1 ORDER BY intime asc";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
@@ -1030,6 +1030,29 @@ function get_chat_switch($us_id){
     }
     return $switch;
 }
+//======================================
+// 函数: 获取要审核的群
+//======================================
+function get_group_list($us_id){
+    $db = new DB_COM();
+    $sql = "select id,name,is_audit from bot_group WHERE us_id='{$us_id}' AND is_audit=1";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    return $rows;
+}
 
+//======================================
+// 函数: 审核
+//======================================
+function audit_group($group_id,$count){
+    $db = new DB_COM();
+    if($count>=100){
+        $time = time();
+        $sql = "update bot_group set is_audit = 2, why='',uptime='{$time}' where id='{$group_id}' ";
+        $db->query($sql);
+//        return $db->affectedRows();
+    }
+    return true;
+}
 
 ?>

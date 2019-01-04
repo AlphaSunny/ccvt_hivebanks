@@ -1,5 +1,5 @@
 $(function () {
-    var token = GetCookie('ba_token'), limit = 10, offset = 0;
+    var token = GetCookie('ba_token'), limit = 50, offset = 0;
     GetBaAccount();
 
     //Get the baseline type
@@ -20,7 +20,7 @@ $(function () {
 
     function RechargeWithdrawCodeQueryFun(limit, offset) {
         var tr = '', count = 1;
-        RechargeWithdrawCodeQuery(token, api_url, type, function (response) {
+        RechargeWithdrawCodeQuery(token, api_url, type, limit, offset, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows;
                 var total = response.total;
@@ -69,7 +69,8 @@ $(function () {
             }
         }, function (response) {
             GetDataFail('rechargePendingTable', '6');
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
             return;
         });
     }
@@ -95,7 +96,8 @@ $(function () {
                 $('#confirmModal').modal('hide');
                 _this.closest('.rechargePendingList').remove();
                 $('.lock_amount').text(response.lock_amount);
-                LayerFun('suc_processing');
+                // LayerFun('suc_processing');
+                SuccessPrompt("处理成功");
                 return;
             }
         }, function (response) {

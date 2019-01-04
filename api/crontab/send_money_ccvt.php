@@ -218,6 +218,15 @@ if ($grous){
         set_time_limit(0);
         if ($v['bot_us_id']!='' || $v['bot_us_id']!=NULL){
             $u_id = $v['bot_us_id'];
+
+            //判断今日已经返现过
+            $check_return = check_is_return($u_id);
+            if ($check_return){
+                $db->Rollback($pInTrans);
+                echo "已经返现过";
+                continue;
+            }
+
             //修改余额
             $give_account = round($v['all_amount']*0.4)*$unit;
             $sql = "update us_base set base_amount=base_amount+'{$give_account}' WHERE us_id='{$u_id}'";
@@ -443,7 +452,16 @@ function get_ba_account($ba_id){
         return 0;
     return $base_amount;
 }
-
+//判断是否今日群主已经返现
+function check_is_return($us_id){
+    $db = new DB_COM();
+    $start = strtotime(date('Y-m-d 00:00:00'));
+    $end = strtotime(date('Y-m-d 23:59:59'));
+    $sql = "select * from com_base_balance WHERE credit_id='{$us_id}' AND utime BETWEEN '{$start}' AND '{$end}' limit 1";
+    $db->query($sql);
+    $rows = $db->fetchRow();
+    return $rows;
+}
 
 //======================================
 // 函数: 获取充值的前置hash

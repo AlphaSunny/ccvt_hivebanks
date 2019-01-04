@@ -10,12 +10,14 @@ $(function () {
             password = $('#password').val(),
             pass_word_hash = hex_sha1(password);
         if (text.length <= 0) {
-            LayerFun('emailNotEmpty');
+            // LayerFun('emailNotEmpty');
+            WranPrompt("邮箱不能为空");
             return;
         }
 
         if (password.length <= 0) {
-            LayerFun('passNotEmpty');
+            // LayerFun('passNotEmpty');
+            WranPrompt("密码不能为空");
             return;
         }
         _email = text.split('@')[1];
@@ -32,7 +34,8 @@ $(function () {
         }, function (response) {
             ShowLoading("hide");
             ActiveClick($this, btnText);
-            LayerFun(response.errmsg);
+            // LayerFun(response.errmsg);
+            ErrorPrompt(response.errmsg);
         })
     });
     $('.GoEmailBtn').click(function () {

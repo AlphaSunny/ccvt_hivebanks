@@ -105,7 +105,8 @@ $(function () {
                 });
             }
         }, function (response) {
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
         });
     }
 
@@ -122,7 +123,8 @@ $(function () {
             text_hash = hex_sha1(text);
 
         if (text == '') {
-            LayerFun('pleaseEnterName');
+            // LayerFun('pleaseEnterName');
+            WranPrompt("请输入姓名");
             return;
         }
         var $this = $(this), btnText = $(this).text();
@@ -133,20 +135,23 @@ $(function () {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
                 $('#name').val(' ');
-                LayerFun('submitSuccess');
+                // LayerFun('submitSuccess');
+                SuccessPrompt("提交成功");
                 GetBindInfo();
             }
         }, function (response) {
             ShowLoading("hide");
             ActiveClick($this, btnText);
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
         })
     });
 
     //show ID card number binding
     $('.idNumBindBtn').click(function () {
         if (name != 'name') {
-            LayerFun('firstBindName');
+            // LayerFun('firstBindName');
+            WranPrompt("请先绑定姓名");
             return;
         }
         $('.idNumFormBox').fadeToggle('fast');
@@ -159,7 +164,8 @@ $(function () {
             text_hash = hex_sha1(text);
 
         if (text == '') {
-            LayerFun('pleaseEnterIdNumber');
+            // LayerFun('pleaseEnterIdNumber');
+            WranPrompt("请输入身份证号码");
             return;
         }
         var $this = $(this), btnText = $(this).text();
@@ -170,13 +176,15 @@ $(function () {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
                 $('#idNum').val(' ');
-                LayerFun('submitSuccess');
+                // LayerFun('submitSuccess');
+                SuccessPrompt("提交成功");
                 GetBindInfo();
             }
         }, function (response) {
             ShowLoading("hide");
             ActiveClick($this, btnText);
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
         })
     });
 
@@ -184,13 +192,15 @@ $(function () {
     //show ID upload binding
     $('.idPhotoBindBtn').click(function () {
         if (name != 'name') {
-            LayerFun('firstBindName');
+            // LayerFun('firstBindName');
+            WranPrompt("请先绑定姓名");
             return;
         }
         if (idNum != 'idNum') {
-            LayerFun('firstIdNum');
+            // LayerFun('firstIdNum');
+            WranPrompt("请先绑定身份证号码");
             return;
-        }
+        };
 
         $('.idPhotoFormBox').fadeToggle('fast');
     });
@@ -213,7 +223,7 @@ $(function () {
                 }
             },
             error: function (response) {
-                layer.msg(response.msg);
+                ErrorPrompt(response.errmsg);
             }
         });
         return src;
@@ -226,7 +236,8 @@ $(function () {
             key_code = response.key_code;
         }
     }, function (response) {
-        LayerFun(response.errcode);
+        // LayerFun(response.errcode);
+        ErrorPrompt(response.errmsg);
     });
 
     /** Upload picture - front
@@ -271,13 +282,15 @@ $(function () {
             if (response.errcode == '0') {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
-                LayerFun('submitSuccess');
+                // LayerFun('submitSuccess');
+                SuccessPrompt("提交成功");
                 GetBindInfo();
             }
         }, function (response) {
             ShowLoading("hide");
             ActiveClick($this, btnText);
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
         })
     });
 
