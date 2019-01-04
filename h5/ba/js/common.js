@@ -370,7 +370,7 @@ function GetEmailCode(email, suc_func, error_func) {
 }
 
 // Reset password (mailbox)
-function ResetEmailPassword(email, cfm_code, pass_word_hash,confirm_pass_word_hash, suc_func, error_func) {
+function ResetEmailPassword(email, cfm_code, pass_word_hash, confirm_pass_word_hash, suc_func, error_func) {
     var api_url = 'rst_pw_email.php',
         post_data = {
             'email': email,
@@ -382,7 +382,7 @@ function ResetEmailPassword(email, cfm_code, pass_word_hash,confirm_pass_word_ha
 }
 
 // Reset password (phone)
-function ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash,confirm_pass_word_hash, suc_func, error_func) {
+function ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash, confirm_pass_word_hash, suc_func, error_func) {
     var api_url = 'rst_pw_phone.php',
         post_data = {
             'country_code': country_code,
@@ -738,10 +738,12 @@ function WithdrawQuest(token, ba_id, bit_type, bit_address, bit_amount, chg_amou
 };
 
 //Proxy user recharge withdrawal record query
-function RechargeWithdrawCodeQuery(token, api_url, type, suc_func, error_func) {
+function RechargeWithdrawCodeQuery(token, api_url, type, limit, offset, suc_func, error_func) {
     var post_data = {
         'token': token,
-        'type': type
+        'type': type,
+        'limit': limit,
+        'offset': offset
     };
     CallApi(api_url, post_data, suc_func, error_func);
 };

@@ -1,5 +1,5 @@
 $(function () {
-    var token = GetCookie('ba_token'), limit = 10, offset = 0;
+    var token = GetCookie('ba_token'), limit = 50, offset = 0;
     GetBaAccount();
 
     //Get the baseline type
@@ -20,7 +20,7 @@ $(function () {
 
     function RechargeWithdrawCodeQueryFun(limit, offset) {
         var tr = '', count = 1;
-        RechargeWithdrawCodeQuery(token, api_url, type, function (response) {
+        RechargeWithdrawCodeQuery(token, api_url, type, limit, offset, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows;
                 var total = response.total;

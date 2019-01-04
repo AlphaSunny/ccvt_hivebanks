@@ -6,11 +6,11 @@ $(function () {
     var base_type = GetCookie('benchmark_type');
 
     //Get user recharged processed order list
-    var api_url = 'log_us_recharge.php', type = '2', limit = 10, offst = 0;
+    var api_url = 'log_us_recharge.php', type = '2', limit = 50, offset = 0;
 
     function RechargeWithdrawCodeQueryFun(limit, offset) {
         var tr = '', count = "";
-        RechargeWithdrawCodeQuery(token, api_url, type, function (response) {
+        RechargeWithdrawCodeQuery(token, api_url, type,limit,offset, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows;
                 var total = response.total;
