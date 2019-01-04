@@ -24,7 +24,7 @@ GET参数
 */
 
 php_begin();
-$args = array('token', 'ca_channel', 'card_nm', 'name', 'idNum','pass_word_hash');
+$args = array('token', 'ca_channel', 'card_nm', 'name', 'pass_word_hash');
 chk_empty_args('GET', $args);
 
 // 用户token
@@ -33,26 +33,27 @@ $token = get_arg_str('GET', 'token', 128);
 $ca_channel = get_arg_str('GET', 'ca_channel');
 $card_nm = get_arg_str('GET', 'card_nm');
 $name = get_arg_str('GET', 'name');
-$idNum = get_arg_str('GET', 'idNum');
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
 //验证token
 $ca_id = check_token($token);
-$pass_word_login = 'password_login';
+
 // 获取pass_word_hash
-if(get_pass_word_hash($ca_id,$pass_word_login) != $pass_word_hash)
+if(get_pass_word_hash($ca_id,'password_login') != $pass_word_hash)
     exit_error("102","密码错误");
 $ca_channel_row = ca_channel_exist_or_not($ca_channel);
+
+//验证代理法定货币类型
 if (!$ca_channel_row)
     exit_error("122","la不支持此代理类型");
-$row_fail = array();
+
 //根据ca_id获取基本信息
 $row = get_ca_base_info($ca_id);
 $data_recharge_pass = array();
+
 //整理插入db数据
 $lgl_addressArr = array();
 $lgl_addressArr["card_nm"] = $card_nm;
 $lgl_addressArr["name"] = $name;
-$lgl_addressArr['idNum'] = $idNum;
 $lgn_type = 'account';
 $utime = time().rand(1000, 9999);
 $ctime = date('Y-m-d H:i:s');
@@ -63,6 +64,7 @@ $data_bind_pass['ca_id'] = $ca_id;
 $data_bind_pass['ca_channel'] = $ca_channel;
 $data_bind_pass['lgl_address'] = json_encode($lgl_addressArr,JSON_UNESCAPED_UNICODE);
 $data_bind_pass['use_flag'] = "0";
+
 $data_bind_pass['ctime'] = date("Y-m-d H:i:s");
 ////判断地址是否已经存在
 if(sel_ca_asset_account_info($ca_id,$card_nm) )

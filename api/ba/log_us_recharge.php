@@ -11,8 +11,8 @@ header("Content-Type:application/json;charset=utf-8");
 /*
 ========================== 用户充值记录 ==========================
 GET参数
-  token           用户TOKEN
-  type            充值类型
+  token           ba TOKEN
+  type            充值类型 (1: 充值待处理 2：充值已处理）
 返回
 total           总记录数
   rows          记录数组
@@ -37,13 +37,11 @@ $page_size = get_arg_str('GET', 'page_size');
 $type = get_arg_str('GET', 'type');
 //验证token
 $ba_id = check_token($token);
+
 //获取充值列表基本信息
-if ($type == '1') {
-    $row = get_ba_recharge_request_ba_id($ba_id,'0');
-}elseif ($type == '2') {
-    $row = get_ba_recharge_request_ba_id($ba_id,'1');
-}elseif ($type == '3'){
-    $row = get_ba_recharge_request_ba_id($ba_id,'2');
+// TODO: 修改type
+if ($type == '1' || $type=='2'|| $type=='3')  {
+    $row = get_ba_recharge_request_ba_id($ba_id, $type);
 }else {
     exit_error(1,"非法参数");
 }
