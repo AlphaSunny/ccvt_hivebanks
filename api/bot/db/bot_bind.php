@@ -1030,6 +1030,29 @@ function get_chat_switch($us_id){
     }
     return $switch;
 }
+//======================================
+// 函数: 获取要审核的群
+//======================================
+function get_group_list($us_id){
+    $db = new DB_COM();
+    $sql = "select id,name,is_audit from bot_group WHERE us_id='{$us_id}' AND is_audit=1";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    return $rows;
+}
 
+//======================================
+// 函数: 审核
+//======================================
+function audit_group($group_id,$count){
+    $db = new DB_COM();
+    if($count>=100){
+        $time = time();
+        $sql = "update bot_group set is_audit = 2, why='',uptime='{$time}' where id='{$group_id}' ";
+        $db->query($sql);
+//        return $db->affectedRows();
+    }
+    return true;
+}
 
 ?>
