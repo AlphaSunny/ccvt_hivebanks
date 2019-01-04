@@ -63,7 +63,7 @@ $(function () {
                         "<td class='opt'>" + opt + "</td>" +
                         "</tr>";
                 });
-                $("#groupListTable").html(tr);
+                $("#groupListTable").append(tr);
             }
         }, function (response) {
             layer.msg(response.errmsg);
