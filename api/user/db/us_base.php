@@ -864,6 +864,7 @@ function white_hat($us_nm){
 
 function black_judge($us_nm){
 
+    return false;
     //判断是否是白帽子
     if(white_hat($us_nm))
         return false;
