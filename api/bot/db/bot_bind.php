@@ -160,7 +160,7 @@ function search_timer()
 function search_bot_group()
 {
     $db = new DB_COM();
-    $sql = "SELECT id,name,ba_id,is_del,is_flirt,us_id,is_test,is_admin_del,invite_code,send_address,bind_account_notice,is_welcome,welcome FROM bot_group WHERE is_del=1 AND is_audit=2 AND is_admin_del=1 ORDER BY intime asc";
+    $sql = "SELECT id,name,ba_id,is_del,is_flirt,us_id,is_test,is_admin_del,invite_code,send_address,bind_account_notice,is_welcome,welcome,exclusive_switch FROM bot_group WHERE is_del=1 AND is_audit=2 AND is_admin_del=1 ORDER BY intime asc";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
