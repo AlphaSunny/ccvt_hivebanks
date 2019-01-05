@@ -65,9 +65,10 @@ if(empty($row['us_id']) || $row['bind_flag'] == 9){
     exit_error('118','该账号暂未审核通过');
 }elseif ($row['bind_flag'] == 3){
     exit_error('137','该账号被拒绝');
-}elseif ($row['scale'] == 0){
-    exit_error('137','等级不够');
 }
+//elseif ($row['scale'] == 0){
+//    exit_error('137','等级不够');
+//}
 
 // 获取最新登录失败信息
 $row_f = get_row_by_us_id($row['us_id']);
