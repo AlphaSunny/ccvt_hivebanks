@@ -33,7 +33,7 @@ $wechat = get_arg_str('GET', 'wechat',128);
 $us_id = check_token($token);
 
 //判断微信是否已经绑定过
-$is_bind = check_wechat_is_bind($us_id,$wechat);
+$is_bind = check_wechat_is_bind($wechat,$us_id);
 if($is_bind){
     exit_error('147','WeChat is already tied');
 }

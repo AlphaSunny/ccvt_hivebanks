@@ -273,7 +273,7 @@ function ins_google_bind($bind_data){
 // 函数: 检查微信是否数据库已经存储
 // 参数: wechat               wechat
 //======================================
-function check_wechat_is_bind($us_id='',$wechat){
+function check_wechat_is_bind($wechat,$us_id=''){
     $db = new DB_COM();
     $sql = "SELECT * FROM us_base WHERE wechat = '{$wechat}'";
     if ($us_id!=''){
