@@ -1071,8 +1071,8 @@ function get_exclusive_code($wechat){
         $sql = "select code from bot_exclusive_code ORDER BY ctime desc limit 1";
         $db->query($sql);
         $last_code = $db->getField($sql,'code');
-        $code = $last_code ? $last_code : "10000";
-        $date['code'] = $code+1;
+        $code = $last_code ? $last_code+1 : "10000";
+        $date['code'] = $code;
         $sql = $db->sqlInsert("bot_exclusive_code", $date);
         $db->query($sql);
     }
