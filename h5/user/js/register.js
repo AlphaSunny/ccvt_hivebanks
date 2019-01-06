@@ -287,6 +287,7 @@ $(function () {
             pass_word = $('.phonePassword').val(),
             again_pass_word = $('.againPhonePassword').val(),
             pass_word_hash = hex_sha1(pass_word),
+            wechat = $('.phoneWeChatName').val(),
             invit_code = $('.phoneInvitCode').val();
         if (cellphone.length <= 0) {
             // LayerFun('phoneNotEmpty');
