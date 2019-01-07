@@ -39,10 +39,10 @@ function get_group_list($us_id)
 //
 // 返回: row           最新信息数组
 //======================================
-function check_group_name($ba_id,$group_name,$vail,$id='')
+function check_group_name($group_name,$vail,$id='')
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM bot_group WHERE ba_id = '{$ba_id}' AND name='{$group_name}'";
+    $sql = "SELECT * FROM bot_group WHERE name='{$group_name}'";
     if ($vail=='edit'){
         $sql .= " AND id!='{$id}'";
     }
@@ -459,8 +459,8 @@ function get_group_temporary_list($us_id)
 function check_is_submit($group_id,$us_id)
 {
     $db = new DB_COM();
-//    $sql = "select is_apply,name from bot_temporary_group WHERE id='{$group_id}' AND us_id='{$us_id}' limit 1";
-    $sql = "select is_apply,name from bot_temporary_group WHERE us_id='{$us_id}' limit 1";
+    $sql = "select is_apply,name from bot_temporary_group WHERE id='{$group_id}' AND us_id='{$us_id}' limit 1";
+//    $sql = "select is_apply,name from bot_temporary_group WHERE us_id='{$us_id}' limit 1";
     $db -> query($sql);
     $row = $db -> fetchRow();
     return $row;

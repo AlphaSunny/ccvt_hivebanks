@@ -38,6 +38,14 @@ if (!$result || $result['is_apply']==2){
     exit_error('139','已经提交过');
 }
 
+//判断名称是否已添加
+$vail = 'edit';
+$is_name = check_group_name($result['name'],$vail);
+if ($is_name){
+    exit_error('109','名称已存在');
+}
+
+
 $data['us_id'] = $us_id;
 $data['group_id'] = $group_id;
 //$data['group_name'] = $result['name'];

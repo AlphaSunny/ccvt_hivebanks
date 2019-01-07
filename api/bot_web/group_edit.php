@@ -42,11 +42,11 @@ $welcome = get_arg_str('GET', 'welcome');
 
 
 //验证token
-$ba_id = check_token($token);
+$us_id = check_token($token);
 
 $vail = 'edit';
 //判断名称是否已添加
-$is_name = check_group_name($ba_id,$group_name,$vail,$group_id);
+$is_name = check_group_name($group_name,$vail,$group_id);
 if ($is_name){
     exit_error('109','名称已存在');
 }
