@@ -39,7 +39,7 @@ $(function () {
 
     //前往注册
     $(".register_text").click(function () {
-        window.location.href = url + "/api/bot_web/page/register.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+        window.location.href = url + "/api/bot_web/page/register.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name)+ "&status=" + encodeURIComponent(status);
     });
 
     //获取参数
@@ -48,6 +48,7 @@ $(function () {
     var reg_type = GetQueryString("reg_type");
     var statistical = GetQueryString("statistical");
     var chat = GetQueryString("chat");
+    var status = GetQueryString("status");
 
     if (reg_type) {
         $(".intl-tel-input").fadeOut("fast");
@@ -114,7 +115,7 @@ $(function () {
                 if (statistical) {
                     window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
                 } else if (chat) {
-                    window.location.href = url + "/api/bot_web/page/chat.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+                    window.location.href = url + "/api/bot_web/page/chat.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name)+ "&status=" + encodeURIComponent(status);
                 }
             }
         }, function (response) {
@@ -165,7 +166,7 @@ $(function () {
                 if (statistical) {
                     window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
                 } else if (chat) {
-                    window.location.href = url + "/api/bot_web/page/chat.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+                    window.location.href = url + "/api/bot_web/page/chat.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name)+ "&status=" + encodeURIComponent(status);
                 }
             }
         }, function (response) {

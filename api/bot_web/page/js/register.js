@@ -35,6 +35,7 @@ $(function () {
     //获取参数
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");
+    var status = GetQueryString("status");
 
     //前往登录
     $(".login_text").click(function () {
@@ -169,7 +170,7 @@ $(function () {
                 $('#invitation').val('');
                 layer.msg("注册成功,请登录");
                 setTimeout(function () {
-                    window.location.href = url + "/api/bot_web/page/login.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+                    window.location.href = url + "/api/bot_web/page/login.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name)+ "&status=" + encodeURIComponent(status);
                 }, 1500);
             }
         }, function (response) {

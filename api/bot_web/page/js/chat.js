@@ -53,6 +53,7 @@ $(function () {
     //获取参数
     var datetime = GetQueryString("datetime");
     var group_name = GetQueryString("group_name");
+    var status = GetQueryString("status");
 
     $(".filter_title").click(function () {
         $(".filter_box").slideToggle("fast");
@@ -189,7 +190,7 @@ $(function () {
     //获取当前域名
     var url = getRootPath();
     $(".backStatistics").click(function () {
-        window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name);
+        window.location.href = url + "/api/bot_web/page/statistical.php?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name) + "&status=" + encodeURIComponent(status);
     });
 
     //scroll top
