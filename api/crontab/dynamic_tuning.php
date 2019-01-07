@@ -84,7 +84,7 @@ function us_base_cut($amount,$us_id){
 
 }
 function ba_add($amount)
-{
+{var_dump($amount);die;
     $db = new DB_COM();
     $sql = "update ba_base set base_amount = base_amount + $amount*".UNIT." where  ba_id= '6C69520E-E454-127B-F474-452E65A3EE75'";
     $db->query($sql);
