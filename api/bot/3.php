@@ -25,7 +25,7 @@ if ($rows){
     foreach ($rows as $k=>$v){
         $data['group_id'] = $v['group_id'];
         $datetime = base64_encode($v['days']);
-        $url = $url."?group_name='".$v['group_name']."'&datetime=".$datetime;
+        $url = $url."?group_name=".$v['group_name']."&datetime=".$datetime;
         $result = json_decode(curl_get($url),true);
         echo $result['url']."<br />";
         $data['address'] =$result['url'];
