@@ -30,7 +30,8 @@ if ($rows){
         $data['address'] =$result['url'];
         $data['date']   = $v['days'];
         $data['ctime'] = date('Y-m-d H:i:s');
-        $db->sqlInsert('bot_statistical_address',$data);
+        $sql = $db->sqlInsert('bot_statistical_address',$data);
+        $db->query($sql);
     }
 }
 echo "OK";
