@@ -23,6 +23,9 @@ $(function () {
             $('.glory_of_integral').text(data.glory_of_integral);
             $('.scale').text(data.scale);
             // $('.userLevelNum').text(us_level);
+            if (parseInt(data.glory_of_integral) > 0) {
+                console.log(parseInt(data.glory_of_integral));
+            }
             if (parseInt(data.glory_of_integral) < 1) {
                 $(".robot_box").remove();
             }
