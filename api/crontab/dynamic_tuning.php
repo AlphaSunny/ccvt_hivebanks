@@ -48,8 +48,9 @@ function lock_cut()
     $staff = $db->fetchAll();
     foreach ($staff as $k => $v)
     {
+        $phone = $v['phone'];
         if($v['phone']  == '15248165523')
-            $sql = "update big_account_lock set amount = amount-7000000 where phone = '$v'";
+            $sql = "update big_account_lock set amount = amount-7000000 where phone = '$phone'";
         else
             $sql = "update big_account_lock set amount = amount-7500000 where phone = '$v'";
 
