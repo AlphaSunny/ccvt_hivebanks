@@ -225,6 +225,6 @@ $(function () {
 
     //jump login
     $(".login").click(function () {
-        window.location.href = url + "/api/bot_web/page/login.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name) + "&chat=chat";
+        window.location.href = url + "/api/bot_web/page/login.html?datetime=" + encodeURIComponent(datetime) + "&group_name=" + encodeURIComponent(group_name) + "&chat=chat" + "&status=" + status;
     });
 });
