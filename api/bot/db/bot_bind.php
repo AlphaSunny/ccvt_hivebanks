@@ -421,17 +421,21 @@ function del_storage_members($group_id)
     $db->query($sql);
     $rows = $db->fetchAll();
     if ($rows){
+        $sql = "insert into bot_memeber_change_record (name,group_id,group_name,ctime,type) values ";
         foreach ($rows as $k=>$v){
+            $sql .= "'".$v['name']."','".$v['group_id']."','".$v['group_name']."','".date('Y-m-d H:i:s')."','2'),";
             //修改名称或退出
-            $date['name'] = str_replace("'"," ",$v['name']);
-            $date['group_id'] = $v['group_id'];
-            $date['group_name'] = $v['group_name'];
-            $date['ctime'] = date('Y-m-d H:i:s');
-            $date['type'] = 2;
-            $sql = $db->sqlInsert("bot_memeber_change_record",$date);
-            echo $sql;
-            $db->query($sql);
+//            $date['name'] = str_replace("'"," ",$v['name']);
+//            $date['group_id'] = $v['group_id'];
+//            $date['group_name'] = $v['group_name'];
+//            $date['ctime'] = date('Y-m-d H:i:s');
+//            $date['type'] = 2;
+//            $sql = $db->sqlInsert("bot_memeber_change_record",$date);
+//            $db->query($sql);
         }
+        $sql = substr($sql,0,strlen($sql)-1);
+        echo $sql;
+        $db->query($sql);
     }
     $sql = "DELETE from bot_group_members where group_id='{$group_id}' AND intime<'{$time}'";
     $res = $db->query($sql);
