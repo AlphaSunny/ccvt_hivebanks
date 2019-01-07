@@ -34,8 +34,18 @@ function dynamic_tuning()
 
 function staff_cut()
 {
-    if(lock_cut())
+    $db = new DB_COM();
+    $sql = "select base_amount from ba_base";
+    $db->query($sql);
+    var_dump($db->fetchAll());
+
+    if(lock_cut()) {
+        $sql = "select base_amount from ba_base";
+        $db->query($sql);
+        var_dump($db->fetchAll());
+
         staff_add();
+    }
 }
 
 //========================
@@ -224,6 +234,10 @@ function lock_add(){
             die('failed'.$flag);
         $flag++;
     }
+    $sql = "select base_amount from ba_base";
+    $db->query($sql);
+    var_dump($db->fetchAll());
+
     die('success'.$flag);
 }
 
