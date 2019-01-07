@@ -17,7 +17,7 @@ header("Content-Type:application/json;charset=utf-8");
 //);
 
 define('UNIT',100000000);
-define('UNIT','6C69520E-E454-127B-F474-452E65A3EE75');
+define('BA_ID','6C69520E-E454-127B-F474-452E65A3EE75');
 dynamic_tuning();
 
 
@@ -49,9 +49,9 @@ function lock_cut()
     foreach ($staff as $k => $v)
     {
         if($v['phone']  == '15248165523')
-            $sql = "update big_us_lock set amount = amount-7000000 where phone = '$v'";
+            $sql = "update big_account_lock set amount = amount-7000000 where phone = '$v'";
         else
-            $sql = "update big_us_lock set amount = amount-7500000 where phone = '$v'";
+            $sql = "update big_account_lock set amount = amount-7500000 where phone = '$v'";
 
         $db->query($sql);
 
