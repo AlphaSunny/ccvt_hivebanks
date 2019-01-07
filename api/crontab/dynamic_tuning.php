@@ -62,22 +62,26 @@ function lock_cut()
     {
         $phone = $v['phone'];
         if($v['phone']  == '15248165523')
+        {
             $sql = "update big_account_lock set amount = amount-7000000 where phone = '$phone'";
-        else
+            $amount = 7000000;
+        }
+        else{
             $sql = "update big_account_lock set amount = amount-7500000 where phone = '$phone'";
-
+            $amount = 7500000;
+        }
         $db->query($sql);
 
         if(!$db->affectedRows())
             die('lock_cut----'.$v);
 
-        if(!ba_add($v['amount']))
+        if(!ba_add($amount))
             die('ba_add'.$v['phone']);
-        if(!cut_log_com_base($v['us_id'],$v['amount']))
+        if(!cut_log_com_base($v['us_id'],$amount))
             die('log_com_base'.$v['phone']);
-        if(!cut_log_com_transfer($v['us_id'],$v['amount']))
+        if(!cut_log_com_transfer($v['us_id'],$amount))
             die('log_com_transfer'.$v['phone']);
-        if(!us_base_cut($v['us_id'],$v['amount']))
+        if(!us_base_cut($v['us_id'],$amount))
             die('us_base_cut'.$v['phone']);
     }
     return true;
