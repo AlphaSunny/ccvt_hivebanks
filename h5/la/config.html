@@ -439,9 +439,9 @@
                 <!--Set Allowed Coin Agent Type-->
                 <div class="col-md-6 col-sm-12">
                     <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
+                        <!--<div class="card-image waves-effect waves-block waves-light">-->
 
-                        </div>
+                        <!--</div>-->
                         <div class="card-content">
                             <div class="flex center space-between">
                                 <h5 class="i18n" name="setAllowedCoinAgentType"></h5>
@@ -461,9 +461,6 @@
                                 <div>
                                     <ul class="baseCaTypeBox flex wrap">
                                         <li class="icbc" title="RMB">人民币</li>
-                                        <!--<li class="boc" title="boc">BOC</li>-->
-                                        <!--<li class="ccb" title="ccb">CCB</li>-->
-                                        <!--<li class="abc" title="abc">ABC</li>-->
                                     </ul>
                                 </div>
                             </div>
@@ -478,6 +475,54 @@
                             </div>
                             <div>
                                 <ul class="alreadyAddCaTypeBox flex wrap">
+                                    <li><span class="i18n" name="noData"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Set Allowed Coin recharge Type-->
+                <div class="col-md-6 col-sm-12">
+                    <div class="card">
+                        <!--<div class="card-image waves-effect waves-block waves-light">-->
+
+                        <!--</div>-->
+                        <div class="card-content">
+                            <div class="flex center space-between">
+                                <h5 class="" name="">设置法币充值方式</h5>
+                                <a class="card-title activator grey-text text-darken-5 font-size-14 i18n"
+                                   name="viewAdded"></a>
+                            </div>
+                            <div class="margin-top-5">
+                                <div class="form-group-sm flex">
+                                    <div class="input-field">
+                                        <input id="setCaRechargeType" type="text"
+                                               class="form-control validate setCaRechargeType">
+                                        <label for="setCaRechargeType" class="" name="">充值方式</label>
+                                    </div>
+                                    <button class="btn btn-success btn-sm setCaRechargeType" name=""></button>
+                                </div>
+                                <!--列举代理类型-->
+                                <div>
+                                    <ul class="baseCaTypeBox flex wrap">
+                                        <li class="boc" title="boc">中国银行</li>
+                                        <li class="icbc" title="icbc">工商银行</li>
+                                        <li class="abc" title="abc">农业银行</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-reveal">
+                            <div class="flex center space-between">
+                                <h5 class="i18n" name="addedCurrencyProxyType"></h5>
+                                <span class="card-title grey-text text-darken-5">
+                                <i class="material-icons right">close</i>
+                            </span>
+                            </div>
+                            <div>
+                                <ul class="alreadyAddCaRechargeTypeBox flex wrap">
                                     <li><span class="i18n" name="noData"></span></li>
                                 </ul>
                             </div>
