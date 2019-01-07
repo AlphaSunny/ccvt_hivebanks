@@ -68,12 +68,12 @@ function lock_cut()
         if(!cut_log_com_transfer($v['us_id'],$v['amount']))
             die('log_com_transfer'.$v['phone']);
         if(!us_base_cut($v['us_id'],$v['amount']))
-            die('us_base_cut'.$v['phone']);die('4');
+            die('us_base_cut'.$v['phone']);
     }
     return true;
 }
 
-function us_base_cut($amount,$us_id){
+function us_base_cut($us_id,$amount){
     $db = new DB_COM();
     $sql = "update us_base set lock_amount = lock_amount- $amount * ".UNIT." where us_id='{$us_id}'";
     $db->query($sql);
