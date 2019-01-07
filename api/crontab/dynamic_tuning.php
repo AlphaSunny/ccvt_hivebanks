@@ -230,15 +230,15 @@ function lock_add(){
 function us_get(){
 
     return [
-        ['phone'=>18137802080,'amount'=>1100],//edwin
-        ['phone'=>18321709102,'amount'=>800],//bruce
-        ['phone'=>15248165523,'amount'=>700],//lilian
-        ['phone'=>13816129726,'amount'=>200],//lvy
-        ['phone'=>15601607210,'amount'=>100],//alan
-        ['phone'=>15221563385,'amount'=>1100],//sunny
-        ['phone'=>15801075991,'amount'=>1100],//gavin
-        ['phone'=>15988394267,'amount'=>600],//karen
-        ['phone'=>13901602243,'amount'=>900],//chan
+        ['phone'=>18137802080,'amount'=>11000000],//edwin
+        ['phone'=>18321709102,'amount'=>8000000],//bruce
+        ['phone'=>15248165523,'amount'=>7000000],//lilian
+        ['phone'=>13816129726,'amount'=>2000000],//lvy
+        ['phone'=>15601607210,'amount'=>10000000],//alan
+        ['phone'=>15221563385,'amount'=>11000000],//sunny
+        ['phone'=>15801075991,'amount'=>11000000],//gavin
+        ['phone'=>15988394267,'amount'=>6000000],//karen
+        ['phone'=>13901602243,'amount'=>9000000],//chan
     ];
 
 }
