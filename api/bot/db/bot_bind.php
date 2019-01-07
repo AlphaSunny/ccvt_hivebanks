@@ -381,7 +381,7 @@ function storage_members($data)
             $row = $db->fetchRow();
             if (!$row){
                 //新用户
-                $date['name'] = ".$v.";
+                $date['name'] = $v;
                 $date['group_id'] = $data['group_id'];
                 $date['group_name'] = $data['group_name'];
                 $date['ctime'] = date('Y-m-d H:i:s');
@@ -434,7 +434,6 @@ function del_storage_members($group_id)
 //            $db->query($sql);
         }
         $sql = substr($sql,0,strlen($sql)-1);
-        echo $sql;
         $db->query($sql);
     }
     $sql = "DELETE from bot_group_members where group_id='{$group_id}' AND intime<'{$time}'";
