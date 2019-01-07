@@ -82,7 +82,7 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                     <div class="chatInfo">
                         <p class="name">
                             <span class="chat_name"><?php echo $v['bot_nickname'] ?></span>
-                            <?php if ($v['us_id']!=NULL && $status!=1){?>
+                            <?php if ($v['us_id']!=NULL){?>
                             <span class="zan_cai_box com_zan_cai_box">
                                 <span class="zan_img_box">
 <!--                                    <span class="zan_count">123</span>-->
@@ -150,7 +150,6 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <tr>
                     <td style="text-align: left"><?php echo $v['bot_nickname']; ?>:</td>
                     <td><?php echo $v['count']; ?></td>
-                    <?php if ($status != 1) { ?>
                     <td class="com_zan_cai_box">
                         <?php if ($v['us_id']!=NULL){ ?>
                         <button class="chat_zan_btn"><img src="img/zan.svg" alt=""><span class="bottom_zan_num">
@@ -181,7 +180,6 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                     <?php }?>
 
                 </tr>
-            <?php } ?>
             </tbody>
         </table>
     </div>
