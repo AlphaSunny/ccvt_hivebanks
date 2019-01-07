@@ -429,7 +429,6 @@ function del_storage_members($group_id)
             $date['ctime'] = date('Y-m-d H:i:s');
             $date['type'] = 2;
             $sql = $db->sqlInsert("bot_memeber_change_record",$date);
-            echo $sql;
             $db->query($sql);
         }
     }
