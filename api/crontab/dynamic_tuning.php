@@ -66,7 +66,7 @@ function lock_cut()
         if(!cut_log_com_base($v['us_id'],$v['amount']))
             die('log_com_base'.$v['phone']);
         if(!cut_log_com_transfer($v['us_id'],$v['amount']))
-            die('log_com_transfer'.$v['phone']);die('3');
+            die('log_com_transfer'.$v['phone']);
         if(!us_base_cut($v['us_id'],$v['amount']))
             die('us_base_cut'.$v['phone']);die('4');
     }
