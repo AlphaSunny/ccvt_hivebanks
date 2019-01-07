@@ -54,7 +54,7 @@ function lock_cut()
         if($v['phone']  == '15248165523')
             $sql = "update big_account_lock set amount = amount-7000000 where phone = '$phone'";
         else
-            $sql = "update big_account_lock set amount = amount-7500000 where phone = '$v'";
+            $sql = "update big_account_lock set amount = amount-7500000 where phone = '$phone'";
 
         $db->query($sql);
 
@@ -199,10 +199,10 @@ function cut_log_com_transfer($us_id,$amount){
 function staff_add()
 {
     lock_add();
-    ba_cut();
-    log_com_base();
-    log_com_transfer();
-    us_base_add();
+//    ba_cut();
+//    log_com_base();
+//    log_com_transfer();
+//    us_base_add();
 }
 
 function lock_add(){
