@@ -423,12 +423,13 @@ function del_storage_members($group_id)
     if ($rows){
         foreach ($rows as $k=>$v){
             //修改名称或退出
-            $date['name'] = $v['name'];
+            $date['name'] = str_replace("'"," ",$v['name']);
             $date['group_id'] = $v['group_id'];
             $date['group_name'] = $v['group_name'];
             $date['ctime'] = date('Y-m-d H:i:s');
             $date['type'] = 2;
             $sql = $db->sqlInsert("bot_memeber_change_record",$date);
+            echo $sql;
             $db->query($sql);
         }
     }
