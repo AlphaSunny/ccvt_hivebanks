@@ -11,6 +11,7 @@ error_reporting(E_ALL | E_STRICT);
 require_once '../inc/common.php';
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
+die('Who is Q++?');
 //
 //define('GONE_STAFF',array('15248165523',
 //    '13816129726')
