@@ -17,6 +17,8 @@ header("Content-Type:application/json;charset=utf-8");
 //);
 
 define('UNIT',100000000);
+define('FLAG',15);
+
 define('BA_ID','6C69520E-E454-127B-F474-452E65A3EE75');
 dynamic_tuning();
 
