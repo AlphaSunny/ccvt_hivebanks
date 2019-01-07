@@ -27,6 +27,7 @@ if ($rows){
         $datetime = base64_encode($v['days']);
         $url = $url."?group_name='".$v['group_name']."'&datetime=".$datetime;
         $result = json_decode(curl_get($url),true);
+        echo $result['url']."<br />";
         $data['address'] =$result['url'];
         $data['date']   = $v['days'];
         $data['ctime'] = date('Y-m-d H:i:s');
