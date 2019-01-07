@@ -1,4 +1,5 @@
 <?php
+require_once '../inc/common.php';
 function curl_get($url){
 
     $testurl = $url;
@@ -13,10 +14,26 @@ function curl_get($url){
     return $output;
 }
 
+$db = new DB_COM();
+
 $url = "https://ccvt_test.fnying.com/api/bot/search_statistical.php";
-$datetime = base64_encode("2018-12-21");
-$url = $url."?group_name=测试2&datetime=".$datetime;
-$result = curl_get($url);
-print_r($result);
+
+$sql = "select DATE_FORMAT(bot_send_time,'%Y-%m-%d') days,group_id,(select name from bot_group where id=group_id) as group_name from bot_message where group_id!=0 group by days,group_id order by days desc";
+$db->query($sql);
+$rows = $db->fetchAll();
+if ($rows){
+    foreach ($rows as $k=>$v){
+        $data['group_id'] = $v['group_id'];
+        $datetime = base64_encode($v['days']);
+        $url = $url."?group_name='".$v['group_name']."'&datetime=".$datetime;
+        $result = json_decode(curl_get($url),true);
+        $data['address'] =$result['url'];
+        $data['date']   = $v['days'];
+        $data['ctime'] = date('Y-m-d H:i:s');
+        $db->sqlInsert('bot_statistical_address',$data);
+    }
+}
+echo "OK";
+
 
 ?>
