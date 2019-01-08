@@ -17,7 +17,30 @@
     <link rel="stylesheet" href="../bot_web/css/robot_login.css">
     <title>智能AI机器人</title>
 </head>
-<body>
+<body class="app sidebar-mini rtl">
+<header class="app-header"><a class="app-header__logo" href="group_list.html">Robot</a>
+    <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+    <!-- Navbar Right Menu-->
+    <ul class="app-nav">
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
+                class="fa fa-user fa-lg"></i></a>
+            <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                <li><a class="dropdown-item logOut" href="javascript:;"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</header>
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+    <div class="app-sidebar__user">
+        <div>
+            <p class="app-sidebar__user-name robot_username"></p>
+        </div>
+    </div>
+    <ul class="app-menu"></ul>
+</aside>
 
 
 <script type="text/javascript" src="../assets/js/jquery-3.2.1.min.js"></script>
