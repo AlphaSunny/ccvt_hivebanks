@@ -337,6 +337,8 @@ $(function () {
                 $('.phonePassword').val('');
                 $('.confirmphonePassword').val('');
                 LayerFun('modifySuccess');
+                DelCookie('user_token');
+                window.location.href = 'login.html';
             }
 
         }, function (response) {
