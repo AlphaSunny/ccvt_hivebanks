@@ -189,7 +189,7 @@ $(function () {
         src = UpLoadImg(formData);
     });
 
-//     //添加关键字
+    //添加关键字
     $(".addSubBtn").click(function () {
         var ask = $("#key_word").val();
         var group_id = $("#selectGroupName").val();
@@ -256,7 +256,7 @@ $(function () {
             $("#upload_img").attr("src", answer);
         }
         var is_audit = "2";
-        GetGroupListFun(is_audit);
+        // GetGroupListFun(is_audit);
         $("#keyWordModal").modal("show");
     });
 
