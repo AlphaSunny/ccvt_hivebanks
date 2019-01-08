@@ -7,6 +7,7 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows[0];
                 $(".group_name_input").val(data.name);
+                $(".group_name").text(data.name);
                 if (data.is_admin_del == "1") {
                     $(".is_admin_del").val("1").addClass("active");
                 } else {
