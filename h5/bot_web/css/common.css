@@ -36,6 +36,10 @@ body {
     color: #353535;
 }
 
+.desktop_panel_fa_icon {
+    font-size: 2rem;
+}
+
 .desktop_panel_inner_link {
     font-size: 42px;
     padding-top: 16px;
