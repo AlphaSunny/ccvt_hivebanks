@@ -44,45 +44,53 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i>首页</h1>
-            <p>账号整体情况</p>
+            <h1><i class="fa fa-th-list"></i>群设置</h1>
+            <p>群设置</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">首页</li>
+            <li class="breadcrumb-item"><a href="home.html">首页</a></li>
+            <li class="breadcrumb-item">群设置</li>
         </ul>
     </div>
     <div id="desktop_panel">
         <div class="desktop_panel_hd">
-            <h3 class="desktop_panel_title">账号整体情况</h3>
+            <h3 class="desktop_panel_title">群设置</h3>
         </div>
         <div class="desktop_panel_bd">
             <div class="row">
                 <div class="col-md-4 col-sm-4 col-xs-4 text-center">
                     <div>
                         <i class="fa fa-line-chart fa-lg desktop_panel_fa_icon"></i>
-                        <span class="desktop_panel_inner_title">新增用户数</span>
-                    </div>
-                    <div>
-                        <a href="#" class="desktop_panel_inner_link">50</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-4 text-center">
-                    <div>
-                        <i class="fa fa-commenting fa-lg desktop_panel_fa_icon"></i>
-                        <span class="desktop_panel_inner_title">消息数量</span>
-                    </div>
-                    <div>
-                        <a href="#" class="desktop_panel_inner_link">40</a>
+                        <div>
+                            <input type="text" class="form-control">
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4 text-center">
                     <div>
-                        <i class="fa fa-user fa-lg desktop_panel_fa_icon"></i>
-                        <span class="desktop_panel_inner_title">用户总人数</span>
+                        <i class="fa fa-line-chart fa-lg desktop_panel_fa_icon"></i>
+                        <span class="desktop_panel_inner_title">运行状态</span>
                     </div>
+                    <div class="flex center">
+                        <span>关</span>
+                        <input id="keyWordSwitch"
+                               class="switch keyWordSwitch switch-anim margin-left-2"
+                               type="checkbox" value="2">
+                        <span>开</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4 text-center">
                     <div>
-                        <a href="#" class="desktop_panel_inner_link">450</a>
+                        <i class="fa fa-line-chart fa-lg desktop_panel_fa_icon"></i>
+                        <span class="desktop_panel_inner_title">调戏状态</span>
+                    </div>
+                    <div class="flex center">
+                        <span>关</span>
+                        <input id="keyWordSwitch"
+                               class="switch keyWordSwitch switch-anim margin-left-2"
+                               type="checkbox" value="2">
+                        <span>开</span>
                     </div>
                 </div>
             </div>
