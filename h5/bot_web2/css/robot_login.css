@@ -22,7 +22,6 @@ a {
 .logo_box {
     width: 50px;
     height: 50px;
-    display: inline-block;
 }
 
 .logo_box img {
@@ -31,8 +30,6 @@ a {
 
 .nav_box h1 {
     margin: 0;
-    padding-top: 20px;
-    display: inline-block;
 }
 
 .qr_box {
@@ -83,4 +80,19 @@ a {
     text-align: center;
     border-top: 1px solid #E4E8EB;
     padding-top: 10px;
+}
+
+.flex {
+    display: flex;
+    display: -moz-flex;
+    display: -o-flex;
+    display: -ms-flex;
+}
+
+.flex.align_item_center {
+    align-items: center;
+}
+
+.flex.justify_center {
+    justify-content: center;
 }
