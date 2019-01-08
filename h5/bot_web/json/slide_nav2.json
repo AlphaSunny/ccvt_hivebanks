@@ -1,5 +1,11 @@
 [
   {
+    "name": "首页",
+    "class":"one",
+    "href": "home.html",
+    "fa_icon": "fa-home"
+  },
+  {
     "name": "定时任务",
     "class":"two",
     "href": "task_list.html",
