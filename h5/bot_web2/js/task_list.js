@@ -1,5 +1,6 @@
 $(function () {
     var token = GetCookie("robot_token");
+    var group_id = GetCookie("group_id");
 
     function GetTaskListFun() {
         GetTaskList(token, function (response) {
@@ -322,7 +323,7 @@ $(function () {
     $(".addSubBtn").click(function () {
         var content = "", tx_content = "", tx_content_arr = [];
         var time = $("#time").val();
-        var group_id = $("#selectGroupName").val();
+        // var group_id = $("#selectGroupName").val();
         var tx_content_list = $(".checkbox_input:checked");
         $.each(tx_content_list, function (i, val) {
             tx_content_arr.push($(this).val());
