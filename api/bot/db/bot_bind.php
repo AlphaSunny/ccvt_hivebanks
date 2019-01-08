@@ -424,7 +424,7 @@ function del_storage_members($group_id)
         $sql = "insert into bot_memeber_change_record (name,group_id,group_name,ctime,type) values ";
         foreach ($rows as $k=>$v){
             $values = str_replace("'"," ",$v['name']);
-            $sql .= "'".$values."','".$v['group_id']."','".$v['group_name']."','".date('Y-m-d H:i:s')."','2'),";
+            $sql .= "('".$values."','".$v['group_id']."','".$v['group_name']."','".date('Y-m-d H:i:s')."','2'),";
             //修改名称或退出
 //            $date['name'] = str_replace("'"," ",$v['name']);
 //            $date['group_id'] = $v['group_id'];
