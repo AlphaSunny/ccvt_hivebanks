@@ -4,6 +4,8 @@ $(function () {
 
     //是否开启自动回复
     $("#keyWordSwitch").on("change", function () {
+        layer.msg("自动回复控制功能即将上线");
+        return;
         if ($(this).val() == "1") {
             $(this).removeClass("active").val("2");
         } else {
