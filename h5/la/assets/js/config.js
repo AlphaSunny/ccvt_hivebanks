@@ -471,11 +471,13 @@ $(function () {
                 // $('#uploadImgModal').modal('close');
                 // LayerFun('setSuccessfully');
                 SuccessPrompt("设置成功");
+                name = "";
                 GetCaTypeFun();
             }
         }, function (response) {
             // LayerFun('setupFailed');
             // LayerFun(response.errmsg);
+            name = "";
             ErrorPrompt(response.errmsg);
             return;
         })
