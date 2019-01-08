@@ -35,7 +35,7 @@ if ($row){
 }
 if(!ins_ca_com_option_config($data))
     exit_error("101","插入错误");
-$rows = sel_ca_com_option_config();
+$rows = sel_ca_type_com_option_config();
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
