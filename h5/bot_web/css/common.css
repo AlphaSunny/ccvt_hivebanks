@@ -45,6 +45,10 @@ body {
     font-size: 2rem;
 }
 
+.desktop_panel_gory {
+    color: #9a9a9a;
+}
+
 .desktop_panel_inner_link {
     font-size: 42px;
     padding-top: 16px;
