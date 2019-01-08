@@ -86,16 +86,16 @@ $(function () {
     }
 
     //编辑任务
-    var type = "", tx_content_arr = [];
+    var type = "", tx_content_arr = [],timer_id = "";
     $(document).on("click", ".editBtn", function () {
         var group_name = $(this).parents("tr").find(".name").text();
         var time = $(this).parents("tr").find(".time").text();
         var content = $(this).parents("tr").find(".content").text();
         var task_id = $(this).parents("tr").find(".content").attr("name");
         send_type = $(this).parents("tr").find(".send_type").text();
+        timer_id = $(this).parents("tr").find(".content").attr("name");
         var type = $(this).parents("tr").find(".type").text();
         var tx_content = $(this).parents("tr").find(".tx_content").text();
-        console.log(task_id);
         if (type == 1) {
             $("input[type='checkbox']").prop("checked", true);
         } else {
@@ -134,7 +134,7 @@ $(function () {
 
     //确认编辑
     $(".editSubBtn").click(function () {
-        var timer_id = $("#timer_id").val();
+        // var timer_id = $("#timer_id").val();
         var content = "", tx_content = "", tx_content_arr = [];
         var time = $("#time").val();
         var tx_content_list = $(".checkbox_input:checked");
