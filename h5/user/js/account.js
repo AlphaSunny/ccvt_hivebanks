@@ -73,7 +73,7 @@ $(function () {
     $('.modifyNameBtn').click(function () {
         var us_account = $('#nickName').val();
         if (us_account.length <= 0) {
-            WranPrompt("请输入昵称");
+            WarnPrompt("请输入昵称");
             // LayerFun('pleaseEnterNickname');
             return;
         }
@@ -249,7 +249,7 @@ $(function () {
     $(".bindWeChatBtn").click(function () {
         var wechat = $("#weChatName").val();
         if (wechat.length <= 0) {
-            WranPrompt("请输入微信昵称");
+            WarnPrompt("请输入微信昵称");
             // LayerFun("pleaseEnterNickname");
             return;
         }
@@ -285,7 +285,7 @@ $(function () {
         var voucher = $(".voucher_input").val();
         if (voucher.length <= 0) {
             // LayerFun("pleaseInputExchangeCode");
-            WranPrompt("请输入兑换码");
+            WarnPrompt("请输入兑换码");
             ShowLoading("hide");
             return
         }
@@ -312,12 +312,12 @@ $(function () {
         var account = $(".transform_ccvt_input").val();
         if (account.length <= 0) {
             // LayerFun("pleaseInputChangeAmount");
-            WranPrompt("请输入金额数量");
+            WarnPrompt("请输入金额数量");
             ShowLoading("hide");
             return
         }
         if (!(/^[1-9]\d*$/.test(account))) {
-            WranPrompt("请输入正确的金额数量");
+            WarnPrompt("请输入正确的金额数量");
             ShowLoading("hide");
             return
         }
@@ -361,7 +361,7 @@ $(function () {
     $(".weChatGroupBtn").click(function () {
         var group_id = $("input[type='radio']:checked").val();
         if (!group_id) {
-            WranPrompt("请选择群");
+            WarnPrompt("请选择群");
             return;
         }
         ShowLoading("show");

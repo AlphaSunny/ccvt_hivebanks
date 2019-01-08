@@ -1,4 +1,4 @@
-function WranPrompt(text) {
+function WarnPrompt(text) {
     layer.msg(text, {icon: 0});
 }
 

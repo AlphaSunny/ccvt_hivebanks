@@ -124,7 +124,7 @@ $(function () {
 
         if (text == '') {
             // LayerFun('pleaseEnterName');
-            WranPrompt("请输入姓名");
+            WarnPrompt("请输入姓名");
             return;
         }
         var $this = $(this), btnText = $(this).text();
@@ -151,7 +151,7 @@ $(function () {
     $('.idNumBindBtn').click(function () {
         if (name != 'name') {
             // LayerFun('firstBindName');
-            WranPrompt("请先绑定姓名");
+            WarnPrompt("请先绑定姓名");
             return;
         }
         $('.idNumFormBox').fadeToggle('fast');
@@ -165,7 +165,7 @@ $(function () {
 
         if (text == '') {
             // LayerFun('pleaseEnterIdNumber');
-            WranPrompt("请输入身份证号码");
+            WarnPrompt("请输入身份证号码");
             return;
         }
         var $this = $(this), btnText = $(this).text();
@@ -193,12 +193,12 @@ $(function () {
     $('.idPhotoBindBtn').click(function () {
         if (name != 'name') {
             // LayerFun('firstBindName');
-            WranPrompt("请先绑定姓名");
+            WarnPrompt("请先绑定姓名");
             return;
         }
         if (idNum != 'idNum') {
             // LayerFun('firstIdNum');
-            WranPrompt("请先绑定身份证号码");
+            WarnPrompt("请先绑定身份证号码");
             return;
         };
 

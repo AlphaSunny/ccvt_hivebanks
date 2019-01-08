@@ -69,7 +69,10 @@
                             <p>CCVT创世首发群</p>
                             <a href="javascript:;" class="edit_group_name">编辑</a>
                         </div>
-                        <input type="text" class="form-control none">
+                        <div>
+                            <input type="text" class="form-control group_name_input none">
+                            <button class="btn btn-success btn-sm confirm_edit_group_name_btn">保存</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4 text-center">
@@ -79,8 +82,8 @@
                     </div>
                     <div class="flex center space-center desktop_panel_inner_top">
                         <span>关</span>
-                        <input id="keyWordSwitch"
-                               class="switch keyWordSwitch switch-anim margin-left-2"
+                        <input id="runSwitch"
+                               class="switch runSwitch switch-anim margin-left-2"
                                type="checkbox" value="2">
                         <span>开</span>
                     </div>
@@ -93,8 +96,8 @@
                     </div>
                     <div class="flex center space-center desktop_panel_inner_top">
                         <span>关</span>
-                        <input id="keyWordSwitch"
-                               class="switch keyWordSwitch switch-anim margin-left-2"
+                        <input id="trickSwitch"
+                               class="switch trickSwitch switch-anim margin-left-2"
                                type="checkbox" value="2">
                         <span>开</span>
                     </div>
@@ -108,8 +111,8 @@
                     </div>
                     <div class="flex center space-center desktop_panel_inner_top">
                         <span>关</span>
-                        <input id="keyWordSwitch"
-                               class="switch keyWordSwitch switch-anim margin-left-2"
+                        <input id="pushSwitch"
+                               class="switch pushSwitch switch-anim margin-left-2"
                                type="checkbox" value="2">
                         <span>开</span>
                     </div>
@@ -121,8 +124,8 @@
                     </div>
                     <div class="flex center space-center desktop_panel_inner_top">
                         <span>关</span>
-                        <input id="keyWordSwitch"
-                               class="switch keyWordSwitch switch-anim margin-left-2"
+                        <input id="bindSwitch"
+                               class="switch bindSwitch switch-anim margin-left-2"
                                type="checkbox" value="2">
                         <span>开</span>
                     </div>
@@ -135,10 +138,13 @@
                     </div>
                     <div class="flex center space-center desktop_panel_inner_top">
                         <span>关</span>
-                        <input id="keyWordSwitch"
-                               class="switch keyWordSwitch switch-anim margin-left-2"
+                        <input id="welcomeSwitch"
+                               class="switch welcomeSwitch switch-anim margin-left-2"
                                type="checkbox" value="2">
                         <span>开</span>
+                    </div>
+                    <div class="welcome_text_box none">
+                        <textarea name="welcome_text" id="welcome_text" cols="30" rows="10"></textarea>
                     </div>
                 </div>
             </div>
@@ -160,5 +166,7 @@
 <script type="text/javascript" src="js/slide_nav.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/get_group_list_nav.js"></script>
+<script type="text/javascript" src="js/prompt.js"></script>
+<script type="text/javascript" src="js/group_set.js"></script>
 </body>
 </html>

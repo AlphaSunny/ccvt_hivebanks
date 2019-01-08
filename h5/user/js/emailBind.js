@@ -11,13 +11,13 @@ $(function () {
             pass_word_hash = hex_sha1(password);
         if (text.length <= 0) {
             // LayerFun('emailNotEmpty');
-            WranPrompt("邮箱不能为空");
+            WarnPrompt("邮箱不能为空");
             return;
         }
 
         if (password.length <= 0) {
             // LayerFun('passNotEmpty');
-            WranPrompt("密码不能为空");
+            WarnPrompt("密码不能为空");
             return;
         }
         _email = text.split('@')[1];

@@ -7,7 +7,7 @@ $(function () {
         var api_key = $('#api_key').val();
         if (api_key.length <= 0) {
             // LayerFun('inputCannotBeEmpty');
-            WranPrompt("请输入内容");
+            WarnPrompt("请输入内容");
             return;
         }
         $(".preloader-wrapper").addClass("active");
@@ -111,12 +111,12 @@ $(function () {
         var key_code = $("input[type='radio']:checked").parent().siblings().children("input[type='text']").val();
         if (type == false) {
             LayerFun("pleaseSelectOpenServer");
-            WranPrompt("请选择需要开通的服务");
+            WarnPrompt("请选择需要开通的服务");
             return;
         }
         if (key_code.length <= 0) {
             // LayerFun("pleaseInputKey");
-            WranPrompt("请输入KEY");
+            WarnPrompt("请输入KEY");
             return;
         }
 
@@ -372,7 +372,7 @@ $(function () {
         option_value = $('.baseBaTypeInput').val();
         if (option_key.length <= 0) {
             // LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
-            WranPrompt("请选择或者手动输入允许的代理类型");
+            WarnPrompt("请选择或者手动输入允许的代理类型");
             return;
         }
         var api_url = 'set_ba_bit_type.php';
@@ -462,7 +462,7 @@ $(function () {
         if (option_key.length <= 0) {
             // LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
 
-            WranPrompt("请选择或者手动输入允许的代理类型");
+            WarnPrompt("请选择或者手动输入允许的代理类型");
             return;
         }
         var api_url = 'set_ca_type.php';
@@ -554,7 +554,7 @@ $(function () {
         }
         option_value = $('.setCaRechargeType').val();
         if (option_key.length <= 0) {
-            WranPrompt("请选择或者手动输入允许的充值方式");
+            WarnPrompt("请选择或者手动输入允许的充值方式");
             return;
         }
         var api_url = 'set_ca_channel.php';

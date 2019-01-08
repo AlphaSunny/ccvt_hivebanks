@@ -109,7 +109,7 @@ $(function () {
 
         if (transfer_tx_hash.length <= 0) {
             // LayerFun('inputHash');
-            WranPrompt("请输入Hash");
+            WarnPrompt("请输入Hash");
             return;
         }
         $('#confirmModal').modal('show');

@@ -16,25 +16,25 @@ $(function () {
 
         if (cash_address.length <= 0) {
             // LayerFun('pleaseCardNumber');
-            WranPrompt("请输入银行卡号");
+            WarnPrompt("请输入银行卡号");
             return;
         }
 
         if (name.length <= 0) {
             // LayerFun('pleaseEnterName');
-            WranPrompt("请输入姓名");
+            WarnPrompt("请输入姓名");
             return;
         }
 
         if (idNum.length <= 0) {
             // LayerFun('pleaseEnterIdNumber');
-            WranPrompt("请输入身份证号码");
+            WarnPrompt("请输入身份证号码");
             return;
         }
 
         if (pass_word_hash.length <= 0) {
             // LayerFun('pleaseEnterPassword');
-            WranPrompt("请输入密码");
+            WarnPrompt("请输入密码");
             return;
         }
         ShowLoading("show");

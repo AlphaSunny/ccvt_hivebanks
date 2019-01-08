@@ -108,24 +108,24 @@ $(document).ready(function () {
         if (email.length <= 0) {
             $('.email_tips').fadeIn().siblings('span').fadeOut();
             // LayerFun('emailNotEmpty');
-            WranPrompt("请输入账号");
+            WarnPrompt("请输入账号");
             return;
         }
         if (!IsEmail(email)) {
             $('.emailErrorTips').fadeIn().siblings('span').fadeOut();
             // LayerFun('emailBad');
-            WranPrompt("邮箱格式错误");
+            WarnPrompt("邮箱格式错误");
             return;
         }
         if (emailPassword.length <= 0) {
             $('.password_tips').fadeIn().siblings('span').hide();
             // LayerFun('passwordNotEmpty');
-            WranPrompt("请输入密码");
+            WarnPrompt("请输入密码");
             return;
         }
         if (user_token) {
             // LayerFun('noMoreAccount');
-            WranPrompt("已登录！请前往账户中心");
+            WarnPrompt("已登录！请前往账户中心");
             return;
         }
 
@@ -172,7 +172,7 @@ $(document).ready(function () {
             }
             GetImgCode();
             // LayerFun(response.errcode);
-            WranPrompt(response.errmsg);
+            WarnPrompt(response.errmsg);
             return;
         });
     });
@@ -281,13 +281,13 @@ $(document).ready(function () {
             pass_word_hash = hex_sha1(phonePassword);
         if (cellphone.length <= 0) {
             // LayerFun('phoneNotEmpty');
-            WranPrompt("请输入账号");
+            WarnPrompt("请输入账号");
             $('.phone_tips').fadeIn().siblings('span').hide();
             return;
         }
         if (cfm_code.length <= 0) {
             // LayerFun('codeNotEmpty');
-            WranPrompt("请输入图形验证码");
+            WarnPrompt("请输入图形验证码");
             $('.phoneImgCode_tips').fadeIn().siblings('span').hide();
             return;
         }
@@ -299,13 +299,13 @@ $(document).ready(function () {
 
         if (phonePassword.length <= 0) {
             // LayerFun('passwordNotEmpty');
-            WranPrompt("请输入密码");
+            WarnPrompt("请输入密码");
             $('.Phonepassword_tips').fadeIn().siblings('span').hide();
             return;
         }
         if (user_token) {
             // LayerFun('noMoreAccount');
-            WranPrompt("已登录，请前往账户中心");
+            WarnPrompt("已登录，请前往账户中心");
             return;
         }
 
@@ -347,7 +347,7 @@ $(document).ready(function () {
                 $('.phoneAuditFail').fadeIn('fast');//not approved
             }
             // LayerFun(response.errcode);
-            WranPrompt(response.errmsg);
+            WarnPrompt(response.errmsg);
             return;
         });
     });
