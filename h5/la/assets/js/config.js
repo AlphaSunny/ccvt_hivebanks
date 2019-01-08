@@ -471,6 +471,7 @@ $(function () {
                 // $('#uploadImgModal').modal('close');
                 // LayerFun('setSuccessfully');
                 SuccessPrompt("设置成功");
+                $('.baseCaTypeInput').val("");
                 name = "";
                 GetCaTypeFun();
             }
@@ -559,6 +560,7 @@ $(function () {
         var api_url = 'set_ca_channel.php';
         SetAgentType(api_url, token, option_key, option_value, function (response) {
             if (response.errcode == '0') {
+                $('.setCaRechargeType').val("");
                 ca_recharge_name = "";
                 SuccessPrompt("设置成功");
                 GetCaRechargeFun();
