@@ -69,9 +69,12 @@
                             <p>CCVT创世首发群</p>
                             <a href="javascript:;" class="edit_group_name">编辑</a>
                         </div>
-                        <div class="none input_box">
+                        <div class="none input_box flex center">
                             <input type="text" class="form-control group_name_input">
-                            <button class="btn btn-success btn-sm confirm_edit_group_name_btn">保存</button>
+                            <div>
+                                <button class="btn btn-success btn-sm confirm_edit_group_name_btn">保存</button>
+                                <button class="btn btn-danger btn-sm cancel_edit_group_name_btn">取消</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -145,6 +148,10 @@
                     </div>
                     <div class="welcome_text_box none">
                         <textarea name="welcome_text" id="welcome_text" cols="30" rows="10"></textarea>
+                        <div>
+                            <button class="btn btn-success confirm_edit_welcome_text">保存</button>
+                            <button class="btn btn-danger cancel_edit_welcome_text">取消</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,10 @@ $(function () {
         $(".input_box").removeClass("none");
     });
 
+    $(".cancel_edit_group_name_btn").click(function () {
+        $(".input_box").addClass("none");
+    });
+
     //确认编辑群名称
     $(".confirm_edit_group_name_btn").click(function () {
         var group_name = $(".group_name_input").val();
