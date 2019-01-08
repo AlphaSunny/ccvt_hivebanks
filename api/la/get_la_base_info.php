@@ -42,7 +42,7 @@ if($timestamp < $now_time){
     exit_error('114','Token timeout please retrieve!');
 }
 
-$row = get_la_base();
+$row = get_la_base_info();
 if (get_configure_key())
     $row["api_key"] = get_configure_key()["option_value"];
 
