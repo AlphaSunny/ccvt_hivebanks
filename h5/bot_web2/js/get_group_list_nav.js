@@ -6,6 +6,7 @@
         GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows[0];
+                SetCookie("group_id",data.id);
                 $(".group_name_input").val(data.name);
                 $(".group_name").text(data.name);
                 if (data.is_admin_del == "1") {

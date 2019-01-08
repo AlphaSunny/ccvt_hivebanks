@@ -11,9 +11,9 @@ $(function () {
         $(".welcome_text_box").addClass("none");
     });
 
-    var group_name = "", del = "", flirt = "", group_id = "", send_address = "", bind_account_notice = "",
+    var group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "",
         is_welcome = "", welcome = "";
-
+    var group_id = GetCookie("group_id");
     function EditGroupFun() {
         EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, function (response) {
             if (response.errcode == "0") {
@@ -24,15 +24,6 @@ $(function () {
             ErrorPrompt(response.errmsg);
         })
     }
-
-    //监听开关按钮状态
-    // $("#runSwitch").on("change", function () {
-    //     if ($(this).val() == "1") {
-    //         $(this).removeClass("active").val("2")
-    //     } else {
-    //         $(this).addClass("active").val("1")
-    //     }
-    // });
 
     //编辑群名称
     $(".confirm_edit_group_name_btn").click(function () {
