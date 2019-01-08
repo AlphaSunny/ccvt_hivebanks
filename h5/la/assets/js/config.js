@@ -414,7 +414,7 @@ $(function () {
 
     //Get the CA proxy type that has been set
     function GetCaTypeFun() {
-        var api_url = 'get_ca_channel.php', li = '';
+        var api_url = 'get_ca_type.php', li = '';
         GetAgentType(api_url, token, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows;
@@ -482,7 +482,7 @@ $(function () {
     //Delete the CA proxy type
     $(document).on('click', '.alreadyAddCaTypeBox .ca_bit_type', function () {
         var _this = $(this);
-        var api_url = 'del_ca_channel.php';
+        var api_url = 'del_ca_type.php';
         var option_key = $(this).children('.option_key').text();
         DeleteAgentType(api_url, token, option_key, function (response) {
             if (response.errcode == '0') {
@@ -499,9 +499,47 @@ $(function () {
         })
     });
 
+    //Get the CA recharge type that has been set
+    function GetCaRechargeFun() {
+        var api_url = 'get_ca_channel.php', li = '';
+        GetAgentType(api_url, token, function (response) {
+            if (response.errcode == '0') {
+                var data = response.rows;
+                if (data.length <= 0) {
+                    return;
+                }
+                $.each(data, function (i, val) {
+                    li += '<li class="ca_recharge_type">' +
+                        '<span class="option_key">' + data[i].option_key + '</span>' +
+                        '<span class="fa fa-times"></span>' +
+                        '</li>';
+                });
+                $('.alreadyAddCaRechargeTypeBox').html(li);
+            }
+        }, function (response) {
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
+            if (response.errcode == "114") {
+                DelCookie("la_token");
+                window.location.href = "login.html";
+            }
+        });
+    }
+    GetCaRechargeFun();
+
+    //Select CA recharge type
+    var ca_recharge_name = "";
+    $('.caRechargeTypeBox li').click(function () {
+        var liVal = $(this).text();
+        ca_recharge_name = $(this).attr('title');
+        $('.setCaRechargeType').val(liVal);
+        $('.setCaRechargeType').attr('name', ca_recharge_name);
+        $(this).addClass('baseLiActive').siblings().removeClass('baseLiActive');
+    });
+
     //set ca recharge type
     $(".setCaRechargeType").click(function () {
-        option_key = name;
+        option_key = ca_recharge_name;
         option_value = $('.setCaRechargeType').val();
         if (option_key.length <= 0) {
             WranPrompt("请选择或者手动输入允许的充值方式");
@@ -511,9 +549,29 @@ $(function () {
         SetAgentType(api_url, token, option_key, option_value, function (response) {
             if (response.errcode == '0') {
                 SuccessPrompt("设置成功");
-                // GetCaRehargeFun();
+                GetCaRechargeFun();
             }
         }, function (response) {
+            ErrorPrompt(response.errmsg);
+            return;
+        })
+    });
+
+    //Delete the CA recharge type
+    $(document).on('click', '.alreadyAddCaRechargeTypeBox .ca_recharge_type', function () {
+        var _this = $(this);
+        var api_url = 'del_ca_channel.php';
+        var option_key = $(this).children('.option_key').text();
+        DeleteAgentType(api_url, token, option_key, function (response) {
+            if (response.errcode == '0') {
+                _this.remove();
+                // LayerFun('successfullyDeleted');
+                SuccessPrompt("删除成功");
+                return;
+            }
+        }, function (response) {
+            // LayerFun('failedToDelete');
+            // LayerFun(response.errcode);
             ErrorPrompt(response.errmsg);
             return;
         })
