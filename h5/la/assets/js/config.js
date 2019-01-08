@@ -461,7 +461,7 @@ $(function () {
             WranPrompt("请选择或者手动输入允许的代理类型");
             return;
         }
-        var api_url = 'set_ca_channel.php';
+        var api_url = 'set_ca_type.php';
         SetAgentType(api_url, token, option_key, option_value, function (response) {
             if (response.errcode == '0') {
                 // $('#uploadImgModal').modal('close');
@@ -494,6 +494,26 @@ $(function () {
         }, function (response) {
             // LayerFun('failedToDelete');
             // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
+            return;
+        })
+    });
+
+    //set ca recharge type
+    $(".setCaRechargeType").click(function () {
+        option_key = name;
+        option_value = $('.setCaRechargeType').val();
+        if (option_key.length <= 0) {
+            WranPrompt("请选择或者手动输入允许的充值方式");
+            return;
+        }
+        var api_url = 'set_ca_channel.php';
+        SetAgentType(api_url, token, option_key, option_value, function (response) {
+            if (response.errcode == '0') {
+                SuccessPrompt("设置成功");
+                // GetCaRehargeFun();
+            }
+        }, function (response) {
             ErrorPrompt(response.errmsg);
             return;
         })
