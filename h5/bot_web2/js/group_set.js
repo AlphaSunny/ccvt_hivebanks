@@ -36,7 +36,7 @@ $(function () {
 
     //编辑欢迎语
     $(".confirm_edit_welcome_text").click(function () {
-        if ($(".welcome").val().length <= 0) {
+        if ($("#welcome_text").val().length <= 0) {
             WarnPrompt("请输入欢迎语");
             return;
         }
