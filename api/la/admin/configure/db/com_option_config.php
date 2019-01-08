@@ -188,7 +188,7 @@ function sel_ca_type_com_option_config_by_option_key($option_key)
 //======================================
 function upd_ca_com_option_config($option_key){
     $db = new DB_COM();
-    $sql = "UPDATE com_option_config SET status = 9 WHERE option_key = '{$option_key}' and sub_id = 'CA' and option_name = 'ca_type'";
+    $sql = "UPDATE com_option_config SET status = 9 WHERE option_key = '{$option_key}' and sub_id = 'CA' and option_name = 'ca_channel'";
     $db->query($sql);
     $count = $db->affectedRows($sql);
     return $count;
