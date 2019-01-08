@@ -7,6 +7,9 @@ body {
     background: #F6F8F9;
 }
 
+.position_relative {
+    position: relative;
+}
 
 #desktop_panel {
     padding: 24px 40px;
@@ -48,7 +51,7 @@ body {
 }
 
 /*table*/
-table .option_a{
+table .option_a {
     margin: 0 5px;
 }
 
