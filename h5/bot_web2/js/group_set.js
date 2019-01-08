@@ -66,15 +66,15 @@ $(function () {
         if ($("#" + id).val() == "1") {
             $("#" + id).removeClass("active").val("2");
             GetVal();
-            // if (id == "welcomeSwitch") {
-            //     $(".welcome_text_box").addClass("none");
-            // }
+            if (id == "welcomeSwitch") {
+                $(".welcome_text_box").addClass("none");
+            }
         } else {
             $("#" + id).addClass("active").val("1");
             GetVal();
-            // if (id == "welcomeSwitch") {
-            //     $(".welcome_text_box").removeClass("none");
-            // }
+            if (id == "welcomeSwitch") {
+                $(".welcome_text_box").removeClass("none");
+            }
         }
     }
 });
