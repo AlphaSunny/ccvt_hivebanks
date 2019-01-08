@@ -79,7 +79,7 @@
                 </div>
                 <div class="col-md-8 col-sm-8 col-xs-8">
                     <div class="text-right">
-                        <button class="btn btn-success">添加关键字</button>
+                        <button class="btn btn-success add_key_word_btn">添加关键字</button>
                     </div>
                 </div>
             </div>
@@ -107,6 +107,72 @@
     </div>
 </main>
 
+<!--添加关键字-->
+<div class="modal fade" id="keyWordModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <!--<div class="form-group">-->
+                        <!--<label for="selectGroupName" class="col-sm-2 control-label">群名称</label>-->
+                        <!--<div class="col-sm-10">-->
+                            <!--<select class="form-control" id="selectGroupName"></select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <label for="key_word" class="col-sm-2 control-label">关键字</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="关键字" id="key_word">
+                        </div>
+                    </div>
+                    <!--内容类型-->
+                    <div class="change_type_box">
+                        <div>
+                            <input type="radio" name="text_file" checked="checked" class="text" id="text">
+                            <label for="text">文本</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="text_file" class="image" id="image">
+                            <label for="image">图片</label>
+                        </div>
+                    </div>
+                    <div class="form-group content_text">
+                        <label for="key_word_content" class="col-sm-2 control-label">回复内容</label>
+                        <div class="col-sm-10">
+                            <textarea name="content" id="key_word_content" class="form-control" rows="10"></textarea>
+                            <p class="timeType" style="color: #9e9e9e">关键字所对应到内容</p>
+                        </div>
+                    </div>
+
+                    <!--form-->
+                    <div class="upload_img_box margin-bottom-2">
+                        <img src="" id="upload_img" alt="">
+                    </div>
+                    <div class="form-group content_image none">
+                        <label class="col-md-2 control-label"></label>
+                        <div class="col-md-10 upload_file_box">
+                            <form id="upload_image" enctype="multipart/form-data" method="GET">
+                                <input type="file" id="file" class="">
+                                <button class="btn btn-success upload-btn">上传文件</button>
+                            </form>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary editSubBtn">保存</button>
+                <button type="button" class="btn btn-primary addSubBtn">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript" src="../assets/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>

@@ -72,16 +72,16 @@ $(function () {
     }
 
     GetKeyWordListFun(limit, offset);
-//
-//     //添加-显示弹框
-//     $(".add_key_word_btn").click(function () {
-//         $("#myModalLabel").text("添加AI关键字");
-//         $(".addSubBtn").removeClass("none");
-//         $(".editSubBtn").addClass("none");
-//         var is_audit = "2";
-//         GetGroupListFun(is_audit);
-//         $("#keyWordModal").modal("show");
-//     });
+
+    //添加-显示弹框
+    $(".add_key_word_btn").click(function () {
+        $("#myModalLabel").text("添加AI关键字");
+        $(".addSubBtn").removeClass("none");
+        $(".editSubBtn").addClass("none");
+        var is_audit = "2";
+        // GetGroupListFun(is_audit);
+        $("#keyWordModal").modal("show");
+    });
 //
 //     //获取群列表
 //     function GetGroupListFun(is_audit) {
