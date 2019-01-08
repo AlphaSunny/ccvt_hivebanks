@@ -31,6 +31,16 @@ body {
     line-height: 1;
 }
 
+.desktop_panel_inner_title {
+    font-weight: 400;
+    color: #353535;
+}
+
+.desktop_panel_inner_link {
+    font-size: 42px;
+    padding-top: 16px;
+}
+
 .dropdown-menu > li > a {
     line-height: 2.5;
 }
