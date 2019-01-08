@@ -49,12 +49,12 @@ $(function () {
         if ($("#" + id).val() == "1") {
             $("#" + id).removeClass("active").val("2");
             if (id == "welcomeSwitch") {
-                $(".welcome_text_box").removeClass("none");
+                $(".welcome_text_box").addClass("none");
             }
         } else {
             $("#" + id).addClass("active").val("1");
             if (id == "welcomeSwitch") {
-                $(".welcome_text_box").addClass("none");
+                $(".welcome_text_box").removeClass("none");
             }
         }
     }
