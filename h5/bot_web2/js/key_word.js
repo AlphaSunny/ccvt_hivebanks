@@ -1,6 +1,7 @@
 $(function () {
 
     var token = GetCookie('robot_token');
+    var group_id = GetCookie('group_id');
 
     //是否开启自动回复
     $("#keyWordSwitch").on("change", function () {
@@ -255,15 +256,13 @@ $(function () {
             $(".upload_img_box").fadeIn(300);
             $("#upload_img").attr("src", answer);
         }
-        var is_audit = "2";
-        // GetGroupListFun(is_audit);
+
         $("#keyWordModal").modal("show");
     });
 
     //确认编辑
     $(".editSubBtn").click(function () {
         var ask = $("#key_word").val();
-        var group_id = $("#selectGroupName").val();
         var answer = "";
         //文本内容判断
         if (send_type == 1) {
