@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+body{
+    background: #F6F8F9;
+}
+
 .dropdown-menu > li > a {
     line-height: 2.5;
 }
