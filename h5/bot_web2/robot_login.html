@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../assets/js/layer/layer.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/robot_login.css">
-
     <link rel="stylesheet" type="text/css"
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>机器人登录</title>
@@ -69,11 +68,12 @@
                 $("#form").attr("action", "http://" + search_pory + "/search");
                 $("#qr_img").attr("src", response.rows.qr_path);
                 if (response.rows.robot_alive == "1") {
-                    $(".robot_qr,.form_box").remove();
-                    $(".success_box").fadeIn();
-                    $(".login_time").text(response.rows.login_time);
-                    $(".elapsed_time").text(response.rows.elapsed_time);
-                    $(".count").text(response.rows.count);
+                    window.location.href = "home.html";
+                    // $(".robot_qr,.form_box").remove();
+                    // $(".success_box").fadeIn();
+                    // $(".login_time").text(response.rows.login_time);
+                    // $(".elapsed_time").text(response.rows.elapsed_time);
+                    // $(".count").text(response.rows.count);
                 }
             }
         });
