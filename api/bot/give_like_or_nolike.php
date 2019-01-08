@@ -25,6 +25,10 @@ $num = get_arg_str('GET','num');
 if ($num<0){
     exit_error('109',"@".$give_wechat.",金额错误");
 }
+
+if ($status=='踩' && $give_wechat==$recive_wechat){
+    exit_error('109',"@".$give_wechat.",不可以踩自己");
+}
 //查看点赞微信或被点赞人微信是否存在,是否打开,是否大于设置金额
 $is_hive = check_wechat($give_wechat,$recive_wechat,$num,$status);
 if ($is_hive['give_status']!=1){
