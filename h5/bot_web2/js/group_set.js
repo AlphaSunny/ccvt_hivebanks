@@ -18,6 +18,7 @@ $(function () {
         EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("设置成功");
+                $(".welcome_text_box,.input_box").addClass("none");
                 GetGroupListNav();
             }
         }, function (response) {
