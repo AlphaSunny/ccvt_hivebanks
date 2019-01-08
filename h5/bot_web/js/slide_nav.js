@@ -1,7 +1,7 @@
 var url = getRootPath(), li = "";
 $.ajax({
     type: "GET",
-    url: url + "/h5/bot_web/json/slide_nav.json",
+    url: url + "/h5/bot_web/json/slide_nav2.json",
     dataType: "json",
     success: function (res) {
         $.each(res, function (i, val) {
