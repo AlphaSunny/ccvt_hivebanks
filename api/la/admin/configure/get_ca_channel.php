@@ -30,20 +30,10 @@ chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token', 128);
-$key = Config::TOKEN_KEY;
-// 获取token并解密
-$des = new Des();
-$decryption_code = $des -> decrypt($token, $key);
-$now_time = time();
-$code_conf =  explode(',',$decryption_code);
-// 获取token中的需求信息
-$user = $code_conf[0];
-$timestamp = $code_conf[1];
-if($timestamp < $now_time){
-    exit_error('114','Token timeout please retrieve!');
-}
-//判断la是否存在
-$row = get_la_by_user($user);
+
+$la_id = check_token($token);
+
+$row = get_la_by_user($la_id);
 if(!$row){
     exit_error('112','用户不存在');
 }
