@@ -10,7 +10,7 @@ body {
     margin-bottom: 1%;
 }
 
-.baseBaTypeBox li:hover, .baseTypeBox li:hover, .baseCaTypeBox li:hover {
+.baseBaTypeBox li:hover, .baseTypeBox li:hover, .baseCaTypeBox li:hover, .alreadyAddCaRechargeTypeBox li:hover {
     background: #000;
     color: #ffffff;
 }
