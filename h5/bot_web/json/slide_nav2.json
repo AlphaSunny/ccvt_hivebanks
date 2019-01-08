@@ -18,7 +18,7 @@
     "fa_icon": "fa-th-list"
   },
   {
-    "name": "AI关键字管理",
+    "name": "AI关键字",
     "class":"last",
     "href": "key_word.html",
     "fa_icon": "fa-file-word-o"
