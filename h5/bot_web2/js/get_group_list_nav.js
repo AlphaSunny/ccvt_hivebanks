@@ -1,4 +1,4 @@
-$(function () {
+// $(function () {
     var token = GetCookie("robot_token");
     var is_audit = "1";
 
@@ -42,6 +42,5 @@ $(function () {
             layer.msg("请稍后再试");
         })
     }
-
     GetGroupListNav();
-});
+// });
