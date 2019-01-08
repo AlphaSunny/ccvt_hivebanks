@@ -254,7 +254,8 @@ table .th_top {
 /*qr_img*/
 #qr_img {
     margin: auto;
-    width: 20%;
+    width: 220px;
+    height: 220px;
 }
 
 /*none*/
