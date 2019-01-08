@@ -128,6 +128,19 @@ function sel_ca_com_option_config()
     $rows = $db->fetchAll();
     return $rows;
 }
+
+/**
+ * @param $option_key
+ * @return array
+ */
+function sel_ca_type_com_option_config()
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM com_option_config WHERE option_name = 'ca_type' and sub_id = 'CA' and status = 1";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    return $rows;
+}
 //======================================
 //  查询共同选项配置表通过选项关键字(ca)
 // 参数:
@@ -148,6 +161,19 @@ function sel_ca_com_option_config_by_option_key($option_key)
     $row = $db->fetchRow();
     return $row;
 }
+
+/**
+ * @param $option_key
+ * @return int
+ */
+function sel_ca_type_com_option_config_by_option_key($option_key)
+{
+    $db = new DB_COM();
+    $sql = "select * from com_option_config where option_name = 'ca_type' and sub_id = 'CA' and option_key='{$option_key}' limit 1";
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    return $row;
+}
 //======================================
 //  更新共同选项配置表通过选项关键字(ca)
 // 参数:option_key     选项关键字
@@ -162,7 +188,7 @@ function sel_ca_com_option_config_by_option_key($option_key)
 //======================================
 function upd_ca_com_option_config($option_key){
     $db = new DB_COM();
-    $sql = "UPDATE com_option_config SET status = 9 WHERE option_key = '{$option_key}' and sub_id = 'CA' and option_name = 'ca_channel'";
+    $sql = "UPDATE com_option_config SET status = 9 WHERE option_key = '{$option_key}' and sub_id = 'CA' and option_name = 'ca_type'";
     $db->query($sql);
     $count = $db->affectedRows($sql);
     return $count;
