@@ -83,22 +83,7 @@ $(function () {
         // GetGroupListFun(is_audit);
         $("#keyWordModal").modal("show");
     });
-//
-//     //获取群列表
-//     function GetGroupListFun(is_audit) {
-//         GetGroupList(token, is_audit, function (response) {
-//             if (response.errcode == "0") {
-//                 var data = response.rows, option = "";
-//                 $.each(data, function (i, val) {
-//                     option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
-//                 });
-//                 $("#selectGroupName").html(option);
-//             }
-//         }, function (response) {
-//             layer.msg(response.errmsg, {icon: 2});
-//         });
-//     }
-//
+
     //选择文本或者图片
     var send_type = 1;
     $("input[type='radio']").change(function () {
@@ -193,7 +178,6 @@ $(function () {
     //添加关键字
     $(".addSubBtn").click(function () {
         var ask = $("#key_word").val();
-        var group_id = $("#selectGroupName").val();
         var answer = "";
         //文本内容判断
         if (send_type == 1) {
