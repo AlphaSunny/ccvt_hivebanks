@@ -68,31 +68,31 @@ $(function () {
         var getOpenServerUrl = "https://ccvt.io/api/plugin/get_common_config.php",
             getOpenServerData = {"key_code": key_code};
         $.get(getOpenServerUrl, getOpenServerData, function (response) {
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 var data = response.rows[0];
-                if(data.email_service == "1" && data.flag == "1"){
+                if (data.email_service == "1" && data.flag == "1") {
                     $(".noOpenEmail").remove();
                     $(".alreadyOpenEmail").removeClass("none");
                     $(".iconEmail").removeClass("color-red").addClass("color-green");
                     $(".iconEmail").removeClass("icon-gantanhao").addClass("icon-duihao");
                     $(".radioEmail").attr("disabled", true);
                 }
-                if(data.sms_service == "1" && data.flag == "1"){
+                if (data.sms_service == "1" && data.flag == "1") {
                     $(".noOpenSms").remove();
                     $(".alreadyOpenSms").removeClass("none");
                     $(".iconSms").removeClass("color-red").addClass("color-green");
                     $(".iconSms").removeClass("icon-gantanhao").addClass("icon-duihao");
                     $(".radioSms").attr("disabled", true);
                 }
-                if(data.upload_file_service == "1" && data.flag == "1"){
+                if (data.upload_file_service == "1" && data.flag == "1") {
                     $(".noOpenFile").remove();
                     $(".alreadyOpenFile").removeClass("none");
                     $(".iconFile").removeClass("color-red").addClass("color-green");
                     $(".iconFile").removeClass("icon-gantanhao").addClass("icon-duihao");
                     $(".radioFile").attr("disabled", true);
                 }
-                if(data.email_service == "1" && data.sms_service == "1" &&
-                    data.upload_file_service == "1" && data.flag == "1"){
+                if (data.email_service == "1" && data.sms_service == "1" &&
+                    data.upload_file_service == "1" && data.flag == "1") {
                     $(".configServeBtn").remove();
                 }
             }
@@ -453,7 +453,11 @@ $(function () {
 
     //Set the CA proxy type
     $('.baseCaTypeBtn').click(function () {
-        option_key = name;
+        if (name == "") {
+            option_key = $(".baseCaTypeInput").val();
+        }else {
+            option_key = name;
+        }
         option_value = $('.baseCaTypeInput').val();
         if (option_key.length <= 0) {
             // LayerFun('pleaseSelectOrManuallyEnterTheAllowedDigitalCurrencyProxyType');
@@ -525,6 +529,7 @@ $(function () {
             }
         });
     }
+
     GetCaRechargeFun();
 
     //Select CA recharge type
@@ -580,35 +585,35 @@ $(function () {
     //Upload image to determine BA/CA
     // $('.baseBaTypeBtnConfirm').click(function () {
     //     var api_url = '';
-        // if (option_src == '') {
-        //     LayerFun('pleaseUploadAnImageOfTheSelectedType');
-        //     return;
-        // }
-        // if ($(this).hasClass('ca')) {
-            // api_url = 'set_ca_channel.php';
-            // SetAgentType(api_url, token, option_key, option_value, function (response) {
-            //     if (response.errcode == '0') {
-            //         $('#uploadImgModal').modal('close');
-            //         LayerFun('setSuccessfully');
-            //         GetCaTypeFun();
-            //     }
-            // }, function (response) {
-            //     LayerFun('setupFailed');
-            //     LayerFun(response.errcode);
-            // })
-        // } else {
-        //     api_url = 'set_ba_bit_type.php';
-        //     SetAgentType(api_url, token, option_key, option_value, function (response) {
-        //         if (response.errcode == '0') {
-        //             $('#uploadImgModal').modal('close');
-        //             LayerFun('setSuccessfully');
-        //             GetBaTypeFun();
-        //         }
-        //     }, function (response) {
-        //         LayerFun('setupFailed');
-        //         LayerFun(response.errcode);
-        //     })
-        // }
+    // if (option_src == '') {
+    //     LayerFun('pleaseUploadAnImageOfTheSelectedType');
+    //     return;
+    // }
+    // if ($(this).hasClass('ca')) {
+    // api_url = 'set_ca_channel.php';
+    // SetAgentType(api_url, token, option_key, option_value, function (response) {
+    //     if (response.errcode == '0') {
+    //         $('#uploadImgModal').modal('close');
+    //         LayerFun('setSuccessfully');
+    //         GetCaTypeFun();
+    //     }
+    // }, function (response) {
+    //     LayerFun('setupFailed');
+    //     LayerFun(response.errcode);
+    // })
+    // } else {
+    //     api_url = 'set_ba_bit_type.php';
+    //     SetAgentType(api_url, token, option_key, option_value, function (response) {
+    //         if (response.errcode == '0') {
+    //             $('#uploadImgModal').modal('close');
+    //             LayerFun('setSuccessfully');
+    //             GetBaTypeFun();
+    //         }
+    //     }, function (response) {
+    //         LayerFun('setupFailed');
+    //         LayerFun(response.errcode);
+    //     })
+    // }
     // });
 
     //Upload image cancel
