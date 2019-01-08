@@ -30,7 +30,7 @@ $(function () {
         GetAssetsReport(token, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows;
-                sum_us_base_amount = data.sum_us_base_amount;
+                sum_us_base_amount = data.sum_us_base_amount + data.sum_us_lock_amount;
                 sum_ba_base_amount = data.sum_ba_base_amount;
                 sum_ca_base_amount = data.sum_ca_base_amount;
                 sum_la_base_amount = Number(sum_us_base_amount) + Number(sum_ba_base_amount) + Number(sum_ca_base_amount);
