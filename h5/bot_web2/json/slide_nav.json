@@ -1,9 +1,9 @@
 [
   {
-    "name": "机器人登录",
+    "name": "首页",
     "class":"one",
-    "href": "robot_login.html",
-    "fa_icon": "fa-dashboard"
+    "href": "home.html",
+    "fa_icon": "fa-home"
   },
   {
     "name": "定时任务",
