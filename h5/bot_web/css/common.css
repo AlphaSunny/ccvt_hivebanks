@@ -35,6 +35,7 @@ body {
 .desktop_panel_inner_title {
     font-weight: 400;
     color: #353535;
+    font-size: 14px;
 }
 
 .desktop_panel_fa_icon {
