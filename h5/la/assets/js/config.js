@@ -545,8 +545,12 @@ $(function () {
     });
 
     //set ca recharge type
-    $(".setCaRechargeType").click(function () {
-        option_key = ca_recharge_name;
+    $(".setCaRechargeTypeBtn").click(function () {
+        if(ca_recharge_name == ""){
+            option_key = $(".setCaRechargeType").val();
+        }else {
+            option_key = ca_recharge_name;
+        }
         option_value = $('.setCaRechargeType').val();
         if (option_key.length <= 0) {
             WranPrompt("请选择或者手动输入允许的充值方式");
@@ -555,10 +559,12 @@ $(function () {
         var api_url = 'set_ca_channel.php';
         SetAgentType(api_url, token, option_key, option_value, function (response) {
             if (response.errcode == '0') {
+                ca_recharge_name = "";
                 SuccessPrompt("设置成功");
                 GetCaRechargeFun();
             }
         }, function (response) {
+            ca_recharge_name = "";
             ErrorPrompt(response.errmsg);
             return;
         })
