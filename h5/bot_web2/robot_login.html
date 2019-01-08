@@ -20,7 +20,9 @@
 </head>
 <body>
 <div class="nav_box">
-    <img src="../assets/img/robot_ccvt_logo.png" alt="">
+    <div class="logo_box">
+        <img src="../assets/img/robot_ccvt_logo.png" alt="">
+    </div>
     <h1>机器人登录</h1>
 </div>
 <div class="qr_box">
@@ -81,9 +83,7 @@
 
         if (robot_alive != "1") {
             timer = setTimeout(function () {
-                console.log("1");
                 GetQr();
-                console.log("2");
             }, 1000);
         } else {
             clearTimeout(timer);

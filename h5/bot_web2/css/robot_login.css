@@ -7,13 +7,24 @@ body {
     margin: 0;
     padding: 0;
 }
-a{
+
+a {
     text-decoration: none;
 }
+
 .nav_box {
     height: 80px;
     background: #ffffff;
     box-shadow: 0 1px 4px 0 rgba(238, 238, 238, 0.5);
+}
+
+.logo_box {
+    width: 50px;
+    height: 50px;
+}
+
+.logo_box img {
+    width: 100%;
 }
 
 .nav_box h1 {
@@ -55,7 +66,8 @@ a{
 .qrcheck p {
     color: #9a9a9a;
 }
-.footer{
+
+.footer {
     padding: 16px 0 40px;
     border-top: none;
     width: 90%;
@@ -63,7 +75,8 @@ a{
     margin-left: auto;
     margin-right: auto;
 }
-.footer p{
+
+.footer p {
     color: #9a9a9a;
     text-align: center;
     border-top: 1px solid #E4E8EB;
