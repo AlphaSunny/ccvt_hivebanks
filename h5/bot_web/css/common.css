@@ -47,6 +47,11 @@ body {
     padding-top: 16px;
 }
 
+/*table*/
+table .option_a{
+    margin: 0 5px;
+}
+
 .dropdown-menu > li > a {
     line-height: 2.5;
 }
