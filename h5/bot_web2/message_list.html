@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="CCVT,机器人,AI,智能AI机器人"/>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/js/layer/layer.css">
+    <link rel="stylesheet" href="../assets/css/jquery.pagination.css">
+    <link rel="stylesheet" type="text/css" href="../bot_web/css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../bot_web/css/common.css">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <title>用户列表</title>
+</head>
+<body class="app sidebar-mini rtl">
+<header class="app-header"><a class="app-header__logo" href="group_list.html">Robot</a>
+    <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+    <!-- Navbar Right Menu-->
+    <ul class="app-nav">
+        <li class="dropdown">
+            <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu">
+                <i class="fa fa-user fa-lg"></i>
+                <span class="app-sidebar__user-name robot_username"></span>
+            </a>
+            <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                <li><a class="dropdown-item logOut" href="javascript:;"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</header>
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+    <ul class="app-menu"></ul>
+</aside>
+
+<!--整体情况-->
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-th-list"></i>首页</h1>
+            <p>用户列表</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="home.html">首页</a></li>
+            <li class="breadcrumb-item active">用户列表</li>
+        </ul>
+    </div>
+    <div id="desktop_panel">
+        <div class="desktop_panel_hd">
+            <h3 class="desktop_panel_title">用户列表</h3>
+        </div>
+        <div class="desktop_panel_bd">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>昵称</th>
+                                <th>发言数</th>
+                            </tr>
+                            </thead>
+                            <tbody id="groupMember">
+
+                            </tbody>
+                        </table>
+                        <div>
+                            <div id="pagination" class="page"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<script type="text/javascript" src="../assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/js/layer/layer.js"></script>
+<script type="text/javascript" src="../bot_web/js/popper.min.js"></script>
+<script type="text/javascript" src="../assets/js/pace.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/slide_nav.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/get_group_list_nav.js"></script>
+<script type="text/javascript" src="js/message_list.js"></script>
+</body>
+</html>

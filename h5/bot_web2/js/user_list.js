@@ -22,8 +22,8 @@ $(function () {
                 }
                 $.each(data, function (i, val) {
                     tr += "<tr>" +
-                        "<td>" + data[i].name + "</td>" +
-                        "<td>" + data[i].chat_num + "</td>" +
+                        "<td style='text-align: left'>" + data[i].name + "</td>" +
+                        "<td style='text-align: left'>" + data[i].chat_num + "</td>" +
                         "</tr>"
                 });
                 $("#groupMember").html(tr);
