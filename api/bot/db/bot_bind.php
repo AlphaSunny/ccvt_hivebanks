@@ -435,7 +435,6 @@ function del_storage_members($group_id)
 //            $db->query($sql);
         }
         $sql = substr($sql,0,strlen($sql)-1);
-        echo $sql;
         $db->query($sql);
     }
     $sql = "DELETE from bot_group_members where group_id='{$group_id}' AND intime<'{$time}'";
