@@ -65,16 +65,18 @@ $(function () {
     function SwitchChangeFun(id) {
         if ($("#" + id).val() == "1") {
             $("#" + id).removeClass("active").val("2");
-            GetVal();
             if (id == "welcomeSwitch") {
                 $(".welcome_text_box").addClass("none");
+                return;
             }
+            GetVal();
         } else {
             $("#" + id).addClass("active").val("1");
-            GetVal();
             if (id == "welcomeSwitch") {
                 $(".welcome_text_box").removeClass("none");
+                return;
             }
+            GetVal();
         }
     }
 });
