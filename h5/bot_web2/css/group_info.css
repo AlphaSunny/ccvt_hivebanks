@@ -1,0 +1,19 @@
+.edit_group {
+    text-align: right;
+    background: #d9edf7;
+    padding: 1%;
+    cursor: pointer;
+    color: #31708f;
+    margin-bottom: 0;
+}
+
+.edit_group:hover {
+    background: #c4e3f3;
+    color: #31708f;
+}
+
+.edit_group_form {
+    background: rgb(242, 242, 242);
+    padding: 5%;
+    border-radius: 5px;
+}

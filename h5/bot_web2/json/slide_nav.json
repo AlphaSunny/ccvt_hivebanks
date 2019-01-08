@@ -1,0 +1,26 @@
+[
+  {
+    "name": "机器人登录",
+    "class":"one",
+    "href": "robot_login.html",
+    "fa_icon": "fa-dashboard"
+  },
+  {
+    "name": "定时任务",
+    "class":"two",
+    "href": "task_list.html",
+    "fa_icon": "fa-thumb-tack"
+  },
+  {
+    "name": "奖励统计列表",
+    "class":"three",
+    "href": "send_amount.html",
+    "fa_icon": "fa-th-list"
+  },
+  {
+    "name": "AI关键字管理",
+    "class":"last",
+    "href": "key_word.html",
+    "fa_icon": "fa-file-word-o"
+  }
+]

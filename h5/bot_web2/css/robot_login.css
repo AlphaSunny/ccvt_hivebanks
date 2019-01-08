@@ -1,0 +1,71 @@
+body {
+    background: #f6f8f9;
+    min-height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.nav_box {
+    height: 80px;
+    background: #ffffff;
+    box-shadow: 0 1px 4px 0 rgba(238, 238, 238, 0.5);
+}
+
+.nav_box h1 {
+    margin: 0;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.qr_box {
+    width: 90%;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.qr_inner_box {
+    padding: 75px 75px 170px;
+    position: relative;
+    min-height: 500px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+}
+
+.login_tips {
+    text-align: center;
+    padding: 20px;
+}
+
+.qrcheck {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.qrcheck p {
+    color: #9a9a9a;
+}
+.footer{
+    padding: 16px 0 40px;
+    border-top: none;
+    width: 90%;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer p{
+    color: #9a9a9a;
+    text-align: center;
+    border-top: 1px solid #E4E8EB;
+    padding-top: 10px;
+}

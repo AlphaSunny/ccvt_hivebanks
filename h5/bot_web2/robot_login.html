@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="CCVT,机器人,AI"/>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/js/layer/layer.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/robot_login.css">
+    <!-- Main CSS-->
+    <!--<link rel="stylesheet" type="text/css" href="css/main.css">-->
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>机器人登录</title>
+</head>
+<body>
+<div class="nav_box">
+    <h1>机器人登录</h1>
+</div>
+<div class="qr_box">
+    <div class="qr_inner_box">
+        <div class="login_tips">
+            请用微信扫码登录机器人
+        </div>
+        <div class="login_scan_box">
+            <div class="qr_img"></div>
+            <div class="qrcheck">
+                <form action="" method="get" id="form">
+                    <div id="login_click">
+                        <input type="hidden" value="" id="port" name="us_id">
+                        <!--<button class="btn btn-success submit">生成二维码</button>-->
+                        <p>您可以<a href="#" class="submit">刷新二维码</a>重新扫描验证，或关闭窗口</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>©2018-2019 Powered by <a href="http://www.hivebanks.com">hivebanks</a></p>
+</div>
+
+<script type="text/javascript" src="../assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+    GetCookie("robot_token");
+    var us_id = GetCookie("robot_us_id");
+    var url = getRootPath();
+    var search_pory = "", robot_alive = "", timer = "";
+
+    function GetQr() {
+        $.get({
+            url: url + "/api/bot/get_qrcode.php?us_id=" + us_id,
+            async: false,
+            success: function (response) {
+                search_pory = response.rows.ip_address;
+                us_id = response.rows.us_id;
+                robot_alive = response.rows.robot_alive;
+                $("#port").val(us_id);
+                $("#form").attr("action", "http://" + search_pory + "/search");
+                $("#qr_img").attr("src", response.rows.qr_path);
+                if (response.rows.robot_alive == "1") {
+                    $(".robot_qr,.form_box").remove();
+                    $(".success_box").fadeIn();
+                    $(".login_time").text(response.rows.login_time);
+                    $(".elapsed_time").text(response.rows.elapsed_time);
+                    $(".count").text(response.rows.count);
+                }
+            }
+        });
+
+        if (robot_alive != "1") {
+            timer = setTimeout(function () {
+                console.log("1");
+                GetQr();
+                console.log("2");
+            }, 1000);
+        } else {
+            clearTimeout(timer);
+            _GetWeChatGroupFun();
+            return;
+        }
+    }
+
+    GetQr();
+
+    $(".submit").click(function () {
+        $("#form").submit();
+        setTimeout(function () {
+            window.location.reload();
+        }, 4000);
+    });
+</script>
+</body>
+</html>

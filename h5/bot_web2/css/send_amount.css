@@ -1,0 +1,53 @@
+.three_col {
+    height: 7rem;
+    border-radius: 10px;
+    text-align: center;
+    /*line-height: 7rem;*/
+    color: #ffffff;
+    font-size: 2rem;
+}
+
+.three_col p {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.three_col p > span:last-child {
+    border-top: 1px solid #ffffff;
+}
+
+.one_red {
+    background: #f31111d9;
+}
+
+.one_red:hover {
+    background: #c30e0ed9;
+    transition: all 0.3s;
+}
+
+.one_yellow {
+    background: #18c5ab;
+}
+
+.one_yellow:hover {
+    background: #15a28d;
+    transition: all 0.3s;
+}
+
+.one_green {
+    background: #4daf17e3;
+}
+
+.one_green:hover {
+    background: #429414e3;
+    transition: all 0.3s;
+}
+
+.one_blue {
+    background: #3b3bcce3;
+}
+
+.one_blue:hover {
+    background: #272796e3;
+    transition: all 0.3s;
+}

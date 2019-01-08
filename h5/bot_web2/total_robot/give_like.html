@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>奖励统计列表</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/jquery.pagination.css">
+    <link rel="stylesheet" href="../../assets/js/layer/layer.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="app sidebar-mini rtl">
+<!-- Navbar-->
+<header class="app-header"><a class="app-header__logo" href="kyc_group_list.html">AI智能机器人</a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+                                    aria-label="Hide Sidebar"></a>
+    <!-- Navbar Right Menu-->
+    <ul class="app-nav">
+        <!-- User Menu-->
+        <!--<li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>-->
+        <!--<li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>-->
+        <!--<li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
+                class="fa fa-user fa-lg"></i></a>
+            <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                <li><a class="dropdown-item logOut" href="javascript:;"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</header>
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+    <div class="app-sidebar__user">
+        <div>
+            <p class="app-sidebar__user-name robot_username"></p>
+        </div>
+    </div>
+    <ul class="app-menu"></ul>
+</aside>
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-th-list"></i>奖励统计</h1>
+            <p>奖励统计</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item">奖励统计</li>
+            <li class="breadcrumb-item active"><a href="#">奖励统计</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="col-md-12 col-sm-12">
+                    <!--<div class="flex center">-->
+                        <!--<p>总奖励数:<span class="all_amount"></span></p>-->
+                        <!--<p class="margin-left-5">总发言数:<span class="all_chat"></span></p>-->
+                    <!--</div>-->
+
+                    <!--<p>条件搜索:</p>-->
+                    <!--<div class="">-->
+                        <!--<div class="form-group form-group-sm inline-block">-->
+                            <!--<label for="startTime" class="control-label">用户昵称</label>-->
+                            <!--<input type="text" class="form-control" id="nickname">-->
+                        <!--</div>-->
+                        <!--<div class="form-group form-group-sm inline-block margin-left-5">-->
+                            <!--<label for="startTime" class="control-label">开始时间</label>-->
+                            <!--<input type="text" class="form-control" id="startTime">-->
+                        <!--</div>-->
+                        <!--<div class="form-group form-group-sm inline-block margin-left-5 margin-right-2">-->
+                            <!--<label for="endTime" class="control-label">结束时间</label>-->
+                            <!--<input type="text" class="form-control" id="endTime">-->
+                        <!--</div>-->
+                        <!--<div class="inline-block">-->
+                            <!--<button class="btn btn-success searchBtn">搜索</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+
+                <div class="tile-body table-responsive">
+                    <table class="table table-hover table-bordered" id="giveLikeTable">
+                        <thead>
+                        <tr class="text-center">
+                            <th>发起人</th>
+                            <th>接收人</th>
+                            <th>数量(CCVT)</th>
+                            <th>时间</th>
+                        </tr>
+                        </thead>
+                        <tbody id="giveLike"></tbody>
+                    </table>
+                    <div>
+                        <div id="pagination" class="page"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<script type="text/javascript" src="../../assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/popper.min.js"></script>
+<script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../assets/js/layer/layer.js"></script>
+<script type="text/javascript" src="../../assets/js/pace.min.js"></script>
+<script type="text/javascript" src="../../assets/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="../../assets/js/jquery.datetimepicker.full.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="js/slide_nav.js"></script>
+<script type="text/javascript" src="js/give_like.js"></script>
+</body>
+</html>

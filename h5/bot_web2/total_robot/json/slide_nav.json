@@ -1,0 +1,32 @@
+[
+  {
+    "name": "群审核",
+    "href": "kyc_group_list.html",
+    "fa_icon": "fa-dashboard"
+  },
+  {
+    "name": "定时任务",
+    "href": "task_list.html",
+    "fa_icon": "fa-object-group"
+  },
+  {
+    "name": "奖励统计",
+    "href": "send_amount.html",
+    "fa_icon": "fa-thumb-tack"
+  },
+  {
+    "name": "群类型管理",
+    "href": "group_type.html",
+    "fa_icon": "fa-th-list"
+  },
+  {
+    "name": "踩-赞记录",
+    "href": "give_like.html",
+    "fa_icon": "fa-file-word-o"
+  },
+  {
+    "name": "AI关键字管理",
+    "href": "key_word.html",
+    "fa_icon": "fa-file-word-o"
+  }
+]

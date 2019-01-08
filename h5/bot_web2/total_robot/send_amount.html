@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>奖励统计列表</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/jquery.datetimepicker.css">
+    <link rel="stylesheet" href="../../assets/css/jquery.pagination.css">
+    <link rel="stylesheet" href="../../assets/js/layer/layer.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/send_amount.css">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="app sidebar-mini rtl">
+<!-- Navbar-->
+<header class="app-header"><a class="app-header__logo" href="kyc_group_list.html">AI智能机器人</a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+                                    aria-label="Hide Sidebar"></a>
+    <!-- Navbar Right Menu-->
+    <ul class="app-nav">
+        <!-- User Menu-->
+        <!--<li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-twitter"-->
+                                                                             <!--aria-hidden="true"></i></a></li>-->
+        <!--<li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-facebook"-->
+                                                                             <!--aria-hidden="true"></i></a></li>-->
+        <!--<li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-weibo" aria-hidden="true"></i></a>-->
+        <!--</li>-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
+                class="fa fa-user fa-lg"></i></a>
+            <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                <li><a class="dropdown-item logOut" href="javascript:;"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</header>
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+    <div class="app-sidebar__user">
+        <div>
+            <p class="app-sidebar__user-name robot_username"></p>
+        </div>
+    </div>
+    <ul class="app-menu"></ul>
+</aside>
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-th-list"></i>奖励统计列表</h1>
+            <p>奖励统计列表</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item">首页</li>
+            <li class="breadcrumb-item active"><a href="#">奖励统计列表</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="row margin-bottom-5">
+                    <div class="col-md-4 col-sm-12">
+                        <h4>选择群</h4>
+                        <div>
+                            <select name="group_select" class="form-control" id="group_select"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="row margin-bottom-5">
+                        <div class="col-md-3">
+                            <div class="three_col one_red flex center space-center">
+                                <p>
+                                    <span><span class="all_amount"></span>CCVT</span><br>
+                                    <span>总奖励数</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="three_col one_yellow flex center space-center">
+                                <p>
+                                    <span><span class="all_cashback"></span>CCVT</span><br>
+                                    <span>群主奖励</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="three_col one_green flex center space-center">
+                                <p>
+                                    <span><span class="all_bind_count"></span>人</span><br>
+                                    <span>绑定人数</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="three_col one_blue flex center space-center">
+                                <p>
+                                    <span><span class="all_chat"></span>条</span><br>
+                                    <span>总发言数</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>条件搜索</h4>
+                    <div class="">
+                        <div class="form-group form-group-sm inline-block">
+                            <label for="startTime" class="control-label">用户昵称</label>
+                            <input type="text" class="form-control" id="nickname">
+                        </div>
+                        <div class="form-group form-group-sm inline-block margin-left-5">
+                            <label for="startTime" class="control-label">开始时间</label>
+                            <input type="text" class="form-control" id="startTime">
+                        </div>
+                        <div class="form-group form-group-sm inline-block margin-left-5 margin-right-2">
+                            <label for="endTime" class="control-label">结束时间</label>
+                            <input type="text" class="form-control" id="endTime">
+                        </div>
+                        <div class="inline-block">
+                            <button class="btn btn-success searchBtn">搜索</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tile-body table-responsive">
+                    <table class="table table-hover table-bordered" id="sendAmountTable">
+                        <thead>
+                        <tr class="text-center">
+                            <th>群昵称</th>
+                            <th>获得(CCVT)</th>
+                            <th>发言数</th>
+                            <th>奖励时间</th>
+                        </tr>
+                        </thead>
+                        <tbody id="sendBody">
+
+                        </tbody>
+                    </table>
+                    <div>
+                        <div id="pagination" class="page"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<script type="text/javascript" src="../../assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/popper.min.js"></script>
+<script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../assets/js/layer/layer.js"></script>
+<script type="text/javascript" src="../../assets/js/pace.min.js"></script>
+<script type="text/javascript" src="../../assets/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="../../assets/js/jquery.datetimepicker.full.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="js/slide_nav.js"></script>
+<script type="text/javascript" src="js/send_amount.js"></script>
+</body>
+</html>

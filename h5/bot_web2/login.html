@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="CCVT,机器人,AI"/>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="../assets/css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
+    <link href="../assets/css/intlTelInput.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <!-- jQuery -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet'
+          type='text/css'>
+</head>
+<body>
+<!--/login-->
+
+<div class="error_page">
+    <!--/login-top-->
+
+    <div class="error-top">
+        <h2 class="inner-tittle page">Robot</h2>
+        <div class="login">
+            <h3 class="inner-tittle t-inner">Login</h3>
+            <div class="buttons login">
+                <ul>
+                    <!--<li><a href="#" class="hvr-sweep-to-right">Email</a></li>-->
+                    <li class="lost"><a href="#" class="hvr-sweep-to-left">Phone</a></li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <form>
+                <!--<input type="text" id="email" class="text" placeholder="Account">-->
+                <input type="text" id="phone" class="text" placeholder="Account">
+                <input type="password" id="password" placeholder="Password">
+                <div class="cfm_code_box">
+                    <input type="text" id="cfm_code" placeholder="图形验证码">
+                    <img src="" id="phone_imgCode" alt="">
+                </div>
+                <div class="submit">
+                    <a href="javascript:;" class="loginBtn">Login</a>
+                </div>
+                <div class="clearfix"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--//login-->
+<!--footer section start-->
+<div class="footer"></div>
+<!-- Bootstrap Core JavaScript -->
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/intlTelInput.js"></script>
+<script src="../assets/js/layer/layer.js"></script>
+<script src="../assets/js/sha.js"></script>
+<script src="js/common.js"></script>
+<script src="js/login.js"></script>
+<script type="text/javascript">
+    $("#phone").intlTelInput({
+        separateDialCode: true,
+    });
+</script>
+</body>
+</html>

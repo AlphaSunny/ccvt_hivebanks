@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>定时任务</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/js/layer/layer.css">
+    <link rel="stylesheet" href="css/common.css">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="app sidebar-mini rtl">
+<!-- Navbar-->
+<header class="app-header"><a class="app-header__logo" href="group_list.html">Robot</a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+                                    aria-label="Hide Sidebar"></a>
+    <!-- Navbar Right Menu-->
+    <ul class="app-nav">
+        <!-- User Menu-->
+        <!--<li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-twitter"-->
+                                                                             <!--aria-hidden="true"></i></a></li>-->
+        <!--<li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-facebook"-->
+                                                                             <!--aria-hidden="true"></i></a></li>-->
+        <!--<li class="dropdown"><a class="app-nav__item" href="javascript:;"><i class="fa fa-weibo" aria-hidden="true"></i></a>-->
+        <!--</li>-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
+                class="fa fa-user fa-lg"></i></a>
+            <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                <!--<li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>-->
+                <!--<li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>-->
+                <li><a class="dropdown-item logOut" href="javascript:;"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</header>
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+    <div class="app-sidebar__user">
+        <div>
+            <p class="app-sidebar__user-name robot_username"></p>
+        </div>
+    </div>
+    <ul class="app-menu"></ul>
+</aside>
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-th-list"></i>定时任务</h1>
+            <p>定时任务</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item">首页</li>
+            <li class="breadcrumb-item active"><a href="#">定时任务</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <button class="btn btn-success margin-bottom-2 addTaskBtn">添加任务</button>
+                <div class="tile-body table-responsive">
+                    <table class="table table-hover table-bordered" id="taskListTable">
+                        <thead>
+                        <tr class="text-center">
+                            <th class="th_top">时间</th>
+                            <th class="th_top">内容</th>
+                            <th class="th_top">所属群主</th>
+                            <th class="operating th_top">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="taskList"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--modal-->
+    <div class="modal fade" id="editTaskModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">编辑任务信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="groupName" class="col-sm-2 control-label">群名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="timer_id" class="none">
+                                <input type="text" readonly class="form-control" id="groupName">
+                                <select class="form-control" id="selectGroupName"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="time" class="col-sm-2 control-label day_label">日期</label>
+                            <div class="col-sm-10 checkbox_input_box">
+                                <div>
+                                    <input type="checkbox" id="allday" class="">
+                                    <label for="allday">全选</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="sunday" value="sunday" class="checkbox_input">
+                                    <label for="sunday">星期日</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="monday" value="monday" class="checkbox_input">
+                                    <label for="monday">星期一</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="tuesday" value="tuesday" class="checkbox_input">
+                                    <label for="tuesday">星期二</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="wednesday" value="wednesday" class="checkbox_input">
+                                    <label for="wednesday">星期三</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="thursday" value="thursday" class="checkbox_input">
+                                    <label for="thursday">星期四</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="friday" value="friday" class="checkbox_input">
+                                    <label for="friday">星期五</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="saturday" value="saturday" class="checkbox_input">
+                                    <label for="saturday">星期六</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="time" class="col-sm-2 control-label">时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="8:5" id="time">
+                                <p class="timeType" style="color: #9e9e9e">时间格式：10:5/10:15 0-9分钟不加0</p>
+                            </div>
+                        </div>
+                        <div class="change_type_box">
+                            <div>
+                                <input type="radio" name="text_file" checked="checked" class="text" id="text">
+                                <label for="text">文本</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" name="text_file" class="image" id="image">
+                                <label for="image">图片</label>
+                            </div>
+                        </div>
+                        <div class="form-group content_text">
+                            <label for="content" class="col-sm-2 control-label">内容</label>
+                            <div class="col-sm-10">
+                                <textarea name="content" id="content" class="form-control" rows="10"></textarea>
+                            </div>
+                        </div>
+
+                        <!--form-->
+                        <div class="upload_img_box">
+                            <img src="" id="upload_img" alt="">
+                        </div>
+                        <div class="form-group content_image none">
+                            <label class="col-md-2 control-label"></label>
+                            <div class="col-md-10 upload_file_box">
+                                <form id="upload_image" enctype="multipart/form-data" method="GET">
+                                    <input type="file" id="file" class="">
+                                    <button class="btn btn-success upload-btn">上传文件</button>
+                                </form>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary editSubBtn">立即提交</button>
+                    <button type="button" class="btn btn-primary addSubBtn none">立即提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!--loading-->
+<div class="loading">
+    <img src="images/loading.gif" alt="">
+</div>
+
+<script type="text/javascript" src="../assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/js/layer/layer.js"></script>
+<script type="text/javascript" src="../assets/js/pace.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/slide_nav.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/get_group_list_nav.js"></script>
+<script type="text/javascript" src="js/task_list.js"></script>
+</body>
+</html>
