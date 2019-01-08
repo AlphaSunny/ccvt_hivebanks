@@ -68,7 +68,6 @@ $(function () {
             $("#" + id).removeClass("active").val("2");
             if (id == "welcomeSwitch") {
                 $(".welcome_text_box").addClass("none");
-                return;
             }
             GetVal();
         } else {
