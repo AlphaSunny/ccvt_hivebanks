@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/js/layer/layer.css">
+    <link rel="stylesheet" href="../assets/css/jquery.pagination.css">
     <link rel="stylesheet" type="text/css" href="../bot_web/css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css"
@@ -93,7 +94,7 @@
                                 <th>操作</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="keyWord">
                             <tr>
                                 <td>hello</td>
                                 <td>文字</td>
@@ -105,14 +106,10 @@
                             </tr>
                             </tbody>
                         </table>
+                        <div>
+                            <div id="pagination" class="page"></div>
+                        </div>
                     </div>
-                    <!--<div>-->
-                    <!--<i class="fa fa-line-chart fa-lg desktop_panel_fa_icon"></i>-->
-                    <!--<span class="desktop_panel_inner_title">新增用户数</span>-->
-                    <!--</div>-->
-                    <!--<div>-->
-                    <!--<a href="#" class="desktop_panel_inner_link">50</a>-->
-                    <!--</div>-->
                 </div>
             </div>
         </div>
@@ -125,6 +122,7 @@
 <script type="text/javascript" src="../assets/js/layer/layer.js"></script>
 <script type="text/javascript" src="../bot_web/js/popper.min.js"></script>
 <script type="text/javascript" src="../assets/js/pace.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.pagination.min.js"></script>
 <script type="text/javascript" src="../bot_web/js/common.js"></script>
 <script type="text/javascript" src="../bot_web/js/slide_nav.js"></script>
 <script type="text/javascript" src="../bot_web/js/main.js"></script>

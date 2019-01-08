@@ -1,4 +1,7 @@
 $(function () {
+
+    var token = GetCookie('robot_token');
+
     //是否开启自动回复
     $("#keyWordSwitch").on("change", function () {
         if ($(this).val() == "1") {
@@ -6,70 +9,67 @@ $(function () {
         } else {
             $(this).addClass("active").val("1");
         }
+    });
+    //获取关键字列表
+    var limit = 10, offset = 0;
 
-    })
-//     var token = GetCookie('robot_token');
-//
-//     //获取关键字列表
-//     var limit = 10, offset = 0;
-//
-//     function GetKeyWordListFun(limit, offset) {
-//         var tr = "", totalPage = "", count = "";
-//         GetKeyWordList(token, limit, offset, function (response) {
-//             ShowLoading("hide");
-//             if (response.errcode == '0') {
-//                 console.log(response);
-//                 var data = response.rows;
-//                 if (data.length <= 0) {
-//                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
-//                     return;
-//                 }
-//
-//                 totalPage = Math.floor(response.total / limit);
-//                 if (totalPage <= 1) {
-//                     count = 1;
-//                 } else if (1 < totalPage && totalPage <= 6) {
-//                     count = totalPage;
-//                 } else {
-//                     count = 6;
-//                 }
-//
-//                 $.each(data, function (i, val) {
-//                     tr += "<tr>" +
-//                         "<td class='ask' name=" + data[i].id + ">" + data[i].ask + "</td>" +
-//                         "<td class='answer'>" + data[i].answer + "</td>" +
-//                         "<td class='group_name'>" + data[i].group_name + "</td>" +
-//                         "<td class='ctime'>" + data[i].ctime + "</td>" +
-//                         "<td class='send_type none'>" + data[i].send_type + "</td>" +
-//                         "<td class='id none'>" + data[i].id + "</td>" +
-//                         "<td>" +
-//                         "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
-//                         "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
-//                         "</td>" +
-//                         "</tr>"
-//                 });
-//                 $("#keyWord").html(tr);
-//                 $("#pagination").pagination({
-//                     currentPage: (limit + offset) / limit,
-//                     totalPage: totalPage,
-//                     isShow: false,
-//                     count: count,
-//                     prevPageText: "<<",
-//                     nextPageText: ">>",
-//                     callback: function (current) {
-//                         GetKeyWordListFun(limit, (current - 1) * limit);
-//                         ShowLoading("show");
-//                     }
-//                 });
-//             }
-//
-//         }, function (response) {
-//             ShowLoading("hide");
-//             layer.msg(response.errmsg, {icon: 2});
-//         })
-//     }
-//
-//     GetKeyWordListFun(limit, offset);
+    function GetKeyWordListFun(limit, offset) {
+        var tr = "", totalPage = "", count = "";
+        GetKeyWordList(token, limit, offset, function (response) {
+            ShowLoading("hide");
+            if (response.errcode == '0') {
+                console.log(response);
+                var data = response.rows;
+                if (data.length <= 0) {
+                    tr = "<tr><td colspan='4'>暂无数据</td></tr>";
+                    return;
+                }
+
+                totalPage = Math.floor(response.total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+
+                $.each(data, function (i, val) {
+                    tr += "<tr>" +
+                        "<td class='ask' name=" + data[i].id + ">" + data[i].ask + "</td>" +
+                        "<td class='answer'>" + data[i].answer + "</td>" +
+                        "<td class='group_name'>" + data[i].group_name + "</td>" +
+                        "<td class='ctime'>" + data[i].ctime + "</td>" +
+                        "<td class='send_type none'>" + data[i].send_type + "</td>" +
+                        "<td class='id none'>" + data[i].id + "</td>" +
+                        "<td>" +
+                        "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+                        "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
+                        "</td>" +
+                        "</tr>"
+                });
+                $("#keyWord").html(tr);
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        GetKeyWordListFun(limit, (current - 1) * limit);
+                        ShowLoading("show");
+                    }
+                });
+            }
+
+        }, function (response) {
+            ShowLoading("hide");
+            layer.msg(response.errmsg, {icon: 2});
+        })
+    }
+
+    GetKeyWordListFun(limit, offset);
 //
 //     //添加-显示弹框
 //     $(".add_key_word_btn").click(function () {
