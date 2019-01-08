@@ -2,7 +2,7 @@ body {
     position: relative;
 }
 
-.baseTypeBox li, .baseBaTypeBox li, .alreadyAddBaTypeBox li, .baseCaTypeBox li, .alreadyAddCaTypeBox li, .caRechargeTypeBox li {
+.baseTypeBox li, .baseBaTypeBox li, .alreadyAddBaTypeBox li, .baseCaTypeBox li, .alreadyAddCaTypeBox li, .alreadyAddCaRechargeTypeBox li {
     border: 1px solid #000;
     padding: 1% 2%;
     margin-right: 1%;
