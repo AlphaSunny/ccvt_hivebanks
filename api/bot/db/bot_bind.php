@@ -423,7 +423,8 @@ function del_storage_members($group_id)
     if ($rows){
         $sql = "insert into bot_memeber_change_record (name,group_id,group_name,ctime,type) values ";
         foreach ($rows as $k=>$v){
-            $sql .= "'".$v['name']."','".$v['group_id']."','".$v['group_name']."','".date('Y-m-d H:i:s')."','2'),";
+            $values = str_replace("'"," ",$v['name']);
+            $sql .= "'".$values."','".$v['group_id']."','".$v['group_name']."','".date('Y-m-d H:i:s')."','2'),";
             //修改名称或退出
 //            $date['name'] = str_replace("'"," ",$v['name']);
 //            $date['group_id'] = $v['group_id'];
@@ -434,6 +435,7 @@ function del_storage_members($group_id)
 //            $db->query($sql);
         }
         $sql = substr($sql,0,strlen($sql)-1);
+        echo $sql;
         $db->query($sql);
     }
     $sql = "DELETE from bot_group_members where group_id='{$group_id}' AND intime<'{$time}'";
