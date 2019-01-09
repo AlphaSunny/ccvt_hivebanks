@@ -1095,6 +1095,7 @@ function check_wechat($give_wechat,$recive_wechat,$num,$status){
     $db->query($sql);
     $row = $db->fetchRow();
     $data['give_status'] = $row ? 1 : 2;
+    $data['us_id'] = $row['us_id'];
     //判断是否打开开关  1:开  2:关
     if ($row){
         $sql = "select bind_info from us_bind WHERE bind_name='point_tread_switch' AND us_id='{$row['us_id']}'";
@@ -1141,8 +1142,6 @@ function check_wechat($give_wechat,$recive_wechat,$num,$status){
     $db->query($sql);
     $row = $db->fetchRow();
     $data['recive_status'] = $row ? 1 : 2;
-
-    $data['us_id'] = $row['us_id'];
     $data['give_us_id'] = $row['us_id'];
 
     return $data;
@@ -1323,7 +1322,7 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
-    
+
     $db->Commit($pInTrans);
     return true;
 }
