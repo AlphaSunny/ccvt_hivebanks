@@ -36,7 +36,7 @@ if ($is_hive['give_status']!=1){
 }elseif ($is_hive['recive_status']!=1){
     exit_error('109',"@".$give_wechat.",您".$status."的".$recive_wechat."未找到");
 }elseif ($is_hive['switch_status']!=1){
-    exit_error('109',"@".$give_wechat.",您未开启群内点赞功能,可以去账户中心开启奥");
+    exit_error('109',"@".$give_wechat.",您未开启群内点赞功能,可以去账户中心-安全中心 开启奥");
 }elseif ($is_hive['point_tread_num_status']!=1){
     exit_error('109',"@".$give_wechat.",金额不能大于设定金额奥");
 }elseif ($is_hive['if_balance']!=1){
