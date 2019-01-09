@@ -42,7 +42,7 @@ $(function () {
             if (response.errcode == '0') {
                 layer.close(loading);
                 var token = response.token;
-                SetCookie('robot_token', token);
+                SetCookie('user_token', token);
                 SetCookie('robot_username', response.wechat);
                 SetCookie('robot_us_id', response.us_id);
                 layer.msg("success");
