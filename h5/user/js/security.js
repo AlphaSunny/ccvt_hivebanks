@@ -103,7 +103,7 @@ $(function () {
     });
 
     $(".customize_modal_cancel_btn").click(function () {
-        $("#top_modal").addClass("none").removeClass("none").val("2");
+        $("#top_modal").addClass("none").val("2");
         $("#quickTreadSwitch")
     });
 
