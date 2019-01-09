@@ -67,11 +67,14 @@ $(function () {
                         $(".quickTreadSwitch").addClass("active").val("1");
                         $(".open,.quick_tread_num_top").removeClass("none");
                         $(".close_status").remove();
+                        $(".open_status").removeClass("none");
                         $('.quickTreadIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
                     if (data[i].bind_name == "point_tread_switch" && data[i].bind_info == "2") {
                         $('.quickTreadIcon').addClass('redIcon icon-gantanhao').removeClass('greenIcon icon-duihao');
+                        $(".open_status").remove();
+                        $(".close_status").removeClass("none");
                     }
 
                     if (data[i].bind_name == "point_tread_num" && data[i].bind_flag == "1") {
