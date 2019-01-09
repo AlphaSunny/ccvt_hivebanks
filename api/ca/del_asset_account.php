@@ -35,7 +35,7 @@ if(!del_ca_asset_account_by_account_id($row['account_id']))
     exit_error('123', '更新失败');
 
 //返回
-$rtn_rows = get_ca_asset_account_ca_id($ca_id);
+$rtn_rows = sel_ca_asset_account_by_ca_id($ca_id);
 $data = array();
 $data['errcode'] = '0';
 $data['errmsg'] = '';

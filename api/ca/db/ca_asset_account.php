@@ -122,6 +122,19 @@ function get_ca_asset_account_ca_id($account_id)
     $bit_address = $db->getField($sql, 'lgl_address');
     return $bit_address;
 }
+
+function sel_ca_asset_account_by_ca_id($ca_id)
+{
+    $db = new DB_COM();
+    $sql = "select * from ca_asset_account where ca_id = '${ca_id} and use_flag = 1";
+    $db -> query($sql);
+    $rows = $db->fetchAll();
+    return $rows;
+}
+
+
+
+
 //======================================
 // 函数: 获取ca渠道列表
 // 参数:
