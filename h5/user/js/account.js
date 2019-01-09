@@ -385,6 +385,12 @@ $(function () {
         $(".help_img_box").slideUp();
     });
 
+    //application robot group
+    $(".application_btn").click(function () {
+       layer.msg("申请功能即将开通");
+       return;
+    });
+
     //login robot
     $(".robotBtn").click(function () {
         var url = getRootPath();
