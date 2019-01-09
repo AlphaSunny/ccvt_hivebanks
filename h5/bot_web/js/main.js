@@ -30,6 +30,6 @@
     });
 
 	//get name
-	var robot_username = GetCookie("robot_username");
-	$(".robot_username").text(robot_username);
+	var us_account = GetCookie("us_account");
+	$(".robot_username").text(us_account);
 })();
