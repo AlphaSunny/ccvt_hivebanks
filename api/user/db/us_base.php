@@ -304,17 +304,6 @@ function get_us_base_info_by_token($us_id)
     $db->query($sql);
     $group = $db->fetchRow();
     $row['group_name'] = $group['name'];
-    //获取快速点赞开关
-    $sql = "select bind_info from us_bind WHERE bind_name='point_tread_switch' AND us_id='{$us_id}'";
-    $db->query($sql);
-    $switch = $db->fetchRow();
-    $row['point_tread_switch'] = $switch ? $switch['bind_info'] : 2;
-
-    //获取快速点赞设置金额
-    $sql = "select bind_info from us_bind WHERE bind_name='point_tread_num' AND us_id='{$us_id}'";
-    $db->query($sql);
-    $num = $db->fetchRow();
-    $row['point_tread_num'] = $num ? $num['bind_info'] : 100;
 
     return $row;
 }
@@ -1079,21 +1068,6 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why)
 // 返回:
 //======================================
 function  get_code_wechat($code)
-{
-    $db = new DB_COM();
-    $sql = "select wechat from bot_exclusive_code WHERE code='{$code}' limit 1";
-    $db -> query($sql);
-    $row = $db -> fetchRow();
-    return $row;
-}
-
-
-//======================================
-// 函数: 设置开关和金额
-// 参数: code          code
-// 返回:
-//======================================
-function  point_tread_switch($code)
 {
     $db = new DB_COM();
     $sql = "select wechat from bot_exclusive_code WHERE code='{$code}' limit 1";
