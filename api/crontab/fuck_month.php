@@ -15,7 +15,7 @@ require_once '../inc/common.php';
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
-echo date('Y-m-d',strtotime('-2721 day'));die;
+//echo date('Y-m-d',strtotime('-2721 day'));die;
 fuckYou();
 function fuckYou(){
     $db = new DB_COM();
