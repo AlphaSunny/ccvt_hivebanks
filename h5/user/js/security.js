@@ -95,7 +95,7 @@ $(function () {
         if (val == "1") {
             $(this).removeClass("active").val("2");
             point_tread_switch = 2;
-            $("#exchange_modal").removeClass("none");
+            $("#top_modal").removeClass("none");
         } else {
             $(this).addClass("active").val("1");
             point_tread_switch = 1;
