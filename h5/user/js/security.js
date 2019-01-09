@@ -96,7 +96,6 @@ $(function () {
         var index = layer.load(1, {
             shade: [0.1, '#fff']
         });
-        // $("#loginCode").html("<tr><td colspan='5'><img src='../assets/img/loading.gif' alt=''><span class='i18n' name='tryingToLoad'>loading...</span></td></tr>")
         AllRecord(token, limit, offset, login_api_url, function (response) {
             layer.close(index);
             if (response.errcode == '0') {
