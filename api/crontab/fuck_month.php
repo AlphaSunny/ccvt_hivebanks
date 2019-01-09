@@ -56,5 +56,6 @@ function fuckYou(){
 
     echo '1130:'.$total_1130;
     echo '----------1228:'.$total_1228;
-    echo '----------month.'.($total_1228-$total_1130);
+    echo '----------month:'.($total_1228-$total_1130);
+    echo '----------monthCutInterest'.($total_1228-$total_1130-16250000);
 }
