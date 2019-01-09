@@ -3,7 +3,7 @@ $(function () {
     var token = GetCookie('user_token'), cellphone = '';
     GetUsAccount();
 
-    function BindingInformationFun (){
+    function BindingInformationFun() {
         BindingInformation(token, function (response) {
             if (response.errcode == '0') {
                 var data = response.rows,
@@ -28,7 +28,7 @@ $(function () {
                         $('.emailBind').fadeOut('fast');
                         $('.emailModify').fadeIn('fast');
                         $(".emailInfo").text($(this)[0].bind_info);
-                        $('.emailIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
+                        $('.emailIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
                     //Whether google is certified
@@ -36,7 +36,7 @@ $(function () {
                         $('.googleTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
                         $('.googleBind').fadeOut('fast');
                         // $('.fileModify').fadeIn('fast');
-                        $('.googleIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
+                        $('.googleIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
                     //Whether the password hash is bound
@@ -44,14 +44,14 @@ $(function () {
                         $('.fundPasswordTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
                         $('.fundPasswordBind').fadeOut('fast');
                         $('.fundPasswordModify').fadeIn('fast');
-                        $('.fundPasswordIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
+                        $('.fundPasswordIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
                     //Whether the password login is bound
                     if (data[i].bind_name == 'password_login' && data[i].bind_flag == '1') {
                         $('.loginPasswordTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
                         $('.loginPasswordModify').fadeIn('fast');
-                        $('.loginPasswordIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
+                        $('.loginPasswordIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
                     //Whether identity authentication is bound
@@ -59,7 +59,7 @@ $(function () {
                         $('.authenticationTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
                         $('.authenticationBind').fadeOut('fast');
                         // $('.authenticationModify').fadeIn('fast');
-                        $('.authenticationIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
+                        $('.authenticationIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
                     //Whether quick tread is bound
@@ -67,10 +67,16 @@ $(function () {
                         $(".quickTreadSwitch").addClass("active").val("1");
                         $(".open,.quick_tread_num_top").removeClass("none");
                         $(".close_status").remove();
-                        $('.quickTreadIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
-                    }else {
-                        $('.quickTreadIcon').addClass('symbol icon-gantanhao').removeClass('greenIcon icon-duihao');
+                        $(".open_status").removeClass("none");
+                        $('.quickTreadIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
+
+                    if (data[i].bind_name == "point_tread_switch" && data[i].bind_info == "2") {
+                        $('.quickTreadIcon').addClass('redIcon icon-gantanhao').removeClass('greenIcon icon-duihao');
+                        $(".open_status").remove();
+                        $(".close_status").removeClass("none");
+                    }
+
                     if (data[i].bind_name == "point_tread_num" && data[i].bind_flag == "1") {
                         $(".quick_top_num").text(data[i].bind_info);
                     }
@@ -83,6 +89,7 @@ $(function () {
             }
         });
     }
+
     BindingInformationFun();
 
     //return fundPasswordBind
@@ -115,8 +122,8 @@ $(function () {
             layer.confirm('确定关闭快捷赞踩？', {
                 btn: ['确认', '取消'] //按钮
             }, function () {
-                PointTreadSwitchFun(point_tread_switch,point_tread_num);
-            },function () {
+                PointTreadSwitchFun(point_tread_switch, point_tread_num);
+            }, function () {
                 $("#quickTreadSwitch").addClass("active").val("1");
             })
         } else {
@@ -137,7 +144,7 @@ $(function () {
         $("#top_modal").addClass("none");
     });
 
-    function PointTreadSwitchFun(point_tread_switch,point_tread_num){
+    function PointTreadSwitchFun(point_tread_switch, point_tread_num) {
         PointTreadSwitch(token, point_tread_switch, point_tread_num, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("提交成功");
