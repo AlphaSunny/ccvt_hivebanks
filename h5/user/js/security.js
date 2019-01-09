@@ -19,7 +19,7 @@ $(function () {
                         $('.phoneBind').fadeOut('fast');
                         $('.phoneModify').fadeIn('fast');
                         $(".phoneInfo").text($(this)[0].bind_info);
-                        $('.phoneIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
+                        $('.phoneIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
                     //Whether the email is bound
