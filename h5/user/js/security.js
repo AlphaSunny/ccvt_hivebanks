@@ -98,8 +98,13 @@ $(function () {
         } else {
             $(this).addClass("active").val("1");
             point_tread_switch = 1;
-            $("#top_modal").removeClass("none");
+            $("#top_modal").removeClass("none").val("2");
         }
+    });
+
+    $(".customize_modal_cancel_btn").click(function () {
+        $("#top_modal").addClass("none").removeClass("none").val("2");
+        $("#quickTreadSwitch")
     });
 
     // Login record query
