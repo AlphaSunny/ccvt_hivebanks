@@ -129,10 +129,10 @@ $(function () {
         point_tread_num = $(".amount_top_input").val();
         if (point_tread_num.length <= 0) {
             WarnPrompt("请输入快捷赞踩上限金额");
-            $("#top_modal").addClass("none");
             return;
         }
         PointTreadSwitchFun(point_tread_switch, point_tread_num);
+        $("#top_modal").addClass("none");
     });
 
     function PointTreadSwitchFun(point_tread_switch,point_tread_num){
