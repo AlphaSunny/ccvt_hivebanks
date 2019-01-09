@@ -11,7 +11,7 @@ require_once  "db/ca_base.php";
 require_once "db/ca_asset_account.php";
 
 php_begin();
-$args = array("token", "channel");
+$args = array("token", "ca_channel");
 chk_empty_args('GET', $args);
 
 //验证登陆
