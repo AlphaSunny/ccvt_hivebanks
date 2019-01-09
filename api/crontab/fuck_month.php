@@ -46,13 +46,13 @@ function fuckYou(){
     $sql_total_today = $db->fetchRow();
 
     $cutter = $sql_total_11_30['cutter'] - $sql_adder_11_30['adder'];
-    $adder_1130 = $sql_adder_11_30[0]['adder'];
-    $total_1130 = $sql_total_today[0]['today'] - $cutter + $adder_1130;
+    $adder_1130 = $sql_adder_11_30['adder'];
+    $total_1130 = $sql_total_today['today'] - $cutter + $adder_1130;
 
 
-    $cutter = $sql_total_12_28[0]['cutter'] - $sql_total_12_28[0]['adder'];
-    $adder_1130 = $sql_total_12_28[0]['adder'];
-    $total_1228 = $sql_total_today[0]['today'] - $cutter + $adder_1130;
+    $cutter = $sql_total_12_28['cutter'] - $sql_total_12_28['adder'];
+    $adder_1130 = $sql_total_12_28['adder'];
+    $total_1228 = $sql_total_today['today'] - $cutter + $adder_1130;
 
     echo '1130:'.$total_1130;
     echo '1228:'.$total_1228;
