@@ -502,6 +502,18 @@ function GetAddAgencyType(token, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//del asset account
+function delAssetAccount(token, ca_channel, suc_func, error_func) {
+    var  api_url = 'ca_get_asset_account.php',
+        post_data = {
+            'token': token,
+            'ca_channel': ca_channel
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+
+}
+
+
 // Text binding
 function TextBind(token, text_type, text, text_hash, suc_func, error_func) {
     var api_url = 'bnd_text.php',
