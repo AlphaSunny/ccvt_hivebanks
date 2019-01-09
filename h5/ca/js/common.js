@@ -504,7 +504,7 @@ function GetAddAgencyType(token, suc_func, error_func) {
 
 //del asset account
 function delAssetAccount(token, ca_channel, suc_func, error_func) {
-    var  api_url = 'ca_get_asset_account.php',
+    var  api_url = 'del_asset_account.php',
         post_data = {
             'token': token,
             'ca_channel': ca_channel
