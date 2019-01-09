@@ -102,9 +102,9 @@ $(function () {
         }
     });
 
-    $(".customize_modal_cancel_btn").click(function () {
-        $("#top_modal").removeClass("active").val("2");
-        $("#quickTreadSwitch")
+    $(".top_cancel_btn").click(function () {
+        $("#top_modal").addClass("none");
+        $("#quickTreadSwitch").removeClass("active").val("2");
     });
 
     // Login record query
