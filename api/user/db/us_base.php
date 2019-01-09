@@ -1086,3 +1086,18 @@ function  get_code_wechat($code)
     $row = $db -> fetchRow();
     return $row;
 }
+
+
+//======================================
+// 函数: 设置开关和金额
+// 参数: code          code
+// 返回:
+//======================================
+function  point_tread_switch($code)
+{
+    $db = new DB_COM();
+    $sql = "select wechat from bot_exclusive_code WHERE code='{$code}' limit 1";
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    return $row;
+}
