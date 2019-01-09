@@ -69,7 +69,7 @@ $(function () {
                         $(".close_status").remove();
                         $('.quickTreadIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
                     }else {
-                        $('.quickTreadIcon').removeClass('greenIcon icon-duihao').addClass('symbol icon-gantanhao');
+                        $('.quickTreadIcon').addClass('symbol icon-gantanhao').removeClass('greenIcon icon-duihao');
                     }
                     if (data[i].bind_name == "point_tread_num" && data[i].bind_flag == "1") {
                         $(".quick_top_num").text(data[i].bind_info);
