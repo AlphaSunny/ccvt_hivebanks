@@ -43,8 +43,8 @@ $(function () {
                 layer.close(loading);
                 var token = response.token;
                 SetCookie('user_token', token);
-                SetCookie('robot_username', response.wechat);
-                SetCookie('robot_us_id', response.us_id);
+                SetCookie('us_account', response.wechat);
+                SetCookie('us_id', response.us_id);
                 layer.msg("success");
                 window.location.href = 'robot_login.html';
             }
