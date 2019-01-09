@@ -491,6 +491,7 @@ function application_group($us_id,$group_name,$group_type_id)
         $sql = "select us_nm from us_base WHERE us_id='{$us_id}'";
         $db->query($sql);
         $date['invite_code'] = $db->getField($sql,'us_nm');
+        $date['is_audit'] = 2;
         $sql = $db->sqlInsert("bot_group", $date);
         $q_id = $db->query($sql);
         if (!$q_id){
