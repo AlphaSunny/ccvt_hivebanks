@@ -68,6 +68,7 @@ $(function () {
                         $(".open,.quick_tread_num_top").removeClass("none");
                         $(".close_status").remove();
                         $('.quickTreadIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
+                        console.log($('.quickTreadIcon'));
                     } else {
                         $('.quickTreadIcon').addClass('redIcon icon-gantanhao').removeClass('greenIcon icon-duihao');
                     }
