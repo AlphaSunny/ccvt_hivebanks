@@ -59,6 +59,16 @@ $(function () {
                     // $('.authenticationModify').fadeIn('fast');
                     $('.authenticationIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
                 }
+
+                //Whether quick tread is bound
+                if (data[i].bind_name == "point_tread_switch" && bind_info == "1") {
+                    $(".amount_top_input").addClass("active").val("1");
+                    $(".open,.quick_tread_num_top").removeClass("none");
+                    $(".close").remove();
+                }
+                if (data[i].bind_name == "point_tread_num" && bind_flag == "1") {
+                        $(".quick_top_num").text(data[i].bind_info);
+                }
             })
         }
     }, function (response) {
@@ -111,7 +121,7 @@ $(function () {
             return;
         }
         PointTreadSwitch(token, point_tread_switch, point_tread_num, function (response) {
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 SuccessPrompt("快捷赞踩开启成功");
             }
         }, function (response) {
