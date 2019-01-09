@@ -62,7 +62,7 @@ $(function () {
 
                 //Whether quick tread is bound
                 if (data[i].bind_name == "point_tread_switch" && data[i].bind_info == "1") {
-                    $(".amount_top_input").addClass("active").val("1");
+                    $(".quickTreadSwitch").addClass("active").val("1");
                     $(".open,.quick_tread_num_top").removeClass("none");
                     $(".close").remove();
                     $('.quickTreadIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
