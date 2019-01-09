@@ -305,6 +305,13 @@ function get_us_base_info_by_token($us_id)
     $group = $db->fetchRow();
     $row['group_name'] = $group['name'];
 
+    //获取申请的群
+    $sql = "select name,group_type from bot_group WHERE us_id='{$us_id}' ORDER BY id ASC limit 1";
+    $db->query($sql);
+    $application_group = $db->fetchRow();
+    $row['application_group'] = $application_group ? $application_group['name'] : "";
+    $row['application_group_type'] = $application_group ? $application_group['group_type'] : "";
+
     return $row;
 }
 //======================================

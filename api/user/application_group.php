@@ -42,7 +42,7 @@ if ($is_name){
 //设置开关和金额
 $row = application_group($us_id,$group_name,$group_type_id);
 if (!$row){
-    exit_error("109","设置错误");
+    exit_error("109","错误");
 }
 
 // 返回数据做成

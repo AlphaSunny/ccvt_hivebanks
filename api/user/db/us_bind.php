@@ -484,16 +484,18 @@ function application_group($us_id,$group_name,$group_type_id)
             return false;
         }
     }else{
-
+        $date['name'] = $group_name;
+        $date['us_id'] = $us_id;
+        $date['group_type'] = $group_type_id;
+        $date['intime'] = time();
+        $sql = "select us_nm from us_base WHERE us_id='{$us_id}'";
+        $db->query($sql);
+        $date['invite_code'] = $db->getField($sql,'us_nm');
+        $sql = $db->sqlInsert("bot_group", $date);
+        $q_id = $db->query($sql);
+        if (!$q_id){
+            return false;
+        }
     }
-//    $date['name'] = $db->getField($sql,'name');
-//    $date['us_id'] = $data['us_id'];
-//    $date['group_type'] = $data['group_type_id'];
-//    $date['intime'] = time();
-//    $sql = "select us_nm from us_base WHERE us_id='{$data['us_id']}'";
-//    $db->query($sql);
-//    $date['invite_code'] = $db->getField($sql,'us_nm');
-//    $sql = $db->sqlInsert("bot_group", $date);
-//    $q_id = $db->query($sql);
-//    if ($q_id){
+    return true;
 }
