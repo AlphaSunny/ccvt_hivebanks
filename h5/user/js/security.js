@@ -93,11 +93,8 @@ $(function () {
 
     function GetLoginCode(token, limit, offset, login_api_url) {
         var tr = '', count = 1;
-        var index = layer.load(1, {
-            shade: [0.1, '#fff']
-        });
         AllRecord(token, limit, offset, login_api_url, function (response) {
-            layer.close(index);
+            ShowLoading("hide");
             if (response.errcode == '0') {
                 var data = response.rows;
                 if (data == false) {
@@ -133,13 +130,14 @@ $(function () {
                     nextPageText: ">>",
                     callback: function (current) {
                         GetLoginCode(token, limit, (current - 1) * limit, login_api_url);
+                        ShowLoading("show");
                     }
                 });
             }
 
         }, function (response) {
-            execI18n();
-            layer.msg(response.errcode);
+            ShowLoading("show");
+            ErrorPrompt(response.errmsg);
             if (response.errcode == '114') {
                 window.location.href = 'login.html';
             }
