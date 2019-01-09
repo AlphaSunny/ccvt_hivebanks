@@ -9,34 +9,40 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 /*
-========================== 群组内快速点赞开关设置 ==========================
+========================== 申请群 ==========================
 GET参数
   token           用户TOKEN
 返回
   errcode = 0     请求成功
 说明
-  绑定谷歌认证器
+
 */
 php_begin();
-$args = array('token','point_tread_switch');
+$args = array('token','group_name','group_type_id');
 chk_empty_args('GET', $args);
 
 // 用户TOKEN
 $token = get_arg_str('GET', 'token',128);
 
-//开关  1:开  2:关
-$point_tread_switch = get_arg_str('GET','point_tread_switch');
+//群名称
+$group_name = get_arg_str('GET','group_name');
 
-//金额
-$point_tread_num = get_arg_str('GET','point_tread_num');
+//群类型id
+$group_type_id = get_arg_str('GET','group_type_id');
 
 //验证token
 $us_id = check_token($token);
 
+//判断名称是否已添加
+$is_name = check_group_name($us_id,$group_name);
+if ($is_name){
+    exit_error('109','名称已存在');
+}
+
 //设置开关和金额
-$row = point_tread_switch($us_id,$point_tread_switch,$point_tread_num);
+$row = application_group($us_id,$group_name,$group_type_id);
 if (!$row){
-    exit_error("109","设置错误");
+    exit_error("109","错误");
 }
 
 // 返回数据做成

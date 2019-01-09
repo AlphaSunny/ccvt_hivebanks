@@ -371,3 +371,132 @@ function group_and_type_list(){
     $rows = $db->fetchAll();
     return $rows;
 }
+
+
+//======================================
+// 函数: 设置开关和金额
+// 参数: code          code
+// 返回:
+//======================================
+function  point_tread_switch($us_id,$point_tread_switch,$point_tread_num)
+{
+    $db = new DB_COM();
+    $sql = "select * from us_bind WHERE us_id='{$us_id}' AND bind_name='point_tread_switch' limit 1";
+    $db->query($sql);
+    $switch = $db->fetchRow();
+    if ($switch){
+        $time = time();
+        $sql = "update us_bind set bind_info='{$point_tread_switch}',utime='{$time}' WHERE bind_id='{$switch['bind_id']}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            return false;
+        }
+    }else{
+        //设置开关
+        $vail = 'point_tread_switch';
+        $data['bind_id'] = get_guid();
+        $data['us_id'] = $us_id;
+        $data['bind_type'] = 'text';
+        $data['bind_name'] = $vail;
+        $data['bind_info'] = $point_tread_switch;
+        $data['bind_flag'] = 1;
+        $data['utime'] = time();
+        $data['ctime'] = date('Y-m-d H:i:s');
+        $sql = $db->sqlInsert("us_bind", $data);
+        $q_id = $db->query($sql);
+        if ($q_id == 0){
+            return false;
+        }
+    }
+    $sql = "select * from us_bind WHERE us_id='{$us_id}' AND bind_name='point_tread_num' limit 1";
+    $db->query($sql);
+    $tread_num = $db->fetchRow();
+    if ($tread_num){
+        $time = time();
+        $sql = "update us_bind set bind_info='{$point_tread_num}',utime='{$time}' WHERE bind_id='{$tread_num['bind_id']}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            return false;
+        }
+    }else{
+        //设置开关
+        $vail = 'point_tread_num';
+        $data['bind_id'] = get_guid();
+        $data['us_id'] = $us_id;
+        $data['bind_type'] = 'text';
+        $data['bind_name'] = $vail;
+        $data['bind_info'] = $point_tread_num;
+        $data['bind_flag'] = 1;
+        $data['utime'] = time();
+        $data['ctime'] = date('Y-m-d H:i:s');
+        $sql = $db->sqlInsert("us_bind", $data);
+        $q_id = $db->query($sql);
+        if ($q_id == 0){
+            return false;
+        }
+    }
+    return true;
+}
+
+//======================================
+// 函数: 获取群组类型列表
+//
+// 返回: rows          最新信息数组
+//======================================
+function get_group_type_list()
+{
+    $db = new DB_COM();
+    $sql = "select id,name from bot_group_type WHERE is_del=1 order by id ASC ";
+    $db -> query($sql);
+    $rows = $db -> fetchAll();
+    return $rows;
+}
+//======================================
+// 函数: 检查名称已存在
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function check_group_name($us_id,$group_name)
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM bot_group WHERE name='{$group_name}' AND us_id!='{$us_id}'";
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    return $row;
+}
+//======================================
+// 函数: 申请群
+//
+// 返回: rows          最新信息数组
+//======================================
+function application_group($us_id,$group_name,$group_type_id)
+{
+    $db = new DB_COM();
+    $sql = "select * from bot_group WHERE us_id='{$us_id}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if ($row){
+        $time = time();
+        $sql = "update bot_group set name='{$group_name}',uptime='{$time}' WHERE id='{$row['id']}'";
+        $db->query($sql);
+        if (!$db->affectedRows()){
+            return false;
+        }
+    }else{
+        $date['name'] = $group_name;
+        $date['us_id'] = $us_id;
+        $date['group_type'] = $group_type_id;
+        $date['intime'] = time();
+        $sql = "select us_nm from us_base WHERE us_id='{$us_id}'";
+        $db->query($sql);
+        $date['invite_code'] = $db->getField($sql,'us_nm');
+        $date['is_audit'] = 2;
+        $sql = $db->sqlInsert("bot_group", $date);
+        $q_id = $db->query($sql);
+        if (!$q_id){
+            return false;
+        }
+    }
+    return true;
+}
