@@ -14,7 +14,7 @@ $(function () {
                 li += '<li class="flex center space-between alreadyItem margin-bottom-2">' +
                     '<div class="width-10"><img src="img/' + data[i].ca_channel + '.png" alt=""></div>' +
                     '<span>' + data[i].lgl_address.card_nm + '</span>' +
-                    '<span class="none ca_channel">' + data[i].lgl_address.ca_channel + '</span>' +
+                    '<span class="none ca_channel">' + data[i].ca_channel + '</span>' +
                     '<span>' + data[i].lgl_address.name + '</span>' +
                     '<button class="btn btn-success btn-sm deleteBtn i18n" name="delete">删除</button>' +
                     '</li>'
