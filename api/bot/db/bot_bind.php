@@ -1117,7 +1117,7 @@ function check_wechat($give_wechat,$recive_wechat,$num,$status){
     }
     $data['point_tread_num_status'] = $point_tread_num_status;
     //判断余额
-    $data['if_balance'] = $row['base_amount']/$unit > $num ? 1 : 2;
+    $data['if_balance'] = $row['base_amount']/$unit >= $num ? 1 : 2;
 
     //判断是否达到上限
     $state = $status == "赞" ? 1 : 2;
