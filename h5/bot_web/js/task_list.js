@@ -42,7 +42,8 @@ $(function () {
                     }
                     tr += "<tr class='text-center trItem'>" +
                         // "<td class='time'>" + data[i].time + "</td>" +
-                        "<td class='time'>" + one_arr.join("#") + data[i].time + "</td>" +
+                        "<td class=''>" + one_arr.join("#")+ "</td>" +
+                        "<td class='time'>" + data[i].time + "</td>" +
                         "<td class='content' name=" + data[i].id + ">" + content + "</td>" +
                         "<td class='name'>" + data[i].name + "</td>" +
                         "<td>" +
