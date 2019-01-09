@@ -32,6 +32,14 @@ $(function () {
         window.location.href = 'contract/robot_login.html';
     });
 
+    $(".to_doc").click(function () {
+        if (token) {
+            window.location.href = 'http://www.fnying.com/h5/ccvt/index.html?t=' + decodeURI(user_token);
+        }else {
+            window.location.href = 'http://www.fnying.com/h5/ccvt/index.html?';
+        }
+    });
+
 
     $('.caLogin').click(function () {
         if (ca_token || login_ca) {
