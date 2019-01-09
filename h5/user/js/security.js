@@ -89,13 +89,17 @@ $(function () {
     });
 
     //quick tread
+    var point_tread_switch = "", point_tread_num = "";
     $("#quickTreadSwitch").on("change", function () {
-       var val = $(this).val();
-       if(val == "1"){
-           $(this).removeClass("active").val("2");
-       }else {
-           $(this).addClass("active").val("1");
-       }
+        var val = $(this).val();
+        if (val == "1") {
+            $(this).removeClass("active").val("2");
+            point_tread_switch = 2;
+            $("#exchange_modal").removeClass("none");
+        } else {
+            $(this).addClass("active").val("1");
+            point_tread_switch = 1;
+        }
     });
 
     // Login record query
