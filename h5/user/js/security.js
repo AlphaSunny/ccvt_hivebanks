@@ -132,7 +132,7 @@ $(function () {
     function PointTreadSwitchFun(point_tread_switch,point_tread_num){
         PointTreadSwitch(token, point_tread_switch, point_tread_num, function (response) {
             if (response.errcode == "0") {
-                SuccessPrompt("快捷赞踩开启成功");
+                SuccessPrompt("提交成功");
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
