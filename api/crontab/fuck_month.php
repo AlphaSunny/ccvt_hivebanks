@@ -45,7 +45,7 @@ function fuckYou(){
     $db->query($sql_total_today);
     $sql_total_today = $db->fetchRow();
 
-    $cutter = $sql_total_11_30[0]['cutter'] - $sql_adder_11_30[0]['adder'];
+    $cutter = $sql_total_11_30['cutter'] - $sql_adder_11_30['adder'];
     $adder_1130 = $sql_adder_11_30[0]['adder'];
     $total_1130 = $sql_total_today[0]['today'] - $cutter + $adder_1130;
 
