@@ -29,7 +29,7 @@ chk_empty_args('GET', $args);
 $token = get_arg_str('GET', 'token', 128);
 //验证token
 $ca_id = check_token($token);
-$rows = ca_get_asset_account_info($ca_id);
+$rows = sel_ca_asset_account_by_ca_id($ca_id);
 $new_rows = array();
 foreach ($rows as $row) {
     $new_row["lgl_address"] = json_decode($row["lgl_address"]);
