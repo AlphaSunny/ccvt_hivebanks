@@ -25,8 +25,8 @@ function fuckYou(){
 
     $sql_adder_11_30 = "select sum(tx_amount/100000000) as adder from com_base_balance where ctime > '2018-12-01' and credit_id in ('6C69520E-E454-127B-F474-452E65A3EE75','50D2910C-6C38-344F-9D30-3289F945C2A6') and tx_type in('gone_staff','give_like','ccvt_inte')";
 
-    $sql_total_12_28 = "select sum(tx_amount/100000000) as cutter from com_base_balance where ctime > '2019-01-01' and debit_id in ('6C69520E-E454-127B-F474-452E65A3EE75','50D2910C-6C38-344F-9D30-3289F945C2A6')";
-    $sql_adder_12_28 = "select sum(tx_amount/100000000) as adder from com_base_balance where ctime > '2019-01-01' and credit_id in ('6C69520E-E454-127B-F474-452E65A3EE75','50D2910C-6C38-344F-9D30-3289F945C2A6') and tx_type in('gone_staff','give_like','ccvt_inte')";
+    $sql_total_12_28 = "select sum(tx_amount/100000000) as cutter from com_base_balance where ctime > '2018-12-29' and debit_id in ('6C69520E-E454-127B-F474-452E65A3EE75','50D2910C-6C38-344F-9D30-3289F945C2A6')";
+    $sql_adder_12_28 = "select sum(tx_amount/100000000) as adder from com_base_balance where ctime > '2018-12-29' and credit_id in ('6C69520E-E454-127B-F474-452E65A3EE75','50D2910C-6C38-344F-9D30-3289F945C2A6') and tx_type in('gone_staff','give_like','ccvt_inte')";
 
     $sql_total_today = "select sum((base_amount+lock_amount)/100000000) as today from us_base" ;
 
