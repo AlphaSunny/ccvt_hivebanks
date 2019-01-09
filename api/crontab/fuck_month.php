@@ -55,6 +55,6 @@ function fuckYou(){
     $total_1228 = $sql_total_today['today'] - $cutter + $adder_1130;
 
     echo '1130:'.$total_1130;
-    echo '1228:'.$total_1228;
-    echo '----------month.'.$total_1228-$total_1130;
+    echo '----------1228:'.$total_1228;
+    echo '----------month.'.($total_1228-$total_1130);
 }
