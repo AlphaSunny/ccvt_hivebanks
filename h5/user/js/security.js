@@ -68,6 +68,7 @@ $(function () {
                         $(".open,.quick_tread_num_top").removeClass("none");
                         $(".close_status").addClass("none");
                         $(".open_status").removeClass("none");
+                        $(".quick_tread_num_top").removeClass("none");
                         $('.quickTreadIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
@@ -75,12 +76,11 @@ $(function () {
                         $('.quickTreadIcon').addClass('redIcon icon-gantanhao').removeClass('greenIcon icon-duihao');
                         $(".open_status").addClass("none");
                         $(".close_status").removeClass("none");
-                        $(".quick_tread_num_top").removeClass("none");
+                        $(".quick_tread_num_top").addClass("none");
                     }
 
                     if (data[i].bind_name == "point_tread_num" && data[i].bind_flag == "1") {
                         $(".quick_top_num").text(data[i].bind_info);
-                        $(".quick_tread_num_top").addClass("none");
                     }
                 })
             }
