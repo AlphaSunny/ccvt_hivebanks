@@ -304,6 +304,17 @@ function get_us_base_info_by_token($us_id)
     $db->query($sql);
     $group = $db->fetchRow();
     $row['group_name'] = $group['name'];
+    //获取快速点赞开关
+    $sql = "select bind_info from us_bind WHERE bind_name='point_tread_switch' AND us_id='{$us_id}'";
+    $db->query($sql);
+    $switch = $db->fetchRow();
+    $row['point_tread_switch'] = $switch ? $switch['bind_info'] : 2;
+
+    //获取快速点赞设置金额
+    $sql = "select bind_info from us_bind WHERE bind_name='point_tread_num' AND us_id='{$us_id}'";
+    $db->query($sql);
+    $num = $db->fetchRow();
+    $row['point_tread_num'] = $num ? $num['bind_info'] : 100;
 
     return $row;
 }
