@@ -43,8 +43,6 @@ function IsEmail(s) {
 }
 
 
-
-
 function getRootPath() {
     //Get current URL
     var curWwwPath = window.document.location.href;
@@ -296,7 +294,7 @@ function GetImgCode() {
 }
 
 //get wechat name
-function GetWeChatName(code,suc_func, error_func) {
+function GetWeChatName(code, suc_func, error_func) {
     var api_url = 'get_code_wechat.php',
         post_data = {
             'code': code
@@ -400,6 +398,17 @@ function BindingInformation(token, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 };
 
+//quick tread
+function PointTreadSwitch(token, point_tread_switch, point_tread_num, suc_func, error_func) {
+    var api_url = 'point_tread_switch.php',
+        post_data = {
+            'token': token,
+            'point_tread_switch': point_tread_switch,
+            'point_tread_num': point_tread_num
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //Modify user nickname
 function ModifyNickName(token, us_account, suc_func, error_func) {
     var api_url = 'alter_us_account.php',
@@ -453,11 +462,11 @@ function AllRecord(token, limit, offset, api_url, suc_func, error_func) {
 function TransferCCVT(token, account, ccvt_num, pass_hash, suc_func, error_func) {
     var api_url = "us_transfer_ccvt.php",
         post_data = {
-        'token': token,
-        'account': account,
-        'ccvt_num': ccvt_num,
-        'pass_hash': pass_hash
-    };
+            'token': token,
+            'account': account,
+            'ccvt_num': ccvt_num,
+            'pass_hash': pass_hash
+        };
     CallApi(api_url, post_data, suc_func, error_func);
 }
 

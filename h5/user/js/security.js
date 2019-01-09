@@ -102,6 +102,21 @@ $(function () {
         }
     });
 
+    //confirm
+    $(".top_confirm_btn").click(function () {
+        point_tread_num = $(".amount_top_input").val();
+        if (point_tread_num.length <= 0) {
+            WarnPrompt("请输入快捷赞踩上限金额");
+            return;
+        }
+        PointTreadSwitch(token, point_tread_switch, point_tread_num, function (response) {
+            SuccessPrompt("快捷赞踩开启成功");
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        })
+    });
+
+    //cancel
     $(".top_cancel_btn").click(function () {
         $("#top_modal").addClass("none");
         $("#quickTreadSwitch").removeClass("active").val("2");
