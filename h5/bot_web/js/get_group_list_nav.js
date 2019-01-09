@@ -1,4 +1,4 @@
-var token = GetCookie("robot_token"), is_audit = "";
+var token = GetCookie("user_token"), is_audit = "";
 function GetGroupListNav() {
     var li = "";
     GetGroupList(token, is_audit, function (response) {

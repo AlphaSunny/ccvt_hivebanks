@@ -1,5 +1,5 @@
 $(function () {
-    var token = GetCookie("robot_token");
+    var token = GetCookie("user_token");
     var group_id = decodeURI(GetQueryString("id"));
     // group_name = decodeURI(GetQueryString("group_name"));
 

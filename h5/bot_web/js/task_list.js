@@ -1,5 +1,5 @@
 $(function () {
-    var token = GetCookie("robot_token");
+    var token = GetCookie("user_token");
 
     function GetTaskListFun() {
         GetTaskList(token, function (response) {

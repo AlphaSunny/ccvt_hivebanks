@@ -1,5 +1,5 @@
 $(function () {
-    var token = GetCookie('robot_token');
+    var token = GetCookie('user_token');
 
     //获取关键字列表
     var limit = 10, offset = 0;

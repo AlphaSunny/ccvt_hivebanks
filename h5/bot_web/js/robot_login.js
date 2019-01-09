@@ -1,4 +1,4 @@
-var token = GetCookie("robot_token");
+var token = GetCookie("user_token");
 
 function _GetWeChatGroupFun() {
     var li = "", option = "", optionArr = "";
