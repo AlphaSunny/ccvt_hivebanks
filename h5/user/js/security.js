@@ -106,6 +106,11 @@ $(function () {
         if (val == "1") {
             $(this).removeClass("active").val("2");
             point_tread_switch = 2;
+            layer.confirm('确定关闭快捷赞踩？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                PointTreadSwitchFun(point_tread_switch,point_tread_num);
+            })
         } else {
             $(this).addClass("active").val("1");
             point_tread_switch = 1;
@@ -121,6 +126,10 @@ $(function () {
             $("#top_modal").addClass("none");
             return;
         }
+        PointTreadSwitchFun(point_tread_switch, point_tread_num);
+    });
+
+    function PointTreadSwitchFun(point_tread_switch,point_tread_num){
         PointTreadSwitch(token, point_tread_switch, point_tread_num, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("快捷赞踩开启成功");
@@ -128,7 +137,7 @@ $(function () {
         }, function (response) {
             ErrorPrompt(response.errmsg);
         })
-    });
+    }
 
     //cancel
     $(".top_cancel_btn").click(function () {
