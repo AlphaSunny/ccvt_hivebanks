@@ -15,6 +15,7 @@ require_once '../inc/common.php';
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
+echo date('Y-m-d',strtotime('-2721 day'));die;
 fuckYou();
 function fuckYou(){
     $db = new DB_COM();
@@ -34,6 +35,7 @@ function fuckYou(){
     $sql_total_11_30 = $db->fetchRow();
 
     $db->query($sql_adder_11_30);
+
     $sql_adder_11_30 = $db->fetchRow();
 
     $db->query($sql_total_12_28);
@@ -50,9 +52,9 @@ function fuckYou(){
     $total_1130 = $sql_total_today['today'] - $cutter + $adder_1130;
 
 
-    $cutter = $sql_total_12_28['cutter'] - $sql_adder_12_28['adder'];
-    $adder_1130 = $sql_adder_12_28['adder'];
-    $total_1228 = $sql_total_today['today'] - $cutter + $adder_1130;
+    $cutter_1228 = $sql_total_12_28['cutter'] - $sql_adder_12_28['adder'];
+    $adder_1228 = $sql_adder_12_28['adder'];
+    $total_1228 = $sql_total_today['today'] - $cutter_1228 + $adder_1228;
 
     echo '1130:'.$total_1130;
     echo '----------1228:'.$total_1228;
