@@ -25,7 +25,7 @@
 
 	//log out
 	$(".logOut").click(function () {
-		DelCookie("robot_token");
+		DelCookie("user_token");
 		window.location.href = "login.html";
     });
 
