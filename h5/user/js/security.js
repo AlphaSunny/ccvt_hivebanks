@@ -98,7 +98,7 @@ $(function () {
         } else {
             $(this).addClass("active").val("1");
             point_tread_switch = 1;
-            $("#top_modal").removeClass("none").val("2");
+            $("#top_modal").removeClass("none");
         }
     });
 
@@ -107,6 +107,7 @@ $(function () {
         point_tread_num = $(".amount_top_input").val();
         if (point_tread_num.length <= 0) {
             WarnPrompt("请输入快捷赞踩上限金额");
+            $("#top_modal").addClass("none");
             return;
         }
         PointTreadSwitch(token, point_tread_switch, point_tread_num, function (response) {
