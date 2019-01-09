@@ -79,6 +79,7 @@ $(function () {
 
                     if (data[i].bind_name == "point_tread_num" && data[i].bind_flag == "1") {
                         $(".quick_top_num").text(data[i].bind_info);
+                        $(".quick_tread_num_top").addClass("none");
                     }
                 })
             }
