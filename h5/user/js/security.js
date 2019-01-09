@@ -115,7 +115,7 @@ $(function () {
             }, function () {
                 PointTreadSwitchFun(point_tread_switch,point_tread_num);
             },function () {
-                $("#quickTreadSwitch").removeClass("active").val("2");
+                $("#quickTreadSwitch").addClass("active").val("1");
             })
         } else {
             $(this).addClass("active").val("1");
