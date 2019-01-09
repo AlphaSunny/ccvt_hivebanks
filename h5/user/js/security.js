@@ -88,6 +88,16 @@ $(function () {
         }
     });
 
+    //quick tread
+    $("#quickTreadSwitch").on("change", function () {
+       var val = $(this).val();
+       if(val == "1"){
+           $(this).removeClass("active").val("2");
+       }else {
+           $(this).addClass("active").val("1");
+       }
+    });
+
     // Login record query
     var login_api_url = 'log_login.php', limit = 10, offset = 0;
 
