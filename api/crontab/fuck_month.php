@@ -50,8 +50,8 @@ function fuckYou(){
     $total_1130 = $sql_total_today['today'] - $cutter + $adder_1130;
 
 
-    $cutter = $sql_total_12_28['cutter'] - $sql_total_12_28['adder'];
-    $adder_1130 = $sql_total_12_28['adder'];
+    $cutter = $sql_total_12_28['cutter'] - $sql_adder_12_28['adder'];
+    $adder_1130 = $sql_adder_12_28['adder'];
     $total_1228 = $sql_total_today['today'] - $cutter + $adder_1130;
 
     echo '1130:'.$total_1130;
