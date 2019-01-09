@@ -13,9 +13,7 @@ function GetCookie(name) {
     var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
     if (arr == null) {
-        alert("cookie获取失败");
-        console.log(name);
-        // window.location.href = "login.html";
+        window.location.href = "login.html";
         return;
     }
 }
