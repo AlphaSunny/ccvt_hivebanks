@@ -30,6 +30,7 @@ $(function () {
     //Delete the added type
     $(document).on('click', '.deleteBtn', function () {
         var ca_channel = $(this).parents("li").find(".ca_channel").text();
+        console.log("ca_channel:  " + ca_channel);
         delAssetAccount(token, ca_channel, function (response) {
             $(this).parents('.alreadyItem').remove();
         }, function (response) {
