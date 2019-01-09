@@ -33,7 +33,7 @@ $(function () {
     });
 
     $(".to_doc").click(function () {
-        if (token) {
+        if (user_token) {
             window.location.href = 'http://www.fnying.com/h5/ccvt/index.html?t=' + decodeURI(user_token);
         }else {
             window.location.href = 'http://www.fnying.com/h5/ccvt/index.html?';
