@@ -149,3 +149,29 @@ function ca_get_asset_account_info($ca_id)
     $rows = $db->fetchAll();
     return $rows;
 }
+
+/**
+ * 根据channel 和ca_id获取一行
+ *
+ */
+function select_channel_by_id_channel($channel, $ca_id)
+{
+    $db = new DB_COM();
+    $sql = "select * from ca_asset_account where ca_id = '${ca_id}' and ca_channel = '{$channel}'";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    return $row;
+}
+
+/**
+ *
+ *
+ */
+function del_ca_asset_account_by_account_id($account_id)
+{
+    $db = new DB_COM();
+    $sql = "update ca_asset_account set use_flag = 9 where account_id = '{$account_id}'";
+    $db->query($sql);
+    $count = $db->affectedRows();
+    return $count;
+}
