@@ -110,7 +110,9 @@ $(function () {
             return;
         }
         PointTreadSwitch(token, point_tread_switch, point_tread_num, function (response) {
-            SuccessPrompt("快捷赞踩开启成功");
+            if(response.errcode == "0"){
+                SuccessPrompt("快捷赞踩开启成功");
+            }
         }, function (response) {
             ErrorPrompt(response.errmsg);
         })
