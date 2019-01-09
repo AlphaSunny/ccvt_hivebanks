@@ -65,6 +65,7 @@ $(function () {
                     $(".amount_top_input").addClass("active").val("1");
                     $(".open,.quick_tread_num_top").removeClass("none");
                     $(".close").remove();
+                    $('.quickTreadIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
                 }
                 if (data[i].bind_name == "point_tread_num" && data[i].bind_flag == "1") {
                         $(".quick_top_num").text(data[i].bind_info);
