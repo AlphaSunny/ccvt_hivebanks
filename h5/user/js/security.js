@@ -114,6 +114,8 @@ $(function () {
                 btn: ['确认', '取消'] //按钮
             }, function () {
                 PointTreadSwitchFun(point_tread_switch,point_tread_num);
+            },function () {
+                $("#quickTreadSwitch").removeClass("active").val("2");
             })
         } else {
             $(this).addClass("active").val("1");
