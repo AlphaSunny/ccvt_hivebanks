@@ -5,7 +5,7 @@ $(function () {
     GetGroupType(token, function (response) {
         if (response.errcode == "0") {
             var data = response.rows;
-            var option = "";
+            var option = "<option value=''>选择群类型</option>";
             $.each(data, function (i, val) {
                 option += "<option value='" + data[i].id + "'>" + data[i].name + "</option>"
             });
