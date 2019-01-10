@@ -63,7 +63,7 @@ $data_bind_pass['account_id'] = hash('md5',$ca_id . $lgn_type . $us_ip .  $utime
 $data_bind_pass['ca_id'] = $ca_id;
 $data_bind_pass['ca_channel'] = $ca_channel;
 $data_bind_pass['lgl_address'] = json_encode($lgl_addressArr,JSON_UNESCAPED_UNICODE);
-$data_bind_pass['use_flag'] = "0";
+$data_bind_pass['use_flag'] = "1";
 
 $data_bind_pass['ctime'] = date("Y-m-d H:i:s");
 ////判断地址是否已经存在
