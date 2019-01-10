@@ -46,6 +46,7 @@ $(function () {
                 SetCookie('us_account', response.wechat);
                 SetCookie('us_id', response.us_id);
                 layer.msg("success");
+                return;
                 window.location.href = 'robot_login.html';
             }
         }, function (response) {
