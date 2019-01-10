@@ -67,7 +67,7 @@ $data_bind_pass['use_flag'] = "1";
 $data_bind_pass['ctime'] = date("Y-m-d H:i:s");
 
 //判断该渠道是否已经存在
-if(sel_ca_asset_account_info($ca_id,$ca_channel) )
+if(sel_ca_asset_account_by_channel($ca_id,$ca_channel) )
     exit_error('103',"该渠道已经有银行卡号");
 
 //插入
