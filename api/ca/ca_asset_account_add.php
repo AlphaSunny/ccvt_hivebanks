@@ -34,21 +34,20 @@ $ca_channel = get_arg_str('GET', 'ca_channel');
 $card_nm = get_arg_str('GET', 'card_nm');
 $name = get_arg_str('GET', 'name');
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
+
 //验证token
 $ca_id = check_token($token);
+$row = get_ca_by_id($ca_id);
+if(!$row)
+    exit_error('101','该用户不存在');
 
 // 获取pass_word_hash
 if(get_pass_word_hash($ca_id,'password_login') != $pass_word_hash)
     exit_error("102","密码错误");
-$ca_channel_row = ca_channel_exist_or_not($ca_channel);
 
-//验证代理法定货币类型
-if (!$ca_channel_row)
+//验证该channel存不存在
+if (!ca_channel_exist_or_not($ca_channel))
     exit_error("122","la不支持此代理类型");
-
-//根据ca_id获取基本信息
-$row = get_ca_base_info($ca_id);
-$data_recharge_pass = array();
 
 //整理插入db数据
 $lgl_addressArr = array();
@@ -59,24 +58,24 @@ $utime = time().rand(1000, 9999);
 $ctime = date('Y-m-d H:i:s');
 $us_ip = get_ip();
 
+//插入数据
 $data_bind_pass['account_id'] = hash('md5',$ca_id . $lgn_type . $us_ip .  $utime . $ctime);
 $data_bind_pass['ca_id'] = $ca_id;
 $data_bind_pass['ca_channel'] = $ca_channel;
 $data_bind_pass['lgl_address'] = json_encode($lgl_addressArr,JSON_UNESCAPED_UNICODE);
 $data_bind_pass['use_flag'] = "1";
-
 $data_bind_pass['ctime'] = date("Y-m-d H:i:s");
-////判断地址是否已经存在
-if(sel_ca_asset_account_info($ca_id,$card_nm) )
-    exit_error('103',"银行卡号重复");
-////如果不存在，插入db
-$ca_channel = ins_ca_asset_account_info($data_bind_pass);
-if (!$ca_channel) {
+
+//判断该渠道是否已经存在
+if(sel_ca_asset_account_info($ca_id,$ca_channel) )
+    exit_error('103',"该渠道已经有银行卡号");
+
+//插入
+if (!ins_ca_asset_account_info($data_bind_pass)) {
     exit_error('101',"设置失败");
 }
+
 //成功后返回数据
 $rtn_ary = array();
-$rtn_ary['errcode'] = '0';
-$rtn_ary['errmsg'] = '';
-$rtn_str = json_encode($rtn_ary);
-php_end($rtn_str);
+exit_ok();
+

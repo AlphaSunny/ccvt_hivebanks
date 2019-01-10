@@ -19,6 +19,20 @@ function get_ca_base_info($ca_id)
     $row = $db->fetchRow();
     return $row;
 }
+
+/**
+ * @param $ca_id
+ * @param $base_amount
+ * @return int
+ */
+function get_ca_by_id($ca_id)
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM ca_base WHERE ca_id = '{$ca_id}' limit 1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    return $row;
+}
 //======================================
 // 函数: 更新ba用户base_amount
 // 参数: ca_id            用户ca_id

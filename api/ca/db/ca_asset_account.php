@@ -7,17 +7,12 @@
 // 返回: true                地址存在
 // 返回: false               地址不存在
 //======================================
-function sel_ca_asset_account_info($ca_id, $card_nm)
+function sel_ca_asset_account_by_channel($ca_id, $ca_channel)
 {
     $db = new DB_COM();
-    $sql = "SELECT lgl_address FROM ca_asset_account WHERE ca_id = '{$ca_id}'";
+    $sql = "SELECT lgl_address FROM ca_asset_account WHERE ca_id = '{$ca_id}' and ca_channel = '{$ca_channel}' and use_flag = 1";
     $db->query($sql);
-    $rows = $db->fetchAll();
-    foreach ($rows as $row){
-        if (json_decode($row['lgl_address'],true)["card_nm"] == $card_nm)
-            return true;
-    }
-    return false;
+    return $db->fetchRow();
 }
 //======================================
 // 函数: 插入地址
