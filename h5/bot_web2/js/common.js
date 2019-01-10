@@ -33,13 +33,14 @@ function GetQueryString(name) {
     if (r != null) return unescape(r[2]);
     return null;
 }
+
 // modify URL parameters
-function replaceParamVal(paramName,replaceWith) {
+function replaceParamVal(paramName, replaceWith) {
     var oUrl = this.location.href.toString();
-    var re=eval('/('+ paramName+'=)([^&]*)/gi');
-    var nUrl = oUrl.replace(re,paramName+'='+replaceWith);
+    var re = eval('/(' + paramName + '=)([^&]*)/gi');
+    var nUrl = oUrl.replace(re, paramName + '=' + replaceWith);
     this.location = nUrl;
-    window.location.href=nUrl
+    window.location.href = nUrl
 }
 
 // Email format check
@@ -341,13 +342,25 @@ function GetKeyCode(token, suc_func, error_func) {
 }
 
 //获取ai关键字
-function GetKeyWordList(token,search_keywords, limit, offset, suc_func, error_func) {
+function GetKeyWordList(token, search_keywords, limit, offset, suc_func, error_func) {
     var api_url = 'key_words_list.php',
         post_data = {
             'token': token,
             'search_keywords': search_keywords,
             'limit': limit,
             'offset': offset
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func, suc_func, error_func);
+}
+
+//设置关键字开关
+function KeyWordsSwitch(token, status, group_id, key_id, suc_func, error_func) {
+    var api_url = 'key_words_list.php',
+        post_data = {
+            'token': token,
+            'status': status,
+            'group_id': group_id,
+            'key_id': key_id
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }

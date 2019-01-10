@@ -321,9 +321,26 @@ $(function () {
 
     //每一个关键字设置开关
     $(document).on("change", ".keyWordItemSwitch", function () {
+        var _this = $(this);
         var val = $(this).val();
         var key_id = $(this).attr("id");
-        console.log(val);
-        console.log(key_id);
-    })
+        var status = "2", group_id = GetCookie();
+        KeyWordsSwitchFun(token, status, group_id, key_id, _this, val);
+    });
+
+    function KeyWordsSwitchFun(token, status, group_id, key_id, _this, val) {
+        KeyWordsSwitch(token, status, group_id, key_id, function (response) {
+            if (response.errcode == "0") {
+                SuccessPrompt("设置成功");
+                if (val == "1") {
+                    _this.removeClass("active").val("2");
+                }
+                if (val == "2") {
+                    _this.addClass("active").val("1");
+                }
+            }
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        })
+    }
 });
