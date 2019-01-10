@@ -300,7 +300,7 @@ function get_us_base_info_by_token($us_id)
     }
     $row['glory_of_integral'] = $glory_of_integral;
 
-    $sql = "select g.name from us_bind as b LEFT JOIN bot_group as g on b.bind_info=g.id WHERE b.us_id='{$us_id}' AND b.bind_type='text' AND b.bind_name='group'";
+    $sql = "select g.name from us_bind as b INNER JOIN bot_group as g on b.bind_info=g.id WHERE b.us_id='{$us_id}' AND b.bind_type='text' AND b.bind_name='group'";
     $db->query($sql);
     $group = $db->fetchRow();
     $row['group_name'] = $group['name'];
