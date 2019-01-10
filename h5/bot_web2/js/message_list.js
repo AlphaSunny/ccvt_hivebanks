@@ -9,6 +9,7 @@ $(function () {
             $(".no_data").text("暂无数据");
             return;
         }
+        console.log(response);
     }, function (response) {
         ErrorPrompt(response.errmsg);
     })
