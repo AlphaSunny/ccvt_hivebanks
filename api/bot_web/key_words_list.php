@@ -36,12 +36,15 @@ $total = get_key_words_list_total($us_id,$search_keywords);
 // 交易记录数组
 $rows = get_key_words_list($us_id,$offset,$limit,$search_keywords);
 
+//获取总开关
+$key_words_switch = get_key_words_switch($us_id);
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
 $rtn_ary['rows'] = $rows;
 $rtn_ary['total'] = $total;
+$rtn_ary['key_words_switch'] = $key_words_switch;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 

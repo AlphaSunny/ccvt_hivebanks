@@ -620,3 +620,14 @@ function keywords_switch($status,$switch,$group_id,$key_id)
     }
     return true;
 }
+
+//获取总开关
+function get_key_words_switch($us_id)
+{
+    $db = new DB_COM();
+    $sql = "select key_words_switch from bot_group WHERE us_id='{$us_id}' limit 1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    $switch = $row ? $row['key_words_switch'] : 2;
+    return $switch;
+}
