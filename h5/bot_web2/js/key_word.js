@@ -18,7 +18,7 @@ $(function () {
 
     function GetKeyWordListFun(search_keywords,limit, offset) {
         var tr = "", totalPage = "", count = "", _switch = "";
-        GetKeyWordList(token, limit, offset, function (response) {
+        GetKeyWordList(token,search_keywords, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
                 var data = response.rows;
