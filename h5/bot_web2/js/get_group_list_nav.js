@@ -11,6 +11,9 @@ function GetGroupListNav() {
             SetCookie("group_id", data.id);
             $(".group_name_input").val(data.name);
             $(".group_name").text(data.name);
+            $(".new_number").text(data.new_number);
+            $(".message_number").text(data.message_number);
+            $(".members_number").text(data.members_number);
             if (data.is_admin_del == "1") {
                 $(".is_admin_del").val("1").addClass("active");
             } else {
