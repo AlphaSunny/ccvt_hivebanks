@@ -354,11 +354,12 @@ function GetKeyWordList(token, search_keywords, limit, offset, suc_func, error_f
 }
 
 //设置关键字开关
-function KeyWordsSwitch(token, status, group_id, key_id, suc_func, error_func) {
+function KeyWordsSwitch(token, status,_switch, group_id, key_id, suc_func, error_func) {
     var api_url = 'key_words_switch.php',
         post_data = {
             'token': token,
             'status': status,
+            'switch': _switch,
             'group_id': group_id,
             'key_id': key_id
         };

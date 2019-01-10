@@ -315,7 +315,13 @@ $(function () {
         var val = $(this).val();
         var key_id = $(this).attr("id");
         var status = "2", group_id = GetCookie("group_id");
-        KeyWordsSwitchFun(token, status, group_id, key_id, _this, val);
+        var _switch = "";
+        if (val == "1") {
+            _switch = "2";
+        } else {
+            _switch = "1";
+        }
+        KeyWordsSwitchFun(token, status, _switch, group_id, key_id, _this, val);
     });
 
     //设置总开关
@@ -324,11 +330,17 @@ $(function () {
         var val = $(this).val();
         var key_id = "";
         var status = "1", group_id = GetCookie("group_id");
-        KeyWordsSwitchFun(token, status, group_id, key_id, _this, val);
+        var _switch = "";
+        if (val == "1") {
+            _switch = "2";
+        } else {
+            _switch = "1";
+        }
+        KeyWordsSwitchFun(token, status, _switch, group_id, key_id, _this, val);
     });
 
-    function KeyWordsSwitchFun(token, status, group_id, key_id, _this, val) {
-        KeyWordsSwitch(token, status, group_id, key_id, function (response) {
+    function KeyWordsSwitchFun(token, status,_switch, group_id, key_id, _this, val) {
+        KeyWordsSwitch(token, status,_switch, group_id, key_id, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("设置成功");
                 if (val == "1") {
