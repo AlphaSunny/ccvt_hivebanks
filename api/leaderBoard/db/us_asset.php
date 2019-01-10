@@ -163,10 +163,10 @@ function get_ranking(){
     }
     foreach ($base_amount_list as $k=>$v){
        if ($num==$v){
-           echo $k;
+           echo $k."<br />";
        }
     }
-//    print_r($base_amount_list);
+    print_r($base_amount_list);
     die;
 }
 
