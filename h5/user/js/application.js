@@ -2,6 +2,14 @@ $(function () {
     //token
     var token = GetCookie("user_token");
 
+    var group_name = GetQueryString("group_name");
+    if (group_name) {
+        $("#group_name").val(group_name);
+        $(".pcTitle,.phoneTitle").attr("name", "modifyGroup");
+        $(".bind_group_btn").attr("name", "modify");
+        execI18n();
+    }
+
     GetGroupType(token, function (response) {
         if (response.errcode == "0") {
             var data = response.rows;

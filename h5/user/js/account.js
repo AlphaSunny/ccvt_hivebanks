@@ -394,8 +394,9 @@ $(function () {
     });
 
     //application robot group
-    $(".to_application").click(function () {
-        window.location.href="application.html";
+    $(".modify_application_btn").click(function () {
+        var group_name = $(".application_group").text();
+        window.location.href = "application.html?group_name=" + group_name;
     });
 
     //login robot
