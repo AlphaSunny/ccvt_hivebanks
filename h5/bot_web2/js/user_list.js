@@ -1,7 +1,6 @@
 $(function () {
     var token = GetCookie("robot_token");
-    // var group_id = GetCookie("group_id");
-    var group_id = "1";
+    var group_id = GetCookie("group_id");
 
     //获取群成员列表
     var limit = 10, offset = 0, status = "-1", loading = "";
