@@ -91,199 +91,199 @@
         </div>
 
         <!--Set up recharge and withdrawal rates for different agent types-->
-        <div class="row differentRate" v-for="(item, index) in differentBank" v-cloak>
-            <!--Different agent types-->
-            <div class="col-md-12 col-sm-12">
-                <div class="flex center space-between bankTypeItem">
-                    <div class="flex">
-                        <p class="font-weight-400 ca_channel">{{item.ca_channel}}</p>
-                    </div>
-                    <div class="flex justify-center notSet">
-                        <p class="font-size-14 margin-right-2 i18n" name="rechargeRateNotSet"
-                           v-if="item.recharge_row.recharge_base_rate == 0">Recharge rate is not set</p>
-                        <p class="font-size-14 margin-left-2 i18n" name="withdrawRateNotSet"
-                           v-if="item.withdraw_row.withdraw_base_rate == 0">Withdraw rate is not set</p>
-                    </div>
-                </div>
-            </div>
-            <!--Currently set recharge rate-->
-            <div class="col-md-6 col-sm-12 padding-2 rateColBox">
+        <!--<div class="row differentRate" v-for="(item, index) in differentBank" v-cloak>-->
+            <!--&lt;!&ndash;Different agent types&ndash;&gt;-->
+            <!--<div class="col-md-12 col-sm-12">-->
+                <!--<div class="flex center space-between bankTypeItem">-->
+                    <!--<div class="flex">-->
+                        <!--<p class="font-weight-400 ca_channel">{{item.ca_channel}}</p>-->
+                    <!--</div>-->
+                    <!--<div class="flex justify-center notSet">-->
+                        <!--<p class="font-size-14 margin-right-2 i18n" name="rechargeRateNotSet"-->
+                           <!--v-if="item.recharge_row.recharge_base_rate == 0">Recharge rate is not set</p>-->
+                        <!--<p class="font-size-14 margin-left-2 i18n" name="withdrawRateNotSet"-->
+                           <!--v-if="item.withdraw_row.withdraw_base_rate == 0">Withdraw rate is not set</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;Currently set recharge rate&ndash;&gt;-->
+            <!--<div class="col-md-6 col-sm-12 padding-2 rateColBox">-->
 
-                <div class="currentRechargeRateBox" v-if="item.recharge_row.recharge_base_rate != 0">
-                    <p class="font-size-14">
-                        <span class="i18n" name="currentRechargeRate">Current setting exchange rate</span>:
-                        <span>1</span>
-                        <span class="base_type">BTC</span>=
-                        <span class="recharge_base_rate">{{item.recharge_row.recharge_base_rate}}</span>
-                        <span class="bit_type ca_currency">CNY</span>
-                    </p>
-                    <p class="font-size-14">
-                        <span class="i18n" name="rechargeMaxAmount">Current setting maximum amount of recharge</span>:
-                        <span class="recharge_max_amount">{{item.recharge_row.recharge_max_amount}}</span>
-                        <span class="bit_type ca_currency">CNY</span>
-                    </p>
-                    <p class="font-size-14">
-                        <span class="i18n" name="rechargeMinAmount">Current setting minimum amount of recharge</span>:
-                        <span class="recharge_min_amount">{{item.recharge_row.recharge_min_amount}}</span>
-                        <span class="bit_type ca_currency">CNY</span>
-                    </p>
-                    <p class="font-size-14">
-                        <span class="i18n" name="effectiveTime">Currently set the recharge rate valid period</span>:
-                        <span class="recharge_set_time">{{item.recharge_row.recharge_set_time}}</span>
-                    </p>
-                    <p class="font-size-14">
-                        <span class="i18n" name="level">Current set recharge exchange rate restriction level</span>:
-                        <span>LV</span>
-                        <span class="recharge_us_level">{{item.recharge_row.recharge_us_level}}</span>
-                    </p>
-                </div>
-                <div v-else>
-                    <p class="i18n" name="rechargeRateNotSet">Recharge rate is not set</p>
-                </div>
+                <!--<div class="currentRechargeRateBox" v-if="item.recharge_row.recharge_base_rate != 0">-->
+                    <!--<p class="font-size-14">-->
+                        <!--<span class="i18n" name="currentRechargeRate">Current setting exchange rate</span>:-->
+                        <!--<span>1</span>-->
+                        <!--<span class="base_type">BTC</span>=-->
+                        <!--<span class="recharge_base_rate">{{item.recharge_row.recharge_base_rate}}</span>-->
+                        <!--<span class="bit_type ca_currency">CNY</span>-->
+                    <!--</p>-->
+                    <!--<p class="font-size-14">-->
+                        <!--<span class="i18n" name="rechargeMaxAmount">Current setting maximum amount of recharge</span>:-->
+                        <!--<span class="recharge_max_amount">{{item.recharge_row.recharge_max_amount}}</span>-->
+                        <!--<span class="bit_type ca_currency">CNY</span>-->
+                    <!--</p>-->
+                    <!--<p class="font-size-14">-->
+                        <!--<span class="i18n" name="rechargeMinAmount">Current setting minimum amount of recharge</span>:-->
+                        <!--<span class="recharge_min_amount">{{item.recharge_row.recharge_min_amount}}</span>-->
+                        <!--<span class="bit_type ca_currency">CNY</span>-->
+                    <!--</p>-->
+                    <!--<p class="font-size-14">-->
+                        <!--<span class="i18n" name="effectiveTime">Currently set the recharge rate valid period</span>:-->
+                        <!--<span class="recharge_set_time">{{item.recharge_row.recharge_set_time}}</span>-->
+                    <!--</p>-->
+                    <!--<p class="font-size-14">-->
+                        <!--<span class="i18n" name="level">Current set recharge exchange rate restriction level</span>:-->
+                        <!--<span>LV</span>-->
+                        <!--<span class="recharge_us_level">{{item.recharge_row.recharge_us_level}}</span>-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--<div v-else>-->
+                    <!--<p class="i18n" name="rechargeRateNotSet">Recharge rate is not set</p>-->
+                <!--</div>-->
 
-                <!--Current set exchange rate-->
-                <div class="currentWithdrawRateBox margin-top-5" v-if="item.withdraw_row.withdraw_base_rate != 0">
-                    <p class="font-size-14">
-                        <span class="i18n" name="currentWithdrawRate">Current set exchange rate</span>:
-                        <span>1</span>
-                        <span class="base_type">BTC</span>=
-                        <span class="recharge_base_rate">{{item.withdraw_row.withdraw_base_rate}}</span>
-                        <span class="bit_type ca_currency">CNY</span>
-                    </p>
-                    <p class="font-size-14">
-                        <span class="i18n" name="withdrawMaxAmount">Current setting withdrawal maximum amount</span>:
-                        <span class="recharge_max_amount">{{item.withdraw_row.withdraw_max_amount}}</span>
-                        <span class="bit_type ca_currency">CNY</span>
-                    </p>
-                    <p class="font-size-14">
-                        <span class="i18n" name="withdrawMinAmount">Current setting withdrawal minimum amount</span>:
-                        <span class="recharge_min_amount">{{item.withdraw_row.withdraw_min_amount}}</span>
-                        <span class="bit_type ca_currency">CNY</span>
-                    </p>
-                    <p class="font-size-14">
-                        <span class="i18n" name="effectiveTime">Current set withdrawal rate valid</span>:
-                        <span class="recharge_set_time">{{item.withdraw_row.withdraw_set_time}}</span>
-                    </p>
-                    <p class="font-size-14">
-                        <span class="i18n" name="level">Current setting exchange rate restriction level</span>:
-                        <span>LV</span>
-                        <span class="recharge_us_level">{{item.withdraw_row.withdraw_us_level}}</span>
-                    </p>
-                </div>
-                <div v-else>
-                    <p class="i18n" name="withdrawRateNotSet">Withdraw rate is not set</p>
-                </div>
-            </div>
-            <!--Set up a recharge cash rate form-->
-            <div class="col-md-6 col-sm-12 rateForm padding-2">
-                <!--Select recharge and withdrawal rate settings-->
-                <div class="margin-bottom-5 setRateType">
-                    <span>
-                        <input type="radio" name="changeRate" checked value="recharge"><span class="i18n"
-                                                                                             name="rechargeRate">Recharge rate setting</span>
-                    </span>
-                    <span class="margin-left-5">
-                        <input type="radio" name="changeRate" value="withdraw"><span class="i18n" name="withdrawRate">Withdraw rate setting</span>
-                    </span>
-                </div>
+                <!--&lt;!&ndash;Current set exchange rate&ndash;&gt;-->
+                <!--<div class="currentWithdrawRateBox margin-top-5" v-if="item.withdraw_row.withdraw_base_rate != 0">-->
+                    <!--<p class="font-size-14">-->
+                        <!--<span class="i18n" name="currentWithdrawRate">Current set exchange rate</span>:-->
+                        <!--<span>1</span>-->
+                        <!--<span class="base_type">BTC</span>=-->
+                        <!--<span class="recharge_base_rate">{{item.withdraw_row.withdraw_base_rate}}</span>-->
+                        <!--<span class="bit_type ca_currency">CNY</span>-->
+                    <!--</p>-->
+                    <!--<p class="font-size-14">-->
+                        <!--<span class="i18n" name="withdrawMaxAmount">Current setting withdrawal maximum amount</span>:-->
+                        <!--<span class="recharge_max_amount">{{item.withdraw_row.withdraw_max_amount}}</span>-->
+                        <!--<span class="bit_type ca_currency">CNY</span>-->
+                    <!--</p>-->
+                    <!--<p class="font-size-14">-->
+                        <!--<span class="i18n" name="withdrawMinAmount">Current setting withdrawal minimum amount</span>:-->
+                        <!--<span class="recharge_min_amount">{{item.withdraw_row.withdraw_min_amount}}</span>-->
+                        <!--<span class="bit_type ca_currency">CNY</span>-->
+                    <!--</p>-->
+                    <!--<p class="font-size-14">-->
+                        <!--<span class="i18n" name="effectiveTime">Current set withdrawal rate valid</span>:-->
+                        <!--<span class="recharge_set_time">{{item.withdraw_row.withdraw_set_time}}</span>-->
+                    <!--</p>-->
+                    <!--<p class="font-size-14">-->
+                        <!--<span class="i18n" name="level">Current setting exchange rate restriction level</span>:-->
+                        <!--<span>LV</span>-->
+                        <!--<span class="recharge_us_level">{{item.withdraw_row.withdraw_us_level}}</span>-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--<div v-else>-->
+                    <!--<p class="i18n" name="withdrawRateNotSet">Withdraw rate is not set</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;Set up a recharge cash rate form&ndash;&gt;-->
+            <!--<div class="col-md-6 col-sm-12 rateForm padding-2">-->
+                <!--&lt;!&ndash;Select recharge and withdrawal rate settings&ndash;&gt;-->
+                <!--<div class="margin-bottom-5 setRateType">-->
+                    <!--<span>-->
+                        <!--<input type="radio" name="changeRate" checked value="recharge"><span class="i18n"-->
+                                                                                             <!--name="rechargeRate">Recharge rate setting</span>-->
+                    <!--</span>-->
+                    <!--<span class="margin-left-5">-->
+                        <!--<input type="radio" name="changeRate" value="withdraw"><span class="i18n" name="withdrawRate">Withdraw rate setting</span>-->
+                    <!--</span>-->
+                <!--</div>-->
 
-                <div class="setRateForm">
-                    <ul>
-                        <!--rate-->
-                        <li class="flex center margin-bottom-2">
-                            <div class="col-md-3">
-                                <p class="font-size-14 flex space-around">
-                                    <span>
-                                        1<span class="base_type">BTC</span>
-                                    </span>
-                                    <span><i class="iconfont icon-transfer"></i></span>
-                                </p>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="input-group rateInput">
-                                    <input type="text" class="form-control inputRateVal rate">
-                                    <span class="input-group-addon ca_currency"></span>
-                                </div>
-                            </div>
+                <!--<div class="setRateForm">-->
+                    <!--<ul>-->
+                        <!--&lt;!&ndash;rate&ndash;&gt;-->
+                        <!--<li class="flex center margin-bottom-2">-->
+                            <!--<div class="col-md-3">-->
+                                <!--<p class="font-size-14 flex space-around">-->
+                                    <!--<span>-->
+                                        <!--1<span class="base_type">BTC</span>-->
+                                    <!--</span>-->
+                                    <!--<span><i class="iconfont icon-transfer"></i></span>-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-9">-->
+                                <!--<div class="input-group rateInput">-->
+                                    <!--<input type="text" class="form-control inputRateVal rate">-->
+                                    <!--<span class="input-group-addon ca_currency"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
 
 
-                        </li>
-                        <!--Maximum amount-->
-                        <li class="flex center margin-bottom-2">
-                            <div class="col-md-3">
-                                <p>
-                                    <span class="i18n font-size-14" name="maxLimit">Maximum amount</span>:
-                                </p>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="input-group">
-                                    <input type="text" class="form-control inputRateVal maxAmount">
-                                    <span class="input-group-addon ca_currency"></span>
-                                </div>
-                            </div>
+                        <!--</li>-->
+                        <!--&lt;!&ndash;Maximum amount&ndash;&gt;-->
+                        <!--<li class="flex center margin-bottom-2">-->
+                            <!--<div class="col-md-3">-->
+                                <!--<p>-->
+                                    <!--<span class="i18n font-size-14" name="maxLimit">Maximum amount</span>:-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-9">-->
+                                <!--<div class="input-group">-->
+                                    <!--<input type="text" class="form-control inputRateVal maxAmount">-->
+                                    <!--<span class="input-group-addon ca_currency"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                        </li>
-                        <!--最小额度-->
-                        <li class="flex center margin-bottom-2">
-                            <div class="col-md-3 ">
-                                <p>
-                                    <span class="i18n font-size-14" name="minLimit">Minimum amount</span>:
-                                </p>
+                        <!--</li>-->
+                        <!--&lt;!&ndash;最小额度&ndash;&gt;-->
+                        <!--<li class="flex center margin-bottom-2">-->
+                            <!--<div class="col-md-3 ">-->
+                                <!--<p>-->
+                                    <!--<span class="i18n font-size-14" name="minLimit">Minimum amount</span>:-->
+                                <!--</p>-->
 
-                            </div>
-                            <div class="col-md-9">
-                                <div class="input-group">
-                                    <input type="text" class="form-control inputRateVal minAmount">
-                                    <span class="input-group-addon ca_currency"></span>
-                                </div>
-                            </div>
-                        </li>
-                        <!--password-->
-                        <li class="flex center margin-bottom-2">
-                            <div class="col-md-3 ">
-                                <p>
-                                    <span class="i18n font-size-14" name="loginPassword">password</span>:
-                                </p>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="input-group width-100">
-                                    <input type="password" class="form-control password minAmount">
-                                </div>
-                            </div>
-                        </li>
-                        <!--Level setting-->
-                        <li class="flex center margin-bottom-2">
-                            <div class="col-md-3">
-                                <p>
-                                    <span class="i18n font-size-14" name="setLevel">Level setting</span>:
-                                </p>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="input-group">
-                                    <input type="text" class="form-control inputRateVal level">
-                                    <span class="input-group-addon">LV</span>
-                                </div>
-                            </div>
-                        </li>
-                        <!--Validity time-->
-                        <li class="flex center margin-bottom-2">
-                            <div class="col-md-3">
-                                <p>
-                                    <span class="i18n font-size-14" name="deadline">Validity period</span>:
-                                </p>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="text" class="timeInput form-control">
-                            </div>
-                        </li>
-                        <!--Confirm setting button-->
-                        <li>
-                            <button class="btn btn-success i18n enableBtn" name="determine">confirm</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+                            <!--</div>-->
+                            <!--<div class="col-md-9">-->
+                                <!--<div class="input-group">-->
+                                    <!--<input type="text" class="form-control inputRateVal minAmount">-->
+                                    <!--<span class="input-group-addon ca_currency"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--&lt;!&ndash;password&ndash;&gt;-->
+                        <!--<li class="flex center margin-bottom-2">-->
+                            <!--<div class="col-md-3 ">-->
+                                <!--<p>-->
+                                    <!--<span class="i18n font-size-14" name="loginPassword">password</span>:-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-9">-->
+                                <!--<div class="input-group width-100">-->
+                                    <!--<input type="password" class="form-control password minAmount">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--&lt;!&ndash;Level setting&ndash;&gt;-->
+                        <!--<li class="flex center margin-bottom-2">-->
+                            <!--<div class="col-md-3">-->
+                                <!--<p>-->
+                                    <!--<span class="i18n font-size-14" name="setLevel">Level setting</span>:-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-9">-->
+                                <!--<div class="input-group">-->
+                                    <!--<input type="text" class="form-control inputRateVal level">-->
+                                    <!--<span class="input-group-addon">LV</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--&lt;!&ndash;Validity time&ndash;&gt;-->
+                        <!--<li class="flex center margin-bottom-2">-->
+                            <!--<div class="col-md-3">-->
+                                <!--<p>-->
+                                    <!--<span class="i18n font-size-14" name="deadline">Validity period</span>:-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-9">-->
+                                <!--<input type="text" class="timeInput form-control">-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--&lt;!&ndash;Confirm setting button&ndash;&gt;-->
+                        <!--<li>-->
+                            <!--<button class="btn btn-success i18n enableBtn" name="determine">confirm</button>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </section>
 
