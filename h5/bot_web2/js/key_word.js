@@ -328,6 +328,15 @@ $(function () {
         KeyWordsSwitchFun(token, status, group_id, key_id, _this, val);
     });
 
+    //设置总开关
+    $(".keyWordSwitch").click(function () {
+        var _this = $(this);
+        var val = $(this).val();
+        var key_id = "";
+        var status = "1", group_id = GetCookie();
+        KeyWordsSwitchFun(token, status, group_id, key_id, _this, val);
+    });
+
     function KeyWordsSwitchFun(token, status, group_id, key_id, _this, val) {
         KeyWordsSwitch(token, status, group_id, key_id, function (response) {
             if (response.errcode == "0") {
