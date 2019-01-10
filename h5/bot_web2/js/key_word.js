@@ -17,7 +17,7 @@ $(function () {
                     return;
                 }
 
-                if(data.key_words_switch == "1"){
+                if(response.key_words_switch == "1"){
                     $(".keyWordSwitch").addClass("active").val("1");
                 }else {
                     $(".keyWordSwitch").removeClass("active").val("2");
