@@ -17,13 +17,6 @@ $(function () {
                     return;
                 }
 
-                if(response.key_words_switch == "1"){
-                    $(".keyWordSwitch").addClass("active").val("1");
-                }else {
-                    $(".keyWordSwitch").removeClass("active").val("2");
-                    $(".keyWordItemSwitch").removeClass("active").val("2");
-                }
-
                 totalPage = Math.floor(response.total / limit);
                 if (totalPage <= 1) {
                     count = 1;
@@ -58,6 +51,14 @@ $(function () {
                         "</tr>"
                 });
                 $("#keyWord").html(tr);
+
+                if(response.key_words_switch == "1"){
+                    $(".keyWordSwitch").addClass("active").val("1");
+                }else {
+                    $(".keyWordSwitch").removeClass("active").val("2");
+                    $(".keyWordItemSwitch").removeClass("active").val("2");
+                }
+
                 $("#pagination").pagination({
                     currentPage: (limit + offset) / limit,
                     totalPage: totalPage,
