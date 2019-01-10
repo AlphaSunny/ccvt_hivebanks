@@ -170,7 +170,7 @@ function get_ranking(){
 function for_key($key,$v,$arr){
 
     $res = '';
-    $lenth = $key;
+    $lenth = $key - 1 ;
     for ($i = $lenth; $i > 0 ;$i--)
     {
         if($v<$arr[$i])
