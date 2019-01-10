@@ -409,6 +409,15 @@ function PointTreadSwitch(token, point_tread_switch, point_tread_num, suc_func, 
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//application group
+function GetGroupType(token, suc_func, error_func) {
+    var api_url = 'get_group_type_list.php',
+        post_data = {
+            'token': token
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //Modify user nickname
 function ModifyNickName(token, us_account, suc_func, error_func) {
     var api_url = 'alter_us_account.php',
