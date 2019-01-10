@@ -163,7 +163,7 @@ function get_ranking(){
     }
     foreach ($base_amount_list as $k=>$v){
        if ($num==$v){
-           echo $k."<br />";
+           echo $k+1;
        }
     }
     print_r($base_amount_list);
