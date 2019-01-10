@@ -33,11 +33,13 @@ list($limit, $offset) = get_paging_arg('GET');
 
 // 获取总记录
 $total = get_key_words_list_total($us_id,$search_keywords);
-// 交易记录数组
-$rows = get_key_words_list($us_id,$offset,$limit,$search_keywords);
 
 //获取总开关
 $key_words_switch = get_key_words_switch($us_id);
+// 交易记录数组
+$rows = get_key_words_list($us_id,$offset,$limit,$search_keywords);
+
+
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
