@@ -177,7 +177,7 @@ function for_key($key,$v,$arr){
             $res = $i;
     }
 
-    return $res ;
+    echo $res ;die;
 
 }
 
