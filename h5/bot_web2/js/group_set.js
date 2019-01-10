@@ -1,4 +1,5 @@
 $(function () {
+    var token = GetCookie("user_token");
     $(".edit_group_name").click(function () {
         $(".input_box").removeClass("none");
     });
@@ -14,6 +15,7 @@ $(function () {
     var group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "",
         is_welcome = "", welcome = "";
     var group_id = GetCookie("group_id");
+
     function EditGroupFun() {
         EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, function (response) {
             if (response.errcode == "0") {

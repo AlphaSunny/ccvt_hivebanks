@@ -1,5 +1,5 @@
 $(function () {
-    var token = GetCookie("robot_token");
+    var token = GetCookie("user_token");
     var group_id = GetCookie("group_id");
 
     function GetTaskListFun() {

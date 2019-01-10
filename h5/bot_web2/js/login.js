@@ -7,8 +7,8 @@ $(function () {
         }
     }
 
-    var robot_token = GetCookie("robot_token");
-    if (robot_token) {
+    var user_token = GetCookie("user_token");
+    if (user_token) {
         window.location.href = "robot_login.html";
     }
 
@@ -42,9 +42,9 @@ $(function () {
             if (response.errcode == '0') {
                 layer.close(loading);
                 var token = response.token;
-                SetCookie('robot_token', token);
-                SetCookie('robot_username', response.wechat);
-                SetCookie('robot_us_id', response.us_id);
+                SetCookie('user_token', token);
+                SetCookie('us_account', response.wechat);
+                SetCookie('us_id', response.us_id);
                 layer.msg("success");
                 window.location.href = 'robot_login.html';
             }

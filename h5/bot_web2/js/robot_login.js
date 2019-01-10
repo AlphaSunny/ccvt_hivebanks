@@ -1,7 +1,7 @@
-var token = GetCookie("robot_token");
+var token = GetCookie("user_token");
 
 function _GetWeChatGroupFun() {
-    var li = "", option = "", optionArr = "";
+    var li = "", option = "";
     //获取群类型
     GetWeChatGroupType(token, function (response) {
         if (response.errcode == "0") {

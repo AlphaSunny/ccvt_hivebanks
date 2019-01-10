@@ -1,6 +1,6 @@
 $(function () {
     //获取token
-    var token = GetCookie("robot_token");
+    var token = GetCookie("user_token");
 
     var limit = 10, offset = 0, loading = "";
 

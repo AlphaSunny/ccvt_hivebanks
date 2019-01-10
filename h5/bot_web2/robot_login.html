@@ -51,7 +51,7 @@
 <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript">
-    GetCookie("robot_token");
+    GetCookie("user_token");
     var us_id = GetCookie("us_id");
     var url = getRootPath();
     var search_pory = "", robot_alive = "", timer = "";
@@ -71,9 +71,9 @@
                     window.location.href = url+"/h5/bot_web2/home.html";
                     // $(".robot_qr,.form_box").remove();
                     // $(".success_box").fadeIn();
-                    $(".login_time").text(response.rows.login_time);
-                    $(".elapsed_time").text(response.rows.elapsed_time);
-                    $(".count").text(response.rows.count);
+                    // $(".login_time").text(response.rows.login_time);
+                    // $(".elapsed_time").text(response.rows.elapsed_time);
+                    // $(".count").text(response.rows.count);
                 }
             }
         });
