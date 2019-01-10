@@ -418,6 +418,16 @@ function GetGroupType(token, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+function ApplicationGroup(token, group_name, group_type_id, suc_func, error_func) {
+    var api_url = 'application_group.php',
+        post_data = {
+            'token': token,
+            'group_name': group_name,
+            'group_type_id': group_type_id
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //Modify user nickname
 function ModifyNickName(token, us_account, suc_func, error_func) {
     var api_url = 'alter_us_account.php',
