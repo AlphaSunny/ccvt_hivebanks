@@ -17,7 +17,7 @@ $(function () {
     var limit = 10, offset = 0;
 
     function GetKeyWordListFun(limit, offset) {
-        var tr = "", totalPage = "", count = "";
+        var tr = "", totalPage = "", count = "", _switch = "";
         GetKeyWordList(token, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
@@ -38,6 +38,11 @@ $(function () {
                 }
 
                 $.each(data, function (i, val) {
+                    if (data[i].switch == "1") {
+                        _switch = "<input id='keyWordItemSwitch' class='switch keyWordItemSwitch switch-anim margin-left-2 active' type='checkbox' value='1'>"
+                    } else {
+                        _switch = "<input id='keyWordItemSwitch' class='switch keyWordItemSwitch switch-anim margin-left-2' type='checkbox' value='2'>"
+                    }
                     tr += "<tr>" +
                         "<td class='ask' name=" + data[i].id + ">" + data[i].ask + "</td>" +
                         "<td class='answer'>" + data[i].answer + "</td>" +
@@ -48,7 +53,7 @@ $(function () {
                         "<td class='flex center space-center'>" +
                         "<div class='flex center'>" +
                         "<span>关</span>" +
-                        "<input id='keyWordItemSwitch' class='switch keyWordItemSwitch switch-anim margin-left-2' type='checkbox' value='2'>" +
+                        _switch +
                         "<span>开</span>" +
                         "</div>" +
                         "<button class='btn-success btn-sm editBtn margin-left-2'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
