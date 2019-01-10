@@ -5,7 +5,7 @@ $(function () {
     var group_name = decodeURI(GetQueryString("group_name"));
     if (group_name) {
         $("#group_name").val(group_name);
-        $(".pcTitle,.phoneTitle").attr("name", "modifyGroup");
+        $(".applicationGroup").attr("name", "modifyGroup");
         $(".bind_group_btn").attr("name", "modify");
         execI18n();
     }
