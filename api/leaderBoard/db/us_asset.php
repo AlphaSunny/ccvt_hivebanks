@@ -174,7 +174,7 @@ function for_key($key,$v,$arr){
     for ($i = $lenth; $i > 0 ;$i--)
     {
         if($v<$arr[$i])
-            $res = $i;
+            $res = $i + 1;
     }
 
     echo $res ;
