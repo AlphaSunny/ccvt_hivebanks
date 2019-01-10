@@ -377,3 +377,10 @@ td.none {
     fill: currentColor;
     overflow: hidden;
 }
+
+.footer {
+    position: fixed;
+    bottom: 0.5rem;
+    left: 0;
+    width: 100%;
+}
