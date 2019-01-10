@@ -2,7 +2,7 @@ $(function () {
     //token
     var token = GetCookie("user_token");
 
-    var group_name = GetQueryString("group_name");
+    var group_name = decodeURI(GetQueryString("group_name"));
     if (group_name) {
         $("#group_name").val(group_name);
         $(".pcTitle,.phoneTitle").attr("name", "modifyGroup");
