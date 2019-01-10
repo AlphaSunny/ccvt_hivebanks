@@ -309,6 +309,9 @@ function GetGroupMember(token, group_id, limit, offset, status, suc_func, error_
 
 //获取聊天记录
 function GetNewsRecord(token, group_id, status, suc_func, error_func) {
+    console.log(token);
+    console.log(group_id);
+    console.log(status);
     var api_url = "group_message_list.php",
         post_data = {
             "token": token,
