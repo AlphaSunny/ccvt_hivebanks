@@ -394,9 +394,8 @@ $(function () {
     });
 
     //application robot group
-    $(".application_btn").click(function () {
-        layer.msg("申请功能即将开通");
-        return;
+    $(".to_application").click(function () {
+        window.location.href="application.html";
     });
 
     //login robot
