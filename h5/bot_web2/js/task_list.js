@@ -37,7 +37,7 @@ $(function () {
                     }
 
                     if (data[i].send_type == "2") {
-                        content = "<img src='" + data[i].content + "'/>";
+                        content = "<img src='" + data[i].content + "' style='max-width: 6rem'/>";
                     } else {
                         content = "<span>" + data[i].content + "</span>";
                     }
