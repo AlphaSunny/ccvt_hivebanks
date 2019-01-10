@@ -161,13 +161,23 @@ function get_ranking(){
     if ($rows){
        $base_amount_list = array_map(function($val){return $val['base_amount'];}, $rows);
     }
-    foreach ($base_amount_list as $k=>$v){
-       if ($num<$v){
-           echo $k+2;
-       }
-    }
+    echo for_key('4',$num,$base_amount_list);
     print_r($base_amount_list);
     die;
+}
+
+function for_key($key,$v,$arr){
+
+    $res = '';
+    $lenth = $key;
+    for ($i = $lenth; $i<$lenth ;$i--)
+    {
+        if($v<$arr[$i])
+            $res = $i;
+    }
+
+    return $res ;
+
 }
 
 
