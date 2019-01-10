@@ -14,25 +14,25 @@ $(function () {
     });
 
     //get recharge withdraw rate list
-    GetRateList(token, function (response) {
-        if (response.errcode == '0') {
-            var data = response.rows;
-            var recharge_base_rate = [];
-            $.each(data, function (i, val) {
-                recharge_base_rate.push(data[i].recharge_row.recharge_base_rate);
-            });
-            new Vue({
-                el: '.content',
-                data: {
-                    differentBank: data,
-                    recharge_base_rate: recharge_base_rate,
-                    bl: true
-                }
-            })
-        }
-    }, function (response) {
-        LayerFun(response.errcode);
-    });
+    // GetRateList(token, function (response) {
+    //     if (response.errcode == '0') {
+    //         var data = response.rows;
+    //         var recharge_base_rate = [];
+    //         $.each(data, function (i, val) {
+    //             recharge_base_rate.push(data[i].recharge_row.recharge_base_rate);
+    //         });
+    //         new Vue({
+    //             el: '.content',
+    //             data: {
+    //                 differentBank: data,
+    //                 recharge_base_rate: recharge_base_rate,
+    //                 bl: true
+    //             }
+    //         })
+    //     }
+    // }, function (response) {
+    //     LayerFun(response.errcode);
+    // });
 
     //select recharge rate and withdraw rate
     $(document).on('click', 'input[name=changeRate]', function () {
