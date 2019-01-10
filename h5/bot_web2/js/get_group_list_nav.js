@@ -5,6 +5,9 @@ function GetGroupListNav() {
     GetGroupList(token, is_audit, function (response) {
         if (response.errcode == "0") {
             var data = response.rows[0];
+            if(!data){
+                return;
+            }
             SetCookie("group_id", data.id);
             $(".group_name_input").val(data.name);
             $(".group_name").text(data.name);
