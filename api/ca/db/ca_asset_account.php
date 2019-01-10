@@ -174,7 +174,7 @@ function ca_get_asset_account_info($ca_id)
 function select_channel_by_id_channel($channel, $ca_id)
 {
     $db = new DB_COM();
-    $sql = "select * from ca_asset_account where ca_id = '${ca_id}' and ca_channel = '{$channel}'";
+    $sql = "select * from ca_asset_account where ca_id = '${ca_id}' and ca_channel = '{$channel}' order by ctime desc limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
     return $row;
