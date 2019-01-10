@@ -345,11 +345,11 @@ $(function () {
                 SuccessPrompt("设置成功");
                 if (val == "1") {
                     _this.removeClass("active").val("2");
-                    $(".keyWordItemSwitch").removeClass("active").val("2");
+                    // $(".keyWordItemSwitch").removeClass("active").val("2");
                 }
                 if (val == "2") {
                     _this.addClass("active").val("1");
-                    $(".keyWordItemSwitch").addClass("active").val("1");
+                    // $(".keyWordItemSwitch").addClass("active").val("1");
                 }
             }
         }, function (response) {
