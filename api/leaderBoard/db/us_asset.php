@@ -146,9 +146,28 @@ function get_chat_list($data,$offset,$limit)
 
 
 //======================================
-// 函数: 点赞功能
+// 函数: 获取积分排名
 // 参数: account      账号
 //      variable      绑定name
+// 返回: row           最新信息数组
+//======================================
+function get_ranking(){
+    $db = new DB_COM();
+    $sql = "select base_amount from us_asset WHERE base_amount>=0 ORDER by base_amount DESC ";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    if ($rows){
+       $base_amount_list = array_map(function($val){return $val['base_amount'];}, $rows);
+    }
+    print_r($base_amount_list);
+    die;
+}
+
+
+//======================================
+// 函数: 点赞功能
+// 参数: $data
+//
 // 返回: row           最新信息数组
 //======================================
 function give_like_us($data)
