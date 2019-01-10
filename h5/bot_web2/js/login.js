@@ -43,10 +43,9 @@ $(function () {
                 layer.close(loading);
                 var token = response.token;
                 SetCookie('user_token', token);
-                SetCookie('us_account', response.wechat);
+                SetCookie('wechat', response.wechat);
                 SetCookie('us_id', response.us_id);
                 layer.msg("success");
-                return;
                 window.location.href = 'robot_login.html';
             }
         }, function (response) {

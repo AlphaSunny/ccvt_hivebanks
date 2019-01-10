@@ -30,6 +30,6 @@
     });
 
 	//get name
-	var robot_username = GetCookie("us_account");
-	$(".robot_username").text(robot_username);
+	var wechat = GetCookie("wechat");
+	$(".robot_username").text(wechat);
 })();
