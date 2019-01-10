@@ -46,6 +46,11 @@ $(function () {
                         "<td class='send_type none'>" + data[i].send_type + "</td>" +
                         "<td class='id none'>" + data[i].id + "</td>" +
                         "<td>" +
+                        "<div class='flex center'>" +
+                        "<span>关</span>" +
+                        "<input id='keyWordSwitch' class='switch keyWordSwitch switch-anim margin-left-2' type='checkbox' value='2'>" +
+                        "<span>开</span>" +
+                        "</div>" +
                         "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                         "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
                         "</td>" +
