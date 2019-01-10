@@ -18,7 +18,7 @@ $(function () {
     //bind group
     $(".bind_group_btn").click(function () {
         var group_name = $("#group_name").val();
-        var group_type_id = $("#group_type optional:selected").val();
+        var group_type_id = $("#group_type option:selected").val();
         console.log(group_name);
         console.log(group_type_id);
     })
