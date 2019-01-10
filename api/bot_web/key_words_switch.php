@@ -22,9 +22,9 @@ $args = array('token','status','switch');
 //1:总开关    2:分开关
 $status =  get_arg_str('GET', 'status');
 if ($status==1){
-    $args = array('group_id');
+    array_push($args,"group_id");
 }else{
-    $args = array('key_id');
+    array_push($args,"key_id");
 }
 chk_empty_args('GET', $args);
 
