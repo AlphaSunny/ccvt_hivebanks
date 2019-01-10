@@ -21,7 +21,6 @@ $(function () {
         GetKeyWordList(token, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
-                console.log(response);
                 var data = response.rows;
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
