@@ -90,6 +90,213 @@
             </div>
         </div>
 
+        <div class="row baseBaNone inputRate">
+            <!--Recharge exchange rate setting-->
+            <div class="col-md-6 col-sm-12">
+                <!--Current Recharge Rate-->
+                <div class="currentRechargeRate currentRechargeRateBox flex space-around font-size-14 phone-font-size-12">
+                    <ul>
+                        <li>
+                            <span class="i18n" name="currentRechargeRate">Current Recharge Rate</span>:&nbsp;&nbsp;
+                            <span>1<span>BTC</span>=<span class="recharge_rate">10</span><span
+                                    class="bit_type"></span></span>
+                        </li>
+                        <li>
+                            <span class="i18n" name="effectiveTime">Effective Time</span>:&nbsp;&nbsp;
+                            <span class="recharge_set_time"></span>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <span class="i18n" name="rechargeMaxAmount">Maximum Recharge Amount</span>:&nbsp;&nbsp;
+                            <span class="recharge_max_amount"></span>
+                            <span class="bit_type"></span>
+                        </li>
+                        <li>
+                            <span class="i18n" name="rechargeMinAmount">Minimum Recharge Amount</span>:&nbsp;&nbsp;
+                            <span class="recharge_min_amount"></span>
+                            <span class="bit_type"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rechargeNotSet margin-bottom-5">
+                    <span class="rechargeRateNotSet i18n" name="rechargeRateNotSet">Recharge Rate Is Not Set</span>
+                </div>
+                <div class="BOCRateChannel bocRechargeBox">
+                    <h5 class="i18n" name="rechargeRate">Recharge Rate</h5>
+                    <!--rate-->
+                    <!--<p class="showRate rechargeShowRate none">-->
+                    <!--<span>1</span>-->
+                    <!--<span class="base_type"></span>=-->
+                    <!--<span class="rechargeRateText"></span>-->
+                    <!--<span class="bit_type"></span>-->
+                    <!--</p>-->
+                    <div class="startRate margin-bottom-5">
+                        <div class="flex center form-group form-group-sm">
+                            <div class="defaultRate flex center">
+                                <p class="margin-right-15">1<span class="base_type"></span></p>
+                                <span><i class="iconfont icon-transfer"></i></span>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" class="form-control inputRateVal rechargeRateInput" placeholder="Please input Number">
+                                <span class="input-group-addon bit_type"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--额度-->
+                    <div class="limit margin-bottom-5">
+                        <div class="minimumLimit flex center">
+                            <h6><span class="i18n" name="minLimit">mini limit</span>:</h6>
+                            <div class="flex wrap center form-group form-group-sm">
+                                <div class="input-group">
+                                    <input type="text" class="form-control minimumVal rechargeMinVal">
+                                    <span class="input-group-addon bit_type"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="limit margin-bottom-5">
+                        <div class="minimumLimit flex center">
+                            <h6><span class="i18n" name="maxLimit">max limit</span>:</h6>
+                            <div class="flex center form-group form-group-sm">
+                                <div class="input-group">
+                                    <input type="text" class="form-control maximumVal rechargeMaxVal">
+                                    <span class="input-group-addon bit_type"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--password-->
+                    <div class="Period flex center margin-bottom-5">
+                        <h6><span class="i18n" name="loginPassword">password</span>:</h6>
+                        <div class="flex center form-group form-group-sm">
+                            <div class="input-group width-100">
+                                <input type="password" class="password form-control width-100" id="rechargePassword"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user_level_box margin-bottom-5">
+                        <div class="user_level flex center">
+                            <h6 class="i18n" name="setLevel">setLevel</h6>
+                            <div class="form-group form-group-sm">
+                                <input type="text" class="form-control rechargeLevel">
+                            </div>
+                        </div>
+                    </div>
+                    <!--Validity time-->
+                    <div class="Period flex center">
+                        <h6><span class="i18n" name="deadline">Deadline</span>:</h6>
+                        <input type="text" class="timeInput" id="rechargeRateTime"/>
+                    </div>
+                    <a href="javascript:;" class="btn btn-success rateConfirm rechargeRateBtn i18n" name="confirm">Confirm</a>
+                </div>
+            </div>
+            <!--withtraw exchange rate setting-->
+            <div class="phone-margin-top-10 col-md-6 col-sm-12">
+                <div class="currentRechargeRate currentWithdrawRateBox flex space-around font-size-14 phone-font-size-12">
+                    <ul>
+                        <li>
+                            <span class="i18n" name="currentWithdrawRate">Current Withdraw Rate</span>:&nbsp;&nbsp;
+                            <span>1<span class="bit_type"></span>=<span class="withdraw_rate">0.001</span><span
+                                    class="base_type"></span></span>
+                        </li>
+                        <li>
+                            <span class="i18n" name="effectiveTime">Effective Time</span>:&nbsp;&nbsp;
+                            <span class="withdraw_set_time"></span>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <span class="i18n" name="withdrawMaxAmount">Maximum Withdrawal Amount</span>:&nbsp;&nbsp;
+                            <span class="withdraw_max_amount"></span>
+                            <span class="bit_type"></span>
+                        </li>
+                        <li>
+                            <span class="i18n" name="withdrawMinAmount">Minimum Withdrawal Amount</span>:&nbsp;&nbsp;
+                            <span class="withdraw_min_amount"></span>
+                            <span class="bit_type"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="withdrawNotSet margin-bottom-5">
+                    <span class="withdrawRateNotSet i18n" name="withdrawRateNotSet">Withdraw Rate Is Not Set</span>
+                </div>
+                <div class="BOCRateChannel bocRechargeBox">
+                    <h5 class="i18n" name="withdrawRate">Withdraw Rate</h5>
+                    <!--rate-->
+                    <!--<p class="showRate withdrawShowRate none">-->
+                    <!--<span>1</span>-->
+                    <!--<span class="bit_type"></span>=-->
+                    <!--<span class='withdrawRateText'></span>-->
+                    <!--<span class="base_type"></span>-->
+                    <!--</p>-->
+                    <div class="startRate margin-bottom-5">
+                        <div class="flex center form-group form-group-sm">
+                            <div class="defaultRate flex center">
+                                <p class="margin-right-15">1<span class="bit_type"></span></p>
+                                <span><i class="iconfont icon-transfer"></i></span>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" class="form-control inputRateVal withdrawRateInput" placeholder="Please input Number">
+                                <span class="input-group-addon base_type"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Amount-->
+                    <div class="limit margin-bottom-5">
+                        <div class="minimumLimit flex center">
+                            <h6><span class="i18n" name="minLimit">The minimum limit</span>:</h6>
+                            <div class="flex center form-group form-group-sm">
+                                <div class="input-group">
+                                    <input type="text" class="form-control minimumVal withdrawMinVal">
+                                    <span class="input-group-addon bit_type"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="limit margin-bottom-5">
+                        <div class="minimumLimit flex center">
+                            <h6><span class="i18n" name="maxLimit">The biggest limit</span>:</h6>
+                            <div class="flex center form-group form-group-sm">
+                                <div class="input-group">
+                                    <input type="text" class="form-control maximumVal withdrawMaxVal">
+                                    <span class="input-group-addon bit_type"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--password-->
+                    <div class="Period flex center margin-bottom-5">
+                        <h6><span class="i18n" name="loginPassword">password</span>:</h6>
+                        <div class="flex center form-group form-group-sm">
+                            <div class="input-group width-100">
+                                <input type="password" class="password form-control" id="withdrawPassword"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user_level_box margin-bottom-5">
+                        <div class="user_level flex center">
+                            <h6 class="i18n" name="setLevel">setLevel</h6>
+                            <div class="form-group form-group-sm">
+                                <input type="text" class="form-control withdrawLevel">
+                            </div>
+                        </div>
+                    </div>
+                    <!--Validity time-->
+                    <div class="Period flex center">
+                        <h6><span class="i18n" name="deadline">Deadline</span>:</h6>
+                        <input type="text" class="timeInput" id="withdrawRateTime"/>
+                    </div>
+                    <button class="btn btn-success rateConfirm withdrawRateBtn i18n" name="confirm">Confirm</button>
+                </div>
+            </div>
+        </div>
+
         <!--Set up recharge and withdrawal rates for different agent types-->
         <!--<div class="row differentRate" v-for="(item, index) in differentBank" v-cloak>-->
             <!--&lt;!&ndash;Different agent types&ndash;&gt;-->
