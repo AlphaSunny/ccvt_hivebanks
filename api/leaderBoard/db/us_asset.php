@@ -162,7 +162,9 @@ function get_ranking(){
        $base_amount_list = array_map(function($val){return $val['base_amount'];}, $rows);
     }
     foreach ($base_amount_list as $k=>$v){
-        echo $v."<br/>";
+       if ($num==$v){
+           echo $k;
+       }
     }
 //    print_r($base_amount_list);
     die;
