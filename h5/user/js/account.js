@@ -396,6 +396,7 @@ $(function () {
     //application robot group
     $(".to_application").click(function () {
         WarnPrompt("即将开启");
+        return;
     });
     // $(".modify_application_btn").click(function () {
     //     var group_name = $(".application_group").text();
