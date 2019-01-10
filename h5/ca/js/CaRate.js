@@ -22,6 +22,7 @@ $(function () {
         SetRechargeRate(token, rate, minAmount, maxAmount, time, level, ca_channel, pass_word_hash, function (response) {
             if(response.errcode == "0"){
                 SuccessPrompt("设置成功");
+                $(".rechargeRateNotSet").remove();
                 $(".recharge_rate").text(response.recharge_rate);
                 $(".recharge_set_time").text(response.limit_time);
                 $(".recharge_max_amount").text(response.recharge_max_amount);
@@ -41,6 +42,11 @@ $(function () {
         SetWithdrawRate(token, rate, minAmount, maxAmount, time, level, ca_channel, pass_word_hash, function (response) {
             if(response.errcode == "0"){
                 SuccessPrompt("设置成功");
+                $(".withdrawRateNotSet").remove();
+                $(".withdraw_rate").text(response.withdraw_rate);
+                $(".withdraw_set_time").text(response.limit_time);
+                $(".withdraw_max_amount").text(response.withdraw_max_amount);
+                $(".withdraw_min_amount").text(response.withdraw_min_amount);
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
