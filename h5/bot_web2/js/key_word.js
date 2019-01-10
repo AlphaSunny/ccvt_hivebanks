@@ -324,7 +324,7 @@ $(function () {
         var _this = $(this);
         var val = $(this).val();
         var key_id = $(this).attr("id");
-        var status = "2", group_id = GetCookie();
+        var status = "2", group_id = GetCookie("group_id");
         KeyWordsSwitchFun(token, status, group_id, key_id, _this, val);
     });
 
@@ -333,7 +333,7 @@ $(function () {
         var _this = $(this);
         var val = $(this).val();
         var key_id = "";
-        var status = "1", group_id = GetCookie();
+        var status = "1", group_id = GetCookie("group_id");
         KeyWordsSwitchFun(token, status, group_id, key_id, _this, val);
     });
 
