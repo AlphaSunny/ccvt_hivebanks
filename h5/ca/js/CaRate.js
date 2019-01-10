@@ -13,6 +13,32 @@ $(function () {
         LayerFun(response.errcode);
     });
 
+    //设置充值汇率
+    $(".rechargeRateBtn").click(function () {
+        var rate = $(".rechargeRateInput").val(), minAmount = $(".rechargeMinVal").val(),
+            maxAmount = $(".rechargeMaxVal").val(), time = $("#rechargeRateTime").val(),
+            level = $(".rechargeLevel").val(), ca_channel = "RMB",
+            pass_word_hash = hex_sha1($("#rechargePassword").val());
+        SetRechargeRate(token, rate, minAmount, maxAmount, time, level, ca_channel, pass_word_hash, function (response) {
+
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        })
+    });
+
+    //设置提现汇率
+    $(".withdrawRateBtn").click(function () {
+        var rate = $(".withdrawRateInput").val(), minAmount = $(".withdrawMinVal").val(),
+            maxAmount = $(".withdrawMaxVal").val(), time = $("#withdrawRateTime").val(),
+            level = $(".withdrawLevel").val(), ca_channel = "RMB",
+            pass_word_hash = hex_sha1($("#withdrawPassword").val());
+        SetWithdrawRate(token, rate, minAmount, maxAmount, time, level, ca_channel, pass_word_hash, function (response) {
+
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        })
+    });
+
     //get recharge withdraw rate list
     // GetRateList(token, function (response) {
     //     if (response.errcode == '0') {
