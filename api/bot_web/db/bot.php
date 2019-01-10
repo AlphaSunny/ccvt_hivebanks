@@ -612,7 +612,8 @@ function keywords_switch($status,$switch,$group_id,$key_id)
             return false;
         }
     }elseif ($status==2){
-        $sql = "update bot_key_words set switch = '{$switch}' , utime='$time' where id='{$key_id}' ";
+        $sql = "update bot_key_words set switch = '{$switch}' , utime='{$time}' where id='{$key_id}'";
+        echo $sql;
         $db->query($sql);
         if (!$db->affectedRows()){
             return false;
