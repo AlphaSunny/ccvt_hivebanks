@@ -43,6 +43,13 @@ $(function () {
                 $("#modify_weChat_group").remove();
                 $("#bind_weChat_group").fadeIn("fast");
             }
+
+            if (data.application_group) {
+                $(".no_application,.application_btn").remove();
+                $(".application_group").text(data.application_group);
+            } else {
+                $(".application_group,.application_btn").remove();
+            }
         }
     }, function (response) {
         ErrorPrompt(response.errmsg);
@@ -387,8 +394,8 @@ $(function () {
 
     //application robot group
     $(".application_btn").click(function () {
-       layer.msg("申请功能即将开通");
-       return;
+        layer.msg("申请功能即将开通");
+        return;
     });
 
     //login robot
