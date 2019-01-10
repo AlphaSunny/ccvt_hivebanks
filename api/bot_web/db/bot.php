@@ -522,10 +522,13 @@ function group_submit_audit($data)
 //
 // 返回: rows          最新信息数组
 //======================================
-function get_key_words_list_total($us_id)
+function get_key_words_list_total($us_id,$search_keywords)
 {
     $db = new DB_COM();
     $sql = "select * from bot_key_words WHERE us_id='{$us_id}' AND is_del=0";
+    if ($search_keywords){
+        $sql .= " AND ask LIKE '%{$search_keywords}%'";
+    }
     $db -> query($sql);
     $count = $db -> affectedRows();
     return $count;
@@ -535,10 +538,14 @@ function get_key_words_list_total($us_id)
 //
 // 返回: rows          最新信息数组
 //======================================
-function get_key_words_list($us_id,$offset,$limit)
+function get_key_words_list($us_id,$offset,$limit,$search_keywords)
 {
     $db = new DB_COM();
-    $sql = "select k.*,g.name as group_name from bot_key_words as k INNER JOIN bot_group as g on k.group_id=g.id WHERE k.us_id='{$us_id}' AND k.is_del=0 limit $offset , $limit";
+    $sql = "select k.*,g.name as group_name from bot_key_words as k INNER JOIN bot_group as g on k.group_id=g.id WHERE k.us_id='{$us_id}' AND k.is_del=0";
+    if ($search_keywords){
+        $sql .= " AND k.ask LIKE '%{$search_keywords}%'";
+    }
+    $sql .= " limit $offset , $limit";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
