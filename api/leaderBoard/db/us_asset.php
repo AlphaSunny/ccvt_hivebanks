@@ -154,14 +154,14 @@ function get_chat_list($data,$offset,$limit)
 function get_ranking(){
     $db = new DB_COM();
     $unit = get_la_base_unit();
-    $num = '666';
+    $num = '766';
     $sql = "select base_amount/'$unit' as base_amount from us_asset WHERE base_amount>=0 ORDER by base_amount DESC ";
     $db->query($sql);
     $rows = $db->fetchAll();
     if ($rows){
        $base_amount_list = array_map(function($val){return $val['base_amount'];}, $rows);
     }
-    echo for_key('4',$num,$base_amount_list);
+    echo for_key('16',$num,$base_amount_list);
     echo 222;
     print_r($base_amount_list);
     die;
