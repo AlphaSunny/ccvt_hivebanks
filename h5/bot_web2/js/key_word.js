@@ -48,7 +48,7 @@ $(function () {
                         "<td class='flex center space-center'>" +
                         "<div class='flex center'>" +
                         "<span>关</span>" +
-                        "<input id='keyWordSwitch' class='switch keyWordSwitch switch-anim margin-left-2' type='checkbox' value='2'>" +
+                        "<input id='keyWordItemSwitch' class='switch keyWordItemSwitch switch-anim margin-left-2' type='checkbox' value='2'>" +
                         "<span>开</span>" +
                         "</div>" +
                         "<button class='btn-success btn-sm editBtn margin-left-2'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
