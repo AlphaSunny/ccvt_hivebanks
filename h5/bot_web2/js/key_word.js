@@ -16,9 +16,9 @@ $(function () {
     //获取关键字列表
     var search_keywords = "", limit = 10, offset = 0;
 
-    function GetKeyWordListFun(search_keywords,limit, offset) {
+    function GetKeyWordListFun(search_keywords, limit, offset) {
         var tr = "", totalPage = "", count = "", _switch = "";
-        GetKeyWordList(token,search_keywords, limit, offset, function (response) {
+        GetKeyWordList(token, search_keywords, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
                 var data = response.rows;
@@ -38,12 +38,12 @@ $(function () {
 
                 $.each(data, function (i, val) {
                     if (data[i].switch == "1") {
-                        _switch = "<input id='keyWordItemSwitch' class='switch keyWordItemSwitch switch-anim margin-left-2 active' type='checkbox' value='1'>"
+                        _switch = "<input id='" + data[i].id + "' class='switch keyWordItemSwitch switch-anim margin-left-2 active' type='checkbox' value='1'>"
                     } else {
-                        _switch = "<input id='keyWordItemSwitch' class='switch keyWordItemSwitch switch-anim margin-left-2' type='checkbox' value='2'>"
+                        _switch = "<input id='" + data[i].id + "' class='switch keyWordItemSwitch switch-anim margin-left-2' type='checkbox' value='2'>"
                     }
                     tr += "<tr>" +
-                        "<td class='ask' name=" + data[i].id + ">" + data[i].ask + "</td>" +
+                        "<td class='ask'>" + data[i].ask + "</td>" +
                         "<td class='answer'>" + data[i].answer + "</td>" +
                         // "<td class='group_name'>" + data[i].group_name + "</td>" +
                         "<td class='ctime'>" + data[i].ctime + "</td>" +
@@ -81,7 +81,7 @@ $(function () {
         })
     }
 
-    GetKeyWordListFun(search_keywords,limit, offset);
+    GetKeyWordListFun(search_keywords, limit, offset);
 
     //添加-显示弹框
     $(".add_key_word_btn").click(function () {
@@ -315,7 +315,15 @@ $(function () {
 
     //搜索
     $(".fa-search").click(function () {
-        search_keywords = $("#key_words_input").val();
-        GetKeyWordListFun(search_keywords,limit, offset);
+        search_keywords = $(".key_words_input").val();
+        GetKeyWordListFun(search_keywords, limit, offset);
+    });
+
+    //每一个关键字设置开关
+    $(document).on("change", ".keyWordItemSwitch", function () {
+        var val = $(this).val();
+        var key_id = $(this).attr("id");
+        console.log(val);
+        console.log(key_id);
     })
 });
