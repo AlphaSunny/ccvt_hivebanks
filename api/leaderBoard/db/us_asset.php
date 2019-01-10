@@ -168,7 +168,8 @@ function get_ranking(){
 }
 
 function for_key($key,$v,$arr){
-
+echo $v.'----';
+echo $key.'----';
     $res = '';
     $lenth = $key  ;
     for ($i = $lenth; $i > 0 ;$i--)
