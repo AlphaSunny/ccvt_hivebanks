@@ -3,7 +3,7 @@ $(function () {
     var url = getRootPath();
     var search_pory = "", robot_alive = "", timer = "";
 
-    function GetQr() {
+    // function GetQr() {
         $.get({
             url: url + "/api/bot/get_qrcode.php?us_id=" + us_id,
             async: false,
@@ -25,5 +25,5 @@ $(function () {
                 }
             }
         });
-    }
+    // }
 });
