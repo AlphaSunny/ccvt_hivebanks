@@ -314,7 +314,7 @@ $(function () {
         var _this = $(this);
         var val = $(this).val();
         var key_id = $(this).attr("id");
-        var status = "2", group_id = GetCookie("group_id");
+        var status = "2", group_id = "";
         var _switch = "";
         if (val == "1") {
             _switch = "2";
@@ -345,11 +345,18 @@ $(function () {
                 SuccessPrompt("设置成功");
                 if (val == "1") {
                     _this.removeClass("active").val("2");
-                    // $(".keyWordItemSwitch").removeClass("active").val("2");
                 }
                 if (val == "2") {
                     _this.addClass("active").val("1");
-                    // $(".keyWordItemSwitch").addClass("active").val("1");
+                }
+
+                if (group_id) {
+                    if (val == "1") {
+                        $(".keyWordItemSwitch").removeClass("active").val("2");
+                    }
+                    if (val == "2") {
+                        $(".keyWordItemSwitch").addClass("active").val("1");
+                    }
                 }
             }
         }, function (response) {
