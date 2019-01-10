@@ -28,7 +28,7 @@ function check_us_group($us_id,$group_id)
 function get_group_list($us_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT g.id,g.name,g.us_id,g.is_del,g.is_flirt,g.is_audit,g.why,g.scale,g.is_give_ccvt,g.group_type,g.is_admin_del,g.send_address,g.bind_account_notice,g.is_welcome,g.welcome,t.name as group_type_name FROM bot_group as g LEFT JOIN bot_group_type as t on g.group_type=t.id WHERE g.us_id = '{$us_id}' AND g.is_test=1 ORDER BY g.intime ASC ";
+    $sql = "SELECT g.id,g.name,g.us_id,g.is_del,g.is_flirt,g.is_audit,g.why,g.scale,g.is_give_ccvt,g.group_type,g.is_admin_del,g.send_address,g.bind_account_notice,g.is_welcome,g.welcome,t.name as group_type_name,g.key_words_switch FROM bot_group as g LEFT JOIN bot_group_type as t on g.group_type=t.id WHERE g.us_id = '{$us_id}' AND g.is_test=1 ORDER BY g.intime ASC ";
     $db -> query($sql);
     $row = $db -> fetchAll();
     if ($row){
@@ -592,4 +592,31 @@ function del_key_words($key_id)
     $sql = "update bot_key_words set is_del = 1  where id='{$key_id}' ";
     $db->query($sql);
     return $db->affectedRows();
+}
+
+//======================================
+// 函数: 关键词开关
+// 参数:
+//
+// 返回: row           最新信息数组
+//======================================
+function keywords_switch($status,$switch,$group_id,$key_id)
+{
+    $db = new DB_COM();
+    $time = time();
+    if ($status==1){
+        //总开关
+        $sql = "update bot_group set key_words_switch = '{$switch}',uptime='{$time}'  where id='{$group_id}'";
+        $db->query($sql);
+        if (!$db->affectedRows()){
+            return false;
+        }
+    }elseif ($status==2){
+        $sql = "update bot_key_words set switch = '{$switch}' , utime='$time' where id='{$key_id}' ";
+        $db->query($sql);
+        if (!$db->affectedRows()){
+            return false;
+        }
+    }
+    return true;
 }
