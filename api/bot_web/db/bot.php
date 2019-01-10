@@ -31,6 +31,24 @@ function get_group_list($us_id)
     $sql = "SELECT g.id,g.name,g.us_id,g.is_del,g.is_flirt,g.is_audit,g.why,g.scale,g.is_give_ccvt,g.group_type,g.is_admin_del,g.send_address,g.bind_account_notice,g.is_welcome,g.welcome,t.name as group_type_name FROM bot_group as g LEFT JOIN bot_group_type as t on g.group_type=t.id WHERE g.us_id = '{$us_id}' AND g.is_test=1 ORDER BY g.intime ASC ";
     $db -> query($sql);
     $row = $db -> fetchAll();
+    if ($row){
+        $day_start = strtotime(date('Y-m-d 00:00:00'));
+        $day_end = strtotime(date('Y-m-d 23:59:59'));
+        foreach ($row as $k=>$v){
+            //新增人数
+            $sql = "select count(*) as count from bot_memeber_change_record WHERE group_id='{$v['id']}' AND type=1 AND BETWEEN '{$day_start}' AND '{$day_end}'";
+            $db->query($sql);
+            $row[$k]['new_number'] = $db->getField($sql,'count');
+            //消息数量
+            $sql = "select count(*) as count from bot_message WHERE group_id='{$v['id']}' AND bot_send_time BETWEEN '{$day_start}' AND '{$day_end}'";
+            $db->query($sql);
+            $row[$k]['messages_number'] = $db->getField($sql,'count');
+            //人数
+            $sql = "select count(*) as count from bot_group_members WHERE group_id='{$v['id']}'";
+            $db->query($sql);
+            $row[$k]['members_number'] = $db->getField($sql,'count');
+        }
+    }
     return $row;
 }
 //======================================
