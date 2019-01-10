@@ -47,6 +47,7 @@ $(function () {
             if (data.application_group) {
                 $(".no_application,.application_btn").remove();
                 $(".application_group").text(data.application_group);
+                $(".modify_application_btn").removeClass("none");
             } else {
                 $(".application_group,.application_btn").remove();
             }
