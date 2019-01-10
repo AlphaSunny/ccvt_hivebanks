@@ -339,15 +339,17 @@ $(function () {
         KeyWordsSwitchFun(token, status, _switch, group_id, key_id, _this, val);
     });
 
-    function KeyWordsSwitchFun(token, status,_switch, group_id, key_id, _this, val) {
-        KeyWordsSwitch(token, status,_switch, group_id, key_id, function (response) {
+    function KeyWordsSwitchFun(token, status, _switch, group_id, key_id, _this, val) {
+        KeyWordsSwitch(token, status, _switch, group_id, key_id, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("设置成功");
                 if (val == "1") {
                     _this.removeClass("active").val("2");
+                    $(".keyWordItemSwitch").removeClass("active").val("2");
                 }
                 if (val == "2") {
                     _this.addClass("active").val("1");
+                    $(".keyWordItemSwitch").addClass("active").val("1");
                 }
             }
         }, function (response) {
