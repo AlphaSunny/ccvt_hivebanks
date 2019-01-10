@@ -14,9 +14,9 @@ $(function () {
         }
     });
     //获取关键字列表
-    var limit = 10, offset = 0;
+    var search_keywords = "", limit = 10, offset = 0;
 
-    function GetKeyWordListFun(limit, offset) {
+    function GetKeyWordListFun(search_keywords,limit, offset) {
         var tr = "", totalPage = "", count = "", _switch = "";
         GetKeyWordList(token, limit, offset, function (response) {
             ShowLoading("hide");
@@ -82,7 +82,7 @@ $(function () {
         })
     }
 
-    GetKeyWordListFun(limit, offset);
+    GetKeyWordListFun(search_keywords,limit, offset);
 
     //添加-显示弹框
     $(".add_key_word_btn").click(function () {
@@ -313,4 +313,10 @@ $(function () {
             layer.msg(response.errmsg, {icon: 2})
         })
     }
+
+    //搜索
+    $(".fa-search").click(function () {
+        search_keywords = $("#key_words_input").val();
+        GetKeyWordListFun(search_keywords,limit, offset);
+    })
 });
