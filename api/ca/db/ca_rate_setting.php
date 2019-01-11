@@ -84,19 +84,9 @@ function  get_ca_settting_withdraw_rate_ca_id($ca_id)
 function ins_ca_recharge_rate_info($data_base)
 {
     $db = new DB_COM();
-    $sql = "SELECT set_id FROM ca_rate_setting WHERE rate_type = '1' and ca_id = '{$data_base["ca_id"]}' and ca_channel = '{$data_base["ca_channel"]}'";
-    $db -> query($sql);
-    $row = $db ->fetchRow();
-    if (!$row["set_id"]) {
-        $sql = $db ->sqlInsert("ca_rate_setting", $data_base);
-        $q_id = $db->query($sql);
-        return $q_id;
-    }else {
-        $sql = $db->sqlUpdate("ca_rate_setting", $data_base,"set_id = '{$row["set_id"]}' and rate_type = '1'");
-        $db -> query($sql);
-        $count = $db ->affectedRows();
-        return $count;
-    }
+    $sql = $db ->sqlInsert("ca_rate_setting", $data_base);
+    $q_id = $db->query($sql);
+    return $q_id;
 }
 //======================================
 // 函数: 插入ca_rate_setting提现基本信息

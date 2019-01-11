@@ -24,7 +24,7 @@ GET参数
 */
 
 php_begin();
-$args = array('token', 'recharge_rate', 'recharge_min_amount', 'recharge_max_amount', 'limit_time', 'ca_channel','pass_word_hash');
+$args = array('token', 'recharge_rate', 'recharge_min_amount', 'recharge_max_amount', 'limit_time', 'ca_type','pass_word_hash');
 chk_empty_args('GET', $args);
 
 // 用户token
@@ -39,7 +39,7 @@ $recharge_max_amount = get_arg_str('GET', 'recharge_max_amount');
 $recharge_us_level = get_arg_str('GET', 'recharge_us_level');
 // 截止时间
 $limit_time = get_arg_str('GET', 'limit_time');
-$ca_channel = get_arg_str('GET', 'ca_channel');
+$ca_type = get_arg_str('GET', 'ca_type');
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
 
 //验证token
@@ -59,7 +59,7 @@ if ( time() > strtotime($limit_time))
 $data_recharge_pass = array();
 $data_bind_pass['ca_id'] = $ca_id;
 $data_bind_pass['rate_type'] = "1";
-$data_bind_pass['ca_channel'] = $ca_channel;
+$data_bind_pass['ca_type'] = $ca_type;
 $data_bind_pass['base_rate'] = $recharge_rate;
 $data_bind_pass['us_level'] = $recharge_us_level;
 $data_bind_pass['min_amount'] = $recharge_min_amount / $recharge_rate * get_la_base_unit();
