@@ -26,8 +26,8 @@ $(function () {
     });
     //Select agent type
     $(document).on('click', '.changePay li', function () {
-        // $(this).siblings().find('.icon-duihao').hide();
-        $(this).find('.icon-duihao').show().siblings().find('.icon-duihao').hide();
+        $(this).siblings().find('.icon-duihao').hide();
+        $(this).find('.icon-duihao').show();
         $(this).addClass("active").siblings("li").removeClass("active");
         $('.next').show();
         var imgHtml = $(this).find('img').attr('src');
