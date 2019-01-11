@@ -34,7 +34,7 @@ $(function () {
 
         layer.confirm('确定删除？', {
             btn: ['确定', '取消'], //按钮
-            title:"提示",
+            title:"提示"
         }, function () {
             delAssetAccountFun(_this, ca_channel);
         }, function () {
