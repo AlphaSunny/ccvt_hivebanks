@@ -1092,7 +1092,7 @@ function get_exclusive_code($wechat){
 //======================================
 // 函数: 判断点赞人和被点赞人是否有账号
 //======================================
-function check_wechat($give_wechat,$recive_wechat,$num,$status){
+function check_wcheck_wechat($give_wechat,$recive_wechat,$num,$status,$group_id){
     $db = new DB_COM();
     $unit = get_la_base_unit();
     $data = array();
@@ -1121,6 +1121,16 @@ function check_wechat($give_wechat,$recive_wechat,$num,$status){
         $point_tread_num_status = 2;
     }
     $data['point_tread_num_status'] = $point_tread_num_status;
+    //判断这个微信绑定的群
+    if ($row){
+        $sql = "select bind_info from us_bind WHERE bind_name='group' AND us_id='{$row['us_id']}'";
+        $db->query($sql);
+        $user_group_id =$db->getField($sql,'bind_info');
+        $group_judge = $user_group_id != $group_id ? 2 : 1;
+    }else{
+        $group_judge = 2;
+    }
+    $data['group_judge'] = $group_judge;
     //判断余额
     $data['if_balance'] = $row['base_amount']/$unit >= $num ? 1 : 2;
 
