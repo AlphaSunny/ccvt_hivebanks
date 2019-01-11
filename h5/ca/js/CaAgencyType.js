@@ -30,7 +30,7 @@ $(function () {
         $(this).find('.icon-duihao').show();
         $(this).addClass("active").siblings("li").removeClass("active");
         $('.next').show();
-        var ca_channel = "";
+        var ca_channel = $(this).find("h4").attr("title");
         // var imgHtml = $(this).find('img').attr('src');
         //Select proxy mode next step
         $('.next').click(function () {
