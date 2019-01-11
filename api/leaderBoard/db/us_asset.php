@@ -250,6 +250,8 @@ function give_like_us($data)
             $rank = $db->fetchRow();
             if ($rank){
                 $change_record['wechat'] = $rank['wechat'];
+                $change_record['first_rand'] = $ranking['now_rand'];
+                $change_record['after_rand'] = $ranking['afert_rand'];
                 $change_record['group_id'] = $rank['bind_info'];
                 $change_record['ctime'] = date('Y-m-d H:i:s');
                 $change_record['utime'] = time();
