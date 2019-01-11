@@ -1097,6 +1097,7 @@ function check_wechat($give_wechat,$recive_wechat,$num,$status){
     $unit = get_la_base_unit();
     $data = array();
     $sql = "select * from us_base WHERE wechat='{$give_wechat}' limit 1";
+    echo 1;
     $db->query($sql);
     $row = $db->fetchRow();
     $data['give_status'] = $row ? 1 : 2;
@@ -1104,6 +1105,7 @@ function check_wechat($give_wechat,$recive_wechat,$num,$status){
     //判断是否打开开关  1:开  2:关
     if ($row){
         $sql = "select bind_info from us_bind WHERE bind_name='point_tread_switch' AND us_id='{$row['us_id']}'";
+        echo 2;
         $db->query($sql);
         $switch = $db->fetchRow();
         $switch_status = $switch ? $switch['bind_info'] : 2;
@@ -1114,6 +1116,7 @@ function check_wechat($give_wechat,$recive_wechat,$num,$status){
     //判断设置金额
     if ($row){
         $sql = "select bind_info from us_bind WHERE bind_name='point_tread_num' AND us_id='{$row['us_id']}'";
+        echo 3;
         $db->query($sql);
         $point_tread_num = $db->fetchRow();
         $point_tread_num_status = $point_tread_num['bind_info'] >= $num ? 1 : 2;
@@ -1137,6 +1140,7 @@ function check_wechat($give_wechat,$recive_wechat,$num,$status){
     $start = strtotime(date('Y-m-d 00:00:00'));
     $end  = strtotime(date('Y-m-d 23:59:59'));
     $sql = "SELECT sum(tx_amount)/'{$unit}' as give_all FROM us_glory_integral_change_log WHERE credit_id='{$row['us_id']}' AND state='{$state}' AND ctime BETWEEN '{$start}' AND '{$end}'";
+    echo 4;
     $db -> query($sql);
     $give_all= $db -> getField($sql,'give_all');
     if ($give_all == $max || ($num+$give_all) > $max){
@@ -1147,6 +1151,7 @@ function check_wechat($give_wechat,$recive_wechat,$num,$status){
     $data['is_ceiling'] = $is_ceiling;
 
     $sql = "select * from us_base WHERE wechat='{$recive_wechat}'";
+    echo 5;
     $db->query($sql);
     $row = $db->fetchRow();
     $data['recive_status'] = $row ? 1 : 2;
