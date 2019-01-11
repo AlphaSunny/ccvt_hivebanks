@@ -173,6 +173,7 @@ function get_ranking($give_us_id,$give_num){
                 break;
             }
         }
+        $result['now_rand'] = $now_rand;
         $afert_rand = '';
         if ($now_rand){
             $afert_rand = for_key($now_rand,$num,$base_amount_list);
@@ -241,7 +242,27 @@ function give_like_us($data)
     }
 
     //判断积分排名是否变化
-    $ranking = get_ranking($data['give_us_id'],$data['give_num']);
+    if ($data['state']==1){
+        $ranking = get_ranking($data['give_us_id'],$data['give_num']);
+        if ($ranking['now_rand']!=$ranking['afert_rand']){
+            $sql = "select b.wechat,bi.bind_info from us_base as b INNER JOIN us_bind as bi on b.us_id=bi.us_id WHERE b.us_id='{$data['give_us_id']}' AND bi.bind_name='group'";
+            $db->query($sql);
+            $rank = $db->fetchRow();
+            if ($rank){
+                $change_record['wechat'] = $rank['wechat'];
+                $change_record['group_id'] = $rank['bind_info'];
+                $change_record['ctime'] = date('Y-m-d H:i:s');
+                $change_record['utime'] = time();
+                $sql = $db->sqlInsert("bot_ranking_change_record", $change_record);
+                $id = $db->query($sql);
+                if (!$id){
+                    $db->Rollback($pInTrans);
+                    return 0;
+                }
+            }
+        }
+    }
+
 
     //增加荣耀积分(减少荣耀积分)
     $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$data['give_us_id']}'";
