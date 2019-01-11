@@ -162,7 +162,6 @@ function get_ranking(){
        $base_amount_list = array_map(function($val){return $val['base_amount'];}, $rows);
     }
     echo for_key('16',$num,$base_amount_list);
-    echo 222;
     print_r($base_amount_list);
     die;
 }
