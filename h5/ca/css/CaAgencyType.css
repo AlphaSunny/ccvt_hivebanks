@@ -9,6 +9,10 @@
 .changePay li.active{
     border: 0.1px solid #82ca9c;
 }
+
+h4{
+    margin: 0;
+}
 /*.changePay li:hover img{*/
     /*-webkit-animation: scale .5s linear;*/
     /*-o-animation: scale .5s linear;*/
