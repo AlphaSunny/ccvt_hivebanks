@@ -1,9 +1,10 @@
 .BankAuthenticationRow{
     margin: 7% 0;
 }
-/*.newImgBox{*/
+.newImgBox{
     /*width: 20%;*/
-/*}*/
+    font-family: cursive;
+}
 .authenticationEnable{
 	width: 100%
 }
