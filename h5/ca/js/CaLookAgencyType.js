@@ -31,12 +31,26 @@ $(function () {
     $(document).on('click', '.deleteBtn', function () {
         var _this = $(this);
         var ca_channel = $(this).parents("li").find(".ca_channel").text();
+
+        layer.confirm('提示', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            delAssetAccountFun(_this, ca_channel);
+        }, function () {
+            layer.msg('也可以这样', {
+                time: 20000, //20s后自动关闭
+                btn: ['明白了', '知道了']
+            });
+        });
+    });
+
+    function delAssetAccountFun(_this, ca_channel) {
         delAssetAccount(token, ca_channel, function (response) {
             _this.parents('.alreadyItem').remove();
+            SuccessPrompt("删除成功");
         }, function (response) {
             LayerFun(response.errcode);
             return;
         })
-
-    })
+    }
 });
