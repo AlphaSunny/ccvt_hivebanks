@@ -5,9 +5,8 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 /*
-========================== 获取专属地址昵称code ==========================
+========================== 获取积分排名变化的用户通知 ==========================
 GET参数
-  wechat         wechat
 
 返回
   errcode = 0     请求成功
