@@ -1147,6 +1147,25 @@ function check_wechat($give_wechat,$recive_wechat,$num,$status){
     return $data;
 }
 
+//======================================
+// 函数: 获取积分排名变化的用户通知列表
+//======================================
+function get_rank_change_record($group_id){
+    $db = new DB_COM();
+    $time = date('Y-m-d H:i:s',(time()-600));
+    $sql = "select id,first_rand,after_rand,wechat from bot_ranking_change_record WHERE group_id='{$group_id}' AND is_send=1 AND ctime>'{$time}'";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    if ($rows){
+        $utime = time();
+        foreach ($rows as $k=>$v){
+            $sql = "update bot_ranking_change_record set is_send = 2,utime='{$utime}' where id='{$v['id']}' ";
+            $db->query($sql);
+        }
+    }
+    return $rows;
+}
+
 
 //======================================
 // 函数: 获取积分排名
