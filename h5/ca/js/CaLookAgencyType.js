@@ -33,8 +33,7 @@ $(function () {
         var ca_channel = $(this).parents("li").find(".ca_channel").text();
 
         layer.confirm('确定删除？', {
-            btn: ['确定', '取消'], //按钮
-            title:"提示"
+            btn: ['确定', '取消']
         }, function () {
             delAssetAccountFun(_this, ca_channel);
         }, function () {
