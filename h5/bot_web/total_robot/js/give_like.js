@@ -25,7 +25,7 @@ $(function () {
                         tr += "<tr>" +
                             "<td>" + data[i].give_account + "</td>" +
                             "<td>" + data[i].receive_account + "</td>" +
-                            "<td>" + data[i].tx_amount + "</td>" +
+                            "<td>" + data[i].tx_detail + '&nbsp;'+ data[i].tx_amount + "</td>" +
                             "<td>" + data[i].utime + "</td>" +
                             "</tr>"
                     })

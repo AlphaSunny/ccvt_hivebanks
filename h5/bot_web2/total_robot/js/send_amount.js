@@ -1,12 +1,16 @@
 $(function () {
     //获取token
     var token = GetCookie("total_robot_token");
-
+    var group_id = "";
     //获取群
     var is_audit = "2";
     GetGroupList(token, is_audit, function (response) {
         if (response.errcode == "0") {
-            var data = response.rows, option = "";
+            var data = response.rows.reverse(), option = "";
+            if (!data) {
+                return;
+            }
+            group_id = data[0].id;
             $.each(data, function (i, val) {
                 option += "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
             });
@@ -17,7 +21,7 @@ $(function () {
     });
 
     // var url = getRootPath();
-    var limit = 10, offset = 0, loading = "", group_id = "";
+    var limit = 10, offset = 0, loading = "";
 
     function GetAmountFun(token, group_id, start_time, end_time, nickname, limit, offset) {
         var tr = "", totalPage = "", count = "";

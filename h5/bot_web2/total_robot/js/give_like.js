@@ -5,7 +5,7 @@ $(function () {
     var limit = 10, offset = 0;
 
     function GiveLikeListFun(token, limit, offset) {
-        var tr = "",totalPage = "", count = "";
+        var tr = "", totalPage = "", count = "";
         GiveLikeList(token, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == "0") {
@@ -25,7 +25,7 @@ $(function () {
                         tr += "<tr>" +
                             "<td>" + data[i].give_account + "</td>" +
                             "<td>" + data[i].receive_account + "</td>" +
-                            "<td>" + data[i].tx_amount + "</td>" +
+                            "<td>" + data[i].tx_detail + '&nbsp;'+ data[i].tx_amount + "</td>" +
                             "<td>" + data[i].utime + "</td>" +
                             "</tr>"
                     })
@@ -50,5 +50,6 @@ $(function () {
             layer.msg(response.errmsg, {icon: 2});
         });
     }
+
     GiveLikeListFun(token, limit, offset);
 });
