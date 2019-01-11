@@ -13,7 +13,8 @@ $(function(){
             }
             $.each(data, function (i, val){
                 li+='<li class="width-20">' +
-                    '<img src="img/'+ data[i].option_key.toLowerCase() +'.png">' +
+                    '<h4>'+ data[i].option_value +'</h4>' +
+                    // '<img src="img/'+ data[i].option_key.toLowerCase() +'.png">' +
                     '<span><i class="iconfont icon-duihao"></i></span>'+
                     '</li>'
             });
