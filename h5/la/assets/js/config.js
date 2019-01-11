@@ -517,7 +517,7 @@ $(function () {
                 }
                 $.each(data, function (i, val) {
                     li += '<li class="ca_recharge_type">' +
-                        '<span class="option_key">' + data[i].option_key + '</span>' +
+                        '<span class="option_key">' + data[i].option_value + '</span>' +
                         '<span class="fa fa-times"></span>' +
                         '</li>';
                 });
