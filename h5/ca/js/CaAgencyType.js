@@ -34,7 +34,7 @@ $(function () {
         // var imgHtml = $(this).find('img').attr('src');
         //Select proxy mode next step
         $('.next').click(function () {
-            window.location.href = 'CaProxyAuthentication.html?' + encodeURIComponent(ca_channel);
+            window.location.href = 'CaProxyAuthentication.html?ca_channel=' + encodeURIComponent(ca_channel);
         })
     })
 });
