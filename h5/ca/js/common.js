@@ -679,7 +679,7 @@ function GetRateList(token, suc_func, error_func) {
 }
 
 //Set up recharge rate
-function SetRechargeRate(token, rate, minAmount, maxAmount, time, level, ca_channel, pass_word_hash, suc_func, error_func) {
+function SetRechargeRate(token, rate, minAmount, maxAmount, time, level, ca_type, pass_word_hash, suc_func, error_func) {
     var api_url = 'set_recharge_rate.php',
         post_data = {
             'token': token,
@@ -688,7 +688,7 @@ function SetRechargeRate(token, rate, minAmount, maxAmount, time, level, ca_chan
             'recharge_max_amount': maxAmount,
             'limit_time': time,
             'recharge_us_level': level,
-            'ca_channel': ca_channel,
+            'ca_type': ca_type,
             'pass_word_hash': pass_word_hash,
         };
     CallApi(api_url, post_data, suc_func, error_func)

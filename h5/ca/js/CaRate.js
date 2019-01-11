@@ -17,9 +17,9 @@ $(function () {
     $(".rechargeRateBtn").click(function () {
         var rate = $(".rechargeRateInput").val(), minAmount = $(".rechargeMinVal").val(),
             maxAmount = $(".rechargeMaxVal").val(), time = $("#rechargeRateTime").val(),
-            level = $(".rechargeLevel").val(), ca_channel = "RMB",
+            level = $(".rechargeLevel").val(), ca_type = "RMB",
             pass_word_hash = hex_sha1($("#rechargePassword").val());
-        SetRechargeRate(token, rate, minAmount, maxAmount, time, level, ca_channel, pass_word_hash, function (response) {
+        SetRechargeRate(token, rate, minAmount, maxAmount, time, level, ca_type, pass_word_hash, function (response) {
             if(response.errcode == "0"){
                 SuccessPrompt("设置成功");
                 $(".rechargeRateNotSet").remove();
