@@ -6,7 +6,7 @@ $(function () {
     var is_audit = "2";
     GetGroupList(token, is_audit, function (response) {
         if (response.errcode == "0") {
-            var data = response.rows, option = "";
+            var data = response.rows.reverse, option = "";
             $.each(data, function (i, val) {
                 option += "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
             });
