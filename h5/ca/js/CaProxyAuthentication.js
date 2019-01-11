@@ -3,13 +3,6 @@ $(function () {
     var token = getCookie('ca_token');
     GetCaAccount();
 
-    //Get url parameter-img address
-    // var href = window.location.search.split("?")[1];
-    // var newImgHtml = decodeURIComponent(href);
-    // $(".newImgBox>img").attr("src", newImgHtml);
-
-    //Add proxy type
-    // var ca_channel = newImgHtml.substring(newImgHtml.indexOf('/') + 1, newImgHtml.indexOf('.'));
     var ca_channel = GetQueryString("ca_channel");
     var ca_channel_cn = decodeURI(GetQueryString("ca_channel_cn"));
 
