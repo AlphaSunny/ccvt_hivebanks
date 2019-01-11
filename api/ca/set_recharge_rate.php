@@ -45,7 +45,7 @@ $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
 //验证token
 $ca_id = check_token($token);
 $row = get_ca_by_id($ca_id);
-if($row)
+if(!$row)
     exit_error('101', '该用户不存在');
 
 // 获取pass_word_hash
