@@ -37,10 +37,7 @@ $(function () {
         }, function () {
             delAssetAccountFun(_this, ca_channel);
         }, function () {
-            layer.msg('也可以这样', {
-                time: 20000, //20s后自动关闭
-                btn: ['明白了', '知道了']
-            });
+
         });
     });
 
