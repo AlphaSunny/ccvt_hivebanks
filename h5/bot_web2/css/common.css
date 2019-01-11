@@ -349,6 +349,7 @@ td.none {
 
 .task_img {
     width: 100%;
+    max-width: 10rem;
 }
 
 /*loading*/
