@@ -1236,7 +1236,7 @@ function give_like_us($data)
     $pInTrans = $db->StartTrans();  //开启事务
     $unit = get_la_base_unit();
 
-    echo 22;
+    echo 1;
 
     //积分变动记录表
     $d['hash_id'] = hash('md5', $data['us_id'] . 'give_like_us' . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
@@ -1254,6 +1254,7 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
+    echo 2;
 
     //用户减钱
 
@@ -1264,6 +1265,7 @@ function give_like_us($data)
         return 0;
     }
 
+    echo 3;
     //la加钱
     $sql = "update la_base set base_amount=base_amount+'{$data['give_num']}'*'{$unit}' limit 1";
     $db->query($sql);
@@ -1271,6 +1273,7 @@ function give_like_us($data)
         $db->Rollback($pInTrans);
         return 0;
     }
+    echo 4;
 
     //判断积分排名是否变化
     if ($data['state']==1){
@@ -1295,6 +1298,7 @@ function give_like_us($data)
             }
         }
     }
+    echo 5;
 
     //增加荣耀积分(减少荣耀积分)
     $sql = "select * from us_asset WHERE asset_id='GLOP' AND us_id='{$data['give_us_id']}'";
