@@ -12,7 +12,7 @@ $(function () {
                 return;
             }
             $.each(data, function (i, val) {
-                li += '<li class="width-20">' +
+                li += '<li class="width-20 text-center">' +
                     '<h4 style="font-weight: 400;font-family: cursive;" title="'+ data[i].option_key +'">' + data[i].option_value + '</h4>' +
                     // '<img src="img/'+ data[i].option_key.toLowerCase() +'.png">' +
                     '<span><i class="iconfont icon-duihao"></i></span>' +
