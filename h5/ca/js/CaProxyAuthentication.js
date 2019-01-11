@@ -11,6 +11,10 @@ $(function () {
     //Add proxy type
     // var ca_channel = newImgHtml.substring(newImgHtml.indexOf('/') + 1, newImgHtml.indexOf('.'));
     var ca_channel = GetQueryString("ca_channel");
+    var ca_channel_cn = decodeURI(GetQueryString("ca_channel_cn"));
+
+    $(".pcTitle,.phoneTitle").text(ca_channel_cn);
+
     $('.addBankBtn').click(function () {
         var card_nm = $('#BankCard').val(), name = $('#Name').val(),
             idNum = $('#IDCard').val(), pass_word_hash = hex_sha1($('#Password').val());

@@ -31,10 +31,11 @@ $(function () {
         $(this).addClass("active").siblings("li").removeClass("active");
         $('.next').show();
         var ca_channel = $(this).find("h4").attr("title");
+        var ca_channel_cn = $(this).find("h4").text();
         // var imgHtml = $(this).find('img').attr('src');
         //Select proxy mode next step
         $('.next').click(function () {
-            window.location.href = 'CaProxyAuthentication.html?ca_channel=' + encodeURIComponent(ca_channel);
+            window.location.href = 'CaProxyAuthentication.html?ca_channel=' + encodeURIComponent(ca_channel) + "&ca_channel_cn="+encodeURI(encodeURI(ca_channel_cn));
         })
     })
 });
