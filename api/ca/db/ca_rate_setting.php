@@ -155,28 +155,10 @@ function get_average_ca_withdraw_rate($time) {
 function  get_ca_recharge_settting_rate_list_by_bit_amount($base_amount,$time)
 {
     $db = new DB_COM();
-//    $sql = "SELECT distinct ca_channel FROM ca_rate_setting WHERE  '{$bit_amount}' > min_amount and '{$bit_amount}' < max_amount and rate_type = 1";
-    $sql = "SELECT ca_channel,max(base_rate) FROM ca_rate_setting where rate_type = '1' and limit_time > '{$time}' and '{$base_amount}' >= min_amount and '{$base_amount}' <= max_amount group by ca_channel ";
-
+    $sql = "SELECT * FROM ca_rate_setting where rate_type = '1' and limit_time > '{$time}' and '{$base_amount}' >= min_amount and '{$base_amount}' <= max_amount order by set_time desc limit 1";
     $db -> query($sql);
-    $rows = $db -> fetchAll();
-//    $new_rows = array();
-//    foreach($rows as $row){
-//        $new_row["ca_channel"] = $row["ca_channel"];
-//        $sql = "SELECT base_rate FROM ca_rate_setting WHERE ca_channel = '{$row["ca_channel"]}' and rate_type = '1' and set_time > '{$time}'  order by base_rate desc limit 1";
-//        $db -> query($sql);
-//        $db_row = $db -> fetchRow();
-//        $new_row["base_rate"] = floatval($db_row["base_rate"]);
-//        $new_rows[] = $new_row;
-//    }
-//    return $new_rows;
-//
-//
-//    $sql = "SELECT bit_type,max(base_rate) FROM ba_rate_setting where rate_type = '1' and limit_time > '{$time}' group by bit_type ";
-//
-//    $db -> query($sql);
-//    $rows = $db -> fetchAll();
-    return $rows;
+    $row = $db -> fetchRow();
+    return $row;
 }
 
 //======================================

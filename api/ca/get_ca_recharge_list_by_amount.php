@@ -28,15 +28,10 @@ $token = get_arg_str('GET', 'token', 128);
 //验证token
 $ca_id = check_token($token);
 $base_amount = get_arg_str('GET', 'base_amount') * get_la_base_unit();
-$rows= get_ca_recharge_settting_rate_list_by_bit_amount($base_amount,date('Y-m-d H:i:s'));
-$new_rows = array();
-foreach ($rows as $new_row){
-    $new_rwo["base_rate"] = floatval($new_row["max(base_rate)"]);
-    $new_rwo["ca_channel"] = $new_row["ca_channel"];
-    $new_rows[] = $new_rwo;
-}
+$row= get_ca_recharge_settting_rate_list_by_bit_amount($base_amount,date('Y-m-d H:i:s'));
+
 //返回给前端数据
 $rtn_data['errcode'] = '0';
 $rtn_data['errmsg'] = '';
-$rtn_data['rows'] = $new_rows;
+$rtn_data['rows'] = $row;
 php_end(json_encode($rtn_data));
