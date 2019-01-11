@@ -4,12 +4,13 @@ $(function () {
     GetCaAccount();
 
     //Get url parameter-img address
-    var href = window.location.search.split("?")[1];
-    var newImgHtml = decodeURIComponent(href);
-    $(".newImgBox>img").attr("src", newImgHtml);
+    // var href = window.location.search.split("?")[1];
+    // var newImgHtml = decodeURIComponent(href);
+    // $(".newImgBox>img").attr("src", newImgHtml);
 
     //Add proxy type
-    var ca_channel = newImgHtml.substring(newImgHtml.indexOf('/') + 1, newImgHtml.indexOf('.'));
+    // var ca_channel = newImgHtml.substring(newImgHtml.indexOf('/') + 1, newImgHtml.indexOf('.'));
+    var ca_channel = GetQueryString("ca_channel");
     $('.addBankBtn').click(function () {
         var card_nm = $('#BankCard').val(), name = $('#Name').val(),
             idNum = $('#IDCard').val(), pass_word_hash = hex_sha1($('#Password').val());
