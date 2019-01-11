@@ -1000,9 +1000,14 @@ function get_answer($ask,$group_id){
     $row = $db->fetchRow();
     if (!$row){
         //查询当前群的问题
-        $sql = "select id,answer,send_type from bot_key_words WHERE is_admin=1 AND group_id='{$group_id}' AND is_del=0 AND ask like '%{$ask}%' ORDER BY rand() limit 1 ";
+        $sql = "select key_words_switch from bot_group WHERE id='{$group_id}'";
         $db->query($sql);
-        $row = $db->fetchRow();
+        $key_words_switch = $db->getField($sql,'key_words_switch');
+        if ($key_words_switch==1){
+            $sql = "select id,answer,send_type from bot_key_words WHERE is_admin=1 AND group_id='{$group_id}' AND is_del=0 AND ask like '%{$ask}%' AND switch=1 ORDER BY rand() limit 1 ";
+            $db->query($sql);
+            $row = $db->fetchRow();
+        }
     }
     return $row;
 }
