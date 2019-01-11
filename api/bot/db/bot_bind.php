@@ -1124,6 +1124,9 @@ function check_wechat($give_wechat,$recive_wechat,$num,$status){
     //判断余额
     $data['if_balance'] = $row['base_amount']/$unit >= $num ? 1 : 2;
 
+    //判断不能大于余额的1|100
+    $data['proportion'] = ($row['base_amount']/$unit)*0.01 > $num ? 1 : 2;
+
     //判断是否达到上限
     $state = $status == "赞" ? 1 : 2;
     if ($state==1){
