@@ -2,6 +2,8 @@ $(function () {
     //获取token
     var token = GetCookie("total_robot_token");
     var group_id = "";
+    var limit = 10, offset = 0, loading = "";
+    var start_time = "", end_time = "", nickname = "";
     //获取群
     var is_audit = "2";
     GetGroupList(token, is_audit, function (response) {
@@ -11,6 +13,7 @@ $(function () {
                 return;
             }
             group_id = data[0].id;
+            GetAmountFun(token, group_id, start_time, end_time, nickname, limit, offset);
             $.each(data, function (i, val) {
                 option += "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
             });
@@ -20,8 +23,6 @@ $(function () {
         layer.msg(response.errmsg, {icon: 2});
     });
 
-    // var url = getRootPath();
-    var limit = 10, offset = 0, loading = "";
 
     function GetAmountFun(token, group_id, start_time, end_time, nickname, limit, offset) {
         var tr = "", totalPage = "", count = "";
@@ -75,9 +76,6 @@ $(function () {
             layer.msg(response.errmsg, {icon: 2});
         });
     }
-
-    var start_time = "", end_time = "", nickname = "";
-    GetAmountFun(token, group_id, start_time, end_time, nickname, limit, offset);
 
     $("#group_select").change(function () {
         group_id = $("#group_select option:selected").val();
