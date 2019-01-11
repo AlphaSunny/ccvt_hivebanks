@@ -100,7 +100,7 @@ function into_bot_status($us_id)
     $row = $db->fetchRow();
     if (!$row){
         $data['ctime'] = time();
-        $data['ip_address'] = "52.194.192.233:8000";
+        $data['ip_address'] = "54.92.77.38:8000";
         $data['us_id'] = $us_id;
         $sql = "select replace(bind_info,'86-','')bind_info from us_bind where us_id='{$us_id}' AND bind_name='cellphone'";
         $db->query($sql);
