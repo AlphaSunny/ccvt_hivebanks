@@ -20,7 +20,7 @@ GET参数
 
 php_begin();
 
-get_ranking();
+//get_ranking();
 
 // 搜索内容
 $search_content = get_arg_str('GET', 'search_content');
