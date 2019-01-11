@@ -41,17 +41,21 @@ $recharge_us_level = get_arg_str('GET', 'recharge_us_level');
 $limit_time = get_arg_str('GET', 'limit_time');
 $ca_channel = get_arg_str('GET', 'ca_channel');
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
+
 //验证token
 $ca_id = check_token($token);
-$time_row = get_ca_valid_time()["option_value"];
-if ($time_row + time() > strtotime($limit_time))
-    exit_error("144","有效期必须要大于la设置的时间");
-$pass_word_login = 'password_login';
+$row = get_ca_by_id($ca_id);
+if($row)
+    exit_error('101', '该用户不存在');
+
 // 获取pass_word_hash
-if(get_pass_word_hash($ca_id,$pass_word_login) != $pass_word_hash)
+if(get_pass_word_hash($ca_id, 'password_login') != $pass_word_hash)
     exit_error("102","密码错误");
-$row_fail = array();
-$variable = 'cellphone';
+
+if ( time() > strtotime($limit_time))
+    exit_error("144","设置时间必须大于当前时间");
+
+//插入数据
 $data_recharge_pass = array();
 $data_bind_pass['ca_id'] = $ca_id;
 $data_bind_pass['rate_type'] = "1";
