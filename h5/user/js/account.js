@@ -49,7 +49,7 @@ $(function () {
                 $(".application_group").text(data.application_group);
                 $(".modify_application_btn").removeClass("none");
             } else {
-                $(".application_group,.application_btn").remove();
+                $(".application_group").remove();
             }
         }
     }, function (response) {
