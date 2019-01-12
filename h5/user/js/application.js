@@ -3,6 +3,7 @@ $(function () {
     var token = GetCookie("user_token");
 
     var group_name = decodeURI(GetQueryString("group_name"));
+    console.log(group_name);
     if (group_name) {
         $("#group_name").val(group_name);
         $(".applicationGroup").attr("name", "modifyGroup");

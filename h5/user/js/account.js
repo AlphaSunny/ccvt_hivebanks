@@ -49,7 +49,7 @@ $(function () {
                 $(".application_group").text(data.application_group);
                 $(".modify_application_btn").removeClass("none");
             } else {
-                $(".application_group").remove();
+                $(".application_group,.modify_application_btn").remove();
             }
         }
     }, function (response) {
@@ -398,10 +398,10 @@ $(function () {
         WarnPrompt("即将开启");
         return;
     });
-    // $(".modify_application_btn").click(function () {
-    //     var group_name = $(".application_group").text();
-    //     window.location.href = "application.html?group_name=" + encodeURI(encodeURI(group_name));
-    // });
+    $(".modify_application_btn").click(function () {
+        var group_name = $(".application_group").text();
+        window.location.href = "application.html?group_name=" + encodeURI(encodeURI(group_name));
+    });
 
     //login robot
     $(".robotBtn").click(function () {
