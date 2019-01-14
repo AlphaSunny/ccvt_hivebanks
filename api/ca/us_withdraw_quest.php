@@ -33,7 +33,7 @@ chk_empty_args('GET', $args);
 $token = get_arg_str('GET', 'token');
 $ca_id = get_arg_str('GET', 'ca_id');
 $base_amount = get_arg_str('GET', 'base_amount');
-$lgl_amount = get_arg_str('GET', 'bit_amount');
+$bit_amount = get_arg_str('GET', 'bit_amount');
 $us_account_id = get_arg_str('GET', 'us_account_id');
 $id_card = get_arg_str('GET', 'id_card');
 $name = get_arg_str('GET', 'name');
@@ -46,19 +46,24 @@ $rate_row = get_ca_settting_withdraw_rate_ca_id($ca_id);
 
 if (($rate_row["min_amount"] > $base_amount * get_la_base_unit() || $base_amount * get_la_base_unit() > $rate_row["max_amount"]))
     exit_error('123',"提现金额必须要在ca允许的金额以内");
-//if (bccomp($base_amount , $lgl_amount / $rate_row["base_rate"],16))
-//    exit_error(1, "汇率有所变化，请重新提交");
+
 $us_row = get_us_base_info($us_id);
 if ($us_row["base_amount"] < $base_amount)
     exit_error("126","用户余额不足");
+
 $data = array();
+$tx_detail = array();
+$tx_detail['id_card'] = $id_card;
+$tx_detail['name'] = $name;
+$json = json_encode($tx_detail);
 $data["us_id"] = $us_id;
 $data["ca_id"] = $ca_id;
 $data["base_amount"] = $base_amount  * get_la_base_unit();
 $data["tx_type"] = "2";
-$data["lgl_amount"] = $lgl_amount;
+$data["lgl_amount"] = $bit_amount;
 $data["tx_time"] = time();
 $data["us_account_id"] = $us_account_id;
+$data['tx_detail'] = $json;
 $lgn_type = 'phone';
 $utime = time();
 $ctime = date('Y-m-d H:i:s');
