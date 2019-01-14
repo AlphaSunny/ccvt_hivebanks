@@ -1,24 +1,26 @@
-.hint li{
+.hint li {
     height: 35px;
     line-height: 35px;
 }
 
-.hint_text{
+.hint_text {
     line-height: 2;
     padding: 1rem;
     font-size: 12px;
 }
 
-.imgBox:hover img{
+.imgBox:hover img {
     /*border: 0.1px solid #82ca9c;*/
     cursor: pointer;
     -webkit-animation: scale 0.5s linear forwards;
     -o-animation: scale 0.5s linear forwards;
     animation: scale 0.5s linear forwards;
 }
+
 @keyframes scale {
-    0%{}
-    100%{
+    0% {
+    }
+    100% {
         -webkit-transform: scale(1.2);
         -moz-transform: scale(1.2);
         -ms-transform: scale(1.2);
@@ -26,17 +28,21 @@
         transform: scale(1.2);
     }
 }
-.rechargeTitle{
+
+.rechargeTitle {
     width: 16%;
 }
+
 .imgBox {
     padding: 2% 2%;
 }
-.bankItem{
+
+.bankItem {
     position: relative;
     height: 5rem;
 }
-.rechargeRateText{
+
+.rechargeRateText {
     position: absolute;
     /* background: rgba(0, 173, 62, 0.3); */
     width: 100%;
@@ -47,12 +53,14 @@
 }
 
 /**/
-.ca_channel_box{
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+.ca_channel_box {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
 }
-.ca_channel_box li{
+
+.ca_channel_box li {
     height: 3rem;
     line-height: 3rem;
     border-bottom: 1px solid #eeeeee;
+    font-weight: 400;
 }
