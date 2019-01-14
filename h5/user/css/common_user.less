@@ -12,6 +12,7 @@
 @default_color: #333333;
 @_absolute: absolute;
 @_relative: relative;
+@_fixed: fixed;
 body {
   background: @main-bg;
   font-family: "Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif";
@@ -139,7 +140,7 @@ li {
 }
 
 .scrollup {
-  position: @_absolute;
+  position: @_fixed;
   right: @default_even_px*25;
   @right: @default_even_px*25;
   bottom: @right;
