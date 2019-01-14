@@ -10,12 +10,15 @@
 @default_odd_px: 3px;
 @default_even_px: 2px;
 @default_color: #333333;
+@_absolute: absolute;
+@_relative: relative;
 body {
   background: @main-bg;
   font-family: "Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif";
   min-height: 100vh;
   border: unset;
   border-radius: unset;
+  position: @_relative;
 }
 
 *, p {
@@ -133,4 +136,12 @@ li {
 
 .none {
   display: none;
+}
+
+.scrollup {
+  position: @_absolute;
+  right: @default_even_px*25;
+  @right: @default_even_px*25;
+  bottom: @right;
+
 }
