@@ -55,23 +55,23 @@ $(function () {
     });
 
     //get us_account_id
-    var option = '';
-    GetUsAccountId(token, ca_channel, function (response){
-        if(response.errcode == '0'){
-            var data = response.rows;
-            if(data == false){
-
-            }
-            $.each(data, function (i, val) {
-                option+='<option value ="'+ data[i].account_id +'">'+ data[i].lgl_address.lgl_address +'</option>';
-            });
-            $('.selectAddress').append(option);
-            return;
-        }
-    }, function (response) {
-        LayerFun(response.errcode);
-        return;
-    });
+    // var option = '';
+    // GetUsAccountId(token, ca_channel, function (response){
+    //     if(response.errcode == '0'){
+    //         var data = response.rows;
+    //         if(data == false){
+    //
+    //         }
+    //         $.each(data, function (i, val) {
+    //             option+='<option value ="'+ data[i].account_id +'">'+ data[i].lgl_address.lgl_address +'</option>';
+    //         });
+    //         $('.selectAddress').append(option);
+    //         return;
+    //     }
+    // }, function (response) {
+    //     LayerFun(response.errcode);
+    //     return;
+    // });
 
     //lockRechargeAmount
     $('.lockAmountBtn').click(function () {
