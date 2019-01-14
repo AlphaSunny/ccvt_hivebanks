@@ -10,9 +10,9 @@ $(function () {
     var ca_channel = GetQueryString('ca_channel');
     var us_recharge_bit_amount = GetQueryString('us_recharge_bit_amount');
     $('.bit_amount').val(us_recharge_bit_amount);
-
+    $(".ca_channel").text(ca_channel);
     // $('.rechargeType').text(ca_channel);
-    $('.rechargeTypeImg').attr("src", "img/" + ca_channel.toLowerCase() + ".png");
+    // $('.rechargeTypeImg').attr("src", "img/" + ca_channel.toLowerCase() + ".png");
 
     //distribution recharge ca
     var api_url = 'assign_recharge_ca.php', rate = '', ca_id = '', recharge_max_amount = '', recharge_min_amount = '';
