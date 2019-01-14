@@ -91,22 +91,22 @@ if(!$check_pass){
 //if ($sms_code == "123456"){
 //}else {
     // 获取绑定信息日志表该用户最新的数据
-    $rec = get_ca_log_bind_by_variable($variable_code , $cellphone_num);
+//    $rec = get_ca_log_bind_by_variable($variable_code , $cellphone_num);
 //超时判断
-    if((strtotime($rec['ctime']) + 5*60) < time()){
-        exit_error('111','信息过期，请重试！');
-    }
+//    if((strtotime($rec['ctime']) + 5*60) < time()){
+//        exit_error('111','信息过期，请重试！');
+//    }
 //    if(empty($rec) || $rec['bind_salt'] != $sms_code || $rec['bind_info']!= $cellphone_num)
 //        exit_error('110','验证码不正确，请重试');
-    if(($rec['limt_time'] + 29*60) < time())
-        exit_error("111","验证超时");
+//    if(($rec['limt_time'] + 29*60) < time())
+//        exit_error("111","验证超时");
 //已使用的验证码消除使用权限
-    $userd_salt =  upd_ca_log_bind_variable($variable_code , $cellphone_num);
-    if(!$userd_salt){
-        exit_error('101','验证码被修改');
-    }
+//    $userd_salt =  upd_ca_log_bind_variable($variable_code , $cellphone_num);
+//    if(!$userd_salt){
+//        exit_error('101','验证码被修改');
+//    }
 // 登陆密码正确删除log_fail表中该用户的所有数据
-    $delect_ca_log_fail = delect_ca_log_login_fail($row['ca_id']);
+//    $delect_ca_log_fail = delect_ca_log_login_fail($row['ca_id']);
 //}
 $timestamp += 2*60*60;
 $des = new Des();
