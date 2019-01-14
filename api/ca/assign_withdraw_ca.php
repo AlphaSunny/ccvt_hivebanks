@@ -34,7 +34,7 @@ $ca_channel = get_arg_str('GET', 'ca_channel');
 //验证taoken
 $us_id = check_token($token);
 
-$ca_id = get_ca_id();
+$ca_id = get_ca_id()['ca_id'];
 //获取提现基本信息
 $data = get_ca_settting_withdraw_rate_ca_id($ca_id);
 
