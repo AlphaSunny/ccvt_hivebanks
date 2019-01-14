@@ -31,11 +31,11 @@ $base_amount = get_arg_str('GET', 'base_amount') * get_la_base_unit();
 
 //验证token
 $us_id = check_token($token);
-$ca_id = get_ca_id();
+$ca_id = get_ca_id()['ca_id'];
 $rows = sel_ca_asset_account_by_ca_id($ca_id);
 
 //返回给前端数据
 $rtn_data['errcode'] = '0';
 $rtn_data['errmsg'] = '';
-$rtn_data['rows'] = $row;
+$rtn_data['rows'] = $rows;
 php_end(json_encode($rtn_data));
