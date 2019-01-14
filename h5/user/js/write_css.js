@@ -10,7 +10,7 @@
     var cssHeader = "<link rel='stylesheet' type='text/css' href='" + appRootPath + "/";
     var cssHeaderLess = "<link rel='stylesheet/less' type='text/css' href='" + appRootPath + "/";
     var cssFooter = "'></link>";
-    document.write(cssHeader + "ccvt_new/common/css/bootstrap.min.css" + cssFooter);
-    document.write(cssHeader + "ccvt_new/common/css/jquery.pagination.css" + cssFooter);
-    document.write(cssHeaderLess + "ccvt_new/common/css/common.less" + cssFooter);
+    document.write(cssHeader + "assets/css/bootstrap.min.css" + cssFooter);
+    document.write(cssHeader + "assets/css/jquery.pagination.css" + cssFooter);
+    document.write(cssHeaderLess + "/css/common.less" + cssFooter);
 })();
