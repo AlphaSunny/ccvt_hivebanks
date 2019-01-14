@@ -12,8 +12,17 @@
     document.write(jsHeader + "assets/js/jquery.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/bootstrap.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/jquery.pagination.min.js" + jsFooter);
+    document.write(jsHeader + "assets/js/layer/layer.js" + jsFooter);
     document.write(jsHeader + "assets/js/less.min.js" + jsFooter);
+    document.write(jsHeader + "assets/js/clipboard.min.js" + jsFooter);
+    document.write(jsHeader + "assets/js/jquery.qrcode.min.js" + jsFooter);
+    document.write(jsHeader + "assets/js/prompt.js" + jsFooter);
+    document.write(jsHeader + "user/language/jquery.i18n.properties.js" + jsFooter);
+    document.write(jsHeader + "user/language/language.js" + jsFooter);
+
+
     document.write(jsHeader + "user/js/common.js" + jsFooter);
+    document.write(jsHeader + "user/js/main.js" + jsFooter);
     document.write(jsHeader + "user/js/account.js" + jsFooter);
     document.write(jsHeader + "assets/js/logout.js" + jsFooter);
     document.write("<script type='text/javascript'>less.watch();</script>");
