@@ -2,6 +2,8 @@
 
 require_once '../inc/common.php';
 require_once 'db/ca_rate_setting.php';
+require_once 'db/ca_asset_account.php';
+require_once 'db/ca_base.php';
 
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
@@ -26,17 +28,16 @@ chk_empty_args('GET', $args);
 // 用户token
 $token = get_arg_str('GET', 'token', 128);
 //验证token
-$ca_id = check_token($token);
+$us_id = check_token($token);
 $base_amount = get_arg_str('GET', 'base_amount') * get_la_base_unit();
-$rows= get_ca_withdraw_settting_rate_list_by_bit_amount($base_amount,date('Y-m-d H:i:s'));
-$new_rows = array();
-foreach ($rows as $new_row){
-    $new_rwo["base_rate"] = floatval($new_row["max(base_rate)"]);
-    $new_rwo["ca_channel"] = $new_row["ca_channel"];
-    $new_rows[] = $new_rwo;
-}
+$ca_id = get_ca_id();
+
+$rows = sel_ca_asset_account_by_ca_id($ca_id);
+
+
 //返回给前端数据
+$rtn_data = array();
 $rtn_data['errcode'] = '0';
 $rtn_data['errmsg'] = '';
-$rtn_data['rows'] = $new_rows;
+$rtn_data['rows'] = $rows;
 php_end(json_encode($rtn_data));
