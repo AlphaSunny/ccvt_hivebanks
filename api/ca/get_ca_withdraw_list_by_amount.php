@@ -30,7 +30,7 @@ $token = get_arg_str('GET', 'token', 128);
 //验证token
 $us_id = check_token($token);
 $base_amount = get_arg_str('GET', 'base_amount') * get_la_base_unit();
-$ca_id = get_ca_id();
+$ca_id = get_ca_id()['ca_ids'];
 
 $rows = sel_ca_asset_account_by_ca_id($ca_id);
 
