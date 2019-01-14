@@ -20,8 +20,8 @@ $(function () {
                 return;
             }
             $.each(data, function (i, val) {
-                li += "<li class='flex center space-between'>" +
-                    "<p class='i18n' name='"+ data[i].ca_channel +"'></p><p> > </p>" +
+                li += "<li class='bankItem flex center space-between'>" +
+                    "<p class='i18n ca_channel' name='"+ data[i].ca_channel +"'></p><p> > </p>" +
                     "</li>"
             });
             $('.ca_channel_ul').html(li);
@@ -34,7 +34,8 @@ $(function () {
 
     //Choose recharge method
     $(document).on('click', '.bankItem', function () {
-        var ca_channel = $(this).find('img').attr('title');
+        // var ca_channel = $(this).find('img').attr('title');
+        var ca_channel = $(this).find('.ca_channel').text();
         window.location.href = 'CaRechargeAmount.html?ca_channel=' + ca_channel + '&us_recharge_bit_amount=' + us_recharge_bit_amount;
     })
 });
