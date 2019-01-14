@@ -10,10 +10,10 @@
     var jsHeader = "<script type='text/javascript' src='" + appRootPath + "/";
     var jsFooter = "'></script>";
     document.write(jsHeader + "assets/js/jquery.min.js" + jsFooter);
-    document.write(jsHeader + "ccvt_new/common/js/bootstrap.min.js" + jsFooter);
-    document.write(jsHeader + "ccvt_new/common/js/jquery.pagination.min.js" + jsFooter);
-    document.write(jsHeader + "ccvt_new/common/js/less.min.js" + jsFooter);
-    document.write(jsHeader + "ccvt_new/common/js/common.js" + jsFooter);
-    document.write(jsHeader + "ccvt_new/common/js/logout.js" + jsFooter);
+    document.write(jsHeader + "assets/js/bootstrap.min.js" + jsFooter);
+    document.write(jsHeader + "assets/js/jquery.pagination.min.js" + jsFooter);
+    document.write(jsHeader + "assets/js/less.min.js" + jsFooter);
+    document.write(jsHeader + "js/common.js" + jsFooter);
+    document.write(jsHeader + "assets/js/logout.js" + jsFooter);
     document.write("<script type='text/javascript'>less.watch();</script>");
 })();
