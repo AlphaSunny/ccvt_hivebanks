@@ -13,6 +13,8 @@ body {
   background: @main-bg;
   font-family: "Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif";
   min-height: 100vh;
+  border: unset;
+  border-radius: unset;
 }
 
 * {
@@ -26,6 +28,10 @@ body {
   z-index: 1000;
   background: @nav-color;
   width: @_100;
+  a{
+    height: 64px;
+    line-height: 64px;
+  }
 }
 
 .card {
