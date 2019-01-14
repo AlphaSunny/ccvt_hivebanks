@@ -79,9 +79,9 @@ $(function () {
                 $(".author").text(data[0].author);
                 $(".news_content").html(data[0].content);
                 if(data[0].category == "1"){
-                    $(".title").text("CCVT 官方新闻");
+                    $(".titles").text("CCVT 官方新闻");
                 }else {
-                    $(".title").text("CCVT 行业新闻");
+                    $(".titles").text("CCVT 行业新闻");
                 }
             }
         }, function (response) {
