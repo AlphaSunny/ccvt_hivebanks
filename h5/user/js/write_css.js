@@ -12,5 +12,5 @@
     var cssFooter = "'></link>";
     document.write(cssHeader + "assets/css/bootstrap.min.css" + cssFooter);
     document.write(cssHeader + "assets/css/jquery.pagination.css" + cssFooter);
-    document.write(cssHeaderLess + "/css/common.less" + cssFooter);
+    document.write(cssHeaderLess + "user/css/common.less" + cssFooter);
 })();
