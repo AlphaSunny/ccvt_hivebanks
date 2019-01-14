@@ -49,4 +49,10 @@
 /**/
 .ca_channel_box{
     box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    padding: 10px 20px;
+}
+.ca_channel_box li{
+    height: 3rem;
+    line-height: 3rem;
+    border-bottom: 1px solid #eeeeee;
 }
