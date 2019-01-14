@@ -57,8 +57,13 @@ li {
   }
   #language {
     padding-left: @default_odd_px*10;
+    cursor: pointer;
     li {
       line-height: @default_even_px*13;
+      cursor: pointer;
+      &:hover {
+        color: #1333cc;
+      }
     }
   }
   .navbar-brand > img {
