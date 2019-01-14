@@ -64,4 +64,9 @@
     border-bottom: 1px solid #eeeeee;
     font-weight: 400;
     cursor: pointer;
+    padding: 0 10px;
+}
+
+.ca_channel_box li:hover {
+    background: #eeeeee;
 }
