@@ -12,5 +12,5 @@
     var cssFooter = "'></link>";
     document.write(cssHeader + "ccvt_new/common/css/bootstrap.min.css" + cssFooter);
     document.write(cssHeader + "ccvt_new/common/css/jquery.pagination.css" + cssFooter);
-    document.write(cssHeaderLess + "ccvt_new/common/css/common.less" + cssFooter);
+    document.write(cssHeaderLess + "ccvt_new/common/css/common_user.less" + cssFooter);
 })();
