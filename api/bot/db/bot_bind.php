@@ -290,6 +290,9 @@ function get_qrcode($us_id)
     $db -> query($sql);
     $row = $db -> fetchRow();
     if ($row){
+        $sql = "select option_value from com_option_config WHERE option_name='python_address'";
+        $db->query($sql);
+        $row['ip_address'] = $db->getField($sql,'option_value');
         $sql = "select * from bot_log_login WHERE login_out_time=0 ORDER BY intime DESC limit 1";
         $db->query($sql);
         $t = $db->fetchRow();
