@@ -147,10 +147,23 @@ function statistics_amount_list()
 function search_timer()
 {
     $db = new DB_COM();
-    $sql = "SELECT a.id,a.time,a.content,a.group_id,a.tx_content,a.send_type,a.type FROM bot_timer as a LEFT JOIN bot_group as b on a.group_id=b.id WHERE a.is_del=0  ORDER BY a.intime asc";
+    $sql = "SELECT a.id,a.time,a.content,a.group_id,a.tx_content,a.send_type,a.type,a.is_change_img FROM bot_timer as a LEFT JOIN bot_group as b on a.group_id=b.id WHERE a.is_del=0  ORDER BY a.intime asc";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
+}
+//======================================
+// 函数:修改定时任务里面图片下载完成的定时任务
+// 参数: $data
+//返回： rows               数据
+//======================================
+function change_timer($timer_id)
+{
+    $db = new DB_COM();
+    $time = time();
+    $sql = "update bot_timer set is_change_img=1,uptime='{$time}' WHERE id='{$timer_id}'";
+    $db->query($sql);
+    return $db->affectedRows();
 }
 //======================================
 // 函数:微信机器人群组返回接口
