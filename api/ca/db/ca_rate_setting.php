@@ -41,7 +41,7 @@ function  us_get_ca_withdraw_settting_rate_ca_id($ca_channel)
 function  get_ca_settting_recharge_rate_ca_id($ca_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM ca_rate_setting WHERE rate_type = '1' and ca_id = '{$ca_id}' limit 1";
+    $sql = "SELECT * FROM ca_rate_setting WHERE rate_type = '1' and ca_id = '{$ca_id}' order by set_time desc limit 1";
     $db -> query($sql);
     $row = $db -> fetchRow();
     return $row;
