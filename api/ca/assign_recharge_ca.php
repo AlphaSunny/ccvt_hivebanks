@@ -33,7 +33,7 @@ $ca_channel = get_arg_str('GET', 'ca_channel');
 //验证token
 $us_id = check_token($token);
 
-$ca_id = get_ca_id();
+$ca_id = get_ca_id()['ca_id'];
 //获取充值汇率基本信息
 $data = get_ca_settting_recharge_rate_ca_id($ca_id);
 // 返回数据做成
