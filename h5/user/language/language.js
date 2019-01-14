@@ -159,4 +159,15 @@ $(function(){
         });
         location.reload();
     });
+
+    /* Choose a language */
+    $("#language li").on('click', function () {
+        var language = $(this).attr("title");
+        $("#language").text($(this).text());
+        getCookie("userLanguage", language, {
+            expires: 30,
+            path: '/'
+        });
+        location.reload();
+    });
 });
