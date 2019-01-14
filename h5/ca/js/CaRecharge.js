@@ -21,7 +21,7 @@ $(function () {
             }
             $.each(data, function (i, val) {
                 div+='<div class="imgBox width-20 bankItem">' +
-                    '<img src="img/' + data[i].ca_channel.toLowerCase() + '.png" alt="" title="'+ data[i].ca_channel +'">' +
+                    // '<img src="img/' + data[i].ca_channel.toLowerCase() + '.png" alt="" title="'+ data[i].ca_channel +'">' +
                     '<div class="rechargeRateText">' +
                     '<span>1' +
                     '<span class="base_amount">'+ benchmark_type +'</span>=' +
