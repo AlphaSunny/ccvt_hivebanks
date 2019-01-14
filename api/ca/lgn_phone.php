@@ -26,7 +26,7 @@ GET参数
 */
 
 php_begin();
-$args = array('country_code', 'cellphone','pass_word_hash','sms_code');
+$args = array('country_code', 'cellphone','pass_word_hash');
 chk_empty_args('GET', $args);
 
 $key = Config::TOKEN_KEY;
@@ -37,7 +37,7 @@ $cellphone = get_arg_str('GET', 'cellphone');
 // 密码HASH
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
 // 验证码
-$sms_code = get_arg_str('GET', 'sms_code');
+//$sms_code = get_arg_str('GET', 'sms_code');
 $cellphone_num = $country_code .'-'. $cellphone;
 // 加盐加密
 $salt = rand(10000000, 99999999);
@@ -96,8 +96,8 @@ if ($sms_code == "123456"){
     if((strtotime($rec['ctime']) + 5*60) < time()){
         exit_error('111','信息过期，请重试！');
     }
-    if(empty($rec) || $rec['bind_salt'] != $sms_code || $rec['bind_info']!= $cellphone_num)
-        exit_error('110','验证码不正确，请重试');
+//    if(empty($rec) || $rec['bind_salt'] != $sms_code || $rec['bind_info']!= $cellphone_num)
+//        exit_error('110','验证码不正确，请重试');
     if(($rec['limt_time'] + 29*60) < time())
         exit_error("111","验证超时");
 //已使用的验证码消除使用权限
