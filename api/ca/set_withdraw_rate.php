@@ -23,7 +23,7 @@ GET参数
 */
 
 php_begin();
-$args = array('token','withdraw_rate','withdraw_min_amount','withdraw_max_amount','limit_time', 'ca_channel','pass_word_hash');
+$args = array('token','withdraw_rate','withdraw_min_amount','withdraw_max_amount','limit_time', 'ca_type','pass_word_hash');
 chk_empty_args('GET', $args);
 
 // 用户token
@@ -39,27 +39,25 @@ $limit_time = get_arg_str('GET', 'limit_time');
 // 用户等级
 $withdraw_us_level = get_arg_str('GET', 'withdraw_us_level');
 // 是否有效
-$ca_channel = get_arg_str('GET', 'ca_channel');
-
+$ca_type = get_arg_str('GET', 'ca_type');
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
 //验证token
 $ca_id = check_token($token);
 
-$time_row = get_ca_valid_time()["option_value"];
-if ($time_row + time() > strtotime($limit_time))
-    exit_error("144","有效期必须要大于la设置的时间");
+if (time() > strtotime($limit_time))
+    exit_error("144","有效期必须要大于当前时间");
 
 $pass_word_login = 'password_login';
 // 获取pass_word_hash
 if(get_pass_word_hash($ca_id,$pass_word_login) != $pass_word_hash)
     exit_error("102","密码错误");
 
-$row_fail = array();
+
 $variable = 'cellphone';
 $data_recharge_pass = array();
 $data_bind_pass['ca_id'] = $ca_id;
 $data_bind_pass['rate_type'] = "2";
-$data_bind_pass['ca_channel'] = $ca_channel;
+$data_bind_pass['ca_type'] = $ca_type;
 $data_bind_pass['base_rate'] = $withdraw_rate;
 $data_bind_pass['us_level'] = $withdraw_us_level;
 if ($withdraw_rate){

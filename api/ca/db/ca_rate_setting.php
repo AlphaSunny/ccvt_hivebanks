@@ -61,7 +61,7 @@ function  get_ca_settting_recharge_rate_ca_id($ca_id)
 function  get_ca_settting_withdraw_rate_ca_id($ca_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM ca_rate_setting WHERE  rate_type = '2' and ca_id = '{$ca_id}' limit 1";
+    $sql = "SELECT * FROM ca_rate_setting WHERE  rate_type = '2' and ca_id = '{$ca_id}' order by set_time desc limit 1";
     $db -> query($sql);
     $row = $db -> fetchRow();
     return $row;
@@ -106,21 +106,9 @@ function ins_ca_recharge_rate_info($data_base)
 function ins_ca_withdraw_rate_info($data_base)
 {
     $db = new DB_COM();
-    $sql = "SELECT set_id FROM ca_rate_setting WHERE rate_type = '2' and ca_id = '{$data_base["ca_id"]}' and ca_channel = '{$data_base["ca_channel"]}'";
-    $db -> query($sql);
-    $row = $db ->fetchRow();
-    if (!$row["set_id"]) {
-        $sql = $db ->sqlInsert("ca_rate_setting", $data_base);
-        $q_id = $db->query($sql);
-        if ($q_id == 0)
-            return false;
-        return true;
-    }else {
-        $sql = $db->sqlUpdate("ca_rate_setting", $data_base,"set_id = '{$row["set_id"]}' and rate_type = '2'");
-        $db -> query($sql);
-        $count = $db ->affectedRows();
-        return $count;
-    }
+    $sql = $db ->sqlInsert("ca_rate_setting", $data_base);
+    $q_id = $db->query($sql);
+    return $q_id;
 }
 //======================================
 // 函数: 获取有效的充值平均汇率
