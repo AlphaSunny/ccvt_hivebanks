@@ -1,4 +1,4 @@
-// 通用js和css
+// 通用js
 (function () {
     var strFullPath = window.document.location.href;
     var strPath = window.document.location.pathname;
@@ -14,6 +14,7 @@
     document.write(jsHeader + "assets/js/jquery.pagination.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/less.min.js" + jsFooter);
     document.write(jsHeader + "user/js/common.js" + jsFooter);
+    document.write(jsHeader + "user/js/account.js" + jsFooter);
     document.write(jsHeader + "assets/js/logout.js" + jsFooter);
     document.write("<script type='text/javascript'>less.watch();</script>");
 })();

@@ -1,4 +1,4 @@
-// 通用js和css
+// 通用css
 (function () {
     var strFullPath = window.document.location.href;
     var strPath = window.document.location.pathname;
@@ -13,4 +13,5 @@
     document.write(cssHeader + "assets/css/bootstrap.min.css" + cssFooter);
     document.write(cssHeader + "assets/css/jquery.pagination.css" + cssFooter);
     document.write(cssHeaderLess + "user/css/common.less" + cssFooter);
+    document.write(cssHeader + "user/css/account.css" + cssFooter);
 })();
