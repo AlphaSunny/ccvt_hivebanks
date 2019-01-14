@@ -20,8 +20,8 @@ $(function () {
                 return;
             }
             $.each(data, function (i, val) {
-                li += "<li>" +
-                    "<p>" + data[i].ca_channel + "</p><p> > </p>" +
+                li += "<li class='flex center space-between'>" +
+                    "<p>" + data[i].ca_channel.toUpperCase() + "</p><p> > </p>" +
                     "</li>"
             });
             $('.ca_channel_ul').html(li);
