@@ -92,6 +92,14 @@ $(function () {
             LayerFun('notLagAmount');
             return;
         }
+        if (id_card.length <= 0) {
+            WarnPrompt("请输入银行卡号");
+            return;
+        }
+        if (name.length <= 0) {
+            WarnPrompt("请输入姓名");
+            return;
+        }
         if (base_amount > us_base_amount) {
             LayerFun('notBalance');
             return;
