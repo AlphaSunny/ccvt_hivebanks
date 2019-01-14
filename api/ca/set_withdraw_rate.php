@@ -73,7 +73,7 @@ if(!ins_ca_withdraw_rate_info($data_bind_pass)){
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['ca_channel'] = $ca_channel;
+$rtn_ary['ca_type'] = $ca_type;
 $rtn_ary['withdraw_rate'] = $withdraw_rate;
 $rtn_ary['limit_time'] = $limit_time;
 $rtn_ary['withdraw_us_level'] = $withdraw_us_level;
