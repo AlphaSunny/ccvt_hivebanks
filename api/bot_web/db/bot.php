@@ -233,12 +233,12 @@ function save_timer($date)
 {
     $db = new DB_COM();
     $time = time();
-    $is_change_img = 2;
+    $is_change_img = 1;
     if ($date['send_type']==2){
         $sql = "select content from bot_timer WHERE id='{$date['timer_id']}'";
         $db->query($sql);
         if ($date['content']!=$db->getField($sql,'content')){
-            $is_change_img = 1;
+            $is_change_img = 2;
         }
     }
     $sql = "update bot_timer set time = '{$date['time']}' , content = '{$date['content']}',send_type='{$date['send_type']}', type='{$date['type']}',is_change_img='{$is_change_img}',uptime='{$time}' where id='{$date['timer_id']}' ";
