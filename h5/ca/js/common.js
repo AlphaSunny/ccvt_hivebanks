@@ -655,15 +655,15 @@ function GetUsAccountId(token, ca_channel, suc_func, error_func) {
 }
 
 //Locked up cash amount (withdrawal request)
-function LockWithdrawAmount(token, ca_id, base_amount, bit_amount, ca_channel, us_level, us_account_id, suc_func, error_func) {
+function LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id, suc_func, error_func) {
     var api_url = 'us_withdraw_quest.php',
         post_data = {
             'token': token,
             'ca_id': ca_id,
             'base_amount': base_amount,
             'bit_amount': bit_amount,
-            'ca_channel': ca_channel,
-            'us_level': us_level,
+            'id_card': id_card,
+            'name': name,
             'us_account_id': us_account_id
         };
     CallApi(api_url, post_data, suc_func, error_func);

@@ -13,7 +13,7 @@ $(function () {
             var data = response.rows;
             us_base_amount = data.base_amount;
             $('.base_amount').text(data.base_amount);
-            if(data.base_amount <= 0){
+            if (data.base_amount <= 0) {
                 $('.allWithdraw').remove();
                 $('.no_base_amount').show();
             }
@@ -28,7 +28,7 @@ $(function () {
         $('.bit_amount_input').val(us_base_amount);
         $('.base_amount_input').val(us_base_amount / rate);
     });
-    
+
     //Get recharge channels
     var ca_channel = decodeURI(GetQueryString('ca_channel'));
     var base_amount = GetQueryString('us_ca_withdraw_amount');
@@ -77,26 +77,28 @@ $(function () {
     $('.lockAmountBtn').click(function () {
         var bit_amount = $('.bit_amount_input').val(),
             base_amount = $('.base_amount_input').val(),
-            us_account_id = $('.us_account_id').val();
+            us_account_id = $('.us_account_id').val(),
+            id_card = $("#idNum").val(),
+            name = $("#name").val();
         if (base_amount.length <= 0) {
             LayerFun('pleaseEnterWithdrawAmount');
             return;
         }
-        if(base_amount < withdraw_min_amount){
+        if (base_amount < withdraw_min_amount) {
             LayerFun('notSmallAmount');
             return;
         }
-        if(base_amount > withdraw_max_amount){
+        if (base_amount > withdraw_max_amount) {
             LayerFun('notLagAmount');
             return;
         }
-        if(base_amount > us_base_amount){
+        if (base_amount > us_base_amount) {
             LayerFun('notBalance');
             return;
         }
         var $this = $(this), btnText = $(this).text();
-        if(DisableClick($this)) return;
-        LockWithdrawAmount(token, ca_id, base_amount, bit_amount, ca_channel, us_level, us_account_id, function (response) {
+        if (DisableClick($this)) return;
+        LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id, function (response) {
             if (response.errcode == '0') {
                 ActiveClick($this, btnText);
                 $('#lockWithdraw').modal('show');
