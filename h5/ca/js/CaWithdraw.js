@@ -22,18 +22,7 @@ $(function () {
                 li += "<li class='bankItem flex center space-between'>" +
                     "<p class='i18n ca_channel' name='" + data[i].ca_channel + "'></p><p> > </p>" +
                     "</li>"
-                // div+='<div class="imgBox width-20 bankItem">' +
-                //     '<img src="img/' + data[i].ca_channel.toLowerCase() + '.png" alt="" title="'+ data[i].ca_channel +'">' +
-                //     '<div class="rechargeRateText">' +
-                //     '<span>1' +
-                //     '<span class="base_amount">'+ benchmark_type +'</span>=' +
-                //     '<span class="base_rate">'+ data[i].base_rate +'</span>' +
-                //     '<span class="bit_amount ca_currency">'+ ca_currency +'</span>' +
-                //     '</span>' +
-                //     '</div>' +
-                //     '</div>'
             });
-            // $('.bankBox').html(div);
             $('.ca_channel_ul').html(li);
             execI18n();
         }
@@ -44,7 +33,8 @@ $(function () {
 
     //Choose recharge method
     $(document).on('click', '.bankItem', function () {
-        var ca_channel = $(this).find('img').attr('title');
+        // var ca_channel = $(this).find('img').attr('title');
+        var ca_channel = $(this).find('.ca_channel').text();
 
         //get us_account_id
         var us_account_id = '';
@@ -60,6 +50,6 @@ $(function () {
                 return;
             }
         });
-        window.location.href = 'CaWithdrawAmount.html?us_ca_withdraw_amount=' + base_amount + '&ca_channel=' + ca_channel;
+        window.location.href = 'CaWithdrawAmount.html?us_ca_withdraw_amount=' + base_amount + '&ca_channel=' + encodeURI(encodeURI(ca_channel));
     })
 });

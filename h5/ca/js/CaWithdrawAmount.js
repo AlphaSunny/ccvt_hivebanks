@@ -30,12 +30,12 @@ $(function () {
     });
     
     //Get recharge channels
-    var ca_channel = GetQueryString('ca_channel');
+    var ca_channel = decodeURI(GetQueryString('ca_channel'));
     var base_amount = GetQueryString('us_ca_withdraw_amount');
     $('.base_amount_input').val(base_amount);
 
-    $('.withdrawTypeImg').attr("src", "img/" + ca_channel.toLowerCase() + ".png");
-
+    // $('.withdrawTypeImg').attr("src", "img/" + ca_channel.toLowerCase() + ".png");
+    $(".ca_channel").text(ca_channel);
     //Assign recharge ca
     var api_url = 'assign_withdraw_ca.php', rate = '', ca_id = '', withdraw_max_amount = '', withdraw_min_amount = '';
     GetAssignCa(api_url, token, ca_channel, function (response) {
