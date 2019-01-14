@@ -37,9 +37,9 @@ $(function () {
     $(".withdrawRateBtn").click(function () {
         var rate = $(".withdrawRateInput").val(), minAmount = $(".withdrawMinVal").val(),
             maxAmount = $(".withdrawMaxVal").val(), time = $("#withdrawRateTime").val(),
-            level = $(".withdrawLevel").val(), ca_channel = "RMB",
+            level = $(".withdrawLevel").val(), ca_type = "RMB",
             pass_word_hash = hex_sha1($("#withdrawPassword").val());
-        SetWithdrawRate(token, rate, minAmount, maxAmount, time, level, ca_channel, pass_word_hash, function (response) {
+        SetWithdrawRate(token, rate, minAmount, maxAmount, time, level, ca_type, pass_word_hash, function (response) {
             if(response.errcode == "0"){
                 SuccessPrompt("设置成功");
                 $(".withdrawRateNotSet").remove();
