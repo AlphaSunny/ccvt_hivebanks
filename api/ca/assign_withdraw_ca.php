@@ -2,6 +2,7 @@
 
 require_once '../inc/common.php';
 require_once 'db/ca_rate_setting.php';
+require_once 'db/ca_base.php';
 
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
@@ -33,7 +34,7 @@ $ca_channel = get_arg_str('GET', 'ca_channel');
 //验证taoken
 $us_id = check_token($token);
 
-$ca_id = us_get_ca_withdraw_settting_rate_ca_id($ca_channel);
+$ca_id = get_ca_id();
 //获取提现基本信息
 $data = get_ca_settting_withdraw_rate_ca_id($ca_id);
 
