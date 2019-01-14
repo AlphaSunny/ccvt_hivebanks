@@ -13,7 +13,7 @@
     document.write(jsHeader + "assets/js/bootstrap.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/jquery.pagination.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/less.min.js" + jsFooter);
-    document.write(jsHeader + "js/common.js" + jsFooter);
+    document.write(jsHeader + "user/js/common.js" + jsFooter);
     document.write(jsHeader + "assets/js/logout.js" + jsFooter);
     document.write("<script type='text/javascript'>less.watch();</script>");
 })();
