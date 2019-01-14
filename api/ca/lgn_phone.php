@@ -88,8 +88,8 @@ if(!$check_pass){
     exit_error('116',pow(2,$row_fail['count_error']));
   } 
 }
-if ($sms_code == "123456"){
-}else {
+//if ($sms_code == "123456"){
+//}else {
     // 获取绑定信息日志表该用户最新的数据
     $rec = get_ca_log_bind_by_variable($variable_code , $cellphone_num);
 //超时判断
@@ -107,7 +107,7 @@ if ($sms_code == "123456"){
     }
 // 登陆密码正确删除log_fail表中该用户的所有数据
     $delect_ca_log_fail = delect_ca_log_login_fail($row['ca_id']);
-}
+//}
 $timestamp += 2*60*60;
 $des = new Des();
 $encryption_code = $row['ca_id'] .',' . $timestamp . ',' . $salt;
