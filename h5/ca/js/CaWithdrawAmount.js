@@ -127,10 +127,10 @@ $(function () {
 
     //Input box listener
     $('.base_amount_input').bind('input', 'propertychange', function () {
-        $('.bit_amount_input').val($(this).val() / rate);
+        $('.bit_amount_input').val($(this).val() * rate);
     });
     $('.bit_amount_input').bind('input', 'propertychange', function () {
-        $('.base_amount_input').val($(this).val() * rate);
+        $('.base_amount_input').val($(this).val() / rate);
     });
 
     //Reading rule time countdown
