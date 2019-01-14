@@ -7,11 +7,12 @@ $(function () {
     var us_level = GetUsCookie('us_level');
 
     // get base information
-    var us_base_amount = '';
+    var us_base_amount = '',us_account_id = "";
     GetUserBaseInfo(token, function (response) {
         if (response.errcode == '0') {
             var data = response.rows;
             us_base_amount = data.base_amount;
+            us_account_id = data.us_id;
             $('.base_amount').text(data.base_amount);
             if (data.base_amount <= 0) {
                 $('.allWithdraw').remove();
@@ -77,7 +78,7 @@ $(function () {
     $('.lockAmountBtn').click(function () {
         var bit_amount = $('.bit_amount_input').val(),
             base_amount = $('.base_amount_input').val(),
-            us_account_id = $('.us_account_id').val(),
+            // us_account_id = $('.us_account_id').val(),
             id_card = $("#idNum").val(),
             name = $("#name").val();
         if (base_amount.length <= 0) {
