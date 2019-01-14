@@ -38,16 +38,17 @@ chk_empty_args('GET', $args);
 $token = get_arg_str('GET', 'token', 128);
 //验证token
 $us_id = check_token($token);
+
 //获取当前订单信息
-$order_list   = get_ca_withdraw_order_list($us_id);
-if(!$order_list){
+$order   = get_ca_withdraw_order_list($us_id);
+if(!$order){
     exit_error('101','订单信息获取失败');
 }
-$time_stamp =$order_list['0']['tx_time'];
-$order_list['0']['tx_time'] = date("Y-m-d H:i:s",$time_stamp);
-$detail = $order_list['0']['tx_detail'];
-$array = json_decode($detail, true);
-$order_list['0']['bit_address'] = $array['bit_address'];
+$time_stamp =$order['tx_time'];
+$order_list['tx_time'] = date("Y-m-d H:i:s",$time_stamp);
+$detail = $order['tx_detail'];
+$decoded_detail = json_decode($detail, true);
+$order['id_card'] = $decoded_detail['id_card'];
 
 // 返回数据做成
 $rtn_ary = array();

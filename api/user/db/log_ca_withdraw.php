@@ -37,5 +37,5 @@ function get_ca_withdraw_order_list($us_id)
     $db = new DB_COM();
     $sql = "select * from us_ca_withdraw_request where us_id='{$us_id}' ORDER BY qa_id DESC LIMIT 1";
     $db->query($sql);
-    return $res = $db->fetchAll();
+    return $res = $db->fetchRow();
 }
