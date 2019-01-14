@@ -9,7 +9,7 @@
 
     var jsHeader = "<script type='text/javascript' src='" + appRootPath + "/";
     var jsFooter = "'></script>";
-    document.write(jsHeader + "ccvt_new/common/js/jquery.min.js" + jsFooter);
+    document.write(jsHeader + "assets/js/jquery.min.js" + jsFooter);
     document.write(jsHeader + "ccvt_new/common/js/bootstrap.min.js" + jsFooter);
     document.write(jsHeader + "ccvt_new/common/js/jquery.pagination.min.js" + jsFooter);
     document.write(jsHeader + "ccvt_new/common/js/less.min.js" + jsFooter);
