@@ -25,10 +25,12 @@ chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token', 128);
-//验证token
-$ca_id = check_token($token);
 $base_amount = get_arg_str('GET', 'base_amount') * get_la_base_unit();
-$row= get_ca_recharge_settting_rate_list_by_bit_amount($base_amount,date('Y-m-d H:i:s'));
+
+//验证token
+$us_id = check_token($token);
+$ca_id = get_ca_id();
+$rows = sel_ca_asset_account_by_ca_id($ca_id);
 
 //返回给前端数据
 $rtn_data['errcode'] = '0';

@@ -144,3 +144,14 @@ function  upd_ca_accout($ca_id,$ca_account)
     $id = $db -> query($sql);
     return $id;
 }
+
+/**
+ *
+ */
+function get_ca_id()
+{
+    $db = new DB_COM();
+    $sql = "select ca_id from ca_base limit 1";
+    $db->query($sql);
+    return $db->fetchRow();
+}
