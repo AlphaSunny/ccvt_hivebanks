@@ -21,7 +21,7 @@ $(function () {
             }
             $.each(data, function (i, val) {
                 li += "<li class='flex center space-between'>" +
-                    "<p>" + data[i].ca_channel.toUpperCase() + "</p><p> > </p>" +
+                    "<p class='i18n' name='"+ data[i].ca_channel +"'></p><p> > </p>" +
                     "</li>"
             });
             $('.ca_channel_ul').html(li);
