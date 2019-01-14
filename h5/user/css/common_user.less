@@ -1,18 +1,14 @@
 //@main-bg:        #1BBC9B;
 @main-bg: #FFFFFF;
-@nav-color: #1a1d29;
+@nav-color: #1a1d2a;
 @nav-bg-active: #333;
 @screen-bg: #D2527F;
 @duration: 300ms;
 @ease: ease-in-out;
 @_100: 100%;
 @shadow: 0 2px 15px rgba(0, 0, 0, .1);
-@radios: 5px;
-
-/**
-* Demo Stuff
-*/
-
+@default_px: 5px;
+@default_color: #333333;
 body {
   background: @main-bg;
   font-family: "Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif";
@@ -34,13 +30,13 @@ body {
 
 .card {
   width: @_100;
-  border-radius: @radios;
-  margin-bottom: @radios * 10;
+  border-radius: @default_px;
+  margin-bottom: @default_px * 10;
   box-shadow: @shadow;
   .title {
-    padding: 20px 0;
-    margin-left: 32px;
-    border-bottom: 1px solid #d9d9d9;
+    padding: @default_px*4 0;
+    margin-left: @default_px*6+2;
+    border-bottom: @default_px/@default_px solid #d9d9d9;
     .remark {
       color: #999;
       font-size: 14px;
