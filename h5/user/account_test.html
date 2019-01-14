@@ -78,8 +78,6 @@
 </div>
 
 
-
-
 <!--account information-->
 <section class="sections">
     <div class="container">
@@ -251,311 +249,315 @@
             </div>
         </div>
     </div>
+</section>
 
-        <!--Account change record-->
-        <section class="sections">
-            <div class="container">
-                <div id='userChange' class="userChange">
-                    <div class="row recharge-history">
-                        <!--Account change record-->
-                        <div class="col-md-12 col-sm-12 deposit-col-right">
-                            <div class="record-bg">
-                                <div id="history">
-                                    <div class="history-title">
-                                        <h3 class="pcTitle i18n" name="changeCode">Account Change Records</h3>
-                                        <h5 class="phoneTitle i18n" name="changeCode">Account Change Records</h5>
-                                    </div>
-                                </div>
-                                <div class="table-box table-responsive">
-                                    <table class="tab table table-hover table-condensed">
-                                        <thead>
-                                        <tr>
-                                            <!--<th class="i18n" name="tradingHash">Trading Hash</th>-->
-                                            <th class="i18n" name="time">Change Time</th>
-                                            <th class="i18n" name="changeAmount">Change Amount</th>
-                                            <th class="i18n" name="accountBalance">accountBalance</th>
-                                            <th class="i18n" name="changeType">Change Type</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="accountChange" class='accountChange'>
-                                        <tr>
-                                            <td colspan="5">
-                                                <img src="../assets/img/loading.gif" alt="">
-                                                <span class="i18n" name="tryingToLoad">loading...</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <div>
-                                        <div id="pagination" class="page"></div>
-                                    </div>
-                                </div>
+<!--Account change record-->
+<section class="sections">
+    <div class="container">
+        <div id='userChange' class="userChange">
+            <div class="row recharge-history">
+                <!--Account change record-->
+                <div class="col-md-12 col-sm-12 deposit-col-right">
+                    <div class="record-bg">
+                        <div id="history">
+                            <div class="history-title">
+                                <h3 class="pcTitle i18n" name="changeCode">Account Change Records</h3>
+                                <h5 class="phoneTitle i18n" name="changeCode">Account Change Records</h5>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--gloryPoints change record-->
-        <section class="sections">
-            <div class="container">
-                <div id='gloryPoints' class="userChange">
-                    <div class="row recharge-history">
-                        <!--Account change record-->
-                        <div class="col-md-12 col-sm-12 deposit-col-right">
-                            <div class="record-bg">
-                                <div id="gloryPoints_history">
-                                    <div class="history-title">
-                                        <h3 class="pcTitle i18n" name="gloryPointsChangeCode">gloryPoints Change
-                                            Records</h3>
-                                        <h5 class="phoneTitle i18n" name="gloryPointsChangeCode">gloryPoints Change
-                                            Records</h5>
-                                    </div>
-                                </div>
-                                <div class="table-box table-responsive">
-                                    <table class="table margin-bottom-0">
-                                        <thead>
-                                        <tr class="table_thead_tr">
-                                            <th class="i18n" name="time">Change Time</th>
-                                            <th class="i18n" name="gloryPoints">gloryPoints</th>
-                                            <th class="i18n" name="changeType">Change Type</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="gloryPointsChange"></tbody>
-                                    </table>
-                                    <div>
-                                        <div id="pagination_glory" class="page"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--footer-->
-        <section class="sections footer">
-            <div class="container">
-                <div class="row left-row">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="footerTR flex space-between center">
-                            <div class="footerIconBox">
-                                <a href="https://twitter.com/Hivebanks " data-toggle="tooltip" data-placement="top"
-                                   title="hivebanks"><i class="iconfont icon-twitter"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i
-                                        class="iconfont icon-telegram"></i></a>
-                                <a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top"
-                                   title="ccvt.io"><i class="iconfont icon-weibo"></i></a>
-                                <a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top"
-                                   title="Hivebanks"><i class="iconfont icon-weixin"></i></a>
-                            </div>
+                        <div class="table-box table-responsive">
+                            <table class="tab table table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <!--<th class="i18n" name="tradingHash">Trading Hash</th>-->
+                                    <th class="i18n" name="time">Change Time</th>
+                                    <th class="i18n" name="changeAmount">Change Amount</th>
+                                    <th class="i18n" name="accountBalance">accountBalance</th>
+                                    <th class="i18n" name="changeType">Change Type</th>
+                                </tr>
+                                </thead>
+                                <tbody id="accountChange" class='accountChange'>
+                                <tr>
+                                    <td colspan="5">
+                                        <img src="../assets/img/loading.gif" alt="">
+                                        <span class="i18n" name="tryingToLoad">loading...</span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                             <div>
-                                <select class="form-control input-sm" id="language">
-                                    <option value="en">English</option>
-                                    <option value="zh-CN">中文简体</option>
-                                    <option value="ja">Japanese</option>
-                                </select>
+                                <div id="pagination" class="page"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row footer-copyright">
-            <span>
-                <span class="i18n" name="version">©2018-2019 Powered by</span>
-                <a href="http://www.hivebanks.com">hivebanks</a>
-            </span>
-                </div>
-            </div>
-        </section>
-
-        <!--modal-->
-
-        <div class="modal fade " id="noBalanceModal" tabindex="-1" role="dialog" data-backdrop="false">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</span></button>
-                        <h4 class="modal-title i18n font-weight-400" name="noBalance" id="noBalance">Insufficient
-                            account
-                            balance</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h5 class="i18n font-weight-400" name="goRecharge">Whether to go to top up</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal">cancel
-                        </button>
-                        <a href="recharge.html" type="button" class="btn btn-success rechargeModalBtn i18n"
-                           name="recharge">recharge</a>
-                    </div>
-                </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <!--modify name-->
-        <div class="modal fade " id="modifyName" tabindex="-1" role="dialog" data-backdrop="false">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</span></button>
-                        <h4 class="modal-title i18n" name="changeUsername" id="modifyNameTitle">Change Username</h4>
-                    </div>
-                    <div class="modal-body margin-bottom-10">
-                        <form>
-                            <div class="form-group">
-                                <label for="nickName" class="control-label i18n" name="nickName">Nick Name:</label>
-                                <input type="text" class="form-control" id="nickName">
+<!--gloryPoints change record-->
+<section class="sections">
+    <div class="container">
+        <div id='gloryPoints' class="userChange">
+            <div class="row recharge-history">
+                <!--Account change record-->
+                <div class="col-md-12 col-sm-12 deposit-col-right">
+                    <div class="record-bg">
+                        <div id="gloryPoints_history">
+                            <div class="history-title">
+                                <h3 class="pcTitle i18n" name="gloryPointsChangeCode">gloryPoints Change
+                                    Records</h3>
+                                <h5 class="phoneTitle i18n" name="gloryPointsChangeCode">gloryPoints Change
+                                    Records</h5>
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer  margin-top-5">
-                        <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal">cancel
-                        </button>
-                        <button type="button" class="btn btn-success modifyNameBtn i18n" name="determine">determine
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--modify weChat group name-->
-        <div class="modal fade " id="weChatGroupName" tabindex="-1" role="dialog" data-backdrop="false">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</span></button>
-                        <h4 class="modal-title i18n" name="weChatGroupNickname" id="modifyWeChatGroupNameTitle">weChat
-                            name</h4>
-                    </div>
-                    <div class="modal-body margin-bottom-10">
-                        <form>
-                            <div class="form-group">
-                                <label for="weChatName" class="control-label i18n" name="weChatGroupNickname">weChatGroupNickname:</label>
-                                <input type="text" class="form-control" id="weChatName">
+                        </div>
+                        <div class="table-box table-responsive">
+                            <table class="table margin-bottom-0">
+                                <thead>
+                                <tr class="table_thead_tr">
+                                    <th class="i18n" name="time">Change Time</th>
+                                    <th class="i18n" name="gloryPoints">gloryPoints</th>
+                                    <th class="i18n" name="changeType">Change Type</th>
+                                </tr>
+                                </thead>
+                                <tbody id="gloryPointsChange"></tbody>
+                            </table>
+                            <div>
+                                <div id="pagination_glory" class="page"></div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer  margin-top-5">
-                        <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal">cancel
-                        </button>
-                        <button type="button" class="btn btn-success i18n bindWeChatBtn" name="determine">determine
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--modal invite-->
-        <div class="modal fade" id="invite" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title i18n" name="inviteNewUsers" id="myModalLabel"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="flex">
-                            <input type="text" id="copy_invite_address" readonly class="form-control inviteInput">
-                            <button data-clipboard-target="#copy_invite_address"
-                                    class="btn btn-success copy_invite_address margin-left-2 i18n" name="copyAddress">
-                                copy
-                                address
-                            </button>
-                        </div>
-                        <div class="inviteImgBox margin-top-2 text-center">
-                            <div id="qrcode" class="margin-top-2 none"></div>
-                            <canvas id="inviteImg" width="533" height="800"></canvas>
-                        </div>
-                        <div class="text-center">
-                            <img src="" class="invite_img" id="base64Img" alt="">
-                            <p class="font-size-14 i18n" name="copyInviteTo"></p>
-                            <p class="font-size-14"><span class="i18n" name="registerSuccessAfter"></span><span
-                                    class="font-weight-400">50 CCVT</span></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <!--modal weChat group-->
-        <div class="modal fade" id="weChatGroup" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title " name="" id="weChatGroupLabel">微信群</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="">
-                            <ul class="weChatGroutItem">
-                                <!--<li class="font-weight-400 margin-bottom-1"><input type="radio" name="weChatGroup" value=""><span class="margin-left-1">风赢科技绝密小分队</span><span>闲聊群</span></li>-->
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="modal-footer  margin-top-5">
-                        <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal">cancel
-                        </button>
-                        <button type="button" class="btn btn-success i18n weChatGroupBtn" name="determine">determine
-                        </button>
-                    </div>
-                </div>
+<div>
+    <iframe src="footer.html" frameborder="0" width="100%"></iframe>
+</div>
+<!--footer-->
+<!--<section class="sections footer">-->
+    <!--<div class="container">-->
+        <!--<div class="row left-row">-->
+            <!--<div class="col-md-12 col-sm-12">-->
+                <!--<div class="footerTR flex space-between center">-->
+                    <!--<div class="footerIconBox">-->
+                        <!--<a href="https://twitter.com/Hivebanks " data-toggle="tooltip" data-placement="top"-->
+                           <!--title="hivebanks"><i class="iconfont icon-twitter"></i></a>-->
+                        <!--<a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i-->
+                                <!--class="iconfont icon-telegram"></i></a>-->
+                        <!--<a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top"-->
+                           <!--title="ccvt.io"><i class="iconfont icon-weibo"></i></a>-->
+                        <!--<a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top"-->
+                           <!--title="Hivebanks"><i class="iconfont icon-weixin"></i></a>-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--<select class="form-control input-sm" id="language">-->
+                            <!--<option value="en">English</option>-->
+                            <!--<option value="zh-CN">中文简体</option>-->
+                            <!--<option value="ja">Japanese</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row footer-copyright">-->
+            <!--<span>-->
+                <!--<span class="i18n" name="version">©2018-2019 Powered by</span>-->
+                <!--<a href="http://www.hivebanks.com">hivebanks</a>-->
+            <!--</span>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</section>-->
+
+<!--modal-->
+
+<div class="modal fade " id="noBalanceModal" tabindex="-1" role="dialog" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</span></button>
+                <h4 class="modal-title i18n font-weight-400" name="noBalance" id="noBalance">Insufficient
+                    account
+                    balance</h4>
+            </div>
+            <div class="modal-body">
+                <h5 class="i18n font-weight-400" name="goRecharge">Whether to go to top up</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal">cancel
+                </button>
+                <a href="recharge.html" type="button" class="btn btn-success rechargeModalBtn i18n"
+                   name="recharge">recharge</a>
             </div>
         </div>
+    </div>
+</div>
 
-        <!--exchange-->
-        <div id="exchange_modal" class="customize_modal none">
-            <div class="customize_modal_mask"></div>
-            <div class="customize_modal_content">
-                <div class="customize_modal_content_head padding-bottom-2">
-                    <h3 class="font-weight-400 i18n" name="redemptionCode">redemptionCode</h3></div>
-                <div class="customize_modal_content_body">
+<!--modify name-->
+<div class="modal fade " id="modifyName" tabindex="-1" role="dialog" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</span></button>
+                <h4 class="modal-title i18n" name="changeUsername" id="modifyNameTitle">Change Username</h4>
+            </div>
+            <div class="modal-body margin-bottom-10">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control voucher_input">
+                        <label for="nickName" class="control-label i18n" name="nickName">Nick Name:</label>
+                        <input type="text" class="form-control" id="nickName">
                     </div>
-                </div>
-                <div class="customize_modal_content_footer margin-top-5">
-                    <button class="btn btn-danger i18n exchange_cancel_btn customize_modal_cancel_btn" name="cancel">
-                        cancel
-                    </button>
-                    <button class="btn btn-success i18n exchange_confirm_btn" name="confirm">confirm</button>
-                </div>
+                </form>
+            </div>
+            <div class="modal-footer  margin-top-5">
+                <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal">cancel
+                </button>
+                <button type="button" class="btn btn-success modifyNameBtn i18n" name="determine">determine
+                </button>
             </div>
         </div>
+    </div>
+</div>
 
-        <!--ccvt to gloryPoints-->
-        <div id="transform_ccvt" class="customize_modal none">
-            <div class="customize_modal_mask"></div>
-            <div class="customize_modal_content">
-                <div class="customize_modal_content_head padding-bottom-2">
-                    <h3 class="font-weight-400 i18n" name="conversionAmount">Conversion amount</h3>
-                </div>
-                <div class="customize_modal_content_body">
+<!--modify weChat group name-->
+<div class="modal fade " id="weChatGroupName" tabindex="-1" role="dialog" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</span></button>
+                <h4 class="modal-title i18n" name="weChatGroupNickname" id="modifyWeChatGroupNameTitle">weChat
+                    name</h4>
+            </div>
+            <div class="modal-body margin-bottom-10">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control transform_ccvt_input">
+                        <label for="weChatName" class="control-label i18n" name="weChatGroupNickname">weChatGroupNickname:</label>
+                        <input type="text" class="form-control" id="weChatName">
                     </div>
-                </div>
-                <div class="customize_modal_content_footer margin-top-5">
-                    <button class="btn btn-danger i18n transform_ccvt_cancel_btn customize_modal_cancel_btn"
-                            name="cancel">
-                        cancel
+                </form>
+            </div>
+            <div class="modal-footer  margin-top-5">
+                <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal">cancel
+                </button>
+                <button type="button" class="btn btn-success i18n bindWeChatBtn" name="determine">determine
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal invite-->
+<div class="modal fade" id="invite" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title i18n" name="inviteNewUsers" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="flex">
+                    <input type="text" id="copy_invite_address" readonly class="form-control inviteInput">
+                    <button data-clipboard-target="#copy_invite_address"
+                            class="btn btn-success copy_invite_address margin-left-2 i18n" name="copyAddress">
+                        copy
+                        address
                     </button>
-                    <button class="btn btn-success i18n transform_ccvt_confirm_btn" name="confirm">confirm</button>
+                </div>
+                <div class="inviteImgBox margin-top-2 text-center">
+                    <div id="qrcode" class="margin-top-2 none"></div>
+                    <canvas id="inviteImg" width="533" height="800"></canvas>
+                </div>
+                <div class="text-center">
+                    <img src="" class="invite_img" id="base64Img" alt="">
+                    <p class="font-size-14 i18n" name="copyInviteTo"></p>
+                    <p class="font-size-14"><span class="i18n" name="registerSuccessAfter"></span><span
+                            class="font-weight-400">50 CCVT</span></p>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <!--Back to top-->
-        <div class="scrollup">
-            <a href="#"><i class="iconfont icon-top"></i></a>
+<!--modal weChat group-->
+<div class="modal fade" id="weChatGroup" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title " name="" id="weChatGroupLabel">微信群</h4>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <ul class="weChatGroutItem">
+                        <!--<li class="font-weight-400 margin-bottom-1"><input type="radio" name="weChatGroup" value=""><span class="margin-left-1">风赢科技绝密小分队</span><span>闲聊群</span></li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer  margin-top-5">
+                <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal">cancel
+                </button>
+                <button type="button" class="btn btn-success i18n weChatGroupBtn" name="determine">determine
+                </button>
+            </div>
         </div>
+    </div>
+</div>
 
-        <!--js-->
-        <script src="js/write_js.js"></script>
+<!--exchange-->
+<div id="exchange_modal" class="customize_modal none">
+    <div class="customize_modal_mask"></div>
+    <div class="customize_modal_content">
+        <div class="customize_modal_content_head padding-bottom-2">
+            <h3 class="font-weight-400 i18n" name="redemptionCode">redemptionCode</h3></div>
+        <div class="customize_modal_content_body">
+            <div class="form-group">
+                <input type="text" class="form-control voucher_input">
+            </div>
+        </div>
+        <div class="customize_modal_content_footer margin-top-5">
+            <button class="btn btn-danger i18n exchange_cancel_btn customize_modal_cancel_btn" name="cancel">
+                cancel
+            </button>
+            <button class="btn btn-success i18n exchange_confirm_btn" name="confirm">confirm</button>
+        </div>
+    </div>
+</div>
+
+<!--ccvt to gloryPoints-->
+<div id="transform_ccvt" class="customize_modal none">
+    <div class="customize_modal_mask"></div>
+    <div class="customize_modal_content">
+        <div class="customize_modal_content_head padding-bottom-2">
+            <h3 class="font-weight-400 i18n" name="conversionAmount">Conversion amount</h3>
+        </div>
+        <div class="customize_modal_content_body">
+            <div class="form-group">
+                <input type="text" class="form-control transform_ccvt_input">
+            </div>
+        </div>
+        <div class="customize_modal_content_footer margin-top-5">
+            <button class="btn btn-danger i18n transform_ccvt_cancel_btn customize_modal_cancel_btn"
+                    name="cancel">
+                cancel
+            </button>
+            <button class="btn btn-success i18n transform_ccvt_confirm_btn" name="confirm">confirm</button>
+        </div>
+    </div>
+</div>
+
+<!--Back to top-->
+<div class="scrollup">
+    <a href="#"><i class="iconfont icon-top"></i></a>
+</div>
+
+<!--js-->
+<script src="js/write_js.js"></script>
 </body>
 </html>
