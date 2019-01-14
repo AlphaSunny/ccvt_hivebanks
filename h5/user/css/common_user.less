@@ -7,7 +7,8 @@
 @ease: ease-in-out;
 @_100: 100%;
 @shadow: 0 2px 15px rgba(0, 0, 0, .1);
-@default_px: 5px;
+@default_odd_px: 3px;
+@default_even_px: 2px;
 @default_color: #333333;
 body {
   background: @main-bg;
@@ -54,6 +55,12 @@ li {
       background: unset;
     }
   }
+  #language {
+    padding-left: @default_odd_px*10;
+    li {
+      line-height: 26px;
+    }
+  }
   .navbar-brand > img {
     width: 60%;
     display: inline-block;
@@ -67,13 +74,13 @@ li {
 
 .card {
   width: @_100;
-  border-radius: @default_px;
-  margin-bottom: @default_px * 10;
+  border-radius: @default_odd_px+@default_even_px;
+  margin-bottom: @default_even_px * 25;
   box-shadow: @shadow;
   .title {
-    padding: @default_px*4 0;
-    margin-left: @default_px*6+2;
-    border-bottom: @default_px/@default_px solid #d9d9d9;
+    padding: @default_even_px*10 0;
+    margin-left: @default_even_px*16;
+    border-bottom: @default_odd_px/3 solid #d9d9d9;
     .remark {
       color: #999;
       font-size: 14px;
@@ -91,11 +98,11 @@ li {
   .msg-col {
     background: #fbf8e3;
     cursor: pointer;
-    height: @default_px*10;
-    line-height: @default_px*10;
+    height: @default_even_px*25;
+    line-height: @default_even_px*25;
   }
   .msg-content p {
-    line-height: @default_px*6;
+    line-height: @default_odd_px*10;
   }
 }
 
