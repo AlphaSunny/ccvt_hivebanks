@@ -44,7 +44,6 @@
 
 .rechargeRateText {
     position: absolute;
-    /* background: rgba(0, 173, 62, 0.3); */
     width: 100%;
     top: 100%;
     left: 0;
@@ -56,6 +55,7 @@
 .ca_channel_box {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
+    border-radius: 5px;
 }
 
 .ca_channel_box li {
