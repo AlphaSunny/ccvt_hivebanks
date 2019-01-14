@@ -7,7 +7,7 @@ $(function () {
     var us_level = GetUsCookie('us_level');
 
     //get recharge assets
-    var ca_channel = GetQueryString('ca_channel');
+    var ca_channel = decodeURI(GetQueryString('ca_channel'));
     var us_recharge_bit_amount = GetQueryString('us_recharge_bit_amount');
     $('.bit_amount').val(us_recharge_bit_amount);
     $(".ca_channel").text(ca_channel);
