@@ -45,3 +45,23 @@
     text-align: center;
     font-weight: 400;
 }
+
+/**/
+.ca_channel_box {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.ca_channel_box li {
+    height: 3rem;
+    line-height: 3rem;
+    border-bottom: 1px solid #eeeeee;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.ca_channel_box li:hover {
+    background: #eeeeee;
+}
