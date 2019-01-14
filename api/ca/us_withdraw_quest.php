@@ -27,16 +27,16 @@ GET参数
 */
 
 php_begin();
-$args = array("token", 'ca_id', 'base_amount', "bit_amount","us_account_id","ca_channel");
+$args = array("token", 'ca_id', 'base_amount', "bit_amount","us_account_id","id_card", "name");
 chk_empty_args('GET', $args);
 // 用户token
 $token = get_arg_str('GET', 'token');
 $ca_id = get_arg_str('GET', 'ca_id');
 $base_amount = get_arg_str('GET', 'base_amount');
 $lgl_amount = get_arg_str('GET', 'bit_amount');
-$ca_channel = get_arg_str('GET', 'ca_channel');
-$us_level = get_arg_str('GET', 'us_level');
 $us_account_id = get_arg_str('GET', 'us_account_id');
+$id_card = get_arg_str('GET', 'id_card');
+$name = get_arg_str('GET', 'name');
 // 是否有效
 
 $us_id = check_token($token);
@@ -48,8 +48,6 @@ if (($rate_row["min_amount"] > $base_amount * get_la_base_unit() || $base_amount
     exit_error('123',"提现金额必须要在ca允许的金额以内");
 //if (bccomp($base_amount , $lgl_amount / $rate_row["base_rate"],16))
 //    exit_error(1, "汇率有所变化，请重新提交");
-if ($us_level < $rate_row["us_level"])
-    exit_error('125', "您的等级不满足ca的要求");
 $us_row = get_us_base_info($us_id);
 if ($us_row["base_amount"] < $base_amount)
     exit_error("126","用户余额不足");
