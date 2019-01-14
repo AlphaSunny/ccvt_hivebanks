@@ -9,9 +9,9 @@
 
     var jsHeader = "<script type='text/javascript' src='" + appRootPath + "/";
     var jsFooter = "'></script>";
+    document.write(jsHeader + "user/language/jquery.i18n.properties.js" + jsFooter);
+    document.write(jsHeader + "user/language/language.js" + jsFooter);
     document.write(jsHeader + "user/js/common.js" + jsFooter);
     document.write(jsHeader + "user/js/main.js" + jsFooter);
     document.write(jsHeader + "user/js/logout.js" + jsFooter);
-    document.write(jsHeader + "user/language/jquery.i18n.properties.js" + jsFooter);
-    document.write(jsHeader + "user/language/language.js" + jsFooter);
 })();
