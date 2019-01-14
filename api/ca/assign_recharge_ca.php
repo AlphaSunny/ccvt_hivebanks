@@ -2,6 +2,7 @@
 
 require_once '../inc/common.php';
 require_once 'db/ca_rate_setting.php';
+require_once 'db/ca_base.php';
 
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
@@ -27,13 +28,12 @@ php_begin();
 $args = array('token', 'ca_channel');
 chk_empty_args('GET', $args);
 $token = get_arg_str('GET', 'token', 128);
-// 用户token
 $ca_channel = get_arg_str('GET', 'ca_channel');
 
-//验证taoken
+//验证token
 $us_id = check_token($token);
 
-$ca_id = us_get_ca_recharge_settting_rate_ca_id($ca_channel);
+$ca_id = get_ca_id();
 //获取充值汇率基本信息
 $data = get_ca_settting_recharge_rate_ca_id($ca_id);
 // 返回数据做成
