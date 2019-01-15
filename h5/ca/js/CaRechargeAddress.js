@@ -22,7 +22,7 @@ $(function () {
     //ca_recharge_order_info.php
     GetCaRechargeInfo(token, ca_id, ca_channel_en, function (response) {
         if (response.errcode == "0") {
-            var rows = response.rows.lgl_address.parse();
+            var rows = response.rows.lgl_address;
             console.log(rows);
             // $('.card_nm').text(rows.lgl_address.card_nm);
             // $('.name').text(rows.lgl_address.name);
