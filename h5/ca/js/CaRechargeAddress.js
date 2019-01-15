@@ -1,5 +1,5 @@
 $(function () {
-    GetUsCookie("user_token");
+    var token = GetUsCookie("user_token");
     GetUsAccount();
     var ca_channel = GetQueryString('ca_channel'),
         ca_id = GetCookie("ca_id"),
