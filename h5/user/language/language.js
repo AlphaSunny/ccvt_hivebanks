@@ -152,6 +152,7 @@ $(function(){
     var languageList = $(".toggleLanguage");
     $.each(languageList, function (i, val) {
         if(i18nLanguage == $(this).attr("title")){
+            console.log("1");
             $(".curr_language").text($(this).text());
         }
     });
