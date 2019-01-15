@@ -28,10 +28,8 @@ $(function () {
 
                     //Whether google is certified
                     if (data[i].bind_name == 'GoogleAuthenticator' && data[i].bind_flag == '1') {
-                        $('.googleTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
-                        $('.googleBind').fadeOut('fast');
-                        // $('.fileModify').fadeIn('fast');
-                        $('.googleIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
+                        $(".google_status_notBind,.googleBind").remove();
+                        $(".google_status_alreadyBind,.googleModifyBtn").removeClass("none");
                     }
 
                     //Whether the password hash is bound
@@ -49,7 +47,7 @@ $(function () {
                     //Whether identity authentication is bound
                     if (data[i].bind_name == 'idPhoto' && data[i].bind_flag == '1') {
                         $(".authenticationBindBtn,.authentication_status_notBind").remove();
-                        $(".authentication_status_alreadyBind").removeClass("none").css("text-align","right");
+                        $(".authentication_status_alreadyBind").removeClass("none").css("text-align", "right");
                     }
 
                     //Whether quick tread is bound
