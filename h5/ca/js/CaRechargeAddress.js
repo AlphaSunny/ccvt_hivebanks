@@ -23,6 +23,7 @@ $(function () {
     GetCaRechargeInfo(token, ca_id, ca_channel_en, function (response) {
         if (response.errcode == "0") {
             console.log(response.rows.card_nm);
+            console.log(response.rows.name);
             var rows = response.rows[0];
             $('.card_nm').text(rows.card_nm);
             $('.name').text(rows.name);
