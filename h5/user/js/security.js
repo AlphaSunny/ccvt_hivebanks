@@ -22,11 +22,8 @@ $(function () {
 
                     //Whether the email is bound
                     if (data[i].bind_name == 'email' && data[i].bind_flag == '1') {
-                        $('.emailTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
-                        $('.emailBind').fadeOut('fast');
-                        $('.emailModify').fadeIn('fast');
-                        $(".emailInfo").text($(this)[0].bind_info);
-                        $('.emailIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
+                        $(".email_status_notBind,.emailBindBtn").remove();
+                        $(".email_status_alreadyBind,.emailModifyBind").removeClass("none");
                     }
 
                     //Whether google is certified
@@ -39,10 +36,8 @@ $(function () {
 
                     //Whether the password hash is bound
                     if (data[i].bind_name == 'pass_hash' && data[i].bind_flag == '1') {
-                        $(".pass_hash_status_alreadyBind").removeClass("none");
-                        $(".pass_hash_status_notBind").remove();
-                        $(".fundPasswordBind").remove();
-                        $(".fundPasswordModify").removeClass("none");
+                        $(".pass_hash_status_alreadyBind,.fundPasswordModify").removeClass("none");
+                        $(".pass_hash_status_notBind,.fundPasswordBind").remove();
                     }
 
                     //Whether the password login is bound
