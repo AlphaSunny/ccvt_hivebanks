@@ -117,7 +117,7 @@ function ins_ca_withdraw_rate_info($data_base)
 //======================================
 function get_average_ca_recharge_rate($time) {
     $db = new DB_COM();
-    $sql = "SELECT avg(base_rate) FROM ca_rate_setting where rate_type = '1' and limit_time > '{$time}'";
+    $sql = "SELECT base_rate FROM ca_rate_setting where rate_type = '1' order by set_time desc limit 1";
     $db -> query($sql);
     $row = $db ->fetchRow();
     return $row;
