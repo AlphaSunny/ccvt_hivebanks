@@ -74,7 +74,7 @@ $(function () {
 
     //Confirm reading rule jump
     $('.ruleBtn').click(function () {
-        window.location.href = 'CaRechargeAddress.html?ca_channel=' + ca_channel + "&ca_channel_en=" + ca_channel_en + '&name=' + name + '&card_nm=' + card_nm + '&bit_amount=' + bit_amount + '&base_amount=' + base_amount;
+        window.location.href = 'CaRechargeAddress.html?ca_channel=' + ca_channel + "&ca_channel_en=" + ca_channel_en + '&ca_id=' + ca_id + '&name=' + name + '&card_nm=' + card_nm + '&bit_amount=' + bit_amount + '&base_amount=' + base_amount;
     });
 
     //input
