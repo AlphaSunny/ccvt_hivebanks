@@ -12,9 +12,9 @@
     <!--<link rel='stylesheet' href='../assets/js/layer/layer.css'>-->
     <!--<link rel='stylesheet' href='css/common.css'>-->
     <!--<link rel='stylesheet' type='text/css' media='only screen and (max-device-width:767px)'-->
-          <!--href='mobile-css/common.css'>-->
+    <!--href='mobile-css/common.css'>-->
     <!--<link rel='stylesheet' type='text/css' media='only screen and (max-device-width:767px)'-->
-          <!--href='mobile-css/security.css'>-->
+    <!--href='mobile-css/security.css'>-->
     <!--<link rel='stylesheet' href='css/security.css'>-->
     <script src="../assets/js/write_css.js"></script>
     <script src="js/user_write_css.js"></script>
@@ -112,9 +112,14 @@
     <div class='container'>
         <div class='row'>
             <div class='col-md-12 col-sm-12'>
-                <div class="pcTitle">
-                    <h3 class='i18n' name='security'></h3>
-                    <p class='remark i18n' name='note'></p>
+                <h3 class='pcTitle i18n' name='security'></h3>
+                <p class='remark i18n' name='note'></p>
+
+                <div class="card">
+                    <div class="title">
+                        <h5>安全等级</h5>
+                        <p>5</p>
+                    </div>
                 </div>
 
 
@@ -149,7 +154,8 @@
                         <i class='iconfont icon-gantanhao symbol redIcon fundPasswordIcon'></i>
                     </div>
                     <div class='thisInfoBox'>
-                        <p class='thisInfoP i18n' name="fundPassword">Fund Password</p><span class='ty-color i18n fundPasswordTime' name='notBind'>Not Bind</span>
+                        <p class='thisInfoP i18n' name="fundPassword">Fund Password</p><span
+                            class='ty-color i18n fundPasswordTime' name='notBind'>Not Bind</span>
                         <p class='i18n' name='securityBindInfo'>Used for withdrawals and security modifications</p>
                     </div>
                     <a href='javascript:;' class='btn btn-success bind-btn fundPasswordBind i18n' name='bind'
@@ -164,12 +170,14 @@
                         <i class='iconfont icon-gantanhao symbol redIcon googleIcon'></i>
                     </div>
                     <div class='thisInfoBox'>
-                        <p class='thisInfoP'>Google</p><span class='ty-color i18n googleTime' name='notBind'>Not Bind</span>
+                        <p class='thisInfoP'>Google</p><span class='ty-color i18n googleTime'
+                                                             name='notBind'>Not Bind</span>
                         <p class='i18n' name='securityBindInfo'>Used for withdrawals and security modifications</p>
                     </div>
-                    <a href='googleBind.html' class='btn btn-success bind-btn googleBind i18n' name='bind' id='modifyBind'>Bind</a>
+                    <a href='googleBind.html' class='btn btn-success bind-btn googleBind i18n' name='bind'
+                       id='modifyBind'>Bind</a>
                     <!--<a href='javascript:;' class='btn btn-success googleModify modify bind-btn i18n' name='modify'-->
-                       <!--id='googleModify'>Modify</a>-->
+                    <!--id='googleModify'>Modify</a>-->
                 </div>
 
                 <!--login passpord-->
@@ -179,10 +187,12 @@
                         <i class='iconfont icon-gantanhao symbol redIcon loginPasswordIcon'></i>
                     </div>
                     <div class='thisInfoBox'>
-                        <p class='thisInfoP i18n' name="loginPassword"></p><span class='ty-color i18n loginPasswordTime' name='notBind'>Not Bind</span>
+                        <p class='thisInfoP i18n' name="loginPassword"></p><span class='ty-color i18n loginPasswordTime'
+                                                                                 name='notBind'>Not Bind</span>
                         <p class='i18n' name='securityBindInfo'>Used for security modifications</p>
                     </div>
-                    <a href='reset.html' class='btn btn-success loginPasswordModify modify bind-btn i18n' name='modify' id='login_password'></a>
+                    <a href='reset.html' class='btn btn-success loginPasswordModify modify bind-btn i18n' name='modify'
+                       id='login_password'></a>
                 </div>
             </div>
 
@@ -193,11 +203,13 @@
                         <i class='iconfont icon-gantanhao symbol redIcon authenticationIcon'></i>
                     </div>
                     <div class='thisInfoBox'>
-                        <p class='thisInfoP i18n' name="authentication">Authentication</p><span class='authenticationTime ty-color i18n' name='notAuthentication'>Not Authentication</span>
+                        <p class='thisInfoP i18n' name="authentication">Authentication</p><span
+                            class='authenticationTime ty-color i18n' name='notAuthentication'>Not Authentication</span>
                         <p class='i18n' name='securityBindInfo'>Used for withdrawals and security modifications</p>
                     </div>
                     <a href='authentication.html' class='btn btn-success bind-btn authenticationBind i18n' name='bind'>Authentication</a>
-                    <a href='javascript:;' class='btn btn-success digitalModify authentication modify bind-btn i18n' name='modify'
+                    <a href='javascript:;' class='btn btn-success digitalModify authentication modify bind-btn i18n'
+                       name='modify'
                        id='digital'>Modify</a>
                 </div>
                 <div class='verify emailBox flex space-between center'>
@@ -247,7 +259,8 @@
                         <!--<label for="runSwitch" class="col-sm-3 control-label">运行状态</label>-->
                         <div class="flex center">
                             <span>关</span>
-                            <input id="quickTreadSwitch" class="switch quickTreadSwitch switch-anim margin-left-2 margin-right-2"
+                            <input id="quickTreadSwitch"
+                                   class="switch quickTreadSwitch switch-anim margin-left-2 margin-right-2"
                                    type="checkbox" value="2">
                             <span>开</span>
                             <!--<span class="margin-left-5 gray">是否开启AI大白在群里运行功能</span>-->
@@ -338,47 +351,47 @@
     <iframe src="footer.html" frameborder="0" height="100%" width="100%"></iframe>
 </div>
 <!--<section class='sections footer'>-->
-    <!--<div class='container'>-->
+<!--<div class='container'>-->
 
-        <!--<div class='row left-row'>-->
-            <!--<div class='col-md-7 col-sm-12'>-->
-                <!--<div class='footerTL'>-->
-                    <!--<ul class='flex center'>-->
-                        <!--<li><a href='/' class='i18n' name='introduction'>Introduction</a></li>-->
-                        <!--<li><a href='/' class='i18n' name='cashAgency'>Cash Agency</a></li>-->
-                        <!--<li><a href='/' class='i18n' name='bitcoinAgency'>Bitcoin Agency</a></li>-->
-                        <!--<li><a href='/' class='i18n' name='partners'>Partners</a></li>-->
-                        <!--<li><a href='/' class='i18n' name='about'>About</a></li>-->
-                        <!--<li><a href='/' class='i18n' name='contact'>Contact</a></li>-->
-                        <!--<li><a href="faultReport.html" class="i18n" name="failureReport">fault report</a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class='col-md-5 col-sm-12'>-->
-                <!--<div class='footerTR flex space-between center'>-->
-                    <!--<i class='iconfont icon-twitter'></i>-->
-                    <!--<i class='iconfont icon-facebook'></i>-->
-                    <!--<i class='iconfont icon-reddit'></i>-->
-                    <!--<i class='iconfont icon-telegram'></i>-->
-                    <!--<i class='iconfont icon-instagram'></i>-->
-                    <!--<i class='iconfont icon-medium'></i>-->
-                    <!--<i class='iconfont icon-weibo'></i>-->
-                    <!--<i class='iconfont icon-qq'></i>-->
-                    <!--<i class='iconfont icon-weixin'></i>-->
-                    <!--<div>-->
-                        <!--<select class="form-control input-sm" id="language">-->
-                            <!--<option value="en">English</option>-->
-                            <!--<option value="zh-CN">中文简体</option>-->
-                            <!--<option value="ja">Japanese</option>-->
-                        <!--</select>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class='row footer-copyright'>-->
-            <!--<p class='i18n' name='allRightsReserved'>©2018-2019 ccvt.io All Rights Reserved</p>-->
-        <!--</div>-->
-    <!--</div>-->
+<!--<div class='row left-row'>-->
+<!--<div class='col-md-7 col-sm-12'>-->
+<!--<div class='footerTL'>-->
+<!--<ul class='flex center'>-->
+<!--<li><a href='/' class='i18n' name='introduction'>Introduction</a></li>-->
+<!--<li><a href='/' class='i18n' name='cashAgency'>Cash Agency</a></li>-->
+<!--<li><a href='/' class='i18n' name='bitcoinAgency'>Bitcoin Agency</a></li>-->
+<!--<li><a href='/' class='i18n' name='partners'>Partners</a></li>-->
+<!--<li><a href='/' class='i18n' name='about'>About</a></li>-->
+<!--<li><a href='/' class='i18n' name='contact'>Contact</a></li>-->
+<!--<li><a href="faultReport.html" class="i18n" name="failureReport">fault report</a></li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class='col-md-5 col-sm-12'>-->
+<!--<div class='footerTR flex space-between center'>-->
+<!--<i class='iconfont icon-twitter'></i>-->
+<!--<i class='iconfont icon-facebook'></i>-->
+<!--<i class='iconfont icon-reddit'></i>-->
+<!--<i class='iconfont icon-telegram'></i>-->
+<!--<i class='iconfont icon-instagram'></i>-->
+<!--<i class='iconfont icon-medium'></i>-->
+<!--<i class='iconfont icon-weibo'></i>-->
+<!--<i class='iconfont icon-qq'></i>-->
+<!--<i class='iconfont icon-weixin'></i>-->
+<!--<div>-->
+<!--<select class="form-control input-sm" id="language">-->
+<!--<option value="en">English</option>-->
+<!--<option value="zh-CN">中文简体</option>-->
+<!--<option value="ja">Japanese</option>-->
+<!--</select>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class='row footer-copyright'>-->
+<!--<p class='i18n' name='allRightsReserved'>©2018-2019 ccvt.io All Rights Reserved</p>-->
+<!--</div>-->
+<!--</div>-->
 <!--</section>-->
 
 <!--Back to top-->
