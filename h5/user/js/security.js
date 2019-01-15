@@ -60,6 +60,7 @@ $(function () {
                     if (data[i].bind_name == "point_tread_switch" && data[i].bind_info == "2") {
                         // $(".quickTreadSwitch").addClass("active").val("1");
                         $(".open_status").remove();
+                        $(".close_status").removeClass("none");
                     }
 
                     if (data[i].bind_name == "point_tread_num" && data[i].bind_flag == "1") {
