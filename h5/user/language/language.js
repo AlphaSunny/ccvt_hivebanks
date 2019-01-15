@@ -85,7 +85,6 @@ var execI18n = function(){
          */
         if (getCookie("userLanguage")) {
             i18nLanguage = getCookie("userLanguage");
-            console.log(i18nLanguage);
         } else {
             // Get the browser language
             // var navLanguage = getNavLanguage();
@@ -152,6 +151,8 @@ $(function(){
 
     var languageList = $(".toggleLanguage");
     $.each(languageList, function (i, val) {
+        console.log($(this).attr("title"));
+        console.log($(this).attr("title")==i18nLanguage);
         if(i18nLanguage == $(this).attr("title")){
             console.log("1");
             $(".curr_language").text($(this).text());
