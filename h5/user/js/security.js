@@ -54,12 +54,12 @@ $(function () {
                     if (data[i].bind_name == "point_tread_switch" && data[i].bind_info == "1") {
                         $(".quickTreadSwitch").addClass("active").val("1");
                         $(".open_status").removeClass("none");
-                        $(".close_status").remove();
+                        $(".close_status").addClass("none");
                     }
 
                     if (data[i].bind_name == "point_tread_switch" && data[i].bind_info == "2") {
-                        // $(".quickTreadSwitch").addClass("active").val("1");
-                        $(".open_status").remove();
+                        $(".quickTreadSwitch").removeClass("active").val("2");
+                        $(".open_status").addClass("none");
                         $(".close_status").removeClass("none");
                     }
 
