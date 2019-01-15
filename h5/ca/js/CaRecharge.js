@@ -36,6 +36,6 @@ $(function () {
     $(document).on('click', '.bankItem', function () {
         var ca_channel = $(this).find('.ca_channel').text();
         var ca_channel_en = $(this).find('.ca_channel').attr("name");
-        window.location.href = 'CaRechargeAmount.html?ca_channel=' + encodeURI(encodeURI(ca_channel)) + "ca_channel_en=" + ca_channel_en + '&us_recharge_bit_amount=' + us_recharge_bit_amount;
+        window.location.href = 'CaRechargeAmount.html?ca_channel=' + encodeURI(encodeURI(ca_channel)) + "&ca_channel_en=" + ca_channel_en + '&us_recharge_bit_amount=' + us_recharge_bit_amount;
     })
 });
