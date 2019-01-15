@@ -14,7 +14,7 @@
 <body>
 <!-- loading -->
 <!--<iframe src="loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"-->
-        <!--scrolling="no"></iframe>-->
+<!--scrolling="no"></iframe>-->
 <!--nav-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -103,9 +103,9 @@
     <div class="container">
         <!-- bind information -->
         <!--<div class="row">-->
-            <!--<div class="col-md-12 col-sm-12">-->
-                <!--<h3 class="pcTitle"><span class="phoneBind i18n" name="emailBind">Email Binding</span></h3>-->
-            <!--</div>-->
+        <!--<div class="col-md-12 col-sm-12">-->
+        <!--<h3 class="pcTitle"><span class="phoneBind i18n" name="emailBind">Email Binding</span></h3>-->
+        <!--</div>-->
         <!--</div>-->
         <!--information authentication-->
         <div class="row">
@@ -113,51 +113,29 @@
         </div>
         <div class="row formInfo table_bg phone margin-top-5">
             <div class="col-md-6 col-md-offset-3 col-sm-12">
-                <div class='row phone-padding'>
-                    <div class='phoneDisplay'>
-                        <!--<div class=''>-->
-                            <!--<div class='text_center'>-->
-                                <!--<lable for='email' class='i18n' name="email">Email</lable>:-->
+                <div class=''>
+                    <div class='form-group margin-bottom-0'>
+                        <lable for='email' class='i18n' name="email">Email</lable>
+                        <input type='tel' id='email' class='form-control'>
+                    </div>
+                    <div class='form-group margin-bottom-0'>
+                        <lable for='password' class='i18n' name="loginPassword"></lable>
+                        <input type='password' id='password' class='form-control'>
+                    </div>
+                    <div>
+                        <button class='btn btn-success width-100 emailEnable i18n' name="determine"></button>
+                    </div>
+                </div>
+                <!--<div class='row phone-padding'>-->
+                    <!--<div class='flex center phoneDisplay'>-->
+                        <!--<div class='col-md-3 col-sm-12'></div>-->
+                        <!--<div class='col-md-9 col-sm-12'>-->
+                            <!--<div class=''>-->
+                                <!--<button class='btn btn-success width-100 emailEnable i18n' name="determine"></button>-->
                             <!--</div>-->
                         <!--</div>-->
-                        <!--<div class=''>-->
-                            <div class=''>
-                                <div class='form-group margin-bottom-0'>
-                                    <lable for='email' class='i18n' name="email">Email</lable>:
-                                    <input type='tel' id='email' class='form-control'>
-                                </div>
-                            </div>
-                        <!--</div>-->
-                    </div>
-                </div>
-
-                <div class='row phone-padding'>
-                    <div class='flex center phoneDisplay'>
-                        <div class='col-md-3 col-sm-12'>
-                            <div class='text_center'>
-                                <lable for='password' class='i18n' name="loginPassword"></lable>
-                                :
-                            </div>
-                        </div>
-                        <div class='col-md-9 col-sm-12'>
-                            <div class=''>
-                                <div class='form-group margin-bottom-0'>
-                                    <input type='password' id='password' class='form-control'>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='row phone-padding'>
-                    <div class='flex center phoneDisplay'>
-                        <div class='col-md-3 col-sm-12'></div>
-                        <div class='col-md-9 col-sm-12'>
-                            <div class=''>
-                                <button class='btn btn-success width-100 emailEnable i18n' name="determine"></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
     </div>
@@ -182,48 +160,48 @@
 </div>
 <!--footer-->
 <!--<section class="sections footer">-->
-    <!--<div class="container">-->
-        <!--<div class="row left-row">-->
-            <!--<div class="col-md-7 col-sm-12">-->
-                <!--<div class="footerTL">-->
-                    <!--<ul class="flex center">-->
-                        <!--<li><a href="javascript:;" class="i18n usLogin" name="user">user</a></li>-->
-                        <!--<li><a href="javascript:;" class="i18n caLogin" name="cashAgency">Cash Agency</a></li>-->
-                        <!--<li><a href="javascript:;" class="i18n baLogin" name="bitcoinAgency">Bitcoin Agency</a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-5 col-sm-12">-->
-                <!--<div class="footerTR flex space-between center">-->
-                    <!--<div class="footerIconBox">-->
-                        <!--<a href="https://twitter.com/Hivebanks " data-toggle="tooltip" data-placement="top"-->
-                           <!--title="hivebanks"><i class="iconfont icon-twitter"></i></a>-->
-                        <!--<a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i-->
-                                <!--class="iconfont icon-telegram"></i></a>-->
-                        <!--<a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top" title="ccvt.io"><i-->
-                                <!--class="iconfont icon-weibo"></i></a>-->
-                        <!--<a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top"-->
-                           <!--title="Hivebanks"><i class="iconfont icon-weixin"></i></a>-->
-                    <!--</div>-->
-                    <!--<div>-->
-                        <!--<select class="form-control input-sm" id="language">-->
-                            <!--<option value="en">English</option>-->
-                            <!--<option value="zh-CN">中文简体</option>-->
-                            <!--<option value="ja">Japanese</option>-->
-                        <!--</select>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row footer-copyright">-->
-            <!--<span>                 <span class="i18n" name="version">©2018-2019 Powered by</span>                 <a-->
-                    <!--href="http://www.hivebanks.com">hivebanks</a>             </span>-->
-        <!--</div>-->
-    <!--</div>-->
+<!--<div class="container">-->
+<!--<div class="row left-row">-->
+<!--<div class="col-md-7 col-sm-12">-->
+<!--<div class="footerTL">-->
+<!--<ul class="flex center">-->
+<!--<li><a href="javascript:;" class="i18n usLogin" name="user">user</a></li>-->
+<!--<li><a href="javascript:;" class="i18n caLogin" name="cashAgency">Cash Agency</a></li>-->
+<!--<li><a href="javascript:;" class="i18n baLogin" name="bitcoinAgency">Bitcoin Agency</a></li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-5 col-sm-12">-->
+<!--<div class="footerTR flex space-between center">-->
+<!--<div class="footerIconBox">-->
+<!--<a href="https://twitter.com/Hivebanks " data-toggle="tooltip" data-placement="top"-->
+<!--title="hivebanks"><i class="iconfont icon-twitter"></i></a>-->
+<!--<a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i-->
+<!--class="iconfont icon-telegram"></i></a>-->
+<!--<a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top" title="ccvt.io"><i-->
+<!--class="iconfont icon-weibo"></i></a>-->
+<!--<a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top"-->
+<!--title="Hivebanks"><i class="iconfont icon-weixin"></i></a>-->
+<!--</div>-->
+<!--<div>-->
+<!--<select class="form-control input-sm" id="language">-->
+<!--<option value="en">English</option>-->
+<!--<option value="zh-CN">中文简体</option>-->
+<!--<option value="ja">Japanese</option>-->
+<!--</select>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="row footer-copyright">-->
+<!--<span>                 <span class="i18n" name="version">©2018-2019 Powered by</span>                 <a-->
+<!--href="http://www.hivebanks.com">hivebanks</a>             </span>-->
+<!--</div>-->
+<!--</div>-->
 <!--</section>-->
 
 <!--<div class="scrollup">-->
-    <!--<a href="#"><i class="iconfont icon-top"></i></a>-->
+<!--<a href="#"><i class="iconfont icon-top"></i></a>-->
 <!--</div>-->
 
 <!--<script src="../assets/js/jquery-3.2.1.min.js"></script>-->
