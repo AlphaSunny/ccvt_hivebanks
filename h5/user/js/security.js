@@ -41,6 +41,8 @@ $(function () {
                     if (data[i].bind_name == 'pass_hash' && data[i].bind_flag == '1') {
                         $(".pass_hash_status_alreadyBind").removeClass("none");
                         $(".pass_hash_status_notBind").remove();
+                        $(".fundPasswordBind").remove();
+                        $(".fundPasswordModify").removeClass("none");
                     }
 
                     //Whether the password login is bound
