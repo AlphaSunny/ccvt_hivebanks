@@ -25,25 +25,23 @@ GET参数
 */
 
 php_begin();
-$args = array("token", 'ca_id', 'base_amount', "ca_channel", "bit_amount");
+$args = array("token", 'ca_id', 'base_amount', "ca_channel");
 chk_empty_args('GET', $args);
+
 // 用户token
 $token = get_arg_str('GET', 'token', 128);
 $ca_id = get_arg_str('GET', 'ca_id');
 $base_amount = get_arg_str('GET', 'base_amount');
-$bit_amount = get_arg_str('GET', 'bit_amount');
 $ca_channel = get_arg_str('GET', 'ca_channel');
 $us_level = get_arg_str('GET', 'us_level');
 ///验证token
 $us_id = check_token($token);
-//echo $base_amount;
-//echo get_la_base_unit();
+
 //判断金额，以及其他参数是否正确
 $rate_row = get_ca_settting_recharge_rate_ca_id($ca_id);
-if (($rate_row["min_amount"]  >= $base_amount * get_la_base_unit() || $base_amount  * get_la_base_unit() >= $rate_row["max_amount"]))
+if ($rate_row["min_amount"]  > $base_amount * get_la_base_unit() || $base_amount  * get_la_base_unit() > $rate_row["max_amount"])
     exit_error('123',"充值金额必须要在ca允许的金额以内");
-//if (bccomp($rate_row["base_rate"] * $base_amount , $bit_amount,16))
-//    exit_error(1, "汇率有所变化，请重新提交");
+
 if ($us_level < $rate_row["us_level"])
     exit_error('125', "您的等级不满足ca的要求");
 
