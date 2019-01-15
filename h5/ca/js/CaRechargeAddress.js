@@ -3,7 +3,7 @@ $(function () {
     GetUsAccount();
     var ca_channel = GetQueryString('ca_channel'),
         ca_channel_en = GetQueryString('ca_channel_en'),
-        // ca_id = GetCookie("ca_id"),
+        ca_id = GetQueryString("ca_id"),
         card_nm = GetQueryString('card_nm'),
         bit_amount = GetQueryString('bit_amount'),
         base_amount = GetQueryString('base_amount'),
