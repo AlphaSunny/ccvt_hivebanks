@@ -85,6 +85,7 @@ var execI18n = function(){
          */
         if (getCookie("userLanguage")) {
             i18nLanguage = getCookie("userLanguage");
+            console.log(i18nLanguage);
         } else {
             // Get the browser language
             // var navLanguage = getNavLanguage();
