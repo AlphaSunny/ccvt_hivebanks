@@ -115,7 +115,7 @@ function ins_ca_withdraw_rate_info($data_base)
 // 参数: time                  当前时间戳
 // 返回: avg(base_rate)         平均值
 //======================================
-function get_average_ca_recharge_rate($time) {
+function get_average_ca_recharge_rate() {
     $db = new DB_COM();
     $sql = "SELECT base_rate FROM ca_rate_setting where rate_type = '1' order by set_time desc limit 1";
     $db -> query($sql);

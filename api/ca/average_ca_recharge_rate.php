@@ -25,7 +25,7 @@ $token = get_arg_str('GET', 'token', 128);
 //验证taoken
 $us_id = check_token($token);
 
-$rate = get_average_ca_recharge_rate(time())['avg(base_rate)'];
+$rate = get_average_ca_recharge_rate()['base_rate'];
 //返回给前端数据
 $rtn_data['errcode'] = '0';
 $rtn_data['errmsg'] = '';
