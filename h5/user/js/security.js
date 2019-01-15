@@ -41,17 +41,12 @@ $(function () {
                     if (data[i].bind_name == 'pass_hash' && data[i].bind_flag == '1') {
                         $(".password_loin_status_alreadyBind").removeClass("none");
                         $(".password_loin_status_notBind").remove();
-                        // $('.fundPasswordTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
-                        // $('.fundPasswordBind').fadeOut('fast');
-                        // $('.fundPasswordModify').fadeIn('fast');
-                        // $('.fundPasswordIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
                     //Whether the password login is bound
                     if (data[i].bind_name == 'password_login' && data[i].bind_flag == '1') {
-                        $('.loginPasswordTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
-                        $('.loginPasswordModify').fadeIn('fast');
-                        $('.loginPasswordIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
+                        $(".password_loin_status_alreadyBind").removeClass("none");
+                        $(".password_loin_status_notBind").remove();
                     }
 
                     //Whether identity authentication is bound
