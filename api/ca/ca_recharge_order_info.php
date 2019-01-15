@@ -31,7 +31,7 @@ $us_id = check_token($token);
 $row = sel_ca_asset_account_by_channel($ca_id, $ca_channel);
 if(!$row)
     exit_error('115', '错误');
-$data = $array();
+$data = array();
 $data['errcode'] = '0';
 $data['errmsg'] = '';
 $data['rows'] = $row;
