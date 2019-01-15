@@ -15,11 +15,12 @@ $(function () {
                     //Whether the phone is bound
                     if (data[i].bind_name == 'cellphone' && data[i].bind_flag == '1') {
                         cellphone = 'cellphone';
-                        $('.phoneTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
-                        $('.phoneBind').fadeOut('fast');
-                        $('.phoneModify').fadeIn('fast');
-                        $(".phoneInfo").text($(this)[0].bind_info);
-                        $('.phoneIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
+                        $(".phoneBindInfo").text(data[i].bind_info).removeClass("none")
+                        // $('.phoneTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
+                        // $('.phoneBind').fadeOut('fast');
+                        // $('.phoneModify').fadeIn('fast');
+                        // $(".phoneInfo").text($(this)[0].bind_info);
+                        // $('.phoneIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
                     //Whether the email is bound
