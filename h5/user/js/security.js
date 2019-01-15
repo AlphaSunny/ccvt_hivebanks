@@ -18,11 +18,6 @@ $(function () {
                         $(".phoneBindInfo").removeClass("none i18n").text(data[i].bind_info);
                         $(".phoneBindBtn").remove();
                         $(".phoneModifyBtn").removeClass("none");
-                        // $('.phoneTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
-                        // $('.phoneBind').fadeOut('fast');
-                        // $('.phoneModify').fadeIn('fast');
-                        // $(".phoneInfo").text($(this)[0].bind_info);
-                        // $('.phoneIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
                     //Whether the email is bound
@@ -44,10 +39,12 @@ $(function () {
 
                     //Whether the password hash is bound
                     if (data[i].bind_name == 'pass_hash' && data[i].bind_flag == '1') {
-                        $('.fundPasswordTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
-                        $('.fundPasswordBind').fadeOut('fast');
-                        $('.fundPasswordModify').fadeIn('fast');
-                        $('.fundPasswordIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
+                        $(".password_loin_status_alreadyBind").removeClass("none");
+                        $(".password_loin_status_notBind").remove();
+                        // $('.fundPasswordTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
+                        // $('.fundPasswordBind').fadeOut('fast');
+                        // $('.fundPasswordModify').fadeIn('fast');
+                        // $('.fundPasswordIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
                     }
 
                     //Whether the password login is bound
