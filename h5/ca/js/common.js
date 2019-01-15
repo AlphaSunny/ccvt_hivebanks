@@ -25,7 +25,7 @@ function GetUsCookie(name) {
     if (arr == null && name == "user_token") {
         window.location.href = '../user/login.html';
         return;
-    }else {
+    } else {
         window.location.href = 'CaLogin.html';
     }
 }
@@ -64,14 +64,15 @@ function getRootPath() {
     var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
     return localhostPath;
 }
+
 var url = getRootPath();
 
 //Get failed error code prompt
 function GetErrorCode(code) {
-    $.getJSON( url+"/h5/assets/json/errcode.json", function (response){
-        $.each(response, function (i, val){
-            if(response[i].code == code){
-                layer.msg('<p class="i18n" name="'+ code +'">'+ response[i].code_value +'</p>');
+    $.getJSON(url + "/h5/assets/json/errcode.json", function (response) {
+        $.each(response, function (i, val) {
+            if (response[i].code == code) {
+                layer.msg('<p class="i18n" name="' + code + '">' + response[i].code_value + '</p>');
                 execI18n();
             }
         })
@@ -81,7 +82,7 @@ function GetErrorCode(code) {
 //Get configuration file
 var config_api_url = '', config_h5_url = '', userLanguage = getCookie('userLanguage');
 $.ajax({
-    url: url+"/h5/assets/json/config_url.json",
+    url: url + "/h5/assets/json/config_url.json",
     async: false,
     type: "GET",
     dataType: "json",
@@ -94,9 +95,9 @@ $.ajax({
         $('.ca_currency').text(ca_currency);
         SetCookie('ca_currency', ca_currency);
         SetCookie('benchmark_type', benchmark_type);
-        if(!userLanguage){
+        if (!userLanguage) {
             SetCookie('userLanguage', data.userLanguage);
-        }else {
+        } else {
             return;
         }
     },
@@ -266,7 +267,7 @@ function CallLaBase(api_url, post_data, suc_func, error_func) {
 function RegisterSwitch(type, suc_func, error_func) {
     var api_url = 'reg_lock.php',
         post_data = {
-            'type' : type
+            'type': type
         };
     CallLaApi(api_url, post_data, suc_func, error_func);
 }
@@ -312,7 +313,7 @@ function PhoneRegister(country_code, cellphone, pass_word_hash, sms_code, suc_fu
 };
 
 // 重置密码(邮箱)
-function ResetEmailPassword(email, cfm_code, pass_word_hash,confirm_pass_word_hash, suc_func, error_func) {
+function ResetEmailPassword(email, cfm_code, pass_word_hash, confirm_pass_word_hash, suc_func, error_func) {
     var api_url = 'rst_pw_email.php',
         post_data = {
             'email': email,
@@ -333,7 +334,7 @@ function GetEmailCode(email, suc_func, error_func) {
 }
 
 // 重置密码(手机)
-function ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash,confirm_pass_word_hash, suc_func, error_func) {
+function ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash, confirm_pass_word_hash, suc_func, error_func) {
     var api_url = 'rst_pw_phone.php',
         post_data = {
             'country_code': country_code,
@@ -504,7 +505,7 @@ function GetAddAgencyType(token, suc_func, error_func) {
 
 //del asset account
 function delAssetAccount(token, ca_channel, suc_func, error_func) {
-    var  api_url = 'del_asset_account.php',
+    var api_url = 'del_asset_account.php',
         post_data = {
             'token': token,
             'ca_channel': ca_channel
@@ -636,15 +637,16 @@ function LockRechargeAmount(token, ca_id, base_amount, bit_amount, ca_channel_en
 }
 
 //ca recharge address
-function GetCaRechargeInfo(token, ca_id, ca_channel,suc_func, error_func){
+function GetCaRechargeInfo(token, ca_id, ca_channel_en, suc_func, error_func) {
     var api_url = 'ca_recharge_order_info.php',
         post_data = {
             'token': token,
             'ca_id': ca_id,
-            'ca_channel': ca_channel
+            'ca_channel': ca_channel_en
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
+
 //Get user balance
 function GetUserBaseInfo(token, suc_func, error_func) {
     var api_url = 'info_base.php',

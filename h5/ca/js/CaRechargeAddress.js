@@ -2,6 +2,7 @@ $(function () {
     var token = GetUsCookie("user_token");
     GetUsAccount();
     var ca_channel = GetQueryString('ca_channel'),
+        ca_channel_en = GetQueryString('ca_channel_en'),
         ca_id = GetCookie("ca_id"),
         card_nm = GetQueryString('card_nm'),
         bit_amount = GetQueryString('bit_amount'),
@@ -18,8 +19,8 @@ $(function () {
 
     //api
     //ca_recharge_order_info.php
-    GetCaRechargeInfo(token, ca_id, ca_channel, function (response) {
-        if(response.errcode == "0"){
+    GetCaRechargeInfo(token, ca_id, ca_channel_en, function (response) {
+        if (response.errcode == "0") {
             console.log(response);
         }
     }, function (response) {
