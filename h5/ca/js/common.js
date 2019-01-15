@@ -635,6 +635,16 @@ function LockRechargeAmount(token, ca_id, base_amount, bit_amount, ca_channel, u
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//ca recharge address
+function GetCaRechargeInfo(token, ca_id, ca_channel,suc_func, error_func){
+    var api_url = 'ca_recharge_order_info.php',
+        post_data = {
+            'token': token,
+            'ca_id': ca_id,
+            'ca_channel': ca_channel
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
 //Get user balance
 function GetUserBaseInfo(token, suc_func, error_func) {
     var api_url = 'info_base.php',
