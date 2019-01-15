@@ -40,6 +40,7 @@ $us_id = check_token($token);
 //判断金额，以及其他参数是否正确
 $rate_row = get_ca_settting_recharge_rate_ca_id($ca_id);
 if ($rate_row["min_amount"]  > $base_amount * get_la_base_unit() || $base_amount  * get_la_base_unit() > $rate_row["max_amount"])
+    echo ('yang');
     exit ($base_amount * get_la_base_unit());
     exit_error('222',"充值金额必须要在ca允许的金额以内");
 
