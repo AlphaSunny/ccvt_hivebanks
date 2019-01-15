@@ -622,14 +622,14 @@ function GetAssignCa(api_url, token, ca_channel, suc_func, error_func) {
 }
 
 //lockRechargeAmount(Recharge request)
-function LockRechargeAmount(token, ca_id, base_amount, bit_amount, ca_channel, us_level, suc_func, error_func) {
+function LockRechargeAmount(token, ca_id, base_amount, bit_amount, ca_channel_en, us_level, suc_func, error_func) {
     var api_url = 'us_recharge_quest.php',
         post_data = {
             'token': token,
             'ca_id': ca_id,
             'base_amount': base_amount,
             'bit_amount': bit_amount,
-            'ca_channel': ca_channel,
+            'ca_channel': ca_channel_en,
             'us_level': us_level
         };
     CallApi(api_url, post_data, suc_func, error_func);

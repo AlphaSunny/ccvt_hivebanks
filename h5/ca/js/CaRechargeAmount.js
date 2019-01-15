@@ -8,6 +8,7 @@ $(function () {
 
     //get recharge assets
     var ca_channel = decodeURI(GetQueryString('ca_channel'));
+    var ca_channel_en = decodeURI(GetQueryString('ca_channel_en'));
     var us_recharge_bit_amount = GetQueryString('us_recharge_bit_amount');
     $('.bit_amount').val(us_recharge_bit_amount);
     $(".ca_channel").text(ca_channel);
@@ -36,8 +37,8 @@ $(function () {
     //lockRechargeAmount
     var card_nm = '', name = '', bit_amount = '', base_amount = '';
     $('.lockAmountBtn').click(function () {
-            bit_amount = $('.bit_amount').val();
-            base_amount = $('.base_amount').val();
+        bit_amount = $('.bit_amount').val();
+        base_amount = $('.base_amount').val();
         if (bit_amount.length <= 0) {
             LayerFun('pleaseEnterRechargeAmount');
             return;
@@ -52,9 +53,9 @@ $(function () {
         }
 
         var $this = $(this), btnText = $(this).text();
-        if(DisableClick($this)) return;
+        if (DisableClick($this)) return;
         ShowLoading("show");
-        LockRechargeAmount(token, ca_id, base_amount, bit_amount, ca_channel, us_level, function (response) {
+        LockRechargeAmount(token, ca_id, base_amount, bit_amount, ca_channel_en, us_level, function (response) {
             if (response.errcode == '0') {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
@@ -73,7 +74,7 @@ $(function () {
 
     //Confirm reading rule jump
     $('.ruleBtn').click(function () {
-        window.location.href = 'CaRechargeAddress.html?ca_channel=' + ca_channel + '&name=' + name + '&card_nm=' + card_nm + '&bit_amount=' + bit_amount + '&base_amount=' + base_amount;
+        window.location.href = 'CaRechargeAddress.html?ca_channel=' + ca_channel + "&ca_channel_en=" + ca_channel_en + '&name=' + name + '&card_nm=' + card_nm + '&bit_amount=' + bit_amount + '&base_amount=' + base_amount;
     });
 
     //input
