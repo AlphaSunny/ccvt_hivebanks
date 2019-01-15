@@ -15,7 +15,7 @@ $(function () {
                     //Whether the phone is bound
                     if (data[i].bind_name == 'cellphone' && data[i].bind_flag == '1') {
                         cellphone = 'cellphone';
-                        $(".phoneBindInfo").text(data[i].bind_info).removeClass("none i18n");
+                        $(".phoneBindInfo").removeClass("none i18n").text(data[i].bind_info);
                         $(".phoneBindBtn").remove();
                         $(".phoneModifyBtn").removeClass("none");
                         // $('.phoneTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
