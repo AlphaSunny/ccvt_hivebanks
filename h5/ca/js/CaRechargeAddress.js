@@ -22,9 +22,8 @@ $(function () {
     //ca_recharge_order_info.php
     GetCaRechargeInfo(token, ca_id, ca_channel_en, function (response) {
         if (response.errcode == "0") {
-            // console.log(response.rows);
-            // console.log(response.rows[0]);
             var rows = response.rows.parse();
+            console.log(rpws);
             $('.card_nm').text(rows.lgl_address.card_nm);
             $('.name').text(rows.lgl_address.name);
         }
