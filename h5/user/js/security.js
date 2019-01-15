@@ -53,18 +53,13 @@ $(function () {
                     //Whether quick tread is bound
                     if (data[i].bind_name == "point_tread_switch" && data[i].bind_info == "1") {
                         $(".quickTreadSwitch").addClass("active").val("1");
-                        $(".open,.quick_tread_num_top").removeClass("none");
-                        $(".close_status").addClass("none");
                         $(".open_status").removeClass("none");
-                        $(".quick_tread_num_top").removeClass("none");
-                        $('.quickTreadIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
+                        $(".close_status").remove();
                     }
 
                     if (data[i].bind_name == "point_tread_switch" && data[i].bind_info == "2") {
-                        $('.quickTreadIcon').addClass('redIcon icon-gantanhao').removeClass('greenIcon icon-duihao');
-                        $(".open_status").addClass("none");
-                        $(".close_status").removeClass("none");
-                        $(".quick_tread_num_top").addClass("none");
+                        // $(".quickTreadSwitch").addClass("active").val("1");
+                        $(".open_status").remove();
                     }
 
                     if (data[i].bind_name == "point_tread_num" && data[i].bind_flag == "1") {
