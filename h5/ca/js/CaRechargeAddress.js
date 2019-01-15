@@ -1,7 +1,7 @@
 $(function () {
     var token = GetUsCookie("user_token");
     GetUsAccount();
-    var ca_channel = GetQueryString('ca_channel'),
+    var ca_channel = decodeURI(GetQueryString('ca_channel')),
         ca_channel_en = GetQueryString('ca_channel_en'),
         bit_amount = GetQueryString('bit_amount'),
         base_amount = GetQueryString('base_amount'),
@@ -23,7 +23,6 @@ $(function () {
     GetCaRechargeInfo(token, ca_id, ca_channel_en, function (response) {
         if (response.errcode == "0") {
             var rows = JSON.parse(response.rows.lgl_address);
-            console.log(rows);
             $('.card_nm').text(rows.card_nm);
             $('.name').text(rows.name);
         }
