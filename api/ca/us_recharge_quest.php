@@ -49,7 +49,7 @@ $data = array();
 $data["us_id"] = $us_id;
 $data["ca_id"] = $ca_id;
 $data["base_amount"] = $base_amount * get_la_base_unit();
-$data["lgl_amount"] = $bit_amount;
+//$data["lgl_amount"] = $bit_amount;
 $data["tx_time"] = time();
 //从地址db里获取account_id
 $bit_address_row = get_ca_bit_account_ca_id($ca_id,$us_id);
