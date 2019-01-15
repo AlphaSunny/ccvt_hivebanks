@@ -24,7 +24,7 @@ $(function () {
         if (response.errcode == "0") {
             // console.log(response.rows);
             // console.log(response.rows[0]);
-            var rows = response.rows[0];
+            var rows = response.rows;
             $('.card_nm').text(rows.lgl_address.card_nm);
             $('.name').text(rows.lgl_address.name);
         }
