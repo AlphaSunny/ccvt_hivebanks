@@ -12,7 +12,8 @@ $(function () {
             }
             $.each(data, function (i, val) {
                 li += '<li class="flex center space-between alreadyItem margin-bottom-2">' +
-                    '<div class="width-10"><img src="img/' + data[i].ca_channel + '.png" alt=""></div>' +
+                    // '<div class="width-10"><img src="img/' + data[i].ca_channel + '.png" alt=""></div>' +
+                    '<div class="width-10"><p class="i18n" name='+ data[i].ca_channel +'>'+ data[i].ca_channel +'</p></div>' +
                     '<span>' + data[i].lgl_address.card_nm + '</span>' +
                     '<span class="none ca_channel">' + data[i].ca_channel + '</span>' +
                     '<span>' + data[i].lgl_address.name + '</span>' +
