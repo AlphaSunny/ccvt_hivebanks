@@ -13,6 +13,7 @@ $(function () {
             SetCookie('us_id', data.us_id);
             SetCookie('us_level', data.us_level);
             SetCookie('us_account', data.us_account);
+            SetCookie('wechat', response.wechat);
             base_amount = data.base_amount;
             $(".us_nm").text(data.us_nm);
             $('.ctime').text(data.ctime);
