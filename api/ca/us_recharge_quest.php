@@ -62,7 +62,9 @@ $ctime = date('Y-m-d H:i:s');
 $us_ip = get_ip();
 $data['tx_hash'] = hash('md5', $ca_id . $lgn_type . $us_ip . $utime . $ctime);
 
-us_recharge_quest($data,$us_id,$utime);
+us_recharge_quest($data, $utime);
+
+
 //返回给前端数据
 $rtn_data['errcode'] = '0';
 $rtn_data['errmsg'] = '';
