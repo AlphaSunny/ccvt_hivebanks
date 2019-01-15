@@ -15,6 +15,11 @@ $(function () {
             return;
         }
 
+        if(!IsEmail(text)){
+            WarnPrompt("邮箱格式错误");
+            return;
+        }
+
         if (password.length <= 0) {
             // LayerFun('passNotEmpty');
             WarnPrompt("密码不能为空");
