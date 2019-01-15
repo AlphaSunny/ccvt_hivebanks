@@ -796,6 +796,5 @@ window.onload = function () {
         document.body.style.overflow = "auto";
         var loading = document.querySelector(".loading");
         loading.parentNode.removeChild(loading);
-        console.log(loading.parentNode);
     }
 };
