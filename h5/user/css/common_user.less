@@ -15,8 +15,8 @@
 @_absolute: absolute;
 @_relative: relative;
 @_fixed: fixed;
-@btn_color:#638bd4;
-@btn_hover_color:#3d5f98;
+@btn_color: #638bd4;
+@btn_hover_color: #3d5f98;
 body {
   background: #f2f3f8;
   font-family: "Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif";
@@ -34,12 +34,13 @@ body {
 .btn-success {
   background-color: @btn_color;
   border-color: @btn_color;
-  &:hover{
+  &:hover {
     background-color: @btn_hover_color;
     border-color: @btn_hover_color;
   }
 }
-.btn-success[disabled]{
+
+.btn-success[disabled] {
   background-color: @btn_hover_color;
   border-color: @btn_hover_color;
   color: @main-bg;
@@ -94,7 +95,6 @@ li {
   height: 5rem;
 }
 
-
 .pcTitle {
   background: @main-bg;
   padding: @default_even_px*10;
@@ -145,6 +145,11 @@ li {
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
   background: unset !important;
   outline: unset !important;
+}
+
+.breadcrumb {
+  background: #ffffff;
+  margin-top: @default_even_px*10;
 }
 
 //table
