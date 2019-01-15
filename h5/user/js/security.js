@@ -39,8 +39,8 @@ $(function () {
 
                     //Whether the password hash is bound
                     if (data[i].bind_name == 'pass_hash' && data[i].bind_flag == '1') {
-                        $(".password_loin_status_alreadyBind").removeClass("none");
-                        $(".password_loin_status_notBind").remove();
+                        $(".pass_hash_status_alreadyBind").removeClass("none");
+                        $(".pass_hash_status_notBind").remove();
                     }
 
                     //Whether the password login is bound
