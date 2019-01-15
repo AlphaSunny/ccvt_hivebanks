@@ -97,7 +97,7 @@ li {
 }
 
 //table
-td {
+td, th {
   height: @height_50 - 10;
   line-height: @height_50 - 10 !important;
 
@@ -121,24 +121,24 @@ td {
   }
   .content {
     padding: 15px 32px 16px;
-    .item{
+    .item {
       display: flex;
       align-items: center;
       height: 40px;
       line-height: 40px;
-      p:nth-child(0){
+      p:nth-child(0) {
         align-self: flex-start;
         width: 30px;
       }
-      .item_content{
+      .item_content {
         width: 100%;
         display: flex;
         justify-content: space-between;
-        border-bottom: 1px solid hsla(0,0%,85%,.5);
-        .w-180{
+        border-bottom: 1px solid hsla(0, 0%, 85%, .5);
+        .w-180 {
           width: 180px;
         }
-        .w-50{
+        .w-50 {
           width: 50%;
         }
       }
