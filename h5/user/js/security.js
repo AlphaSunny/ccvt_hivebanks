@@ -49,12 +49,7 @@ $(function () {
                     //Whether identity authentication is bound
                     if (data[i].bind_name == 'idPhoto' && data[i].bind_flag == '1') {
                         $(".authenticationBindBtn,.authentication_status_notBind").remove();
-                        $(".authentication_status_alreadyBind").removeClass("none");
-
-                        $('.authenticationTime').removeClass('i18n').text($(this)[0].ctime).addClass('isTime');
-                        $('.authenticationBind').fadeOut('fast');
-                        // $('.authenticationModify').fadeIn('fast');
-                        $('.authenticationIcon').addClass('greenIcon icon-duihao').removeClass('redIcon icon-gantanhao');
+                        $(".authentication_status_alreadyBind").removeClass("none").css("text-align","right");
                     }
 
                     //Whether quick tread is bound
