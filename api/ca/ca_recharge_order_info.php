@@ -9,7 +9,9 @@
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
+require_once ('../inc/common.php');
 require_once ('db/ca_asset_account.php');
+
 
 
 php_begin();
