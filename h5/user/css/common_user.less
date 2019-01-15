@@ -7,8 +7,9 @@
 @ease: ease-in-out;
 @_100: 100%;
 @shadow: 0 2px 15px rgba(0, 0, 0, .1);
-@default_odd_px: 3px;
 @default_even_px: 2px;
+@default_odd_px: 3px;
+@height_50: @default_even_px*25;
 @default_color: #333333;
 @_absolute: absolute;
 @_relative: relative;
@@ -86,6 +87,13 @@ li {
   outline: unset !important;
 }
 
+//table
+td {
+  height: @height_50;
+  line-height: @height_50;
+
+}
+
 .card {
   width: @_100;
   border-radius: @default_odd_px+@default_even_px;
@@ -112,8 +120,8 @@ li {
   .msg-col {
     background: #fbf8e3;
     cursor: pointer;
-    height: @default_even_px*25;
-    line-height: @default_even_px*25;
+    height: @height_50;
+    line-height: @height_50;
   }
   .msg-content p {
     line-height: @default_odd_px*10;
@@ -144,15 +152,14 @@ li {
 }
 
 .footer_box {
-  margin-top: @default_even_px*25;
+  margin-top: @height_50;
   height: @default_odd_px*100+5;
 }
 
 .scrollup {
   position: @_fixed;
-  right: @default_even_px*25;
-  @right: @default_even_px*25;
-  bottom: @right;
+  right: @height_50;
+  bottom: @height_50;
   height: @default_odd_px*10;
   @height: @default_odd_px*10;
   width: @height;
