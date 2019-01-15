@@ -41,6 +41,8 @@ $us_id = check_token($token);
 $rate_row = get_ca_settting_recharge_rate_ca_id($ca_id);
 if ($rate_row["min_amount"]  > $base_amount * get_la_base_unit() || $base_amount  * get_la_base_unit() > $rate_row["max_amount"])
     echo ($base_amount * get_la_base_unit());
+    echo ($rate_row["min_amount"]);
+    echo ($rate_row["max_amount"]);
     exit ($base_amount * get_la_base_unit());
     exit_error('222',"充值金额必须要在ca允许的金额以内");
 
