@@ -67,7 +67,8 @@ $(function () {
         }, function (response) {
             ShowLoading("hide");
             ActiveClick($this, btnText);
-            LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
+            // LayerFun(response.errcode);
             return;
         })
     });
