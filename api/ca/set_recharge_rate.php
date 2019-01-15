@@ -62,8 +62,8 @@ $data_bind_pass['rate_type'] = "1";
 $data_bind_pass['ca_type'] = $ca_type;
 $data_bind_pass['base_rate'] = $recharge_rate;
 $data_bind_pass['us_level'] = $recharge_us_level;
-$data_bind_pass['min_amount'] = $recharge_min_amount / $recharge_rate * get_la_base_unit();
-$data_bind_pass['max_amount'] = $recharge_max_amount / $recharge_rate * get_la_base_unit();
+$data_bind_pass['min_amount'] = $recharge_min_amount  * get_la_base_unit();
+$data_bind_pass['max_amount'] = $recharge_max_amount  * get_la_base_unit();
 $data_bind_pass['limit_time'] = $limit_time;
 $data_bind_pass['set_time'] = time();
 if(!ins_ca_recharge_rate_info($data_bind_pass)){

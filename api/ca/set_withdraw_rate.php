@@ -61,8 +61,8 @@ $data_bind_pass['ca_type'] = $ca_type;
 $data_bind_pass['base_rate'] = $withdraw_rate;
 $data_bind_pass['us_level'] = $withdraw_us_level;
 if ($withdraw_rate){
-    $data_bind_pass['min_amount'] = $withdraw_min_amount / $withdraw_rate * get_la_base_unit();
-    $data_bind_pass['max_amount'] = $withdraw_max_amount / $withdraw_rate * get_la_base_unit();
+    $data_bind_pass['min_amount'] = $withdraw_min_amount * get_la_base_unit();
+    $data_bind_pass['max_amount'] = $withdraw_max_amount * get_la_base_unit();
 }
 $data_bind_pass['limit_time'] = $limit_time;
 $data_bind_pass['set_time'] = time();
