@@ -15,6 +15,8 @@
 @_absolute: absolute;
 @_relative: relative;
 @_fixed: fixed;
+@btn_color:#638bd4;
+@btn_hover_color:#3d5f98;
 body {
   background: #f2f3f8;
   font-family: "Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif";
@@ -27,6 +29,15 @@ body {
 *, p {
   margin: 0;
   padding: 0;
+}
+
+.btn-success {
+  background-color: @btn_color;
+  border-color: @btn_color;
+  &:hover{
+    background-color: @btn_hover_color;
+    border-color: @btn_hover_color;
+  }
 }
 
 a {
@@ -148,8 +159,8 @@ td, th {
       align-items: center;
       height: @height_50;
       line-height: @height_50;
-      &:last-child{
-        .item_content{
+      &:last-child {
+        .item_content {
           border-bottom: unset;
         }
       }
