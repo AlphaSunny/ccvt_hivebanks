@@ -147,18 +147,25 @@ $(function(){
     execI18n();
 
     /*Set the language selection to the value in the cache by default*/
-    $("#language option[value="+i18nLanguage+"]").prop("selected",true);
+    // $("#language option[value="+i18nLanguage+"]").prop("selected",true);
+
+    var languageList = $(".toggleLanguage");
+    $.each(languageList, function (i, val) {
+        if(i18nLanguage == $(this).attr("title")){
+            $(".curr_language").text($(this).text());
+        }
+    });
 
     /* Choose a language */
-    $("#language").on('change', function() {
-        var language = $(this).children('option:selected').val();
-        // console.log("language"+language);
-        getCookie("userLanguage",language,{
-            expires: 30,
-            path:'/'
-        });
-        location.reload();
-    });
+    // $("#language").on('change', function() {
+    //     var language = $(this).children('option:selected').val();
+    //     // console.log("language"+language);
+    //     getCookie("userLanguage",language,{
+    //         expires: 30,
+    //         path:'/'
+    //     });
+    //     location.reload();
+    // });
 
     /* Choose a language */
     $("#language li").on('click', function () {
