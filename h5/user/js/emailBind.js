@@ -33,6 +33,7 @@ $(function () {
             function (response) {
             WarnPrompt(response.errmsg);
             console.log(response.errmsg);
+            console.log(response.errcode);
             if (response.errcode == '0') {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
