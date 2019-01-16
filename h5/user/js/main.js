@@ -168,7 +168,6 @@ function GetPhoneCodeFun(bind_type, $this, cfm_code) {
     var cellphone = $('#phone').val();
     if (cellphone == '') {
         // LayerFun('phoneNotEmpty');
-
         return;
     }
     GetPhoneCode(cellphone, country_code, bind_type, cfm_code, function (response) {

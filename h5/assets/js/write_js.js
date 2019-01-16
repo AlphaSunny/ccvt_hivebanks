@@ -19,5 +19,6 @@
     document.write(jsHeader + "assets/js/clipboard.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/jquery.qrcode.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/prompt.js" + jsFooter);
+    document.write(jsHeader + "assets/js/get_sms_count.js" + jsFooter);
     // document.write("<script type='text/javascript'>less.watch();</script>");
 })();
