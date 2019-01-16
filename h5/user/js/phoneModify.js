@@ -6,6 +6,10 @@ $(function () {
     //Get graphic verification code
     GetImgCode();
 
+    $(".getImgCodeBtn").click(function () {
+        GetImgCode();
+    });
+
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
         var bind_type = '2', $this = $(this), cfm_code = $('#phoneCfmCode').val();
