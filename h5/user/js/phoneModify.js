@@ -1,4 +1,7 @@
 $(function () {
+    $("#phone").intlTelInput({
+        separateDialCode: true,
+    });
     //get user token
     var token = GetCookie('user_token');
     GetUsAccount();
