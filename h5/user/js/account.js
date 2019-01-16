@@ -284,8 +284,8 @@ $(function () {
         $("#exchange_modal").removeClass("none");
     });
 
-    $(".customize_modal_cancel_btn").click(function () {
-        $(".customize_modal").fadeOut();
+    $(".exchange_cancel_btn").click(function () {
+        $(".customize_modal").addClass("none");
         $(".voucher_input").val("");
     });
 
