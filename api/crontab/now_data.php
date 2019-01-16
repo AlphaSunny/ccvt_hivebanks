@@ -32,7 +32,6 @@ $db->query($sql);
 $two_invite_send = $db->fetchAll();
 foreach ($two_invite_send as $k=>$v){
     $sql = "select count(us_id) as count from us_base WHERE invite_code in (select us_nm from us_base WHERE invite_code=(select us_nm from us_base WHERE us_id='{$v['us_id']}') GROUP BY us_nm)";
-    echo $sql;
     $db->query($sql);
     $data = $db->fetchRow();
     if ($data['count']==0){
@@ -47,7 +46,7 @@ foreach ($two_invite_send as $k=>$v){
     }
 }
 
-print_r($two_invite_send);die;
+print_r(json_encode($two_invite_send,true));die;
 
 //邀请
 $sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
