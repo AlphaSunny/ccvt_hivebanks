@@ -56,8 +56,9 @@ $(function () {
         TextModify(token, text_type, text, text_hash, pass_word_hash, function (response) {
             if (response.errcode == '0') {
                 ShowLoading("hide");
-                LayerFun('modifySuccess');
-                window.location.href = "security.html";
+                // LayerFun('modifySuccess');
+                SuccessPrompt("修改成功");
+                window.location.href = "test_security.html";
                 return;
             }
         }, function (response) {
