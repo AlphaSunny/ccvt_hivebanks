@@ -65,6 +65,7 @@ $(function () {
                     //Whether quick tread is bound
                     if (data[i].bind_name == "point_tread_num" && data[i].bind_flag == "1") {
                         $(".quick_top_num").text(data[i].bind_info);
+                        $('.quickTreadIcon').addClass('greenIcon icon-duihao').removeClass('symbol icon-gantanhao');
                     }
 
                     if (data[i].bind_name == "point_tread_switch" && data[i].bind_info == "1") {
@@ -76,6 +77,7 @@ $(function () {
                     if (data[i].bind_name == "point_tread_switch" && data[i].bind_info == "2") {
                         $(".quickTreadSwitch").removeClass("active").val("2");
                         $(".open_status").addClass("none");
+                        $('.quickTreadIcon').addClass('symbol icon-gantanhao').removeClass('greenIcon icon-duihao');
                     }
                 })
             }
