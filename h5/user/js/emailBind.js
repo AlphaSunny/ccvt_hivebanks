@@ -49,7 +49,7 @@ $(function () {
 
     $("#email").bind("input propertychange", function () {
         if ($(this).val().length > 0) {
-            $(".emailEnable").attr("disabled",false);
+            $(".emailEnable").attr("disabled", false);
         }
     })
 });
