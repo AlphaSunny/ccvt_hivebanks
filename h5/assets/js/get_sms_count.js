@@ -2,6 +2,7 @@ function GetSmsCodeFun(cellphone, country_code, bind_type, cfm_code) {
     GetPhoneCode(cellphone, country_code, bind_type, cfm_code, function (response) {
         if (response.errcode == '0') {
             // LayerFun('sendSuccess');
+            ShowLoading("hide");
             SuccessPrompt("发送成功");
             countDown();
         }
