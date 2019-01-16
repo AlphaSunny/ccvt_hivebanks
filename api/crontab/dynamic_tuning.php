@@ -168,9 +168,9 @@ function cut_log_com_transfer($us_id,$amount){
     $data['tx_hash'] = hash('md5', BA_ID . FLAG . get_ip() . mt() . date('Y-m-d H:i:s'));
     $data['flag'] = FLAG;
     $data['transfer_type'] = 'us-ba';
-    $data['transfer_state'] = 2;
+    $data['transfer_state'] = 1;
     $data['tx_detail'] = '离职回收';
-    $data['give_or_receive'] = 1;
+    $data['give_or_receive'] = 2;
     $data['ctime'] = time();
     $data['utime'] = date('Y-m-d H:i:s',time());
     $sql = $db->sqlInsert("com_transfer_request", $data);
