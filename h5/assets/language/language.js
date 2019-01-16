@@ -111,9 +111,11 @@ var execI18n = function () {
     /*
     Here you need to translate i18n
      */
+    console.log(window.location.host);
+    console.log(window.location.hostname);
     jQuery.i18n.properties({
         name: sourceName, //Resource file name
-        path: window.location.host+'assets/language/i18n/' + i18nLanguage + '/', //Resource file path
+        path: 'assets/language/i18n/' + i18nLanguage + '/', //Resource file path
         mode: 'map', //Use the value in the resource file as a Map
         language: i18nLanguage,
         checkAvailableLanguages: true,
