@@ -6,7 +6,7 @@ function GetSmsCodeFun(cellphone, country_code, bind_type, cfm_code) {
             countDown();
         }
     }, function (response) {
-        ErrorPrompt("发送失败")
+        ErrorPrompt(response.errmsg);
     });
 }
 
