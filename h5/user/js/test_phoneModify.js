@@ -14,7 +14,7 @@ $(function () {
     $('.phoneCodeBtn').click(function () {
         var country_code = $('.selected-dial-code').text().split("+")[1];
         var cellphone = $('#phone').val();
-        var bind_type = '2', $this = $(this), cfm_code = $('#phoneCfmCode').val();
+        var bind_type = '2', cfm_code = $('#phoneCfmCode').val();
 
         if (cellphone == '') {
             // LayerFun('phoneNotEmpty');
