@@ -281,7 +281,7 @@ $(function () {
 
     //exchange
     $(".exchange_btn").click(function () {
-        $("#exchange_modal").fadeIn();
+        $("#exchange_modal").removeClass("none");
     });
 
     $(".customize_modal_cancel_btn").click(function () {
