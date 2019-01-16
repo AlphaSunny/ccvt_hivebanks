@@ -7,14 +7,6 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title class="i18n" name="phoneBind"></title>
-    <!--<link rel="stylesheet" href="../assets/css/bootstrap.min.css">-->
-    <!--<link rel="stylesheet" href="../assets/css/intlTelInput.css">-->
-    <!--<link rel="stylesheet" href="css/common.css">-->
-    <!--<link rel="stylesheet" type="text/css" media="only screen and (max-device-width:767px)"-->
-          <!--href="mobile-css/common.css">-->
-    <!--<link rel="stylesheet" type="text/css" media="only screen and (max-device-width:767px)"-->
-          <!--href="mobile-css/phoneBind.css">-->
-    <!--<link rel="stylesheet" href="css/phoneBind.css">-->
     <script src="../assets/js/write_css.js"></script>
     <script src="js/user_write_css.js"></script>
     <link rel="stylesheet/less" href="css/test_phoneBind.less">
@@ -22,7 +14,7 @@
 <body>
 <!-- loading -->
 <!--<iframe src="loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"-->
-        <!--scrolling="no"></iframe>-->
+<!--scrolling="no"></iframe>-->
 <!--nav-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -112,80 +104,39 @@
         <!-- bind information -->
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <h3 class="pcTitle"><span class="phoneBind i18n" name="phoneBind">Phone Binding</span></h3>
+                <h3 class="pcTitle"><span class="phoneBind i18n" name="phoneBind"></span></h3>
             </div>
         </div>
         <!--information authentication-->
         <div class="row formInfo table_bg phone">
             <div class="col-md-6 col-md-offset-3 col-sm-12">
-                <div class='row phone-padding'>
-                    <div class='flex center phoneDisplay'>
-                        <div class='col-md-4 col-sm-12'>
-                            <div class='text_center'>
-                                <lable for='phone' class='i18n' name="phone">Phone</lable>
-                                :
-                            </div>
-                        </div>
-                        <div class='col-md-8 col-sm-12'>
-                            <div class=''>
-                                <div class='form-group margin-bottom-0'>
-                                    <input type='tel' id='phone' class='form-control'>
-                                </div>
-                            </div>
-                        </div>
+
+                <div class='form-group margin-bottom-0'>
+                    <label for='phone' class='i18n' name="phone"></label>
+                    <input type='tel' id='phone' class='form-control'>
+                </div>
+
+                <div class='flex center form-group margin-bottom-0'>
+                    <label for='phoneCfmCode' class='i18n' name="imgCode"></label>
+                    <div class="flex">
+                        <input type='text' id='phoneCfmCode' class='form-control'>
+                        <img src="" class="margin-left-5" id="phone_imgCode" alt="">
                     </div>
                 </div>
 
-                <div class='row phone-padding'>
-                    <div class='flex center phoneDisplay'>
-                        <div class='col-md-4 col-sm-12'>
-                            <div class='text_center'>
-                                <lable for='phoneCfmCode' class='i18n' name="imgCode">Captcha</lable>
-                                :
-                            </div>
-                        </div>
-                        <div class='col-md-8 col-sm-12'>
-                            <div class=''>
-                                <div class='flex center form-group margin-bottom-0'>
-                                    <input type='text' id='phoneCfmCode' class='form-control'>
-                                    <img src="" class="margin-left-5" id="phone_imgCode" alt="">
-                                </div>
-                            </div>
-                        </div>
+                <div class='flex center form-group margin-bottom-0'>
+                    <label for='phoneCode' class='i18n' name="phoneCode"></label>
+                    <div class="flex">
+                        <input type='text' id='phoneCode' class='form-control'>
+                        <button class="btn btn-success phoneCodeBtn margin-left-5">
+                            <span class="sixty"></span>
+                            <span class="getCodeText i18n" name="getCode"></span>
+                        </button>
                     </div>
                 </div>
 
-                <div class='row phone-padding'>
-                    <div class='flex center phoneDisplay'>
-                        <div class='col-md-4 col-sm-12'>
-                            <div class='text_center'>
-                                <lable for='phoneCode' class='i18n' name="phoneCode">Phone Code</lable>
-                                :
-                            </div>
-                        </div>
-                        <div class='col-md-8 col-sm-12'>
-                            <div class=''>
-                                <div class='flex center form-group margin-bottom-0'>
-                                    <input type='text' id='phoneCode' class='form-control'>
-                                    <button class="btn btn-success phoneCodeBtn margin-left-2">
-                                        <span class="sixty"></span>&nbsp;&nbsp;
-                                        <span class="getCodeText i18n" name="getCode">Get Code</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='row phone-padding'>
-                    <div class='flex center phoneDisplay'>
-                        <div class='col-md-4 col-sm-12'></div>
-                        <div class='col-md-8 col-sm-12'>
-                            <div class=''>
-                                <button class='btn btn-success phoneEnable i18n' name="determine">Enable</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class=''>
+                    <button class='btn btn-success phoneEnable i18n' name="determine"></button>
                 </div>
             </div>
         </div>
