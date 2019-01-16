@@ -3,7 +3,6 @@ require_once "../inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
-die;
 $db = new DB_COM();
 
 $unit = get_la_base_unit();
@@ -149,6 +148,7 @@ $list = array_merge($reg_user,$invite_rows,$bot_rows,$glory,$voucher,$tiaozhang,
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
 echo count($list);
+die;
 $ba_id = get_ba_id();
 $la_id = get_la_id();
 foreach ($list as $k=>$v){
