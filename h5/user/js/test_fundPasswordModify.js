@@ -7,7 +7,7 @@ $(function () {
     GetImgCode();
 
     //Switch graphic verification code
-    $('#phone_imgCode').click(function () {
+    $('.getImgCodeBtn').click(function () {
         GetImgCode();
     });
 
