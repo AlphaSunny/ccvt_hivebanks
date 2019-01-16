@@ -91,8 +91,7 @@ foreach ($glory as $k=>$v){
     $glory[$k]['transfer_type'] = "us-la";
 }
 
-//余额兑换荣耀积分
-$sql = "";
+
 
 
 //兑换码兑换
@@ -119,7 +118,7 @@ foreach ($tiaozhang as $k=>$v){
 
 
 //升级返还
-$sql = "select us_id,ctime from us_scale_changes WHERE 1";
+$sql = "select us_id,ctime from us_scale_changes WHERE ctime<'2018-12-01 19:50:02'";
 $db->query($sql);
 $scale_changes = $db->fetchAll();
 foreach ($scale_changes as $k=>$v){
@@ -130,6 +129,37 @@ foreach ($scale_changes as $k=>$v){
     $scale_changes[$k]['transfer_type'] = "ba-us";
 }
 
+//用户提现
+
+
+
+//群主返现
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=12 AND give_or_receive=2";
+$db->query($sql);
+$group_cashback = $db->fetchAll();
+foreach ($group_cashback as $k=>$v){
+    $group_cashback[$k]['type'] = "group_cashback";
+    $group_cashback[$k]['transfer_type'] = "ba-us";
+}
+
+//用户转账
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=13 AND give_or_receive=1";
+$db->query($sql);
+$us_us_transfer = $db->fetchAll();
+foreach ($us_us_transfer as $k=>$v){
+    $us_us_transfer[$k]['type'] = "us_us_transfer";
+    $us_us_transfer[$k]['transfer_type'] = "us-us";
+}
+
+//踩赞返还
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=14 AND give_or_receive=2";
+$db->query($sql);
+$give_like_back = $db->fetchAll();
+foreach ($give_like_back as $k=>$v){
+    $give_like_back[$k]['type'] = "give_like_back";
+    $give_like_back[$k]['transfer_type'] = "ba-us";
+}
+
 
 //锁仓(锁仓余额)
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=10 AND give_or_receive=2";
@@ -138,6 +168,15 @@ $suocang = $db->fetchAll();
 foreach ($suocang as $k=>$v){
     $suocang[$k]['type'] = "big_us_lock";
     $suocang[$k]['transfer_type'] = "ba-us";
+}
+
+//锁仓利息
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=11 AND give_or_receive=2";
+$db->query($sql);
+$big_us_interest = $db->fetchAll();
+foreach ($big_us_interest as $k=>$v){
+    $big_us_interest[$k]['type'] = "big_us_interest";
+    $big_us_interest[$k]['transfer_type'] = "ba-us";
 }
 
 
