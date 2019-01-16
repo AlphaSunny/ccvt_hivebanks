@@ -285,8 +285,12 @@ $(function () {
     });
 
     $(".exchange_cancel_btn").click(function () {
-        $(".customize_modal").addClass("none");
+        $("#exchange_modal").addClass("none");
         $(".voucher_input").val("");
+    });
+    $(".transform_ccvt_cancel_btn").click(function () {
+        $("#transform_ccvt").addClass("none");
+        $(".transform_ccvt_input").val("");
     });
 
     $(".exchange_confirm_btn").click(function () {
