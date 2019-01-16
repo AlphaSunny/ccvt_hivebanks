@@ -26,6 +26,18 @@ foreach ($reg_user as $k=>$v){
     $reg_user[$k]['transfer_type'] = "ba-us";
 }
 
+//邀请
+$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
+$db->query($sql);
+$invite_rows = $db->fetchAll();
+foreach ($invite_rows as $k=>$v){
+    $invite_rows[$k]['send_money'] = "50"*$unit;
+    $invite_rows[$k]['flag'] = 2;
+    $invite_rows[$k]['detail'] = "邀请赠送";
+    $invite_rows[$k]['type'] = "invite_send";
+    $invite_rows[$k]['transfer_type'] = "ba-us";
+}
+
 //二级邀请奖励
 $sql = "select us_id,ctime from us_base WHERE 1";
 $db->query($sql);
@@ -45,19 +57,6 @@ foreach ($two_invite_send as $k=>$v){
         $two_invite_send[$k]['transfer_type'] = "ba-us";
     }
 }
-
-//邀请
-$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
-$db->query($sql);
-$invite_rows = $db->fetchAll();
-foreach ($invite_rows as $k=>$v){
-    $invite_rows[$k]['send_money'] = "50"*$unit;
-    $invite_rows[$k]['flag'] = 2;
-    $invite_rows[$k]['detail'] = "邀请赠送";
-    $invite_rows[$k]['type'] = "invite_send";
-    $invite_rows[$k]['transfer_type'] = "ba-us";
-}
-
 
 
 //群聊奖励
@@ -91,6 +90,9 @@ foreach ($glory as $k=>$v){
     $glory[$k]['type'] = $type;
     $glory[$k]['transfer_type'] = "us-la";
 }
+
+//余额兑换荣耀积分
+$sql = "";
 
 
 //兑换码兑换
