@@ -157,15 +157,15 @@ $(function(){
     });
 
     /* Choose a language */
-    // $("#language").on('change', function() {
-    //     var language = $(this).children('option:selected').val();
-    //     // console.log("language"+language);
-    //     getCookie("userLanguage",language,{
-    //         expires: 30,
-    //         path:'/'
-    //     });
-    //     location.reload();
-    // });
+    $("#language").on('change', function() {
+        var language = $(this).children('option:selected').val();
+        // console.log("language"+language);
+        getCookie("userLanguage",language,{
+            expires: 30,
+            path:'/'
+        });
+        location.reload();
+    });
 
     /* Choose a language */
     $("#language li").on('click', function () {
