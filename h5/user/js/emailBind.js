@@ -15,7 +15,7 @@ $(function () {
             return;
         }
 
-        if(!IsEmail(text)){
+        if (!IsEmail(text)) {
             WarnPrompt("邮箱格式错误");
             return;
         }
@@ -41,10 +41,15 @@ $(function () {
             ActiveClick($this, btnText);
             // LayerFun(response.errmsg);
             ErrorPrompt(response.errmsg);
-                console.log(response.errmsg);
         })
     });
     $('.GoEmailBtn').click(function () {
         window.open(emailList[_email]);
+    });
+
+    $("#email").bind("input propertychange", function () {
+        if ($(this).val().length > 0) {
+            $(".emailEnable").attr("disabled",false);
+        }
     })
 });
