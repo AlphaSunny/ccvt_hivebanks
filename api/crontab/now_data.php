@@ -27,6 +27,18 @@ foreach ($reg_user as $k=>$v){
     $reg_user[$k]['transfer_type'] = "ba-us";
 }
 
+//二级邀请奖励
+$sql = "select us_id,us_nm from us_base WHERE 1";
+$db->query($sql);
+$rows = $db->fetchAll();
+foreach ($rows as $k=>$v){
+    $sql = "select count(us_id) as count from us_base WHERE invite_code in (select us_nm from us_base WHERE invite_code='{$v['us_nm']}' GROUP BY us_nm)";
+    $db->query($sql);
+    $data = $db->fetchRow();
+    if ($data['count']>0){
+
+    }
+}
 
 //邀请
 $sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
