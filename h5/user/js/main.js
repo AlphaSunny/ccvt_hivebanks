@@ -190,7 +190,7 @@ function GetPhoneCodeFun(bind_type, $this, cfm_code) {
 var countdown = 60;
 
 function setTime($this) {
-    $('.sixty').text(countdown + "s").fadeIn('fast').css('color', 'red');
+    $('.sixty').text(countdown + "s").fadeIn('fast');
     $('.getCodeText').fadeOut();
     $this.attr("disabled", true);
     timer = setInterval(function () {
