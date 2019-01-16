@@ -8,23 +8,23 @@ $db = new DB_COM();
 $unit = get_la_base_unit();
 
 //注册
-$sql = "select us_id,ctime from us_base WHERE 1";
-$db->query($sql);
-$reg_user = $db->fetchAll();
-foreach ($reg_user as $k=>$v){
-    if ($v['ctime']<'2018-10-01 00:00:00'){
-        $send_money = "1000"*$unit;
-    }elseif($v['ctime']>='2018-10-01 00:00:00' and $v['ctime']<'2018-10-07 23:59:59'){
-        $send_money = "500"*$unit;
-    }else{
-        $send_money = "50"*$unit;
-    }
-    $reg_user[$k]['send_money'] = $send_money;
-    $reg_user[$k]['flag'] = 1;
-    $reg_user[$k]['detail'] = "注册赠送";
-    $reg_user[$k]['type'] = "reg_send";
-    $reg_user[$k]['transfer_type'] = "ba-us";
-}
+//$sql = "select us_id,ctime from us_base WHERE 1";
+//$db->query($sql);
+//$reg_user = $db->fetchAll();
+//foreach ($reg_user as $k=>$v){
+//    if ($v['ctime']<'2018-10-01 00:00:00'){
+//        $send_money = "1000"*$unit;
+//    }elseif($v['ctime']>='2018-10-01 00:00:00' and $v['ctime']<'2018-10-07 23:59:59'){
+//        $send_money = "500"*$unit;
+//    }else{
+//        $send_money = "50"*$unit;
+//    }
+//    $reg_user[$k]['send_money'] = $send_money;
+//    $reg_user[$k]['flag'] = 1;
+//    $reg_user[$k]['detail'] = "注册赠送";
+//    $reg_user[$k]['type'] = "reg_send";
+//    $reg_user[$k]['transfer_type'] = "ba-us";
+//}
 
 //二级邀请奖励
 $sql = "select us_id,ctime from us_base WHERE 1";
@@ -37,7 +37,7 @@ foreach ($two_invite_send as $k=>$v){
     if ($data['count']==0){
         unset($two_invite_send[$k]);
     }else{
-        $two_invite_send[$k]['send_money'] = $data['count']*20;
+        $two_invite_send[$k]['send_money'] = $data['count']*20*$unit;
         $two_invite_send[$k]['ctime'] = date('Y-m-d H:i:s',strtotime($v['ctime'])+10);
         $two_invite_send[$k]['flag'] = 2;
         $two_invite_send[$k]['detail'] = "二级邀请赠送";
