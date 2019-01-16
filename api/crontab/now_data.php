@@ -47,7 +47,6 @@ foreach ($two_invite_send as $k=>$v){
         $two_invite_send[$k]['transfer_type'] = "ba-us";
     }
 }
-echo count($two_invite_send);
 print_r(json_encode($two_invite_send,true));die;
 
 //邀请
