@@ -29,7 +29,7 @@ $(function () {
         var $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
         ShowLoading("show");
-        TextBind(token, text_type, text, text_hash, pass_word_hash,
+        TextBind(token, text_type, text, text_hash,
             function (response) {
             WarnPrompt(response.errmsg);
             console.log(response.errmsg);
