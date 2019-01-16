@@ -32,7 +32,8 @@ $db->query($sql);
 $two_invite_send = $db->fetchAll();
 foreach ($two_invite_send as $k=>$v){
     $sql = "select count(us_id) as count from us_base WHERE invite_code in (select us_nm from us_base WHERE invite_code=(select us_nm from us_base WHERE us_id='{$v['us_id']}') GROUP BY us_nm)";
-    echo $sql;
+    echo 111;
+    echo $sql;die;
     $db->query($sql);
     $data = $db->fetchRow();
     if ($data['count']==0){
