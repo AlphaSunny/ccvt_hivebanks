@@ -23,22 +23,30 @@ foreach ($reg_user as $k=>$v){
     $reg_user[$k]['flag'] = 1;
     $reg_user[$k]['detail'] = "注册赠送";
     $reg_user[$k]['type'] = "reg_send";
-    $reg_user[$k]['type'] = "reg_send";
     $reg_user[$k]['transfer_type'] = "ba-us";
 }
 
 //二级邀请奖励
-$sql = "select us_id,us_nm from us_base WHERE 1";
+$sql = "select us_id,ctime from us_base WHERE 1";
 $db->query($sql);
-$rows = $db->fetchAll();
-foreach ($rows as $k=>$v){
-    $sql = "select count(us_id) as count from us_base WHERE invite_code in (select us_nm from us_base WHERE invite_code='{$v['us_nm']}' GROUP BY us_nm)";
+$two_invite_send = $db->fetchAll();
+foreach ($two_invite_send as $k=>$v){
+    $sql = "select count(us_id) as count from us_base WHERE invite_code in (select us_nm from us_base WHERE invite_code=(select us_nm from us_base WHERE us_id='{$v['us_id']}') GROUP BY us_nm)";
     $db->query($sql);
     $data = $db->fetchRow();
-    if ($data['count']>0){
-
+    if ($data['count']==0){
+        unset($two_invite_send[$k]);
+    }else{
+        $two_invite_send[$k]['send_money'] = $data['count']*20;
+        $two_invite_send[$k]['ctime'] = date('Y-m-d H:i:s',strtotime($v['ctime'])+10);
+        $two_invite_send[$k]['flag'] = 2;
+        $two_invite_send[$k]['detail'] = "二级邀请赠送";
+        $two_invite_send[$k]['type'] = "two_invite_send";
+        $two_invite_send[$k]['transfer_type'] = "ba-us";
     }
 }
+
+print_r($two_invite_send);die;
 
 //邀请
 $sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
@@ -51,6 +59,7 @@ foreach ($invite_rows as $k=>$v){
     $invite_rows[$k]['type'] = "invite_send";
     $invite_rows[$k]['transfer_type'] = "ba-us";
 }
+
 
 
 //群聊奖励
