@@ -29,8 +29,10 @@ $(function () {
         var $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
         ShowLoading("show");
-        TextBind(token, text_type, text, text_hash, pass_word_hash, function (response) {
+        TextBind(token, text_type, text, text_hash, pass_word_hash,
+            function (response) {
             WarnPrompt(response.errmsg);
+            console.log(response.errmsg);
             if (response.errcode == '0') {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
@@ -42,6 +44,7 @@ $(function () {
             ActiveClick($this, btnText);
             // LayerFun(response.errmsg);
             ErrorPrompt(response.errmsg);
+                console.log(response.errmsg);
         })
     });
     $('.GoEmailBtn').click(function () {
