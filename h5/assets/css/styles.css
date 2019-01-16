@@ -979,31 +979,37 @@ h4.title:after {
 }
 
 .szgl {
-    background: #5aaf33;
+    background: #94c3ea;
 }
 
 .scjl {
-    background: #3771ca;
+    background: #ffd94b;
 }
 
 .zcjl {
-    background: #479bdb;
+    background: #8ed34e;
 }
 
 .yqjl {
+    background: #5aaf33;
+}
+
+.batx {
     background: #fd7603;
 }
 
-.hdjl {
-    background: #ffbe00;
-}
-
 .ltjl {
-    background: #a5a5a5;
+    background: #3771ca;
 }
 
 .ryrs {
-    background: #045e95;
+    background: #a5a5a5;
+}
+.dhm {
+    background: #ffbe00;
+}
+.qzjl {
+    background: #479bdb;
 }
 
 #chart_box {
