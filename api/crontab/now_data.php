@@ -37,6 +37,8 @@ foreach ($two_invite_send as $k=>$v){
     if ($data['count']==0){
         unset($two_invite_send[$k]);
     }else{
+        $two_invite_send[$k]['count'] = $data['count'];
+        $two_invite_send[$k]['money'] = $data['count']*20;
         $two_invite_send[$k]['send_money'] = $data['count']*20*$unit;
         $two_invite_send[$k]['ctime'] = date('Y-m-d H:i:s',strtotime($v['ctime'])+10);
         $two_invite_send[$k]['flag'] = 2;
@@ -45,7 +47,7 @@ foreach ($two_invite_send as $k=>$v){
         $two_invite_send[$k]['transfer_type'] = "ba-us";
     }
 }
-
+echo count($two_invite_send);
 print_r(json_encode($two_invite_send,true));die;
 
 //邀请
