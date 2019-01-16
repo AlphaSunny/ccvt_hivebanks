@@ -99,7 +99,8 @@ if ($text_type == 'email') {
     require_once "db/la_admin.php";
     $key_code = get_la_admin_info()["key_code"];
 
-    $output_array = send_email_by_agent_service($email,$title,$body,$key_code);
+//    $output_array = send_email_by_agent_service($email,$title,$body,$key_code);
+    $output_array = send_email_by_agent_service($text,$title,$body,$key_code);///=====FZG 20190116 1655
 
     if ($output_array["errcode"] == "0") {
         exit_ok('Please verify email as soon as possible!');
