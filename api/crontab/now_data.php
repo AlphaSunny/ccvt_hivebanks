@@ -28,6 +28,7 @@ $unit = get_la_base_unit();
 
 //二级邀请奖励
 $sql = "select us_id,ctime from us_base WHERE 1";
+echo $sql;die;
 $db->query($sql);
 $two_invite_send = $db->fetchAll();
 foreach ($two_invite_send as $k=>$v){
