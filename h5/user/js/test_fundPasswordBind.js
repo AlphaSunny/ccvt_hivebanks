@@ -6,15 +6,29 @@ $(function () {
     //Get graphic verification code
     GetImgCode();
 
+    $('.getImgCodeBtn').click(function () {
+        GetImgCode();
+    });
+
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
-        var bind_type = '4', $this = $(this), cfm_code = $('#phoneCfmCode').val();
-        if (cfm_code <= 0) {
-            LayerFun('pleaseImgCode');
+        var country_code = $('.selected-dial-code').text().split("+")[1];
+        var cellphone = $('#phone').val();
+        var bind_type = '2', cfm_code = $('#phoneCfmCode').val();
+
+        if (cellphone == '') {
+            // LayerFun('phoneNotEmpty');
+            WarnPrompt("请输入手机号码");
             return;
         }
-        setTime($this);
-        GetPhoneCodeFun(bind_type, $this, cfm_code);
+
+        if (cfm_code <= 0) {
+            // LayerFun('pleaseImgCode');
+            WarnPrompt("请输入图形验证码");
+            return;
+        }
+        ShowLoading("show");
+        GetSmsCodeFun(cellphone, country_code, bind_type, cfm_code);
     });
 
     //Get url parameter
