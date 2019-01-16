@@ -313,7 +313,7 @@ $(function () {
 
     //transform ccvt
     $(".upgrade_btn").click(function () {
-        $("#transform_ccvt").fadeIn();
+        $("#transform_ccvt").removeClass("none");
     });
 
     $(".transform_ccvt_confirm_btn").click(function () {
