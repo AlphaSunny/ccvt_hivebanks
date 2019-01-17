@@ -177,7 +177,7 @@ $(function () {
             dataType: "json",
             success: function (res) {
                 if (res.errcode == "0") {
-                    var data = res.rows;
+                    var data = res.row;
                     $(".name").text(data.name);
                     $(".bind_count").text(data.bind_count);
                     $(".glory_number").text(data.glory_number);
