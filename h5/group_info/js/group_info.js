@@ -185,7 +185,7 @@ $(function () {
                     $(".this_day_in").text(data.this_day_in);
                     $(".scale").text(data.scale);
 
-                    if (is_top == 1) {
+                    if (data.is_top == 1) {
                         $(".scale_next_p").remove();
                         $(".up_tips").attr("title","距离下一级还需："+ data.next_level_bind_number +"个绑定用户 "+ data.next_level_glory_number +"颗荣耀星数");
                     } else {

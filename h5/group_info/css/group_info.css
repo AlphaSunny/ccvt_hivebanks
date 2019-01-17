@@ -26,6 +26,10 @@ body, html {
     line-height: 30px;
     font-family: serif;
     cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .group_list_box li:hover {
