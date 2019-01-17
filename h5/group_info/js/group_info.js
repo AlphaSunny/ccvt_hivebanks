@@ -140,7 +140,8 @@ $(function () {
                         }
                         $(".up_tips").attr("data-original-title", "距离下一级还需：" + bind_num + "个绑定用户 " + glory_number + "颗荣耀星数");
                         var width = 100 - (bind_num + glory_number);
-                        $(".progress-bar").css("width", width+"%");
+                        console.log(width);
+                        $(".progress-bar").css("width", width + "%");
                     }
                     $(".up_tips").tooltip();
 
