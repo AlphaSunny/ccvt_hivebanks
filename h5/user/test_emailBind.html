@@ -66,7 +66,7 @@
 <section class="msg">
     <div class="container">
         <div class="row msg-row">
-            <div class="">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="msg-col flex align-items-center justify-content-space-between">
                     <p class="msgText i18n" name="informationTitle"></p>
                     <i class="iconfont icon-xialajiantou jt"></i>
@@ -74,7 +74,7 @@
             </div>
         </div>
         <div class="row msg-content none">
-            <div class="col-md-12 col-sm-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationOne">
                     related.</span></p>
                 <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationTwo"></span>
@@ -91,7 +91,7 @@
 <!--Bread crumbs-->
 <div class='container margin-top-1'>
     <div class="row">
-        <div class="">
+        <div class="col-md-12 col-sm-12 col-xs-12">
             <ol class="breadcrumb">
                 <li><a href="test_account.html" class="i18n" name="account"></a></li>
                 <li><a href="test_security.html" class="i18n" name="security"></a></li>
@@ -104,26 +104,43 @@
 <section class="content section-top-2">
     <div class="container">
         <div class="row">
-            <div class="">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <h3 class="pcTitle"><span class="phoneBind i18n" name="emailBind"></span></h3>
-            </div>
-        </div>
-        <div class="row formInfo phone margin-top-5 padding-top-bottom-100 table_bg">
-            <div class="col-md-6 col-md-offset-3 col-sm-12">
-                <div class=''>
-                    <div class='form-group margin-bottom-0'>
-                        <label for='email' class='i18n' name="email"></label>
-                        <input type='tel' id='email' autocomplete="off" class='form-control i18n-input'
-                               selectname="emailInput" selectattr="placeholder">
+
+                <div class="row formInfo phone margin-top-5 padding-top-bottom-100 table_bg">
+                    <div class="col-md-6 col-md-offset-3 col-sm-12">
+                        <div class=''>
+                            <div class='form-group margin-bottom-0'>
+                                <label for='email' class='i18n' name="email"></label>
+                                <input type='tel' id='email' autocomplete="off" class='form-control i18n-input'
+                                       selectname="emailInput" selectattr="placeholder">
+                            </div>
+                            <div>
+                                <button class='btn btn-success width-100 emailEnable i18n' disabled name="determine"></button>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <button class='btn btn-success width-100 emailEnable i18n' disabled name="determine"></button>
-                    </div>
+                    <!--</div>-->
+                    <!--</div>-->
                 </div>
             </div>
-            <!--</div>-->
-            <!--</div>-->
         </div>
+        <!--<div class="row formInfo phone margin-top-5 padding-top-bottom-100 table_bg">-->
+            <!--<div class="col-md-6 col-md-offset-3 col-sm-12">-->
+                <!--<div class=''>-->
+                    <!--<div class='form-group margin-bottom-0'>-->
+                        <!--<label for='email' class='i18n' name="email"></label>-->
+                        <!--<input type='tel' id='email' autocomplete="off" class='form-control i18n-input'-->
+                               <!--selectname="emailInput" selectattr="placeholder">-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--<button class='btn btn-success width-100 emailEnable i18n' disabled name="determine"></button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
     </div>
 </section>
 <!-- Modal -->
