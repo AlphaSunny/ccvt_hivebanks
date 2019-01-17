@@ -36,6 +36,7 @@ $(function () {
                     borderColor: window.chartColors.red,
                     fill: false,
                     data: newArrary,
+                    labels : ["10:10:40  ","February","March","April","May","June","July"],
                 },
                     // {
                     //     label: '新增人数',
