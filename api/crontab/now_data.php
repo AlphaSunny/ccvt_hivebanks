@@ -129,11 +129,18 @@ $unit = get_la_base_unit();
 //    $scale_changes[$k]['transfer_type'] = "ba-us";
 //}
 
-//用户提现
-$sql = "select us_id,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') from us_ba_withdraw_request WHERE qa_flag=1";
-echo $sql;
+//用户提现(com_transfer_request不存)
+$sql = "select us_id,base_amount as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ba_withdraw_request WHERE qa_flag=1";
 $db->query($sql);
 $us_ba_withdraw_request = $db->fetchAll();
+if ($us_ba_withdraw_request){
+    foreach ($us_ba_withdraw_request as $k=>$v){
+        $us_ba_withdraw_request[$k]['flag'] = 0;
+        $us_ba_withdraw_request[$k]['detail'] = "用户提现";
+        $us_ba_withdraw_request[$k]['type'] = "ba_out";
+        $us_ba_withdraw_request[$k]['transfer_type'] = "";
+    }
+}
 print_r($us_ba_withdraw_request);
 die;
 
