@@ -50,6 +50,7 @@ function get_group_info($group_id)
     $weeks = get_weeks();
     foreach ($weeks as $k=>$v){
         echo $k;
+        echo $v;
     }
     die;
     //七天内绑定变化
