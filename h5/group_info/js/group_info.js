@@ -33,108 +33,95 @@ $(function () {
         return moment().add(days, 'd').format();
     }
 
-    var color = Chart.helpers.color;
-    var config = {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: '注册人数增长趋势图',
-                backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-                borderColor: window.chartColors.red,
-                fill: false,
-                data: [{
-                    x: newDateString(0),
-                    y: randomScalingFactor()
-                }, {
-                    x: newDateString(2),
-                    y: randomScalingFactor()
-                }, {
-                    x: newDateString(4),
-                    y: randomScalingFactor()
-                }, {
-                    x: newDateString(5),
-                    y: randomScalingFactor()
-                }],
+    function ChartLine(newArrary) {
+        var color = Chart.helpers.color;
+        var config = {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: '注册人数增长趋势图',
+                    backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+                    borderColor: window.chartColors.red,
+                    fill: false,
+                    data: newArrary,
+                },
+                    // {
+                    //     label: '新增人数',
+                    //     backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                    //     borderColor: window.chartColors.blue,
+                    //     fill: false,
+                    //     data: [{
+                    //         x: newDate(0),
+                    //         y: randomScalingFactor()
+                    //     }, {
+                    //         x: newDate(2),
+                    //         y: randomScalingFactor()
+                    //     }, {
+                    //         x: newDate(4),
+                    //         y: randomScalingFactor()
+                    //     }, {
+                    //         x: newDate(5),
+                    //         y: randomScalingFactor()
+                    //     }, {
+                    //         x: newDate(5),
+                    //         y: randomScalingFactor()
+                    //     }]
+                    // },
+                    // {
+                    //     label: '退群人数',
+                    //     backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                    //     borderColor: window.chartColors.green,
+                    //     fill: false,
+                    //     data: [{
+                    //         x: newDate(0),
+                    //         y: randomScalingFactor()
+                    //     }, {
+                    //         x: newDate(2),
+                    //         y: randomScalingFactor()
+                    //     }, {
+                    //         x: newDate(4),
+                    //         y: randomScalingFactor()
+                    //     }, {
+                    //         x: newDate(5),
+                    //         y: randomScalingFactor()
+                    //     }]
+                    // }
+                ]
             },
-                // {
-                //     label: '新增人数',
-                //     backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                //     borderColor: window.chartColors.blue,
-                //     fill: false,
-                //     data: [{
-                //         x: newDate(0),
-                //         y: randomScalingFactor()
-                //     }, {
-                //         x: newDate(2),
-                //         y: randomScalingFactor()
-                //     }, {
-                //         x: newDate(4),
-                //         y: randomScalingFactor()
-                //     }, {
-                //         x: newDate(5),
-                //         y: randomScalingFactor()
-                //     }, {
-                //         x: newDate(5),
-                //         y: randomScalingFactor()
-                //     }]
-                // },
-                // {
-                //     label: '退群人数',
-                //     backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                //     borderColor: window.chartColors.green,
-                //     fill: false,
-                //     data: [{
-                //         x: newDate(0),
-                //         y: randomScalingFactor()
-                //     }, {
-                //         x: newDate(2),
-                //         y: randomScalingFactor()
-                //     }, {
-                //         x: newDate(4),
-                //         y: randomScalingFactor()
-                //     }, {
-                //         x: newDate(5),
-                //         y: randomScalingFactor()
-                //     }]
-                // }
-            ]
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: '群成员变化图'
-            },
-            scales: {
-                xAxes: [{
-                    type: 'time',
+            options: {
+                responsive: true,
+                title: {
                     display: true,
-                    scaleLabel: {
+                    text: '群成员变化图'
+                },
+                scales: {
+                    xAxes: [{
+                        type: 'time',
                         display: true,
-                        labelString: '时间'
-                    },
-                    ticks: {
-                        major: {
-                            fontStyle: 'bold',
-                            fontColor: '#FF0000'
+                        scaleLabel: {
+                            display: true,
+                            labelString: '时间'
+                        },
+                        ticks: {
+                            major: {
+                                fontStyle: 'bold',
+                                fontColor: '#FF0000'
+                            }
                         }
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
+                    }],
+                    yAxes: [{
                         display: true,
-                        labelString: ''
-                    }
-                }]
+                        scaleLabel: {
+                            display: true,
+                            labelString: ''
+                        }
+                    }]
+                }
             }
-        }
-    };
-
-    window.onload = function () {
+        };
         var ctx = document.getElementById('canvas').getContext('2d');
         window.myLine = new Chart(ctx, config);
-    };
+    }
 
 
     //获取群列表
@@ -178,6 +165,8 @@ $(function () {
             success: function (res) {
                 if (res.errcode == "0") {
                     var data = res.row, bind_num = "", glory_number = "";
+                    var bind_rows = res.bind_rows;
+                    var newArrary = [];
                     $(".name").text(data.name);
                     $(".bind_count").text(data.bind_count);
                     $(".glory_number").text(data.glory_number);
@@ -188,7 +177,6 @@ $(function () {
                     if (data.is_top == 1) {
                         $(".scale_next_p").addClass("none");
                         $(".up_tips").attr("data-original-title", "已达该领域最高级");
-                        // $('.up_tips').tooltip('hide')
                     } else {
                         $(".scale_next").text(parseInt(data.scale) + 1);
                         $(".scale_next_p").removeClass("none");
@@ -204,9 +192,18 @@ $(function () {
                             glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
                         }
                         $(".up_tips").attr("data-original-title", "距离下一级还需：" + bind_num + "个绑定用户 " + glory_number + "颗荣耀星数");
-                        // $('.up_tips').tooltip('hide')
                     }
                     $(".up_tips").tooltip();
+
+
+                    //chart line
+                    $.each(bind_rows, function (i, val) {
+                        newArrary[i].x = bind_rows[i].date;
+                        newArrary[i].y = bind_rows[i].num;
+                    });
+                    // config.data.datasets.data = newArrary;
+                    ChartLine(newArrary);
+
                 }
             },
             error: function (res) {
