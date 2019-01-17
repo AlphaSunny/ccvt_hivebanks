@@ -50,7 +50,9 @@ function get_group_info($group_id)
     $weeks = implode(get_weeks(),',');
     echo $weeks;
     //七天内绑定变化
-    $sql = "select count(us_id) as num,DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d') as date from us_bind where bind_name='group' AND bind_info='{$group_id}' AND DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d') between date_sub(curdate(),interval 7 day) and date_sub(curdate(),interval 1 day) group by DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d')";
+    $sql = "select count(us_id) as num,DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d') as date from us_bind where bind_name='group' AND bind_info='{$group_id}' AND 
+DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d') IN '({$weeks})'";
+    echo $sql;die;
     $db->query($sql);
     $bind_rows = $db->fetchAll();
     $row['bind_rows'] = $bind_rows;
