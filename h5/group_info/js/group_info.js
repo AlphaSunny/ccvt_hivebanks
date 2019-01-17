@@ -25,18 +25,18 @@ $(function () {
     });
 
     //chart
-    function ChartLine(newArrary) {
+    function ChartLine(x_arr,y_arr) {
         var color = Chart.helpers.color;
         var config = {
             type: 'line',
             data: {
-                labels : ["February","March","April","May","June","July"],
+                labels : x_arr,
                 datasets: [{
                     label: '注册人数增长趋势图',
                     backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
                     borderColor: window.chartColors.red,
                     fill: false,
-                    data: newArrary,
+                    data: y_arr,
                 },
                     // {
                     //     label: '新增人数',
@@ -110,7 +110,7 @@ $(function () {
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: ''
+                            labelString: '数量'
                         }
                     }]
                 }
@@ -163,7 +163,8 @@ $(function () {
                 if (res.errcode == "0") {
                     var data = res.row, bind_num = "", glory_number = "";
                     var bind_rows = res.bind_rows;
-                    var newArrary = [];
+                    var y_arr = [], x_arr = [];
+                    // var newArrary = [];
                     $(".name").text(data.name);
                     $(".bind_count").text(data.bind_count);
                     $(".glory_number").text(data.glory_number);
@@ -195,9 +196,11 @@ $(function () {
 
                     //chart line
                     $.each(bind_rows, function (i, val) {
-                        newArrary.push({x: bind_rows[i].date, y: bind_rows[i].num})
+                        // newArrary.push({x: bind_rows[i].date, y: bind_rows[i].num});
+                        x_arr.push(bind_rows[i].date);
+                        y_arr.push(bind_rows[i].num);
                     });
-                    ChartLine(newArrary);
+                    ChartLine(x_arr,y_arr);
 
                 }
             },
