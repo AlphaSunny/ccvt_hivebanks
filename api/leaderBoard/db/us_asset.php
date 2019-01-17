@@ -363,7 +363,8 @@ function give_like_us($data)
     $prvs_hash = get_recharge_pre_hash($data['us_id']);
     $com_balance_us['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;var_dump($com_balance_us['prvs_hash']);
     var_dump($com_balance_us['hash_id']);
-    var_dump($prvs_hash);die;
+    var_dump($prvs_hash);
+    var_dump($prvs_hash==0);die;
     $com_balance_us["credit_id"] = $data['us_id'];
     $com_balance_us["debit_id"] = $la_id;
     $com_balance_us["tx_type"] = 'give_like';
