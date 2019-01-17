@@ -42,9 +42,10 @@ $(function () {
                 }
             ]
         };
+        var ctx = document.getElementById('canvas').getContext('2d');
+        var myLineChart = new Chart(ctx).Line(data, options);
     }
-    var ctx = document.getElementById('canvas').getContext('2d');
-    var myLineChart = new Chart(ctx).Line(data, options);
+
 
 
     //获取群列表
