@@ -49,7 +49,7 @@ function get_group_info($group_id)
     $row['row'] = $row;
     $weeks = get_weeks();
     foreach ($weeks as $k=>$v){
-        $bind_rows[$k]['date'] = $v;
+        $bind_rows[$k-1]['date'] = $v;
         $sql = "select count(us_id) as num from us_bind where bind_name='group' AND bind_info='{$group_id}' AND DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d')='{$v}'";
         $db->query($sql);
         $bind_rows[$k]['num'] = $db->getField($sql,'num');
