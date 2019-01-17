@@ -14,6 +14,19 @@ function get_group_list()
     if ($row){
         foreach ($row as $k=>$v){
             $row[$k]['glory_number'] = glory_number($v['id']);
+            $sql = "select scale from bot_group_level_rules ORDER BY scale desc limit 1";
+            $db->query($sql);
+            if ($v['scale']==$db->getField($sql,'scale')){
+                $row[$k]['is_top'] = 1;
+                $row[$k]['next_level_bind_number'] = 0;
+                $row[$k]['next_level_glory_number'] = 0;
+            }else{
+                $row[$k]['is_top'] = 0;
+                $sql = "select bind_number,glory_number from bot_group_level_rules WHERE scale='{$v['scale']}'+1";
+                $db->query($sql);
+                $row[$k]['next_level_bind_number'] = $db->getField($sql,'bind_number');
+                $row[$k]['next_level_glory_number'] = $db->getField($sql,'glory_number');
+            }
         }
     }
     return $row;
