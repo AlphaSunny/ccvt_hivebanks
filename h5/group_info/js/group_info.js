@@ -26,7 +26,7 @@ $(function () {
 
     //chart
     function ChartLine(x_arr,y_arr) {
-        var ctx = document.getElementById("myChart").getContext('2d');
+        var ctx = document.getElementById("canvas").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
