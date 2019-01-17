@@ -32,7 +32,7 @@ $(function () {
         dataType: "json",
         success: function (res) {
             if (res.errcode == "0") {
-
+                console.log(res);
             }
         },
         error: function (res) {
