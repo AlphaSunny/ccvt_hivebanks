@@ -25,100 +25,26 @@ $(function () {
     });
 
     //chart
-    function ChartLine(newArr) {
-        var color = Chart.helpers.color;
-        var config = {
-            type: 'line',
-            data: {
-                // labels : x_arr,
-                datasets: [{
-                    label: '注册人数增长趋势图',
-                    backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-                    borderColor: window.chartColors.red,
-                    fill: false,
-                    data: newArr,
-                },
-                    // {
-                    //     label: '新增人数',
-                    //     backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                    //     borderColor: window.chartColors.blue,
-                    //     fill: false,
-                    //     data: [{
-                    //         x: newDate(0),
-                    //         y: randomScalingFactor()
-                    //     }, {
-                    //         x: newDate(2),
-                    //         y: randomScalingFactor()
-                    //     }, {
-                    //         x: newDate(4),
-                    //         y: randomScalingFactor()
-                    //     }, {
-                    //         x: newDate(5),
-                    //         y: randomScalingFactor()
-                    //     }, {
-                    //         x: newDate(5),
-                    //         y: randomScalingFactor()
-                    //     }]
-                    // },
-                    // {
-                    //     label: '退群人数',
-                    //     backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                    //     borderColor: window.chartColors.green,
-                    //     fill: false,
-                    //     data: [{
-                    //         x: newDate(0),
-                    //         y: randomScalingFactor()
-                    //     }, {
-                    //         x: newDate(2),
-                    //         y: randomScalingFactor()
-                    //     }, {
-                    //         x: newDate(4),
-                    //         y: randomScalingFactor()
-                    //     }, {
-                    //         x: newDate(5),
-                    //         y: randomScalingFactor()
-                    //     }]
-                    // }
-                ]
-            },
-            options: {
-                responsive: true,
-                title: {
-                    display: true,
-                    text: '群成员变化图'
-                },
-                scales: {
-                    xAxes: [{
-                        type: 'time',
-                        display: true,
-                        time: {
-                            // round: 'day'
-                            tooltipFormat: 'll HH:mm'
-                        },
-                        scaleLabel: {
-                            display: true,
-                            labelString: '日期'
-                        },
-                        ticks: {
-                            major: {
-                                fontStyle: 'bold',
-                                fontColor: '#FF0000'
-                            }
-                        }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: '数量'
-                        }
-                    }]
+    function ChartLine(x_arr,y_arr) {
+
+        var data = {
+            labels: x_arr,
+            datasets: [
+                {
+                    label: "日期",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: y_arr
                 }
-            }
+            ]
         };
-        var ctx = document.getElementById('canvas').getContext('2d');
-        window.myLine = new Chart(ctx, config);
     }
+    var ctx = document.getElementById('canvas').getContext('2d');
+    var myLineChart = new Chart(ctx).Line(data, options);
 
 
     //获取群列表
@@ -163,8 +89,8 @@ $(function () {
                 if (res.errcode == "0") {
                     var data = res.row, bind_num = "", glory_number = "";
                     var bind_rows = res.bind_rows;
-                    // var y_arr = [], x_arr = [];
-                    var newArr = [];
+                    var y_arr = [], x_arr = [];
+                    // var newArr = [];
                     $(".name").text(data.name);
                     $(".bind_count").text(data.bind_count);
                     $(".glory_number").text(data.glory_number);
@@ -196,11 +122,12 @@ $(function () {
 
                     //chart line
                     $.each(bind_rows, function (i, val) {
-                        newArr.push({x: bind_rows[i].date, y: bind_rows[i].num});
-                        // x_arr.push(bind_rows[i].date);
-                        // y_arr.push(bind_rows[i].num);
+                        // newArr.push({x: bind_rows[i].date, y: bind_rows[i].num});
+                        x_arr.push(bind_rows[i].date);
+                        y_arr.push(bind_rows[i].num);
                     });
-                    ChartLine(newArr);
+                    // ChartLine(newArr);
+                    ChartLine(x_arr, y_arr);
 
                 }
             },
