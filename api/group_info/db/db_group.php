@@ -21,31 +21,29 @@ function get_group_list()
 function get_group_info($group_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT id,name,scale,(select count(*) from us_bind where bind_name='group' and bind_info=id) as bind_count FROM bot_group  WHERE is_test=1 AND is_audit=2 AND is_admin_del=1 ORDER BY scale DESC,bind_count desc";
+    $sql = "SELECT id,name,scale,(select count(*) from us_bind where bind_name='group' and bind_info='{$group_id}') as bind_count FROM bot_group WHERE id='{$group_id}'";
     $db -> query($sql);
-    $row = $db -> fetchAll();
+    $row = $db -> fetchRow();
     if ($row){
-        foreach ($row as $k=>$v){
-            $sql = "select count(member_id) as count from bot_group_members WHERE group_id='{$v['id']}'";
+        $sql = "select count(member_id) as count from bot_group_members WHERE group_id='{$row['id']}'";
+        $db->query($sql);
+        $row['group_member_number'] = $db->getField($sql,'count');
+        $sql = "select count(id) as count from bot_memeber_change_record WHERE group_id='{$row['id']}' AND to_days(ctime) = to_days(now())";
+        $db->query($sql);
+        $row['this_day_in'] = $db->getField($sql,'count');
+        $row['glory_number'] = glory_number($row['id']);
+        $sql = "select scale from bot_group_level_rules ORDER BY scale desc limit 1";
+        $db->query($sql);
+        if ($row['scale']==$db->getField($sql,'scale')){
+            $row['is_top'] = 1;
+            $row['next_level_bind_number'] = 0;
+            $row['next_level_glory_number'] = 0;
+        }else{
+            $row['is_top'] = 0;
+            $sql = "select bind_number,glory_number from bot_group_level_rules WHERE scale='{$row['scale']}'+1";
             $db->query($sql);
-            $row[$k]['group_member_number'] = $db->getField($sql,'count');
-            $sql = "select count(id) as count from bot_memeber_change_record WHERE group_id='{$v['id']}' AND to_days(ctime) = to_days(now())";
-            $db->query($sql);
-            $row[$k]['this_day_in'] = $db->getField($sql,'count');
-            $row[$k]['glory_number'] = glory_number($v['id']);
-            $sql = "select scale from bot_group_level_rules ORDER BY scale desc limit 1";
-            $db->query($sql);
-            if ($v['scale']==$db->getField($sql,'scale')){
-                $row[$k]['is_top'] = 1;
-                $row[$k]['next_level_bind_number'] = 0;
-                $row[$k]['next_level_glory_number'] = 0;
-            }else{
-                $row[$k]['is_top'] = 0;
-                $sql = "select bind_number,glory_number from bot_group_level_rules WHERE scale='{$v['scale']}'+1";
-                $db->query($sql);
-                $row[$k]['next_level_bind_number'] = $db->getField($sql,'bind_number');
-                $row[$k]['next_level_glory_number'] = $db->getField($sql,'glory_number');
-            }
+            $row['next_level_bind_number'] = $db->getField($sql,'bind_number');
+            $row['next_level_glory_number'] = $db->getField($sql,'glory_number');
         }
     }
     return $row;

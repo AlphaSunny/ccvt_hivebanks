@@ -19,13 +19,10 @@ GET参数
 */
 
 php_begin();
-$args = array('group_id');
-chk_empty_args('GET', $args);
 
-$group_id = get_arg_str('GET','group_id');
 
 // 记录数组
-$rows = get_group_info($group_id);
+$rows = get_group_list();
 
 // 返回数据做成
 $rtn_ary = array();
