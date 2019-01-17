@@ -141,13 +141,14 @@ $(function () {
     //获取群列表
     $.ajax({
         type: "GET",
-        url: getRootPath() + "/api/group_info/group_info.php",
+        url: getRootPath() + "/api/group_info/group_list.php",
         dataType: "json",
         success: function (res) {
             if (res.errcode == "0") {
                 var data = res.rows;
+                var li = "";
                 $.each(data, function (i, val) {
-
+                    li+="<li class='group_item' name='"+ data[i].id +"'>"+ data[i].name +"</li>"
                 })
             }
         },
@@ -158,8 +159,9 @@ $(function () {
 
 
     //获取群详细信息
+    var group_id = 1;
     $(".group_item").click(function () {
-        var group_id = 1;
+        group_id = $(this).attr("name");
         GetGroupInfo(group_id);
     });
 
