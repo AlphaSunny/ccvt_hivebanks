@@ -25,6 +25,18 @@ $(function () {
         }
     });
 
-    // https://ccvt_test.fnying.com/api/group_info/group_info.php
 
+    $.ajax({
+        type: "GET",
+        url: getRootPath() + "api//group_info/group_info.php",
+        dataType: "json",
+        success: function (res) {
+            if (res.errcode == "0") {
+
+            }
+        },
+        error: function (res) {
+            ErrorPrompt(res.errmsg);
+        }
+    })
 });
