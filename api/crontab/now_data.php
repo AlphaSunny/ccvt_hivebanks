@@ -189,8 +189,27 @@ foreach ($big_us_interest as $k=>$v){
     $big_us_interest[$k]['transfer_type'] = "ba-us";
 }
 
-//员工动态调整
-$sql = "select s";
+//员工动态调整(ba-us加锁定余额)
+$sql = "select credit_id as us_id,tx_amount as send_money,ctime from com_base_balance2 WHERE tx_type='dynamic_tuning' AND debit_id='6C69520E-E454-127B-F474-452E65A3EE75'";
+$db->query($sql);
+$dynamic_tuning = $db->fetchAll();
+foreach ($dynamic_tuning as $k=>$v){
+    $dynamic_tuning[$k]['flag'] = 15;
+    $dynamic_tuning[$k]['detail'] = "员工动态调整";
+    $dynamic_tuning[$k]['type'] = "dynamic_tuning";
+    $dynamic_tuning[$k]['transfer_type'] = "ba-us";
+}
+
+//离职回收(us锁定金额给ba)
+$sql = "select credit_id as us_id,tx_amount as send_money,ctime from com_base_balance2 WHERE tx_type='gone_staff' AND debit_id='6C69520E-E454-127B-F474-452E65A3EE75'";
+$db->query($sql);
+$dynamic_tuning = $db->fetchAll();
+foreach ($dynamic_tuning as $k=>$v){
+    $dynamic_tuning[$k]['flag'] = 15;
+    $dynamic_tuning[$k]['detail'] = "离职回收";
+    $dynamic_tuning[$k]['type'] = "gone_staff";
+    $dynamic_tuning[$k]['transfer_type'] = "us-ba";
+}
 
 
 $list = array_merge($reg_user,$invite_rows,$bot_rows,$glory,$voucher,$tiaozhang,$scale_changes,$suocang);
