@@ -52,9 +52,20 @@ function get_group_info($group_id)
     $db->query($sql);
     $bind_rows = $db->fetchAll();
     $row['bind_rows'] = $bind_rows;
-
+    print_r(get_week());
     return $row;
 
+}
+
+function get_week($time = '', $format='Y-m-d'){
+    $time = $time != '' ? $time : time();
+    //获取当前周几
+    $week = date('w', $time);
+    $date = [];
+    for ($i=1; $i<=7; $i++){
+        $date[$i] = date($format ,strtotime( '+' . $i-$week .' days', $time));
+    }
+    return $date;
 }
 
 
