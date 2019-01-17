@@ -111,8 +111,7 @@ var execI18n = function () {
     /*
     Here you need to translate i18n
      */
-    console.log(window.location.host);
-    console.log(window.location.hostname);
+
     jQuery.i18n.properties({
         name: sourceName, //Resource file name
         path: 'assets/language/i18n/' + i18nLanguage + '/', //Resource file path

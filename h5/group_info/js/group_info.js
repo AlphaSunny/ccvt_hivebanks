@@ -32,7 +32,10 @@ $(function () {
         dataType: "json",
         success: function (res) {
             if (res.errcode == "0") {
-                console.log(res);
+                var data = res.rows;
+                $.each(data, function (i, val) {
+
+                })
             }
         },
         error: function (res) {
