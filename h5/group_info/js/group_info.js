@@ -166,7 +166,7 @@ $(function () {
                 if (res.errcode == "0") {
                     var data = res.row, bind_num = "", glory_number = "";
                     var bind_rows = res.bind_rows;
-                    var newArrary = [{}];
+                    var newArrary = bind_rows;
                     $(".name").text(data.name);
                     $(".bind_count").text(data.bind_count);
                     $(".glory_number").text(data.glory_number);
@@ -197,10 +197,10 @@ $(function () {
 
 
                     //chart line
-                    $.each(bind_rows, function (i, val) {
-                        newArrary[i].x = bind_rows[i].date;
-                        newArrary[i].y = bind_rows[i].num;
-                    });
+                    // $.each(bind_rows, function (i, val) {
+                    //     newArrary[i].x = bind_rows[i].date;
+                    //     newArrary[i].y = bind_rows[i].num;
+                    // });
                     // config.data.datasets.data = newArrary;
                     ChartLine(newArrary);
 
