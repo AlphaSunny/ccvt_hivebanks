@@ -26,6 +26,7 @@ $(function () {
 
     //chart
     function ChartLine(newArrary) {
+        var timeFormat = 'MM/DD/YYYY HH:mm';
         var color = Chart.helpers.color;
         var config = {
             type: 'line',
@@ -90,6 +91,11 @@ $(function () {
                     xAxes: [{
                         type: 'time',
                         display: true,
+                        time: {
+                            format: timeFormat,
+                            // round: 'day'
+                            tooltipFormat: 'll HH:mm'
+                        },
                         scaleLabel: {
                             display: true,
                             labelString: '日期'
