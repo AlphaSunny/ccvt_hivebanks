@@ -88,7 +88,7 @@ $(function () {
                 },
                 scales: {
                     xAxes: [{
-                        type: 'date',
+                        type: 'time',
                         display: true,
                         scaleLabel: {
                             display: true,
