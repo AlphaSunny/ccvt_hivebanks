@@ -167,6 +167,7 @@ $(function () {
     });
 
     function GetGroupInfo(group_id) {
+        console.log(group_id);
         $.ajax({
             type: "GET",
             url: getRootPath() + "/api/group_info/group_info.php?group_id="+group_id,
