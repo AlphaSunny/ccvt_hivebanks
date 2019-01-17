@@ -13,6 +13,9 @@ function get_group_list()
     $row = $db -> fetchAll();
     if ($row){
         foreach ($row as $k=>$v){
+            $sql = "select count(member_id) as count from bot_group_members WHERE group_id='{$v['id']}'";
+            $db->query($sql);
+            $row[$k]['group_member_number'] = $db->getField($sql,'count');
             $row[$k]['glory_number'] = glory_number($v['id']);
             $sql = "select scale from bot_group_level_rules ORDER BY scale desc limit 1";
             $db->query($sql);
