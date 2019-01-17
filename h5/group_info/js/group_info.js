@@ -74,6 +74,9 @@ $(function () {
                     }, {
                         x: newDate(5),
                         y: randomScalingFactor()
+                    }, {
+                        x: newDate(5),
+                        y: randomScalingFactor()
                     }]
                 },
                 // {
@@ -135,7 +138,7 @@ $(function () {
     };
 
 
-    //ajax
+    //获取群列表
     $.ajax({
         type: "GET",
         url: getRootPath() + "/api/group_info/group_info.php",
@@ -153,6 +156,8 @@ $(function () {
         }
     });
 
+
+    //获取群详细信息
     $(".group_item").click(function () {
         var group_id = 1;
         GetGroupInfo(group_id);
