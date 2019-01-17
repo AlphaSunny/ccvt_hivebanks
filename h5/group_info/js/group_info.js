@@ -177,7 +177,7 @@ $(function () {
             dataType: "json",
             success: function (res) {
                 if (res.errcode == "0") {
-                    var data = res.row;
+                    var data = res.row, bind_num = "", glory_number = "";
                     $(".name").text(data.name);
                     $(".bind_count").text(data.bind_count);
                     $(".glory_number").text(data.glory_number);
@@ -187,12 +187,23 @@ $(function () {
 
                     if (data.is_top == 1) {
                         $(".scale_next_p").addClass("none");
-                        $(".up_tips").attr("title","已达该领域最高级");
+                        $(".up_tips").attr("title", "已达该领域最高级");
                         $('.up_tips').tooltip('destroy')
                     } else {
                         $(".scale_next").text(parseInt(data.scale) + 1);
                         $(".scale_next_p").removeClass("none");
-                        $(".up_tips").attr("title","距离下一级还需："+ data.next_level_bind_number +"个绑定用户 "+ data.next_level_glory_number +"颗荣耀星数");
+                        if ((parseInt(data.next_level_bind_number) - (parseInt(data.bind_count))) <= 0) {
+                            bind_num = 0;
+                        } else {
+                            bind_num = parseInt(data.next_level_bind_number) - parseInt(data.bind_count);
+                        }
+
+                        if (((parseInt(data.next_level_glory_number)) - (parseInt(data.glory_number))) <= 0) {
+                            glory_number = 0;
+                        } else {
+                            glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
+                        }
+                        $(".up_tips").attr("title", "距离下一级还需：" + bind_num + "个绑定用户 " + glory_number + "颗荣耀星数");
                         $('.up_tips').tooltip('destroy')
                     }
                     $('[data-toggle="tooltip"]').tooltip();
