@@ -169,10 +169,7 @@ $(function () {
     function GetGroupInfo(group_id) {
         $.ajax({
             type: "GET",
-            url: getRootPath() + "/api/group_info/group_info.php",
-            data: {
-                "group_id": group_id
-            },
+            url: getRootPath() + "/api/group_info/group_info.php?group_id="+group_id,
             dataType: "json",
             success: function (res) {
                 if (res.errcode == "0") {
