@@ -24,4 +24,7 @@ $(function () {
             window.location.href = 'user/account.html';
         }
     });
+
+    // https://ccvt_test.fnying.com/api/group_info/group_info.php
+
 });
