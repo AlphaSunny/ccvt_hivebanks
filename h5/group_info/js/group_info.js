@@ -188,7 +188,7 @@ $(function () {
                     if (data.is_top == 1) {
                         $(".scale_next_p").addClass("none");
                         $(".up_tips").attr("title", "已达该领域最高级");
-                        $('.up_tips').tooltip('destroy')
+                        $('.up_tips').tooltip('hide')
                     } else {
                         $(".scale_next").text(parseInt(data.scale) + 1);
                         $(".scale_next_p").removeClass("none");
@@ -204,9 +204,9 @@ $(function () {
                             glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
                         }
                         $(".up_tips").attr("title", "距离下一级还需：" + bind_num + "个绑定用户 " + glory_number + "颗荣耀星数");
-                        $('.up_tips').tooltip('destroy')
+                        $('.up_tips').tooltip('hide')
                     }
-                    $('[data-toggle="tooltip"]').tooltip();
+                    $(".up_tips").tooltip('show');
                 }
             },
             error: function (res) {
