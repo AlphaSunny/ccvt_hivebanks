@@ -161,7 +161,7 @@ $(function () {
 
     //获取群详细信息
     var group_id = 1;
-    $(".group_item").click(function () {
+    $(document).on("click",".group_item",function () {
         group_id = $(this).attr("name");
         GetGroupInfo(group_id);
     });
