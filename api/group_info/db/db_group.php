@@ -52,7 +52,7 @@ function get_group_info($group_id)
     $db->query($sql);
     $bind_rows = $db->fetchAll();
     $row['bind_rows'] = $bind_rows;
-    print_r(get_week());
+    print_r(get_weeks());
     return $row;
 
 }
