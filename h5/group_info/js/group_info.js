@@ -26,7 +26,6 @@ $(function () {
 
     //chart
     function ChartLine(newArrary) {
-        var timeFormat = 'MM/DD/YYYY HH:mm';
         var color = Chart.helpers.color;
         var config = {
             type: 'line',
@@ -92,7 +91,6 @@ $(function () {
                         type: 'time',
                         display: true,
                         time: {
-                            format: timeFormat,
                             // round: 'day'
                             tooltipFormat: 'll HH:mm'
                         },
