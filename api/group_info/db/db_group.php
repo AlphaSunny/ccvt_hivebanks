@@ -57,13 +57,15 @@ function get_group_info($group_id)
 
 }
 
-function get_week($time = '', $format='Y-m-d'){
+/**
+ * 获取最近七天所有日期
+ */
+function get_weeks($time = '', $format='Y-m-d'){
     $time = $time != '' ? $time : time();
-    //获取当前周几
-    $week = date('w', $time);
+    //组合数据
     $date = [];
     for ($i=1; $i<=7; $i++){
-        $date[$i] = date($format ,strtotime( '+' . $i-$week .' days', $time));
+        $date[$i] = date($format ,strtotime( '+' . $i-7 .' days', $time));
     }
     return $date;
 }
