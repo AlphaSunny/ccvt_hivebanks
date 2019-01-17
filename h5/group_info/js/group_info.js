@@ -39,7 +39,7 @@ $(function () {
         type: 'line',
         data: {
             datasets: [{
-                label: '群成员',
+                label: '注册人数增长趋势图',
                 backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
                 borderColor: window.chartColors.red,
                 fill: false,
@@ -57,28 +57,28 @@ $(function () {
                     y: randomScalingFactor()
                 }],
             },
-                {
-                    label: '新增人数',
-                    backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                    borderColor: window.chartColors.blue,
-                    fill: false,
-                    data: [{
-                        x: newDate(0),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDate(2),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDate(4),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDate(5),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDate(5),
-                        y: randomScalingFactor()
-                    }]
-                },
+                // {
+                //     label: '新增人数',
+                //     backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                //     borderColor: window.chartColors.blue,
+                //     fill: false,
+                //     data: [{
+                //         x: newDate(0),
+                //         y: randomScalingFactor()
+                //     }, {
+                //         x: newDate(2),
+                //         y: randomScalingFactor()
+                //     }, {
+                //         x: newDate(4),
+                //         y: randomScalingFactor()
+                //     }, {
+                //         x: newDate(5),
+                //         y: randomScalingFactor()
+                //     }, {
+                //         x: newDate(5),
+                //         y: randomScalingFactor()
+                //     }]
+                // },
                 // {
                 //     label: '退群人数',
                 //     backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
