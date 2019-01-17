@@ -33,7 +33,7 @@ $(function () {
                 // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                 labels: x_arr,
                 datasets: [{
-                    label: '# of Votes',
+                    label: '成员增长趋势图',
                     // data: [12, 19, 3, 5, 2, 3],
                     data: y_arr,
                     backgroundColor: [
@@ -65,21 +65,6 @@ $(function () {
                 }
             }
         });
-        // var data = {
-        //     labels: x_arr,
-        //     datasets: [
-        //         {
-        //             label: "日期",
-        //             fillColor: "rgba(220,220,220,0.2)",
-        //             strokeColor: "rgba(220,220,220,1)",
-        //             pointColor: "rgba(220,220,220,1)",
-        //             pointStrokeColor: "#fff",
-        //             pointHighlightFill: "#fff",
-        //             pointHighlightStroke: "rgba(220,220,220,1)",
-        //             data: y_arr
-        //         }
-        //     ]
-        // };
     }
 
 
@@ -127,7 +112,6 @@ $(function () {
                     var data = res.row, bind_num = "", glory_number = "";
                     var bind_rows = res.bind_rows;
                     var y_arr = [], x_arr = [];
-                    // var newArr = [];
                     $(".name").text(data.name);
                     $(".bind_count").text(data.bind_count);
                     $(".glory_number").text(data.glory_number);
@@ -159,7 +143,6 @@ $(function () {
 
                     //chart line
                     $.each(bind_rows, function (i, val) {
-                        // newArr.push({x: bind_rows[i].date, y: bind_rows[i].num});
                         x_arr.push(bind_rows[i].date);
                         y_arr.push(bind_rows[i].num);
                     });
