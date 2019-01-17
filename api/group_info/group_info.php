@@ -7,7 +7,7 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 /*
-========================== 群信息列表 ==========================
+========================== 群信息 ==========================
 GET参数
   limit                分页记录
   offset               分页偏移量
@@ -31,6 +31,7 @@ $rows = get_group_info($group_id);
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['rows'] = $rows;
+$rtn_ary['row'] = $rows['row'];
+$rtn_ary['bind_rows'] = $rows['bind_rows'];
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
