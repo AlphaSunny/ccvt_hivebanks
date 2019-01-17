@@ -141,8 +141,6 @@ if ($us_ba_withdraw_request){
         $us_ba_withdraw_request[$k]['transfer_type'] = "";
     }
 }
-print_r($us_ba_withdraw_request);
-die;
 
 
 //群主返现
@@ -190,6 +188,9 @@ foreach ($big_us_interest as $k=>$v){
     $big_us_interest[$k]['type'] = "big_us_interest";
     $big_us_interest[$k]['transfer_type'] = "ba-us";
 }
+
+//员工动态调整
+$sql = "select s";
 
 
 $list = array_merge($reg_user,$invite_rows,$bot_rows,$glory,$voucher,$tiaozhang,$scale_changes,$suocang);
