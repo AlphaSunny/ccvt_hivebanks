@@ -14,7 +14,7 @@
 <body>
 <!-- loading -->
 <!--<iframe src='loading.html' class='loading' width='100%' height='100%' frameborder='0' marginheight='0' marginwidth='0'-->
-        <!--scrolling='no'></iframe>-->
+<!--scrolling='no'></iframe>-->
 <!--nav-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -89,7 +89,7 @@
 <!--Bread crumbs-->
 <div class='container'>
     <div class='row'>
-        <div class=''>
+        <div class='col-md-12 col-sm-12 col-xs-12'>
             <ol class='breadcrumb'>
                 <li><a href='test_account.html' class='i18n' name='account'></a></li>
                 <li class='active i18n' name='security'></li>
@@ -100,17 +100,11 @@
 <!--Security Information-->
 <section class='sections content section-top-2'>
     <div class='container'>
-        <!--<div class="row">-->
-            <!--<div class="col-md-12 col-sm-12 col-xs-12">-->
-                <!--<h3 class='pcTitle i18n' name='security'></h3>-->
-            <!--</div>-->
-        <!--</div>-->
         <div class='row'>
-            <div class='col-md-12 col-sm-12'>
+            <div class='col-md-12 col-sm-12 col-xs-12'>
                 <div>
                     <h3 class='pcTitle i18n' name='security'></h3>
                 </div>
-
 
                 <div class="card">
                     <div class="title flex justify-content-space-between align-items-center">
@@ -126,7 +120,8 @@
                                 <p class="w-180 i18n security_bind_title" name="phoneBind"></p>
                                 <p class="w-50 security_bind_status i18n phoneBindInfo none" name="notBind"></p>
                                 <a href="test_phoneBind.html" class="a_link i18n phoneBindBtn" name="bind"></a>
-                                <a href="test_phoneModify.html" class="a_link i18n phoneModifyBtn none" name="modify"></a>
+                                <a href="test_phoneModify.html" class="a_link i18n phoneModifyBtn none"
+                                   name="modify"></a>
                             </div>
                         </div>
 
@@ -136,9 +131,11 @@
                             <div class="item_content">
                                 <p class="w-180 i18n security_bind_title" name="emailBind"></p>
                                 <p class="w-50 security_bind_status email_status_notBind i18n" name="notBind"></p>
-                                <p class="w-50 security_bind_status email_status_alreadyBind i18n none" name="alreadyBind"></p>
+                                <p class="w-50 security_bind_status email_status_alreadyBind i18n none"
+                                   name="alreadyBind"></p>
                                 <a href="test_emailBind.html" class="a_link emailBindBtn i18n" name="bind"></a>
-                                <a href="test_emailModify.html" class="a_link emailModifyBind i18n none" name="modify"></a>
+                                <a href="test_emailModify.html" class="a_link emailModifyBind i18n none"
+                                   name="modify"></a>
                             </div>
                         </div>
 
@@ -148,7 +145,8 @@
                             <div class="item_content">
                                 <p class="w-180 i18n security_bind_title" name="fundPassword"></p>
                                 <p class="w-50 security_bind_status pass_hash_status_notBind i18n" name="notBind"></p>
-                                <p class="w-50 security_bind_status pass_hash_status_alreadyBind i18n none" name="alreadyBind"></p>
+                                <p class="w-50 security_bind_status pass_hash_status_alreadyBind i18n none"
+                                   name="alreadyBind"></p>
                                 <a href="javascript:;" class="a_link i18n fundPasswordBind" name="bind"></a>
                                 <a href="javascript:;" class="a_link i18n fundPasswordModify none" name="modify"></a>
                             </div>
@@ -159,8 +157,10 @@
                             <p class="icon_box"><i class='iconfont icon-iphone'></i></p>
                             <div class="item_content">
                                 <p class="w-180 i18n security_bind_title" name="loginPassword"></p>
-                                <p class="w-50 security_bind_status password_loin_status_notBind i18n" name="notBind"></p>
-                                <p class="w-50 security_bind_status password_loin_status_alreadyBind i18n none" name="alreadyBind"></p>
+                                <p class="w-50 security_bind_status password_loin_status_notBind i18n"
+                                   name="notBind"></p>
+                                <p class="w-50 security_bind_status password_loin_status_alreadyBind i18n none"
+                                   name="alreadyBind"></p>
                                 <a href="reset.html" class="a_link i18n" name="modify"></a>
                             </div>
                         </div>
@@ -170,8 +170,10 @@
                             <p class="icon_box"><i class='iconfont icon-iphone'></i></p>
                             <div class="item_content">
                                 <p class="w-180 i18n security_bind_title" name="authentication"></p>
-                                <p class="w-50 security_bind_status authentication_status_notBind i18n" name="notBind"></p>
-                                <p class="w-50 security_bind_status authentication_status_alreadyBind i18n none" name="alreadyBind"></p>
+                                <p class="w-50 security_bind_status authentication_status_notBind i18n"
+                                   name="notBind"></p>
+                                <p class="w-50 security_bind_status authentication_status_alreadyBind i18n none"
+                                   name="alreadyBind"></p>
                                 <a href="authentication.html" class="a_link i18n authenticationBindBtn" name="bind"></a>
                             </div>
                         </div>
@@ -182,7 +184,8 @@
                             <div class="item_content">
                                 <p class="w-180 security_bind_title i18n" name="google"></p>
                                 <p class="w-50 security_bind_status google_status_notBind i18n" name="notBind"></p>
-                                <p class="w-50 security_bind_status google_status_alreadyBind i18n none" name="alreadyBind"></p>
+                                <p class="w-50 security_bind_status google_status_alreadyBind i18n none"
+                                   name="alreadyBind"></p>
                                 <a href="googleBind.html" class="a_link i18n googleBindBtn" name="bind"></a>
                                 <a href="javascript:;" class="a_link i18n googleModifyBtn none" name="modify"></a>
                             </div>
@@ -199,7 +202,8 @@
                                 </p>
                                 <div class="flex align-items-center">
                                     <span class="i18n" name="closeSwitch"></span>
-                                    <input id="quickTreadSwitch" class="switch quickTreadSwitch switch-anim" type="checkbox" value="2">
+                                    <input id="quickTreadSwitch" class="switch quickTreadSwitch switch-anim"
+                                           type="checkbox" value="2">
                                     <span class="i18n" name="openSwitch"></span>
                                 </div>
                             </div>
