@@ -360,7 +360,7 @@ function give_like_us($data)
     $ctime = date('Y-m-d H:i:s');
     $com_balance_us['hash_id'] = hash('md5', $data['us_id'] . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_us['tx_id'] = $transfer['tx_hash'];
-    $prvs_hash = get_recharge_pre_hash($data['us_id']);
+    $prvs_hash = get_recharge_pre_hash($data['us_id'].'111');
     $com_balance_us['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;var_dump($com_balance_us['prvs_hash']);
     var_dump($com_balance_us['hash_id']);
     var_dump($prvs_hash);
