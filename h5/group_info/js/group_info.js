@@ -1,5 +1,4 @@
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip();
     var login_us = GetQueryString('user');
 
     function GetIndexCookie(name) {
@@ -189,10 +188,12 @@ $(function () {
                     if (data.is_top == 1) {
                         $(".scale_next_p").addClass("none");
                         $(".up_tips").attr("title","已达该领域最高级");
+                        $('[data-toggle="tooltip"]').tooltip();
                     } else {
                         $(".scale_next").text(parseInt(data.scale) + 1);
                         $(".scale_next_p").removeClass("none");
                         $(".up_tips").attr("title","距离下一级还需："+ data.next_level_bind_number +"个绑定用户 "+ data.next_level_glory_number +"颗荣耀星数");
+                        $('[data-toggle="tooltip"]').tooltip();
                     }
 
                 }
