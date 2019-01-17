@@ -61,7 +61,7 @@ function get_group_info($group_id)
 
 function get_day( $date ,$rtype = '1')
 {
-    $tem = explode(':' , $date);    //切割日期 得到年份和月份
+    $tem = explode('-' , $date);    //切割日期 得到年份和月份
     $year = $tem['0'];
     $month = $tem['1'];
     $text = 7;
