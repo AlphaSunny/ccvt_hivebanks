@@ -47,8 +47,11 @@ function get_group_info($group_id)
         }
     }
     $row['row'] = $row;
-    $weeks = implode(get_weeks(),',');
-    echo $weeks;
+    $weeks = get_weeks();
+    foreach ($weeks as $k=>$v){
+        echo $k;
+    }
+    die;
     //七天内绑定变化
     $sql = "select count(us_id) as num,DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d') as date from us_bind where bind_name='group' AND bind_info='{$group_id}' AND 
 DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d') IN '({$weeks})'";
