@@ -25,7 +25,7 @@ $(function () {
     });
 
     //chart
-    function ChartLine(x_arr,y_arr) {
+    function ChartLine(x_arr, y_arr) {
         var ctx = document.getElementById("canvas").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
@@ -59,14 +59,13 @@ $(function () {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                            beginAtZero: true
                         }
                     }]
                 }
             }
         });
     }
-
 
 
     //获取群列表
@@ -119,24 +118,29 @@ $(function () {
                     $(".this_day_in").text(data.this_day_in);
                     $(".scale").text(data.scale);
 
+                    var next_bind_number = parseInt(data.next_level_bind_number) - parseInt(data.bind_count);
+                    var next_glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
+
                     if (data.is_top == 1) {
                         $(".scale_next_p").addClass("none");
                         $(".up_tips").attr("data-original-title", "已达该领域最高级");
                     } else {
                         $(".scale_next").text(parseInt(data.scale) + 1);
                         $(".scale_next_p").removeClass("none");
-                        if ((parseInt(data.next_level_bind_number) - (parseInt(data.bind_count))) <= 0) {
+                        if (next_bind_number <= 0) {
                             bind_num = 0;
                         } else {
-                            bind_num = parseInt(data.next_level_bind_number) - parseInt(data.bind_count);
+                            bind_num = next_bind_number;
                         }
 
-                        if (((parseInt(data.next_level_glory_number)) - (parseInt(data.glory_number))) <= 0) {
+                        if (next_glory_number <= 0) {
                             glory_number = 0;
                         } else {
-                            glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
+                            glory_number = next_glory_number;
                         }
                         $(".up_tips").attr("data-original-title", "距离下一级还需：" + bind_num + "个绑定用户 " + glory_number + "颗荣耀星数");
+                        var width = 100 - (bind_num + glory_number);
+                        $(".progress-bar").css("width", width+"%");
                     }
                     $(".up_tips").tooltip();
 
