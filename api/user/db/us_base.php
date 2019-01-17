@@ -111,7 +111,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     //增币记录   赠送者
     $data['hash_id'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($rows['ba_id']);
-    $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $data['prvs_hash'] = $prvs_hash == 0 ? hash($rows['ba_id']) : $prvs_hash;
     $data['credit_id'] = $rows['ba_id'];
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $money*$unit;
@@ -134,7 +134,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     //接收者
     $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($us_id);
-    $dat['prvs_hash'] = $prvs_hash == 0 ? $dat['hash_id'] : $prvs_hash;
+    $dat['prvs_hash'] = $prvs_hash == 0 ? hash($us_id) : $prvs_hash;
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = $rows['ba_id'];
     $dat['tx_amount'] = $money*$unit;
@@ -161,7 +161,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_us['tx_id'] = $data['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($us_id);
-    $com_balance_us['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
+    $com_balance_us['prvs_hash'] = $prvs_hash == 0 ? hash($us_id) : $prvs_hash;
     $com_balance_us["credit_id"] = $us_id;
     $com_balance_us["debit_id"] = $rows['ba_id'];
     $com_balance_us["tx_type"] = $type;
@@ -181,7 +181,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $com_balance_ba['hash_id'] = hash('md5', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_ba['tx_id'] = $data['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($rows['ba_id']);
-    $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
+    $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? hash($rows['ba_id']) : $prvs_hash;
     $com_balance_ba["credit_id"] = $rows['ba_id'];
     $com_balance_ba["debit_id"] = $us_id;
     $com_balance_ba["tx_type"] = $type;
