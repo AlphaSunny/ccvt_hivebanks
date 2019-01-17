@@ -148,8 +148,9 @@ $(function () {
                 var data = res.rows;
                 var li = "";
                 $.each(data, function (i, val) {
-                    li+="<li class='group_item' name='"+ data[i].id +"'>"+ data[i].name +"</li>"
-                })
+                    li += "<li class='group_item' name='" + data[i].id + "'>" + data[i].name + "</li>"
+                });
+                $(".group_item_box").html(li);
             }
         },
         error: function (res) {
@@ -169,8 +170,8 @@ $(function () {
         $.ajax({
             type: "GET",
             url: getRootPath() + "/api/group_info/group_info.php",
-            data:{
-                "group_id":group_id
+            data: {
+                "group_id": group_id
             },
             dataType: "json",
             success: function (res) {
@@ -184,4 +185,6 @@ $(function () {
             }
         });
     }
+
+    GetGroupInfo(group_id);
 });
