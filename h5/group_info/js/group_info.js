@@ -187,8 +187,8 @@ $(function () {
 
                     if (data.is_top == 1) {
                         $(".scale_next_p").addClass("none");
-                        $(".up_tips").attr("title", "已达该领域最高级");
-                        $('.up_tips').tooltip('hide')
+                        $(".up_tips").attr("data-original-title", "已达该领域最高级");
+                        // $('.up_tips').tooltip('hide')
                     } else {
                         $(".scale_next").text(parseInt(data.scale) + 1);
                         $(".scale_next_p").removeClass("none");
@@ -203,10 +203,10 @@ $(function () {
                         } else {
                             glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
                         }
-                        $(".up_tips").attr("title", "距离下一级还需：" + bind_num + "个绑定用户 " + glory_number + "颗荣耀星数");
-                        $('.up_tips').tooltip('hide')
+                        $(".up_tips").attr("data-original-title", "距离下一级还需：" + bind_num + "个绑定用户 " + glory_number + "颗荣耀星数");
+                        // $('.up_tips').tooltip('hide')
                     }
-                    $(".up_tips").tooltip('show');
+                    $(".up_tips").tooltip();
                 }
             },
             error: function (res) {
