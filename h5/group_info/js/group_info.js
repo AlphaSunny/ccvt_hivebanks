@@ -186,7 +186,7 @@ $(function () {
                     $(".scale").text(data.scale);
 
                     if (data.is_top == 1) {
-                        $(".scale_next_p").remove();
+                        $(".scale_next_p").addClass("none");
                         $(".up_tips").attr("title","距离下一级还需："+ data.next_level_bind_number +"个绑定用户 "+ data.next_level_glory_number +"颗荣耀星数");
                     } else {
                         $(".scale_next").text(parseInt(data.scale) + 1);
