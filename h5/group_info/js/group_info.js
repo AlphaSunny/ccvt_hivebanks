@@ -166,7 +166,7 @@ $(function () {
                 if (res.errcode == "0") {
                     var data = res.row, bind_num = "", glory_number = "";
                     var bind_rows = res.bind_rows;
-                    var newArrary = [];
+                    var newArrary = [{}];
                     $(".name").text(data.name);
                     $(".bind_count").text(data.bind_count);
                     $(".glory_number").text(data.glory_number);
