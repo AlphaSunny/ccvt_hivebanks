@@ -131,6 +131,7 @@ $unit = get_la_base_unit();
 
 //用户提现
 $sql = "select us_id,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') from us_ba_withdraw_request WHERE qa_flag=1";
+echo $sql;
 $db->query($sql);
 $us_ba_withdraw_request = $db->fetchAll();
 print_r($us_ba_withdraw_request);
