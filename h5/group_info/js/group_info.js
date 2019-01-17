@@ -30,13 +30,13 @@ $(function () {
         var config = {
             type: 'line',
             data: {
+                labels : ["February","March","April","May","June","July"],
                 datasets: [{
                     label: '注册人数增长趋势图',
                     backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
                     borderColor: window.chartColors.red,
                     fill: false,
                     data: newArrary,
-                    labels : ["10:10:40  ","February","March","April","May","June","July"],
                 },
                     // {
                     //     label: '新增人数',
