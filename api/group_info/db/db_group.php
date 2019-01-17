@@ -53,8 +53,26 @@ function get_group_info($group_id)
     $bind_rows = $db->fetchAll();
     $row['bind_rows'] = $bind_rows;
 
+    print_r(get_day(date('Y-m-d'),2));die;
+
     return $row;
 
+}
+
+function get_day( $date ,$rtype = '1')
+{
+    $tem = explode(':' , $date);    //切割日期 得到年份和月份
+    $year = $tem['0'];
+    $month = $tem['1'];
+    $text = 7;
+    if ($rtype == '2') {
+        for ($i = 1; $i <= $text ; $i ++ ) {
+            $r[] = $year."-".$month."-".$i;
+        }
+    } else {
+        $r = $text;
+    }
+    return $r;
 }
 
 
