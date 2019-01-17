@@ -67,8 +67,11 @@ $(function () {
                 }
             ]
         };
+        var option ={
+            bezierCurve: false
+        };
         var ctx = document.getElementById('canvas').getContext('2d');
-        var myLineChart = new Chart(ctx).Line(data);
+        var myLineChart = new Chart(ctx).Line(data,option);
     }
 
 
