@@ -28,7 +28,7 @@ $(function () {
 
     $.ajax({
         type: "GET",
-        url: getRootPath() + "/api//group_info/group_info.php",
+        url: getRootPath() + "/api/group_info/group_info.php",
         dataType: "json",
         success: function (res) {
             if (res.errcode == "0") {
