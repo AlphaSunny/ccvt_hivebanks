@@ -7,127 +7,127 @@ $db = new DB_COM();
 
 $unit = get_la_base_unit();
 
-//注册
-$sql = "select us_id,ctime from us_base WHERE 1";
-$db->query($sql);
-$reg_user = $db->fetchAll();
-foreach ($reg_user as $k=>$v){
-    if ($v['ctime']<'2018-10-01 00:00:00'){
-        $send_money = "1000"*$unit;
-    }elseif($v['ctime']>='2018-10-01 00:00:00' and $v['ctime']<'2018-10-07 23:59:59'){
-        $send_money = "500"*$unit;
-    }else{
-        $send_money = "50"*$unit;
-    }
-    $reg_user[$k]['send_money'] = $send_money;
-    $reg_user[$k]['flag'] = 1;
-    $reg_user[$k]['detail'] = "注册赠送";
-    $reg_user[$k]['type'] = "reg_send";
-    $reg_user[$k]['transfer_type'] = "ba-us";
-}
-
-//邀请
-$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
-$db->query($sql);
-$invite_rows = $db->fetchAll();
-foreach ($invite_rows as $k=>$v){
-    $invite_rows[$k]['send_money'] = "50"*$unit;
-    $invite_rows[$k]['flag'] = 2;
-    $invite_rows[$k]['detail'] = "邀请赠送";
-    $invite_rows[$k]['type'] = "invite_send";
-    $invite_rows[$k]['transfer_type'] = "ba-us";
-}
-
-//二级邀请奖励
-$sql = "select us_id,ctime from us_base WHERE 1";
-$db->query($sql);
-$two_invite_send = $db->fetchAll();
-foreach ($two_invite_send as $k=>$v){
-    $sql = "select count(us_id) as count from us_base WHERE invite_code in (select us_nm from us_base WHERE invite_code=(select us_nm from us_base WHERE us_id='{$v['us_id']}') GROUP BY us_nm)";
-    $db->query($sql);
-    $data = $db->fetchRow();
-    if ($data['count']==0){
-        unset($two_invite_send[$k]);
-    }else{
-        $two_invite_send[$k]['send_money'] = $data['count']*20*$unit;
-        $two_invite_send[$k]['ctime'] = date('Y-m-d H:i:s',strtotime($v['ctime'])+10);
-        $two_invite_send[$k]['flag'] = 2;
-        $two_invite_send[$k]['detail'] = "二级邀请赠送";
-        $two_invite_send[$k]['type'] = "two_invite_send";
-        $two_invite_send[$k]['transfer_type'] = "ba-us";
-    }
-}
-
-
-//群聊奖励
-$sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where 1";
-$db->query($sql);
-$bot_rows = $db->fetchAll();
-foreach ($bot_rows as $k=>$v){
-    $bot_rows[$k]['flag'] = 4;
-    $bot_rows[$k]['detail'] = "聊天奖励";
-    $bot_rows[$k]['type'] = "ba_send";
-    $bot_rows[$k]['transfer_type'] = "ba-us";
-}
-
-
-//点赞(点踩)(ccvt兑换积分)
-$sql = "select credit_id as us_id,utime as ctime,tx_amount as send_money,tx_detail as detail,state as flag from us_glory_integral_change_log WHERE 1";
-$db->query($sql);
-$glory = $db->fetchAll();
-foreach ($glory as $k=>$v){
-    if ($v['flag']==1 && $v['detail']=="点赞"){
-        $flag = 5;
-        $type = "give_like";
-    }elseif ($v['flag']==1 && $v['detail']=="ccvt兑换积分"){
-        $flag = 8;
-        $type = "ccvt_inte";
-    }elseif ($v['flag']==2){
-        $flag = 6;
-        $type = "give_like";
-    }
-    $glory[$k]['flag'] = $flag;
-    $glory[$k]['type'] = $type;
-    $glory[$k]['transfer_type'] = "us-la";
-}
-
-
-
-
-//兑换码兑换
-$sql = "select us_id,amount as send_money,exchange_time as ctime from us_voucher WHERE is_effective=2";
-$db->query($sql);
-$voucher = $db->fetchAll();
-foreach ($voucher as $k=>$v){
-    $voucher[$k]['send_money'] = $v['send_money']*$unit;
-    $voucher[$k]['flag'] = 7;
-    $voucher[$k]['detail'] = "兑换码兑换";
-    $voucher[$k]['type'] = "voucher";
-    $voucher[$k]['transfer_type'] = "ba-us";
-}
-
-
-//ba调账(活动奖励啥的)
-$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=3 AND give_or_receive=2";
-$db->query($sql);
-$tiaozhang = $db->fetchAll();
-foreach ($tiaozhang as $k=>$v){
-    $tiaozhang[$k]['type'] = "ba_tran";
-    $tiaozhang[$k]['transfer_type'] = "ba-us";
-}
-
-
-//升级返还
-$sql = "select us_id,ctime from us_scale_changes WHERE ctime<'2018-12-01 19:50:02'";
-$db->query($sql);
-$scale_changes = $db->fetchAll();
-foreach ($scale_changes as $k=>$v){
-    $scale_changes[$k]['send_money'] = "50"*$unit;
-    $scale_changes[$k]['flag'] = 9;
-    $scale_changes[$k]['detail'] = "升级返还";
-    $scale_changes[$k]['type'] = "up_retuen";
-    $scale_changes[$k]['transfer_type'] = "ba-us";
-}
+////注册
+//$sql = "select us_id,ctime from us_base WHERE 1";
+//$db->query($sql);
+//$reg_user = $db->fetchAll();
+//foreach ($reg_user as $k=>$v){
+//    if ($v['ctime']<'2018-10-01 00:00:00'){
+//        $send_money = "1000"*$unit;
+//    }elseif($v['ctime']>='2018-10-01 00:00:00' and $v['ctime']<'2018-10-07 23:59:59'){
+//        $send_money = "500"*$unit;
+//    }else{
+//        $send_money = "50"*$unit;
+//    }
+//    $reg_user[$k]['send_money'] = $send_money;
+//    $reg_user[$k]['flag'] = 1;
+//    $reg_user[$k]['detail'] = "注册赠送";
+//    $reg_user[$k]['type'] = "reg_send";
+//    $reg_user[$k]['transfer_type'] = "ba-us";
+//}
+//
+////邀请
+//$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
+//$db->query($sql);
+//$invite_rows = $db->fetchAll();
+//foreach ($invite_rows as $k=>$v){
+//    $invite_rows[$k]['send_money'] = "50"*$unit;
+//    $invite_rows[$k]['flag'] = 2;
+//    $invite_rows[$k]['detail'] = "邀请赠送";
+//    $invite_rows[$k]['type'] = "invite_send";
+//    $invite_rows[$k]['transfer_type'] = "ba-us";
+//}
+//
+////二级邀请奖励
+//$sql = "select us_id,ctime from us_base WHERE 1";
+//$db->query($sql);
+//$two_invite_send = $db->fetchAll();
+//foreach ($two_invite_send as $k=>$v){
+//    $sql = "select count(us_id) as count from us_base WHERE invite_code in (select us_nm from us_base WHERE invite_code=(select us_nm from us_base WHERE us_id='{$v['us_id']}') GROUP BY us_nm)";
+//    $db->query($sql);
+//    $data = $db->fetchRow();
+//    if ($data['count']==0){
+//        unset($two_invite_send[$k]);
+//    }else{
+//        $two_invite_send[$k]['send_money'] = $data['count']*20*$unit;
+//        $two_invite_send[$k]['ctime'] = date('Y-m-d H:i:s',strtotime($v['ctime'])+10);
+//        $two_invite_send[$k]['flag'] = 2;
+//        $two_invite_send[$k]['detail'] = "二级邀请赠送";
+//        $two_invite_send[$k]['type'] = "two_invite_send";
+//        $two_invite_send[$k]['transfer_type'] = "ba-us";
+//    }
+//}
+//
+//
+////群聊奖励
+//$sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where 1";
+//$db->query($sql);
+//$bot_rows = $db->fetchAll();
+//foreach ($bot_rows as $k=>$v){
+//    $bot_rows[$k]['flag'] = 4;
+//    $bot_rows[$k]['detail'] = "聊天奖励";
+//    $bot_rows[$k]['type'] = "ba_send";
+//    $bot_rows[$k]['transfer_type'] = "ba-us";
+//}
+//
+//
+////点赞(点踩)(ccvt兑换积分)
+//$sql = "select credit_id as us_id,utime as ctime,tx_amount as send_money,tx_detail as detail,state as flag from us_glory_integral_change_log WHERE 1";
+//$db->query($sql);
+//$glory = $db->fetchAll();
+//foreach ($glory as $k=>$v){
+//    if ($v['flag']==1 && $v['detail']=="点赞"){
+//        $flag = 5;
+//        $type = "give_like";
+//    }elseif ($v['flag']==1 && $v['detail']=="ccvt兑换积分"){
+//        $flag = 8;
+//        $type = "ccvt_inte";
+//    }elseif ($v['flag']==2){
+//        $flag = 6;
+//        $type = "give_like";
+//    }
+//    $glory[$k]['flag'] = $flag;
+//    $glory[$k]['type'] = $type;
+//    $glory[$k]['transfer_type'] = "us-la";
+//}
+//
+//
+//
+//
+////兑换码兑换
+//$sql = "select us_id,amount as send_money,exchange_time as ctime from us_voucher WHERE is_effective=2";
+//$db->query($sql);
+//$voucher = $db->fetchAll();
+//foreach ($voucher as $k=>$v){
+//    $voucher[$k]['send_money'] = $v['send_money']*$unit;
+//    $voucher[$k]['flag'] = 7;
+//    $voucher[$k]['detail'] = "兑换码兑换";
+//    $voucher[$k]['type'] = "voucher";
+//    $voucher[$k]['transfer_type'] = "ba-us";
+//}
+//
+//
+////ba调账(活动奖励啥的)
+//$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=3 AND give_or_receive=2";
+//$db->query($sql);
+//$tiaozhang = $db->fetchAll();
+//foreach ($tiaozhang as $k=>$v){
+//    $tiaozhang[$k]['type'] = "ba_tran";
+//    $tiaozhang[$k]['transfer_type'] = "ba-us";
+//}
+//
+//
+////升级返还
+//$sql = "select us_id,ctime from us_scale_changes WHERE ctime<'2018-12-01 19:50:02'";
+//$db->query($sql);
+//$scale_changes = $db->fetchAll();
+//foreach ($scale_changes as $k=>$v){
+//    $scale_changes[$k]['send_money'] = "50"*$unit;
+//    $scale_changes[$k]['flag'] = 9;
+//    $scale_changes[$k]['detail'] = "升级返还";
+//    $scale_changes[$k]['type'] = "up_retuen";
+//    $scale_changes[$k]['transfer_type'] = "ba-us";
+//}
 
 //用户提现
 $sql = "select us_id,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') from us_ba_withdraw_request WHERE qa_flag=1";
