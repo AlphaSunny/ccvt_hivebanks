@@ -130,7 +130,11 @@ foreach ($scale_changes as $k=>$v){
 }
 
 //用户提现
-
+$sql = "select us_id,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') from us_ba_withdraw_request WHERE qa_flag=1";
+$db->query($sql);
+$us_ba_withdraw_request = $db->fetchAll();
+print_r($us_ba_withdraw_request);
+die;
 
 
 //群主返现
