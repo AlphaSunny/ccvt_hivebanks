@@ -64,9 +64,10 @@ function get_day( $date ,$rtype = '1')
     $tem = explode('-' , $date);    //切割日期 得到年份和月份
     $year = $tem['0'];
     $month = $tem['1'];
+    $day = $tem['2'];
     $text = 7;
     if ($rtype == '2') {
-        for ($i = 1; $i <= $text ; $i ++ ) {
+        for ($i = $day; $i >= $text ; $i -- ) {
             $r[] = $year."-".$month."-".$i;
         }
     } else {
