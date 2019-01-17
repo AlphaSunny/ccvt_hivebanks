@@ -76,25 +76,25 @@ $(function () {
                         y: randomScalingFactor()
                     }]
                 },
-                {
-                    label: '退群人数',
-                    backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                    borderColor: window.chartColors.green,
-                    fill: false,
-                    data: [{
-                        x: newDate(0),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDate(2),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDate(4),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDate(5),
-                        y: randomScalingFactor()
-                    }]
-                }
+                // {
+                //     label: '退群人数',
+                //     backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                //     borderColor: window.chartColors.green,
+                //     fill: false,
+                //     data: [{
+                //         x: newDate(0),
+                //         y: randomScalingFactor()
+                //     }, {
+                //         x: newDate(2),
+                //         y: randomScalingFactor()
+                //     }, {
+                //         x: newDate(4),
+                //         y: randomScalingFactor()
+                //     }, {
+                //         x: newDate(5),
+                //         y: randomScalingFactor()
+                //     }]
+                // }
             ]
         },
         options: {
