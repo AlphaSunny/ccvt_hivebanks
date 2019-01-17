@@ -25,14 +25,6 @@ $(function () {
     });
 
     //chart
-    function newDate(days) {
-        return moment().add(days, 'd').toDate();
-    }
-
-    function newDateString(days) {
-        return moment().add(days, 'd').format();
-    }
-
     function ChartLine(newArrary) {
         var color = Chart.helpers.color;
         var config = {
@@ -96,11 +88,11 @@ $(function () {
                 },
                 scales: {
                     xAxes: [{
-                        type: 'time',
+                        type: 'date',
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: '时间'
+                            labelString: '日期'
                         },
                         ticks: {
                             major: {
@@ -198,12 +190,8 @@ $(function () {
 
                     //chart line
                     $.each(bind_rows, function (i, val) {
-                        // newArrary[i].x = bind_rows[i].date;
-                        // newArrary[i].y = bind_rows[i].num;
-
                         newArrary.push({x: bind_rows[i].date, y: bind_rows[i].num})
                     });
-                    // config.data.datasets.data = newArrary;
                     ChartLine(newArrary);
 
                 }
