@@ -257,14 +257,13 @@ $list = array_merge($reg_user,$invite_rows,$two_invite_send,$bot_rows,$glory,$vo
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
 //print_r(json_encode($list));
-////echo count($list);
+echo count($list);
 //die;
 
 $ba_id = get_ba_id();
 $la_id = get_la_id();
 foreach ($list as $k=>$v){
     set_time_limit(0);
-    print_r($v);
     into_transfer($v['us_id'],$v['send_money'],$v['ctime'],$v['flag'],$v['detail'],$v['type'],$v['transfer_type'],$ba_id,$la_id,$v['transfer_us_id']);
 }
 
