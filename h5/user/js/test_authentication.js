@@ -80,7 +80,7 @@ $(function () {
                         $(".idPhoto2").attr("src",idPhoto2);
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '1') {//Upload ID card review rejection
-                        $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoAlreadyBind").remove();
+                        $(".idPhotoNotBind,.idPhotoBindInfo,.idPhotoAlreadyBind").remove();
                         $(".idPhotoUnderReview").text("认证被拒绝，请重新绑定").removeClass("none");
                         return;
                     }
