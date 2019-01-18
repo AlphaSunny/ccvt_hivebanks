@@ -285,7 +285,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
                 $sql .= " base_amount=base_amount+'{$send_money}'";
             }
             $sql .= "WHERE us_id='{$us_id}'";
-            echo $sql."1";
+            echo $sql."1"."<br />";
             $db -> query($sql);
             if (!$db->affectedRows()){
                 echo "us加钱1错误";
@@ -293,7 +293,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
 
             //ba减钱
             $sql = "update ba_base set base_amount=base_amount-'{$send_money}' WHERE ba_id='{$ba_id}'";
-            echo $sql."2";
+            echo $sql."2"."<br />";
             $db -> query($sql);
             if (!$db->affectedRows()){
                 echo "ba减钱1错误";
@@ -301,7 +301,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         case "us-la":
             //用户减钱
             $sql = "update us_base set base_amount=base_amount-'{$send_money}' WHERE us_id='{$us_id}'";
-            echo $sql."3";
+            echo $sql."3"."<br />";
             $db -> query($sql);
             if (!$db->affectedRows()){
                 echo "us减钱2错误";
@@ -309,7 +309,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
 
             //la加钱
             $sql = "update la_base set base_amount=base_amount+'{$send_money}' limit 1";
-            echo $sql."4";
+            echo $sql."4"."<br />";
             $db->query($sql);
             if (!$db->affectedRows()){
                 echo "la加钱2错误";
@@ -317,7 +317,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         case "us-us":
             //用户减钱
             $sql = "update us_base set base_amount=base_amount-'{$send_money}' WHERE us_id='{$us_id}'";
-            echo $sql."5";
+            echo $sql."5"."<br />";
             $db -> query($sql);
             if (!$db->affectedRows()){
                 echo "us减钱3错误";
@@ -325,7 +325,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
 
             //用户加钱
             $sql = "update us_base set base_amount=base_amount+'{$send_money}' WHERE us_id='{$transfer_us_id}'";
-            echo $sql."6";
+            echo $sql."6"."<br />";
             $db -> query($sql);
             if (!$db->affectedRows()){
                 echo "us加钱3错误";
@@ -340,7 +340,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
                 $sql .= "set base_amount=base_amount-'{$send_money}'";
             }
             $sql .= " WHERE us_id='{$us_id}'";
-            echo $sql."6";
+            echo $sql."6"."<br />";
             $db -> query($sql);
             if (!$db->affectedRows()){
                 echo "us金额减钱4错误";
@@ -348,7 +348,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
 
             //ba加钱
             $sql = "update ba_base set base_amount=base_amount+'{$send_money}' WHERE ba_id='{$ba_id}'";
-            echo $sql."7";
+            echo $sql."7"."<br />";
             $db->query($sql);
             if (!$db->affectedRows()){
                 echo "ba加钱4错误";
