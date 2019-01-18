@@ -26,7 +26,7 @@ $(function () {
             recharge_min_amount = response.recharge_min_amount;
             $('.recharge_max_amount').text(response.max_amount);
             $('.recharge_min_amount').text(response.min_amount);
-            $('.recharge_ctime').text(response.set_time);
+            // $('.recharge_ctime').text(response.set_time);
             $('.base_amount').val(us_recharge_bit_amount / rate);
         }
     }, function (response) {
