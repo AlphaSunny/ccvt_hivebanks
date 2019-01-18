@@ -94,6 +94,11 @@ $(function () {
 
     GetBindInfo();
 
+    //look img
+    $(".idPhotoBindInfo").click(function () {
+        $("#idPhotoImg_modal").removeClass("none");
+    });
+
     //show bind name
     $('.nameBindBtn').click(function () {
         $('#nameBindModal').modal('show');
