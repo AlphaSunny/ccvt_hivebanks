@@ -256,8 +256,8 @@ foreach ($gone_staff as $k=>$v){
 $list = array_merge($reg_user,$invite_rows,$two_invite_send,$bot_rows,$glory,$voucher,$tiaozhang,$scale_changes,$us_ba_withdraw_request,$group_cashback,$us_us_transfer,$give_like_back,$suocang,$big_us_interest,$dynamic_tuning,$gone_staff);
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
-print_r(json_encode($list));
-//echo count($list);
+//print_r(json_encode($list));
+echo count($list);
 die;
 
 $ba_id = get_ba_id();
