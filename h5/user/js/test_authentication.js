@@ -135,7 +135,7 @@ $(function () {
     //Bind ID number
     $('.idNumBindEnable').click(function () {
         var text_type = '2',
-            text = $('#idNum').val(),
+            text = $('#idCardBindInput').val(),
             text_hash = hex_sha1(text);
 
         if (text == '') {
@@ -150,7 +150,7 @@ $(function () {
             if (response.errcode == '0') {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
-                $('#idNum').val(' ');
+                $('#idCardBindInput').val(' ');
                 // LayerFun('submitSuccess');
                 SuccessPrompt("提交成功");
                 $('#idCardBindModal').modal("hide");
