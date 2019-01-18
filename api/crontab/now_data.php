@@ -265,7 +265,6 @@ $la_id = get_la_id();
 foreach ($list as $k=>$v){
     set_time_limit(0);
     print_r($v);
-    die;
     into_transfer($v['us_id'],$v['send_money'],$v['ctime'],$v['flag'],$v['detail'],$v['type'],$v['transfer_type'],$ba_id,$la_id,$v['transfer_us_id']);
 }
 
