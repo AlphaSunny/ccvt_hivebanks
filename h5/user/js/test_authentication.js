@@ -17,7 +17,7 @@ $(function () {
 
                     //bind name
                     if (data[i].bind_name == 'name' && data[i].bind_flag == '1') {//Name binding succeeded
-                        name = data[i].bind_name;
+                        name = data[i].bind_info;
                         $(".nameNotBind,.nameUnderReview,.nameBindBtn").remove();
                         $(".nameBindInfo").text(name).removeClass("none");
                         $(".nameAlreadyBind").removeClass("none");
