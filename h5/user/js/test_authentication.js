@@ -23,7 +23,9 @@ $(function () {
                         $(".nameAlreadyBind").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '0') {//Name review
-                        $(".nameNotBind,.nameBindBtn,.nameBindInfo,.nameAlreadyBind").remove();
+                        name = data[i].bind_info;
+                        $(".nameNotBind,.nameBindBtn,.nameAlreadyBind").remove();
+                        $(".nameBindInfo").text(name).removeClass("none");
                         $(".nameUnderReview").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '1') {//Name review rejection
