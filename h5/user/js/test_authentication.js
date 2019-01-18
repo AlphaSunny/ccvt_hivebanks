@@ -54,13 +54,13 @@ $(function () {
                         idPhoto = data[i].bind_name;
 
                         $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoBindBtn,.idPhotoBindInfo").remove();
-                        // $(".idCardBindInfo").text(idNum).removeClass("none");
+                        $(".idCardBindInfo").removeClass("none");
                         $(".idPhotoAlreadyBind").removeClass("none");
 
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '0') {//Upload ID card review
-                        $(".idPhotoNotBind,.idPhotoBindBtn,.idPhotoBindInfo,.idPhotoAlreadyBind").remove();
-                        $(".idPhotoUnderReview").removeClass("none");
+                        $(".idPhotoNotBind,.idPhotoBindBtn,.idPhotoAlreadyBind").remove();
+                        $(".idPhotoUnderReview,.idPhotoBindInfo").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '1') {//Upload ID card review rejection
                         $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoAlreadyBind").remove();
