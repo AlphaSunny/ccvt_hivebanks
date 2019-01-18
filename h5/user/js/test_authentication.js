@@ -21,60 +21,31 @@ $(function () {
                         $(".nameNotBind,.nameUnderReview,.nameBindBtn").remove();
                         $(".nameBindInfo").text(name).removeClass("none");
                         $(".nameAlreadyBind").removeClass("none");
-                        // $('.nameBindNot').text(data[i].bind_info).show();
-                        // $('.nameFormBox').remove();
-                        // $('.nameBindBtn').remove();
-                        // $('.nameUnderReview').remove();
-                        // $('.nameBindRefuse').remove();
-                        // $('.nameBindAlready').show('fast');
-                        // $('.nameIcon').addClass('greenIcon icon-duihao').removeClass('icon-gantanhao');
                         return;
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '0') {//Name review
-                        // name = data[i].bind_name;
-                        // $('.nameFormBox').remove();
-                        // $('.nameBindBtn').remove();
-                        // $('.nameBindNot').remove();
-                        // $('.nameBindAlready').remove();
-                        // $('.nameBindRefuse').remove();
-                        // $('.nameUnderReview').show('fast');
-                        // $('.nameIcon').css('color', '#9e9e9e');
+                        $(".nameNotBind,.nameBindBtn,.nameBindInfo,.nameAlreadyBind").remove();
+                        $(".nameUnderReview").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '1') {//Name review rejection
-                        // $('.nameBindNot').remove();
-                        // $('.nameBindAlready').remove();
-                        // $('.nameUnderReview').remove();
-                        // $('.nameBindBtn').show();
-                        // $('.nameBindRefuse').show();
+                        $(".nameNotBind,.nameUnderReview,.nameAlreadyBind").remove();
+                        $(".nameUnderReview").text("认证被拒绝，请重新绑定").removeClass("none");
                         return;
                     }
 
                     //Bind ID number
                     if (data[i].bind_name == 'idNum' && data[i].bind_flag == '1') {//ID card number binding success
-                        idNum = data[i].bind_name;
-                        $('.idNumBindNot').text(data[i].bind_info).show();
-                        $('.idNumFormBox').remove();
-                        $('.idNumBindBtn').remove();
-                        $('.idNumUnderReview').remove();
-                        $('.idNumBindRefuse').remove();
-                        $('.idNumBindAlready').show('fast');
-                        $('.idNumIcon').addClass('greenIcon icon-duihao').removeClass('icon-gantanhao');
+                        idNum = data[i].bind_info;
+                        $(".idCardNotBind,.idCardUnderReview,.idCardBindBtn").remove();
+                        $(".idCardBindInfo").text(idNum).removeClass("none");
+                        $(".idCardAlreadyBind").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'idNum' && data[i].count_error == '0') {//ID card number review
-                        idNum = data[i].bind_name;
-                        $('.idNumFormBox').remove();
-                        $('.idNumBindBtn').remove();
-                        $('.idNumBindNot').remove();
-                        $('.idNumBindRefuse').remove();
-                        $('.idNumBindAlready').remove();
-                        $('.idNumUnderReview').show('fast');
-                        $('.idNumIcon').css('color', '#9e9e9e');
+                        $(".idCardNotBind,.idCardBindBtn,.idCardBindInfo,.idCardAlreadyBind").remove();
+                        $(".idCardUnderReview").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'idNum' && data[i].count_error == '1') {//ID card number review rejection
-                        $('.idNumBindNot').remove();
-                        $('.idNumBindAlready').remove();
-                        $('.idNumUnderReview').remove();
-                        $('.idNumBindBtn').show();
-                        $('.idNumBindRefuse').show();
+                        $(".idCardNotBind,.idCardUnderReview,.idCardAlreadyBind").remove();
+                        $(".idCardUnderReview").text("认证被拒绝，请重新绑定").removeClass("none");
                         return;
                     }
 
