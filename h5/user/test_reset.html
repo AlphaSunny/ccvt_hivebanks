@@ -94,6 +94,10 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <h3 class="pcTitle"><span class="phoneBind i18n" name="userReset"></span></h3>
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                </div>
             </div>
         </div>
         <div class="row sec-row table_bg padding-top-bottom-100">
@@ -166,7 +170,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="flex align-items-center justify-content-space-between">
+                            <div class="flex justify-content-space-between">
                                 <input type="text" class="form-control i18n-input phoneCfmCode" name="cfmCode" value="" selectname="cfmCodeInput" selectattr="placeholder">
                                 <img src="" id="phone_imgCode" class="margin-left-5" alt="">
                             </div>
@@ -174,7 +178,7 @@
                             <span class='ty-color input_tips errPhoneImgCode_tips i18n' name="codeBad">* Verification Code Error, Please Re-enter</span>
                         </div>
                         <div class="form-group">
-                            <div class="flex align-items-center justify-content-space-between">
+                            <div class="flex justify-content-space-between">
                                 <input type="text" class="form-control i18n-input phoneSmsCode" name="cfmCode" value="" selectname="cfmCodeInput" selectattr="placeholder">
                                 <button class="btn btn-success btn-sm phoneCodeBtn margin-left-5">
                                     <span class="sixty"></span>&nbsp;&nbsp;
