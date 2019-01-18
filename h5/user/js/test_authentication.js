@@ -60,9 +60,12 @@ $(function () {
                     //Upload ID card
                     if (data[i].bind_name == 'idPhoto' && data[i].bind_flag == '1') {//Successful ID card upload
                         idPhoto = data[i].bind_name;
+                        var idPhotoInfo = data[i].bind_info;
                         $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoBindBtn,.idPhotoBindInfo,#idPhotoBindModal").remove();
                         $(".idCardBindInfo").removeClass("none");
                         $(".idPhotoAlreadyBind").removeClass("none");
+                        var idPhoto1 = idPhotoInfo.split(",");
+                        console.log(idPhoto1);
 
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '0') {//Upload ID card review
