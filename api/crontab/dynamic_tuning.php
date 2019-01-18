@@ -122,7 +122,7 @@ function cut_log_com_base($us_id,$amount){
     $data['tx_id'] = hash('md5', BA_ID  . 'phone' . get_ip() . mt() . date('Y-m-d H:i:s'));;
     $data['prvs_hash'] = get_recharge_pre_hash(BA_ID);
 
-    $data['prvs_hash'] = $data['prvs_hash'] == 0 ? $data['hash_id'] : $data['prvs_hash'];
+    $data['prvs_hash'] = $data['prvs_hash'] === 0 ? hash('md5',BA_ID) : $data['prvs_hash'];
     $data['debit_id'] = $us_id;
     $data['credit_id']= BA_ID;
     $data['tx_type'] = 'gone_staff';
@@ -136,7 +136,7 @@ function cut_log_com_base($us_id,$amount){
     $uata['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . mt() . rand(1000, 9999) . $ctime);
     $uata['tx_id'] = hash('md5', BA_ID  . 'phone' . get_ip() . mt() . date('Y-m-d H:i:s'));;
     $uata['prvs_hash'] = get_recharge_pre_hash($us_id);
-    $uata['prvs_hash'] = $uata['prvs_hash'] == 0 ? $uata['hash_id'] : $uata['prvs_hash'];
+    $uata['prvs_hash'] = $uata['prvs_hash'] === 0 ? hash('md5',$us_id) : $uata['prvs_hash'];
 
     $uata['credit_id'] = $us_id;
     $uata['debit_id']= BA_ID;
@@ -160,7 +160,7 @@ function cut_log_com_transfer($us_id,$amount){
     $db = new DB_COM();
     $data['hash_id'] = hash('md5', BA_ID . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash(BA_ID);
-    $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $data['prvs_hash'] = $prvs_hash === 0 ? hash('md5',BA_ID) : $prvs_hash;
     $data['credit_id'] = BA_ID;
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $amount*UNIT;
@@ -177,7 +177,7 @@ function cut_log_com_transfer($us_id,$amount){
 
     $dat['hash_id'] = hash('md5', $us_id . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($us_id);
-    $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $dat['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$us_id) : $prvs_hash;
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = BA_ID;
     $dat['tx_amount'] = $amount*UNIT;
@@ -306,7 +306,7 @@ function add_log_com_base($us_id,$amount){
     $data['tx_id'] = hash('md5', BA_ID  . 'phone' . get_ip() . mt() . date('Y-m-d H:i:s'));;
     $data['prvs_hash'] = get_recharge_pre_hash(BA_ID);
 
-    $data['prvs_hash'] = $data['prvs_hash'] == 0 ? $data['hash_id'] : $data['prvs_hash'];
+    $data['prvs_hash'] = $data['prvs_hash'] === 0 ? hash('md5',BA_ID) : $data['prvs_hash'];
     $data['debit_id'] = $us_id;
     $data['credit_id']= BA_ID;
     $data['tx_type'] = 'dynamic_tuning';
@@ -320,7 +320,7 @@ function add_log_com_base($us_id,$amount){
     $uata['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . mt() . rand(1000, 9999) . $ctime);
     $uata['tx_id'] = hash('md5', BA_ID  . 'phone' . get_ip() . mt() . date('Y-m-d H:i:s'));;
     $uata['prvs_hash'] = get_recharge_pre_hash($us_id);
-    $uata['prvs_hash'] = $uata['prvs_hash'] == 0 ? $uata['hash_id'] : $uata['prvs_hash'];
+    $uata['prvs_hash'] = $uata['prvs_hash'] === 0 ? hash('md5',$us_id) : $uata['prvs_hash'];
 
     $uata['credit_id'] = $us_id;
     $uata['debit_id']= BA_ID;
@@ -344,7 +344,7 @@ function add_log_transfer($us_id,$amount){
     $db = new DB_COM();
     $data['hash_id'] = hash('md5', BA_ID . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash(BA_ID);
-    $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $data['prvs_hash'] = $prvs_hash === 0 ? hash('md5',BA_ID) : $prvs_hash;
     $data['credit_id'] = BA_ID;
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $amount*UNIT;
@@ -361,7 +361,7 @@ function add_log_transfer($us_id,$amount){
 
     $dat['hash_id'] = hash('md5', $us_id . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($us_id);
-    $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $dat['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$us_id) : $prvs_hash;
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = BA_ID;
     $dat['tx_amount'] = $amount*UNIT;
