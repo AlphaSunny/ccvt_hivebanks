@@ -8,7 +8,7 @@ $db = new DB_COM();
 $unit = get_la_base_unit();
 
 //注册
-$sql = "select us_id,ctime from us_base WHERE 1";
+$sql = "select us_id,ctime from us_base WHERE us_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $reg_user = $db->fetchAll();
 foreach ($reg_user as $k=>$v){
@@ -29,7 +29,7 @@ foreach ($reg_user as $k=>$v){
 echo "注册:".count($reg_user)."<br />";
 
 //邀请
-$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
+$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0 AND a.us_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $invite_rows = $db->fetchAll();
 foreach ($invite_rows as $k=>$v){
@@ -43,7 +43,7 @@ foreach ($invite_rows as $k=>$v){
 echo "邀请:".count($invite_rows)."<br />";
 
 //二级邀请奖励
-$sql = "select us_id,ctime from us_base WHERE 1";
+$sql = "select us_id,ctime from us_base WHERE us_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $two_invite_send = $db->fetchAll();
 foreach ($two_invite_send as $k=>$v){
@@ -66,7 +66,7 @@ foreach ($two_invite_send as $k=>$v){
 echo "二级邀请:".count($two_invite_send)."<br />";
 
 //群聊奖励
-$sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where 1";
+$sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where us_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $bot_rows = $db->fetchAll();
 foreach ($bot_rows as $k=>$v){
@@ -81,7 +81,7 @@ echo "群聊奖励:".count($bot_rows)."<br />";
 
 
 //点赞(点踩)(ccvt兑换积分)
-$sql = "select credit_id as us_id,utime as ctime,tx_amount as send_money,tx_detail as detail,state as flag from us_glory_integral_change_log WHERE 1";
+$sql = "select credit_id as us_id,utime as ctime,tx_amount as send_money,tx_detail as detail,state as flag from us_glory_integral_change_log WHERE credit_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $glory = $db->fetchAll();
 foreach ($glory as $k=>$v){
@@ -107,7 +107,7 @@ echo "点赞(点踩)(ccvt兑换积分):".count($glory)."<br />";
 
 
 //兑换码兑换
-$sql = "select us_id,amount as send_money,exchange_time as ctime from us_voucher WHERE is_effective=2 and exchange_time!=''";
+$sql = "select us_id,amount as send_money,exchange_time as ctime from us_voucher WHERE is_effective=2 and exchange_time!='' AND us_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $voucher = $db->fetchAll();
 foreach ($voucher as $k=>$v){
@@ -122,7 +122,7 @@ foreach ($voucher as $k=>$v){
 echo "兑换码兑换:".count($voucher)."<br />";
 
 //ba调账(活动奖励啥的)
-$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=3 AND give_or_receive=2";
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=3 AND give_or_receive=2 AND credit_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $tiaozhang = $db->fetchAll();
 foreach ($tiaozhang as $k=>$v){
@@ -134,7 +134,7 @@ foreach ($tiaozhang as $k=>$v){
 echo "ba调账(活动奖励啥的):".count($tiaozhang)."<br />";
 
 //升级返还
-$sql = "select us_id,ctime from us_scale_changes WHERE ctime<'2018-12-01 19:50:02'";
+$sql = "select us_id,ctime from us_scale_changes WHERE ctime<'2018-12-01 19:50:02' AND us_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $scale_changes = $db->fetchAll();
 foreach ($scale_changes as $k=>$v){
@@ -149,7 +149,7 @@ foreach ($scale_changes as $k=>$v){
 echo "升级返还:".count($scale_changes)."<br />";
 
 //用户提现(com_transfer_request不存)
-$sql = "select us_id,base_amount as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ba_withdraw_request WHERE qa_flag=1";
+$sql = "select us_id,base_amount as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ba_withdraw_request WHERE qa_flag=1 AND us_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $us_ba_withdraw_request = $db->fetchAll();
 if ($us_ba_withdraw_request){
@@ -165,7 +165,7 @@ if ($us_ba_withdraw_request){
 echo "用户提现:".count($us_ba_withdraw_request)."<br />";
 
 //群主返现
-$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=12 AND give_or_receive=2";
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=12 AND give_or_receive=2 AND credit_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $group_cashback = $db->fetchAll();
 foreach ($group_cashback as $k=>$v){
@@ -177,7 +177,7 @@ foreach ($group_cashback as $k=>$v){
 echo "群主返现:".count($group_cashback)."<br />";
 
 //用户转账
-$sql = "select credit_id as us_id,debit_id as transfer_us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=13 AND give_or_receive=1";
+$sql = "select credit_id as us_id,debit_id as transfer_us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=13 AND give_or_receive=1 AND credit_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $us_us_transfer = $db->fetchAll();
 foreach ($us_us_transfer as $k=>$v){
@@ -188,7 +188,7 @@ foreach ($us_us_transfer as $k=>$v){
 echo "用户转账:".count($us_us_transfer)."<br />";
 
 //踩赞返还
-$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=14 AND give_or_receive=2";
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=14 AND give_or_receive=2 AND credit_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $give_like_back = $db->fetchAll();
 foreach ($give_like_back as $k=>$v){
@@ -201,7 +201,7 @@ echo "踩赞返还:".count($give_like_back)."<br />";
 
 
 //锁仓(锁仓余额)
-$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=10 AND give_or_receive=2";
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=10 AND give_or_receive=2 AND credit_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $suocang = $db->fetchAll();
 foreach ($suocang as $k=>$v){
@@ -213,7 +213,7 @@ foreach ($suocang as $k=>$v){
 echo "锁仓(锁仓余额):".count($suocang)."<br />";
 
 //锁仓利息
-$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=11 AND give_or_receive=2";
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=11 AND give_or_receive=2 AND credit_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $big_us_interest = $db->fetchAll();
 foreach ($big_us_interest as $k=>$v){
@@ -225,7 +225,7 @@ foreach ($big_us_interest as $k=>$v){
 echo "锁仓利息:".count($big_us_interest)."<br />";
 
 //员工动态调整(ba-us加锁定余额)
-$sql = "select credit_id as us_id,tx_amount as send_money,ctime from com_base_balance2 WHERE tx_type='dynamic_tuning' AND debit_id='6C69520E-E454-127B-F474-452E65A3EE75'";
+$sql = "select credit_id as us_id,tx_amount as send_money,ctime from com_base_balance2 WHERE tx_type='dynamic_tuning' AND debit_id='6C69520E-E454-127B-F474-452E65A3EE75' AND credit_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $dynamic_tuning = $db->fetchAll();
 foreach ($dynamic_tuning as $k=>$v){
@@ -239,7 +239,7 @@ foreach ($dynamic_tuning as $k=>$v){
 echo "员工动态调整:".count($dynamic_tuning)."<br />";
 
 //离职回收(us锁定金额给ba)
-$sql = "select credit_id as us_id,tx_amount as send_money,ctime from com_base_balance2 WHERE tx_type='gone_staff' AND debit_id='6C69520E-E454-127B-F474-452E65A3EE75'";
+$sql = "select credit_id as us_id,tx_amount as send_money,ctime from com_base_balance2 WHERE tx_type='gone_staff' AND debit_id='6C69520E-E454-127B-F474-452E65A3EE75' AND credit_id='3E0B1C68-2E94-A758-0C79-6ABF21794C82'";
 $db->query($sql);
 $gone_staff = $db->fetchAll();
 foreach ($gone_staff as $k=>$v){
