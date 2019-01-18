@@ -31,7 +31,10 @@ $(function () {
                     '<td>'+ data[i].tx_time +'</td>' +
                     '<td>' +
                     '<a class="btn btn-success btn-sm confirmBtn">' +
-                    '<span class="i18n" name="handle">handle</span>' +
+                    '<span class="i18n" name="handle"></span>' +
+                    '</a>' +
+                    '<a class="btn btn-success btn-sm refuseBtn">' +
+                    '<span class="i18n" name="refuse"></span>' +
                     '</a>' +
                     '<span class="qa_id none">' + data[i].qa_id + '</span>' +
                     '</td>' +
@@ -64,4 +67,6 @@ $(function () {
             LayerFun("err_processing");
         })
     })
+
+    //Refuse processing margin recharge
 });
