@@ -276,6 +276,8 @@ echo "ok";
 function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_type,$ba_id,$la_id,$transfer_us_id){
     $db = new DB_COM();
 
+    echo $transfer_type;
+
     switch ($transfer_type){
         case "ba-us":
             //用户加钱
