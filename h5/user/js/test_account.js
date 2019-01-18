@@ -406,7 +406,7 @@ $(function () {
 
     $(".modify_application_btn").click(function () {
         var group_name = $(".application_group").text();
-        window.location.href = "application.html?group_name=" + encodeURI(encodeURI(group_name));
+        window.location.href = "test_application.html?group_name=" + encodeURI(encodeURI(group_name));
     });
 
     //login robot
