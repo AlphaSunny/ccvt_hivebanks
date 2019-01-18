@@ -20,8 +20,8 @@
 </head>
 <body>
 <!-- loading -->
-<iframe src="loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"
-        scrolling="no"></iframe>
+<!--<iframe src="loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"-->
+        <!--scrolling="no"></iframe>-->
 <!--nav-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -32,18 +32,68 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../index.html">
+            <a class="navbar-brand toIndexBtn" href="javascript:;">
                 <img src="../assets/img/ccvt_logo.png" alt="">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="login.html" class="i18n" name="login">Login</a></li>
-                <li class="active"><a href="register.html" class="i18n" name="register">Register</a></li>
+                <li>
+                    <div class="dropdown">
+                        <a id="dLabel" type="button" data-toggle="dropdown">
+                            <span class="curr_language"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="language">
+                            <li title="zh-CN" class="toggleLanguage">简体中文</li>
+                            <li title="en" class="toggleLanguage">English</li>
+                            <li title="ja" class="toggleLanguage">Japanese</li>
+                        </ul>
+                    </div>
+                </li>
+                <!--<li><a href="#" class="i18n" name="recharge">Recharge</a></li>-->
+                <!--<li><a href="#" class="i18n" name="withdraw">Withdraw</a></li>-->
+                <li><a href="recharge.html" class="i18n" name="recharge"></a></li>
+                <li><a href="javascript:;" class="i18n navWithdraw" name="withdraw"></a></li>
+
+                <!--<li><a href="transfer.html" class="i18n" name="transfer">Transfer</a></li>-->
+                <li>
+                    <a href="account.html">
+                        <span><i class="iconfont icon-account"></i></span>
+                        <span class="us_account" name=""></span>
+                    </a>
+                </li>
+                <li><a href="../index.html" class="logout i18n" name="logout"></a></li>
             </ul>
         </div>
     </div>
 </nav>
+
+<!--Security message-->
+<section class="msg">
+    <div class="container">
+        <div class="row msg-row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="msg-col flex align-items-center justify-content-space-between">
+                    <p class="msgText i18n" name="informationTitle"></p>
+                    <i class="iconfont icon-xialajiantou jt"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row msg-content none">
+            <div class="col-md-12 col-sm-12">
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationOne">
+                    related.</span></p>
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationTwo"></span>
+                </p>
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationThree"></span>
+                </p>
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationFour"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!--change Password-->
 <section class="sections" id="content">
