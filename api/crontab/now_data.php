@@ -26,7 +26,7 @@ foreach ($reg_user as $k=>$v){
     $reg_user[$k]['transfer_type'] = "ba-us";
     $reg_user[$k]['transfer_us_id'] = "0";
 }
-echo "注册:".count($reg_user)."<br />";
+//echo "注册:".count($reg_user)."<br />";
 
 //邀请
 $sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
@@ -40,7 +40,7 @@ foreach ($invite_rows as $k=>$v){
     $invite_rows[$k]['transfer_type'] = "ba-us";
     $invite_rows[$k]['transfer_us_id'] = "0";
 }
-echo "邀请:".count($invite_rows)."<br />";
+//echo "邀请:".count($invite_rows)."<br />";
 
 //二级邀请奖励
 $sql = "select us_id,ctime from us_base WHERE 1";
@@ -62,7 +62,7 @@ foreach ($two_invite_send as $k=>$v){
         $two_invite_send[$k]['transfer_us_id'] = "0";
     }
 }
-print_r($two_invite_send);
+print_r(json_encode($two_invite_send));
 die;
 
 echo "二级邀请:".count($two_invite_send)."<br />";
