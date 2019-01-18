@@ -109,14 +109,6 @@
 
 <section class="content section-top-2">
     <div class="container">
-        <!-- bind information -->
-        <!--<div class="row">-->
-            <!--<div class="col-md-12 col-sm-12">-->
-                <!---->
-                <!--<p class="margin-bottom-2 font-size-12 i18n" name="authenticationTips">In order to ensure the security of your funds, you need to verify your identity before you can conduct transactions. Once the certification information cannot be modified, please be sure to fill in the form.</p>-->
-            <!--</div>-->
-        <!--</div>-->
-
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <h3 class="pcTitle"><span class="phoneBind i18n" name="authentication"></span></h3>
@@ -162,66 +154,7 @@
             </div>
         </div>
         <!--bind name-->
-        <div class="row nameBinRow phone-margin-top-10">
-            <!--<div class="col-md-12 col-sm-12">-->
-                <!--<div class="flex center space-between bindBox padding-1">-->
-                    <!--<span class="font-size-14 phone-font-size-12 i18n" name="nameBind">nameBind</span>-->
-                    <!--<div>-->
-                        <!--<i class='iconfont icon-gantanhao redIcon nameIcon'></i>-->
-                        <!--<span class="font-size-14 phone-font-size-12 nameBindStatus nameBindNot i18n"  name="unbound">unbound</span>-->
-                        <!--<span class="font-size-14 phone-font-size-12 bindStatus nameBindRefuse none i18n"  name="review">Review rejected, re-bind</span>-->
-                    <!--</div>-->
 
-                    <!--<span class="font-size-14 phone-font-size-12 nameBindStatus nameBindAlready i18n none" name="alreadyBind">alreadyBind</span>-->
-                    <!--<span class="font-size-14 phone-font-size-12 nameBindStatus nameUnderReview none i18n" name="underReview">underReview</span>-->
-                    <!--<a href="javascript:;" class="font-size-14 phone-font-size-12 nameBindBtn i18n"  name="bind">bind</a>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-6 col-md-offset-3 col-sm-12 margin-top-5 nameFormBox none">-->
-                <!--<div class="">-->
-                    <!--<ul class="flex center space-between">-->
-                        <!--<li><span class="i18n" name="name">name</span></li>-->
-                        <!--<li class="width-75">-->
-                            <!--<input type="text" id="name" class="form-control">-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<button class="btn btn-success nameBindEnable i18n" name="determine">determine</button>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-
-        <!--ID card number binding-->
-        <!--<div class="row margin-top-5 phone-margin-top-10">-->
-            <!--<div class="col-md-12 col-sm-12">-->
-                <!--<div class="flex center space-between bindBox padding-1">-->
-                    <!--<span class="font-size-14 phone-font-size-12 i18n" name="IDCardBind">IDCardBind</span>-->
-                    <!--<div>-->
-                        <!--<i class='iconfont icon-gantanhao redIcon idNumIcon'></i>-->
-                        <!--<span class="font-size-14 phone-font-size-12 bindStatus idNumBindNot i18n" name="unbound">unbound</span>-->
-                        <!--<span class="font-size-14 phone-font-size-12 bindStatus idNumBindRefuse none i18n" name="review">Review rejected, re-bind</span>-->
-                    <!--</div>-->
-
-                    <!--<span class="font-size-14 phone-font-size-12 bindStatus idNumBindAlready i18n none" name="alreadyBind">alreadyBind</span>-->
-                    <!--<span class="font-size-14 phone-font-size-12 nameBindStatus idNumUnderReview none i18n" name="underReview">underReview</span>-->
-                    <!--<a href="javascript:;" class="font-size-14 phone-font-size-12 idNumBindBtn i18n" name="bind">bind</a>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-6 col-md-offset-3 col-sm-12 margin-top-5 idNumFormBox none">-->
-                <!--<div class="">-->
-                    <!--<ul class="flex center space-between phone-block">-->
-                        <!--<li><span class="i18n" name="idNumber">idNumber</span></li>-->
-                        <!--<li class="width-75 phone-width-100">-->
-                            <!--<input type="text" id="idNum" class="form-control">-->
-                        <!--</li>-->
-                        <!--<li class="phone-margin-top-5">-->
-                            <!--<button class="btn btn-success idNumBindEnable i18n" name="bind">bind</button>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
 
         <!--ID upload binding-->
         <div class="row margin-top-5 phone-margin-top-10">
@@ -314,6 +247,28 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal"></button>
                 <button type="button" class="btn btn-primary i18n idNumBindEnable" name="bind"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--name bind modal-->
+<div class="modal fade" id="idPhotoBindModal" tabindex="-1" role="dialog" aria-labelledby="idPhotoBindModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title i18n" name="IDCardUpload" id="idPhotoBindModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <!--<label for="nameBindInput" class="i18n" name="nameBind"></label>-->
+                    <!--<input type="text" id="idPhotoBindInput" class="form-control">-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal"></button>
+                <button type="button" class="btn btn-primary i18n nameBindEnable" name="bind"></button>
             </div>
         </div>
     </div>

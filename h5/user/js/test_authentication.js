@@ -17,15 +17,17 @@ $(function () {
 
                     //bind name
                     if (data[i].bind_name == 'name' && data[i].bind_flag == '1') {//Name binding succeeded
-                        name = data[i].bind_info;
+                        name = data[i].bind_name;
+                        var info=data[i].bind_info;
                         $(".nameNotBind,.nameUnderReview,.nameBindBtn").remove();
-                        $(".nameBindInfo").text(name).removeClass("none");
+                        $(".nameBindInfo").text(info).removeClass("none");
                         $(".nameAlreadyBind").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '0') {//Name review
-                        name = data[i].bind_info;
+                        name = data[i].bind_name;
+                        var info=data[i].bind_info;
                         $(".nameNotBind,.nameBindBtn,.nameAlreadyBind").remove();
-                        $(".nameBindInfo").text(name).removeClass("none");
+                        $(".nameBindInfo").text(info).removeClass("none");
                         $(".nameUnderReview").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '1') {//Name review rejection
@@ -36,13 +38,17 @@ $(function () {
 
                     //Bind ID number
                     if (data[i].bind_name == 'idNum' && data[i].bind_flag == '1') {//ID card number binding success
-                        idNum = data[i].bind_info;
+                        idNum = data[i].bind_name;
+                        var idNum_info = data[i].bind_info;
                         $(".idCardNotBind,.idCardUnderReview,.idCardBindBtn").remove();
-                        $(".idCardBindInfo").text(idNum).removeClass("none");
+                        $(".idCardBindInfo").text(idNum_info).removeClass("none");
                         $(".idCardAlreadyBind").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'idNum' && data[i].count_error == '0') {//ID card number review
-                        $(".idCardNotBind,.idCardBindBtn,.idCardBindInfo,.idCardAlreadyBind").remove();
+                        idNum = data[i].bind_name;
+                        var idNum_info = data[i].bind_info;
+                        $(".idCardNotBind,.idCardBindBtn,.idCardAlreadyBind").remove();
+                        $(".idCardBindInfo").text(idNum_info).removeClass("none");
                         $(".idCardUnderReview").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'idNum' && data[i].count_error == '1') {//ID card number review rejection
@@ -54,13 +60,13 @@ $(function () {
                     //Upload ID card
                     if (data[i].bind_name == 'idPhoto' && data[i].bind_flag == '1') {//Successful ID card upload
                         idPhoto = data[i].bind_name;
-
                         $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoBindBtn,.idPhotoBindInfo").remove();
                         $(".idCardBindInfo").removeClass("none");
                         $(".idPhotoAlreadyBind").removeClass("none");
 
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '0') {//Upload ID card review
+                        idPhoto = data[i].bind_name;
                         $(".idPhotoNotBind,.idPhotoBindBtn,.idPhotoAlreadyBind").remove();
                         $(".idPhotoUnderReview,.idPhotoBindInfo").removeClass("none");
                         return;
