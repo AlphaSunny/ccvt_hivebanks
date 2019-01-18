@@ -70,8 +70,11 @@ $(function () {
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '0') {//Upload ID card review
                         idPhoto = data[i].bind_name;
+                        var idPhotoInfo = data[i].bind_info;
                         $(".idPhotoNotBind,.idPhotoBindBtn,.idPhotoAlreadyBind,#idPhotoBindModal").remove();
                         $(".idPhotoUnderReview,.idPhotoBindInfo").removeClass("none");
+                        var idPhoto1 = idPhotoInfo.split(",");
+                        console.log(idPhoto1);
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '1') {//Upload ID card review rejection
                         $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoAlreadyBind").remove();
