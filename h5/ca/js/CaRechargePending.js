@@ -24,7 +24,7 @@ $(function () {
                 tr += '<tr class="rechargePendingList">' +
                     '<td><span>' + data[i].us_id + '</span></td>' +
                     '<td><span>' + data[i].base_amount + '</span></td>' +
-                    '<td><span class="ca_currency">CNY</span>/<span>' + 'BTC' + '</span></td>' +
+                    '<td><span class="ca_currency">'+ GetCookie("ca_currency") +'</span>/<span class="base_type">'+ GetCookie("benchmark_type") +'</span></td>' +
                     // '<td><span>' + data[i].bit_address + '</span></td>' +
                     '<td><span>' + data[i].tx_time + '</span></td>' +
                     '<td>' +
