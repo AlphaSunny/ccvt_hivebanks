@@ -62,6 +62,8 @@ foreach ($two_invite_send as $k=>$v){
         $two_invite_send[$k]['transfer_us_id'] = "0";
     }
 }
+print_r($two_invite_send);
+die;
 
 echo "二级邀请:".count($two_invite_send)."<br />";
 
