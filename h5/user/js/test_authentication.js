@@ -79,12 +79,12 @@ $(function () {
 
     //show bind name
     $('.nameBindBtn').click(function () {
-        $('.nameFormBox').fadeToggle('fast');
+        $('#nameBindModal').modal('show');
     });
     //bind name
     $('.nameBindEnable').click(function () {
         var text_type = '3',
-            text = $('#name').val(),
+            text = $('#nameBindInput').val(),
             text_hash = hex_sha1(text);
 
         if (text == '') {
@@ -113,13 +113,13 @@ $(function () {
     });
 
     //show ID card number binding
-    $('.idNumBindBtn').click(function () {
+    $('.idCardBindBtn').click(function () {
         if (name != 'name') {
             // LayerFun('firstBindName');
             WarnPrompt("请先绑定姓名");
             return;
         }
-        $('.idNumFormBox').fadeToggle('fast');
+        $('#idCardBindModal').modal("show");
     });
 
     //Bind ID number
