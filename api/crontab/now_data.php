@@ -54,7 +54,7 @@ foreach ($two_invite_send as $k=>$v){
         unset($two_invite_send[$k]);
     }else{
         $two_invite_send[$k]['send_money'] = $data['count']*20*$unit;
-        $two_invite_send[$k]['ctime'] = date('Y-m-d H:i:s',strtotime($v['ctime'])+10);
+        $two_invite_send[$k]['ctime'] = date('Y-m-d H:i:s',strtotime($v['ctime'])+300);
         $two_invite_send[$k]['flag'] = 2;
         $two_invite_send[$k]['detail'] = "二级邀请赠送";
         $two_invite_send[$k]['type'] = "two_invite_send";
@@ -272,9 +272,9 @@ $list = array_merge(
 );
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
-print_r(json_encode($list));
-//echo count($list);
-die;
+//print_r(json_encode($list));
+echo count($list);
+//die;
 
 $ba_id = get_ba_id();
 $la_id = get_la_id();
