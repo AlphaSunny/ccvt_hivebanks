@@ -11,6 +11,7 @@
     var jsFooter = "'></script>";
     document.write(jsHeader + "assets/js/jquery.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/bootstrap.min.js" + jsFooter);
+    document.write(jsHeader + "assets/js/cnt.js" + jsFooter);
     document.write(jsHeader + "assets/js/jquery.pagination.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/intlTelInput.js" + jsFooter);
     document.write(jsHeader + "assets/js/layer/layer.js" + jsFooter);

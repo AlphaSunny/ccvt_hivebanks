@@ -15,20 +15,20 @@ $(function () {
     });
 
     //get time
-    var time = new Date().toLocaleString('chinese', {hour12: false});
-    $(".time").text(time);
+    // var time = new Date().toLocaleString('chinese', {hour12: false});
+    // $(".time").text(time);
 
     // Icon link
-    var link = $('<link rel="stylesheet" href="//at.alicdn.com/t/font_626151_s2e3q5g4f2.css">');
-    $('head').append(link);
+    // var link = $('<link rel="stylesheet" href="//at.alicdn.com/t/font_626151_s2e3q5g4f2.css">');
+    // $('head').append(link);
 
     //favicon
-    var link_icon = $("<link rel='shortcut icon' href='../favicon.ico' />");
-    $('head').append(link_icon);
+    // var link_icon = $("<link rel='shortcut icon' href='../favicon.ico' />");
+    // $('head').append(link_icon);
 
-    //cnt.js
-    var cnt = $("<script src='../assets/js/cnt.js'></script>");
-    cnt.appendTo($("head"));
+    // //cnt.js
+    // var cnt = $("<script src='../assets/js/cnt.js'></script>");
+    // cnt.appendTo($("head"));
 
 // Password strength verification
     $('#emailPass').keyup(function () {
