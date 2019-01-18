@@ -52,28 +52,19 @@ $(function () {
                     //Upload ID card
                     if (data[i].bind_name == 'idPhoto' && data[i].bind_flag == '1') {//Successful ID card upload
                         idPhoto = data[i].bind_name;
-                        $('.uploadBindNot').remove();
-                        $('.idPhotoFormBox').remove();
-                        $('.idPhotoBindBtn').remove();
-                        $('.uploadUnderReview').remove();
-                        $('.uploadBindRefuse').remove();
-                        $('.uploadBindAlready').show('fast');
-                        $('.idPhotoIcon').addClass('greenIcon icon-duihao').removeClass('icon-gantanhao');
+
+                        $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoBindBtn,.idPhotoBindInfo").remove();
+                        // $(".idCardBindInfo").text(idNum).removeClass("none");
+                        $(".idPhotoAlreadyBind").removeClass("none");
+
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '0') {//Upload ID card review
-                        idPhoto = data[i].bind_name;
-                        $('.idPhotoFormBox').remove();
-                        $('.idPhotoBindBtn').remove();
-                        $('.uploadBindNot').remove();
-                        $('.uploadBindRefuse').remove();
-                        $('.uploadBindAlready').remove();
-                        $('.uploadUnderReview').show('fast');
-                        $('.idPhotoIcon').css('color', '#9e9e9e');
+                        $(".idPhotoNotBind,.idPhotoBindBtn,.idPhotoBindInfo,.idPhotoAlreadyBind").remove();
+                        $(".idPhotoUnderReview").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '1') {//Upload ID card review rejection
-                        $('.idNumBindNot').remove();
-                        $('.idNumBindAlready').remove();
-                        $('.idNumUnderReview').remove();
+                        $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoAlreadyBind").remove();
+                        $(".idPhotoUnderReview").text("认证被拒绝，请重新绑定").removeClass("none");
                         return;
                     }
                 });
