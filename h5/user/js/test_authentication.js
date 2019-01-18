@@ -99,9 +99,10 @@ $(function () {
             if (response.errcode == '0') {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
-                $('#name').val(' ');
+                $('#nameBindInput').val(' ');
                 // LayerFun('submitSuccess');
                 SuccessPrompt("提交成功");
+                $('#nameBindModal').modal('hide');
                 GetBindInfo();
             }
         }, function (response) {
@@ -109,6 +110,7 @@ $(function () {
             ActiveClick($this, btnText);
             // LayerFun(response.errcode);
             ErrorPrompt(response.errmsg);
+            $('#nameBindModal').modal('hide');
         })
     });
 
@@ -143,6 +145,7 @@ $(function () {
                 $('#idNum').val(' ');
                 // LayerFun('submitSuccess');
                 SuccessPrompt("提交成功");
+                $('#idCardBindModal').modal("hide");
                 GetBindInfo();
             }
         }, function (response) {
@@ -150,6 +153,7 @@ $(function () {
             ActiveClick($this, btnText);
             // LayerFun(response.errcode);
             ErrorPrompt(response.errmsg);
+            $('#idCardBindModal').modal("hide");
         })
     });
 
