@@ -276,8 +276,6 @@ echo "ok";
 function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_type,$ba_id,$la_id,$transfer_us_id){
     $db = new DB_COM();
 
-    echo $transfer_type;
-
     switch ($transfer_type){
         case "ba-us":
             //用户加钱
@@ -301,6 +299,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             if (!$db->affectedRows()){
                 echo "ba减钱1错误";
             }
+            break;
         case "us-la":
             //用户减钱
             $sql = "update us_base set base_amount=base_amount-'{$send_money}' WHERE us_id='{$us_id}'";
@@ -317,6 +316,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             if (!$db->affectedRows()){
                 echo "la加钱2错误";
             }
+            break;
         case "us-us":
             //用户减钱
             $sql = "update us_base set base_amount=base_amount-'{$send_money}' WHERE us_id='{$us_id}'";
@@ -333,6 +333,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             if (!$db->affectedRows()){
                 echo "us加钱3错误";
             }
+            break;
         case "us-ba":
             $sql = "update us_base set";
             if ($type=='gone_staff'){
@@ -356,7 +357,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             if (!$db->affectedRows()){
                 echo "ba加钱4错误";
             }
-
+            break;
     }
 
 
