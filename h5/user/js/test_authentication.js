@@ -192,9 +192,9 @@ $(function () {
             WarnPrompt("请先绑定身份证号码");
             return;
         }
-        ;
 
-        $('.idPhotoFormBox').fadeToggle('fast');
+        // $('.idPhotoFormBox').fadeToggle('fast');
+        $('#idPhotoBindModal').modal('show');
     });
 
     //Return images information
