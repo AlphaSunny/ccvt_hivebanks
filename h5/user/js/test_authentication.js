@@ -18,15 +18,15 @@ $(function () {
                     //bind name
                     if (data[i].bind_name == 'name' && data[i].bind_flag == '1') {//Name binding succeeded
                         name = data[i].bind_name;
-                        var info=data[i].bind_info;
-                        $(".nameNotBind,.nameUnderReview,.nameBindBtn").remove();
+                        var info = data[i].bind_info;
+                        $(".nameNotBind,.nameUnderReview,.nameBindBtn,#nameBindModal").remove();
                         $(".nameBindInfo").text(info).removeClass("none");
                         $(".nameAlreadyBind").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '0') {//Name review
                         name = data[i].bind_name;
-                        var info=data[i].bind_info;
-                        $(".nameNotBind,.nameBindBtn,.nameAlreadyBind").remove();
+                        var info = data[i].bind_info;
+                        $(".nameNotBind,.nameBindBtn,.nameAlreadyBind,#nameBindModal").remove();
                         $(".nameBindInfo").text(info).removeClass("none");
                         $(".nameUnderReview").removeClass("none");
                         return;
@@ -40,14 +40,14 @@ $(function () {
                     if (data[i].bind_name == 'idNum' && data[i].bind_flag == '1') {//ID card number binding success
                         idNum = data[i].bind_name;
                         var idNum_info = data[i].bind_info;
-                        $(".idCardNotBind,.idCardUnderReview,.idCardBindBtn").remove();
+                        $(".idCardNotBind,.idCardUnderReview,.idCardBindBtn,#idCardBindModal").remove();
                         $(".idCardBindInfo").text(idNum_info).removeClass("none");
                         $(".idCardAlreadyBind").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'idNum' && data[i].count_error == '0') {//ID card number review
                         idNum = data[i].bind_name;
                         var idNum_info = data[i].bind_info;
-                        $(".idCardNotBind,.idCardBindBtn,.idCardAlreadyBind").remove();
+                        $(".idCardNotBind,.idCardBindBtn,.idCardAlreadyBind,#idCardBindModal").remove();
                         $(".idCardBindInfo").text(idNum_info).removeClass("none");
                         $(".idCardUnderReview").removeClass("none");
                         return;
@@ -60,14 +60,14 @@ $(function () {
                     //Upload ID card
                     if (data[i].bind_name == 'idPhoto' && data[i].bind_flag == '1') {//Successful ID card upload
                         idPhoto = data[i].bind_name;
-                        $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoBindBtn,.idPhotoBindInfo").remove();
+                        $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoBindBtn,.idPhotoBindInfo,#idPhotoBindModal").remove();
                         $(".idCardBindInfo").removeClass("none");
                         $(".idPhotoAlreadyBind").removeClass("none");
 
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '0') {//Upload ID card review
                         idPhoto = data[i].bind_name;
-                        $(".idPhotoNotBind,.idPhotoBindBtn,.idPhotoAlreadyBind").remove();
+                        $(".idPhotoNotBind,.idPhotoBindBtn,.idPhotoAlreadyBind,#idPhotoBindModal").remove();
                         $(".idPhotoUnderReview,.idPhotoBindInfo").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '1') {//Upload ID card review rejection
@@ -101,7 +101,7 @@ $(function () {
             return;
         }
         var $this = $(this), btnText = $(this).text();
-        if(DisableClick($this)) return;
+        if (DisableClick($this)) return;
         ShowLoading("show");
         TextBind(token, text_type, text, text_hash, function (response) {
             if (response.errcode == '0') {
@@ -144,7 +144,7 @@ $(function () {
             return;
         }
         var $this = $(this), btnText = $(this).text();
-        if(DisableClick($this)) return;
+        if (DisableClick($this)) return;
         ShowLoading("show");
         TextBind(token, text_type, text, text_hash, function (response) {
             if (response.errcode == '0') {
@@ -177,7 +177,8 @@ $(function () {
             // LayerFun('firstIdNum');
             WarnPrompt("请先绑定身份证号码");
             return;
-        };
+        }
+        ;
 
         $('.idPhotoFormBox').fadeToggle('fast');
     });
@@ -253,7 +254,7 @@ $(function () {
             file_url = src1 + ',' + src2;
         //bind file
         var $this = $(this), btnText = $(this).text();
-        if(DisableClick($this)) return;
+        if (DisableClick($this)) return;
         ShowLoading("show");
         FileBind(token, file_type, file_url, function (response) {
             if (response.errcode == '0') {
