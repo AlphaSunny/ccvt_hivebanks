@@ -8,7 +8,7 @@ $(function () {
         if (response.errcode == '0') {
             var data = response.rows, tr = '';
             if (data == false) {
-                GetDataEmpty('manageBankTable', '4');
+                GetDataEmpty('manageBankTable', '5');
                 return;
             }
             $.each(data, function (i, val) {

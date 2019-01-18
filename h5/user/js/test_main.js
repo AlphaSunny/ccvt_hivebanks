@@ -135,7 +135,7 @@ function GetUsAccount() {
 function GetDataEmpty(element, num) {
     var tr = '';
     tr = '<tr>' +
-        '<td colspan="' + num + '" style="line-height: unset!important;"><i class="iconfont icon-noData" style="font-size: 10rem"></i></td>' +
+        '<td colspan="' + num + '" style="line-height: unset!important; text-align: center"><i class="iconfont icon-noData" style="font-size: 10rem"></i></td>' +
         '</tr>';
     $('#' + element).html(tr);
     return;
