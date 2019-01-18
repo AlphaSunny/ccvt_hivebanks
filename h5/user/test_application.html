@@ -7,14 +7,6 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title class="" name="">CCVT:申请专属群</title>
-    <!--<link rel="stylesheet" href="../assets/css/bootstrap.min.css">-->
-    <!--<link rel="stylesheet" href="css/application.css">-->
-    <!--<link rel="stylesheet" href="css/common.css">-->
-    <!--<link rel="stylesheet" type="text/css" media="only screen and (max-device-width:767px)"-->
-          <!--href="mobile-css/common.css">-->
-    <!--<link rel="stylesheet" type="text/css" media="only screen and (max-device-width:767px)"-->
-          <!--href="mobile-css/application.css">-->
-    <!--<link rel="stylesheet" type="text/css" href="../assets/css/jquery.pagination.css" media="screen">-->
 
     <script src="../assets/js/write_css.js"></script>
     <script src="js/user_write_css.js"></script>
@@ -101,8 +93,8 @@
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <ol class="breadcrumb">
-                <li><a href="account.html" class="i18n" name="account">Account</a></li>
-                <li class="active applicationGroup i18n" name="applicationGroup">申请专属群</li>
+                <li><a href="account.html" class="i18n" name="account"></a></li>
+                <li class="active applicationGroup i18n" name="applicationGroup"></li>
             </ol>
         </div>
     </div>
@@ -112,18 +104,19 @@
 <section class="sections content">
     <div class="container">
         <h3 class="pcTitle applicationGroup i18n" name="applicationGroup"></h3>
-        <h5 class="phoneTitle applicationGroup i18n" name="applicationGroup"></h5>
-        <div class="row">
+        <div class="row table_bg padding-top-bottom-100">
             <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-                <div class="form-group margin-bottom-5">
+                <div class="form-group">
                     <label for="group_name" class="i18n" name="weChatGroup"></label>
                     <input type="text" id="group_name" class="form-control" placeholder="请输入微信群">
                 </div>
-                <div class="margin-bottom-5">
+                <div class="form-group">
                     <label for="group_type" class="i18n" name="weChatGroupType"></label>
                     <select name="group_type" id="group_type" class="form-control"></select>
                 </div>
-                <button class="btn btn-success width-100 bind_group_btn i18n" name="determine"></button>
+                <div>
+                    <button class="btn btn-success width-100 bind_group_btn i18n" name="determine"></button>
+                </div>
             </div>
         </div>
     </div>
