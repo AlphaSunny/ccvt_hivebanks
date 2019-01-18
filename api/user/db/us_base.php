@@ -481,7 +481,7 @@ function send_to_us_ccvt_voucher($us_id,$voucher,$flag,$why,$type)
     //增币记录  赠送者
     $data['hash_id'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($rows['ba_id']);
-    $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $data['prvs_hash'] = $prvs_hash === 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = $rows['ba_id'];
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $money*$unit;
@@ -504,7 +504,7 @@ function send_to_us_ccvt_voucher($us_id,$voucher,$flag,$why,$type)
     //接收者
     $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($us_id);
-    $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $dat['prvs_hash'] = $prvs_hash === 0 ? $data['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = $rows['ba_id'];
     $dat['tx_amount'] = $money*$unit;
@@ -531,7 +531,7 @@ function send_to_us_ccvt_voucher($us_id,$voucher,$flag,$why,$type)
     $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_us['tx_id'] = $data['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($us_id);
-    $com_balance_us['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
+    $com_balance_us['prvs_hash'] = $prvs_hash === 0 ? $com_balance_us['hash_id'] : $prvs_hash;
     $com_balance_us["credit_id"] = $us_id;
     $com_balance_us["debit_id"] = $rows['ba_id'];
     $com_balance_us["tx_type"] = $type;
@@ -551,7 +551,7 @@ function send_to_us_ccvt_voucher($us_id,$voucher,$flag,$why,$type)
     $com_balance_ba['hash_id'] = hash('md5', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_ba['tx_id'] = $data['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($rows['ba_id']);
-    $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_ba['hash_id'] : $prvs_hash;
+    $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? $com_balance_ba['hash_id'] : $prvs_hash;
     $com_balance_ba["credit_id"] = $rows['ba_id'];
     $com_balance_ba["debit_id"] = $us_id;
     $com_balance_ba["tx_type"] = $type;
@@ -690,7 +690,7 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     //赠送者
     $transfer['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($us_id);
-    $transfer['prvs_hash'] = $prvs_hash == 0 ? $transfer['hash_id'] : $prvs_hash;
+    $transfer['prvs_hash'] = $prvs_hash === 0 ? $transfer['hash_id'] : $prvs_hash;
     $transfer['credit_id'] = $us_id;
     $transfer['debit_id'] = $la_id;
     $transfer['tx_amount'] = $account*$unit;
@@ -713,7 +713,7 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     //接收者(la)
     $dat['hash_id'] = hash('md5', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($la_id);
-    $dat['prvs_hash'] = $prvs_hash == 0 ? $dat['hash_id'] : $prvs_hash;
+    $dat['prvs_hash'] = $prvs_hash === 0 ? $dat['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $la_id;
     $dat['debit_id'] = $us_id;
     $dat['tx_amount'] = $account*$unit;
@@ -741,7 +741,7 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_us['tx_id'] = $transfer['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($us_id);
-    $com_balance_us['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;
+    $com_balance_us['prvs_hash'] = $prvs_hash===0 ? $com_balance_us['hash_id'] : $prvs_hash;
     $com_balance_us["credit_id"] = $us_id;
     $com_balance_us["debit_id"] = $la_id;
     $com_balance_us["tx_type"] = $type;
@@ -761,7 +761,7 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     $com_balance_ba['hash_id'] = hash('md5', $la_id. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_ba['tx_id'] = $dat['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($la_id);
-    $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
+    $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? $com_balance_us['hash_id'] : $prvs_hash;
     $com_balance_ba["credit_id"] = $la_id;
     $com_balance_ba["debit_id"] = $us_id;
     $com_balance_ba["tx_type"] = $type;
@@ -980,7 +980,7 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why)
     //增币记录  赠送者
     $data['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($us_id);
-    $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $data['prvs_hash'] = $prvs_hash === 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = $us_id;
     $data['debit_id'] = $trans_us_id;
     $data['tx_amount'] = $money*$unit;
@@ -1003,7 +1003,7 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why)
     //接收者
     $dat['hash_id'] = hash('md5', $trans_us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($trans_us_id);
-    $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $dat['prvs_hash'] = $prvs_hash === 0 ? $data['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $trans_us_id;
     $dat['debit_id'] = $us_id;
     $dat['tx_amount'] = $money*$unit;
@@ -1030,7 +1030,7 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why)
     $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_us['tx_id'] = $data['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($us_id);
-    $com_balance_us['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
+    $com_balance_us['prvs_hash'] = $prvs_hash === 0 ? $com_balance_us['hash_id'] : $prvs_hash;
     $com_balance_us["credit_id"] = $us_id;
     $com_balance_us["debit_id"] = $trans_us_id;
     $com_balance_us["tx_type"] = "us_us_transfer_out";
@@ -1049,7 +1049,7 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why)
     $com_balance_ba['hash_id'] = hash('md5', $trans_us_id. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_ba['tx_id'] = $data['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($trans_us_id);
-    $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_ba['hash_id'] : $prvs_hash;
+    $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? $com_balance_ba['hash_id'] : $prvs_hash;
     $com_balance_ba["credit_id"] = $trans_us_id;
     $com_balance_ba["debit_id"] = $us_id;
     $com_balance_ba["tx_type"] = "us_us_transfer_in";

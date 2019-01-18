@@ -823,7 +823,7 @@ function send_to_us_ccvt($nickname,$voucher,$flag,$why,$type)
     //增币记录  赠送者
     $data['hash_id'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($rows['ba_id']);
-    $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $data['prvs_hash'] = $prvs_hash === 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = $rows['ba_id'];
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $money*$unit;
@@ -846,7 +846,7 @@ function send_to_us_ccvt($nickname,$voucher,$flag,$why,$type)
     //接收者
     $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($us_id);
-    $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
+    $dat['prvs_hash'] = $prvs_hash === 0 ? $dat['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = $rows['ba_id'];
     $dat['tx_amount'] = $money*$unit;
@@ -873,7 +873,7 @@ function send_to_us_ccvt($nickname,$voucher,$flag,$why,$type)
     $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_us['tx_id'] = $data['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($us_id);
-    $com_balance_us['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
+    $com_balance_us['prvs_hash'] = $prvs_hash === 0 ? $com_balance_us['hash_id'] : $prvs_hash;
     $com_balance_us["credit_id"] = $us_id;
     $com_balance_us["debit_id"] = $rows['ba_id'];
     $com_balance_us["tx_type"] = $type;
@@ -893,7 +893,7 @@ function send_to_us_ccvt($nickname,$voucher,$flag,$why,$type)
     $com_balance_ba['hash_id'] = hash('md5', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_ba['tx_id'] = $data['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($rows['ba_id']);
-    $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_ba['hash_id'] : $prvs_hash;
+    $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? $com_balance_ba['hash_id'] : $prvs_hash;
     $com_balance_ba["credit_id"] = $rows['ba_id'];
     $com_balance_ba["debit_id"] = $us_id;
     $com_balance_ba["tx_type"] = $type;
@@ -1364,7 +1364,7 @@ function give_like_us($data)
     $flag = $data['state'] == 1 ? 5 : 6;
     $transfer['hash_id'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_pre_hash($data['us_id']);
-    $transfer['prvs_hash'] = $prvs_hash == 0 ? $transfer['hash_id'] : $prvs_hash;
+    $transfer['prvs_hash'] = $prvs_hash === 0 ? $transfer['hash_id'] : $prvs_hash;
     $transfer['credit_id'] = $data['us_id'];
     $transfer['debit_id'] = $la_id;
     $transfer['tx_amount'] = $data['give_num']*$unit;
@@ -1387,7 +1387,7 @@ function give_like_us($data)
     //接收者(la)
     $dat['hash_id'] = hash('md5', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_pre_hash($la_id);
-    $dat['prvs_hash'] = $prvs_hash == 0 ? $dat['hash_id'] : $prvs_hash;
+    $dat['prvs_hash'] = $prvs_hash === 0 ? $dat['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $la_id;
     $dat['debit_id'] = $data['us_id'];
     $dat['tx_amount'] = $data['give_num']*$unit;
@@ -1415,7 +1415,7 @@ function give_like_us($data)
     $com_balance_us['hash_id'] = hash('md5', $data['us_id'] . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_us['tx_id'] = $transfer['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($data['us_id']);
-    $com_balance_us['prvs_hash'] = $prvs_hash==0 ? $com_balance_us['hash_id'] : $prvs_hash;
+    $com_balance_us['prvs_hash'] = $prvs_hash===0 ? $com_balance_us['hash_id'] : $prvs_hash;
     $com_balance_us["credit_id"] = $data['us_id'];
     $com_balance_us["debit_id"] = $la_id;
     $com_balance_us["tx_type"] = 'give_like';
@@ -1435,7 +1435,7 @@ function give_like_us($data)
     $com_balance_ba['hash_id'] = hash('md5', $la_id. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
     $com_balance_ba['tx_id'] = $dat['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($la_id);
-    $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
+    $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? $com_balance_ba['hash_id'] : $prvs_hash;
     $com_balance_ba["credit_id"] = $la_id;
     $com_balance_ba["debit_id"] = $data['us_id'];
     $com_balance_ba["tx_type"] = 'give_like';
