@@ -10,7 +10,7 @@ $(function () {
     var ca_channel = decodeURI(GetQueryString('ca_channel'));
     var ca_channel_en = decodeURI(GetQueryString('ca_channel_en'));
     var us_recharge_bit_amount = GetQueryString('us_recharge_bit_amount');
-    $('.bit_amount').val(us_recharge_bit_amount);
+    // $('.bit_amount').val(us_recharge_bit_amount);
     $(".ca_channel").text(ca_channel);
     // $('.rechargeType').text(ca_channel);
     // $('.rechargeTypeImg').attr("src", "img/" + ca_channel.toLowerCase() + ".png");
@@ -26,6 +26,8 @@ $(function () {
             recharge_min_amount = response.recharge_min_amount;
             $('.recharge_max_amount').text(response.max_amount);
             $('.recharge_min_amount').text(response.min_amount);
+            $('#rechargeAmount').text(response.min_amount);
+            $('#payAmount').text(response.min_amount * response.base_rate);
             // $('.recharge_ctime').text(response.set_time);
             $('.base_amount').val(us_recharge_bit_amount / rate);
         }
