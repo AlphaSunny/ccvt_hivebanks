@@ -157,14 +157,22 @@
                     </div>
                     <!-- phone reset -->
                     <div class="phoneResetBox form-inner-content fadeInRight">
+
+                        <div class="form-group">
+                            <input type="tel" class="form-control phone" name="phone" id="phone" value="" selectname="phoneInput" selectattr="placeholder">
+                            <span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>
+                            <span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>
+                            <span class='ty-color input_tips noPhonelTips i18n' name="userNotExist">* User Does Not Exist</span>
+                        </div>
+
                         <ul class="mess-ul">
-                            <li>
-                                <input type="tel" class="form-control phone" name="phone" id="phone" value=""
-                                       selectname="phoneInput" selectattr="placeholder">
-                                <span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>
-                                <span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>
-                                <span class='ty-color input_tips noPhonelTips i18n' name="userNotExist">* User Does Not Exist</span>
-                            </li>
+                            <!--<li>-->
+                                <!--<input type="tel" class="form-control phone" name="phone" id="phone" value=""-->
+                                       <!--selectname="phoneInput" selectattr="placeholder">-->
+                                <!--<span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>-->
+                                <!--<span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>-->
+                                <!--<span class='ty-color input_tips noPhonelTips i18n' name="userNotExist">* User Does Not Exist</span>-->
+                            <!--</li>-->
                             <!--Captcha-->
                             <li class="flex">
                                 <input type="text" class="form-control i18n-input phoneCfmCode" name="cfmCode" value=""
