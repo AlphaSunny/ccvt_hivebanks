@@ -337,10 +337,10 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             $sql = "update us_base set";
             if ($type=='gone_staff'){
                 //用户锁定减钱
-                $sql .= "set lock_amount=lock_amount-'{$send_money}'";
+                $sql .= " lock_amount=lock_amount-'{$send_money}'";
             }elseif ($type=='ba_out'){
                 //用户可用余额减钱
-                $sql .= "set base_amount=base_amount-'{$send_money}'";
+                $sql .= " base_amount=base_amount-'{$send_money}'";
             }
             $sql .= " WHERE us_id='{$us_id}'";
             echo $sql."6"."<br />";
