@@ -36,6 +36,7 @@ $(function () {
                     '</tr>'
             });
             $('#rechargePendingTable').html(tr);
+            execI18n();
         }
     }, function (response) {
         GetDataFail('rechargePendingTable', '5');
