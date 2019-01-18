@@ -231,7 +231,7 @@ $list = array_merge($reg_user,$invite_rows,$two_invite_send,$bot_rows,$glory,$vo
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
 print_r(json_encode($list));
-echo count($list);
+//echo count($list);
 die;
 $ba_id = get_ba_id();
 $la_id = get_la_id();
