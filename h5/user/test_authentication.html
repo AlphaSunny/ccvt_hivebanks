@@ -130,7 +130,7 @@
                                 <p class="w-50 security_bind_status i18n nameUnderReview none" name="underReview"></p>
                                 <p class="w-50 security_bind_status nameBindInfo none" name=""></p>
                                 <p class="security_bind_status i18n nameAlreadyBind none" name="alreadyBind"></p>
-                                <a href="javascript:;" class="a_link i18n nameBindBtn" name="bind"></a>
+                                <a href="javascript:;" class="a_link i18n nameBindBtn" name="bind" data-toggle="modal" data-target="#nameBindModal"></a>
                             </div>
                         </div>
                         <div class="item">
@@ -163,33 +163,33 @@
         </div>
         <!--bind name-->
         <div class="row nameBinRow phone-margin-top-10">
-            <div class="col-md-12 col-sm-12">
-                <div class="flex center space-between bindBox padding-1">
-                    <span class="font-size-14 phone-font-size-12 i18n" name="nameBind">nameBind</span>
-                    <div>
-                        <i class='iconfont icon-gantanhao redIcon nameIcon'></i>
-                        <span class="font-size-14 phone-font-size-12 nameBindStatus nameBindNot i18n"  name="unbound">unbound</span>
-                        <span class="font-size-14 phone-font-size-12 bindStatus nameBindRefuse none i18n"  name="review">Review rejected, re-bind</span>
-                    </div>
+            <!--<div class="col-md-12 col-sm-12">-->
+                <!--<div class="flex center space-between bindBox padding-1">-->
+                    <!--<span class="font-size-14 phone-font-size-12 i18n" name="nameBind">nameBind</span>-->
+                    <!--<div>-->
+                        <!--<i class='iconfont icon-gantanhao redIcon nameIcon'></i>-->
+                        <!--<span class="font-size-14 phone-font-size-12 nameBindStatus nameBindNot i18n"  name="unbound">unbound</span>-->
+                        <!--<span class="font-size-14 phone-font-size-12 bindStatus nameBindRefuse none i18n"  name="review">Review rejected, re-bind</span>-->
+                    <!--</div>-->
 
-                    <span class="font-size-14 phone-font-size-12 nameBindStatus nameBindAlready i18n none" name="alreadyBind">alreadyBind</span>
-                    <span class="font-size-14 phone-font-size-12 nameBindStatus nameUnderReview none i18n" name="underReview">underReview</span>
-                    <a href="javascript:;" class="font-size-14 phone-font-size-12 nameBindBtn i18n"  name="bind">bind</a>
-                </div>
-            </div>
-            <div class="col-md-6 col-md-offset-3 col-sm-12 margin-top-5 nameFormBox none">
-                <div class="">
-                    <ul class="flex center space-between">
-                        <li><span class="i18n" name="name">name</span></li>
-                        <li class="width-75">
-                            <input type="text" id="name" class="form-control">
-                        </li>
-                        <li>
-                            <button class="btn btn-success nameBindEnable i18n" name="determine">determine</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                    <!--<span class="font-size-14 phone-font-size-12 nameBindStatus nameBindAlready i18n none" name="alreadyBind">alreadyBind</span>-->
+                    <!--<span class="font-size-14 phone-font-size-12 nameBindStatus nameUnderReview none i18n" name="underReview">underReview</span>-->
+                    <!--<a href="javascript:;" class="font-size-14 phone-font-size-12 nameBindBtn i18n"  name="bind">bind</a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-6 col-md-offset-3 col-sm-12 margin-top-5 nameFormBox none">-->
+                <!--<div class="">-->
+                    <!--<ul class="flex center space-between">-->
+                        <!--<li><span class="i18n" name="name">name</span></li>-->
+                        <!--<li class="width-75">-->
+                            <!--<input type="text" id="name" class="form-control">-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<button class="btn btn-success nameBindEnable i18n" name="determine">determine</button>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
 
         <!--ID card number binding-->
@@ -275,47 +275,29 @@
     </div>
 </section>
 
+<!--name bind modal-->
+<div class="modal fade" id="nameBindModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title i18n" name="nameBind" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="nameBindInput" class="i18n" name="nameBind"></label>
+                    <input type="text" id="nameBindInput" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal"></button>
+                <button type="button" class="btn btn-primary i18n nameBindEnable" name="bind"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--footer-->
-<!--<section class="sections footer">-->
-    <!--<div class="container">-->
-        <!--<div class="row left-row">-->
-            <!--<div class="col-md-12 col-sm-12">-->
-                <!--<div class="footerTR flex space-between center">-->
-                    <!--<div class="footerIconBox">-->
-                        <!--<a href="https://twitter.com/Hivebanks "  data-toggle="tooltip" data-placement="top" title="hivebanks"><i class="iconfont icon-twitter"></i></a>-->
-                        <!--<a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i class="iconfont icon-telegram"></i></a>-->
-                        <!--<a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top" title="ccvt.io"><i class="iconfont icon-weibo"></i></a>-->
-                        <!--<a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top" title="Hivebanks"><i class="iconfont icon-weixin"></i></a>-->
-                    <!--</div>-->
-                    <!--<div>-->
-                        <!--<select class="form-control input-sm" id="language">-->
-                            <!--<option value="en">English</option>-->
-                            <!--<option value="zh-CN">中文简体</option>-->
-                            <!--<option value="ja">Japanese</option>-->
-                        <!--</select>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row footer-copyright">-->
-            <!--<span>                 <span class="i18n" name="version">©2018-2019 Powered by</span>                 <a href="http://www.hivebanks.com">hivebanks</a>             </span>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</section>-->
-
-<!--<div class="scrollup">-->
-    <!--<a href="#"><i class="iconfont icon-top"></i></a>-->
-<!--</div>-->
-
-<!--<script src="../assets/js/jquery-3.2.1.min.js"></script>-->
-<!--<script src="language/jquery.i18n.properties.js"></script>-->
-<!--<script src="language/language.js"></script>-->
-<!--<script src="../assets/js/sha.js"></script>-->
-<!--<script src="../assets/js/bootstrap.min.js"></script>-->
-<!--<script src="../assets/js/layer/layer.js"></script>-->
-<!--<script src="../assets/js/prompt.js"></script>-->
-<!--<script src="js/common.js"></script>-->
-<!--<script src="js/main.js"></script>-->
 <div class="footer_box">
     <iframe src="footer.html" frameborder="0" height="100%" width="100%"></iframe>
 </div>
