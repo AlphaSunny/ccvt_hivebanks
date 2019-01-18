@@ -18,30 +18,33 @@ $(function () {
                     //bind name
                     if (data[i].bind_name == 'name' && data[i].bind_flag == '1') {//Name binding succeeded
                         name = data[i].bind_name;
-                        $('.nameBindNot').text(data[i].bind_info).show();
-                        $('.nameFormBox').remove();
-                        $('.nameBindBtn').remove();
-                        $('.nameUnderReview').remove();
-                        $('.nameBindRefuse').remove();
-                        $('.nameBindAlready').show('fast');
-                        $('.nameIcon').addClass('greenIcon icon-duihao').removeClass('icon-gantanhao');
+                        $(".nameNotBind,.nameUnderReview,.nameBindBtn").remove();
+                        $(".nameBindInfo").text(name);
+                        $(".nameAlreadyBind").removeClass("none");
+                        // $('.nameBindNot').text(data[i].bind_info).show();
+                        // $('.nameFormBox').remove();
+                        // $('.nameBindBtn').remove();
+                        // $('.nameUnderReview').remove();
+                        // $('.nameBindRefuse').remove();
+                        // $('.nameBindAlready').show('fast');
+                        // $('.nameIcon').addClass('greenIcon icon-duihao').removeClass('icon-gantanhao');
                         return;
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '0') {//Name review
-                        name = data[i].bind_name;
-                        $('.nameFormBox').remove();
-                        $('.nameBindBtn').remove();
-                        $('.nameBindNot').remove();
-                        $('.nameBindAlready').remove();
-                        $('.nameBindRefuse').remove();
-                        $('.nameUnderReview').show('fast');
-                        $('.nameIcon').css('color', '#9e9e9e');
+                        // name = data[i].bind_name;
+                        // $('.nameFormBox').remove();
+                        // $('.nameBindBtn').remove();
+                        // $('.nameBindNot').remove();
+                        // $('.nameBindAlready').remove();
+                        // $('.nameBindRefuse').remove();
+                        // $('.nameUnderReview').show('fast');
+                        // $('.nameIcon').css('color', '#9e9e9e');
                         return;
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '1') {//Name review rejection
-                        $('.nameBindNot').remove();
-                        $('.nameBindAlready').remove();
-                        $('.nameUnderReview').remove();
-                        $('.nameBindBtn').show();
-                        $('.nameBindRefuse').show();
+                        // $('.nameBindNot').remove();
+                        // $('.nameBindAlready').remove();
+                        // $('.nameUnderReview').remove();
+                        // $('.nameBindBtn').show();
+                        // $('.nameBindRefuse').show();
                         return;
                     }
 
