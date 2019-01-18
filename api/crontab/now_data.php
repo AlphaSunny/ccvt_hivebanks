@@ -107,7 +107,7 @@ foreach ($glory as $k=>$v){
 
 
 //兑换码兑换
-$sql = "select us_id,amount as send_money,exchange_time as ctime from us_voucher WHERE is_effective=2 AND us_id!=0";
+$sql = "select us_id,amount as send_money,exchange_time as ctime from us_voucher WHERE is_effective=2 and exchange_time!=''";
 $db->query($sql);
 $voucher = $db->fetchAll();
 foreach ($voucher as $k=>$v){
