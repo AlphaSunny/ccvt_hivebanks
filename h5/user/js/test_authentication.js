@@ -19,7 +19,7 @@ $(function () {
                     if (data[i].bind_name == 'name' && data[i].bind_flag == '1') {//Name binding succeeded
                         name = data[i].bind_name;
                         $(".nameNotBind,.nameUnderReview,.nameBindBtn").remove();
-                        $(".nameBindInfo").text(name);
+                        $(".nameBindInfo").text(name).removeClass("none");
                         $(".nameAlreadyBind").removeClass("none");
                         // $('.nameBindNot').text(data[i].bind_info).show();
                         // $('.nameFormBox').remove();
