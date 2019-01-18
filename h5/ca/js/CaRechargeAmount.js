@@ -10,10 +10,7 @@ $(function () {
     var ca_channel = decodeURI(GetQueryString('ca_channel'));
     var ca_channel_en = decodeURI(GetQueryString('ca_channel_en'));
     var us_recharge_bit_amount = GetQueryString('us_recharge_bit_amount');
-    // $('.bit_amount').val(us_recharge_bit_amount);
     $(".ca_channel").text(ca_channel);
-    // $('.rechargeType').text(ca_channel);
-    // $('.rechargeTypeImg').attr("src", "img/" + ca_channel.toLowerCase() + ".png");
 
     //distribution recharge ca
     var api_url = 'assign_recharge_ca.php', rate = '', ca_id = '', recharge_max_amount = '', recharge_min_amount = '';
@@ -28,7 +25,6 @@ $(function () {
             $('.recharge_min_amount').text(response.min_amount);
             $('#rechargeAmount').text(response.min_amount);
             $('#payAmount').text(response.min_amount * response.base_rate);
-            // $('.recharge_ctime').text(response.set_time);
             $('.base_amount').val(us_recharge_bit_amount / rate);
         }
     }, function (response) {
