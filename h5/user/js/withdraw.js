@@ -134,8 +134,8 @@ $(function () {
 
     //fullWithdrawal
     $('.fullWithdrawal').click(function () {
-        $('.base_amount').val(us_base_amount);
-        $('.bit_amount').val(us_base_amount * withdraw_rate);
+        $('#withdrawAmount').val(us_base_amount);
+        $('#payAmount').val(us_base_amount * withdraw_rate);
     });
 
     //Ca recharge the next step
