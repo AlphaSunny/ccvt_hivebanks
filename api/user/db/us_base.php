@@ -124,6 +124,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $data['give_or_receive'] = 1;
     $data['ctime'] = time();
     $data['utime'] = date('Y-m-d H:i:s',time());
+    $data["tx_count"] = transfer_get_pre_count($rows['ba_id']);
     $sql = $db->sqlInsert("com_transfer_request", $data);
     $id = $db->query($sql);
     if (!$id){
@@ -147,6 +148,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $dat['give_or_receive'] = 2;
     $dat['ctime'] = time();
     $dat['utime'] = date('Y-m-d H:i:s',time());;
+    $dat["tx_count"] = transfer_get_pre_count($us_id);
     $sql = $db->sqlInsert("com_transfer_request", $dat);
     $id = $db->query($sql);
     if (!$id){
@@ -169,6 +171,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $com_balance_us["credit_balance"] = get_us_account($us_id)+$com_balance_us["tx_amount"];
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = $ctime;
+    $com_balance_us["tx_count"] = base_get_pre_count($us_id);
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
     if (!$db->query($sql)) {
@@ -189,6 +192,7 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id'])-$com_balance_ba["tx_amount"];
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;
+    $com_balance_ba["tx_count"] = base_get_pre_count($rows['ba_id']);
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
     if (!$db->query($sql)) {
@@ -755,7 +759,6 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     $com_balance_us["credit_balance"] = get_us_account($us_id)-$com_balance_us["tx_amount"];
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = date('Y-m-d H:i:s');
-
     $com_balance_us["tx_count"] = base_get_pre_count($us_id);
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
@@ -777,7 +780,6 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     $com_balance_ba["credit_balance"] = get_la_base_amount($la_id)+$com_balance_ba["tx_amount"];
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;
-
     $com_balance_ba["tx_count"] = base_get_pre_count($la_id);
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
     if (!$db->query($sql)) {
