@@ -7,21 +7,11 @@
     <meta name='viewport'
           content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'>
     <title class='i18n' name='transfer'></title>
-    <!--<link rel='stylesheet' href='../assets/css/bootstrap.min.css'>-->
-    <!--<link rel='stylesheet' href='css/common.css'>-->
-    <!--<link rel='stylesheet' type='text/css' media='only screen and (max-device-width:767px)'-->
-          <!--href='mobile-css/common.css'>-->
-    <!--<link rel='stylesheet' type='text/css' media='only screen and (max-device-width:767px)'-->
-          <!--href='mobile-css/transfer.css'>-->
-    <!--<link rel='stylesheet' href='css/transfer.css'>-->
     <script src="../assets/js/write_css.js"></script>
     <script src="js/user_write_css.js"></script>
     <link rel="stylesheet/less" href="css/test_transfer.less">
 </head>
 <body>
-<!-- loading -->
-<!--<iframe src='loading.html' class='loading' width='100%' height='100%' frameborder='0' marginheight='0' marginwidth='0'-->
-        <!--scrolling='no'></iframe>-->
 <!--nav-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -107,17 +97,39 @@
 <!--Transfer form-->
 <section class='sections'>
     <div class='container'>
-        <h3 class='pcTitle i18n' name='transfer'>Transfer</h3>
-        <h5 class='phoneTitle i18n' name='transfer'>Transfer</h5>
+        <h3 class='pcTitle i18n' name='transfer'></h3>
         <div class='row transferInfo'>
             <div class='col-md-12 col-sm-12 transfer'>
+                <div class="form-group">
+                    <label for="payee">对方账户昵称</label>
+                    <input type="text" id="payee" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="invite_code">对方邀请码</label>
+                    <input type="text" id="invite_code" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="amount" class="i18n" name="transferAmount"></label>
+                    <input type="text" id="amount" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="fun_pass" class="i18n" name="fundPassword"></label>
+                    <input type="text" id="fun_pass" class="form-control">
+                </div>
+
+                <div>
+                    <button class="btn btn-success transfer_btn i18n" name="transfer"></button>
+                </div>
                 <ul>
-                    <li><span class='' name=''>对方账户昵称</span><input type='text' id="payee" class='form-control'>
-                    <li><span class='' name=''>对方邀请码</span><input type='text' id="invite_code" class='form-control'>
-                    </li>
-                    <li><span class='i18n' name='transferAmount'></span><input type='text' id="amount" class='form-control'></li>
-                    <li><span class='i18n' name='fundPassword'></span><input type='password' id="fun_pass" class='form-control'></li>
-                    <li><a href='javascript:;' class='btn btn-success transfer_btn i18n' name="transfer"></a></li>
+                    <!--<li><span class='' name=''>对方账户昵称</span><input type='text' id="payee" class='form-control'>-->
+                    <!--<li><span class='' name=''>对方邀请码</span><input type='text' id="invite_code" class='form-control'>-->
+                    <!--</li>-->
+                    <!--<li><span class='i18n' name='transferAmount'></span><input type='text' id="amount" class='form-control'></li>-->
+                    <!--<li><span class='i18n' name='fundPassword'></span><input type='password' id="fun_pass" class='form-control'></li>-->
+                    <!--<li><a href='javascript:;' class='btn btn-success transfer_btn i18n' name="transfer"></a></li>-->
                 </ul>
             </div>
         </div>
@@ -127,7 +139,6 @@
 <section>
     <div class='container' id='transferCodes'>
         <h3 class='pcTitle i18n' name='transferRecord'>Transfer Record</h3>
-        <h5 class='phoneTitle i18n' name='transferRecord'>Transfer Record</h5>
         <div class='row'>
             <!--history-->
             <div class='col-md-12 col-sm-12 deposit-col-right'>
