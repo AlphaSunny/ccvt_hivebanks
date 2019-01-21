@@ -72,7 +72,7 @@ $(function () {
     });
 
     //transfer list
-
+    let limit = "10", offset = "0", type = "1";
     function TransferListFun(limit, offset, type) {
         TransferList(token, limit, offset, type, function (response) {
             if (response.errcode == "0") {
@@ -118,7 +118,6 @@ $(function () {
         })
     }
 
-    let limit = "10", offset = "0", type = "1";
     TransferListFun(limit, offset, type)
 
 });
