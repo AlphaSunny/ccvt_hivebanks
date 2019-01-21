@@ -22,33 +22,25 @@ function get_group_info($group_id)
 {
     $db = new DB_COM();
     $sql = "SELECT id,name,scale,(select count(*) from us_bind where bind_name='group' and bind_info='{$group_id}') as bind_count FROM bot_group WHERE id='{$group_id}'";
-    echo 1;
     $db -> query($sql);
     $row = $db -> fetchRow();
     if ($row){
         $sql = "select count(member_id) as count from bot_group_members WHERE group_id='{$row['id']}'";
-        echo 2;
         $db->query($sql);
         $row['group_member_number'] = $db->getField($sql,'count');
         $sql = "select count(id) as count from bot_memeber_change_record WHERE group_id='{$row['id']}' AND to_days(ctime) = to_days(now())";
-        echo 3;
         $db->query($sql);
         $row['this_day_in'] = $db->getField($sql,'count');
         $row['glory_number'] = glory_number($row['id']);
         $sql = "select scale from bot_group_level_rules ORDER BY scale desc limit 1";
-        echo 4;
         $db->query($sql);
         if ($row['scale']==$db->getField($sql,'scale')){
-            echo 22;
             $row['is_top'] = 1;
             $row['next_level_bind_number'] = 0;
             $row['next_level_glory_number'] = 0;
         }else{
             $row['is_top'] = 0;
-            echo 1111;
             $sql = "select bind_number,glory_number from bot_group_level_rules WHERE scale='{$row['scale']}'+1";
-            echo $sql;
-            echo 5;
             $db->query($sql);
             $row['next_level_bind_number'] = $db->getField($sql,'bind_number');
             $row['next_level_glory_number'] = $db->getField($sql,'glory_number');
@@ -60,7 +52,6 @@ function get_group_info($group_id)
     foreach ($weeks as $k=>$v){
         $bind_rows[$k-1]['date'] = $v;
         $sql = "select count(us_id) as num from us_bind where bind_name='group' AND bind_info='{$group_id}' AND DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(ctime)), '%Y-%m-%d')='{$v}'";
-        echo 6;
         $db->query($sql);
         $bind_rows[$k-1]['num'] = $db->getField($sql,'num');
     }
