@@ -60,7 +60,7 @@ $(function () {
             layer.closeAll('dialog');
             $(".transfer_account").text(account);
             $(".transfer_amount").text(ccvt_num);
-            $("#transfer_success_modal").fadeIn(300);
+            $("#transfer_success_modal").removeClass("none");
         }, function (response) {
             ShowLoading("hide");
             layer.msg(response.errmsg, {icon: 2});
