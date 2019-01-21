@@ -15,7 +15,7 @@ $(function () {
     $(document).on("click", ".look_chat", function () {
         wechat = null;
         group_id = $(this).attr("name");
-        group_name = $("#title option:selected").text();
+        group_name = $(this).text();
         $(".person_name").text(group_name);
         offset = 0;
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
