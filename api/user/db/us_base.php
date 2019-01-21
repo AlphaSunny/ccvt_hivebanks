@@ -961,7 +961,7 @@ function  us_us_transfer_request($data)
     //扣除用户
     $unit = get_la_base_unit();
     $sql = "update us_base set base_amount=base_amount+'{$data['num']}'*'{$unit}' WHERE us_id='{$data['us_id']}'";
-    echo 1;
+    echo $sql;
     $db -> query($sql);
     if (!$db->affectedRows()){
         $db->Rollback($pInTrans);
@@ -969,7 +969,7 @@ function  us_us_transfer_request($data)
     }
     //用户加钱(加入锁定金额)
     $sql = "update us_base set lock_amount=lock_amount+'{$data['num']}'*'{$unit}' WHERE us_id='{$data['trans_us_id']}'";
-    echo 2;
+    echo $sql;
     $db -> query($sql);
     if (!$db->affectedRows()){
         $db->Rollback($pInTrans);
@@ -985,7 +985,7 @@ function  us_us_transfer_request($data)
     $d['tx_time'] = date('Y-m-d H:i:s',time());
     $d['utime'] = time();
     $sql = $db->sqlInsert("us_us_transfer_request", $d);
-    echo 3;
+    echo $sql;
     $id = $db->query($sql);
     if (!$id){
         $db->Rollback($pInTrans);
