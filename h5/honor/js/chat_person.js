@@ -2,8 +2,8 @@ $(function () {
     let wechat = "", group_id = "", group_name = "", limit = 50, offset = 0, search_content = "";
 
     //显示个人聊天内容
-    $(document).on("click", ".message_icon", function () {
-        wechat = $(this).parents("tr").find(".wechat").text();
+    $(document).on("click", ".wechat", function () {
+        wechat = $(this).text();
         group_id = null;
         group_name = null;
         $(".person_name").text(wechat);

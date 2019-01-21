@@ -89,9 +89,9 @@ $(function () {
                     }
                     tr += "<tr>" +
                         sorting +
-                        "<td class='weChatName'>"+ scale +"&nbsp;<span class='wechat'>" + data[i].wechat + "</span></td>" +
+                        "<td class='weChatName'>"+ scale +"&nbsp;<a href='javascript:;' class='wechat'>" + data[i].wechat + "</a></td>" +
                         "<td class='group' title='"+ data[i].group_name +"'><a href='javascript:;' name='"+ data[i].group_id +"' class='look_chat'>" + data[i].group_name + "</a></td>" +
-                        "<td class='text-center'><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
+                        // "<td class='text-center'><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                         "<td class='text-center'>" +
                         "<span class='none us_id'>" + data[i].us_id + "</span>" +
                         "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
