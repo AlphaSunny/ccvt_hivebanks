@@ -3,7 +3,7 @@ require_once "../inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
-die;
+
 //群等级提升程序(每次只能升一级)
 
 
