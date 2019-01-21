@@ -5,7 +5,7 @@ error_reporting(E_ALL | E_STRICT);
 
 
 
-die;
+
 //等级提升程序(每次只能升一级)
 
 $db = new DB_COM();
@@ -14,6 +14,8 @@ $unit = get_la_base_unit();
 $sql = "select scale from us_base group by scale order by scale desc";
 $db->query($sql);
 $scale_list = $db->fetchAll();
+print_r($scale_list);
+die;
 if ($scale_list){
     foreach ($scale_list as $k=>$v){
         set_time_limit(0);
