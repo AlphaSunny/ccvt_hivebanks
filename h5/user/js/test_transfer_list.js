@@ -86,8 +86,8 @@ $(function () {
                         "<td>" + data[i].tx_amount + "</td>" +
                         "<td>" + data[i].tx_time + "</td>" +
                         "<td>" +
-                        "<button class='btn btn-success transfer_confirm'>确认</button>" +
-                        "<button class='btn btn-danger transfer_cancel'>取消</button>" +
+                        "<button class='btn btn-success btn-sm transfer_confirm'>确认</button>" +
+                        "<button class='btn btn-danger btn-sm transfer_cancel margin-left-10'>取消</button>" +
                         "</td>" +
                         "</tr>"
                 });
