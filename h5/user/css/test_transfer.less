@@ -1,3 +1,4 @@
+@import "common_user";
 .transferInfo {
   height: 530px;
 }
@@ -8,9 +9,15 @@
 }
 
 .transfer_h1 p {
-  font-size: 24px;
+  font-size: @default_odd_px * 8;
   font-weight: 400;
 }
-.transform_ccvt_confirm_btn.width-100{
-  width: 100%;
+
+.transform_ccvt_confirm_btn.width-100 {
+  width: @_100;
+}
+
+.transferRecord {
+  display: block;
+  padding: @default_odd_px * 5;
 }
