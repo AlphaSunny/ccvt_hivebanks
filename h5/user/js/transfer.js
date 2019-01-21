@@ -142,7 +142,7 @@ $(function () {
                 }
 
                 if (data == false) {
-                    GetDataEmpty('transfer_out_list', '3');
+                    GetDataEmpty('transfer_in_list', '3');
                     return;
                 }
                 $.each(data, function (i, val) {
