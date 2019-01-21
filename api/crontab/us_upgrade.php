@@ -11,6 +11,29 @@ die;
 $db = new DB_COM();
 $unit = get_la_base_unit();
 
+$sql = "select scale from us_base group by scale order by scale desc";
+$db->query($sql);
+$scale_list = $db->fetchAll();
+if ($scale_list){
+    foreach ($scale_list as $k=>$v){
+        set_time_limit(0);
+        //获取下一级所需荣耀积分
+        $next_glory = get_next_glory($v['scale']);
+        $sql = "select us_id,us_nm,us_account,base_amount/'{$unit}' as base_amount,(select wechat from us_base where us_id=a.us_id) as wechat from us_asset as a where asset_id='GLOP' and  base_amount/'{$unit}' >='{$next_glory['integral']}' and us_id in (select us_id from us_base where scale='{$v['scale']}') order by base_amount desc";
+        $db->query($sql);
+        $two_rows = $db->fetchAll();
+        foreach ($two_rows as $a=>$b){
+            set_time_limit(0);
+            //判断等级提升
+            $us_scale = get_us_base($b['us_id'])['scale'];
+            if ($us_scale!=($v['scale']+1)){
+                scale_upgrade($v['us_id'],$v['scale'],$v['scale']+1,$v['base_amount']);
+            }
+        }
+    }
+}
+
+
 //1-2
 $sql = "select us_id,us_nm,us_account,base_amount/'{$unit}' as base_amount,(select wechat from us_base where us_id=a.us_id) as wechat from us_asset as a where asset_id='GLOP' and  base_amount/'{$unit}' >= 300 and us_id in (select us_id from us_base where scale=1) order by base_amount desc";
 $db->query($sql);
@@ -74,6 +97,15 @@ function scale_upgrade($us_id,$before_scale,$after_scale,$scale){
         $db->Commit($pInTrans);
 }
 
+
+//获取下一级所需荣耀积分
+function get_next_glory($scale){
+    $db = new DB_COM();
+    $sql = "select * from us_scale WHERE scale='{$scale}'+1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    return $row;
+}
 
 
 //获取用户信息

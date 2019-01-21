@@ -21,7 +21,7 @@ function get_transfer_ccvt_total($us_id,$type)
     return $count = $db->affectedRows();
 }
 //======================================
-// 函数: 转账记录总数查询
+// 函数: 转账记录查询
 // 参数: us_id         用户id
 //      offset        查询起始位置
 //      limit         查询个数
@@ -32,15 +32,15 @@ function get_transfer_ccvt_list($us_id,$offset,$limit,$type)
 {
     $db = new DB_COM();
     $unit = get_la_base_unit();
-    $sql = "select qa_id,tx_amount/'{$unit}',tx_time,qa_flag from us_us_transfer_request where";
+    $sql = "select qa_id,tx_amount/'{$unit}',tx_time,qa_flag,b.us_account from us_us_transfer_request as a LEFT JOIN us_base as b ON";
     switch ($type){
         case 1:
-            $sql .= " us_id='{$us_id}'";
+            $sql .= " a.us_id=b.us_id where a.us_id='{$us_id}'";
             break;
         case 2:
-            $sql .= " transfer_id='{$us_id}'";
+            $sql .= " a.transfer_id=b.us_id where a.transfer_id='{$us_id}'";
     }
-    $sql .= " order by tx_time limit $offset,$limit";
+    $sql .= " order by a.tx_time limit $offset,$limit";
     $db->query($sql);
     return $res = $db->fetchAll();
 }
