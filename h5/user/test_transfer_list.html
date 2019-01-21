@@ -88,8 +88,9 @@
     <div class='row'>
         <div class='col-md-12 col-sm-12'>
             <ol class='breadcrumb'>
-                <li><a href='test_account.html' class='i18n' name='account'>Account</a></li>
-                <li class='active i18n' name='transfer'>Transfer</li>
+                <li><a href='test_account.html' class='i18n' name='account'></a></li>
+                <li><a href='test_transfer.html' class='i18n' name='transfer'></a></li>
+                <li class='active i18n' name='transferRecord'></li>
             </ol>
         </div>
     </div>
@@ -99,42 +100,14 @@
     <div class='container'>
         <div>
             <h3 class='pcTitle i18n' name='transfer'></h3>
-            <a href="test_transfer_list.html" class="i18n" name="transferRecord">转账记录</a>
         </div>
 
-        <div class='table_bg padding-top-bottom-100 transferInfo'>
-            <div class='col-md-6 col-md-offset-3 col-sm-12 col-xs-12 transfer'>
-                <div class="form-group">
-                    <label for="payee">对方账户昵称</label>
-                    <input type="text" id="payee" class="form-control">
-                </div>
 
-                <div class="form-group">
-                    <label for="invite_code">对方邀请码</label>
-                    <input type="text" id="invite_code" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="amount" class="i18n" name="transferAmount"></label>
-                    <input type="text" id="amount" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="fun_pass" class="i18n" name="fundPassword"></label>
-                    <input type="text" id="fun_pass" class="form-control">
-                </div>
-
-                <div>
-                    <button class="btn btn-success width-100 transfer_btn i18n" name="transfer"></button>
-                </div>
-
-            </div>
-        </div>
     </div>
 </section>
 <!--Transfer history-->
-<!--<section>-->
-    <!--<div class='container' id='transferCodes'>-->
+<section>
+    <div class='container' id='transferCodes'>
         <!--<div class="row">-->
             <!--<div class="col-md-12 col-sm-12 col-xs-12">-->
                 <!--<h3 class='pcTitle i18n' name='transferRecord'></h3>-->
@@ -145,32 +118,56 @@
             <!--</div>-->
         <!--</div>-->
 
-        <!--<div class='row'>-->
-            <!--&lt;!&ndash;history&ndash;&gt;-->
-            <!--<div class='col-md-12 col-sm-12 deposit-col-right'>-->
-                <!--<div class='record-bg'>-->
-                    <!--<div class='table-box table_bg table-responsive'>-->
-                        <!--<table class='tab table table-hover table-condensed'>-->
-                            <!--<thead>-->
-                            <!--<tr>-->
-                                <!--<th class='' name=''>账户昵称</th>-->
-                                <!--<th class='i18n' name='changeAmount'>Change Amount</th>-->
-                                <!--<th class='i18n' name='changeTime'>Change Time</th>-->
-                            <!--</tr>-->
-                            <!--</thead>-->
-                            <!--<tbody class="historyCode" id="transfer_out_list">-->
+        <div class='row'>
+            <!--history-->
+            <div class='col-md-12 col-sm-12 deposit-col-right'>
+                <h3 class='pcTitle' name=''>转出记录</h3>
+                <div class='record-bg'>
+                    <div class='table-box table_bg table-responsive'>
+                        <table class='tab table table-hover table-condensed'>
+                            <thead>
+                            <tr>
+                                <th class='' name=''>账户昵称</th>
+                                <th class='i18n' name='changeAmount'>Change Amount</th>
+                                <th class='i18n' name='changeTime'>Change Time</th>
+                            </tr>
+                            </thead>
+                            <tbody class="historyCode" id="transfer_out_list">
 
-                            <!--</tbody>-->
-                        <!--</table>-->
-                        <!--<div class="text-right">-->
-                            <!--<div id="pagination" class="page"></div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</section>-->
+                            </tbody>
+                        </table>
+                        <div class="text-right">
+                            <div id="pagination" class="page"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-md-12 col-sm-12 deposit-col-right'>
+                <h3 class='pcTitle' name=''>转入记录</h3>
+                <div class='record-bg'>
+                    <div class='table-box table_bg table-responsive'>
+                        <table class='tab table table-hover table-condensed'>
+                            <thead>
+                            <tr>
+                                <th class='' name=''>账户昵称</th>
+                                <th class='i18n' name='changeAmount'>Change Amount</th>
+                                <th class='i18n' name='changeTime'>Change Time</th>
+                            </tr>
+                            </thead>
+                            <tbody class="historyCode" id="transfer_in_list">
+
+                            </tbody>
+                        </table>
+                        <div class="text-right">
+                            <div id="pagination_in" class="page"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!--not bind fun pass-->
 <div id="not_bind_funPass_modal" class="customize_modal none">
