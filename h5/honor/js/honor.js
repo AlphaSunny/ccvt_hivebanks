@@ -90,7 +90,7 @@ $(function () {
                     tr += "<tr>" +
                         sorting +
                         "<td class='weChatName'><span class='wechat'>" + data[i].wechat + "</span>&nbsp;" + scale + "</td>" +
-                        "<td class='group' title='"+ data[i].group_name +"' name='"+ data[i].group_name +"'><span>" + data[i].group_name + "</span></td>" +
+                        "<td class='group' title='"+ data[i].group_name +"'><a href='javascript:;' name='"+ data[i].group_id +"' class='look_chat'>" + data[i].group_name + "</a></td>" +
                         "<td class='text-center'><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                         "<td class='text-center'>" +
                         "<span class='none us_id'>" + data[i].us_id + "</span>" +
@@ -133,18 +133,18 @@ $(function () {
     HonorFun(limit, offset, search_content, group_id);
 
     //获取群列表
-    var option = "<option value='all'>全部</option>";
-    GetGroupList(function (response) {
-        if (response.errcode == "0") {
-            var data = response.rows;
-            $.each(data, function (i, val) {
-                option += "<option value=" + data[i].id + ">LV." + data[i].scale + "&nbsp;" + data[i].name + "</option>";
-            });
-            $("#title").html(option);
-        }
-    }, function (response) {
-        layer.msg(response.errmsg, {icon: 2});
-    });
+    // var option = "<option value='all'>全部</option>";
+    // GetGroupList(function (response) {
+    //     if (response.errcode == "0") {
+    //         var data = response.rows;
+    //         $.each(data, function (i, val) {
+    //             option += "<option value=" + data[i].id + ">LV." + data[i].scale + "&nbsp;" + data[i].name + "</option>";
+    //         });
+    //         $("#title").html(option);
+    //     }
+    // }, function (response) {
+    //     layer.msg(response.errmsg, {icon: 2});
+    // });
 
     //搜索
     $(".nick_name_search").click(function () {
@@ -178,7 +178,7 @@ $(function () {
     });
 
     //赞/踩
-    var give_us_id = "", state = "",
+    let give_us_id = "", state = "",
         _this_click_zan_num = "",
         _this_click_cai_num = "",
         _this_already_zan_num = "",
@@ -233,7 +233,7 @@ $(function () {
     }
 
     //确定点赞/cai
-    var give_num = "";
+    let give_num = "";
     $(".customize_modal_confirm_btn").click(function () {
         give_num = Number($(".zan_cai_input").val());
         if (give_num.length <= 0) {
@@ -254,7 +254,7 @@ $(function () {
 
     //赞--》踩--》
     function ConfirmZanCaiFun() {
-        var index = layer.load(1, {
+        let index = layer.load(1, {
             shade: [0.1, '#fff']
         });
         ConfirmZanCai(token, give_us_id, give_num, state, function (response) {

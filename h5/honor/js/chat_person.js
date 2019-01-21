@@ -1,5 +1,5 @@
 $(function () {
-    var wechat = "", group_id = "", group_name = "", limit = 50, offset = 0, search_content = "";
+    let wechat = "", group_id = "", group_name = "", limit = 50, offset = 0, search_content = "";
 
     //显示个人聊天内容
     $(document).on("click", ".message_icon", function () {
@@ -12,20 +12,20 @@ $(function () {
     });
 
     //显示群聊内容
-    $(document).on("click", ".look_chat_recode_btn", function () {
+    $(document).on("click", ".look_chat", function () {
         wechat = null;
-        group_id = $("#title").val();
+        group_id = $(this).attr("name");
         group_name = $("#title option:selected").text();
         $(".person_name").text(group_name);
         offset = 0;
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
-    var is_content = 1;
+    let is_content = 1;
 
     function GetWeChatFun(wechat, group_id, search_content, limit, offset) {
-        var bot_content = "", li = "";
-        var index = layer.load(1, {
+        let bot_content = "", li = "";
+        let index = layer.load(1, {
             shade: [0.1, '#fff']
         });
         GetChatPerson(wechat, group_id, search_content, limit, offset, function (response) {
@@ -33,8 +33,8 @@ $(function () {
             $("html, body").css("overflow", "hidden");
             layer.close(index);
             if (response.errcode == "0") {
-                var data = response.rows;
-                var total = response.total;
+                let data = response.rows;
+                let total = response.total;
                 if (total <= limit + offset) {
                     $(".none_weChat").text("暂无更多聊天内容");
                     is_content = 0;
