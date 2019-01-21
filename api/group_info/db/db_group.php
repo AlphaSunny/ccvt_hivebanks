@@ -44,6 +44,7 @@ function get_group_info($group_id)
             $row['next_level_glory_number'] = 0;
         }else{
             $row['is_top'] = 0;
+            echo 1111;
             $sql = "select bind_number,glory_number from bot_group_level_rules WHERE scale='{$row['scale']}'+1";
             echo $sql;
             echo 5;
