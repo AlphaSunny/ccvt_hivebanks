@@ -30,20 +30,25 @@ body {
   margin: 0;
   padding: 0;
 }
-
+.btn_color{
+  background-color: @btn_hover_color;
+  border-color: @btn_hover_color;
+}
 .btn-success {
   background-color: @btn_color;
   border-color: @btn_color;
 
   &:hover {
-    background-color: @btn_hover_color;
-    border-color: @btn_hover_color;
+    &:extend(.btn_color);
   }
 }
 
+.btn-success.active {
+  &:extend(.btn_color);
+}
+
 .btn-success[disabled] {
-  background-color: @btn_hover_color;
-  border-color: @btn_hover_color;
+  &:extend(.btn_color);
   color: @main-bg;
 }
 
@@ -444,7 +449,8 @@ td, th {
     left: 4%;
     width: 92%;
   }
-  .customize_modal_content_footer button{
+
+  .customize_modal_content_footer button {
     width: @_100;
   }
 }
