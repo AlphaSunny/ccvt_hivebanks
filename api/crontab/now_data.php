@@ -394,6 +394,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $data['give_or_receive'] = 1;
         $data['ctime'] = strtotime($time);
         $data['utime'] = $time;
+        $data['tx_count'] = transfer_get_pre_count($ba_id);
         $sql = $db->sqlInsert("com_transfer_request", $data);
         $id = $db->query($sql);
         if (!$id){
@@ -416,6 +417,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $dat['give_or_receive'] = 2;
         $dat['ctime'] = strtotime($time);
         $dat['utime'] = $time;
+        $dat['tx_count'] = transfer_get_pre_count($us_id);
         $sql = $db->sqlInsert("com_transfer_request", $dat);
         $id = $db->query($sql);
         if (!$id){
@@ -438,6 +440,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $transfer['give_or_receive'] = 1;
         $transfer['ctime'] = strtotime($time);
         $transfer['utime'] = $time;
+        $transfer['tx_count'] = transfer_get_pre_count($us_id);
         $sql = $db->sqlInsert("com_transfer_request", $transfer);
         $id = $db->query($sql);
         if (!$id){
@@ -460,6 +463,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $dat['give_or_receive'] = 2;
         $dat['ctime'] = strtotime($time);
         $dat['utime'] = $time;
+
+        $dat['tx_count'] = transfer_get_pre_count($la_id);
         $sql = $db->sqlInsert("com_transfer_request", $dat);
         $id = $db->query($sql);
         if (!$id){
@@ -482,6 +487,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $transfer['give_or_receive'] = 1;
         $transfer['ctime'] = strtotime($time);
         $transfer['utime'] = $time;
+
+        $transfer['tx_count'] = transfer_get_pre_count($us_id);
         $sql = $db->sqlInsert("com_transfer_request", $transfer);
         $id = $db->query($sql);
         if (!$id){
@@ -504,6 +511,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $dat['give_or_receive'] = 2;
         $dat['ctime'] = strtotime($time);
         $dat['utime'] = $time;
+
+        $dat['tx_count'] = transfer_get_pre_count($transfer_us_id);
         $sql = $db->sqlInsert("com_transfer_request", $dat);
         $id = $db->query($sql);
         if (!$id){
@@ -527,6 +536,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             $transfer['give_or_receive'] = 1;
             $transfer['ctime'] = strtotime($time);
             $transfer['utime'] = $time;
+
+            $transfer['tx_count'] = transfer_get_pre_count($us_id);
             $sql = $db->sqlInsert("com_transfer_request", $transfer);
             $id = $db->query($sql);
             if (!$id){
@@ -549,6 +560,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             $dat['give_or_receive'] = 2;
             $dat['ctime'] = strtotime($time);
             $dat['utime'] = $time;
+
+            $dat['tx_count'] = transfer_get_pre_count($ba_id);
             $sql = $db->sqlInsert("com_transfer_request", $dat);
             $id = $db->query($sql);
             if (!$id){
@@ -573,6 +586,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_us["utime"] = strtotime($time);
         $com_balance_us["ctime"] = $time;
 
+        $com_balance_us['tx_count'] = base_get_pre_count($us_id);
         $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
         if (!$db->query($sql)) {
             echo $us_id."资金变动1记录表错误";
@@ -590,6 +604,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_ba["credit_balance"] = get_ba_base_amount($ba_id);
         $com_balance_ba["utime"] = strtotime($time);
         $com_balance_ba["ctime"] = $time;
+
+        $com_balance_ba['tx_count'] = base_get_pre_count($ba_id);
         $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
         if (!$db->query($sql)) {
             echo $ba_id."资金变动1记录表错误";
@@ -607,6 +623,9 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_us["credit_balance"] = get_us_base_amount($us_id);
         $com_balance_us["utime"] = strtotime($time);
         $com_balance_us["ctime"] = $time;
+
+
+        $com_balance_us['tx_count'] = base_get_pre_count($us_id);
         $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
         if (!$db->query($sql)) {
             echo $us_id."资金变动2记录表错误";
@@ -624,6 +643,9 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_ba["credit_balance"] = get_la_base_amount($la_id);
         $com_balance_ba["utime"] = strtotime($time);
         $com_balance_ba["ctime"] = $time;
+
+
+        $com_balance_ba['tx_count'] = base_get_pre_count($la_id);
         $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
         if (!$db->query($sql)) {
             echo $la_id."资金变动2记录表错误";
@@ -641,6 +663,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_us["credit_balance"] = get_us_base_amount($us_id);
         $com_balance_us["utime"] = strtotime($time);
         $com_balance_us["ctime"] = $time;
+
+        $com_balance_us['tx_count'] = base_get_pre_count($us_id);
         $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
         if (!$db->query($sql)) {
             echo $us_id."资金变动3记录表错误";
@@ -658,6 +682,9 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_ba["credit_balance"] = get_us_base_amount($transfer_us_id);
         $com_balance_ba["utime"] = strtotime($time);
         $com_balance_ba["ctime"] = $time;
+
+
+        $com_balance_ba['tx_count'] = base_get_pre_count($transfer_us_id);
         $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
         if (!$db->query($sql)) {
             echo $transfer_us_id."资金变动3记录表错误";
@@ -675,6 +702,9 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_us["credit_balance"] = get_us_base_amount($us_id);
         $com_balance_us["utime"] = strtotime($time);
         $com_balance_us["ctime"] = $time;
+
+
+        $com_balance_us['tx_count'] = base_get_pre_count($us_id);
         $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
         if (!$db->query($sql)) {
             echo $us_id."资金变动4记录表错误";
@@ -692,6 +722,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_ba["credit_balance"] = get_ba_base_amount($ba_id);
         $com_balance_ba["utime"] = strtotime($time);
         $com_balance_ba["ctime"] = $time;
+
+        $com_balance_ba['tx_count'] = base_get_pre_count($ba_id);
         $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
         if (!$db->query($sql)) {
             echo $ba_id."资金变动4记录表错误";
@@ -784,4 +816,35 @@ function get_us_id($invite_code){
     $db->query($sql);
     $rows = $db->fetchRow();
     return $rows['us_id'];
+}
+
+
+/**
+ * @param $credit_id
+ * @return int|mixed
+ * 获取上一个交易的链高度 （com_base_balance表）
+ */
+function base_get_pre_count($credit_id)
+{
+    $db = new DB_COM();
+    $sql = "select tx_count from com_base_balance where credit_id = {$credit_id} order by ctime desc limit 1";
+    $tx_count = $db->getField($sql, 'tx_count');
+    if($tx_count == null)
+        return 1;
+    return $tx_count;
+}
+
+/**
+ * @param $credit_id
+ * @return int|mixed
+ * 获取上一个交易的链高度 （com_transfer_request表）
+ */
+function transfer_get_pre_count($credit_id)
+{
+    $db = new DB_COM();
+    $sql = "select tx_count from com_transfer_request where credit_id = {$credit_id} order by ctime desc limit 1";
+    $tx_count = $db->getField($sql, 'tx_count');
+    if($tx_count == null)
+        return 1;
+    return $tx_count;
 }
