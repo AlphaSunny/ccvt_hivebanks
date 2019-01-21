@@ -27,6 +27,7 @@ $(function () {
     //transfer
     $(".transfer_btn").click(() => {
         var account = $("#payee").val();
+        var code = $("#invite_code").val();
         var ccvt_num = $("#amount").val();
         var pass_hash = hex_sha1($("#fun_pass").val());
         if (account.length <= 0) {
@@ -46,15 +47,15 @@ $(function () {
         layer.confirm('是否确定向' + account + '转账?', {
             btn: ['确定', '取消'] //按钮
         }, function () {
-            TransferCCVTFun(token, account, ccvt_num, pass_hash);
+            TransferCCVTFun(token, account, code, ccvt_num, pass_hash);
         }, function () {
 
         });
     });
 
-    function TransferCCVTFun(token, account, ccvt_num, pass_hash) {
+    function TransferCCVTFun(token, account, code, ccvt_num, pass_hash) {
         ShowLoading("show");
-        TransferCCVT(token, account, ccvt_num, pass_hash, function (response) {
+        TransferCCVT(token, account, code, ccvt_num, pass_hash, function (response) {
             ShowLoading("hide");
             layer.closeAll('dialog');
             $(".transfer_account").text(account);
