@@ -831,7 +831,7 @@ function base_get_pre_count($credit_id)
     if($tx_count == null)
         return 1;
 
-    var_dump($tx_count);die;
+    var_dump($tx_count);
     var_dump(++$tx_count);die;
     return ++$tx_count;
 }
