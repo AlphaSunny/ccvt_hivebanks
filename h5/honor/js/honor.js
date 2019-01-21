@@ -1,5 +1,5 @@
 $(function () {
-    var token = GetCookie("user_token");
+    let token = GetCookie("user_token");
     if (!token) {
         $(".usAccount").remove();
         $(".usLogin,.usRegister").removeClass("none");
@@ -26,17 +26,17 @@ $(function () {
     let limit = 50, offset = 0, group_id = "all", group_name = "", total = "", search_content = "";
 
     //选择群
-    $("#title").on("change", function () {
-        group_id = $(this).val();
-        group_name = $(this).children("option:selected").text();
-        search_content = "";
-        HonorFun(limit, offset, search_content, group_id);
-        if (group_id != "all") {
-            $(".look_chat_recode_btn").fadeIn();
-        } else {
-            $(".look_chat_recode_btn").fadeOut();
-        }
-    });
+    // $("#title").on("change", function () {
+    //     group_id = $(this).val();
+    //     group_name = $(this).children("option:selected").text();
+    //     search_content = "";
+    //     HonorFun(limit, offset, search_content, group_id);
+    //     if (group_id != "all") {
+    //         $(".look_chat_recode_btn").fadeIn();
+    //     } else {
+    //         $(".look_chat_recode_btn").fadeOut();
+    //     }
+    // });
 
     //获取排行榜
     function HonorFun(limit, offset, search_content, group_id) {
@@ -90,7 +90,7 @@ $(function () {
                     tr += "<tr>" +
                         sorting +
                         "<td class='weChatName'><span class='wechat'>" + data[i].wechat + "</span>&nbsp;" + scale + "</td>" +
-                        "<td class='group' title='"+ data[i].group_id +"'><span>" + data[i].group_name + "</span></td>" +
+                        "<td class='group' title='"+ data[i].group_name +"' name='"+ data[i].group_name +"'><span>" + data[i].group_name + "</span></td>" +
                         "<td class='text-center'><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                         "<td class='text-center'>" +
                         "<span class='none us_id'>" + data[i].us_id + "</span>" +
