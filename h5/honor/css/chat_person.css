@@ -78,15 +78,26 @@ p.chat_item_name:after {
 .chat_item_content {
     background: #ffffff;
     display: inline-block;
-    line-height: 1.5rem;
-    /*max-width: 14rem;*/
+    line-height: 2rem;
+    /* max-width: 14rem; */
     max-width: 100%;
     border-right: 5px;
-    padding: 3% 3% 3% 4%;
+    padding: 4% 3% 4% 4%;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
     overflow: auto;
     color: #000000;
+    /*background: #ffffff;*/
+    /*display: inline-block;*/
+    /*line-height: 1.5rem;*/
+    /*!*max-width: 14rem;*!*/
+    /*max-width: 100%;*/
+    /*border-right: 5px;*/
+    /*padding: 3% 3% 3% 4%;*/
+    /*border-radius: 5px;*/
+    /*font-size: 14px;*/
+    /*overflow: auto;*/
+    /*color: #000000;*/
 }
 
 .chat_item_content img, .chat_item_content video {
