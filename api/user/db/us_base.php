@@ -114,8 +114,8 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $data['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$rows['ba_id']) : $prvs_hash;
     $data['credit_id'] = $rows['ba_id'];
     $data['debit_id'] = $us_id;
-    $data['tx_amount'] = $money*$unit;
-    $data['credit_balance'] = get_ba_account($rows['ba_id'])-$data['tx_amount'];
+    $data['tx_amount'] = -($money*$unit);
+    $data['credit_balance'] = get_ba_account($rows['ba_id'])-($money*$unit);
     $data['tx_hash'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $data['flag'] = $flag;
     $data['transfer_type'] = 'ba-us';
@@ -188,8 +188,8 @@ function send_to_us_ccvt($us_id,$type,$money,$why,$flag)
     $com_balance_ba["credit_id"] = $rows['ba_id'];
     $com_balance_ba["debit_id"] = $us_id;
     $com_balance_ba["tx_type"] = $type;
-    $com_balance_ba["tx_amount"] = $money*$unit;
-    $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id'])-$com_balance_ba["tx_amount"];
+    $com_balance_ba["tx_amount"] = -($money*$unit);
+    $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id'])-($money*$unit);
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;
     $com_balance_ba["tx_count"] = base_get_pre_count($rows['ba_id']);
@@ -488,8 +488,8 @@ function send_to_us_ccvt_voucher($us_id,$voucher,$flag,$why,$type)
     $data['prvs_hash'] = $prvs_hash === 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = $rows['ba_id'];
     $data['debit_id'] = $us_id;
-    $data['tx_amount'] = $money*$unit;
-    $data['credit_balance'] = get_ba_account($rows['ba_id'])-$data['tx_amount'];
+    $data['tx_amount'] = -($money*$unit);
+    $data['credit_balance'] = get_ba_account($rows['ba_id'])-($money*$unit);
     $data['tx_hash'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $data['flag'] = $flag;
     $data['transfer_type'] = 'ba-us';
@@ -562,8 +562,8 @@ function send_to_us_ccvt_voucher($us_id,$voucher,$flag,$why,$type)
     $com_balance_ba["credit_id"] = $rows['ba_id'];
     $com_balance_ba["debit_id"] = $us_id;
     $com_balance_ba["tx_type"] = $type;
-    $com_balance_ba["tx_amount"] = $money*$unit;
-    $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id'])-$com_balance_ba["tx_amount"];
+    $com_balance_ba["tx_amount"] = -($money*$unit);
+    $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id'])-($money*$unit);
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;
     $com_balance_ba["tx_count"] = base_get_pre_count($rows['ba_id']);
@@ -701,8 +701,8 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     $transfer['prvs_hash'] = $prvs_hash === 0 ? $transfer['hash_id'] : $prvs_hash;
     $transfer['credit_id'] = $us_id;
     $transfer['debit_id'] = $la_id;
-    $transfer['tx_amount'] = $account*$unit;
-    $transfer['credit_balance'] = get_us_account($transfer['credit_id'])-$transfer['tx_amount'];
+    $transfer['tx_amount'] = -($account*$unit);
+    $transfer['credit_balance'] = get_us_account($transfer['credit_id'])-($account*$unit);
     $transfer['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $transfer['flag'] = $flag;
     $transfer['transfer_type'] = 'us-la';
@@ -755,8 +755,8 @@ function us_ccvt_to_integral($us_id,$account,$flag,$why,$type)
     $com_balance_us["credit_id"] = $us_id;
     $com_balance_us["debit_id"] = $la_id;
     $com_balance_us["tx_type"] = $type;
-    $com_balance_us["tx_amount"] = $account*$unit;
-    $com_balance_us["credit_balance"] = get_us_account($us_id)-$com_balance_us["tx_amount"];
+    $com_balance_us["tx_amount"] = -($account*$unit);
+    $com_balance_us["credit_balance"] = get_us_account($us_id)-($account*$unit);
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = date('Y-m-d H:i:s');
     $com_balance_us["tx_count"] = base_get_pre_count($us_id);
@@ -1054,8 +1054,8 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why,$qa_flag,$qa_id)
         $data['prvs_hash'] = $prvs_hash === 0 ? $data['hash_id'] : $prvs_hash;
         $data['credit_id'] = $us_id;
         $data['debit_id'] = $trans_us_id;
-        $data['tx_amount'] = $money;
-        $data['credit_balance'] = get_us_account($us_id)-$data['tx_amount'];
+        $data['tx_amount'] = -($money);
+        $data['credit_balance'] = get_us_account($us_id)-$money;
         $data['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
         $data['flag'] = $flag;
         $data['transfer_type'] = 'us-us';
@@ -1107,8 +1107,8 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why,$qa_flag,$qa_id)
         $com_balance_us["credit_id"] = $us_id;
         $com_balance_us["debit_id"] = $trans_us_id;
         $com_balance_us["tx_type"] = "us_us_transfer_out";
-        $com_balance_us["tx_amount"] = $money;
-        $com_balance_us["credit_balance"] = get_us_account($us_id)-$com_balance_us["tx_amount"];
+        $com_balance_us["tx_amount"] = -($money);
+        $com_balance_us["credit_balance"] = get_us_account($us_id)-$money;
         $com_balance_us["utime"] = time();
         $com_balance_us["ctime"] = $ctime;
         $com_balance_us["tx_count"] = base_get_pre_count($us_id);

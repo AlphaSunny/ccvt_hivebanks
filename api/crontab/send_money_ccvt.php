@@ -119,7 +119,7 @@ if ($groups){
                 $data['prvs_hash'] = get_pre_hash($ba_info['ba_id']);
                 $data['credit_id'] = $ba_info['ba_id'];
                 $data['debit_id'] = $u_id;
-                $data['tx_amount'] = $give_account*$unit;
+                $data['tx_amount'] = -($give_account*$unit);
                 $data['credit_balance'] = $ba_account;
                 $data['tx_hash'] = hash('md5', $ba_info['ba_id'] . 4 . get_ip() . time() . microtime());
                 $data['flag'] = 4;
@@ -129,6 +129,7 @@ if ($groups){
                 $data['give_or_receive'] = 1;
                 $data['ctime'] = time();
                 $data['utime'] = date('Y-m-d H:i:s',time());
+                $data['tx_count'] = transfer_get_pre_count($ba_info['ba_id']);
                 $sql = $db->sqlInsert("com_transfer_request", $data);
                 $id = $db->query($sql);
                 if (!$id){
@@ -151,6 +152,7 @@ if ($groups){
                 $dat['give_or_receive'] = 2;
                 $dat['ctime'] = time();
                 $dat['utime'] = date('Y-m-d H:i:s',time());
+                $dat['tx_count'] = transfer_get_pre_count($u_id);
                 $sql = $db->sqlInsert("com_transfer_request", $dat);
                 $id = $db->query($sql);
                 if (!$id){
@@ -172,6 +174,7 @@ if ($groups){
                 $com_balance_us["credit_balance"] = get_us_account($u_id)+($give_account*$unit);
                 $com_balance_us["utime"] = time();
                 $com_balance_us["ctime"] = $ctime;
+                $com_balance_us['tx_count'] = base_get_pre_count($u_id);
 
                 $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
                 if (!$db->query($sql)) {
@@ -187,10 +190,11 @@ if ($groups){
                 $com_balance_ba["credit_id"] = $ba_info['ba_id'];
                 $com_balance_ba["debit_id"] = $u_id;
                 $com_balance_ba["tx_type"] = "ba_send";
-                $com_balance_ba["tx_amount"] = $give_account*$unit;
+                $com_balance_ba["tx_amount"] = -($give_account*$unit);
                 $com_balance_ba["credit_balance"] = $ba_account;
                 $com_balance_ba["utime"] = time();
                 $com_balance_ba["ctime"] = $ctime;
+                $com_balance_ba['tx_count'] = base_get_pre_count($ba_info['ba_id']);
 
                 $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
                 if (!$db->query($sql)) {
@@ -256,7 +260,7 @@ if ($grous){
             $data['prvs_hash'] = get_pre_hash($ba_info['ba_id']);
             $data['credit_id'] = $ba_info['ba_id'];
             $data['debit_id'] = $u_id;
-            $data['tx_amount'] = $give_account;
+            $data['tx_amount'] = -$give_account;
             $data['credit_balance'] = $ba_account;
             $data['tx_hash'] = hash('md5', $ba_info['ba_id'] . 12 . get_ip() . time() . microtime());
             $data['flag'] = 12;
@@ -266,6 +270,7 @@ if ($grous){
             $data['give_or_receive'] = 1;
             $data['ctime'] = time();
             $data['utime'] = date('Y-m-d H:i:s',time());
+            $data['tx_count'] = transfer_get_pre_count($ba_info['ba_id']);
             $sql = $db->sqlInsert("com_transfer_request", $data);
             $id = $db->query($sql);
             if (!$id){
@@ -288,6 +293,7 @@ if ($grous){
             $dat['give_or_receive'] = 2;
             $dat['ctime'] = time();
             $dat['utime'] = date('Y-m-d H:i:s',time());
+            $dat['tx_count'] = transfer_get_pre_count($u_id);
             $sql = $db->sqlInsert("com_transfer_request", $dat);
             $id = $db->query($sql);
             if (!$id){
@@ -309,6 +315,7 @@ if ($grous){
             $com_balance_us["credit_balance"] = get_us_account($u_id)+($give_account);
             $com_balance_us["utime"] = time();
             $com_balance_us["ctime"] = $ctime;
+            $com_balance_us['tx_count'] = base_get_pre_count($u_id);
 
             $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
             if (!$db->query($sql)) {
@@ -324,10 +331,11 @@ if ($grous){
             $com_balance_ba["credit_id"] = $ba_info['ba_id'];
             $com_balance_ba["debit_id"] = $u_id;
             $com_balance_ba["tx_type"] = "group_cashback";
-            $com_balance_ba["tx_amount"] = $give_account;
+            $com_balance_ba["tx_amount"] = -$give_account;
             $com_balance_ba["credit_balance"] = $ba_account;
             $com_balance_ba["utime"] = time();
             $com_balance_ba["ctime"] = $ctime;
+            $com_balance_ba['tx_count'] = base_get_pre_count($ba_info['ba_id']);
 
             $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
             if (!$db->query($sql)) {
@@ -488,4 +496,35 @@ function get_pre_hash($credit_id){
     if($hash_id == null)
         return 0;
     return $hash_id;
+}
+
+/**
+ * @param $credit_id
+ * @return int|mixed
+ * 获取上一个交易的链高度 （com_base_balance表）
+ */
+function base_get_pre_count($credit_id)
+{
+    $db = new DB_COM();
+    $sql = "select tx_count from com_base_balance where credit_id = '{$credit_id}' order by ctime desc limit 1";
+    $tx_count = $db->getField($sql, 'tx_count');
+    if($tx_count == null)
+        return 1;
+
+    return $tx_count+1;
+}
+
+/**
+ * @param $credit_id
+ * @return int|mixed
+ * 获取上一个交易的链高度 （com_transfer_request表）
+ */
+function transfer_get_pre_count($credit_id)
+{
+    $db = new DB_COM();
+    $sql = "select tx_count from com_transfer_request where credit_id = '{$credit_id}' order by ctime desc limit 1";
+    $tx_count = $db->getField($sql, 'tx_count');
+    if($tx_count == null)
+        return 1;
+    return $tx_count+1;
 }

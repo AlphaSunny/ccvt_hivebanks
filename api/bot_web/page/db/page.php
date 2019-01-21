@@ -166,8 +166,8 @@ function give_like_us($data)
     $transfer['prvs_hash'] = $prvs_hash === 0 ? $transfer['hash_id'] : $prvs_hash;
     $transfer['credit_id'] = $data['us_id'];
     $transfer['debit_id'] = $la_id;
-    $transfer['tx_amount'] = $data['give_num']*$unit;
-    $transfer['credit_balance'] = get_us_base_amount($transfer['credit_id'])-$transfer['tx_amount'];
+    $transfer['tx_amount'] = -($data['give_num']*$unit);
+    $transfer['credit_balance'] = get_us_base_amount($transfer['credit_id'])-($data['give_num']*$unit);
     $transfer['tx_hash'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $transfer['flag'] = $flag;
     $transfer['transfer_type'] = 'us-la';
@@ -220,8 +220,8 @@ function give_like_us($data)
     $com_balance_us["credit_id"] = $data['us_id'];
     $com_balance_us["debit_id"] = $la_id;
     $com_balance_us["tx_type"] = 'give_like';
-    $com_balance_us["tx_amount"] = $data['give_num']*$unit;
-    $com_balance_us["credit_balance"] = get_us_base_amount($data['us_id'])-$com_balance_us["tx_amount"];
+    $com_balance_us["tx_amount"] = -($data['give_num']*$unit);
+    $com_balance_us["credit_balance"] = get_us_base_amount($data['us_id'])-($data['give_num']*$unit);
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = date('Y-m-d H:i:s');
     $com_balance_us['tx_count'] = base_get_pre_count($data['us_id']);
