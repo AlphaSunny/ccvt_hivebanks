@@ -659,7 +659,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_us["credit_id"] = $us_id;
         $com_balance_us["debit_id"] = $transfer_us_id;
         $com_balance_us["tx_type"] = $type."_out";
-        $com_balance_us["tx_amount"] = $send_money;
+        $com_balance_us["tx_amount"] = -$send_money;
         $com_balance_us["credit_balance"] = get_us_base_amount($us_id);
         $com_balance_us["utime"] = strtotime($time);
         $com_balance_us["ctime"] = $time;
