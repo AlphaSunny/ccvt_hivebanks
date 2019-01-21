@@ -30,10 +30,12 @@ body {
   margin: 0;
   padding: 0;
 }
-.btn_color{
+
+.btn_color {
   background-color: @btn_hover_color;
   border-color: @btn_hover_color;
 }
+
 .btn-success {
   background-color: @btn_color;
   border-color: @btn_color;
@@ -41,7 +43,12 @@ body {
   &:hover {
     &:extend(.btn_color);
   }
+
   &:active {
+    &:extend(.btn_color);
+  }
+
+  &:focus {
     &:extend(.btn_color);
   }
 }
