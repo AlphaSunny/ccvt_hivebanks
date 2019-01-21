@@ -73,11 +73,12 @@ $(function () {
 
     //transfer list
     let limit = 10, offset = 0, type = 1;
+
     function TransferListFun(limit, offset, type) {
         TransferList(token, limit, offset, type, function (response) {
             if (response.errcode == "0") {
                 ShowLoading("hide");
-                let data = response.rows, tr = "",count = "";
+                let data = response.rows, tr = "", count = "";
                 let total = response.total;
                 let totalPage = Math.ceil(total / limit);
                 if (totalPage <= 1) {
@@ -120,6 +121,16 @@ $(function () {
         })
     }
 
-    TransferListFun(limit, offset, type)
+    TransferListFun(limit, offset, type);
+
+    $(".look_transfer_btn").click(function () {
+        $(this).removeClass("active").siblings().addClass("active");
+        if ($(this).hasClass("transfer_out_btn")) {
+            type = 1;
+        } else {
+            type = 2;
+        }
+        TransferListFun(limit, offset, type);
+    })
 
 });
