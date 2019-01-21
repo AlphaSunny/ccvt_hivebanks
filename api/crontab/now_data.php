@@ -384,7 +384,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $data['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$ba_id) : $prvs_hash;
         $data['credit_id'] = $ba_id;
         $data['debit_id'] = $us_id;
-        $data['tx_amount'] = $send_money;
+        $data['tx_amount'] = -$send_money;
         $data['credit_balance'] = get_ba_base_amount($ba_id);
         $data['tx_hash'] = hash('md5', $ba_id . $flag . get_ip() . time() . microtime());
         $data['flag'] = $flag;
@@ -430,7 +430,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $transfer['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$us_id) : $prvs_hash;
         $transfer['credit_id'] = $us_id;
         $transfer['debit_id'] = $la_id;
-        $transfer['tx_amount'] = $send_money;
+        $transfer['tx_amount'] = -$send_money;
         $transfer['credit_balance'] = get_us_base_amount($us_id);
         $transfer['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . microtime());
         $transfer['flag'] = $flag;
@@ -477,7 +477,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $transfer['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$us_id) : $prvs_hash;
         $transfer['credit_id'] = $us_id;
         $transfer['debit_id'] = $transfer_us_id;
-        $transfer['tx_amount'] = $send_money;
+        $transfer['tx_amount'] = -$send_money;
         $transfer['credit_balance'] = get_us_base_amount($us_id);
         $transfer['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . microtime());
         $transfer['flag'] = $flag;
@@ -526,7 +526,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             $transfer['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$us_id) : $prvs_hash;
             $transfer['credit_id'] = $us_id;
             $transfer['debit_id'] = $ba_id;
-            $transfer['tx_amount'] = $send_money;
+            $transfer['tx_amount'] = -$send_money;
             $transfer['credit_balance'] = get_us_base_amount($us_id);
             $transfer['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . microtime());
             $transfer['flag'] = $flag;
@@ -600,7 +600,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_ba["credit_id"] = $ba_id;
         $com_balance_ba["debit_id"] = $us_id;
         $com_balance_ba["tx_type"] = $type;
-        $com_balance_ba["tx_amount"] = $send_money;
+        $com_balance_ba["tx_amount"] = -$send_money;
         $com_balance_ba["credit_balance"] = get_ba_base_amount($ba_id);
         $com_balance_ba["utime"] = strtotime($time);
         $com_balance_ba["ctime"] = $time;
@@ -619,7 +619,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_us["credit_id"] = $us_id;
         $com_balance_us["debit_id"] = $la_id;
         $com_balance_us["tx_type"] = $type;
-        $com_balance_us["tx_amount"] = $send_money;
+        $com_balance_us["tx_amount"] = -$send_money;
         $com_balance_us["credit_balance"] = get_us_base_amount($us_id);
         $com_balance_us["utime"] = strtotime($time);
         $com_balance_us["ctime"] = $time;
@@ -698,7 +698,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_us["credit_id"] = $us_id;
         $com_balance_us["debit_id"] = $transfer_us_id;
         $com_balance_us["tx_type"] = $type;
-        $com_balance_us["tx_amount"] = $send_money;
+        $com_balance_us["tx_amount"] = -$send_money;
         $com_balance_us["credit_balance"] = get_us_base_amount($us_id);
         $com_balance_us["utime"] = strtotime($time);
         $com_balance_us["ctime"] = $time;
