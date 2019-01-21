@@ -6,7 +6,7 @@ error_reporting(E_ALL | E_STRICT);
 
 //群等级提升程序(每次只能升一级)
 
-die;
+
 $db = new DB_COM();
 
 $sql = "select scale from bot_group WHERE id!=1 group by scale order by scale DESC";
@@ -20,15 +20,16 @@ if ($scale_list){
         $sql = "select id,name,(select count(*) from us_bind where bind_name='group' and bind_info=gr.id) as bind_count from bot_group as gr WHERE gr.scale='{$v['scale']}'";
         $db->query($sql);
         $rows = $db->fetchAll();
-        if ($rows){
-            foreach ($rows as $a=>$b){
-                //获取当前群所有的星数
-                $all_glory_number = glory_number($b['id']);
-                if ($b['bind_count']>=$next_group_level['bind_number'] && $all_glory_number>=$next_group_level['glory_number']){
-                    scale_upgrade($b['id'],$v['scale'],$v['scale']+1,$b['bind_count'],$all_glory_number);
-                }
-            }
-        }
+        print_r($rows);
+//        if ($rows){
+//            foreach ($rows as $a=>$b){
+//                //获取当前群所有的星数
+//                $all_glory_number = glory_number($b['id']);
+//                if ($b['bind_count']>=$next_group_level['bind_number'] && $all_glory_number>=$next_group_level['glory_number']){
+//                    scale_upgrade($b['id'],$v['scale'],$v['scale']+1,$b['bind_count'],$all_glory_number);
+//                }
+//            }
+//        }
     }
 }
 
