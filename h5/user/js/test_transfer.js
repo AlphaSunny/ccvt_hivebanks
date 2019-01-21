@@ -68,6 +68,6 @@ $(function () {
     }
 
     $(".transform_ccvt_confirm_btn").click(()=>{
-        window.location.href = "account.html";
+        window.location.href = "test_account.html";
     })
 });
