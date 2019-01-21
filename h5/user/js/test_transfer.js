@@ -1,12 +1,12 @@
 $(function () {
     GetUsAccount();
-    var token = GetCookie("user_token");
-    var is_pass_hash = "";
+    let token = GetCookie("user_token");
+    let is_pass_hash = "";
 
     //get bind info
     BindingInformation(token, function (response) {
         if (response.errcode == "0") {
-            var data = response.rows;
+            let data = response.rows;
             $.each(data, function (i, val) {
                 if (data[i].bind_name == "pass_hash" && data[i].bind_flag == "1") {
                     is_pass_hash = "is_pass_hash";
@@ -26,10 +26,10 @@ $(function () {
 
     //transfer
     $(".transfer_btn").click(() => {
-        var account = $("#payee").val();
-        var code = $("#invite_code").val();
-        var ccvt_num = $("#amount").val();
-        var pass_hash = hex_sha1($("#fun_pass").val());
+        let account = $("#payee").val();
+        let code = $("#invite_code").val();
+        let ccvt_num = $("#amount").val();
+        let pass_hash = hex_sha1($("#fun_pass").val());
         if (account.length <= 0) {
             layer.msg("请输入收款账号");
             return;
@@ -69,5 +69,11 @@ $(function () {
 
     $(".transform_ccvt_confirm_btn").click(()=>{
         window.location.href = "test_account.html";
-    })
+    });
+
+    //transfer list
+    function TransferList(token, limit, offset, type) {
+
+    }
+    TransferList(token, limit, offset, type)
 });
