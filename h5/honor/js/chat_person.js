@@ -39,7 +39,7 @@ $(function () {
                     $(".none_weChat").text("暂无更多聊天内容");
                     is_content = 0;
                 } else {
-                    $(".none_weChat").text("下拉刷新加载更多内容");
+                    $(".none_weChat").text("加载更多内容");
                 }
 
                 if (data.length <= 0 && offset <= 0) {
@@ -109,6 +109,12 @@ $(function () {
         $(".title_search_box").fadeIn();
         $(".chat_search_input").val("");
         search_content = "";
+        GetWeChatFun(wechat, group_id, search_content, limit, offset);
+    });
+
+    //加载更多
+    $(".none_weChat").click(function () {
+        offset += limit;
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
