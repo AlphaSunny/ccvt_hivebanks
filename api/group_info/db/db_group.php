@@ -39,6 +39,7 @@ function get_group_info($group_id)
         echo 4;
         $db->query($sql);
         if ($row['scale']==$db->getField($sql,'scale')){
+            echo 22;
             $row['is_top'] = 1;
             $row['next_level_bind_number'] = 0;
             $row['next_level_glory_number'] = 0;
