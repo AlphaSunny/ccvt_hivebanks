@@ -35,10 +35,10 @@ function get_transfer_ccvt_list($us_id,$offset,$limit,$type)
     $sql = "select qa_id,tx_amount/'{$unit}' as tx_amount,tx_time,qa_flag,b.us_account from us_us_transfer_request as a LEFT JOIN us_base as b ON";
     switch ($type){
         case 1:
-            $sql .= " a.us_id=b.us_id where a.us_id='{$us_id}'";
+            $sql .= " a.transfer_id=b.us_id where a.us_id='{$us_id}'";
             break;
         case 2:
-            $sql .= " a.transfer_id=b.us_id where a.transfer_id='{$us_id}'";
+            $sql .= " a.us_id=b.us_id where a.transfer_id='{$us_id}'";
     }
     $sql .= " order by a.tx_time limit $offset,$limit";
     $db->query($sql);
