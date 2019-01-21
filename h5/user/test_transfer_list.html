@@ -102,16 +102,16 @@
         <div class='row'>
             <!--history-->
             <div class='col-md-12 col-sm-12 deposit-col-right'>
-                <h3 class='pcTitle' name=''>转出记录</h3>
+                <h3 class='pcTitle i18n' name='transferIn'></h3>
                 <div class='record-bg'>
                     <div class='table-box table_bg table-responsive'>
                         <table class='tab table table-hover table-condensed'>
                             <thead>
                             <tr>
-                                <th class='' name=''>账户昵称</th>
-                                <th class='i18n' name='changeAmount'>Change Amount</th>
-                                <th class='i18n' name='changeTime'>Change Time</th>
-                                <th class='' name=''>操作</th>
+                                <th class='i18n' name='accountNickName'></th>
+                                <th class='i18n' name='changeAmount'></th>
+                                <th class='i18n' name='changeTime'></th>
+                                <th class='i18n' name='operating'></th>
                             </tr>
                             </thead>
                             <tbody class="historyCode" id="transfer_out_list">
@@ -126,13 +126,13 @@
             </div>
 
             <div class='col-md-12 col-sm-12 deposit-col-right'>
-                <h3 class='pcTitle' name=''>转入记录</h3>
+                <h3 class='pcTitle i18n' name='transferIn'></h3>
                 <div class='record-bg'>
                     <div class='table-box table_bg table-responsive'>
                         <table class='tab table table-hover table-condensed'>
                             <thead>
                             <tr>
-                                <th class='' name=''>账户昵称</th>
+                                <th class='i18n' name='accountNickName'></th>
                                 <th class='i18n' name='changeAmount'>Change Amount</th>
                                 <th class='i18n' name='changeTime'>Change Time</th>
                             </tr>
@@ -150,49 +150,6 @@
         </div>
     </div>
 </section>
-
-<!--not bind fun pass-->
-<div id="not_bind_funPass_modal" class="customize_modal none">
-    <div class="customize_modal_mask"></div>
-    <div class="customize_modal_content">
-        <div class="customize_modal_content_head padding-bottom-2">
-            <h3 class="font-weight-400" name="">资金密码未绑定</h3></div>
-        <div class="customize_modal_content_body">
-            <p class="font-size-14 font-weight-400">未绑定资金密码，无法进行转账，请前往安全中心绑定</p>
-        </div>
-        <div class="customize_modal_content_footer margin-top-5">
-            <!--<button class="btn btn-danger i18n exchange_cancel_btn customize_modal_cancel_btn" name="cancel"></button>-->
-            <button class="btn btn-success i18n exchange_confirm_btn" name="bind"></button>
-        </div>
-    </div>
-</div>
-
-<!--transfer success modal-->
-<div id="transfer_success_modal" class="customize_modal none">
-    <div class="customize_modal_mask"></div>
-    <div class="customize_modal_content">
-        <div class="customize_modal_content_head padding-bottom-2">
-            <h3 class="font-weight-400 i18n" name="transferResult"></h3>
-        </div>
-        <div class="customize_modal_content_body">
-            <h1 class="text-center transfer_h1">
-                <i class="iconfont icon-duihao"></i>
-                <p class="i18n" name="successfulTransfer"></p>
-            </h1>
-            <br>
-            <p class="text-center font-size-14 font-weight-400">
-                <span>对方账户昵称</span>  <span class="transfer_account">edwin</span><br>
-            </p>
-            <p class="text-center">
-                <span>转账金额</span>
-                <span class="ty-color"><span class="transfer_amount">1000</span><span class="base_type"></span></span>
-            </p>
-        </div>
-        <div class="customize_modal_content_footer margin-top-5">
-            <button class="btn btn-success width-100 i18n transform_ccvt_confirm_btn" name="account"></button>
-        </div>
-    </div>
-</div>
 
 
 <!--footer-->
