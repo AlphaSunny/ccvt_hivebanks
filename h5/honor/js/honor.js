@@ -23,7 +23,7 @@ $(function () {
     }
 
     //获取荣耀排行榜
-    var limit = 50, offset = 0, group_id = "all", group_name = "", total = "", search_content = "";
+    let limit = 50, offset = 0, group_id = "all", group_name = "", total = "", search_content = "";
 
     //选择群
     $("#title").on("change", function () {
@@ -40,14 +40,14 @@ $(function () {
 
     //获取排行榜
     function HonorFun(limit, offset, search_content, group_id) {
-        var tr = "", sorting = "", scale = "", count = "", totalPage = "";
-        var index = layer.load(1, {
+        let tr = "", sorting = "", scale = "", count = "", totalPage = "";
+        let index = layer.load(1, {
             shade: [0.1, '#fff']
         });
         GetLeaderBoard(limit, offset, search_content, group_id, function (response) {
             layer.close(index);
             if (response.errcode == "0") {
-                var data = response.rows;
+                let data = response.rows;
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4' class='text-center'>暂无数据</td></tr>"
                 }
@@ -90,6 +90,7 @@ $(function () {
                     tr += "<tr>" +
                         sorting +
                         "<td class='weChatName'><span class='wechat'>" + data[i].wechat + "</span>&nbsp;" + scale + "</td>" +
+                        "<td class='group' title='"+ data[i].group_id +"'><span>" + data[i].group_name + "</span></td>" +
                         "<td class='text-center'><svg class='icon message_icon' aria-hidden='true'><use xlink:href='#icon-message'></use></svg></td>" +
                         "<td class='text-center'>" +
                         "<span class='none us_id'>" + data[i].us_id + "</span>" +
