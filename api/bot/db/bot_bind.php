@@ -1381,6 +1381,7 @@ function give_like_us($data)
     $transfer['give_or_receive'] = 1;
     $transfer['ctime'] = time();
     $transfer['utime'] = date('Y-m-d H:i:s');
+    $transfer['tx_count'] = transfer_get_pre_count($data['us_id']);
     $sql = $db->sqlInsert("com_transfer_request", $transfer);
     $id = $db->query($sql);
     if (!$id){
@@ -1404,6 +1405,7 @@ function give_like_us($data)
     $dat['give_or_receive'] = 2;
     $dat['ctime'] = time();
     $dat['utime'] = date('Y-m-d H:i:s');
+    $dat['tx_count'] = transfer_get_pre_count($la_id);
     $sql = $db->sqlInsert("com_transfer_request", $dat);
     $id = $db->query($sql);
     if (!$id){
@@ -1427,6 +1429,7 @@ function give_like_us($data)
     $com_balance_us["credit_balance"] = get_us_account($data['us_id'])-$com_balance_us["tx_amount"];
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = date('Y-m-d H:i:s');
+    $com_balance_us['tx_count'] = base_get_pre_count($data['us_id']);
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
     if (!$db->query($sql)) {
@@ -1447,6 +1450,7 @@ function give_like_us($data)
     $com_balance_ba["credit_balance"] = get_la_base_amount($la_id)+$com_balance_ba["tx_amount"];
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;
+    $com_balance_ba['tx_count'] = base_get_pre_count($la_id);
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
     if (!$db->query($sql)) {
