@@ -76,6 +76,7 @@ $(function () {
     function TransferListFun(limit, offset, type) {
         TransferList(token, limit, offset, type, function (response) {
             if (response.errcode == "0") {
+                ShowLoading("hide");
                 let data = response.rows, tr = "",count = "";
                 let total = response.total;
                 let totalPage = Math.ceil(total / limit);
@@ -114,6 +115,7 @@ $(function () {
                 });
             }
         }, function (response) {
+            ShowLoading("hide");
             ErrorPrompt(response.errmsg);
         })
     }
