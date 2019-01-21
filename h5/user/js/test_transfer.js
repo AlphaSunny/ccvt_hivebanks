@@ -109,7 +109,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        TransferListFun(token, limit, (current - 1) * limit, type);
+                        TransferListFun(limit, (current - 1) * limit, type);
                         ShowLoading("show");
                     }
                 });
