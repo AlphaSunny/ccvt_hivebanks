@@ -123,14 +123,14 @@ $(function () {
 
     TransferListFun(limit, offset, type);
 
-    $(".look_transfer_btn").click(function () {
-        $(this).removeClass("active").siblings().addClass("active");
-        if ($(this).hasClass("transfer_out_btn")) {
-            type = 1;
-        } else {
-            type = 2;
-        }
-        TransferListFun(limit, offset, type);
-    })
+    // $(".look_transfer_btn").click(function () {
+    //     $(this).removeClass("active").siblings().addClass("active");
+    //     if ($(this).hasClass("transfer_out_btn")) {
+    //         type = 1;
+    //     } else {
+    //         type = 2;
+    //     }
+    //     TransferListFun(limit, offset, type);
+    // })
 
 });
