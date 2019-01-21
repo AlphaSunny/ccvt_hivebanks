@@ -73,7 +73,6 @@ $data['us_id'] = $us_id;
 $data['trans_us_id'] = $is_account['us_id'];
 $data['num'] = $ccvt_num;
 
-echo 222;
 //存储数据库
 $rows = us_us_transfer_request($data);
 
