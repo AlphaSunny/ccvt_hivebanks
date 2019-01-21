@@ -30,7 +30,7 @@ $qa_flag = get_arg_str('GET', 'qa_flag');
 //验证token
 $us_id = check_token($token);
 
-if ($qa_flag!=1 || $qa_flag!=2){
+if ($qa_flag!=1 && $qa_flag!=2){
     exit_error("105","非法操作");
 }
 
