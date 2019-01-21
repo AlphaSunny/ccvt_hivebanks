@@ -12,22 +12,35 @@ $db = new DB_COM();
 $sql = "select scale from bot_group WHERE id!=1 group by scale order by scale DESC";
 $db->query($sql);
 $scale_list = $db->fetchAll();
-print_r($scale_list);die;
 if ($scale_list){
     foreach ($scale_list as $k=>$v){
-        $sql = "select id,name from bot_group as gr WHERE gr.scale='{$v['scale']}'";
+        set_time_limit(0);
+        //获取下一级所需绑定数,星数
+        $next_group_level = get_next_group_level($v['scale']);
+        $sql = "select id,name,(select count(*) from us_bind where bind_name='group' and bind_info=gr.id) as bind_count from bot_group as gr WHERE gr.scale='{$v['scale']}'";
+        $db->query($sql);
+        $rows = $db->fetchAll();
+        if ($rows){
+            foreach ($rows as $a=>$b){
+                //获取当前群所有的星数
+                $all_glory_number = glory_number($b['id']);
+                if ($b['bind_count']>=$next_group_level['bind_number'] && $all_glory_number>=$next_group_level['glory_number']){
+                    scale_upgrade($b['id'],$v['scale'],$v['scale']+1,$b['bind_count'],$all_glory_number);
+                }
+            }
+        }
     }
 }
 
-//群
-$sql = "select id,name,(select count(*) from us_bind where bind_name='group' and bind_info=gr.id) as bind_count,(select count(*) from us_base where scale=1 and us_id in (select us_id from us_bind where bind_name='group' and bind_info=gr.id)) as one_scale_user_count 
-from bot_group as gr where gr.scale=1 and (select count(*) from us_bind where bind_name='group' and bind_info=gr.id)>=10 
-and (select count(*) from us_base where scale=1 and us_id in (select us_id from us_bind where bind_name='group' and bind_info=gr.id))>=2;";
-$db->query($sql);
-$group_rows = $db->fetchAll();
-foreach ($group_rows as $k=>$v){
-    scale_upgrade($v['id'],1,2,$v['bind_count'],$v['one_scale_user_count']);
-}
+////群
+//$sql = "select id,name,(select count(*) from us_bind where bind_name='group' and bind_info=gr.id) as bind_count,(select count(*) from us_base where scale=1 and us_id in (select us_id from us_bind where bind_name='group' and bind_info=gr.id)) as one_scale_user_count
+//from bot_group as gr where gr.scale=1 and (select count(*) from us_bind where bind_name='group' and bind_info=gr.id)>=10
+//and (select count(*) from us_base where scale=1 and us_id in (select us_id from us_bind where bind_name='group' and bind_info=gr.id))>=2;";
+//$db->query($sql);
+//$group_rows = $db->fetchAll();
+//foreach ($group_rows as $k=>$v){
+//    scale_upgrade($v['id'],1,2,$v['bind_count'],$v['one_scale_user_count']);
+//}
 
 //print_r(json_encode($group_rows));die;
 
@@ -64,6 +77,17 @@ function scale_upgrade($group_id,$before_scale,$after_scale,$bind_count,$one_sca
         }
 
         $db->Commit($pInTrans);
+}
+
+//======================================
+// 函数: 获取下一级所需绑定数,星数
+//======================================
+function get_next_group_level($scale){
+    $db = new DB_COM();
+    $sql = "select * from bot_group_level_rules where scale='{$scale}'+1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    return $row;
 }
 
 //======================================
