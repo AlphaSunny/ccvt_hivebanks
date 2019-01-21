@@ -563,6 +563,24 @@ function get_praise_pointon_maxnum()
     }
     return $m_config;
 }
+//======================================
+// 函数: 获取转账最大(小)值
+// 参数:
+// 返回:
+//======================================
+function get_transfer_maximum_minimum_value()
+{
+    $db = new DB_COM();
+
+    $m_config = array();
+    $sql = "select option_key,option_value from com_option_config WHERE option_key IN ('transfer_big','transfer_small')";
+    $db->query($sql);
+    $list = $db->fetchAll();
+    foreach($list as $item){
+        $m_config[$item['option_key']] = $item['option_value'];
+    }
+    return $m_config;
+}
 
 
 ?>
