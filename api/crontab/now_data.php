@@ -729,7 +729,6 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             echo $ba_id."资金变动4记录表错误";
         }
     }
-
 }
 
 
