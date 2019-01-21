@@ -1,5 +1,6 @@
 body, html {
     background: #f2f3f8;
+    color: #000;
 }
 
 .accountNone {
@@ -50,6 +51,11 @@ body, html {
     font-weight: bold;
     font-family: monospace;
     font-size: 26px;
+}
+
+.group_person_num {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eeeeee;
 }
 
 .group_person_num p {
@@ -114,10 +120,25 @@ body, html {
     font-weight: 400;
 }
 
-/*.group_person_num{*/
-/*counter-reset: li;*/
-/*}*/
-/*.group_person_num li:before{*/
-/*content: counter(li);*/
-/*counter-increment: li;*/
-/*}*/
+.lord_box {
+    padding: 10px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.lord_box p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.group_type {
+    color: #9e9e9e;
+}
+
+.qr_box_img {
+    width: 150px;
+    height: 150px;
+}
+.applicationAdd{
+    font-size: 16px;
+    font-weight: 400;
+}
