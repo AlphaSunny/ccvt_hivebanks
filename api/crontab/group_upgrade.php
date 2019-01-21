@@ -8,6 +8,17 @@ die;
 
 
 $db = new DB_COM();
+
+$sql = "select scale from bot_group WHERE id!=1 group by scale order by scale DESC";
+$db->query($sql);
+$scale_list = $db->fetchAll();
+print_r($scale_list);die;
+if ($scale_list){
+    foreach ($scale_list as $k=>$v){
+        $sql = "select id,name from bot_group as gr WHERE gr.scale='{$v['scale']}'";
+    }
+}
+
 //群
 $sql = "select id,name,(select count(*) from us_bind where bind_name='group' and bind_info=gr.id) as bind_count,(select count(*) from us_base where scale=1 and us_id in (select us_id from us_bind where bind_name='group' and bind_info=gr.id)) as one_scale_user_count 
 from bot_group as gr where gr.scale=1 and (select count(*) from us_bind where bind_name='group' and bind_info=gr.id)>=10 
@@ -55,3 +66,21 @@ function scale_upgrade($group_id,$before_scale,$after_scale,$bind_count,$one_sca
         $db->Commit($pInTrans);
 }
 
+//======================================
+// 函数: 根据用户等级表查出所有星数之和
+//======================================
+function glory_number($group_id){
+    $db = new DB_COM();
+    $sql = "select scale from us_scale where scale!=0";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    $all_glory = 0;
+    if ($rows){
+        foreach ($rows as $k=>$v){
+            $sql = "select count(a.us_id) as count from us_bind as a left join us_base as b on a.us_id=b.us_id WHERE a.bind_name='group' AND a.bind_info='{$group_id}' AND b.scale='{$v['scale']}'";
+            $db->query($sql);
+            $all_glory = $all_glory+$db->getField($sql,'count');
+        }
+    }
+    return $all_glory;
+}
