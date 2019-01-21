@@ -832,6 +832,7 @@ function base_get_pre_count($credit_id)
         return 1;
 
     var_dump($tx_count);die;
+    var_dump(++$tx_count);die;
     return ++$tx_count;
 }
 
