@@ -74,9 +74,17 @@ $(function () {
     //transfer list
 
     function TransferListFun(limit, offset, type) {
-        TransferList(token,limit, offset, type, function (response) {
+        TransferList(token, limit, offset, type, function (response) {
             if (response.errcode == "0") {
-                console.log(response);
+                let data = response.rows, tr = "";
+                $.each(data, function (i, val) {
+                    tr += "<tr>" +
+                        "<td>" + data[i].us_account + "</td>" +
+                        "<td>" + data[i].tx_amount + "</td>" +
+                        "<td>" + data[i].tx_time + "</td>" +
+                        "</tr>"
+                });
+                $("#transfer_out_list").html(tr);
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
