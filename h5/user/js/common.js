@@ -490,6 +490,18 @@ function TransferCCVT(token, account, code, ccvt_num, pass_hash, suc_func, error
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//transfer list
+function TransferList(token, limit, offset, type, suc_func, error_func) {
+    let api_url = 'get_transfer_ccvt_list.php',
+        post_data = {
+            'token': token,
+            'limit': limit,
+            'offset': offset,
+            'type': type
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //Get order transaction status
 function TradingStatus(token, limit, offset, type, suc_func, error_func) {
     var api_url = 'log_balance.php',

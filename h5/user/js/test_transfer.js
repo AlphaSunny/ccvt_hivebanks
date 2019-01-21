@@ -67,13 +67,23 @@ $(function () {
         });
     }
 
-    $(".transform_ccvt_confirm_btn").click(()=>{
+    $(".transform_ccvt_confirm_btn").click(() => {
         window.location.href = "test_account.html";
     });
 
     //transfer list
-    function TransferList(token, limit, offset, type) {
 
+    function TransferListFun(limit, offset, type) {
+        TransferList(token,limit, offset, type, function (response) {
+            if (response.errcode == "0") {
+                console.log(response);
+            }
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        })
     }
-    TransferList(token, limit, offset, type)
+
+    let limit = "10", offset = "0", type = "1";
+    TransferListFun(limit, offset, type)
+
 });
