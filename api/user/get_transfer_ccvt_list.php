@@ -32,7 +32,7 @@ $token = get_arg_str('GET', 'token');
 //验证token
 $us_id = check_token($token);
 
-if ($type!=1 || $type!=2){
+if ($type!=1 && $type!=2){
     exit_error("150","非法请求");
 }
 
