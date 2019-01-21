@@ -830,7 +830,7 @@ function base_get_pre_count($credit_id)
     $tx_count = $db->getField($sql, 'tx_count');
     if($tx_count == null)
         return 1;
-    return $tx_count;
+    return ++$tx_count;
 }
 
 /**
@@ -845,5 +845,5 @@ function transfer_get_pre_count($credit_id)
     $tx_count = $db->getField($sql, 'tx_count');
     if($tx_count == null)
         return 1;
-    return $tx_count;
+    return ++$tx_count;
 }
