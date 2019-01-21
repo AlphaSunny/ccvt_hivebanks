@@ -39,6 +39,7 @@ function get_transfer_ccvt_list($us_id,$offset,$limit,$type)
             break;
         case 2:
             $sql .= " a.us_id=b.us_id where a.transfer_id='{$us_id}'";
+            break;
     }
     $sql .= " order by a.tx_time limit $offset,$limit";
     $db->query($sql);
