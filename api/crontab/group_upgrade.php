@@ -6,7 +6,7 @@ error_reporting(E_ALL | E_STRICT);
 
 //群等级提升程序(每次只能升一级)
 
-
+die;
 $db = new DB_COM();
 
 $sql = "select scale from bot_group WHERE id!=1 group by scale order by scale DESC";
