@@ -1,7 +1,7 @@
 $(function () {
     GetUsAccount();
     let token = GetCookie("user_token");
-    
+
     //transfer list
     let limit = 10, offset = 0, type = 1;
 
