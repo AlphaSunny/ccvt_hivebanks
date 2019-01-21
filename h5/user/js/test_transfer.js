@@ -76,7 +76,21 @@ $(function () {
     function TransferListFun(limit, offset, type) {
         TransferList(token, limit, offset, type, function (response) {
             if (response.errcode == "0") {
-                let data = response.rows, tr = "";
+                let data = response.rows, tr = "",count = "";
+                let total = response.total;
+                let totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+
+                if (data == false) {
+                    GetDataEmpty('transfer_out_list', '3');
+                    return;
+                }
                 $.each(data, function (i, val) {
                     tr += "<tr>" +
                         "<td>" + data[i].us_account + "</td>" +
@@ -85,6 +99,19 @@ $(function () {
                         "</tr>"
                 });
                 $("#transfer_out_list").html(tr);
+
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        TransferListFun(token, limit, (current - 1) * limit, type);
+                        ShowLoading("show");
+                    }
+                });
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
