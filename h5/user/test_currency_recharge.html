@@ -115,18 +115,21 @@
                         </span>
                     </div>
                     <div>
-
                         <form class="form-inline">
                             <div class="form-group">
-                                <label for="currency"></label>
-                                <input type="text" class="currency bit_amount" id="currency">
-                                <span class="input-group-addon ca_currency"></span>
+                                <label class="sr-only" for="currency"></label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control currency bit_amount" id="currency">
+                                    <span class="input-group-addon ca_currency"></span>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="bit"></label>
-                                <input type="text" class="currency base_amount" id="bit">
-                                <span class="input-group-addon base_type"></span>
+                                <label class="sr-only" for="bit"></label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control currency base_amount" id="bit">
+                                    <span class="input-group-addon base_type"></span>
+                                </div>
                             </div>
                         </form>
                     </div>
