@@ -9,13 +9,13 @@
 function get_transfer_ccvt_total($us_id,$type)
 {
     $db = new DB_COM();
-    $sql = "select qa_id from us_us_transfer_request where us_id='{$us_id}'";
+    $sql = "select qa_id from us_us_transfer_request where";
     switch ($type){
         case 1:
-            $sql .= " AND qa_flag=0";
+            $sql .= "  us_id='{$us_id}' AND qa_flag=0";
             break;
         case 2:
-            $sql .= "  OR transfer_id='{$us_id}' AND qa_flag!=0";
+            $sql .= "  qa_flag!=0 and us_id='{$us_id}' OR transfer_id='{$us_id}'";
     }
     $db->query($sql);
     return $count = $db->affectedRows();
