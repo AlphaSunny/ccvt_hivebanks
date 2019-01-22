@@ -803,109 +803,109 @@ function into_transfer_balance($us_id,$send_money,$flag,$detail,$type,$transfer_
 
 
 }
-//获取ba余额
-function get_ba_base_amount($ba_id){
-    $db = new DB_COM();
-    $sql = "select base_amount from ba_base WHERE ba_id='{$ba_id}'";
-    $db->query($sql);
-    $amount = $db->getField($sql,'base_amount');
-    return $amount;
-}
-
-//获取us余额
-function get_u_amount($us_id){
-    $db = new DB_COM();
-    $sql = "select (base_amount+lock_amount) as base_amount from us_base WHERE us_id='{$us_id}'";
-    $db->query($sql);
-    $amount = $db->getField($sql,'base_amount');
-    return $amount;
-}
-
-//获取ba_id余额
-function get_ba_id(){
-    $db = new DB_COM();
-    $sql = "select ba_id from ba_base ORDER BY ctime ASC limit 1";
-    $ba_id = $db->getField($sql,'ba_id');
-    if ($ba_id==null){
-        return 0;
-    }
-    return $ba_id;
-}
-
-//获取la id
-function get_la_us_id(){
-    $db = new DB_COM();
-    $sql = "select id from la_base limit 1";
-    $db->query($sql);
-    $id = $db->getField($sql,'id');
-    return $id;
-}
-
-//获取la余额
-function get_l_base_amount($la_id){
-    $db = new DB_COM();
-    $sql = "select base_amount from la_base WHERE id='{$la_id}'";
-    $db->query($sql);
-    $amount = $db->getField($sql,'base_amount');
-    return $amount;
-}
-
-//======================================
-// 函数: 获取上传交易hash
-//======================================
-function get_transfer_hash($credit_id){
-    $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
-    $hash_id = $db->getField($sql, 'hash_id');
-    if($hash_id == null)
-        return 0;
-    return $hash_id;
-}
-//======================================
-// 函数: 获取资金变动记录表的前置hash
-// 参数: ba_id                 baID
-// 返回: hash_id               前置hashid
-//======================================
-function  get_balance_pre_hash($credit_id)
-{
-    $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$credit_id}'  ORDER BY  ctime DESC LIMIT 1";
-    $hash_id = $db->getField($sql, 'hash_id');
-    if($hash_id == null)
-        return 0;
-    return $hash_id;
-}
-
-/**
- * @param $credit_id
- * @return int|mixed
- * 获取上一个交易的链高度 （com_base_balance表）
- */
-function base_balance_get_pre_count($credit_id)
-{
-    $db = new DB_COM();
-    $sql = "select tx_count from com_base_balance where credit_id = '{$credit_id}' order by ctime desc limit 1";
-    $tx_count = $db->getField($sql, 'tx_count');
-    if($tx_count == null)
-        return 1;
-
-    return $tx_count+1;
-}
-
-/**
- * @param $credit_id
- * @return int|mixed
- * 获取上一个交易的链高度 （com_transfer_request表）
- */
-function transfer_request_get_pre_count($credit_id)
-{
-    $db = new DB_COM();
-    $sql = "select tx_count from com_transfer_request where credit_id = '{$credit_id}' order by ctime desc limit 1";
-    $tx_count = $db->getField($sql, 'tx_count');
-    if($tx_count == null)
-        return 1;
-    return $tx_count+1;
-}
+////获取ba余额
+//function get_ba_base_amount($ba_id){
+//    $db = new DB_COM();
+//    $sql = "select base_amount from ba_base WHERE ba_id='{$ba_id}'";
+//    $db->query($sql);
+//    $amount = $db->getField($sql,'base_amount');
+//    return $amount;
+//}
+//
+////获取us余额
+//function get_u_amount($us_id){
+//    $db = new DB_COM();
+//    $sql = "select (base_amount+lock_amount) as base_amount from us_base WHERE us_id='{$us_id}'";
+//    $db->query($sql);
+//    $amount = $db->getField($sql,'base_amount');
+//    return $amount;
+//}
+//
+////获取ba_id余额
+//function get_ba_id(){
+//    $db = new DB_COM();
+//    $sql = "select ba_id from ba_base ORDER BY ctime ASC limit 1";
+//    $ba_id = $db->getField($sql,'ba_id');
+//    if ($ba_id==null){
+//        return 0;
+//    }
+//    return $ba_id;
+//}
+//
+////获取la id
+//function get_la_us_id(){
+//    $db = new DB_COM();
+//    $sql = "select id from la_base limit 1";
+//    $db->query($sql);
+//    $id = $db->getField($sql,'id');
+//    return $id;
+//}
+//
+////获取la余额
+//function get_l_base_amount($la_id){
+//    $db = new DB_COM();
+//    $sql = "select base_amount from la_base WHERE id='{$la_id}'";
+//    $db->query($sql);
+//    $amount = $db->getField($sql,'base_amount');
+//    return $amount;
+//}
+//
+////======================================
+//// 函数: 获取上传交易hash
+////======================================
+//function get_transfer_hash($credit_id){
+//    $db = new DB_COM();
+//    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
+//    $hash_id = $db->getField($sql, 'hash_id');
+//    if($hash_id == null)
+//        return 0;
+//    return $hash_id;
+//}
+////======================================
+//// 函数: 获取资金变动记录表的前置hash
+//// 参数: ba_id                 baID
+//// 返回: hash_id               前置hashid
+////======================================
+//function  get_balance_pre_hash($credit_id)
+//{
+//    $db = new DB_COM();
+//    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$credit_id}'  ORDER BY  ctime DESC LIMIT 1";
+//    $hash_id = $db->getField($sql, 'hash_id');
+//    if($hash_id == null)
+//        return 0;
+//    return $hash_id;
+//}
+//
+///**
+// * @param $credit_id
+// * @return int|mixed
+// * 获取上一个交易的链高度 （com_base_balance表）
+// */
+//function base_balance_get_pre_count($credit_id)
+//{
+//    $db = new DB_COM();
+//    $sql = "select tx_count from com_base_balance where credit_id = '{$credit_id}' order by ctime desc limit 1";
+//    $tx_count = $db->getField($sql, 'tx_count');
+//    if($tx_count == null)
+//        return 1;
+//
+//    return $tx_count+1;
+//}
+//
+///**
+// * @param $credit_id
+// * @return int|mixed
+// * 获取上一个交易的链高度 （com_transfer_request表）
+// */
+//function transfer_request_get_pre_count($credit_id)
+//{
+//    $db = new DB_COM();
+//    $sql = "select tx_count from com_transfer_request where credit_id = '{$credit_id}' order by ctime desc limit 1";
+//    $tx_count = $db->getField($sql, 'tx_count');
+//    if($tx_count == null)
+//        return 1;
+//    return $tx_count+1;
+//}
 
 
 
