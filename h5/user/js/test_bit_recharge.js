@@ -18,11 +18,12 @@ $(function () {
             }
             $.each(data, function (i, val) {
                 tr += "<tr>" +
-                    "<td>" + data[i].bit_type.toUpperCase() + "</td>" +
+                    "<td class='bit_type'>" + data[i].bit_type.toUpperCase() + "</td>" +
                     "<td>" +
                     "<span>1<span>" + data[i].bit_type.toUpperCase() + "</span></span>" +
                     "<span>=<span>" + data[i].base_rate + "</span>" + base_type + "</span>" +
                     "</td>" +
+                    "<td><button class='btn btn-success btn-sm i18n recharge_btn' name='recharge'></button></td>" +
                     "</tr>"
             });
             $('#bit_recharge_box').html(tr);
@@ -33,8 +34,8 @@ $(function () {
     });
 
     //Click to select recharge
-    $(document).on('click', '.digital-inner-box li', function () {
-        let val = $(this).children("span").text().trim();
+    $(document).on('click', '.recharge_btn', function () {
+        let val = $(this).parents("tr").find(".bit_type").text();
         SetCookie('re_bit_type', val);
         window.location.href = "../ba/BaRecharge.html";
     });
