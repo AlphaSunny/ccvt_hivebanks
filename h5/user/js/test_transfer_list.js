@@ -64,11 +64,11 @@ $(function () {
         let qa_id = $(this).siblings(".qa_id").attr("name");
         let qa_flag = "1";
         layer.confirm('是否确定转账？', {
-            btn: ['是','否'] //按钮
-        }, function(){
+            btn: ['是', '否'] //按钮
+        }, function () {
             ShowLoading("show");
             TransferConfirmFun(qa_id, qa_flag,);
-        }, function(){
+        }, function () {
         });
     });
 
@@ -77,11 +77,11 @@ $(function () {
         let qa_id = $(this).siblings(".qa_id").attr("name");
         let qa_flag = "2";
         layer.confirm('是否取消转账？', {
-            btn: ['是','否'] //按钮
-        }, function(){
+            btn: ['是', '否'] //按钮
+        }, function () {
             ShowLoading("show");
             TransferConfirmFun(qa_id, qa_flag,);
-        }, function(){
+        }, function () {
         });
     });
 
@@ -106,6 +106,7 @@ $(function () {
                 let data = response.rows, tr = "", count = "";
                 let total = response.total;
                 let totalPage = Math.ceil(total / limit);
+                let type = "";
                 let status = "";
                 if (totalPage <= 1) {
                     count = 1;
@@ -120,13 +121,23 @@ $(function () {
                     return;
                 }
                 $.each(data, function (i, val) {
-                    if(data[i].in_or_out == "in"){
-                        status = "<span class='i18n' name='us_us_transfer_in'></span>"
-                    }else {
-                        status = "<span class='i18n' name='us_us_transfer_out'></span>"
+                    if (data[i].in_or_out == "in") {
+                        type = "<span class='i18n' name='us_us_transfer_in'></span>"
+                    } else if (data[i].in_or_out == "out") {
+                        type = "<span class='i18n' name='us_us_transfer_out'></span>"
+                    } else {
+                        type = "<span class='i18n' name='us_us_transfer_out'></span>"
+                    }
+
+                    if (data[i].status == "1") {
+                        status = "<span class='i18n' name=''></span>"
+                    } else if (data[i].status == "2") {
+                        status = "<span class='i18n' name=''></span>"
+                    } else {
+                        status = "<span class='i18n' name=''></span>"
                     }
                     tr += "<tr>" +
-                        "<td>" + status + "</td>" +
+                        "<td>" + type + "</td>" +
                         "<td>" + data[i].tx_amount + "</td>" +
                         "<td>" + data[i].us_account + "</td>" +
                         "<td>" + data[i].tx_time + "</td>" +
