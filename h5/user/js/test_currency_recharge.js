@@ -12,11 +12,11 @@ $(function () {
     GetAverageRate(api_url, token, function (response) {
         if (response.errcode == '0') {
             if (response.recharge_rate == '0') {
-                $('.currentRechargeRateBox, .legalRechargeBox').remove();
-                $('.legalTitle').attr('name', 'noLegalCurrencyAgent');
-                execI18n();
+                $('.rate, .input_box').remove();
+                $(".no_ca").removeClass("none");
                 return;
             }
+            $(".no_ca").remove();
             $('.recharge_rate').text(response.recharge_rate);
             recharge_rate = (response.recharge_rate);
             $('.bit_amount').val(response.recharge_rate);
