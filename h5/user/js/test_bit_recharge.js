@@ -43,27 +43,52 @@ $(function () {
     // BA recharge recode
     let limit = 10, offset = 0,
         ba_api_url = 'log_ba_recharge.php';
-    AllRecord(token, limit, offset, ba_api_url, function (response) {
-        if (response.errcode == '0') {
-            let data = response.rows, tr = '';
-            if (data == false) {
-                GetDataEmpty('baRechargeCodeTable', '4');
-                return;
+    function BitRechargeList(token, limit, offset, ba_api_url){
+        AllRecord(token, limit, offset, ba_api_url, function (response) {
+            if (response.errcode == '0') {
+                let data = response.rows, tr = '',count = "";
+                let total = response.total;
+                let totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+                if (data == false) {
+                    GetDataEmpty('baRechargeCodeTable', '4');
+                    return;
+                }
+                $.each(data, function (i, val) {
+                    tr += '<tr>' +
+                        '<td><span>' + data[i].tx_hash + '</span></td>' +
+                        '<td><span>' + data[i].asset_id + '</span></td>' +
+                        '<td><span>' + data[i].base_amount + '</span></td>' +
+                        '<td><span>' + data[i].tx_time + '</span></td>' +
+                        '</tr>'
+                });
+                $("#baRechargeCodeTable").html(tr);
+
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        BitRechargeList(token, limit, (current - 1) * limit, ba_api_url);
+                        ShowLoading("show");
+                    }
+                });
             }
-            $.each(data, function (i, val) {
-                tr += '<tr>' +
-                    '<td><span>' + data[i].tx_hash + '</span></td>' +
-                    '<td><span>' + data[i].asset_id + '</span></td>' +
-                    '<td><span>' + data[i].base_amount + '</span></td>' +
-                    '<td><span>' + data[i].tx_time + '</span></td>' +
-                    '</tr>'
-            });
-            $("#baRechargeCodeTable").html(tr);
-        }
-    }, function (response) {
-        GetDataFail('baRechargeCodeTable', '4');
-        if (response.errcode == '114') {
-            window.location.href = 'login.html';
-        }
-    });
+        }, function (response) {
+            GetDataFail('baRechargeCodeTable', '4');
+            if (response.errcode == '114') {
+                window.location.href = 'login.html';
+            }
+        });
+    }
+    BitRechargeList(token, limit, offset, ba_api_url)
 });
