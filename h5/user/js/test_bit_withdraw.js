@@ -61,7 +61,7 @@ $(function () {
             $('#notAuthentication').modal('show');
             return;
         } else {
-            var val = $(this).children("span").text().trim();
+            var val = $(this).parents("tr").find(".bit_type").text();
             SetCookie('wi_bit_type', val);
             window.location.href = "../ba/BaWithdraw.html";
         }
