@@ -21,7 +21,7 @@ $(function () {
                     "<td>"+ data[i].bit_type.toUpperCase() +"</td>" +
                     "<td>" +
                     "<span>1<span>"+ data[i].bit_type.toUpperCase() +"</span></span>" +
-                    "<span>=<span>"+ data[i].base_rate+"</span>+ base_type +</span>" +
+                    "<span>=<span>"+ data[i].base_rate+"</span>"+ base_type +"</span>" +
                     "</td>" +
                     "</tr>"
                 // li += '<li>' +
