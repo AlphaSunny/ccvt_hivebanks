@@ -582,5 +582,120 @@ function get_transfer_maximum_minimum_value()
     return $m_config;
 }
 
+//======================================
+// 函数: 所有变动记录
+// 参数:
+// 返回:
+//注://ba-us(分给余额加减和锁定余额   锁仓余额(big_us_lock)、员工动态调整(dynamic_tuning)这两个是加锁定余额)  us-la(点赞)  us-us(转账)   us-ba(离职回收,用户提现)
+//======================================
+function into_transfer_balance($us_id,$send_money,$time,$flag,$detail,$type,$transfer_type,$ba_id,$la_id,$transfer_us_id){
+    $db = new DB_COM();
+    $pInTrans = $db->StartTrans();  //开启事务
+    switch ($transfer_type){
+        case "ba-us":
+            //用户加钱
+            $sql = "update us_base set";
+            if ($type=='big_us_lock' or $type=='dynamic_tuning'){
+                $sql .= " lock_amount=lock_amount+'{$send_money}'";
+            }else{
+                $sql .= " base_amount=base_amount+'{$send_money}'";
+            }
+            $sql .= "WHERE us_id='{$us_id}'";
+            $db -> query($sql);
+            if (!$db->affectedRows()){
+                $db->Rollback($pInTrans);
+                return false;
+            }
+
+            //ba减钱
+            $sql = "update ba_base set base_amount=base_amount-'{$send_money}' WHERE ba_id='{$ba_id}'";
+            $db -> query($sql);
+            if (!$db->affectedRows()){
+                $db->Rollback($pInTrans);
+                return false;
+            }
+            break;
+        case "us-la":
+            //用户减钱
+            $sql = "update us_base set base_amount=base_amount-'{$send_money}' WHERE us_id='{$us_id}'";
+            echo $sql."3"."<br />";
+            $db -> query($sql);
+            if (!$db->affectedRows()){
+                echo "us减钱2错误";
+            }
+
+            //la加钱
+            $sql = "update la_base set base_amount=base_amount+'{$send_money}' limit 1";
+            echo $sql."4"."<br />";
+            $db->query($sql);
+            if (!$db->affectedRows()){
+                echo "la加钱2错误";
+            }
+            break;
+        case "us-us":
+            //用户减钱
+            $sql = "update us_base set base_amount=base_amount-'{$send_money}' WHERE us_id='{$us_id}'";
+            echo $sql."5"."<br />";
+            $db -> query($sql);
+            if (!$db->affectedRows()){
+                echo "us减钱3错误";
+            }
+
+            //用户加钱
+            $sql = "update us_base set base_amount=base_amount+'{$send_money}' WHERE us_id='{$transfer_us_id}'";
+            echo $sql."6"."<br />";
+            $db -> query($sql);
+            if (!$db->affectedRows()){
+                echo "us加钱3错误";
+            }
+            break;
+        case "us-ba":
+            $sql = "update us_base set";
+            if ($type=='gone_staff'){
+                //用户锁定减钱
+                $sql .= " lock_amount=lock_amount-'{$send_money}'";
+            }elseif ($type=='ba_out'){
+                //用户可用余额减钱
+                $sql .= " base_amount=base_amount-'{$send_money}'";
+            }
+            $sql .= " WHERE us_id='{$us_id}'";
+            echo $sql."6"."<br />";
+            $db -> query($sql);
+            if (!$db->affectedRows()){
+                echo "us金额减钱4错误";
+            }
+
+            //ba加钱
+            $sql = "update ba_base set base_amount=base_amount+'{$send_money}' WHERE ba_id='{$ba_id}'";
+            echo $sql."7"."<br />";
+            $db->query($sql);
+            if (!$db->affectedRows()){
+                echo "ba加钱4错误";
+            }
+            break;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>

@@ -1005,7 +1005,7 @@ function  us_send_ccvt_record($us_id,$qa_id,$qa_flag)
     $row = $db->fetchRow();
     if ($row){
         //转账
-        us_send_ccvt($row['us_id'],$row['trans_us_id'],$row['tx_amount'],'13',"用户转账",$qa_flag,$qa_id);
+        us_send_ccvt($row['us_id'],$row['transfer_id'],$row['tx_amount'],'13',"用户转账",$qa_flag,$qa_id);
         return true;
     }
     return false;
