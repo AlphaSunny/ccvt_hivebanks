@@ -12,7 +12,7 @@ function get_transfer_ccvt_total($us_id,$type)
     $sql = "select qa_id from us_us_transfer_request where";
     switch ($type){
         case 1:
-            $sql .= "  us_id='{$us_id}' AND qa_flag=0";
+            $sql .= " us_id='{$us_id}' AND qa_flag=0";
             break;
         case 2:
             $sql .= "  qa_flag!=0 and us_id='{$us_id}' OR transfer_id='{$us_id}'";
