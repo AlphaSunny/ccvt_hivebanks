@@ -106,6 +106,7 @@ $(function () {
                 let data = response.rows, tr = "", count = "";
                 let total = response.total;
                 let totalPage = Math.ceil(total / limit);
+                let status = "";
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (1 < totalPage && totalPage <= 6) {
@@ -119,13 +120,20 @@ $(function () {
                     return;
                 }
                 $.each(data, function (i, val) {
+                    if(data[i].in_or_out == "in"){
+                        status = "<span class='i18n' name='us_us_transfer_in'></span>"
+                    }else {
+                        status = "<span class='i18n' name='us_us_transfer_out'></span>"
+                    }
                     tr += "<tr>" +
-                        "<td>" + data[i].us_account + "</td>" +
+                        "<td>" + status + "</td>" +
                         "<td>" + data[i].tx_amount + "</td>" +
+                        "<td>" + data[i].us_account + "</td>" +
                         "<td>" + data[i].tx_time + "</td>" +
                         "</tr>"
                 });
                 $("#transfer_out_list").html(tr);
+                execI18n();
 
                 $("#pagination_in").pagination({
                     currentPage: (limit_in + offset_in) / limit_in,
