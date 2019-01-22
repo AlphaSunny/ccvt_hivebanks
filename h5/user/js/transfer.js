@@ -98,6 +98,11 @@ $(function () {
                         "<td>" + data[i].us_account + "</td>" +
                         "<td>" + data[i].tx_amount + "</td>" +
                         "<td>" + data[i].tx_time + "</td>" +
+                        "<td>" +
+                        "<span class='qa_id none' name='" + data[i].qa_id + "'></span>" +
+                        "<button class='btn btn-success btn-sm transfer_confirm'>确认</button>" +
+                        "<button class='btn btn-danger btn-sm transfer_cancel margin-left-10'>取消</button>" +
+                        "</td>" +
                         "</tr>"
                 });
                 $("#transfer_out_list").html(tr);
@@ -122,6 +127,44 @@ $(function () {
     }
 
     TransferListFun(limit, offset, type);
+
+
+    //confirm transfer
+    $(document).on("click", ".transfer_confirm", function () {
+        let qa_id = $(this).siblings(".qa_id").attr("name");
+        let qa_flag = "1";
+        layer.confirm('是否确定转账？', {
+            btn: ['是','否'] //按钮
+        }, function(){
+            ShowLoading("show");
+            TransferConfirmFun(qa_id, qa_flag,);
+        }, function(){
+        });
+    });
+
+    //cancel transfer
+    $(document).on("click", ".transfer_cancel", function () {
+        let qa_id = $(this).siblings(".qa_id").attr("name");
+        let qa_flag = "2";
+        layer.confirm('是否取消转账？', {
+            btn: ['是','否'] //按钮
+        }, function(){
+            ShowLoading("show");
+            TransferConfirmFun(qa_id, qa_flag,);
+        }, function(){
+        });
+    });
+
+    function TransferConfirmFun(qa_id, qa_flag) {
+        TransferConfirm(token, qa_id, qa_flag, function (response) {
+            SuccessPrompt("处理成功");
+            ShowLoading("hide");
+            TransferListFun(limit, offset, type);
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+            ShowLoading("hide");
+        })
+    }
 
     //**********
     let _limit = 10, _offset = 0, _type = 2;
