@@ -12,5 +12,5 @@
     var cssHeaderIco = "<link rel='shortcut icon' type='text/css' href='" + appRootPath + "/";
     var cssFooter = "'></link>";
     document.write(cssHeaderLess + "user/css/common_user.less" + cssFooter);
-    document.write(cssHeaderIco + "../favicon.ico" + cssFooter);
+    document.write(cssHeaderIco + "../../favicon.ico" + cssFooter);
 })();
