@@ -105,7 +105,7 @@ $(function () {
                 ShowLoading("hide");
                 let data = response.rows, tr = "", count = "";
                 let total = response.total;
-                let totalPage = Math.ceil(total / limit);
+                let totalPage = Math.ceil(total / limit_in);
                 let type = "";
                 let status = "";
                 if (totalPage <= 1) {

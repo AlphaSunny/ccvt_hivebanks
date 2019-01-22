@@ -169,13 +169,13 @@ $(function () {
     //**********
     let _limit = 10, _offset = 0, _type = 2;
 
-    function _TransferListFun(limit, offset, type) {
-        TransferList(token, limit, offset, type, function (response) {
+    function _TransferListFun(_limit, _offset, _type) {
+        TransferList(token, _limit, _offset, _type, function (response) {
             if (response.errcode == "0") {
                 ShowLoading("hide");
                 let data = response.rows, tr = "", count = "";
                 let total = response.total;
-                let totalPage = Math.ceil(total / limit);
+                let totalPage = Math.ceil(total / _limit);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (1 < totalPage && totalPage <= 6) {
@@ -198,14 +198,14 @@ $(function () {
                 $("#transfer_in_list").html(tr);
 
                 $("#pagination2").pagination({
-                    currentPage: (limit + offset) / limit,
+                    currentPage: (_limit + _offset) / _limit,
                     totalPage: totalPage,
                     isShow: false,
                     count: count,
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        TransferListFun(limit, (current - 1) * limit, type);
+                        _TransferListFun(_limit, (current - 1) * _limit, type);
                         ShowLoading("show");
                     }
                 });
