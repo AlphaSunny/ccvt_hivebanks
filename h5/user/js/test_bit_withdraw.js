@@ -1,16 +1,16 @@
 $(function () {
     //get token;
-    var token = GetCookie('user_token');
+    let token = GetCookie('user_token');
     GetUsAccount();
 
     //get base_type
-    var base_type = GetCookie('benchmark_type');
+    let base_type = GetCookie('benchmark_type');
 
     //Get ba withdrawal list
-    var api_url = 'us_get_withdraw_ba_list.php';
+    let api_url = 'us_get_withdraw_ba_list.php';
     GetBaRateList(api_url, token, function (response) {
         if (response.errcode == '0') {
-            var data = response.rows, tr = '';
+            let data = response.rows, tr = '';
 
             if (data == false) {
                 GetDataEmpty('bit_withdraw_box', '3');
@@ -34,10 +34,10 @@ $(function () {
     });
 
     //Get user binding information
-    var us_bind_type_name = '', us_bind_type_idNum = '', us_bind_type_file = '', us_bind_name_idPhoto = '';
+    let us_bind_type_name = '', us_bind_type_idNum = '', us_bind_type_file = '', us_bind_name_idPhoto = '';
     BindingInformation(token, function (response) {
         if (response.errcode == '0') {
-            var data = response.rows;
+            let data = response.rows;
             $.each(data, function (i, val) {
                 if (data[i].bind_type == 'file' && data[i].bind_name == 'idPhoto' && data[i].bind_flag == "1") {
                     us_bind_type_file = 'file';
@@ -61,14 +61,14 @@ $(function () {
             $('#notAuthentication').modal('show');
             return;
         } else {
-            var val = $(this).parents("tr").find(".bit_type").text();
+            let val = $(this).parents("tr").find(".bit_type").text();
             SetCookie('wi_bit_type', val);
             window.location.href = "../ba/BaWithdraw.html";
         }
     });
 
     //Get user account balance display
-    var us_base_amount = '';
+    let us_base_amount = '';
     UserInformation(token, function (response) {
         if (response.errcode == '0') {
             us_base_amount = response.rows.base_amount;
@@ -87,15 +87,15 @@ $(function () {
     });
 
     // BA withdrawal record
-    var limit = 10, offset = 0, ba_api_url = 'log_ba_withdraw.php';
+    let limit = 10, offset = 0, ba_api_url = 'log_ba_withdraw.php';
 
     function GetBaWithdrawCodeFun(limit, offset) {
-        var tr = "", totalPage = "", count = "", ba_state = "";
+        let tr = "", totalPage = "", count = "", ba_state = "";
         AllRecord(token, limit, offset, ba_api_url, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
-                var data = response.rows;
-                var total = response.total;
+                let data = response.rows;
+                let total = response.total;
                 totalPage = Math.floor(total / limit);
                 if (totalPage <= 1) {
                     count = 1;
