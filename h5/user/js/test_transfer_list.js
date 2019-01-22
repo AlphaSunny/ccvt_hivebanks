@@ -115,7 +115,7 @@ $(function () {
                 }
 
                 if (data == false) {
-                    GetDataEmpty('transfer_in_list', '3');
+                    GetDataEmpty('transfer_in_list', '4');
                     return;
                 }
                 $.each(data, function (i, val) {
