@@ -155,7 +155,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        TransferListFun(limit_in, (current - 1) * limit_in, type_in);
+                        TransferInListFun(limit_in, (current - 1) * limit_in, type_in);
                         ShowLoading("show");
                     }
                 });
