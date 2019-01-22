@@ -63,33 +63,29 @@ $(function () {
     $(document).on("click", ".transfer_confirm", function () {
         let qa_id = $(this).siblings(".qa_id").attr("name");
         let qa_flag = "1";
-        TransferConfirmFun(qa_id, qa_flag,);
+        layer.confirm('是否确定转账？', {
+            btn: ['是','否'] //按钮
+        }, function(){
+            TransferConfirmFun(qa_id, qa_flag,);
+        }, function(){
+        });
     });
 
     //cancel transfer
     $(document).on("click", ".transfer_cancel", function () {
         let qa_id = $(this).siblings(".qa_id").attr("name");
         let qa_flag = "2";
-        TransferConfirmFun(qa_id, qa_flag,);
+        layer.confirm('是否取消转账？', {
+            btn: ['是','否'] //按钮
+        }, function(){
+            TransferConfirmFun(qa_id, qa_flag,);
+        }, function(){
+        });
     });
 
     function TransferConfirmFun(qa_id, qa_flag) {
         TransferConfirm(token, qa_id, qa_flag, function (response) {
-            if(qa_flag == "1"){
-                layer.confirm('是否确定转账？', {
-                    btn: ['是','否'] //按钮
-                }, function(){
-                    SuccessPrompt("处理成功");
-                }, function(){
-                });
-            }else{
-                layer.confirm('是否取消转账？', {
-                    btn: ['是','否'] //按钮
-                }, function(){
-                    SuccessPrompt("处理成功");
-                }, function(){
-                });
-            }
+            SuccessPrompt("处理成功");
         }, function (response) {
             ErrorPrompt(response.errmsg);
         })
