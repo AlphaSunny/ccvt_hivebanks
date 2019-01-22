@@ -10,30 +10,37 @@ $(function () {
     let api_url = 'us_get_recharge_ba_list.php';
     GetBaRateList(api_url, token, function (response) {
         if (response.errcode == '0') {
-            let data = response.rows, li = '';
+            let data = response.rows, tr = '';
             if (data == false) {
                 $('.bitAgentTitle').attr('name', 'noDigitalCurrencyAgent');
                 execI18n();
                 return;
             }
-            // $.each(data, function (i, val) {
-            //     li += '<li>' +
-            //         '<p>' +
-            //         '<svg class="icon" aria-hidden="true">' +
-            //         '<use xlink:href="#icon-' + data[i].bit_type.toUpperCase() + '"></use>' +
-            //         '</svg>' +
-            //         '</p>' +
-            //         '<span>' + data[i].bit_type + '</span>' +
-            //         '<div class="mask">' +
-            //         '<p class="parities">1' +
-            //         '<span class="base_type">' + base_type + '</span>=' +
-            //         '<span class="base_rate">' + data[i].base_rate + '</span>' +
-            //         '<span class="bit_type">' + data[i].bit_type + '</span>' +
-            //         '</p>' +
-            //         '</div>' +
-            //         '</li>';
-            // });
-            // $('#baRechargeList').html(li);
+            $.each(data, function (i, val) {
+                tr+="<tr>" +
+                    "<td>"+ data[i].bit_type.toUpperCase() +"</td>" +
+                    "<td>" +
+                    "<span>1<span>"+ data[i].bit_type.toUpperCase() +"</span></span>" +
+                    "<span>=<span>"+ data[i].base_rate+"</span>+ base_type +</span>" +
+                    "</td>" +
+                    "</tr>"
+                // li += '<li>' +
+                //     '<p>' +
+                //     '<svg class="icon" aria-hidden="true">' +
+                //     '<use xlink:href="#icon-' + data[i].bit_type.toUpperCase() + '"></use>' +
+                //     '</svg>' +
+                //     '</p>' +
+                //     '<span>' + data[i].bit_type + '</span>' +
+                //     '<div class="mask">' +
+                //     '<p class="parities">1' +
+                //     '<span class="base_type">' + base_type + '</span>=' +
+                //     '<span class="base_rate">' + data[i].base_rate + '</span>' +
+                //     '<span class="bit_type">' + data[i].bit_type + '</span>' +
+                //     '</p>' +
+                //     '</div>' +
+                //     '</li>';
+            });
+            $('#bit_recharge_box').html(tr);
         }
     }, function (response) {
         LayerFun(response.errcode);
