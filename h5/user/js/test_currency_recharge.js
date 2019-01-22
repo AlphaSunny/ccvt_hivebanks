@@ -5,7 +5,7 @@ $(function () {
 
     //get base_type
     let base_type = GetCookie('benchmark_type');
-    
+
 
     //CA recharge to get the average exchange rate
     let recharge_rate = '', api_url = 'average_ca_recharge_rate.php';
@@ -48,8 +48,9 @@ $(function () {
 
     // CA recharge recode
     let ca_api_url = 'log_ca_recharge.php';
-        // ca_tx_hash_arr = [];
-    function CurrencyRechargeList(token, limit, offset, ca_api_url){
+    let limit = 10, offset = 0;
+
+    function CurrencyRechargeList(token, limit, offset, ca_api_url) {
         AllRecord(token, limit, offset, ca_api_url, function (response) {
             if (response.errcode == '0') {
                 let data = response.rows, tr = '', count = "";
@@ -96,5 +97,6 @@ $(function () {
             GetDataEmpty('caRechargeCodeTable', '4');
         });
     }
+
     CurrencyRechargeList(token, limit, offset, ca_api_url);
 });
