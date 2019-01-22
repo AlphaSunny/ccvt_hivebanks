@@ -1,67 +1,16 @@
 $(function () {
     //get token;
-    var token = GetCookie('user_token');
+    let token = GetCookie('user_token');
     GetUsAccount();
 
     //get base_type
-    var base_type = GetCookie('benchmark_type');
-
-    // Click to switch between digital currency and legal currency
-    $('.digital-btn').click(function () {
-        $(this).addClass('active').siblings().removeClass('active');
-        $('.digital').fadeIn();
-        $('.legal').fadeOut();
-        $('.baWithdrawCodeRow').fadeIn();
-        $('.caWithdrawCodeRow').fadeOut();
-    });
-    $('.legal-btn').click(function () {
-        $(this).addClass('active').siblings().removeClass('active');
-        $('.digital').fadeOut();
-        $('.legal').fadeIn();
-        $('.baWithdrawCodeRow').fadeOut();
-        $('.caWithdrawCodeRow').fadeIn();
-    });
-
-    //Get ba withdrawal list
-    var api_url = 'us_get_withdraw_ba_list.php';
-    GetBaRateList(api_url, token, function (response) {
-        if (response.errcode == '0') {
-            var data = response.rows, li = '';
-
-            if (data == false) {
-                $('.bitAgentTitle').attr('name', 'noDigitalCurrencyAgent');
-                execI18n();
-                return;
-            }
-            $.each(data, function (i, val) {
-                li += '<li>' +
-                    '<p>' +
-                    '<svg class="icon" aria-hidden="true">' +
-                    '<use xlink:href="#icon-' + data[i].bit_type.toUpperCase() + '"></use>' +
-                    '</svg>' +
-                    '</p>' +
-                    '<span>' + data[i].bit_type + '</span>' +
-                    '<div class="mask">' +
-                    '<p class="parities">1' +
-                    '<span class="bit_type">' + data[i].bit_type + '</span>=' +
-                    '<span class="base_rate">' + data[i].base_rate + '</span>' +
-                    '<span class="base_type">' + base_type + '</span>' +
-                    '</p>' +
-                    '</div>' +
-                    '</li>'
-            });
-            $('#baWithdrawList').html(li);
-        }
-    }, function (response) {
-        LayerFun(response.errcode);
-        return;
-    });
-
+    let base_type = GetCookie('benchmark_type');
+    
     //Get user binding information
-    var us_bind_type_name = '', us_bind_type_idNum = '', us_bind_type_file = '', us_bind_name_idPhoto = '';
+    let us_bind_type_name = '', us_bind_type_idNum = '', us_bind_type_file = '', us_bind_name_idPhoto = '';
     BindingInformation(token, function (response) {
         if (response.errcode == '0') {
-            var data = response.rows;
+            let data = response.rows;
             $.each(data, function (i, val) {
                 if (data[i].bind_type == 'file' && data[i].bind_name == 'idPhoto' && data[i].bind_flag == "1") {
                     us_bind_type_file = 'file';
@@ -85,14 +34,14 @@ $(function () {
             $('#notAuthentication').modal('show');
             return;
         } else {
-            var val = $(this).children("span").text().trim();
+            let val = $(this).children("span").text().trim();
             SetCookie('wi_bit_type', val);
             window.location.href = "../ba/BaWithdraw.html";
         }
     });
 
     //Get the average exchange rate of Ca withdrawal
-    var withdraw_rate = '', api_url = 'average_ca_withdraw_rate.php';
+    let withdraw_rate = '', api_url = 'average_ca_withdraw_rate.php';
     GetAverageRate(api_url, token, function (response) {
         if (response.errcode == '0') {
             $('.withdraw_rate').text(response.withdraw_rate);
@@ -104,7 +53,7 @@ $(function () {
     });
 
     //Get user account balance display
-    var us_base_amount = '';
+    let us_base_amount = '';
     UserInformation(token, function (response) {
         if (response.errcode == '0') {
             us_base_amount = response.rows.base_amount;
@@ -153,7 +102,7 @@ $(function () {
             LayerFun('insufficientBalance');
             return;
         }
-        var base_amount = $('#withdrawAmount').val();
+        let base_amount = $('#withdrawAmount').val();
         if (base_amount > us_base_amount) {
             LayerFun('insufficientBalance');
             return;
@@ -167,15 +116,15 @@ $(function () {
     });
 
     // BA withdrawal record
-    var limit = 10, offset = 0, ba_api_url = 'log_ba_withdraw.php';
+    let limit = 10, offset = 0, ba_api_url = 'log_ba_withdraw.php';
 
     function GetBaWithdrawCodeFun(limit, offset) {
-        var tr = "", totalPage = "", count = "", ba_state = "";
+        let tr = "", totalPage = "", count = "", ba_state = "";
         AllRecord(token, limit, offset, ba_api_url, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
-                var data = response.rows;
-                var total = response.total;
+                let data = response.rows;
+                let total = response.total;
                 totalPage = Math.floor(total / limit);
                 if (totalPage <= 1) {
                     count = 1;
@@ -230,15 +179,15 @@ $(function () {
     GetBaWithdrawCodeFun(limit, offset);
 
     // CA withdrawal record
-    var limit_ca = 10, offset_ca = 0, ca_api_url = 'log_ca_withdraw.php';
+    let limit_ca = 10, offset_ca = 0, ca_api_url = 'log_ca_withdraw.php';
 
     function GetCaWithdrawCodeFun(limit_ca, offset_ca) {
-        var tr = "", totalPage = "", count = "", ba_state = "";
+        let tr = "", totalPage = "", count = "", ba_state = "";
         AllRecord(token, limit_ca, offset_ca, ca_api_url, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
-                var data = response.rows;
-                var total = response.total;
+                let data = response.rows;
+                let total = response.total;
                 totalPage = Math.floor(total / limit_ca);
                 if (totalPage <= 1) {
                     count = 1;
