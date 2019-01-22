@@ -958,16 +958,9 @@ function  us_us_transfer_request($data)
     $db = new DB_COM();
     $pInTrans = $db->StartTrans();  //开启事务
 
-    //扣除用户
+    //扣除用户可用余额(加入锁定金额)
     $unit = get_la_base_unit();
-    $sql = "update us_base set base_amount=base_amount+'{$data['num']}'*'{$unit}' WHERE us_id='{$data['us_id']}'";
-    $db -> query($sql);
-    if (!$db->affectedRows()){
-        $db->Rollback($pInTrans);
-        return false;
-    }
-    //用户加钱(加入锁定金额)
-    $sql = "update us_base set lock_amount=lock_amount+'{$data['num']}'*'{$unit}' WHERE us_id='{$data['trans_us_id']}'";
+    $sql = "update us_base set base_amount=base_amount-'{$data['num']}'*'{$unit}',lock_amount=lock_amount+'{$data['num']}'*'{$unit}' WHERE us_id='{$data['us_id']}'";
     $db -> query($sql);
     if (!$db->affectedRows()){
         $db->Rollback($pInTrans);
@@ -1023,24 +1016,24 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why,$qa_flag,$qa_id)
     $pInTrans = $db->StartTrans();  //开启事务
     if ($qa_flag==2){
         //订单取消
-        //转账us加钱
-        $sql = "update us_base set base_amount=base_amount+'{$money}' WHERE us_id='{$us_id}'";
+        //转账us加钱(锁定金额加入可用余额)
+        $sql = "update us_base set base_amount=base_amount+'{$money}',lock_amount=lock_amount-'{$money}' WHERE us_id='{$us_id}'";
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
             return false;
         }
 
-        //被转账us锁定金额减钱
-        $sql = "update us_base set lock_amount=lock_amount-'{$money}' WHERE us_id='{$trans_us_id}'";
+    }elseif ($qa_flag==1){
+        //转账us锁定金额减钱
+        $sql = "update us_base set lock_amount=lock_amount-'{$money}' WHERE us_id='{$us_id}'";
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
             return false;
         }
-    }elseif ($qa_flag==1){
-        //被转us加(减)钱
-        $sql = "update us_base set base_amount=base_amount+'{$money}',lock_amount=lock_amount-'{$money}' WHERE us_id='{$trans_us_id}'";
+        //被转us加钱
+        $sql = "update us_base set base_amount=base_amount+'{$money}' WHERE us_id='{$trans_us_id}'";
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
