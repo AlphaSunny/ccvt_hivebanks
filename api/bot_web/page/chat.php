@@ -34,13 +34,13 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
 <div id="chat">
     <p class="text-center title"><?php echo base64_decode($_REQUEST['group_name']); ?>(<?php echo $datetime; ?>)</p>
 
-        <div class="backStatistics_box login_right_box">
-            <a href="javascript:;" class="backStatistics login">登录</a>
-            <span class="amount_box">
+    <div class="backStatistics_box login_right_box">
+        <a href="javascript:;" class="backStatistics login">登录</a>
+        <span class="amount_box">
                 余额:
                 <span class="amount"></span>
             </span>
-        </div>
+    </div>
     <?php if ($status != 1) { ?>
         <div class="backStatistics_box">
             <a href="javascript:;" class="backStatistics">奖励统计</a>
@@ -82,19 +82,19 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                     <div class="chatInfo">
                         <p class="name">
                             <span class="chat_name"><?php echo $v['bot_nickname'] ?></span>
-                            <?php if ($v['us_id']!=NULL){?>
-                            <span class="zan_cai_box com_zan_cai_box">
+                            <?php if ($v['us_id'] != NULL) { ?>
+                                <span class="zan_cai_box com_zan_cai_box">
                                 <span class="zan_img_box">
 <!--                                    <span class="zan_count">123</span>-->
                                     <img src="img/zan.svg" alt="">
                                 </span>
                                 <span class="cai_img_box">
                                     <img src="img/cai.svg" alt="">
-<!--                                    <span class="cai_count">321</span>-->
+                                    <!--                                    <span class="cai_count">321</span>-->
                                 </span>
-                                <span class="us_id none"><?php echo $v['us_id'];?></span>
+                                <span class="us_id none"><?php echo $v['us_id']; ?></span>
                             </span>
-                            <?php }?>
+                            <?php } ?>
                         </p>
                         <p class="chatContent">
                             <?php
@@ -138,21 +138,25 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <th style="text-align: left">昵称</th>
                 <th>发言数</th>
                 <?php if ($status != 1) { ?>
-                <th>赞/踩</th>
-                <?php }?>
+                    <th>赞/踩</th>
+                <?php } ?>
             </tr>
             </thead>
             <tbody>
             <?php
-            foreach ($rows as $k => $v) {
+            foreach ($rows
 
-                ?>
-                <tr>
-                    <td style="text-align: left"><?php echo $v['bot_nickname']; ?>:</td>
-                    <td><?php echo $v['count']; ?></td>
-                    <td class="com_zan_cai_box">
-                        <?php if ($v['us_id']!=NULL){ ?>
-                        <button class="chat_zan_btn"><img src="img/zan.svg" alt=""><span class="bottom_zan_num">
+            as $k => $v) {
+
+            ?>
+            <tr>
+                <td style="text-align: left"><?php echo $v['bot_nickname']; ?>:</td>
+                <td><?php echo $v['count']; ?></td>
+                <td class="com_zan_cai_box">
+                    <?php if ($v['us_id'] != NULL) { ?>
+                        <button class="chat_zan_btn">
+                            <img src="img/zan.svg" alt="">
+                            <span class="bottom_zan_num">
                                 <?php
                                 $sql = "select sum(tx_amount)/'{$unit}' as zan from us_glory_integral_change_log WHERE debit_id='{$v['us_id']}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
                                 $db->query($sql);
@@ -162,24 +166,28 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                                 }
                                 echo $zan;
                                 ?>
-                            </span></button>&nbsp;|&nbsp;
-                        <button class="chat_cai_btn"><img src="img/cai.svg" alt=""><span class="bottom_cai_num">
+                            </span>
+                        </button>&nbsp;|&nbsp;
+                        <button class="chat_cai_btn">
+                            <img src="img/cai.svg" alt="">
+                            <span class="bottom_cai_num">
                                     <?php
-                                        $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$v['us_id']}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-                                        $db->query($sql);
-                                        $all_am = $db->getField($sql, 'all_am');
-                                        if (!$all_am) {
-                                            $all_am = 0;
-                                        }
-                                        echo $all_am;
+                                    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$v['us_id']}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                                    $db->query($sql);
+                                    $all_am = $db->getField($sql, 'all_am');
+                                    if (!$all_am) {
+                                        $all_am = 0;
+                                    }
+                                    echo $all_am;
                                     ?>
-                                </span></button>
-                        <span class="us_id none"><?php echo $v['us_id'];?></span>
-                        <?php }?>
-                    </td>
-                    <?php }?>
+                                </span>
+                        </button>
+                        <span class="us_id none"><?php echo $v['us_id']; ?></span>
+                    <?php } ?>
+                </td>
+                <?php } ?>
 
-                </tr>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -214,19 +222,21 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <span class="margin-left-5 zan_num">已点赞
                     <span class="already_zan_count" style="color: #333333">
                         <?php
-                                        $s_time = strtotime(date('Y-m-d 00:00:00'), time());
-                                        $e_time = strtotime(date('Y-m-d 23:59:59'), time());
-                                        $us_id = $_COOKIE['statistics_user_id'];
-                                        if ($us_id){
-                                            $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-                                            $db->query($sql);
-                                            $all_am = $db->getField($sql,'all_am');
-                                            if (!$all_am){$all_am=0;}
-                                            echo $all_am;
-                                        }else{
-                                            echo 0;
-                                        }
-                                                ?>
+                        $s_time = strtotime(date('Y-m-d 00:00:00'), time());
+                        $e_time = strtotime(date('Y-m-d 23:59:59'), time());
+                        $us_id = $_COOKIE['statistics_user_id'];
+                        if ($us_id) {
+                            $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                            $db->query($sql);
+                            $all_am = $db->getField($sql, 'all_am');
+                            if (!$all_am) {
+                                $all_am = 0;
+                            }
+                            echo $all_am;
+                        } else {
+                            echo 0;
+                        }
+                        ?>
                     </span>ccvt
                 </span>
 
@@ -234,17 +244,19 @@ $url = $data['api_url'] . "/api/bot_web/page/statistical.php?datetime=" . base64
                 <span class="margin-left-5 cai_num">已踩
                     <span class="already_cai_count" style="color: #333333">
                         <?php
-                                                $us_id = $_COOKIE['statistics_user_id'];
-                                                if ($us_id){
-                                                    $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
-                                                    $db->query($sql);
-                                                    $all_am = $db->getField($sql,'all_am');
-                                                    if (!$all_am){$all_am=0;}
-                                                    echo $all_am;
-                                                }else{
-                                                    echo 0;
-                                                }
-                       ?>
+                        $us_id = $_COOKIE['statistics_user_id'];
+                        if ($us_id) {
+                            $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$us_id}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+                            $db->query($sql);
+                            $all_am = $db->getField($sql, 'all_am');
+                            if (!$all_am) {
+                                $all_am = 0;
+                            }
+                            echo $all_am;
+                        } else {
+                            echo 0;
+                        }
+                        ?>
                     </span>ccvt
                 </span>
             </p>
