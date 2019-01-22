@@ -168,7 +168,7 @@ $(function(){
     });
 
     /* Choose a language */
-    $("#language li").on('click', function () {
+    $(".toggleLanguage").on('click', function () {
         var language = $(this).attr("title");
         $(".curr_language").text($(this).text());
         $("#language").text($(this).text());
