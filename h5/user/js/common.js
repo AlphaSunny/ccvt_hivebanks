@@ -502,6 +502,16 @@ function TransferList(token, limit, offset, type, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+function TransferConfirm(token, qa_id, qa_flag,suc_func, error_func) {
+    let api_url = 'us_deal_transfer_ccvt.php',
+        post_data = {
+            'token': token,
+            'qa_id': qa_id,
+            'qa_flag': qa_flag
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //Get order transaction status
 function TradingStatus(token, limit, offset, type, suc_func, error_func) {
     var api_url = 'log_balance.php',
