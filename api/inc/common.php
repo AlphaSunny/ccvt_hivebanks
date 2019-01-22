@@ -618,18 +618,18 @@ function into_transfer_balance($us_id,$send_money,$time,$flag,$detail,$type,$tra
         case "us-la":
             //用户减钱
             $sql = "update us_base set base_amount=base_amount-'{$send_money}' WHERE us_id='{$us_id}'";
-            echo $sql."3"."<br />";
             $db -> query($sql);
             if (!$db->affectedRows()){
-                echo "us减钱2错误";
+                $db->Rollback($pInTrans);
+                return false;
             }
 
             //la加钱
             $sql = "update la_base set base_amount=base_amount+'{$send_money}' limit 1";
-            echo $sql."4"."<br />";
             $db->query($sql);
             if (!$db->affectedRows()){
-                echo "la加钱2错误";
+                $db->Rollback($pInTrans);
+                return false;
             }
             break;
         case "us-us":

@@ -1041,6 +1041,7 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why,$qa_flag,$qa_id)
     }elseif ($qa_flag==1){
         //被转us加(减)钱
         $sql = "update us_base set base_amount=base_amount+'{$money}',lock_amount=lock_amount-'{$money}' WHERE us_id='{$trans_us_id}'";
+        echo $sql;die;
         $db -> query($sql);
         if (!$db->affectedRows()){
             $db->Rollback($pInTrans);
