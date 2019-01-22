@@ -12,8 +12,7 @@ $(function () {
         if (response.errcode == '0') {
             let data = response.rows, tr = '';
             if (data == false) {
-                $('.bitAgentTitle').attr('name', 'noDigitalCurrencyAgent');
-                execI18n();
+                GetDataEmpty('bit_recharge_box', '3');
                 return;
             }
             $.each(data, function (i, val) {
