@@ -471,6 +471,10 @@ td, th {
   }
 
   .w-180 {
-    width: @default_even_px * 40;
+    width: unset !important;
+  }
+
+  .w-50 {
+    &:extend(.w-180);
   }
 }
