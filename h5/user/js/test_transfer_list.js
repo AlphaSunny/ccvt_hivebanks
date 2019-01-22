@@ -89,6 +89,7 @@ $(function () {
         TransferConfirm(token, qa_id, qa_flag, function (response) {
             SuccessPrompt("处理成功");
             ShowLoading("hide");
+            TransferListFun(limit, offset, type);
         }, function (response) {
             ErrorPrompt(response.errmsg);
             ShowLoading("hide");
