@@ -22,7 +22,8 @@ $(function () {
             $('.bit_amount').val(response.recharge_rate);
         }
     }, function (response) {
-        LayerFun(response.errcode);
+        // LayerFun(response.errcode);
+        ErrorPrompt(response.errmsg);
     });
 
     //Enter the recharge amount binding input box
