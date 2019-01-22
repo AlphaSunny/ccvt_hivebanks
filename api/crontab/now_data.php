@@ -380,14 +380,14 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
 /******************************转账记录表(提现不存)***************************************************/
     if ($transfer_type=='ba-us'){
         //赠送者
-        $data['hash_id'] = hash('md5', $ba_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+        $data['hash_id'] = hash('md5', $ba_id . $flag . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $prvs_hash = get_pre_hash($ba_id);
         $data['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$ba_id) : $prvs_hash;
         $data['credit_id'] = $ba_id;
         $data['debit_id'] = $us_id;
         $data['tx_amount'] = -$send_money;
         $data['credit_balance'] = get_ba_base_amount($ba_id);
-        $data['tx_hash'] = hash('md5', $ba_id . $flag . get_ip() . time() . microtime());
+        $data['tx_hash'] = hash('md5', $ba_id . $flag . '127.0.0.1' . time() . microtime());
         $data['flag'] = $flag;
         $data['transfer_type'] = $transfer_type;
         $data['transfer_state'] = 1;
@@ -403,14 +403,14 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
 
         //接收者
-        $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+        $dat['hash_id'] = hash('md5', $us_id . $flag . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $prvs_hash = get_pre_hash($us_id);
         $dat['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$us_id) : $prvs_hash;
         $dat['credit_id'] = $us_id;
         $dat['debit_id'] = $ba_id;
         $dat['tx_amount'] = $send_money;
         $dat['credit_balance'] = get_us_base_amount($us_id);
-        $dat['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . microtime());
+        $dat['tx_hash'] = hash('md5', $us_id . $flag . '127.0.0.1' . time() . microtime());
         $dat['flag'] = $flag;
         $dat['transfer_type'] = $transfer_type;
         $dat['transfer_state'] = 1;
@@ -426,14 +426,14 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
     }elseif ($transfer_type=='us-la'){
         //赠送者
-        $transfer['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+        $transfer['hash_id'] = hash('md5', $us_id . $flag . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $prvs_hash = get_pre_hash($us_id);
         $transfer['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$us_id) : $prvs_hash;
         $transfer['credit_id'] = $us_id;
         $transfer['debit_id'] = $la_id;
         $transfer['tx_amount'] = -$send_money;
         $transfer['credit_balance'] = get_us_base_amount($us_id);
-        $transfer['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . microtime());
+        $transfer['tx_hash'] = hash('md5', $us_id . $flag . '127.0.0.1' . time() . microtime());
         $transfer['flag'] = $flag;
         $transfer['transfer_type'] = $transfer_type;
         $transfer['transfer_state'] = 1;
@@ -449,14 +449,14 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
 
         //接收者(la)
-        $dat['hash_id'] = hash('md5', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+        $dat['hash_id'] = hash('md5', $la_id . $flag . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $prvs_hash = get_pre_hash($la_id);
         $dat['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$la_id) : $prvs_hash;
         $dat['credit_id'] = $la_id;
         $dat['debit_id'] = $us_id;
         $dat['tx_amount'] = $send_money;
         $dat['credit_balance'] = get_la_base_amount($la_id);
-        $dat['tx_hash'] = hash('md5', $la_id . $flag . get_ip() . time() . microtime());
+        $dat['tx_hash'] = hash('md5', $la_id . $flag . '127.0.0.1' . time() . microtime());
         $dat['flag'] = $flag;
         $dat['transfer_type'] = $transfer_type;
         $dat['transfer_state'] = 1;
@@ -473,14 +473,14 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
     }elseif ($transfer_type=='us-us'){
         //赠送者
-        $transfer['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+        $transfer['hash_id'] = hash('md5', $us_id . $flag . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $prvs_hash = get_pre_hash($us_id);
         $transfer['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$us_id) : $prvs_hash;
         $transfer['credit_id'] = $us_id;
         $transfer['debit_id'] = $transfer_us_id;
         $transfer['tx_amount'] = -$send_money;
         $transfer['credit_balance'] = get_us_base_amount($us_id);
-        $transfer['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . microtime());
+        $transfer['tx_hash'] = hash('md5', $us_id . $flag . '127.0.0.1' . time() . microtime());
         $transfer['flag'] = $flag;
         $transfer['transfer_type'] = $transfer_type;
         $transfer['transfer_state'] = 1;
@@ -497,14 +497,14 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
 
         //接收者(us)
-        $dat['hash_id'] = hash('md5', $transfer_us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+        $dat['hash_id'] = hash('md5', $transfer_us_id . $flag . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $prvs_hash = get_pre_hash($transfer_us_id);
         $dat['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$transfer_us_id) : $prvs_hash;
         $dat['credit_id'] = $transfer_us_id;
         $dat['debit_id'] = $us_id;
         $dat['tx_amount'] = $send_money;
         $dat['credit_balance'] = get_us_base_amount($transfer_us_id);
-        $dat['tx_hash'] = hash('md5', $transfer_us_id . $flag . get_ip() . time() . microtime());
+        $dat['tx_hash'] = hash('md5', $transfer_us_id . $flag . '127.0.0.1' . time() . microtime());
         $dat['flag'] = $flag;
         $dat['transfer_type'] = $transfer_type;
         $dat['transfer_state'] = 1;
@@ -522,14 +522,14 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     }elseif ($transfer_type=='us-ba'){
         if ($type!='ba_out'){
             //赠送者(us)
-            $transfer['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+            $transfer['hash_id'] = hash('md5', $us_id . $flag . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
             $prvs_hash = get_pre_hash($us_id);
             $transfer['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$us_id) : $prvs_hash;
             $transfer['credit_id'] = $us_id;
             $transfer['debit_id'] = $ba_id;
             $transfer['tx_amount'] = -$send_money;
             $transfer['credit_balance'] = get_us_base_amount($us_id);
-            $transfer['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . microtime());
+            $transfer['tx_hash'] = hash('md5', $us_id . $flag . '127.0.0.1' . time() . microtime());
             $transfer['flag'] = $flag;
             $transfer['transfer_type'] = $transfer_type;
             $transfer['transfer_state'] = 1;
@@ -546,14 +546,14 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             }
 
             //接收者(ba)
-            $dat['hash_id'] = hash('md5', $ba_id . $flag . get_ip() . time() . rand(1000, 9999) . microtime());
+            $dat['hash_id'] = hash('md5', $ba_id . $flag . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
             $prvs_hash = get_pre_hash($ba_id);
             $dat['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$ba_id) : $prvs_hash;
             $dat['credit_id'] = $ba_id;
             $dat['debit_id'] = $us_id;
             $dat['tx_amount'] = $send_money;
             $dat['credit_balance'] = get_ba_base_amount($ba_id);
-            $dat['tx_hash'] = hash('md5', $ba_id . $flag . get_ip() . time() . microtime());
+            $dat['tx_hash'] = hash('md5', $ba_id . $flag . '127.0.0.1' . time() . microtime());
             $dat['flag'] = $flag;
             $dat['transfer_type'] = $transfer_type;
             $dat['transfer_state'] = 1;
@@ -575,7 +575,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     /***********************资金变动记录表***********************************/
     if ($transfer_type=='ba-us'){
         //us添加基准资产变动记录
-        $com_balance_us['hash_id'] = hash('md5', $us_id . $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_us['hash_id'] = hash('md5', $us_id . $type . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $com_balance_us['tx_id'] = $dat['tx_hash'];
         $prvs_hash = get_recharge_pre_hash($us_id);
         $com_balance_us['prvs_hash'] = $prvs_hash===0 ? hash('md5',$us_id) : $prvs_hash;
@@ -594,7 +594,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
 
         //ba添加基准资产变动记录
-        $com_balance_ba['hash_id'] = hash('md5', $ba_id. $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_ba['hash_id'] = hash('md5', $ba_id. $type . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $com_balance_ba['tx_id'] = $data['tx_hash'];
         $prvs_hash = get_recharge_pre_hash($ba_id);
         $com_balance_ba['prvs_hash'] = $prvs_hash===0 ? hash('md5',$ba_id) : $prvs_hash;
@@ -613,7 +613,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
     }elseif ($transfer_type=='us-la'){
         //us添加基准资产变动记录
-        $com_balance_us['hash_id'] = hash('md5', $us_id . $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_us['hash_id'] = hash('md5', $us_id . $type . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $com_balance_us['tx_id'] = $transfer['tx_hash'];
         $prvs_hash = get_recharge_pre_hash($us_id);
         $com_balance_us['prvs_hash'] = $prvs_hash===0 ? hash('md5',$us_id) : $prvs_hash;
@@ -633,7 +633,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
 
         //la添加基准资产变动记录
-        $com_balance_ba['hash_id'] = hash('md5', $la_id. $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_ba['hash_id'] = hash('md5', $la_id. $type . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $com_balance_ba['tx_id'] = $dat['tx_hash'];
         $prvs_hash = get_recharge_pre_hash($la_id);
         $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$la_id) : $prvs_hash;
@@ -653,7 +653,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
     }elseif ($transfer_type=='us-us'){
         //us添加基准资产变动记录
-        $com_balance_us['hash_id'] = hash('md5', $us_id . $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_us['hash_id'] = hash('md5', $us_id . $type . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $com_balance_us['tx_id'] = $transfer['tx_hash'];
         $prvs_hash = get_recharge_pre_hash($us_id);
         $com_balance_us['prvs_hash'] = $prvs_hash===0 ? hash('md5',$us_id) : $prvs_hash;
@@ -672,7 +672,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
 
         //us添加基准资产变动记录
-        $com_balance_ba['hash_id'] = hash('md5', $transfer_us_id. $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_ba['hash_id'] = hash('md5', $transfer_us_id. $type . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $com_balance_ba['tx_id'] = $dat['tx_hash'];
         $prvs_hash = get_recharge_pre_hash($transfer_us_id);
         $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$transfer_us_id) : $prvs_hash;
@@ -692,7 +692,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
     }elseif ($transfer_type=='us-ba'){
         //us添加基准资产变动记录
-        $com_balance_us['hash_id'] = hash('md5', $us_id . $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_us['hash_id'] = hash('md5', $us_id . $type . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $com_balance_us['tx_id'] = $transfer['tx_hash'];
         $prvs_hash = get_recharge_pre_hash($us_id);
         $com_balance_us['prvs_hash'] = $prvs_hash===0 ? hash('md5',$us_id) : $prvs_hash;
@@ -712,7 +712,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
 
         //ba添加基准资产变动记录
-        $com_balance_ba['hash_id'] = hash('md5', $ba_id. $type . get_ip() . time() . rand(1000, 9999) . microtime());
+        $com_balance_ba['hash_id'] = hash('md5', $ba_id. $type . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $com_balance_ba['tx_id'] = $dat['tx_hash'];
         $prvs_hash = get_recharge_pre_hash($ba_id);
         $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$ba_id) : $prvs_hash;
