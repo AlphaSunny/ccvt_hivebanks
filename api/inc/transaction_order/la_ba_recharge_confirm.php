@@ -81,6 +81,7 @@ function base_ba_recharge_confirm($rows)
     $com_balance_us["credit_balance"] = $new_ba_row["base_amount"]+$new_ba_row["lock_amount"];
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = $ctime;
+    $com_balance_us["tx_count"] = base_get_pre_count($rows["agent_id"]);//FZG
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
     if (!$db->query($sql)) {
@@ -99,6 +100,7 @@ function base_ba_recharge_confirm($rows)
     $com_balance_ba["credit_balance"] = $new_base_row["base_amount"] + $new_base_row["lock_amount"];
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;
+    $com_balance_ba["tx_count"] = base_get_pre_count($rows["base_id"]);//FZG
 
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
     if (!$db->query($sql)) {
