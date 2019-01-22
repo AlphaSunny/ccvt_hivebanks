@@ -85,7 +85,7 @@ function  get_recharge_pre_hash($ba_id)
     $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}' ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
-        return 0;
+        return hash('md5',$ba_id);
     return $hash_id;
 }
 //======================================
@@ -99,7 +99,7 @@ function  get_withdraw_pre_hash($ba_id)
     $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}'  ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
-        return 0;
+        return hash('md5',$ba_id);
     return $hash_id;
 }
 //======================================
@@ -113,7 +113,7 @@ function  get_ca_recharge_pre_hash($ca_id)
     $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ca_id}'  ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
-        return 0;
+        return hash('md5',$ca_id); //FZG
     return $hash_id;
 }
 //======================================
@@ -127,6 +127,6 @@ function  get_ca_withdraw_pre_hash($ca_id)
     $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ca_id}' ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
-        return 0;
+        return hash('md5',$ca_id);
     return $hash_id;
 }

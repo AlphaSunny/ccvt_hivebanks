@@ -68,10 +68,10 @@ function ins_ca_rechargeAndwithdraw_com_base_banlance($data) {
 function  get_ca_recharge_pre_hash($ca_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ca_id}' and tx_type = 'ca_in' ORDER BY  ctime DESC LIMIT 1";
+    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ca_id}' ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
-        return 0;
+        return hash('md5',$ca_id);//FZG
     return $hash_id;
 }
 //======================================
@@ -82,9 +82,9 @@ function  get_ca_recharge_pre_hash($ca_id)
 function  get_ca_withdraw_pre_hash($ca_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ca_id}' and tx_type = 'ca_out' ORDER BY  ctime DESC LIMIT 1";
+    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ca_id}'  ORDER BY  ctime DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
-        return 0;
+        return hash('md5',$ca_id);//FZG
     return $hash_id;
 }

@@ -94,7 +94,7 @@ function recharge_confirm($rows)
     $com_balance_ba["credit_id"] = $rows["ba_id"];
     $com_balance_ba["debit_id"] = $rows["us_id"];
     $com_balance_ba["tx_type"] = "ba_in";
-    $com_balance_ba["tx_amount"] = $rows["base_amount"];
+    $com_balance_ba["tx_amount"] = -$rows["base_amount"];//FZG -
     $com_balance_ba["credit_balance"] = $new_ba_row["base_amount"] + $new_ba_row["lock_amount"];
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;

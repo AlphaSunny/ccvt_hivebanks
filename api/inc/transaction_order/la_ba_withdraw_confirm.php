@@ -80,7 +80,7 @@ function base_ba_withdraw_confirm($rows,$transfer_tx_hash){
     $com_balance_us['prvs_hash'] = get_withdraw_pre_hash($rows["agent_id"]);
     $com_balance_us["debit_id"] = $rows["base_id"];
     $com_balance_us["tx_type"] =    "ba_out";
-    $com_balance_us["tx_amount"] =  $rows["base_amount"];
+    $com_balance_us["tx_amount"] =  -$rows["base_amount"]; //FZG -
     $com_balance_us["credit_balance"] = $new_ba_row["base_amount"] + $new_ba_row["lock_amount"];
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = $ctime;
