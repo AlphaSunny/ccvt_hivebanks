@@ -9,10 +9,12 @@
 
     var cssHeader = "<link rel='stylesheet' type='text/css' href='" + appRootPath + "/";
     var cssHeaderLess = "<link rel='stylesheet/less' type='text/css' href='" + appRootPath + "/";
+    var cssHeaderIco = "<link rel='shortcut icon' type='text/css' href='" + appRootPath + "/";
     var cssFooter = "'></link>";
     document.write(cssHeader + "assets/css/bootstrap.min.css" + cssFooter);
     document.write(cssHeader + "assets/css/jquery.pagination.css" + cssFooter);
     document.write(cssHeader + "assets/css/intlTelInput.css" + cssFooter);
     document.write(cssHeader + "assets/css/animate.css" + cssFooter);
+    document.write(cssHeaderIco + "favicon.ico" + cssFooter);
     document.write('<link rel="stylesheet" href="//at.alicdn.com/t/font_626151_s2e3q5g4f2.css">');
 })();
