@@ -10,31 +10,23 @@ $(function () {
     var api_url = 'us_get_withdraw_ba_list.php';
     GetBaRateList(api_url, token, function (response) {
         if (response.errcode == '0') {
-            var data = response.rows, li = '';
+            var data = response.rows, tr = '';
 
             if (data == false) {
-                $('.bitAgentTitle').attr('name', 'noDigitalCurrencyAgent');
-                execI18n();
+                GetDataEmpty('bit_withdraw_box', '3');
                 return;
             }
             $.each(data, function (i, val) {
-                li += '<li>' +
-                    '<p>' +
-                    '<svg class="icon" aria-hidden="true">' +
-                    '<use xlink:href="#icon-' + data[i].bit_type.toUpperCase() + '"></use>' +
-                    '</svg>' +
-                    '</p>' +
-                    '<span>' + data[i].bit_type + '</span>' +
-                    '<div class="mask">' +
-                    '<p class="parities">1' +
-                    '<span class="bit_type">' + data[i].bit_type + '</span>=' +
-                    '<span class="base_rate">' + data[i].base_rate + '</span>' +
-                    '<span class="base_type">' + base_type + '</span>' +
-                    '</p>' +
-                    '</div>' +
-                    '</li>'
+                tr += "<tr>" +
+                    "<td class='bit_type'>" + data[i].bit_type.toUpperCase() + "</td>" +
+                    "<td>" +
+                    "<span>1<span>" + data[i].bit_type.toUpperCase() + "</span></span>" +
+                    "<span>=<span>" + data[i].base_rate + "</span>" + base_type + "</span>" +
+                    "</td>" +
+                    "<td class='text-right'><button class='btn btn-success btn-sm withdraw_btn' name='withdraw'>提现</button></td>" +
+                    "</tr>"
             });
-            $('#baWithdrawList').html(li);
+            $('#bit_withdraw_box').html(tr);
         }
     }, function (response) {
         LayerFun(response.errcode);
@@ -64,7 +56,7 @@ $(function () {
     });
 
     //Click to select cash
-    $(document).on('click', '.digital-inner-box li', function () {
+    $(document).on('click', '.withdraw_btn', function () {
         if (us_bind_type_name != 'name' || us_bind_type_idNum != 'idNum' || us_bind_name_idPhoto != 'idPhoto') {
             $('#notAuthentication').modal('show');
             return;
@@ -92,50 +84,6 @@ $(function () {
         if (response.errcode == '114') {
             window.location.href = 'login.html';
         }
-    });
-
-    //Enter the recharge amount binding input box
-    // $('.base_amount').bind('input porpertychange', function () {
-    //     $('.bit_amount').val($(this).val() * withdraw_rate);
-    //     $('.payWithdrawAmount').text($(this).val());
-    // });
-    // $('.bit_amount').bind('input porpertychange', function () {
-    //     $('.base_amount').val($(this).val() / withdraw_rate);
-    //     $('.payWithdrawAmount').text($('.base_amount').val());
-    // });
-
-    //fullWithdrawal
-    $('.fullWithdrawal').click(function () {
-        $('#withdrawAmount').val(us_base_amount);
-        $('#payAmount').val(us_base_amount * withdraw_rate);
-    });
-
-    //Ca recharge the next step
-    $('.enableAmount').click(function () {
-        if (us_bind_type_name != 'name' || us_bind_type_idNum != 'idNum' || us_bind_name_idPhoto != 'idPhoto') {
-            $('#notAuthentication').modal('show');
-            return;
-        }
-
-        if ($('.base_amount').val().length <= 0) {
-            LayerFun('withdrawalAmountNotEmpty');
-        }
-
-        if (us_base_amount <= 0) {
-            LayerFun('insufficientBalance');
-            return;
-        }
-        var base_amount = $('#withdrawAmount').val();
-        if (base_amount > us_base_amount) {
-            LayerFun('insufficientBalance');
-            return;
-        }
-
-        if (base_amount <= 0) {
-            LayerFun('pleaseEnterCorrectWithdrawAmount');
-            return;
-        }
-        window.location.href = '../ca/CaWithdraw.html?us_ca_withdraw_amount=' + base_amount;
     });
 
     // BA withdrawal record
