@@ -13,7 +13,7 @@ GET参数
   token                用户token
   limit                分页记录
   offset               分页偏移量
-  type                 1:转方    2:被转方
+  type                 1:待处理    2:已处理
 返回
 
 说明
@@ -25,7 +25,7 @@ chk_empty_args('GET', $args);
 
 // 取得分页参数
 list($limit, $offset) = get_paging_arg('GET');
-// type 1:转方    2:被转方
+// type 1:待处理    2:已处理
 $type = get_arg_str('GET', 'type');
 // 用户token
 $token = get_arg_str('GET', 'token');
