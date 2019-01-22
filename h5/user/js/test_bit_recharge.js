@@ -24,21 +24,6 @@ $(function () {
                     "<span>=<span>"+ data[i].base_rate+"</span>"+ base_type +"</span>" +
                     "</td>" +
                     "</tr>"
-                // li += '<li>' +
-                //     '<p>' +
-                //     '<svg class="icon" aria-hidden="true">' +
-                //     '<use xlink:href="#icon-' + data[i].bit_type.toUpperCase() + '"></use>' +
-                //     '</svg>' +
-                //     '</p>' +
-                //     '<span>' + data[i].bit_type + '</span>' +
-                //     '<div class="mask">' +
-                //     '<p class="parities">1' +
-                //     '<span class="base_type">' + base_type + '</span>=' +
-                //     '<span class="base_rate">' + data[i].base_rate + '</span>' +
-                //     '<span class="bit_type">' + data[i].bit_type + '</span>' +
-                //     '</p>' +
-                //     '</div>' +
-                //     '</li>';
             });
             $('#bit_recharge_box').html(tr);
         }
