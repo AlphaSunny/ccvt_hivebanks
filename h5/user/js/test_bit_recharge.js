@@ -17,12 +17,13 @@ $(function () {
                 return;
             }
             $.each(data, function (i, val) {
-                tr+="<tr>" +
-                    "<td>"+ data[i].bit_type.toUpperCase() +"</td>" +
+                tr += "<tr>" +
+                    "<td>" + data[i].bit_type.toUpperCase() + "</td>" +
                     "<td>" +
-                    "<span>1<span>"+ data[i].bit_type.toUpperCase() +"</span></span>" +
-                    "<span>=<span>"+ data[i].base_rate+"</span>"+ base_type +"</span>" +
+                    "<span>1<span>" + data[i].bit_type.toUpperCase() + "</span></span>" +
+                    "<span>=<span>" + data[i].base_rate + "</span>" + base_type + "</span>" +
                     "</td>" +
+                    "<td> > </td>" +
                     "</tr>"
             });
             $('#bit_recharge_box').html(tr);
