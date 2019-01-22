@@ -132,7 +132,7 @@ $(function () {
                         "<td>" + data[i].tx_time + "</td>" +
                         "</tr>"
                 });
-                $("#transfer_out_list").html(tr);
+                $("#transfer_in_list").html(tr);
                 execI18n();
 
                 $("#pagination_in").pagination({
