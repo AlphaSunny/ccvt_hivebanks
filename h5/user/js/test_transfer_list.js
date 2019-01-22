@@ -66,6 +66,7 @@ $(function () {
         layer.confirm('是否确定转账？', {
             btn: ['是','否'] //按钮
         }, function(){
+            ShowLoading("show");
             TransferConfirmFun(qa_id, qa_flag,);
         }, function(){
         });
@@ -78,6 +79,7 @@ $(function () {
         layer.confirm('是否取消转账？', {
             btn: ['是','否'] //按钮
         }, function(){
+            ShowLoading("show");
             TransferConfirmFun(qa_id, qa_flag,);
         }, function(){
         });
@@ -86,8 +88,10 @@ $(function () {
     function TransferConfirmFun(qa_id, qa_flag) {
         TransferConfirm(token, qa_id, qa_flag, function (response) {
             SuccessPrompt("处理成功");
+            ShowLoading("hide");
         }, function (response) {
             ErrorPrompt(response.errmsg);
+            ShowLoading("hide");
         })
     }
 
