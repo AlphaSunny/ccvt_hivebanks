@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta id="i18n_pagename" content="index-common">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title class="i18n" name="ba_in"></title>
+    <meta charset='UTF-8'>
+    <meta id='i18n_pagename' content='index-common'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'>
+    <title class='i18n' name='ca_out'></title>
     <script src="../assets/js/write_css.js"></script>
     <script src="js/user_write_css.js"></script>
-    <link rel="stylesheet/less" href="css/test_currency_recharge.less">
+    <link rel="stylesheet/less" href="css/test_currency_withdraw.less">
 </head>
 <body>
-
 <!--nav-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -87,24 +86,22 @@
 </section>
 
 <!--Bread crumbs-->
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 col-sm-12">
-            <ol class="breadcrumb">
-                <li><a href="test_account.html" class="i18n" name="account"></a></li>
-                <li class="active i18n" name="ca_in"></li>
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-12 col-sm-12'>
+            <ol class='breadcrumb'>
+                <li><a href='test_account.html' class='i18n' name='account'></a></li>
+                <li class='active i18n' name='ca_out'></li>
             </ol>
         </div>
     </div>
 </div>
 
-<!--recharge-->
-<section class="sections">
-    <div class="container">
-        <div class="row">
+<!--withdraw-->
+<section class='sections'>
+    <div class='container'>
+        <div class='row'>
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <h3 class="pcTitle bitAgentTitle i18n" name="ca_in"></h3>
-
                 <div class="table_bg padding-top-bottom-100 ca_recharge_box">
                     <h3 class="i18n no_ca none" name="noLegalCurrencyAgent"></h3>
                     <div class="rate">
@@ -141,41 +138,84 @@
                     </div>
                 </div>
             </div>
+            <!--Legal currency recharge-->
+            <!--<div class="tab-btn legal">-->
+                <!--<h3 class="pcTitle i18n" name="legalCurrencyWithdraw">Legal Currency Withdraw</h3>-->
+                <!--<div class="currentRechargeRateBox font-weight-400 margin-top-2 margin-bottom-2">-->
+                    <!--<span class="i18n" name="currentWithdrawRate">Current Withdraw Rate</span>-->
+                    <!--<span class="rechargeRate">1<span class="ca_currency"></span> = <span-->
+                            <!--class="withdraw_rate"></span><span class="base_type"></span></span>-->
+                <!--</div>-->
+
+                <!--<div class="legalRechargeBox">-->
+                    <!--<div class="legalRechargeInnerBox">-->
+                        <!--<label for="payAmount" class="payAmount i18n" name="withdrawAmount">Withdraw Amounts</label>-->
+                        <!--<div class="flex center rechargeInfoRow">-->
+                            <!--<div class="form-group">-->
+                                <!--<div class="input-group">-->
+                                    <!--<input id="payAmount" type="text" value="1"-->
+                                           <!--class="form-control base_amount rechargeInput font-size-14">-->
+                                    <!--<span class="pay_bit_type margin-left-1 font-weight-400 ca_currency input-group-addon"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<span class="icon margin-left-1 margin-right-1"><i-->
+                                    <!--class="iconfont icon-transfer"></i></span>-->
+                            <!--<div class="form-group">-->
+                                <!--<div class="input-group">-->
+                                    <!--<input type="text" id="withdrawAmount"-->
+                                           <!--class="form-control bit_amount rechargeInputSum chg_amount font-size-14">-->
+                                    <!--<span class="margin-left-1 font-weight-400 bit_type input-group-addon base_type"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="margin-top-2">-->
+                            <!--<ul class="flex center">-->
+                                <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<span class="rechargeTitle i18n" name="amountsPayable">应付金额</span>:&ndash;&gt;-->
+                                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<li><span class="payWithdrawAmount ty-color margin-left-5">1</span><span class="base_type margin-left-5"></span>&ndash;&gt;-->
+                                <!--</li>-->
+                                <!--<li class=""><span class="i18n" name="accountBalance">accountBalance</span>:</li>-->
+                                <!--<li><span class="us_base_amount ty-color margin-left-5">0</span><span-->
+                                        <!--class="base_type margin-left-5"></span></li>-->
+                                <!--<li class="margin-left-1"><a href="javascript:;" class="i18n fullWithdrawal none"-->
+                                                             <!--name="fullWithdrawal">fullWithdrawal</a><span-->
+                                        <!--class="i18n insufficientBalance ty-color none"-->
+                                        <!--name="insufficientBalance">余额不足</span>-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                        <!--<a href="javascript:;" class="btn btn-success enableAmount i18n" name="next"></a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
 </section>
 
-
-
-<!--recharge code-->
-<section class="recharge-row margin-top-50">
-    <div class="container" id="rechargeCodes">
-        <h3 class="pcTitle i18n" name="rechargeRecord"></h3>
-
-        <!--BA recharge code-->
-        <div class="row baRechargeCodeRow">
-            <div class="col-md-12 col-sm-12 col-xs-12 deposit-col-right">
-                <div class="table-box table-responsive table_bg">
-                    <table class="tab table table-hover table-condensed ceshi">
+<!--withdraw recode-->
+<section class='withdraw-row'>
+    <div class='container' id='baWithdrawCodes'>
+        <h3 class='pcTitle i18n' name='withdrawRecord'></h3>
+        <!--CA withdraw recode-->
+        <div class='row caWithdrawCodeRow'>
+            <div class='col-md-12 col-sm-12 deposit-col-right'>
+                <div class='table-box table-responsive'>
+                    <table class='tab table table_bg table-hover table-condensed'>
                         <thead>
                         <tr>
-                            <th class="i18n" name="tradingHash"></th>
-                            <th class="i18n" name="bit_type"></th>
-                            <th class="i18n" name="bit_amount"></th>
-                            <th class="i18n" name="cTime"></th>
+                            <th class="i18n" name="lgl_amount">Legal Currency Amount</th>
+                            <th class="i18n" name="bit_amount">Legal Currency Amount</th>
+                            <th class="i18n" name="ba_ctime_withdraw">Withdrawal Time</th>
+                            <th class="i18n" name="status"></th>
+                            <th class="i18n" name="tradingHash">Trading Hash</th>
                         </tr>
                         </thead>
-                        <tbody id="caRechargeCodeTable" class='caRechargeCode'>
-                        <tr>
-                            <td colspan="4">
-                                <img src="../assets/img/loading.gif" alt="">
-                                <span class="i18n" name="tryingToLoad">tryingToLoad...</span>
-                            </td>
-                        </tr>
-                        </tbody>
+                        <tbody id="caWithdrawCodesTable" class='caWithdrawCodes'></tbody>
                     </table>
-                    <div class="text-right">
-                        <div id="pagination_glory" class="page"></div>
+                    <div>
+                        <div id="pagination_ca" class="page"></div>
                     </div>
                 </div>
             </div>
@@ -183,6 +223,24 @@
     </div>
 </section>
 
+<!-- Modal -->
+<div class="modal fade" id="notAuthentication" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h3 class="modal-title pcTitle i18n" name="withdrawalAuthenticate">Use the withdrawal feature to
+                    authenticate</h3>
+                <h5 class="modal-title phoneTitle i18n" name="withdrawalAuthenticate">Use the withdrawal feature to
+                    authenticate</h5>
+            </div>
+            <div class="modal-footer">
+                <a href="authentication.html?withdraw" type="button" class="btn btn-primary width-100 i18n"
+                   name="authentication">authentication</a>
+            </div>
+        </div>
+    </div>
+</div>
 <!--footer-->
 <div class="footer_box">
     <iframe src="footer.html" frameborder="0" height="100%" width="100%"></iframe>
@@ -201,6 +259,6 @@
 <!--js-->
 <script src="../assets/js/write_js.js"></script>
 <script src="js/user_write_js.js"></script>
-<script src="js/test_currency_recharge.js"></script>
+<script src='js/test_currency_withdraw.js'></script>
 </body>
 </html>
