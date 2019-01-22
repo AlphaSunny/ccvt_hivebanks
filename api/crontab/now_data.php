@@ -1,5 +1,5 @@
 <?php
-require_once "../inc/common.php";
+require_once "/alidata/www/ccvt/api/inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
