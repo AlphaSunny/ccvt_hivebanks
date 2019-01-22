@@ -23,10 +23,11 @@ $(function () {
                     "<span>1<span>" + data[i].bit_type.toUpperCase() + "</span></span>" +
                     "<span>=<span>" + data[i].base_rate + "</span>" + base_type + "</span>" +
                     "</td>" +
-                    "<td><button class='btn btn-success btn-sm i18n recharge_btn' name='recharge'></button></td>" +
+                    "<td><button class='btn btn-success btn-sm recharge_btn' name='recharge'>充值</button></td>" +
                     "</tr>"
             });
             $('#bit_recharge_box').html(tr);
+            // execI18n();
         }
     }, function (response) {
         LayerFun(response.errcode);
