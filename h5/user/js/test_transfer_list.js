@@ -126,15 +126,15 @@ $(function () {
                     } else if (data[i].in_or_out == "out") {
                         type = "<span class='i18n' name='us_us_transfer_out'></span>"
                     } else {
-                        type = "<span class='i18n' name='us_us_transfer_out'></span>"
+                        type = "<span class='i18n' name='invalidOrder'></span>"
                     }
 
                     if (data[i].status == "1") {
-                        status = "<span class='i18n' name=''></span>"
+                        status = "<span class='i18n' name='confirmed'></span>"
                     } else if (data[i].status == "2") {
-                        status = "<span class='i18n' name=''></span>"
+                        status = "<span class='i18n' name='canceled'></span>"
                     } else {
-                        status = "<span class='i18n' name=''></span>"
+                        status = "<span class='i18n' name='invalidOrder'></span>"
                     }
                     tr += "<tr>" +
                         "<td>" + type + "</td>" +
