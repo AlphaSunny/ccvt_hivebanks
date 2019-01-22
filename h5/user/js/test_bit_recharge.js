@@ -23,7 +23,6 @@ $(function () {
                     "<span>1<span>" + data[i].bit_type.toUpperCase() + "</span></span>" +
                     "<span>=<span>" + data[i].base_rate + "</span>" + base_type + "</span>" +
                     "</td>" +
-                    "<td> > </td>" +
                     "</tr>"
             });
             $('#bit_recharge_box').html(tr);
