@@ -129,7 +129,7 @@ $(function () {
                         type = "<span class='i18n' name='invalidOrder'></span>"
                     }
 
-                    if (data[i].status == "1") {
+                    if (data[i].qa_flag == "1") {
                         status = "<span class='i18n' name='confirmed'></span>"
                     } else if (data[i].status == "2") {
                         status = "<span class='i18n' name='canceled'></span>"
