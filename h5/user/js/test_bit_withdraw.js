@@ -6,22 +6,6 @@ $(function () {
     //get base_type
     var base_type = GetCookie('benchmark_type');
 
-    // Click to switch between digital currency and legal currency
-    $('.digital-btn').click(function () {
-        $(this).addClass('active').siblings().removeClass('active');
-        $('.digital').fadeIn();
-        $('.legal').fadeOut();
-        $('.baWithdrawCodeRow').fadeIn();
-        $('.caWithdrawCodeRow').fadeOut();
-    });
-    $('.legal-btn').click(function () {
-        $(this).addClass('active').siblings().removeClass('active');
-        $('.digital').fadeOut();
-        $('.legal').fadeIn();
-        $('.baWithdrawCodeRow').fadeOut();
-        $('.caWithdrawCodeRow').fadeIn();
-    });
-
     //Get ba withdrawal list
     var api_url = 'us_get_withdraw_ba_list.php';
     GetBaRateList(api_url, token, function (response) {
@@ -91,18 +75,6 @@ $(function () {
         }
     });
 
-    //Get the average exchange rate of Ca withdrawal
-    var withdraw_rate = '', api_url = 'average_ca_withdraw_rate.php';
-    GetAverageRate(api_url, token, function (response) {
-        if (response.errcode == '0') {
-            $('.withdraw_rate').text(response.withdraw_rate);
-            withdraw_rate = (response.withdraw_rate);
-            $('.bit_amount').val(response.withdraw_rate);
-        }
-    }, function (response) {
-        LayerFun(response.errcode);
-    });
-
     //Get user account balance display
     var us_base_amount = '';
     UserInformation(token, function (response) {
@@ -123,14 +95,14 @@ $(function () {
     });
 
     //Enter the recharge amount binding input box
-    $('.base_amount').bind('input porpertychange', function () {
-        $('.bit_amount').val($(this).val() * withdraw_rate);
-        $('.payWithdrawAmount').text($(this).val());
-    });
-    $('.bit_amount').bind('input porpertychange', function () {
-        $('.base_amount').val($(this).val() / withdraw_rate);
-        $('.payWithdrawAmount').text($('.base_amount').val());
-    });
+    // $('.base_amount').bind('input porpertychange', function () {
+    //     $('.bit_amount').val($(this).val() * withdraw_rate);
+    //     $('.payWithdrawAmount').text($(this).val());
+    // });
+    // $('.bit_amount').bind('input porpertychange', function () {
+    //     $('.base_amount').val($(this).val() / withdraw_rate);
+    //     $('.payWithdrawAmount').text($('.base_amount').val());
+    // });
 
     //fullWithdrawal
     $('.fullWithdrawal').click(function () {
@@ -228,67 +200,4 @@ $(function () {
     }
 
     GetBaWithdrawCodeFun(limit, offset);
-
-    // CA withdrawal record
-    var limit_ca = 10, offset_ca = 0, ca_api_url = 'log_ca_withdraw.php';
-
-    function GetCaWithdrawCodeFun(limit_ca, offset_ca) {
-        var tr = "", totalPage = "", count = "", ba_state = "";
-        AllRecord(token, limit_ca, offset_ca, ca_api_url, function (response) {
-            ShowLoading("hide");
-            if (response.errcode == '0') {
-                var data = response.rows;
-                var total = response.total;
-                totalPage = Math.floor(total / limit_ca);
-                if (totalPage <= 1) {
-                    count = 1;
-                } else if (1 < totalPage && totalPage <= 6) {
-                    count = totalPage;
-                } else {
-                    count = 6;
-                }
-                if (data == false) {
-                    GetDataEmpty('caWithdrawCodesTable', '5');
-                    return;
-                }
-                $.each(data, function (i, val) {
-                    if (data[i].state == "1") {
-                        ba_state = "<td class='i18n' name='processed'></td>"
-                    } else {
-                        ba_state = "<td class='i18n' name='unProcessed'></td>"
-                    }
-                    tr += '<tr>' +
-                        '<td>' + data[i].asset_id + '</td>' +
-                        '<td>' + data[i].base_amount + '</td>' +
-                        '<td title=' + data[i].address + '>' + data[i].address.substr(0, 20) + '</td>' +
-                        '<td>' + data[i].tx_time + '</td>' +
-                        ba_state +
-                        '<td title=' + data[i].transfer_tx_hash + '>' + data[i].transfer_tx_hash.substr(0, 20) + '</td>' +
-                        '</tr>'
-                });
-                $("#caWithdrawCodesTable").html(tr);
-                execI18n();
-                $("#pagination_ca").pagination({
-                    currentPage: (limit_ca + offset_ca) / limit_ca,
-                    totalPage: totalPage,
-                    isShow: false,
-                    count: count,
-                    prevPageText: "<<",
-                    nextPageText: ">>",
-                    callback: function (current) {
-                        GetBaWithdrawCodeFun(limit_ca, (current - 1) * limit_ca);
-                        ShowLoading("show");
-                    }
-                });
-            }
-        }, function (response) {
-            ShowLoading("hide");
-            GetDataFail('caWithdrawCodesTable', '4');
-            if (response.errcode == '114') {
-                window.location.href = 'login.html';
-            }
-        });
-    }
-
-    GetCaWithdrawCodeFun(limit_ca, offset_ca);
 });
