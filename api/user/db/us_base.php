@@ -988,29 +988,28 @@ function  us_us_transfer_request($data)
         $db->Rollback($pInTrans);
         return false;
     }
-    echo 222;die;
 
     /******************************转账记录表***************************************************/
     $flag = 13;
     $why = "用户转账";
     //增币记录  赠送者
-    $data['hash_id'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $transfer['hash_id'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($data['us_id']);
-    $data['prvs_hash'] = $prvs_hash === 0 ? $data['hash_id'] : $prvs_hash;
-    $data['credit_id'] = $data['us_id'];
-    $data['debit_id'] = $data['trans_us_id'];
-    $data['tx_amount'] = -($data['num']*$unit);
-    $data['credit_balance'] = get_us_account($data['us_id'])-($data['num']*$unit);
-    $data['tx_hash'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
-    $data['flag'] = $flag;
-    $data['transfer_type'] = 'us-us';
-    $data['transfer_state'] = 1;
-    $data['tx_detail'] = $why;
-    $data['give_or_receive'] = 1;
-    $data['ctime'] = time();
-    $data['utime'] = date('Y-m-d H:i:s',time());
-    $data["tx_count"] = transfer_get_pre_count($data['us_id']);
-    $sql = $db->sqlInsert("com_transfer_request", $data);
+    $transfer['prvs_hash'] = $prvs_hash === 0 ? $transfer['hash_id'] : $prvs_hash;
+    $transfer['credit_id'] = $data['us_id'];
+    $transfer['debit_id'] = $data['trans_us_id'];
+    $transfer['tx_amount'] = -($data['num']*$unit);
+    $transfer['credit_balance'] = get_us_account($data['us_id'])-($data['num']*$unit);
+    $transfer['tx_hash'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+    $transfer['flag'] = $flag;
+    $transfer['transfer_type'] = 'us-us';
+    $transfer['transfer_state'] = 1;
+    $transfer['tx_detail'] = $why;
+    $transfer['give_or_receive'] = 1;
+    $transfer['ctime'] = time();
+    $transfer['utime'] = date('Y-m-d H:i:s',time());
+    $transfer["tx_count"] = transfer_get_pre_count($data['us_id']);
+    $sql = $db->sqlInsert("com_transfer_request", $transfer);
     $id = $db->query($sql);
     if (!$id){
         $db->Rollback($pInTrans);
@@ -1046,7 +1045,7 @@ function  us_us_transfer_request($data)
     $us_type = 'us_reg_send_balance';
     $ctime = date('Y-m-d H:i:s');
     $com_balance_us['hash_id'] = hash('md5', $data['us_id'] . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
-    $com_balance_us['tx_id'] = $data['tx_hash'];
+    $com_balance_us['tx_id'] = $transfer['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($data['us_id']);
     $com_balance_us['prvs_hash'] = $prvs_hash === 0 ? $com_balance_us['hash_id'] : $prvs_hash;
     $com_balance_us["credit_id"] = $data['us_id'];
@@ -1066,7 +1065,7 @@ function  us_us_transfer_request($data)
     //us添加基准资产变动记录
     $us_type = 'ba_reg_send_balance';
     $com_balance_ba['hash_id'] = hash('md5', $data['trans_us_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
-    $com_balance_ba['tx_id'] = $data['tx_hash'];
+    $com_balance_ba['tx_id'] = $dat['tx_hash'];
     $prvs_hash = get_recharge_pre_hash($data['trans_us_id']);
     $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? $com_balance_ba['hash_id'] : $prvs_hash;
     $com_balance_ba["credit_id"] = $data['trans_us_id'];
