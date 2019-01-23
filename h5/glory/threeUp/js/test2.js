@@ -3,7 +3,7 @@ $(function () {
     let ok_url = window.location.search.split("=")[1];
     // let url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
     let url = "test.json";
-    let letter_arr = [], one_list = [], two_list = [];
+    let letter_arr = [], one_list = [], two_list = [],three_list = [];
     let text_timer = "", item_one = "", item_two = "", ul_num = 3;
 
     //判断是否在规定时间内
@@ -51,10 +51,12 @@ $(function () {
                 let data = res[0].all_list;
                 one_list = res[0].one_list;
                 two_list = res[0].two_list;
+                three_list = res[0].three_list;
                 item_one = Math.ceil(one_list.length / ul_num);
                 item_two = Math.ceil(two_list.length / ul_num);
                 $(".one_level_num").text(one_list.length);
                 $(".two_level_num").text(two_list.length);
+                $(".three_level_num").text(three_list.length);
                 $.each(data, function (i, val) {
                     letter_arr.push(data[i].wechat);
                 });
