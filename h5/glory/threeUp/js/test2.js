@@ -24,6 +24,7 @@ $(function () {
         let curr_time = new Date();
         let end_time = new Date("2019-1-23 17:55");//setTime
         let num = parseInt((end_time - curr_time) / 1000);
+
         console.log(num);
 
         if (num > 0) {
