@@ -65,7 +65,7 @@ $(function () {
         type: "GET",
         dataType: "jsonp",
         success: function (response) {
-            let data = response.rows;
+            let data = response;
 
             $.each(data, function (i, val) {
                 arr_list.push(data[i].us_account);
