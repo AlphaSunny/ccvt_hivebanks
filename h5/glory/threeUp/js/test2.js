@@ -22,8 +22,9 @@ $(function () {
     //判断当前时间
     function timeIsOk() {
         let curr_time = new Date();
-        let end_time = new Date("2019-1-23 17:45");//setTime
+        let end_time = new Date("2019-1-23 17:50");//setTime
         let num = parseInt((end_time - curr_time) / 1000);
+        console.log(num);
 
         if (num > 0) {
             console.log("没有OK。没有过期");
