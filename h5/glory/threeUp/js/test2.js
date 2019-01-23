@@ -4,7 +4,7 @@ $(function () {
     // let url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
     let url = "test.json";
     let letter_arr = [], one_list = [], two_list = [], three_list = [];
-    let text_timer = "", item_one = "", item_two = "", item_three = "", ul_num = 3;
+    let text_timer = "", item_one = "", item_two = "", item_three = "", ul_num = 2;
 
     //判断是否在规定时间内
     function Start() {
