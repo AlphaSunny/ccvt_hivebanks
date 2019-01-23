@@ -75,8 +75,8 @@ $(function () {
             // start();
             // $(".num").text(arr_list.length);
         },
-        error: function () {
-            alert("获取失败");
+        error: function (res) {
+            console.log(res);
         }
     });
 
