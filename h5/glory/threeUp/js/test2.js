@@ -21,7 +21,7 @@ $(function () {
     //判断当前时间
     function timeIsOk() {
         var curr_time = new Date();
-        var end_time = new Date("2019-1-29 20:00");
+        var end_time = new Date("2019-1-23 15:37");
         var num = parseInt((end_time - curr_time) / 1000);
 
         if (num > 0) {
