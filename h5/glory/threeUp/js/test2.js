@@ -1,10 +1,10 @@
 $(function () {
-    var url_path = window.location.hostname;
-    var ok_url = window.location.search.split("=")[1];
-    // var url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
-    var url = "";
-    var letter_arr = [], one_list = [], two_list = [];
-    var text_timer = "", item_one = "", item_two = "", ul_num = 3;
+    let url_path = window.location.hostname;
+    let ok_url = window.location.search.split("=")[1];
+    // let url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
+    let url = "test.json";
+    let letter_arr = [], one_list = [], two_list = [];
+    let text_timer = "", item_one = "", item_two = "", ul_num = 3;
 
     //判断是否在规定时间内
     function Start() {
@@ -20,9 +20,9 @@ $(function () {
     Start();
     //判断当前时间
     function timeIsOk() {
-        var curr_time = new Date();
-        var end_time = new Date("2019-1-23 15:37");
-        var num = parseInt((end_time - curr_time) / 1000);
+        let curr_time = new Date();
+        let end_time = new Date("2019-1-23 15:37");
+        let num = parseInt((end_time - curr_time) / 1000);
 
         if (num > 0) {
             console.log("没有OK。没有过期");
@@ -45,7 +45,7 @@ $(function () {
             url: url,
             dataType: "jsonp",
             success: function (res) {
-                var data = res.all_list;
+                let data = res.all_list;
                 one_list = res.one_list;
                 two_list = res.two_list;
                 item_one = Math.ceil(one_list.length / ul_num);
@@ -68,11 +68,11 @@ $(function () {
     }
 
 
-    var level_one_ul_box = "", level_two_ul_box = "";
+    let level_one_ul_box = "", level_two_ul_box = "";
 
     //一级列表
     function level_one() {
-        for (var i = 0; i < ul_num; i++) {
+        for (let i = 0; i < ul_num; i++) {
             level_one_ul_box += "<ul></ul>";
         }
         $(".level_one_ul_box").html(level_one_ul_box);
@@ -81,7 +81,7 @@ $(function () {
 
     //2级列表
     function level_two() {
-        for (var i = 0; i < ul_num; i++) {
+        for (let i = 0; i < ul_num; i++) {
             level_two_ul_box += "<ul></ul>";
         }
         $(".level_two_ul_box").html(level_two_ul_box);
@@ -125,7 +125,7 @@ $(function () {
 
     //文字特效
     function particleAlphabetFun() {
-        var particleAlphabet = {
+        let particleAlphabet = {
             Particle: function (x, y) {
                 this.x = x;
                 this.y = y;
@@ -163,9 +163,9 @@ $(function () {
             },
             currentPos: 0,
             changeLetter: function () {
-                // var letters = 'ABCDEFGHIJKLMNOPQRSTUVXYZ',
+                // let letters = 'ABCDEFGHIJKLMNOPQRSTUVXYZ',
                 // letters = letters.split('');
-                var letters = letter_arr;//显示的数据
+                let letters = letter_arr;//显示的数据
                 particleAlphabet.time = letters;
                 particleAlphabet.time = letters[particleAlphabet.currentPos];
                 particleAlphabet.currentPos++;
@@ -183,12 +183,12 @@ $(function () {
                 Prepend(particleAlphabet.time);
             },
             makeParticles: function (num) {
-                for (var i = 0; i <= num; i++) {
+                for (let i = 0; i <= num; i++) {
                     particleAlphabet.particles.push(new particleAlphabet.Particle(particleAlphabet.W / 2 + Math.random() * 400 - 200, particleAlphabet.H / 2 + Math.random() * 400 - 200));
                 }
             },
             getPixels: function (canvas, ctx) {
-                var keyword = particleAlphabet.time,
+                let keyword = particleAlphabet.time,
                     gridX = 6,
                     gridY = 6;
                 canvas.width = window.innerWidth;
@@ -196,11 +196,11 @@ $(function () {
                 ctx.fillStyle = 'red';
                 ctx.font = 'italic bold 120px Noto Serif';
                 ctx.fillText(keyword, canvas.width / 2 - ctx.measureText(keyword).width / 2, canvas.height / 2);
-                var idata = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                var buffer32 = new Uint32Array(idata.data.buffer);
+                let idata = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                let buffer32 = new Uint32Array(idata.data.buffer);
                 if (particleAlphabet.particlePositions.length > 0) particleAlphabet.particlePositions = [];
-                for (var y = 0; y < canvas.height; y += gridY) {
-                    for (var x = 0; x < canvas.width; x += gridX) {
+                for (let y = 0; y < canvas.height; y += gridY) {
+                    for (let x = 0; x < canvas.width; x += gridX) {
                         if (buffer32[y * canvas.width + x]) {
                             particleAlphabet.particlePositions.push({x: x, y: y});
                         }
@@ -208,8 +208,8 @@ $(function () {
                 }
             },
             animateParticles: function () {
-                var p, pPos;
-                for (var i = 0, num = particleAlphabet.particles.length; i < num; i++) {
+                let p, pPos;
+                for (let i = 0, num = particleAlphabet.particles.length; i < num; i++) {
                     p = particleAlphabet.particles[i];
                     pPos = particleAlphabet.particlePositions[i];
                     if (particleAlphabet.particles.indexOf(p) === particleAlphabet.particlePositions.indexOf(pPos)) {
@@ -233,9 +233,9 @@ $(function () {
 
     //文字随机效果
     function textRandom() {
-        var li_list = $(".already_up_box").find("li");
+        let li_list = $(".already_up_box").find("li");
         setInterval(function () {
-            var num = sum(1, 200);
+            let num = sum(1, 200);
             li_list.eq(num).css({"transform": "scale(1.5)", "transition": "all 1s"});
             setTimeout(function () {
                 li_list.eq(num).css({"transform": "unset", "transition": "all 1s"});
