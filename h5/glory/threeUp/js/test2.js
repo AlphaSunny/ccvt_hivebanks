@@ -109,7 +109,7 @@ $(function () {
         ListThree();
     }
 
-    //生成列表
+    //1生成列表
     function ListOne() {
         $.each(one_list, function (j, val) {
             if (one_list <= max) {
@@ -123,7 +123,7 @@ $(function () {
         level_two();
     }
 
-    //生成列表
+    //2生成列表
     function ListTwo() {
         $.each(two_list, function (j, val) {
             if (two_list <= max) {
@@ -137,12 +137,12 @@ $(function () {
         level_three();
     }
 
-    //生成列表
+    //3生成列表
     function ListThree() {
         $.each(two_list, function (j, val) {
-            if (j < item_two) {
+            if (three_list <= max) {
                 $(".level_three_ul_box ul:nth-child(1)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv3'></use></svg>" + two_list[j].wechat + "</li>");
-            } else if (j >= item_two && j < item_two * 2) {
+            } else if (three_list > max && j >= item_two && j < item_two * 2) {
                 $(".level_three_ul_box ul:nth-child(2)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv3'></use></svg>" + two_list[j].wechat + "</li>");
             } else {
                 $(".level_three_ul_box ul:nth-child(3)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv3'></use></svg>" + two_list[j].wechat + "</li>");
