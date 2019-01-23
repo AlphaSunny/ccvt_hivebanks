@@ -3,12 +3,15 @@ select {
 }
 
 a {
-  color: #ffffff;
+  color: #000000;
 }
 
 tbody tr:hover {
   background: #1a1d2b;
   color: #fff;
 
-  &:extend(a);
+  a {
+    color: #ffffff;
+  }
+
 }
