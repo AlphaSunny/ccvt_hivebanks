@@ -24,6 +24,14 @@ error_reporting(E_ALL | E_STRICT);
 
 $db = new DB_COM();
 $unit = get_la_base_unit();
+
+$sql = "select after_scale from us_scale_changes WHERE ctime>'2018-12-2 00:00:00' group BY after_scale ORDER by after_scale DESC ";
+$db->query($sql);
+$scales = $db->fetchAll();
+print_r($scales);
+die;
+
+
 //1
 $sql = "select us.wechat from us_scale_changes as sc INNER JOIN us_base as us on sc.us_id=us.us_id WHERE sc.after_scale=1  AND us.wechat!='' AND sc.ctime>'2018-12-2 00:00:00' ORDER BY sc.scale DESC";
 $db->query($sql);
