@@ -60,7 +60,8 @@ $(function () {
 
     let host_path = window.location.host;
     $.ajax({
-        url: host_path + "/api/crontab/get_scale_us_data.php",
+        // url: host_path + "/api/crontab/get_scale_us_data.php",
+        url: host_path + "/h5/glory/test_glory.json",
         type: "GET",
         dataType: "jsonp",
         success: function (response) {
