@@ -13,7 +13,7 @@
 </head>
 <body>
 <!--<iframe src="../user/loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"-->
-        <!--scrolling="no"></iframe>-->
+<!--scrolling="no"></iframe>-->
 
 <nav class="navbar navbar-default">
     <div class="container">
@@ -32,7 +32,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../user/login.html" class="usLogin font-weight-400 nav_a" name="login">登录</a></li>
-                <li class=""><a href="javascript:;" class="accountNone font-weight-400 toAccountBtn alreadyLogin nav_a" name="account">注册</a>
+                <li class=""><a href="javascript:;" class="accountNone font-weight-400 toAccountBtn alreadyLogin nav_a"
+                                name="account">注册</a>
                 </li>
             </ul>
         </div>
@@ -41,6 +42,58 @@
 
 <div class="footer_box">
     <iframe src="../user/footer.html" frameborder="0" height="100%" width="100%"></iframe>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div>
+                <h3 class="pcTitle">群列表</h3>
+            </div>
+            <div>
+                <p>筛选</p>
+                <div>
+                    <select name="level" id="level">
+                        <option value="0">等级筛选</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="honor" id="honor">
+                        <option value="0">荣耀星数筛选</option>
+                        <option value="1">20-30</option>
+                        <option value="2">31-40</option>
+                        <option value="3">41-50</option>
+                        <option value="4">51-60</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="type" id="type">
+                        <option value="0">类型筛选</option>
+                        <option value="1">综合群</option>
+                        <option value="2">技术群</option>
+                        <option value="3">宠物群</option>
+                        <option value="4">IT群</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>群名</th>
+                        <th>群等级</th>
+                        <th>荣耀星数</th>
+                        <th>类型</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--Back to top-->
