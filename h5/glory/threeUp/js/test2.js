@@ -43,7 +43,7 @@ $(function () {
         $.ajax({
             type: "GET",
             url: url,
-            dataType: "jsonp",
+            dataType: "json",
             success: function (res) {
                 console.log(res);
                 console.log(res[0].all_list);
