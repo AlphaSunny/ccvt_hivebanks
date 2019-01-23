@@ -1,11 +1,11 @@
 $(function () {
-    var arr_list = [];
-    var h1 = "";
+    let arr_list = [];
+    let h1 = "";
 
-    var li = "";
-    var i = 0;
-    var timer = "";
-    var length = "";
+    let li = "";
+    let i = 0;
+    let timer = "";
+    let length = "";
 
     function start() {
         if(i == 0){
@@ -43,8 +43,8 @@ $(function () {
 
 
     function reverse (){
-        var arr_list_new_0 = arr_list;
-        var arr_list_new = arr_list_new_0.reverse();
+        let arr_list_new_0 = arr_list;
+        let arr_list_new = arr_list_new_0.reverse();
         length = Math.floor(arr_list_new.length / 3);
         $.each(arr_list_new, function (i, val) {
             if (i < length) {
@@ -64,7 +64,7 @@ $(function () {
         type: "GET",
         dataType: "jsonp",
         success: function (response) {
-            var data = response.rows;
+            let data = response.rows;
 
             $.each(data, function (i, val) {
                 arr_list.push(data[i].us_account);
