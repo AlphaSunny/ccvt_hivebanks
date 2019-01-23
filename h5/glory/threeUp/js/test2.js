@@ -45,9 +45,9 @@ $(function () {
             url: url,
             dataType: "jsonp",
             success: function (res) {
-                let data = res.all_list;
-                one_list = res.one_list;
-                two_list = res.two_list;
+                let data = res[0].all_list;
+                one_list = res[0].one_list;
+                two_list = res[0].two_list;
                 item_one = Math.ceil(one_list.length / ul_num);
                 item_two = Math.ceil(two_list.length / ul_num);
                 $(".one_level_num").text(one_list.length);
