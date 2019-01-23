@@ -8,10 +8,10 @@
           content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title class="title"></title>
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../user/css/common.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_626151_unhf9sd8sf.css">
-    <link rel="stylesheet" media="only screen and (max-device-width:767px)" href="../user/mobile-css/common.css">
-    <link rel="stylesheet" href="css/group_info.css">
+    <link rel="stylesheet/less" href="../assets/css/common.less">
+    <link rel="stylesheet/less" href="../user/css/common_user.less">
+    <link rel="stylesheet/less" href="../assets/css/footer.less">
+    <link rel="stylesheet/less" href="css/group_info.less">
     <link rel="shorycut icon" href="../favicon.ico">
     <title>群信息</title>
     <style>
@@ -132,44 +132,26 @@
 
 
 <!--footer-->
-<section class="sections footer">
-    <div class="container">
-        <div class="row left-row">
-            <div class="col-md-12 col-sm-12">
-                <div class="footerTR flex space-between center">
-                    <div class="footerIconBox">
-                        <a href="https://twitter.com/Hivebanks " data-toggle="tooltip" data-placement="top"
-                           title="hivebanks"><i class="iconfont icon-twitter"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i
-                                class="iconfont icon-telegram"></i></a>
-                        <a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top"
-                           title="ccvt.io"><i class="iconfont icon-weibo"></i></a>
-                        <a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top"
-                           title="Hivebanks"><i class="iconfont icon-weixin"></i></a>
-                    </div>
-                    <div>
-                        <select class="form-control input-sm" id="language">
-                            <option value="en">English</option>
-                            <option value="zh-CN">中文简体</option>
-                            <option value="ja">Japanese</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row footer-copyright">
-            <span>
-                <span class="" name="version">©2018-2019 Powered by</span>
-                <a href="http://www.hivebanks.com">hivebanks</a>
-            </span>
-        </div>
-    </div>
-</section>
+<div class="footer_box">
+    <iframe src="../user/footer.html" frameborder="0" height="100%" width="100%"></iframe>
+</div>
+
+<!--Back to top-->
+<div class="scrollup">
+    <a href="#"><i class="iconfont icon-top"></i></a>
+</div>
+
+<!--loading-->
+<div class="loading">
+    <img src="../assets/img/loading2.gif" alt="">
+</div>
+
 <script src="../assets/js/jquery-3.2.1.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/less.min.js"></script>
 <script src="../assets/js/cnt.js"></script>
 <script src="../assets/language/jquery.i18n.properties.js"></script>
 <script src="../assets/language/language.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
 <script src="../assets/js/layer/layer.js"></script>
 <script src="../assets/chart/Chart.js"></script>
 <script src="../assets/js/prompt.js"></script>
