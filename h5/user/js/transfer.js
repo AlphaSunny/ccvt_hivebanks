@@ -130,6 +130,7 @@ $(function () {
 
 
     //confirm transfer
+
     $(document).on("click", ".transfer_confirm", function () {
         let qa_id = $(this).siblings(".qa_id").attr("name");
         let qa_flag = "1";
