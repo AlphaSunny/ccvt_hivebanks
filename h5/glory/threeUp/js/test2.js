@@ -126,9 +126,9 @@ $(function () {
     //生成列表
     function ListTwo() {
         $.each(two_list, function (j, val) {
-            if (j < item_two) {
+            if (two_list <= max) {
                 $(".level_two_ul_box ul:nth-child(1)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
-            } else if (j >= item_two && j < item_two * 2) {
+            } else if (two_list > max && j >= item_two && j < item_two * 2) {
                 $(".level_two_ul_box ul:nth-child(2)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
             } else {
                 $(".level_two_ul_box ul:nth-child(3)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
