@@ -1,8 +1,8 @@
 $(function () {
-    var login_us = GetQueryString('user');
+    let login_us = GetQueryString('user');
 
     function GetIndexCookie(name) {
-        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) {
             return unescape(arr[2]);
         } else {
@@ -10,11 +10,11 @@ $(function () {
         }
     }
 
-    var user_token = GetIndexCookie('user_token');
+    let user_token = GetIndexCookie('user_token');
 
     if (user_token || login_us) {
-        $('.usLogin').remove();
-        $('.accountNone').removeClass('accountNone');
+        $('.usLogin,.usRegister').remove();
+        $('.accountNone').removeClass('none');
     }
 
 
@@ -26,8 +26,8 @@ $(function () {
 
     //chart
     function ChartLine(x_arr, y_arr) {
-        var ctx = document.getElementById("canvas").getContext('2d');
-        var myChart = new Chart(ctx, {
+        let ctx = document.getElementById("canvas").getContext('2d');
+        let myChart = new Chart(ctx, {
             type: 'line',
             data: {
                 // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -75,8 +75,8 @@ $(function () {
         dataType: "json",
         success: function (res) {
             if (res.errcode == "0") {
-                var data = res.rows;
-                var li = "";
+                let data = res.rows;
+                let li = "";
                 $.each(data, function (i, val) {
                     if (data[i].id == "1") {
                         li = "<li class='group_item active' name='" + data[i].id + "'>" + data[i].name + "</li>"
@@ -94,7 +94,7 @@ $(function () {
 
 
     //获取群详细信息
-    var group_id = 1;
+    let group_id = 1;
     $(document).on("click", ".group_item", function () {
         $(this).addClass("active").siblings("li").removeClass("active");
         group_id = $(this).attr("name");
@@ -108,9 +108,9 @@ $(function () {
             dataType: "json",
             success: function (res) {
                 if (res.errcode == "0") {
-                    var data = res.row, bind_num = "", glory_number = "";
-                    var bind_rows = res.bind_rows;
-                    var y_arr = [], x_arr = [];
+                    let data = res.row, bind_num = "", glory_number = "";
+                    let bind_rows = res.bind_rows;
+                    let y_arr = [], x_arr = [];
                     $(".name").text(data.name);
                     $(".bind_count").text(data.bind_count);
                     $(".glory_number").text(data.glory_number);
@@ -118,8 +118,8 @@ $(function () {
                     $(".this_day_in").text(data.this_day_in);
                     $(".scale").text(data.scale);
 
-                    var next_bind_number = parseInt(data.next_level_bind_number) - parseInt(data.bind_count);
-                    var next_glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
+                    let next_bind_number = parseInt(data.next_level_bind_number) - parseInt(data.bind_count);
+                    let next_glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
 
                     if (data.is_top == 1) {
                         $(".scale_next_p").addClass("none");
@@ -140,7 +140,7 @@ $(function () {
                             glory_number = next_glory_number;
                         }
                         $(".up_tips").attr("data-original-title", "距离下一级还需：" + bind_num + "个绑定用户 " + glory_number + "颗荣耀星数");
-                        var width = 100 - (bind_num + glory_number);
+                        let width = 100 - (bind_num + glory_number);
                         $(".progress-bar").css("width", width + "%");
                     }
                     $(".up_tips").tooltip();

@@ -9,7 +9,7 @@ $(function () {
 
     var user_token = GetCookie("user_token");
     if (user_token) {
-        window.location.href = "robot_login.html";
+        window.location.href = "home.html";
     }
 
     //图形验证码
@@ -46,7 +46,7 @@ $(function () {
                 SetCookie('wechat', response.wechat);
                 SetCookie('us_id', response.us_id);
                 layer.msg("success");
-                window.location.href = 'robot_login.html';
+                window.location.href = 'home.html';
             }
         }, function (response) {
             layer.close(loading);

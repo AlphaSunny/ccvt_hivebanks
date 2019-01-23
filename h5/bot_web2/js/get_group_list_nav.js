@@ -1,11 +1,11 @@
-var token = GetCookie("user_token");
-var is_audit = "1";
+let token = GetCookie("user_token");
+let is_audit = "1";
 
 function GetGroupListNav() {
     GetGroupList(token, is_audit, function (response) {
         if (response.errcode == "0") {
-            var data = response.rows[0];
-            if(!data){
+            let data = response.rows[0];
+            if (!data) {
                 return;
             }
             SetCookie("group_id", data.id);

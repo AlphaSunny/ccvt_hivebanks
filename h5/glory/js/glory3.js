@@ -1,38 +1,38 @@
 $(function () {
-    var arr_list = [];
-    var h1 = "";
+    let arr_list = [];
+    let h1 = "";
 
-    var li = "";
-    var i = 0;
-    var timer = "";
-    var length = "";
+    let li = "";
+    let i = 0;
+    let timer = "";
+    let length = "";
 
     function start() {
-        if(i == 0){
+        if (i == 0) {
             big_name(i);
             i++;
         }
         timer = setInterval(function () {
             big_name(i);
             i++;
-        }, 3000);
+        }, 1000);
     }
 
 
     function big_name(i) {
         if (i >= arr_list.length) {
             $(".big_name,.show_name").remove();
-            $(".table_name").css("opacity","1");
-            $(".num_box").css("display","flex");
+            $(".table_name").css("opacity", "1");
+            $(".num_box").css("display", "flex");
             reverse();
             clearInterval(timer);
             return;
-        }else {
+        } else {
             h1 = "<h1 class='wow rotateIn'>" + arr_list[i] + "</h1>";
             $('.big_name').html(h1);
             setTimeout(function () {
                 append_anme(i);
-            }, 3000)
+            }, 1000)
         }
     }
 
@@ -42,9 +42,9 @@ $(function () {
     }
 
 
-    function reverse (){
-        var arr_list_new_0 = arr_list;
-        var arr_list_new = arr_list_new_0.reverse();
+    function reverse() {
+        let arr_list_new_0 = arr_list;
+        let arr_list_new = arr_list_new_0.reverse();
         length = Math.floor(arr_list_new.length / 3);
         $.each(arr_list_new, function (i, val) {
             if (i < length) {
@@ -58,13 +58,14 @@ $(function () {
 
     }
 
+    let host_path = window.location.host;
     $.ajax({
-        url: "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php",
-        //url: "https://ccvt_test.fnying.com/api/crontab/get_scale_us_data.php",
+        // url: host_path + "/api/crontab/get_scale_us_data.php",
+        url: "test_glory.json",
         type: "GET",
-        dataType: "jsonp",
+        dataType: "json",
         success: function (response) {
-            var data = response.rows;
+            let data = response;
 
             $.each(data, function (i, val) {
                 arr_list.push(data[i].us_account);
@@ -72,8 +73,8 @@ $(function () {
             start();
             $(".num").text(arr_list.length);
         },
-        error: function () {
-            alert("获取失败");
+        error: function (res) {
+            console.log(res);
         }
     });
 
