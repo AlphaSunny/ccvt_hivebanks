@@ -1224,6 +1224,14 @@ function us_send_ccvt($us_id,$trans_us_id,$money,$flag,$why,$qa_flag,$qa_id)
             return false;
         }
 
+    }elseif ($qa_flag==1){
+        //被转账us锁定金额转到可用余额
+        $sql = "update us_base set base_amount=base_amount+'{$money}',lock_amount=lock_amount-'{$money}' WHERE us_id='{$trans_us_id}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            $db->Rollback($pInTrans);
+            return false;
+        }
     }
 
     //修改订单状态
