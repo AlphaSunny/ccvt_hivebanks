@@ -17,6 +17,9 @@ canvas {
 
 li {
     list-style: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .show_name {
