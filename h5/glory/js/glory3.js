@@ -15,7 +15,7 @@ $(function () {
         timer = setInterval(function () {
             big_name(i);
             i++;
-        }, 3000);
+        }, 1000);
     }
 
 
@@ -32,7 +32,7 @@ $(function () {
             $('.big_name').html(h1);
             setTimeout(function () {
                 append_anme(i);
-            }, 3000)
+            }, 1000)
         }
     }
 
