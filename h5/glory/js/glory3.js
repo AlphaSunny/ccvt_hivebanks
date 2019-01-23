@@ -63,7 +63,7 @@ $(function () {
         // url: host_path + "/api/crontab/get_scale_us_data.php",
         url: "test_glory.json",
         type: "GET",
-        dataType: "jsonp",
+        dataType: "json",
         success: function (response) {
             let data = response;
             console.log(response);
