@@ -35,11 +35,11 @@ function ba_gift($flag)
     if($flag!=5) {
         $sql = "select a.tx_amount/(select unit from la_base limit 1) as amount,a.tx_detail,
         b.us_account,b.wechat,DATE_FORMAT(FROM_UNIXTIME(a.ctime), '%Y-%m-%d %H:%i:%s') AS gift_time
-      from com_transfer_request a ,us_base b where a.debit_id=b.us_id and a.flag='{$flag}'  order by a.ctime desc ;";
+      from com_transfer_request a ,us_base b where a.credit_id=b.us_id and a.flag='{$flag}'  order by a.ctime desc ;";
     }else{
         $sql = "select a.tx_amount/(select unit from la_base limit 1) as amount,a.tx_detail,
         b.us_account,b.wechat,DATE_FORMAT(FROM_UNIXTIME(a.ctime), '%Y-%m-%d %H:%i:%s') AS gift_time
-      from com_transfer_request a ,us_base b where a.debit_id=b.us_id  order by a.ctime desc ;";
+      from com_transfer_request a ,us_base b where a.credit_id=b.us_id  order by a.ctime desc ;";
     }
     $db->query($sql);
     return $db->fetchAll();
