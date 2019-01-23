@@ -52,6 +52,7 @@ $(function () {
                 one_list = res[0].one_list;
                 two_list = res[0].two_list;
                 three_list = res[0].three_list;
+                console.log("length:"+three_list.length);
                 item_one = Math.ceil(one_list.length / ul_num);
                 item_two = Math.ceil(two_list.length / ul_num);
                 item_three = Math.ceil(three_list.length / ul_num);
