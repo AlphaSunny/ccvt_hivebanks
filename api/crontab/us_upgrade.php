@@ -24,7 +24,7 @@ if ($scale_list){
         $two_rows = $db->fetchAll();
 //        echo "升级".$v['scale']+1;
         echo count($two_rows)."<br />";
-        print_r($two_rows);
+//        print_r($two_rows);
 //        foreach ($two_rows as $a=>$b){
 //            set_time_limit(0);
 //            //判断等级提升
