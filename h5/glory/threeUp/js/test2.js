@@ -52,7 +52,7 @@ $(function () {
                 one_list = res[0].one_list;
                 two_list = res[0].two_list;
                 three_list = res[0].three_list;
-                console.log("length:"+three_list.length);
+                console.log("length:" + three_list.length);
                 item_one = Math.ceil(one_list.length / ul_num);
                 item_two = Math.ceil(two_list.length / ul_num);
                 item_three = Math.ceil(three_list.length / ul_num);
@@ -113,7 +113,7 @@ $(function () {
     //1生成列表
     function ListOne() {
         $.each(one_list, function (j, val) {
-            if (one_list <= max) {
+            if (one_list.length <= max || j<item_one) {
                 $(".level_one_ul_box ul:nth-child(1)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
             } else if (one_list > max && j > item_one && j < item_one * 2) {
                 $(".level_one_ul_box ul:nth-child(2)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
@@ -127,9 +127,9 @@ $(function () {
     //2生成列表
     function ListTwo() {
         $.each(two_list, function (j, val) {
-            if (two_list <= max) {
+            if (two_list.length <= max || j < item_two) {
                 $(".level_two_ul_box ul:nth-child(1)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
-            } else if (two_list > max && j >= item_two && j < item_two * 2) {
+            } else if (two_list.length > max && j >= item_two && j < item_two * 2) {
                 $(".level_two_ul_box ul:nth-child(2)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
             } else {
                 $(".level_two_ul_box ul:nth-child(3)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
