@@ -141,9 +141,9 @@ $(function () {
     //3生成列表
     function ListThree() {
         $.each(three_list, function (j, val) {
-            if (three_list <= max || j < item_three) {
+            if (three_list.length <= max || j < item_three) {
                 $(".level_three_ul_box ul:nth-child(1)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv3'></use></svg>" + three_list[j].wechat + "</li>");
-            } else if (three_list > max && j >= item_three && j < item_three * 2) {
+            } else if (three_list.length > max && j >= item_three && j < item_three * 2) {
                 $(".level_three_ul_box ul:nth-child(2)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv3'></use></svg>" + three_list[j].wechat + "</li>");
             } else {
                 $(".level_three_ul_box ul:nth-child(3)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv3'></use></svg>" + three_list[j].wechat + "</li>");
