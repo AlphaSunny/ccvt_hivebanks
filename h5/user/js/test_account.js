@@ -83,7 +83,7 @@ $(function () {
             $('#noBalanceModal').modal('show');
             return;
         }
-        window.location.href = "transfer.html";
+        window.location.href = "test_transfer.html";
     });
 
     //change username
