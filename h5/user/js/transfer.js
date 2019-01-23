@@ -90,7 +90,7 @@ $(function () {
                 }
 
                 if (data == false) {
-                    GetDataEmpty('transfer_out_list', '3');
+                    GetDataEmpty('transfer_out_list', '4');
                     return;
                 }
                 $.each(data, function (i, val) {
