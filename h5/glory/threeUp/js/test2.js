@@ -45,6 +45,8 @@ $(function () {
             url: url,
             dataType: "jsonp",
             success: function (res) {
+                console.log(res);
+                console.log(res[0].all_list);
                 let data = res[0].all_list;
                 one_list = res[0].one_list;
                 two_list = res[0].two_list;
