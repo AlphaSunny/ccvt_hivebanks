@@ -418,6 +418,7 @@ $(function () {
             window.open(url + "/h5/bot_web2/login.html");
         } else {
             WarnPrompt("请先申请机器人专属群");
+            return;
         }
 
     })
