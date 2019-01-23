@@ -18,6 +18,7 @@ $(function () {
     }
 
     Start();
+
     //判断当前时间
     function timeIsOk() {
         let curr_time = new Date();
@@ -57,9 +58,9 @@ $(function () {
                 $.each(data, function (i, val) {
                     letter_arr.push(data[i].wechat);
                 });
-                if (type != "guo"){
+                if (type != "guo") {
                     particleAlphabetFun();
-                }else {
+                } else {
                     $("body,html").addClass('bg_black');
                     $("#text,.show_name").remove();
                     $(".already_up_box").css("display", "flex");
@@ -70,7 +71,7 @@ $(function () {
     }
 
 
-    let level_one_ul_box = "", level_two_ul_box = "";
+    let level_one_ul_box = "", level_two_ul_box = "", level_three_ul_box = "";
 
     //一级列表
     function level_one() {
@@ -93,7 +94,7 @@ $(function () {
     //3级列表
     function level_three() {
         for (let i = 0; i < ul_num; i++) {
-            level_two_ul_box += "<ul></ul>";
+            level_three_ul_box += "<ul></ul>";
         }
         $(".level_three_ul_box").html(level_three_ul_box);
         ListThree();
