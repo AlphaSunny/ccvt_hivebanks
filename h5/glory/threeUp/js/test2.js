@@ -116,7 +116,7 @@ $(function () {
         $.each(one_list, function (j, val) {
             if (one_list.length <= max || j<item_one) {
                 $(".level_one_ul_box ul:nth-child(1)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
-            } else if (one_list.length > max && j > item_one && j < item_one * 2) {
+            } else if (one_list.length > max && j >= item_one && j < item_one * 2) {
                 $(".level_one_ul_box ul:nth-child(2)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
             } else {
                 $(".level_one_ul_box ul:nth-child(3)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
