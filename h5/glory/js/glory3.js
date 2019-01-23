@@ -69,11 +69,11 @@ $(function () {
             console.log(response);
             console.log(data);
 
-            $.each(data, function (i, val) {
-                arr_list.push(data[i].us_account);
-            });
-            start();
-            $(".num").text(arr_list.length);
+            // $.each(data, function (i, val) {
+            //     arr_list.push(data[i].us_account);
+            // });
+            // start();
+            // $(".num").text(arr_list.length);
         },
         error: function () {
             alert("获取失败");
