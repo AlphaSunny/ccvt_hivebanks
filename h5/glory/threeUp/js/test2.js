@@ -66,8 +66,8 @@ $(function () {
                     letter_arr.push(data[i].wechat);
                 });
 
-                // max = Math.max(item_one, item_two, item_three);
-                max = 35;
+                max = Math.max(item_one, item_two, item_three);
+                // max = 35;
 
                 if (type != "guo") {
                     particleAlphabetFun(max);
