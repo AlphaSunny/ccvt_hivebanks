@@ -2,11 +2,13 @@ select {
   margin: 0 5px;
 }
 
+a {
+  color: #ffffff;
+}
+
 tbody tr:hover {
   background: #1a1d2b;
   color: #fff;
 
-  a {
-    color: #ffffff;
-  }
+  &:extend(a);
 }
