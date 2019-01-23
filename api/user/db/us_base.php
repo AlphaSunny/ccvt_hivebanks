@@ -988,6 +988,7 @@ function  us_us_transfer_request($data)
         $db->Rollback($pInTrans);
         return false;
     }
+    echo 222;die;
 
     /******************************转账记录表***************************************************/
     $flag = 13;
