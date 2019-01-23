@@ -47,47 +47,50 @@
                 <h3 class="pcTitle">群列表</h3>
             </div>
             <div>
-                <p>筛选</p>
                 <div>
-                    <select name="level" id="level">
-                        <option value="0">等级筛选</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
+                    <p>筛选</p>
+                    <div>
+                        <select name="level" id="level">
+                            <option value="0">等级筛选</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select name="honor" id="honor">
+                            <option value="0">荣耀星数筛选</option>
+                            <option value="1">20-30</option>
+                            <option value="2">31-40</option>
+                            <option value="3">41-50</option>
+                            <option value="4">51-60</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select name="type" id="type">
+                            <option value="0">类型筛选</option>
+                            <option value="1">综合群</option>
+                            <option value="2">技术群</option>
+                            <option value="3">宠物群</option>
+                            <option value="4">IT群</option>
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <select name="honor" id="honor">
-                        <option value="0">荣耀星数筛选</option>
-                        <option value="1">20-30</option>
-                        <option value="2">31-40</option>
-                        <option value="3">41-50</option>
-                        <option value="4">51-60</option>
-                    </select>
-                </div>
-                <div>
-                    <select name="type" id="type">
-                        <option value="0">类型筛选</option>
-                        <option value="1">综合群</option>
-                        <option value="2">技术群</option>
-                        <option value="3">宠物群</option>
-                        <option value="4">IT群</option>
-                    </select>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>群名</th>
+                            <th>群等级</th>
+                            <th>荣耀星数</th>
+                            <th>类型</th>
+                        </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>群名</th>
-                        <th>群等级</th>
-                        <th>荣耀星数</th>
-                        <th>类型</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
+
         </div>
     </div>
 </div>
