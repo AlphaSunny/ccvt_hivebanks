@@ -40,6 +40,8 @@ $(function () {
     }
 
     //开始执行
+    let max = "";
+
     function AJAX_Start(type) {
         $.ajax({
             type: "GET",
@@ -62,8 +64,11 @@ $(function () {
                 $.each(data, function (i, val) {
                     letter_arr.push(data[i].wechat);
                 });
+
+                max = Math.max(item_one, item_two, item_three);
+
                 if (type != "guo") {
-                    particleAlphabetFun();
+                    particleAlphabetFun(max);
                 } else {
                     $("body,html").addClass('bg_black');
                     $("#text,.show_name").remove();
@@ -107,9 +112,9 @@ $(function () {
     //生成列表
     function ListOne() {
         $.each(one_list, function (j, val) {
-            if (j < item_one) {
+            if (one_list <= max) {
                 $(".level_one_ul_box ul:nth-child(1)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
-            } else if (j >= item_one && j < item_one * 2) {
+            } else if (one_list > max && j > item_one && j < item_one * 2) {
                 $(".level_one_ul_box ul:nth-child(2)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
             } else {
                 $(".level_one_ul_box ul:nth-child(3)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
