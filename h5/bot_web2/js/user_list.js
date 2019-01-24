@@ -11,7 +11,7 @@ $(function () {
             layer.close(loading);
             if (response.errcode == "0") {
                 let data = response.rows;
-                if(!data){
+                if(data==""){
                     $("#groupMember").html("<tr><td colspan='2'>暂无数据</td></tr>");
                     return;
                 }
