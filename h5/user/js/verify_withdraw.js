@@ -5,7 +5,6 @@ $(function () {
         UserInformation(token, function (response) {
             if (response.errcode == "0") {
                 let base_amount = response.rows.base_amount;
-                console.log(base_amount);
                 if (base_amount <= 0) {
                     // $('#noBalanceModal').modal('show');
                     WarnPrompt("账户余额不足，无法进行提现");
@@ -31,6 +30,8 @@ $(function () {
 
     });
     $('.nav_ca_withdraw').click(function () {
-        verifyWithdraw("ca_withdraw");
+        WarnPrompt("Ca提现功能暂未开通");
+        return;
+        // verifyWithdraw("ca_withdraw");
     });
 });
