@@ -1,8 +1,8 @@
 $(function () {
     let url_path = window.location.hostname;
     let ok_url = window.location.search.split("=")[1];
-    // let url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
-    let url = "test.json";
+    let url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
+    // let url = "test.json";
     let letter_arr = [], one_list = [], two_list = [], three_list = [];
     let text_timer = "", item_one = "", item_two = "", item_three = "", ul_num = 2;
 
@@ -50,10 +50,10 @@ $(function () {
             url: url,
             dataType: "json",
             success: function (res) {
-                let data = res[0].all_list;
-                one_list = res[0].one_list;
-                two_list = res[0].two_list;
-                three_list = res[0].three_list;
+                let data = res.all_list;
+                one_list = res + ".1_list";
+                two_list = res + ".2_list";
+                three_list = res + ".3_list";
                 console.log("length:" + three_list.length);
                 item_one = Math.ceil(one_list.length / ul_num);
                 item_two = Math.ceil(two_list.length / ul_num);
@@ -116,7 +116,7 @@ $(function () {
     //1生成列表
     function ListOne() {
         $.each(one_list, function (j, val) {
-            if (one_list.length <= max || j<item_one) {
+            if (one_list.length <= max || j < item_one) {
                 $(".level_one_ul_box ul:nth-child(1)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
             } else if (one_list.length > max && j >= item_one && j < item_one * 2) {
                 $(".level_one_ul_box ul:nth-child(2)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
