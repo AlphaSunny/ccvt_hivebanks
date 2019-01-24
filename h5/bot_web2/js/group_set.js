@@ -13,11 +13,11 @@ $(function () {
     });
 
     let group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "",
-        is_welcome = "", welcome = "", ranking_change_switch = "";
+        is_welcome = "", welcome = "", group_introduction = "";
     let group_id = GetCookie("group_id");
 
     function EditGroupFun() {
-        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, function (response) {
+        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, group_introduction, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("设置成功");
                 $(".welcome_text_box,.input_box").addClass("none");
@@ -56,7 +56,7 @@ $(function () {
         is_welcome = $(".is_welcome").val();
         is_welcome = $(".is_welcome").val();
         welcome = $(".welcome").val();
-        ranking_change_switch = $(".ranking_change_switch").val();
+        group_introduction = $(".ranking_change_switch").val();
         EditGroupFun();
     }
 
