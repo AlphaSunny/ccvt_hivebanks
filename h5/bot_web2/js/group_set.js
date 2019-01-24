@@ -1,5 +1,6 @@
 $(function () {
     let token = GetCookie("user_token");
+    //编辑群名字
     $(".edit_group_name").click(function () {
         $(".input_box").removeClass("none");
     });
@@ -8,16 +9,26 @@ $(function () {
         $(".input_box").addClass("none");
     });
 
+    //编辑欢迎语
     $(".cancel_edit_welcome_text").click(function () {
         $(".welcome_text_box").addClass("none");
     });
 
+    //编辑群介绍
+    $(".edit_group_introduction").click(function () {
+        $(".group_introduction_box").removeClass("none");
+    });
+
+    $(".cancel_edit_group_introduction_btn").click(function () {
+        $(".group_introduction_box").addClass("none");
+    });
+
     let group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "",
-        is_welcome = "", welcome = "", ranking_change_switch = "", src = "";
+        is_welcome = "", welcome = "", ranking_change_switch = "", src = "", group_introduction = "";
     let group_id = GetCookie("group_id");
 
     function EditGroupFun() {
-        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src, function (response) {
+        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src,group_introduction, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("设置成功");
                 $(".welcome_text_box,.input_box").addClass("none");
@@ -31,6 +42,15 @@ $(function () {
     //编辑群名称
     $(".confirm_edit_group_name_btn").click(function () {
         if ($(".group_name_input").val().length <= 0) {
+            WarnPrompt("请输入群名称");
+            return;
+        }
+        GetVal();
+    });
+
+    //编辑群介绍
+    $(".confirm_edit_group_introduction_btn").click(function () {
+        if ($("#group_introduction").val().length <= 0) {
             WarnPrompt("请输入群名称");
             return;
         }
@@ -109,6 +129,7 @@ $(function () {
         is_welcome = $(".is_welcome").val();
         welcome = $(".welcome").val();
         ranking_change_switch = $(".ranking_change_switch").val();
+        group_introduction = $("#group_introduction").val();
         if (type) {
             src = type;
         } else {
