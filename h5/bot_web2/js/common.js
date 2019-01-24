@@ -208,7 +208,7 @@ function SubmitAddGroup(token, group_id, group_type_id, suc_func, error_func) {
 //==========
 
 //编辑群主信息
-function EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome,group_introduction,src, suc_func, error_func) {
+function EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome,ranking_change_switch,src, suc_func, error_func) {
     let api_url = "group_edit.php",
         post_data = {
             "token": token,
@@ -220,7 +220,7 @@ function EditGroup(token, group_name, del, flirt, group_id, send_address, bind_a
             "bind_account_notice": bind_account_notice,
             "is_welcome": is_welcome,
             "welcome": welcome,
-            "group_introduction": group_introduction,
+            "ranking_change_switch": ranking_change_switch,
             "src": src
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
