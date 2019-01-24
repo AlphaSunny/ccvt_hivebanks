@@ -25,14 +25,14 @@ if ($scale_list){
 //        echo "升级".$v['scale']+1;
         echo count($two_rows)."<br />";
 //        print_r($two_rows);
-//        foreach ($two_rows as $a=>$b){
-//            set_time_limit(0);
-//            //判断等级提升
-//            $us_scale = get_us_base($b['us_id'])['scale'];
-//            if ($us_scale!=($v['scale']+1)){
-//                scale_upgrade($v['us_id'],$v['scale'],$v['scale']+1,$v['base_amount']);
-//            }
-//        }
+        foreach ($two_rows as $a=>$b){
+            set_time_limit(0);
+            //判断等级提升
+            $us_scale = get_us_base($b['us_id'])['scale'];
+            if ($us_scale!=($v['scale']+1)){
+                scale_upgrade($v['us_id'],$v['scale'],$v['scale']+1,$v['base_amount']);
+            }
+        }
     }
 }
 
@@ -86,12 +86,12 @@ function scale_upgrade($us_id,$before_scale,$after_scale,$scale){
         }
 
         //修改用户等级
-        $sql = "update us_base set scale='{$after_scale}' WHERE us_id='{$us_id}'";
-        $db -> query($sql);
-        if (!$db->affectedRows()){
-            $db->Rollback($pInTrans);
-            echo "修改用户等级失败";
-        }
+//        $sql = "update us_base set scale='{$after_scale}' WHERE us_id='{$us_id}'";
+//        $db -> query($sql);
+//        if (!$db->affectedRows()){
+//            $db->Rollback($pInTrans);
+//            echo "修改用户等级失败";
+//        }
 
         $db->Commit($pInTrans);
 }
