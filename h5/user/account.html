@@ -108,33 +108,11 @@
     </div>
 </section>
 
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!--account information-->
 <section class="sections">
     <div class="container">
         <h3 class="pcTitle i18n" name="accountTitle"></h3>
-        <a class="test_modal" data-toggle="modal" data-target="#myModal" onclick="return false;">
-            Launch demo modal
-        </a>
+        
         <div class="personInfo table_bg white_bg">
             <div class="row">
                 <div class="col-md-4 col-sm-6">
@@ -183,7 +161,7 @@
                                 <a class="i18n none weChatBindBtn" id="weChatBindBtn" data-toggle="modal"
                                    data-target="#weChatGroupName" name="bind"></a>
                                 <a class="i18n none weChatBindBtn" id="weChatModifyBtn" data-toggle="modal"
-                                   data-target="#weChatGroupName" name="modify"></a>
+                                   data-target="#weChatGroupName" name="modify" onclick="return false;"></a>
                         </div>
                         <!--微信群-->
                         <div>
