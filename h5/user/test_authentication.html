@@ -12,10 +12,6 @@
     <link rel="stylesheet/less" href="css/test_authentication.less">
 </head>
 <body>
-<!-- loading -->
-<!--<iframe src="loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"-->
-<!--scrolling="no"></iframe>-->
-<!--nav-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -142,13 +138,44 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row uploadImgBox none idPhotoFormBox">
+                        <div class='col col-md-3 col-sm-12 col-md-offset-3 margin-top-5 uploadCol'>
+                            <div class='positive '>
+                                <div class='imgBox'>
+                                    <img id='idPositive' src="../assets/img/id-card001.png">
+                                </div>
+                                <form id="form0" method="GET" enctype="multipart/form-data" class="align-center">
+                                    <a class='btn btn-success uploadBtn'>
+                                        <input id='file0' name="file" class='uploadFile' type='file'>
+                                        <span class='i18n' name='uploadPositive'>Upload positive</span>
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class='col col-md-3 col-sm-12 uploadCol margin-top-5 margin-top-bottom-10'>
+                            <div class='negative'>
+                                <div class='imgBox'>
+                                    <img id='idNegative' src="../assets/img/id-card002.png">
+                                </div>
+                                <form id="form1" method="GET" enctype="multipart/form-data" class="align-center">
+                                    <a class='btn btn-success uploadBtn'>
+                                        <input id='file1' name="file" class='uploadFile' type='file'>
+                                        <span class='i18n' name='uploadNegative'>Upload Negative</span>
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class='col-md-4 col-sm-12 col-md-offset-4 submit margin-top-5 phone-margin-top-10 submitBox'>
+                            <button id='submit' class='btn btn-success i18n width-100' name='bind'>Bind</button>
+                        </div>
+                    </div>
                 </div>
 
 
             </div>
         </div>
         <!--bind name-->
-
 
         <!--ID upload binding-->
         <div class="row margin-top-5 phone-margin-top-10">
@@ -170,37 +197,37 @@
                        <!--name="bind">bind</a>-->
                 <!--</div>-->
             <!--</div>-->
-            <div class="row uploadImgBox none idPhotoFormBox">
-                <div class='col col-md-3 col-sm-12 col-md-offset-3 margin-top-5 uploadCol'>
-                    <div class='positive '>
-                        <div class='imgBox'>
-                            <img id='idPositive' src="../assets/img/id-card001.png">
-                        </div>
-                        <form id="form0" method="GET" enctype="multipart/form-data" class="align-center">
-                            <a class='btn btn-success uploadBtn'>
-                                <input id='file0' name="file" class='uploadFile' type='file'>
-                                <span class='i18n' name='uploadPositive'>Upload positive</span>
-                            </a>
-                        </form>
-                    </div>
-                </div>
-                <div class='col col-md-3 col-sm-12 uploadCol margin-top-5 margin-top-bottom-10'>
-                    <div class='negative'>
-                        <div class='imgBox'>
-                            <img id='idNegative' src="../assets/img/id-card002.png">
-                        </div>
-                        <form id="form1" method="GET" enctype="multipart/form-data" class="align-center">
-                            <a class='btn btn-success uploadBtn'>
-                                <input id='file1' name="file" class='uploadFile' type='file'>
-                                <span class='i18n' name='uploadNegative'>Upload Negative</span>
-                            </a>
-                        </form>
-                    </div>
-                </div>
-                <div class='col-md-4 col-sm-12 col-md-offset-4 submit margin-top-5 phone-margin-top-10 submitBox'>
-                    <button id='submit' class='btn btn-success i18n width-100' name='bind'>Bind</button>
-                </div>
-            </div>
+            <!--<div class="row uploadImgBox none idPhotoFormBox">-->
+                <!--<div class='col col-md-3 col-sm-12 col-md-offset-3 margin-top-5 uploadCol'>-->
+                    <!--<div class='positive '>-->
+                        <!--<div class='imgBox'>-->
+                            <!--<img id='idPositive' src="../assets/img/id-card001.png">-->
+                        <!--</div>-->
+                        <!--<form id="form0" method="GET" enctype="multipart/form-data" class="align-center">-->
+                            <!--<a class='btn btn-success uploadBtn'>-->
+                                <!--<input id='file0' name="file" class='uploadFile' type='file'>-->
+                                <!--<span class='i18n' name='uploadPositive'>Upload positive</span>-->
+                            <!--</a>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class='col col-md-3 col-sm-12 uploadCol margin-top-5 margin-top-bottom-10'>-->
+                    <!--<div class='negative'>-->
+                        <!--<div class='imgBox'>-->
+                            <!--<img id='idNegative' src="../assets/img/id-card002.png">-->
+                        <!--</div>-->
+                        <!--<form id="form1" method="GET" enctype="multipart/form-data" class="align-center">-->
+                            <!--<a class='btn btn-success uploadBtn'>-->
+                                <!--<input id='file1' name="file" class='uploadFile' type='file'>-->
+                                <!--<span class='i18n' name='uploadNegative'>Upload Negative</span>-->
+                            <!--</a>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class='col-md-4 col-sm-12 col-md-offset-4 submit margin-top-5 phone-margin-top-10 submitBox'>-->
+                    <!--<button id='submit' class='btn btn-success i18n width-100' name='bind'>Bind</button>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
 </section>
