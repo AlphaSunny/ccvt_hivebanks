@@ -1,13 +1,11 @@
 $(function () {
     let token = GetCookie('user_token');
     GetUsAccount();
-    var is_email = GetVerifyBindingInformation(token,"email");
+    let is_email = GetVerifyBindingInformation(token,"email");
     if(is_email){
         console.log(is_email);
         SuccessPrompt("邮箱已绑定!");
         window.location.href = "test_security.html";
-    }else {
-        console.log("no11111")
     }
 
     let _email = '', emailList = '';

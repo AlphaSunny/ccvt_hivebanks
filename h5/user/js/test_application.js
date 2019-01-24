@@ -110,7 +110,7 @@ $(function () {
             return;
         }
 
-        ApplicationGroup(token, group_name, group_type_id, function (response) {
+        ApplicationGroup(token, group_name, group_type_id, group_introduction, src, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("申请成功");
                 window.location.href = "test_account.html";
