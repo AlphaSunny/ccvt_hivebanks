@@ -1,12 +1,12 @@
 $(function () {
     // Get user binding information
-    var token = GetCookie('user_token'), cellphone = '';
+    let token = GetCookie('user_token'), cellphone = '';
     GetUsAccount();
 
     function BindingInformationFun() {
         BindingInformation(token, function (response) {
             if (response.errcode == '0') {
-                var data = response.rows,
+                let data = response.rows,
                     security_level = parseInt(response.security_level);
                 $('.levelNum').text(security_level);
 
@@ -99,9 +99,9 @@ $(function () {
     });
 
     //quick tread
-    var point_tread_switch = "", point_tread_num = "";
+    let point_tread_switch = "", point_tread_num = "";
     $("#quickTreadSwitch").on("change", function () {
-        var val = $(this).val();
+        let val = $(this).val();
         if (val == "1") {
             $(this).removeClass("active").val("2");
             point_tread_switch = 2;
@@ -148,19 +148,19 @@ $(function () {
     });
 
     // Login record query
-    var login_api_url = 'log_login.php', limit = 10, offset = 0;
+    let login_api_url = 'log_login.php', limit = 10, offset = 0;
 
     function GetLoginCode(token, limit, offset, login_api_url) {
-        var tr = '', count = 1;
+        let tr = '', count = 1;
         AllRecord(token, limit, offset, login_api_url, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
-                var data = response.rows;
+                let data = response.rows;
                 if (data == false) {
                     GetDataEmpty('loginCode', '4');
                     return;
                 }
-                var totalPage = Math.ceil(response.total / limit);
+                let totalPage = Math.ceil(response.total / limit);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (1 < totalPage && totalPage <= 6) {
@@ -168,7 +168,7 @@ $(function () {
                 } else {
                     count = 6;
                 }
-                for (var i = 0; i < data.length; i++) {
+                for (let i = 0; i < data.length; i++) {
                     tr += '<tr>' +
                         '<td class="i18n" name="' + data[i].lgn_type + '">' + data[i].lgn_type.substr(0, 20) + '...' + '</td>' +
                         '<td>' + data[i].ctime + '</td>' +
