@@ -13,7 +13,7 @@ $(function () {
     });
 
     let group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "",
-        is_welcome = "", welcome = "";
+        is_welcome = "", welcome = "", ranking_change_switch = "";
     let group_id = GetCookie("group_id");
 
     function EditGroupFun() {
@@ -56,6 +56,7 @@ $(function () {
         is_welcome = $(".is_welcome").val();
         is_welcome = $(".is_welcome").val();
         welcome = $(".welcome").val();
+        ranking_change_switch = $(".ranking_change_switch").val();
         EditGroupFun();
     }
 
