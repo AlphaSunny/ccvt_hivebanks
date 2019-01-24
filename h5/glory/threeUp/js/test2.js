@@ -1,10 +1,10 @@
 $(function () {
     let url_path = window.location.hostname;
     let ok_url = window.location.search.split("=")[1];
-    // let url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
-    let url = "test.json";
+    let url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
+    // let url = "test.json";
     let letter_arr = [], one_list = [], two_list = [], three_list = [];
-    let text_timer = "", item_one = "", item_two = "", item_three = "", ul_num = 3;
+    let text_timer = "", item_one = "", item_two = "", item_three = "", ul_num = 2;
 
     //判断是否在规定时间内
     function Start() {
@@ -22,8 +22,10 @@ $(function () {
     //判断当前时间
     function timeIsOk() {
         let curr_time = new Date();
-        let end_time = new Date("2019-1-23 15:37");
+        let end_time = new Date("2019-1-23 17:55");//setTime
         let num = parseInt((end_time - curr_time) / 1000);
+
+        console.log(num);
 
         if (num > 0) {
             console.log("没有OK。没有过期");
@@ -48,10 +50,11 @@ $(function () {
             url: url,
             dataType: "json",
             success: function (res) {
-                let data = res[0].all_list;
-                one_list = res[0].one_list;
-                two_list = res[0].two_list;
-                three_list = res[0].three_list;
+                let data = res.all_list;
+                one_list = res.list_1;
+                two_list = res.list_2;
+                three_list = res.list_3;
+                console.log(one_list);
                 console.log("length:" + three_list.length);
                 item_one = Math.ceil(one_list.length / ul_num);
                 item_two = Math.ceil(two_list.length / ul_num);
@@ -66,8 +69,8 @@ $(function () {
                     letter_arr.push(data[i].wechat);
                 });
 
-                // max = Math.max(item_one, item_two, item_three);
-                max = 35;
+                max = Math.max(item_one, item_two, item_three);
+                // max = 35;
 
                 if (type != "guo") {
                     particleAlphabetFun(max);
@@ -114,9 +117,9 @@ $(function () {
     //1生成列表
     function ListOne() {
         $.each(one_list, function (j, val) {
-            if (one_list.length <= max || j<item_one) {
+            if (one_list.length <= max || j < item_one) {
                 $(".level_one_ul_box ul:nth-child(1)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
-            } else if (one_list > max && j > item_one && j < item_one * 2) {
+            } else if (one_list.length > max && j >= item_one && j < item_one * 2) {
                 $(".level_one_ul_box ul:nth-child(2)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
             } else {
                 $(".level_one_ul_box ul:nth-child(3)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");

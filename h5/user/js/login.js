@@ -1,22 +1,22 @@
 $(document).ready(function () {
     //判断当前是否登录
     function GetLoginCookie(name) {
-        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) {
             return unescape(arr[2]);
         } else {
             return null;
         }
     }
-    var user_token = GetLoginCookie('user_token');
+    let user_token = GetLoginCookie('user_token');
     if (user_token) {
-        window.location.href = "account.html";
+        window.location.href = "test_account.html";
     }
 
-    var leaderBoard = GetQueryString("honor");
+    let leaderBoard = GetQueryString("honor");
 
     function GetLoginCookie(name) {
-        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) return unescape(arr[2]);
     }
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
         $('.emailAuditFail').fadeOut('fast');
     });
     $('.email').blur(function () {
-        var emailVal = $('.email').val();//Get mailbox content
+        let emailVal = $('.email').val();//Get mailbox content
         if (emailVal.length <= 0) {//Is it empty?
             $('.email_tips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else if (!IsEmail(emailVal)) {
@@ -73,7 +73,7 @@ $(document).ready(function () {
 
     //email password judgment
     $('.emailPassword').blur(function () {
-        var emailPassword = $('.emailPassword').val();//Get mailbox content
+        let emailPassword = $('.emailPassword').val();//Get mailbox content
         if (emailPassword.length <= 0) {//Is it empty?
             $('.password_tips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else {
@@ -87,7 +87,7 @@ $(document).ready(function () {
         $('.errEmailImgCode_tips').fadeOut('fast');
     });
     $('.emailCfmCode').blur(function () {
-        var emailCfmCode = $('.emailCfmCode').val();//Get mailbox content
+        let emailCfmCode = $('.emailCfmCode').val();//Get mailbox content
         if (emailCfmCode.length <= 0) {//Is it empty?
             $('.emailImgCode_tips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else {
@@ -97,10 +97,10 @@ $(document).ready(function () {
     });
 
     // email submit judgment
-    var _email = '', emailList = '';
+    let _email = '', emailList = '';
     $(".emailLoginBtn").click(function () {
-        var user_token = GetLoginCookie('user_token');
-        var email = $(".email").val(),
+        let user_token = GetLoginCookie('user_token');
+        let email = $(".email").val(),
             emailPassword = $(".emailPassword").val(),
             pass_word_hash = hex_sha1(emailPassword),
             cfm_code = $(".emailCfmCode").val();
@@ -131,7 +131,7 @@ $(document).ready(function () {
 
         _email = email.split('@')[1];
         emailList = EmailList();
-        var $this = $(this), _text = $(this).text();
+        let $this = $(this), _text = $(this).text();
         if (DisableClick($this)) return;
         EmailLogin(email, pass_word_hash, cfm_code, function (response) {
             ActiveClick($this, _text);
@@ -141,10 +141,10 @@ $(document).ready(function () {
                 $('.emailCfmCode').val('');
                 // LayerFun('loginSuccessful');
                 SuccessPrompt("登录成功");
-                var token = response.token;
+                let token = response.token;
                 SetCookie('user_token', token);
                 if (!leaderBoard) {
-                    window.location.href = 'account.html';
+                    window.location.href = 'test_account.html';
                 } else {
                     window.location.href = "../honor/honor.html";
                 }
@@ -153,7 +153,7 @@ $(document).ready(function () {
             ActiveClick($this, _text);
             if (response.errcode == '116') {//Login Failed
                 $('.emailLoginError').fadeIn('fast');
-                var count = response.errmsg,
+                let count = response.errmsg,
                     emailErrorNum = $('.emailErrorNum'),
                     emailLoginBtn = $('.emailLoginBtn'),
                     emailLoginError = $('.emailLoginError'),
@@ -183,7 +183,7 @@ $(document).ready(function () {
     });
 
     //Phone registration returns to login display
-    var url = GetQueryString('name');
+    let url = GetQueryString('name');
     if (url == 'phone') {
         $('.emailLogin').removeClass('active');
         $('.emailLoginBox').fadeOut('fast');
@@ -200,7 +200,7 @@ $(document).ready(function () {
         $('.phoneAuditFail').fadeOut('fast');
     });
     $('#phone').blur(function () {
-        var phone = $('#phone').val();
+        let phone = $('#phone').val();
         if (phone.length <= 0) {
             $('.phone_tips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else if (isNaN(phone)) {
@@ -214,7 +214,7 @@ $(document).ready(function () {
 
     //phone password
     $('.phonePassword').blur(function () {
-        var phonePassword = $('.phonePassword').val();
+        let phonePassword = $('.phonePassword').val();
         if (phonePassword.length <= 0) {
             $('.phonePassword_tips').fadeIn('fast');
         } else {
@@ -228,7 +228,7 @@ $(document).ready(function () {
         $('.errPhoneImgCode_tips').fadeOut('fast');
     });
     $('.phoneCfmCode').blur(function () {
-        var phoneCfmCode = $('.phoneCfmCode').val();
+        let phoneCfmCode = $('.phoneCfmCode').val();
         if (phoneCfmCode.length <= 0) {
             $('.phoneImgCode_tips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else {
@@ -239,7 +239,7 @@ $(document).ready(function () {
 
     //phone phoneSmsCode
     // $('#phoneSmsCode').blur(function () {
-    //     var phoneSmsCode = $('#phoneSmsCode').val();
+    //     let phoneSmsCode = $('#phoneSmsCode').val();
     //     if (phoneSmsCode.length <= 0) {
     //         $('.phoneSmsCode_tips').fadeIn('fast');
     //     } else {
@@ -249,7 +249,7 @@ $(document).ready(function () {
 
     //Get phone verification code
     // $('.phoneCodeBtn').click(function () {
-    //     var bind_type = '2', $this = $(this), cfm_code = $('.phoneCfmCode').val();
+    //     let bind_type = '2', $this = $(this), cfm_code = $('.phoneCfmCode').val();
     //     if ($(".phone").val().length <= 0) {
     //         $('.phone_tips').fadeIn().siblings('span').hide();
     //         LayerFun('phoneNotEmpty');
@@ -269,12 +269,12 @@ $(document).ready(function () {
     });
 
     $(".phoneLoginBtn").click(function () {//Click Login to submit
-        var user_token = GetLoginCookie('user_token');
+        let user_token = GetLoginCookie('user_token');
         // Get country code
-        var country_code = $('.selected-dial-code').text().split("+")[1];
+        let country_code = $('.selected-dial-code').text().split("+")[1];
 
         // Get user input
-        var cellphone = $("#phone").val(),
+        let cellphone = $("#phone").val(),
             cfm_code = $(".phoneCfmCode").val(),
             // sms_code = $("#phoneSmsCode").val(),
             phonePassword = $(".phonePassword").val(),
@@ -309,7 +309,7 @@ $(document).ready(function () {
             return;
         }
 
-        var $this = $(this), _text = $(this).text();
+        let $this = $(this), _text = $(this).text();
         if (DisableClick($this)) return;
         PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, function (response) {
             ActiveClick($this, _text);
@@ -318,10 +318,10 @@ $(document).ready(function () {
                 $('.phoneCfmCode').val('');
                 // $('#phoneSmsCode').val('');
                 $('.phonePassword').val('');
-                var token = response.token;
+                let token = response.token;
                 SetCookie('user_token', token);
                 if (!leaderBoard) {
-                    window.location.href = 'account.html';
+                    window.location.href = 'test_account.html';
                 } else {
                     window.location.href = "../honor/honor.html";
                 }
@@ -331,7 +331,7 @@ $(document).ready(function () {
             ActiveClick($this, _text);
             if (response.errcode == '116') {//Login Failed
                 $('.phoneLoginError').fadeIn('fast');
-                var count = response.errmsg,
+                let count = response.errmsg,
                     phoneErrorNum = $('.phoneErrorNum'),
                     phoneLoginBtn = $('.phoneLoginBtn'),
                     phoneLoginError = $('.phoneLoginError'),

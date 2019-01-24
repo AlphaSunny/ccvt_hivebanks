@@ -12,10 +12,6 @@
     <link rel="stylesheet/less" href="css/test_authentication.less">
 </head>
 <body>
-<!-- loading -->
-<!--<iframe src="loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"-->
-<!--scrolling="no"></iframe>-->
-<!--nav-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -25,7 +21,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand toIndexBtn" href="javascript:;">
+            <a class="navbar-brand toIndexBtn nav_a" href="javascript:;">
                 <img src="../assets/img/ccvt_logo.png" alt="">
             </a>
         </div>
@@ -33,30 +29,53 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <div class="dropdown">
-                        <a id="dLabel" type="button" data-toggle="dropdown">
+                        <a class="nav_a" id="dLabel" type="button" data-toggle="dropdown">
                             <span class="curr_language"></span>
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" id="language">
-                            <li title="zh-CN" class="toggleLanguage">简体中文</li>
-                            <li title="en" class="toggleLanguage">English</li>
-                            <li title="ja" class="toggleLanguage">Japanese</li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="zh-CN">简体中文</a></li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="en">English</a></li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="ja">Japanese</a></li>
                         </ul>
                     </div>
                 </li>
-                <!--<li><a href="#" class="i18n" name="recharge">Recharge</a></li>-->
-                <!--<li><a href="#" class="i18n" name="withdraw">Withdraw</a></li>-->
-                <li><a href="recharge.html" class="i18n" name="recharge"></a></li>
-                <li><a href="javascript:;" class="i18n navWithdraw" name="withdraw"></a></li>
+
+                <li>
+                    <div class="dropdown">
+                        <a class="nav_a" id="recharge_dropdown" type="button" data-toggle="dropdown">
+                            <span class="i18n" name="recharge"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="recharge_menu">
+                            <li><a href="test_bit_recharge.html" class="i18n" name="ba_in"></a></li>
+                            <li><a href="test_currency_recharge.html" class="i18n" name="ca_in"></a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <a class="nav_a" id="withdraw_dropdown" type="button" data-toggle="dropdown">
+                            <span class="i18n" name="withdraw"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="withdraw_menu">
+                            <li><a href="javascript:;" class="nav_ba_withdraw i18n" name="ba_out"></a></li>
+                            <li><a href="javascript:;" class="nav_ca_withdraw i18n" name="ca_out"></a></li>
+
+                        </ul>
+                    </div>
+                </li>
 
                 <!--<li><a href="transfer.html" class="i18n" name="transfer">Transfer</a></li>-->
                 <li>
-                    <a href="account.html">
+                    <a href="account.html" class="nav_a">
                         <span><i class="iconfont icon-account"></i></span>
                         <span class="us_account" name=""></span>
                     </a>
                 </li>
-                <li><a href="../index.html" class="logout i18n" name="logout"></a></li>
+                <li><a href="../index.html" class="logout i18n nav_a" name="logout"></a></li>
             </ul>
         </div>
     </div>
@@ -142,63 +161,41 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-
-            </div>
-        </div>
-        <!--bind name-->
-
-
-        <!--ID upload binding-->
-        <div class="row margin-top-5 phone-margin-top-10">
-            <!--<div class="col-md-12 col-sm-12">-->
-                <!--<div class="flex center space-between bindBox padding-1">-->
-                    <!--<span class="font-size-14 phone-font-size-12 i18n" name="IDCardUpload">ID Card Upload</span>-->
-                    <!--<div>-->
-                        <!--<i class='iconfont icon-gantanhao redIcon idPhotoIcon'></i>-->
-                        <!--<span class="font-size-14 phone-font-size-12 bindStatus uploadBindNot i18n" name="unbound">unbound</span>-->
-                        <!--<span class="font-size-14 phone-font-size-12 bindStatus uploadBindRefuse none i18n"-->
-                              <!--name="review">Review rejected, re-bind</span>-->
-                    <!--</div>-->
-
-                    <!--<span class="font-size-14 phone-font-size-12 bindStatus uploadBindAlready none i18n"-->
-                          <!--name="alreadyBind">alreadyBind</span>-->
-                    <!--<span class="font-size-14 phone-font-size-12 nameBindStatus uploadUnderReview none i18n"-->
-                          <!--name="underReview">underReview</span>-->
-                    <!--<a href="javascript:;" class="font-size-14 phone-font-size-12 idPhotoBindBtn i18n"-->
-                       <!--name="bind">bind</a>-->
-                <!--</div>-->
-            <!--</div>-->
-            <div class="row uploadImgBox none idPhotoFormBox">
-                <div class='col col-md-3 col-sm-12 col-md-offset-3 margin-top-5 uploadCol'>
-                    <div class='positive '>
-                        <div class='imgBox'>
-                            <img id='idPositive' src="../assets/img/id-card001.png">
+                    <!--ID upload binding-->
+                    <div class="row uploadImgBox none idPhotoFormBox">
+                        <div class='col col-md-3 col-sm-12 col-xs-12 col-md-offset-3 margin-top-5 uploadCol'>
+                            <div class='positive '>
+                                <div class='imgBox'>
+                                    <img id='idPositive' src="../assets/img/id-card001.png">
+                                </div>
+                                <form id="form0" method="GET" enctype="multipart/form-data"
+                                      class="align-center margin-top-50">
+                                    <a class='btn btn-success uploadBtn upload_btn'>
+                                        <input id='file0' name="file" class='uploadFile upload_input' type='file'>
+                                        <span class='i18n' name='uploadPositive'></span>
+                                    </a>
+                                </form>
+                            </div>
                         </div>
-                        <form id="form0" method="GET" enctype="multipart/form-data" class="align-center">
-                            <a class='btn btn-success uploadBtn'>
-                                <input id='file0' name="file" class='uploadFile' type='file'>
-                                <span class='i18n' name='uploadPositive'>Upload positive</span>
-                            </a>
-                        </form>
-                    </div>
-                </div>
-                <div class='col col-md-3 col-sm-12 uploadCol margin-top-5 margin-top-bottom-10'>
-                    <div class='negative'>
-                        <div class='imgBox'>
-                            <img id='idNegative' src="../assets/img/id-card002.png">
+                        <div class='col col-md-3 col-sm-12 col-xs-12 uploadCol margin-top-5 margin-top-bottom-10'>
+                            <div class='negative'>
+                                <div class='imgBox'>
+                                    <img id='idNegative' src="../assets/img/id-card002.png">
+                                </div>
+                                <form id="form1" method="GET" enctype="multipart/form-data"
+                                      class="align-center margin-top-50">
+                                    <a class='btn btn-success upload_btn uploadBtn'>
+                                        <input id='file1' name="file" class='uploadFile upload_input' type='file'>
+                                        <span class='i18n' name='uploadNegative'></span>
+                                    </a>
+                                </form>
+                            </div>
                         </div>
-                        <form id="form1" method="GET" enctype="multipart/form-data" class="align-center">
-                            <a class='btn btn-success uploadBtn'>
-                                <input id='file1' name="file" class='uploadFile' type='file'>
-                                <span class='i18n' name='uploadNegative'>Upload Negative</span>
-                            </a>
-                        </form>
+                        <div class='col-md-4 col-sm-12 col-xs-12 col-md-offset-4 submit margin-top-50 margin-bottom-50 submitBox'>
+                            <button id='submit' class='btn btn-success i18n width-100' name='bind'></button>
+                        </div>
                     </div>
-                </div>
-                <div class='col-md-4 col-sm-12 col-md-offset-4 submit margin-top-5 phone-margin-top-10 submitBox'>
-                    <button id='submit' class='btn btn-success i18n width-100' name='bind'>Bind</button>
                 </div>
             </div>
         </div>
@@ -251,36 +248,16 @@
     </div>
 </div>
 
-<!--idPhoto bind modal-->
-<div class="modal fade" id="idPhotoBindModal" tabindex="-1" role="dialog" aria-labelledby="idPhotoBindModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title i18n" name="IDCardUpload" id="idPhotoBindModalLabel"></h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger i18n" name="cancel" data-dismiss="modal"></button>
-                <button type="button" class="btn btn-primary i18n nameBindEnable" name="bind"></button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!--idPhoto img-->
 <div id="idPhotoImg_modal" class="customize_modal none">
-    <div class="customize_modal_content_head padding-bottom-2"><span class="i18n closeBtn" name="close"></span></div>
+    <div class="customize_modal_content_head padding-bottom-2"></div>
     <div class="customize_modal_mask"></div>
     <div class="customize_modal_content">
+        <p class="i18n text-right close_customize" name="close">关闭</p>
+
         <div class="customize_modal_content_body flex">
-            <div><img src="" class="idPhoto1 width-100" alt=""></div>
-            <div><img src="" class="idPhoto2 width-100" alt=""></div>
+            <div class="look_img_box"><img src="" class="idPhoto1 width-100" alt=""></div>
+            <div class="look_img_box"><img src="" class="idPhoto2 width-100" alt=""></div>
         </div>
     </div>
 </div>

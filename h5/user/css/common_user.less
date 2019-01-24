@@ -292,21 +292,27 @@ td, th {
 .margin-top-50 {
   margin-top: @height_50;
 }
-
+.margin-top-10 {
+  margin-top: @default_even_px * 5;
+}
 .margin-left-5 {
-  margin-left: 5px;
+  margin-left: @default_even_px + @default_odd_px;
 }
 
 .margin-left-10 {
-  margin-left: 10px;
+  margin-left: @default_even_px * 5;
+}
+
+.margin_top_bottom_10 {
+  margin: @default_even_px * 5 0;
 }
 
 .margin-bottom-10 {
-  margin-bottom: 10px;
+  margin-bottom: @default_even_px * 5;
 }
 
 .margin-bottom-50 {
-  margin-bottom: 50px;
+  margin-bottom: @default_even_px * 25;
 }
 
 //padding
@@ -354,6 +360,7 @@ td, th {
   cursor: pointer;
 }
 
+
 .customize_modal_content_head h3 {
   border-bottom: 1px solid #eeeeee;
 }
@@ -371,7 +378,7 @@ td, th {
 
 .customize_modal_content_footer button {
   width: 49%;
-  height: 2.5rem;
+  height: 3.5rem;
 }
 
 /*switch*/

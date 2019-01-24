@@ -10,7 +10,7 @@ $(function () {
         window.location.href = '../../index.html?user=user';
     });
 
-    $(".closeBtn").click(function () {
+    $(".close_customize").click(function () {
        $(".customize_modal").addClass("none");
     });
 

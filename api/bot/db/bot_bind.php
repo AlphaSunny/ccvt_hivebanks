@@ -144,10 +144,10 @@ function statistics_amount_list()
 // 参数: $data
 //返回： rows               数据
 //======================================
-function search_timer()
+function search_timer($group_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT a.id,a.time,a.content,a.group_id,a.tx_content,a.send_type,a.type,a.is_change_img FROM bot_timer as a LEFT JOIN bot_group as b on a.group_id=b.id WHERE a.is_del=0  ORDER BY a.intime asc";
+    $sql = "SELECT a.id,a.time,a.content,a.group_id,a.tx_content,a.send_type,a.type,a.is_change_img FROM bot_timer as a LEFT JOIN bot_group as b on a.group_id=b.id WHERE a.is_del=0 AND a.group_id='{$group_id}' ORDER BY a.intime asc";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;

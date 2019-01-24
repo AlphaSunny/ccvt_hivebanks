@@ -18,12 +18,12 @@ GET参数
 
 php_begin();
 
-//$args = array('group_name');
-//chk_empty_args('GET', $args);
+$args = array('group_id');
+chk_empty_args('GET', $args);
 
 //查询定时任务
-//$group_name = get_arg_str('GET', 'group_name');
-$rows = search_timer();
+$group_id = get_arg_str('GET', 'group_id');
+$rows = search_timer($group_id);
 
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';

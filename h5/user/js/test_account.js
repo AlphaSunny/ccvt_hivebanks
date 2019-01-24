@@ -1,15 +1,15 @@
 $(function () {
     // token
-    var token = GetCookie('user_token');
+    let token = GetCookie('user_token');
 
     $(".disabled_a").attr("disabled", true).css("color", "#9e9e9e");
 
     // Basic user information
-    var base_amount = '';
+    let base_amount = '', is_application_group = "";
     UserInformation(token, function (response) {
         if (response.errcode == '0') {
-            var data = response.rows;
-            var security_level = parseInt(data.security_level);
+            let data = response.rows;
+            let security_level = parseInt(data.security_level);
             SetCookie('us_id', data.us_id);
             SetCookie('us_level', data.us_level);
             SetCookie('us_account', data.us_account);
@@ -46,6 +46,7 @@ $(function () {
             }
 
             if (data.application_group) {
+                is_application_group = "1";
                 $(".no_application,.application_btn").remove();
                 $(".application_group").text(data.application_group);
                 $(".modify_application_btn").removeClass("none");
@@ -82,12 +83,12 @@ $(function () {
             $('#noBalanceModal').modal('show');
             return;
         }
-        window.location.href = "transfer.html";
+        window.location.href = "test_transfer.html";
     });
 
     //change username
     $('.modifyNameBtn').click(function () {
-        var us_account = $('#nickName').val();
+        let us_account = $('#nickName').val();
         if (us_account.length <= 0) {
             WarnPrompt("请输入昵称");
             // LayerFun('pleaseEnterNickname');
@@ -113,18 +114,18 @@ $(function () {
         });
     });
 
-    var limit = 10, offset = 0, n = 0, type = '2';
+    let limit = 10, offset = 0, n = 0, type = '2';
 
     //Account change record
-    var account_change_url = 'log_balance.php';
+    let account_change_url = 'log_balance.php';
 
     function GetAccountChange(token, limit, offset, account_change_url) {
-        var tr = '', count = 1;
+        let tr = '', count = 1;
         AllRecord(token, limit, offset, account_change_url, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
-                var total = response.total;
-                var totalPage = Math.ceil(total / limit);
+                let total = response.total;
+                let totalPage = Math.ceil(total / limit);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (1 < totalPage && totalPage <= 6) {
@@ -133,7 +134,7 @@ $(function () {
                     count = 6;
                 }
 
-                var data = response.rows;
+                let data = response.rows;
                 if (data == false) {
                     GetDataEmpty('accountChange', '5');
                     return;
@@ -170,18 +171,18 @@ $(function () {
 
 
     // gloryPoints change code
-    var gloryPoints_change_url = "us_integral_change_log.php";
+    let gloryPoints_change_url = "us_integral_change_log.php";
 
-    var limit_glory = 10, offset_glory = 0;
+    let limit_glory = 10, offset_glory = 0;
 
     function GetGloryPointsChange(token, limit_glory, offset_glory, gloryPoints_change_url) {
-        var tr = '', count = 1;
+        let tr = '', count = 1;
         AllRecord(token, limit_glory, offset_glory, gloryPoints_change_url, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
-                var data = response.rows;
-                var total = response.total;
-                var totalPage = Math.ceil(total / limit_glory);
+                let data = response.rows;
+                let total = response.total;
+                let totalPage = Math.ceil(total / limit_glory);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (1 < totalPage && totalPage <= 6) {
@@ -226,7 +227,7 @@ $(function () {
     $(".inviteBtn").click(function () {
         ShowLoading("show");
         //设置生成二维码
-        var url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
+        let url = getRootPath() + "/h5/user/register.html?invite_code=" + $(".us_nm").text();
         $(".inviteInput").val(url);
         $('#qrcode').qrcode({
             render: "canvas",
@@ -235,19 +236,19 @@ $(function () {
             height: 90
         });
         //设置邀请图片
-        var qrImg = new Image();
+        let qrImg = new Image();
         qrImg.crossOrigin = "*";
         qrImg.src = "img/inviteImg.jpg?t=" + Math.random();
         //找到画布
-        var canvas = $("#inviteImg")[0];
-        var ctx = canvas.getContext("2d");
+        let canvas = $("#inviteImg")[0];
+        let ctx = canvas.getContext("2d");
         //找到二维码
-        var qr = $("#qrcode canvas")[0];
+        let qr = $("#qrcode canvas")[0];
         //图片加载完成时
         qrImg.onload = function () {
             ctx.drawImage(qrImg, 0, 0, 533, 800);
             ctx.drawImage(qr, 65, 588);
-            var base64 = canvas.toDataURL("images/png");//转换URL
+            let base64 = canvas.toDataURL("images/png");//转换URL
             $("#base64Img").attr("src", base64);
             $(".inviteImgBox").remove();
             ShowLoading("hide");
@@ -263,7 +264,7 @@ $(function () {
 
     //bind weChat name
     $(".bindWeChatBtn").click(function () {
-        var wechat = $("#weChatName").val();
+        let wechat = $("#weChatName").val();
         if (wechat.length <= 0) {
             WarnPrompt("请输入微信昵称");
             // LayerFun("pleaseEnterNickname");
@@ -302,7 +303,7 @@ $(function () {
 
     $(".exchange_confirm_btn").click(function () {
         ShowLoading("show");
-        var voucher = $(".voucher_input").val();
+        let voucher = $(".voucher_input").val();
         if (voucher.length <= 0) {
             // LayerFun("pleaseInputExchangeCode");
             WarnPrompt("请输入兑换码");
@@ -329,7 +330,7 @@ $(function () {
 
     $(".transform_ccvt_confirm_btn").click(function () {
         ShowLoading("show");
-        var account = $(".transform_ccvt_input").val();
+        let account = $(".transform_ccvt_input").val();
         if (account.length <= 0) {
             // LayerFun("pleaseInputChangeAmount");
             WarnPrompt("请输入金额数量");
@@ -358,12 +359,12 @@ $(function () {
 
     //bind/modify weChat group
     $(".bind_weChat_group,.modify_weChat_group").click(function () {
-        var li = "";
+        let li = "";
         ShowLoading("show");
         WeChatGroupList(token, function (response) {
             ShowLoading("hide");
             if (response.errcode == "0") {
-                var data = response.rows;
+                let data = response.rows;
                 $("#weChatGroup").modal("show");
                 $.each(data, function (i, val) {
                     li += "<li class='font-weight-400 margin-bottom-2'>" +
@@ -379,7 +380,7 @@ $(function () {
     });
 
     $(".weChatGroupBtn").click(function () {
-        var group_id = $("input[type='radio']:checked").val();
+        let group_id = $("input[type='radio']:checked").val();
         if (!group_id) {
             WarnPrompt("请选择群");
             return;
@@ -412,14 +413,20 @@ $(function () {
     // });
 
     $(".modify_application_btn").click(function () {
-        var group_name = $(".application_group").text();
+        let group_name = $(".application_group").text();
         window.location.href = "test_application.html?group_name=" + encodeURI(encodeURI(group_name));
     });
 
     //login robot
     $(".robotBtn").click(function () {
-        var url = getRootPath();
-        // window.location.href = url + "/h5/bot_web/login.html";
-        window.open(url + "/h5/bot_web2/login.html");
+        if (is_application_group == "1") {
+            let url = getRootPath();
+            // window.location.href = url + "/h5/bot_web/login.html";
+            window.open(url + "/h5/bot_web2/login.html");
+        } else {
+            WarnPrompt("请先申请机器人专属群");
+            return;
+        }
+
     })
 });
