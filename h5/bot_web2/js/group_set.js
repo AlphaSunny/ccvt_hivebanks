@@ -83,9 +83,9 @@ $(function () {
 
     //修改群二维码
     let src = "";
-    $(".qr_img_box").hover(function () {
-        $(".mask").removeClass("none");
-    });
+    // $(".qr_img_box").hover(function () {
+    //     $(".mask").removeClass("none");
+    // });
 
     $("#file").on("change", function () {
         let objUrl = getObjectURL(this.files[0]);

@@ -10,7 +10,7 @@
     position: relative;
 }
 
-.qr_img_box .mask {
+.qr_img_box:hover .mask {
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 100%;
