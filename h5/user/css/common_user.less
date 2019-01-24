@@ -294,19 +294,23 @@ td, th {
 }
 
 .margin-left-5 {
-  margin-left: 5px;
+  margin-left: @default_even_px + @default_odd_px;
 }
 
 .margin-left-10 {
-  margin-left: 10px;
+  margin-left: @default_even_px * 5;
+}
+
+.margin_top_bottom_10 {
+  margin: 10px 0;
 }
 
 .margin-bottom-10 {
-  margin-bottom: 10px;
+  margin-bottom: @default_even_px * 5;
 }
 
 .margin-bottom-50 {
-  margin-bottom: 50px;
+  margin-bottom: @default_even_px * 25;
 }
 
 //padding
@@ -353,7 +357,6 @@ td, th {
   right: 0;
   cursor: pointer;
 }
-
 
 
 .customize_modal_content_head h3 {
