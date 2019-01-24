@@ -113,7 +113,7 @@ $(function () {
         ApplicationGroup(token, group_name, group_type_id, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("申请成功");
-                window.location.href = "account.html";
+                window.location.href = "test_account.html";
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
