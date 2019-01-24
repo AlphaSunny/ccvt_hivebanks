@@ -209,7 +209,6 @@ $(function () {
             contentType: false,
             processData: false,
             success: function (response) {
-                ShowLoading("hide");
                 let data = JSON.parse(response);
                 if (data.errcode == '0') {
                     src = data.url;
@@ -298,6 +297,7 @@ $(function () {
         } else if (window.webkitURL != undefined) { // webkit or chrome
             url = window.webkitURL.createObjectURL(file);
         }
+        ShowLoading("hide");
         return url;
     }
 });
