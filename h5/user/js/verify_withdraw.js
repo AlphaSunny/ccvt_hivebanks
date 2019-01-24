@@ -1,11 +1,22 @@
 $(function () {
     let token = GetCookie('user_token');
-    function verifyWithdraw() {
-        // let base_amount = "";
+
+    function verifyWithdraw(type) {
         UserInformation(token, function (response) {
             if (response.errcode == "0") {
-                let data = response.rows;
-                return response.rows.base_amount;
+                let base_amount = response.rows.base_amount;
+                if (base_amount <= 0) {
+                    // $('#noBalanceModal').modal('show');
+                    WarnPrompt("账户余额不足，无法进行提现");
+                    return;
+                }
+                if (type == "ba_withdraw") {
+                    window.location.href = "bit_withdraw.html";
+                }
+                if (type == "ca_withdraw") {
+                    window.location.href = "currency_withdraw.html";
+                }
+
             }
         }, function (response) {
             ErrorPrompt(response);
@@ -13,26 +24,12 @@ $(function () {
     }
 
 
-
 //withdraw
     $('.nav_ba_withdraw').click(function () {
-        let base_amount = verifyWithdraw();
-        if (base_amount <= 0) {
-            // $('#noBalanceModal').modal('show');
-            WarnPrompt("账户余额不足，无法进行提现");
-            return;
-        }
-        window.location.href = "bit_withdraw.html";
+        verifyWithdraw("ba_withdraw");
+
     });
     $('.nav_ca_withdraw').click(function () {
-        let base_amount = verifyWithdraw();
-        console.log(base_amount);
-        return;
-        if (base_amount <= 0) {
-            // $('#noBalanceModal').modal('show');
-            WarnPrompt("账户余额不足，无法进行提现");
-            return;
-        }
-        window.location.href = "currency_withdraw.html";
+        verifyWithdraw("ca_withdraw");
     });
 });
