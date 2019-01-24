@@ -51,7 +51,7 @@ $(function () {
     //编辑群介绍
     $(".confirm_edit_group_introduction_btn").click(function () {
         if ($("#group_introduction").val().length <= 0) {
-            WarnPrompt("请输入群名称");
+            WarnPrompt("请输入群介绍");
             return;
         }
         GetVal();
