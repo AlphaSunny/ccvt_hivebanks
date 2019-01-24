@@ -20,3 +20,11 @@
     color: #ffffff;
     cursor: pointer;
 }
+
+.qr_img_box #file{
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    opacity: 0;
+    z-index: 123;
+}
