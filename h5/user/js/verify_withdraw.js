@@ -5,9 +5,7 @@ $(function () {
         UserInformation(token, function (response) {
             if (response.errcode == "0") {
                 let data = response.rows;
-                // base_amount = data.base_amount;
-                // console.log(base_amount);
-                return data.base_amount;
+                return response.rows.base_amount;
             }
         }, function (response) {
             ErrorPrompt(response);
