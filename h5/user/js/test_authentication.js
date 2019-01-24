@@ -57,11 +57,11 @@ $(function () {
                         return;
                     }
 
-                    //Upload ID card
+                    //Upload ID photo
                     if (data[i].bind_name == 'idPhoto' && data[i].bind_flag == '1') {//Successful ID card upload
                         idPhoto = data[i].bind_name;
                         let idPhotoInfo = data[i].bind_info;
-                        $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoBindBtn,.idPhotoBindInfo,#idPhotoBindModal").remove();
+                        $(".idPhotoNotBind,.idPhotoUnderReview,.idPhotoBindBtn,.idPhotoBindInfo,#idPhotoBindModal,.uploadImgBox").remove();
                         $(".idCardBindInfo").removeClass("none");
                         $(".idPhotoAlreadyBind").removeClass("none");
                         let idPhoto1 = idPhotoInfo.split(",")[0];
@@ -72,7 +72,7 @@ $(function () {
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '0') {//Upload ID card review
                         idPhoto = data[i].bind_name;
                         let idPhotoInfo = data[i].bind_info;
-                        $(".idPhotoNotBind,.idPhotoBindBtn,.idPhotoAlreadyBind,#idPhotoBindModal").remove();
+                        $(".idPhotoNotBind,.idPhotoBindBtn,.idPhotoAlreadyBind,#idPhotoBindModal,.uploadImgBox").remove();
                         $(".idPhotoUnderReview,.idPhotoBindInfo").removeClass("none");
                         let idPhoto1 = idPhotoInfo.split(",")[0];
                         let idPhoto2 = idPhotoInfo.split(",")[1];
