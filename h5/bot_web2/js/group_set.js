@@ -46,6 +46,60 @@ $(function () {
         GetVal();
     });
 
+    //get key_code
+    let key_code = "";
+    GetKeyCode(token, function (response) {
+        if (response.errcode == '0') {
+            key_code = response.key_code;
+        }
+    }, function (response) {
+        // LayerFun(response.errcode);
+        ErrorPrompt(response.errmsg);
+    });
+
+    //Return images information
+    function UpLoadImg(formData) {
+        let src = '';
+        $.ajax({
+            url: url + '/api/plugin/upload_file.php',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                let data = JSON.parse(response);
+                if (data.errcode == '0') {
+                    src = data.url;
+                }
+            },
+            error: function (response) {
+                ErrorPrompt(response.errmsg);
+            }
+        });
+        return src;
+    }
+
+    //修改群二维码
+    let src = "";
+    $(".qr_img_box").hover(function () {
+        $(".mask").removeClass("none");
+    });
+
+    $("#file").on("change", function () {
+        let objUrl = getObjectURL(this.files[0]);
+        if (objUrl) {
+            // show img
+            $(".qr_code_address").attr("src", objUrl);
+        }
+
+        let formData = new FormData($("#form")[0]);
+        formData.append("file", this.files[0]);
+        formData.append("key_code", key_code);
+        src = UpLoadImg(formData);
+    });
+
     //获取参数
     function GetVal() {
         group_name = $(".group_name_input").val();
@@ -81,5 +135,18 @@ $(function () {
             }
             GetVal();
         }
+    }
+
+    //Display when selecting a picture
+    function getObjectURL(file) {
+        let url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
     }
 });
