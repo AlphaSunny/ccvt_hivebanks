@@ -6,7 +6,7 @@ require_once 'db/us_bind.php';
 require_once 'db/us_base.php';
 require_once 'db/us_log_bind.php';
 require_once '../inc/judge_format.php';
-ini_set("display_errors", "off");
+ini_set("display_errors", "on");
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
