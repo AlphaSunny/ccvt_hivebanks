@@ -23,7 +23,9 @@
 }
 
 .qr_img_box:hover .mask{
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .qr_img_box #file{
