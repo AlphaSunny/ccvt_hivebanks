@@ -20,12 +20,12 @@
     color: #ffffff;
     cursor: pointer;
     display: none;
+    align-items: center;
+    justify-content: center;
 }
 
 .qr_img_box:hover .mask{
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .qr_img_box #file{
