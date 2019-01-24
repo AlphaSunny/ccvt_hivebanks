@@ -84,7 +84,7 @@ $(function () {
             $('#goBindCellPhone').modal('show');
             return;
         } else {
-            window.location.href = 'test_fundPasswordBind.html';
+            window.location.href = 'fundPasswordBind.html';
         }
     });
 
@@ -94,7 +94,7 @@ $(function () {
             $('#goBindCellPhone').modal('show');
             return;
         } else {
-            window.location.href = 'test_fundPasswordModify.html';
+            window.location.href = 'fundPasswordModify.html';
         }
     });
 

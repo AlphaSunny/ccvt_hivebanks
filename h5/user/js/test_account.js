@@ -67,14 +67,14 @@ $(function () {
             $('#noBalanceModal').modal('show');
             return;
         }
-        window.location.href = "test_bit_withdraw.html";
+        window.location.href = "bit_withdraw.html";
     });
     $('.nav_ca_withdraw').click(function () {
         if (base_amount <= 0) {
             $('#noBalanceModal').modal('show');
             return;
         }
-        window.location.href = "test_currency_withdraw.html";
+        window.location.href = "currency_withdraw.html";
     });
 
     //transferBtn
@@ -83,7 +83,7 @@ $(function () {
             $('#noBalanceModal').modal('show');
             return;
         }
-        window.location.href = "test_transfer.html";
+        window.location.href = "transfer.html";
     });
 
     //change username
@@ -414,7 +414,7 @@ $(function () {
 
     $(".modify_application_btn").click(function () {
         let group_name = $(".application_group").text();
-        window.location.href = "test_application.html?group_name=" + encodeURI(encodeURI(group_name));
+        window.location.href = "application.html?group_name=" + encodeURI(encodeURI(group_name));
     });
 
     //login robot

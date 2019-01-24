@@ -6,19 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title class="i18n" name="userReset">User Reset</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/intlTelInput.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" type="text/css" media="only screen and (max-device-width:767px)"
-          href="mobile-css/common.css">
-    <link rel="stylesheet" type="text/css" media="only screen and (max-device-width:767px)" href="mobile-css/reset.css">
-    <link rel="stylesheet" href="css/reset.css">
+    <title class="i18n" name="userReset"></title>
+    <script src="../assets/js/write_css.js"></script>
+    <script src="js/user_write_css.js"></script>
+    <link rel="stylesheet/less" href="css/reset.less">
 </head>
 <body>
 <!-- loading -->
-<iframe src="loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"
-        scrolling="no"></iframe>
+<!--<iframe src="loading.html" class="loading" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"-->
+        <!--scrolling="no"></iframe>-->
 <!--nav-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -29,38 +25,124 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../index.html">
+            <a class="navbar-brand toIndexBtn nav_a" href="javascript:;">
                 <img src="../assets/img/ccvt_logo.png" alt="">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="login.html" class="i18n" name="login">Login</a></li>
-                <li class="active"><a href="register.html" class="i18n" name="register">Register</a></li>
+                <li>
+                    <div class="dropdown">
+                        <a class="nav_a" id="dLabel" type="button" data-toggle="dropdown">
+                            <span class="curr_language"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="language">
+                            <li><a href="javascript:;" class="toggleLanguage" title="zh-CN">简体中文</a></li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="en">English</a></li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="ja">Japanese</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <a class="nav_a" id="recharge_dropdown" type="button" data-toggle="dropdown">
+                            <span class="i18n" name="recharge"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="recharge_menu">
+                            <li><a href="bit_recharge.html" class="i18n" name="ba_in"></a></li>
+                            <li><a href="currency_recharge.html" class="i18n" name="ca_in"></a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <a class="nav_a" id="withdraw_dropdown" type="button" data-toggle="dropdown">
+                            <span class="i18n" name="withdraw"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="withdraw_menu">
+                            <li><a href="javascript:;" class="nav_ba_withdraw i18n" name="ba_out"></a></li>
+                            <li><a href="javascript:;" class="nav_ca_withdraw i18n" name="ca_out"></a></li>
+
+                        </ul>
+                    </div>
+                </li>
+
+                <!--<li><a href="transfer.html" class="i18n" name="transfer">Transfer</a></li>-->
+                <li>
+                    <a href="account.html" class="nav_a">
+                        <span><i class="iconfont icon-account"></i></span>
+                        <span class="us_account" name=""></span>
+                    </a>
+                </li>
+                <li><a href="../index.html" class="logout i18n nav_a" name="logout"></a></li>
             </ul>
         </div>
     </div>
 </nav>
 
+<!--Security message-->
+<section class="msg">
+    <div class="container">
+        <div class="row msg-row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="msg-col flex align-items-center justify-content-space-between">
+                    <p class="msgText i18n" name="informationTitle"></p>
+                    <i class="iconfont icon-xialajiantou jt"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row msg-content none">
+            <div class="col-md-12 col-sm-12">
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationOne">
+                    related.</span></p>
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationTwo"></span>
+                </p>
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationThree"></span>
+                </p>
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationFour"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!--change Password-->
 <section class="sections" id="content">
     <div class="container">
-        <div class="row sec-row">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h3 class="pcTitle"><span class="phoneBind i18n" name="userReset"></span></h3>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                </div>
+            </div>
+        </div>
+        <div class="row sec-row table_bg padding-top-bottom-100">
             <div class="col-md-6 col-md-offset-3 col-sm-12">
                 <div class="form-box">
                     <div class="form-header fadeInLeft">
-                        <span class="f24 i18n" name="noAccount">User&nbsp;Have no account? &nbsp;</span><a
-                            href="register.html" class="c-login i18n" name="createNow">Create one now!</a>
+                        <span class="f24 i18n" name="noAccount"></span>
+                        <a href="register.html" class="c-login i18n" name="createNow"></a>
                     </div>
                     <div class="resetToggleBox">
-                        <ul class="flex center space-around">
+                        <ul class="flex align-items-center justify-content-space-around">
                             <li class="active resetToggle phoneReset">
-                                <i class="iconfont icon-shouji"></i>
-                                <span class="phoneResetTitle i18n" name="phoneResetTitle">Reset(Phone)</span>
+                                <a rel="nofollow">
+                                    <i class="iconfont icon-shouji"></i>
+                                    <span class="phoneResetTitle i18n" name="phoneResetTitle"></span>
+                                </a>
                             </li>
                             <li class="resetToggle emailReset">
-                                <i class="iconfont icon-youxiang"></i>
-                                <span class="emailResetTitle i18n" name="emailResetTitle">Reset(Email)</span>
+                                <a rel="nofollow">
+                                    <i class="iconfont icon-youxiang"></i>
+                                    <span class="emailResetTitle i18n" name="emailResetTitle"></span>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -102,50 +184,97 @@
                     </div>
                     <!-- phone reset -->
                     <div class="phoneResetBox form-inner-content fadeInRight">
-                        <ul class="mess-ul">
-                            <li>
-                                <input type="tel" class="form-control phone" name="phone" id="phone" value=""
-                                       selectname="phoneInput" selectattr="placeholder">
-                                <span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>
-                                <span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>
-                                <span class='ty-color input_tips noPhonelTips i18n' name="userNotExist">* User Does Not Exist</span>
-                            </li>
-                            <!--Captcha-->
-                            <li class="flex">
-                                <input type="text" class="form-control i18n-input phoneCfmCode" name="cfmCode" value=""
-                                       selectname="cfmCodeInput" selectattr="placeholder">
-                                <img src="" id="phone_imgCode" alt="">
-                                <span class='ty-color input_tips phoneImgCode_tips i18n'
-                                      name="codeNotEmpty">* Verification Code Must Be Filled</span>
-                                <span class='ty-color input_tips errPhoneImgCode_tips i18n'
-                                      name="codeBad">* Verification Code Error, Please Re-enter</span>
-                            </li>
-                            <li class="flex">
-                                <input type="text" class="form-control i18n-input phoneSmsCode" name="cfmCode" value=""
-                                       selectname="cfmCodeInput" selectattr="placeholder">
-                                <span class='ty-color input_tips phoneCode_tips i18n' name="codeNotEmpty">* Verification Code Must Be Filled</span>
-                                <button class="btn btn-success btn-sm phoneCodeBtn"><span class="sixty">60</span>&nbsp;&nbsp;
+
+                        <div class="form-group">
+                            <input type="tel" class="form-control phone" name="phone" id="phone" value="" selectname="phoneInput" selectattr="placeholder">
+                            <span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>
+                            <span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>
+                            <span class='ty-color input_tips noPhonelTips i18n' name="userNotExist">* User Does Not Exist</span>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="flex justify-content-space-between">
+                                <input type="text" class="form-control i18n-input phoneCfmCode" name="cfmCode" value="" selectname="cfmCodeInput" selectattr="placeholder">
+                                <img src="" id="phone_imgCode" class="margin-left-5" alt="">
+                            </div>
+                            <span class='ty-color input_tips phoneImgCode_tips i18n' name="codeNotEmpty">* Verification Code Must Be Filled</span>
+                            <span class='ty-color input_tips errPhoneImgCode_tips i18n' name="codeBad">* Verification Code Error, Please Re-enter</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="flex justify-content-space-between">
+                                <input type="text" class="form-control i18n-input phoneSmsCode" name="cfmCode" value="" selectname="cfmCodeInput" selectattr="placeholder">
+                                <button class="btn btn-success btn-sm phoneCodeBtn margin-left-5">
+                                    <span class="sixty"></span>&nbsp;&nbsp;
                                     <span class="getCodeText i18n" name="getCode">Get Code</span>
                                 </button>
-                            </li>
-                            <li>
-                                <input type="password" class="form-control i18n-input phonePassword"
-                                       name="phonePassword" value="" selectname="newPasswordInput"
-                                       selectattr="placeholder">
-                                <span class='ty-color input_tips Phonepassword_tips i18n' name="passwordNotEmpty">* Password Can Not Be Blank</span>
-                                <span class='ty-color input_tips errPhonePass_tips i18n' name="PasswordStructure">* 8-16 Bits are composed of letters (case-sensitive),numbers,symbols</span>
-                            </li>
-                            <li>
-                                <input type="password" class="form-control i18n-input confirmphonePassword"
-                                       name="phone_confirm_Password" value="" selectname="newConfirmPasswordInput"
-                                       selectattr="placeholder">
-                                <span class='ty-color input_tips ConfirmPhonepassword_tips i18n' name="confirmPasswordNotEmpty">* ConfirmPassword Can Not Be Blank</span>
-                                <span class='ty-color input_tips errconfirmPhonePass_tips i18n' name="PasswordStructure">* 8-16 Bits are composed of letters (case-sensitive),numbers,symbols</span>
-                                <span class='ty-color input_tips TwoPassword_phone i18n' name="TwoPassword">* Two Passwords Must Be The Same</span>
-                            </li>
-                        </ul>
-                        <a href="javascript:;" class="btn btn-lg btn-success register phoneResetBtn login i18n"
-                           name="reset">Reset</a>
+                            </div>
+                            <span class='ty-color input_tips phoneCode_tips i18n' name="codeNotEmpty">* Verification Code Must Be Filled</span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control i18n-input phonePassword"
+                                   name="phonePassword" value="" selectname="newPasswordInput"
+                                   selectattr="placeholder">
+                            <span class='ty-color input_tips Phonepassword_tips i18n' name="passwordNotEmpty">* Password Can Not Be Blank</span>
+                            <span class='ty-color input_tips errPhonePass_tips i18n' name="PasswordStructure">* 8-16 Bits are composed of letters (case-sensitive),numbers,symbols</span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control i18n-input confirmphonePassword"
+                                   name="phone_confirm_Password" value="" selectname="newConfirmPasswordInput"
+                                   selectattr="placeholder">
+                            <span class='ty-color input_tips ConfirmPhonepassword_tips i18n' name="confirmPasswordNotEmpty">* ConfirmPassword Can Not Be Blank</span>
+                            <span class='ty-color input_tips errconfirmPhonePass_tips i18n' name="PasswordStructure">* 8-16 Bits are composed of letters (case-sensitive),numbers,symbols</span>
+                            <span class='ty-color input_tips TwoPassword_phone i18n' name="TwoPassword">* Two Passwords Must Be The Same</span>
+                        </div>
+                        <div>
+                            <button class="btn btn-success register phoneResetBtn login i18n width-100" name="reset">Reset</button>
+                        </div>
+
+                        <!--<ul class="mess-ul">-->
+                            <!--<li>-->
+                                <!--<input type="tel" class="form-control phone" name="phone" id="phone" value=""-->
+                                       <!--selectname="phoneInput" selectattr="placeholder">-->
+                                <!--<span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>-->
+                                <!--<span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>-->
+                                <!--<span class='ty-color input_tips noPhonelTips i18n' name="userNotExist">* User Does Not Exist</span>-->
+                            <!--</li>-->
+                            <!--Captcha-->
+                            <!--<li class="flex">-->
+                                <!--<input type="text" class="form-control i18n-input phoneCfmCode" name="cfmCode" value=""-->
+                                       <!--selectname="cfmCodeInput" selectattr="placeholder">-->
+                                <!--<img src="" id="phone_imgCode" alt="">-->
+                                <!--<span class='ty-color input_tips phoneImgCode_tips i18n'-->
+                                      <!--name="codeNotEmpty">* Verification Code Must Be Filled</span>-->
+                                <!--<span class='ty-color input_tips errPhoneImgCode_tips i18n'-->
+                                      <!--name="codeBad">* Verification Code Error, Please Re-enter</span>-->
+                            <!--</li>-->
+                            <!--<li class="flex">-->
+                                <!--<input type="text" class="form-control i18n-input phoneSmsCode" name="cfmCode" value=""-->
+                                       <!--selectname="cfmCodeInput" selectattr="placeholder">-->
+                                <!--<span class='ty-color input_tips phoneCode_tips i18n' name="codeNotEmpty">* Verification Code Must Be Filled</span>-->
+                                <!--<button class="btn btn-success btn-sm phoneCodeBtn"><span class="sixty">60</span>&nbsp;&nbsp;-->
+                                    <!--<span class="getCodeText i18n" name="getCode">Get Code</span>-->
+                                <!--</button>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<input type="password" class="form-control i18n-input phonePassword"-->
+                                       <!--name="phonePassword" value="" selectname="newPasswordInput"-->
+                                       <!--selectattr="placeholder">-->
+                                <!--<span class='ty-color input_tips Phonepassword_tips i18n' name="passwordNotEmpty">* Password Can Not Be Blank</span>-->
+                                <!--<span class='ty-color input_tips errPhonePass_tips i18n' name="PasswordStructure">* 8-16 Bits are composed of letters (case-sensitive),numbers,symbols</span>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<input type="password" class="form-control i18n-input confirmphonePassword"-->
+                                       <!--name="phone_confirm_Password" value="" selectname="newConfirmPasswordInput"-->
+                                       <!--selectattr="placeholder">-->
+                                <!--<span class='ty-color input_tips ConfirmPhonepassword_tips i18n' name="confirmPasswordNotEmpty">* ConfirmPassword Can Not Be Blank</span>-->
+                                <!--<span class='ty-color input_tips errconfirmPhonePass_tips i18n' name="PasswordStructure">* 8-16 Bits are composed of letters (case-sensitive),numbers,symbols</span>-->
+                                <!--<span class='ty-color input_tips TwoPassword_phone i18n' name="TwoPassword">* Two Passwords Must Be The Same</span>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                        <!--<a href="javascript:;" class="btn btn-lg btn-success register phoneResetBtn login i18n"-->
+                           <!--name="reset">Reset</a>-->
                     </div>
                 </div>
             </div>
@@ -153,44 +282,25 @@
     </div>
 
 </section>
-<!--footer-->
-<section class="sections footer">
-    <div class="container">
-        <div class="row left-row">
-            <div class="col-md-12 col-sm-12">
-                <div class="footerTR flex space-between center">
-                    <div class="footerIconBox">
-                        <a href="https://twitter.com/Hivebanks "  data-toggle="tooltip" data-placement="top" title="hivebanks"><i class="iconfont icon-twitter"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i class="iconfont icon-telegram"></i></a>
-                        <a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top" title="ccvt.io"><i class="iconfont icon-weibo"></i></a>
-                        <a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top" title="Hivebanks"><i class="iconfont icon-weixin"></i></a>
-                    </div>
-                    <div>
-                        <select class="form-control input-sm" id="language">
-                            <option value="en">English</option>
-                            <option value="zh-CN">中文简体</option>
-                            <option value="ja">Japanese</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row footer-copyright">
-            <span>                 <span class="i18n" name="version">©2018-2019 Powered by</span>                 <a href="http://www.hivebanks.com">hivebanks</a>             </span>
-        </div>
-    </div>
-</section>
 
-<script src="../assets/js/jquery-3.2.1.min.js"></script>
-<script src="../assets/js/spin.min.js"></script>
-<script src="language/jquery.i18n.properties.js"></script>
-<script src="language/language.js"></script>
-<script src="../assets/js/intlTelInput.js"></script>
-<script src="../assets/js/sha.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/layer/layer.js"></script>
-<script src="js/main.js"></script>
-<script src="js/common.js"></script>
+<div class="footer_box">
+    <iframe src="footer.html" frameborder="0" height="100%" width="100%"></iframe>
+</div>
+
+<!--Back to top-->
+<div class="scrollup">
+    <a href="#"><i class="iconfont icon-top"></i></a>
+</div>
+
+<!--loading-->
+<div class="loading">
+    <img src="../assets/img/loading2.gif" alt="">
+</div>
+
+<!--js-->
+<script src="../assets/js/write_js.js"></script>
+<script src="js/user_write_js.js"></script>
+
 <script src="js/reset.js"></script>
 <script type="text/javascript">
     $("#phone").intlTelInput({

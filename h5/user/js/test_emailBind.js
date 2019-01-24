@@ -5,7 +5,7 @@ $(function () {
     if(is_email){
         console.log(is_email);
         SuccessPrompt("邮箱已绑定!");
-        window.location.href = "test_security.html";
+        window.location.href = "security.html";
     }
 
     let _email = '', emailList = '';

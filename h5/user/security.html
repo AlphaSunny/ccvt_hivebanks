@@ -6,82 +6,118 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport'
           content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'>
-    <title class='i18n' name='security'>security</title>
-    <link rel='stylesheet' href='../assets/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='../assets/css/jquery.pagination.css'>
-    <link rel='stylesheet' href='../assets/js/layer/layer.css'>
-    <link rel='stylesheet' href='css/common.css'>
-    <link rel='stylesheet' type='text/css' media='only screen and (max-device-width:767px)'
-          href='mobile-css/common.css'>
-    <link rel='stylesheet' type='text/css' media='only screen and (max-device-width:767px)'
-          href='mobile-css/security.css'>
-    <link rel='stylesheet' href='css/security.css'>
+    <title class='i18n' name='security'></title>
+    <script src="../assets/js/write_css.js"></script>
+    <script src="js/user_write_css.js"></script>
+    <link rel="stylesheet/less" href="css/security.less">
 </head>
 <body>
 <!-- loading -->
-<iframe src='loading.html' class='loading' width='100%' height='100%' frameborder='0' marginheight='0' marginwidth='0'
-        scrolling='no'></iframe>
+<!--<iframe src='loading.html' class='loading' width='100%' height='100%' frameborder='0' marginheight='0' marginwidth='0'-->
+<!--scrolling='no'></iframe>-->
 <!--nav-->
-<nav class='navbar navbar-default' role='navigation'>
-    <div class='container'>
-        <div class='navbar-header'>
-            <button type='button' class='navbar-toggle' data-toggle='collapse'
-                    data-target='#example-navbar-collapse'>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand toIndexBtn" href="javascript:;">
+            <a class="navbar-brand toIndexBtn nav_a" href="javascript:;">
                 <img src="../assets/img/ccvt_logo.png" alt="">
             </a>
         </div>
-        <div class='collapse navbar-collapse' id='example-navbar-collapse'>
-            <ul class='nav navbar-nav navbar-right'>
-                <li><a href='javascript:;' class='i18n' name='recharge'>Recharge</a></li>
-                <li><a href='withdraw.html' class='i18n' name='withdraw'>Withdraw</a></li>
-                <!--<li><a href='transfer.html' class='i18n' name='transfer'>Transfer</a></li>-->
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="account.html">
+                    <div class="dropdown">
+                        <a class="nav_a" id="dLabel" type="button" data-toggle="dropdown">
+                            <span class="curr_language"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="language">
+                            <li><a href="javascript:;" class="toggleLanguage" title="zh-CN">简体中文</a></li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="en">English</a></li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="ja">Japanese</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <a class="nav_a" id="recharge_dropdown" type="button" data-toggle="dropdown">
+                            <span class="i18n" name="recharge"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="recharge_menu">
+                            <li><a href="bit_recharge.html" class="i18n" name="ba_in"></a></li>
+                            <li><a href="currency_recharge.html" class="i18n" name="ca_in"></a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <a class="nav_a" id="withdraw_dropdown" type="button" data-toggle="dropdown">
+                            <span class="i18n" name="withdraw"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="withdraw_menu">
+                            <li><a href="javascript:;" class="nav_ba_withdraw i18n" name="ba_out"></a></li>
+                            <li><a href="javascript:;" class="nav_ca_withdraw i18n" name="ca_out"></a></li>
+
+                        </ul>
+                    </div>
+                </li>
+
+                <!--<li><a href="transfer.html" class="i18n" name="transfer">Transfer</a></li>-->
+                <li>
+                    <a href="account.html" class="nav_a">
                         <span><i class="iconfont icon-account"></i></span>
                         <span class="us_account" name=""></span>
                     </a>
                 </li>
-                <li><a href="javascript:;" class="logout i18n" name="logout">Logout</a></li>
+                <li><a href="../index.html" class="logout i18n nav_a" name="logout"></a></li>
             </ul>
         </div>
     </div>
 </nav>
+
 <!--Security message-->
-<section class='msg'>
-    <div class='container'>
-        <div class='row msg-row'>
-            <div class='col-md-12 col-sm-12 msg-col'>
-                <p class='msgText i18n' name='informationTitle'>Safety Phrases：Check the visit url to open the secondary
-                    verification.</p>
-                <i class='iconfont icon-xialajiantou jt'></i>
+<section class="msg">
+    <div class="container">
+        <div class="row msg-row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="msg-col flex align-items-center justify-content-space-between">
+                    <p class="msgText i18n" name="informationTitle"></p>
+                    <i class="iconfont icon-xialajiantou jt"></i>
+                </div>
             </div>
         </div>
-        <div class='row msg-content'>
-            <div class='col-md-12 col-sm-12'>
-                <p><i class='iconfont icon-iconset0211'></i><span class='i18n' name='informationOne'>Do not install any browser plug-ins that are claimed and
+        <div class="row msg-content none">
+            <div class="col-md-12 col-sm-12">
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationOne">
                     related.</span></p>
-                <p><i class='iconfont icon-iconset0211'></i><span class='i18n' name='informationTwo'>Don’t reveal password information and Google verification codes and Google keys to anyone.</span>
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationTwo"></span>
                 </p>
-                <p><i class='iconfont icon-iconset0211'></i><span class='i18n' name='informationThree'>Don't transfer money to anyone who claims to be a staff member.</span>
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationThree"></span>
                 </p>
-                <p><i class='iconfont icon-iconset0211'></i><span class='i18n' name='informationFour'>Be sure to pay attention to safety and protect yourself.</span>
+                <p><i class="iconfont icon-iconset0211"></i><span class="i18n" name="informationFour"></span>
                 </p>
             </div>
         </div>
     </div>
 </section>
+
 <!--Bread crumbs-->
 <div class='container'>
     <div class='row'>
-        <div class='col-md-12 col-sm-12'>
+        <div class='col-md-12 col-sm-12 col-xs-12'>
             <ol class='breadcrumb'>
-                <li><a href='account.html' class='i18n' name='account'>Account</a></li>
-                <li class='active i18n' name='security'>Security</li>
+                <li><a href='account.html' class='i18n' name='account'></a></li>
+                <li class='active i18n' name='security'></li>
             </ol>
         </div>
     </div>
@@ -90,149 +126,118 @@
 <section class='sections content section-top-2'>
     <div class='container'>
         <div class='row'>
-            <div class='col-md-12 col-sm-12'>
-                <h3 class='pcTitle i18n' name='security'>Security</h3>
-                <h5 class='phoneTitle i18n' name='security'>Security</h5>
-                <p class='note i18n' name='note'>Please do not disclose SMS and verification code to anyone, including
-                    customer service.</p>
-                <div class='leave-box flex center'>
-                    <p class='i18n font-weight-400' name='securityLevel'>Security Level</p>:
-                    <div class='level'>
-                        <span class='levelText'>Lv.<span class='levelNum'></span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='row iconfontRow verifyRow'>
-            <div class='col-md-6 col-sm-12'>
-                <div class='verify phoneBox flex space-between center'>
-                    <div>
-                        <i class='iconfont icon-iphone'></i>
-                        <i class='iconfont icon-gantanhao symbol redIcon phoneIcon'></i>
-                    </div>
-                    <div class='thisInfoBox'>
-                        <p class='thisInfoP i18n' name="phoneBind">PHONE</p>
-                        <span class="phoneInfo"></span>
-                        <span class='ty-color i18n phoneTime' name='notBind'>Not Bind</span>
-                        <p class='i18n' name='securityBindInfo'>Used for withdrawals and security modifications</p>
-                    </div>
-                    <a href='phoneBind.html' class='btn btn-success bind-btn phoneBind i18n' name='bind' id='phoneNum'>Bind</a>
-                    <a href='phoneModify.html' class='btn btn-success phoneModify modify bind-btn i18n' name='modify'
-                       id='phone'>Modify</a>
-                </div>
-                <div class='verify fundPasswordBox flex space-between center'>
-                    <div>
-                        <i class='iconfont icon-hash'></i>
-                        <i class='iconfont icon-gantanhao symbol redIcon fundPasswordIcon'></i>
-                    </div>
-                    <div class='thisInfoBox'>
-                        <p class='thisInfoP i18n' name="fundPassword">Fund Password</p><span class='ty-color i18n fundPasswordTime' name='notBind'>Not Bind</span>
-                        <p class='i18n' name='securityBindInfo'>Used for withdrawals and security modifications</p>
-                    </div>
-                    <a href='javascript:;' class='btn btn-success bind-btn fundPasswordBind i18n' name='bind'
-                       id='hashNum'>Bind</a>
-                    <a href='javascript:;' class='btn btn-success fundPasswordModify modify bind-btn i18n' name='modify'
-                       id='hash'>Modify</a>
+            <div class='col-md-12 col-sm-12 col-xs-12'>
+                <div>
+                    <h3 class='pcTitle i18n' name='security'></h3>
                 </div>
 
-                <div class='verify googleBox flex space-between center'>
-                    <div>
-                        <i class='iconfont icon-Google'></i>
-                        <i class='iconfont icon-gantanhao symbol redIcon googleIcon'></i>
+                <div class="card">
+                    <div class="title flex justify-content-space-between align-items-center">
+                        <h5 class="i18n" name="securityLevel"></h5>
+                        <p class="security_level"><span class='levelText'>Lv.<span class='levelNum'></span></span></p>
                     </div>
-                    <div class='thisInfoBox'>
-                        <p class='thisInfoP'>Google</p><span class='ty-color i18n googleTime' name='notBind'>Not Bind</span>
-                        <p class='i18n' name='securityBindInfo'>Used for withdrawals and security modifications</p>
-                    </div>
-                    <a href='googleBind.html' class='btn btn-success bind-btn googleBind i18n' name='bind' id='modifyBind'>Bind</a>
-                    <!--<a href='javascript:;' class='btn btn-success googleModify modify bind-btn i18n' name='modify'-->
-                       <!--id='googleModify'>Modify</a>-->
-                </div>
+                    <!--<p class='remark i18n' name='note'></p>-->
+                    <div class="content">
+                        <!--手机绑定-->
+                        <div class="item">
+                            <p class="icon_box"><i class='iconfont icon-iphone'></i></p>
+                            <div class="item_content">
+                                <p class="w-180 i18n security_bind_title" name="phoneBind"></p>
+                                <p class="w-50 security_bind_status i18n phoneBindInfo none" name="notBind"></p>
+                                <a href="phoneBind.html" class="a_link i18n phoneBindBtn" name="bind"></a>
+                                <a href="phoneModify.html" class="a_link i18n phoneModifyBtn none"
+                                   name="modify"></a>
+                            </div>
+                        </div>
 
-                <!--login passpord-->
-                <div class='verify loginPasswordBox flex space-between center'>
-                    <div>
-                        <i class='iconfont icon-hash'></i>
-                        <i class='iconfont icon-gantanhao symbol redIcon loginPasswordIcon'></i>
-                    </div>
-                    <div class='thisInfoBox'>
-                        <p class='thisInfoP i18n' name="loginPassword"></p><span class='ty-color i18n loginPasswordTime' name='notBind'>Not Bind</span>
-                        <p class='i18n' name='securityBindInfo'>Used for security modifications</p>
-                    </div>
-                    <a href='reset.html' class='btn btn-success loginPasswordModify modify bind-btn i18n' name='modify' id='login_password'></a>
-                </div>
-            </div>
+                        <!--邮箱绑定-->
+                        <div class="item">
+                            <p class="icon_box"><i class='iconfont icon-iphone'></i></p>
+                            <div class="item_content">
+                                <p class="w-180 i18n security_bind_title" name="emailBind"></p>
+                                <p class="w-50 security_bind_status email_status_notBind i18n" name="notBind"></p>
+                                <p class="w-50 security_bind_status email_status_alreadyBind i18n none"
+                                   name="alreadyBind"></p>
+                                <a href="emailBind.html" class="a_link emailBindBtn i18n" name="bind"></a>
+                                <a href="emailModify.html" class="a_link emailModifyBind i18n none"
+                                   name="modify"></a>
+                            </div>
+                        </div>
 
-            <div class='col-md-6 col-sm-12'>
-                <div class='verify authenticationBox flex space-between center'>
-                    <div>
-                        <i class='iconfont icon-digital'></i>
-                        <i class='iconfont icon-gantanhao symbol redIcon authenticationIcon'></i>
-                    </div>
-                    <div class='thisInfoBox'>
-                        <p class='thisInfoP i18n' name="authentication">Authentication</p><span class='authenticationTime ty-color i18n' name='notAuthentication'>Not Authentication</span>
-                        <p class='i18n' name='securityBindInfo'>Used for withdrawals and security modifications</p>
-                    </div>
-                    <a href='authentication.html' class='btn btn-success bind-btn authenticationBind i18n' name='bind'>Authentication</a>
-                    <a href='javascript:;' class='btn btn-success digitalModify authentication modify bind-btn i18n' name='modify'
-                       id='digital'>Modify</a>
-                </div>
-                <div class='verify emailBox flex space-between center'>
-                    <div>
-                        <i class='iconfont icon-1'></i>
-                        <i class='iconfont icon-gantanhao symbol redIcon emailIcon'></i>
-                    </div>
-                    <div class='thisInfoBox'>
-                        <p class='thisInfoP i18n' name="emailBind">Email</p>
-                        <span class="emailInfo"></span>
-                        <span class='ty-color i18n emailTime' name='notBind'>Not Bind</span>
-                        <p class='i18n' name='securityBindInfo'>Used for withdrawals and security modifications</p>
-                    </div>
-                    <a href='emailBind.html' class='btn btn-success emailBind bind-btn i18n' name='bind' id='emailBind'>Bind</a>
-                    <a href='emailModify.html' class='btn btn-success emailModify modify bind-btn i18n' name='modify'
-                       id='emailModify'>Modify</a>
-                </div>
+                        <!--资金密码-->
+                        <div class="item">
+                            <p class="icon_box"><i class='iconfont icon-iphone'></i></p>
+                            <div class="item_content">
+                                <p class="w-180 i18n security_bind_title" name="fundPassword"></p>
+                                <p class="w-50 security_bind_status pass_hash_status_notBind i18n" name="notBind"></p>
+                                <p class="w-50 security_bind_status pass_hash_status_alreadyBind i18n none"
+                                   name="alreadyBind"></p>
+                                <a href="javascript:;" class="a_link i18n fundPasswordBind" name="bind"></a>
+                                <a href="javascript:;" class="a_link i18n fundPasswordModify none" name="modify"></a>
+                            </div>
+                        </div>
 
-                <div class='verify ipBox flex space-between center'>
-                    <div>
-                        <i class='iconfont icon-ip'></i>
-                        <i class='iconfont icon-gantanhao symbol redIcon'></i>
-                    </div>
-                    <div class='thisInfoBox'>
-                        <p class='thisInfoP'>IP</p><span class='ty-color i18n' name='notBind'>Not Bind</span>
-                        <p class='i18n' name='securityBindInfo'>Used for withdrawals and security modifications</p>
-                    </div>
-                    <a href='javascript:;' class='btn btn-success bind-btn ipBind i18n' name='bind'>Bind</a>
-                    <a href='javascript:;' class='btn btn-success ipModify modify bind-btn i18n' name='modify' id='ip'>Modify</a>
-                </div>
+                        <!--登录密码-->
+                        <div class="item">
+                            <p class="icon_box"><i class='iconfont icon-iphone'></i></p>
+                            <div class="item_content">
+                                <p class="w-180 i18n security_bind_title" name="loginPassword"></p>
+                                <p class="w-50 security_bind_status password_loin_status_notBind i18n"
+                                   name="notBind"></p>
+                                <p class="w-50 security_bind_status password_loin_status_alreadyBind i18n none"
+                                   name="alreadyBind"></p>
+                                <a href="reset.html" class="a_link i18n" name="modify"></a>
+                            </div>
+                        </div>
 
-                <div class='verify quickTreadBox flex space-between center'>
-                    <div>
-                        <i class='iconfont icon-quick'></i>
-                        <i class='iconfont icon-gantanhao symbol redIcon quickTreadIcon'></i>
-                    </div>
-                    <div class='thisInfoBox'>
-                        <p class='thisInfoP'>快捷赞踩</p>
-                        <span class='ty-color close_status i18n' name='close'>关闭</span>
-                        <span class='ty-color open_status none i18n' name='open'>开启</span>
-                        <p class='none quick_tread_num_top'>
-                            <span class="quick_top">上限</span>
-                            <span class="quick_top_num"></span>
-                        </p>
-                    </div>
-                    <div class="form-group">
-                        <!--<label for="runSwitch" class="col-sm-3 control-label">运行状态</label>-->
-                        <div class="flex center">
-                            <span class="">关</span>
-                            <input id="quickTreadSwitch" class="switch quickTreadSwitch switch-anim margin-left-2 margin-right-2"
-                                   type="checkbox" value="2">
-                            <span>开</span>
-                            <!--<span class="margin-left-5 gray">是否开启AI大白在群里运行功能</span>-->
+                        <!--身份认证-->
+                        <div class="item">
+                            <p class="icon_box"><i class='iconfont icon-iphone'></i></p>
+                            <div class="item_content">
+                                <p class="w-180 i18n security_bind_title" name="authentication"></p>
+                                <p class="w-50 security_bind_status authentication_status_notBind i18n"
+                                   name="notBind"></p>
+                                <p class="w-50 security_bind_status authentication_status_alreadyBind i18n none"
+                                   name="alreadyBind"></p>
+                                <a href="authentication.html" class="a_link i18n authenticationBindBtn" name="bind"></a>
+                            </div>
+                        </div>
+
+                        <!--google-->
+                        <div class="item">
+                            <p class="icon_box"><i class='iconfont icon-iphone'></i></p>
+                            <div class="item_content">
+                                <p class="w-180 security_bind_title i18n" name="google"></p>
+                                <p class="w-50 security_bind_status google_status_notBind i18n" name="notBind"></p>
+                                <p class="w-50 security_bind_status google_status_alreadyBind i18n none"
+                                   name="alreadyBind"></p>
+                                <a href="googleBind.html" class="a_link i18n googleBindBtn" name="bind"></a>
+                                <a href="javascript:;" class="a_link i18n googleModifyBtn none" name="modify"></a>
+                            </div>
+                        </div>
+
+                        <!--快捷赞踩-->
+                        <div class="item">
+                            <p class="icon_box"><i class='iconfont icon-iphone'></i></p>
+                            <div class="item_content">
+                                <p class="w-180 security_bind_title i18n" name="quicklyStepOn"></p>
+                                <p class="w-50 security_bind_status">
+                                    <span class='ty-color close_status i18n none' name='close'></span>
+                                    <span class='ty-color open_status none i18n none' name='open'></span>
+                                </p>
+                                <div class="flex align-items-center">
+                                    <span class="i18n" name="closeSwitch"></span>
+                                    <input id="quickTreadSwitch" class="switch quickTreadSwitch switch-anim"
+                                           type="checkbox" value="2">
+                                    <span class="i18n" name="openSwitch"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -242,13 +247,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                <h3 class="modal-title pcTitle i18n" name="pleaseBindPhone">Mobile number is not bound</h3>
-                <h5 class="modal-title phoneTitle i18n" name="pleaseBindPhone">Mobile number is not bound</h5>
+                <h3 class="modal-title pcTitle i18n" name="pleaseBindPhone"></h3>
+                <h5 class="modal-title phoneTitle i18n" name="pleaseBindPhone"></h5>
             </div>
             <div class="modal-footer">
                 <a href="phoneBind.html"
                    class="btn btn-success bingPhoneBtn i18n"
-                   name="bind">bind</a>
+                   name="bind"></a>
             </div>
         </div>
     </div>
@@ -259,16 +264,16 @@
     <div class="customize_modal_mask"></div>
     <div class="customize_modal_content">
         <div class="customize_modal_content_head padding-bottom-2">
-            <h3 class="font-weight-400" name="">金额上限</h3></div>
+            <h3 class="font-weight-400 i18n" name="maximumAmount"></h3>
+        </div>
         <div class="customize_modal_content_body">
             <div class="form-group">
                 <input type="text" class="form-control amount_top_input" value="100">
             </div>
         </div>
         <div class="customize_modal_content_footer margin-top-5">
-            <button class="btn btn-danger i18n top_cancel_btn customize_modal_cancel_btn" name="cancel">cancel
-            </button>
-            <button class="btn btn-success i18n top_confirm_btn" name="confirm">confirm</button>
+            <button class="btn btn-danger i18n top_cancel_btn customize_modal_cancel_btn" name="cancel"></button>
+            <button class="btn btn-success i18n top_confirm_btn" name="confirm"></button>
         </div>
     </div>
 </div>
@@ -278,25 +283,30 @@
     <div class='container'>
         <div class='row'>
             <div class='col-md-12 col-sm-12'>
-                <h3 class='pcTitle i18n' name='loginRecord'>Login Record</h3>
-                <h5 class='phoneTitle i18n' name='loginRecord'>Login Record</h5>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-md-12 col-sm-12'>
-                <div class='log-box table-responsive'>
+                <div>
+                    <h3 class='pcTitle i18n' name='loginRecord'></h3>
+                </div>
+
+                <div class='log-box table-responsive table_bg'>
                     <table class='tab table table-hover table-condensed'>
                         <thead>
                         <tr>
-                            <th class='i18n' name='loginType'>Login Type</th>
-                            <th class='i18n' name='time'>Time</th>
-                            <th class='i18n' name='ipAddress'>IP Address</th>
+                            <th class='i18n' name='loginType'></th>
+                            <th class='i18n' name='time'></th>
+                            <th class='i18n' name='ipAddress'></th>
                             <!--<th class='i18n' name='location'>Location</th>-->
                         </tr>
                         </thead>
-                        <tbody id='loginCode'></tbody>
+                        <tbody id='loginCode'>
+                        <tr>
+                            <td colspan="3">
+                                <img src="../assets/img/loading.gif" alt="">
+                                <span class="i18n" name="tryingToLoad">loading...</span>
+                            </td>
+                        </tr>
+                        </tbody>
                     </table>
-                    <div>
+                    <div class="text-right">
                         <div id="pagination" class="page"></div>
                     </div>
                 </div>
@@ -306,64 +316,23 @@
 </section>
 
 <!--footer-->
-<section class='sections footer'>
-    <div class='container'>
-
-        <div class='row left-row'>
-            <div class='col-md-7 col-sm-12'>
-                <div class='footerTL'>
-                    <ul class='flex center'>
-                        <li><a href='/' class='i18n' name='introduction'>Introduction</a></li>
-                        <li><a href='/' class='i18n' name='cashAgency'>Cash Agency</a></li>
-                        <li><a href='/' class='i18n' name='bitcoinAgency'>Bitcoin Agency</a></li>
-                        <li><a href='/' class='i18n' name='partners'>Partners</a></li>
-                        <li><a href='/' class='i18n' name='about'>About</a></li>
-                        <li><a href='/' class='i18n' name='contact'>Contact</a></li>
-                        <li><a href="faultReport.html" class="i18n" name="failureReport">fault report</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class='col-md-5 col-sm-12'>
-                <div class='footerTR flex space-between center'>
-                    <i class='iconfont icon-twitter'></i>
-                    <i class='iconfont icon-facebook'></i>
-                    <i class='iconfont icon-reddit'></i>
-                    <i class='iconfont icon-telegram'></i>
-                    <i class='iconfont icon-instagram'></i>
-                    <i class='iconfont icon-medium'></i>
-                    <i class='iconfont icon-weibo'></i>
-                    <i class='iconfont icon-qq'></i>
-                    <i class='iconfont icon-weixin'></i>
-                    <div>
-                        <select class="form-control input-sm" id="language">
-                            <option value="en">English</option>
-                            <option value="zh-CN">中文简体</option>
-                            <option value="ja">Japanese</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='row footer-copyright'>
-            <p class='i18n' name='allRightsReserved'>©2018-2019 ccvt.io All Rights Reserved</p>
-        </div>
-    </div>
-</section>
-
-<div class='scrollup'>
-    <a href='#'><i class='iconfont icon-top'></i></a>
+<div class="footer_box">
+    <iframe src="footer.html" frameborder="0" height="100%" width="100%"></iframe>
 </div>
 
-<script src='../assets/js/jquery-3.2.1.min.js'></script>
-<script src='../assets/js/bootstrap.min.js'></script>
-<script src='../assets/js/layer/layer.js'></script>
-<script src="../assets/js/jquery.pagination.min.js"></script>
-<!--<script src="../assets/js/spin.min.js"></script>-->
-<script src='language/jquery.i18n.properties.js'></script>
-<script src='language/language.js'></script>
-<script src="../assets/js/prompt.js"></script>
-<script src='js/common.js'></script>
-<script src='js/main.js'></script>
-<script src='js/security.js'></script>
+<!--Back to top-->
+<div class="scrollup">
+    <a href="#"><i class="iconfont icon-top"></i></a>
+</div>
+
+<!--loading-->
+<div class="loading">
+    <img src="../assets/img/loading2.gif" alt="">
+</div>
+
+<!--js-->
+<script src="../assets/js/write_js.js"></script>
+<script src="js/user_write_js.js"></script>
+<script src='js/test_security.js'></script>
 </body>
 </html>

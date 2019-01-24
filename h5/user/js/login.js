@@ -10,7 +10,7 @@ $(document).ready(function () {
     }
     let user_token = GetLoginCookie('user_token');
     if (user_token) {
-        window.location.href = "test_account.html";
+        window.location.href = "account.html";
     }
 
     let leaderBoard = GetQueryString("honor");
@@ -144,7 +144,7 @@ $(document).ready(function () {
                 let token = response.token;
                 SetCookie('user_token', token);
                 if (!leaderBoard) {
-                    window.location.href = 'test_account.html';
+                    window.location.href = 'account.html';
                 } else {
                     window.location.href = "../honor/honor.html";
                 }
@@ -321,7 +321,7 @@ $(document).ready(function () {
                 let token = response.token;
                 SetCookie('user_token', token);
                 if (!leaderBoard) {
-                    window.location.href = 'test_account.html';
+                    window.location.href = 'account.html';
                 } else {
                     window.location.href = "../honor/honor.html";
                 }

@@ -58,7 +58,7 @@ $(function () {
                 ShowLoading("hide");
                 // LayerFun('modifySuccess');
                 SuccessPrompt("修改成功");
-                window.location.href = "test_security.html";
+                window.location.href = "security.html";
                 return;
             }
         }, function (response) {

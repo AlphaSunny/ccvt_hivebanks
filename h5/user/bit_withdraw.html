@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title class="i18n" name="ba_in"></title>
+    <title class="i18n" name="ba_out"></title>
     <script src="../assets/js/write_css.js"></script>
     <script src="js/user_write_css.js"></script>
-    <link rel="stylesheet/less" href="css/test_bit_recharge.less">
+    <link rel="stylesheet/less" href="css/bit_withdraw.less">
 </head>
 <body>
 
@@ -50,8 +50,8 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" id="recharge_menu">
-                            <li><a href="test_bit_recharge.html" class="i18n" name="ba_in"></a></li>
-                            <li><a href="test_currency_recharge.html" class="i18n" name="ca_in"></a></li>
+                            <li><a href="bit_recharge.html" class="i18n" name="ba_in"></a></li>
+                            <li><a href="currency_recharge.html" class="i18n" name="ca_in"></a></li>
                         </ul>
                     </div>
                 </li>
@@ -72,7 +72,7 @@
 
                 <!--<li><a href="transfer.html" class="i18n" name="transfer">Transfer</a></li>-->
                 <li>
-                    <a href="test_account.html" class="nav_a">
+                    <a href="account.html" class="nav_a">
                         <span><i class="iconfont icon-account"></i></span>
                         <span class="us_account" name=""></span>
                     </a>
@@ -114,19 +114,19 @@
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <ol class="breadcrumb">
-                <li><a href="test_account.html" class="i18n" name="account"></a></li>
-                <li class="active i18n" name="ba_in"></li>
+                <li><a href="account.html" class="i18n" name="account"></a></li>
+                <li class="active i18n" name="ba_out"></li>
             </ol>
         </div>
     </div>
 </div>
 
-<!--recharge-->
+<!--withdraw-->
 <section class="sections">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <h3 class="pcTitle bitAgentTitle i18n" name="ba_in"></h3>
+                <h3 class="pcTitle bitAgentTitle i18n" name="ba_out"></h3>
 
                 <div class="bit_box table-responsive table_bg">
                     <table class="table table-info table-hover">
@@ -137,7 +137,7 @@
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody id="bit_recharge_box">
+                        <tbody id="bit_withdraw_box">
                         <tr>
                             <td colspan="3">
                                 <img src="../assets/img/loading.gif" alt="">
@@ -146,6 +146,9 @@
                         </tr>
                         </tbody>
                     </table>
+                    <div class="text-right">
+                        <div id="pagination_glory" class="page"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -155,7 +158,7 @@
 <!--recharge code-->
 <section class="recharge-row margin-top-50">
     <div class="container" id="rechargeCodes">
-        <h3 class="pcTitle i18n" name="rechargeRecord"></h3>
+        <h3 class="pcTitle i18n" name="withdrawRecord"></h3>
 
         <!--BA recharge code-->
         <div class="row baRechargeCodeRow">
@@ -170,23 +173,38 @@
                             <th class="i18n" name="time"></th>
                         </tr>
                         </thead>
-                        <tbody id="baRechargeCodeTable" class='baRechargeCode'>
+                        <tbody id="baWithdrawCodesTable" class='baWithdrawCode'>
                         <tr>
                             <td colspan="4">
                                 <img src="../assets/img/loading.gif" alt="">
-                                <span class="i18n" name="tryingToLoad">tryingToLoad...</span>
+                                <span class="" name="">loading...</span>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                     <div class="text-right">
-                        <div id="pagination_glory" class="page"></div>
+                        <div id="pagination" class="page"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="notAuthentication" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h3 class="modal-title pcTitle i18n" name="withdrawalAuthenticate"></h3>
+            </div>
+            <div class="modal-footer">
+                <a href="authentication.html?withdraw" type="button" class="btn btn-primary width-100 i18n" name="authentication"></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--footer-->
 <div class="footer_box">
@@ -206,6 +224,6 @@
 <!--js-->
 <script src="../assets/js/write_js.js"></script>
 <script src="js/user_write_js.js"></script>
-<script src="js/test_bit_recharge.js"></script>
+<script src="js/test_bit_withdraw.js"></script>
 </body>
 </html>

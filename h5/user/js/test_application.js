@@ -115,7 +115,7 @@ $(function () {
         ApplicationGroup(token, group_name, group_type_id, group_introduction, src, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("申请成功");
-                window.location.href = "test_account.html";
+                window.location.href = "account.html";
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
