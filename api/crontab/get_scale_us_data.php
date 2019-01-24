@@ -39,7 +39,7 @@ foreach ($scales as $k=>$v){
     $db->query($sql);
     $list = $db->fetchAll();
     $all_list = array_merge($all_list,$list);
-    $rtn_ary[$v['after_scale']."_list"] = $list;
+    $rtn_ary["list_".$v['after_scale']] = $list;
 }
 $rtn_ary['all_list'] = $all_list;
 
