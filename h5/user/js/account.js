@@ -62,9 +62,9 @@ $(function () {
     });
 
     //modal modify us name
-    $(".modify_us_name").click(function () {
-       $("#modifyName").modal("show");
-    });
+    // $(".modify_us_name").click(function () {
+    //    $("#modifyName").modal("show");
+    // });
     //withdraw
     // $('.withdrawBtn, .navWithdraw').click(function () {
     //     if (base_amount <= 0) {
