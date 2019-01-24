@@ -7,7 +7,7 @@ $(function () {
             if (response.errcode == "0") {
                 var data = response.rows, tr = "", content = "";
                 if (data.length <= 0) {
-                    tr = "<tr><td colspan='4' class='text-center'>暂无数据</td></tr>";
+                    tr = "<tr><td colspan='5' class='text-center'>暂无数据</td></tr>";
                     $("#taskList").html(tr);
                     return;
                 }
