@@ -6,6 +6,8 @@ $(function () {
         console.log(is_email);
         SuccessPrompt("邮箱已绑定!");
         window.location.href = "test_security.html";
+    }else {
+        console.log("no11111")
     }
 
     let _email = '', emailList = '';
