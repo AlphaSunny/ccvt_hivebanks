@@ -18,7 +18,7 @@ GET参数
 */
 
 php_begin();
-$args = array('token','group_name','del','flirt','group_id','send_address','bind_account_notice','is_welcome');
+$args = array('token','group_name','del','flirt','group_id','send_address','bind_account_notice','is_welcome','group_introduction','src','ranking_change_switch');
 chk_empty_args('GET', $args);
 
 // 用户token
@@ -40,6 +40,14 @@ $is_welcome = get_arg_str('GET', 'is_welcome');
 // 欢迎语
 $welcome = get_arg_str('GET', 'welcome');
 
+// 群介绍
+$group_introduction = get_arg_str('GET', 'group_introduction');
+
+// 群二维码
+$src = get_arg_str('GET', 'src');
+
+// 积分排名变化的通知  1:通知   2：不通知
+$ranking_change_switch = get_arg_str('GET', 'ranking_change_switch');
 
 //验证token
 $us_id = check_token($token);
@@ -59,6 +67,9 @@ $date['send_address'] = $send_address;
 $date['bind_account_notice'] = $bind_account_notice;
 $date['is_welcome'] = $is_welcome;
 $date['welcome'] = $welcome;
+$date['dis'] = $group_introduction;
+$date['qr_code_address'] = $src;
+$date['ranking_change_switch'] = $ranking_change_switch;
 //修改群组
 $row = save_group($date);
 if (!$row){
