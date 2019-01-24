@@ -1,7 +1,7 @@
 $(function () {
     let token = GetCookie('user_token');
     GetUsAccount();
-    let is_email = GetVerifyBindingInformation(token,"email");
+    var is_email = GetVerifyBindingInformation(token,"email");
     if(is_email){
         console.log(is_email);
         SuccessPrompt("邮箱已绑定!");
