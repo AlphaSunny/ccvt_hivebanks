@@ -15,27 +15,27 @@ $(function () {
     });
 
     //get time
-    // var time = new Date().toLocaleString('chinese', {hour12: false});
+    // let time = new Date().toLocaleString('chinese', {hour12: false});
     // $(".time").text(time);
 
     // Icon link
-    // var link = $('<link rel="stylesheet" href="//at.alicdn.com/t/font_626151_s2e3q5g4f2.css">');
+    // let link = $('<link rel="stylesheet" href="//at.alicdn.com/t/font_626151_s2e3q5g4f2.css">');
     // $('head').append(link);
 
     //favicon
-    // var link_icon = $("<link rel='shortcut icon' href='../favicon.ico' />");
+    // let link_icon = $("<link rel='shortcut icon' href='../favicon.ico' />");
     // $('head').append(link_icon);
 
     // //cnt.js
-    // var cnt = $("<script src='../assets/js/cnt.js'></script>");
+    // let cnt = $("<script src='../assets/js/cnt.js'></script>");
     // cnt.appendTo($("head"));
 
 // Password strength verification
     $('#emailPass').keyup(function () {
         $('.email-pw-strength').css('display', 'block');
-        var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-        var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-        var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+        let strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+        let mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+        let enoughRegex = new RegExp("(?=.{6,}).*", "g");
 
         if (false == enoughRegex.test($(this).val())) {
             $('.emailRegisterBox #emailLevel').removeClass('pw-weak');
@@ -70,9 +70,9 @@ $(function () {
 
     $('#phonePass').keyup(function () {
         $('.phone-pw-strength').css('display', 'block');
-        var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-        var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-        var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+        let strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+        let mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+        let enoughRegex = new RegExp("(?=.{6,}).*", "g");
 
         if (false == enoughRegex.test($(this).val())) {
             $('.phoneRegisterBox #phoneLevel').removeClass('pw-weak');
@@ -127,13 +127,13 @@ $(function () {
 
 //Get User Account
 function GetUsAccount() {
-    var us_account = GetCookie('us_account');
+    let us_account = GetCookie('us_account');
     $(".us_account").text(us_account);
 }
 
 //Data acquisition is empty
 function GetDataEmpty(element, num) {
-    var tr = '';
+    let tr = '';
     tr = '<tr>' +
         '<td colspan="' + num + '" style="line-height: unset!important; text-align: center"><i class="iconfont icon-noData" style="font-size: 10rem"></i></td>' +
         '</tr>';
@@ -143,7 +143,7 @@ function GetDataEmpty(element, num) {
 
 //Data acquisition failed
 function GetDataFail(element, num) {
-    var tr = '';
+    let tr = '';
     tr = '<tr>' +
         '<td colspan="' + num + '" style="line-height: unset!important;"><i class="iconfont icon-loadFai" style="font-size: 10rem"></i></td>' +
         '</tr>';
@@ -154,22 +154,22 @@ function GetDataFail(element, num) {
 function fmoney(s, n) {
     n = n > 0 && n <= 20 ? n : 2;
     s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";//Change the number of n here to determine the decimal place to keep.
-    var l = s.split(".")[0].split("").reverse(),
+    let l = s.split(".")[0].split("").reverse(),
         r = s.split(".")[1];
-    var t = "";
-    for (var i = 0; i < l.length; i++) {
+    let t = "";
+    for (let i = 0; i < l.length; i++) {
         t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
     }
     return t.split("").reverse().join("") + "." + r.substring(0, 2);//Keep 2 decimal places. If you want to change, change the last digit of substring.
 };
 
 //Get phone verification code
-var timer = null;
+let timer = null;
 
 function GetPhoneCodeFun(bind_type, $this, cfm_code) {
     //Get country code
-    var country_code = $('.selected-dial-code').text().split("+")[1];
-    var cellphone = $('#phone').val();
+    let country_code = $('.selected-dial-code').text().split("+")[1];
+    let cellphone = $('#phone').val();
     if (cellphone == '') {
         // LayerFun('phoneNotEmpty');
         return;
@@ -190,7 +190,7 @@ function GetPhoneCodeFun(bind_type, $this, cfm_code) {
     });
 };
 
-var countdown = 60;
+let countdown = 60;
 
 function setTime($this) {
     $('.sixty').text(countdown + "s").fadeIn('fast');
@@ -212,9 +212,9 @@ function setTime($this) {
 
 //email address
 function EmailList() {
-    var emailList = {
+    let emailList = {
         'qq.com': 'http://mail.qq.com',
-        'google.com': 'http://mail.google.com',
+        'gmail.com': 'http://mail.google.com',
         'sina.com': 'http://mail.sina.com.cn',
         '163.com': 'http://mail.163.com',
         '126.com': 'http://mail.126.com',
@@ -251,9 +251,9 @@ function LayerFun(type) {
 }
 
 function GetUserAgent() {
-    var browser = {
+    let browser = {
         versions: function () {
-            var u = navigator.userAgent, app = navigator.appVersion;
+            let u = navigator.userAgent, app = navigator.appVersion;
             return {   //Mobile terminal browser version information
                 trident: u.indexOf('Trident') > -1, //IE kernel
                 presto: u.indexOf('Presto') > -1, //opera kernel
@@ -270,7 +270,7 @@ function GetUserAgent() {
         language: (navigator.browserLanguage || navigator.language).toLowerCase()
     };
     if (browser.versions.mobile) {//Determine if the mobile device is open
-        var ua = navigator.userAgent.toLowerCase();//Get the object for judgment
+        let ua = navigator.userAgent.toLowerCase();//Get the object for judgment
         if (ua.match(/MicroMessenger/i) == "micromessenger") {
             //Open on WeChat
             return 'wx';
@@ -286,7 +286,7 @@ function GetUserAgent() {
 }
 
 //show loading
-var index_loading = "";
+let index_loading = "";
 
 function ShowLoading(type) {
     if (type == "show") {
