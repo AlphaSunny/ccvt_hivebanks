@@ -34,6 +34,13 @@ function GetGroupListNav() {
             } else {
                 $(".bind_account_notice").val("2").removeClass("active");
             }
+
+            if (data.ranking_change_switch == "1") {
+                $(".ranking_change_switch").val("1").addClass("active");
+            } else {
+                $(".ranking_change_switch").val("2").removeClass("active");
+            }
+
             if (data.is_welcome == "1") {
                 $(".is_welcome").val("1").addClass("active");
                 $(".welcome_text").text(data.welcome).removeClass("none");
