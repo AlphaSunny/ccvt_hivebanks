@@ -209,6 +209,7 @@ $(function () {
             contentType: false,
             processData: false,
             success: function (response) {
+                ShowLoading("hide");
                 let data = JSON.parse(response);
                 if (data.errcode == '0') {
                     src = data.url;
@@ -244,7 +245,6 @@ $(function () {
             // show img
             $("#idPositive").attr("src", objUrl);
         }
-        ShowLoading("hide");
 
         let formData = new FormData($("#form0")[0]);
         formData.append("file", this.files[0]);
