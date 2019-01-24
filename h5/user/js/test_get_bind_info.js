@@ -1,4 +1,4 @@
-function GetVerifyBindingInformation(type) {
+function GetVerifyBindingInformation(token, type) {
     BindingInformation(token, function (response) {
         let data = response.rows;
         $.each(data, function (i, val) {
