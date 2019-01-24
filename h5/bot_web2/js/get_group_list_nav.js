@@ -15,6 +15,7 @@ function GetGroupListNav() {
             $(".message_number").text(data.messages_number);
             $(".members_number").text(data.members_number);
             $(".qr_code_address").attr("src", data.qr_code_address);
+            $("#group_introduction").val(data.dis);
             if (data.is_admin_del == "1") {
                 $(".is_admin_del").val("1").addClass("active");
             } else {
