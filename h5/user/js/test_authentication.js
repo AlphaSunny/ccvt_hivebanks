@@ -243,6 +243,7 @@ $(function () {
         if (objUrl) {
             // show img
             $("#idPositive").attr("src", objUrl);
+            ShowLoading("hide");
         }
 
         let formData = new FormData($("#form0")[0]);
@@ -297,7 +298,6 @@ $(function () {
         } else if (window.webkitURL != undefined) { // webkit or chrome
             url = window.webkitURL.createObjectURL(file);
         }
-        ShowLoading("hide");
         return url;
     }
 });
