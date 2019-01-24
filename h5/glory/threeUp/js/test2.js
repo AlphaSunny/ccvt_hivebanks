@@ -51,9 +51,9 @@ $(function () {
             dataType: "json",
             success: function (res) {
                 let data = res.all_list;
-                one_list = res + ".1_list";
-                two_list = res + ".2_list";
-                three_list = res + ".3_list";
+                one_list = res.list_1;
+                two_list = res.list_2;
+                three_list = res.list_3;
                 console.log(one_list);
                 console.log("length:" + three_list.length);
                 item_one = Math.ceil(one_list.length / ul_num);
