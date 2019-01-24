@@ -21,7 +21,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand toIndexBtn" href="javascript:;">
+            <a class="navbar-brand toIndexBtn nav_a" href="javascript:;">
                 <img src="../assets/img/ccvt_logo.png" alt="">
             </a>
         </div>
@@ -29,30 +29,53 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <div class="dropdown">
-                        <a id="dLabel" type="button" data-toggle="dropdown">
+                        <a class="nav_a" id="dLabel" type="button" data-toggle="dropdown">
                             <span class="curr_language"></span>
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" id="language">
-                            <li title="zh-CN" class="toggleLanguage">简体中文</li>
-                            <li title="en" class="toggleLanguage">English</li>
-                            <li title="ja" class="toggleLanguage">Japanese</li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="zh-CN">简体中文</a></li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="en">English</a></li>
+                            <li><a href="javascript:;" class="toggleLanguage" title="ja">Japanese</a></li>
                         </ul>
                     </div>
                 </li>
-                <!--<li><a href="#" class="i18n" name="recharge">Recharge</a></li>-->
-                <!--<li><a href="#" class="i18n" name="withdraw">Withdraw</a></li>-->
-                <li><a href="recharge.html" class="i18n" name="recharge"></a></li>
-                <li><a href="javascript:;" class="i18n navWithdraw" name="withdraw"></a></li>
+
+                <li>
+                    <div class="dropdown">
+                        <a class="nav_a" id="recharge_dropdown" type="button" data-toggle="dropdown">
+                            <span class="i18n" name="recharge"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="recharge_menu">
+                            <li><a href="test_bit_recharge.html" class="i18n" name="ba_in"></a></li>
+                            <li><a href="test_currency_recharge.html" class="i18n" name="ca_in"></a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <a class="nav_a" id="withdraw_dropdown" type="button" data-toggle="dropdown">
+                            <span class="i18n" name="withdraw"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="withdraw_menu">
+                            <li><a href="javascript:;" class="nav_ba_withdraw i18n" name="ba_out"></a></li>
+                            <li><a href="javascript:;" class="nav_ca_withdraw i18n" name="ca_out"></a></li>
+
+                        </ul>
+                    </div>
+                </li>
 
                 <!--<li><a href="transfer.html" class="i18n" name="transfer">Transfer</a></li>-->
                 <li>
-                    <a href="account.html">
+                    <a href="account.html" class="nav_a">
                         <span><i class="iconfont icon-account"></i></span>
                         <span class="us_account" name=""></span>
                     </a>
                 </li>
-                <li><a href="../index.html" class="logout i18n" name="logout"></a></li>
+                <li><a href="../index.html" class="logout i18n nav_a" name="logout"></a></li>
             </ul>
         </div>
     </div>
