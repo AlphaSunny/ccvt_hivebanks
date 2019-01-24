@@ -470,7 +470,7 @@ function check_group_name($us_id,$group_name)
 //
 // 返回: rows          最新信息数组
 //======================================
-function application_group($us_id,$group_name,$group_type_id)
+function application_group($us_id,$group_name,$group_type_id,$group_introduction,$src)
 {
     $db = new DB_COM();
     $sql = "select * from bot_group WHERE us_id='{$us_id}'";
@@ -478,7 +478,7 @@ function application_group($us_id,$group_name,$group_type_id)
     $row = $db->fetchRow();
     if ($row){
         $time = time();
-        $sql = "update bot_group set name='{$group_name}',uptime='{$time}' WHERE id='{$row['id']}'";
+        $sql = "update bot_group set name='{$group_name}',dis='{$group_introduction}',qr_code_address=>'{$src}',uptime='{$time}' WHERE id='{$row['id']}'";
         $db->query($sql);
         if (!$db->affectedRows()){
             return false;
@@ -492,6 +492,8 @@ function application_group($us_id,$group_name,$group_type_id)
         $db->query($sql);
         $date['invite_code'] = $db->getField($sql,'us_nm');
         $date['is_audit'] = 2;
+        $date['dis'] = $group_introduction;
+        $date['qr_code_address'] = $src;
         $sql = $db->sqlInsert("bot_group", $date);
         $q_id = $db->query($sql);
         if (!$q_id){

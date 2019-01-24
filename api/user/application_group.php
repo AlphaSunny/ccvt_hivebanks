@@ -18,7 +18,7 @@ GET参数
 
 */
 php_begin();
-$args = array('token','group_name','group_type_id');
+$args = array('token','group_name','group_type_id','group_introduction','src');
 chk_empty_args('GET', $args);
 
 // 用户TOKEN
@@ -30,6 +30,11 @@ $group_name = get_arg_str('GET','group_name');
 //群类型id
 $group_type_id = get_arg_str('GET','group_type_id');
 
+//简介
+$group_introduction = get_arg_str('GET','group_introduction');
+//群二维码地址
+$src = get_arg_str('GET','src');
+
 //验证token
 $us_id = check_token($token);
 
@@ -40,7 +45,7 @@ if ($is_name){
 }
 
 //设置开关和金额
-$row = application_group($us_id,$group_name,$group_type_id);
+$row = application_group($us_id,$group_name,$group_type_id,$group_introduction,$src);
 if (!$row){
     exit_error("109","错误");
 }
