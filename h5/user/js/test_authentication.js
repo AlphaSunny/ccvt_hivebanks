@@ -238,12 +238,10 @@ $(function () {
      */
     let src1 = '', src2 = '';
     $('#file0').on('change', function () {
-        ShowLoading("show");
         let objUrl = getObjectURL(this.files[0]);
         if (objUrl) {
             // show img
             $("#idPositive").attr("src", objUrl);
-            ShowLoading("hide");
         }
 
         let formData = new FormData($("#form0")[0]);
