@@ -25,7 +25,7 @@ error_reporting(E_ALL | E_STRICT);
 $db = new DB_COM();
 $unit = get_la_base_unit();
 
-$times = '2018-12-2 00:00:00';
+$times = '2018-12-29 19:59:03';
 
 $sql = "select after_scale from us_scale_changes WHERE ctime>'{$times}' group BY after_scale ORDER by after_scale DESC ";
 $db->query($sql);
