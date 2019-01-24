@@ -1,10 +1,10 @@
 $(function () {
     //get token
-    var token = GetCookie('user_token');
+    let token = GetCookie('user_token');
     GetUsAccount();
 
     // Basic user information
-    var submit_name = '';
+    let submit_name = '';
     UserInformation(token, function (response) {
         if (response.errcode == '0') {
             submit_name = response.rows.us_account;
@@ -16,7 +16,7 @@ $(function () {
     });
 
     //Get the declaration list
-    var _li = '';
+    let _li = '';
     function FaultProcess(submit_info, log_status) {
 
         if(log_status == 'unProcessed' || log_status == 'processing'){
@@ -37,17 +37,17 @@ $(function () {
     function GetFaultReportFun() {
         GetFaultReportList(token, function (response) {
             if (response.errcode == '0') {
-                var data = response.rows, li = '';
+                let data = response.rows, li = '';
                 if (data == false) {
                     $('.noInformation').show();
                 }
                 $.each(data, function (i, val) {
                     if(data[i].log_status == '0'){
-                        var log_status = 'unProcessed',
+                        let log_status = 'unProcessed',
                             submit_info = data[i].submit_info;
                         FaultProcess(submit_info, log_status);
                     }else if(data[i].log_status == '9'){
-                        var log_status = 'processed';
+                        let log_status = 'processed';
                             li += '<li class="margin-bottom-2 faultLi">' +
                                 '<p>' +
                                 '<span class="font-weight-400 i18n" name="declarationInformation">Declaration Information</span>:' +
@@ -73,7 +73,7 @@ $(function () {
                         $('.faultReportList').append(li);
                         execI18n();
                     }else {
-                        var log_status = 'processing',
+                        let log_status = 'processing',
                             submit_info = data[i].submit_info;
                         FaultProcess(submit_info, log_status);
                     }
@@ -91,11 +91,11 @@ $(function () {
     GetFaultReportFun();
 
     //Determine what device is on
-    var end_type = GetUserAgent();
+    let end_type = GetUserAgent();
 
-    var sub_id = 'us';
+    let sub_id = 'us';
     $('.faultReportBtn').click(function () {
-        var submit_info = $('#faultReportInfo').val();
+        let submit_info = $('#faultReportInfo').val();
         if (submit_info.length <= 0) {
             LayerFun('pleaseEnterFaultReportInfo');
             return;

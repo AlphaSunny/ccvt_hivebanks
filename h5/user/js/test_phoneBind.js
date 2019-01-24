@@ -1,9 +1,9 @@
 $(function () {
     //get user token
-    var token = GetCookie('user_token');
+    let token = GetCookie('user_token');
     GetUsAccount();
 
-    var wi_bindPhone = GetQueryString('wi_bindPhone');
+    let wi_bindPhone = GetQueryString('wi_bindPhone');
 
     //Get graphic verification code
     GetImgCode();
@@ -15,9 +15,9 @@ $(function () {
 
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
-        var country_code = $('.selected-dial-code').text().split("+")[1];
-        var cellphone = $('#phone').val();
-        var bind_type = '2', cfm_code = $('#phoneCfmCode').val();
+        let country_code = $('.selected-dial-code').text().split("+")[1];
+        let cellphone = $('#phone').val();
+        let bind_type = '2', cfm_code = $('#phoneCfmCode').val();
 
         if (cellphone == '') {
             // LayerFun('phoneNotEmpty');
@@ -36,7 +36,7 @@ $(function () {
 
     $('.phoneEnable').click(function () {
         // Get country code
-        var country_code = $('.selected-dial-code').text().split("+")[1],
+        let country_code = $('.selected-dial-code').text().split("+")[1],
             text_type = '4',
             text = country_code + '-' + $('#phone').val(),
             text_hash = $('#phoneCode').val();
@@ -50,7 +50,7 @@ $(function () {
             return;
         }
 
-        var $this = $(this), btnText = $this.text();
+        let $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
         ShowLoading("show");
         TextBind(token, text_type, text, text_hash, function (response) {
