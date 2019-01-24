@@ -41,6 +41,7 @@ foreach ($scales as $k=>$v){
     $all_list = array_merge($all_list,$list);
     $rtn_ary[$v['after_scale']."_list"] = $list;
 }
+$rtn_ary['all_list'] = $all_list;
 
 
 ////1
