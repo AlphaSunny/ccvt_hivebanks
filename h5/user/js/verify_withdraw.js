@@ -1,13 +1,13 @@
 $(function () {
     let token = GetCookie('user_token');
     function verifyWithdraw() {
-        let base_amount = "";
+        // let base_amount = "";
         UserInformation(token, function (response) {
             if (response.errcode == "0") {
                 let data = response.rows;
-                base_amount = data.base_amount;
-                console.log(base_amount);
-                return base_amount;
+                // base_amount = data.base_amount;
+                // console.log(base_amount);
+                return data.base_amount;
             }
         }, function (response) {
             ErrorPrompt(response);
