@@ -1,5 +1,5 @@
 $(function () {
-    var token = GetCookie("user_token");
+    let token = GetCookie("user_token");
     $(".edit_group_name").click(function () {
         $(".input_box").removeClass("none");
     });
@@ -12,9 +12,9 @@ $(function () {
         $(".welcome_text_box").addClass("none");
     });
 
-    var group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "",
+    let group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "",
         is_welcome = "", welcome = "";
-    var group_id = GetCookie("group_id");
+    let group_id = GetCookie("group_id");
 
     function EditGroupFun() {
         EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, function (response) {
@@ -61,7 +61,7 @@ $(function () {
 
     //开关监听
     $(".switch").on("change", function () {
-        var id = $(this).attr("id");
+        let id = $(this).attr("id");
         SwitchChangeFun(id);
     });
 
