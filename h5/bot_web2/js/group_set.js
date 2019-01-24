@@ -13,11 +13,11 @@ $(function () {
     });
 
     let group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "",
-        is_welcome = "", welcome = "", group_introduction = "";
+        is_welcome = "", welcome = "", group_introduction = "", src = "";
     let group_id = GetCookie("group_id");
 
     function EditGroupFun() {
-        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, group_introduction, function (response) {
+        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, group_introduction, src, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("设置成功");
                 $(".welcome_text_box,.input_box").addClass("none");
@@ -82,10 +82,7 @@ $(function () {
     }
 
     //修改群二维码
-    let src = "";
-    // $(".qr_img_box").hover(function () {
-    //     $(".mask").removeClass("none");
-    // });
+    let _src = "";
 
     $("#file").on("change", function () {
         let objUrl = getObjectURL(this.files[0]);
@@ -97,11 +94,12 @@ $(function () {
         let formData = new FormData($("#form")[0]);
         formData.append("file", this.files[0]);
         formData.append("key_code", key_code);
-        src = UpLoadImg(formData);
+        _src = UpLoadImg(formData);
+        GetVal(_src);
     });
 
     //获取参数
-    function GetVal() {
+    function GetVal(type) {
         group_name = $(".group_name_input").val();
         del = $(".is_admin_del").val();
         flirt = $(".is_flirt").val();
@@ -111,6 +109,11 @@ $(function () {
         is_welcome = $(".is_welcome").val();
         welcome = $(".welcome").val();
         group_introduction = $(".ranking_change_switch").val();
+        if (type) {
+            src = type;
+        } else {
+            src = $(".qr_code_address").attr("src");
+        }
         EditGroupFun();
     }
 
