@@ -25,6 +25,7 @@ $(function () {
 
     //Return images information
     function UpLoadImg(formData) {
+        ShowLoading("show");
         let src = '';
         $.ajax({
             url: url + '/api/plugin/upload_file.php',
@@ -39,6 +40,7 @@ $(function () {
                 if (data.errcode == '0') {
                     src = data.url;
                 }
+                ShowLoading("hide");
             },
             error: function (response) {
                 ErrorPrompt(response.errmsg);
