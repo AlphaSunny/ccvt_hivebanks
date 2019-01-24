@@ -1,3 +1,7 @@
-.edit_group_name{
+.edit_group_name {
     margin: 0 5px;
+}
+
+.qr_code_address {
+    width: 100%;
 }
