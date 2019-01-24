@@ -13,6 +13,7 @@
     document.write(jsHeader + "user/language/language.js" + jsFooter);
     document.write(jsHeader + "user/js/common.js" + jsFooter);
     document.write(jsHeader + "user/js/test_main.js" + jsFooter);
+    document.write(jsHeader + "user/js/verify_withdraw.js" + jsFooter);
     document.write(jsHeader + "user/js/test_get_bind_info.js" + jsFooter);
     document.write(jsHeader + "user/js/logout.js" + jsFooter);
 })();

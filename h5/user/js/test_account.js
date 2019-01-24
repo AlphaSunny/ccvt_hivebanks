@@ -61,21 +61,6 @@ $(function () {
         }
     });
 
-    //withdraw
-    $('.nav_ba_withdraw').click(function () {
-        if (base_amount <= 0) {
-            $('#noBalanceModal').modal('show');
-            return;
-        }
-        window.location.href = "bit_withdraw.html";
-    });
-    $('.nav_ca_withdraw').click(function () {
-        if (base_amount <= 0) {
-            $('#noBalanceModal').modal('show');
-            return;
-        }
-        window.location.href = "currency_withdraw.html";
-    });
 
     //transferBtn
     $(".transferBtn").click(() => {
