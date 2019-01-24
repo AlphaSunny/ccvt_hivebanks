@@ -1039,10 +1039,7 @@ function wechat_is_bind($wechat){
     $sql = "select * from us_base WHERE wechat='{$wechat}'";
     $db->query($sql);
     $row = $db->fetchRow();
-    if (!$row) {
-        return false;
-    }
-    return true;
+    return $row;
 }
 
 //======================================
