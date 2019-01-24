@@ -13,6 +13,8 @@ $(function () {
         });
     }
 
+    
+
 //withdraw
     $('.nav_ba_withdraw').click(function () {
         let base_amount = verifyWithdraw();
