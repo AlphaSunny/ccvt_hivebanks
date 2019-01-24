@@ -105,12 +105,6 @@ $(function () {
         return true;
     });
 
-//Logout to clear cookies
-    $('.logout').click(function () {
-        DelCookie('user_token');
-        window.location.href = '../ccvtContract.html';
-    });
-
 // scroll Up
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -164,51 +158,51 @@ function fmoney(s, n) {
 };
 
 //Get phone verification code
-let timer = null;
+// let timer = null;
 
-function GetPhoneCodeFun(bind_type, $this, cfm_code) {
-    //Get country code
-    let country_code = $('.selected-dial-code').text().split("+")[1];
-    let cellphone = $('#phone').val();
-    if (cellphone == '') {
-        // LayerFun('phoneNotEmpty');
-        return;
-    }
-    GetPhoneCode(cellphone, country_code, bind_type, cfm_code, function (response) {
-        if (response.errcode == '0') {
-            // LayerFun('sendSuccess');
-            layer.msg("发送成功", {icon: 1});
-        }
-    }, function (response) {
-        clearInterval(timer);
-        $this.attr("disabled", false);
-        LayerFun(response.errcode);
-        $('.sixty').fadeOut('fast');
-        $('.getCodeText').fadeIn("fast");
-        GetImgCode();
-        return;
-    });
-};
+// function GetPhoneCodeFun(bind_type, $this, cfm_code) {
+//     //Get country code
+//     let country_code = $('.selected-dial-code').text().split("+")[1];
+//     let cellphone = $('#phone').val();
+//     if (cellphone == '') {
+//         // LayerFun('phoneNotEmpty');
+//         return;
+//     }
+//     GetPhoneCode(cellphone, country_code, bind_type, cfm_code, function (response) {
+//         if (response.errcode == '0') {
+//             // LayerFun('sendSuccess');
+//             layer.msg("发送成功", {icon: 1});
+//         }
+//     }, function (response) {
+//         clearInterval(timer);
+//         $this.attr("disabled", false);
+//         LayerFun(response.errcode);
+//         $('.sixty').fadeOut('fast');
+//         $('.getCodeText').fadeIn("fast");
+//         GetImgCode();
+//         return;
+//     });
+// };
 
-let countdown = 60;
-
-function setTime($this) {
-    $('.sixty').text(countdown + "s").fadeIn('fast');
-    $('.getCodeText').fadeOut();
-    $this.attr("disabled", true);
-    timer = setInterval(function () {
-        if (countdown > 0) {
-            countdown--;
-            $('.sixty').text(countdown + "s");
-        } else {
-            clearInterval(timer);
-            $this.attr("disabled", false);
-            $('.sixty').fadeOut('fast');
-            $('.getCodeText').fadeIn();
-            return;
-        }
-    }, 1000);
-}
+// let countdown = 60;
+//
+// function setTime($this) {
+//     $('.sixty').text(countdown + "s").fadeIn('fast');
+//     $('.getCodeText').fadeOut();
+//     $this.attr("disabled", true);
+//     timer = setInterval(function () {
+//         if (countdown > 0) {
+//             countdown--;
+//             $('.sixty').text(countdown + "s");
+//         } else {
+//             clearInterval(timer);
+//             $this.attr("disabled", false);
+//             $('.sixty').fadeOut('fast');
+//             $('.getCodeText').fadeIn();
+//             return;
+//         }
+//     }, 1000);
+// }
 
 //email address
 function EmailList() {
