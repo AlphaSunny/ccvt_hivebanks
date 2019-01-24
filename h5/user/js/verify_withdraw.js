@@ -5,6 +5,7 @@ $(function () {
         UserInformation(token, function (response) {
             if (response.errcode == "0") {
                 let base_amount = response.rows.base_amount;
+                console.log(base_amount);
                 if (base_amount <= 0) {
                     // $('#noBalanceModal').modal('show');
                     WarnPrompt("账户余额不足，无法进行提现");
