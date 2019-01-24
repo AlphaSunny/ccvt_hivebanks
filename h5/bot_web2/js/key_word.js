@@ -1,17 +1,17 @@
 $(function () {
 
-    var token = GetCookie('user_token');
-    var group_id = GetCookie('group_id');
+    let token = GetCookie('user_token');
+    let group_id = GetCookie('group_id');
 
     //获取关键字列表
-    var search_keywords = "", limit = 10, offset = 0;
+    let search_keywords = "", limit = 10, offset = 0;
 
     function GetKeyWordListFun(search_keywords, limit, offset) {
-        var tr = "", totalPage = "", count = "", _switch = "";
+        let tr = "", totalPage = "", count = "", _switch = "";
         GetKeyWordList(token, search_keywords, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
-                var data = response.rows;
+                let data = response.rows;
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='4'>暂无数据</td></tr>";
                     return;
@@ -86,13 +86,13 @@ $(function () {
         $("#myModalLabel").text("添加AI关键字");
         $(".addSubBtn").removeClass("none");
         $(".editSubBtn").addClass("none");
-        var is_audit = "2";
+        let is_audit = "2";
         // GetGroupListFun(is_audit);
         $("#keyWordModal").modal("show");
     });
 
     //选择文本或者图片
-    var send_type = 1;
+    let send_type = 1;
     $("input[type='radio']").change(function () {
         if ($(this).hasClass("text")) {
             send_type = 1;
@@ -115,7 +115,7 @@ $(function () {
     //上传文件到服务器
     function UpLoadImg(formData) {
         ShowLoading("show");
-        var src = '';
+        let src = '';
         $.ajax({
             url: url + '/api/plugin/upload_file.php',
             type: 'POST',
@@ -126,7 +126,7 @@ $(function () {
             processData: false,
             success: function (response) {
                 ShowLoading("hide");
-                var data = JSON.parse(response);
+                let data = JSON.parse(response);
                 if (data.errcode == '0') {
                     src = data.url;
                 }
@@ -140,7 +140,7 @@ $(function () {
     }
 
     //get key_code
-    var key_code = "";
+    let key_code = "";
     GetKeyCode(token, function (response) {
         if (response.errcode == '0') {
             key_code = response.key_code;
@@ -151,7 +151,7 @@ $(function () {
 
     //获取本地图片地址并显示
     function getObjectURL(file) {
-        var url = null;
+        let url = null;
         if (window.createObjectURL != undefined) { // basic
             url = window.createObjectURL(file);
         } else if (window.URL != undefined) { // mozilla(firefox)
@@ -163,13 +163,13 @@ $(function () {
     }
 
     //选择图片
-    var src = "";
+    let src = "";
     $("#file").on("change", function () {
-        var formData = new FormData($("#upload_image")[0]);
-        var objUrl = getObjectURL(this.files[0]);
+        let formData = new FormData($("#upload_image")[0]);
+        let objUrl = getObjectURL(this.files[0]);
         formData.append("file", this.files[0]);
         formData.append("key_code", key_code);
-        var _this_size = this.files[0].size;
+        let _this_size = this.files[0].size;
         if (_this_size > 500000) {
             layer.msg("图片不能大于500KB", {icon: 0});
             return;
@@ -184,8 +184,8 @@ $(function () {
 
     //添加关键字
     $(".addSubBtn").click(function () {
-        var ask = $("#key_word").val();
-        var answer = "";
+        let ask = $("#key_word").val();
+        let answer = "";
         //文本内容判断
         if (send_type == 1) {
             answer = $("#key_word_content").val();
@@ -219,10 +219,10 @@ $(function () {
     });
 
     // 编辑-
-    var key_id = "";
+    let key_id = "";
     $(document).on("click", ".editBtn", function () {
-        var ask = $(this).parents("tr").find(".ask").text();
-        var answer = $(this).parents("tr").find(".answer").text();
+        let ask = $(this).parents("tr").find(".ask").text();
+        let answer = $(this).parents("tr").find(".answer").text();
         send_type = $(this).parents("tr").find(".send_type").text();
         key_id = $(this).parents("tr").find(".id").text();
         $("#myModalLabel").text("编辑AI关键字");
@@ -253,8 +253,8 @@ $(function () {
 
     //确认编辑
     $(".editSubBtn").click(function () {
-        var ask = $("#key_word").val();
-        var answer = "";
+        let ask = $("#key_word").val();
+        let answer = "";
         //文本内容判断
         if (send_type == 1) {
             answer = $("#key_word_content").val();
@@ -289,7 +289,7 @@ $(function () {
 
     //删除关键词
     $(document).on("click", ".delBtn", function () {
-        var key_id = $(this).parents("tr").find(".id").text();
+        let key_id = $(this).parents("tr").find(".id").text();
         layer.confirm('确定删除？', {
             title: "重要提示",
             btn: ['确定', '取消'] //按钮
@@ -319,11 +319,11 @@ $(function () {
 
     //每一个关键字设置开关
     $(document).on("change", ".keyWordItemSwitch", function () {
-        var _this = $(this);
-        var val = $(this).val();
-        var key_id = $(this).attr("id");
-        var status = "2", group_id = "";
-        var _switch = "";
+        let _this = $(this);
+        let val = $(this).val();
+        let key_id = $(this).attr("id");
+        let status = "2", group_id = "";
+        let _switch = "";
         if (val == "1") {
             _switch = "2";
         } else {
@@ -334,11 +334,11 @@ $(function () {
 
     //设置总开关
     $(".keyWordSwitch").click(function () {
-        var _this = $(this);
-        var val = $(this).val();
-        var key_id = "";
-        var status = "1", group_id = GetCookie("group_id");
-        var _switch = "";
+        let _this = $(this);
+        let val = $(this).val();
+        let key_id = "";
+        let status = "1", group_id = GetCookie("group_id");
+        let _switch = "";
         if (val == "1") {
             _switch = "2";
         } else {

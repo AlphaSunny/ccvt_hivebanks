@@ -1,16 +1,20 @@
 $(function () {
-    var token = GetCookie("user_token");
-    var group_id = GetCookie("group_id");
+    let token = GetCookie("user_token");
+    let group_id = GetCookie("group_id");
 
     //获取群成员列表
-    var limit = 10, offset = 0, status = "-1", loading = "";
+    let limit = 10, offset = 0, status = "-1", loading = "";
 
     function GetGroupMemberFun(token, limit, offset, status) {
-        var tr = "", totalPage = "", count = "";
+        let tr = "", totalPage = "", count = "";
         GetGroupMember(token, group_id, limit, offset, status, function (response) {
             layer.close(loading);
             if (response.errcode == "0") {
-                var data = response.rows;
+                let data = response.rows;
+                if(!data){
+                    $("#groupMember").html("<tr><td colspan='2'>暂无数据</td></tr>");
+                    return;
+                }
                 totalPage = Math.floor(response.total / limit);
                 if (totalPage <= 1) {
                     count = 1;
