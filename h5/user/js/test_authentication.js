@@ -209,6 +209,7 @@ $(function () {
             contentType: false,
             processData: false,
             success: function (response) {
+                ShowLoading("hide");
                 var data = JSON.parse(response);
                 if (data.errcode == '0') {
                     src = data.url;
@@ -248,6 +249,7 @@ $(function () {
         formData.append("file", this.files[0]);
         formData.append("key_code", key_code);
         src1 = UpLoadImg(formData);
+        ShowLoading("show");
     });
     //Upload back
     $('#file1').on('change', function () {
