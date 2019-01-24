@@ -94,8 +94,8 @@ if ($text_type == 'email') {
     $des = new Des();
     $body = $url . "?cfm_hash=";
     $encryption_code = $us_id . ',' . $text . ',' . $timestamp . ',' . 'email' . ',' . $salt;
-    $body .= urlencode($des->encrypt($encryption_code, $key));
-var_dump(urlencode($des->encrypt($encryption_code, $key)));die;
+    $body .= urlencode($des->encrypt($encryption_code, KEY));
+var_dump(urlencode($des->encrypt($encryption_code, KEY)));die;
     require_once "db/la_admin.php";
     $key_code = get_la_admin_info()["key_code"];
 
