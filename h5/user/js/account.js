@@ -61,14 +61,18 @@ $(function () {
         }
     });
 
-    //withdraw
-    $('.withdrawBtn, .navWithdraw').click(function () {
-        if (base_amount <= 0) {
-            $('#noBalanceModal').modal('show');
-            return;
-        }
-        window.location.href = "withdraw.html";
+    //modal modify us name
+    $(".modify_us_name").click(function () {
+       $("#modifyName").modal("show");
     });
+    //withdraw
+    // $('.withdrawBtn, .navWithdraw').click(function () {
+    //     if (base_amount <= 0) {
+    //         $('#noBalanceModal').modal('show');
+    //         return;
+    //     }
+    //     window.location.href = "withdraw.html";
+    // });
 
     //transferBtn
     $(".transferBtn").click(() => {
