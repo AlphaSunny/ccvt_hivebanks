@@ -194,7 +194,7 @@ $(function () {
         }
 
         // $('.idPhotoFormBox').fadeToggle('fast');
-        $('#idPhotoBindModal').modal('show');
+        $('.uploadImgBox').removeClass("none");
     });
 
     //Return images information
