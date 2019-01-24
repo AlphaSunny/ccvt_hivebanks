@@ -138,6 +138,21 @@
                     <select name="group_type" id="group_type" class="form-control"></select>
                 </div>
                 <div>
+                    <label for="group_introduction">群介绍</label>
+                    <textarea name="group_introduction" id="group_introduction" cols="30" rows="8"></textarea>
+                </div>
+                <div>
+                    <div>上传群二维码或者群主二维码</div>
+                    <div>
+                        <form method="get" enctype="multipart/form-data">
+                            <button class="btn btn-success">
+                                <input type="file" id="uploadFileInput">
+                                <span>选择图片</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div>
                     <button class="btn btn-success width-100 bind_group_btn i18n" name="determine"></button>
                 </div>
             </div>
