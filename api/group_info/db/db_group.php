@@ -16,6 +16,7 @@ function  get_search_list()
     if ($glory_number_list){
         foreach ($glory_number_list as $k=>$v){
             echo $k[$v];
+            die;
             if ($k==0){
                 $glory_number_list[$k]['glory_number'] = 1;
             }
