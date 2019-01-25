@@ -2,7 +2,9 @@ $(function () {
     let wechat = "", limit = 50, offset = 0, search_content = "";
 
     let group_id = GetQueryString("group_id");
-    let group_name = GetQueryString("group_name");
+    let group_name = decodeURI(GetQueryString("group_name"));
+    $(".person_name").text(group_name);
+    GetWeChatFun(wechat, group_id, search_content, limit, offset);
 
     //显示个人聊天内容
     $(document).on("click", ".wechat", function () {

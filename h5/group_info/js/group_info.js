@@ -140,6 +140,6 @@ $(function () {
     $(".look_chat_recode").click(function () {
         let group_id = GetQueryString("id");
         let group_name = $(".name").text();
-        window.location.href = "../honor/chat_person.html?group_id=" + group_id + "&group_name=" + group_name;
+        window.location.href = "../honor/chat_person.html?group_id=" + group_id + "&group_name=" + encodeURI(encodeURI(group_name));
     })
 });
