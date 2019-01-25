@@ -21,12 +21,12 @@ if ($scale_list){
         $db->query($sql);
         $rows = $db->fetchAll();
         if ($rows){
+            echo "可升级群:"."<br />";
             foreach ($rows as $a=>$b){
                 //获取当前群所有的星数
                 $all_glory_number = glory_number($b['id']);
                 //echo $b['name']."&nbsp;&nbsp;当前绑定数:".$b['bind_count']."&nbsp;&nbsp;下级所需绑定数:".$next_group_level['bind_number']."&nbsp;&nbsp;当前星数:".$all_glory_number."&nbsp;&nbsp;下级所需星数:".$next_group_level['glory_number']."<br />";
                 if (($b['bind_count']>=$next_group_level['bind_number']) && ($all_glory_number>=$next_group_level['glory_number'])){
-                    echo "可升级群:"."<br />";
                     echo $b['name']."&nbsp;&nbsp;&nbsp;".$v['scale']."--".($v['scale']+1).'<br />';
                     //scale_upgrade($b['id'],$v['scale'],$v['scale']+1,$b['bind_count'],$all_glory_number);
                 }
