@@ -29,8 +29,8 @@ $(function () {
         let count = "";
         $.ajax({
             type: "GET",
-            url: getRootPath() + "/api/group_info/group_list.php",
-            dataType: "json",
+            url: getRootPath() + "/api/group_info/group_list.php?limit=" + limit + "&offset=" + offset,
+            dataType: "jsonp",
             success: function (res) {
                 if (res.errcode == "0") {
                     let data = res.rows;
