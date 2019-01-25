@@ -65,7 +65,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        getGroupListFun(limit, (current - 1) * limit);
+                        getGroupListFun(limit, (current - 1) * limit,search_name, scale, type_id);
                         ShowLoading("show");
                     }
                 });
