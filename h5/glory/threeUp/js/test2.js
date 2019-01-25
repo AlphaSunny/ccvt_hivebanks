@@ -51,17 +51,20 @@ $(function () {
             dataType: "json",
             success: function (res) {
                 let data = res.all_list;
+                if(data == ""){
+                    ErrorPrompt("暂无数据");
+                }
                 one_list = res.list_1;
                 two_list = res.list_2;
                 three_list = res.list_3;
-                console.log(one_list);
-                console.log("length:" + three_list.length);
+                // console.log(one_list);
+                // console.log("length:" + three_list.length);
                 item_one = Math.ceil(one_list.length / ul_num);
                 item_two = Math.ceil(two_list.length / ul_num);
                 item_three = Math.ceil(three_list.length / ul_num);
-                console.log(item_one);
-                console.log(item_two);
-                console.log(item_three);
+                // console.log(item_one);
+                // console.log(item_two);
+                // console.log(item_three);
                 $(".one_level_num").text(one_list.length);
                 $(".two_level_num").text(two_list.length);
                 $(".three_level_num").text(three_list.length);
