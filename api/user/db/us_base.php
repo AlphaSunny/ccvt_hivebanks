@@ -322,7 +322,7 @@ function get_us_base_info_by_token($us_id)
     $next = $db->getField($sql,'integral');
     $row['next'] = $next;
     $next_scale_poor = $next-$glory_of_integral;
-    $row['next_scale_poor'] = $next_scale_poor ? $next_scale_poor<0 : 0;
+    $row['next_scale_poor'] = $next_scale_poor >=0 ? $next_scale_poor : 0;
 
 
     return $row;
