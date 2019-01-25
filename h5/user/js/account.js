@@ -28,7 +28,7 @@ $(function () {
             if (parseInt(data.next_scale_poor) > 0) {
                 $('.help_icon').attr("data-original-title", "距离下一级还需" + data.next_scale_poor + "荣耀积分");
             } else {
-                $('.help_icon').attr("data-original-title", "荣耀积分已达下一个等级要求，下一个解锁周期即可升级");
+                $('.help_icon').attr("data-original-title", "符合升级条件");
             }
 
             // $('.userLevelNum').text(us_level);
