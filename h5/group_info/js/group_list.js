@@ -117,6 +117,7 @@ $(function () {
         getGroupListFun(limit, offset, search_name, scale, type_id);
     });
 
+    
     //名称筛选
     $(".search_icon").click(function () {
         type_id = "";
