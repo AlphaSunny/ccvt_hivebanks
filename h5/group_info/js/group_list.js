@@ -106,6 +106,7 @@ $(function () {
     //等级筛选
     $("#level").on("change", function () {
         scale = $(this).val();
+        console.log(scale);
         type_id = "";
         search_name = "";
         limit = 10;
