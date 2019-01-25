@@ -128,7 +128,7 @@ $(function () {
     });
 
     //scroll
-    $("#chat_box").scroll(function () {
+    $("#chat_box,#chat_content").scroll(function () {
         if (is_content == 0) {
             return;
         }
