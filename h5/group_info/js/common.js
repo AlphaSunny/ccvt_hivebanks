@@ -82,6 +82,19 @@ function GetGroupSearch(suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//show loading
+let index_loading = "";
+
+function ShowLoading(type) {
+    if (type == "show") {
+        index_loading = layer.load(1, {
+            shade: [0.1, '#fff']
+        });
+    } else if (type == "hide") {
+        layer.close(index_loading);
+    }
+}
+
 /**
  * Initialization page loading loading
  */

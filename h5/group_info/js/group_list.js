@@ -40,7 +40,6 @@ $(function () {
                     count = 6;
                 }
                 let tr = "";
-                console.log(data);
                 $.each(data, function (i, val) {
                     tr += "<tr>" +
                         "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + ">" + data[i].name + "</td>" +
