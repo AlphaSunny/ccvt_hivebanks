@@ -42,7 +42,7 @@ $(function () {
                     count = 6;
                 }
                 if (total <= 0) {
-                    tr = "<tr>暂无数据</tr>";
+                    tr = "<tr><td colspan='5'>暂无数据</td></tr>";
                     $("#group_list").html(tr);
                     return;
                 }
