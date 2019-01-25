@@ -31,6 +31,7 @@ $(function () {
             ShowLoading("hide");
             if (response.errcode == "0") {
                 let data = response.rows;
+                let tr = "";
                 let total = response.total;
                 let totalPage = Math.ceil(total / limit);
                 if (totalPage <= 1) {
@@ -40,13 +41,18 @@ $(function () {
                 } else {
                     count = 6;
                 }
-                let tr = "";
+                if (total <= 0) {
+                    tr = "<tr>暂无数据</tr>";
+                    $("#group_list").html(tr);
+                    return;
+                }
+
                 $.each(data, function (i, val) {
                     tr += "<tr>" +
                         "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + ">" + data[i].name + "</td>" +
                         "<td>" + data[i].scale + "</td>" +
-                        "<td>暂无数据</td>" +
-                        "<td>暂无数据</td>" +
+                        "<td>" + data[i].glory_number + "</td>" +
+                        "<td>" + data[i].type_name + "</td>" +
                         "<td><a href='javascript:;' class='to_group_info'>查看</a></td>" +
                         "</tr>";
                 });
