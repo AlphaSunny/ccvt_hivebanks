@@ -10,20 +10,9 @@ function  get_search_list()
     $db -> query($sql);
     $rows['scale_list'] = $db -> fetchAll();
 
-    $sql = "select glory_number from bot_group_level_rules WHERE glory_number!=NULL OR glory_number!=0 ORDER BY scale asc";
+    $sql = "select id,name from bot_group_type WHERE is_del=1";
     $db->query($sql);
-    $glory_number_list = $db->fetchAll();
-    if ($glory_number_list){
-        foreach ($glory_number_list as $k=>$v){
-            echo $k[$v];
-            die;
-            if ($k==0){
-                $glory_number_list[$k]['glory_number'] = 1;
-            }
-            $glory_number_list[$k]['glory_number'] =1;
-        }
-    }
-    $rows['glory_number_list'] =$glory_number_list;
+    $rows['type_list'] = $db->fetchAll();
     return $rows;
 }
 //======================================
