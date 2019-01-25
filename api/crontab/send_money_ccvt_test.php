@@ -24,11 +24,10 @@ if ($grous){
     $pInTrans = $db->StartTrans();  //开启事务
     $ba_account = 0;
     foreach ($grous as $k=>$v){
-        echo 222;die;
         set_time_limit(0);
         if ($v['bot_us_id']!='' || $v['bot_us_id']!=NULL){
             $u_id = $v['bot_us_id'];
-
+            echo $u_id;die;
             //判断今日已经返现过
             $check_return = check_is_return($u_id);
             if ($check_return){
