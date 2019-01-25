@@ -8,9 +8,14 @@
 function get_group_list()
 {
     $db = new DB_COM();
-    $sql = "SELECT id,name,scale,(select count(*) from us_bind where bind_name='group' and bind_info=id) as bind_count FROM bot_group  WHERE is_test=1 AND is_audit=2 AND is_admin_del=1 ORDER BY scale DESC,bind_count desc";
+    $sql = "SELECT a.id,a.name,a.scale,b.name as type_name,(select count(*) from us_bind where bind_name='group' and bind_info=id) as bind_count FROM bot_group as a left JOIN bot_group_type as b ON a.group_type=b.id WHERE a.is_test=1 AND a.is_audit=2 AND a.is_admin_del=1 ORDER BY a.scale DESC,bind_count desc";
     $db -> query($sql);
     $row = $db -> fetchAll();
+    if ($row){
+        foreach ($row as $k=>$v){
+
+        }
+    }
     return $row;
 }
 
