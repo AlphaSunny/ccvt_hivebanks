@@ -35,7 +35,6 @@ if ($grous){
                 continue;
             }
 
-            echo 222;die;
 
             //修改余额
             $give_account = round($v['all_amount']*0.4)*$unit;
@@ -272,6 +271,7 @@ function check_is_return($us_id){
     $start = strtotime(date('2019-01-24 00:00:00'));
     $end = strtotime(date('2019-01-24 23:59:59'));
     $sql = "select * from com_base_balance WHERE credit_id='{$us_id}' AND utime BETWEEN '{$start}' AND '{$end}' limit 1";
+    echo $sql;die;
     $db->query($sql);
     $rows = $db->fetchRow();
     return $rows;
