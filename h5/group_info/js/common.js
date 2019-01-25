@@ -6,6 +6,20 @@ function GetQueryString(name) {
     return null;
 }
 
+function getRootPath() {
+    //Get current URL
+    let curWwwPath = window.document.location.href;
+    //Get the directory after the host address
+    let pathName = window.document.location.pathname;
+    let pos = curWwwPath.indexOf(pathName);
+    //Get the host address
+    let localhostPath = curWwwPath.substring(0, pos);
+    //Get the project name with "/"
+    let projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+    return localhostPath;
+}
+
+let url = getRootPath();
 let config_api_url = '';
 $.ajax({
     url: url + "/h5/assets/json/config_url.json",
