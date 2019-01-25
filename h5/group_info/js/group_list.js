@@ -90,7 +90,7 @@ $(function () {
         $("#level").html(option_scale);
 
         $.each(type_list, function (i, val) {
-            option_scale += "<option vlaue=" + type_list[i].id + ">" + type_list[i].name + "</option>";
+            option_type += "<option vlaue=" + type_list[i].id + ">" + type_list[i].name + "</option>";
         });
         $("#type").html(option_type);
     }, function (response) {
