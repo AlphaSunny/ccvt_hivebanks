@@ -7,10 +7,9 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 /*
-========================== 群列表信息 ==========================
+========================== 搜索类型的数据列表 ==========================
 GET参数
-  limit                分页记录
-  offset               分页偏移量
+
 返回
   total                总记录数
   rows                 记录数组
@@ -22,7 +21,7 @@ php_begin();
 
 
 // 记录数组
-$rows = get_group_list();
+$rows = get_search_list();
 
 // 返回数据做成
 $rtn_ary = array();

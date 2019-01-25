@@ -20,7 +20,10 @@ GET参数
 
 php_begin();
 
-
+// 取得分页参数
+list($limit, $offset) = get_paging_arg('GET');
+// 获取当前总记录
+$total = get_group_list_total();
 // 记录数组
 $rows = get_group_list();
 
@@ -29,5 +32,6 @@ $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
 $rtn_ary['rows'] = $rows;
+$rtn_ary['total'] = $total;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);

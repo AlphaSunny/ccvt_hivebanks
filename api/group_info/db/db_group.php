@@ -1,5 +1,31 @@
 <?php
 //======================================
+// 函数: 获取搜索条件列表
+// 参数:
+//======================================
+function  get_search_list()
+{
+    $db = new DB_COM();
+    $sql = "SELECT scale from bot_group_level_rules WHERE 1";
+    $db -> query($sql);
+    $rows['scale_list'] = $db -> fetchAll();
+
+    return $rows;
+}
+//======================================
+// 函数: 获取群组总数
+// 参数:
+// 返回: count        记录总数
+//======================================
+function  get_group_list_total()
+{
+    $db = new DB_COM();
+    $sql = "SELECT a.id FROM bot_group as a left JOIN bot_group_type as b ON a.group_type=b.id WHERE a.is_test=1 AND a.is_audit=2 AND a.is_admin_del=1";
+    $db -> query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+//======================================
 // 函数: 获取群组列表
 // 参数: account      账号
 //      variable      绑定name
