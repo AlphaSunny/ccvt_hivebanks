@@ -1,7 +1,7 @@
 $(function () {
     let scan = GetQueryString("scan");
     if(scan == "1"){
-
+        $("#robot_qr_modal").modal("show");
     }
 
     //获取机器人运行状态

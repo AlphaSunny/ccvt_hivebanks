@@ -1,0 +1,12 @@
+.modal-dialog {
+    margin-top: 10% !important;
+}
+
+.robot_qr_box {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.robot_qr_box img {
+    width: 100%;
+}
