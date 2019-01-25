@@ -51,6 +51,8 @@ if (!$is_account){
     exit_error("149","账号不存在");
 }elseif ($is_account['us_nm']!=$code){
     exit_error("149","识别码错误");
+}elseif ($is_account['scale']<2){
+    exit_error("149","等级不够,无法操作");
 }
 
 $max_min = get_transfer_maximum_minimum_value();
