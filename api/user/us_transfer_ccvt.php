@@ -51,8 +51,6 @@ if (!$is_account){
     exit_error("149","账号不存在");
 }elseif ($is_account['us_nm']!=$code){
     exit_error("149","识别码错误");
-}elseif ($is_account['scale']<2){
-    exit_error("149","等级不够,无法操作");
 }
 
 $max_min = get_transfer_maximum_minimum_value();
@@ -74,6 +72,11 @@ if (!$rs){
 $data['us_id'] = $us_id;
 $data['trans_us_id'] = $is_account['us_id'];
 $data['num'] = $ccvt_num;
+
+$scale = get_us_base_info_by_token($us_id)['scale'];
+if ($scale<2){
+    exit_error("150","等级不足,无法操作");
+}
 
 //存储数据库
 $rows = us_us_transfer_request($data);
