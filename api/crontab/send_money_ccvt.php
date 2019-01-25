@@ -20,8 +20,6 @@ $groups = $db->fetchAll();
 if ($groups){
     $pInTrans = $db->StartTrans();  //开启事务
     $ba_account = 0;
-    $transfer_get_pre_count = transfer_get_pre_count($ba_info['ba_id']);
-    $base_get_pre_count = base_get_pre_count($ba_info['ba_id']);
     foreach ($groups as $a=>$b){
         set_time_limit(0);
         //查询机器人昵称
@@ -31,10 +29,8 @@ if ($groups){
         $sql = "select wechat,count(bot_message_id) as count from bot_message where group_id='{$b['id']}' AND type='Text' AND CHAR_LENGTH(bot_content)>=5 AND is_effective='0' AND bot_content not LIKE '%@{$bot_name}%' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
         $db->query($sql);
         $rows = $db->fetchAll();
-        print_r($rows);die;
         if ($rows){
             foreach ($rows as $k=>$v){
-                echo $k;die;
                 set_time_limit(0);
                 //判断用户表是否有这个微信
                 $u_id = get_us_id($v['wechat']);
