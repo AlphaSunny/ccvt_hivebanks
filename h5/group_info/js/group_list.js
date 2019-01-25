@@ -95,4 +95,10 @@ $(function () {
     }, function (response) {
         ErrorPrompt(response.errmsg);
     });
+
+    //等级筛选
+    $("#level").on("change", function () {
+        scale = $(this).val();
+        console.log(scale);
+    })
 });
