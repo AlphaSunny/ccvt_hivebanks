@@ -19,13 +19,21 @@ GET参数
 */
 
 php_begin();
+// 搜索名称
+$search_name = get_arg_str('GET', 'search_name');
+
+// 搜索等级
+$scale = get_arg_str('GET', 'scale');
+
+// 搜索类型(id)
+$type_id = get_arg_str('GET', 'type_id');
 
 // 取得分页参数
 list($limit, $offset) = get_paging_arg('GET');
 // 获取当前总记录
-$total = get_group_list_total();
+$total = get_group_list_total($search_name,$scale,$type_id);
 // 记录数组
-$rows = get_group_list();
+$rows = get_group_list($offset,$limit,$search_name,$scale,$type_id);
 
 // 返回数据做成
 $rtn_ary = array();

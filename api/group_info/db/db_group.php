@@ -20,10 +20,19 @@ function  get_search_list()
 // 参数:
 // 返回: count        记录总数
 //======================================
-function  get_group_list_total()
+function  get_group_list_total($search_name,$scale,$type_id)
 {
     $db = new DB_COM();
     $sql = "SELECT a.id FROM bot_group as a left JOIN bot_group_type as b ON a.group_type=b.id WHERE a.is_test=1 AND a.is_audit=2 AND a.is_admin_del=1";
+    if ($search_name){
+        $sql .= " and a.name like '%{$search_name}%'";
+    }
+    if ($scale){
+        $sql .= " and a.scale= '{$scale}'";
+    }
+    if ($type_id){
+        $sql .= " and a.group_type= '{$type_id}'";
+    }
     $db -> query($sql);
     $count = $db -> affectedRows();
     return $count;
@@ -34,10 +43,20 @@ function  get_group_list_total()
 //      variable      绑定name
 // 返回: row           最新信息数组
 //======================================
-function get_group_list()
+function get_group_list($offset,$limit,$search_name,$scale,$type_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT a.id,a.name,a.scale,b.name as type_name,(select count(*) from us_bind where bind_name='group' and bind_info=a.id) as bind_count FROM bot_group as a left JOIN bot_group_type as b ON a.group_type=b.id WHERE a.is_test=1 AND a.is_audit=2 AND a.is_admin_del=1 ORDER BY a.scale DESC,bind_count desc";
+    $sql = "SELECT a.id,a.name,a.scale,b.name as type_name,(select count(*) from us_bind where bind_name='group' and bind_info=a.id) as bind_count FROM bot_group as a left JOIN bot_group_type as b ON a.group_type=b.id WHERE a.is_test=1 AND a.is_audit=2 AND a.is_admin_del=1";
+    if ($search_name){
+        $sql .= " and a.name like '%{$search_name}%'";
+    }
+    if ($scale){
+        $sql .= " and a.scale= '{$scale}'";
+    }
+    if ($type_id){
+        $sql .= " and a.group_type= '{$type_id}'";
+    }
+    $sql .= "  ORDER BY a.scale DESC,bind_count desc limit $offset , $limit";
     $db -> query($sql);
     $row = $db -> fetchAll();
     if ($row){
