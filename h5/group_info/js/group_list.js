@@ -100,6 +100,20 @@ $(function () {
     //等级筛选
     $("#level").on("change", function () {
         scale = $(this).val();
-        console.log(scale);
+        type_id = "";
+        search_name = "";
+        limit = 10;
+        offset = 0;
+        getGroupListFun(limit, offset, search_name, scale, type_id);
+    });
+
+    //类型筛选
+    $("#level").on("change", function () {
+        type_id = $(this).val();
+        scale = "";
+        search_name = "";
+        limit = 10;
+        offset = 0;
+        getGroupListFun(limit, offset, search_name, scale, type_id);
     })
 });
