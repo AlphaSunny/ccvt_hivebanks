@@ -465,7 +465,7 @@ function check_is_return($us_id){
     $db = new DB_COM();
     $start = strtotime(date('Y-m-d 00:00:00'));
     $end = strtotime(date('Y-m-d 23:59:59'));
-    $sql = "select * from com_base_balance WHERE credit_id='{$us_id}' AND utime BETWEEN '{$start}' AND '{$end}' limit 1";
+    $sql = "select * from com_base_balance WHERE credit_id='{$us_id}' AND tx_type='group_cashback' AND utime BETWEEN '{$start}' AND '{$end}' limit 1";
     $db->query($sql);
     $rows = $db->fetchRow();
     return $rows;
