@@ -20,6 +20,8 @@ $groups = $db->fetchAll();
 if ($groups){
     $pInTrans = $db->StartTrans();  //开启事务
     $ba_account = 0;
+    $transfer_get_pre_count = transfer_get_pre_count($ba_info['ba_id']);
+    $base_get_pre_count = base_get_pre_count($ba_info['ba_id']);
     foreach ($groups as $a=>$b){
         set_time_limit(0);
         //查询机器人昵称
@@ -31,6 +33,7 @@ if ($groups){
         $rows = $db->fetchAll();
         if ($rows){
             foreach ($rows as $k=>$v){
+                echo $k;die;
                 set_time_limit(0);
                 //判断用户表是否有这个微信
                 $u_id = get_us_id($v['wechat']);
@@ -112,6 +115,7 @@ if ($groups){
                 }else{
                     $ba_account = $ba_account-($give_account*$unit);
                 }
+
                 /******************************转账记录表***************************************************/
                 //赠送者
 
