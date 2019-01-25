@@ -66,7 +66,7 @@ $(function () {
     }
 
     //获取群详细信息
-    let group_id = 1;
+    let group_id = GetQueryString("id");
     $(document).on("click", ".group_item", function () {
         $(this).addClass("active").siblings("li").removeClass("active");
         group_id = $(this).attr("name");

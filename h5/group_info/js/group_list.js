@@ -47,7 +47,7 @@ $(function () {
                     console.log(data);
                     $.each(data, function (i, val) {
                         tr += "<tr>" +
-                            "<td id=" + data[i].id + " title=" + data[i].name + ">" + data[i].name + "</td>" +
+                            "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + ">" + data[i].name + "</td>" +
                             "<td>" + data[i].scale + "</td>" +
                             "<td>暂无数据</td>" +
                             "<td>暂无数据</td>" +
@@ -75,5 +75,11 @@ $(function () {
         });
     }
 
-    getGroupListFun(limit, offset)
+    getGroupListFun(limit, offset);
+
+    //前往群详情
+    $(document).on("click", ".to_group_info", function () {
+        let id = $(this).parents("tr").find(".id_name").attr("id");
+        window.location.href = "group_info.html?id=" + id;
+    })
 });
