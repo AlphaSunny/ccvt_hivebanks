@@ -1,12 +1,31 @@
+@border_color: #eeeeee;
+@border: 1px solid @border_color;
+@default_even_px: 2px;
+@default_odd_px: 3px;
+@font_weight_bold: bold;
+@font_weight_400: 400;
+@width_100: 100%;
+
+.width_100 {
+  width: @width_100;
+}
+
+.font_weight_400 {
+  font-weight: @font_weight_400;
+}
+
+.group_title_box {
+  border-bottom: @border;
+}
+
 .group_title {
-  font-weight: bold;
+  font-weight: @font_weight_bold;
   font-family: monospace;
-  font-size: 26px;
+  font-size: @default_even_px * 13;
 }
 
 .group_person_num {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: @border;
 }
 
 .group_person_num p {
@@ -14,13 +33,12 @@
 }
 
 .group_person_num li {
+  &:extend(.font_weight_400);
   text-align: center;
-  font-weight: 400;
   color: #ffffff;
   background: red;
   width: 160px;
   height: 70px;
-  //padding-top: 8px;
   border-radius: 10px;
 }
 
@@ -52,7 +70,7 @@
 }
 
 .honor_num {
-  font-weight: 400;
+  &:extend(.font_weight_400);
   font-size: 14px;
 }
 
@@ -67,17 +85,17 @@
 
 .level p {
   font-size: 14px;
-  font-weight: 400;
+  &:extend(.font_weight_400);
 }
 
 .lord_box {
   padding: 10px 0;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: @border;
 }
 
 .lord_box p {
   font-size: 14px;
-  font-weight: 400;
+  &:extend(.font_weight_400);
 }
 
 .group_type {
@@ -89,11 +107,11 @@
   height: 150px;
 
   img {
-    width: 100%;
+    &:extend(.width_100);
   }
 }
 
 .applicationAdd {
   font-size: 16px;
-  font-weight: 400;
+  &:extend(.font_weight_400);
 }
