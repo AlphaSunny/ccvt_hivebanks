@@ -25,7 +25,7 @@ if ($scale_list){
                 //获取当前群所有的星数
                 $all_glory_number = glory_number($b['id']);
                 if ($b['bind_count']>=$next_group_level['bind_number'] && $all_glory_number>=$next_group_level['glory_number']){
-                    echo $b['name'].'<br />';
+                    echo $b['name'].$v['scale']."--".($v['scale']+1).'<br />';
                     //scale_upgrade($b['id'],$v['scale'],$v['scale']+1,$b['bind_count'],$all_glory_number);
                 }
             }
