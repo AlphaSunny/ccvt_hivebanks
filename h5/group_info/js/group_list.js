@@ -86,8 +86,8 @@ $(function () {
 
     //获取筛选列表
     GetGroupSearch(function (response) {
-        let option_scale = "<option vlaue='0'>等级筛选</option>";
-        let option_type = "<option vlaue='0'>类型筛选</option>";
+        let option_scale = "<option vlaue='-1'>等级筛选</option>";
+        let option_type = "<option vlaue='-1'>类型筛选</option>";
         let scale_list = response.rows.scale_list;
         let type_list = response.rows.type_list;
         $.each(scale_list, function (i, val) {
@@ -117,6 +117,7 @@ $(function () {
     //类型筛选
     $("#type").on("change", function () {
         type_id = $(this).val();
+        console.log(type_id);
         scale = "";
         search_name = "";
         limit = 10;
