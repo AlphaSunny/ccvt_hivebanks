@@ -31,6 +31,7 @@ if ($groups){
         $sql = "select wechat,count(bot_message_id) as count from bot_message where group_id='{$b['id']}' AND type='Text' AND CHAR_LENGTH(bot_content)>=5 AND is_effective='0' AND bot_content not LIKE '%@{$bot_name}%' AND bot_create_time BETWEEN '{$day_start}' AND '{$day_end}' group by wechat";
         $db->query($sql);
         $rows = $db->fetchAll();
+        print_r($rows);die;
         if ($rows){
             foreach ($rows as $k=>$v){
                 echo $k;die;
