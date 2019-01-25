@@ -6,9 +6,23 @@ function GetQueryString(name) {
     return null;
 }
 
+let config_api_url = '';
+$.ajax({
+    url: url + "/h5/assets/json/config_url.json",
+    async: false,
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+        config_api_url = data.api_url;
+    },
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+    }
+});
+
 //CallApi
 function CallApi(api_url, post_data, suc_func, error_func) {
-    let api_site = api_url + '/api/group_info/';
+    let api_site = config_api_url + '/api/group_info/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
