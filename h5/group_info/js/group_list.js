@@ -85,12 +85,12 @@ $(function () {
         let scale_list = response.rows.scale_list;
         let type_list = response.rows.type_list;
         $.each(scale_list, function (i, val) {
-            option_scale += "<option vlaue=" + data[i].scale + ">" + data[i].scale + "</option>";
+            option_scale += "<option vlaue=" + scale_list[i].scale + ">" + scale_list[i].scale + "</option>";
         });
         $("#level").html(option_scale);
 
         $.each(type_list, function (i, val) {
-            option_scale += "<option vlaue=" + data[i].id + ">" + data[i].name + "</option>";
+            option_scale += "<option vlaue=" + type_list[i].id + ">" + type_list[i].name + "</option>";
         });
         $("#type").html(option_type);
     }, function (response) {
