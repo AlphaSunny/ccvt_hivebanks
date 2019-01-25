@@ -76,7 +76,7 @@ $(function () {
                         "</div>" +
                         "</li>";
                 });
-                var pre_height = $("#chat_content")[0].scrollHeight;
+                let pre_height = $("#chat_content")[0].scrollHeight;
 
                 if (offset <= 0) {
                     $(".chat_item_ul").html(li);
@@ -84,7 +84,7 @@ $(function () {
                     $(".chat_item_ul").prepend(li);
                 }
 
-                var now_height = $("#chat_content")[0].scrollHeight;
+                let now_height = $("#chat_content")[0].scrollHeight;
                 //默认在最底部
                 if (offset == 0) {
                     $("#chat_box").scrollTop($("#chat_content")[0].scrollHeight);
@@ -130,7 +130,7 @@ $(function () {
         if (is_content == 0) {
             return;
         }
-        var height = $(this).scrollTop();
+        let height = $(this).scrollTop();
         if (height <= 5) {
             offset += limit;
             GetWeChatFun(wechat, group_id, search_content, limit, offset);
