@@ -13,7 +13,7 @@ function get_group_list()
     $row = $db -> fetchAll();
     if ($row){
         foreach ($row as $k=>$v){
-
+            $row[$k]['glory_number'] = glory_number($v['id']);
         }
     }
     return $row;
