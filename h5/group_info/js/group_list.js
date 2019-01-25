@@ -23,29 +23,57 @@ $(function () {
     });
 
     //获取群列表
-    $.ajax({
-        type: "GET",
-        url: getRootPath() + "/api/group_info/group_list.php",
-        dataType: "json",
-        success: function (res) {
-            if (res.errcode == "0") {
-                let data = res.rows;
-                let tr = "";
-                console.log(data);
-                $.each(data, function (i, val) {
-                    tr += "<tr>" +
-                        "<td id=" + data[i].id + " title=" + data[i].name + ">" + data[i].name + "</td>" +
-                        "<td>" + data[i].scale + "</td>" +
-                        "<td>暂无数据</td>" +
-                        "<td>暂无数据</td>" +
-                        "<td><a href='javascript:;' class='to_group_info'>查看</a></td>" +
-                        "</tr>";
-                });
-                $("#group_list").html(tr);
+    let limit = 10, offset = 0;
+
+    function getGroupListFun(limit, offset) {
+        let count = "";
+        $.ajax({
+            type: "GET",
+            url: getRootPath() + "/api/group_info/group_list.php",
+            dataType: "json",
+            success: function (res) {
+                if (res.errcode == "0") {
+                    let data = res.rows;
+                    let total = res.total;
+                    let totalPage = Math.ceil(total / limit);
+                    if (totalPage <= 1) {
+                        count = 1;
+                    } else if (1 < totalPage && totalPage <= 6) {
+                        count = totalPage;
+                    } else {
+                        count = 6;
+                    }
+                    let tr = "";
+                    console.log(data);
+                    $.each(data, function (i, val) {
+                        tr += "<tr>" +
+                            "<td id=" + data[i].id + " title=" + data[i].name + ">" + data[i].name + "</td>" +
+                            "<td>" + data[i].scale + "</td>" +
+                            "<td>暂无数据</td>" +
+                            "<td>暂无数据</td>" +
+                            "<td><a href='javascript:;' class='to_group_info'>查看</a></td>" +
+                            "</tr>";
+                    });
+                    $("#group_list").html(tr);
+                    $("#pagination").pagination({
+                        currentPage: (limit + offset) / limit,
+                        totalPage: totalPage,
+                        isShow: false,
+                        count: count,
+                        prevPageText: "<<",
+                        nextPageText: ">>",
+                        callback: function (current) {
+                            getGroupListFun(token, limit, (current - 1) * limit);
+                            ShowLoading("show");
+                        }
+                    });
+                }
+            },
+            error: function (res) {
+                ErrorPrompt(res.errmsg);
             }
-        },
-        error: function (res) {
-            ErrorPrompt(res.errmsg);
-        }
-    });
+        });
+    }
+
+    getGroupListFun(limit, offset)
 });
