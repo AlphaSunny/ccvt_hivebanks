@@ -71,6 +71,7 @@ $(function () {
         }
         if (parseInt(scale) < 2) {
             WarnPrompt("荣耀等级不足2级，无法进行转账");
+            return;
         }
         window.location.href = "transfer.html";
     });
