@@ -81,3 +81,17 @@ function GetGroupSearch(suc_func, error_func) {
     let post_data = {};
     CallApi(api_url, post_data, suc_func, error_func);
 }
+
+/**
+ * Initialization page loading loading
+ */
+window.onload = function () {
+    // $("header").css("background-image", "url(assets/img/banner-1.jpg)");
+    if (document.readyState === 'loading') {
+        document.body.style.overflow = "hidden";
+    } else if (document.readyState === 'interactive' || document.readyState === 'complete') {
+        document.body.style.overflow = "auto";
+        let loading = document.querySelector(".loading");
+        loading.parentNode.removeChild(loading);
+    }
+};
