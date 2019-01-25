@@ -32,14 +32,16 @@ $(function () {
                 let data = res.rows;
                 let tr = "";
                 console.log(data);
-                // $.each(data, function (i, val) {
-                //     if (data[i].id == "1") {
-                //         li = "<li class='group_item active' name='" + data[i].id + "'>" + data[i].name + "</li>"
-                //     } else {
-                //         li += "<li class='group_item' name='" + data[i].id + "'>" + data[i].name + "</li>"
-                //     }
-                // });
-                // $(".group_item_box").html(li);
+                $.each(data, function (i, val) {
+                    tr += "<tr>" +
+                        "<td id=" + data[i].id + " title=" + data[i].name + ">" + data[i].name + "</td>" +
+                        "<td>" + data[i].scale + "</td>" +
+                        "<td>暂无数据</td>" +
+                        "<td>暂无数据</td>" +
+                        "<td><a href='javascript:;' class='to_group_info'>查看</a></td>" +
+                        "</tr>";
+                });
+                $(".group_list").html(tr);
             }
         },
         error: function (res) {
