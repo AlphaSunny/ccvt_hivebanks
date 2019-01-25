@@ -22,8 +22,7 @@ if ($scale_list){
         $sql = "select us_id,us_nm,us_account,base_amount/'{$unit}' as base_amount,(select wechat from us_base where us_id=a.us_id) as wechat from us_asset as a where asset_id='GLOP' and  base_amount/'{$unit}' >='{$next_glory['integral']}' and us_id in (select us_id from us_base where scale='{$v['scale']}') order by base_amount desc";
         $db->query($sql);
         $two_rows = $db->fetchAll();
-//        echo "升级".$v['scale']+1;
-        echo count($two_rows)."<br />";
+        echo count($two_rows)."&nbsp;&nbsp;&nbsp;".$v['scale']."-".($v['scale']+1)."<br />";
 //        print_r($two_rows);
         foreach ($two_rows as $a=>$b){
             set_time_limit(0);
