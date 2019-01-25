@@ -1,5 +1,8 @@
 $(function () {
-    let wechat = "", group_id = "", group_name = "", limit = 50, offset = 0, search_content = "";
+    let wechat = "", limit = 50, offset = 0, search_content = "";
+
+    let group_id = GetQueryString("group_id");
+    let group_name = GetQueryString("group_name");
 
     //显示个人聊天内容
     $(document).on("click", ".wechat", function () {
