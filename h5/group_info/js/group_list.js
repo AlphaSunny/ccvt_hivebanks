@@ -115,5 +115,15 @@ $(function () {
         limit = 10;
         offset = 0;
         getGroupListFun(limit, offset, search_name, scale, type_id);
-    })
+    });
+
+    //名称筛选
+    $(".search_icon").click(function () {
+        type_id = "";
+        scale = "";
+        search_name = $(".search_name_input").val();
+        limit = 10;
+        offset = 0;
+        getGroupListFun(limit, offset, search_name, scale, type_id);
+    });
 });
