@@ -28,6 +28,7 @@ $(function () {
     function getGroupListFun(limit, offset, search_name, scale, type_id) {
         let count = "";
         _GetGroupList(limit, offset, search_name, scale, type_id, function (response) {
+            ShowLoading("hide");
             if (response.errcode == "0") {
                 let data = response.rows;
                 let total = response.total;
@@ -64,6 +65,7 @@ $(function () {
                 });
             }
         }, function (response) {
+            ShowLoading("hide");
             ErrorPrompt(response.errmsg);
         });
     }
