@@ -41,7 +41,7 @@ $(function () {
                         "<td><a href='javascript:;' class='to_group_info'>查看</a></td>" +
                         "</tr>";
                 });
-                $(".group_list").html(tr);
+                $("#group_list").html(tr);
             }
         },
         error: function (res) {
