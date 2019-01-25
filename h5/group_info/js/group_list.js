@@ -108,7 +108,7 @@ $(function () {
     });
 
     //类型筛选
-    $("#level").on("change", function () {
+    $("#type").on("change", function () {
         type_id = $(this).val();
         scale = "";
         search_name = "";
