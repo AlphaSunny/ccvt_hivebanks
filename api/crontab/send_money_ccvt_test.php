@@ -20,11 +20,11 @@ $end = strtotime(date('2019-01-24 23:59:59'));
 $sql = "select sum(amount)/'{$unit}' as all_amount,bot_us_id from bot_Iss_records WHERE bot_create_time BETWEEN '{$start}' AND '{$end}' GROUP BY bot_us_id";
 $db->query($sql);
 $grous = $db->fetchAll();
-print_r($grous);die;
 if ($grous){
     $pInTrans = $db->StartTrans();  //开启事务
     $ba_account = 0;
     foreach ($grous as $k=>$v){
+        echo 222;die;
         set_time_limit(0);
         if ($v['bot_us_id']!='' || $v['bot_us_id']!=NULL){
             $u_id = $v['bot_us_id'];
