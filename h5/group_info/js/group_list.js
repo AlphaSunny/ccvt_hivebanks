@@ -63,7 +63,7 @@ $(function () {
                         prevPageText: "<<",
                         nextPageText: ">>",
                         callback: function (current) {
-                            getGroupListFun(token, limit, (current - 1) * limit);
+                            getGroupListFun(limit, (current - 1) * limit);
                             ShowLoading("show");
                         }
                     });
