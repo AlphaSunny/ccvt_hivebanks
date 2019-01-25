@@ -9,7 +9,7 @@ error_reporting(E_ALL | E_STRICT);
 
 $db = new DB_COM();
 
-$sql = "select scale from bot_group WHERE id!=1 AND is_del=1 AND is_admin_del=1 group by scale order by scale DESC";
+$sql = "select scale from bot_group WHERE id!=1 group by scale order by scale DESC";
 $db->query($sql);
 $scale_list = $db->fetchAll();
 if ($scale_list){
@@ -17,7 +17,7 @@ if ($scale_list){
         set_time_limit(0);
         //获取下一级所需绑定数,星数
         $next_group_level = get_next_group_level($v['scale']);
-        $sql = "select id,name,(select count(*) from us_bind where bind_name='group' and bind_info=gr.id) as bind_count from bot_group as gr WHERE gr.scale='{$v['scale']}'";
+        $sql = "select id,name,(select count(*) from us_bind where bind_name='group' and bind_info=gr.id) as bind_count from bot_group as gr WHERE gr.scale='{$v['scale']}' AND gr.is_del=1 AND gr.is_admin_del=1";
         $db->query($sql);
         $rows = $db->fetchAll();
         if ($rows){
