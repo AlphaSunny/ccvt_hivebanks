@@ -112,8 +112,10 @@ $(function () {
         offset = 0;
         if (!scale) {
             scale = "";
+            ShowLoading("show");
             getGroupListFun(limit, offset, search_name, scale, type_id);
         }
+        ShowLoading("show");
         getGroupListFun(limit, offset, search_name, scale, type_id);
     });
 
@@ -128,8 +130,10 @@ $(function () {
         if (!type_id) {
             console.log("不存在");
             type_id = "";
+            ShowLoading("show");
             getGroupListFun(limit, offset, search_name, scale, type_id);
         }
+        ShowLoading("show");
         getGroupListFun(limit, offset, search_name, scale, type_id);
     });
 
@@ -141,6 +145,7 @@ $(function () {
         search_name = $(".search_name_input").val();
         limit = 10;
         offset = 0;
+        ShowLoading("show");
         getGroupListFun(limit, offset, search_name, scale, type_id);
     });
 });
