@@ -31,6 +31,10 @@ $(function () {
                 $('.help_icon').attr("data-original-title", "符合升级条件");
             }
 
+            if (parseInt(scale) < 2) {
+                $(".transfer_box").remove();
+            }
+
             // $('.userLevelNum').text(us_level);
             if (parseInt(data.scale) < 1) {
                 $(".robot_box").remove();
@@ -74,10 +78,6 @@ $(function () {
     $(".transferBtn").click(() => {
         if (base_amount <= 0) {
             $('#noBalanceModal').modal('show');
-            return;
-        }
-        if (parseInt(scale) < 2) {
-            WarnPrompt("荣耀等级不足2级，无法进行转账");
             return;
         }
         window.location.href = "transfer.html";
