@@ -183,16 +183,13 @@ p.chat_item_name:after {
 }
 
 .title_search_box h1 {
-    width: 50%;
+    /*width: 50%;*/
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
 
 @media only screen and (max-width: 768px) {
-    .chat_content {
-        padding-top: 16%;
-    }
 
     .chat_search_box .chat_search_input {
         width: 75%;
