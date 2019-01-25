@@ -65,7 +65,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        getGroupListFun(limit, (current - 1) * limit,search_name, scale, type_id);
+                        getGroupListFun(limit, (current - 1) * limit, search_name, scale, type_id);
                         ShowLoading("show");
                     }
                 });
@@ -86,8 +86,8 @@ $(function () {
 
     //获取筛选列表
     GetGroupSearch(function (response) {
-        let option_scale = "<option value='0'>等级筛选</option>";
-        let option_type = "<option value='0'>类型筛选</option>";
+        let option_scale = "<option value=''>等级筛选</option>";
+        let option_type = "<option value=''>类型筛选</option>";
         let scale_list = response.rows.scale_list;
         let type_list = response.rows.type_list;
         $.each(scale_list, function (i, val) {
@@ -106,11 +106,15 @@ $(function () {
     //等级筛选
     $("#level").on("change", function () {
         scale = $(this).find("option:selected").val();
-        console.log(scale);
         type_id = "";
         search_name = "";
         limit = 10;
         offset = 0;
+        if (!scale) {
+            scale = "";
+            getGroupListFun(limit, offset, search_name, scale, type_id);
+        }
+        console.log(scale);
         getGroupListFun(limit, offset, search_name, scale, type_id);
     });
 
@@ -122,7 +126,11 @@ $(function () {
         search_name = "";
         limit = 10;
         offset = 0;
-        getGroupListFun(limit, offset, search_name, scale, type_id);
+        if (!type_id) {
+            console.log("不存在");
+            type_id = "";
+            getGroupListFun(limit, offset, search_name, scale, type_id);
+        }
     });
 
 
