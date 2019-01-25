@@ -114,8 +114,12 @@ if ($groups){
                 }
 
                 /******************************转账记录表***************************************************/
+                if ($k==0){
+                    $transfer_get_pre_count = transfer_get_pre_count($ba_info['ba_id']);
+                }else{
+                    $transfer_get_pre_count = $transfer_get_pre_count+1;
+                }
                 //赠送者
-
                 $data['hash_id'] = hash('md5', $ba_info['ba_id'] . 4 . get_ip() . time() . rand(1000, 9999) . microtime());
                 $data['prvs_hash'] = get_pre_hash($ba_info['ba_id']);
                 $data['credit_id'] = $ba_info['ba_id'];
@@ -130,7 +134,7 @@ if ($groups){
                 $data['give_or_receive'] = 1;
                 $data['ctime'] = time();
                 $data['utime'] = date('Y-m-d H:i:s',time());
-                $data['tx_count'] = transfer_get_pre_count($ba_info['ba_id']);
+                $data['tx_count'] = $transfer_get_pre_count;
                 $sql = $db->sqlInsert("com_transfer_request", $data);
                 $id = $db->query($sql);
                 if (!$id){
@@ -182,7 +186,11 @@ if ($groups){
                     $db->Rollback($pInTrans);
                     break;
                 }
-
+                if ($k==0){
+                    $base_get_pre_count = base_get_pre_count($ba_info['ba_id']);
+                }else{
+                    $base_get_pre_count = $base_get_pre_count+1;
+                }
                 //ba添加基准资产变动记录
                 $us_type = 'ba_send_balance';
                 $com_balance_ba['hash_id'] = hash('md5', $ba_info['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
@@ -195,7 +203,7 @@ if ($groups){
                 $com_balance_ba["credit_balance"] = $ba_account;
                 $com_balance_ba["utime"] = time();
                 $com_balance_ba["ctime"] = $ctime;
-                $com_balance_ba['tx_count'] = base_get_pre_count($ba_info['ba_id']);
+                $com_balance_ba['tx_count'] = $base_get_pre_count;
 
                 $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
                 if (!$db->query($sql)) {
@@ -256,7 +264,11 @@ if ($grous){
             }
             /******************************转账记录表***************************************************/
             //赠送者
-
+            if ($k==0){
+                $transfer_get_pre_count = transfer_get_pre_count($ba_info['ba_id']);
+            }else{
+                $transfer_get_pre_count = $transfer_get_pre_count+1;
+            }
             $data['hash_id'] = hash('md5', $ba_info['ba_id'] . 12 . get_ip() . time() . rand(1000, 9999) . microtime());
             $data['prvs_hash'] = get_pre_hash($ba_info['ba_id']);
             $data['credit_id'] = $ba_info['ba_id'];
@@ -271,7 +283,7 @@ if ($grous){
             $data['give_or_receive'] = 1;
             $data['ctime'] = time();
             $data['utime'] = date('Y-m-d H:i:s',time());
-            $data['tx_count'] = transfer_get_pre_count($ba_info['ba_id']);
+            $data['tx_count'] = $transfer_get_pre_count;
             $sql = $db->sqlInsert("com_transfer_request", $data);
             $id = $db->query($sql);
             if (!$id){
@@ -323,7 +335,11 @@ if ($grous){
                 $db->Rollback($pInTrans);
                 break;
             }
-
+            if ($k==0){
+                $base_get_pre_count = base_get_pre_count($ba_info['ba_id']);
+            }else{
+                $base_get_pre_count = $base_get_pre_count+1;
+            }
             //ba添加基准资产变动记录
             $us_type = 'ba_send_balance';
             $com_balance_ba['hash_id'] = hash('md5', $ba_info['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
@@ -336,7 +352,7 @@ if ($grous){
             $com_balance_ba["credit_balance"] = $ba_account;
             $com_balance_ba["utime"] = time();
             $com_balance_ba["ctime"] = $ctime;
-            $com_balance_ba['tx_count'] = base_get_pre_count($ba_info['ba_id']);
+            $com_balance_ba['tx_count'] = $base_get_pre_count;
 
             $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
             if (!$db->query($sql)) {
