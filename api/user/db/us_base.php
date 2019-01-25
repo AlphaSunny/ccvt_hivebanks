@@ -320,11 +320,7 @@ function get_us_base_info_by_token($us_id)
     $sql = "select integral from us_scale WHERE scale='{$row['scale']}'+1";
     $db->query($sql);
     $next = $db->getField($sql,'integral');
-    $row['next'] = $next;
-    echo $next."<br />";
-    echo $glory_of_integral."<br />";
-    $next_scale_poor = $next-$glory_of_integral;
-    echo $next_scale_poor;die;
+    $next_scale_poor = $next-$glory_of_integral/get_la_base_unit();
     $row['next_scale_poor'] = $next_scale_poor >=0 ? $next_scale_poor : 0;
 
 
