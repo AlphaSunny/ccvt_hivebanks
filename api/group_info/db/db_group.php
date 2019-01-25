@@ -74,7 +74,7 @@ function get_group_list($offset,$limit,$search_name,$scale,$type_id)
 function get_group_info($group_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT id,name,scale,(select count(*) from us_bind where bind_name='group' and bind_info='{$group_id}') as bind_count FROM bot_group WHERE id='{$group_id}'";
+    $sql = "SELECT id,name,scale,dis,qr_code_address,(select count(*) from us_bind where bind_name='group' and bind_info='{$group_id}') as bind_count FROM bot_group WHERE id='{$group_id}'";
     $db -> query($sql);
     $row = $db -> fetchRow();
     if ($row){
