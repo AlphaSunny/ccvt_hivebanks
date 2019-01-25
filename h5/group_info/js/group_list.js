@@ -105,7 +105,7 @@ $(function () {
 
     //等级筛选
     $("#level").on("change", function () {
-        scale = $(this).children("option:selected").val();
+        scale = $(this).find("option:selected").val();
         console.log(scale);
         type_id = "";
         search_name = "";
@@ -116,7 +116,7 @@ $(function () {
 
     //类型筛选
     $("#type").on("change", function () {
-        type_id = $(this).children("option:selected").val();
+        type_id = $(this).find("option:selected").val();
         console.log(type_id);
         scale = "";
         search_name = "";
