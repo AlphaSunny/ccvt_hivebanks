@@ -1,17 +1,17 @@
 $(function () {
     //token
-    var token = GetCookie('user_token');
+    let token = GetCookie('user_token');
     GetUsAccount();
 
     //Get images
-    var img = decodeURIComponent(window.location.search.split('=')[1]);
+    let img = decodeURIComponent(window.location.search.split('=')[1]);
     $('.bankImg').attr('src', img);
-    var start = img.indexOf('/'), end = img.indexOf('.');
+    let start = img.indexOf('/'), end = img.indexOf('.');
 
     //Confirmation information to add a bank card
-    var cash_type = GetCookie('ca_currency');
+    let cash_type = GetCookie('ca_currency');
     $('.addBankBtn').click(function () {
-        var cash_channel = img.substring(start + 1, end), cash_address = $('#BankCard').val(),
+        let cash_channel = img.substring(start + 1, end), cash_address = $('#BankCard').val(),
             name = $('#Name').val(), idNum = $('#IDCard').val(), pass_word_hash = hex_sha1($('#Password').val());
 
         if (cash_address.length <= 0) {

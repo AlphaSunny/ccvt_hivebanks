@@ -13,7 +13,7 @@ $(function () {
             SetCookie('us_id', data.us_id);
             SetCookie('us_level', data.us_level);
             SetCookie('us_account', data.us_account);
-            SetCookie('wechat', data.wechat);
+            SetCookie('wechat', response.wechat);
             base_amount = data.base_amount;
             $(".us_nm").text(data.us_nm);
             $('.ctime').text(data.ctime);
@@ -61,18 +61,6 @@ $(function () {
         }
     });
 
-    //modal modify us name
-    // $(".modify_us_name").click(function () {
-    //    $("#modifyName").modal("show");
-    // });
-    //withdraw
-    // $('.withdrawBtn, .navWithdraw').click(function () {
-    //     if (base_amount <= 0) {
-    //         $('#noBalanceModal').modal('show');
-    //         return;
-    //     }
-    //     window.location.href = "withdraw.html";
-    // });
 
     //transferBtn
     $(".transferBtn").click(() => {

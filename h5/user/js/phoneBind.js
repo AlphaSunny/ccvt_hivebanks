@@ -1,32 +1,42 @@
 $(function () {
     //get user token
-    var token = GetCookie('user_token');
+    let token = GetCookie('user_token');
     GetUsAccount();
 
-    var wi_bindPhone = GetQueryString('wi_bindPhone');
+    let wi_bindPhone = GetQueryString('wi_bindPhone');
 
     //Get graphic verification code
     GetImgCode();
 
     //Switch graphic verification code
-    $('#phone_imgCode').click(function () {
+    $('.getImgCodeBtn').click(function () {
         GetImgCode();
     });
 
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
-        var bind_type = '4', $this = $(this), cfm_code = $('#phoneCfmCode').val();
-        if (cfm_code <= 0) {
-            LayerFun('pleaseImgCode');
+        let country_code = $('.selected-dial-code').text().split("+")[1];
+        let cellphone = $('#phone').val();
+        let bind_type = '2', cfm_code = $('#phoneCfmCode').val();
+
+        if (cellphone == '') {
+            // LayerFun('phoneNotEmpty');
+            WarnPrompt("请输入手机号码");
             return;
         }
-        setTime($this);
-        GetPhoneCodeFun(bind_type, $this, cfm_code);
+
+        if (cfm_code <= 0) {
+            // LayerFun('pleaseImgCode');
+            WarnPrompt("请输入图形验证码");
+            return;
+        }
+        ShowLoading("show");
+        GetSmsCodeFun(cellphone, country_code, bind_type, cfm_code);
     });
 
     $('.phoneEnable').click(function () {
         // Get country code
-        var country_code = $('.selected-dial-code').text().split("+")[1],
+        let country_code = $('.selected-dial-code').text().split("+")[1],
             text_type = '4',
             text = country_code + '-' + $('#phone').val(),
             text_hash = $('#phoneCode').val();
@@ -40,7 +50,7 @@ $(function () {
             return;
         }
 
-        var $this = $(this), btnText = $this.text();
+        let $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
         ShowLoading("show");
         TextBind(token, text_type, text, text_hash, function (response) {
