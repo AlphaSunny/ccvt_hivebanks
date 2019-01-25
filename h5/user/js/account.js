@@ -5,7 +5,7 @@ $(function () {
     $(".disabled_a").attr("disabled", true).css("color", "#9e9e9e");
 
     // Basic user information
-    let base_amount = '', is_application_group = "";
+    let base_amount = '', scale = "", is_application_group = "";
     UserInformation(token, function (response) {
         if (response.errcode == '0') {
             let data = response.rows;
@@ -15,6 +15,7 @@ $(function () {
             SetCookie('us_account', data.us_account);
             SetCookie('wechat', data.wechat);
             base_amount = data.base_amount;
+            scale = data.scale;
             $(".us_nm").text(data.us_nm);
             $('.ctime').text(data.ctime);
             $('.us_account').text(data.us_account);
@@ -67,6 +68,9 @@ $(function () {
         if (base_amount <= 0) {
             $('#noBalanceModal').modal('show');
             return;
+        }
+        if (parseInt(scale) < 2) {
+            WarnPrompt("荣耀等级不足2级，无法进行转账");
         }
         window.location.href = "transfer.html";
     });
