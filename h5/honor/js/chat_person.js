@@ -48,7 +48,7 @@ $(function () {
                     $(".none_weChat").text("暂无更多聊天内容");
                     is_content = 0;
                 } else {
-                    $(".none_weChat").text("加载更多内容").css("color", "blue");
+                    $(".none_weChat").text("加载更多内容").css({"color": "blue", "cursor": "pointer"});
                 }
 
                 if (data.length <= 0 && offset <= 0) {
