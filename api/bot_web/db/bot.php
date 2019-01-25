@@ -241,7 +241,7 @@ function save_timer($date)
             $is_change_img = 2;
         }
     }
-    $sql = "update bot_timer set time = '{$date['time']}' , content = '{$date['content']}',send_type='{$date['send_type']}', type='{$date['type']}',is_change_img='{$is_change_img}',uptime='{$time}' where id='{$date['timer_id']}' ";
+    $sql = "update bot_timer set time = '{$date['time']}' , content = '{$date['content']}',send_type='{$date['send_type']}', type='{$date['type']}',is_change_img='{$is_change_img}',tx_content='{$date['tx_content']}',uptime='{$time}' where id='{$date['timer_id']}' ";
     $db->query($sql);
     return $db->affectedRows();
 }
