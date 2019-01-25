@@ -316,6 +316,18 @@ function get_us_base_info_by_token($us_id)
     $row['application_group'] = $application_group ? $application_group['name'] : "";
     $row['application_group_type'] = $application_group ? $application_group['group_type'] : "";
 
+    //离下一级差多荣耀积分
+    $sql = "select integral from us_scale WHERE scale='{$row['scale']}'+1";
+    $db->query($sql);
+    $next = $db->getField($sql,'integral');
+    if ($glory_of_integral>=$next){
+        $next_scale_poor = 0;
+    }else{
+        $next_scale_poor = $next-$glory_of_integral;
+    }
+    $row['next_scale_poor'] = $next_scale_poor;
+
+
     return $row;
 }
 //======================================
