@@ -35,7 +35,6 @@ $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
 foreach ($scales as $k=>$v){
-    echo $k."<br />";
     $sql = "select us.wechat from us_scale_changes as sc INNER JOIN us_base as us on sc.us_id=us.us_id WHERE sc.after_scale='{$v['after_scale']}'  AND us.wechat!='' AND sc.ctime>'{$times}' ORDER BY sc.scale DESC";
     $db->query($sql);
     $list = $db->fetchAll();
