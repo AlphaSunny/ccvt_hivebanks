@@ -8,7 +8,7 @@ function GetQueryString(name) {
 
 //CallApi
 function CallApi(api_url, post_data, suc_func, error_func) {
-    let api_site = config_api_url + '/api/group_info/';
+    let api_site = api_url + '/api/group_info/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
