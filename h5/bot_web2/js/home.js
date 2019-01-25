@@ -1,4 +1,9 @@
 $(function () {
+    let scan = GetQueryString("scan");
+    if(scan == "1"){
+
+    }
+
     //获取机器人运行状态
     let us_id = GetCookie("us_id");
     let url = getRootPath();

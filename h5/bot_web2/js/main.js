@@ -1,6 +1,6 @@
 (function () {
 	"use strict";
-	var treeviewMenu = $('.app-menu');
+	let treeviewMenu = $('.app-menu');
 
 	// Toggle Sidebar
 	$('[data-toggle="sidebar"]').click(function(event) {
@@ -30,6 +30,6 @@
     });
 
 	//get name
-	var wechat = GetCookie("wechat");
+	let wechat = GetCookie("wechat");
 	$(".robot_username").text(wechat);
 })();
