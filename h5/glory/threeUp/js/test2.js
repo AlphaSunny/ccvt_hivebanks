@@ -53,6 +53,7 @@ $(function () {
                 let data = res.all_list;
                 if(data == ""){
                     ErrorPrompt("暂无数据");
+                    return;
                 }
                 one_list = res.list_1;
                 two_list = res.list_2;
