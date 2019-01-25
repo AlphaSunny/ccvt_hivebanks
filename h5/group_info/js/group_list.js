@@ -114,7 +114,6 @@ $(function () {
             scale = "";
             getGroupListFun(limit, offset, search_name, scale, type_id);
         }
-        console.log(scale);
         getGroupListFun(limit, offset, search_name, scale, type_id);
     });
 
@@ -131,6 +130,7 @@ $(function () {
             type_id = "";
             getGroupListFun(limit, offset, search_name, scale, type_id);
         }
+        getGroupListFun(limit, offset, search_name, scale, type_id);
     });
 
 
