@@ -13,6 +13,7 @@ $(function () {
                 }
                 if(scale < 2){
                     WarnPrompt("荣耀等级不足2级，无法进行提现");
+                    return;
                 }
                 if (type == "ba_withdraw") {
                     window.location.href = "bit_withdraw.html";
