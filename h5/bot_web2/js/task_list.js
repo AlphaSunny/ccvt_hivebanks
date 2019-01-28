@@ -208,6 +208,7 @@ $(function () {
                 $("#selectGroupName").html(option);
                 $(".addSubBtn").removeClass("none");
                 $(".editSubBtn").addClass("none");
+                $("#myModalLabel").text("添加定时任务");
                 $("#groupName").fadeOut("fast");
                 $("#editTaskModal").modal("show");
             }
