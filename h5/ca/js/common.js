@@ -765,11 +765,12 @@ function WithdrawConfirm(token, qa_id, type, suc_func, error_func) {
 }
 
 //withdraw request refuse processing
-function WithdrawRefuse(token, tx_hash, suc_func, error_func) {
+function WithdrawRefuse(token, qa_id, type, suc_func, error_func) {
     let api_url = 'ca_refuse_us_withdraw.php',
         post_data = {
             'token': token,
-            'tx_hash': tx_hash
+            'qa_id': qa_id,
+            'type': type
         };
     CallApi(api_url, post_data, suc_func, error_func);
 };

@@ -21,7 +21,7 @@ $(function () {
     GetRechargeWithdrawList(api_url, token, type, function (response) {
         if (response.errcode == '0') {
             let data = response.rows;
-            if(data == false){
+            if (data == false) {
                 GetDataEmpty('withdrawPendingTable', '5');
                 return;
             }
@@ -31,7 +31,7 @@ $(function () {
                     '<td>' + tx_detail.name + '</td>' +
                     '<td>' + data[i].base_amount + '</td>' +
                     '<td>' + tx_detail.id_card + '</td>' +
-                    '<td><span>' + benchmark_type + '</span>/<span class="ca_currency">'+ ca_currency +'</span></td>' +
+                    '<td><span>' + benchmark_type + '</span>/<span class="ca_currency">' + ca_currency + '</span></td>' +
                     // '<td><span>' + data[i].bit_address + '</span></td>' +
                     '<td><span>' + data[i].tx_time + '</span></td>' +
                     // '<td><input type="text" class="form-control transfer_tx_hash"></td>' +
@@ -72,7 +72,7 @@ $(function () {
     $('.againConfirmBtn').click(function () {
         let type = '1';
         let $this = $(this), btnText = $(this).text();
-        if(DisableClick($this)) return;
+        if (DisableClick($this)) return;
         ShowLoading("show");
         WithdrawConfirm(token, qa_id, type, function (response) {
             if (response.errcode == '0') {
@@ -92,18 +92,20 @@ $(function () {
     });
 
     //refuse withdraw
-    $(document).on("click",".refuseBtn",function () {
-        let tx_hash = $(this).next('.tx_hash').text();
+    $(document).on("click", ".refuseBtn", function () {
+        // let tx_hash = $(this).next('.tx_hash').text();
+        let qa_id = $(this).siblings().$('.qa_id').text();
+        let type = '2';
         layer.confirm('拒绝此笔提现请求？', {
             btn: ['确定', '取消'] //按钮
         }, function () {
             ShowLoading("show");
-            WithdrawRefuse(token,tx_hash,function (response) {
-                if(response.errcode == "0"){
+            WithdrawRefuse(token, qa_id, type, function (response) {
+                if (response.errcode == "0") {
                     SuccessPrompt("处理成功");
                     ShowLoading("hide");
                 }
-            },function (response) {
+            }, function (response) {
                 ErrorPrompt(response.errmsg);
                 ShowLoading("hide");
             });
