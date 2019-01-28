@@ -1,19 +1,19 @@
 $(function () {
     //get token
-    var token = GetUsCookie('user_token');
+    let token = GetUsCookie('user_token');
     GetUsAccount();
 
     //get us_level
-    var us_level = GetUsCookie('us_level');
+    let us_level = GetUsCookie('us_level');
 
     //get recharge assets
-    var ca_channel = decodeURI(GetQueryString('ca_channel'));
-    var ca_channel_en = decodeURI(GetQueryString('ca_channel_en'));
-    var us_recharge_bit_amount = GetQueryString('us_recharge_bit_amount');
+    let ca_channel = decodeURI(GetQueryString('ca_channel'));
+    let ca_channel_en = decodeURI(GetQueryString('ca_channel_en'));
+    let us_recharge_bit_amount = GetQueryString('us_recharge_bit_amount');
     $(".ca_channel").text(ca_channel);
 
     //distribution recharge ca
-    var api_url = 'assign_recharge_ca.php', rate = '', ca_id = '', recharge_max_amount = '', recharge_min_amount = '';
+    let api_url = 'assign_recharge_ca.php', rate = '', ca_id = '', recharge_max_amount = '', recharge_min_amount = '';
     GetAssignCa(api_url, token, ca_channel, function (response) {
         if (response.errcode == '0') {
             $('.base_rate').text(response.base_rate);
@@ -33,7 +33,7 @@ $(function () {
     });
 
     //lockRechargeAmount
-    var card_nm = '', name = '', bit_amount = '', base_amount = '';
+    let card_nm = '', name = '', bit_amount = '', base_amount = '';
     $('.lockAmountBtn').click(function () {
         bit_amount = $('.bit_amount').val();
         base_amount = $('.base_amount').val();
@@ -50,7 +50,7 @@ $(function () {
             return;
         }
 
-        var $this = $(this), btnText = $(this).text();
+        let $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
         ShowLoading("show");
         LockRechargeAmount(token, ca_id, base_amount, bit_amount, ca_channel_en, us_level, function (response) {
@@ -86,7 +86,7 @@ $(function () {
 
     //Reading rule time countdown
     function readingTime(time) {
-        var timer = null;
+        let timer = null;
         timer = setInterval(function () {
             if (time != 0) {
                 time--;

@@ -1,16 +1,16 @@
 $(function () {
     //get token
-    var token = GetUsCookie('user_token');
+    let token = GetUsCookie('user_token');
     GetUsAccount();
 
     //get us_level
-    var us_level = GetUsCookie('us_level');
+    let us_level = GetUsCookie('us_level');
 
     // get base information
-    var us_base_amount = '',us_account_id = "";
+    let us_base_amount = '',us_account_id = "";
     GetUserBaseInfo(token, function (response) {
         if (response.errcode == '0') {
-            var data = response.rows;
+            let data = response.rows;
             us_base_amount = data.base_amount;
             us_account_id = data.us_id;
             $('.base_amount').text(data.base_amount);
@@ -31,14 +31,14 @@ $(function () {
     });
 
     //Get recharge channels
-    var ca_channel = decodeURI(GetQueryString('ca_channel'));
-    var base_amount = GetQueryString('us_ca_withdraw_amount');
-    $('.base_amount_input').val(base_amount);
+    let ca_channel = decodeURI(GetQueryString('ca_channel'));
+    // let base_amount = GetQueryString('us_ca_withdraw_amount');
+    // $('.base_amount_input').val(base_amount);
 
     // $('.withdrawTypeImg').attr("src", "img/" + ca_channel.toLowerCase() + ".png");
     $(".ca_channel").text(ca_channel);
     //Assign recharge ca
-    var api_url = 'assign_withdraw_ca.php', rate = '', ca_id = '', withdraw_max_amount = '', withdraw_min_amount = '';
+    let api_url = 'assign_withdraw_ca.php', rate = '', ca_id = '', withdraw_max_amount = '', withdraw_min_amount = '';
     GetAssignCa(api_url, token, ca_channel, function (response) {
         if (response.errcode == '0') {
             $('.base_rate').text(response.base_rate);
@@ -48,18 +48,19 @@ $(function () {
             withdraw_min_amount = response.min_amount;
             $('.withdraw_max_amount').text(response.max_amount);
             $('.withdraw_min_amount').text(response.min_amount);
+            $('.base_amount_input').val(withdraw_min_amount);
             $('.withdraw_ctime').text(response.set_time);
-            $('.bit_amount_input').val(base_amount * rate);
+            $('.bit_amount_input').val(withdraw_min_amount * rate);
         }
     }, function (response) {
         LayerFun(response.errcode);
     });
 
     //get us_account_id
-    // var option = '';
+    // let option = '';
     // GetUsAccountId(token, ca_channel, function (response){
     //     if(response.errcode == '0'){
-    //         var data = response.rows;
+    //         let data = response.rows;
     //         if(data == false){
     //
     //         }
@@ -76,7 +77,7 @@ $(function () {
 
     //lockRechargeAmount
     $('.lockAmountBtn').click(function () {
-        var bit_amount = $('.bit_amount_input').val(),
+        let bit_amount = $('.bit_amount_input').val(),
             base_amount = $('.base_amount_input').val(),
             // us_account_id = $('.us_account_id').val(),
             id_card = $("#idNum").val(),
@@ -105,7 +106,7 @@ $(function () {
             LayerFun('notBalance');
             return;
         }
-        var $this = $(this), btnText = $(this).text();
+        let $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
         LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id, function (response) {
             if (response.errcode == '0') {
@@ -135,7 +136,7 @@ $(function () {
 
     //Reading rule time countdown
     function readingTime(time) {
-        var timer = null;
+        let timer = null;
         timer = setInterval(function () {
             if (time != 0) {
                 time--;
