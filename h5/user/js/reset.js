@@ -355,7 +355,7 @@ $(function () {
         }, function (response) {
             ActiveClick($this, btnText);
             // LayerFun('modifyFail');
-            WarnPrompt("修改失败");
+            WarnPrompt(response.errmsg);
             if (response.errcode == '120') {
                 $('.noPhonelTips').fadeIn('fast');
             }
