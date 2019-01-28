@@ -30,7 +30,7 @@ $(function () {
         $(this).siblings('span').hide();
     });
     $('.email').blur(function () {
-        var email = $(this).val();
+        let email = $(this).val();
         if (email.length <= 0) {//Email account is empty
             $('.email_tips').fadeIn().siblings('span').fadeOut();
             return;
@@ -46,7 +46,7 @@ $(function () {
         $('.emailCode_tips').hide();
     });
     $('.emailcfmCode').blur(function () {
-        var emailcfmCode = $(this).val();
+        let emailcfmCode = $(this).val();
         if (emailcfmCode.length <= 0) {//Email verification code is empty
             $('.emailCode_tips').fadeIn();
             return;
@@ -58,7 +58,7 @@ $(function () {
         $(this).siblings('span').hide();
     });
     $('.emailPassword').blur(function () {
-        var emailPassword = $(this).val();
+        let emailPassword = $(this).val();
         if (emailPassword.length <= 0) {
             $('.password_tips').fadeIn().siblings('span').hide();
             return;
@@ -73,7 +73,7 @@ $(function () {
         $(this).siblings('span').hide();
     });
     $('.email_confirm_Password').blur(function () {
-        var confirmemailPassword = $(this).val();
+        let confirmemailPassword = $(this).val();
         if (confirmemailPassword.length <= 0) {
             $('.confirmpassword_tips').fadeIn().siblings('span').hide();
             return;
@@ -90,7 +90,7 @@ $(function () {
 
     // Reset email to get verification code
     $('.emailCodeBtn').click(function () {
-        var email = $('.email').val();
+        let email = $('.email').val();
         if (email.length <= 0) {
             $('.email_tips').fadeIn().siblings('span').fadeOut();
             return;
@@ -111,7 +111,7 @@ $(function () {
 
     // Password reset (mailbox)
     $('.emailResetBtn').click(function () {
-        var email = $('.email').val(),
+        let email = $('.email').val(),
             cfm_code = $('.emailcfmCode').val(),
             emailPassword = $('.emailPassword').val(),
             email_confirm_Password = $('.email_confirm_Password').val(),
@@ -148,7 +148,7 @@ $(function () {
             LayerFun('TwoPassword');
             return;
         }
-        var $this = $(this), btnText = $(this).text();
+        let $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
         ResetEmailPassword(email, cfm_code, pass_word_hash, confirm_pass_word_hash, function (response) {
             ActiveClick($this, btnText);
@@ -185,7 +185,7 @@ $(function () {
         $(this).siblings('span').hide();
     });
     $('#phone').blur(function () {
-        var phone = $(this).val();
+        let phone = $(this).val();
         if (phone.length <= 0) {
             $('.phone_tips').fadeIn().siblings('span').hide();
             return;
@@ -201,7 +201,7 @@ $(function () {
         $(this).siblings('span').hide();
     });
     $('.phoneCfmCode').blur(function () {
-        var phoneCfmCode = $(this).val();
+        let phoneCfmCode = $(this).val();
         if (phoneCfmCode.length <= 0) {
             $('.phoneImgCode_tips').fadeIn().siblings('span').hide();
             return;
@@ -213,7 +213,7 @@ $(function () {
         $(this).siblings('span').hide();
     });
     $('.phoneSmsCode').blur(function () {
-        var phoneSmsCode = $(this).val();
+        let phoneSmsCode = $(this).val();
         if (phoneSmsCode.length <= 0) {
             $('.phoneCode_tips').fadeIn();
             return;
@@ -225,7 +225,7 @@ $(function () {
         $(this).siblings('span').hide();
     });
     $('.phonePassword').blur(function () {
-        var phonePassword = $(this).val();
+        let phonePassword = $(this).val();
         if (phonePassword.length <= 0) {
             $('.Phonepassword_tips').fadeIn().siblings('span').hide();
             return;
@@ -240,7 +240,7 @@ $(function () {
         $(this).siblings('span').hide();
     });
     $('.confirmphonePassword').blur(function () {
-        var confirmphonePassword = $(this).val();
+        let confirmphonePassword = $(this).val();
         if (confirmphonePassword.length <= 0) {
             $('.ConfirmPhonepassword_tips').fadeIn().siblings('span').hide();
             return;
@@ -258,7 +258,7 @@ $(function () {
 
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
-        var bind_type = '3', $this = $(this), cfm_code = $('.phoneCfmCode').val();
+        let bind_type = '3', $this = $(this), cfm_code = $('.phoneCfmCode').val();
         if ($(".phone").val().length <= 0) {
             $('.phone_tips').fadeIn().siblings('span').hide();
             LayerFun('phoneNotEmpty');
@@ -274,8 +274,8 @@ $(function () {
     // Password reset (mobile phone)
     $('.phoneResetBtn').click(function () {
         // Get country code
-        var country_code = $('.selected-dial-code').text().split("+")[1];
-        var cellphone = $('.phone').val(),
+        let country_code = $('.selected-dial-code').text().split("+")[1];
+        let cellphone = $('.phone').val(),
             cfm_code = $('.phoneCfmCode').val(),
             sms_code = $('.phoneSmsCode').val(),
             phonePassword = $('.phonePassword').val(),
@@ -326,7 +326,7 @@ $(function () {
             return;
         }
 
-        var $this = $(this), btnText = $(this).text();
+        let $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
         ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash, confirm_pass_word_hash, function (response) {
             ActiveClick($this, btnText);

@@ -4,8 +4,6 @@ $(document).ready(function () {
         let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) {
             return unescape(arr[2]);
-        } else {
-            return null;
         }
     }
     let user_token = GetLoginCookie('user_token');
@@ -15,10 +13,10 @@ $(document).ready(function () {
 
     let leaderBoard = GetQueryString("honor");
 
-    function GetLoginCookie(name) {
-        let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
-        if (arr != null) return unescape(arr[2]);
-    }
+    // function GetLoginCookie(name) {
+    //     let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    //     if (arr != null) return unescape(arr[2]);
+    // }
 
     //Get graphic verification code
     GetImgCode();
