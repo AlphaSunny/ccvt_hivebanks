@@ -1,15 +1,15 @@
 $(function(){
-    var token = GetCookie('ca_token');
-    var benchmark_type = GetUsCookie('benchmark_type');
-    var ca_currency = GetUsCookie('ca_currency');
+    let token = GetCookie('ca_token');
+    let benchmark_type = GetUsCookie('benchmark_type');
+    let ca_currency = GetUsCookie('ca_currency');
     GetCaAccount();
 
     //Get user recharged processed order list
-    var api_url = 'log_us_withdraw.php', type = '2', tr = '', bit_address=[], tx_hash = [], limit = 10, offst = 0;
+    let api_url = 'log_us_withdraw.php', type = '2', tr = '', bit_address=[], tx_hash = [], limit = 10, offst = 0;
     GetRechargeWithdrawList(api_url, token, type, function (response){
 
         if(response.errcode == '0'){
-            var data = response.rows;
+            let data = response.rows;
             if(data == false){
                 GetDataEmpty('withdrawPendingTable', '6');
                 return;
