@@ -23,7 +23,7 @@ function isEmail($email){
 //       false        假
 //======================================
 function isPhone($cellphone){
-    $mode = "/^1[34578]{1}\d{9}$/";
+    $mode = "/^1[345678]{1}\d{9}$/";
     if(preg_match($mode,$cellphone)){
         return true;
     }else{
