@@ -27,7 +27,6 @@ $(function () {
             ErrorPrompt(response);
         });
     }
-
 //withdraw
     $('.nav_ba_withdraw').click(function () {
         verifyWithdraw("ba_withdraw");
