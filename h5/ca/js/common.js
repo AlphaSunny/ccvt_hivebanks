@@ -744,11 +744,12 @@ function RechargeConfirm(token, qa_id, type, suc_func, error_func) {
 };
 
 //Recharge request refuse processing
-function RechargeRefuse(token, tx_hash, suc_func, error_func) {
-    let api_url = 'ca_refuse_us_recharge.php',
+function RechargeRefuse(token, type, qa_id, suc_func, error_func) {
+    let api_url = 'recharge_confirm.php',
         post_data = {
             'token': token,
-            'tx_hash': tx_hash
+            'type': type,
+            'qa_id': qa_id
         };
     CallApi(api_url, post_data, suc_func, error_func);
 };

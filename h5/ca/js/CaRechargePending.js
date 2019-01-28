@@ -50,6 +50,7 @@ $(function () {
             return;
         });
     }
+
     GetRechargeWithdrawListFun();
 
     //recharge confirm process
@@ -83,16 +84,18 @@ $(function () {
     });
 
     $(document).on("click", ".cancelBtn", function () {
-        let tx_hash = $(this).next('.tx_hash').text();
+        // let tx_hash = $(this).next('.tx_hash').text();
         // ca_refuse_us_recharge.php
+        let type = '2';
+        let qa_id = $(this).siblings().$('.qa_id').text();
         layer.confirm('拒绝此笔充值请求？', {
             btn: ['确定', '取消'] //按钮
         }, function () {
-            RechargeRefuse(token,tx_hash,function (response) {
-                if(response.errcode == "0"){
+            RechargeRefuse(token, type, qa_id, function (response) {
+                if (response.errcode == "0") {
                     SuccessPrompt("处理成功");
                 }
-            },function (response) {
+            }, function (response) {
                 ErrorPrompt(response.errmsg);
             });
         }, function () {
