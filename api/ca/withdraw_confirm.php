@@ -24,7 +24,7 @@ GET参数
 */
 
 php_begin();
-$args = array('token','qa_id', 'type','transfer_tx_hash');
+$args = array('token','qa_id', 'type');
 chk_empty_args('GET', $args);
 
 // 用户token
@@ -32,7 +32,6 @@ $token = get_arg_str('GET', 'token',128);
 // 请求id
 $type = get_arg_str('GET','type');
 $qa_id = get_arg_str('GET','qa_id');
-$transfer_tx_hash = get_arg_str('GET','transfer_tx_hash');
 //验证token
 $ca_id = check_token($token);
 //根据qa_id获取订单信息
