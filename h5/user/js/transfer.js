@@ -55,20 +55,22 @@ $(function () {
         layer.confirm('是否确定向' + account + '转账?', {
             btn: ['确定', '取消'] //按钮
         }, function () {
-            TransferCCVTFun(token, account, code, ccvt_num, pass_hash);
+            TransferCCVTFun(token, account, code, ccvt_num, pass_hash,confirm_fun_pass);
         }, function () {
 
         });
     });
 
-    function TransferCCVTFun(token, account, code, ccvt_num, pass_hash) {
+    function TransferCCVTFun(token, account, code, ccvt_num,confirm_fun_pass, pass_hash) {
         ShowLoading("show");
         TransferCCVT(token, account, code, ccvt_num, pass_hash,confirm_fun_pass, function (response) {
-            ShowLoading("hide");
-            layer.closeAll('dialog');
-            $(".transfer_account").text(account);
-            $(".transfer_amount").text(ccvt_num);
-            $("#transfer_success_modal").removeClass("none");
+            if(response.errcode == "0"){
+                ShowLoading("hide");
+                layer.closeAll('dialog');
+                $(".transfer_account").text(account);
+                $(".transfer_amount").text(ccvt_num);
+                $("#transfer_success_modal").removeClass("none");
+            }
         }, function (response) {
             ShowLoading("hide");
             layer.msg(response.errmsg, {icon: 2});
