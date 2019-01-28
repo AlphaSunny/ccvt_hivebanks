@@ -34,7 +34,7 @@ $(function () {
                         '<span class="i18n" name="handle"></span>' +
                         '</a>' +
                         '<span class="qa_id none">' + data[i].qa_id + '</span>' +
-                        '<a class="btn btn-success btn-sm cancelBtn">' +
+                        '<a class="btn btn-danger btn-sm cancelBtn">' +
                         '<span class="i18n" name="refuse"></span>' +
                         '</a>' +
                         '<span class="tx_hash none">' + data[i].tx_hash + '</span>' +
