@@ -754,13 +754,12 @@ function RechargeRefuse(token, tx_hash, suc_func, error_func) {
 };
 
 //Withdrawal request confirmation processing
-function WithdrawConfirm(token, qa_id, type, transfer_tx_hash, suc_func, error_func) {
+function WithdrawConfirm(token, qa_id, type, suc_func, error_func) {
     let api_url = 'withdraw_confirm.php',
         post_data = {
             'token': token,
             'qa_id': qa_id,
-            'type': type,
-            'transfer_tx_hash': transfer_tx_hash
+            'type': type
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }

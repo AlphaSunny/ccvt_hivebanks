@@ -58,11 +58,11 @@ $(function () {
     //Withdrawal request confirmation processing
     let qa_id = '', _this = '', transfer_tx_hash = '';
     $(document).on('click', '.confirmBtn', function () {
-        transfer_tx_hash = $(this).parents('.withdrawPendingList').find('.transfer_tx_hash').val();
-        if (transfer_tx_hash.length <= 0) {
-            LayerFun('inputHash');
-            return;
-        }
+        // transfer_tx_hash = $(this).parents('.withdrawPendingList').find('.transfer_tx_hash').val();
+        // if (transfer_tx_hash.length <= 0) {
+        //     LayerFun('inputHash');
+        //     return;
+        // }
         $('#confirmModal').modal('show');
         qa_id = $(this).next('.qa_id').text();
         _this = $(this);
@@ -74,7 +74,7 @@ $(function () {
         let $this = $(this), btnText = $(this).text();
         if(DisableClick($this)) return;
         ShowLoading("show");
-        WithdrawConfirm(token, qa_id, type, transfer_tx_hash, function (response) {
+        WithdrawConfirm(token, qa_id, type, function (response) {
             if (response.errcode == '0') {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
