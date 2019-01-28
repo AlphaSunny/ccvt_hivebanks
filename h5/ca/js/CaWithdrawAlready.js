@@ -15,9 +15,11 @@ $(function(){
                 return;
             }
             $.each(data, function (i, val) {
+                let tx_detail = JSON.parse(data[i].tx_detail);
                 tr += '<tr class="withdrawPendingList">' +
-                    '<td>' + data[i].us_id + '</td>' +
+                    '<td>' + data[i].tx_detail.name + '</td>' +
                     '<td>' + data[i].base_amount + '</td>' +
+                    '<td>' + data[i].tx_detail.id_card + '</td>' +
                     '<td><span>' + benchmark_type + '</span>/<span>'+ ca_currency +'</span></td>' +
                     // '<td><span>' + data[i].bit_address + '</span></td>' +
                     '<td><span>' + data[i].tx_time + '</span></td>' +
