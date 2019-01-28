@@ -19,9 +19,9 @@ function countDown() {
     $(".sixty").text(count_down + "s").removeClass("none");
 
     let timer = setInterval(function () {
-        if (countdown > 0) {
-            countdown--;
-            $('.sixty').text(countdown + "s");
+        if (count_down > 0) {
+            count_down--;
+            $('.sixty').text(count_down + "s");
         } else {
             clearInterval(timer);
             $("#phoneCodeBtn").attr("disabled", false);
