@@ -1,4 +1,4 @@
-let url = window.location.host, li = "";
+var url = window.location.host, li = "";
 $.ajax({
     type: "GET",
     url: url + "/h5/bot_web/total_robot/json/slide_nav.json",
