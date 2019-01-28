@@ -30,19 +30,27 @@ $(function () {
         let code = $("#invite_code").val();
         let ccvt_num = $("#amount").val();
         let pass_hash = hex_sha1($("#fun_pass").val());
+        let confirm_fun_pass = hex_sha1($("#confirm_fun_pass").val());
         if (account.length <= 0) {
-            layer.msg("请输入收款账号");
+            WarnPrompt("请输入收款账号");
             return;
         }
         if (ccvt_num.length <= 0) {
-            layer.msg("请输入转账金额");
+            WarnPrompt("请输入转账金额");
             return;
         }
         if (pass_hash.length <= 0) {
-            layer.msg("请输入资金密码");
+            WarnPrompt("请输入资金密码");
             return;
         }
-
+        if (confirm_fun_pass.length <= 0) {
+            WarnPrompt("请输入确认资金密码");
+            return;
+        }
+        if (pass_hash != confirm_fun_pass) {
+            WarnPrompt("两次密码必须相同");
+            return;
+        }
         //是否确认转账
         layer.confirm('是否确定向' + account + '转账?', {
             btn: ['确定', '取消'] //按钮
@@ -55,7 +63,7 @@ $(function () {
 
     function TransferCCVTFun(token, account, code, ccvt_num, pass_hash) {
         ShowLoading("show");
-        TransferCCVT(token, account, code, ccvt_num, pass_hash, function (response) {
+        TransferCCVT(token, account, code, ccvt_num, pass_hash,confirm_fun_pass, function (response) {
             ShowLoading("hide");
             layer.closeAll('dialog');
             $(".transfer_account").text(account);
