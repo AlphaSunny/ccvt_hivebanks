@@ -97,12 +97,15 @@ $(function () {
         layer.confirm('拒绝此笔提现请求？', {
             btn: ['确定', '取消'] //按钮
         }, function () {
+            ShowLoading("show");
             WithdrawRefuse(token,tx_hash,function (response) {
                 if(response.errcode == "0"){
                     SuccessPrompt("处理成功");
+                    ShowLoading("hide");
                 }
             },function (response) {
                 ErrorPrompt(response.errmsg);
+                ShowLoading("hide");
             });
         }, function () {
         });
