@@ -1,11 +1,11 @@
 $(function () {
-    var token = GetCookie("user_token");
-    var group_id = GetCookie("group_id");
+    let token = GetCookie("user_token");
+    let group_id = GetCookie("group_id");
 
     function GetTaskListFun() {
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
-                var data = response.rows, tr = "", content = "";
+                let data = response.rows, tr = "", content = "";
                 if (data.length <= 0) {
                     tr = "<tr><td colspan='5' class='text-center'>暂无数据</td></tr>";
                     $("#taskList").html(tr);
@@ -13,7 +13,7 @@ $(function () {
                 }
 
                 $.each(data, function (i, val) {
-                    var one_arr = data[i].tx_content.split("-");
+                    let one_arr = data[i].tx_content.split("-");
                     if (one_arr.indexOf("sunday") != -1) {
                         one_arr[one_arr.indexOf("sunday")] = "星期日";
                     }
@@ -64,7 +64,7 @@ $(function () {
     GetTaskListFun();
 
     //确定删除任务
-    var timer_id = "";
+    let timer_id = "";
     $(document).on("click", ".delBtn", function () {
         timer_id = $(this).parents("tr").find(".content").attr("name");
         layer.confirm('确定删除该条数据？', {
@@ -87,16 +87,16 @@ $(function () {
     }
 
     //编辑任务
-    var type = "", tx_content_arr = [],timer_id = "";
+    let type = "", tx_content_arr = [];
     $(document).on("click", ".editBtn", function () {
-        var group_name = $(this).parents("tr").find(".name").text();
-        var time = $(this).parents("tr").find(".time").text();
-        var content = $(this).parents("tr").find(".content").text();
-        var task_id = $(this).parents("tr").find(".content").attr("name");
+        let group_name = $(this).parents("tr").find(".name").text();
+        let time = $(this).parents("tr").find(".time").text();
+        let content = $(this).parents("tr").find(".content").text();
+        let task_id = $(this).parents("tr").find(".content").attr("name");
         send_type = $(this).parents("tr").find(".send_type").text();
         timer_id = $(this).parents("tr").find(".content").attr("name");
-        var type = $(this).parents("tr").find(".type").text();
-        var tx_content = $(this).parents("tr").find(".tx_content").text();
+        let type = $(this).parents("tr").find(".type").text();
+        let tx_content = $(this).parents("tr").find(".tx_content").text();
         if (type == 1) {
             $("input[type='checkbox']").prop("checked", true);
         } else {
@@ -135,10 +135,10 @@ $(function () {
 
     //确认编辑
     $(".editSubBtn").click(function () {
-        // var timer_id = $("#timer_id").val();
-        var content = "", tx_content = "", tx_content_arr = [];
-        var time = $("#time").val();
-        var tx_content_list = $(".checkbox_input:checked");
+        // let timer_id = $("#timer_id").val();
+        let content = "", tx_content = "", tx_content_arr = [];
+        let time = $("#time").val();
+        let tx_content_list = $(".checkbox_input:checked");
         $.each(tx_content_list, function (i, val) {
             tx_content_arr.push($(this).val());
         });
@@ -179,7 +179,7 @@ $(function () {
             }
         }
         //loading
-        var loading = layer.load(1, {
+        let loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
         EditTask(token, timer_id, time, content, send_type, tx_content, type, function (response) {
@@ -198,10 +198,10 @@ $(function () {
 
     //添加信息
     $(".addTaskBtn").click(function () {
-        var is_audit = "2";
+        let is_audit = "2";
         GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
-                var data = response.rows, option = "";
+                let data = response.rows, option = "";
                 $.each(data, function (i, val) {
                     option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
                 });
@@ -217,7 +217,7 @@ $(function () {
     });
 
     //选择文本或者图片
-    var send_type = 1;
+    let send_type = 1;
     $("input[type='radio']").change(function () {
         if ($(this).hasClass("text")) {
             send_type = 1;
@@ -240,7 +240,7 @@ $(function () {
     //上传文件到服务器
     function UpLoadImg(formData) {
         ShowLoading("show");
-        var src = '';
+        let src = '';
         $.ajax({
             url: url + '/api/plugin/upload_file.php',
             type: 'POST',
@@ -251,7 +251,7 @@ $(function () {
             processData: false,
             success: function (response) {
                 ShowLoading("hide");
-                var data = JSON.parse(response);
+                let data = JSON.parse(response);
                 if (data.errcode == '0') {
                     src = data.url;
                 }
@@ -265,7 +265,7 @@ $(function () {
     }
 
     //get key_code
-    var key_code = "";
+    let key_code = "";
     GetKeyCode(token, function (response) {
         if (response.errcode == '0') {
             key_code = response.key_code;
@@ -276,7 +276,7 @@ $(function () {
 
     //获取本地图片地址并显示
     function getObjectURL(file) {
-        var url = null;
+        let url = null;
         if (window.createObjectURL != undefined) { // basic
             url = window.createObjectURL(file);
         } else if (window.URL != undefined) { // mozilla(firefox)
@@ -288,13 +288,13 @@ $(function () {
     }
 
     //选择图片
-    var src = "";
+    let src = "";
     $("#file").on("change", function () {
-        var formData = new FormData($("#upload_image")[0]);
-        var objUrl = getObjectURL(this.files[0]);
+        let formData = new FormData($("#upload_image")[0]);
+        let objUrl = getObjectURL(this.files[0]);
         formData.append("file", this.files[0]);
         formData.append("key_code", key_code);
-        var _this_size = this.files[0].size;
+        let _this_size = this.files[0].size;
         if (_this_size > 500000) {
             layer.msg("图片不能大于500KB", {icon: 0});
             return;
@@ -308,7 +308,7 @@ $(function () {
     });
 
     //选择日期
-    var is_checked = 0;
+    let is_checked = 0;
     $("#allday").on("change", function () {
         if (is_checked == 0) {
             $(".checkbox_input").prop("checked", true);
@@ -322,10 +322,10 @@ $(function () {
 
     //确认添加信息
     $(".addSubBtn").click(function () {
-        var content = "", tx_content = "", tx_content_arr = [];
-        var time = $("#time").val();
-        // var group_id = $("#selectGroupName").val();
-        var tx_content_list = $(".checkbox_input:checked");
+        let content = "", tx_content = "", tx_content_arr = [];
+        let time = $("#time").val();
+        // let group_id = $("#selectGroupName").val();
+        let tx_content_list = $(".checkbox_input:checked");
         $.each(tx_content_list, function (i, val) {
             tx_content_arr.push($(this).val());
         });
@@ -369,7 +369,7 @@ $(function () {
         }
 
         //loading
-        var loading = layer.load(1, {
+        let loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
         AddTask(token, time, group_id, content, send_type, tx_content, type, function (response) {

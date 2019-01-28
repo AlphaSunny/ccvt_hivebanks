@@ -1,7 +1,7 @@
 // Set the cookies function
 function SetCookie(name, value) {
-    var now = new Date();
-    var time = now.getTime();
+    let now = new Date();
+    let time = now.getTime();
     // Valid for 2 hours
     time += 3600 * 1000 * 2;
     now.setTime(time);
@@ -10,7 +10,7 @@ function SetCookie(name, value) {
 
 // Take the cookies function
 function GetCookie(name) {
-    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
     if (arr == null && name == "total_robot_token") {
         window.location.href = "login.html";
@@ -20,50 +20,50 @@ function GetCookie(name) {
 
 // Delete cookie function
 function DelCookie(name) {
-    var exp = new Date();
+    let exp = new Date();
     exp.setTime(exp.getTime() - 1);
-    var cval = GetCookie(name);
+    let cval = GetCookie(name);
     if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ';path=/';
 }
 
 // Get URL parameters
 function GetQueryString(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
+    let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    let r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]);
     return null;
 }
 
 // Email format check
 function IsEmail(s) {
-    var patrn = /^(?:\w+\.?)*\w+@(?:\w+\.)*\w+$/;
+    let patrn = /^(?:\w+\.?)*\w+@(?:\w+\.)*\w+$/;
     return patrn.exec(s);
 }
 
 function getRootPath() {
     //Get current URL
-    var curWwwPath = window.document.location.href;
+    let curWwwPath = window.document.location.href;
     //Get the directory after the host address
-    var pathName = window.document.location.pathname;
-    var pos = curWwwPath.indexOf(pathName);
+    let pathName = window.document.location.pathname;
+    let pos = curWwwPath.indexOf(pathName);
     //Get the host address
-    var localhostPath = curWwwPath.substring(0, pos);
+    let localhostPath = curWwwPath.substring(0, pos);
     //Get the project name with "/"
-    var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+    let projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
     return localhostPath;
 }
 
-var url = getRootPath();
+let url = getRootPath();
 
 //获取图形验证码
 function GetImgCode() {
-    var src = config_api_url + '/api/inc/code.php';
+    let src = config_api_url + '/api/inc/code.php';
     // $('#email_imgCode').attr("src", src);
     $('#phone_imgCode').attr("src", src);
 }
 
 //Get configuration file
-var config_api_url = '', config_h5_url = '', userLanguage = GetCookie('userLanguage');
+let config_api_url = '', config_h5_url = '', userLanguage = GetCookie('userLanguage');
 $.ajax({
     url: url + "/h5/assets/json/config_url.json",
     async: false,
@@ -82,7 +82,7 @@ $.ajax({
 
 // Call the API LA configuration function
 function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/api/la/admin/configure/';
+    let api_site = config_api_url + '/api/la/admin/configure/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -103,7 +103,7 @@ function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             // API error exception
-            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            let response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
             // Exception handling
             error_func(response);
         }
@@ -113,7 +113,7 @@ function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
 // Call API common function
 function CallRobotApi(api_url, post_data, suc_func, error_func) {
 
-    var api_site = config_api_url + '/api/bot_web/admin/';
+    let api_site = config_api_url + '/api/bot_web/admin/';
 
     post_data = post_data || {};
     suc_func = suc_func || function () {
@@ -137,7 +137,7 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             // API error exception
-            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            let response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
             // Exception handling
             error_func(response);
         }
@@ -146,7 +146,7 @@ function CallRobotApi(api_url, post_data, suc_func, error_func) {
 
 //LA_LOGIN
 function LaLogin(user, pass_word_hash, suc_func, error_func) {
-    var api_url = 'login.php',
+    let api_url = 'login.php',
         post_data = {
             'user': user,
             'pass_word_hash': pass_word_hash
@@ -156,7 +156,7 @@ function LaLogin(user, pass_word_hash, suc_func, error_func) {
 
 //获取群列表
 function GetGroupList(token, is_audit, suc_func, error_func) {
-    var api_url = 'group_list.php',
+    let api_url = 'group_list.php',
         post_data = {
             'token': token,
             'is_audit': is_audit
@@ -166,7 +166,7 @@ function GetGroupList(token, is_audit, suc_func, error_func) {
 
 //审核群列表
 function ReviewGroup(token, review_group_id, is_audit, why, suc_func, error_func) {
-    var api_url = 'group_audit.php',
+    let api_url = 'group_audit.php',
         post_data = {
             'token': token,
             'group_id': review_group_id,
@@ -178,7 +178,7 @@ function ReviewGroup(token, review_group_id, is_audit, why, suc_func, error_func
 
 //编辑群信息
 function EditGroup(token, group_name, admin_del, group_manager_name, group_id, suc_func, error_func) {
-    var api_url = "group_edit.php",
+    let api_url = "group_edit.php",
         post_data = {
             "token": token,
             "group_name": group_name,
@@ -191,7 +191,7 @@ function EditGroup(token, group_name, admin_del, group_manager_name, group_id, s
 
 //查看群成员列表
 function GetGroupMember(token, group_id, limit, offset, status, suc_func, error_func) {
-    var api_url = "group_members_list.php",
+    let api_url = "group_members_list.php",
         post_data = {
             "token": token,
             "group_id": group_id,
@@ -204,7 +204,7 @@ function GetGroupMember(token, group_id, limit, offset, status, suc_func, error_
 
 //获取聊天记录
 function GetNewsRecord(token, group_id, status, suc_func, error_func) {
-    var api_url = "group_message_list.php",
+    let api_url = "group_message_list.php",
         post_data = {
             "token": token,
             "group_id": group_id,
@@ -215,16 +215,31 @@ function GetNewsRecord(token, group_id, status, suc_func, error_func) {
 
 //获取定时任务
 function GetTaskList(token, suc_func, error_func) {
-    var api_url = "timer_list.php",
+    let api_url = "timer_list.php",
         post_data = {
             "token": token
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//添加任务信息
+function AddTask(token, time, group_id, content, send_type, tx_content, type, suc_func, error_func) {
+    let api_url = "timer_add.php",
+        post_data = {
+            "token": token,
+            "time": time,
+            "group_id": group_id,
+            "content": content,
+            "send_type": send_type,
+            "tx_content": tx_content,
+            "type": type
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 //编辑任务信息
 function EditTask(token, timer_id, time, content, suc_func, error_func) {
-    var api_url = "timer_edit.php",
+    let api_url = "timer_edit.php",
         post_data = {
             "token": token,
             "timer_id": timer_id,
@@ -236,7 +251,7 @@ function EditTask(token, timer_id, time, content, suc_func, error_func) {
 
 //删除任务信息
 function DelTask(token, timer_id, suc_func, error_func) {
-    var api_url = "timer_del.php",
+    let api_url = "timer_del.php",
         post_data = {
             "token": token,
             "timer_id": timer_id
@@ -246,7 +261,7 @@ function DelTask(token, timer_id, suc_func, error_func) {
 
 //搜索获取统计列表
 function GetAmount(token, group_id, start_time, end_time, nickname, limit, offset, suc_func, error_func) {
-    var api_url = "iss_records_list.php",
+    let api_url = "iss_records_list.php",
         post_data = {
             "token": token,
             "group_id": group_id,
@@ -261,7 +276,7 @@ function GetAmount(token, group_id, start_time, end_time, nickname, limit, offse
 
 //获取群类型
 function GetGroupTypeAdmin(token, suc_func, error_func) {
-    var api_url = "group_type.php",
+    let api_url = "group_type.php",
         post_data = {
             "token": token
         };
@@ -270,7 +285,7 @@ function GetGroupTypeAdmin(token, suc_func, error_func) {
 
 //添加群类型
 function AddGroupType(token, name, suc_func, error_func) {
-    var api_url = "group_type_add.php",
+    let api_url = "group_type_add.php",
         post_data = {
             "token": token,
             "name": name
@@ -280,7 +295,7 @@ function AddGroupType(token, name, suc_func, error_func) {
 
 //删除群类型
 function DeleteGroupType(token, type_id, suc_func, error_func) {
-    var api_url = "group_type_del.php",
+    let api_url = "group_type_del.php",
         post_data = {
             "token": token,
             "type_id": type_id
@@ -290,7 +305,7 @@ function DeleteGroupType(token, type_id, suc_func, error_func) {
 
 //编辑群类型
 function EditGroupType(token, type_id, name, suc_func, error_func) {
-    var api_url = "group_type_edit.php",
+    let api_url = "group_type_edit.php",
         post_data = {
             "token": token,
             "type_id": type_id,
@@ -301,7 +316,7 @@ function EditGroupType(token, type_id, name, suc_func, error_func) {
 
 //踩-赞记录
 function GiveLikeList(token, limit, offset, suc_func, error_func) {
-    var api_url = "glory_integral_list.php",
+    let api_url = "glory_integral_list.php",
         post_data = {
             "token": token,
             "limit": limit,
@@ -312,7 +327,7 @@ function GiveLikeList(token, limit, offset, suc_func, error_func) {
 
 //获取key code
 function GetKeyCode(token, suc_func, error_func) {
-    var api_url = 'get_key_code.php',
+    let api_url = 'get_key_code.php',
         post_data = {
             'token': token
         };
@@ -321,7 +336,7 @@ function GetKeyCode(token, suc_func, error_func) {
 
 //获取ai关键字
 function GetKeyWordList(token, limit, offset, suc_func, error_func) {
-    var api_url = 'key_words_list.php',
+    let api_url = 'key_words_list.php',
         post_data = {
             'token': token,
             'limit': limit,
@@ -332,7 +347,7 @@ function GetKeyWordList(token, limit, offset, suc_func, error_func) {
 
 //添加ai关键字
 function AddKeyWord(token, ask, answer, send_type, suc_func, error_func) {
-    var api_url = 'key_words_add.php',
+    let api_url = 'key_words_add.php',
         post_data = {
             'token': token,
             'ask': ask,
@@ -344,7 +359,7 @@ function AddKeyWord(token, ask, answer, send_type, suc_func, error_func) {
 
 //编辑ai关键字
 function EditKeyWord(token, ask, answer, send_type, key_id, suc_func, error_func) {
-    var api_url = 'key_words_edit.php',
+    let api_url = 'key_words_edit.php',
         post_data = {
             'token': token,
             'ask': ask,
@@ -357,7 +372,7 @@ function EditKeyWord(token, ask, answer, send_type, key_id, suc_func, error_func
 
 //删除ai关键字
 function DelKeyWord(token, key_id, suc_func, error_func) {
-    var api_url = 'key_words_del.php',
+    let api_url = 'key_words_del.php',
         post_data = {
             'token': token,
             'key_id': key_id
@@ -376,7 +391,7 @@ function DisableClick($this, btnText) {
         console.warn("$this Can not be empty");
         return true;
     }
-    var status = Number($this.attr('data-clickStatus') || 1);
+    let status = Number($this.attr('data-clickStatus') || 1);
     if (status == 0) {
         return true;
     }
@@ -407,7 +422,7 @@ window.onload = function () {
 };
 
 //loading
-var loading = "";
+let loading = "";
 
 function ShowLoading(type) {
     if (type == "show") {
