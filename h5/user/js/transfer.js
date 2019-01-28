@@ -68,7 +68,7 @@ $(function () {
     }
 
     $(".transform_ccvt_confirm_btn").click(() => {
-        window.location.href = "test_transfer_list.html";
+        window.location.href = "transfer_list.html";
     });
 
     //transfer list
