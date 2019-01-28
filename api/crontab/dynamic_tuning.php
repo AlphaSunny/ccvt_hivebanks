@@ -65,7 +65,7 @@ function lock_cut()
         if($v['phone']  == '18321709102')
         {
             $sql = "update big_account_lock set amount = amount-18000000 where phone = '$phone'";
-            $amount = 7000000;
+            $amount = 18000000;
         }
         $db->query($sql);
 
