@@ -344,8 +344,12 @@ $(function () {
                 // LayerFun('modifySuccess');
 
                 SuccessPrompt("修改成功");
-                DelCookie('user_token');
-                window.location.href = 'login.html';
+                layer.confirm('修改成功，重新登录！', {
+                    btn: ['重新登录'] //按钮
+                }, function () {
+                    DelCookie('user_token');
+                    window.location.href = 'login.html';
+                });
             }
 
         }, function (response) {
