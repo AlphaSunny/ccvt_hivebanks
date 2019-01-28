@@ -84,10 +84,8 @@ $(function () {
     });
 
     $(document).on("click", ".cancelBtn", function () {
-        // let tx_hash = $(this).next('.tx_hash').text();
-        // ca_refuse_us_recharge.php
         let type = '2';
-        let qa_id = $(this).siblings().$('.qa_id').text();
+        let qa_id = $(this).siblings(".qa_id").text();
         layer.confirm('拒绝此笔充值请求？', {
             btn: ['确定', '取消'] //按钮
         }, function () {

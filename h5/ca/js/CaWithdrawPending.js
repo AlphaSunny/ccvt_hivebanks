@@ -94,7 +94,7 @@ $(function () {
     //refuse withdraw
     $(document).on("click", ".refuseBtn", function () {
         // let tx_hash = $(this).next('.tx_hash').text();
-        let qa_id = $(this).siblings().$('.qa_id').text();
+        let qa_id = $(this).siblings(".qa_id").text();
         let type = '2';
         layer.confirm('拒绝此笔提现请求？', {
             btn: ['确定', '取消'] //按钮
