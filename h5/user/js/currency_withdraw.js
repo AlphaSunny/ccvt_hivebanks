@@ -102,7 +102,7 @@ $(function () {
             LayerFun('insufficientBalance');
             return;
         }
-        let base_amount = $('#withdrawAmount').val();
+        let base_amount = $('.base_amount').val();
         if (base_amount > us_base_amount) {
             LayerFun('insufficientBalance');
             return;
