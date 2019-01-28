@@ -1,7 +1,7 @@
 $(function () {
-    var token = GetCookie('ca_token'), limit = 10, offset = 0;
-    var benchmark_type = GetUsCookie('benchmark_type');
-    var ca_currency = GetUsCookie('ca_currency');
+    let token = GetCookie('ca_token'), limit = 10, offset = 0;
+    let benchmark_type = GetUsCookie('benchmark_type');
+    let ca_currency = GetUsCookie('ca_currency');
     GetCaAccount();
 
     // get Basic user information
@@ -17,10 +17,10 @@ $(function () {
     });
 
     //Get a list of user withdrawal pending orders
-    var api_url = 'log_us_withdraw.php', type = '1', bit_address = [], tr = '';
+    let api_url = 'log_us_withdraw.php', type = '1', bit_address = [], tr = '';
     GetRechargeWithdrawList(api_url, token, type, function (response) {
         if (response.errcode == '0') {
-            var data = response.rows;
+            let data = response.rows;
             if(data == false){
                 GetDataEmpty('withdrawPendingTable', '5');
                 return;
@@ -50,7 +50,7 @@ $(function () {
         return;
     });
     //Withdrawal request confirmation processing
-    var qa_id = '', _this = '', transfer_tx_hash = '';
+    let qa_id = '', _this = '', transfer_tx_hash = '';
     $(document).on('click', '.confirmBtn', function () {
         transfer_tx_hash = $(this).parents('.withdrawPendingList').find('.transfer_tx_hash').val();
         if (transfer_tx_hash.length <= 0) {
@@ -64,8 +64,8 @@ $(function () {
 
     //again confirm
     $('.againConfirmBtn').click(function () {
-        var type = '1';
-        var $this = $(this), btnText = $(this).text();
+        let type = '1';
+        let $this = $(this), btnText = $(this).text();
         if(DisableClick($this)) return;
         ShowLoading("show");
         WithdrawConfirm(token, qa_id, type, transfer_tx_hash, function (response) {
