@@ -39,6 +39,8 @@ $id_card = get_arg_str('GET', 'id_card');
 $name = get_arg_str('GET', 'name');
 // 是否有效
 
+exit_ok($name);
+
 $us_id = check_token($token);
 //$ca_channel_row = get_us_asset_cash_account_info($us_id,date("Y-m-d H:i:s"));
 //判断金额，以及其他参数是否正确
