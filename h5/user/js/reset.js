@@ -342,7 +342,7 @@ $(function () {
                 $('.phonePassword').val('');
                 $('.confirmphonePassword').val('');
                 // LayerFun('modifySuccess');
-                WarnPrompt("修改成功");
+                SuccessPrompt("修改成功");
                 DelCookie('user_token');
                 window.location.href = 'login.html';
             }
