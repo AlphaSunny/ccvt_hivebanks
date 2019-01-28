@@ -142,7 +142,7 @@ function cut_log_com_base($us_id,$amount){
     $uata["credit_balance"] = get_us_account($us_id)-($amount*UNIT);
     $uata["utime"] = time();
     $uata["ctime"] = $ctime;
-    $data['tx_count'] = base_get_pre_count($uata['credit_id']);
+    $uata['tx_count'] = base_get_pre_count($uata['credit_id']);
     $uql = $db->sqlInsert("com_base_balance", $uata);
 
     if($db->query($sql)&&$db->query($uql))
