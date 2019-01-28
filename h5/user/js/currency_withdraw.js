@@ -41,7 +41,7 @@ $(function () {
     });
 
     //Get the average exchange rate of Ca withdrawal
-    let withdraw_rate = '', api_url = 'average_ca_withdraw_rate.php';
+    let withdraw_rate = '', api_url = 'ca_withdraw_rate.php';
     GetAverageRate(api_url, token, function (response) {
         if (response.errcode == '0') {
             $('.withdraw_rate').text(response.withdraw_rate);
