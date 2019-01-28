@@ -32,7 +32,7 @@ $(function () {
                     '<td><span>' + benchmark_type + '</span>/<span class="ca_currency">'+ ca_currency +'</span></td>' +
                     // '<td><span>' + data[i].bit_address + '</span></td>' +
                     '<td><span>' + data[i].tx_time + '</span></td>' +
-                    '<td><input type="text" class="form-control transfer_tx_hash"></td>' +
+                    // '<td><input type="text" class="form-control transfer_tx_hash"></td>' +
                     '<td>' +
                     '<a class="btn btn-success btn-sm confirmBtn">' +
                     '<span class="i18n" name="handle">handle</span>' +
