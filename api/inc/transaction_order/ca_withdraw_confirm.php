@@ -6,7 +6,7 @@
  * Date: 2018/8/8
  * Time: 下午2:52
  */
-require_once 'db/com_base_balance.php';
+
 function withdraw_confirm($rows){
 
     //增加ca_base的该订单的base_amount

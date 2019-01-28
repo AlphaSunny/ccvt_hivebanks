@@ -6,6 +6,7 @@ require_once 'db/ca_base.php';
 require_once 'db/us_base.php';
 require_once 'db/com_base_balance.php';
 require_once "../inc/transaction_order/ca_withdraw_confirm.php";
+require_once "../inc/transaction_order/db/com_base_balance.php";
 
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
