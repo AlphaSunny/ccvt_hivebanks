@@ -31,7 +31,6 @@ $(function () {
 //withdraw
     $('.nav_ba_withdraw').click(function () {
         verifyWithdraw("ba_withdraw");
-
     });
     $('.nav_ca_withdraw').click(function () {
         // WarnPrompt("Ca提现功能暂未开通");
