@@ -508,6 +508,8 @@ function notice_records($data)
             $db->query($sql);
             $glory_integral = $db->fetchRow();
             if ($glory_integral && $glory_integral['base_amount']<0){
+                $sql = $db->sqlInsert("bot_notice_records", $data);
+                $db->query($sql);
                 $status = 3;
             }
         }
