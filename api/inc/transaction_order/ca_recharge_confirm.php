@@ -109,3 +109,35 @@ function recharge_confirm($rows)
     $db->Commit($pInTrans);
 
 }
+
+
+/**
+ * @param $credit_id
+ * @return int|mixed
+ * 获取上一个交易的链高度 （com_base_balance表）
+ */
+function base_get_pre_count($credit_id)
+{
+    $db = new DB_COM();
+    $sql = "select tx_count from com_base_balance where credit_id = '{$credit_id}' order by ctime desc limit 1";
+    $tx_count = $db->getField($sql, 'tx_count');
+    if($tx_count == null)
+        return 1;
+
+    return $tx_count+1;
+}
+
+/**
+ * @param $credit_id
+ * @return int|mixed
+ * 获取上一个交易的链高度 （com_transfer_request表）
+ */
+function transfer_get_pre_count($credit_id)
+{
+    $db = new DB_COM();
+    $sql = "select tx_count from com_transfer_request where credit_id = '{$credit_id}' order by ctime desc limit 1";
+    $tx_count = $db->getField($sql, 'tx_count');
+    if($tx_count == null)
+        return 1;
+    return $tx_count+1;
+}
