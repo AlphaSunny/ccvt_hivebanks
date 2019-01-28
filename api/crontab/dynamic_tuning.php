@@ -11,7 +11,7 @@ error_reporting(E_ALL | E_STRICT);
 require_once '../inc/common.php';
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
-die('Who is Q++?');
+//die('Who is');
 //
 //define('GONE_STAFF',array('15248165523',
 //    '13816129726')
@@ -45,7 +45,7 @@ function staff_cut()
         $db->query($sql);
         var_dump($db->fetchAll());
 
-        staff_add();
+//        staff_add();
     }
 }
 
@@ -56,20 +56,16 @@ function lock_cut()
 //        array('phone'=>'13816129726','amount'=>7500000)
 //    );
     $db = new DB_COM();
-    $sql = "select * from big_account_lock where phone in ('15248165523','13816129726')";
+    $sql = "select * from big_account_lock where phone in ('18321709102')";
     $db->query($sql);
     $staff = $db->fetchAll();
     foreach ($staff as $k => $v)
     {
         $phone = $v['phone'];
-        if($v['phone']  == '15248165523')
+        if($v['phone']  == '18321709102')
         {
-            $sql = "update big_account_lock set amount = amount-7000000 where phone = '$phone'";
+            $sql = "update big_account_lock set amount = amount-18000000 where phone = '$phone'";
             $amount = 7000000;
-        }
-        else{
-            $sql = "update big_account_lock set amount = amount-7500000 where phone = '$phone'";
-            $amount = 7500000;
         }
         $db->query($sql);
 
@@ -130,6 +126,7 @@ function cut_log_com_base($us_id,$amount){
     $data["credit_balance"] = get_ba_account(BA_ID)+($amount*UNIT);
     $data["utime"] = time();
     $data["ctime"] = $ctime;
+    $data['tx_count'] = base_get_pre_count($data['credit_id']);
     $sql = $db->sqlInsert("com_base_balance", $data);
 
     $uata = array();
@@ -141,10 +138,11 @@ function cut_log_com_base($us_id,$amount){
     $uata['credit_id'] = $us_id;
     $uata['debit_id']= BA_ID;
     $uata['tx_type'] = 'gone_staff';
-    $uata["tx_amount"] = $amount*UNIT;
+    $uata["tx_amount"] = -$amount*UNIT;
     $uata["credit_balance"] = get_us_account($us_id)-($amount*UNIT);
     $uata["utime"] = time();
     $uata["ctime"] = $ctime;
+    $data['tx_count'] = base_get_pre_count($uata['credit_id']);
     $uql = $db->sqlInsert("com_base_balance", $uata);
 
     if($db->query($sql)&&$db->query($uql))
@@ -173,6 +171,7 @@ function cut_log_com_transfer($us_id,$amount){
     $data['give_or_receive'] = 2;
     $data['ctime'] = time();
     $data['utime'] = date('Y-m-d H:i:s',time());
+    $data['tx_count'] = transfer_get_pre_count($data['credit_id']);
     $sql = $db->sqlInsert("com_transfer_request", $data);
 
     $dat['hash_id'] = hash('md5', $us_id . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
@@ -180,7 +179,7 @@ function cut_log_com_transfer($us_id,$amount){
     $dat['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$us_id) : $prvs_hash;
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = BA_ID;
-    $dat['tx_amount'] = $amount*UNIT;
+    $dat['tx_amount'] = -$amount*UNIT;
     $dat['credit_balance'] = get_us_account($us_id)-$dat['tx_amount'];
     $dat['tx_hash'] = hash('md5', $us_id . FLAG . get_ip() . mt() . date('Y-m-d H:i:s'));
     $dat['flag'] = FLAG;
@@ -190,6 +189,7 @@ function cut_log_com_transfer($us_id,$amount){
     $dat['give_or_receive'] = 1;
     $dat['ctime'] = time();
     $dat['utime'] = date('Y-m-d H:i:s',time());
+    $dat['tx_count'] = transfer_get_pre_count($dat['credit_id']);
     $uql = $db->sqlInsert("com_transfer_request", $dat);
 
     if($db->query($sql)&&$db->query($uql))
@@ -197,6 +197,38 @@ function cut_log_com_transfer($us_id,$amount){
     die('com_transfer');
     return false;
 
+}
+
+
+/**
+ * @param $credit_id
+ * @return int|mixed
+ * 获取上一个交易的链高度 （com_base_balance表）
+ */
+function base_get_pre_count($credit_id)
+{
+    $db = new DB_COM();
+    $sql = "select tx_count from com_base_balance where credit_id = '{$credit_id}' order by ctime desc limit 1";
+    $tx_count = $db->getField($sql, 'tx_count');
+    if($tx_count == null)
+        return 1;
+
+    return $tx_count+1;
+}
+
+/**
+ * @param $credit_id
+ * @return int|mixed
+ * 获取上一个交易的链高度 （com_transfer_request表）
+ */
+function transfer_get_pre_count($credit_id)
+{
+    $db = new DB_COM();
+    $sql = "select tx_count from com_transfer_request where credit_id = '{$credit_id}' order by ctime desc limit 1";
+    $tx_count = $db->getField($sql, 'tx_count');
+    if($tx_count == null)
+        return 1;
+    return $tx_count+1;
 }
 
 //===============================
