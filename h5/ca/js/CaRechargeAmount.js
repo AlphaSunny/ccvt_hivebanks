@@ -23,6 +23,7 @@ $(function () {
             recharge_min_amount = response.recharge_min_amount;
             $('.recharge_max_amount').text(response.max_amount);
             $('.recharge_min_amount').text(response.min_amount);
+            $(".rechargeInputSum").val(recharge_min_amount);
             $('#rechargeAmount').text(response.min_amount);
             $('#payAmount').text(response.min_amount * response.base_rate);
             $('.base_amount').val(us_recharge_bit_amount / rate);
