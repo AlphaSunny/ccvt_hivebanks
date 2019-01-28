@@ -37,9 +37,13 @@ $(function () {
                     // '<td><input type="text" class="form-control transfer_tx_hash"></td>' +
                     '<td>' +
                     '<a class="btn btn-success btn-sm confirmBtn">' +
-                    '<span class="i18n" name="handle">handle</span>' +
+                    '<span class="i18n" name="handle"></span>' +
                     '</a>' +
                     '<span class="qa_id none">' + data[i].qa_id + '</span>' +
+                    '<a class="btn btn-success btn-sm refuseBtn">' +
+                    '<span class="i18n" name="refuse"></span>' +
+                    '</a>' +
+                    '<span class="tx_hash none">' + data[i].tx_hash + '</span>' +
                     '</td>' +
                     '</tr>';
             });
@@ -85,6 +89,23 @@ $(function () {
             LayerFun("processingFailure");
             return;
         })
+    });
+
+    //refuse withdraw
+    $(document).on("click",".refuseBtn",function () {
+        let tx_hash = $(this).next('.tx_hash').text();
+        layer.confirm('拒绝此笔充值？', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            WithdrawRefuse(token,tx_hash,function (response) {
+                if(response.errcode == "0"){
+                    SuccessPrompt("处理成功");
+                }
+            },function (response) {
+                ErrorPrompt(response.errmsg);
+            });
+        }, function () {
+        });
     })
 });
 

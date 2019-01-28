@@ -1,7 +1,7 @@
 // Set the cookies function
 function SetCookie(name, value) {
-    var now = new Date();
-    var time = now.getTime();
+    let now = new Date();
+    let time = now.getTime();
     // Valid for 2 hours
     time += 3600 * 1000 * 2;
     now.setTime(time);
@@ -10,7 +10,7 @@ function SetCookie(name, value) {
 
 // Take the cookies function
 function GetCookie(name) {
-    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
     if (arr == null) {
         window.location.href = 'CaLogin.html';
@@ -19,7 +19,7 @@ function GetCookie(name) {
 
 // Take the us_cookies function
 function GetUsCookie(name) {
-    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
 
     if (arr == null && name == "user_token") {
@@ -32,40 +32,40 @@ function GetUsCookie(name) {
 
 // Delete cookie function
 function DelCookie(name) {
-    var exp = new Date();
+    let exp = new Date();
     exp.setTime(exp.getTime() - 1);
-    var cookieVal = GetCookie(name);
+    let cookieVal = GetCookie(name);
     if (cookieVal != null) document.cookie = name + "=" + cookieVal + ";expires=" + exp.toGMTString();
 }
 
 // Get URL parameters
 function GetQueryString(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
+    let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    let r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]);
     return null;
 }
 
 // Email format check
 function IsEmail(s) {
-    var patrn = /^(?:\w+\.?)*\w+@(?:\w+\.)*\w+$/;
+    let patrn = /^(?:\w+\.?)*\w+@(?:\w+\.)*\w+$/;
     return patrn.exec(s);
 }
 
 function getRootPath() {
     //Get current URL
-    var curWwwPath = window.document.location.href;
+    let curWwwPath = window.document.location.href;
     //Get the directory after the host address
-    var pathName = window.document.location.pathname;
-    var pos = curWwwPath.indexOf(pathName);
+    let pathName = window.document.location.pathname;
+    let pos = curWwwPath.indexOf(pathName);
     //Get the host address
-    var localhostPath = curWwwPath.substring(0, pos);
+    let localhostPath = curWwwPath.substring(0, pos);
     //Get the project name with "/"
-    var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+    let projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
     return localhostPath;
 }
 
-var url = getRootPath();
+let url = getRootPath();
 
 //Get failed error code prompt
 function GetErrorCode(code) {
@@ -80,7 +80,7 @@ function GetErrorCode(code) {
 }
 
 //Get configuration file
-var config_api_url = '', config_h5_url = '', userLanguage = getCookie('userLanguage');
+let config_api_url = '', config_h5_url = '', userLanguage = getCookie('userLanguage');
 $.ajax({
     url: url + "/h5/assets/json/config_url.json",
     async: false,
@@ -89,8 +89,8 @@ $.ajax({
     success: function (data) {
         config_api_url = data.api_url;
         config_h5_url = data.h5_url;
-        var benchmark_type = data.benchmark_type.toUpperCase();
-        var ca_currency = data.ca_currency.toUpperCase();
+        let benchmark_type = data.benchmark_type.toUpperCase();
+        let ca_currency = data.ca_currency.toUpperCase();
         $('.base_type').text(benchmark_type);
         $('.ca_currency').text(ca_currency);
         SetCookie('ca_currency', ca_currency);
@@ -109,7 +109,7 @@ $.ajax({
 // Call API common function
 function CallApi(api_url, post_data, suc_func, error_func) {
 
-    var api_site = config_api_url + '/api/ca/';
+    let api_site = config_api_url + '/api/ca/';
 
     post_data = post_data || {};
     suc_func = suc_func || function () {
@@ -132,7 +132,7 @@ function CallApi(api_url, post_data, suc_func, error_func) {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             // API error exception
-            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            let response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
             // Exception handling
             error_func(response);
         }
@@ -142,7 +142,7 @@ function CallApi(api_url, post_data, suc_func, error_func) {
 // Call the USER API common function
 function CallUserApi(api_url, post_data, suc_func, error_func) {
 
-    var api_site = config_api_url + '/api/user/';
+    let api_site = config_api_url + '/api/user/';
 
     post_data = post_data || {};
     suc_func = suc_func || function () {
@@ -166,7 +166,7 @@ function CallUserApi(api_url, post_data, suc_func, error_func) {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             // API error exception
-            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            let response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
             // Exception handling
             error_func(response);
         }
@@ -175,7 +175,7 @@ function CallUserApi(api_url, post_data, suc_func, error_func) {
 
 // Call the la API registration function
 function CallLaApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/api/la/admin/admin/';
+    let api_site = config_api_url + '/api/la/admin/admin/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -196,7 +196,7 @@ function CallLaApi(api_url, post_data, suc_func, error_func) {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             // API error exception
-            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            let response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
             // Exception handling
             error_func(response);
         }
@@ -205,7 +205,7 @@ function CallLaApi(api_url, post_data, suc_func, error_func) {
 
 // Call the API LA configuration function
 function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/api/la/admin/configure/';
+    let api_site = config_api_url + '/api/la/admin/configure/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -226,7 +226,7 @@ function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             // API error exception
-            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            let response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
             // Exception handling
             error_func(response);
         }
@@ -235,7 +235,7 @@ function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
 
 //Ca recharge margin la function
 function CallLaBase(api_url, post_data, suc_func, error_func) {
-    var api_site = config_api_url + '/api/base/';
+    let api_site = config_api_url + '/api/base/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };
@@ -256,7 +256,7 @@ function CallLaBase(api_url, post_data, suc_func, error_func) {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             // API error exception
-            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            let response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
             // Exception handling
             error_func(response);
         }
@@ -265,7 +265,7 @@ function CallLaBase(api_url, post_data, suc_func, error_func) {
 
 //Check if registration is allowed
 function RegisterSwitch(type, suc_func, error_func) {
-    var api_url = 'reg_lock.php',
+    let api_url = 'reg_lock.php',
         post_data = {
             'type': type
         };
@@ -274,14 +274,14 @@ function RegisterSwitch(type, suc_func, error_func) {
 
 //Get graphic verification code
 function GetImgCode() {
-    var src = config_api_url + '/api/inc/code.php';
+    let src = config_api_url + '/api/inc/code.php';
     $('#email_imgCode').attr("src", src);
     $('#phone_imgCode').attr("src", src);
 }
 
 //email registration
 function EmailRegister(email, pass_word_hash, suc_func, error_func) {
-    var api_url = 'mst_reg_email.php',
+    let api_url = 'mst_reg_email.php',
         post_data = {
             'email': email,
             'pass_word_hash': pass_word_hash
@@ -291,7 +291,7 @@ function EmailRegister(email, pass_word_hash, suc_func, error_func) {
 
 //Mailbox login processing
 function EmailLogin(email, pass_word_hash, cfm_code, suc_func, error_func) {
-    var api_url = 'lgn_email.php',
+    let api_url = 'lgn_email.php',
         post_data = {
             'email': email,
             'pass_word_hash': pass_word_hash,
@@ -302,7 +302,7 @@ function EmailLogin(email, pass_word_hash, cfm_code, suc_func, error_func) {
 
 //Register your phone
 function PhoneRegister(country_code, cellphone, pass_word_hash, sms_code, suc_func, error_func) {
-    var api_url = 'mst_reg_phone.php',
+    let api_url = 'mst_reg_phone.php',
         post_data = {
             'country_code': country_code,
             'cellphone': cellphone,
@@ -314,7 +314,7 @@ function PhoneRegister(country_code, cellphone, pass_word_hash, sms_code, suc_fu
 
 // 重置密码(邮箱)
 function ResetEmailPassword(email, cfm_code, pass_word_hash, confirm_pass_word_hash, suc_func, error_func) {
-    var api_url = 'rst_pw_email.php',
+    let api_url = 'rst_pw_email.php',
         post_data = {
             'email': email,
             'cfm_code': cfm_code,
@@ -326,7 +326,7 @@ function ResetEmailPassword(email, cfm_code, pass_word_hash, confirm_pass_word_h
 
 //Reset Email Password - Get Verification Code
 function GetEmailCode(email, suc_func, error_func) {
-    var api_url = 'cfm_email_preform.php',
+    let api_url = 'cfm_email_preform.php',
         post_data = {
             'email': email
         };
@@ -335,7 +335,7 @@ function GetEmailCode(email, suc_func, error_func) {
 
 // 重置密码(手机)
 function ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash, confirm_pass_word_hash, suc_func, error_func) {
-    var api_url = 'rst_pw_phone.php',
+    let api_url = 'rst_pw_phone.php',
         post_data = {
             'country_code': country_code,
             'cellphone': cellphone,
@@ -348,7 +348,7 @@ function ResetPhonePassword(country_code, cellphone, sms_code, pass_word_hash, c
 
 //Login failure countdown
 function CountDown(count, ErrorNum, LoginBtn, input, LoginError) {
-    var counts = count;
+    let counts = count;
     if (counts != 0) {
         counts--;
         ErrorNum.text(counts);
@@ -370,7 +370,7 @@ function CountDown(count, ErrorNum, LoginBtn, input, LoginError) {
 
 //Get phone verification code
 function GetPhoneCode(cellphone, country_code, bind_type, cfm_code, suc_func, error_func) {
-    var api_url = 'sms_send.php',
+    let api_url = 'sms_send.php',
         post_data = {
             'cellphone': cellphone,
             'country_code': country_code,
@@ -382,7 +382,7 @@ function GetPhoneCode(cellphone, country_code, bind_type, cfm_code, suc_func, er
 
 //Mobile phone login processing
 function PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, suc_func, error_func) {
-    var api_url = 'lgn_phone.php',
+    let api_url = 'lgn_phone.php',
         post_data = {
             'country_code': country_code,
             'cellphone': cellphone,
@@ -394,7 +394,7 @@ function PhoneLogin(country_code, cellphone, pass_word_hash, cfm_code, suc_func,
 
 //ca Recharge deposit
 function RechargeManage(token, base_amount, suc_func, error_func) {
-    var api_url = 'ca_recharge_quest.php',
+    let api_url = 'ca_recharge_quest.php',
         post_data = {
             'token': token,
             'base_amount': base_amount
@@ -404,7 +404,7 @@ function RechargeManage(token, base_amount, suc_func, error_func) {
 
 //caWithdrawal margin
 function WithdrawManage(token, base_amount, fun_pass, suc_func, error_func) {
-    var api_url = 'ca_withdraw_quest.php',
+    let api_url = 'ca_withdraw_quest.php',
         post_data = {
             'token': token,
             'base_amount': base_amount,
@@ -415,7 +415,7 @@ function WithdrawManage(token, base_amount, fun_pass, suc_func, error_func) {
 
 //Get the margin withdrawal address
 function GetMarginWithdrawAddress(token, suc_func, error_func) {
-    var api_url = 'get_bit_address_withdraw.php',
+    let api_url = 'get_bit_address_withdraw.php',
         post_data = {
             'token': token
         };
@@ -424,7 +424,7 @@ function GetMarginWithdrawAddress(token, suc_func, error_func) {
 
 //Add margin withdrawal address
 function AddMarginWithdrawAddress(token, bit_address, fun_pass, suc_func, error_func) {
-    var api_url = 'bit_address_withdraw_add.php',
+    let api_url = 'bit_address_withdraw_add.php',
         post_data = {
             'token': token,
             'bit_address': bit_address,
@@ -435,7 +435,7 @@ function AddMarginWithdrawAddress(token, bit_address, fun_pass, suc_func, error_
 
 //get ca base information
 function GetCaInformation(token, suc_func, error_func) {
-    var api_url = 'mst_info_base.php',
+    let api_url = 'mst_info_base.php',
         post_data = {
             'token': token
         };
@@ -444,7 +444,7 @@ function GetCaInformation(token, suc_func, error_func) {
 
 //Modify ca nickname
 function ModifyNickName(token, ca_account, suc_func, error_func) {
-    var api_url = 'alter_ca_account.php',
+    let api_url = 'alter_ca_account.php',
         post_data = {
             'token': token,
             'ca_account': ca_account
@@ -454,7 +454,7 @@ function ModifyNickName(token, ca_account, suc_func, error_func) {
 
 //get ca bind information
 function GetCaBindInformation(token, suc_func, error_func) {
-    var api_url = 'mst_info_bind.php',
+    let api_url = 'mst_info_bind.php',
         post_data = {
             'token': token
         };
@@ -463,7 +463,7 @@ function GetCaBindInformation(token, suc_func, error_func) {
 
 // CA Change Record - Login Record
 function AllRecord(token, limit, offset, api_url, suc_func, error_func) {
-    var post_data = {
+    let post_data = {
         'token': token,
         'limit': limit,
         'offset': offset
@@ -473,7 +473,7 @@ function AllRecord(token, limit, offset, api_url, suc_func, error_func) {
 
 //get bank list
 function GetBankList(token, suc_func, error_func) {
-    var api_url = 'ca_channel_list.php',
+    let api_url = 'ca_channel_list.php',
         post_data = {
             'token': token
         };
@@ -482,7 +482,7 @@ function GetBankList(token, suc_func, error_func) {
 
 //add bank
 function AddAgencyType(token, ca_channel, card_nm, name, idNum, pass_word_hash, suc_func, error_func) {
-    var api_url = 'ca_asset_account_add.php',
+    let api_url = 'ca_asset_account_add.php',
         post_data = {
             'token': token,
             'ca_channel': ca_channel,
@@ -496,7 +496,7 @@ function AddAgencyType(token, ca_channel, card_nm, name, idNum, pass_word_hash, 
 
 //get added type
 function GetAddAgencyType(token, suc_func, error_func) {
-    var api_url = 'ca_get_asset_account.php',
+    let api_url = 'ca_get_asset_account.php',
         post_data = {
             'token': token
         };
@@ -505,7 +505,7 @@ function GetAddAgencyType(token, suc_func, error_func) {
 
 //del asset account
 function delAssetAccount(token, ca_channel, suc_func, error_func) {
-    var api_url = 'del_asset_account.php',
+    let api_url = 'del_asset_account.php',
         post_data = {
             'token': token,
             'ca_channel': ca_channel
@@ -517,7 +517,7 @@ function delAssetAccount(token, ca_channel, suc_func, error_func) {
 
 // Text binding
 function TextBind(token, text_type, text, text_hash, suc_func, error_func) {
-    var api_url = 'bnd_text.php',
+    let api_url = 'bnd_text.php',
         post_data = {
             'token': token,
             'text_type': text_type,
@@ -530,7 +530,7 @@ function TextBind(token, text_type, text, text_hash, suc_func, error_func) {
 
 // Text modification
 function TextModify(token, text_type, text, text_hash, pass_word_hash, suc_func, error_func) {
-    var api_url = 'change_text.php',
+    let api_url = 'change_text.php',
         post_data = {
             'token': token,
             'text_type': text_type,
@@ -543,7 +543,7 @@ function TextModify(token, text_type, text, text_hash, pass_word_hash, suc_func,
 
 //get la_id
 function GetLaId(token, suc_func, error_func) {
-    var api_url = 'get_la_admin_info.php',
+    let api_url = 'get_la_admin_info.php',
         post_data = {
             'token': token
         };
@@ -552,7 +552,7 @@ function GetLaId(token, suc_func, error_func) {
 
 // File binding
 function FileBind(token, file_type, file_url, suc_func, error_func) {
-    var api_url = 'bnd_file.php',
+    let api_url = 'bnd_file.php',
         post_data = {
             'token': token,
             'file_type': file_type,
@@ -563,7 +563,7 @@ function FileBind(token, file_type, file_url, suc_func, error_func) {
 
 //hash binding
 function Hash(token, hash_type, hash, pass_word_hash, phone, phoneCode, suc_func, error_func) {
-    var api_url = 'bnd_hash.php',
+    let api_url = 'bnd_hash.php',
         post_data = {
             'token': token,
             'hash': hash,
@@ -577,7 +577,7 @@ function Hash(token, hash_type, hash, pass_word_hash, phone, phoneCode, suc_func
 
 //Google binding
 function GoogleBind(token, email, suc_func, error_func) {
-    var api_url = 'bnd_Google.php',
+    let api_url = 'bnd_Google.php',
         post_data = {
             'token': token,
             'email': email
@@ -587,7 +587,7 @@ function GoogleBind(token, email, suc_func, error_func) {
 
 //Google verification
 function GoogleVerify(token, code, suc_func, error_func) {
-    var api_url = 'cfm_Google.php',
+    let api_url = 'cfm_Google.php',
         post_data = {
             'token': token,
             'code': code
@@ -597,7 +597,7 @@ function GoogleVerify(token, code, suc_func, error_func) {
 
 //Get a list of Cas that meet the withdrawal criteria
 function GetMeetCaList(api_url, token, base_amount, suc_func, error_func) {
-    var post_data = {
+    let post_data = {
         'token': token,
         'base_amount': base_amount
     };
@@ -606,7 +606,7 @@ function GetMeetCaList(api_url, token, base_amount, suc_func, error_func) {
 
 //Get a list of Cas that meet the withdrawal criteria
 function GetMeetWithdrawCaList(api_url, token, base_amount, suc_func, error_func) {
-    var post_data = {
+    let post_data = {
         'token': token,
         'base_amount': base_amount
     };
@@ -615,7 +615,7 @@ function GetMeetWithdrawCaList(api_url, token, base_amount, suc_func, error_func
 
 //Assign recharge cash withdrawal
 function GetAssignCa(api_url, token, ca_channel, suc_func, error_func) {
-    var post_data = {
+    let post_data = {
         'token': token,
         'ca_channel': ca_channel
     };
@@ -624,7 +624,7 @@ function GetAssignCa(api_url, token, ca_channel, suc_func, error_func) {
 
 //lockRechargeAmount(Recharge request)
 function LockRechargeAmount(token, ca_id, base_amount, bit_amount, ca_channel_en, us_level, suc_func, error_func) {
-    var api_url = 'us_recharge_quest.php',
+    let api_url = 'us_recharge_quest.php',
         post_data = {
             'token': token,
             'ca_id': ca_id,
@@ -638,7 +638,7 @@ function LockRechargeAmount(token, ca_id, base_amount, bit_amount, ca_channel_en
 
 //ca recharge address
 function GetCaRechargeInfo(token, ca_id, ca_channel_en, suc_func, error_func) {
-    var api_url = 'ca_recharge_order_info.php',
+    let api_url = 'ca_recharge_order_info.php',
         post_data = {
             'token': token,
             'ca_id': ca_id,
@@ -649,7 +649,7 @@ function GetCaRechargeInfo(token, ca_id, ca_channel_en, suc_func, error_func) {
 
 //Get user balance
 function GetUserBaseInfo(token, suc_func, error_func) {
-    var api_url = 'info_base.php',
+    let api_url = 'info_base.php',
         post_data = {
             'token': token
         };
@@ -658,7 +658,7 @@ function GetUserBaseInfo(token, suc_func, error_func) {
 
 //get us_account_id
 function GetUsAccountId(token, ca_channel, suc_func, error_func) {
-    var api_url = 'get_specified_bank_card_list.php',
+    let api_url = 'get_specified_bank_card_list.php',
         post_data = {
             'token': token,
             'cash_channel': ca_channel
@@ -668,7 +668,7 @@ function GetUsAccountId(token, ca_channel, suc_func, error_func) {
 
 //Locked up cash amount (withdrawal request)
 function LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id, suc_func, error_func) {
-    var api_url = 'us_withdraw_quest.php',
+    let api_url = 'us_withdraw_quest.php',
         post_data = {
             'token': token,
             'ca_id': ca_id,
@@ -683,7 +683,7 @@ function LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name
 
 //Get a list of top-up exchange rates
 function GetRateList(token, suc_func, error_func) {
-    var api_url = 'get_recharge_withdraw_rate.php',
+    let api_url = 'get_recharge_withdraw_rate.php',
         post_data = {
             'token': token
         };
@@ -692,7 +692,7 @@ function GetRateList(token, suc_func, error_func) {
 
 //Set up recharge rate
 function SetRechargeRate(token, rate, minAmount, maxAmount, time, level, ca_type, pass_word_hash, suc_func, error_func) {
-    var api_url = 'set_recharge_rate.php',
+    let api_url = 'set_recharge_rate.php',
         post_data = {
             'token': token,
             'recharge_rate': rate,
@@ -708,7 +708,7 @@ function SetRechargeRate(token, rate, minAmount, maxAmount, time, level, ca_type
 
 //Set up withdraw rate
 function SetWithdrawRate(token, rate, minAmount, maxAmount, time, level, ca_type, pass_word_hash, suc_func, error_func) {
-    var api_url = 'set_withdraw_rate.php',
+    let api_url = 'set_withdraw_rate.php',
         post_data = {
             'token': token,
             'withdraw_rate': rate,
@@ -734,7 +734,7 @@ function GetRechargeWithdrawList(api_url, token, type, suc_func, error_func) {
 
 //Recharge request confirmation processing
 function RechargeConfirm(token, qa_id, type, suc_func, error_func) {
-    var api_url = 'recharge_confirm.php',
+    let api_url = 'recharge_confirm.php',
         post_data = {
             'token': token,
             'type': type,
@@ -745,7 +745,7 @@ function RechargeConfirm(token, qa_id, type, suc_func, error_func) {
 
 //Recharge request refuse processing
 function RechargeRefuse(token, tx_hash, suc_func, error_func) {
-    var api_url = 'ca_refuse_us_recharge.php',
+    let api_url = 'ca_refuse_us_recharge.php',
         post_data = {
             'token': token,
             'tx_hash': tx_hash
@@ -755,7 +755,7 @@ function RechargeRefuse(token, tx_hash, suc_func, error_func) {
 
 //Withdrawal request confirmation processing
 function WithdrawConfirm(token, qa_id, type, transfer_tx_hash, suc_func, error_func) {
-    var api_url = 'withdraw_confirm.php',
+    let api_url = 'withdraw_confirm.php',
         post_data = {
             'token': token,
             'qa_id': qa_id,
@@ -765,9 +765,19 @@ function WithdrawConfirm(token, qa_id, type, transfer_tx_hash, suc_func, error_f
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//withdraw request refuse processing
+function WithdrawRefuse(token, tx_hash, suc_func, error_func) {
+    let api_url = 'ca_refuse_us_withdraw.php',
+        post_data = {
+            'token': token,
+            'tx_hash': tx_hash
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+};
+
 //User withdrawal order details
 function GetWithdrawInfo(token, suc_func, error_func) {
-    var api_url = 'order_ca_withdraw_list.php',
+    let api_url = 'order_ca_withdraw_list.php',
         post_data = {
             'token': token
         };
@@ -776,7 +786,7 @@ function GetWithdrawInfo(token, suc_func, error_func) {
 
 //get key code
 function GetKeyCode(token, suc_func, error_func) {
-    var api_url = 'get_key_code.php',
+    let api_url = 'get_key_code.php',
         post_data = {
             'token': token
         };
@@ -794,7 +804,7 @@ function DisableClick($this, btnText) {
         console.warn("$this Can not be empty");
         return true;
     }
-    var status = Number($this.attr('data-clickStatus') || 1);
+    let status = Number($this.attr('data-clickStatus') || 1);
     if (status == 0) {
         return true;
     }
@@ -826,7 +836,7 @@ function ActiveClick($this, btnText) {
 window.onload = function () {
     if (document.readyState === 'complete') {
         document.body.style.overflow = "auto";
-        var loading = document.querySelector(".loading");
+        let loading = document.querySelector(".loading");
         loading.parentNode.removeChild(loading);
     }
 };
