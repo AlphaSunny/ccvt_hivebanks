@@ -208,6 +208,7 @@ $(function () {
                 $("#selectGroupName").html(option);
                 $(".addSubBtn").removeClass("none");
                 $(".editSubBtn").addClass("none");
+                $("#myModalLabel").text("添加定时任务");
                 $("#groupName").fadeOut("fast");
                 $("#editTaskModal").modal("show");
             }
@@ -324,7 +325,7 @@ $(function () {
     $(".addSubBtn").click(function () {
         let content = "", tx_content = "", tx_content_arr = [];
         let time = $("#time").val();
-        // let group_id = $("#selectGroupName").val();
+        let group_id = $("#selectGroupName").val();
         let tx_content_list = $(".checkbox_input:checked");
         $.each(tx_content_list, function (i, val) {
             tx_content_arr.push($(this).val());
