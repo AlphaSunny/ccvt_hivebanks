@@ -26,8 +26,9 @@ $(function () {
                 return;
             }
             $.each(data, function (i, val) {
+                let tx_detail = JSON.parse(data[i].tx_detail);
                 tr += '<tr class="withdrawPendingList">' +
-                    '<td>' + data[i].us_id + '</td>' +
+                    '<td>' + tx_detail.name + '</td>' +
                     '<td>' + data[i].base_amount + '</td>' +
                     '<td><span>' + benchmark_type + '</span>/<span class="ca_currency">'+ ca_currency +'</span></td>' +
                     // '<td><span>' + data[i].bit_address + '</span></td>' +
