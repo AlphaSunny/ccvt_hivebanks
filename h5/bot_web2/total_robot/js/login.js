@@ -1,16 +1,16 @@
 $(function () {
     function GetLoginCookie(name) {
-        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) return unescape(arr[2]);
     }
 
-    var total_robot_token = GetLoginCookie("total_robot_token");
+    let total_robot_token = GetLoginCookie("total_robot_token");
     if (total_robot_token) {
         window.location.href = 'kyc_group_list.html';
     }
     $('#login_btn').click(function () {
-        var _this = $(this), _text = $(this).text();
-        var user = $('#user').val(),
+        let _this = $(this), _text = $(this).text();
+        let user = $('#user').val(),
             password = $('#password').val(),
             pass_word_hash = hex_sha1(password);
         if (user.length <= 0) {
