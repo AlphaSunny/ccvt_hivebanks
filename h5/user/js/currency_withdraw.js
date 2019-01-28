@@ -44,9 +44,9 @@ $(function () {
     let withdraw_rate = '', api_url = 'ca_withdraw_rate.php';
     GetAverageRate(api_url, token, function (response) {
         if (response.errcode == '0') {
-            $('.withdraw_rate').text(response.withdraw_rate);
             withdraw_rate = (response.withdraw_rate);
-            $('.withdraw_rate').val(response.withdraw_rate);
+            $('.withdraw_rate').text(response.withdraw_rate);
+            $('.bit_amount').val(response.withdraw_rate);
         }
     }, function (response) {
         LayerFun(response.errcode);
