@@ -83,15 +83,18 @@ $(function () {
             id_card = $("#idNum").val(),
             name = $("#name").val();
         if (base_amount.length <= 0) {
-            LayerFun('pleaseEnterWithdrawAmount');
+            // LayerFun('pleaseEnterWithdrawAmount');
+            WarnPrompt("请输入提现金额");
             return;
         }
         if (base_amount < withdraw_min_amount) {
-            LayerFun('notSmallAmount');
+            // LayerFun('notSmallAmount');
+            WarnPrompt("不能低于最小提现额度");
             return;
         }
         if (base_amount > withdraw_max_amount) {
-            LayerFun('notLagAmount');
+            // LayerFun('notLagAmount');
+            WarnPrompt("不能高于最高提现额度");
             return;
         }
         if (id_card.length <= 0) {
@@ -103,7 +106,8 @@ $(function () {
             return;
         }
         if (base_amount > us_base_amount) {
-            LayerFun('notBalance');
+            // LayerFun('notBalance');
+            WarnPrompt("账户余额不足");
             return;
         }
         let $this = $(this), btnText = $(this).text();
