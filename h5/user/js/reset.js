@@ -336,14 +336,16 @@ $(function () {
                 $('.phoneSmsCode').val('');
                 $('.phonePassword').val('');
                 $('.confirmphonePassword').val('');
-                LayerFun('modifySuccess');
+                // LayerFun('modifySuccess');
+                WarnPrompt("修改成功");
                 DelCookie('user_token');
                 window.location.href = 'login.html';
             }
 
         }, function (response) {
             ActiveClick($this, btnText);
-            LayerFun('modifyFail');
+            // LayerFun('modifyFail');
+            WarnPrompt("修改失败");
             if (response.errcode == '120') {
                 $('.noPhonelTips').fadeIn('fast');
             }
