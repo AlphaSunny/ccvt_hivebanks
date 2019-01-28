@@ -258,18 +258,23 @@ $(function () {
 
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
-        let bind_type = '3', $this = $(this), cfm_code = $('.phoneCfmCode').val();
-        if ($(".phone").val().length <= 0) {
-            $('.phone_tips').fadeIn().siblings('span').hide();
-            LayerFun('phoneNotEmpty');
+        let country_code = $('.selected-dial-code').text().split("+")[1];
+        let cellphone = $('#phone').val();
+        let bind_type = '3', cfm_code = $('#phoneCfmCode').val();
+
+        if (cellphone == '') {
+            // LayerFun('phoneNotEmpty');
+            WarnPrompt("请输入手机号码");
             return;
         }
-        if ($('.phoneCfmCode').val().length <= 0) {
-            $('.phoneImgCode_tips').fadeIn('fast');
+
+        if (cfm_code <= 0) {
+            // LayerFun('pleaseImgCode');
+            WarnPrompt("请输入图形验证码");
             return;
         }
-        setTime($this);
-        GetPhoneCodeFun(bind_type, $this, cfm_code);
+        ShowLoading("show");
+        GetSmsCodeFun(cellphone, country_code, bind_type, cfm_code);
     });
     // Password reset (mobile phone)
     $('.phoneResetBtn').click(function () {
