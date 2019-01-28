@@ -7,7 +7,7 @@
  * Time: 下午2:52
  */
 require_once 'db/com_base_balance.php';
-function withdraw_confirm($rows,$transfer_tx_hash){
+function withdraw_confirm($rows){
 
     //增加ca_base的该订单的base_amount
     $db = new DB_COM();
@@ -22,7 +22,6 @@ function withdraw_confirm($rows,$transfer_tx_hash){
     $ca_row = $db->fetchRow();
 
     $tx_detail = json_decode($rows["tx_detail"],true);
-    $tx_detail["transfer_tx_hash"] = $transfer_tx_hash;
     $tx_detail = json_encode($tx_detail);
     $sql = "UPDATE us_ca_withdraw_request SET qa_flag = '1', tx_detail = '{$tx_detail}' WHERE ca_id = '{$rows["ca_id"]}' and qa_id = '{$rows["qa_id"]}'";
     $db->query($sql);

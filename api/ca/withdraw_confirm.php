@@ -54,7 +54,7 @@ if ($type == "2"){
 //if (!$rows["base_amount"])
 //    exit_error(1,"订单异常");
 //获取ba基本用户信息
-withdraw_confirm($rows,$transfer_tx_hash);
+withdraw_confirm($rows);
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
