@@ -36,6 +36,9 @@ $(function () {
     $('.nav_ca_withdraw').click(function () {
         // WarnPrompt("Ca提现功能暂未开通");
         // return;
+
+
+        
         verifyWithdraw("ca_withdraw");
     });
 });
