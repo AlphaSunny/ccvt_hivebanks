@@ -83,7 +83,7 @@ $(function () {
     });
 
     $(document).on("click", ".cancelBtn", function () {
-        let tx_hash = tx_hash = $(this).next('.tx_hash').text();
+        let tx_hash = $(this).next('.tx_hash').text();
         // ca_refuse_us_recharge.php
         layer.confirm('', {
             btn: ['确定', '取消'] //按钮
