@@ -53,6 +53,7 @@ foreach ($row as $for_row) {
     $new_row["bit_amount"] = floatval($for_row["lgl_amount"]);
     $new_row["base_amount"] = floatval($for_row["base_amount"] / get_la_base_unit());
     $new_row["tx_time"] = date('Y-m-d H:i', $for_row["tx_time"]);
+    $new_row["tx_detail"] = $for_row["tx_detail"];
     $new_row["us_id"] = $for_row["us_id"];
     $new_row["qa_id"] = $for_row["qa_id"];
     $new_row["tx_hash"] = $for_row["tx_hash"];
