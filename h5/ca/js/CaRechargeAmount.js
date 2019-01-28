@@ -24,7 +24,7 @@ $(function () {
             $('.recharge_max_amount').text(response.max_amount);
             $('.recharge_min_amount').text(response.min_amount);
             $('#rechargeAmount').val(response.min_amount);
-            $('#payAmount').text(response.min_amount * response.base_rate);
+            $('#payAmount').val(response.min_amount * response.base_rate);
         }
     }, function (response) {
         LayerFun(response.errcode);
