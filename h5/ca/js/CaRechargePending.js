@@ -85,7 +85,7 @@ $(function () {
     $(document).on("click", ".cancelBtn", function () {
         let tx_hash = $(this).next('.tx_hash').text();
         // ca_refuse_us_recharge.php
-        layer.confirm('拒绝此笔充值？', {
+        layer.confirm('拒绝此笔充值请求？', {
             btn: ['确定', '取消'] //按钮
         }, function () {
             RechargeRefuse(token,tx_hash,function (response) {
