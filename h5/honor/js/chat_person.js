@@ -2,7 +2,7 @@ $(function () {
     let wechat = "", limit = 50, offset = 0, search_content = "";
 
     let group_id = GetQueryString("group_id");
-    let group_info = GetQueryString("group_info");
+    let group_info = GetQueryString("domain");
     let group_name = decodeURI(GetQueryString("group_name"));
     if (group_info == "1") {
         $(".person_name").text(group_name);

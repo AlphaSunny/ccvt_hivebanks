@@ -170,6 +170,6 @@ $(function () {
     $(document).on("click", ".infoBtn", function () {
         var group_id = $(this).parents("tr").find(".id").text();
         var group_name = $(this).parents("tr").find(".name").text();
-        window.location.href = "group_info.html?group_id=" + group_id + "&group_name=" + encodeURI(encodeURI(group_name));
+        window.location.href = "domain.html?group_id=" + group_id + "&group_name=" + encodeURI(encodeURI(group_name));
     })
 });

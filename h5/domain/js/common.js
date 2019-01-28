@@ -36,7 +36,7 @@ $.ajax({
 
 //CallApi
 function CallApi(api_url, post_data, suc_func, error_func) {
-    let api_site = config_api_url + '/api/group_info/';
+    let api_site = config_api_url + '/api/domain/';
     post_data = post_data || {};
     suc_func = suc_func || function () {
     };

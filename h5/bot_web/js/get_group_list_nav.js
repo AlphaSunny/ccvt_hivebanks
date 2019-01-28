@@ -58,17 +58,17 @@ $(function () {
         SetCookie("is_welcome", is_welcome);
         SetCookie("welcome", welcome);
         SetCookie("group_name", group_name);
-        // window.location.href = "group_info.html?id=" + encodeURI(id) + "&group_name=" + encodeURI(encodeURI(group_name));
-        window.location.href = "group_info.html?id=" + encodeURI(id);
+        // window.location.href = "domain.html?id=" + encodeURI(id) + "&group_name=" + encodeURI(encodeURI(group_name));
+        window.location.href = "domain.html?id=" + encodeURI(id);
 
-        // window.location.href = "group_info.html?id=" + encodeURI(id) + "&is_admin_del=" + encodeURI(is_admin_del) + "&is_del=" + encodeURI(is_del) + "&is_flirt=" + encodeURI(is_flirt) + "&is_give_ccvt=" + encodeURI(is_give_ccvt) + "&bind_account_notice=" + encodeURI(bind_account_notice) + "&is_welcome=" + encodeURI(is_welcome) + "&welcome=" + encodeURI(encodeURI(welcome)) + "&send_address=" + encodeURI(send_address) + "&group_name=" + encodeURI(encodeURI(group_name));
+        // window.location.href = "domain.html?id=" + encodeURI(id) + "&is_admin_del=" + encodeURI(is_admin_del) + "&is_del=" + encodeURI(is_del) + "&is_flirt=" + encodeURI(is_flirt) + "&is_give_ccvt=" + encodeURI(is_give_ccvt) + "&bind_account_notice=" + encodeURI(bind_account_notice) + "&is_welcome=" + encodeURI(is_welcome) + "&welcome=" + encodeURI(encodeURI(welcome)) + "&send_address=" + encodeURI(send_address) + "&group_name=" + encodeURI(encodeURI(group_name));
     });
 
     //是否为当前页面
     // function check_is_group() {
     //     //是否为当前页面
     //     var is_group_info = window.location.href;
-    //     var reg = new RegExp("group_info.html");
+    //     var reg = new RegExp("domain.html");
     //     if (reg.test(is_group_info)) {
     //         GetGroupMemberFun(token, limit, offset, status);
     //         $(".group_name").text(group_name);

@@ -76,7 +76,7 @@ $(function () {
     function GetGroupInfo(group_id) {
         $.ajax({
             type: "GET",
-            url: getRootPath() + "/api/group_info/group_info.php?group_id=" + group_id,
+            url: getRootPath() + "/api/domain/domain.php?group_id=" + group_id,
             dataType: "json",
             success: function (res) {
                 if (res.errcode == "0") {
@@ -140,6 +140,6 @@ $(function () {
     $(".look_chat_recode").click(function () {
         let group_id = GetQueryString("id");
         let group_name = $(".name").text();
-        window.location.href = "../honor/chat_person.html?group_id=" + group_id + "&group_name=" + encodeURI(encodeURI(group_name)) + "&group_info=1";
+        window.location.href = "../honor/chat_person.html?group_id=" + group_id + "&group_name=" + encodeURI(encodeURI(group_name)) + "&domain=1";
     })
 });
