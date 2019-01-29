@@ -151,7 +151,7 @@ $(function () {
 
     /*Set the language selection to the value in the cache by default*/
     // $("#language option[value="+i18nLanguage+"]").prop("selected",true);
-    var get_language_icon = $.cookie("language_icon");
+    var get_language_icon = document.cookie.match(new RegExp("(^| )" + language_icon + "=([^;]*)(;|$)"));
     var languageList = $(".toggle_language_li");
     $.each(languageList, function (i, val) {
         if (i18nLanguage == $(this).find(".toggleLanguage").attr("title")) {
@@ -179,7 +179,7 @@ $(function () {
         var language_icon = $(this).find("use").attr("xlink:href");
         $(".current_icon").find("use").attr("xlink:href", language_icon);
         $(".curr_language").text($(this).find(".toggleLanguage").text());
-        $.cookie("language_icon", language_icon, {path: "/"});
+        document.cookie = "language_icon=" + language_icon + ';path=/';
         // $("#language").text($(this).find(".toggleLanguage").text());
         getCookie("userLanguage", language, {
             expires: 30,
