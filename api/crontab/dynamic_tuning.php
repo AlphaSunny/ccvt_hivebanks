@@ -271,6 +271,7 @@ function lock_add(){
         if(!(ba_cut($amount)&&add_log_com_base($us_id,$amount)&&add_log_transfer($us_id,$amount)&&us_add($amount,$us_id)&&log_lock($phone,$amount)))
             die('failed'.$flag);
         $flag++;
+        sleep(1);
     }
     $sql = "select base_amount from ba_base";
     $db->query($sql);
