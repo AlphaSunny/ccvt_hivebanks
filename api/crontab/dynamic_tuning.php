@@ -27,10 +27,10 @@ dynamic_tuning();
 function dynamic_tuning()
 {
     //减掉离职员工所扣金额
-    staff_cut();
+//    staff_cut();
 
     //增加当月员工金额
-//    staff_add();
+    staff_add();
 }
 
 function staff_cut()
@@ -123,7 +123,7 @@ function cut_log_com_base($us_id,$amount){
     $data['credit_id']= BA_ID;
     $data['tx_type'] = 'gone_staff';
     $data["tx_amount"] = $amount*UNIT;
-    $data["credit_balance"] = get_ba_account(BA_ID)+($amount*UNIT);
+    $data["credit_balance"] = get_ba_account(BA_ID);
     $data["utime"] = time();
     $data["ctime"] = $ctime;
     $data['tx_count'] = base_get_pre_count($data['credit_id']);
@@ -281,15 +281,15 @@ function lock_add(){
 function us_get(){
 
     return [
-        ['phone'=>18137802080,'amount'=>11000000],//edwin
-        ['phone'=>18321709102,'amount'=>8000000],//bruce
-        ['phone'=>15248165523,'amount'=>7000000],//lilian
-        ['phone'=>13816129726,'amount'=>2000000],//lvy
+        ['phone'=>18137802080,'amount'=>10000000],//edwin
+//        ['phone'=>18321709102,'amount'=>8000000],//bruce
+//        ['phone'=>15248165523,'amount'=>7000000],//lilian
+//        ['phone'=>13816129726,'amount'=>2000000],//lvy
         ['phone'=>15601607210,'amount'=>10000000],//alan
         ['phone'=>15221563385,'amount'=>11000000],//sunny
         ['phone'=>15801075991,'amount'=>11000000],//gavin
-        ['phone'=>15988394267,'amount'=>6000000],//karen
-        ['phone'=>13901602243,'amount'=>9000000],//chan
+        ['phone'=>15988394267,'amount'=>10000000],//karen
+        ['phone'=>13901602243,'amount'=>11000000],//chan
     ];
 
 }
@@ -380,7 +380,7 @@ function add_log_transfer($us_id,$amount){
     $data['credit_id'] = BA_ID;
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $amount*UNIT;
-    $data['credit_balance'] = get_ba_account(BA_ID)-($amount*UNIT);
+    $data['credit_balance'] = get_ba_account(BA_ID);
     $data['tx_hash'] = hash('md5', BA_ID . FLAG . get_ip() . mt() . date('Y-m-d H:i:s'));
     $data['flag'] = FLAG;
     $data['transfer_type'] = 'ba-us';
