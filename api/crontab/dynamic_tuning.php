@@ -343,9 +343,10 @@ function add_log_com_base($us_id,$amount){
     $data['credit_id']= BA_ID;
     $data['tx_type'] = 'dynamic_tuning';
     $data["tx_amount"] = -$amount*UNIT;
-    $data["credit_balance"] = get_ba_account(BA_ID)-($amount*UNIT);
+    $data["credit_balance"] = get_ba_account(BA_ID);
     $data["utime"] = time();
     $data["ctime"] = $ctime;
+    $data['tx_count'] = base_get_pre_count($data['credit_id']);
     $sql = $db->sqlInsert("com_base_balance", $data);
 
     $uata = array();
@@ -361,6 +362,8 @@ function add_log_com_base($us_id,$amount){
     $uata["credit_balance"] = get_us_account($us_id)+($amount*UNIT);
     $uata["utime"] = time();
     $uata["ctime"] = $ctime;
+
+    $uata['tx_count'] = base_get_pre_count($uata['credit_id']);
     $uql = $db->sqlInsert("com_base_balance", $uata);
 
     if($db->query($sql)&&$db->query($uql))
@@ -389,6 +392,7 @@ function add_log_transfer($us_id,$amount){
     $data['give_or_receive'] = 1;
     $data['ctime'] = time();
     $data['utime'] = date('Y-m-d H:i:s',time());
+    $data['tx_count'] = transfer_get_pre_count($data['credit_id']);
     $sql = $db->sqlInsert("com_transfer_request", $data);
 
     $dat['hash_id'] = hash('md5', $us_id . FLAG . get_ip() . mt() . rand(1000, 9999) . date('Y-m-d H:i:s'));
@@ -406,6 +410,7 @@ function add_log_transfer($us_id,$amount){
     $dat['give_or_receive'] = 2;
     $dat['ctime'] = time();
     $dat['utime'] = date('Y-m-d H:i:s',time());
+    $dat['tx_count'] = transfer_get_pre_count($dat['credit_id']);
     $uql = $db->sqlInsert("com_transfer_request", $dat);
 
     if($db->query($sql)&&$db->query($uql))
