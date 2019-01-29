@@ -41,7 +41,9 @@
                                 <a href="javascript:;" class="toggleLanguage" title="zh-CN">简体中文</a>
                             </li>
                             <li>
-                                <span><i class="iconfont icon-english"></i></span>
+                                <span>
+                                    <svg class="icon" aria-hidden="true"><use xlink:href="#icon-english"></use></svg>
+                                </span>
                                 <a href="javascript:;" class="toggleLanguage" title="en">English</a>
                             </li>
                             <li>
@@ -131,7 +133,8 @@
                             <p><span class="us_account"></span></p>
                             <p>
                                 <span class="i18n" name="accountNickName"></span>
-                                <a class="i18n modify_us_id" name="modify" data-toggle="modal" data-target="#modifyName" onclick="return false;"></a>
+                                <a class="i18n modify_us_id" name="modify" data-toggle="modal" data-target="#modifyName"
+                                   onclick="return false;"></a>
                             </p>
                         </div>
                         <div>
@@ -201,16 +204,19 @@
                             <p>
                                 <span class='levelText glory_level'>Lv.<span class='scale'></span></span>
                             </p>
-                            <p class=""><span class='i18n' name='gloryLevel'></span><span class="help_icon" data-toggle="tooltip" data-placement="bottom" title="">❓</span></p>
+                            <p class=""><span class='i18n' name='gloryLevel'></span><span class="help_icon"
+                                                                                          data-toggle="tooltip"
+                                                                                          data-placement="bottom"
+                                                                                          title="">❓</span></p>
                         </div>
                         <!--<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>-->
 
                         <!--法币收款地址管理-->
                         <!--<div>-->
-                            <!--<p><span class="i18n" name="cashCollectionAddress"></span></p>-->
-                            <!--<p>-->
-                                <!--<a href="addBankAddress.html" class="i18n font-size-14" name="add"></a>-->
-                                <!--<a href="manageBankList.html" class="i18n font-size-14" name="manage"></a></p>-->
+                        <!--<p><span class="i18n" name="cashCollectionAddress"></span></p>-->
+                        <!--<p>-->
+                        <!--<a href="addBankAddress.html" class="i18n font-size-14" name="add"></a>-->
+                        <!--<a href="manageBankList.html" class="i18n font-size-14" name="manage"></a></p>-->
                         <!--</div>-->
                     </div>
                 </div>
@@ -218,14 +224,14 @@
                     <div class="account_num">
                         <!--充值-->
                         <!--<div>-->
-                            <!--<p><i class="iconfont icon-recharge"></i></p>-->
-                            <!--<p><a href="recharge.html" class="i18n btn btn-success btn-sm"-->
-                                  <!--name="recharge"></a></p>-->
+                        <!--<p><i class="iconfont icon-recharge"></i></p>-->
+                        <!--<p><a href="recharge.html" class="i18n btn btn-success btn-sm"-->
+                        <!--name="recharge"></a></p>-->
                         <!--</div>-->
                         <!--提现-->
                         <!--<div>-->
-                            <!--<p><i class="iconfont icon-svgwithdrawdeposit"></i>️</p>-->
-                            <!--<p><a class="i18n withdrawBtn btn btn-success btn-sm" name="withdraw"></a></p>-->
+                        <!--<p><i class="iconfont icon-svgwithdrawdeposit"></i>️</p>-->
+                        <!--<p><a class="i18n withdrawBtn btn btn-success btn-sm" name="withdraw"></a></p>-->
                         <!--</div>-->
                         <!--转账-->
                         <div class="transfer_box">
@@ -277,7 +283,8 @@
                             </p>
                             <p>
                                 <span class="i18n" name="robotGroup"></span>
-                                <a href="application.html" class="application_btn to_application i18n" name="application"></a>
+                                <a href="application.html" class="application_btn to_application i18n"
+                                   name="application"></a>
                                 <a class="modify_application_btn none" name="modify"></a>
                             </p>
                         </div>
@@ -403,7 +410,8 @@
 </div>
 
 <!--modify name-->
-<div class="modal fade " id="modifyName" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="modifyNameTitle">
+<div class="modal fade " id="modifyName" tabindex="-1" role="dialog" data-backdrop="false"
+     aria-labelledby="modifyNameTitle">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -548,7 +556,8 @@
             </div>
         </div>
         <div class="customize_modal_content_footer margin-top-5">
-            <button class="btn btn-danger i18n transform_ccvt_cancel_btn customize_modal_cancel_btn" name="cancel"></button>
+            <button class="btn btn-danger i18n transform_ccvt_cancel_btn customize_modal_cancel_btn"
+                    name="cancel"></button>
             <button class="btn btn-success i18n transform_ccvt_confirm_btn" name="confirm"></button>
         </div>
     </div>
