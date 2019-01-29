@@ -207,12 +207,13 @@ function cut_log_com_transfer($us_id,$amount){
  */
 function base_get_pre_count($credit_id)
 {
+
     $db = new DB_COM();
     $sql = "select tx_count from com_base_balance where credit_id = '{$credit_id}' order by ctime desc limit 1";
     $tx_count = $db->getField($sql, 'tx_count');
     if($tx_count == null)
         return 1;
-
+var_dump($tx_count);
     return $tx_count+1;
 }
 
