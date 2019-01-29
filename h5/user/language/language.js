@@ -174,7 +174,7 @@ $(function () {
     // if (unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)")))) {
     //     $(".current_icon").find("use").attr("xlink:href", unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]));
     // }
-// });
+});
 
     /* Choose a language */
     $("#language").on('change', function () {
