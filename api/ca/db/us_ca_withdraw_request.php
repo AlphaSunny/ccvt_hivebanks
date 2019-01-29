@@ -98,3 +98,14 @@ function  get_ca_withdraw_amount_request_ca_id($ca_id)
     $count = $db -> fetchRow();
     return $count;
 }
+
+/**
+ * 拒绝用户提款请求
+ */
+function withdraw_refuse($qa_id)
+{
+    $db = new DB_COM();
+    $sql = "update us_ca_withdraw_request set qa_flag ='2' where qa_id = '{$qa_id}'";
+    $db -> query($sql);
+    return $db->affectedRows();
+}

@@ -47,6 +47,8 @@ elseif ($rows["qa_flag"] == 2)
 
 //拒绝
 if ($type == "2"){
+    // 拒绝该订单
+    $count = withdraw_refuse($qa_id);
     //返回用的base_amount,减去lock_amount
     if (!upd_refuse_us_base_amount_info($rows["us_id"],$rows["base_amount"]))
         exit_error('101',"更新失败");

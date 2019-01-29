@@ -27,6 +27,7 @@ function upd_us_base_amount_info($us_id,$base_amount,$lock_amount) {
 //      lock_amount        充值订单基准货币锁定金额
 // 返回: true           更新成功
 // 返回: false          更新失败
+// TODO: 需要改
 //======================================
 function upd_refuse_us_base_amount_info($us_id,$base_amount) {
     $db = new DB_COM();
@@ -38,7 +39,6 @@ function upd_refuse_us_base_amount_info($us_id,$base_amount) {
     $sql = "UPDATE us_base SET base_amount = '{$new_base_amount}', lock_amount = '{$new_lock_amount}' WHERE us_id = '{$us_id}'";
     $db->query($sql);
     $count = $db->affectedRows($sql);
-
     return $count;
 }
 //======================================
