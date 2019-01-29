@@ -44,8 +44,10 @@ elseif ($rows["qa_flag"] == 2)
     exit_error('130',"该订单已拒绝");
 
 if ($type == "2"){
+
+    $count = recharge_refuse($qa_id);
     //返回用的base_amount,减去lock_amount
-    if (!upd_refuse_ca_base_amount_info($rows["ca_id"],$rows["base_amount"],$rows["$base_amount"]))
+    if (!upd_refuse_ca_base_amount_info($rows["ca_id"],$rows["base_amount"]))
         exit_error('101',"更新失败");
     exit_ok();
 }

@@ -113,3 +113,15 @@ function  get_ca_recharge_amount_request_ca_id($ca_id)
     $count = $db -> fetchRow();
     return $count;
 }
+
+/**
+ * 拒绝该请求
+ *
+ */
+function recharge_refuse($qa_id)
+{
+    $db = new DB_COM();
+    $sql = "update us_ca_recharge_request set qa_flag ='2' where qa_id = '{$qa_id}'";
+    $db -> query($sql);
+    return $db->affectedRows();
+}
