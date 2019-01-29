@@ -1,16 +1,16 @@
 /**
  * Cookie operation
  */
-let getCookie = function(name, value, options) {
+var getCookie = function(name, value, options) {
     if (typeof value != 'undefined') { // name and value given, set cookie
         options = options || {};
         if (value === null) {
             value = '';
             options.expires = -1;
         }
-        let expires = '';
+        var expires = '';
         if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
-            let date;
+            var date;
             if (typeof options.expires == 'number') {
                 date = new Date();
                 date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
@@ -19,19 +19,19 @@ let getCookie = function(name, value, options) {
             }
             expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
         }
-        let path = options.path ? '; path=' + options.path : '';
-        let domain = options.domain ? '; domain=' + options.domain : '';
-        let s = [cookie, expires, path, domain, secure].join('');
-        let secure = options.secure ? '; secure' : '';
-        let c = [name, '=', encodeURIComponent(value)].join('');
-        let cookie = [c, expires, path, domain, secure].join('');
+        var path = options.path ? '; path=' + options.path : '';
+        var domain = options.domain ? '; domain=' + options.domain : '';
+        var s = [cookie, expires, path, domain, secure].join('');
+        var secure = options.secure ? '; secure' : '';
+        var c = [name, '=', encodeURIComponent(value)].join('');
+        var cookie = [c, expires, path, domain, secure].join('');
         document.cookie = cookie;
     } else { // only name given, get cookie
-        let cookieValue = null;
+        var cookieValue = null;
         if (document.cookie && document.cookie != '') {
-            let cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                let cookie = jQuery.trim(cookies[i]);
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
                 // Does this cookie string begin with the name we want?
                 if (cookie.substring(0, name.length + 1) == (name + '=')) {
                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
@@ -47,9 +47,9 @@ let getCookie = function(name, value, options) {
  * Get browser language type
  * @return {string} Browser country language
  */
-// let getNavLanguage = function(){
+// var getNavLanguage = function(){
 //     if(navigator.appName == "Netscape"){
-//         let navLanguage = navigator.language;
+//         var navLanguage = navigator.language;
 //         return navLanguage.substr(0,2);
 //     }
 //     return false;
@@ -58,27 +58,27 @@ let getCookie = function(name, value, options) {
 /**
  * Set the language type: Default is English
  */
-let i18nLanguage = "";
+var i18nLanguage = "";
 
 /*
 Set the language types supported by the website
  */
-let webLanguage = ['en','zh-CN', 'ja'];
+var webLanguage = ['en','zh-CN', 'ja'];
 
 /**
  * Execute page i18n method
  * @return
  */ 
-let execI18n = function(){
+var execI18n = function(){
     /*
     Get the resource file name
      */
-    let optionEle = $("#i18n_pagename");
+    var optionEle = $("#i18n_pagename");
     if (optionEle.length < 1) {
         // console.log("未找到页面名称元素，请在页面写入\n <meta id=\"i18n_pagename\" content=\"页面名(对应语言包的语言文件名)\">");
         return false;
     };
-    let sourceName = optionEle.attr('content');
+    var sourceName = optionEle.attr('content');
     sourceName = sourceName.split('-');
         /*
         First get the language type selected before the user's browser device
@@ -87,10 +87,10 @@ let execI18n = function(){
             i18nLanguage = getCookie("userLanguage");
         } else {
             // Get the browser language
-            // let navLanguage = getNavLanguage();
+            // var navLanguage = getNavLanguage();
             // if (navLanguage) {
             //     // Determine if it is in the web support language array
-            //     let charSize = $.inArray(navLanguage, webLanguage);
+            //     var charSize = $.inArray(navLanguage, webLanguage);
             //     if (charSize > -1) {
             //         i18nLanguage = navLanguage;
             //         // Save to cache
@@ -118,7 +118,7 @@ let execI18n = function(){
             checkAvailableLanguages:true,
             async:true,
             callback : function() {//Set the display content after loading successfully
-                let insertEle = $(".i18n");
+                var insertEle = $(".i18n");
                 // console.log(".i18n 写入中...");
                 insertEle.each(function() {
                     // Get content write based on the name of the i18n element
@@ -127,9 +127,9 @@ let execI18n = function(){
                 // console.log("写入完毕");
 
                 // console.log(".i18n-input 写入中...");
-                let insertInputEle = $(".i18n-input");
+                var insertInputEle = $(".i18n-input");
                 insertInputEle.each(function() {
-                    let selectAttr = $(this).attr('selectattr');
+                    var selectAttr = $(this).attr('selectattr');
                     if (!selectAttr) {
                         selectAttr = "value";
                     };
@@ -149,7 +149,7 @@ $(function(){
     /*Set the language selection to the value in the cache by default*/
     // $("#language option[value="+i18nLanguage+"]").prop("selected",true);
 
-    let languageList = $(".toggleLanguage");
+    var languageList = $(".toggleLanguage");
     $.each(languageList, function (i, val) {
         if(i18nLanguage == $(this).attr("title")){
             $(".curr_language").text($(this).text());
@@ -158,7 +158,7 @@ $(function(){
 
     /* Choose a language */
     $("#language").on('change', function() {
-        let language = $(this).children('option:selected').val();
+        var language = $(this).children('option:selected').val();
         // console.log("language"+language);
         getCookie("userLanguage",language,{
             expires: 30,
@@ -169,8 +169,8 @@ $(function(){
 
     /* Choose a language */
     $(".toggle_language_li").on('click', function () {
-        let language = $(this).find(".toggleLanguage").attr("title");
-        let language_icon = $(this).find("use").attr("xlink:href");
+        var language = $(this).find(".toggleLanguage").attr("title");
+        var language_icon = $(this).find("use").attr("xlink:href");
         console.log(language_icon);
         $(".curr_language").text($(this).find(".toggleLanguage").text());
         // $("#language").text($(this).find(".toggleLanguage").text());
