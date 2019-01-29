@@ -55,14 +55,14 @@ function withdraw_confirm($rows){
     }
 
     //更新us的余额
-    $new_us_amount = $us_row["base_amount"] - $rows["base_amount"];
-    $sql = "UPDATE us_base SET base_amount = '{$new_us_amount}' WHERE us_id = '{$rows["us_id"]}'";
-    $db->query($sql);
-    $count = $db->affectedRows($sql);
-    if (!$count){
-        $db->Rollback($pInTrans);
-        exit_error('101',"更新失败");
-    }
+//    $new_us_amount = $us_row["base_amount"] - $rows["base_amount"];
+//    $sql = "UPDATE us_base SET base_amount = '{$new_us_amount}' WHERE us_id = '{$rows["us_id"]}'";
+//    $db->query($sql);
+//    $count = $db->affectedRows($sql);
+//    if (!$count){
+//        $db->Rollback($pInTrans);
+//        exit_error('101',"更新失败");
+//    }
 
 
 
