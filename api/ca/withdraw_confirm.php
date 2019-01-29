@@ -35,6 +35,7 @@ $type = get_arg_str('GET','type');
 $qa_id = get_arg_str('GET','qa_id');
 //验证token
 $ca_id = check_token($token);
+
 //根据qa_id获取订单信息
 $rows = sel_withdraw_ca_base_amount_info($qa_id);
 if (!$rows)
