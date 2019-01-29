@@ -56,13 +56,8 @@ $(function () {
         return;
     });
     //Withdrawal request confirmation processing
-    let qa_id = '', _this = '', transfer_tx_hash = '';
+    let qa_id = '', _this = '';
     $(document).on('click', '.confirmBtn', function () {
-        // transfer_tx_hash = $(this).parents('.withdrawPendingList').find('.transfer_tx_hash').val();
-        // if (transfer_tx_hash.length <= 0) {
-        //     LayerFun('inputHash');
-        //     return;
-        // }
         $('#confirmModal').modal('show');
         qa_id = $(this).next('.qa_id').text();
         _this = $(this);
@@ -97,6 +92,7 @@ $(function () {
         // let tx_hash = $(this).next('.tx_hash').text();
         let qa_id = $(this).siblings(".qa_id").text();
         let type = '2';
+        let _this = $(this);
         layer.confirm('拒绝此笔提现请求？', {
             btn: ['确定', '取消'] //按钮
         }, function () {
@@ -105,6 +101,7 @@ $(function () {
                 if (response.errcode == "0") {
                     SuccessPrompt("处理成功");
                     ShowLoading("hide");
+                    _this.closest('.withdrawPendingList').remove();
                 }
             }, function (response) {
                 ErrorPrompt(response.errmsg);
