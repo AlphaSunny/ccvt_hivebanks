@@ -342,7 +342,7 @@ function add_log_com_base($us_id,$amount){
     $data['debit_id'] = $us_id;
     $data['credit_id']= BA_ID;
     $data['tx_type'] = 'dynamic_tuning';
-    $data["tx_amount"] = $amount*UNIT;
+    $data["tx_amount"] = -$amount*UNIT;
     $data["credit_balance"] = get_ba_account(BA_ID)-($amount*UNIT);
     $data["utime"] = time();
     $data["ctime"] = $ctime;
@@ -379,7 +379,7 @@ function add_log_transfer($us_id,$amount){
     $data['prvs_hash'] = $prvs_hash === 0 ? hash('md5',BA_ID) : $prvs_hash;
     $data['credit_id'] = BA_ID;
     $data['debit_id'] = $us_id;
-    $data['tx_amount'] = $amount*UNIT;
+    $data['tx_amount'] = -$amount*UNIT;
     $data['credit_balance'] = get_ba_account(BA_ID);
     $data['tx_hash'] = hash('md5', BA_ID . FLAG . get_ip() . mt() . date('Y-m-d H:i:s'));
     $data['flag'] = FLAG;
