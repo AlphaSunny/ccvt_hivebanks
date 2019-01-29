@@ -90,8 +90,10 @@ $(function () {
                 //默认在最底部
                 if (offset == 0) {
                     $("#chat_box").scrollTop($("#chat_content")[0].scrollHeight);
+                    $(".chat_box").scrollTop($("#chat_content")[0].scrollHeight);
                 } else {
                     $("#chat_box").scrollTop(now_height - pre_height);
+                    $(".chat_box").scrollTop(now_height - pre_height);
                 }
             }
         }, function (response) {
