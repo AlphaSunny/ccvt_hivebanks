@@ -61,7 +61,7 @@ var getCookie = function (name, value, options) {
 var i18nLanguage = "en";
 
 /**
-*Set the language types supported by the website
+ *Set the language types supported by the website
  */
 var webLanguage = ['en', 'zh-CN', 'ja'];
 
@@ -71,7 +71,7 @@ var webLanguage = ['en', 'zh-CN', 'ja'];
  */
 var execI18n = function () {
     /**
-    *Get the resource file name
+     *Get the resource file name
      */
     var optionEle = $("#i18n_pagename");
     if (optionEle.length < 1) {
@@ -90,11 +90,11 @@ var execI18n = function () {
         // Get the browser language
         // var navLanguage = getNavLanguage();
         // if (navLanguage) {
-             // Determine if it is in the web support language array
+        // Determine if it is in the web support language array
         //     var charSize = $.inArray(navLanguage, webLanguage);
         //     if (charSize > -1) {
         //         i18nLanguage = navLanguage;
-                 // Save to cache
+        // Save to cache
         //         getCookie("userLanguage",navLanguage);
         //     };
         // } else{
@@ -149,12 +149,46 @@ $(function () {
     /*Perform I18n translation*/
     execI18n();
 
+    function getLanguageIconCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+
+    var languageList = $(".toggle_language_li");
+    $.each(languageList, function (i, val) {
+        if (i18nLanguage == $(this).find(".toggleLanguage").attr("title")) {
+            $(".curr_language").text($(this).text());
+        }
+
+        var get_language_icon = getLanguageIconCookie("language_icon");
+        if (get_language_icon) {
+            $(".current_icon").find("use").attr("xlink:href", get_language_icon)
+        }
+    });
+
     /*Set the language selection to the value in the cache by default*/
     $("#language option[value=" + i18nLanguage + "]").prop("selected", true);
 
     /* Choose a language */
     $("#language").on('change', function () {
         var language = $(this).children('option:selected').val();
+        getCookie("userLanguage", language, {
+            expires: 30,
+            path: '/'
+        });
+        location.reload();
+    });
+
+    /* Choose a language */
+    $(".toggle_language_li").on('click', function () {
+        var language = $(this).find(".toggleLanguage").attr("title");
+        var language_icon = $(this).find("use").attr("xlink:href");
+        $(".current_icon").find("use").attr("xlink:href", language_icon);
+        $(".curr_language").text($(this).find(".toggleLanguage").text());
+        SetCookie("language_icon", language_icon);
         getCookie("userLanguage", language, {
             expires: 30,
             path: '/'
