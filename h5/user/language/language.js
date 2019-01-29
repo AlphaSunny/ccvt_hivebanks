@@ -152,8 +152,9 @@ $(function () {
     /*Set the language selection to the value in the cache by default*/
     // $("#language option[value="+i18nLanguage+"]").prop("selected",true);
     var get_language_icon = GetCookie("language_icon");
+
     var languageList = $(".toggle_language_li");
-    // console.log(get_language_icon);
+    console.log(get_language_icon);
     $.each(languageList, function (i, val) {
         if (i18nLanguage == $(this).find(".toggleLanguage").attr("title")) {
             $(".curr_language").text($(this).text());
