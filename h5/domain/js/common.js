@@ -82,6 +82,14 @@ function GetGroupSearch(suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+function GetDoMainInfo(group_id, suc_func, error_func) {
+    let api_url = "group_info.php";
+    let post_data = {
+        "group_id": group_id
+    };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //show loading
 let index_loading = "";
 

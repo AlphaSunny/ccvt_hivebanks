@@ -74,64 +74,119 @@ $(function () {
     });
 
     function GetGroupInfo(group_id) {
-        $.ajax({
-            type: "GET",
-            url: getRootPath() + "/api/domain/domain.php?group_id=" + group_id,
-            dataType: "json",
-            success: function (res) {
-                if (res.errcode == "0") {
-                    let data = res.row, bind_num = "", glory_number = "";
-                    let bind_rows = res.bind_rows;
-                    let y_arr = [], x_arr = [];
-                    $(".name").text(data.name);
-                    $(".bind_count").text(data.bind_count);
-                    $(".glory_number").text(data.glory_number);
-                    $(".group_member_number").text(data.group_member_number);
-                    $(".this_day_in").text(data.this_day_in);
-                    $(".scale").text(data.scale);
+        GetDoMainInfo(group_id, function (response) {
+            if (response.errcode == "0") {
+                let data = response.row, bind_num = "", glory_number = "";
+                let bind_rows = response.bind_rows;
+                let y_arr = [], x_arr = [];
+                $(".name").text(data.name);
+                $(".bind_count").text(data.bind_count);
+                $(".glory_number").text(data.glory_number);
+                $(".group_member_number").text(data.group_member_number);
+                $(".this_day_in").text(data.this_day_in);
+                $(".scale").text(data.scale);
 
-                    let next_bind_number = parseInt(data.next_level_bind_number) - parseInt(data.bind_count);
-                    let next_glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
+                let next_bind_number = parseInt(data.next_level_bind_number) - parseInt(data.bind_count);
+                let next_glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
 
-                    if (data.is_top == 1) {
-                        $(".scale_next_p").addClass("none");
-                        $(".up_tips").attr("data-original-title", "已达该领域最高级");
-                        $(".progress-bar").css("width", "100%");
+                if (data.is_top == 1) {
+                    $(".scale_next_p").addClass("none");
+                    $(".up_tips").attr("data-original-title", "已达该领域最高级");
+                    $(".progress-bar").css("width", "100%");
+                } else {
+                    $(".scale_next").text(parseInt(data.scale) + 1);
+                    $(".scale_next_p").removeClass("none");
+                    if (next_bind_number <= 0) {
+                        bind_num = 0;
                     } else {
-                        $(".scale_next").text(parseInt(data.scale) + 1);
-                        $(".scale_next_p").removeClass("none");
-                        if (next_bind_number <= 0) {
-                            bind_num = 0;
-                        } else {
-                            bind_num = next_bind_number;
-                        }
-
-                        if (next_glory_number <= 0) {
-                            glory_number = 0;
-                        } else {
-                            glory_number = next_glory_number;
-                        }
-                        $(".up_tips").attr("data-original-title", "距离下一级还需：" + bind_num + "个绑定用户 " + glory_number + "颗荣耀星数");
-                        let width = 100 - (bind_num + glory_number);
-                        $(".progress-bar").css("width", width + "%");
+                        bind_num = next_bind_number;
                     }
-                    $(".up_tips").tooltip();
 
-
-                    //chart line
-                    $.each(bind_rows, function (i, val) {
-                        x_arr.push(bind_rows[i].date);
-                        y_arr.push(bind_rows[i].num);
-                    });
-                    // ChartLine(newArr);
-                    ChartLine(x_arr, y_arr);
-
+                    if (next_glory_number <= 0) {
+                        glory_number = 0;
+                    } else {
+                        glory_number = next_glory_number;
+                    }
+                    $(".up_tips").attr("data-original-title", "距离下一级还需：" + bind_num + "个绑定用户 " + glory_number + "颗荣耀星数");
+                    let width = 100 - (bind_num + glory_number);
+                    $(".progress-bar").css("width", width + "%");
                 }
-            },
-            error: function (res) {
-                ErrorPrompt(res.errmsg);
+                $(".up_tips").tooltip();
+
+
+                //chart line
+                $.each(bind_rows, function (i, val) {
+                    x_arr.push(bind_rows[i].date);
+                    y_arr.push(bind_rows[i].num);
+                });
+                // ChartLine(newArr);
+                ChartLine(x_arr, y_arr);
+
             }
+        },function (response) {
+            ErrorPrompt(response.errmsg);
         });
+
+
+
+        // $.ajax({
+        //     type: "GET",
+        //     url: getRootPath() + "/api/domain/domain.php?group_id=" + group_id,
+        //     dataType: "json",
+        //     success: function (res) {
+        //         if (res.errcode == "0") {
+        //             let data = res.row, bind_num = "", glory_number = "";
+        //             let bind_rows = res.bind_rows;
+        //             let y_arr = [], x_arr = [];
+        //             $(".name").text(data.name);
+        //             $(".bind_count").text(data.bind_count);
+        //             $(".glory_number").text(data.glory_number);
+        //             $(".group_member_number").text(data.group_member_number);
+        //             $(".this_day_in").text(data.this_day_in);
+        //             $(".scale").text(data.scale);
+        //
+        //             let next_bind_number = parseInt(data.next_level_bind_number) - parseInt(data.bind_count);
+        //             let next_glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
+        //
+        //             if (data.is_top == 1) {
+        //                 $(".scale_next_p").addClass("none");
+        //                 $(".up_tips").attr("data-original-title", "已达该领域最高级");
+        //                 $(".progress-bar").css("width", "100%");
+        //             } else {
+        //                 $(".scale_next").text(parseInt(data.scale) + 1);
+        //                 $(".scale_next_p").removeClass("none");
+        //                 if (next_bind_number <= 0) {
+        //                     bind_num = 0;
+        //                 } else {
+        //                     bind_num = next_bind_number;
+        //                 }
+        //
+        //                 if (next_glory_number <= 0) {
+        //                     glory_number = 0;
+        //                 } else {
+        //                     glory_number = next_glory_number;
+        //                 }
+        //                 $(".up_tips").attr("data-original-title", "距离下一级还需：" + bind_num + "个绑定用户 " + glory_number + "颗荣耀星数");
+        //                 let width = 100 - (bind_num + glory_number);
+        //                 $(".progress-bar").css("width", width + "%");
+        //             }
+        //             $(".up_tips").tooltip();
+        //
+        //
+        //             //chart line
+        //             $.each(bind_rows, function (i, val) {
+        //                 x_arr.push(bind_rows[i].date);
+        //                 y_arr.push(bind_rows[i].num);
+        //             });
+        //             // ChartLine(newArr);
+        //             ChartLine(x_arr, y_arr);
+        //
+        //         }
+        //     },
+        //     error: function (res) {
+        //         ErrorPrompt(res.errmsg);
+        //     }
+        // });
     }
 
     GetGroupInfo(group_id);
