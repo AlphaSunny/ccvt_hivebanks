@@ -168,10 +168,12 @@ $(function(){
     });
 
     /* Choose a language */
-    $(".toggleLanguage").on('click', function () {
-        let language = $(this).attr("title");
-        $(".curr_language").text($(this).text());
-        $("#language").text($(this).text());
+    $(".toggle_language_li").on('click', function () {
+        let language = $(this).find(".toggleLanguage").attr("title");
+        let language_icon = $(this).find("use").attr("xlink:href");
+        console.log(language_icon);
+        $(".curr_language").text($(this).find(".toggleLanguage").text());
+        // $("#language").text($(this).find(".toggleLanguage").text());
         getCookie("userLanguage", language, {
             expires: 30,
             path: '/'
