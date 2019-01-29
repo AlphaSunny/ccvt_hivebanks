@@ -153,15 +153,29 @@ $(function () {
     // $("#language option[value="+i18nLanguage+"]").prop("selected",true);
     // var get_language_icon = unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]);
 
-    var languageList = $(".toggle_language_li");
-    $.each(languageList, function (i, val) {
-        if (i18nLanguage == $(this).find(".toggleLanguage").attr("title")) {
-            $(".curr_language").text($(this).text());
-        }
-        // if (unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)")))) {
-        //     $(".current_icon").find("use").attr("xlink:href", unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]));
-        // }
-    });
+    function getLanguageIconCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+
+    $(".curr_language").text(i18nLanguage);
+    var get_language_icon = getLanguageIconCookie("language_icon");
+    if (get_language_icon) {
+        $(".current_icon").find("use").attr("xlink:href", get_language_icon)
+    }
+    // var languageList = $(".toggle_language_li");
+    // $.each(languageList, function (i, val) {
+    //     if (i18nLanguage == $(this).find(".toggleLanguage").attr("title")) {
+    //         $(".curr_language").text($(this).text());
+    //     }
+
+    // if (unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)")))) {
+    //     $(".current_icon").find("use").attr("xlink:href", unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]));
+    // }
+// });
 
     /* Choose a language */
     $("#language").on('change', function () {
@@ -180,7 +194,7 @@ $(function () {
         var language_icon = $(this).find("use").attr("xlink:href");
         $(".current_icon").find("use").attr("xlink:href", language_icon);
         $(".curr_language").text($(this).find(".toggleLanguage").text());
-        SetCookie("language_icon",language_icon);
+        SetCookie("language_icon", language_icon);
         getCookie("userLanguage", language, {
             expires: 30,
             path: '/'
