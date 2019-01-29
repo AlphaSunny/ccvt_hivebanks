@@ -149,11 +149,11 @@ $(function(){
     /*Set the language selection to the value in the cache by default*/
     // $("#language option[value="+i18nLanguage+"]").prop("selected",true);
 
-    var languageList = $(".toggleLanguage");
+    var languageList = $(".toggle_language_li");
     $.each(languageList, function (i, val) {
-        if(i18nLanguage == $(this).attr("title")){
+        if(i18nLanguage == $(this).find(".toggleLanguage").attr("title")){
             $(".curr_language").text($(this).text());
-        }
+        };
     });
 
     /* Choose a language */
@@ -171,7 +171,7 @@ $(function(){
     $(".toggle_language_li").on('click', function () {
         var language = $(this).find(".toggleLanguage").attr("title");
         var language_icon = $(this).find("use").attr("xlink:href");
-        console.log(language_icon);
+        $(".current_icon").find("use").attr("xlink:href",language_icon);
         $(".curr_language").text($(this).find(".toggleLanguage").text());
         // $("#language").text($(this).find(".toggleLanguage").text());
         getCookie("userLanguage", language, {
