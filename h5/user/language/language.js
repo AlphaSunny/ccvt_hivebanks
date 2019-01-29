@@ -151,16 +151,13 @@ $(function () {
 
     /*Set the language selection to the value in the cache by default*/
     // $("#language option[value="+i18nLanguage+"]").prop("selected",true);
-    var get_language_icon = unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]);
-
     var languageList = $(".toggle_language_li");
-    console.log(get_language_icon);
     $.each(languageList, function (i, val) {
         if (i18nLanguage == $(this).find(".toggleLanguage").attr("title")) {
             $(".curr_language").text($(this).text());
         }
-        if (get_language_icon == $(this).find("use").attr("xlink:href")) {
-            $(".current_icon").find("use").attr("xlink:href", get_language_icon);
+        if (unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]) == $(this).find("use").attr("xlink:href")) {
+            $(".current_icon").find("use").attr("xlink:href", unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]));
         }
     });
 
