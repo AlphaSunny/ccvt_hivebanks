@@ -180,5 +180,6 @@ $(function(){
         });
         // location.reload();
         execI18n();
+        $(".footer_box iframe").contentWindow.execI18n();
     });
 });
