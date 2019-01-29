@@ -81,6 +81,7 @@ $(function () {
                 $('#confirmModal').modal('hide');
                 _this.closest('.withdrawPendingList').remove();
                 $('.lock_amount').text(response.lock_amount);
+                $('.base_amount').text(response.base_amount);
                 LayerFun("successfulProcessing");
             }
         }, function (response) {
