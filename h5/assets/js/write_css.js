@@ -17,5 +17,5 @@
     document.write(cssHeader + "assets/css/animate.css" + cssFooter);
     document.write(cssHeaderIco + "favicon.ico" + cssFooter);
     document.write(cssHeaderLess + "assets/css/common.less" + cssFooter);
-    document.write('<link rel="stylesheet" href="//at.alicdn.com/t/font_626151_s2e3q5g4f2.css">');
+    document.write('<link rel="stylesheet" href="//at.alicdn.com/t/font_626151_t6n32vq6jjq.css">');
 })();
