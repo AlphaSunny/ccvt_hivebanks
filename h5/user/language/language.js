@@ -158,7 +158,7 @@ $(function () {
         if (i18nLanguage == $(this).find(".toggleLanguage").attr("title")) {
             $(".curr_language").text($(this).text());
         }
-        if (unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2])) {
+        if (unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)")))) {
             $(".current_icon").find("use").attr("xlink:href", unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]));
         }
     });
