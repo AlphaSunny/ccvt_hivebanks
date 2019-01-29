@@ -20,7 +20,7 @@ $(function () {
             }
             $.each(data, function (i, val) {
                 li += "<li class='bankItem item'>" +
-                    "<p class='i18n ca_channel' name='" + data[i].ca_channel + "'></p><p> > </p>" +
+                    "<p class='i18n ca_channel justify-content-space-center' name='" + data[i].ca_channel + "'></p><p> > </p>" +
                     "</li>"
             });
             $('.ca_channel_ul').html(li);

@@ -86,6 +86,7 @@ $(function () {
 
     $(document).on("click", ".cancelBtn", function () {
         let type = '2';
+        let _this = $(this);
         let qa_id = $(this).siblings(".qa_id").text();
         layer.confirm('拒绝此笔充值请求？', {
             btn: ['确定', '取消'] //按钮
@@ -93,6 +94,7 @@ $(function () {
             RechargeRefuse(token, type, qa_id, function (response) {
                 if (response.errcode == "0") {
                     SuccessPrompt("处理成功");
+                    _this.closest('.rechargePendingList').remove();
                 }
             }, function (response) {
                 ErrorPrompt(response.errmsg);
