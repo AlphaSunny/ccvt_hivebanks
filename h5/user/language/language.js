@@ -161,17 +161,16 @@ $(function () {
             return null;
     }
 
-    $(".curr_language").text(i18nLanguage);
+    var languageList = $(".toggle_language_li");
+    $.each(languageList, function (i, val) {
+        if (i18nLanguage == $(this).find(".toggleLanguage").attr("title")) {
+            $(".curr_language").text($(this).text());
+        }
+
     var get_language_icon = getLanguageIconCookie("language_icon");
     if (get_language_icon) {
         $(".current_icon").find("use").attr("xlink:href", get_language_icon)
     }
-    // var languageList = $(".toggle_language_li");
-    // $.each(languageList, function (i, val) {
-    //     if (i18nLanguage == $(this).find(".toggleLanguage").attr("title")) {
-    //         $(".curr_language").text($(this).text());
-    //     }
-
     // if (unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)")))) {
     //     $(".current_icon").find("use").attr("xlink:href", unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]));
     // }
