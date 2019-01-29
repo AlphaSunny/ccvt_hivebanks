@@ -80,7 +80,7 @@ function GetErrorCode(code) {
 }
 
 //Get configuration file
-let config_api_url = '', config_h5_url = '', userLanguage = getCookie('userLanguage');
+let config_api_url = '', config_h5_url = '', userLanguage = GetCookie('userLanguage');
 $.ajax({
     url: url + "/h5/assets/json/config_url.json",
     async: false,
