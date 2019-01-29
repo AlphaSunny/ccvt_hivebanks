@@ -1,9 +1,9 @@
 $(function () {
     //get token
-    let token = GetUsCookie('user_token');
+    let token = GetCookie('user_token');
     GetUsAccount();
-    let benchmark_type = GetUsCookie('benchmark_type');
-    let ca_currency = GetUsCookie('ca_currency');
+    let benchmark_type = GetCookie('benchmark_type');
+    let ca_currency = GetCookie('ca_currency');
 
     //Get the recharge amount
     let base_amount = GetQueryString('us_ca_withdraw_amount');
