@@ -212,6 +212,31 @@ td, th {
   padding: @default_even_px*10 @default_even_px*10 @default_odd_px*10 @default_even_px*10;
 }
 
+//list_box
+.list_box {
+  width: @_100;
+  border-radius: @default_odd_px+@default_even_px;
+  margin-bottom: @default_even_px * 25;
+  //box-shadow: @shadow;
+  background: @main-bg;
+
+  .content {
+    padding: 15px 20px;
+
+    .item {
+      display: flex;
+      align-items: center;
+      height: @height_50;
+      line-height: @height_50;
+      border-bottom: @border;
+      &:hover{
+        background: #0a0a0a;
+        color: @main-bg;
+      }
+    }
+  }
+}
+
 //card
 .card {
   width: @_100;

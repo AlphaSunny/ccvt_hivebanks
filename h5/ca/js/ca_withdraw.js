@@ -19,7 +19,7 @@ $(function () {
                 return;
             }
             $.each(data, function (i, val) {
-                li += "<li class='bankItem item'>" +
+                li += "<li class='bankItem list_box_item'>" +
                     "<p class='i18n ca_channel justify-content-space-center' name='" + data[i].ca_channel + "'></p><p> > </p>" +
                     "</li>"
             });
