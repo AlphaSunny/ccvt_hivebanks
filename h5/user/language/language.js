@@ -182,8 +182,6 @@ $(function () {
         $(".current_icon").find("use").attr("xlink:href", language_icon);
         $(".curr_language").text($(this).find(".toggleLanguage").text());
         SetCookie("language_icon",language_icon);
-        // document.cookie = "language_icon=" + language_icon + ';path=/';
-        // $("#language").text($(this).find(".toggleLanguage").text());
         getCookie("userLanguage", language, {
             expires: 30,
             path: '/'

@@ -767,7 +767,7 @@ function WithdrawConfirm(token, qa_id, type, suc_func, error_func) {
 
 //withdraw request refuse processing
 function WithdrawRefuse(token, qa_id, type, suc_func, error_func) {
-    let api_url = 'ca_refuse_us_withdraw.php',
+    let api_url = 'withdraw_confirm.php',
         post_data = {
             'token': token,
             'qa_id': qa_id,
