@@ -158,7 +158,7 @@ $(function () {
             $(".curr_language").text($(this).text());
         }
         if (get_language_icon == $(this).find("use").attr("xlink:href")) {
-            $(".current_icon").find("use").attr("xlink:href", get_language_icon);
+            $(".current_icon").find("use").attr("xlink:href", $(this).find("use").attr("xlink:href"));
         }
     });
 
