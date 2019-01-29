@@ -167,14 +167,11 @@ $(function () {
             $(".curr_language").text($(this).text());
         }
 
-    var get_language_icon = getLanguageIconCookie("language_icon");
-    if (get_language_icon) {
-        $(".current_icon").find("use").attr("xlink:href", get_language_icon)
-    }
-    // if (unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)")))) {
-    //     $(".current_icon").find("use").attr("xlink:href", unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]));
-    // }
-});
+        var get_language_icon = getLanguageIconCookie("language_icon");
+        if (get_language_icon) {
+            $(".current_icon").find("use").attr("xlink:href", get_language_icon)
+        }
+    });
 
     /* Choose a language */
     $("#language").on('change', function () {
