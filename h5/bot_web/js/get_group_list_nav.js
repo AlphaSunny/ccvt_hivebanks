@@ -59,7 +59,7 @@ $(function () {
         SetCookie("welcome", welcome);
         SetCookie("group_name", group_name);
         // window.location.href = "domain.html?id=" + encodeURI(id) + "&group_name=" + encodeURI(encodeURI(group_name));
-        window.location.href = "domain.html?id=" + encodeURI(id);
+        window.location.href = "group_info.html?id=" + encodeURI(id);
 
         // window.location.href = "domain.html?id=" + encodeURI(id) + "&is_admin_del=" + encodeURI(is_admin_del) + "&is_del=" + encodeURI(is_del) + "&is_flirt=" + encodeURI(is_flirt) + "&is_give_ccvt=" + encodeURI(is_give_ccvt) + "&bind_account_notice=" + encodeURI(bind_account_notice) + "&is_welcome=" + encodeURI(is_welcome) + "&welcome=" + encodeURI(encodeURI(welcome)) + "&send_address=" + encodeURI(send_address) + "&group_name=" + encodeURI(encodeURI(group_name));
     });
