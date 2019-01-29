@@ -151,12 +151,14 @@ $(function () {
 
     /*Set the language selection to the value in the cache by default*/
     // $("#language option[value="+i18nLanguage+"]").prop("selected",true);
+    // var get_language_icon = unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]);
+
     var languageList = $(".toggle_language_li");
     $.each(languageList, function (i, val) {
         if (i18nLanguage == $(this).find(".toggleLanguage").attr("title")) {
             $(".curr_language").text($(this).text());
         }
-        if (unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]) == $(this).find("use").attr("xlink:href")) {
+        if (unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2])) {
             $(".current_icon").find("use").attr("xlink:href", unescape(document.cookie.match(new RegExp("(^| )language_icon=([^;]*)(;|$)"))[2]));
         }
     });
