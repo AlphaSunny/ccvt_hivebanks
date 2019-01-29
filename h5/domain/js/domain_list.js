@@ -81,7 +81,7 @@ $(function () {
     //前往群详情
     $(document).on("click", ".to_group_info", function () {
         let id = $(this).parents("tr").find(".id_name").attr("id");
-        window.location.href = "domain.html?id=" + id;
+        window.location.href = "domain_info.html?id=" + id;
     });
 
     //获取筛选列表
