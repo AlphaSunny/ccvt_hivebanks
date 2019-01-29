@@ -45,17 +45,15 @@ if ($rows["qa_flag"] == 1)
 elseif ($rows["qa_flag"] == 2)
     exit_error('130',"该订单已拒绝");
 
-//成功，拒绝
+//拒绝
 if ($type == "2"){
     //返回用的base_amount,减去lock_amount
-    if (!upd_refuse_us_base_amount_info($rows["us_id"],$rows["base_amount"],$rows["$base_amount"]))
+    if (!upd_refuse_us_base_amount_info($rows["us_id"],$rows["base_amount"]))
         exit_error('101',"更新失败");
     exit_ok();
 }
-//成功，同意
-//if (!$rows["base_amount"])
-//    exit_error(1,"订单异常");
-//获取ba基本用户信息
+
+//成功
 withdraw_confirm($rows);
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
