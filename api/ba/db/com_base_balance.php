@@ -79,7 +79,7 @@ function ins_ba_rechargeAndwithdraw_com_base_banlance($data) {
 // 参数: ba_id                 baID
 // 返回: hash_id               前置hashid
 //======================================
-function  get_recharge_pre_hash($ba_id)
+function  get_recharge_pre_hash_2($ba_id)
 {
     $db = new DB_COM();
     $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}' ORDER BY  ctime DESC LIMIT 1";
