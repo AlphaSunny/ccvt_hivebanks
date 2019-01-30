@@ -75,6 +75,7 @@ $(function () {
                 ActiveClick($this, btnText);
                 // LayerFun("modifySuccess");
                 SuccessPrompt("修改成功");
+                return;
                 setInterval(()=>{
                     window.location.href = 'security.html';
                 },2000);
