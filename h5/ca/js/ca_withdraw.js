@@ -19,8 +19,8 @@ $(function () {
                 return;
             }
             $.each(data, function (i, val) {
-                li += "<li class='bankItem list_box_item'>" +
-                    "<p class='i18n ca_channel flex align-items-center justify-content-space-between' name='" + data[i].ca_channel + "'></p><p> > </p>" +
+                li += "<li class='bankItem list_box_item flex align-items-center justify-content-space-between'>" +
+                    "<p class='i18n ca_channel' name='" + data[i].ca_channel + "'></p><p> > </p>" +
                     "</li>"
             });
             $('.ca_channel_ul').html(li);
