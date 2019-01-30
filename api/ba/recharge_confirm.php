@@ -5,6 +5,7 @@ require_once 'db/us_ba_recharge_request.php';
 require_once 'db/us_base.php';
 require_once 'db/ba_base.php';
 require_once 'db/com_base_balance.php';
+require_once '../inc/transaction_order/db/com_base_balance.php';
 require_once('../inc/mysql.php');
 require_once "../inc/transaction_order/ba_recharge_confirm.php";
 

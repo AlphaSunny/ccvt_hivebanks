@@ -6,7 +6,6 @@
  * Date: 2018/8/8
  * Time: 上午11:32
  */
-require_once 'db/com_base_balance.php';
 function recharge_confirm($rows)
 {
     $db = new DB_COM();
