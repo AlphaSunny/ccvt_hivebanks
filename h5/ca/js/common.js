@@ -606,7 +606,14 @@ function GetMeetCaList(api_url, token, base_amount, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
-
+//Get a list of Cas that meet the withdrawal criteria
+function GetMeetWithdrawCaList(api_url, token, base_amount, suc_func, error_func) {
+    let post_data = {
+        'token': token,
+        'base_amount': base_amount
+    };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
 
 //Assign recharge cash withdrawal
 function GetAssignCa(api_url, token, ca_channel, suc_func, error_func) {
@@ -647,6 +654,16 @@ function GetUserBaseInfo(token, suc_func, error_func) {
     let api_url = 'info_base.php',
         post_data = {
             'token': token
+        };
+    CallUserApi(api_url, post_data, suc_func, error_func);
+}
+
+//get us_account_id
+function GetUsAccountId(token, ca_channel, suc_func, error_func) {
+    let api_url = 'get_specified_bank_card_list.php',
+        post_data = {
+            'token': token,
+            'cash_channel': ca_channel
         };
     CallUserApi(api_url, post_data, suc_func, error_func);
 }
