@@ -12,8 +12,10 @@ function SetCookie(name, value) {
 function GetCookie(name) {
     let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
-    if (arr == null) {
+    if (arr == null && name == "ca_token") {
         window.location.href = 'CaLogin.html';
+    }else{
+        window.location.href = '../user/login.html';
     }
 }
 
