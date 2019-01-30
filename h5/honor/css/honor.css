@@ -455,7 +455,7 @@ li.none {
 
     .title_h1 {
         font-size: 2rem;
-        display: inline-block;
+        display: inline-block!important;
         width: 50%;
         margin-top: 3%;
     }
