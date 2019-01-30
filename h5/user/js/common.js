@@ -622,6 +622,25 @@ function GetAverageRate(api_url, token, suc_func, error_func) {
     CallCaApi(api_url, post_data, suc_func, error_func);
 }
 
+//Get a list of Cas that meet the withdrawal criteria
+function GetMeetWithdrawCaList(api_url, token, base_amount, suc_func, error_func) {
+    let post_data = {
+        'token': token,
+        'base_amount': base_amount
+    };
+    CallCaApi(api_url, post_data, suc_func, error_func);
+}
+
+//get us_account_id
+function GetUsAccountId(token, ca_channel, suc_func, error_func) {
+    let api_url = 'get_specified_bank_card_list.php',
+        post_data = {
+            'token': token,
+            'cash_channel': ca_channel
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //get phone code
 function GetPhoneCode(cellphone, country_code, bind_type, cfm_code, suc_func, error_func) {
     let api_url = 'sms_send.php',
