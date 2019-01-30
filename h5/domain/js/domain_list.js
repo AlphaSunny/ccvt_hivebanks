@@ -51,7 +51,7 @@ $(function () {
                 $.each(data, function (i, val) {
                     let scale = "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
                     tr += "<tr>" +
-                        "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + ">"+ scale +"<a href='javascript:;' class='to_group_info'>" + data[i].name + "</a></td>" +
+                        "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + ">" + scale + "<a href='javascript:;' class='to_group_info'>" + data[i].name + "</a></td>" +
                         // "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + "><span>" + data[i].name + "</span><span>("+ data[i].type_name +")</span></td>" +
                         // "<td>" + data[i].scale + "</td>" +
                         "<td>🌟" + data[i].glory_number + "</td>" +
@@ -142,13 +142,27 @@ $(function () {
 
 
     //名称筛选
-    $(".search_icon").click(function () {
+    function searchNameFun(search_name) {
         type_id = "";
         scale = "";
-        search_name = $(".search_name_input").val();
-        // limit = 10;
-        // offset = 0;
+
         ShowLoading("show");
         getGroupListFun(limit, offset, search_name, scale, type_id);
+    }
+
+    $(".search_icon").click(function () {
+        search_name = $(".search_name_input").val();
+        if (search_name.length <= 0) {
+            WarnPrompt("请输入搜索内容");
+            return;
+        }
+        searchNameFun(search_name);
     });
+
+    $(".search_name_input").bind("input propertychange", function () {
+        if ($(".search_name_input").val().length <= 0) {
+            search_name = "";
+            searchNameFun(search_name);
+        }
+    })
 });
