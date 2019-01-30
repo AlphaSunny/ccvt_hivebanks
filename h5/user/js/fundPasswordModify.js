@@ -1,6 +1,6 @@
 $(function () {
     //get token
-    var token = GetCookie('user_token');
+    let token = GetCookie('user_token');
     GetUsAccount();
 
     //Get graphic verification code
@@ -13,9 +13,9 @@ $(function () {
 
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
-        var country_code = $('.selected-dial-code').text().split("+")[1];
-        var cellphone = $('#phone').val();
-        var bind_type = '2', cfm_code = $('#phoneCfmCode').val();
+        let country_code = $('.selected-dial-code').text().split("+")[1];
+        let cellphone = $('#phone').val();
+        let bind_type = '2', cfm_code = $('#phoneCfmCode').val();
 
         if (cellphone == '') {
             // LayerFun('phoneNotEmpty');
@@ -34,7 +34,7 @@ $(function () {
 
     //Binding fund password
     $('.fundPasswordEnable').click(function () {
-        var hash_type = 'pass_hash',
+        let hash_type = 'pass_hash',
             // Get country code
             country_code = $(".selected-flag").attr("title").split("+")[1],
             phone = country_code + '-' + $('#phone').val(),
@@ -43,35 +43,41 @@ $(function () {
             password = $('#password').val(),
             pass_word_hash = hex_sha1(password);
         if ($('#fundPassword').val().length <= 0) {
-            LayerFun('funPassNotEmpty');
+            // LayerFun('funPassNotEmpty');
+            WarnPrompt("请输入资金密码");
             return;
         }
 
         if ($('#phone').val().length <= 0) {
-            LayerFun('phoneNotEmpty');
+            // LayerFun('phoneNotEmpty');
+            WarnPrompt("请输入手机号码");
             return;
         }
 
         if ($('#phoneCode').val().length <= 0) {
-            LayerFun('codeNotEmpty');
+            // LayerFun('codeNotEmpty');
+            WarnPrompt("请输入手机验证码");
             return;
         }
 
         if (password.length <= 0) {
-            LayerFun('passNotEmpty');
+            // LayerFun('passNotEmpty');
+            WarnPrompt("请输入登录密码");
             return;
         }
         //hashFund password binding
-        var $this = $(this), btnText = $this.text();
+        let $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
         ShowLoading("show");
         Hash(token, hash_type, hash, pass_word_hash, phone, phoneCode, function (response) {
             if (response.errcode == '0') {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
-                LayerFun("modifySuccess");
-                window.location.href = 'security.html';
-
+                // LayerFun("modifySuccess");
+                SuccessPrompt("修改成功");
+                setTime(()=>{
+                    window.location.href = 'security.html';
+                },2000);
             }
         }, function (response) {
             ShowLoading("hide");
