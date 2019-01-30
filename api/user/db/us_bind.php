@@ -117,16 +117,29 @@ function  get_us_bind_phone_by_token($us_id,$cellphone)
 //======================================
 function bind_info($us_id, $data_bind)
 {
-  $data_bind['us_id'] = $us_id;
-  $data_bind['bind_id'] = get_guid();
-  $data_bind['utime'] = time();
-  $data_bind['ctime'] = date("Y-m-d H:i:s");
-  $db = new DB_COM();
-  $sql = $db->sqlInsert('us_bind', $data_bind);
-  $q_id = $db->query($sql);
-  if ($q_id == 0)
-    return false;
-  return true;
+    $db = new DB_COM();
+    $sql = "select * from us_bind WHERE us_id='{$us_id}' AND bind_name='{$data_bind['bind_name']}' order by ctime ASC limit 1";
+    $db->query($sql);
+    $pas = $db->fetchRow();
+    if ($pas){
+        $utime = time();
+        $sql = "UPDATE us_bind SET bind_info = '{$data_bind['bind_info']}',utime='{$utime}' WHERE bind_id='{$pas['bind_id']}'";
+        $db->query($sql);
+        if (!$db -> affectedRows()){
+            return false;
+        }
+    }else{
+        $data_bind['us_id'] = $us_id;
+        $data_bind['bind_id'] = get_guid();
+        $data_bind['utime'] = time();
+        $data_bind['ctime'] = date("Y-m-d H:i:s");
+        $db = new DB_COM();
+        $sql = $db->sqlInsert('us_bind', $data_bind);
+        $q_id = $db->query($sql);
+        if ($q_id == 0)
+            return false;
+    }
+    return true;
 }
 //======================================
 // 函数: 判断绑定是否存在
