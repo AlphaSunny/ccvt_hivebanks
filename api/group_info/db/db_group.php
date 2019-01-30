@@ -74,7 +74,7 @@ function get_group_list($offset,$limit,$search_name,$scale,$type_id)
 function get_group_info($group_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT id,name,scale,dis,qr_code_address,(select count(*) from us_bind where bind_name='group' and bind_info='{$group_id}') as bind_count FROM bot_group WHERE id='{$group_id}'";
+    $sql = "SELECT a.id,a.name,a.scale,a.us_id,a.dis,a.qr_code_address,b.name as type_name,(select count(*) from us_bind where bind_name='group' and bind_info='{$group_id}') as bind_count FROM bot_group as a left JOIN bot_group_type as b ON a.group_type=b.id WHERE a.id='{$group_id}'";
     $db -> query($sql);
     $row = $db -> fetchRow();
     if ($row){
@@ -100,6 +100,10 @@ function get_group_info($group_id)
         }
     }
     $row['row'] = $row;
+    //群主
+    $sql = "select wechat from us_base where us_id='{$row['us_id']}'";
+    $db->query($sql);
+    $row['group_lord'] = $db->getField($sql,'wechat');
 
     $weeks = get_weeks();
     foreach ($weeks as $k=>$v){
