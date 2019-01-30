@@ -1,5 +1,6 @@
 @black: #000000;
 @white: #ffffff;
+@_100: 100%;
 html, body {
   background: #000000;
   color: @white;
@@ -16,14 +17,16 @@ nav {
       height: 100%;
     }
   }
-  a{
+
+  a {
     &:extend(a);
   }
 }
 
-input{
-  background: transparent!important;
+input {
+  background: transparent !important;
 }
+
 select {
   margin: 0 5px;
   &:extend(input);
@@ -35,6 +38,18 @@ a {
 
 .domain_title {
   &:extend(a);
+}
+
+.height_100 {
+  height: @_100;
+}
+
+.filter_box {
+  height: 35px;
+
+  div, select, input {
+    height: @_100;
+  }
 }
 
 tbody tr {
