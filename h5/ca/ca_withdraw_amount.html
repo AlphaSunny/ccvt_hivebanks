@@ -7,11 +7,14 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title class="i18n" name="withdraw"></title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/CaWithdrawAmount.css">
-    <link rel="stylesheet" media="only screen and (max-width:767px)" href="mobile-css/common.css">
-    <link rel="stylesheet" media="only screen and (max-width:767px)" href="mobile-css/CaWithdrawAmount.css">
+    <!--<link rel="stylesheet" href="../assets/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="css/common.css">-->
+    <!--<link rel="stylesheet" href="css/CaWithdrawAmount.css">-->
+    <!--<link rel="stylesheet" media="only screen and (max-width:767px)" href="mobile-css/common.css">-->
+    <!--<link rel="stylesheet" media="only screen and (max-width:767px)" href="mobile-css/CaWithdrawAmount.css">-->
+    <script src="../assets/js/write_css.js"></script>
+    <script src="../user/js/user_write_css.js"></script>
+    <link rel="stylesheet" href="css/ca_withdraw_amount.less">
 </head>
 <body>
 <!-- loading -->
@@ -232,35 +235,18 @@
     </div>
 </div>
 <!--footer-->
-<section class="sections footer">
-    <div class="container">
-        <div class="row left-row">
-            <div class="col-md-12 col-sm-12">
-                <div class="footerTR flex space-between center">
-                    <div class="footerIconBox">
-                        <a href="https://twitter.com/Hivebanks "  data-toggle="tooltip" data-placement="top" title="hivebanks"><i class="iconfont icon-twitter"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i class="iconfont icon-telegram"></i></a>
-                        <a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top" title="ccvt.io"><i class="iconfont icon-weibo"></i></a>
-                        <a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top" title="Hivebanks"><i class="iconfont icon-weixin"></i></a>
-                    </div>
-                    <div>
-                        <select class="form-control input-sm" id="language">
-                            <option value="en">English</option>
-                            <option value="zh-CN">中文简体</option>
-                            <option value="ja">Japanese</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row footer-copyright">
-            <span>                 <span class="i18n" name="version">©2018-2019 Powered by</span>                 <a href="http://www.hivebanks.com">hivebanks</a>             </span>
-        </div>
-    </div>
-</section>
-<!--top-->
+<div class="footer_box">
+    <iframe src="../user/footer.html" frameborder="0" height="100%" width="100%"></iframe>
+</div>
+
+<!--Back to top-->
 <div class="scrollup">
     <a href="#"><i class="iconfont icon-top"></i></a>
+</div>
+
+<!--loading-->
+<div class="loading">
+    <img src="../assets/img/loading2.gif" alt="">
 </div>
 
 <!--<script src="../assets/js/jquery-3.2.1.min.js"></script>-->
@@ -274,11 +260,13 @@
 <!--<script src="../user/js/new_main.js"></script>-->
 
 <!--js-->
+<!--<script src="../assets/js/write_js.js"></script>-->
+<!--<script src="js/ca_write_js.js"></script>-->
+<!--<script src="../user/js/verify_withdraw.js"></script>-->
+<!--<script src="../user/js/get_bind_info.js"></script>-->
+<!--<script src="../user/js/logout.js"></script>-->
 <script src="../assets/js/write_js.js"></script>
-<script src="js/ca_write_js.js"></script>
-<script src="../user/js/verify_withdraw.js"></script>
-<script src="../user/js/get_bind_info.js"></script>
-<script src="../user/js/logout.js"></script>
+<script src="../user/js/user_write_js.js"></script>
 
 <script src="js/CaWithdrawAmount.js"></script>
 </body>
