@@ -28,7 +28,7 @@ total           总记录数
 */
 
 php_begin();
-$args = array('token','type');
+$args = array('token');
 chk_empty_args('GET', $args);
 // 用户token
 $token = get_arg_str('GET', 'token', 128);
@@ -40,7 +40,7 @@ $ba_id = check_token($token);
 
 //获取充值列表基本信息
 // TODO: 修改type
-if ($type == '1' || $type=='2'|| $type=='3')  {
+if ($type == '0'|| $type == '1' || $type=='2'|| $type=='3')  {
     $row = get_ba_recharge_request_ba_id($ba_id, $type);
 }else {
     exit_error(1,"非法参数");
