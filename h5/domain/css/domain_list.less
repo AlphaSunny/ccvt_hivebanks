@@ -15,14 +15,6 @@ nav {
       height: 100%;
     }
   }
-
-  //a {
-  //  color: @black;
-  //}
-}
-
-.domain_title {
-  color: @white;
 }
 
 select {
@@ -31,6 +23,10 @@ select {
 
 a {
   color: @white;
+}
+
+.domain_title {
+  &:extend(a);
 }
 
 tbody tr {
