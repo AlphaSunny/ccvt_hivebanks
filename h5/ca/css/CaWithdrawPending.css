@@ -42,3 +42,6 @@
 .balanceBox p:last-child{
     margin-left: 5%;
 }
+.layui-layer-btn{
+    text-align: center!important;
+}

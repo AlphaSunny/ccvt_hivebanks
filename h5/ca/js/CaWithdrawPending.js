@@ -66,30 +66,47 @@ $(function () {
     //again confirm
     $('.againConfirmBtn').click(function () {
         let type = '1';
-        let $this = $(this), btnText = $(this).text();
-        if (DisableClick($this)) return;
-        ShowLoading("show");
-        WithdrawConfirm(token, qa_id, type, function (response) {
-            if (response.errcode == '0') {
+        let _this = $(this);
+        layer.confirm('确定处理此笔提现请求？', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            ShowLoading("show");
+            WithdrawRefuse(token, qa_id, type, function (response) {
+                if (response.errcode == "0") {
+                    SuccessPrompt("处理成功");
+                    ShowLoading("hide");
+                    _this.closest('.withdrawPendingList').remove();
+                }
+            }, function (response) {
+                ErrorPrompt(response.errmsg);
                 ShowLoading("hide");
-                ActiveClick($this, btnText);
-                $('#confirmModal').modal('hide');
-                _this.closest('.withdrawPendingList').remove();
-                $('.lock_amount').text(response.lock_amount);
-                $('.base_amount').text(response.base_amount);
-                LayerFun("successfulProcessing");
-            }
-        }, function (response) {
-            ShowLoading("hide");
-            ActiveClick($this, btnText);
-            LayerFun("processingFailure");
-            return;
-        })
+            });
+        }, function () {
+        });
+
+
+
+
+        // WithdrawConfirm(token, qa_id, type, function (response) {
+        //     if (response.errcode == '0') {
+        //         ShowLoading("hide");
+        //         ActiveClick($this, btnText);
+        //         $('#confirmModal').modal('hide');
+        //         _this.closest('.withdrawPendingList').remove();
+        //         $('.lock_amount').text(response.lock_amount);
+        //         $('.base_amount').text(response.base_amount);
+        //         LayerFun("successfulProcessing");
+        //     }
+        // }, function (response) {
+        //     ShowLoading("hide");
+        //     ActiveClick($this, btnText);
+        //     LayerFun("processingFailure");
+        //     return;
+        // })
     });
 
     //refuse withdraw
     $(document).on("click", ".refuseBtn", function () {
-        // let tx_hash = $(this).next('.tx_hash').text();
         let qa_id = $(this).siblings(".qa_id").text();
         let type = '2';
         let _this = $(this);
