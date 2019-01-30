@@ -6,14 +6,18 @@ a {
   color: #000000;
 }
 
-tbody tr:hover {
-  background: #1a1d2b;
-  color: #fff;
+tbody tr {
+  transition: all 0.3s;
 
-  a {
-    color: #ffffff;
+  &:hover {
+    background: #1a1d2b;
+    color: #fff;
+
+    a {
+      color: #ffffff;
+    }
+
   }
-
 }
 
 .position_relative {
