@@ -56,15 +56,9 @@ $(function () {
         return;
     });
     //Withdrawal request confirmation processing
-    let qa_id = '', _this = '';
     $(document).on('click', '.confirmBtn', function () {
         $('#confirmModal').modal('show');
-        qa_id = $(this).next('.qa_id').text();
-        _this = $(this);
-    });
-
-    //again confirm
-    $('.againConfirmBtn').click(function () {
+        let qa_id = $(this).next('.qa_id').text();
         let type = '1';
         let _this = $(this);
         layer.confirm('确定处理此笔提现请求？', {
@@ -83,6 +77,11 @@ $(function () {
             });
         }, function () {
         });
+    });
+
+    //again confirm
+    $('.againConfirmBtn').click(function () {
+
 
 
 
