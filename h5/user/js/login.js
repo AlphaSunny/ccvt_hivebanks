@@ -12,6 +12,7 @@ $(document).ready(function () {
     }
 
     let leaderBoard = GetQueryString("honor");
+    let domain_list = GetQueryString("domain_list");
 
     // function GetLoginCookie(name) {
     //     let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
@@ -145,6 +146,11 @@ $(document).ready(function () {
                     window.location.href = 'account.html';
                 } else {
                     window.location.href = "../honor/honor.html";
+                }
+                if (!domain_list) {
+                    window.location.href = 'account.html';
+                } else {
+                    window.location.href = "../domain/domain_list.html";
                 }
             }
         }, function (response) {
