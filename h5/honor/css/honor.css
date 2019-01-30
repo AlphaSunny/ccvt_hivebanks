@@ -514,3 +514,6 @@ p {
 .to_domain{
     color: #ffffff;
 }
+.to_domain:hover{
+    color: #ffffff;
+}
