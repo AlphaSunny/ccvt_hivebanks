@@ -1,14 +1,14 @@
 $(function () {
     //get token
-    let token = GetUsCookie('user_token');
+    let token = GetCookie('user_token');
     GetUsAccount();
 
     //get us_level
-    let us_level = GetUsCookie('us_level');
+    let us_level = GetCookie('us_level');
 
     // get base information
     let us_base_amount = '',us_account_id = "";
-    GetUserBaseInfo(token, function (response) {
+    UserInformation(token, function (response) {
         if (response.errcode == '0') {
             let data = response.rows;
             us_base_amount = data.base_amount;
@@ -55,25 +55,6 @@ $(function () {
     }, function (response) {
         LayerFun(response.errcode);
     });
-
-    //get us_account_id
-    // let option = '';
-    // GetUsAccountId(token, ca_channel, function (response){
-    //     if(response.errcode == '0'){
-    //         let data = response.rows;
-    //         if(data == false){
-    //
-    //         }
-    //         $.each(data, function (i, val) {
-    //             option+='<option value ="'+ data[i].account_id +'">'+ data[i].lgl_address.lgl_address +'</option>';
-    //         });
-    //         $('.selectAddress').append(option);
-    //         return;
-    //     }
-    // }, function (response) {
-    //     LayerFun(response.errcode);
-    //     return;
-    // });
 
     //lockRechargeAmount
     $('.lockAmountBtn').click(function () {

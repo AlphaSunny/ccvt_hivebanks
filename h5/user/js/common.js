@@ -631,6 +631,30 @@ function GetMeetWithdrawCaList(api_url, token, base_amount, suc_func, error_func
     CallCaApi(api_url, post_data, suc_func, error_func);
 }
 
+//Assign recharge cash withdrawal
+function GetAssignCa(api_url, token, ca_channel, suc_func, error_func) {
+    let post_data = {
+        'token': token,
+        'ca_channel': ca_channel
+    };
+    CallCaApi(api_url, post_data, suc_func, error_func);
+}
+
+//Locked up cash amount (withdrawal request)
+function LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id, suc_func, error_func) {
+    let api_url = 'us_withdraw_quest.php',
+        post_data = {
+            'token': token,
+            'ca_id': ca_id,
+            'base_amount': base_amount,
+            'bit_amount': bit_amount,
+            'id_card': id_card,
+            'name': name,
+            'us_account_id': us_account_id
+        };
+    CallCaApi(api_url, post_data, suc_func, error_func);
+}
+
 //get us_account_id
 function GetUsAccountId(token, ca_channel, suc_func, error_func) {
     let api_url = 'get_specified_bank_card_list.php',
