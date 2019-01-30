@@ -54,34 +54,35 @@ $(function () {
     GetRechargeWithdrawListFun();
 
     //recharge confirm process
-    let qa_id = '', _this = '';
     $(document).on('click', '.confirmBtn', function () {
-        $('#confirmModal').modal('show');
-        qa_id = $(this).next('.qa_id').text();
-        _this = $(this);
-    });
-    $('.againConfirmBtn').click(function () {
+        // $('#confirmModal').modal('show');
+        let qa_id = $(this).next('.qa_id').text();
+        let _this = $(this);
         let type = '1';
-        let $this = $(this), btnText = $(this).text();
-        if (DisableClick($this)) return;
-        ShowLoading("show");
-        RechargeConfirm(token, qa_id, type, function (response) {
-            if (response.errcode == '0') {
+
+        layer.confirm('确定处理此笔充值请求？', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            ShowLoading("show");
+            RechargeConfirm(token, qa_id, type, function (response) {
+                if (response.errcode == '0') {
+                    ShowLoading("hide");
+                    _this.closest('.rechargePendingList').remove();
+                    $('.lock_amount').text(response.lock_amount);
+                    $('.base_amount').text(response.base_amount);
+                    LayerFun("successfulProcessing");
+                }
+            }, function (response) {
                 ShowLoading("hide");
-                ActiveClick($this, btnText);
-                $('#confirmModal').modal('hide');
-                _this.closest('.rechargePendingList').remove();
-                $('.lock_amount').text(response.lock_amount);
-                $('.base_amount').text(response.base_amount);
-                LayerFun("successfulProcessing");
-            }
-        }, function (response) {
-            ShowLoading("hide");
-            ActiveClick($this, btnText);
-            LayerFun("processingFailure");
-            LayerFun(response.errcode);
-            return;
-        })
+                ErrorPrompt(response.errmsg);
+                // LayerFun("processingFailure");
+                // LayerFun(response.errcode);
+                return;
+            })
+        }, function () {
+        });
+
+
     });
 
     $(document).on("click", ".cancelBtn", function () {
