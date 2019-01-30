@@ -51,10 +51,10 @@ $(function () {
 
                 $.each(data, function (i, val) {
                     tr += "<tr>" +
-                        "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + ">" + data[i].name + "</td>" +
+                        "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + ">" + data[i].name + "("+ data[i].type_name +")</td>" +
                         "<td>" + data[i].scale + "</td>" +
-                        "<td>🌟X" + data[i].glory_number + "</td>" +
-                        "<td>" + data[i].type_name + "</td>" +
+                        "<td>🌟" + data[i].glory_number + "</td>" +
+                        // "<td>" + data[i].type_name + "</td>" +
                         "<td><a href='javascript:;' class='to_group_info'>查看</a></td>" +
                         "</tr>";
                 });
