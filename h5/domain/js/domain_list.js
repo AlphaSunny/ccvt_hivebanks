@@ -158,6 +158,17 @@ $(function () {
         }
         searchNameFun(search_name);
     });
+    
+    $(".search_icon").keyup(function (e) {
+        if(e.keyCode == 13){
+            search_name = $(".search_name_input").val();
+            if (search_name.length <= 0) {
+                WarnPrompt("请输入搜索内容");
+                return;
+            }
+            searchNameFun(search_name);
+        }
+    });
 
     $(".search_name_input").bind("input propertychange", function () {
         if ($(".search_name_input").val().length <= 0) {
