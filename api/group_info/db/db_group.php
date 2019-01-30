@@ -98,13 +98,13 @@ function get_group_info($group_id)
             $row['next_level_bind_number'] = $db->getField($sql,'bind_number');
             $row['next_level_glory_number'] = $db->getField($sql,'glory_number');
         }
+        //群主
+        $sql = "select wechat from us_base where us_id='{$row['us_id']}'";
+        $db->query($sql);
+        $row['group_lord'] = $db->getField($sql,'wechat');
     }
     $row['row'] = $row;
-    //群主
-    $sql = "select wechat from us_base where us_id='{$row['us_id']}'";
-    $db->query($sql);
-    $row['group_lord'] = $db->getField($sql,'wechat');
-
+    
     $weeks = get_weeks();
     foreach ($weeks as $k=>$v){
         $bind_rows[$k-1]['date'] = $v;
