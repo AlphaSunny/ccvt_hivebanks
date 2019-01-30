@@ -13,6 +13,8 @@ $(function () {
     if (user_token) {
         $('.usLogin,.usRegister').remove();
         $('.accountNone').removeClass('none');
+    } else {
+        $('.accountNone').remove();
     }
 
 
