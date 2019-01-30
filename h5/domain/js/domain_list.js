@@ -25,7 +25,7 @@ $(function () {
     });
 
     //获取群列表
-    let limit = 10, offset = 0, search_name = "", scale = "", type_id = "";
+    let limit = 50, offset = 0, search_name = "", scale = "", type_id = "";
 
     function getGroupListFun(limit, offset, search_name, scale, type_id) {
         let count = "";
