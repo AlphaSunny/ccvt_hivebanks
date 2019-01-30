@@ -350,6 +350,10 @@ li.none {
     top: 10%;
 }
 
+.title_h1{
+    display: inline-block;
+}
+
 @media only screen and (max-width: 768px) {
     nav {
         padding: 8px 15px;
@@ -455,7 +459,7 @@ li.none {
 
     .title_h1 {
         font-size: 2rem;
-        display: inline-block!important;
+        display: inline-block;
         width: 50%;
         margin-top: 3%;
     }
