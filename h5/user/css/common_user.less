@@ -221,15 +221,14 @@ td, th {
   background: @main-bg;
 
   .list_box_content {
-    padding: 15px 20px;
-
     .list_box_item {
-      display: flex;
-      align-items: center;
+      padding: 15px 20px;
       height: @height_50;
       line-height: @height_50;
       border-bottom: @border;
-      &:hover{
+      transition: all 0.3s;
+
+      &:hover {
         background: #0a0a0a;
         color: @main-bg;
       }
