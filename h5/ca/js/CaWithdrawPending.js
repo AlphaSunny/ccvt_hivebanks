@@ -79,31 +79,6 @@ $(function () {
         });
     });
 
-    //again confirm
-    $('.againConfirmBtn').click(function () {
-
-
-
-
-
-        // WithdrawConfirm(token, qa_id, type, function (response) {
-        //     if (response.errcode == '0') {
-        //         ShowLoading("hide");
-        //         ActiveClick($this, btnText);
-        //         $('#confirmModal').modal('hide');
-        //         _this.closest('.withdrawPendingList').remove();
-        //         $('.lock_amount').text(response.lock_amount);
-        //         $('.base_amount').text(response.base_amount);
-        //         LayerFun("successfulProcessing");
-        //     }
-        // }, function (response) {
-        //     ShowLoading("hide");
-        //     ActiveClick($this, btnText);
-        //     LayerFun("processingFailure");
-        //     return;
-        // })
-    });
-
     //refuse withdraw
     $(document).on("click", ".refuseBtn", function () {
         let qa_id = $(this).siblings(".qa_id").text();
