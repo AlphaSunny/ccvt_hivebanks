@@ -87,6 +87,8 @@ $(function () {
                 $(".group_member_number").text(data.group_member_number);
                 $(".this_day_in").text(data.this_day_in);
                 $(".scale").text(data.scale);
+                $(".type_name").text(data.type_name);
+                $(".group_lord").text(data.group_lord);
 
                 let next_bind_number = parseInt(data.next_level_bind_number) - parseInt(data.bind_count);
                 let next_glory_number = parseInt(data.next_level_glory_number) - parseInt(data.glory_number);
