@@ -350,7 +350,7 @@ li.none {
     top: 10%;
 }
 
-.title_h1{
+.title_h1 {
     display: inline-block;
 }
 
@@ -515,9 +515,14 @@ p {
     margin-left: 0.5%;
 }
 
-.to_domain{
+.to_domain {
     color: #ffffff;
 }
-.to_domain:hover{
+
+.to_domain:hover {
     color: #ffffff;
+}
+
+.footer_text {
+    padding: 30px 0;
 }
