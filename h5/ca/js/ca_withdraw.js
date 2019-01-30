@@ -50,6 +50,6 @@ $(function () {
                 return;
             }
         });
-        window.location.href = 'CaWithdrawAmount.html?us_ca_withdraw_amount=' + base_amount + '&ca_channel=' + encodeURI(encodeURI(ca_channel));
+        window.location.href = 'ca_withdraw_amount.html?us_ca_withdraw_amount=' + base_amount + '&ca_channel=' + encodeURI(encodeURI(ca_channel));
     })
 });
