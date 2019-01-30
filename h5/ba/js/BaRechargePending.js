@@ -16,7 +16,7 @@ $(function () {
         return;
     });
     //Get a list of user refill pending orders
-    var api_url = 'log_us_recharge.php', type = '1';
+    var api_url = 'log_us_recharge.php', type = '0';
 
     function RechargeWithdrawCodeQueryFun(limit, offset) {
         var tr = '', count = 1;
