@@ -51,7 +51,7 @@ $(function () {
 
                 $.each(data, function (i, val) {
                     tr += "<tr>" +
-                        "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + ">" + data[i].name + "("+ data[i].type_name +")</td>" +
+                        "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + "><span>" + data[i].name + "</span><span>("+ data[i].type_name +")</span></td>" +
                         "<td>" + data[i].scale + "</td>" +
                         "<td>🌟" + data[i].glory_number + "</td>" +
                         // "<td>" + data[i].type_name + "</td>" +
