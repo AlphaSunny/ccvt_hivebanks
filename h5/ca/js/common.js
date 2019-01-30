@@ -5,7 +5,7 @@ function SetCookie(name, value) {
     // Valid for 2 hours
     time += 3600 * 1000 * 2;
     now.setTime(time);
-    document.cookie = name + "=" + escape(value) + '; expires=' + now.toUTCString();
+    document.cookie = name + "=" + escape(value) + '; expires=' + now.toUTCString() + ';path=/';
 }
 
 // Take the cookies function
