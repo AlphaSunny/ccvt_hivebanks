@@ -1,6 +1,6 @@
 $(function () {
     //get token
-    let token = GetUsCookie('user_token');
+    let token = GetCookie('user_token');
     GetUsAccount();
 
     //get us_level
