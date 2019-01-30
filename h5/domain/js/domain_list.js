@@ -110,8 +110,8 @@ $(function () {
         scale = $(this).find("option:selected").val();
         type_id = "";
         search_name = "";
-        limit = 10;
-        offset = 0;
+        // limit = 10;
+        // offset = 0;
         if (!scale) {
             scale = "";
             ShowLoading("show");
@@ -127,8 +127,8 @@ $(function () {
         console.log(type_id);
         scale = "";
         search_name = "";
-        limit = 10;
-        offset = 0;
+        // limit = 10;
+        // offset = 0;
         if (!type_id) {
             console.log("不存在");
             type_id = "";
@@ -145,8 +145,8 @@ $(function () {
         type_id = "";
         scale = "";
         search_name = $(".search_name_input").val();
-        limit = 10;
-        offset = 0;
+        // limit = 10;
+        // offset = 0;
         ShowLoading("show");
         getGroupListFun(limit, offset, search_name, scale, type_id);
     });
