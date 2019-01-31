@@ -20,8 +20,8 @@ $(function () {
             }
 
             $.each(data, function (i, val) {
-                li += "<a class='bankItem list_box_item flex align-items-center justify-content-space-between'>" +
-                    "<span class='i18n ca_channel' name='" + data[i].ca_channel + "'></span><span> > </span>" +
+                li += "<a class='bankItem list_box_item flex align-items-center justify-content-space-between' name='" + data[i].ca_channel + "'>" +
+                    // "<span class='i18n ca_channel' name='" + data[i].ca_channel + "'></span><span> > </span>" +
                     "</a>"
             });
             $('.ca_channel_ul').html(li);
@@ -37,7 +37,8 @@ $(function () {
         // let ca_channel = $(this).find('img').attr('title');
         e.preventDefault();
         e.stopPropagation();
-        let ca_channel = $(this).find('.ca_channel').text();
+        let ca_channel = $(this).text();
+        // let ca_channel = $(this).find('.ca_channel').text();
 
         //get us_account_id
         let us_account_id = '';
