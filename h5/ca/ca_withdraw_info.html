@@ -6,13 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title class="i18n" name="ca_out"></title>
+    <title class="i18n" name="orderInfo"></title>
+    <!--<link rel="stylesheet" href="../assets/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="css/common.css">-->
+    <!--<link rel="stylesheet" href="css/CaWithdrawInfo.css">-->
+    <!--<link rel="stylesheet" media="only screen and (max-width:767px)" href="mobile-css/common.css">-->
+    <!--<link rel="stylesheet" media="only screen and (max-width:767px)" href="mobile-css/CaWithdrawInfo.css">-->
     <script src="../assets/js/write_css.js"></script>
     <script src="../user/js/user_write_css.js"></script>
-    <link rel="stylesheet" href="css/ca_withdraw_amount.less">
+    <link rel="stylesheet" href="css/ca_withdraw_info.less">
 </head>
 <body>
-
 <!--nav-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -126,107 +130,73 @@
         </div>
     </div>
 </section>
-
 <!--Bread crumbs-->
-<div class="container margin-top-1">
-    <div class="row">
-        <div class="col-md-12 col-sm-12">
-            <ol class="breadcrumb">
-                <li><a href="../user/account.html" class="i18n" name="account"></a></li>
-                <li><a href="../user/currency_withdraw.html" class="i18n" name="withdraw"></a></li>
-                <li class="active i18n" name="ca_out"></li>
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-12 col-sm-12'>
+            <ol class='breadcrumb'>
+                <li><a href='../user/account.html' class='i18n' name='account'>Account</a></li>
+                <li><a href='../user/currency_withdraw.html' class='i18n' name='withdraw'>Withdraw</a></li>
+                <li class='active i18n' name='orderInfo'>withdraw</li>
             </ol>
         </div>
     </div>
 </div>
-<!--Recharge details-->
-<section class="sections content section-top-2">
+
+<section class="content">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <h3 class="pcTitle"><span class="ca_channel"></span></h3>
-            </div>
-        </div>
-        <div class="row pay-row margin-top-2">
-            <div class="col-md-12 col-sm-12">
-                <div class="table_bg">
-                    <div class="baInfoBox">
-                        <p class="font-size-14 font-weight-400">
-                            <span class="i18n" name="currRate"></span>:
-                            <span class="curr_withdraw_rate">
-                            1<span class="base_type"></span>=
-                            <span class="base_rate"></span>
-                            <span class="bit_type ca_currency"></span>
-                        </span>
-                        </p>
-                        <p class="font-size-14 font-weight-400">
-                            <span class="i18n" name="effectiveTime"></span>:
-                            <span class="withdraw_ctime"></span>
-                        </p>
+            <div class="col col-md-8 col-md-offset-2 col-sm-12">
+                <div class="orderInfoBox">
+                    <div>
+                        <h3 class="pcTitle i18n" name="orderInfo">Order Details</h3>
+                        <h5 class="phoneTitle i18n" name="orderInfo">Order Details</h5>
                     </div>
                     <div>
-                        <p class="font-size-14 font-weight-400">
-                            <span class="i18n" name="withdrawMaxAmount"></span>:
-                            <span class="withdraw_max_amount"></span>
-                            <span class="base_type"></span>
-                        </p>
-                        <p class="font-size-14 font-weight-400">
-                            <span class="i18n" name="withdrawMinAmount"></span>:
-                            <span class="withdraw_min_amount"></span>
-                            <span class="base_type"></span>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="row margin-top-50">
-            <div class="col col-md-12 col-sm-12">
-                <div class="table_bg">
-                    <label for="payAmount" class="payAmount i18n" name="withdrawAmount"></label>
-                    <div class="flex center rechargeInfoRow">
-                        <div class="form-group flex align-items-center">
-                            <div class="input-group">
-                                <input id="payAmount" type="text"
-                                       class="form-control base_amount_input rechargeInput font-size-14">
-                                <span class="pay_bit_type base_type input-group-addon"></span>
-                            </div>
-                            <span class="icon icon_transfer"><i class="iconfont icon-transfer"></i></span>
-                            <div class="input-group">
-                                <input type="text" id="withdrawAmount"
-                                       class="form-control bit_amount_input rechargeInputSum chg_amount font-size-14">
-                                <span class="margin-left-1 font-weight-400 bit_type input-group-addon ca_currency"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="font-size-14 margin-top-1">
-                            <span class="i18n" name="accountBalance"></span>:
-                            <span class="base_amount"></span>
-                            <span class="base_type"></span>
-                            <a href="javascript:;" class="allWithdraw i18n" name="allWithdraw"></a>
-                            <a href="javascript:;" class="ty-color no_base_amount none"></a>
-                        </p>
-                    </div>
-
-                    <div class="margin-top-50">
-                        <div class="form-group margin-bottom-5">
-                            <label for="idNum">银行卡号</label>
-                            <input type="text" class="form-control" id="idNum">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">姓名</label>
-                            <input type="text" class="form-control" id="name">
-                        </div>
-                    </div>
-
-                    <div>
-                        <a class="btn btn-success lockAmountBtn margin-bottom-2 i18n" data-toggle="modal"
-                           name="lockWithdrawAmount"></a>
-                        <p class="font-size-12">(<span class="ty-color i18n" name="transferBefore"></span>
-                            <span class="i18n" name="lockAfter"></span>)
-                        </p>
+                        <ul class="orderInfoInner">
+                            <li><span class="i18n tradingHash font-weight-400" name="tradingHash">Trading Hash</span>：</li>
+                            <li class="phone-font-size-12"><span class="tx_hash"></span></li>
+                        </ul>
+                        <ul class="orderInfoInner">
+                            <li><span class="i18n font-weight-400" name="status">status</span>：</li>
+                            <li><span class="i18n enablePending" name="enablePending">Unconfirmed</span></li>
+                        </ul>
+                        <ul class="orderInfoInner">
+                            <li><span class="i18n font-weight-400" name="bit_type">Currency</span>：</li>
+                            <li>
+                                <span class="base_type ca_base_type"></span>/
+                                <spa class="ca_currency"></spa>
+                            </li>
+                        </ul>
+                        <ul class="orderInfoInner">
+                            <li><span class="i18n font-weight-400" name="withdrawAccount">Withdrawal Amount</span>：</li>
+                            <li>
+                                <span class="caWithdrawAmount">0</span>
+                                <span class="ca_currency"></span>
+                            </li>
+                        </ul>
+                        <!--<ul class="orderInfoInner">-->
+                            <!--<li><span class="i18n font-weight-400" name="withdrawAddress">Withdrawal Address</span>：</li>-->
+                            <!--<li class="phone-font-size-12 caWithdrawAddress"></li>-->
+                        <!--</ul>-->
+                        <ul class="orderInfoInner">
+                            <li>
+                                <span class="i18n font-weight-400" name="handlingFee">Handling Fee</span>：
+                            </li>
+                            <li>
+                                <span class="handlingFee"></span>
+                            </li>
+                            <!--<li>农业银行</li>-->
+                        </ul>
+                        <!--<ul class="orderInfoInner">-->
+                        <!--<li><span class="i18n" name="withdrawNum">提币数量</span>：</li>-->
+                        <!--<li>0.0339BTC</li>-->
+                        <!--</ul>-->
+                        <ul class="orderInfoInner">
+                            <li><span class="i18n font-weight-400" name="withdrawTime">Cash withdrawal time</span>：</li>
+                            <li class="time"></li>
+                        </ul>
+                        <!--<button class="btn btn-success margin-top-5 cancelSub">取消提币</button>-->
                     </div>
                 </div>
             </div>
@@ -234,35 +204,46 @@
     </div>
 </section>
 
-<!-- Modal -->
-<div class="modal fade" id="lockWithdraw" tabindex="-1" role="dialog" data-backdrop="false">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                <h4 class="modal-title pcTitle i18n" name="beforeConfirm">Please read carefully before you confirm</h4>
-                    confirm</h4>
-            </div>
-            <div class="modal-body">
-                <div class="confirmReadingBox">
-                    <p class="font-size-14 line-height-2 phone-font-size-12 i18n" name="lockTipsOne">1, After locking
-                        the recharge amount, be sure to pay within 30 minutes.</p>
-                    <p class="font-size-14 line-height-2 phone-font-size-12 i18n" name="lockTipsTwo">2, If you do not
-                        complete the recharge transaction within the specified time, your credit will be affected and
-                        the system will record your bad credit record.</p>
-                    <p class="font-size-14 line-height-2 phone-font-size-12 i18n" name="lockTipsThree">3, Your late
-                        trading operation will be restricted due to multiple bad credit records.</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" disabled class="btn btn-success i18n width-100 ruleBtn" name="determine">
-                    determine
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
 <!--footer-->
+<!--<section class="sections footer">-->
+    <!--<div class="container">-->
+        <!--<div class="row left-row">-->
+            <!--<div class="col-md-12 col-sm-12">-->
+                <!--<div class="footerTR flex space-between center">-->
+                    <!--<div class="footerIconBox">-->
+                        <!--<a href="https://twitter.com/Hivebanks "  data-toggle="tooltip" data-placement="top" title="hivebanks"><i class="iconfont icon-twitter"></i></a>-->
+                        <!--<a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i class="iconfont icon-telegram"></i></a>-->
+                        <!--<a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top" title="ccvt.io"><i class="iconfont icon-weibo"></i></a>-->
+                        <!--<a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top" title="Hivebanks"><i class="iconfont icon-weixin"></i></a>-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--<select class="form-control input-sm" id="language">-->
+                            <!--<option value="en">English</option>-->
+                            <!--<option value="zh-CN">中文简体</option>-->
+                            <!--<option value="ja">Japanese</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row footer-copyright">-->
+            <!--<span>                 <span class="i18n" name="version">©2018-2019 Powered by</span>                 <a href="http://www.hivebanks.com">hivebanks</a>             </span>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</section>-->
+<!--&lt;!&ndash;🔝&ndash;&gt;-->
+<!--<div class="scrollup">-->
+    <!--<a href="#"><i class="iconfont icon-top"></i></a>-->
+<!--</div>-->
+
+<!--<script src="../assets/js/jquery-3.2.1.min.js"></script>-->
+<!--<script src="../assets/js/spin.min.js"></script>-->
+<!--<script src="language/jquery.i18n.properties.js"></script>-->
+<!--<script src="language/language.js"></script>-->
+<!--<script src="../assets/js/bootstrap.min.js"></script>-->
+<!--<script src="../assets/js/layer/layer.js"></script>-->
+<!--<script src="js/common.js"></script>-->
+<!--<script src="../user/js/new_main.js"></script>-->
 <div class="footer_box">
     <iframe src="../user/footer.html" frameborder="0" height="100%" width="100%"></iframe>
 </div>
@@ -279,7 +260,6 @@
 
 <script src="../assets/js/write_js.js"></script>
 <script src="../user/js/user_write_js.js"></script>
-
-<script src="js/ca_withdraw_amount.js"></script>
+<script src="js/CaWithdrawInfo.js"></script>
 </body>
 </html>
