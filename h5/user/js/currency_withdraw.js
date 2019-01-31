@@ -206,7 +206,7 @@ $(function () {
                     } else if (data[i].qa_flag == "1") {
                         ba_state = "<td class='i18n' name='processed'></td>";
                     } else {
-                        ba_state = "<td class='i18n' name='unProcessed'></td>"
+                        ba_state = "<td class='i18n' name='alreadyRefuse'></td>"
                     }
                     tr += '<tr>' +
                         // '<td>' + data[i].asset_id + '</td>' +
