@@ -2,8 +2,6 @@ $(function () {
     //get token
     let token = GetCookie('user_token');
     GetUsAccount();
-    let benchmark_type = GetCookie('benchmark_type');
-    let ca_currency = GetCookie('ca_currency');
 
     //Get the recharge amount
     let base_amount = GetQueryString('us_ca_withdraw_amount');
@@ -12,7 +10,7 @@ $(function () {
     let api_url = 'get_ca_withdraw_list_by_amount.php';
     GetMeetWithdrawCaList(api_url, token, base_amount, function (response) {
         if (response.errcode == '0') {
-            let data = response.rows, srcArr = [], div = '', li = "";
+            let data = response.rows, li = "";
             if (data == false) {
                 $('.bankBox').html('<h5 class="i18n" name="noData">noData</h5>').css('justify-content', 'center');
                 execI18n();
@@ -34,11 +32,9 @@ $(function () {
 
     //Choose recharge method
     $(document).on('click', '.bankItem', function (e) {
-        // let ca_channel = $(this).find('img').attr('title');
         e.preventDefault();
         e.stopPropagation();
         let ca_channel = $(this).find(".ca_channel").text();
-        // let ca_channel = $(this).find('.ca_channel').text();
 
         //get us_account_id
         let us_account_id = '';
