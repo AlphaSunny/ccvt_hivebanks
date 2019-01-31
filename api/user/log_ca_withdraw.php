@@ -56,6 +56,7 @@ foreach ($rows as $row){
     $new_row["base_amount"] = $row["base_amount"] /  get_la_base_unit();
     $new_row["tx_hash"] = $row["tx_hash"];
     $new_row["lgl_amount"] = floatval($row["lgl_amount"]);
+    $new_row["qa_flag"] = $row["qa_flag"];
     $new_rows[] = $new_row;
 }
 // 返回数据做成
