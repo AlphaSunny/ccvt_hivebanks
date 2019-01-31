@@ -108,7 +108,7 @@ $(function () {
 
     //Confirm reading rule jump
     $('.ruleBtn').click(function () {
-        window.location.href = 'CaWithdrawInfo.html';
+        window.location.href = 'ca_withdraw_info.html';
     });
 
     //Input box listener
