@@ -33,8 +33,10 @@ $(function () {
     });
 
     //Choose recharge method
-    $(document).on('click', '.bankItem', function () {
+    $(document).on('click', '.bankItem', function (e) {
         // let ca_channel = $(this).find('img').attr('title');
+        e.preventDefault();
+        e.stopPropagation();
         let ca_channel = $(this).find('.ca_channel').text();
 
         //get us_account_id
