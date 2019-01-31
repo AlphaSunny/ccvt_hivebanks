@@ -112,7 +112,7 @@ $(function () {
             LayerFun('pleaseEnterCorrectWithdrawAmount');
             return;
         }
-        window.location.href = '../ca/CaWithdraw.html?us_ca_withdraw_amount=' + base_amount;
+        window.location.href = '../ca/ca_withdraw.html?us_ca_withdraw_amount=' + base_amount;
     });
 
     // CA withdrawal record
