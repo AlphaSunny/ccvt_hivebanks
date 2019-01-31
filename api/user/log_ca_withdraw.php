@@ -50,7 +50,7 @@ if(!$us_info)
 $total = get_us_ca_withdraw_total_by_us_id($us_id);
 // 记录数组
 $rows = get_us_ca_withdraw_rows($us_id,$limit, $offset);
-echo ($rows);
+var_dump($rows);
 $new_rows = array();
 foreach ($rows as $row){
     $new_row["tx_time"] = date('Y-m-d H:i', $row["tx_time"]);
