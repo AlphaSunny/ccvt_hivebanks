@@ -6,10 +6,10 @@
 //      type         查讯类型（默认为1）
 // 返回: acount        总数
 //======================================
-function get_us_ca_withdraw_total_by_us_id($us_id,$type)
+function get_us_ca_withdraw_total_by_us_id($us_id)
 {
     $db = new DB_COM();
-    $sql = "select * from us_ca_withdraw_request  where us_id='{$us_id}'  and qa_flag= '{$type}'";
+    $sql = "select * from us_ca_withdraw_request  where us_id='{$us_id}'";
     $db->query($sql);
     return $count = $db->affectedRows();
 }
@@ -20,12 +20,12 @@ function get_us_ca_withdraw_total_by_us_id($us_id,$type)
 //      limit         查询个数
 //      type          查询类型
 // 返回: rows          查询数组
-function get_us_ca_withdraw_rows($us_id,$offset,$limit,$type)
+function get_us_ca_withdraw_rows($us_id,$offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "select * from us_ca_withdraw_request where us_id='{$us_id}' and qa_flag= '{$type}' limit $offset,$limit";
+    $sql = "select * from us_ca_withdraw_request where us_id='{$us_id}' limit $offset,$limit";
     $db->query($sql);
-    return $res = $db->fetchAll();
+    return  $db->fetchAll();
 }
 //======================================
 // 函数: 获取用户提现订单

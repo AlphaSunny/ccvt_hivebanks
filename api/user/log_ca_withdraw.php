@@ -36,24 +36,20 @@ chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token',128);
-// 查询类型
-$type = get_arg_str('GET', 'type');
+
 // 取得分页参数
 list($limit, $offset) = get_paging_arg('GET');
 //验证token
 $us_id = check_token($token);
-$vail = 'us_in';
-if($type ==''){
-    $type = 1;
-}
+
 //用户信息
 $us_info = get_us_base_info_by_token($us_id);
 if(!$us_info)
     exit_error('101','get user info error');
 
-$total = get_us_ca_withdraw_total_by_us_id($us_id,$type);
+$total = get_us_ca_withdraw_total_by_us_id($us_id);
 // 记录数组
-$rows = get_us_ca_withdraw_rows($us_id,$limit, $offset,$type);
+$rows = get_us_ca_withdraw_rows($us_id,$limit, $offset);
 $new_rows = array();
 foreach ($rows as $row){
     $new_row["tx_time"] = date('Y-m-d H:i', $row["tx_time"]);
