@@ -33,7 +33,7 @@ $(function () {
     });
 
     //Choose recharge method
-    $(body).on('click', '.bankItem', function (e) {
+    $(document).on('click', '.bankItem', function (e) {
         // let ca_channel = $(this).find('img').attr('title');
         e.preventDefault();
         e.stopPropagation();
