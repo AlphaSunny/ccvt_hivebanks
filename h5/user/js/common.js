@@ -655,6 +655,15 @@ function LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name
     CallCaApi(api_url, post_data, suc_func, error_func);
 }
 
+//User withdrawal order details
+function GetWithdrawInfo(token, suc_func, error_func) {
+    let api_url = 'order_ca_withdraw_list.php',
+        post_data = {
+            'token': token
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //get us_account_id
 function GetUsAccountId(token, ca_channel, suc_func, error_func) {
     let api_url = 'get_specified_bank_card_list.php',
