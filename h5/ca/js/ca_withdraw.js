@@ -20,7 +20,7 @@ $(function () {
             }
 
             $.each(data, function (i, val) {
-                li += "<a class='bankItem list_box_item flex align-items-center justify-content-space-between' name='" + data[i].ca_channel + "'>" +
+                li += "<a class='bankItem list_box_item flex align-items-center justify-content-space-between i18n' name='" + data[i].ca_channel + "'>" +
                     // "<span class='i18n ca_channel' name='" + data[i].ca_channel + "'></span><span> > </span>" +
                     "</a>"
             });
