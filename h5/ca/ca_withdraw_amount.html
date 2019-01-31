@@ -183,8 +183,8 @@
 
         <div class="row">
             <div class="col col-md-12 col-sm-12">
-                <label for="payAmount" class="payAmount i18n" name="withdrawAmount"></label>
-                <div class="flex center rechargeInfoRow">
+                <!--<label for="payAmount" class="payAmount i18n" name="withdrawAmount"></label>-->
+                <div class="flex center rechargeInfoRow table_bg">
                     <div class="form-group flex align-items-center">
                         <div class="input-group">
                             <input id="payAmount" type="text"
@@ -198,48 +198,61 @@
                             <span class="margin-left-1 font-weight-400 bit_type input-group-addon ca_currency"></span>
                         </div>
                     </div>
-                    <!--<span class="icon margin-left-1 margin-right-1"><i class="iconfont icon-transfer"></i></span>-->
-                    <!--<div class="form-group">-->
-                        <!--<div class="input-group">-->
-                            <!--<input type="text" id="withdrawAmount"-->
-                                   <!--class="form-control bit_amount_input rechargeInputSum chg_amount font-size-14">-->
-                            <!--<span class="margin-left-1 font-weight-400 bit_type input-group-addon ca_currency"></span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                </div>
-                <div>
-                    <p class="font-size-14 margin-top-1">
-                        <span class="i18n" name="accountBalance">accountBalance</span>:
-                        <span class="base_amount"></span>
-                        <span class="base_type"></span>
-                        <a href="javascript:;" class="allWithdraw i18n" name="allWithdraw">allWithdraw</a>
-                        <a href="javascript:;" class="ty-color no_base_amount none">Insufficient balance</a>
-                    </p>
+
+                    <div>
+                        <p class="font-size-14 margin-top-1">
+                            <span class="i18n" name="accountBalance"></span>:
+                            <span class="base_amount"></span>
+                            <span class="base_type"></span>
+                            <a href="javascript:;" class="allWithdraw i18n" name="allWithdraw"></a>
+                            <a href="javascript:;" class="ty-color no_base_amount none"></a>
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="form-group margin-bottom-5">
+                            <label for="idNum">银行卡号</label>
+                            <input type="text" class="form-control" id="idNum">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                    </div>
+
+                    <div>
+                        <a class="btn btn-success lockAmountBtn margin-bottom-2 i18n" data-toggle="modal"
+                           name="lockWithdrawAmount"></a>
+                        <p class="font-size-12">(<span class="ty-color i18n" name="transferBefore"></span>
+                            <span class="i18n" name="lockAfter"></span>)
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row margin-top-2 margin-bottom-2">
-            <div class="col-md-6 col-sm-12">
-                <div class="form-group margin-bottom-5">
-                    <label for="idNum">银行卡号</label>
-                    <input type="text" class="form-control" id="idNum">
-                </div>
-                <div class="form-group">
-                    <label for="name">姓名</label>
-                    <input type="text" class="form-control" id="name">
-                </div>
-            </div>
-        </div>
+        <!--<div class="row margin-top-2 margin-bottom-2">-->
+            <!--<div class="col-md-6 col-sm-12">-->
+                <!--<div class="form-group margin-bottom-5">-->
+                    <!--<label for="idNum">银行卡号</label>-->
+                    <!--<input type="text" class="form-control" id="idNum">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="name">姓名</label>-->
+                    <!--<input type="text" class="form-control" id="name">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <div class="row">
-            <div class="col col-md-12 col-sm-12">
-                <a class="btn btn-success lockAmountBtn margin-bottom-2 i18n" data-toggle="modal"
-                   name="lockWithdrawAmount"></a>
-                <p class="font-size-12">(<span class="ty-color i18n" name="transferBefore">Be sure to do this before transferring funds,</span> <span
-                        class="i18n" name="lockAfter">After the order is locked, it cannot be canceled manually</span>)</p>
-            </div>
-        </div>
+        <!--<div class="row">-->
+            <!--<div class="col col-md-12 col-sm-12">-->
+                <!--<a class="btn btn-success lockAmountBtn margin-bottom-2 i18n" data-toggle="modal"-->
+                   <!--name="lockWithdrawAmount"></a>-->
+                <!--<p class="font-size-12">(<span class="ty-color i18n" name="transferBefore"></span> -->
+                    <!--<span class="i18n" name="lockAfter"></span>)-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </section>
 
