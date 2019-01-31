@@ -57,6 +57,7 @@ foreach ($rows as $row){
     $new_row["tx_hash"] = $row["tx_hash"];
     $new_row["lgl_amount"] = floatval($row["lgl_amount"]);
     $new_row["qa_flag"] = $row["qa_flag"];
+    $new_row["tx_detail"] = $row["tx_detail"];
     $new_rows[] = $new_row;
 }
 // 返回数据做成
