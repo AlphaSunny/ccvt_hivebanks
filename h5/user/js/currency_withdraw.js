@@ -5,7 +5,7 @@ $(function () {
 
     //get base_type
     let base_type = GetCookie('benchmark_type');
-    
+
     //Get user binding information
     let us_bind_type_name = '', us_bind_type_idNum = '', us_bind_type_file = '', us_bind_name_idPhoto = '';
     BindingInformation(token, function (response) {
@@ -203,15 +203,15 @@ $(function () {
                 $.each(data, function (i, val) {
                     if (data[i].state == "0") {
                         ba_state = "<td class='i18n' name='processing'></td>";
-                    } else if(data[i].state == "1"){
+                    } else if (data[i].state == "1") {
                         ba_state = "<td class='i18n' name='processed'></td>";
-                    }else{
+                    } else {
                         ba_state = "<td class='i18n' name='unProcessed'></td>"
                     }
                     tr += '<tr>' +
                         // '<td>' + data[i].asset_id + '</td>' +
 
-                        '<td title=' + data[i].address + '>' + data[i].address.substr(0, 20) + '</td>' +
+                        '<td title=' + data[i].address + '>' + JSON.parse(data[i].tx_detail).id_card + '</td>' +
                         '<td>' + data[i].base_amount + '</td>' +
                         '<td>' + data[i].tx_time + '</td>' +
                         ba_state +
