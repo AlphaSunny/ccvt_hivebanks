@@ -201,9 +201,9 @@ $(function () {
                     return;
                 }
                 $.each(data, function (i, val) {
-                    if (data[i].state == "0") {
+                    if (data[i].qa_flag == "0") {
                         ba_state = "<td class='i18n' name='processing'></td>";
-                    } else if (data[i].state == "1") {
+                    } else if (data[i].qa_flag == "1") {
                         ba_state = "<td class='i18n' name='processed'></td>";
                     } else {
                         ba_state = "<td class='i18n' name='unProcessed'></td>"
