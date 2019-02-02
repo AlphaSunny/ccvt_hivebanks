@@ -24,7 +24,7 @@ GET参数
 */
 php_begin();
 
-$args = array('token', 'hash_type', 'hash');
+$args = array('token', 'hash_type', 'hash','comfirm_pass_hash');
 chk_empty_args('GET', $args);
 
 // 用户TOKEN
@@ -35,6 +35,9 @@ $hash_type = get_arg_str('GET', 'hash_type');
 $hash = get_arg_str('GET', 'hash', 255);
 // 密码HASH
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
+
+//确认密码HASH
+$comfirm_pass_hash = get_arg_str('GET', 'comfirm_pass_hash');
 
 //手机号码
 $phone = get_arg_str('GET', 'phone');
@@ -48,6 +51,11 @@ if($hash_type == 'pass_hash'){
 
 //验证token
 $us_id = check_token($token);
+
+if($pass_word_hash!=$comfirm_pass_hash){
+    exit_error('105','密码与确认密码不一致!');
+}
+
 $now_time = time();
 // 参数整理
 $data_bind = array();
