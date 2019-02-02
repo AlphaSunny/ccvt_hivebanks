@@ -573,7 +573,7 @@ function FileBind(token, file_type, file_url, suc_func, error_func) {
 }
 
 //hash binding
-function Hash(token, hash_type, hash, pass_word_hash, phone, phoneCode, suc_func, error_func) {
+function Hash(token, hash_type, hash, pass_word_hash, confirm_pass_hash, phone, phoneCode, suc_func, error_func) {
     let api_url = 'bnd_hash.php',
         post_data = {
             'token': token,
@@ -581,7 +581,8 @@ function Hash(token, hash_type, hash, pass_word_hash, phone, phoneCode, suc_func
             'phone': phone,
             'phoneCode': phoneCode,
             'hash_type': hash_type,
-            'pass_word_hash': pass_word_hash
+            'pass_word_hash': pass_word_hash,
+            'confirm_pass_hash': confirm_pass_hash
         };
     CallApi(api_url, post_data, suc_func, error_func);
 };
