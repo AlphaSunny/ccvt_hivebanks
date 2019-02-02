@@ -39,6 +39,10 @@ $(function () {
             WarnPrompt("请输入转账金额");
             return;
         }
+        if (parseInt(ccvt_num) <= 1000000) {
+            WarnPrompt("转账金额至少1000000");
+            return;
+        }
         if (pass_hash.length <= 0) {
             WarnPrompt("请输入资金密码");
             return;
@@ -55,16 +59,16 @@ $(function () {
         layer.confirm('是否确定向' + account + '转账?', {
             btn: ['确定', '取消'] //按钮
         }, function () {
-            TransferCCVTFun(token, account, code, ccvt_num, pass_hash,confirm_fun_pass);
+            TransferCCVTFun(token, account, code, ccvt_num, pass_hash, confirm_fun_pass);
         }, function () {
 
         });
     });
 
-    function TransferCCVTFun(token, account, code, ccvt_num,confirm_fun_pass, pass_hash) {
+    function TransferCCVTFun(token, account, code, ccvt_num, confirm_fun_pass, pass_hash) {
         ShowLoading("show");
-        TransferCCVT(token, account, code, ccvt_num, pass_hash,confirm_fun_pass, function (response) {
-            if(response.errcode == "0"){
+        TransferCCVT(token, account, code, ccvt_num, pass_hash, confirm_fun_pass, function (response) {
+            if (response.errcode == "0") {
                 ShowLoading("hide");
                 layer.closeAll('dialog');
                 $(".transfer_account").text(account);

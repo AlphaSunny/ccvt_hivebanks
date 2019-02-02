@@ -66,7 +66,8 @@ $(function () {
             pass_word_hash = hex_sha1(password),
             confirm_pass_hash = hex_sha1($('#confirmPassword').val());
         if ($('#fundPassword').val().length <= 0) {
-            LayerFun('funPassNotEmpty');
+            // LayerFun('funPassNotEmpty');
+            WarnPrompt("请输入资金密码");
             return;
         }
 
@@ -76,17 +77,20 @@ $(function () {
         }
 
         if ($('#phone').val().length <= 0) {
-            LayerFun('phoneNotEmpty');
+            // LayerFun('phoneNotEmpty');
+            WarnPrompt("请输入手机号码");
             return;
         }
 
         if ($('#phoneCode').val().length <= 0) {
-            LayerFun('codeNotEmpty');
+            // LayerFun('codeNotEmpty');
+            WarnPrompt("请输入手机验证码");
             return;
         }
 
         if (password.length <= 0) {
-            LayerFun('passNotEmpty');
+            // LayerFun('passNotEmpty');
+            WarnPrompt("请输入密码");
             return;
         }
         //hashFund password binding
