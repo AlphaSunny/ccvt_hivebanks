@@ -39,8 +39,8 @@ $(function () {
             WarnPrompt("请输入转账金额");
             return;
         }
-        if (parseInt(ccvt_num) <= 1000000) {
-            WarnPrompt("转账金额至少1000000");
+        if (parseInt(ccvt_num) > 1000000) {
+            WarnPrompt("转账金额最大1000000");
             return;
         }
         if (pass_hash.length <= 0) {
