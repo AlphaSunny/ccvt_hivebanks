@@ -24,7 +24,7 @@ GET参数
 */
 php_begin();
 
-$args = array('token', 'hash_type', 'hash','comfirm_pass_hash');
+$args = array('token', 'hash_type', 'hash','confirm_pass_hash');
 chk_empty_args('GET', $args);
 
 // 用户TOKEN
@@ -37,7 +37,7 @@ $hash = get_arg_str('GET', 'hash', 255);
 $pass_word_hash = get_arg_str('GET', 'pass_word_hash');
 
 //确认密码HASH
-$comfirm_pass_hash = get_arg_str('GET', 'comfirm_pass_hash');
+$comfirm_pass_hash = get_arg_str('GET', 'confirm_pass_hash');
 
 //手机号码
 $phone = get_arg_str('GET', 'phone');
