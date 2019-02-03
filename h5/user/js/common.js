@@ -480,15 +480,14 @@ function AllRecord(token, limit, offset, api_url, suc_func, error_func) {
 }
 
 //user to user transfer
-function TransferCCVT(token, account, code, ccvt_num, pass_hash, confirm_fun_pass, suc_func, error_func) {
+function TransferCCVT(token, account, code, ccvt_num, pass_hash, suc_func, error_func) {
     let api_url = "us_transfer_ccvt.php",
         post_data = {
             'token': token,
             'account': account,
             'code': code,
             'ccvt_num': ccvt_num,
-            'pass_hash': pass_hash,
-            'confirm_fun_pass': confirm_fun_pass
+            'pass_hash': pass_hash
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
