@@ -43,7 +43,7 @@ if (!$row){
     require_once "db/la_admin.php";
     $key_code = get_la_admin_info()["key_code"];
     //发送短信
-    transfer_sms_send($us_id,$key_code);
+    $output_array = transfer_sms_send($us_id,$key_code);
 }
 
 // 返回数据做成
