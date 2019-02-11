@@ -6,8 +6,8 @@ error_reporting(E_ALL | E_STRICT);
 //因时间原因,未封装,后面有时间封装
 
 
-$day_start = strtotime(date('2019-02-08 08:00:00')); //早上八点
-$day_end = strtotime(date('2019-02-08 22:00:00'));    //晚上十点
+$day_start = strtotime(date('2019-02-10 08:00:00')); //早上八点
+$day_end = strtotime(date('2019-02-10 22:00:00'));    //晚上十点
 
 $db = new DB_COM();
 $unit = get_la_base_unit();
@@ -91,8 +91,8 @@ if ($groups){
                 $d['num'] = $v['count'];
                 $d['amount'] = $give_account*$unit;
                 $d['is_replacement'] = 0;
-                $d['send_time'] = date('Y-m-d H:i:s',time());
-                $d['bot_create_time'] = time();
+                $d['send_time'] = '2019-02-10 22:10:39';
+                $d['bot_create_time'] = '1549807839';
                 $lgn_type = 'phone';
                 $d['tx_hash'] = hash('md5', $ba_info['ba_id'] . $lgn_type . get_ip() . time() . date('Y-m-d H:i:s'));
                 $d['us_id'] = $u_id;
@@ -218,8 +218,8 @@ if ($groups){
 }
 
 //给群主反40%
-$start = strtotime(date('2019-02-08 00:00:00'));
-$end = strtotime(date('2019-02-08 23:59:59'));
+$start = strtotime(date('2019-02-10 00:00:00'));
+$end = strtotime(date('2019-02-10 23:59:59'));
 
 $sql = "select sum(amount)/'{$unit}' as all_amount,bot_us_id from bot_Iss_records WHERE bot_create_time BETWEEN '{$start}' AND '{$end}' GROUP BY bot_us_id";
 $db->query($sql);
@@ -412,8 +412,8 @@ function sel_ba_amout($ba_id,$day_start,$day_end){
 //判断是否今日已经增过币
 function send_money_if($ba_id,$wechat){
     $db = new DB_COM();
-    $start = strtotime(date('2019-02-08 00:00:00'));
-    $end = strtotime(date('2019-02-08 23:59:59'));
+    $start = strtotime(date('2019-02-10 00:00:00'));
+    $end = strtotime(date('2019-02-10 23:59:59'));
     $sql = "select * from bot_Iss_records WHERE ba_id='{$ba_id}' AND wechat='{$wechat}' AND bot_create_time BETWEEN '{$start}' AND '{$end}' limit 1";
     $db->query($sql);
     $rows = $db->fetchRow();
@@ -480,8 +480,8 @@ function get_ba_account($ba_id){
 //判断是否今日群主已经返现
 function check_is_return($us_id){
     $db = new DB_COM();
-    $start = strtotime(date('2019-02-08 00:00:00'));
-    $end = strtotime(date('2019-02-08 23:59:59'));
+    $start = strtotime(date('2019-02-10 00:00:00'));
+    $end = strtotime(date('2019-02-10 23:59:59'));
     $sql = "select * from com_base_balance WHERE credit_id='{$us_id}' AND tx_type='group_cashback' AND utime BETWEEN '{$start}' AND '{$end}' limit 1";
     $db->query($sql);
     $rows = $db->fetchRow();
