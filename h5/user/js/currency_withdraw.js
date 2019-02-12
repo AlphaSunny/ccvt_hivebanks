@@ -116,7 +116,7 @@ $(function () {
     });
 
     // CA withdrawal record
-    let limit = 10, offset = 0, ba_api_url = 'log_ba_withdraw.php';
+    // let limit = 10, offset = 0, ba_api_url = 'log_ba_withdraw.php';
 
     // function GetBaWithdrawCodeFun(limit, offset) {
     //     let tr = "", totalPage = "", count = "", ba_state = "";
@@ -204,18 +204,15 @@ $(function () {
                     if (data[i].qa_flag == "0") {
                         ba_state = "<td class='i18n' name='processing'></td>";
                     } else if (data[i].qa_flag == "1") {
-                        ba_state = "<td class='i18n' name='processed'></td>";
+                        ba_state = "<td class='i18n color_green' name='processed'></td>";
                     } else {
-                        ba_state = "<td class='i18n' name='alreadyRefuse'></td>"
+                        ba_state = "<td class='i18n color_red' name='alreadyRefuse'></td>"
                     }
                     tr += '<tr>' +
-                        // '<td>' + data[i].asset_id + '</td>' +
-
                         '<td title=' + data[i].address + '>' + JSON.parse(data[i].tx_detail).id_card + '</td>' +
                         '<td>' + data[i].base_amount + '</td>' +
                         '<td>' + data[i].tx_time + '</td>' +
                         ba_state +
-                        // '<td title=' + data[i].transfer_tx_hash + '>' + data[i].transfer_tx_hash.substr(0, 20) + '</td>' +
                         '</tr>'
                 });
                 $("#caWithdrawCodesTable").html(tr);
