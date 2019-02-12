@@ -1,6 +1,6 @@
 $(function () {
     let str = "6222021718011398167";
-    let str1 = str.replace(/(.{4})/g,"-");
+    let str1 = str.replace(/(.{4})/g,"$1 -");
     console.log(str1);
     var login_us = GetQueryString('user');
     var login_ba = GetQueryString('ba');
