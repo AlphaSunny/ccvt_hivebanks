@@ -209,7 +209,7 @@ $(function () {
                         ba_state = "<td class='i18n color_red' name='alreadyRefuse'></td>"
                     }
                     tr += '<tr>' +
-                        '<td title=' + data[i].address + '>' + JSON.parse(data[i].tx_detail).id_card.replace(/(.{4})/g,"$1 ") + '</td>' +
+                        '<td>' + JSON.parse(data[i].tx_detail).id_card.replace(/(.{4})/g,"$1 ") + '</td>' +
                         '<td>' + data[i].base_amount + '</td>' +
                         '<td>' + data[i].tx_time + '</td>' +
                         ba_state +
