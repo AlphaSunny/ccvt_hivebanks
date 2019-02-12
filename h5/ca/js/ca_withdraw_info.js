@@ -13,6 +13,7 @@ $(function () {
             $('.caWithdrawAmount').text(data.lgl_amount);
             $('.handlingFee').text(data.tx_fee);
             $('.time').text(data.tx_time);
+            console.log(data.tx_time);
             console.log(new Date(data.tx_time)/1000);
         }
     }, function (response) {
