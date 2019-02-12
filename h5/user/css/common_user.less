@@ -367,6 +367,9 @@ td, th {
 .footer_box {
   margin-top: @height_50;
   height: @default_odd_px*100+5;
+  @media only screen and (max-width:768px) {
+    height: @default_even_px * 228;
+  }
 }
 
 /*customize-modal*/
