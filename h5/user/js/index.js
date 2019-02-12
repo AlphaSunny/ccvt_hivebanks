@@ -1,13 +1,10 @@
 $(function () {
-    // let str = "6222021718011398167";
-    // let str1 = str.replace(/(.{4})/g,"$1-");
-    // console.log(str1);
-    var login_us = GetQueryString('user');
-    var login_ba = GetQueryString('ba');
-    var login_ca = GetQueryString('ca');
+    let login_us = GetQueryString('user');
+    let login_ba = GetQueryString('ba');
+    let login_ca = GetQueryString('ca');
 
     function GetIndexCookie(name) {
-        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) {
             return unescape(arr[2]);
         } else {
@@ -15,9 +12,9 @@ $(function () {
         }
     }
 
-    var user_token = GetIndexCookie('user_token');
-    var ba_token = GetIndexCookie('ba_token');
-    var ca_token = GetIndexCookie('ca_token');
+    let user_token = GetIndexCookie('user_token');
+    let ba_token = GetIndexCookie('ba_token');
+    let ca_token = GetIndexCookie('ca_token');
 
     if (user_token || login_us) {
         $('.usLogin, .usRegister,.phone_show>.btn').remove();
@@ -60,10 +57,10 @@ $(function () {
 
 
     // scroll news
-    var timer_news = "", margin_top = "", item_height = "";
+    let timer_news = "", margin_top = "", item_height = "";
 
     function AutoScroll(obj) {
-        // var body_width = $(document).width();
+        // let body_width = $(document).width();
         item_height = $(obj).find("ul>li").height();
         margin_top = "0px";
         $(obj).find("ul:first").animate({
@@ -93,7 +90,7 @@ $(function () {
     //get new list
     Get_News_List(function (response) {
         if (response.errcode == "0") {
-            var data = response.new_rows, li = "";
+            let data = response.new_rows, li = "";
             $.each(data, function (i, val) {
                 li += "<li><a href='javascript:void(0)' class='toNewsInfo' name=" + data[i].news_id + ">" + data[i].title + "</a></li>"
             });
@@ -109,7 +106,7 @@ $(function () {
 
     //to news info
     $(document).on("click", ".toNewsInfo", function () {
-        var news_id = $(this).attr("name");
+        let news_id = $(this).attr("name");
         if (!news_id) {
             return;
         } else {
@@ -151,7 +148,7 @@ $(function () {
     new WOW().init();
 
     $('a.page-scroll').bind('click', function (event) {
-        var $ele = $(this);
+        let $ele = $(this);
         $('html, body').stop().animate({
             scrollTop: ($($ele.attr('href')).offset().top - 60)
         }, 1450, 'easeInOutExpo');
