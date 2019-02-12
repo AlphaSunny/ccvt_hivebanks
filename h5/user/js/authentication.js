@@ -26,7 +26,7 @@ $(function () {
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '0') {//Name review
                         name = data[i].bind_name;
                         let info = data[i].bind_info;
-                        $(".nameNotBind,.nameBindBtn,.nameAlreadyBind,#nameBindModal").remove();
+                        $(".nameBindBtn,.nameAlreadyBind,#nameBindModal").remove();
                         $(".nameBindInfo").text(info).removeClass("none");
                         $(".nameUnderReview").removeClass("none");
                         return;
