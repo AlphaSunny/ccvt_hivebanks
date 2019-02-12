@@ -14,7 +14,7 @@ $(function () {
             $('.handlingFee').text(data.tx_fee);
             $('.time').text(data.tx_time);
             console.log(data.tx_time);
-            console.log(new Date(Number(data.tx_time)));
+            console.log(new Date(parseInt(data.tx_time) * 1000).toLocaleString());
         }
     }, function (response) {
         LayerFun(response.errcode);
