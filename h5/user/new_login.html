@@ -66,12 +66,68 @@
 </nav>
 
 <!--login-->
-<div>
-    3213213<br>
-    3213213<br>
-    3213213<br>
-    3213213<br>
-    3213213<br>3213213<br>3213213<br>3213213<br>3213213<br>3213213<br>3213213<br>3213213<br>3213213<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+            <div>
+                <div>
+                    <span class="f24 i18n" name="noAccount">UserHave no account?</span>&nbsp;&nbsp;
+                    <a href="register.html" class="c-login i18n" name="createNow">Create one now!</a>
+                </div>
+                <div>
+                    <ul class="flex center space-around">
+                        <li class="active loginToggle phoneLogin">
+                            <i class="iconfont icon-shouji"></i>
+                            <span class="phoneLoginTitle i18n" name="phoneLoginTitle">Phone Login</span>
+                        </li>
+                        <li class="loginToggle emailLogin">
+                            <i class="iconfont icon-youxiang"></i>
+                            <span class="emailLoginTitle i18n" name="emailLoginTitle">Email Login</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phoneLoginBox form-inner-content fadeInRight">
+                    <ul class="mess-ul">
+                        <li class="countryCodeBox">
+                            <input type="tel" maxlength="11" class="form-control phone i18n-input" name="phone"
+                                   id="phone" value=""
+                                   selectname="phoneInput" selectattr="placeholder">
+                            <span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>
+                            <span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>
+                            <span class='ty-color input_tips phoneAuditFail' name="">* Account has not been approved yet</span>
+                            <span class='ty-color input_tips phoneAccountNot i18n'
+                                  name="phoneAccountNot">* User Does Not Exist</span>
+                            <span class="phoneLoginError input_tips">
+                                    <span class='ty-color i18n' name="phoneLoginError">* Login Failed</span>
+                                    <span class="phoneErrorNum ty-color"></span>&nbsp;
+                                    <span class="reTry i18n ty-color" name="reTry">Seconds Later Retry</span>
+                                </span>
+                        </li>
+                        <li><!--phone password-->
+                            <input type="password" class="pass form-control i18n-input phonePassword"
+                                   name="phonePassword" value="" selectname="passwordInput"
+                                   selectattr="placeholder">
+                            <span class='ty-color input_tips phonePassword_tips i18n' name="passwordNotEmpty">* Password Can Not Be Blank</span>
+                        </li>
+                        <!--Captcha-->
+                        <li class="flex">
+                            <input type="text" class="form-control i18n-input phoneCfmCode" name="cfmCode" value=""
+                                   selectname="cfmCodeInput" selectattr="placeholder">
+                            <img src="" id="phone_imgCode" alt="">
+                            <span class='ty-color input_tips phoneImgCode_tips i18n'
+                                  name="codeNotEmpty">* Verification Code Must Be Filled</span>
+                            <span class='ty-color input_tips errPhoneImgCode_tips i18n'
+                                  name="codeBad">* Verification Code Error, Please Re-enter</span>
+                        </li>
+
+                    </ul>
+                    <p class="reset-p"><a href="reset.html" class="c-login i18n" name="forgotPassword"></a></p>
+                    <a href="javascript:;" class="btn btn-lg btn-success phoneLoginBtn loginBtn i18n" name="login">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </div>
@@ -82,8 +138,8 @@
             <div class="col-md-6 col-md-offset-3 col-sm-12">
                 <div class="form-box">
                     <div class="form-header fadeInLeft">
-                        <span class="f24 i18n" name="noAccount">UserHave no account?</span>&nbsp;&nbsp;<a
-                            href="register.html" class="c-login i18n" name="createNow">Create one now!</a>
+                        <span class="f24 i18n" name="noAccount">UserHave no account?</span>&nbsp;&nbsp;
+                        <a href="register.html" class="c-login i18n" name="createNow">Create one now!</a>
                     </div>
                     <div class="loginToggleBox">
                         <ul class="flex center space-around">
@@ -143,56 +199,56 @@
                         <a href="javascript:;" class="btn btn-lg btn-success emailLoginBtn loginBtn i18n" name="login">Login</a>
                     </div>
                     <!-- phone login -->
-                    <div class="phoneLoginBox form-inner-content fadeInRight">
-                        <ul class="mess-ul">
-                            <li class="countryCodeBox">
-                                <input type="tel" maxlength="11" class="form-control phone i18n-input" name="phone"
-                                       id="phone" value=""
-                                       selectname="phoneInput" selectattr="placeholder">
-                                <span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>
-                                <span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>
-                                <span class='ty-color input_tips phoneAuditFail' name="">* Account has not been approved yet</span>
-                                <span class='ty-color input_tips phoneAccountNot i18n'
-                                      name="phoneAccountNot">* User Does Not Exist</span>
-                                <span class="phoneLoginError input_tips">
-                                    <span class='ty-color i18n' name="phoneLoginError">* Login Failed</span>
-                                    <span class="phoneErrorNum ty-color"></span>&nbsp;
-                                    <span class="reTry i18n ty-color" name="reTry">Seconds Later Retry</span>
-                                </span>
-                            </li>
-                            <li><!--phone password-->
-                                <input type="password" class="pass form-control i18n-input phonePassword"
-                                       name="phonePassword" value="" selectname="passwordInput"
-                                       selectattr="placeholder">
-                                <span class='ty-color input_tips phonePassword_tips i18n' name="passwordNotEmpty">* Password Can Not Be Blank</span>
-                            </li>
-                            <!--Captcha-->
-                            <li class="flex">
-                                <input type="text" class="form-control i18n-input phoneCfmCode" name="cfmCode" value=""
-                                       selectname="cfmCodeInput" selectattr="placeholder">
-                                <img src="" id="phone_imgCode" alt="">
-                                <span class='ty-color input_tips phoneImgCode_tips i18n'
-                                      name="codeNotEmpty">* Verification Code Must Be Filled</span>
-                                <span class='ty-color input_tips errPhoneImgCode_tips i18n'
-                                      name="codeBad">* Verification Code Error, Please Re-enter</span>
-                            </li>
-
-                            <!--<li class="flex">&lt;!&ndash;phone code&ndash;&gt;-->
-                                <!--<input type="text" id="phoneSmsCode" class="i18n-input font-size-14"-->
+                    <!--<div class="phoneLoginBox form-inner-content fadeInRight">-->
+                        <!--<ul class="mess-ul">-->
+                            <!--<li class="countryCodeBox">-->
+                                <!--<input type="tel" maxlength="11" class="form-control phone i18n-input" name="phone"-->
+                                       <!--id="phone" value=""-->
+                                       <!--selectname="phoneInput" selectattr="placeholder">-->
+                                <!--<span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>-->
+                                <!--<span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>-->
+                                <!--<span class='ty-color input_tips phoneAuditFail' name="">* Account has not been approved yet</span>-->
+                                <!--<span class='ty-color input_tips phoneAccountNot i18n'-->
+                                      <!--name="phoneAccountNot">* User Does Not Exist</span>-->
+                                <!--<span class="phoneLoginError input_tips">-->
+                                    <!--<span class='ty-color i18n' name="phoneLoginError">* Login Failed</span>-->
+                                    <!--<span class="phoneErrorNum ty-color"></span>&nbsp;-->
+                                    <!--<span class="reTry i18n ty-color" name="reTry">Seconds Later Retry</span>-->
+                                <!--</span>-->
+                            <!--</li>-->
+                            <!--<li>&lt;!&ndash;phone password&ndash;&gt;-->
+                                <!--<input type="password" class="pass form-control i18n-input phonePassword"-->
+                                       <!--name="phonePassword" value="" selectname="passwordInput"-->
+                                       <!--selectattr="placeholder">-->
+                                <!--<span class='ty-color input_tips phonePassword_tips i18n' name="passwordNotEmpty">* Password Can Not Be Blank</span>-->
+                            <!--</li>-->
+                            <!--&lt;!&ndash;Captcha&ndash;&gt;-->
+                            <!--<li class="flex">-->
+                                <!--<input type="text" class="form-control i18n-input phoneCfmCode" name="cfmCode" value=""-->
                                        <!--selectname="cfmCodeInput" selectattr="placeholder">-->
-                                <!--<button class="btn btn-success btn-sm phoneCodeBtn">-->
-                                    <!--<span class="sixty">60</span>&nbsp;&nbsp;-->
-                                    <!--<span class="getCodeText i18n" name="getCode">Get Code</span>-->
-                                <!--</button>-->
-                                <!--&lt;!&ndash;phone code tips&ndash;&gt;-->
-                                <!--<span class="phoneSmsCode_tips ty-color input_tips i18n"-->
-                                      <!--name="codeNotEmpty">Verification Code Must Be Filled</span>-->
+                                <!--<img src="" id="phone_imgCode" alt="">-->
+                                <!--<span class='ty-color input_tips phoneImgCode_tips i18n'-->
+                                      <!--name="codeNotEmpty">* Verification Code Must Be Filled</span>-->
+                                <!--<span class='ty-color input_tips errPhoneImgCode_tips i18n'-->
+                                      <!--name="codeBad">* Verification Code Error, Please Re-enter</span>-->
                             <!--</li>-->
 
-                        </ul>
-                        <p class="reset-p"><a href="reset.html" class="c-login i18n" name="forgotPassword"></a></p>
-                        <a href="javascript:;" class="btn btn-lg btn-success phoneLoginBtn loginBtn i18n" name="login">Login</a>
-                    </div>
+                            <!--&lt;!&ndash;<li class="flex">&lt;!&ndash;phone code&ndash;&gt;&ndash;&gt;-->
+                                <!--&lt;!&ndash;<input type="text" id="phoneSmsCode" class="i18n-input font-size-14"&ndash;&gt;-->
+                                       <!--&lt;!&ndash;selectname="cfmCodeInput" selectattr="placeholder">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<button class="btn btn-success btn-sm phoneCodeBtn">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<span class="sixty">60</span>&nbsp;&nbsp;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<span class="getCodeText i18n" name="getCode">Get Code</span>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                                <!--&lt;!&ndash;&lt;!&ndash;phone code tips&ndash;&gt;&ndash;&gt;-->
+                                <!--&lt;!&ndash;<span class="phoneSmsCode_tips ty-color input_tips i18n"&ndash;&gt;-->
+                                      <!--&lt;!&ndash;name="codeNotEmpty">Verification Code Must Be Filled</span>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+                        <!--</ul>-->
+                        <!--<p class="reset-p"><a href="reset.html" class="c-login i18n" name="forgotPassword"></a></p>-->
+                        <!--<a href="javascript:;" class="btn btn-lg btn-success phoneLoginBtn loginBtn i18n" name="login">Login</a>-->
+                    <!--</div>-->
                     <!-- Small modal -->
                     <div id="emailVerification" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
                          data-backdrop="false" data-keyboard="false">
