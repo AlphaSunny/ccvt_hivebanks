@@ -12,9 +12,7 @@ $(function () {
             $('.tx_hash').text(data.tx_hash);
             $('.caWithdrawAmount').text(data.lgl_amount);
             $('.handlingFee').text(data.tx_fee);
-            $('.time').text(data.tx_time);
-            console.log(data.tx_time);
-            console.log(new Date(parseInt(data.tx_time) * 1000).toLocaleString("chinese",{hour12:false}));
+            $('.time').text(ToHour(data.tx_time));
         }
     }, function (response) {
         LayerFun(response.errcode);

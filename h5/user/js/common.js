@@ -35,7 +35,11 @@ function GetQueryString(name) {
     return null;
 }
 
-//正则验证
+//时间戳转时间24小时制
+function ToHour(new_time) {
+    return new Date(parseInt(new_time) * 1000).toLocaleString("chinese", {hour12: false});
+}
+
 // Email format check
 function IsEmail(s) {
     let patrn = /^(?:\w+\.?)*\w+@(?:\w+\.)*\w+$/;
