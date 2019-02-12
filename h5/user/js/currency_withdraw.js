@@ -202,11 +202,11 @@ $(function () {
                 }
                 $.each(data, function (i, val) {
                     if (data[i].qa_flag == "0") {
-                        ba_state = "<td class='i18n padding-right-20' name='processing'></td>";
+                        ba_state = "<td class='i18n' name='processing'></td>";
                     } else if (data[i].qa_flag == "1") {
-                        ba_state = "<td class='i18n padding-right-20 color_green' name='processed'></td>";
+                        ba_state = "<td class='i18n color_green' name='processed'></td>";
                     } else {
-                        ba_state = "<td class='i18n padding-right-20 color_red' name='alreadyRefuse'></td>"
+                        ba_state = "<td class='i18n color_red' name='alreadyRefuse'></td>"
                     }
                     tr += '<tr>' +
                         '<td class="padding-left-20">' + JSON.parse(data[i].tx_detail).id_card.replace(/(.{4})/g,"$1 ") + '</td>' +
