@@ -30,7 +30,7 @@ $(function () {
                 tr += '<tr class="withdrawPendingList">' +
                     '<td>' + tx_detail.name + '</td>' +
                     '<td>' + data[i].base_amount + '</td>' +
-                    '<td>' + tx_detail.id_card.replace(/(.{4})/g,"$1-").replace(/[-]$/,"") + '</td>' +
+                    '<td>' + tx_detail.id_card.replace(/(.{4})/g,"$1 ") + '</td>' +
                     '<td><span>' + benchmark_type + '</span>/<span class="ca_currency">' + ca_currency + '</span></td>' +
                     '<td><span>' + data[i].tx_time + '</span></td>' +
                     '<td>' +
