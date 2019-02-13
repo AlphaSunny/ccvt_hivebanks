@@ -201,6 +201,8 @@ $(document).ready(function () {
             $(".accountNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
         }else if (isNaN($('#phone').val())) {
             $('.phoneBad').fadeIn().siblings('.phone_tips').fadeOut();
+        }else{
+            $(".alert-warning,.phone_tips").fadeOut();
         }
     });
 
