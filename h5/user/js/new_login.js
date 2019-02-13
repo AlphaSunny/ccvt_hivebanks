@@ -189,38 +189,21 @@ $(document).ready(function () {
     GetImgCode();
 
     //PhoneForm Input Monitor
-    //phone
-    // $('#phone,#phonePassword,#phoneCfmCode').focus(function () {
-    //     $(".alert-warning,.phone_tips").fadeOut();
-    // });
-
     $("#phone").bind("input propertychange", function () {
-        // let phone = $('#phone').val();
-        if ($('#phone').val().length <= 0) {
+        console.log($(this).val());
+        if ($(this).val().length <= 0) {
             $(".alert-warning").fadeIn();
             $(".accountNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
-        }else if (isNaN($('#phone').val())) {
-            $('.phoneBad').fadeIn().siblings('.phone_tips').fadeOut();
         }else{
             $(".alert-warning,.phone_tips").fadeOut();
         }
     });
 
-    // $('#phone').blur(function () {
-    //     let phone = $('#phone').val();
-    //     if (phone.length <= 0) {
-    //         $(".alert-warning,.accountNotEmpty").fadeIn();
-    //     } else if (isNaN(phone)) {
-    //         $('.phoneBad').fadeIn('fast').siblings('span').fadeOut('fast');
-    //     }
-    //     // else {
-    //     //     $('.phone_tips').fadeOut('fast');
-    //     //     $('.phoneErrorTips').fadeOut('fast');
-    //     //     $('.phoneAuditFail').fadeOut('fast');
-    //     // }
-    // });
-
     //phone password
+    $("#phonePassword").bind("input propertuchange", function () {
+
+    });
+
     $('.phonePassword').blur(function () {
         let phonePassword = $('.phonePassword').val();
         if (phonePassword.length <= 0) {
