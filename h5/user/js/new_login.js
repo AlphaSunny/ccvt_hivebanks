@@ -199,6 +199,10 @@ $(document).ready(function () {
         if (phone.length <= 0) {
             $(".alert-warning").fadeIn();
             $(".accountNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
+            return;
+        }
+        if (isNaN(phone)) {
+            $('.phoneBad').fadeIn('fast').siblings('.phone_tips').fadeOut();
         }
     });
 
