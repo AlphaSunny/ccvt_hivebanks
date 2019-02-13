@@ -190,15 +190,13 @@ $(document).ready(function () {
     //PhoneForm Input Monitor
     //phone
     $('#phone').focus(function () {
-        $('.phone_tips').fadeOut('fast');
-        $('.phoneErrorTips').fadeOut('fast');
-        $('.phoneAccountNot').fadeOut('fast');
-        $('.phoneAuditFail').fadeOut('fast');
+        $(".accountNotEmpty").fadeOut();
     });
     $('#phone').blur(function () {
         let phone = $('#phone').val();
         if (phone.length <= 0) {
-            $('.phone_tips').fadeIn('fast').siblings('span').fadeOut('fast');
+            $(".accountNotEmpty").fadeIn();
+            // $('.phone_tips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else if (isNaN(phone)) {
             $('.phoneErrorTips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else {
