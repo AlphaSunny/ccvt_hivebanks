@@ -71,8 +71,20 @@
     <div class="row">
         <div class="col-md-12">
             <div class="alert-tips alert alert-warning alert-dismissible none" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <span class="accountNotEmpty i18n none" name="accountNotEmpty"></span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <span class="phone_tips accountNotEmpty i18n none" name="accountNotEmpty"></span>
+                <span class="phone_tips phoneBad i18n none" name="phoneBad"></span>
+                <span class="phone_tips phoneAccountNot i18n none" name="phoneAccountNot"></span>
+                <span class="phone_tips phoneLoginError none">
+                    <span class="i18n" name="phoneLoginError"></span>
+                    <span class="phoneErrorNum"></span>&nbsp;
+                    <span class="reTry i18n" name="reTry"></span>
+                </span>
+                <span class='phone_tips input_tips phonePassword_tips i18n none' name="passwordNotEmpty"></span>
+                <span class='phone_tips input_tips phoneImgCode_tips i18n none' name="codeNotEmpty"></span>
+                <span class='phone_tips input_tips errPhoneImgCode_tips i18n none' name="codeBad"></span>
+
             </div>
         </div>
     </div>
@@ -104,54 +116,23 @@
                         </div>
                         <div class="margin-bottom-26">
                             <input type="password" class="pass form-control i18n-input phonePassword"
-                                   name="phonePassword" value="" selectname="passwordInput" selectattr="placeholder">
+                                   id="phonePassword" name="phonePassword" value="" selectname="passwordInput"
+                                   selectattr="placeholder">
                         </div>
                         <div class="margin-bottom-26 flex">
-                            <input type="text" class="form-control i18n-input phoneCfmCode margin-right-5" name="cfmCode" value=""
+                            <input type="text" class="form-control i18n-input phoneCfmCode margin-right-5"
+                                   name="cfmCode" id="phoneCfmCode" value=""
                                    selectname="cfmCodeInput" selectattr="placeholder">
                             <img src="" id="phone_imgCode" alt="">
                         </div>
-                        <p class="reset-p margin-bottom-26"><a href="reset.html" class="c-login i18n" name="forgotPassword"></a></p>
+                        <p class="reset-p margin-bottom-26"><a href="reset.html" class="c-login i18n"
+                                                               name="forgotPassword"></a></p>
                         <div>
-                            <button class="btn btn-lg btn-success phoneLoginBtn loginBtn i18n width-100" name="login">Login</button>
+                            <button class="btn btn-lg btn-success phoneLoginBtn loginBtn i18n width-100" name="login">
+                                Login
+                            </button>
                         </div>
                     </div>
-                    <!--<ul class="mess-ul">-->
-                        <!--<li class="countryCodeBox">-->
-                        <!--<input type="tel" maxlength="11" class="form-control phone i18n-input" name="phone"-->
-                        <!--id="phone" value=""-->
-                        <!--selectname="phoneInput" selectattr="placeholder">-->
-                        <!--<span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>-->
-                        <!--<span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>-->
-                        <!--<span class='ty-color input_tips phoneAuditFail' name="">* Account has not been approved yet</span>-->
-                        <!--<span class='ty-color input_tips phoneAccountNot i18n'-->
-                        <!--name="phoneAccountNot">* User Does Not Exist</span>-->
-                        <!--<span class="phoneLoginError input_tips">-->
-                        <!--<span class='ty-color i18n' name="phoneLoginError">* Login Failed</span>-->
-                        <!--<span class="phoneErrorNum ty-color"></span>&nbsp;-->
-                        <!--<span class="reTry i18n ty-color" name="reTry">Seconds Later Retry</span>-->
-                        <!--</span>-->
-                        <!--</li>-->
-                        <!--<li>&lt;!&ndash;phone password&ndash;&gt;-->
-                            <!--<input type="password" class="pass form-control i18n-input phonePassword"-->
-                                   <!--name="phonePassword" value="" selectname="passwordInput"-->
-                                   <!--selectattr="placeholder">-->
-                            <!--&lt;!&ndash;<span class='ty-color input_tips phonePassword_tips i18n' name="passwordNotEmpty">* Password Can Not Be Blank</span>&ndash;&gt;-->
-                        <!--</li>-->
-                        <!--Captcha-->
-                        <!--<li class="flex">-->
-                        <!--<input type="text" class="form-control i18n-input phoneCfmCode" name="cfmCode" value=""-->
-                        <!--selectname="cfmCodeInput" selectattr="placeholder">-->
-                        <!--<img src="" id="phone_imgCode" alt="">-->
-                        <!--&lt;!&ndash;<span class='ty-color input_tips phoneImgCode_tips i18n'&ndash;&gt;-->
-                        <!--&lt;!&ndash;name="codeNotEmpty">* Verification Code Must Be Filled</span>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<span class='ty-color input_tips errPhoneImgCode_tips i18n'&ndash;&gt;-->
-                        <!--&lt;!&ndash;name="codeBad">* Verification Code Error, Please Re-enter</span>&ndash;&gt;-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                    <!--<p class="reset-p"><a href="reset.html" class="c-login i18n" name="forgotPassword"></a></p>-->
-                    <!--<a href="javascript:;" class="btn btn-lg btn-success phoneLoginBtn loginBtn i18n"-->
-                       <!--name="login">Login</a>-->
                 </div>
 
                 <div class="emailLoginBox form-inner-content fadeInRight none">
@@ -166,55 +147,58 @@
                                    selectattr="placeholder">
                         </div>
                         <div class="margin-bottom-26 flex">
-                            <input type="text" class="form-control emailCfmCode i18n-input margin-right-5" name="cfmCode" value=""
+                            <input type="text" class="form-control emailCfmCode i18n-input margin-right-5"
+                                   name="cfmCode" value=""
                                    selectname="cfmCodeInput" selectattr="placeholder">
                             <img src="" id="email_imgCode" alt="">
                         </div>
-                        <p class="reset-p margin-bottom-26"><a href="reset.html" class="c-login i18n" name="forgotPassword"></a></p>
+                        <p class="reset-p margin-bottom-26"><a href="reset.html" class="c-login i18n"
+                                                               name="forgotPassword"></a></p>
                         <div>
-                            <button class="btn btn-lg btn-success emailLoginBtn loginBtn i18n width-100" name="login"></button>
+                            <button class="btn btn-lg btn-success emailLoginBtn loginBtn i18n width-100"
+                                    name="login"></button>
                         </div>
                     </div>
                     <!--<ul class="mess-ul">-->
-                        <!--<li>-->
-                            <!--<input type="text" class="email form-control i18n-input" name="email" value=""-->
-                                   <!--selectname="emailInput" selectattr="placeholder">-->
-                            <!--<span class='ty-color input_tips email_tips i18n' name="emailNotEmpty">* E-mail Can Not Be Empty</span>-->
-                            <!--<span class='ty-color input_tips emailErrorTips i18n' name="emailBad">* Bad Mailbox Format</span>-->
-                            <!--<span class='ty-color input_tips emailAuditFail i18n' name="accountNotApproved">* Account has not been approved yet</span>-->
-                            <!--<span class='ty-color input_tips emailAccountNot i18n'-->
-                                  <!--name="emailAccountNot">* User Does Not Exist</span>-->
-                            <!--<span class="emailLoginError input_tips">-->
-                                    <!--<span class='ty-color i18n' name="emailLoginError">* Login Failed</span>-->
-                                    <!--<span class="emailErrorNum ty-color"></span>&nbsp;-->
-                                    <!--<span class="reTry i18n ty-color" name="reTry">Seconds Later Retry</span>-->
-                                <!--</span>-->
-                        <!--</li>-->
+                    <!--<li>-->
+                    <!--<input type="text" class="email form-control i18n-input" name="email" value=""-->
+                    <!--selectname="emailInput" selectattr="placeholder">-->
+                    <!--<span class='ty-color input_tips email_tips i18n' name="emailNotEmpty">* E-mail Can Not Be Empty</span>-->
+                    <!--<span class='ty-color input_tips emailErrorTips i18n' name="emailBad">* Bad Mailbox Format</span>-->
+                    <!--<span class='ty-color input_tips emailAuditFail i18n' name="accountNotApproved">* Account has not been approved yet</span>-->
+                    <!--<span class='ty-color input_tips emailAccountNot i18n'-->
+                    <!--name="emailAccountNot">* User Does Not Exist</span>-->
+                    <!--<span class="emailLoginError input_tips">-->
+                    <!--<span class='ty-color i18n' name="emailLoginError">* Login Failed</span>-->
+                    <!--<span class="emailErrorNum ty-color"></span>&nbsp;-->
+                    <!--<span class="reTry i18n ty-color" name="reTry">Seconds Later Retry</span>-->
+                    <!--</span>-->
+                    <!--</li>-->
 
-                        <!--code-->
-                        <!--<li>-->
-                            <!--<input type="password" class="emailPassword form-control i18n-input"-->
-                                   <!--name="emailPassword" value="" selectname="passwordInput"-->
-                                   <!--selectattr="placeholder">-->
-                            <!--<span class='ty-color input_tips password_tips i18n'-->
-                                  <!--name="passwordNotEmpty">* Password Can Not Be Blank</span>-->
-                            <!--<span class='ty-color input_tips errorPass_tips i18n'-->
-                                  <!--name="loginFailed">* Login Failed</span>-->
-                        <!--</li>-->
+                    <!--code-->
+                    <!--<li>-->
+                    <!--<input type="password" class="emailPassword form-control i18n-input"-->
+                    <!--name="emailPassword" value="" selectname="passwordInput"-->
+                    <!--selectattr="placeholder">-->
+                    <!--<span class='ty-color input_tips password_tips i18n'-->
+                    <!--name="passwordNotEmpty">* Password Can Not Be Blank</span>-->
+                    <!--<span class='ty-color input_tips errorPass_tips i18n'-->
+                    <!--name="loginFailed">* Login Failed</span>-->
+                    <!--</li>-->
 
-                        <!--Captcha-->
-                        <!--<li class="flex">-->
-                            <!--<input type="text" class="form-control emailCfmCode i18n-input" name="cfmCode" value=""-->
-                                   <!--selectname="cfmCodeInput" selectattr="placeholder">-->
-                            <!--<img src="" id="email_imgCode" alt="">-->
-                            <!--<span class='ty-color input_tips emailImgCode_tips i18n'-->
-                                  <!--name="codeNotEmpty">* Verification Code Must Be Filled</span>-->
-                            <!--<span class='ty-color input_tips errEmailImgCode_tips i18n'-->
-                                  <!--name="codeBad">* Verification Code Error, Please Re-enter</span>-->
-                        <!--</li>-->
+                    <!--Captcha-->
+                    <!--<li class="flex">-->
+                    <!--<input type="text" class="form-control emailCfmCode i18n-input" name="cfmCode" value=""-->
+                    <!--selectname="cfmCodeInput" selectattr="placeholder">-->
+                    <!--<img src="" id="email_imgCode" alt="">-->
+                    <!--<span class='ty-color input_tips emailImgCode_tips i18n'-->
+                    <!--name="codeNotEmpty">* Verification Code Must Be Filled</span>-->
+                    <!--<span class='ty-color input_tips errEmailImgCode_tips i18n'-->
+                    <!--name="codeBad">* Verification Code Error, Please Re-enter</span>-->
+                    <!--</li>-->
                     <!--</ul>-->
                     <!--<p class="reset-p">-->
-                        <!--<a href="reset.html" class="c-login i18n" name="forgotPassword">Forgot your password?</a>-->
+                    <!--<a href="reset.html" class="c-login i18n" name="forgotPassword">Forgot your password?</a>-->
                     <!--</p>-->
                 </div>
             </div>
@@ -225,148 +209,148 @@
 </div>
 <!--login form-->
 <!--<section class="sections" id="content">-->
-    <!--<div class="container">-->
-        <!--<div class="row sec-row">-->
-            <!--<div class="col-md-6 col-md-offset-3 col-sm-12">-->
-                <!--<div class="form-box">-->
-                    <!--<div class="form-header fadeInLeft">-->
-                        <!--<span class="f24 i18n" name="noAccount">UserHave no account?</span>&nbsp;&nbsp;-->
-                        <!--<a href="register.html" class="c-login i18n" name="createNow">Create one now!</a>-->
-                    <!--</div>-->
-                    <!--<div class="loginToggleBox">-->
-                        <!--<ul class="flex center space-around">-->
-                            <!--<li class="active loginToggle phoneLogin">-->
-                                <!--<i class="iconfont icon-shouji"></i>-->
-                                <!--<span class="phoneLoginTitle i18n" name="phoneLoginTitle">Phone Login</span>-->
-                            <!--</li>-->
-                            <!--<li class="loginToggle emailLogin">-->
-                                <!--<i class="iconfont icon-youxiang"></i>-->
-                                <!--<span class="emailLoginTitle i18n" name="emailLoginTitle">Email Login</span>-->
-                            <!--</li>-->
-                        <!--</ul>-->
-                    <!--</div>-->
-                    <!--&lt;!&ndash; email login &ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="emailLoginBox form-inner-content fadeInRight">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<ul class="mess-ul">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<input type="text" class="email form-control i18n-input" name="email" value=""&ndash;&gt;-->
-                                       <!--&lt;!&ndash;selectname="emailInput" selectattr="placeholder">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<span class='ty-color input_tips email_tips i18n' name="emailNotEmpty">* E-mail Can Not Be Empty</span>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<span class='ty-color input_tips emailErrorTips i18n' name="emailBad">* Bad Mailbox Format</span>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<span class='ty-color input_tips emailAuditFail i18n' name="accountNotApproved">* Account has not been approved yet</span>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<span class='ty-color input_tips emailAccountNot i18n'&ndash;&gt;-->
-                                      <!--&lt;!&ndash;name="emailAccountNot">* User Does Not Exist</span>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<span class="emailLoginError input_tips">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<span class='ty-color i18n' name="emailLoginError">* Login Failed</span>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<span class="emailErrorNum ty-color"></span>&nbsp;&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<span class="reTry i18n ty-color" name="reTry">Seconds Later Retry</span>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</span>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+<!--<div class="container">-->
+<!--<div class="row sec-row">-->
+<!--<div class="col-md-6 col-md-offset-3 col-sm-12">-->
+<!--<div class="form-box">-->
+<!--<div class="form-header fadeInLeft">-->
+<!--<span class="f24 i18n" name="noAccount">UserHave no account?</span>&nbsp;&nbsp;-->
+<!--<a href="register.html" class="c-login i18n" name="createNow">Create one now!</a>-->
+<!--</div>-->
+<!--<div class="loginToggleBox">-->
+<!--<ul class="flex center space-around">-->
+<!--<li class="active loginToggle phoneLogin">-->
+<!--<i class="iconfont icon-shouji"></i>-->
+<!--<span class="phoneLoginTitle i18n" name="phoneLoginTitle">Phone Login</span>-->
+<!--</li>-->
+<!--<li class="loginToggle emailLogin">-->
+<!--<i class="iconfont icon-youxiang"></i>-->
+<!--<span class="emailLoginTitle i18n" name="emailLoginTitle">Email Login</span>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; email login &ndash;&gt;-->
+<!--&lt;!&ndash;<div class="emailLoginBox form-inner-content fadeInRight">&ndash;&gt;-->
+<!--&lt;!&ndash;<ul class="mess-ul">&ndash;&gt;-->
+<!--&lt;!&ndash;<li>&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="text" class="email form-control i18n-input" name="email" value=""&ndash;&gt;-->
+<!--&lt;!&ndash;selectname="emailInput" selectattr="placeholder">&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips email_tips i18n' name="emailNotEmpty">* E-mail Can Not Be Empty</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips emailErrorTips i18n' name="emailBad">* Bad Mailbox Format</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips emailAuditFail i18n' name="accountNotApproved">* Account has not been approved yet</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips emailAccountNot i18n'&ndash;&gt;-->
+<!--&lt;!&ndash;name="emailAccountNot">* User Does Not Exist</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="emailLoginError input_tips">&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color i18n' name="emailLoginError">* Login Failed</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="emailErrorNum ty-color"></span>&nbsp;&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="reTry i18n ty-color" name="reTry">Seconds Later Retry</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
 
-                            <!--&lt;!&ndash;&lt;!&ndash;code&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<input type="password" class="emailPassword form-control i18n-input"&ndash;&gt;-->
-                                       <!--&lt;!&ndash;name="emailPassword" value="" selectname="passwordInput"&ndash;&gt;-->
-                                       <!--&lt;!&ndash;selectattr="placeholder">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<span class='ty-color input_tips password_tips i18n'&ndash;&gt;-->
-                                      <!--&lt;!&ndash;name="passwordNotEmpty">* Password Can Not Be Blank</span>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<span class='ty-color input_tips errorPass_tips i18n'&ndash;&gt;-->
-                                      <!--&lt;!&ndash;name="loginFailed">* Login Failed</span>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;code&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;<li>&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="password" class="emailPassword form-control i18n-input"&ndash;&gt;-->
+<!--&lt;!&ndash;name="emailPassword" value="" selectname="passwordInput"&ndash;&gt;-->
+<!--&lt;!&ndash;selectattr="placeholder">&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips password_tips i18n'&ndash;&gt;-->
+<!--&lt;!&ndash;name="passwordNotEmpty">* Password Can Not Be Blank</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips errorPass_tips i18n'&ndash;&gt;-->
+<!--&lt;!&ndash;name="loginFailed">* Login Failed</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
 
-                            <!--&lt;!&ndash;&lt;!&ndash;Captcha&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;<li class="flex">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<input type="text" class="form-control emailCfmCode i18n-input" name="cfmCode" value=""&ndash;&gt;-->
-                                       <!--&lt;!&ndash;selectname="cfmCodeInput" selectattr="placeholder">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<img src="" id="email_imgCode" alt="">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<span class='ty-color input_tips emailImgCode_tips i18n'&ndash;&gt;-->
-                                      <!--&lt;!&ndash;name="codeNotEmpty">* Verification Code Must Be Filled</span>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<span class='ty-color input_tips errEmailImgCode_tips i18n'&ndash;&gt;-->
-                                      <!--&lt;!&ndash;name="codeBad">* Verification Code Error, Please Re-enter</span>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<p class="reset-p">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<a href="reset.html" class="c-login i18n" name="forgotPassword">Forgot your password?</a>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</p>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<a href="javascript:;" class="btn btn-lg btn-success emailLoginBtn loginBtn i18n" name="login">Login</a>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash; phone login &ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="phoneLoginBox form-inner-content fadeInRight">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<ul class="mess-ul">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<li class="countryCodeBox">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<input type="tel" maxlength="11" class="form-control phone i18n-input" name="phone"&ndash;&gt;-->
-                    <!--&lt;!&ndash;id="phone" value=""&ndash;&gt;-->
-                    <!--&lt;!&ndash;selectname="phoneInput" selectattr="placeholder">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class='ty-color input_tips phoneAuditFail' name="">* Account has not been approved yet</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class='ty-color input_tips phoneAccountNot i18n'&ndash;&gt;-->
-                    <!--&lt;!&ndash;name="phoneAccountNot">* User Does Not Exist</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class="phoneLoginError input_tips">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class='ty-color i18n' name="phoneLoginError">* Login Failed</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class="phoneErrorNum ty-color"></span>&nbsp;&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class="reTry i18n ty-color" name="reTry">Seconds Later Retry</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<li>&lt;!&ndash;phone password&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;<input type="password" class="pass form-control i18n-input phonePassword"&ndash;&gt;-->
-                    <!--&lt;!&ndash;name="phonePassword" value="" selectname="passwordInput"&ndash;&gt;-->
-                    <!--&lt;!&ndash;selectattr="placeholder">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class='ty-color input_tips phonePassword_tips i18n' name="passwordNotEmpty">* Password Can Not Be Blank</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;Captcha&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;<li class="flex">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<input type="text" class="form-control i18n-input phoneCfmCode" name="cfmCode" value=""&ndash;&gt;-->
-                    <!--&lt;!&ndash;selectname="cfmCodeInput" selectattr="placeholder">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<img src="" id="phone_imgCode" alt="">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class='ty-color input_tips phoneImgCode_tips i18n'&ndash;&gt;-->
-                    <!--&lt;!&ndash;name="codeNotEmpty">* Verification Code Must Be Filled</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class='ty-color input_tips errPhoneImgCode_tips i18n'&ndash;&gt;-->
-                    <!--&lt;!&ndash;name="codeBad">* Verification Code Error, Please Re-enter</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;Captcha&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;<li class="flex">&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="text" class="form-control emailCfmCode i18n-input" name="cfmCode" value=""&ndash;&gt;-->
+<!--&lt;!&ndash;selectname="cfmCodeInput" selectattr="placeholder">&ndash;&gt;-->
+<!--&lt;!&ndash;<img src="" id="email_imgCode" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips emailImgCode_tips i18n'&ndash;&gt;-->
+<!--&lt;!&ndash;name="codeNotEmpty">* Verification Code Must Be Filled</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips errEmailImgCode_tips i18n'&ndash;&gt;-->
+<!--&lt;!&ndash;name="codeBad">* Verification Code Error, Please Re-enter</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+<!--&lt;!&ndash;</ul>&ndash;&gt;-->
+<!--&lt;!&ndash;<p class="reset-p">&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="reset.html" class="c-login i18n" name="forgotPassword">Forgot your password?</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</p>&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="javascript:;" class="btn btn-lg btn-success emailLoginBtn loginBtn i18n" name="login">Login</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash; phone login &ndash;&gt;-->
+<!--&lt;!&ndash;<div class="phoneLoginBox form-inner-content fadeInRight">&ndash;&gt;-->
+<!--&lt;!&ndash;<ul class="mess-ul">&ndash;&gt;-->
+<!--&lt;!&ndash;<li class="countryCodeBox">&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="tel" maxlength="11" class="form-control phone i18n-input" name="phone"&ndash;&gt;-->
+<!--&lt;!&ndash;id="phone" value=""&ndash;&gt;-->
+<!--&lt;!&ndash;selectname="phoneInput" selectattr="placeholder">&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips phone_tips i18n' name="accountNotEmpty">* Account Cannot Be Empty</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips phoneErrorTips i18n' name="phoneBad">* Bad Cell Phone Format</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips phoneAuditFail' name="">* Account has not been approved yet</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips phoneAccountNot i18n'&ndash;&gt;-->
+<!--&lt;!&ndash;name="phoneAccountNot">* User Does Not Exist</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="phoneLoginError input_tips">&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color i18n' name="phoneLoginError">* Login Failed</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="phoneErrorNum ty-color"></span>&nbsp;&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="reTry i18n ty-color" name="reTry">Seconds Later Retry</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li>&lt;!&ndash;phone password&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="password" class="pass form-control i18n-input phonePassword"&ndash;&gt;-->
+<!--&lt;!&ndash;name="phonePassword" value="" selectname="passwordInput"&ndash;&gt;-->
+<!--&lt;!&ndash;selectattr="placeholder">&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips phonePassword_tips i18n' name="passwordNotEmpty">* Password Can Not Be Blank</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;Captcha&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;<li class="flex">&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="text" class="form-control i18n-input phoneCfmCode" name="cfmCode" value=""&ndash;&gt;-->
+<!--&lt;!&ndash;selectname="cfmCodeInput" selectattr="placeholder">&ndash;&gt;-->
+<!--&lt;!&ndash;<img src="" id="phone_imgCode" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips phoneImgCode_tips i18n'&ndash;&gt;-->
+<!--&lt;!&ndash;name="codeNotEmpty">* Verification Code Must Be Filled</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class='ty-color input_tips errPhoneImgCode_tips i18n'&ndash;&gt;-->
+<!--&lt;!&ndash;name="codeBad">* Verification Code Error, Please Re-enter</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
 
-                    <!--&lt;!&ndash;&lt;!&ndash;<li class="flex">&lt;!&ndash;phone code&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;<input type="text" id="phoneSmsCode" class="i18n-input font-size-14"&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;selectname="cfmCodeInput" selectattr="placeholder">&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;<button class="btn btn-success btn-sm phoneCodeBtn">&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;<span class="sixty">60</span>&nbsp;&nbsp;&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;<span class="getCodeText i18n" name="getCode">Get Code</span>&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;</button>&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;phone code tips&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;<span class="phoneSmsCode_tips ty-color input_tips i18n"&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;name="codeNotEmpty">Verification Code Must Be Filled</span>&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;</li>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<li class="flex">&lt;!&ndash;phone code&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<input type="text" id="phoneSmsCode" class="i18n-input font-size-14"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;selectname="cfmCodeInput" selectattr="placeholder">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<button class="btn btn-success btn-sm phoneCodeBtn">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<span class="sixty">60</span>&nbsp;&nbsp;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<span class="getCodeText i18n" name="getCode">Get Code</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;phone code tips&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<span class="phoneSmsCode_tips ty-color input_tips i18n"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;name="codeNotEmpty">Verification Code Must Be Filled</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</li>&ndash;&gt;&ndash;&gt;-->
 
-                    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<p class="reset-p"><a href="reset.html" class="c-login i18n" name="forgotPassword"></a></p>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<a href="javascript:;" class="btn btn-lg btn-success phoneLoginBtn loginBtn i18n" name="login">Login</a>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash; Small modal &ndash;&gt;-->
-                    <!--<div id="emailVerification" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"-->
-                         <!--data-backdrop="false" data-keyboard="false">-->
-                        <!--<div class="modal-dialog modal-sm" role="document">-->
-                            <!--<div class="modal-content">-->
-                                <!--<div class="modal-header">-->
-                                    <!--<h3 class="pcTitle i18n" name="goEmailVerify">Please go to email for-->
-                                        <!--verification</h3>-->
-                                    <!--<h5 class="phoneTitle i18n" name="goEmailVerify">Please go to email for-->
-                                        <!--verification</h5>-->
-                                <!--</div>-->
-                                <!--<div class="modal-footer">-->
-                                    <!--<button type="button" class="btn btn-success i18n" name="cancel"-->
-                                            <!--data-dismiss="modal">cancel-->
-                                    <!--</button>-->
-                                    <!--<button type="button" class="btn btn-primary goEmailBtn i18n" name="goTo">-->
-                                        <!--Go To-->
-                                    <!--</button>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+<!--&lt;!&ndash;</ul>&ndash;&gt;-->
+<!--&lt;!&ndash;<p class="reset-p"><a href="reset.html" class="c-login i18n" name="forgotPassword"></a></p>&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="javascript:;" class="btn btn-lg btn-success phoneLoginBtn loginBtn i18n" name="login">Login</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash; Small modal &ndash;&gt;-->
+<!--<div id="emailVerification" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"-->
+<!--data-backdrop="false" data-keyboard="false">-->
+<!--<div class="modal-dialog modal-sm" role="document">-->
+<!--<div class="modal-content">-->
+<!--<div class="modal-header">-->
+<!--<h3 class="pcTitle i18n" name="goEmailVerify">Please go to email for-->
+<!--verification</h3>-->
+<!--<h5 class="phoneTitle i18n" name="goEmailVerify">Please go to email for-->
+<!--verification</h5>-->
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--<button type="button" class="btn btn-success i18n" name="cancel"-->
+<!--data-dismiss="modal">cancel-->
+<!--</button>-->
+<!--<button type="button" class="btn btn-primary goEmailBtn i18n" name="goTo">-->
+<!--Go To-->
+<!--</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 <!--</section>-->
 <!--footer-->
 

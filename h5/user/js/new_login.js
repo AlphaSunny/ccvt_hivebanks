@@ -190,21 +190,21 @@ $(document).ready(function () {
 
     //PhoneForm Input Monitor
     //phone
-    $('#phone').focus(function () {
-        $(".alert-warning,.accountNotEmpty").fadeOut();
+    $('#phone,#phonePassword,#phoneCfmCode').focus(function () {
+        $(".alert-warning,.phone_tips").fadeOut();
     });
     $('#phone').blur(function () {
         let phone = $('#phone').val();
         if (phone.length <= 0) {
             $(".alert-warning,.accountNotEmpty").fadeIn();
-            // $('.phone_tips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else if (isNaN(phone)) {
-            $('.phoneErrorTips').fadeIn('fast').siblings('span').fadeOut('fast');
-        } else {
-            $('.phone_tips').fadeOut('fast');
-            $('.phoneErrorTips').fadeOut('fast');
-            $('.phoneAuditFail').fadeOut('fast');
+            $('.phoneBad').fadeIn('fast').siblings('span').fadeOut('fast');
         }
+        // else {
+        //     $('.phone_tips').fadeOut('fast');
+        //     $('.phoneErrorTips').fadeOut('fast');
+        //     $('.phoneAuditFail').fadeOut('fast');
+        // }
     });
 
     //phone password
@@ -218,10 +218,10 @@ $(document).ready(function () {
     });
 
     //phone phoneCfmCode
-    $('.phoneCfmCode').focus(function () {
-        $('.phoneImgCode_tips').fadeOut('fast');
-        $('.errPhoneImgCode_tips').fadeOut('fast');
-    });
+    // $('.phoneCfmCode').focus(function () {
+    //     $('.phoneImgCode_tips').fadeOut('fast');
+    //     $('.errPhoneImgCode_tips').fadeOut('fast');
+    // });
     $('.phoneCfmCode').blur(function () {
         let phoneCfmCode = $('.phoneCfmCode').val();
         if (phoneCfmCode.length <= 0) {
