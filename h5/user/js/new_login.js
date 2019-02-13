@@ -201,7 +201,12 @@ $(document).ready(function () {
 
     //phone password
     $("#phonePassword").bind("input propertuchange", function () {
-
+        if ($(this).val().length <= 0) {
+            $(".alert-warning").fadeIn();
+            $('.phonePassword_tips').fadeIn().siblings(".phone_tips").fadeOut();;
+        } else {
+            $(".alert-warning,.phone_tips").fadeOut();
+        }
     });
 
     $('.phonePassword').blur(function () {
