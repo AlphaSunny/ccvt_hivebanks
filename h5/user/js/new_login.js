@@ -153,9 +153,9 @@ $(document).ready(function () {
             }
             if (response.errcode == '139') {
                 $(".alert-warning").fadeIn();
-                $('.errEmailImgCode_tips').fadeIn().siblings(".phone_tips").fadeOut();//Graphic verification code error
+                $('.errPhoneImgCode_tips').fadeIn().siblings(".phone_tips").fadeOut();//Graphic verification code error
             }
-            
+
             GetImgCode();
             // LayerFun(response.errcode);
             WarnPrompt(response.errmsg);
