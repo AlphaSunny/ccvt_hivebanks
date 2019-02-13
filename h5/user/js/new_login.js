@@ -6,6 +6,7 @@ $(document).ready(function () {
             return unescape(arr[2]);
         }
     }
+
     let user_token = GetLoginCookie('user_token');
     if (user_token) {
         window.location.href = "account.html";
@@ -190,12 +191,12 @@ $(document).ready(function () {
     //PhoneForm Input Monitor
     //phone
     $('#phone').focus(function () {
-        $(".accountNotEmpty").fadeOut();
+        $(".alert-warning,.accountNotEmpty").fadeOut();
     });
     $('#phone').blur(function () {
         let phone = $('#phone').val();
         if (phone.length <= 0) {
-            $(".accountNotEmpty").fadeIn();
+            $(".alert-warning,.accountNotEmpty").fadeIn();
             // $('.phone_tips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else if (isNaN(phone)) {
             $('.phoneErrorTips').fadeIn('fast').siblings('span').fadeOut('fast');
