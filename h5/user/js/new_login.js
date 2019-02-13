@@ -197,7 +197,8 @@ $(document).ready(function () {
     $("#phone").bind("input propertychange", function () {
         let phone = $('#phone').val();
         if (phone.length <= 0) {
-            $(".alert-warning,.accountNotEmpty").fadeIn();
+            $(".alert-warning").fadeIn();
+            $(".accountNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
         }
     });
 
