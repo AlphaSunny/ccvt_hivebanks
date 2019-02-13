@@ -16,10 +16,10 @@ $(function () {
                     return;
                 }
                 if (type == "ba_withdraw") {
-                    window.location.href = "bit_withdraw.html";
+                    window.location.href = getRootPath()+"/h5/user/bit_withdraw.html";
                 }
                 if (type == "ca_withdraw") {
-                    window.location.href = "currency_withdraw.html";
+                    window.location.href = getRootPath()+"/h5/user/currency_withdraw.html";
                 }
 
             }
