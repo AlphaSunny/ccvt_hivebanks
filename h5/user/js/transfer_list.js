@@ -4,6 +4,7 @@ $(function () {
 
     //transfer out list
     let limit = 10, offset = 0, type = 1;
+    let limit_in = 10, offset_in = 0, type_in = 2;
 
     function TransferListFun(limit, offset, type) {
         TransferList(token, limit, offset, type, function (response) {
@@ -91,6 +92,7 @@ $(function () {
             SuccessPrompt("处理成功");
             ShowLoading("hide");
             TransferListFun(limit, offset, type);
+            TransferInListFun(limit_in, offset_in, type_in)
         }, function (response) {
             ErrorPrompt(response.errmsg);
             ShowLoading("hide");
@@ -98,7 +100,6 @@ $(function () {
     }
 
     //transfer in list
-    let limit_in = 10, offset_in = 0, type_in = 2;
 
     function TransferInListFun(limit_in, offset_in, type_in) {
         TransferList(token, limit_in, offset_in, type_in, function (response) {
