@@ -194,7 +194,7 @@ $(document).ready(function () {
         if ($(this).val().length <= 0) {
             $(".alert-warning").fadeIn();
             $(".accountNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
-        }else{
+        } else {
             $(".alert-warning,.phone_tips").fadeOut();
         }
     });
@@ -203,67 +203,23 @@ $(document).ready(function () {
     $("#phonePassword").bind("input propertuchange", function () {
         if ($(this).val().length <= 0) {
             $(".alert-warning").fadeIn();
-            $('.phonePassword_tips').fadeIn().siblings(".phone_tips").fadeOut();;
+            $('.phonePassword_tips').fadeIn().siblings(".phone_tips").fadeOut();
         } else {
             $(".alert-warning,.phone_tips").fadeOut();
         }
     });
 
-    $('.phonePassword').blur(function () {
-        let phonePassword = $('.phonePassword').val();
-        if (phonePassword.length <= 0) {
-            $('.phonePassword_tips').fadeIn('fast');
-        } else {
-            $('.phonePassword_tips').fadeOut('fast');
-        }
-    });
-
     //phone phoneCfmCode
-    // $('.phoneCfmCode').focus(function () {
-    //     $('.phoneImgCode_tips').fadeOut('fast');
-    //     $('.errPhoneImgCode_tips').fadeOut('fast');
-    // });
-    $('.phoneCfmCode').blur(function () {
-        let phoneCfmCode = $('.phoneCfmCode').val();
-        if (phoneCfmCode.length <= 0) {
-            $('.phoneImgCode_tips').fadeIn('fast').siblings('span').fadeOut('fast');
+    $("#phoneCfmCode").bind("input propertychange", function () {
+        if ($(this).val().length <= 0) {
+            $(".alert-warning").fadeIn();
+            $(".phoneImgCode_tips").fadeIn().siblings(".phone_tips").fadeOut();
         } else {
-            $('.phoneImgCode_tips').fadeOut('fast');
-            $('.errPhoneImgCode_tips').fadeOut('fast');
+            $(".alert-warning,.phone_tips").fadeOut();
         }
     });
-
-    //phone phoneSmsCode
-    // $('#phoneSmsCode').blur(function () {
-    //     let phoneSmsCode = $('#phoneSmsCode').val();
-    //     if (phoneSmsCode.length <= 0) {
-    //         $('.phoneSmsCode_tips').fadeIn('fast');
-    //     } else {
-    //         $('.phoneSmsCode_tips').fadeOut('fast');
-    //     }
-    // });
-
-    //Get phone verification code
-    // $('.phoneCodeBtn').click(function () {
-    //     let bind_type = '2', $this = $(this), cfm_code = $('.phoneCfmCode').val();
-    //     if ($(".phone").val().length <= 0) {
-    //         $('.phone_tips').fadeIn().siblings('span').hide();
-    //         LayerFun('phoneNotEmpty');
-    //         return;
-    //     }
-    //     if ($('.phoneCfmCode').val().length <= 0) {
-    //         $('.phoneImgCode_tips').fadeIn('fast');
-    //         return;
-    //     }
-    //     setTime($this);
-    //     GetPhoneCodeFun(bind_type, $this, cfm_code);
-    // });
 
     // ========Log in with phone========
-    $('.phoneCanvas').click(function () {//click switch verification code
-        GetImgCode();
-    });
-
     $(".phoneLoginBtn").click(function () {//Click Login to submit
         let user_token = GetLoginCookie('user_token');
         // Get country code
@@ -271,32 +227,26 @@ $(document).ready(function () {
 
         // Get user input
         let cellphone = $("#phone").val(),
-            cfm_code = $(".phoneCfmCode").val(),
-            // sms_code = $("#phoneSmsCode").val(),
-            phonePassword = $(".phonePassword").val(),
+            cfm_code = $("#phoneCfmCode").val(),
+            phonePassword = $("#phonePassword").val(),
             pass_word_hash = hex_sha1(phonePassword);
         if (cellphone.length <= 0) {
             // LayerFun('phoneNotEmpty');
             WarnPrompt("请输入账号");
-            $('.phone_tips').fadeIn().siblings('span').hide();
+            $('.phone_tips').fadeIn().siblings('.phone_tips').fadeOut();
             return;
         }
         if (cfm_code.length <= 0) {
             // LayerFun('codeNotEmpty');
             WarnPrompt("请输入图形验证码");
-            $('.phoneImgCode_tips').fadeIn().siblings('span').hide();
+            $('.phoneImgCode_tips').fadeIn().siblings('.phone_tips').fadeOut();
             return;
         }
-        // if (sms_code.length <= 0) {
-        //     LayerFun('codeNotEmpty');
-        //     $('.phoneCode_tips').fadeIn();
-        //     return;
-        // }
 
         if (phonePassword.length <= 0) {
             // LayerFun('passwordNotEmpty');
             WarnPrompt("请输入密码");
-            $('.Phonepassword_tips').fadeIn().siblings('span').hide();
+            $('.phonePassword_tips').fadeIn().siblings('.phone_tips').fadeOut();
             return;
         }
         if (user_token) {
@@ -326,7 +276,7 @@ $(document).ready(function () {
             GetImgCode();
             ActiveClick($this, _text);
             if (response.errcode == '116') {//Login Failed
-                $('.phoneLoginError').fadeIn('fast');
+                $('.alert-warning,.phoneLoginError').fadeIn();
                 let count = response.errmsg,
                     phoneErrorNum = $('.phoneErrorNum'),
                     phoneLoginBtn = $('.phoneLoginBtn'),
@@ -334,13 +284,16 @@ $(document).ready(function () {
                     phoneInput = $('.phoneLoginBox input');
                 CountDown(count, phoneErrorNum, phoneLoginBtn, phoneInput, phoneLoginError);
             } else if (response.errcode == '112') {
-                $('.phoneAccountNot').fadeIn('fast');//User Does Not Exist
+                $(".alert-warning").fadeIn();
+                $('.phoneAccountNot').fadeIn().siblings('.phone_tips').fadeOut();//User Does Not Exist
             }
             if (response.errcode == '139') {
-                $('.errPhoneImgCode_tips').fadeIn('fast');//Graphic verification code error
+                $(".alert-warning").fadeIn();
+                $('.errPhoneImgCode_tips').fadeIn().siblings('.phone_tips').fadeOut();//Graphic verification code error
             }
             if (response.errcode == '118') {
-                $('.phoneAuditFail').fadeIn('fast');//not approved
+                $(".alert-warning").fadeIn();
+                $('.phoneAuditFail').fadeIn().siblings('.phone_tips').fadeOut();//not approved
             }
             // LayerFun(response.errcode);
             WarnPrompt(response.errmsg);

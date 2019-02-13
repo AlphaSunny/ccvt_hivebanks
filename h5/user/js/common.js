@@ -796,10 +796,11 @@ function CountDown(count, ErrorNum, LoginBtn, input, LoginError) {
         LoginBtn.attr('disabled', false);
         input.attr('disabled', false);
         input.val('');
-        LoginError.fadeOut('fast');
+        LoginError.fadeOut();
+        $(".alert-warning").fadeOut();
         return;
     }
-    ;
+
     setTimeout(function () {
         CountDown(counts, ErrorNum, LoginBtn, input, LoginError)
     }, 1000)
