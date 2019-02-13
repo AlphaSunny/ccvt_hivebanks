@@ -235,12 +235,6 @@ $(document).ready(function () {
             $('.phone_tips').fadeIn().siblings('.phone_tips').fadeOut();
             return;
         }
-        if (cfm_code.length <= 0) {
-            // LayerFun('codeNotEmpty');
-            WarnPrompt("请输入图形验证码");
-            $('.phoneImgCode_tips').fadeIn().siblings('.phone_tips').fadeOut();
-            return;
-        }
 
         if (phonePassword.length <= 0) {
             // LayerFun('passwordNotEmpty');
@@ -248,6 +242,14 @@ $(document).ready(function () {
             $('.phonePassword_tips').fadeIn().siblings('.phone_tips').fadeOut();
             return;
         }
+
+        if (cfm_code.length <= 0) {
+            // LayerFun('codeNotEmpty');
+            WarnPrompt("请输入图形验证码");
+            $('.phoneImgCode_tips').fadeIn().siblings('.phone_tips').fadeOut();
+            return;
+        }
+
         if (user_token) {
             // LayerFun('noMoreAccount');
             WarnPrompt("已登录，请前往账户中心");
