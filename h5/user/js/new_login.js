@@ -199,10 +199,8 @@ $(document).ready(function () {
         if ($('#phone').val().length <= 0) {
             $(".alert-warning").fadeIn();
             $(".accountNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
-            return;
-        }
-        if (isNaN($('#phone').val())) {
-            $('.phoneBad').fadeIn('fast').siblings('.phone_tips').fadeOut();
+        }else if (isNaN($('#phone').val())) {
+            $('.phoneBad').fadeIn().siblings('.phone_tips').fadeOut();
         }
     });
 
