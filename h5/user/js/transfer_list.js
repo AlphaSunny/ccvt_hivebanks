@@ -131,9 +131,9 @@ $(function () {
                     }
 
                     if (data[i].qa_flag == "1") {
-                        status = "<span class='i18n color-green' name='confirmed'></span>"
+                        status = "<span class='i18n color_green' name='confirmed'></span>"
                     } else if (data[i].status == "2") {
-                        status = "<span class='i18n color-red' name='canceled'></span>"
+                        status = "<span class='i18n color_red' name='canceled'></span>"
                     } else {
                         status = "<span class='i18n' name='invalidOrder'></span>"
                     }
