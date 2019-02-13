@@ -195,13 +195,13 @@ $(document).ready(function () {
     // });
 
     $("#phone").bind("input propertychange", function () {
-        let phone = $('#phone').val();
-        if (phone.length <= 0) {
+        // let phone = $('#phone').val();
+        if ($('#phone').val().length <= 0) {
             $(".alert-warning").fadeIn();
             $(".accountNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
             return;
         }
-        if (isNaN(phone)) {
+        if (isNaN($('#phone').val())) {
             $('.phoneBad').fadeIn('fast').siblings('.phone_tips').fadeOut();
         }
     });
