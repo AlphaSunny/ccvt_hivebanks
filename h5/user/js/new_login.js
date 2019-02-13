@@ -44,47 +44,35 @@ $(document).ready(function () {
 
     // Email form change judgment
     //email judgment
-    $('.email').focus(function () {
-        $('.email_tips').fadeOut('fast');
-        $('.emailErrorTips').fadeOut('fast');
-        $('.emailAccountNot').fadeOut('fast');
-        $('.emailAuditFail').fadeOut('fast');
-    });
-    $('.email').blur(function () {
-        let emailVal = $('.email').val();//Get mailbox content
-        if (emailVal.length <= 0) {//Is it empty?
-            $('.email_tips').fadeIn('fast').siblings('span').fadeOut('fast');
-        } else if (!IsEmail(emailVal)) {
-            $('.emailErrorTips').fadeIn('fast').siblings('span').fadeOut('fast');
+    $("#email").bind("input propertychange", function () {
+        if ($(this).val().length <= 0) {
+            $(".alert-warning").fadeIn();
+            $(".accountNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
+        } else if (!IsEmail($(this).val())) {
+            $(".alert-warning").fadeIn();
+            $(".emailErrorTips").fadeIn().siblings(".phone_tips").fadeOut();
         } else {
-            $('.email_tips').fadeOut('fast');
-            $('.emailErrorTips').fadeOut('fast');
-            $('.emailAuditFail').fadeOut('fast');
+            $(".alert-warning,.phone_tips").fadeOut();
         }
     });
 
     //email password judgment
-    $('.emailPassword').blur(function () {
-        let emailPassword = $('.emailPassword').val();//Get mailbox content
-        if (emailPassword.length <= 0) {//Is it empty?
-            $('.password_tips').fadeIn('fast').siblings('span').fadeOut('fast');
+    $("#emailPassword").bind("input propertychange", function () {
+        if ($(this).val().length <= 0) {
+            $(".alert-warning").fadeIn();
+            $(".phonePassword_tips").fadeIn().siblings(".phone_tips").fadeOut();
         } else {
-            $('.password_tips').fadeOut('fast')
+            $(".alert-warning,.phone_tips").fadeOut();
         }
     });
 
     //email emailCfmCode
-    $('.emailCfmCode').focus(function () {
-        $('.emailImgCode_tips').fadeOut('fast');
-        $('.errEmailImgCode_tips').fadeOut('fast');
-    });
-    $('.emailCfmCode').blur(function () {
-        let emailCfmCode = $('.emailCfmCode').val();//Get mailbox content
-        if (emailCfmCode.length <= 0) {//Is it empty?
-            $('.emailImgCode_tips').fadeIn('fast').siblings('span').fadeOut('fast');
+    $("#emailCfmCode").bind("input propertychange", function () {
+        if ($(this).val().length <= 0) {
+            $(".alert-warning").fadeIn();
+            $(".phoneImgCode_tips").fadeIn().siblings(".phone_tips").fadeOut();
         } else {
-            $('.emailImgCode_tips').fadeOut('fast');
-            $('.errEmailImgCode_tips').fadeOut('fast');
+            $(".alert-warning,.phone_tips").fadeOut();
         }
     });
 
@@ -149,7 +137,8 @@ $(document).ready(function () {
         }, function (response) {
             ActiveClick($this, _text);
             if (response.errcode == '116') {//Login Failed
-                $('.emailLoginError').fadeIn('fast');
+                $(".alert-warning").fadeIn();
+                $('.phoneLoginError').fadeIn().siblings(".phone_tips").fadeOut();
                 let count = response.errmsg,
                     emailErrorNum = $('.emailErrorNum'),
                     emailLoginBtn = $('.emailLoginBtn'),
@@ -157,16 +146,16 @@ $(document).ready(function () {
                     emailInput = $('.emailLoginBox input');
                 CountDown(count, emailErrorNum, emailLoginBtn, emailInput, emailLoginError);
             } else if (response.errcode == '112') {
-                $('.emailAccountNot').fadeIn('fast');//User Does Not Exist
+                $(".alert-warning").fadeIn();
+                $('.emailAccountNot').fadeIn().siblings(".phone_tips").fadeOut();//User Does Not Exist
             } else if (response.errcode == '113') {//Unverified
                 $('#emailVerification').modal('show');
             }
             if (response.errcode == '139') {
-                $('.errEmailImgCode_tips').fadeIn('fast');//Graphic verification code error
+                $(".alert-warning").fadeIn();
+                $('.errEmailImgCode_tips').fadeIn().siblings(".phone_tips").fadeOut();//Graphic verification code error
             }
-            if (response.errcode == '118') {
-                $('.emailAuditFail').fadeIn('fast');//not approved
-            }
+            
             GetImgCode();
             // LayerFun(response.errcode);
             WarnPrompt(response.errmsg);
@@ -292,10 +281,7 @@ $(document).ready(function () {
                 $(".alert-warning").fadeIn();
                 $('.errPhoneImgCode_tips').fadeIn().siblings('.phone_tips').fadeOut();//Graphic verification code error
             }
-            if (response.errcode == '118') {
-                $(".alert-warning").fadeIn();
-                $('.phoneAuditFail').fadeIn().siblings('.phone_tips').fadeOut();//not approved
-            }
+
             // LayerFun(response.errcode);
             WarnPrompt(response.errmsg);
             return;
