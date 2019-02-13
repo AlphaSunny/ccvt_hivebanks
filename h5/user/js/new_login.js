@@ -147,7 +147,7 @@ $(document).ready(function () {
                 CountDown(count, emailErrorNum, emailLoginBtn, emailInput, emailLoginError);
             } else if (response.errcode == '112') {
                 $(".alert-warning").fadeIn();
-                $('.emailAccountNot').fadeIn().siblings(".phone_tips").fadeOut();//User Does Not Exist
+                $('.phoneAccountNot').fadeIn().siblings(".phone_tips").fadeOut();//User Does Not Exist
             } else if (response.errcode == '113') {//Unverified
                 $('#emailVerification').modal('show');
             }
