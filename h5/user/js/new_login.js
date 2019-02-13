@@ -40,9 +40,6 @@ $(document).ready(function () {
         GetImgCode();
     });
     // ========email login========
-    $('.emailCanvas').click(function () {//Click to replace the verification code
-        GetImgCode();
-    });
 
     // Email form change judgment
     //email judgment
