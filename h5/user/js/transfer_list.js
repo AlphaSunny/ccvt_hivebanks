@@ -31,12 +31,13 @@ $(function () {
                         "<td>" + data[i].tx_time + "</td>" +
                         "<td>" +
                         "<span class='qa_id none' name='" + data[i].qa_id + "'></span>" +
-                        "<button class='btn btn-success btn-sm transfer_confirm'>确认</button>" +
-                        "<button class='btn btn-danger btn-sm transfer_cancel margin-left-10'>取消</button>" +
+                        "<button class='btn btn-success btn-sm transfer_confirm i18n' name='confirm'></button>" +
+                        "<button class='btn btn-danger btn-sm transfer_cancel margin-left-10 i18n' name='cancel'></button>" +
                         "</td>" +
                         "</tr>"
                 });
                 $("#transfer_out_list").html(tr);
+                execI18n();
 
                 $("#pagination").pagination({
                     currentPage: (limit + offset) / limit,
@@ -130,9 +131,9 @@ $(function () {
                     }
 
                     if (data[i].qa_flag == "1") {
-                        status = "<span class='i18n' name='confirmed'></span>"
+                        status = "<span class='i18n color-green' name='confirmed'></span>"
                     } else if (data[i].status == "2") {
-                        status = "<span class='i18n' name='canceled'></span>"
+                        status = "<span class='i18n color-red' name='canceled'></span>"
                     } else {
                         status = "<span class='i18n' name='invalidOrder'></span>"
                     }
