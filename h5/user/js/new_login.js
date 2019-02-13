@@ -190,7 +190,6 @@ $(document).ready(function () {
 
     //PhoneForm Input Monitor
     $("#phone").bind("input propertychange", function () {
-        console.log($(this).val());
         if ($(this).val().length <= 0) {
             $(".alert-warning").fadeIn();
             $(".accountNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
