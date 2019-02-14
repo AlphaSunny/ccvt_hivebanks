@@ -46,6 +46,7 @@ $(document).ready(function () {
     let account_email = GetLoginCookie("account_email");
     let p = GetLoginCookie("p");
     let e = GetLoginCookie("e");
+    let isRemember = GetLoginCookie("remember");
     if (account_cellphone) {
         $("#phone").val(account_cellphone);
         if (p) {
@@ -60,6 +61,12 @@ $(document).ready(function () {
         }
     }
 
+    if (isRemember) {
+        $("#remember").attr("checked", true);
+    } else {
+        $("#remember").attr("checked", false);
+    }
+
 
     //是否记住密码
     function IsRememberPassword(p, type) {
@@ -70,6 +77,9 @@ $(document).ready(function () {
             if (type == "email") {
                 SetCookie("e", compileStr(p));
             }
+            SetCookie("remember", "1");
+        } else {
+            SetCookie("remember", "0");
         }
     }
 
