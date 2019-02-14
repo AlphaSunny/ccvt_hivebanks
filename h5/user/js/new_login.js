@@ -73,17 +73,21 @@ $(document).ready(function () {
         if (type == "phone" && $("#remember_phone").is(":checked")) {
             SetCookie("p", compileStr(p));
             SetCookie("remember", "1");
+            return;
         } else {
             SetCookie("p", "");
             SetCookie("remember", "");
+            return;
         }
 
         if (type == "email" && $("#remember_email").is(":checked")) {
             SetCookie("e", compileStr(p));
             SetCookie("remember", "1");
+            return;
         } else {
             SetCookie("e", "");
             SetCookie("remember", "");
+            return;
         }
     }
 
