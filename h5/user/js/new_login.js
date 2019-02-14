@@ -79,6 +79,12 @@ $(document).ready(function () {
             }
             SetCookie("remember", "1");
         } else {
+            if (type == "phone") {
+                SetCookie("p", "0");
+            }
+            if (type == "email") {
+                SetCookie("e", "0");
+            }
             SetCookie("remember", "0");
         }
     }
