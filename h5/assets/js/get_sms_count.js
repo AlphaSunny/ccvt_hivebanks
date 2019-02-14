@@ -15,7 +15,7 @@ function GetSmsCodeFun(cellphone, country_code, bind_type, cfm_code) {
 
 function countDown() {
     let count_down = 60;
-    $("#phoneCodeBtn").attr("disabled",true);
+    $(".phoneCodeBtn").attr("disabled",true);
     $(".getCodeText").addClass("none");
     $(".sixty").text(count_down + "s").removeClass("none");
 
