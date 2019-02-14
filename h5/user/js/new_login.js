@@ -62,29 +62,27 @@ $(document).ready(function () {
     }
 
     if (isRemember) {
-        $("#remember").attr("checked", true);
+        $("#remember_phone,#remember_email").attr("checked", true);
     } else {
-        $("#remember").attr("checked", false);
+        $("#remember_phone,#remember_email").attr("checked", false);
     }
 
 
     //是否记住密码
     function IsRememberPassword(p, type) {
-        if ($("#remember").is(":checked")) {
-            if (type == "phone") {
-                SetCookie("p", compileStr(p));
-            }
-            if (type == "email") {
-                SetCookie("e", compileStr(p));
-            }
+        if (type == "phone" && $("#remember_phone").is(":checked")) {
+            SetCookie("p", compileStr(p));
             SetCookie("remember", "1");
         } else {
-            if (type == "phone") {
-                SetCookie("p", "");
-            }
-            if (type == "email") {
-                SetCookie("e", "");
-            }
+            SetCookie("p", "");
+            SetCookie("remember", "");
+        }
+
+        if (type == "email" && $("#remember_email").is(":checked")) {
+            SetCookie("e", compileStr(p));
+            SetCookie("remember", "1");
+        } else {
+            SetCookie("e", "");
             SetCookie("remember", "");
         }
     }
