@@ -1,7 +1,7 @@
 $(function () {
     //判断当前是否登录
     function GetLoginCookie(name) {
-        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) {
             return unescape(arr[2]);
         } else {
@@ -9,24 +9,24 @@ $(function () {
         }
     }
 
-    var user_token = GetLoginCookie('user_token');
+    let user_token = GetLoginCookie('user_token');
     if (user_token) {
         window.location.href = "account.html";
     }
 
     //get invite
-    var invite_code = GetQueryString("invite_code");
-    var code = GetQueryString("code");
-    var group_id = GetQueryString("group_id");
+    let invite_code = GetQueryString("invite_code");
+    let code = GetQueryString("code");
+    let group_id = GetQueryString("group_id");
     if (invite_code && invite_code != 0) {
-        $(".emailInvitCode,.phoneInvitCode").val(invite_code);
+        $(".emailInviteCode,.phoneInviteCode").val(invite_code);
     }
 
     if (code && code != "null") {
         GetWeChatName(code, function (response) {
             if (response.errcode == "0") {
                 $(".phoneWeChatName").val(response.wechat);
-                $(".phoneWeChatName_li").fadeIn();
+                $(".phoneWeChatNameBox").removeClass("none");
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
@@ -34,13 +34,13 @@ $(function () {
     }
 
     //Whether to allow registration
-    var type = 'us';
+    let type = 'us';
     RegisterSwitch(type, function (response) {
         if (response.errcode == '0') {
-            var data = response.rows;
+            let data = response.rows;
             if (data[0].option_name == 'user_lock' && data[0].is_open == '0') {
-                $('.form_col').remove();
-                $('.sec-row').html('<h2 style="color: #fff" class="i18n font-weight-400" name="unableRegister"></h2>');
+                $('.register_box').remove();
+                $('.form_col').html('<h2 style="color: #fff" class="i18n font-weight-400" name="unableRegister"></h2>');
                 execI18n();
                 return;
             }
@@ -75,7 +75,7 @@ $(function () {
     // Monitor mailbox registration input
     //emailInput
     $('.email').blur(function () {
-        var email = $('.email').val();
+        let email = $('.email').val();
         if (email.length <= 0) {//Is it empty?
             $('.email_tips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else {
@@ -90,7 +90,7 @@ $(function () {
 
     //emailPassInput
     $('#emailPass').blur(function () {
-        var emailPass = $('#emailPass').val();
+        let emailPass = $('#emailPass').val();
         if (emailPass.length <= 0) {//Is it empty?
             $('.password_tips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else if (emailPass.length < 8) {
@@ -103,7 +103,7 @@ $(function () {
 
     //againEmailPasswordInput
     $('.againEmailPassword').blur(function () {
-        var againEmailPassword = $('.againEmailPassword').val();
+        let againEmailPassword = $('.againEmailPassword').val();
         if (againEmailPassword.length <= 0) {//Is it empty?
             $('.emailAgainPassword_tips').fadeIn('fast').siblings('span').fadeOut('fast');
         } else if (againEmailPassword != $('#emailPass').val()) {
@@ -115,9 +115,9 @@ $(function () {
     });
 
     // ========email registration========
-    var _email = '', emailList = '';
+    let _email = '', emailList = '';
     $('.emailRegisterBtn').click(function () {
-        var email = $('.email').val(),
+        let email = $('.email').val(),
             pass_word = $('.emailPassword').val(),
             againEmailPassword = $('.againEmailPassword').val(),
             pass_word_hash = hex_sha1(pass_word),
@@ -155,7 +155,7 @@ $(function () {
         _email = email.split('@')[1];
         emailList = EmailList();
 
-        var $this = $(this), btnText = $this.text();
+        let $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
         EmailRegister(email, pass_word, pass_word_hash, invit_code, wechat, group_id, function (response) {
             ActiveClick($this, btnText);
@@ -194,7 +194,7 @@ $(function () {
         $('.phoneLoginTips').fadeOut('fast');
     });
     $('#phone').blur(function () {
-        var phone = $('#phone').val();
+        let phone = $('#phone').val();
         if (phone.length <= 0) {
             $('.phone_tips').fadeIn('fast').siblings('span').fadeOut();
         } else if (isNaN(phone)) {
@@ -207,7 +207,7 @@ $(function () {
 
     //phoneCfmCode-
     $('.phoneCfmCode').blur(function () {
-        var phoneCfmCode = $('.phoneCfmCode').val();
+        let phoneCfmCode = $('.phoneCfmCode').val();
         if (phoneCfmCode.length <= 0) {
             $('.phoneCode_tips').fadeIn('fast').siblings('span').fadeOut();
         } else {
@@ -222,7 +222,7 @@ $(function () {
         $('.phoneCode_expired').fadeOut('fast');
     });
     $('.phoneSmsCode').blur(function () {
-        var phoneSmsCode = $('.phoneSmsCode').val();
+        let phoneSmsCode = $('.phoneSmsCode').val();
         if (phoneSmsCode.length <= 0) {
             $('.phoneSmsCode_tips').fadeIn('fast').siblings('span').fadeOut();
         } else {
@@ -232,7 +232,7 @@ $(function () {
 
     //phonePassword
     $('#phonePass').blur(function () {
-        var phonePass = $('#phonePass').val();
+        let phonePass = $('#phonePass').val();
         if (phonePass.length <= 0) {
             $('.PhonePassword_tips').fadeIn('fast').siblings('span').fadeOut();
         } else if (phonePass.length < 8) {
@@ -245,7 +245,7 @@ $(function () {
 
     //phoneAgainPassword
     $('.againPhonePassword').blur(function () {
-        var againPhonePassword = $('.againPhonePassword').val();
+        let againPhonePassword = $('.againPhonePassword').val();
         if (againPhonePassword.length <= 0) {
             $('.phoneAgainPassword_tips').fadeIn('fast').siblings('span').fadeOut();
         } else if (againPhonePassword != $('#phonePass').val()) {
@@ -258,7 +258,7 @@ $(function () {
 
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
-        var bind_type = '1', $this = $(this), cfm_code = $('.phoneCfmCode').val();
+        let bind_type = '1', $this = $(this), cfm_code = $('.phoneCfmCode').val();
         if ($(".phone").val().length <= 0) {
             $('.phone_tips').fadeIn().siblings('span').hide();
             // LayerFun('phoneNotEmpty');
@@ -279,9 +279,9 @@ $(function () {
      * Click to register to submit
      */
     $('.phoneRegisterBtn').click(function () {
-        var country_code = $('.selected-dial-code').text().split("+")[1];
+        let country_code = $('.selected-dial-code').text().split("+")[1];
         // Get user input
-        var cellphone = $('.phone').val(),
+        let cellphone = $('.phone').val(),
             sms_code = $('.phoneSmsCode').val(),
             phoneCfmCode = $('.phoneCfmCode').val(),
             pass_word = $('.phonePassword').val(),
@@ -325,7 +325,7 @@ $(function () {
             $('.phoneSmsCode_tips').fadeIn();
             return;
         }
-        var $this = $(this), btnText = $(this).text();
+        let $this = $(this), btnText = $(this).text();
         if (DisableClick($this)) return;
         PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_hash, invit_code, wechat, group_id, function (response) {
             ActiveClick($this, btnText);

@@ -103,29 +103,51 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+            <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 form_col">
                 <div class="register_box">
                     <div class="margin-bottom-26">
                         <span class="f24 i18n" name="alreadyAccount"></span>&nbsp;&nbsp;
                         <a href="login.html" class="c-login i18n" name="login"></a>
                     </div>
+
+                    <div class="margin-bottom-26">
+                        <ul class="flex align-items-center justify-content-space-around">
+                            <li class="active loginToggle phoneLogin">
+                                <i class="iconfont icon-shouji"></i>
+                                <span class="phoneRegisterTitle i18n" name="phoneRegisterTitle"></span>
+                            </li>
+                            <li class="loginToggle emailLogin">
+                                <i class="iconfont icon-youxiang"></i>
+                                <span class="emailRegisterTitle i18n" name="emailRegisterTitle"></span>
+                            </li>
+                        </ul>
+                    </div>
+
                     <!--register-->
                     <div class="form-group">
-                        <div class="margin-bottom-26">
-                            <input type="tel" maxlength="11" class="form-control phone i18n-input" name="phone" id="phone" value="" selectname="phoneInput" selectattr="placeholder">
+                        <!--phone-->
+                        <div class="phone_box">
+                            <div class="margin-bottom-26">
+                                <input type="tel" maxlength="11" class="form-control phone i18n-input" name="phone" id="phone" value="" selectname="phoneInput" selectattr="placeholder">
+                            </div>
+
+                            <div class="margin-bottom-26 flex">
+                                <input type="text" class="form-control i18n-input phoneCfmCode margin-right-5" name="cfmCode" id="phoneCfmCode" value="" selectname="cfmCodeInput" selectattr="placeholder">
+                                <img src="" id="phone_imgCode" alt="">
+                            </div>
+
+                            <div class="margin-bottom-26 flex">
+                                <input type="text" class="form-control i18n-input phoneSmsCode margin-right-5" name="cfmCode" value="" selectname="cfmCodeInput" selectattr="placeholder">
+                                <button class="btn btn-success btn-sm phoneCodeBtn">
+                                    <span class="sixty"></span>&nbsp;&nbsp;
+                                    <span class="getCodeText i18n" name="getCode"></span>
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="margin-bottom-26 flex">
-                            <input type="text" class="form-control i18n-input phoneCfmCode margin-right-5" name="cfmCode" id="phoneCfmCode" value="" selectname="cfmCodeInput" selectattr="placeholder">
-                            <img src="" id="phone_imgCode" alt="">
-                        </div>
-
-                        <div class="margin-bottom-26 flex">
-                            <input type="text" class="form-control i18n-input phoneSmsCode margin-right-5" name="cfmCode" value="" selectname="cfmCodeInput" selectattr="placeholder">
-                            <button class="btn btn-success btn-sm phoneCodeBtn">
-                                <span class="sixty"></span>&nbsp;&nbsp;
-                                <span class="getCodeText i18n" name="getCode"></span>
-                            </button>
+                        <!--email-->
+                        <div class="email_box">
+                            <input type="email" class="form-control email i18n-input" name="username" value="" selectname="emailInput" selectattr="placeholder">
                         </div>
 
                         <div class="margin-bottom-26">
@@ -137,7 +159,7 @@
                         </div>
 
                         <div class="margin-bottom-26">
-                            <input type="text" class="form-control i18n-input phoneInvitCode" name="phoneInvitCode" value="" selectname="invitCodeInput" selectattr="placeholder">
+                            <input type="text" class="form-control i18n-input phoneInviteCode" name="phoneInvitCode" value="" selectname="invitCodeInput" selectattr="placeholder">
                         </div>
 
                         <div class="margin-bottom-26 phoneWeChatNameBox none">
@@ -203,7 +225,7 @@
                     <!--<span class='ty-color input_tips emailSamePassword_tips i18n' name="TwoPassword">* Two Passwords Must Be The Same</span>-->
                     <!--</li>-->
                     <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<input type="text" class="form-control emailInvitCode i18n-input" name="emailInvitCode" value="" selectname="invitCodeInput" selectattr="placeholder">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="text" class="form-control emailInviteCode i18n-input" name="emailInvitCode" value="" selectname="invitCodeInput" selectattr="placeholder">&ndash;&gt;-->
                     <!--&lt;!&ndash;<span class='ty-color input_tips emailInvitCode_tips i18n' name="invitCodeNotEmpty">* Invitation Code Cannot Be Empty</span>&ndash;&gt;-->
                     <!--&lt;!&ndash;</li>&ndash;&gt;-->
                     <!--</ul>-->
