@@ -99,6 +99,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="alert-tips alert alert-warning alert-dismissible none" role="alert">
+                <span class="phone_tips accountNotEmpty i18n none" name="accountNotEmpty"></span>
+                <span class='phone_tips input_tips phonePassword_tips passwordNotEmpty i18n none' name="passwordNotEmpty"></span>
+                <span class='ty-color input_tips PasswordStructure i18n' name="PasswordStructure"></span>
+                <span class='ty-color input_tips confirmPasswordNotEmpty i18n' name="confirmPasswordNotEmpty"></span>
+                <span class='ty-color input_tips TwoPassword i18n' name="TwoPassword"></span>
+                <!--email tips-->
+                <span class='phone_tips input_tips emailErrorTips i18n' name="emailBad"></span>
             </div>
         </div>
 
@@ -110,18 +117,18 @@
                         <a href="login.html" class="c-login i18n" name="login"></a>
                     </div>
 
-                    <div class="margin-bottom-26">
-                        <ul class="flex align-items-center justify-content-space-around">
-                            <li class="active registerToggle phoneRegister">
-                                <i class="iconfont icon-shouji"></i>
-                                <span class="phoneRegisterTitle i18n" name="phoneRegisterTitle"></span>
-                            </li>
-                            <li class="registerToggle emailRegister">
-                                <i class="iconfont icon-youxiang"></i>
-                                <span class="emailRegisterTitle i18n" name="emailRegisterTitle"></span>
-                            </li>
-                        </ul>
-                    </div>
+                    <!--<div class="margin-bottom-26">-->
+                        <!--<ul class="flex align-items-center justify-content-space-around">-->
+                            <!--<li class="active registerToggle phoneRegister">-->
+                                <!--<i class="iconfont icon-shouji"></i>-->
+                                <!--<span class="phoneRegisterTitle i18n" name="phoneRegisterTitle"></span>-->
+                            <!--</li>-->
+                            <!--<li class="registerToggle emailRegister">-->
+                                <!--<i class="iconfont icon-youxiang"></i>-->
+                                <!--<span class="emailRegisterTitle i18n" name="emailRegisterTitle"></span>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
 
                     <!--register-->
                     <div class="form-group">
@@ -137,9 +144,10 @@
                             </div>
 
                             <div class="margin-bottom-26 flex">
-                                <input type="text" class="form-control i18n-input phoneSmsCode margin-right-5" name="cfmCode" value="" selectname="cfmCodeInput" selectattr="placeholder">
-                                <button class="btn btn-success btn-sm phoneCodeBtn">
-                                    <span class="sixty"></span>&nbsp;&nbsp;
+                                <input type="text" class="form-control i18n-input phoneSmsCode margin-right-5" id="phoneSmsCode" name="cfmCode" value="" selectname="cfmCodeInput" selectattr="placeholder">
+
+                                <button class="btn btn-success phoneCodeBtn margin-left-5">
+                                    <span class="sixty"></span>
                                     <span class="getCodeText i18n" name="getCode"></span>
                                 </button>
                             </div>
@@ -147,26 +155,27 @@
 
                         <!--email-->
                         <div class="email_box margin-bottom-26 none">
-                            <input type="email" class="form-control email i18n-input" name="username" value="" selectname="emailInput" selectattr="placeholder">
+                            <input type="email" id="email" class="form-control email i18n-input" name="username" value="" selectname="emailInput" selectattr="placeholder">
+                        </div>
+
+                        <!--other-->
+                        <div class="margin-bottom-26">
+                            <input type="password" maxlength="16" id='password' class="form-control i18n-input phonePassword" name="phonePassword" value="" selectname="passwordInput" selectattr="placeholder">
                         </div>
 
                         <div class="margin-bottom-26">
-                            <input type="password" maxlength="16" id='phonePass' class="form-control i18n-input phonePassword" name="phonePassword" value="" selectname="passwordInput" selectattr="placeholder">
+                            <input type="password" class="form-control i18n-input" id="againPassword" name="againPhonePassword" value="" selectname="againPasswordInput" selectattr="placeholder">
                         </div>
 
                         <div class="margin-bottom-26">
-                            <input type="password" class="form-control i18n-input againPhonePassword" name="againPhonePassword" value="" selectname="againPasswordInput" selectattr="placeholder">
-                        </div>
-
-                        <div class="margin-bottom-26">
-                            <input type="text" class="form-control i18n-input phoneInviteCode" name="phoneInvitCode" value="" selectname="invitCodeInput" selectattr="placeholder">
+                            <input type="text" class="form-control i18n-input" id="inviteCode" name="phoneInvitCode" value="" selectname="invitCodeInput" selectattr="placeholder">
                         </div>
 
                         <div class="margin-bottom-26 phoneWeChatNameBox none">
-                            <input type="text" class="form-control phoneWeChatName i18n-input" selectname="weChatNameInput" selectattr="placeholder" name="phoneWeChatName" value="">
+                            <input type="text" class="form-control phoneWeChatName i18n-input" id="weChatName" selectname="weChatNameInput" selectattr="placeholder" name="phoneWeChatName" value="">
                         </div>
 
-                        <button class="btn btn-lg btn-success register phoneRegisterBtn login width-100 i18n" name="register"></button>
+                        <button class="btn btn-lg btn-success register_btn phoneRegisterBtn login width-100 i18n" name="register"></button>
                     </div>
                 </div>
             </div>

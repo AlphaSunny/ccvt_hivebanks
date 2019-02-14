@@ -64,69 +64,70 @@ $(function () {
     $('.emailRegister').click(function () {
         $(".phone_box").addClass("none");
         $(".email_box").removeClass("none");
+        $(".register_btn").removeClass("phoneRegisterBtn").addClass("emailRegisterBtn");
     });
     // Switch phone registration
     $('.phoneRegister').click(function () {
         $(".phone_box").removeClass("none");
         $(".email_box").addClass("none");
+        $(".register_btn").removeClass("emailRegisterBtn").addClass("phoneRegisterBtn");
         GetImgCode();
     });
 
     // Monitor mailbox registration input
     //emailInput
-    // $('.email').blur(function () {
-    //     let email = $('.email').val();
-    //     if (email.length <= 0) {//Is it empty?
-    //         $('.email_tips').fadeIn('fast').siblings('span').fadeOut('fast');
-    //     } else {
-    //         $('.email_tips').fadeOut('fast');
-    //     }
-    //     if (!IsEmail(email)) {//Bad Mailbox Format
-    //         $('.emailErrorTips').fadeIn('fast').siblings('span').fadeOut('fast');
-    //     } else {
-    //         $('.emailErrorTips').fadeOut('fast');
-    //     }
-    // });
-
-    //emailPassInput
-    $('#emailPass').blur(function () {
-        let emailPass = $('#emailPass').val();
-        if (emailPass.length <= 0) {//Is it empty?
-            $('.password_tips').fadeIn('fast').siblings('span').fadeOut('fast');
-        } else if (emailPass.length < 8) {
-            $('.errEmailPass_tips').fadeIn('fast').siblings('span').fadeOut('fast');
+    $("#email").bind("input propertychange", function () {
+        if ($(this).val().length <= 0) {
+            $(".alert-warning").fadeIn();
+            $(".accountNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
+        }
+        if (!IsEmail($(this).val())) {
+            $(".alert-warning").fadeIn();
+            $(".emailErrorTips").fadeIn().siblings(".phone_tips").fadeOut();
         } else {
-            $('.password_tips').fadeOut('fast');
-            $('.errEmailPass_tips').fadeOut('fast');
+            $(".alert-warning,.phone_tips").fadeOut();
         }
     });
 
-    //againEmailPasswordInput
-    $('.againEmailPassword').blur(function () {
-        let againEmailPassword = $('.againEmailPassword').val();
-        if (againEmailPassword.length <= 0) {//Is it empty?
-            $('.emailAgainPassword_tips').fadeIn('fast').siblings('span').fadeOut('fast');
-        } else if (againEmailPassword != $('#emailPass').val()) {
-            $('.emailSamePassword_tips').fadeIn('fast').siblings('span').fadeOut('fast');
+    //password input
+    $("#password").bind("input propertychange", function () {
+        if ($(this).val().length <= 0) {
+            $(".alert-warning").fadeIn();
+            $(".passwordNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
+        } else if ($(this).val().length < 8) {
+            $(".alert-warning").fadeIn();
+            $(".PasswordStructure").fadeIn().siblings(".phone_tips").fadeOut();
         } else {
-            $('.emailAgainPassword_tips').fadeOut('fast');
-            $('.emailSamePassword_tips').fadeOut('fast');
+            $(".alert-warning,.phone_tips").fadeOut();
+        }
+    });
+
+    //again password input
+    $("#againPassword").bind("input propertychange", function () {
+        if ($(this).val().length <= 0) {
+            $(".alert-warning").fadeIn();
+            $(".confirmPasswordNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
+        } else if ($(this).val() != $("#password").val()) {
+            $(".alert-warning").fadeIn();
+            $(".TwoPassword").fadeIn().siblings(".phone_tips").fadeOut();
+        } else {
+            $(".alert-warning,.phone_tips").fadeOut();
         }
     });
 
     // ========email registration========
     let _email = '', emailList = '';
     $('.emailRegisterBtn').click(function () {
-        let email = $('.email').val(),
-            pass_word = $('.emailPassword').val(),
-            againEmailPassword = $('.againEmailPassword').val(),
+        let email = $('#email').val(),
+            pass_word = $('#password').val(),
+            againEmailPassword = $('#againPassword').val(),
             pass_word_hash = hex_sha1(pass_word),
-            invit_code = $('.emailInvitCode').val();
+            invite_code = $('#inviteCode').val(),
+            wechat = $("#weChatName").val();
 
         if (email.length <= 0) {
             // LayerFun('emailNotEmpty');
             layer.msg("请输入账号", {icon: 0});
-            $('.email_tips').fadeIn();
             return;
         }
         if (!IsEmail(email)) {
@@ -136,19 +137,16 @@ $(function () {
         if (pass_word.length <= 0) {
             // LayerFun('passNotEmpty');
             layer.msg("请输入密码", {icon: 0});
-            $('.password_tips').fadeIn();
             return;
         }
         if (againEmailPassword.length <= 0) {
             // LayerFun('confirmPasswordNotEmpty');
             layer.msg("请输入确认密码", {icon: 0});
-            $('.emailAgainPassword_tips').fadeIn();
             return;
         }
         if (pass_word != againEmailPassword) {
             // LayerFun('TwoPassword');
             layer.msg("两次密码必须相同", {icon: 0});
-            $('.emailSamePassword_tips').fadeIn();
             return;
         }
 
@@ -157,7 +155,7 @@ $(function () {
 
         let $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
-        EmailRegister(email, pass_word, pass_word_hash, invit_code, wechat, group_id, function (response) {
+        EmailRegister(email, pass_word, pass_word_hash, invite_code, wechat, group_id, function (response) {
             ActiveClick($this, btnText);
             if (response.errcode == '0') {
                 $('.email').val('');
@@ -188,91 +186,53 @@ $(function () {
 
     //phoneInput
     //phone
-    $('#phone').focus(function () {
-        $('.phone_tips').fadeOut('fast');
-        $('.phoneErrorTips').fadeOut('fast');
-        $('.phoneLoginTips').fadeOut('fast');
-    });
-    $('#phone').blur(function () {
-        let phone = $('#phone').val();
-        if (phone.length <= 0) {
-            $('.phone_tips').fadeIn('fast').siblings('span').fadeOut();
-        } else if (isNaN(phone)) {
-            $('.phoneErrorTips').fadeIn('fast').siblings('span').fadeOut();
+    $("#phone").bind("input propertychange", function () {
+        if ($(this).val().length <= 0) {
+            $(".alert-warning").fadeIn();
+            $(".accountNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
         } else {
-            $('.phone_tips').fadeOut('fast');
-            $('.phoneErrorTips').fadeOut('fast');
+            $(".alert-warning,.phone_tips").fadeOut();
         }
     });
 
     //phoneCfmCode-
-    $('.phoneCfmCode').blur(function () {
-        let phoneCfmCode = $('.phoneCfmCode').val();
-        if (phoneCfmCode.length <= 0) {
-            $('.phoneCode_tips').fadeIn('fast').siblings('span').fadeOut();
+    $("#phoneCfmCode").bind("input propertychange", function () {
+        if ($(this).val().length <= 0) {
+            $(".alert-warning").fadeIn();
+            $(".phoneImgCode_tips").fadeIn().siblings(".phone_tips").fadeOut();
         } else {
-            $('.phoneCode_tips').fadeOut('fast');
-            $('.errPhoneCode_tips').fadeOut('fast');
+            $(".alert-warning,.phone_tips").fadeOut();
         }
     });
+
 
     //phoneSmsCode-
-    $('.phoneSmsCode').focus(function () {
-        $('.phoneSmsCode_tips').fadeOut('fast');
-        $('.phoneCode_expired').fadeOut('fast');
-    });
-    $('.phoneSmsCode').blur(function () {
-        let phoneSmsCode = $('.phoneSmsCode').val();
-        if (phoneSmsCode.length <= 0) {
-            $('.phoneSmsCode_tips').fadeIn('fast').siblings('span').fadeOut();
+    $("#phoneSmsCode").bind("input propertychange", function () {
+        if ($(this).val().length <= 0) {
+            $(".alert-warning").fadeIn();
+            $(".phoneImgCode_tips").fadeIn().siblings(".phone_tips").fadeOut();
         } else {
-            $('.phoneSmsCode_tips').fadeOut('fast');
-        }
-    });
-
-    //phonePassword
-    $('#phonePass').blur(function () {
-        let phonePass = $('#phonePass').val();
-        if (phonePass.length <= 0) {
-            $('.PhonePassword_tips').fadeIn('fast').siblings('span').fadeOut();
-        } else if (phonePass.length < 8) {
-            $('.errPhonePass_tips').fadeIn('fast').siblings('span').fadeOut();
-        } else {
-            $('.PhonePassword_tips').fadeOut('fast');
-            $('.errPhonePass_tips').fadeOut('fast');
-        }
-    });
-
-    //phoneAgainPassword
-    $('.againPhonePassword').blur(function () {
-        let againPhonePassword = $('.againPhonePassword').val();
-        if (againPhonePassword.length <= 0) {
-            $('.phoneAgainPassword_tips').fadeIn('fast').siblings('span').fadeOut();
-        } else if (againPhonePassword != $('#phonePass').val()) {
-            $('.phoneSamePassword_tips').fadeIn('fast').siblings('span').fadeOut();
-        } else {
-            $('.phoneAgainPassword_tips').fadeOut('fast');
-            $('.phoneSamePassword_tips').fadeOut('fast');
+            $(".alert-warning,.phone_tips").fadeOut();
         }
     });
 
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
-        let bind_type = '1', $this = $(this), cfm_code = $('.phoneCfmCode').val();
-        if ($(".phone").val().length <= 0) {
-            $('.phone_tips').fadeIn().siblings('span').hide();
-            // LayerFun('phoneNotEmpty');
+        let country_code = $('.selected-dial-code').text().split("+")[1];
+        let bind_type = '1', $this = $(this), cfm_code = $('#phoneCfmCode').val();
+        let cellphone = $('#phone').val();
+        if ($("#phone").val().length <= 0) {
             layer.msg("请输入账号", {icon: 0});
             return;
         }
         if (cfm_code.length <= 0) {
             // LayerFun('codeNotEmpty');
             layer.msg("请输入图形验证码", {icon: 0});
-            $('.phoneCode_tips').fadeIn();
             return;
         }
-        setTime($this);
-        GetPhoneCodeFun(bind_type, $this, cfm_code);
+
+        ShowLoading("show");
+        GetSmsCodeFun(cellphone, country_code, bind_type, cfm_code);
     });
     /**
      /* ========Register your phone========
@@ -281,36 +241,32 @@ $(function () {
     $('.phoneRegisterBtn').click(function () {
         let country_code = $('.selected-dial-code').text().split("+")[1];
         // Get user input
-        let cellphone = $('.phone').val(),
-            sms_code = $('.phoneSmsCode').val(),
-            phoneCfmCode = $('.phoneCfmCode').val(),
-            pass_word = $('.phonePassword').val(),
-            again_pass_word = $('.againPhonePassword').val(),
+        let cellphone = $('#phone').val(),
+            sms_code = $('#phoneSmsCode').val(),
+            phoneCfmCode = $('#phoneCfmCode').val(),
+            pass_word = $('#password').val(),
+            again_pass_word = $('#againPassword').val(),
             pass_word_hash = hex_sha1(pass_word),
-            wechat = $('.phoneWeChatName').val(),
-            invit_code = $('.phoneInvitCode').val();
+            wechat = $('#weChatName').val(),
+            invit_code = $('#inviteCode').val();
         if (cellphone.length <= 0) {
             // LayerFun('phoneNotEmpty');
             layer.msg("请输入账号", {icon: 0});
-            $('.phone_tips').fadeIn();
             return;
         }
         if (pass_word.length <= 0) {
             // LayerFun('passNotEmpty');
             layer.msg("请输入密码", {icon: 0});
-            $('.PhonePassword_tips').fadeIn();
             return;
         }
         if (again_pass_word.length <= 0) {
             // LayerFun('confirmPasswordNotEmpty');
             layer.msg("请输入确认密码", {icon: 0});
-            $('.phoneAgainPassword_tips').fadeIn();
             return;
         }
         if (phoneCfmCode.length <= 0) {
             // LayerFun('codeNotEmpty');
             layer.msg("请输入图形验证码", {icon: 0});
-            $('.phoneCode_tips').fadeIn();
             return;
         }
         if (pass_word != again_pass_word) {
@@ -322,7 +278,6 @@ $(function () {
         if (sms_code.length <= 0) {
             // LayerFun('codeNotEmpty');
             layer.msg("请输入短信验证码", {icon: 0});
-            $('.phoneSmsCode_tips').fadeIn();
             return;
         }
         let $this = $(this), btnText = $(this).text();
@@ -330,11 +285,11 @@ $(function () {
         PhoneRegister(country_code, cellphone, sms_code, pass_word, pass_word_hash, invit_code, wechat, group_id, function (response) {
             ActiveClick($this, btnText);
             if (response.errcode == '0') {
-                $('.phone').val('');
-                $('.phoneCfmCode').val('');
-                $('.phonePassword').val('');
-                $('.againPhonePassword').val('');
-                $('.phoneInvitCode').val('');
+                $('#phone').val('');
+                $('#phoneCfmCode').val('');
+                $('#password').val('');
+                $('#againPassword').val('');
+                $('#inviteCode').val('');
                 window.location.href = 'login.html?name=phone';
             }
         }, function (response) {
