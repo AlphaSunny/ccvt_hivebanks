@@ -62,31 +62,32 @@ $(function () {
     });
     // Switch mailbox registration
     $('.emailRegister').click(function () {
-        $('.phoneRegisterBox').fadeOut();
-        $('.emailRegisterBox').fadeIn();
+        $(".phone_box").addClass("none");
+        $(".email_box").removeClass("none");
+        GetImgCode();
     });
     // Switch phone registration
     $('.phoneRegister').click(function () {
-        $('.emailRegisterBox').fadeOut();
-        $('.phoneRegisterBox').fadeIn();
+        $(".phone_box").removeClass("none");
+        $(".email_box").addClass("none");
         GetImgCode();
     });
 
     // Monitor mailbox registration input
     //emailInput
-    $('.email').blur(function () {
-        let email = $('.email').val();
-        if (email.length <= 0) {//Is it empty?
-            $('.email_tips').fadeIn('fast').siblings('span').fadeOut('fast');
-        } else {
-            $('.email_tips').fadeOut('fast');
-        }
-        if (!IsEmail(email)) {//Bad Mailbox Format
-            $('.emailErrorTips').fadeIn('fast').siblings('span').fadeOut('fast');
-        } else {
-            $('.emailErrorTips').fadeOut('fast');
-        }
-    });
+    // $('.email').blur(function () {
+    //     let email = $('.email').val();
+    //     if (email.length <= 0) {//Is it empty?
+    //         $('.email_tips').fadeIn('fast').siblings('span').fadeOut('fast');
+    //     } else {
+    //         $('.email_tips').fadeOut('fast');
+    //     }
+    //     if (!IsEmail(email)) {//Bad Mailbox Format
+    //         $('.emailErrorTips').fadeIn('fast').siblings('span').fadeOut('fast');
+    //     } else {
+    //         $('.emailErrorTips').fadeOut('fast');
+    //     }
+    // });
 
     //emailPassInput
     $('#emailPass').blur(function () {
