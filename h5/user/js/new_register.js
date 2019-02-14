@@ -210,7 +210,7 @@ $(function () {
     $("#phoneSmsCode").bind("input propertychange", function () {
         if ($(this).val().length <= 0) {
             $(".alert-warning").fadeIn();
-            $(".phoneImgCode_tips").fadeIn().siblings(".phone_tips").fadeOut();
+            $(".codeNotEmpty").fadeIn().siblings(".phone_tips").fadeOut();
         } else {
             $(".alert-warning,.phone_tips").fadeOut();
         }
