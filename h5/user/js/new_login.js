@@ -80,12 +80,12 @@ $(document).ready(function () {
             SetCookie("remember", "1");
         } else {
             if (type == "phone") {
-                SetCookie("p", "0");
+                SetCookie("p", "");
             }
             if (type == "email") {
-                SetCookie("e", "0");
+                SetCookie("e", "");
             }
-            SetCookie("remember", "0");
+            SetCookie("remember", "");
         }
     }
 
