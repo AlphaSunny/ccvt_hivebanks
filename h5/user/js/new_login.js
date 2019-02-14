@@ -209,6 +209,15 @@ $(document).ready(function () {
 
     // ========Log in with phone========
     $(".phoneLoginBtn").click(function () {//Click Login to submit
+
+        if($("#remember:checked")){
+            console.log("checked");
+            return;
+        }else {
+            console.log("not checked");
+            return;
+        }
+
         let user_token = GetLoginCookie('user_token');
         // Get country code
         let country_code = $('.selected-dial-code').text().split("+")[1];
