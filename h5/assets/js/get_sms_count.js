@@ -7,6 +7,7 @@ function GetSmsCodeFun(cellphone, country_code, bind_type, cfm_code) {
             countDown();
         }
     }, function (response) {
+        ShowLoading("hide");
         ErrorPrompt(response.errmsg);
         GetImgCode();
     });
