@@ -227,6 +227,11 @@ $(document).ready(function () {
 
     // ========Log in with phone========
     $(".phoneLoginBtn").click(function () {//Click Login to submit
+        let a = "123456";
+        let b = compileStr(a);
+        console.log(b);
+        console.log(uncompileStr(b));
+        return;
         let user_token = GetLoginCookie('user_token');
         // Get country code
         let country_code = $('.selected-dial-code').text().split("+")[1];
