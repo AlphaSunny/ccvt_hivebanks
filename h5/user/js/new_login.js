@@ -40,6 +40,24 @@ $(document).ready(function () {
         $('.emailPassword').removeClass('.pass');
         GetImgCode();
     });
+
+    //自动填充账号密码
+    let account_cellphone = GetLoginCookie("account_cellphone");
+    let p = GetLoginCookie("p");
+    if (account_cellphone) {
+        $("#phone").val(account_cellphone);
+    }
+    if(p){
+        $("#phonePassword").val(uncompileStr(p));
+    }
+
+    //是否记住密码
+    function IsRememberPassword(p) {
+        if ($("#remember").is(":checked")) {
+            SetCookie("p", compileStr(p));
+        }
+    }
+
     // ========email login========
 
     // Email form change judgment
@@ -209,15 +227,6 @@ $(document).ready(function () {
 
     // ========Log in with phone========
     $(".phoneLoginBtn").click(function () {//Click Login to submit
-
-        if($("#remember").is(":checked")){
-            console.log("checked");
-            return;
-        }else {
-            console.log("not checked");
-            return;
-        }
-
         let user_token = GetLoginCookie('user_token');
         // Get country code
         let country_code = $('.selected-dial-code').text().split("+")[1];
@@ -265,6 +274,8 @@ $(document).ready(function () {
                 $('.phonePassword').val('');
                 let token = response.token;
                 SetCookie('user_token', token);
+                SetCookie('account_cellphone', cellphone);
+                IsRememberPassword(phonePassword);
                 if (!leaderBoard) {
                     window.location.href = 'account.html';
                 } else {
