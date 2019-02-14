@@ -43,18 +43,33 @@ $(document).ready(function () {
 
     //自动填充账号密码
     let account_cellphone = GetLoginCookie("account_cellphone");
+    let account_email = GetLoginCookie("account_email");
     let p = GetLoginCookie("p");
+    let e = GetLoginCookie("e");
     if (account_cellphone) {
         $("#phone").val(account_cellphone);
-    }
-    if(p){
-        $("#phonePassword").val(uncompileStr(p));
+        if (p) {
+            $("#phonePassword").val(uncompileStr(p));
+        }
     }
 
+    if (account_email) {
+        $("#email").val(account_email);
+        if (e) {
+            $("#emailPassword").val(uncompileStr(e));
+        }
+    }
+
+
     //是否记住密码
-    function IsRememberPassword(p) {
+    function IsRememberPassword(p, type) {
         if ($("#remember").is(":checked")) {
-            SetCookie("p", compileStr(p));
+            if (type == "phone") {
+                SetCookie("p", compileStr(p));
+            }
+            if (type == "email") {
+                SetCookie("e", compileStr(p));
+            }
         }
     }
 
@@ -141,6 +156,10 @@ $(document).ready(function () {
                 SuccessPrompt("登录成功");
                 let token = response.token;
                 SetCookie('user_token', token);
+
+                SetCookie('account_email', email);
+                IsRememberPassword(emailPassword, "email");
+
                 if (!leaderBoard) {
                     window.location.href = 'account.html';
                 } else {
@@ -227,11 +246,6 @@ $(document).ready(function () {
 
     // ========Log in with phone========
     $(".phoneLoginBtn").click(function () {//Click Login to submit
-        let a = "123456";
-        let b = compileStr(a);
-        console.log(b);
-        console.log(uncompileStr(b));
-        return;
         let user_token = GetLoginCookie('user_token');
         // Get country code
         let country_code = $('.selected-dial-code').text().split("+")[1];
@@ -280,7 +294,7 @@ $(document).ready(function () {
                 let token = response.token;
                 SetCookie('user_token', token);
                 SetCookie('account_cellphone', cellphone);
-                IsRememberPassword(phonePassword);
+                IsRememberPassword(phonePassword, "phone");
                 if (!leaderBoard) {
                     window.location.href = 'account.html';
                 } else {
