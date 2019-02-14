@@ -210,7 +210,7 @@ $(document).ready(function () {
     // ========Log in with phone========
     $(".phoneLoginBtn").click(function () {//Click Login to submit
 
-        if($("#remember:checked")){
+        if($("#remember").is(":checked")){
             console.log("checked");
             return;
         }else {
