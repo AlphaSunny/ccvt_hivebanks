@@ -64,7 +64,6 @@ $(function () {
     $('.emailRegister').click(function () {
         $(".phone_box").addClass("none");
         $(".email_box").removeClass("none");
-        GetImgCode();
     });
     // Switch phone registration
     $('.phoneRegister').click(function () {
