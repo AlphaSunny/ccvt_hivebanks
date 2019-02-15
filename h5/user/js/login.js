@@ -91,6 +91,15 @@ $(document).ready(function () {
         }
     }
 
+    //显示隐藏密码
+    $(".icon-yanjing1").click(function () {
+       $(this).removeClass("icon-yanjing1").addClass("icon-yanjing").siblings("input").attr("type","text");
+    });
+
+    $(".icon-yanjing").click(function () {
+        $(this).removeClass("icon-yanjing").addClass("icon-yanjing1").siblings("input").attr("type","password");
+    });
+
     // ========email login========
 
     // Email form change judgment
