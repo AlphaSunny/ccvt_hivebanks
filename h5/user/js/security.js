@@ -22,8 +22,9 @@ $(function () {
 
                     //Whether the email is bound
                     if (data[i].bind_name == 'email' && data[i].bind_flag == '1') {
-                        $(".email_status_notBind,.emailBindBtn").remove();
-                        $(".email_status_alreadyBind,.emailModifyBind").removeClass("none");
+                        $(".emailBindInfo").removeClass("none i18n").text(data[i].bind_info);
+                        $(".emailBindBtn").remove();
+                        $(".emailModifyBind").removeClass("none");
                     }
 
                     //Whether google is certified
