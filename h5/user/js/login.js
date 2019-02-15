@@ -96,7 +96,7 @@ $(document).ready(function () {
        $(this).removeClass("icon-yanjing1").addClass("icon-yanjing").siblings("input").attr("type","text");
     });
 
-    $(".icon-yanjing").click(function () {
+    $(document).on("click",".icon-yanjing",function () {
         $(this).removeClass("icon-yanjing").addClass("icon-yanjing1").siblings("input").attr("type","password");
     });
 
