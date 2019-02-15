@@ -92,7 +92,7 @@ $(document).ready(function () {
     }
 
     //显示隐藏密码
-    $(".icon-yanjing1").click(function () {
+    $(document).on("click",".icon-yanjing1",function () {
        $(this).removeClass("icon-yanjing1").addClass("icon-yanjing").siblings("input").attr("type","text");
     });
 
