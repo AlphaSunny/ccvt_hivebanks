@@ -90,81 +90,9 @@ $(function () {
             }
             div.find(".item_ul").html(li);
             $(".up_content").append(div);
+            textRandom();
         }
     }
-
-
-    // let level_one_ul_box = "", level_two_ul_box = "", level_three_ul_box = "";
-
-    //一级列表
-    // function level_one() {
-    //     for (let i = 0; i < ul_num; i++) {
-    //         level_one_ul_box += "<ul></ul>";
-    //     }
-    //     $(".level_one_ul_box").html(level_one_ul_box);
-    //     ListOne();
-    // }
-
-    //2级列表
-    // function level_two() {
-    //     for (let i = 0; i < ul_num; i++) {
-    //         level_two_ul_box += "<ul></ul>";
-    //     }
-    //     $(".level_two_ul_box").html(level_two_ul_box);
-    //     ListTwo();
-    // }
-
-    //3级列表
-    // function level_three() {
-    //     for (let i = 0; i < ul_num; i++) {
-    //         level_three_ul_box += "<ul></ul>";
-    //     }
-    //     $(".level_three_ul_box").html(level_three_ul_box);
-    //     ListThree();
-    // }
-
-    //1生成列表
-    // function ListOne() {
-    //     $.each(one_list, function (j, val) {
-    //         if (one_list.length <= max || j < item_one) {
-    //             $(".level_one_ul_box ul:nth-child(1)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
-    //         } else if (one_list.length > max && j >= item_one && j < item_one * 2) {
-    //             $(".level_one_ul_box ul:nth-child(2)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
-    //         } else {
-    //             $(".level_one_ul_box ul:nth-child(3)").append("<li class='wow slideInRight' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" + one_list[j].wechat + "</li>");
-    //         }
-    //     });
-    //     level_two();
-    // }
-
-    //2生成列表
-    // function ListTwo() {
-    //     $.each(two_list, function (j, val) {
-    //         if (two_list.length <= max || j < item_two) {
-    //             $(".level_two_ul_box ul:nth-child(1)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
-    //         } else if (two_list.length > max && j >= item_two && j < item_two * 2) {
-    //             $(".level_two_ul_box ul:nth-child(2)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
-    //         } else {
-    //             $(".level_two_ul_box ul:nth-child(3)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv2'></use></svg>" + two_list[j].wechat + "</li>");
-    //         }
-    //     });
-    //     level_three();
-    // }
-
-    //3生成列表
-    // function ListThree() {
-    //     $.each(three_list, function (j, val) {
-    //         if (three_list.length <= max || j < item_three) {
-    //             $(".level_three_ul_box ul:nth-child(1)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv3'></use></svg>" + three_list[j].wechat + "</li>");
-    //         } else if (three_list.length > max && j >= item_three && j < item_three * 2) {
-    //             $(".level_three_ul_box ul:nth-child(2)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv3'></use></svg>" + three_list[j].wechat + "</li>");
-    //         } else {
-    //             $(".level_three_ul_box ul:nth-child(3)").append("<li class='wow slideInLeft' data-wow-delay='800ms'><svg class='icon'><use xlink:href='#icon-lv3'></use></svg>" + three_list[j].wechat + "</li>");
-    //         }
-    //     });
-    //     textRandom();
-    // }
-
 
     function Prepend(val) {
         setTimeout(function () {
