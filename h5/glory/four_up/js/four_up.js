@@ -1,7 +1,7 @@
 $(function () {
     let url_path = window.location.hostname;
     let url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
-    let all_list = [], item_list_arr = [], item_length = 0;
+    let all_list = [], item_list_arr = [], div = "";
     $.ajax(
         {
             type: "GET",
@@ -20,11 +20,19 @@ $(function () {
                     }
                 });
                 for (let i = 0; i < item_list_arr.length; i++) {
-                    console.log(item_list_arr[i]);
                     for (let j = 0; j < item_list_arr[i].length; j++) {
-                        console.log(item_list_arr[i].length);
+                        div += "<div class='up_item'>" +
+                            "<h2>" + item_list_arr[i] + "</h2>" +
+                            "<ul>" +
+                            "<li>" +
+                            "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" +
+                            "<span>" + item_list_arr[i][j] + "</span>" +
+                            "</li>" +
+                            "</ul>" +
+                            "</div>"
                     }
                 }
+                $(".up_content").html(div);
             }
         }
     )
