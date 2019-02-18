@@ -5,7 +5,7 @@ $(function () {
     // let url = "test.json";
     let letter_arr = [], one_list = [], two_list = [], three_list = [];
     let text_timer = "", item_one = "", item_two = "", item_three = "", ul_num = 2;
-    let item_list_arr = [], level_list = [];
+    let item_list = [], item_list_arr = [], level_list = [];
 
     //判断是否在规定时间内
     function Start() {
@@ -52,59 +52,45 @@ $(function () {
             dataType: "json",
             success: function (res) {
                 let data = res.all_list;
+                item_list = res;
                 if(data == ""){
                     ErrorPrompt("暂无数据");
                     return;
                 }
-                // one_list = res.list_1;
-                // two_list = res.list_2;
-                // three_list = res.list_3;
-                // console.log(one_list);
-                // console.log("length:" + three_list.length);
-                // item_one = Math.ceil(one_list.length / ul_num);
-                // item_two = Math.ceil(two_list.length / ul_num);
-                // item_three = Math.ceil(three_list.length / ul_num);
-                // console.log(item_one);
-                // console.log(item_two);
-                // console.log(item_three);
-                // $(".one_level_num").text(one_list.length);
-                // $(".two_level_num").text(two_list.length);
-                // $(".three_level_num").text(three_list.length);
+
                 $.each(data, function (i, val) {
                     letter_arr.push(data[i].wechat);
                 });
 
-                let item_list = res;
-                $.each(item_list, function (i, val) {
-                    if (i.indexOf("list_") > -1) {
-                        item_list_arr.push(item_list[i]);
-                        level_list.push(i);
-                    }
-                });
-                for (let i = 0; i < item_list_arr.length; i++) {
-                    let div = $("<div class='up_item'><h2><svg class='icon'><use xlink:href='#icon-lv"+ level_list[i].split("list_")[1] +"'></use></svg><span>" + level_list[i].split("list_")[1] + "</span>级用户</h2><ul class='item_ul'></ul></div>");
-                    let li = "";
-                    for (let j = 0; j < item_list_arr[i].length; j++) {
-                        li += "<li>" +
-                            "<svg class='icon'><use xlink:href='#icon-lv"+ level_list[i].split("list_")[1] +"'></use></svg>" +
-                            "<span title=" + item_list_arr[i][j].wechat + ">" + item_list_arr[i][j].wechat + "</span>" +
-                            "</li>";
-                    }
-                    div.find(".item_ul").html(li);
-                    $(".up_content").append(div);
+                if (type != "guo") {
+                    particleAlphabetFun(max);
+                } else {
+                    $("#text").remove();
+                    upItemFun();
                 }
-
-                // max = Math.max(item_one, item_two, item_three);
-                // max = 35;
-
-                // if (type != "guo") {
-                //     particleAlphabetFun(max);
-                // } else {
-                //     $("#text").remove();
-                //     // level_one();
-                // }
             }
         });
+    }
+
+    function upItemFun() {
+        $.each(item_list, function (i, val) {
+            if (i.indexOf("list_") > -1) {
+                item_list_arr.push(item_list[i]);
+                level_list.push(i);
+            }
+        });
+        for (let i = 0; i < item_list_arr.length; i++) {
+            let div = $("<div class='up_item'><h2><svg class='icon'><use xlink:href='#icon-lv"+ level_list[i].split("list_")[1] +"'></use></svg><span>" + level_list[i].split("list_")[1] + "</span>级用户</h2><ul class='item_ul'></ul></div>");
+            let li = "";
+            for (let j = 0; j < item_list_arr[i].length; j++) {
+                li += "<li>" +
+                    "<svg class='icon'><use xlink:href='#icon-lv"+ level_list[i].split("list_")[1] +"'></use></svg>" +
+                    "<span title=" + item_list_arr[i][j].wechat + ">" + item_list_arr[i][j].wechat + "</span>" +
+                    "</li>";
+            }
+            div.find(".item_ul").html(li);
+            $(".up_content").append(div);
+        }
     }
 
 
@@ -236,9 +222,8 @@ $(function () {
                     // particleAlphabet.currentPos = 0;
                     clearInterval(text_timer);
                     setTimeout(function () {
-                        // $("body,html").addClass('bg_black');
                         $("#text").remove();
-                        // level_one();
+                        upItemFun();
                     }, 1000);
 
                 }
