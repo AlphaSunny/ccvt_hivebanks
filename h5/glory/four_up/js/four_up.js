@@ -18,8 +18,10 @@ $(function () {
                     console.log(i.indexOf("list_"));
                     if (i.indexOf("list_") > -1) {
                         console.log(item_list[i]);
+                        item_list_arr.push(item_list[i]);
                     }
-                })
+                });
+                console.log(item_list_arr);
             }
         }
     )
