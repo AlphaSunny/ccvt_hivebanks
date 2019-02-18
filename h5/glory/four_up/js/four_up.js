@@ -24,7 +24,7 @@ $(function () {
                     for (let j = 0; j < item_list_arr[i].length; j++) {
                         li += "<li>" +
                             "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" +
-                            "<span>" + item_list_arr[i][j].wechat + "</span>" +
+                            "<span title=" + item_list_arr[i][j].wechat + ">" + item_list_arr[i][j].wechat + "</span>" +
                             "</li>";
                     }
                     div.find(".item_ul").append(li);
