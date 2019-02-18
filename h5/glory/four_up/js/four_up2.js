@@ -215,7 +215,7 @@ $(function () {
                 particleAlphabet.currentPos++;
                 if (particleAlphabet.currentPos >= letters.length) {
                     // particleAlphabet.currentPos = 0;
-                    // clearInterval(text_timer);
+                    clearInterval(text_timer);
                     // setTimeout(function () {
                     //     $("body,html").addClass('bg_black');
                     //     $("#text,.show_name").remove();
