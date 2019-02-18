@@ -3,8 +3,7 @@ $(function () {
     let ok_url = window.location.search.split("=")[1];
     let url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
     // let url = "test.json";
-    let letter_arr = [], one_list = [], two_list = [], three_list = [];
-    let text_timer = "", item_one = "", item_two = "", item_three = "", ul_num = 2;
+    let letter_arr = [],text_timer = "";
     let item_list = [], item_list_arr = [], level_list = [];
 
     //判断是否在规定时间内
