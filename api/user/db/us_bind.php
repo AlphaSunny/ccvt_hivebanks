@@ -499,6 +499,7 @@ function application_group($us_id,$group_name,$group_type_id,$group_introduction
     }else{
         $date['name'] = $group_name;
         $date['us_id'] = $us_id;
+        $date['bot_us_id'] = $us_id;
         $date['group_type'] = $group_type_id;
         $date['intime'] = time();
         $sql = "select us_nm from us_base WHERE us_id='{$us_id}'";
