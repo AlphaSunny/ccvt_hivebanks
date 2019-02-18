@@ -1,7 +1,7 @@
 $(function () {
     let url_path = window.location.hostname;
     let url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
-    let all_list = [], item_list_arr = [], div = "", li = "";
+    let all_list = [], item_list_arr = [], li = "";
     $.ajax(
         {
             type: "GET",
@@ -25,7 +25,7 @@ $(function () {
                         li += "<li>" +
                             "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" +
                             "<span>" + item_list_arr[i][j].wechat + "</span>" +
-                            "</li>" +
+                            "</li>";
                             div.find(".item_ul").append(li);
                         $(".up_content").append(div);
                     }
