@@ -27,6 +27,7 @@ $(function () {
                             "<svg class='icon'><use xlink:href='#icon-lv"+ level_list[i].split("list_")[1] +"'></use></svg>" +
                             "<span title=" + item_list_arr[i][j].wechat + ">" + item_list_arr[i][j].wechat + "</span>" +
                             "</li>";
+                        li = "";
                     }
                     div.find(".item_ul").html(li);
                     $(".up_content").append(div);
