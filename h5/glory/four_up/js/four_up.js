@@ -18,6 +18,7 @@ $(function () {
                     if (i.indexOf("list_") > -1) {
                         item_list_arr.push(item_list[i]);
                         console.log(i);
+                        level_list.push(i);
                     }
                 });
                 for (let i = 0; i < item_list_arr.length; i++) {
