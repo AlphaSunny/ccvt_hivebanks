@@ -69,7 +69,7 @@
                     $("#form").attr("action", "http://" + search_pory + "/search");
                     $("#qr_img").attr("src", response.rows.qr_path);
                     if (response.rows.robot_alive == "1") {
-                        // window.location.href = url+"/h5/bot_web2/home.html";
+                        window.location.href = url+"/h5/bot_web2/home.html";
                         $(".robot_qr,.form_box").remove();
                         $(".success_box").fadeIn();
                         $(".login_time").text(response.rows.login_time);
