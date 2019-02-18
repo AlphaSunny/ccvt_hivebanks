@@ -676,6 +676,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $com_balance_ba['hash_id'] = hash('md5', $transfer_us_id. $type . '127.0.0.1' . time() . rand(1000, 9999) . microtime());
         $com_balance_ba['tx_id'] = $dat['tx_hash'];
         $prvs_hash = get_recharge_pre_hash($transfer_us_id);
+
+        //
         $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$transfer_us_id) : $prvs_hash;
         $com_balance_ba["credit_id"] = $transfer_us_id;
         $com_balance_ba["debit_id"] = $us_id;

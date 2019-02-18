@@ -42,8 +42,6 @@ list($limit, $offset) = get_paging_arg('GET');
 //验证token
 $us_id = check_token($token);
 
-$vail = 'us_in';
-
 //用户信息
 $us_info = get_us_base_info_by_token($us_id);
 if(!$us_info)

@@ -764,6 +764,7 @@ function into_transfer_balance($us_id,$send_money,$flag,$detail,$type,$transfer_
 
     /***********************资金变动记录表***********************************/
     //减钱记录
+    // TODO: 和跑数据的不同
     $com_balance_us['hash_id'] = hash('md5', $credit_id . $type . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $com_balance_us['tx_id'] = $transfer['tx_hash'] ? $transfer['tx_hash'] : hash('md5', $credit_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $prvs_hash = get_balance_pre_hash($credit_id);

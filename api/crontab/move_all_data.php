@@ -414,6 +414,7 @@ function get_us_base_amount($us_id){
 
 //======================================
 // 函数: 获取上传交易hash
+// TODO:
 //======================================
 function get_pre_hash($credit_id){
     $db = new DB_COM();
