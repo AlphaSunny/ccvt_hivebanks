@@ -17,6 +17,7 @@ $(function () {
                 $.each(item_list, function (i, val) {
                     console.log(i.indexOf("list_"));
                     if (i.indexOf("list_") > -1) {
+                        console.log(i);
                         console.log(item_list[i]);
                         item_list_arr.push(item_list[i]);
                     }
