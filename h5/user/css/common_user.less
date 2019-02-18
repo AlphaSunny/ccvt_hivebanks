@@ -38,6 +38,10 @@ body {
   color: @main-bg;
 }
 
+.btn {
+  outline: none !important;
+}
+
 .btn_color {
   background-color: @btn_hover_color;
   border-color: @btn_hover_color;
@@ -87,19 +91,24 @@ li {
   list-style: none;
 }
 
+.color(@_color) {
+  @color: @_color;
+}
+
+.color_red {
+  .color(red);
+  color: @color;
+}
+
+.color_green {
+  .color(green);
+  color: @color;
+}
+
 .white_bg {
   background: @main-bg;
 }
 
-//.loading {
-//  position: @_fixed;
-//  width: @_100;
-//  height: @_100;
-//  left: 0;
-//  top: 0;
-//  background: #fff;
-//  z-index: 999;
-//}
 .width-100 {
   width: @_100;
 }
@@ -153,6 +162,7 @@ li {
     line-height: 64px !important;
     padding: 0 12px !important;
     color: #ffffff !important;
+    background: transparent !important;
     text-decoration: none;
     outline: none;
     cursor: pointer;
@@ -223,10 +233,12 @@ td, th {
   .list_box_content {
     .list_box_item {
       padding: 15px;
-      height: @height_50;
-      line-height: @height_50;
+      height: @height_50 + 10;
+      line-height: @height_50 + 10;
       border-bottom: @border;
       transition: all 0.3s;
+      z-index: 10;
+
       &:hover {
         background: #0a0a0a;
         color: @main-bg;
@@ -327,6 +339,10 @@ td, th {
   margin-left: @default_even_px + @default_odd_px;
 }
 
+.margin-right-5 {
+  margin-right: @default_even_px + @default_odd_px;
+}
+
 .margin-left-10 {
   margin-left: @default_even_px * 5;
 }
@@ -339,6 +355,10 @@ td, th {
   margin-bottom: @default_even_px * 5;
 }
 
+.margin-bottom-26 {
+  margin-bottom: @default_even_px * 13;
+}
+
 .margin-bottom-50 {
   margin-bottom: @default_even_px * 25;
 }
@@ -348,9 +368,20 @@ td, th {
   padding: 100px 0;
 }
 
+.padding-left-20 {
+  padding-left: @default_even_px * 10 !important;
+}
+
+.padding-right-20 {
+  padding-right: @default_even_px * 10 !important;
+}
+
 .footer_box {
   margin-top: @height_50;
   height: @default_odd_px*100+5;
+  @media only screen and (max-width: 768px) {
+    min-height: @default_even_px * 228;
+  }
 }
 
 /*customize-modal*/

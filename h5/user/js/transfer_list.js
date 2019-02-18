@@ -4,6 +4,7 @@ $(function () {
 
     //transfer out list
     let limit = 10, offset = 0, type = 1;
+    let limit_in = 10, offset_in = 0, type_in = 2;
 
     function TransferListFun(limit, offset, type) {
         TransferList(token, limit, offset, type, function (response) {
@@ -31,12 +32,13 @@ $(function () {
                         "<td>" + data[i].tx_time + "</td>" +
                         "<td>" +
                         "<span class='qa_id none' name='" + data[i].qa_id + "'></span>" +
-                        "<button class='btn btn-success btn-sm transfer_confirm'>确认</button>" +
-                        "<button class='btn btn-danger btn-sm transfer_cancel margin-left-10'>取消</button>" +
+                        "<button class='btn btn-success btn-sm transfer_confirm i18n' name='confirm'></button>" +
+                        "<button class='btn btn-danger btn-sm transfer_cancel margin-left-10 i18n' name='cancel'></button>" +
                         "</td>" +
                         "</tr>"
                 });
                 $("#transfer_out_list").html(tr);
+                execI18n();
 
                 $("#pagination").pagination({
                     currentPage: (limit + offset) / limit,
@@ -90,6 +92,7 @@ $(function () {
             SuccessPrompt("处理成功");
             ShowLoading("hide");
             TransferListFun(limit, offset, type);
+            TransferInListFun(limit_in, offset_in, type_in)
         }, function (response) {
             ErrorPrompt(response.errmsg);
             ShowLoading("hide");
@@ -97,7 +100,6 @@ $(function () {
     }
 
     //transfer in list
-    let limit_in = 10, offset_in = 0, type_in = 2;
 
     function TransferInListFun(limit_in, offset_in, type_in) {
         TransferList(token, limit_in, offset_in, type_in, function (response) {
@@ -130,9 +132,9 @@ $(function () {
                     }
 
                     if (data[i].qa_flag == "1") {
-                        status = "<span class='i18n' name='confirmed'></span>"
+                        status = "<span class='i18n color_green' name='confirmed'></span>"
                     } else if (data[i].status == "2") {
-                        status = "<span class='i18n' name='canceled'></span>"
+                        status = "<span class='i18n color_red' name='canceled'></span>"
                     } else {
                         status = "<span class='i18n' name='invalidOrder'></span>"
                     }

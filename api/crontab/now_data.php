@@ -252,6 +252,18 @@ foreach ($gone_staff as $k=>$v){
     $gone_staff[$k]['transfer_us_id'] = "0";
 }
 
+//ca_in,ca_out
+//$sql = "select credit_id as us_id,tx_amount as send_money,ctime from com_base_balance2 WHERE tx_type='ca_out' AND debit_id='0F685EB8-1FA1-5C89-2C2A-5B2136031131'";
+//$db->query($sql);
+//$withdrawal = $db->fetchAll();
+//foreach ($withdrawal as $k=>$v){
+//    $withdrawal[$k]['flag'] = 15;
+//    $withdrawal[$k]['detail'] = "ca提现";
+//    $withdrawal[$k]['type'] = "ca_out";
+//    $withdrawal[$k]['transfer_type'] = "us-ba";
+//    $withdrawal[$k]['transfer_us_id'] = "0";
+//}
+
 //echo "离职回收(us锁定金额给ba):".count($gone_staff)."<br />";
 
 $list = array_merge(
@@ -270,7 +282,8 @@ $list = array_merge(
     $suocang,
     $big_us_interest,
     $dynamic_tuning,
-    $gone_staff
+    $gone_staff,
+    $withdrawal
 );
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 

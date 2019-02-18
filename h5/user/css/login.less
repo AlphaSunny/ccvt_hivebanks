@@ -1,0 +1,39 @@
+@import "common_user";
+
+.login_box {
+  margin: @default_even_px * 50 0;
+  padding: @default_odd_px * 5;
+  background: #ffffff;
+  border-radius: @default_even_px * 10;
+}
+
+.alert-tips {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 64px;
+  z-index: 99;
+}
+
+#phone_imgCode {
+  cursor: pointer;
+}
+
+.loginToggle {
+  &:extend(#phone_imgCode);
+}
+
+.loginToggle.active {
+  color: #337ab7;
+}
+
+.password_box {
+  position: @_relative;
+}
+
+.password_eyes {
+  position: @_absolute;
+  right: 1rem;
+  top: 18%;
+  cursor: pointer;
+}

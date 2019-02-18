@@ -19,7 +19,7 @@ GET参数
 //exit_error("101","系统维护");
 
 php_begin();
-$args = array('token','account','ccvt_num','code','pass_hash','confirm_fun_pass');
+$args = array('token','account','ccvt_num','code','pass_hash');
 chk_empty_args('GET', $args);
 
 // 用户token
@@ -28,15 +28,15 @@ $ccvt_num = get_arg_str('GET', 'ccvt_num');
 $account = get_arg_str('GET', 'account');
 //资金密码哈希
 $pass_hash = get_arg_str('GET', 'pass_hash');
-//确认资金密码哈希
-$confirm_fun_pass = get_arg_str('GET', 'confirm_fun_pass');
+////确认资金密码哈希
+//$confirm_fun_pass = get_arg_str('GET', 'confirm_fun_pass');
 //识别码(邀请码)
 $code = get_arg_str('GET', 'code');
 //验证token
 $us_id = check_token($token);
 
 
-if (!(is_numeric($account))&&strpos($account, '.')) {
+if (!(is_numeric($ccvt_num))&&strpos($ccvt_num, '.')) {
     exit_error("150","金额错误");
 }
 
@@ -47,10 +47,10 @@ if (!$check_pass_hash){
     exit_error("150","资金密码错误");
 }
 
-//判断确认密码使用一致
-if ($pass_hash!=$confirm_fun_pass){
-    exit_error("150","资金密码与确认密码不一致");
-}
+////判断确认密码使用一致
+//if ($pass_hash!=$confirm_fun_pass){
+//    exit_error("150","资金密码与确认密码不一致");
+//}
 
 //判断是否有此账号
 $is_account = check_us_account($account);

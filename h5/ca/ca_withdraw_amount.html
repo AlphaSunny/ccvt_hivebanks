@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title class="i18n" name="withdraw"></title>
+    <title class="i18n" name="ca_out"></title>
     <script src="../assets/js/write_css.js"></script>
     <script src="../user/js/user_write_css.js"></script>
-    <link rel="stylesheet" href="css/ca_withdraw_amount.less">
+    <link rel="stylesheet/less" href="css/ca_withdraw_amount.less">
 </head>
 <body>
 
@@ -90,7 +90,7 @@
 
                 <!--<li><a href="transfer.html" class="i18n" name="transfer">Transfer</a></li>-->
                 <li>
-                    <a href="account.html" class="nav_a">
+                    <a href="../user/account.html" class="nav_a">
                         <span><i class="iconfont icon-account"></i></span>
                         <span class="us_account" name=""></span>
                     </a>
@@ -149,86 +149,86 @@
         </div>
         <div class="row pay-row margin-top-2">
             <div class="col-md-12 col-sm-12">
-                <div class="baInfoBox">
-                    <p class="font-size-14 font-weight-400">
-                        <span class="i18n" name="currRate"></span>:
-                        <span class="curr_withdraw_rate">
+                <div class="table_bg">
+                    <div class="baInfoBox">
+                        <p class="font-size-14 font-weight-400">
+                            <span class="i18n" name="currRate"></span>:
+                            <span class="curr_withdraw_rate">
                             1<span class="base_type"></span>=
                             <span class="base_rate"></span>
                             <span class="bit_type ca_currency"></span>
                         </span>
-                    </p>
-                    <p class="font-size-14 font-weight-400">
-                        <span class="i18n" name="effectiveTime"></span>:
-                        <span class="withdraw_ctime"></span>
-                    </p>
-                </div>
-                <div>
-                    <p class="font-size-14 font-weight-400">
-                        <span class="i18n" name="withdrawMaxAmount"></span>:
-                        <span class="withdraw_max_amount"></span>
-                        <span class="base_type"></span>
-                    </p>
-                    <p class="font-size-14 font-weight-400">
-                        <span class="i18n" name="withdrawMinAmount"></span>:
-                        <span class="withdraw_min_amount"></span>
-                        <span class="base_type"></span>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col col-md-12 col-sm-12">
-                <label for="payAmount" class="payAmount i18n" name="withdrawAmount">Locked Up Cash Amount</label>
-                <div class="flex center rechargeInfoRow">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input id="payAmount" type="text"
-                                   class="form-control base_amount_input rechargeInput font-size-14">
-                            <span class="pay_bit_type margin-left-1 font-weight-400 base_type input-group-addon"></span>
-                        </div>
+                        </p>
+                        <p class="font-size-14 font-weight-400">
+                            <span class="i18n" name="effectiveTime"></span>:
+                            <span class="withdraw_ctime"></span>
+                        </p>
                     </div>
-                    <span class="icon margin-left-1 margin-right-1"><i class="iconfont icon-transfer"></i></span>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" id="withdrawAmount"
-                                   class="form-control bit_amount_input rechargeInputSum chg_amount font-size-14">
-                            <span class="margin-left-1 font-weight-400 bit_type input-group-addon ca_currency"></span>
-                        </div>
+                    <div>
+                        <p class="font-size-14 font-weight-400">
+                            <span class="i18n" name="withdrawMaxAmount"></span>:
+                            <span class="withdraw_max_amount"></span>
+                            <span class="base_type"></span>
+                        </p>
+                        <p class="font-size-14 font-weight-400">
+                            <span class="i18n" name="withdrawMinAmount"></span>:
+                            <span class="withdraw_min_amount"></span>
+                            <span class="base_type"></span>
+                        </p>
                     </div>
                 </div>
-                <div>
-                    <p class="font-size-14 margin-top-1">
-                        <span class="i18n" name="accountBalance">accountBalance</span>:
-                        <span class="base_amount"></span>
-                        <span class="base_type"></span>
-                        <a href="javascript:;" class="allWithdraw i18n" name="allWithdraw">allWithdraw</a>
-                        <a href="javascript:;" class="ty-color no_base_amount none">Insufficient balance</a>
-                    </p>
-                </div>
+
             </div>
         </div>
 
-        <div class="row margin-top-2 margin-bottom-2">
-            <div class="col-md-6 col-sm-12">
-                <div class="form-group margin-bottom-5">
-                    <label for="idNum">银行卡号</label>
-                    <input type="text" class="form-control" id="idNum">
-                </div>
-                <div class="form-group">
-                    <label for="name">姓名</label>
-                    <input type="text" class="form-control" id="name">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
+        <div class="row margin-top-50">
             <div class="col col-md-12 col-sm-12">
-                <a class="btn btn-success lockAmountBtn margin-bottom-2 i18n" data-toggle="modal"
-                   name="lockWithdrawAmount"></a>
-                <p class="font-size-12">(<span class="ty-color i18n" name="transferBefore">Be sure to do this before transferring funds,</span> <span
-                        class="i18n" name="lockAfter">After the order is locked, it cannot be canceled manually</span>)</p>
+                <div class="table_bg">
+                    <label for="payAmount" class="payAmount i18n" name="withdrawAmount"></label>
+                    <div class="flex center rechargeInfoRow">
+                        <div class="form-group input_box">
+                            <div class="input-group">
+                                <input id="payAmount" type="text"
+                                       class="form-control base_amount_input rechargeInput font-size-14">
+                                <span class="pay_bit_type base_type input-group-addon"></span>
+                            </div>
+                            <span class="icon icon_transfer"><i class="iconfont icon-transfer"></i></span>
+                            <div class="input-group">
+                                <input type="text" id="withdrawAmount"
+                                       class="form-control bit_amount_input rechargeInputSum chg_amount font-size-14">
+                                <span class="margin-left-1 font-weight-400 bit_type input-group-addon ca_currency"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-size-14 margin-top-1">
+                            <span class="i18n" name="accountBalance"></span>:
+                            <span class="base_amount"></span>
+                            <span class="base_type"></span>
+                            <a href="javascript:;" class="allWithdraw i18n" name="allWithdraw"></a>
+                            <a href="javascript:;" class="ty-color no_base_amount none"></a>
+                        </p>
+                    </div>
+
+                    <div class="margin-top-50">
+                        <div class="form-group margin-bottom-5">
+                            <label for="idNum">银行卡号</label>
+                            <input type="text" class="form-control" id="idNum">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                    </div>
+
+                    <div>
+                        <a class="btn btn-success lockAmountBtn margin-bottom-2 i18n" data-toggle="modal"
+                           name="lockWithdrawAmount"></a>
+                        <p class="font-size-12">(<span class="ty-color i18n" name="transferBefore"></span>
+                            <span class="i18n" name="lockAfter"></span>)
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -241,17 +241,22 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                 <h4 class="modal-title pcTitle i18n" name="beforeConfirm">Please read carefully before you confirm</h4>
-                <h4 class="modal-title phoneTitle i18n" name="beforeConfirm">Please read carefully before you confirm</h4>
             </div>
             <div class="modal-body">
                 <div class="confirmReadingBox">
-                    <p class="font-size-14 line-height-2 phone-font-size-12 i18n" name="lockTipsOne">1, After locking the recharge amount, be sure to pay within 30 minutes.</p>
-                    <p class="font-size-14 line-height-2 phone-font-size-12 i18n" name="lockTipsTwo">2, If you do not complete the recharge transaction within the specified time, your credit will be affected and the system will record your bad credit record.</p>
-                    <p class="font-size-14 line-height-2 phone-font-size-12 i18n" name="lockTipsThree">3, Your late trading operation will be restricted due to multiple bad credit records.</p>
+                    <p class="font-size-14 line-height-2 phone-font-size-12 i18n" name="lockTipsOne">1, After locking
+                        the recharge amount, be sure to pay within 30 minutes.</p>
+                    <p class="font-size-14 line-height-2 phone-font-size-12 i18n" name="lockTipsTwo">2, If you do not
+                        complete the recharge transaction within the specified time, your credit will be affected and
+                        the system will record your bad credit record.</p>
+                    <p class="font-size-14 line-height-2 phone-font-size-12 i18n" name="lockTipsThree">3, Your late
+                        trading operation will be restricted due to multiple bad credit records.</p>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" disabled class="btn btn-success i18n width-100 ruleBtn" name="determine">determine</button>
+                <button type="button" disabled class="btn btn-success i18n width-100 ruleBtn" name="determine">
+                    determine
+                </button>
             </div>
         </div>
     </div>

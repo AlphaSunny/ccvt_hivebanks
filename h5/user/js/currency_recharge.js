@@ -72,7 +72,7 @@ $(function () {
                     // ca_tx_hash_arr.push(data[i].tx_hash.substr(0, 20) + '...');
                     tr += '<tr>' +
                         '<td title=' + data[i].tx_hash + '>' + data[i].tx_hash + '</td>' +
-                        '<td>' + data[i].lgl_amount + '</td>' +
+                        // '<td>' + data[i].lgl_amount + '</td>' +
                         '<td>' + data[i].base_amount + '</td>' +
                         '<td>' + data[i].tx_time + '</td></tr>';
                 });

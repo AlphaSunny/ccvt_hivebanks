@@ -39,6 +39,11 @@ $row = us_send_ccvt_record($us_id,$qa_id,$qa_flag);
 
 if (!$row){
     exit_error("101","fail");
+}elseif ($qa_flag==1){
+    require_once "db/la_admin.php";
+    $key_code = get_la_admin_info()["key_code"];
+    //发送短信
+    $output_array = transfer_sms_send($us_id,$key_code);
 }
 
 // 返回数据做成

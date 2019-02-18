@@ -1,0 +1,28 @@
+@import "common_user";
+
+.register_box {
+  margin: @default_even_px * 50 0;
+  padding: @default_odd_px * 5;
+  background: #ffffff;
+  border-radius: @default_even_px * 10;
+}
+
+.alert-tips {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 64px;
+  z-index: 99;
+}
+
+#phone_imgCode {
+  cursor: pointer;
+}
+
+.registerToggle {
+  &:extend(#phone_imgCode);
+}
+
+.registerToggle.active {
+  color: #337ab7;
+}

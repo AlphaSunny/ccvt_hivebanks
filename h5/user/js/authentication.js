@@ -26,13 +26,13 @@ $(function () {
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '0') {//Name review
                         name = data[i].bind_name;
                         let info = data[i].bind_info;
-                        $(".nameNotBind,.nameBindBtn,.nameAlreadyBind,#nameBindModal").remove();
+                        $(".nameBindBtn,.nameAlreadyBind,#nameBindModal").remove();
                         $(".nameBindInfo").text(info).removeClass("none");
                         $(".nameUnderReview").removeClass("none");
                         return;
                     } else if (data[i].bind_name == 'name' && data[i].count_error == '1') {//Name review rejection
                         $(".nameNotBind,.nameUnderReview,.nameAlreadyBind").remove();
-                        $(".nameUnderReview").text("认证被拒绝，请重新绑定").removeClass("none");
+                        $(".nameUnderReview").text("认证被拒绝，请重新绑定").removeClass("none i18n");
                         return;
                     }
 
@@ -53,7 +53,7 @@ $(function () {
                         return;
                     } else if (data[i].bind_name == 'idNum' && data[i].count_error == '1') {//ID card number review rejection
                         $(".idCardNotBind,.idCardUnderReview,.idCardAlreadyBind").remove();
-                        $(".idCardUnderReview").text("认证被拒绝，请重新绑定").removeClass("none");
+                        $(".idCardUnderReview").text("认证被拒绝，请重新绑定").removeClass("none i18n");
                         return;
                     }
 
@@ -81,7 +81,7 @@ $(function () {
                         return;
                     } else if (data[i].bind_name == 'idPhoto' && data[i].count_error == '1') {//Upload ID card review rejection
                         $(".idPhotoNotBind,.idPhotoBindInfo,.idPhotoAlreadyBind").remove();
-                        $(".idPhotoUnderReview").text("认证被拒绝，请重新绑定").removeClass("none");
+                        $(".idPhotoUnderReview").text("认证被拒绝，请重新绑定").removeClass("none i18n");
                         return;
                     }
                 });

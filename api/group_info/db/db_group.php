@@ -104,7 +104,7 @@ function get_group_info($group_id)
         $row['group_lord'] = $db->getField($sql,'wechat');
     }
     $row['row'] = $row;
-    
+
     $weeks = get_weeks();
     foreach ($weeks as $k=>$v){
         $bind_rows[$k-1]['date'] = $v;

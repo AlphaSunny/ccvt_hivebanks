@@ -41,10 +41,16 @@ $(function () {
             phoneCode = $('#phoneCode').val(),
             hash = hex_sha1($('#fundPassword').val()),
             password = $('#password').val(),
-            pass_word_hash = hex_sha1(password);
+            pass_word_hash = hex_sha1(password),
+            confirm_pass_hash = hex_sha1($('#confirmPassword').val());
         if ($('#fundPassword').val().length <= 0) {
             // LayerFun('funPassNotEmpty');
             WarnPrompt("请输入资金密码");
+            return;
+        }
+
+        if ($('#confirmPassword').val().length <= 0) {
+            WarnPrompt("请输入确认资金密码");
             return;
         }
 
@@ -69,15 +75,15 @@ $(function () {
         let $this = $(this), btnText = $this.text();
         if (DisableClick($this)) return;
         ShowLoading("show");
-        Hash(token, hash_type, hash, pass_word_hash, phone, phoneCode, function (response) {
+        Hash(token, hash_type, hash, pass_word_hash, confirm_pass_hash, phone, phoneCode, function (response) {
             if (response.errcode == '0') {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
                 // LayerFun("modifySuccess");
                 SuccessPrompt("修改成功");
-                setInterval(()=>{
+                setInterval(() => {
                     window.location.href = 'security.html';
-                },2000);
+                }, 2000);
             }
         }, function (response) {
             ShowLoading("hide");

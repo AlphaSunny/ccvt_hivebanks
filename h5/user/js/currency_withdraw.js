@@ -5,7 +5,7 @@ $(function () {
 
     //get base_type
     let base_type = GetCookie('benchmark_type');
-    
+
     //Get user binding information
     let us_bind_type_name = '', us_bind_type_idNum = '', us_bind_type_file = '', us_bind_name_idPhoto = '';
     BindingInformation(token, function (response) {
@@ -112,71 +112,71 @@ $(function () {
             LayerFun('pleaseEnterCorrectWithdrawAmount');
             return;
         }
-        window.location.href = '../ca/CaWithdraw.html?us_ca_withdraw_amount=' + base_amount;
+        window.location.href = '../ca/ca_withdraw.html?us_ca_withdraw_amount=' + base_amount;
     });
 
-    // BA withdrawal record
-    let limit = 10, offset = 0, ba_api_url = 'log_ba_withdraw.php';
+    // CA withdrawal record
+    // let limit = 10, offset = 0, ba_api_url = 'log_ba_withdraw.php';
 
-    function GetBaWithdrawCodeFun(limit, offset) {
-        let tr = "", totalPage = "", count = "", ba_state = "";
-        AllRecord(token, limit, offset, ba_api_url, function (response) {
-            ShowLoading("hide");
-            if (response.errcode == '0') {
-                let data = response.rows;
-                let total = response.total;
-                totalPage = Math.floor(total / limit);
-                if (totalPage <= 1) {
-                    count = 1;
-                } else if (1 < totalPage && totalPage <= 6) {
-                    count = totalPage;
-                } else {
-                    count = 6;
-                }
-                if (data == false) {
-                    GetDataEmpty('baWithdrawCodesTable', '6');
-                    return;
-                }
-                $.each(data, function (i, val) {
-                    if (data[i].state == "1") {
-                        ba_state = "<td class='i18n' name='processed'></td>"
-                    } else {
-                        ba_state = "<td class='i18n' name='unProcessed'></td>"
-                    }
-                    tr += '<tr>' +
-                        '<td>' + data[i].asset_id + '</td>' +
-                        '<td>' + data[i].base_amount + '</td>' +
-                        '<td title=' + data[i].address + '>' + data[i].address.substr(0, 20) + '</td>' +
-                        '<td>' + data[i].tx_time + '</td>' +
-                        ba_state +
-                        '<td title=' + data[i].transfer_tx_hash + '>' + data[i].transfer_tx_hash.substr(0, 20) + '</td>' +
-                        '</tr>'
-                });
-                $("#baWithdrawCodesTable").html(tr);
-                execI18n();
-                $("#pagination_ba").pagination({
-                    currentPage: (limit + offset) / limit,
-                    totalPage: totalPage,
-                    isShow: false,
-                    count: count,
-                    prevPageText: "<<",
-                    nextPageText: ">>",
-                    callback: function (current) {
-                        GetBaWithdrawCodeFun(limit, (current - 1) * limit);
-                        ShowLoading("show");
-                    }
-                });
-            }
-        }, function (response) {
-            ShowLoading("hide");
-            GetDataFail('baWithdrawCodesTable', '6');
-            if (response.errcode == '114') {
-                window.location.href = 'login.html';
-            }
-        });
-    }
+    // function GetBaWithdrawCodeFun(limit, offset) {
+    //     let tr = "", totalPage = "", count = "", ba_state = "";
+    //     AllRecord(token, limit, offset, ba_api_url, function (response) {
+    //         ShowLoading("hide");
+    //         if (response.errcode == '0') {
+    //             let data = response.rows;
+    //             let total = response.total;
+    //             totalPage = Math.floor(total / limit);
+    //             if (totalPage <= 1) {
+    //                 count = 1;
+    //             } else if (1 < totalPage && totalPage <= 6) {
+    //                 count = totalPage;
+    //             } else {
+    //                 count = 6;
+    //             }
+    //             if (data == false) {
+    //                 GetDataEmpty('baWithdrawCodesTable', '6');
+    //                 return;
+    //             }
+    //             $.each(data, function (i, val) {
+    //                 if (data[i].state == "1") {
+    //                     ba_state = "<td class='i18n' name='processed'></td>"
+    //                 } else {
+    //                     ba_state = "<td class='i18n' name='unProcessed'></td>"
+    //                 }
+    //                 tr += '<tr>' +
+    //                     '<td>' + data[i].asset_id + '</td>' +
+    //                     '<td>' + data[i].base_amount + '</td>' +
+    //                     '<td title=' + data[i].address + '>' + data[i].address.substr(0, 20) + '</td>' +
+    //                     '<td>' + data[i].tx_time + '</td>' +
+    //                     ba_state +
+    //                     '<td title=' + data[i].transfer_tx_hash + '>' + data[i].transfer_tx_hash.substr(0, 20) + '</td>' +
+    //                     '</tr>'
+    //             });
+    //             $("#baWithdrawCodesTable").html(tr);
+    //             execI18n();
+    //             $("#pagination_ba").pagination({
+    //                 currentPage: (limit + offset) / limit,
+    //                 totalPage: totalPage,
+    //                 isShow: false,
+    //                 count: count,
+    //                 prevPageText: "<<",
+    //                 nextPageText: ">>",
+    //                 callback: function (current) {
+    //                     GetBaWithdrawCodeFun(limit, (current - 1) * limit);
+    //                     ShowLoading("show");
+    //                 }
+    //             });
+    //         }
+    //     }, function (response) {
+    //         ShowLoading("hide");
+    //         GetDataFail('baWithdrawCodesTable', '6');
+    //         if (response.errcode == '114') {
+    //             window.location.href = 'login.html';
+    //         }
+    //     });
+    // }
 
-    GetBaWithdrawCodeFun(limit, offset);
+    // GetBaWithdrawCodeFun(limit, offset);
 
     // CA withdrawal record
     let limit_ca = 10, offset_ca = 0, ca_api_url = 'log_ca_withdraw.php';
@@ -201,18 +201,18 @@ $(function () {
                     return;
                 }
                 $.each(data, function (i, val) {
-                    if (data[i].state == "1") {
-                        ba_state = "<td class='i18n' name='processed'></td>"
+                    if (data[i].qa_flag == "0") {
+                        ba_state = "<td class='i18n' name='processing'></td>";
+                    } else if (data[i].qa_flag == "1") {
+                        ba_state = "<td class='i18n color_green' name='processed'></td>";
                     } else {
-                        ba_state = "<td class='i18n' name='unProcessed'></td>"
+                        ba_state = "<td class='i18n color_red' name='alreadyRefuse'></td>"
                     }
                     tr += '<tr>' +
-                        '<td>' + data[i].asset_id + '</td>' +
+                        '<td>' + JSON.parse(data[i].tx_detail).id_card.replace(/(.{4})/g,"$1 ") + '</td>' +
                         '<td>' + data[i].base_amount + '</td>' +
-                        '<td title=' + data[i].address + '>' + data[i].address.substr(0, 20) + '</td>' +
                         '<td>' + data[i].tx_time + '</td>' +
                         ba_state +
-                        '<td title=' + data[i].transfer_tx_hash + '>' + data[i].transfer_tx_hash.substr(0, 20) + '</td>' +
                         '</tr>'
                 });
                 $("#caWithdrawCodesTable").html(tr);
@@ -225,7 +225,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        GetBaWithdrawCodeFun(limit_ca, (current - 1) * limit_ca);
+                        GetCaWithdrawCodeFun(limit_ca, (current - 1) * limit_ca);
                         ShowLoading("show");
                     }
                 });

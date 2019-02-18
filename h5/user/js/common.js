@@ -13,9 +13,9 @@ function SetCookie(name, value) {
 function GetCookie(name) {
     let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
-    if (arr == null) {
-        window.location.href = 'login.html';
-    }
+    // if (arr == null) {
+    //     window.location.href = 'login.html';
+    // }
 }
 
 // Delete cookie function
@@ -35,7 +35,11 @@ function GetQueryString(name) {
     return null;
 }
 
-//正则验证
+//时间戳转时间24小时制
+function ToHour(new_time) {
+    return new Date(parseInt(new_time) * 1000).toLocaleString("chinese", {hour12: false});
+}
+
 // Email format check
 function IsEmail(s) {
     let patrn = /^(?:\w+\.?)*\w+@(?:\w+\.)*\w+$/;
@@ -480,15 +484,14 @@ function AllRecord(token, limit, offset, api_url, suc_func, error_func) {
 }
 
 //user to user transfer
-function TransferCCVT(token, account, code, ccvt_num, pass_hash, confirm_fun_pass, suc_func, error_func) {
+function TransferCCVT(token, account, code, ccvt_num, pass_hash, suc_func, error_func) {
     let api_url = "us_transfer_ccvt.php",
         post_data = {
             'token': token,
             'account': account,
             'code': code,
             'ccvt_num': ccvt_num,
-            'pass_hash': pass_hash,
-            'confirm_fun_pass': confirm_fun_pass
+            'pass_hash': pass_hash
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
@@ -573,7 +576,7 @@ function FileBind(token, file_type, file_url, suc_func, error_func) {
 }
 
 //hash binding
-function Hash(token, hash_type, hash, pass_word_hash, phone, phoneCode, suc_func, error_func) {
+function Hash(token, hash_type, hash, pass_word_hash, confirm_pass_hash, phone, phoneCode, suc_func, error_func) {
     let api_url = 'bnd_hash.php',
         post_data = {
             'token': token,
@@ -581,7 +584,8 @@ function Hash(token, hash_type, hash, pass_word_hash, phone, phoneCode, suc_func
             'phone': phone,
             'phoneCode': phoneCode,
             'hash_type': hash_type,
-            'pass_word_hash': pass_word_hash
+            'pass_word_hash': pass_word_hash,
+            'confirm_pass_hash': confirm_pass_hash
         };
     CallApi(api_url, post_data, suc_func, error_func);
 };
@@ -653,6 +657,15 @@ function LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name
             'us_account_id': us_account_id
         };
     CallCaApi(api_url, post_data, suc_func, error_func);
+}
+
+//User withdrawal order details
+function GetWithdrawInfo(token, suc_func, error_func) {
+    let api_url = 'order_ca_withdraw_list.php',
+        post_data = {
+            'token': token
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
 }
 
 //get us_account_id
@@ -783,10 +796,11 @@ function CountDown(count, ErrorNum, LoginBtn, input, LoginError) {
         LoginBtn.attr('disabled', false);
         input.attr('disabled', false);
         input.val('');
-        LoginError.fadeOut('fast');
+        LoginError.fadeOut();
+        $(".alert-warning").fadeOut();
         return;
     }
-    ;
+
     setTimeout(function () {
         CountDown(counts, ErrorNum, LoginBtn, input, LoginError)
     }, 1000)

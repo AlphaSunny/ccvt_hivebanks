@@ -1302,3 +1302,29 @@ function transfer_get_pre_count($credit_id)
         return 1;
     return $tx_count+1;
 }
+
+/**
+ * 短信通知
+ */
+function transfer_sms_send($us_id,$key_code)
+{
+    $db = new DB_COM();
+    $sql = "select replace(bind_info,'86-','')bind_info from us_bind where us_id='{$us_id}' AND bind_name='cellphone'";
+    $db->query($sql);
+    $cellphone = $db->getField($sql,'bind_info');
+    $url = "http://agent_service.fnying.com/sms/transfer_sms_send.php";
+    $post_data = array();
+    $post_data["cellphone"] = $cellphone;
+    $post_data["key_code"] = $key_code;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $output = curl_exec($ch);
+
+    curl_close($ch);
+    $output_array = json_decode($output, true);
+    return $output_array;
+}
+
