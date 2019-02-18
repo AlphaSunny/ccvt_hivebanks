@@ -44,7 +44,12 @@ li {
 }
 
 @media only screen and (max-width: 768px) {
+    .up_content{
+        width: 100%;
+        margin: 0;
+    }
     li{
-        width: 45%;
+        width: 50%;
+        margin: 0;
     }
 }
