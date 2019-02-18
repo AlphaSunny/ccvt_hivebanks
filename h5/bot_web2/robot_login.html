@@ -52,9 +52,9 @@
 <script type="text/javascript" src="js/common.js"></script>
 <script>
     GetCookie("user_token");
-    var us_id = GetCookie("us_id");
-    var url = getRootPath();
-    var search_pory = "", robot_alive = "", timer = "";
+    let us_id = GetCookie("us_id");
+    let url = getRootPath();
+    let search_pory = "", robot_alive = "", timer = "";
 
     function GetQr() {
         $.get({
