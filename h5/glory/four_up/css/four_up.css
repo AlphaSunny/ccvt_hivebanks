@@ -1,6 +1,6 @@
 body {
     color: #ffffff;
-    overflow: auto!important;
+    overflow: auto !important;
 }
 
 h1 {
@@ -17,11 +17,13 @@ h1 {
     fill: currentColor;
     overflow: hidden;
 }
-.up_content{
+
+.up_content {
     width: 90%;
     margin-left: 5%;
 }
-ul{
+
+ul {
     margin: 0;
     padding: 0;
     display: flex;
@@ -29,7 +31,8 @@ ul{
     justify-content: flex-start;
     flex-wrap: wrap;
 }
-li{
+
+li {
     list-style: none;
     margin: 0 5px;
     line-height: 40px;
@@ -37,4 +40,10 @@ li{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+@media only screen and (max-width: 768px) {
+    li{
+        width: 45%;
+    }
 }
