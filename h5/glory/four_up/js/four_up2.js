@@ -216,12 +216,12 @@ $(function () {
                 if (particleAlphabet.currentPos >= letters.length) {
                     // particleAlphabet.currentPos = 0;
                     // clearInterval(text_timer);
-                    setTimeout(function () {
-                        $("body,html").addClass('bg_black');
-                        $("#text,.show_name").remove();
-                        $(".already_up_box").css("display", "flex");
-                        // level_one();
-                    }, 1000);
+                    // setTimeout(function () {
+                    //     $("body,html").addClass('bg_black');
+                    //     $("#text,.show_name").remove();
+                    //     $(".already_up_box").css("display", "flex");
+                    //     // level_one();
+                    // }, 1000);
 
                 }
                 Prepend(particleAlphabet.time);
