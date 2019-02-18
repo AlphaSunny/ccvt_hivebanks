@@ -21,18 +21,20 @@ $(function () {
                 });
                 for (let i = 0; i < item_list_arr.length; i++) {
                     for (let j = 0; j < item_list_arr[i].length; j++) {
-                        div += "<div class='up_item'>" +
-                            "<h2>" + item_list_arr[i] + "</h2>" +
-                            "<ul>" +
-                            "<li>" +
-                            "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" +
-                            "<span>" + item_list_arr[i][j] + "</span>" +
-                            "</li>" +
-                            "</ul>" +
-                            "</div>"
+                        console.log(item_list_arr[i]);
+                        console.log(item_list_arr[i][j]);
+                        // div += "<div class='up_item'>" +
+                        //     "<h2>" + item_list_arr[i] + "</h2>" +
+                        //     "<ul>" +
+                        //     "<li>" +
+                        //     "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" +
+                        //     "<span>" + item_list_arr[i][j] + "</span>" +
+                        //     "</li>" +
+                        //     "</ul>" +
+                        //     "</div>";
                     }
                 }
-                $(".up_content").html(div);
+                // $(".up_content").html(div);
             }
         }
     )
