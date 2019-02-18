@@ -208,7 +208,7 @@ $(function () {
 
     //文字随机效果
     function textRandom() {
-        let li_list = $(".already_up_box").find("li");
+        let li_list = $(".up_content").find("li");
         setInterval(function () {
             let num = sum(1, 200);
             li_list.eq(num).css({"transform": "scale(1.5)", "transition": "all 1s"});
