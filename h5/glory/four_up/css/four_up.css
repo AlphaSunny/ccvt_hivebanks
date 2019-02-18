@@ -2,6 +2,7 @@ body {
     color: #ffffff;
     overflow-y: auto!important;
     overflow-x: hidden!important;
+    margin: 0;
 }
 
 h1 {
