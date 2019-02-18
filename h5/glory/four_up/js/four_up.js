@@ -20,9 +20,7 @@ $(function () {
                     }
                 });
                 for (let i = 0; i < item_list_arr.length; i++) {
-                    div += "<div class='up_item'>" +
-                        "<h2>4</h2>" +
-                        "</div>";
+                    let div = $("<div class='up_item'><h2>4</h2></div>");
                     for (let j = 0; j < item_list_arr[i].length; j++) {
                         ul += "<ul>" +
                             "<li>" +
