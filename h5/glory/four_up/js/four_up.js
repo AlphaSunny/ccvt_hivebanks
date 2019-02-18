@@ -28,7 +28,7 @@ $(function () {
                             "<span title=" + item_list_arr[i][j].wechat + ">" + item_list_arr[i][j].wechat + "</span>" +
                             "</li>";
                     }
-                    div.find(".item_ul").append(li);
+                    div.find(".item_ul").html(li);
                     $(".up_content").append(div);
                 }
 
