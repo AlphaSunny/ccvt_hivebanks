@@ -83,7 +83,7 @@ $(function () {
             let div = $("<div class='up_item'><h2><svg class='icon'><use xlink:href='#icon-lv"+ level_list[i].split("list_")[1] +"'></use></svg><span>" + level_list[i].split("list_")[1] + "</span>级用户</h2><ul class='item_ul'></ul></div>");
             let li = "";
             for (let j = 0; j < item_list_arr[i].length; j++) {
-                li += "<li>" +
+                li += "<li class='wow slideInRight' data-wow-delay='800ms'>" +
                     "<svg class='icon'><use xlink:href='#icon-lv"+ level_list[i].split("list_")[1] +"'></use></svg>" +
                     "<span title=" + item_list_arr[i][j].wechat + ">" + item_list_arr[i][j].wechat + "</span>" +
                     "</li>";
@@ -205,7 +205,7 @@ $(function () {
                 text_timer = setInterval(function () {
                     particleAlphabet.changeLetter();
                     particleAlphabet.getPixels(particleAlphabet.tmpCanvas, particleAlphabet.tmpCtx);
-                }, 300);//变换时间
+                }, 200);//变换时间
 
                 particleAlphabet.makeParticles(6000);//文字粒子多少
                 particleAlphabet.animate();
