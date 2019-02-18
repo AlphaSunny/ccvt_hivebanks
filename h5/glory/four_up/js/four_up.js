@@ -19,9 +19,11 @@ $(function () {
                         item_list_arr.push(item_list[i]);
                     }
                 });
-                console.log(item_list_arr);
                 for (let i = 0; i < item_list_arr.length; i++) {
                     console.log(item_list_arr[i]);
+                    for (let j = 0; j < item_list_arr[i].length; j++) {
+                        console.log(item_list_arr[i].length);
+                    }
                 }
             }
         }
