@@ -17,7 +17,7 @@ $(function () {
                 $.each(item_list, function (i, val) {
                     if (i.indexOf("list_") > -1) {
                         item_list_arr.push(item_list[i]);
-                        console.log(i.splice("list_",1));
+                        console.log(i.split("list_")[1]);
                         level_list.push(i);
                     }
                 });
