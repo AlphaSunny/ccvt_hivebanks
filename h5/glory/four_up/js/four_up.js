@@ -22,8 +22,8 @@ $(function () {
                 });
                 for (let i = 0; i < item_list_arr.length; i++) {
                     let div = $("<div class='up_item'><h2><span>" + level_list[i].split("list_")[1] + "</span>级用户</h2><ul class='item_ul'></ul></div>");
+                    let li = "";
                     for (let j = 0; j < item_list_arr[i].length; j++) {
-                        let li = "";
                         li += "<li>" +
                             "<svg class='icon'><use xlink:href='#icon-lv"+ level_list[i].split("list_")[1] +"'></use></svg>" +
                             "<span title=" + item_list_arr[i][j].wechat + ">" + item_list_arr[i][j].wechat + "</span>" +
