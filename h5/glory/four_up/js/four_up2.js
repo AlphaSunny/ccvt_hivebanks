@@ -5,6 +5,7 @@ $(function () {
     // let url = "test.json";
     let letter_arr = [], one_list = [], two_list = [], three_list = [];
     let text_timer = "", item_one = "", item_two = "", item_three = "", ul_num = 2;
+    let item_list_arr = [], level_list = [];
 
     //判断是否在规定时间内
     function Start() {
@@ -73,17 +74,35 @@ $(function () {
                     letter_arr.push(data[i].wechat);
                 });
 
+                let item_list = res;
+                $.each(item_list, function (i, val) {
+                    if (i.indexOf("list_") > -1) {
+                        item_list_arr.push(item_list[i]);
+                        level_list.push(i);
+                    }
+                });
+                for (let i = 0; i < item_list_arr.length; i++) {
+                    let div = $("<div class='up_item'><h2><svg class='icon'><use xlink:href='#icon-lv"+ level_list[i].split("list_")[1] +"'></use></svg><span>" + level_list[i].split("list_")[1] + "</span>级用户</h2><ul class='item_ul'></ul></div>");
+                    let li = "";
+                    for (let j = 0; j < item_list_arr[i].length; j++) {
+                        li += "<li>" +
+                            "<svg class='icon'><use xlink:href='#icon-lv"+ level_list[i].split("list_")[1] +"'></use></svg>" +
+                            "<span title=" + item_list_arr[i][j].wechat + ">" + item_list_arr[i][j].wechat + "</span>" +
+                            "</li>";
+                    }
+                    div.find(".item_ul").html(li);
+                    $(".up_content").append(div);
+                }
+
                 // max = Math.max(item_one, item_two, item_three);
                 // max = 35;
 
-                if (type != "guo") {
-                    particleAlphabetFun(max);
-                } else {
-                    $("body,html").addClass('bg_black');
-                    $("#text,.show_name").remove();
-                    $(".already_up_box").css("display", "flex");
-                    // level_one();
-                }
+                // if (type != "guo") {
+                //     particleAlphabetFun(max);
+                // } else {
+                //     $("#text").remove();
+                //     // level_one();
+                // }
             }
         });
     }
@@ -216,12 +235,11 @@ $(function () {
                 if (particleAlphabet.currentPos >= letters.length) {
                     // particleAlphabet.currentPos = 0;
                     clearInterval(text_timer);
-                    // setTimeout(function () {
-                    //     $("body,html").addClass('bg_black');
-                    //     $("#text,.show_name").remove();
-                    //     $(".already_up_box").css("display", "flex");
-                    //     // level_one();
-                    // }, 1000);
+                    setTimeout(function () {
+                        // $("body,html").addClass('bg_black');
+                        $("#text").remove();
+                        // level_one();
+                    }, 1000);
 
                 }
                 Prepend(particleAlphabet.time);

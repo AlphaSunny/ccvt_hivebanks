@@ -32,7 +32,6 @@ $(function () {
                     div.find(".item_ul").html(li);
                     $(".up_content").append(div);
                 }
-
             }
         }
     )
