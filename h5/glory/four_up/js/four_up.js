@@ -16,7 +16,7 @@ $(function () {
                 let item_list = res;
                 $.each(item_list, function (i, val) {
                     console.log(i);
-                    console.log(val);
+                    // console.log(val);
                 })
             }
         }
