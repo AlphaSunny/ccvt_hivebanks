@@ -30,9 +30,11 @@ $(function () {
                             "<span>" + item_list_arr[i][j].wechat + "</span>" +
                             "</li>" +
                             "</ul>";
+                        div.append(ul);
+                        $(".up_content").append(div);
                     }
                 }
-                $(".up_content").html(div);
+
             }
         }
     )
