@@ -244,6 +244,13 @@ function bot_alive($data){
                     return 1;
                 }
             }else{
+                $sql = "select * from bot_group where us_id='{$data['us_id']}'";
+                $db->query($sql);
+                $groups = $db->fetchRow();
+                if ($groups){
+                    $sql = "update bot_group set bot_us_id='{$data['us_id']}',uptime='{$time}' WHERE us_id='{$data['us_id']}'";
+                    $db->query($sql);
+                }
                 if (!$lo){
                     $d['login_in_time'] = $time;
                     $d['intime'] = $time;
