@@ -21,7 +21,7 @@ $(function () {
                     }
                 });
                 for (let i = 0; i < item_list_arr.length; i++) {
-                    let div = $("<div class='up_item'><h2>4</h2><ul class='item_ul'></ul></div>");
+                    let div = $("<div class='up_item'><h2><span>"+ i +"</span>级用户</h2><ul class='item_ul'></ul></div>");
                     for (let j = 0; j < item_list_arr[i].length; j++) {
                         li += "<li>" +
                             "<svg class='icon'><use xlink:href='#icon-lv1'></use></svg>" +
