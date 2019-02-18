@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/four_up.css">
     <link rel="stylesheet" href="css/loading.css">
     <script src="//at.alicdn.com/t/font_988213_hacf5i82tcd.js"></script>
-    <script src='js/prefixfree.min.js'></script>
+    <!--<script src='js/prefixfree.min.js'></script>-->
     <style class="cp-pen-styles">body {
         background: radial-gradient(200% 100% at bottom center, #0070aa, #0b2570, #000035, #000);
         background: radial-gradient(220% 105% at top center, #000 10%, #000035 40%, #0b2570 65%, #0070aa);
@@ -63,32 +63,32 @@
 </div>
 <script src="../../assets/js/jquery.min.js"></script>
 <script src="../../assets/js/wow.min.js"></script>
-<script src='js/stopExecutionOnTimeout.js'></script>
+<!--<script src='js/stopExecutionOnTimeout.js'></script>-->
 <script src='js/four_up2.js'></script>
-<script>
-    $(document).ready(function () {
-        let stars = 800;
-        let $stars = $('.stars');
-        let r = 800;
-        for (let i = 0; i < stars; i++) {
-            if (window.CP.shouldStopExecution(1)) {
-                break;
-            }
-            let $star = $('<div/>').addClass('star');
-            $stars.append($star);
-        }
-        window.CP.exitedLoop(1);
-        $('.star').each(function () {
-            let cur = $(this);
-            let s = 0.2 + Math.random() * 1;
-            let curR = r + Math.random() * 300;
-            cur.css({
-                transformOrigin: '0 0 ' + curR + 'px',
-                transform: ' translate3d(0,0,-' + curR + 'px) rotateY(' + Math.random() * 360 + 'deg) rotateX(' + Math.random() * -50 + 'deg) scale(' + s + ',' + s + ')'
-            });
-        });
-    });
+<!--<script>-->
+    <!--$(document).ready(function () {-->
+        <!--let stars = 800;-->
+        <!--let $stars = $('.stars');-->
+        <!--let r = 800;-->
+        <!--for (let i = 0; i < stars; i++) {-->
+            <!--if (window.CP.shouldStopExecution(1)) {-->
+                <!--break;-->
+            <!--}-->
+            <!--let $star = $('<div/>').addClass('star');-->
+            <!--$stars.append($star);-->
+        <!--}-->
+        <!--window.CP.exitedLoop(1);-->
+        <!--$('.star').each(function () {-->
+            <!--let cur = $(this);-->
+            <!--let s = 0.2 + Math.random() * 1;-->
+            <!--let curR = r + Math.random() * 300;-->
+            <!--cur.css({-->
+                <!--transformOrigin: '0 0 ' + curR + 'px',-->
+                <!--transform: ' translate3d(0,0,-' + curR + 'px) rotateY(' + Math.random() * 360 + 'deg) rotateX(' + Math.random() * -50 + 'deg) scale(' + s + ',' + s + ')'-->
+            <!--});-->
+        <!--});-->
+    <!--});-->
 
-</script>
+<!--</script>-->
 </body>
 </html>
