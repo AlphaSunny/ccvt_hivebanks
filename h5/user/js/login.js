@@ -195,7 +195,7 @@ $(document).ready(function () {
                 if (!domain_list) {
                     window.location.href = 'account.html';
                 } else {
-                    window.location.href = "../domain/domain_list.html";
+                    window.location.href = "../domain/domain_list2.html";
                 }
             }
         }, function (response) {
@@ -326,6 +326,12 @@ $(document).ready(function () {
                     window.location.href = 'account.html';
                 } else {
                     window.location.href = "../honor/honor.html";
+                }
+
+                if (!domain_list) {
+                    window.location.href = 'account.html';
+                } else {
+                    window.location.href = "../domain/domain_list2.html";
                 }
             }
         }, function (response) {

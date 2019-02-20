@@ -33,7 +33,7 @@ $(function () {
             ShowLoading("hide");
             if (response.errcode == "0") {
                 let data = response.rows;
-                let div = "",group_money = "";
+                let div = "", group_money = "";
                 let total = response.total;
                 let totalPage = Math.ceil(total / limit);
                 if (totalPage <= 1) {
@@ -52,32 +52,21 @@ $(function () {
 
                     if (!data[i].fee || data[i].fee <= 0) {
                         group_money = "<p class='group_money'>免费</p>";
-                    }else {
-                        group_money = "<p class='group_money'>"+ data[i].fee +"</p>";
+                    } else {
+                        group_money = "<p class='group_money'>" + data[i].fee + "</p>";
                     }
 
                     div += "<div class='col col-md-3 col-sm-6 col-xs-12 group_col'>" +
-                        "<div class='group_container' title='"+ data[i].name +"' id="+ data[i].id +">" +
+                        "<div class='group_container' title='" + data[i].name + "' id=" + data[i].id + ">" +
                         "<div class='group_head'>" +
                         "<button class='join_btn'>加入领域</button>" +
                         "<h3>" + scale + data[i].name + "</h3>" +
                         "<p>荣耀星数 ✨" + data[i].glory_number + "</p>" +
                         "<p>" + data[i].type_name + "</p>" +
                         group_money +
-                        // "<p>"+ scale +"</p>" +
                         "</div>" +
                         "</div>" +
                         "</div>";
-
-
-                    // div += "<tr>" +
-                    //     "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + ">" + scale + "<a href='javascript:;' class='to_group_info'>" + data[i].name + "</a></td>" +
-                    //     // "<td class='id_name' id=" + data[i].id + " title=" + data[i].name + "><span>" + data[i].name + "</span><span>("+ data[i].type_name +")</span></td>" +
-                    //     // "<td>" + data[i].scale + "</td>" +
-                    //     "<td>🌟" + data[i].glory_number + "</td>" +
-                    //     "<td>" + data[i].type_name + "</td>" +
-                    //     // "<td><a href='javascript:;' class='to_group_info'>查看</a></td>" +
-                    //     "</tr>";
                 });
                 $(".group_row").html(div);
                 $("#pagination").pagination({
@@ -108,10 +97,25 @@ $(function () {
     });
 
     //加入领域
-    $(document).on("click", ".join_btn",function (e) {
+    $(document).on("click", ".join_btn", function (e) {
         e.preventDefault();
         e.stopPropagation();
-        console.log("c");
+        let fee = $(this).siblings(".group_money").text();
+        if (!user_token) {
+            WarnPrompt("请先登录");
+            return;
+        } else if (fee != "免费") {
+            //收费提示
+            layer.confirm('您将支付' + fee + 'CCVT', {
+                btn: ['支付', '取消'] //按钮
+            }, function () {
+                SuccessPrompt("支付成功");
+            }, function () {
+                WarnPrompt("已取消");
+            });
+        } else {
+            SuccessPrompt("加入成功");
+        }
     });
 
     //获取筛选列表
