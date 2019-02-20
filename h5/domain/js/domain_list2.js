@@ -101,6 +101,7 @@ $(function () {
         e.preventDefault();
         e.stopPropagation();
         let fee = $(this).siblings(".group_money").text();
+        console.log(fee);
         if (!user_token) {
             WarnPrompt("请先登录");
             return;
