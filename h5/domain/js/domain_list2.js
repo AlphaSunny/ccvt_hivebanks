@@ -109,7 +109,7 @@ $(function () {
 
     //加入领域
     $(document).on("click", ".join_btn",function (e) {
-        e.defaultPrevented;
+        e.preventDefault();
         e.stopPropagation();
         console.log("c");
     });
