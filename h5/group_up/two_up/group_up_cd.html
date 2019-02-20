@@ -75,6 +75,7 @@
 
         if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
             clearInterval(count_timer);//清楚定时器
+            $(".text_h2,.h1_time").remove();
             let bool = oneMinCountDown();//判断是否过了一分钟误差
             if (bool) {
                 //已经升级成功直接跳转排名
@@ -112,21 +113,13 @@
     }
 
     count_timer = setInterval(function () {
-        TimeDown("2019-2-20 15:10");//setTime
+        TimeDown("2019-2-20 15:14");//setTime
         // TimeDown("2018-12-28 16:26");
     }, 1000);
 
     //即将进行二次荣耀等级升级
     function TwoUp() {
-        setTimeout(function () {
-            $(".text_h2,.h1_time").remove();
-            $(".text_h3").css("font-size", "6rem").text("即将进行领域升级");
-            JumpUp();
-        }, 3000);
-    }
-
-    //跳转升级页面
-    function JumpUp() {
+        $(".text_h3").css("font-size", "6rem").text("即将进行领域升级");
         setTimeout(function () {
             window.location.href = "two_up.html";
         }, 3000);
@@ -134,7 +127,7 @@
 
     //一分钟//
     function oneMinCountDown() {
-        let one_end_time = new Date("2019-2-20 15:11");//setTime
+        let one_end_time = new Date("2019-2-20 15:15");//setTime
         let one_now_time = new Date();
         let curr_num = parseInt((one_end_time - one_now_time) / 1000);
 
