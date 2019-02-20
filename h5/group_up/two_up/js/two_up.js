@@ -1,12 +1,49 @@
 $(function () {
     let url_path = window.location.hostname;
+    let ok_url = window.location.search.split("=")[1];
     let url = "https://" + url_path + "/api/crontab/get_scale_group_data.php";
     let item_list = [], item_list_arr = [], level_list = [];
 
-    setTimeout(function () {
-        $(".loading,.upload_text").remove();
-    },2000);
 
+
+    //判断是否在规定时间内
+    function Start() {
+        if (ok_url == "ok") {
+            console.log("有OK ，过期了");
+            $(".loading,.upload_text").remove();
+            AJAX_Start("guo");
+        } else {
+            timeIsOk();
+        }
+    }
+
+    Start();
+
+    //判断当前时间
+    function timeIsOk() {
+        let curr_time = new Date();
+        let end_time = new Date("2019-2-22 20:01");//setTime
+        let num = parseInt((end_time - curr_time) / 1000);
+
+        console.log(num);
+
+        if (num > 0) {
+            console.log("没有OK。没有过期");
+            setTimeout(function () {
+                $(".upload_text").text("升级成功");
+                $(".loading,.upload_text").remove();
+                AJAX_Start("no_guo");
+            }, 3000);
+        } else {
+            console.log("没有OK。过期了");
+            $(".loading,.upload_text").remove();
+            AJAX_Start("guo");
+        }
+    }
+
+
+
+function AJAX_Start(){
     $.ajax({
         type: "GET",
         dataType: "json",
@@ -21,6 +58,7 @@ $(function () {
             upItemFun();
         }
     });
+}
 
     function upItemFun() {
         console.log("into each");
