@@ -33,14 +33,21 @@ if ($result['ruselt']==1){
 }else{
     if (!$result['next_bind_count'] && !$result['next_glory_number']){
         $rs = "本群 ".$group_name."，当前荣耀等级是 ".$result['scale']." 级，已达到最大等级。";
-    }elseif (($result['all_glory_number']>=$result['next_glory_number']) && ($result['bind_count']<$result['next_bind_count'])){
-        $rs = "本群 ".$group_name."，当前荣耀等级是 ".$result['scale']." 级，距离下个荣耀等级还需要绑定 ".($result['next_bind_count']-$result['bind_count'])." 个用户。";
-    }elseif (($result['all_glory_number']<$result['next_glory_number']) && ($result['bind_count']>=$result['next_bind_count'])){
-        $rs = "本群 ".$group_name."，当前荣耀等级是 ".$result['scale']." 级，距离下个荣耀等级还需要 ".($result['next_glory_number']-$result['all_glory_number'])." 荣耀星数。";
-    }elseif (($result['all_glory_number']<$result['next_glory_number']) && ($result['bind_count']<$result['next_bind_count'])){
-        $rs = "本群 ".$group_name."，当前荣耀等级是 ".$result['scale']." 级，距离下个荣耀等级还需要 ".($result['next_glory_number']-$result['all_glory_number'])." 荣耀星数,绑定 ".($result['next_bind_count']-$result['bind_count'])." 个用户。";
     }else{
-        $rs = "本群 ".$group_name."，当前荣耀等级是 ".$result['scale']." 级，当前荣耀星数已满足下次升级条件。";
+        if ($result['real_scale']==$result['scale']){
+            $rs = "本群 ".$group_name."，当前荣耀等级是 ".$result['scale']." 级，";
+        }else{
+            $rs = "本群 ".$group_name."，当前荣耀等级是 ".$result['scale']." 级，真实等级是 ".$result['real_scale']." 级, ";
+        }
+        if (($result['all_glory_number']>=$result['next_glory_number']) && ($result['bind_count']<$result['next_bind_count'])){
+            $rs = $rs."距离下个荣耀等级还需要绑定 ".($result['next_bind_count']-$result['bind_count'])." 个用户。";
+        }elseif (($result['all_glory_number']<$result['next_glory_number']) && ($result['bind_count']>=$result['next_bind_count'])){
+            $rs = $rs."距离下个荣耀等级还需要 ".($result['next_glory_number']-$result['all_glory_number'])." 荣耀星数。";
+        }elseif (($result['all_glory_number']<$result['next_glory_number']) && ($result['bind_count']<$result['next_bind_count'])){
+            $rs = $rs."距离下个荣耀等级还需要 ".($result['next_glory_number']-$result['all_glory_number'])." 荣耀星数,绑定 ".($result['next_bind_count']-$result['bind_count'])." 个用户。";
+        }else{
+            $rs = $rs."当前荣耀星数已满足下次升级条件。";
+        }
     }
 }
 

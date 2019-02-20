@@ -1574,13 +1574,18 @@ function group_to_upgrade($group_id){
     $db->query($sql);
     $group = $db->fetchRow();
     if ($group){
+        $sql = "select after_scale from bot_group_scale_changes WHERE group_id='{$group_id}' order by ctime desc limit 1";
+        $db->query($sql);
+        $real_scale = $db->fetchRow();
+        $this_scale = $real_scale ? $real_scale['after_scale'] : 1;
         $row['ruselt'] = 2;
+        $row['real_scale'] = $this_scale;
         $row['scale'] = $group['scale'];
         //获取当前群所有的星数
         $row['all_glory_number'] = glory_number($group_id);
         $row['bind_count'] = $group['bind_count'];
-        $row['next_glory_number'] = get_next_group_level($group['scale'])['glory_number'];
-        $row['next_bind_count'] = get_next_group_level($group['scale'])['bind_number'];
+        $row['next_glory_number'] = get_next_group_level($this_scale)['glory_number'];
+        $row['next_bind_count'] = get_next_group_level($this_scale)['bind_number'];
     }else{
         $row['ruselt'] = 1;
     }
