@@ -20,7 +20,7 @@ php_begin();
 $args = array('nickname');
 chk_empty_args('GET', $args);
 
-//群昵称
+//昵称
 $nickname = get_arg_str('GET','nickname');
 
 // 处理
@@ -29,9 +29,9 @@ if ($result['ruselt']==1){
     $rs = "@".$nickname.",未找到用户信息。";
 }else{
     if ($result['us_integral']>=$result['next_integral']){
-        $rs = "@".$nickname.",你当前荣耀等级是".$result['us_scale']."级，当前荣耀积分已满足下次升级条件。";
+        $rs = "@".$nickname.",你当前荣耀等级是 ".$result['us_scale']." 级，当前荣耀积分已满足下次升级条件。";
     }elseif ($result['us_integral']<$result['next_integral']){
-        $rs = "@".$nickname.",你当前荣耀等级是".$result['us_scale']."级，距离下个荣耀等级还需要".($result['next_integral']-$result['us_integral'])."积分。";
+        $rs = "@".$nickname.",你当前荣耀等级是 ".$result['us_scale']." 级，距离下个荣耀等级还需要 ".($result['next_integral']-$result['us_integral'])." 积分。";
     }
 }
 

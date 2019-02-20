@@ -1565,5 +1565,55 @@ function user_to_upgrade($nickname){
     }
     return $row;
 }
+//======================================
+// 函数: 群升级所需条件
+//======================================
+function group_to_upgrade($group_id){
+    $db = new DB_COM();
+    $sql = "select id,name,scale,(select count(*) from us_bind where bind_name='group' and bind_info=gr.id) as bind_count from bot_group as gr WHERE gr.id='{$group_id}'";
+    $db->query($sql);
+    $group = $db->fetchRow();
+    if ($group){
+        $row['ruselt'] = 2;
+        $row['scale'] = $group['scale'];
+        //获取当前群所有的星数
+        $row['all_glory_number'] = glory_number($group_id);
+        $row['bind_count'] = $group['bind_count'];
+        $row['next_glory_number'] = get_next_group_level($group['scale'])['glory_number'];
+        $row['next_bind_count'] = get_next_group_level($group['scale'])['bind_number'];
+    }else{
+        $row['ruselt'] = 1;
+    }
+    return $row;
+}
+//======================================
+// 函数: 获取下一级所需绑定数,星数
+//======================================
+function get_next_group_level($scale){
+    $db = new DB_COM();
+    $sql = "select * from bot_group_level_rules where scale='{$scale}'+1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    return $row;
+}
+
+//======================================
+// 函数: 根据用户等级表查出所有星数之和
+//======================================
+function glory_number($group_id){
+    $db = new DB_COM();
+    $sql = "select scale from us_scale where scale!=0";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    $all_glory = 0;
+    if ($rows){
+        foreach ($rows as $k=>$v){
+            $sql = "select count(a.us_id) as count from us_bind as a left join us_base as b on a.us_id=b.us_id WHERE a.bind_name='group' AND a.bind_info='{$group_id}' AND b.scale='{$v['scale']}'";
+            $db->query($sql);
+            $all_glory = $all_glory+$db->getField($sql,'count');
+        }
+    }
+    return $all_glory;
+}
 
 ?>
