@@ -33,7 +33,9 @@ $(function () {
                     "</li>";
             }
             div.find(".item_ul").html(li);
+            console.log(div);
             $(".up_content").append(div);
+            console.log("add");
         }
     }
 });
