@@ -1540,4 +1540,30 @@ function transfer_get_pre_count($credit_id)
     return $tx_count+1;
 }
 
+//======================================
+// 函数: 用户升级所需积分
+//======================================
+function user_to_upgrade($nickname){
+    $db = new DB_COM();
+    $sql = "select * from us_base WHERE wechat='{$nickname}'";
+    $db->query($sql);
+    $user = $db->fetchRow();
+    if($user){
+        $row['ruselt'] = 2;
+        $row['us_scale'] = $user['scale'];
+        $sql = "select base_amount/(select unit from la_base where 1) as base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$user['us_id']}'";
+        $db->query($sql);
+        $us_integral = $db->getField($sql,'base_amount');
+        $row['us_integral'] = $us_integral;
+        //查询下一级的积分
+        $sql = "select integral from us_scale WHERE scale='{$user['scale']}'+1";
+        $db->query($sql);
+        $next_integral = $db->getField($sql,'integral');
+        $row['next_integral'] = $next_integral;
+    }else{
+        $row['ruselt'] = 1;
+    }
+    return $row;
+}
+
 ?>
