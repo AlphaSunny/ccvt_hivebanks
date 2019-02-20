@@ -31,7 +31,7 @@ $(function () {
             for (let j = 0; j < item_list_arr[i].length; j++) {
                 li += "<li class='wow slideInRight' data-wow-delay='800ms'>" +
                     "<svg class='icon'><use xlink:href='#icon-lv"+ level_list[i].split("list_")[1] +"'></use></svg>" +
-                    "<span title=" + item_list_arr[i][j].wechat + ">" + item_list_arr[i][j].wechat + "</span>" +
+                    "<span title=" + item_list_arr[i][j].name + ">" + item_list_arr[i][j].name + "</span>" +
                     "</li>";
             }
             div.find(".item_ul").html(li);
