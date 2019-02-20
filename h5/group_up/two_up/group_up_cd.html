@@ -12,10 +12,10 @@
 <body id="first_box">
 <h1 class="count_down_text">CCVT领域升级倒计时</h1>
 <div class="count_box">
-    <h1 class="days"></h1>
-    <h1 class="hours"></h1>
-    <h1 class="minutes"></h1>
-    <h1 class="seconds"></h1>
+    <h1 class="h1_time days"></h1>
+    <h1 class="h1_time hours"></h1>
+    <h1 class="h1_time minutes"></h1>
+    <h1 class="h1_time seconds"></h1>
     <h2 class="text_h2"></h2>
     <h2 class="text_h3"></h2>
 </div>
@@ -112,14 +112,14 @@
     }
 
     count_timer = setInterval(function () {
-        TimeDown("2019-2-20 15:05");//setTime
+        TimeDown("2019-2-20 15:10");//setTime
         // TimeDown("2018-12-28 16:26");
     }, 1000);
 
     //即将进行二次荣耀等级升级
     function TwoUp() {
         setTimeout(function () {
-            $(".text_h2").remove();
+            $(".text_h2,.h1_time").remove();
             $(".text_h3").css("font-size", "6rem").text("即将进行领域升级");
             JumpUp();
         }, 3000);
@@ -134,7 +134,7 @@
 
     //一分钟//
     function oneMinCountDown() {
-        let one_end_time = new Date("2019-2-20 15:06");//setTime
+        let one_end_time = new Date("2019-2-20 15:11");//setTime
         let one_now_time = new Date();
         let curr_num = parseInt((one_end_time - one_now_time) / 1000);
 
