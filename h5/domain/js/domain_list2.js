@@ -108,6 +108,7 @@ $(function () {
         } else if (fee != "免费") {
             //收费提示
             layer.confirm('您将支付' + fee + 'CCVT', {
+                title:"提示",
                 btn: ['支付', '取消'] //按钮
             }, function () {
                 SuccessPrompt("支付成功");
