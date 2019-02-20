@@ -60,11 +60,11 @@ $(function () {
                         "<div class='group_container' title='"+ data[i].name +"' id="+ data[i].id +">" +
                         "<div class='group_head'>" +
                         "<button class='join_btn'>加入领域</button>" +
-                        "<h3>" + data[i].name + "</h3>" +
+                        "<h3>" + scale + data[i].name + "</h3>" +
                         "<p>荣耀星数 ✨" + data[i].glory_number + "</p>" +
                         "<p>" + data[i].type_name + "</p>" +
                         group_money +
-                        "<p>"+ scale +"</p>" +
+                        // "<p>"+ scale +"</p>" +
                         "</div>" +
                         "</div>" +
                         "</div>";
