@@ -17,6 +17,7 @@ $(function () {
     });
 
     function upItemFun() {
+        console.log("into each");
         $.each(item_list, function (i, val) {
             if (i.indexOf("list_") > -1) {
                 item_list_arr.push(item_list[i]);
