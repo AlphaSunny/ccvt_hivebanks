@@ -17,21 +17,19 @@ GET参数
 
 php_begin();
 
-$args = array('group_id','nickname','group_name');
+$args = array('group_id','group_name');
 chk_empty_args('GET', $args);
 
 //群id
 $group_id = get_arg_str('GET','group_id');
 
-//昵称
-$nickname = get_arg_str('GET','nickname');
 
 $group_name = get_arg_str('GET','group_name');
 
 // 处理
 $result = group_to_upgrade($group_id);
 if ($result['ruselt']==1){
-    $rs = "@".$nickname.",未找到群信息。";
+    $rs = "未找到群信息。";
 }else{
     if (!$result['next_bind_count'] && !$result['next_glory_number']){
         $rs = "本群 ".$group_name."，当前荣耀等级是 ".$result['scale']." 级，已达到最大等级。";
