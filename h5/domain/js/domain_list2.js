@@ -64,6 +64,7 @@ $(function () {
                         "<p>荣耀星数 ✨" + data[i].glory_number + "</p>" +
                         "<p>" + data[i].type_name + "</p>" +
                         group_money +
+                        "<p>"+ scale +"</p>" +
                         "</div>" +
                         "</div>" +
                         "</div>";
