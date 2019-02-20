@@ -56,7 +56,7 @@ $(function () {
                         group_money = "<p class='group_money'>"+ data[i].fee +"</p>";
                     }
 
-                    div += "<div class='col col-md-3 col-sm-6 col-xs-12'>" +
+                    div += "<div class='col col-md-3 col-sm-6 col-xs-12 group_col'>" +
                         "<div class='group_container' title='"+ data[i].name +"' id="+ data[i].id +">" +
                         "<div class='group_head'>" +
                         "<button class='join_btn'>加入领域</button>" +
