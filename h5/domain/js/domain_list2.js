@@ -107,6 +107,13 @@ $(function () {
         window.location.href = "domain_info.html?id=" + id;
     });
 
+    //加入领域
+    $(document).on("click", ".join_btn",function (e) {
+        e.defaultPrevented;
+        e.stopPropagation();
+        console.log("c");
+    });
+
     //获取筛选列表
     GetGroupSearch(function (response) {
         let option_scale = "<option value=''>等级筛选</option>";
