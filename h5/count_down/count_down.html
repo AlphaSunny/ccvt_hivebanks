@@ -130,7 +130,7 @@
     }
 </style>
 <body id="first_box">
-<h1 class="count_down_text">CCVT第三次解锁倒计时</h1>
+<h1 class="count_down_text">CCVT第四次解锁倒计时</h1>
 <div class="count_box">
     <h1 class="days"></h1>
     <h1 class="hours"></h1>
@@ -180,7 +180,7 @@
 
         // 倒计时30s
         if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 30) {
-            $(".count_down_text").text("第三次解锁即将成功");
+            $(".count_down_text").text("第四次解锁即将成功");
             $(".days, .hours,.minutes").remove();
             $(".count_box").css("justify-content", "center");
             $(".seconds").css({"font-size": "25rem", "border": "unset"})
@@ -232,7 +232,7 @@
     }
 
     count_timer = setInterval(function () {
-        TimeDown("2019-1-25 20:00");//setTime
+        TimeDown("2019-2-22 20:00");//setTime
         // TimeDown("2018-12-28 16:26");
     }, 1000);
 
@@ -270,7 +270,7 @@
 
     //一分钟//
     function oneMinCountDown() {
-        let one_end_time = new Date("2019-1-25 20:01");//setTime
+        let one_end_time = new Date("2019-2-22 20:01");//setTime
         let one_now_time = new Date();
         let curr_num = parseInt((one_end_time - one_now_time) / 1000);
 
