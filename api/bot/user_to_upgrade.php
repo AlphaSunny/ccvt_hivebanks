@@ -31,7 +31,7 @@ if ($result['ruselt']==1){
     if ($result['us_integral']>=$result['next_integral']){
         $rs = "@".$nickname.",你当前荣耀等级是".$result['us_scale']."级，当前荣耀积分已满足下次升级条件。";
     }elseif ($result['us_integral']<$result['next_integral']){
-        $rs = "@".$nickname.",你当前荣耀等级是".$result['us_scale']."级，距离下个荣耀等级还需要".$result['next_integral']-$result['us_integral']."积分";
+        $rs = "@".$nickname.",你当前荣耀等级是".$result['us_scale']."级，距离下个荣耀等级还需要".($result['next_integral']-$result['us_integral'])."积分";
     }
 }
 
