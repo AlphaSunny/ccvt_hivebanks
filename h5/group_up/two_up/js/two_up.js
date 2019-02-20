@@ -2,6 +2,11 @@ $(function () {
     let url_path = window.location.hostname;
     let url = "https://" + url_path + "/api/crontab/get_scale_group_data.php";
     let item_list = [], item_list_arr = [], level_list = [];
+
+    setTimeout(function () {
+        $(".loading,.upload_text").remove();
+    },2000);
+
     $.ajax({
         type: "GET",
         dataType: "json",
