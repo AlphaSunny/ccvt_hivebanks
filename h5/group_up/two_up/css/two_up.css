@@ -31,8 +31,19 @@ ul {
     justify-content: flex-start;
 }
 
-li {
+h2 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.item_ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.item_ul li {
     list-style: none;
-    margin: 0 5px;
     line-height: 40px;
+    font-size: 2rem;
 }
