@@ -379,7 +379,7 @@ function bind_group($data){
 //======================================
 function group_and_type_list(){
     $db = new DB_COM();
-    $sql = "select a.id,a.name as group_name,b.name as type_name,a.qr_code_address from bot_group as a LEFT JOIN bot_group_type as b on a.group_type=b.id WHERE a.is_audit=2 AND a.is_test=1 AND a.is_del=1";
+    $sql = "select a.id,a.name as group_name,b.name as type_name from bot_group as a LEFT JOIN bot_group_type as b on a.group_type=b.id WHERE a.is_audit=2 AND a.is_test=1 AND a.is_del=1";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
