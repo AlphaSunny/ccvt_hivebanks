@@ -1,6 +1,6 @@
 $(function () {
     let url_path = window.location.hostname;
-    let url = "https://" + url_path + "/api/crontab/get_scale_us_data.php";
+    let url = "https://" + url_path + "/api/crontab/get_scale_group_data.php";
     let item_list = [], item_list_arr = [], level_list = [];
     $.ajax({
         type: "GET",
@@ -34,7 +34,6 @@ $(function () {
             }
             div.find(".item_ul").html(li);
             $(".up_content").append(div);
-            textRandom();
         }
     }
 });
