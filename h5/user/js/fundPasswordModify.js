@@ -88,7 +88,8 @@ $(function () {
         }, function (response) {
             ShowLoading("hide");
             ActiveClick($this, btnText);
-            LayerFun(response.errcode);
+            // LayerFun(response.errcode);
+            ErrorPrompt(response.errmsg);
             GetImgCode();
         })
     })
