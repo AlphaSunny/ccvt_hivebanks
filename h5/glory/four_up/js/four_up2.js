@@ -132,7 +132,7 @@ $(function () {
                 text_timer = setInterval(function () {
                     particleAlphabet.changeLetter();
                     particleAlphabet.getPixels(particleAlphabet.tmpCanvas, particleAlphabet.tmpCtx);
-                }, 200);//变换时间
+                }, 1500);//变换时间
 
                 particleAlphabet.makeParticles(6000);//文字粒子多少
                 particleAlphabet.animate();

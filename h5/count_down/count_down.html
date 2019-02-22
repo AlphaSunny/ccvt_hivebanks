@@ -238,7 +238,7 @@
 
     //二次解锁成功
     function twoSuccess() {
-        let i = 0, str = "第三次解锁成功";
+        let i = 0, str = "第四次解锁成功";
         $("h1").remove();
         let textTimer = setInterval(function () {
             if ($(".text_h2").text() == str) {
@@ -256,7 +256,7 @@
     function TwoUp() {
         setTimeout(function () {
             $(".text_h2").remove();
-            $(".text_h3").css("font-size", "6rem").text("即将进行第三次荣耀等级升级");
+            $(".text_h3").css("font-size", "6rem").text("即将进行第四次荣耀等级升级");
             JumpUp();
         }, 3000);
     }
