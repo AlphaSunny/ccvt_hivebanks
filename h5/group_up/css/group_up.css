@@ -45,5 +45,6 @@ h2 {
 .item_ul li {
     list-style: none;
     line-height: 40px;
+    margin: 0 5px;
     /*font-size: 2rem;*/
 }
