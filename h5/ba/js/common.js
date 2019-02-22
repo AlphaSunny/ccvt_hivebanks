@@ -23,6 +23,14 @@ function GetCookie(name) {
     }
 }
 
+// Delete cookie function
+function DelCookie(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cookieVal = GetCookie(name);
+    if (cookieVal != null) document.cookie = name + "=" + cookieVal + ";expires=" + exp.toGMTString() + ';path=/';
+}
+
 // Take the us_cookies function
 function GetUsCookie(name) {
     var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
@@ -35,14 +43,6 @@ function GetUsCookie(name) {
         DelCookie('ba_token');
         window.location.href = 'BaLogin.html';
     }
-}
-
-// Delete cookie function
-function DelCookie(name) {
-    var exp = new Date();
-    exp.setTime(exp.getTime() - 1);
-    var cookieVal = GetCookie(name);
-    if (cookieVal != null) document.cookie = name + "=" + cookieVal + ";expires=" + exp.toGMTString() + ';path=/';
 }
 
 // Get URL parameters
