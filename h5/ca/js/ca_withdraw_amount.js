@@ -93,6 +93,7 @@ $(function () {
         layer.confirm('是否确认锁定？', {
             btn: ['确认', '取消'] //按钮
         }, function () {
+            ShowLoading("show");
             confirmLockAmountFun(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id);
         }, function () {
         });
@@ -102,10 +103,12 @@ $(function () {
     function confirmLockAmountFun(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id) {
         LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id, function (response) {
             if (response.errcode == '0') {
+                ShowLoading("hide");
                 SuccessPrompt("提交成功");
                 window.location.href = "ca_withdraw_info.html";
             }
         }, function (response) {
+            ShowLoading("hide");
             LayerFun(response.errcode);
             return;
         })
