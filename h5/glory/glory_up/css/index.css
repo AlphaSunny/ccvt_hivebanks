@@ -120,6 +120,7 @@ h2.active {
 @media screen and (max-width: 768px) {
     .count_box {
         display: block;
+        height: unset;
         /*position: absolute;*/
         /*color: #fff;*/
         /*width: 90%;*/
