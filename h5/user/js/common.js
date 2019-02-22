@@ -13,11 +13,11 @@ function SetCookie(name, value) {
 function GetCookie(name) {
     let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
-    if (arr == null) {
-        alert("com:"+name);
-        DelCookie("user_token");
-        window.location.href = 'login.html';
-    }
+    // if (arr == null) {
+    //     alert("com:"+name);
+    //     DelCookie("user_token");
+    //     window.location.href = 'login.html';
+    // }
 }
 
 // Delete cookie function
