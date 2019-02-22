@@ -68,7 +68,7 @@ $data["us_account_id"] = $us_account_id;
 $data['tx_detail'] = $json;
 
 // TODO: 暂且将交易奋勇设置为500
-$data['tx_fee'] = 500;
+$data['tx_fee'] = 50000000000;
 $lgn_type = 'phone';
 $utime = time();
 $ctime = date('Y-m-d H:i:s');

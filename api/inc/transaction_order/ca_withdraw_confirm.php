@@ -30,7 +30,7 @@ function withdraw_confirm($rows){
 
 
     // 更新ca的余额
-    $new_ca_amount = $ca_row["base_amount"] + $rows["base_amount"];
+    $new_ca_amount = $ca_row["base_amount"] + $rows["base_amount"] + $rows['tx_fee'];
     $sql = "UPDATE ca_base SET base_amount = '{$new_ca_amount}' WHERE ca_id = '{$rows["ca_id"]}'";
     $db->query($sql);
     $count = $db->affectedRows($sql);
@@ -41,7 +41,7 @@ function withdraw_confirm($rows){
 
 
     //更新us的锁定余额
-    $new_lock_amount = $us_row["lock_amount"] - $rows["base_amount"];
+    $new_lock_amount = $us_row["lock_amount"] - $rows["base_amount"] - $rows['tx_fee'];
     if ($new_lock_amount < 0){
         $db->Rollback($pInTrans);
         exit_error('134',"订单异常，金额不对,联系管理员");
