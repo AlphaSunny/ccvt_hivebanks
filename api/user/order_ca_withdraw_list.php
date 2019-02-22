@@ -41,6 +41,7 @@ $us_id = check_token($token);
 
 //获取当前订单信息
 $order   = get_ca_withdraw_order_list($us_id);
+$order['tx_fee'] = $order['tx_fee'] / 100000000;
 if(!$order){
     exit_error('101','订单信息获取失败');
 }
