@@ -42,12 +42,20 @@ li {
     white-space: nowrap;
 }
 
+.show_name {
+    color: #ffffff;
+    position: absolute;
+    left: 2%;
+    top: 8%;
+}
+
 @media only screen and (max-width: 768px) {
-    .up_content{
+    .up_content {
         width: 100%;
         margin: 0;
     }
-    li{
+
+    li {
         width: 50%;
         margin: 0;
     }
