@@ -11,7 +11,6 @@ $(document).ready(function () {
 
     let user_token = GetLoginCookie('user_token');
     if (user_token) {
-        alert("to account");
         window.location.href = "account.html";
     }
 
