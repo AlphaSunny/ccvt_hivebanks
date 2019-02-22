@@ -1,14 +1,21 @@
+@_30: 30px;
 .icon_transfer {
   text-align: center;
   display: block;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+  width: @_30;
+  height: @_30;
+  line-height: @_30;
 }
 
 .input_box {
   display: flex;
   align-items: center;
+}
+
+.withdraw_info {
+  p {
+    line-height: @_30;
+  }
 }
 
 @media only screen and (max-width: 768px) {
