@@ -5,13 +5,13 @@ $(document).ready(function () {
         if (arr != null) {
             return unescape(arr[2]);
         }else{
-            DelCookie("user_token");
             return 0;
         }
     }
 
     let user_token = GetLoginCookie('user_token');
     if (user_token) {
+        alert("to account");
         window.location.href = "account.html";
     }
 
