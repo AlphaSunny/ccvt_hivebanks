@@ -14,6 +14,7 @@ function GetCookie(name) {
     let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
     if (arr == null && name == "user_token") {
+        alert(name);
         //     alert("commom文件中不存在user_token" + "com:" + name);
         window.location.href = 'login.html';
     }
