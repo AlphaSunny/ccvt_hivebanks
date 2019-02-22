@@ -3,7 +3,6 @@ $(document).ready(function () {
     function GetLoginCookie(name) {
         let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) {
-            alert(arr);
             return unescape(arr[2]);
         }else{
             DelCookie("user_token");
@@ -13,6 +12,7 @@ $(document).ready(function () {
 
     let user_token = GetLoginCookie('user_token');
     if (user_token) {
+        alert("登录页面不存在user_token");
         window.location.href = "account.html";
     }
 
