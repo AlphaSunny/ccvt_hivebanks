@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
-    <link rel="shortcut icon" href="../../favicon.ico"/>
+    <link rel="shortcut icon" href="../favicon.ico"/>
     <link rel="stylesheet" href="css/group_up_cd.css">
 </head>
 <body id="first_box">
@@ -22,7 +22,7 @@
 <canvas id="three-container"></canvas>
 
 
-<script src="../../assets/js/jquery.min.js"></script>
+<script src="../assets/js/jquery.min.js"></script>
 <script src='js/dat.gui.min.js'></script>
 <script src="js/index.js"></script>
 </body>
@@ -113,7 +113,7 @@
     }
 
     count_timer = setInterval(function () {
-        TimeDown("2019-2-22 13:30");//setTime
+        TimeDown("2019-2-22 20:00");//setTime
         // TimeDown("2018-12-28 16:26");
     }, 1000);
 
@@ -127,7 +127,7 @@
 
     //一分钟//
     function oneMinCountDown() {
-        let one_end_time = new Date("2019-2-22 13:31");//setTime
+        let one_end_time = new Date("2019-2-22 20:01");//setTime
         let one_now_time = new Date();
         let curr_num = parseInt((one_end_time - one_now_time) / 1000);
 
