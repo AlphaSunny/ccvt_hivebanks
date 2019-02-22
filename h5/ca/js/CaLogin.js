@@ -3,6 +3,12 @@ $(document).ready(function () {
         var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) return unescape(arr[2]);
     }
+
+    var ca_token = GetLoginCookie('ca_token');
+    if(ca_token){
+        window.location.href = "CaLogin.html";
+    }
+
     //Get graphic verification code
     GetImgCode();
     //    Switch verification code
@@ -81,7 +87,7 @@ $(document).ready(function () {
     // emailSubmit judgment
     var _email = '', emailList = '';
     $(".emailLoginBtn").click(function () {
-        var ca_token = GetLoginCookie('ca_token');
+
         var email = $(".email").val(),
             emailPassword = $(".emailPassword").val(),
             pass_word_hash = hex_sha1(emailPassword),
@@ -97,10 +103,6 @@ $(document).ready(function () {
         }
         if (emailPassword.length <= 0) {
             LayerFun('passwordNotEmpty');
-            return;
-        }
-        if(ca_token){
-            LayerFun('noMoreAccount');
             return;
         }
 
@@ -234,7 +236,6 @@ $(document).ready(function () {
     // });
     // ========Log in with phone========
     $(".phoneLoginBtn").click(function () {//Click Login to submit
-        var ca_token = GetLoginCookie('ca_token');
         // Get country code
         var country_code = $('.selected-dial-code').text().split("+")[1];
         // Get user input---判断
@@ -255,11 +256,6 @@ $(document).ready(function () {
             LayerFun('codeNotEmpty');
             return;
         }
-        // if (sms_code.length <= 0) {
-        //     $('.phoneCode_tips').fadeIn();
-        //     LayerFun('codeNotEmpty');
-        //     return;
-        // }
 
         if (phonePassword.length <= 0) {
             $('.Phonepassword_tips').fadeIn().siblings('span').hide();
@@ -269,10 +265,6 @@ $(document).ready(function () {
         if (phonePassword.length < 8) {
             $('.errPhonePass_tips').fadeIn().siblings('span').hide();
             LayerFun('PasswordStructure');
-            return;
-        }
-        if(ca_token){
-            LayerFun('noMoreAccount');
             return;
         }
 

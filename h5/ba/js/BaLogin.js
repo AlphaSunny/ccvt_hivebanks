@@ -242,7 +242,6 @@ $(document).ready(function () {
     });
 
     $(".phoneLoginBtn").click(function () {//Click Login to submit
-        var ba_token = GetLoginCookie('ba_token');
         // Get country code
         var country_code = $('.selected-dial-code').text().split("+")[1];
         // Get user input
@@ -272,10 +271,6 @@ $(document).ready(function () {
         if (phonePassword.length < 8) {
             $('.errPhonePass_tips').fadeIn().siblings('span').hide();
             LayerFun('PasswordStructure');
-            return;
-        }
-        if (ba_token) {
-            LayerFun('noMoreAccount');
             return;
         }
         var $this = $(this), _text = $(this).text();
