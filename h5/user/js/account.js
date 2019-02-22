@@ -421,7 +421,7 @@ $(function () {
             // window.location.href = url + "/h5/bot_web/login.html";
             window.open(url + "/h5/bot_web2/login.html");
         } else {
-            WarnPrompt("请先申请机器人专属群");
+            WarnPrompt("请先申请专属领域");
             return;
         }
 
