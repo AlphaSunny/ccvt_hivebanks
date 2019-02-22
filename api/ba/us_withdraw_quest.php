@@ -74,6 +74,10 @@ $data["bit_amount"] = $withdraw_base_amount / $rate;
 $data["tx_time"] = time();
 $data["asset_id"] = $bit_type;
 $data["us_account_id"] = "1";
+
+// TODO: 暂且将交易奋勇设置为500
+$data['tx_fee'] = 500;
+
 $json_detail = array();
 $json_detail["bit_address"] = $bit_address;
 $data["tx_detail"] = json_encode($json_detail);
