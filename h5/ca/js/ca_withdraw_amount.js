@@ -32,10 +32,7 @@ $(function () {
 
     //Get recharge channels
     let ca_channel = decodeURI(GetQueryString('ca_channel'));
-    // let base_amount = GetQueryString('us_ca_withdraw_amount');
-    // $('.base_amount_input').val(base_amount);
 
-    // $('.withdrawTypeImg').attr("src", "img/" + ca_channel.toLowerCase() + ".png");
     $(".ca_channel").text(ca_channel);
     //Assign recharge ca
     let api_url = 'assign_withdraw_ca.php', rate = '', ca_id = '', withdraw_max_amount = '', withdraw_min_amount = '';
