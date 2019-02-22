@@ -32,18 +32,18 @@ ul {
 }
 
 h2 {
-    font-size: 3rem;
-    text-align: center;
+    /*font-size: 3rem;*/
+    /*text-align: center;*/
 }
 
 .item_ul {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: space-around;*/
 }
 
 .item_ul li {
     list-style: none;
     line-height: 40px;
-    font-size: 2rem;
+    /*font-size: 2rem;*/
 }
