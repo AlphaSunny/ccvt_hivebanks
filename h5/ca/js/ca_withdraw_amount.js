@@ -7,7 +7,7 @@ $(function () {
     let us_level = GetCookie('us_level');
 
     // get base information
-    let us_base_amount = '',us_account_id = "";
+    let us_base_amount = '', us_account_id = "";
     UserInformation(token, function (response) {
         if (response.errcode == '0') {
             let data = response.rows;
@@ -88,25 +88,28 @@ $(function () {
             WarnPrompt("账户余额不足");
             return;
         }
-        let $this = $(this), btnText = $(this).text();
-        if (DisableClick($this)) return;
+
+        //询问框
+        layer.confirm('是否确认锁定？', {
+            btn: ['确认', '取消'] //按钮
+        }, function () {
+            confirmLockAmountFun(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id);
+        }, function () {
+        });
+    });
+
+
+    function confirmLockAmountFun(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id) {
         LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id, function (response) {
             if (response.errcode == '0') {
-                ActiveClick($this, btnText);
                 $('#lockWithdraw').modal('show');
                 readingTime(8);
             }
         }, function (response) {
-            ActiveClick($this, btnText);
             LayerFun(response.errcode);
             return;
         })
-    });
-
-    //Confirm reading rule jump
-    $('.ruleBtn').click(function () {
-        window.location.href = 'ca_withdraw_info.html';
-    });
+    }
 
     //Input box listener
     $('.base_amount_input').bind('input', 'propertychange', function () {
