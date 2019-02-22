@@ -10,10 +10,10 @@ $(document).ready(function () {
     }
 
     let user_token = GetLoginCookie('user_token');
-    if (user_token) {
-        alert(user_token);
-        window.location.href = "account.html";
-    }
+    // if (user_token) {
+    //     alert(user_token);
+    //     window.location.href = "account.html";
+    // }
 
     let leaderBoard = GetQueryString("honor");
     let domain_list = GetQueryString("domain_list");
