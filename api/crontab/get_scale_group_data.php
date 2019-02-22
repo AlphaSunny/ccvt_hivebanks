@@ -19,7 +19,7 @@ $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
 foreach ($scales as $k=>$v){
-    $sql = "select name from bot_group WHERE scale='{$v['after_scale']}'";
+    $sql = "select b.name from bot_group as b INNER JOIN bot_group_scale_changes bo ON b.id=bo.group_id WHERE b.scale='{$v['after_scale']}' AND bo.ctime>{$times}'";
     $db->query($sql);
     $list = $db->fetchAll();
     $all_list = array_merge($all_list,$list);
