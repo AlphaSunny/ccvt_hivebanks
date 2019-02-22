@@ -219,25 +219,25 @@
             $(".days").text("0" + days);
         } else if (days >= 10) {
             $(".days").text(days);
-            console.log("days" + days);
+            // console.log("days" + days);
         }
         if (hours < 10 && hours >= 0) {
             $(".hours").text("0" + hours);
         } else if (hours >= 10) {
             $(".hours").text(hours);
-            console.log("hours" + hours)
+            // console.log("hours" + hours)
         }
         if (minutes < 10 && minutes >= 0) {
             $(".minutes").text("0" + minutes);
         } else if (minutes >= 10) {
             $(".minutes").text(minutes);
-            console.log("minutes" + minutes)
+            // console.log("minutes" + minutes)
         }
         if (seconds < 10 && seconds >= 0) {
             $(".seconds").text("0" + seconds);
         } else if (seconds >= 10) {
             $(".seconds").text(seconds);
-            console.log("seconds" + seconds)
+            // console.log("seconds" + seconds)
         }
     }
 
@@ -279,11 +279,11 @@
         let one_now_time = new Date();
         let curr_num = parseInt((one_end_time - one_now_time) / 1000);
 
-        console.log(one_end_time);
-        console.log(one_now_time);
-        console.log(parseInt((one_end_time - one_now_time) / 1000));
-        console.log(typeof curr_num);
-        console.log(curr_num);
+        // console.log(one_end_time);
+        // console.log(one_now_time);
+        // console.log(parseInt((one_end_time - one_now_time) / 1000));
+        // console.log(typeof curr_num);
+        // console.log(curr_num);
         if (curr_num <= 0) {
             return true;
         } else {
