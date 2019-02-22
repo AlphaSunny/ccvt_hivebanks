@@ -33,13 +33,20 @@ ul.item_ul {
 }
 
 ul.item_ul li {
-    list-style: none;
     margin: 0 5px;
     line-height: 40px;
     width: 15%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.show_name_ul li {
+    line-height: 40px;
+}
+
+li {
+    list-style: none;
 }
 
 .show_name {
