@@ -9,7 +9,7 @@ error_reporting(E_ALL | E_STRICT);
 $db = new DB_COM();
 $unit = get_la_base_unit();
 
-$times = '2018-12-29 19:59:03';
+$times = '2019-01-25 20:05:51';
 
 $sql = "select after_scale from bot_group_scale_changes WHERE ctime>'{$times}' group BY after_scale ORDER by after_scale DESC ";
 $db->query($sql);
