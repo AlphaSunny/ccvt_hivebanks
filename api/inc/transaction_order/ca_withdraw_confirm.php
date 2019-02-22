@@ -93,7 +93,7 @@ function withdraw_confirm($rows){
     $com_balance_ba["credit_id"] = $rows["ca_id"];
     $com_balance_ba["debit_id"] = $rows["us_id"];
     $com_balance_ba["tx_type"] =    "ca_out";
-    $com_balance_ba["tx_amount"] =  $rows["base_amount"];
+    $com_balance_ba["tx_amount"] =  $rows["base_amount"] + $rows["tx_fee"];
     $com_balance_ba["credit_balance"] = $new_ca_row["base_amount"] + $new_ca_row["lock_amount"];
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;
