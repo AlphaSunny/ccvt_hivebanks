@@ -60,10 +60,10 @@ li {
     .up_content {
         width: 100%;
         margin: 0;
+        padding: 0 15px;
     }
 
-    li {
-        width: 50%;
-        margin: 0;
+    ul.item_ul li {
+        width: 45%;
     }
 }
