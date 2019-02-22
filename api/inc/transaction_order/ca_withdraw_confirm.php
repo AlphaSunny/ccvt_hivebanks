@@ -73,7 +73,7 @@ function withdraw_confirm($rows){
     $com_balance_us['prvs_hash'] = get_ca_withdraw_pre_hash($rows["us_id"]);
     $com_balance_us["debit_id"] = $rows["ca_id"];
     $com_balance_us["tx_type"] =    "ca_out";
-    $com_balance_us["tx_amount"] =  -$rows["base_amount"];//FZG
+    $com_balance_us["tx_amount"] =  -$rows["base_amount"] - $rows["tx_fee"];//FZG
     $com_balance_us["credit_balance"] = $new_us_row["base_amount"] + $new_us_row["lock_amount"];
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = $ctime;
