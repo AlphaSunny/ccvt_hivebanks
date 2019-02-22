@@ -52,7 +52,7 @@ function AJAX_Start(){
             let data = res.all_list;
             item_list = res;
             if (data == "") {
-                ErrorPrompt("暂无数据");
+                alert("暂无数据");
                 return;
             }
             upItemFun();
