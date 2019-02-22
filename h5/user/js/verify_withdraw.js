@@ -11,15 +11,15 @@ $(function () {
                     WarnPrompt("账户余额不足，无法进行提现");
                     return;
                 }
-                if(scale < 2){
+                if (scale < 2) {
                     WarnPrompt("荣耀等级不足2级，无法进行提现");
                     return;
                 }
                 if (type == "ba_withdraw") {
-                    window.location.href = getRootPath()+"/h5/user/bit_withdraw.html";
+                    window.location.href = getRootPath() + "/h5/user/bit_withdraw.html";
                 }
                 if (type == "ca_withdraw") {
-                    window.location.href = getRootPath()+"/h5/user/currency_withdraw.html";
+                    window.location.href = getRootPath() + "/h5/user/currency_withdraw.html";
                 }
 
             }
@@ -27,6 +27,7 @@ $(function () {
             ErrorPrompt(response);
         });
     }
+
 //withdraw
     $('.nav_ba_withdraw').click(function () {
         verifyWithdraw("ba_withdraw");
