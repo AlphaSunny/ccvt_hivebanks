@@ -90,11 +90,10 @@ $(function () {
         }
 
         //询问框
-        let con = layer.confirm('是否确认锁定？', {
+        layer.confirm('是否确认锁定？', {
             btn: ['确认', '取消'] //按钮
         }, function () {
             confirmLockAmountFun(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id);
-            con.close();
         }, function () {
         });
     });
