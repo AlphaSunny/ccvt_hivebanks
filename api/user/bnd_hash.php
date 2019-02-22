@@ -34,7 +34,7 @@ $hash_type = get_arg_str('GET', 'hash_type');
 // HASH内容
 $hash = get_arg_str('GET', 'hash', 255);
 //// 密码HASH
-//$pass_word_hash = get_arg_str('GET', 'pass_word_hash');
+$pass_word_hash = get_arg_str('GET', 'pass_word_hash');
 
 //确认密码HASH
 $comfirm_pass_hash = get_arg_str('GET', 'confirm_pass_hash');
