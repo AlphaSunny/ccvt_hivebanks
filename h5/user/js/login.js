@@ -5,7 +5,6 @@ $(document).ready(function () {
         if (arr != null) {
             return unescape(arr[2]);
         }else{
-            alert("登录页面不存在user_token");
             DelCookie("user_token");
             return 0;
         }
