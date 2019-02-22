@@ -215,29 +215,29 @@
             }
         }
 
-        if (days < 10) {
+        if (days < 10 && days >= 0) {
             $(".days").text("0" + days);
-        }else {
+        } else if (days >= 10) {
             $(".days").text(days);
-            console.log("days"+days);
+            console.log("days" + days);
         }
-        if (hours < 10) {
+        if (hours < 10 && hours >= 0) {
             $(".hours").text("0" + hours);
-        } else {
+        } else if (hours >= 10) {
             $(".hours").text(hours);
-            console.log("hours"+hours)
+            console.log("hours" + hours)
         }
-        if (minutes < 10) {
+        if (minutes < 10 && minutes >= 0) {
             $(".minutes").text("0" + minutes);
-        } else {
+        } else if (minutes >= 10) {
             $(".minutes").text(minutes);
-            console.log("minutes"+minutes)
+            console.log("minutes" + minutes)
         }
-        if (seconds < 10) {
+        if (seconds < 10 && seconds >= 0) {
             $(".seconds").text("0" + seconds);
-        } else {
+        } else if (seconds >= 10) {
             $(".seconds").text(seconds);
-            console.log("seconds"+seconds)
+            console.log("seconds" + seconds)
         }
     }
 
