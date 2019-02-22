@@ -103,7 +103,8 @@ $(function () {
     function confirmLockAmountFun(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id) {
         LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id, function (response) {
             if (response.errcode == '0') {
-
+                SuccessPrompt("提交成功");
+                window.location.href = "ca_withdraw_info.html";
             }
         }, function (response) {
             LayerFun(response.errcode);
