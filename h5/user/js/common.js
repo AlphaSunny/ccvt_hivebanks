@@ -13,7 +13,7 @@ function SetCookie(name, value) {
 function GetCookie(name) {
     let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
-    if (arr == null) {
+    if (arr == null && name == "user_token") {
         alert("commom文件中不存在user_token");
     //     alert("com:"+name);
     //     DelCookie("user_token");
