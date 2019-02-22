@@ -165,8 +165,8 @@ $(function () {
     });
     //Go to the mailbox to verify
     $('.goEmailBtn').click(function () {
-        window.location.href = 'login.html';
         window.open(emailList[_email]);
+        window.location.href = 'login.html';
     });
 
     //phoneInput
