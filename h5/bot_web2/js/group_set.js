@@ -126,8 +126,7 @@ $(function () {
         send_address = $(".send_address").val();
         bind_account_notice = $(".bind_account_notice").val();
         is_welcome = $(".is_welcome").val();
-        is_welcome = $(".is_welcome").val();
-        welcome = $(".welcome").val();
+        welcome = $("#welcome_text").val();
         ranking_change_switch = $(".ranking_change_switch").val();
         group_introduction = $("#group_introduction").val();
         if (type) {
