@@ -1,19 +1,4 @@
 $(function () {
-    //判断当前是否登录
-    function GetLoginCookie(name) {
-        let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
-        if (arr != null) {
-            return unescape(arr[2]);
-        } else {
-            return null;
-        }
-    }
-
-    let user_token = GetLoginCookie('user_token');
-    if (user_token) {
-        window.location.href = "account.html";
-    }
-
     //get invite
     let invite_code = GetQueryString("invite_code");
     let code = GetQueryString("code");
