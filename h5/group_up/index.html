@@ -29,6 +29,17 @@
 <script>
     let count_timer = "";
 
+    let is_out = oneMinCountDown();
+
+    if(is_out){
+        window.location.href = "group_up.html?ok=ok";
+    }else{
+        count_timer = setInterval(function () {
+            TimeDown("2019/2/22 20:00");//setTime
+            // TimeDown("2018-12-28 16:26");
+        }, 1000);
+    }
+
     //倒计时
     function TimeDown(endDateStr) {
         //结束时间
@@ -112,11 +123,6 @@
         }
     }
 
-    count_timer = setInterval(function () {
-        TimeDown("2019-2-22 20:00");//setTime
-        // TimeDown("2018-12-28 16:26");
-    }, 1000);
-
     //即将进行二次荣耀等级升级
     function TwoUp() {
         $(".text_h3").css("font-size", "6rem").text("即将进行领域升级");
@@ -127,7 +133,7 @@
 
     //一分钟//
     function oneMinCountDown() {
-        let one_end_time = new Date("2019-2-22 20:01");//setTime
+        let one_end_time = new Date("2019/2/22 20:01");//setTime
         let one_now_time = new Date();
         let curr_num = parseInt((one_end_time - one_now_time) / 1000);
 
