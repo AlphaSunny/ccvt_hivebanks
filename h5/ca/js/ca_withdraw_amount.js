@@ -90,10 +90,11 @@ $(function () {
         }
 
         //询问框
-        layer.confirm('是否确认锁定？', {
+        let con = layer.confirm('是否确认锁定？', {
             btn: ['确认', '取消'] //按钮
         }, function () {
             confirmLockAmountFun(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id);
+            con.close();
         }, function () {
         });
     });
@@ -102,8 +103,7 @@ $(function () {
     function confirmLockAmountFun(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id) {
         LockWithdrawAmount(token, ca_id, base_amount, bit_amount, id_card, name, us_account_id, function (response) {
             if (response.errcode == '0') {
-                $('#lockWithdraw').modal('show');
-                readingTime(8);
+
             }
         }, function (response) {
             LayerFun(response.errcode);
