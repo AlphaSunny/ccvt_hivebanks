@@ -50,7 +50,7 @@ if (($rate_row["min_amount"] > $base_amount * get_la_base_unit() || $base_amount
 $us_row = get_us_base_info($us_id);
 die($us_row["base_amount"]);
 // TODO: 加上500的手续费，在数据库未设置前写死
-if ($us_row["base_amount"] < $base_amount + 500)
+if ($us_row["base_amount"] / get_la_base_unit() < $base_amount + 500)
     exit_error("126","用户余额不足");
 
 $data = array();
