@@ -121,6 +121,7 @@ h2.active {
     .count_box {
         display: block;
         height: unset;
+        top: 35%;
         /*position: absolute;*/
         /*color: #fff;*/
         /*width: 90%;*/
@@ -132,6 +133,7 @@ h2.active {
 
     .count_box h1 {
         display: block;
+        font-size: 6rem;
         /*border: 1px solid #ffffff;*/
         /*border-radius: 10px;*/
         /*font-size: 6rem;*/
