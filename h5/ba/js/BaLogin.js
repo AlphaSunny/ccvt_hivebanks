@@ -4,6 +4,11 @@ $(document).ready(function () {
         if (arr != null) return unescape(arr[2]);
     }
 
+    var ba_token = GetLoginCookie('ba_token');
+    if (ba_token) {
+        window.location.href = "BaLogin.html";
+    }
+
     //Get graphic verification code
     GetImgCode();
     //    Switch verification code
@@ -86,7 +91,6 @@ $(document).ready(function () {
     // emailSubmit judgment
     var _email = '', emailList = '';
     $(".emailLoginBtn").click(function () {
-        var ba_token = GetLoginCookie('ba_token');
         var email = $(".email").val(),
             emailPassword = $(".emailPassword").val(),
             pass_word_hash = hex_sha1(emailPassword),
@@ -103,10 +107,6 @@ $(document).ready(function () {
 
         if (emailPassword.length <= 0) {
             LayerFun('passwordNotEmpty');
-            return;
-        }
-        if (ba_token) {
-            LayerFun('noMoreAccount');
             return;
         }
         _email = email.split('@')[1];
