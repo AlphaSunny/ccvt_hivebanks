@@ -4,12 +4,14 @@ $(document).ready(function () {
         let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) {
             return unescape(arr[2]);
+        }else{
+            return false;
         }
     }
 
     let user_token = GetLoginCookie('user_token');
     alert(user_token);
-    if (user_token && user_token!= 'undefined') {
+    if (user_token) {
         window.location.href = "account.html";
     }
 
