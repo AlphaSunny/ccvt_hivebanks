@@ -34,9 +34,9 @@ $(function () {
 
     $(".to_doc").click(function () {
         if (user_token) {
-            window.location.href = 'http://www.fnying.com/h5/ccvt/index.html?t=' + decodeURI(user_token);
+            window.location.href = 'http://www.fnying.com/h5/ccvt/glory_up.html?t=' + decodeURI(user_token);
         }else {
-            window.location.href = 'http://www.fnying.com/h5/ccvt/index.html?';
+            window.location.href = 'http://www.fnying.com/h5/ccvt/glory_up.html?';
         }
     });
 
