@@ -233,7 +233,7 @@
     }
 
     count_timer = setInterval(function () {
-        TimeDown("2019-2-22 20:27");
+        TimeDown("2019-2-22 20:30");
         // TimeDown("2019-2-22 16:30");
     }, 1000);
 
@@ -265,13 +265,13 @@
     //跳转升级页面
     function JumpUp() {
         setTimeout(function () {
-            window.location.href = "glory_up.html";
+            window.location.href = "glory_up.html?ok=ok";
         }, 3000);
     }
 
     //一分钟//
     function oneMinCountDown() {
-        let one_end_time = new Date("2019-2-22 20:28");//setTime
+        let one_end_time = new Date("2019-2-22 20:31");//setTime
         let one_now_time = new Date();
         let curr_num = parseInt((one_end_time - one_now_time) / 1000);
 
