@@ -150,6 +150,16 @@
 <script>
     let count_timer = "";
 
+    //判断是否过期
+    let is_out = oneMinCountDown();
+    if (is_out) {
+        window.location.href = "glory_up.html?ok=ok";
+    } else {
+        count_timer = setInterval(function () {
+            TimeDown("2019-2-22 22:48");
+        }, 1000);
+    }
+
     //倒计时
     function TimeDown(endDateStr) {
         //结束时间
@@ -231,10 +241,6 @@
             $(".seconds").text(seconds);
         }
     }
-
-    count_timer = setInterval(function () {
-        TimeDown("2019-2-22 22:48");
-    }, 1000);
 
     //二次解锁成功
     function twoSuccess() {
