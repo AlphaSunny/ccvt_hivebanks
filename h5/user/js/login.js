@@ -5,6 +5,7 @@ $(document).ready(function () {
         if (arr != null) {
             return unescape(arr[2]);
         }else{
+            DelCookie("user_token");
             return 0;
         }
     }
