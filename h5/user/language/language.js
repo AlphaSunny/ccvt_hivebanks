@@ -107,7 +107,6 @@ var execI18n = function () {
         // console.log("请引入i18n js 文件")
         return false;
     }
-    ;
 
     /*
     Here you need to translate i18n
