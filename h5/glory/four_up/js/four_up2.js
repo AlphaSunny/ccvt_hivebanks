@@ -149,7 +149,7 @@ $(function () {
                     // particleAlphabet.currentPos = 0;
                     clearInterval(text_timer);
                     setTimeout(function () {
-                        $("#text").remove();
+                        $("#text,.show_name").remove();
                         upItemFun();
                     }, 1000);
 
