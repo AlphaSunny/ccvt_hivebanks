@@ -64,7 +64,7 @@ $(function () {
                 if (type != "guo") {
                     particleAlphabetFun(max);
                 } else {
-                    $("#text").remove();
+                    $("#text,.show_name").remove();
                     upItemFun();
                 }
             }
