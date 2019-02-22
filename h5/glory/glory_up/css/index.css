@@ -119,22 +119,24 @@ h2.active {
 
 @media screen and (max-width: 768px) {
     .count_box {
-        position: absolute;
-        color: #fff;
-        width: 90%;
-        left: 50%;
-        margin-left: -45%;
-        top: 35%;
-        margin-top: -8rem;
+        display: block;
+        /*position: absolute;*/
+        /*color: #fff;*/
+        /*width: 90%;*/
+        /*left: 50%;*/
+        /*margin-left: -45%;*/
+        /*top: 35%;*/
+        /*margin-top: -8rem;*/
     }
 
     .count_box h1 {
-        border: 1px solid #ffffff;
-        border-radius: 10px;
-        font-size: 6rem;
-        margin: 0;
-        text-align: center;
-        transition: all 2s;
-        text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);
+        display: block;
+        /*border: 1px solid #ffffff;*/
+        /*border-radius: 10px;*/
+        /*font-size: 6rem;*/
+        /*margin: 0;*/
+        /*text-align: center;*/
+        /*transition: all 2s;*/
+        /*text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);*/
     }
 }
