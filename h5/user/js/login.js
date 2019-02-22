@@ -5,7 +5,7 @@ $(document).ready(function () {
         if (arr != null) {
             return unescape(arr[2]);
         }else{
-            return false;
+            return 0;
         }
     }
 
