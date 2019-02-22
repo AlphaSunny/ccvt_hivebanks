@@ -8,8 +8,7 @@ $(document).ready(function () {
     }
 
     let user_token = GetLoginCookie('user_token');
-    alert(user_token && user_token!= undefined);
-    if (user_token) {
+    if (user_token && user_token!= undefined) {
         window.location.href = "account.html";
     }
 
