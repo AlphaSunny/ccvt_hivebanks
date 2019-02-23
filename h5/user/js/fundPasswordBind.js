@@ -101,7 +101,9 @@ $(function () {
             if (response.errcode == '0') {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
-                LayerFun('bindSuccess');
+                SuccessPrompt("绑定成功");
+                return;
+                // LayerFun('bindSuccess');
                 if (wi_funPass !== 'wi_funPass') {
                     window.location.href = 'security.html';
                 } else {
