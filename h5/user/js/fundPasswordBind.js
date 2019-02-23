@@ -36,23 +36,27 @@ $(function () {
     let transfer_funPass = GetQueryString('transfer_funPass');
 
     //Get binding information
-    BindingInformation(token, function (response) {
-        if (response.errcode == '0') {
-            let data = response.rows, cellphone = "";
-            $.each(data, function (i, val) {
-                if (data[i].bind_name == 'cellphone' && data[i].bind_flag == '1') {
-                    cellphone = data[i].bind_name;
-                    return;
-                }
-            });
-            if (cellphone != "cellphone") {
-                $("#goBindCellPhone").modal('show');
-            }
-        }
-    }, function (response) {
-        LayerFun(response.errcode);
-        return;
-    });
+    let is_phone = GetVerifyBindingInformation(token,"cellphone");
+    if(is_phone){
+        console.log(is_phone);
+    }
+    // BindingInformation(token, function (response) {
+    //     if (response.errcode == '0') {
+    //         let data = response.rows, cellphone = "";
+    //         $.each(data, function (i, val) {
+    //             if (data[i].bind_name == 'cellphone' && data[i].bind_flag == '1') {
+    //                 cellphone = data[i].bind_name;
+    //                 return;
+    //             }
+    //         });
+    //         if (cellphone != "cellphone") {
+    //             $("#goBindCellPhone").modal('show');
+    //         }
+    //     }
+    // }, function (response) {
+    //     LayerFun(response.errcode);
+    //     return;
+    // });
 
     //Binding fund password
     $('.fundPasswordEnable').click(function () {
