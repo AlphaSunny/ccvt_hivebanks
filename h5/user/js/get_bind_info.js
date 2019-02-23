@@ -6,7 +6,6 @@ function GetVerifyBindingInformation(token, type) {
             if (data[i].bind_name == type && data[i].bind_flag == '1') {
                 // return true;
                 info = data[i].bind_info;
-                console.log(info);
                 return info;
             }
         })
