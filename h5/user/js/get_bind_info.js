@@ -4,7 +4,9 @@ function GetVerifyBindingInformation(token, type) {
         $.each(data, function (i, val) {
             if (data[i].bind_name == type && data[i].bind_flag == '1') {
                 // return true;
-                return data[i].bind_info;
+                let info = data[i].bind_info;
+                console.log(info);
+                return info;
             }
         })
     }, function (response) {
