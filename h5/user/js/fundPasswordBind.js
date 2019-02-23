@@ -36,7 +36,7 @@ $(function () {
     let transfer_funPass = GetQueryString('transfer_funPass');
 
     //Get binding information
-    let is_phone = GetVerifyBindingInformation(token,"cellphone");   
+    let is_phone = GetVerifyBindingInformation(token,"cellphone");
     if(is_phone){
         console.log(is_phone);
     }
