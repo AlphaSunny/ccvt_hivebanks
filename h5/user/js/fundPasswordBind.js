@@ -102,7 +102,6 @@ $(function () {
                 ShowLoading("hide");
                 ActiveClick($this, btnText);
                 SuccessPrompt("绑定成功");
-                return;
                 // LayerFun('bindSuccess');
                 if (wi_funPass !== 'wi_funPass') {
                     window.location.href = 'security.html';
