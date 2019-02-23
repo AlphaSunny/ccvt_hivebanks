@@ -3,6 +3,17 @@ $(function () {
     let token = GetCookie('user_token');
     GetUsAccount();
 
+    //Get url parameter
+    let wi_funPass = GetQueryString('wi_funPass');
+    let transfer_funPass = GetQueryString('transfer_funPass');
+
+    //Get binding information
+    let is_phone = GetVerifyBindingInformation(token,"cellphone");
+    console.log(is_phone);
+    if(is_phone){
+        console.log(is_phone);
+    }
+
     //Get graphic verification code
     GetImgCode();
 
@@ -31,16 +42,7 @@ $(function () {
         GetSmsCodeFun(cellphone, country_code, bind_type, cfm_code);
     });
 
-    //Get url parameter
-    let wi_funPass = GetQueryString('wi_funPass');
-    let transfer_funPass = GetQueryString('transfer_funPass');
 
-    //Get binding information
-    let is_phone = GetVerifyBindingInformation(token,"cellphone");
-    console.log(is_phone);
-    if(is_phone){
-        console.log(is_phone);
-    }
     // BindingInformation(token, function (response) {
     //     if (response.errcode == '0') {
     //         let data = response.rows, cellphone = "";
