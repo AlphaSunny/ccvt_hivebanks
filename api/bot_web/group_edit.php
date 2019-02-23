@@ -38,7 +38,7 @@ $bind_account_notice = get_arg_str('GET', 'bind_account_notice');
 $is_welcome = get_arg_str('GET', 'is_welcome');
 
 // 欢迎语
-$welcome = get_arg_str('GET', 'welcome');
+$welcome = get_arg_str('GET', 'welcome','255');
 
 // 群介绍
 $group_introduction = get_arg_str('GET', 'group_introduction');
