@@ -37,6 +37,7 @@ $(function () {
 
     //Get binding information
     let is_phone = GetVerifyBindingInformation(token,"cellphone");
+    console.log(is_phone);
     if(is_phone){
         console.log(is_phone);
     }
