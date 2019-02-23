@@ -1,12 +1,27 @@
 $(function () {
     let token = GetCookie('user_token');
     GetUsAccount();
-    let is_email = GetVerifyBindingInformation(token,"email");
-    if(is_email){
-        console.log(is_email);
-        SuccessPrompt("邮箱已绑定!");
-        window.location.href = "security.html";
-    }
+    // let is_email = GetVerifyBindingInformation(token,"email");
+    // if(is_email){
+    //     console.log(is_email);
+    //     SuccessPrompt("邮箱已绑定!");
+    //     window.location.href = "security.html";
+    // }
+
+    BindingInformation(token, function (response) {
+        if (response.errcode == '0') {
+            let data = response.rows, cellphone = "";
+            $.each(data, function (i, val) {
+                if (data[i].bind_name == 'email' && data[i].bind_flag == '1') {
+                    SuccessPrompt("邮箱已绑定!");
+                    window.location.href = "security.html";
+                }
+            });
+        }
+    }, function (response) {
+        ErrorPrompt(response.errcode);
+        return;
+    });
 
     let _email = '', emailList = '';
     $('.emailEnable').click(function () {

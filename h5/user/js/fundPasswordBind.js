@@ -50,7 +50,7 @@ $(function () {
             }
         }
     }, function (response) {
-        LayerFun(response.errcode);
+        ErrorPrompt(response.errcode);
         return;
     });
 
