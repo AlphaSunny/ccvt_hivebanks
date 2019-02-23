@@ -4,7 +4,7 @@ $(function () {
     let code = GetQueryString("code");
     let group_id = GetQueryString("group_id");
     if (invite_code && invite_code != 0) {
-        $(".emailInviteCode,.phoneInviteCode").val(invite_code);
+        $("#inviteCode").val(invite_code);
     }
 
     if (code && code != "null") {
