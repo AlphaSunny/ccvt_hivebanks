@@ -75,16 +75,16 @@ if($row != $phone){
 }
 
 //获取当前用户的绑定信息
-//$bind_info_us = get_us_bind_info_by_token($us_id);
-//foreach ($bind_info_us as $us_info)
-//{
+$bind_info_us = get_us_bind_info_by_token($us_id);
+foreach ($bind_info_us as $us_info)
+{
 //    if($us_info['bind_name'] == $hash_type){
 //        //更新该条数据
 //        $ret_us = upd_bind_info_for_us_id($us_id,$hash_type);
 //        if(!$ret_us)
 //            exit_error('101',"Information entry or update failed");
 //    }
-//}
+}
 // 获取pass_word_hash
 $pass_word_login = 'password_login';
 $get_pass_word_hash = get_pass_word_hash($us_id,$pass_word_login);
