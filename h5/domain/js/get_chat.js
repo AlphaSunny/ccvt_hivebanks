@@ -38,7 +38,7 @@ $(function () {
     let is_content = 1;
 
     function GetWeChatFun(wechat, group_id, search_content, limit, offset) {
-        let bot_content = "", li = "";
+        let bot_content = "", li = "", show_zan_cai = "";
         let index = layer.load(1, {
             shade: [0.1, '#fff']
         });
@@ -77,17 +77,27 @@ $(function () {
                         bot_content = "<video src='" + data[i].bot_content + "' controls='controls'></video>";
                     }
 
+                    if (data[i].us_id !== null) {
+                        show_zan_cai = "<span class='none us_id'>" + data[i].us_id + "</span>&nbsp;&nbsp;" +
+                            "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
+                            "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
+                            "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
+                            "<span class='cai_num'>" + data[i].all_point_on + "</span>"
+                    }
+
                     li += "<li class='chat_item'>" +
                         "<p class='chat_item_name'>" + data[i].bot_nickname.substr(0, 1) + "</p>" +
                         "<div class='chat_item_content_box'>" +
                         "<p class='name'>" +
                         "<span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;" +
                         "<span>" + data[i].bot_send_time + "</span>" +
-                        "<span class='none us_id'>" + data[i].us_id + "</span>&nbsp;&nbsp;" +
-                        "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                        "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
-                        "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-                        "<span class='cai_num'>" + data[i].all_point_on + "</span>" +
+                        show_zan_cai +
+                        // "<span class='none us_id'>" + data[i].us_id + "</span>&nbsp;&nbsp;" +
+                        // "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
+                        // "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
+                        // "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
+                        // "<span class='cai_num'>" + data[i].all_point_on + "</span>" +
+
                         "</p>" +
                         "<div class='chat_item_content'>" + bot_content + "</div>" +
                         "</div>" +
