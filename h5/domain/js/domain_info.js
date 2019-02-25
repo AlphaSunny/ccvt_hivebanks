@@ -151,7 +151,7 @@ $(function () {
     });
 
     function BindNumFun(group_id, limit, offset) {
-        let li = "", scale = "", total = "", totalPage = "", count = "";
+        let li = "", wechat = "", scale = "", total = "", totalPage = "", count = "";
         ShowLoading("show");
         BindNum(group_id, limit, offset, function (response) {
             if (response.errcode == "0") {
@@ -178,9 +178,13 @@ $(function () {
                     } else {
                         scale = "<span></span>"
                     }
+
+                    if (data[i].wechat != null) {
+                        wechat = "<span class='wechat'>" + data[i].wechat + "</span>";
+                    }
                     li += "<li>" +
                         scale +
-                        "<span class='wechat'>" + data[i].wechat + "</span>" +
+                        wechat +
                         "</li>";
                 });
                 $(".bind_list_ul").html(li);
@@ -203,7 +207,8 @@ $(function () {
             ErrorPrompt(response.errmsg);
         });
     }
-    $(".bind_num_close").click(()=>{
+
+    $(".bind_num_close").click(() => {
         $(".bind_num_box").addClass("none");
     });
 });
