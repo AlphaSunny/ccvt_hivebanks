@@ -75,11 +75,12 @@ $(function () {
                         "<div class='chat_item_content_box'>" +
                         "<p class='name'>" +
                         "<span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;" +
-                        "<span>" + data[i].bot_send_time + "</span></p>" +
+                        "<span>" + data[i].bot_send_time + "</span>" +
                         "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                         "<span class='zan_num'>122</span>&nbsp;|&nbsp;" +
                         "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
                         "<span class='cai_num'>12</span>" +
+                        "</p>" +
                         "<div class='chat_item_content'>" + bot_content + "</div>" +
                         "</div>" +
                         "</li>";
