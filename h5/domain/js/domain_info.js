@@ -166,7 +166,7 @@ $(function () {
                     }
                     li += "<li>" +
                         scale +
-                        "<span>" + data[i].wechat + "</span>" +
+                        "<span class='wechat'>" + data[i].wechat + "</span>" +
                         "</li>";
                 });
                 $(".bind_list_ul").html(li);
