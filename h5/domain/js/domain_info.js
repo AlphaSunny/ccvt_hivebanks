@@ -164,7 +164,7 @@ $(function () {
                         console.log("不等于0");
                         scale = "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
                     }else {
-                        console.log("等于0");
+                        scale = "<span></span>"
                     }
                     li += "<li>" +
                         scale +
