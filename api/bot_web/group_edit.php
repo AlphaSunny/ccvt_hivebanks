@@ -49,6 +49,9 @@ $src = get_arg_str('GET', 'src');
 // 积分排名变化的通知  1:通知   2：不通知
 $ranking_change_switch = get_arg_str('GET', 'ranking_change_switch');
 
+// 新闻推送
+$news_switch = get_arg_str('GET', 'news_switch');
+
 //验证token
 $us_id = check_token($token);
 
@@ -70,6 +73,7 @@ $date['welcome'] = $welcome;
 $date['dis'] = $group_introduction;
 $date['qr_code_address'] = $src;
 $date['ranking_change_switch'] = $ranking_change_switch;
+$date['news_switch'] = $news_switch;
 //修改群组
 $row = save_group($date);
 if (!$row){
