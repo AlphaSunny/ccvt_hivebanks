@@ -151,16 +151,16 @@ $(function () {
     });
 
     function BindNumFun(group_id, limit, offset) {
-        let li = "",scale = "";
+        let li = "", scale = "";
         ShowLoading("show");
         BindNum(group_id, limit, offset, function (response) {
             if (response.errcode == "0") {
                 ShowLoading("hide");
-                $(".bind_num_box").fadeIn();
+                $(".bind_num_box").removeClass("none");
                 let data = response.rows;
                 $.each(data, function (i, val) {
-                    if (data[i].scale != 0) {
-                        scale="<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
+                    if (data[i].scale != "0") {
+                        scale = "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
                     }
                     li += "<li>" +
                         scale +
