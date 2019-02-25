@@ -36,9 +36,10 @@ $code = get_arg_str('GET', 'code');
 $us_id = check_token($token);
 
 
-if (!(is_numeric($ccvt_num))&&strpos($ccvt_num, '.')) {
+if (!(is_numeric($ccvt_num)) || strpos($ccvt_num, '.')) {
     exit_error("150","金额错误");
 }
+
 
 
 //验证哈希密码
