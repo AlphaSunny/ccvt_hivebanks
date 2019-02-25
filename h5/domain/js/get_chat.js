@@ -1,4 +1,5 @@
 $(function () {
+    let group_id = GetQueryString("id");
     let token = GetCookie("user_token");
     if (!token) {
         $(".usAccount").remove();
@@ -23,12 +24,11 @@ $(function () {
     }
 
     let wechat = "", limit = 50, offset = 0, search_content = "";
-    let group_id = "", group_name = "";
+    let group_name = "";
 
     //显示群聊内容
     $(".look_chat_recode").click( function () {
         wechat = null;
-        group_id = $(this).attr("name");
         group_name = $(".group_title").text();
         $(".person_name").text(group_name);
         offset = 0;
