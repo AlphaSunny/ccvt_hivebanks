@@ -163,6 +163,11 @@ $(function () {
     });
 
 //========================
+    //登录
+    $(".usLogin").click(function () {
+        window.location.href = "../user/login.html?domain_info=1";
+    });
+
     //赞/踩
     let give_us_id = "", state = "",
         _this_click_zan_num = "",

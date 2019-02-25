@@ -16,6 +16,7 @@ $(document).ready(function () {
 
     let leaderBoard = GetQueryString("honor");
     let domain_list = GetQueryString("domain_list");
+    let domain_info = GetQueryString("domain_info");
 
     //Get graphic verification code
     GetImgCode();
@@ -199,6 +200,11 @@ $(document).ready(function () {
                 } else {
                     window.location.href = "../domain/domain_list2.html";
                 }
+                if (!domain_info) {
+                    window.location.href = 'account.html';
+                } else {
+                    window.location.href = "../domain/domain_info.html";
+                }
             }
         }, function (response) {
             ActiveClick($this, _text);
@@ -334,6 +340,11 @@ $(document).ready(function () {
                     window.location.href = 'account.html';
                 } else {
                     window.location.href = "../domain/domain_list2.html";
+                }
+                if (!domain_info) {
+                    window.location.href = 'account.html';
+                } else {
+                    window.location.href = "../domain/domain_info.html";
                 }
             }
         }, function (response) {
