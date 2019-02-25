@@ -242,8 +242,12 @@ if ($grous){
 
             //修改余额
             $give_account = round($v['all_amount']*0.4)*$unit;
+            if ($give_account<=0){
+                $db->Rollback($pInTrans);
+                echo "金额为0";
+                break;
+            }
             $sql = "update us_base set base_amount=base_amount+'{$give_account}' WHERE us_id='{$u_id}'";
-            echo $sql;
             $db -> query($sql);
             if (!$db->affectedRows()){
                 $db->Rollback($pInTrans);
