@@ -76,7 +76,7 @@ $(function () {
                         "<p class='name'>" +
                         "<span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;" +
                         "<span>" + data[i].bot_send_time + "</span>" +
-                        "<span class='none us_id'>" + data[i].us_id + "</span>" +
+                        "<span class='none us_id'>" + data[i].us_id + "</span>&nbsp;&nbsp;" +
                         "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                         "<span class='zan_num'>122</span>&nbsp;|&nbsp;" +
                         "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
