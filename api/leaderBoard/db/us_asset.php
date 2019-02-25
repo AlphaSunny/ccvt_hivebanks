@@ -141,6 +141,25 @@ function get_chat_list($data,$offset,$limit)
     $sql .= " ORDER BY b.bot_create_time desc limit $offset , $limit";
     $db->query($sql);
     $rows = $db->fetchAll();
+    foreach ($rows as $k=>$v){
+        $s_time = strtotime(date('Y-m-d 00:00:00'), time());
+        $e_time = strtotime(date('Y-m-d 23:59:59'), time());
+        $unit = get_la_base_unit();
+        $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$v['us_id']}' AND state=1 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+        $db->query($sql);
+        $all_zan = $db->getField($sql, 'all_am');
+        if (!$all_zan) {
+            $all_zan = 0;
+        }
+        $rows[$k]['all_zan'] = $all_zan;
+        $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$v['us_id']}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
+        $db->query($sql);
+        $all_cai = $db->getField($sql, 'all_am');
+        if (!$all_cai) {
+            $all_cai = 0;
+        }
+        $rows[$k]['all_cai'] = $all_cai;
+    }
     return $rows;
 }
 
