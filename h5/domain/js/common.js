@@ -14,19 +14,21 @@ function GetQueryString(name) {
 
 function getRootPath() {
     //Get current URL
-    let curWwwPath = window.document.location.href;
+    var curWwwPath = window.document.location.href;
     //Get the directory after the host address
-    let pathName = window.document.location.pathname;
-    let pos = curWwwPath.indexOf(pathName);
+    var pathName = window.document.location.pathname;
+    var pos = curWwwPath.indexOf(pathName);
     //Get the host address
-    let localhostPath = curWwwPath.substring(0, pos);
+    var localhostPath = curWwwPath.substring(0, pos);
     //Get the project name with "/"
-    let projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+    var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
     return localhostPath;
 }
 
-let url = getRootPath();
-let config_api_url = '';
+var url = getRootPath();
+
+//Get configuration file/Base currency type
+var config_api_url = '', config_h5_url = '';
 $.ajax({
     url: url + "/h5/assets/json/config_url.json",
     async: false,
@@ -34,6 +36,13 @@ $.ajax({
     dataType: "json",
     success: function (data) {
         config_api_url = data.api_url;
+        config_h5_url = data.h5_url;
+        var benchmark_type = data.benchmark_type.toUpperCase();
+        var ca_currency = data.ca_currency.toUpperCase();
+        $('.base_type').text(benchmark_type);
+        $('.ca_currency').text(ca_currency);
+        SetCookie('ca_currency', ca_currency);
+        SetCookie('benchmark_type', benchmark_type);
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
 
