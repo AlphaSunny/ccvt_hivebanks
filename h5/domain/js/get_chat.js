@@ -104,7 +104,7 @@ $(function () {
     //显示搜索
     $(".chat_search_icon").click(function () {
         $(".title_search_box").fadeOut();
-        $(".chat_search_box").fadeIn();
+        $(".chat_search_box").removeClass("none");
     });
 
     //进行搜索
