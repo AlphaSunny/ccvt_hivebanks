@@ -151,14 +151,14 @@ function get_chat_list($data,$offset,$limit)
         if (!$all_zan) {
             $all_zan = 0;
         }
-        $rows[$k]['all_zan'] = $all_zan;
+        $rows[$k]['all_praise'] = $all_zan;
         $sql = "select sum(tx_amount)/'{$unit}' as all_am from us_glory_integral_change_log WHERE credit_id='{$v['us_id']}' AND state=2 AND ctime BETWEEN '{$s_time}' AND '{$e_time}'";
         $db->query($sql);
         $all_cai = $db->getField($sql, 'all_am');
         if (!$all_cai) {
             $all_cai = 0;
         }
-        $rows[$k]['all_cai'] = $all_cai;
+        $rows[$k]['all_point_on'] = $all_cai;
     }
     return $rows;
 }
