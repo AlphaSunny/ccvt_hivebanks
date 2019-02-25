@@ -81,7 +81,7 @@ $(function () {
                 let data = response.row, bind_num = "", glory_number = "";
                 let bind_rows = response.bind_rows;
                 let y_arr = [], x_arr = [];
-                $(".name").text(data.name);
+                $(".group_title").text(data.name);
                 $(".bind_count").text(data.bind_count);
                 $(".glory_number").text(data.glory_number);
                 $(".group_member_number").text(data.group_member_number);

@@ -1,20 +1,12 @@
 $(function () {
     let wechat = "", limit = 50, offset = 0, search_content = "";
-    //
-    // let group_id = GetQueryString("group_id");
-    // let group_info = GetQueryString("domain");
-    // let group_name = decodeURI(GetQueryString("group_name"));
-    // if (group_info == "1") {
-    //     $(".person_name").text(group_name);
-    //     GetWeChatFun(wechat, group_id, search_content, limit, offset);
-    // }
     let group_id = "", group_name = "";
 
     //显示群聊内容
     $(".look_chat_recode").click( function () {
         wechat = null;
         group_id = $(this).attr("name");
-        group_name = $(this).text();
+        group_name = $(".group_title").text();
         $(".person_name").text(group_name);
         offset = 0;
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
