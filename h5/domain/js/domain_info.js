@@ -151,13 +151,18 @@ $(function () {
     });
 
     function BindNumFun(group_id, limit, offset) {
-        let li = "";
+        let li = "",scale = "";
         BindNum(group_id, limit, offset, function (response) {
             if (response.errcode == "0") {
-                console.log(response);
                 let data = response.rows;
                 $.each(data, function (i, val) {
-                    li+="<li>"+ data[i].wechat +"</li>";
+                    if (data[i].scale != 0) {
+                        scale="<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
+                    }
+                    li += "<li>" +
+                        scale +
+                        "<span>" + data[i].wechat + "</span>" +
+                        "</li>";
                 });
                 $(".bind_list_ul").html(li);
             }
