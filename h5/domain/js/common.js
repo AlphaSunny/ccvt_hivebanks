@@ -90,6 +90,40 @@ function GetDoMainInfo(group_id, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//get GetChatPerson
+function GetChatPerson(wechat, group_id, search_content, limit, offset, suc_func, error_func) {
+    let api_url = 'chat_person.php',
+        post_data = {
+            "wechat": wechat,
+            "group_id": group_id,
+            "search_content": search_content,
+            "limit": limit,
+            "offset": offset
+        };
+    CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
+}
+
+//zan/cai
+function ConfirmZanCai(token, give_us_id, give_num, state, suc_func, error_func) {
+    let api_url = 'give_like.php',
+        post_data = {
+            "token": token,
+            "give_us_id": give_us_id,
+            "give_num": give_num,
+            "state": state
+        };
+    CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
+}
+
+//already zan cai
+function AlreadyZanCaiNum(token, suc_func, error_func) {
+    let api_url = 'praise_or_pointon_num.php',
+        post_data = {
+            "token": token
+        };
+    CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
+}
+
 //show loading
 let index_loading = "";
 
