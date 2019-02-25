@@ -123,6 +123,12 @@ $(function () {
         GetWeChatFun(wechat, group_id, search_content, limit, offset);
     });
 
+    //关闭聊天内容close_page
+    $(".close_page").click(function () {
+        $("#chat_box").fadeOut();
+        $("html, body").css("overflow", "unset");
+    });
+
     //加载更多
     $(".none_weChat").click(function () {
         offset += limit;
