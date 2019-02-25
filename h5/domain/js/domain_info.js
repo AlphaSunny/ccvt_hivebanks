@@ -152,8 +152,10 @@ $(function () {
 
     function BindNumFun(group_id, limit, offset) {
         let li = "",scale = "";
+        ShowLoading("show");
         BindNum(group_id, limit, offset, function (response) {
             if (response.errcode == "0") {
+                ShowLoading("hide");
                 $(".bind_num_box").fadeIn();
                 let data = response.rows;
                 $.each(data, function (i, val) {
@@ -168,6 +170,7 @@ $(function () {
                 $(".bind_list_ul").html(li);
             }
         }, function (response) {
+            ShowLoading("hide");
             ErrorPrompt(response.errmsg);
         });
     }
