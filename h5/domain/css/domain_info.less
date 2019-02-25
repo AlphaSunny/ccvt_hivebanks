@@ -628,3 +628,254 @@ p {
 .footer_text {
   padding: 30px 0;
 }
+
+//==================================
+body {
+  margin: 0;
+}
+
+.chat_content {
+  padding-top: 82px;
+  background: #f2f2f2;
+  padding-bottom: 5%;
+  min-height: 100%;
+}
+
+.chat_item_ul {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.chat_title_box {
+  background: #f2f2f2;
+  border-bottom: 1px solid #dadada;
+  color: #000000;
+  text-align: center;
+  height: 5rem;
+  line-height: 5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.chat_title_box h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.chat_item_name {
+  background: #314c98;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 3rem;
+  position: relative;
+}
+
+p.chat_item_name:after {
+  content: "";
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #ffffff;
+  right: -22%;
+  top: 66%;
+  transform: rotate(45deg);
+}
+
+.name {
+  font-size: 12px;
+  color: #9e9e9e;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.chat_item {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 10px;
+  margin-bottom: 5%;
+}
+
+/*.chat_item:not(:last-child) {*/
+/*margin-bottom: 5%;*/
+/*}*/
+
+.chat_item_content_box {
+  padding-left: 0.5%;
+  max-width: 80%;
+  /*max-width: 14rem;*/
+}
+
+.chat_item_content {
+  background: #ffffff;
+  display: inline-block;
+  line-height: 2rem;
+  /* max-width: 14rem; */
+  max-width: 100%;
+  border-right: 5px;
+  padding: 10px 10px 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  overflow: auto;
+  color: #000000;
+  text-align: justify;
+  /*background: #ffffff;*/
+  /*display: inline-block;*/
+  /*line-height: 1.5rem;*/
+  /*!*max-width: 14rem;*!*/
+  /*max-width: 100%;*/
+  /*border-right: 5px;*/
+  /*padding: 3% 3% 3% 4%;*/
+  /*border-radius: 5px;*/
+  /*font-size: 14px;*/
+  /*overflow: auto;*/
+  /*color: #000000;*/
+}
+
+.chat_item_content img, .chat_item_content video {
+  width: 100%;
+}
+
+/*搜索*/
+/*.search_box {*/
+/*position: absolute;*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*text-align: center;*/
+/*top: 0;*/
+/*left: 0;*/
+/*line-height: 4rem;*/
+/*}*/
+
+.chat_search_box .chat_search_input {
+  border: unset;
+  background: transparent;
+  border-bottom: 2px solid #000000;
+  width: 50%;
+  outline: unset;
+  height: 3.5rem;
+  padding: 5px;
+  caret-color: #000000;
+  color: #000000;
+  font-size: 1.6rem;
+  border-bottom-left-radius: unset;
+  border-bottom-right-radius: unset;
+}
+
+.chat_search_box .chat_search_btn {
+  width: 5rem;
+  height: 4rem;
+  border-radius: 5px;
+  background: transparent;
+  /*color: #ffffff;*/
+  color: #000000;
+  outline: unset;
+  cursor: pointer;
+  line-height: 4rem;
+}
+
+.none {
+  display: none;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.chat_search_icon {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.close_page_box:hover {
+  cursor: pointer;
+}
+
+.none_weChat {
+  text-align: center;
+  padding: 1%;
+  color: #9e9e9e;
+  font-size: 0.8rem;
+  display: block;
+}
+
+.title_search_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.title_search_box h1 {
+  /*width: 50%;*/
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.zan_icon, .cai_icon {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .chat_search_box .chat_search_input {
+    width: 75%;
+    font-size: 0.8rem;
+    height: 3rem;
+    border-radius: 0;
+    border-bottom-width: 1px;
+    color: #000000;
+  }
+
+  .chat_search_box .chat_search_btn {
+    width: 4rem;
+    height: 3rem;
+    line-height: 3rem;
+  }
+
+  .chat_title_box {
+    height: 5rem;
+    line-height: 5rem;
+  }
+
+  .chat_title_box h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    /*line-height: 81px;*/
+  }
+
+  p.chat_item_name:after {
+    right: -20%;
+    top: 66%;
+  }
+
+  .chat_item_content_box {
+    padding-left: 1.5%;
+  }
+
+  .none_weChat {
+    padding: 5%;
+  }
+}
+
+#chat_box {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*margin-left: 1%;*/
+  overflow: auto;
+  z-index: 1;
+}
