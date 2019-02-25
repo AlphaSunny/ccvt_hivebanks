@@ -63,6 +63,8 @@ $(function () {
         }, function (response) {
             ShowLoading("hide");
             ErrorPrompt(response.errmsg);
+            $("#payee").val("");
+            $("#invite_code").val("");
         })
     }
 
