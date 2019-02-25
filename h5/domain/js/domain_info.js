@@ -154,6 +154,7 @@ $(function () {
         let li = "",scale = "";
         BindNum(group_id, limit, offset, function (response) {
             if (response.errcode == "0") {
+                $(".bind_num_box").fadeIn();
                 let data = response.rows;
                 $.each(data, function (i, val) {
                     if (data[i].scale != 0) {
