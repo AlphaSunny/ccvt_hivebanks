@@ -11,6 +11,18 @@ $(function () {
         GetImgCode();
     });
 
+    BindingInformation(token, function (response) {
+        let data = response.rows;
+        $.each(data, function (i, val) {
+            if (data[i].bind_name == 'cellphone' && data[i].bind_flag == '1') {
+                let phone = data[i].bind_info.split("-")[1];
+                $("#phone").val(phone);
+            }
+        })
+    }, function (response) {
+        ErrorPrompt(response.errmsg)
+    });
+
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
         let country_code = $('.selected-dial-code').text().split("+")[1];
