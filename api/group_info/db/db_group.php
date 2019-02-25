@@ -150,3 +150,33 @@ function glory_number($group_id){
     return $all_glory;
 }
 
+
+
+//======================================
+// 函数: 绑定列表总数
+// 参数: group_id
+//
+// 返回: count           最新信息数组
+//======================================
+function  get_bnd_total($group_id)
+{
+    $db = new DB_COM();
+    $sql = "SELECT us_id FROM us_bind WHERE bind_name='group' AND bind_info='{$group_id}'";
+    $db -> query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+
+//======================================
+// 函数: 获取绑定列表
+// 参数: group_id
+// 返回: row           最新信息数组
+//======================================
+function bnd_list($group_id,$offset,$limit)
+{
+    $db = new DB_COM();
+    $sql = "SELECT b.wechat FROM us_bind as a left join us_base as b on a.us_id=b.us_id WHERE a.bind_name='group' AND bind_info='{$group_id}' ORDER by a.ctime DESC limit $offset,$limit";
+    $db -> query($sql);
+    $row = $db -> fetchAll();
+    return $row;
+}
