@@ -203,6 +203,9 @@ $(function () {
             ErrorPrompt(response.errmsg);
         });
     }
+    $(".bind_num_close").click(()=>{
+        $(".bind_num_box").addClass("none");
+    });
 });
 
 /**
