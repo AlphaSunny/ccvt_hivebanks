@@ -12,7 +12,6 @@ $(function () {
 
     //显示群聊内容
     $(".look_chat_recode").click( function () {
-        alert("1");
         wechat = null;
         group_id = $(this).attr("name");
         group_name = $(this).text();
@@ -30,7 +29,7 @@ $(function () {
         });
         GetChatPerson(wechat, group_id, search_content, limit, offset, function (response) {
             // if (group_info != "1") {
-            //     $("#chat_box").fadeIn(300);
+                $("#chat_box").fadeIn(300);
             //     $("html, body").css("overflow", "hidden");
             // }
             layer.close(index);
