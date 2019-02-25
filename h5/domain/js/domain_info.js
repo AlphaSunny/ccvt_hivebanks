@@ -151,17 +151,31 @@ $(function () {
     });
 
     function BindNumFun(group_id, limit, offset) {
-        let li = "", scale = "";
+        let li = "", scale = "", total = "", totalPage = "", count = "";
         ShowLoading("show");
         BindNum(group_id, limit, offset, function (response) {
             if (response.errcode == "0") {
                 ShowLoading("hide");
                 $(".bind_num_box").removeClass("none");
                 let data = response.rows;
+                if (data.length <= 0) {
+                    li = "<li><td class='text-center'>暂无数据</td></li>"
+                }
+
+                total = response.total;
+                totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (totalPage > 1 && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+
                 $.each(data, function (i, val) {
                     if (parseInt(data[i].scale) != 0) {
                         scale = "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
-                    }else {
+                    } else {
                         scale = "<span></span>"
                     }
                     li += "<li>" +
@@ -170,6 +184,19 @@ $(function () {
                         "</li>";
                 });
                 $(".bind_list_ul").html(li);
+
+                //显示页码
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        BindNumFun(group_id, limit, (current - 1) * limit);
+                    }
+                });
             }
         }, function (response) {
             ShowLoading("hide");
