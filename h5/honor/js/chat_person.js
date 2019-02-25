@@ -73,7 +73,13 @@ $(function () {
                     li += "<li class='chat_item'>" +
                         "<p class='chat_item_name'>" + data[i].bot_nickname.substr(0, 1) + "</p>" +
                         "<div class='chat_item_content_box'>" +
-                        "<p class='name'><span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;<span>" + data[i].bot_send_time + "</span></p>" +
+                        "<p class='name'>" +
+                        "<span>" + data[i].bot_nickname + "</span>&nbsp;&nbsp;" +
+                        "<span>" + data[i].bot_send_time + "</span></p>" +
+                        "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
+                        "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
+                        "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
+                        "<span class='cai_num'>" + data[i].all_point_on + "</span>" +
                         "<div class='chat_item_content'>" + bot_content + "</div>" +
                         "</div>" +
                         "</li>";
