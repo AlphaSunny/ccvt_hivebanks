@@ -1,3 +1,13 @@
+// Set the cookies function
+function SetCookie(name, value) {
+    var now = new Date();
+    var time = now.getTime();
+
+    // Valid for 2 hours
+    time += 3600 * 1000 * 2;
+    now.setTime(time);
+    document.cookie = name + "=" + escape(value) + '; expires=' + now.toUTCString() + ';path=/';
+}
 // Take the cookies function
 function GetCookie(name) {
     let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
