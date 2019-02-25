@@ -26,6 +26,11 @@ function GetGroupListNav() {
             } else {
                 $(".is_flirt").val("2").removeClass("active");
             }
+            if (data.news_switch == "1") {
+                $(".newsSwitch").val("1").addClass("active");
+            } else {
+                $(".newsSwitch").val("2").removeClass("active");
+            }
             if (data.send_address == "1") {
                 $(".send_address").val("1").addClass("active");
             } else {
