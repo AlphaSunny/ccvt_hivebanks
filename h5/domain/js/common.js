@@ -8,6 +8,7 @@ function SetCookie(name, value) {
     now.setTime(time);
     document.cookie = name + "=" + escape(value) + '; expires=' + now.toUTCString() + ';path=/';
 }
+
 // Take the cookies function
 function GetCookie(name) {
     let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
@@ -171,6 +172,17 @@ function GetDoMainInfo(group_id, suc_func, error_func) {
     let api_url = "group_info.php";
     let post_data = {
         "group_id": group_id
+    };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
+//绑定人数
+function BindNum(group_id, limit, offset, suc_func, error_func) {
+    let api_url = "bnd_list.php";
+    let post_data = {
+        "group_id": group_id,
+        "limit": limit,
+        "offset": offset
     };
     CallApi(api_url, post_data, suc_func, error_func);
 }

@@ -144,12 +144,21 @@ $(function () {
 
     GetGroupInfo(group_id);
 
-    // //查看聊天记录
-    // $(".look_chat_recode").click(function () {
-    //     let group_id = GetQueryString("id");
-    //     let group_name = $(".name").text();
-    //     window.location.href = "../honor/chat_person.html?group_id=" + group_id + "&group_name=" + encodeURI(encodeURI(group_name)) + "&domain=1";
-    // })
+    //绑定人数
+    let limit = 20, offset = 0;
+    $(".bind_count").click(function () {
+        BindNumFun(group_id, limit, offset)
+    });
+
+    function BindNumFun(group_id, limit, offset) {
+        BindNum(group_id, limit, offset, function (response) {
+            if(response.errcode == "0"){
+                console.log(response);
+            }
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        });
+    }
 });
 
 /**
