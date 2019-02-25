@@ -1,4 +1,27 @@
 $(function () {
+    let token = GetCookie("user_token");
+    if (!token) {
+        $(".usAccount").remove();
+        $(".usLogin,.usRegister").removeClass("none");
+    } else {
+        GetUserInfoFun();
+        $(".usLogin,.usRegister").remove();
+        $(".usAccount,.amount_li").removeClass("none");
+    }
+
+    //获取用户信息
+    function GetUserInfoFun() {
+        UserInformation(token, function (response) {
+            if (response.errcode == "0") {
+                // $(".login").remove();
+                $(".amount").text(response.rows.base_amount);
+                $(".amount_box").fadeIn();
+            }
+        }, function (response) {
+            layer.msg(response.errmsg);
+        })
+    }
+
     let wechat = "", limit = 50, offset = 0, search_content = "";
     let group_id = "", group_name = "";
 
@@ -137,9 +160,9 @@ $(function () {
             offset += limit;
             GetWeChatFun(wechat, group_id, search_content, limit, offset);
         }
-    })
+    });
 
-//    ========================
+//========================
     //赞/踩
     let give_us_id = "", state = "",
         _this_click_zan_num = "",

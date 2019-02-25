@@ -154,6 +154,15 @@ function AlreadyZanCaiNum(token, suc_func, error_func) {
     CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
 }
 
+// user information
+function UserInformation(token, suc_func, error_func) {
+    var api_url = 'info_base.php',
+        post_data = {
+            'token': token
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+};
+
 //show loading
 let index_loading = "";
 
