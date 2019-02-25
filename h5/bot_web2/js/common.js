@@ -222,7 +222,7 @@ function EditGroup(token, group_name, del, flirt, group_id, send_address, bind_a
             "ranking_change_switch": ranking_change_switch,
             "src": src,
             "group_introduction": group_introduction,
-            "news_notice": news_notice
+            "news_switch": news_notice
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
