@@ -483,6 +483,17 @@ function AllRecord(token, limit, offset, api_url, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//自动匹配用户
+function UsTransferSelInfo(token, account, code, suc_func, error_func) {
+    let api_url = "us_transfer_sel_info.php",
+        post_data = {
+            'token': token,
+            'account': account,
+            'code': code
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //user to user transfer
 function TransferCCVT(token, account, code, ccvt_num, pass_hash, suc_func, error_func) {
     let api_url = "us_transfer_ccvt.php",

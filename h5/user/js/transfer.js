@@ -24,6 +24,43 @@ $(function () {
         window.location.href = "./fundPasswordBind.html?transfer_funPass=transfer_funPass";
     });
 
+    $("#payee").blur(() => {
+        let account = $(this).val();
+        let code = "";
+        if (account.length <= 0) {
+            ErrorPrompt("请输入对方账户昵称");
+            return;
+        } else {
+            UsTransferSelInfoFun(account, code);
+        }
+    });
+
+    $("#invite_code").blur(() => {
+        let code = $(this).val();
+        let account = "";
+        if (code.length <= 0) {
+            ErrorPrompt("请输入对方邀请码");
+            return;
+        } else {
+            UsTransferSelInfoFun(account, code);
+        }
+    });
+
+    function UsTransferSelInfoFun(account, code) {
+        UsTransferSelInfo(token, account, code, function (response) {
+            if (response.errcode == "0") {
+                if (account.length > 0) {
+                    $("#invite_code").val(response.result);
+                }
+                if (code.length > 0) {
+                    $("#payee").val(response.result);
+                }
+            }
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        })
+    }
+
     //transfer
     $(".transfer_btn").click(() => {
         let account = $("#payee").val();
