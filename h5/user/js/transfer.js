@@ -37,6 +37,7 @@ $(function () {
 
     $("#invite_code").blur(() => {
         let code = $(this).val();
+        console.log(code);
         let account = "";
         if (code.length <= 0) {
             ErrorPrompt("请输入对方邀请码");
