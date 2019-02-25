@@ -79,7 +79,7 @@ $(function () {
 
                     console.log(data[i].us_id);
 
-                    if (data[i].us_id !== null) {
+                    if (data[i].us_id != null) {
                         show_zan_cai = "<span class='none us_id'>" + data[i].us_id + "</span>&nbsp;&nbsp;" +
                             "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
                             "<span class='zan_num'>" + data[i].all_praise + "</span>&nbsp;|&nbsp;" +
