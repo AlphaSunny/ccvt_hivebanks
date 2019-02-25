@@ -146,7 +146,7 @@ $(function () {
 
     //绑定人数
     let limit = 30, offset = 0;
-    $(".bind_count").click(function () {
+    $(".bind_count_box").click(function () {
         BindNumFun(group_id, limit, offset)
     });
 
