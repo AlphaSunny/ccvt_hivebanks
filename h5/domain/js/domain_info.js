@@ -151,9 +151,15 @@ $(function () {
     });
 
     function BindNumFun(group_id, limit, offset) {
+        let li = "";
         BindNum(group_id, limit, offset, function (response) {
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 console.log(response);
+                let data = response.rows;
+                $.each(data, function (i, val) {
+                    li+="<li>"+ data[i].wechat +"</li>";
+                });
+                $(".bind_list_ul").html(li);
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
