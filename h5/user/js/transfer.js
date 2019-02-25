@@ -26,6 +26,7 @@ $(function () {
 
     $("#payee").blur(() => {
         let account = $(this).val();
+        console.log(account);
         let code = "";
         if (account.length <= 0) {
             ErrorPrompt("请输入对方账户昵称");
