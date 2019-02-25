@@ -922,6 +922,32 @@ function black_judge($us_nm){
 }
 
 //======================================
+// 函数: 用户给用户转账输入账号查询code,输入code查询账号
+// 参数: account          账号
+//       code       邀请码
+//       只能传一个
+// 返回:
+//======================================
+function transfer_sel_info($account,$code)
+{
+    $db = new DB_COM();
+    $sql = "select ";
+    if ($account){
+        $sql .= "us_nm";
+        $where = " us_account='{$account}'";
+    }
+    if ($code){
+        $sql .= "us_account";
+        $where = " us_nm='{$code}'";
+    }
+    $sql .= " from us_base where ".$where;
+    echo $sql;die;
+    $db -> query($sql);
+    $row = $db -> fetchRow();
+    return true;
+}
+
+//======================================
 // 函数: 判断资金密码
 // 参数: account          账号
 // 返回:
