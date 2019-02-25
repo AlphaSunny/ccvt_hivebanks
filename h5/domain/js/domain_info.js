@@ -145,7 +145,7 @@ $(function () {
     GetGroupInfo(group_id);
 
     //绑定人数
-    let limit = 20, offset = 0;
+    let limit = 50, offset = 0;
     $(".bind_count").click(function () {
         BindNumFun(group_id, limit, offset)
     });
