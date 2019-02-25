@@ -214,7 +214,7 @@ p.chat_item_name:after {
     .chat_title_box h1 {
         font-size: 1.5rem;
         font-weight: 400;
-        line-height: 81px;
+        /*line-height: 81px;*/
     }
 
     p.chat_item_name:after {
