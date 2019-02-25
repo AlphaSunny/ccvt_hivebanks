@@ -159,7 +159,7 @@ $(function () {
                 $(".bind_num_box").removeClass("none");
                 let data = response.rows;
                 $.each(data, function (i, val) {
-                    if (data[i].scale != "0") {
+                    if (parseInt(data[i].scale) != 0) {
                         scale = "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
                     }
                     li += "<li>" +
