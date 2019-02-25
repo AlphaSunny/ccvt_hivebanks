@@ -1,7 +1,7 @@
 <?php
 
 require_once '../inc/common.php';
-require_once 'db/us_asset.php';
+require_once 'db/db_group.php';
 
 header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
