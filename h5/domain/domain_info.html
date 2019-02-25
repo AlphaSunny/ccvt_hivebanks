@@ -24,7 +24,7 @@
 </head>
 <body>
 <nav class="navbar navbar-default">
-    <div class="container">
+    <div class="">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1">
@@ -62,77 +62,80 @@
 
 <section>
     <div class="container">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div>
-                <h3 class="pcTitle">领域信息</h3>
-            </div>
-            <div class="group_info_box table_bg">
-                <div class="flex align-items-center justify-content-space-between group_title_box padding_bottom">
-                    <p class="group_title"></p>
-                    <p class="honor_num"><span>荣耀星数：</span><span class="glory_number"></span>️</p>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div>
+                    <h3 class="pcTitle">领域信息</h3>
                 </div>
+                <div class="group_info_box table_bg">
+                    <div class="flex align-items-center justify-content-space-between group_title_box padding_bottom">
+                        <p class="group_title"></p>
+                        <p class="honor_num"><span>荣耀星数：</span><span class="glory_number"></span>️</p>
+                    </div>
 
-                <div class="flex align-items-center level margin_top_bottom_20">
-                    <p><span>领域等级:</span>LV.<span class="scale"></span></p>
-                    <div class="progress up_tips" data-toggle="tooltip" data-placement="top" title="">
-                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80"
-                             aria-valuemin="0"
-                             aria-valuemax="100">
-                            <!--60%-->
+                    <div class="flex align-items-center level margin_top_bottom_20">
+                        <p><span>领域等级:</span>LV.<span class="scale"></span></p>
+                        <div class="progress up_tips" data-toggle="tooltip" data-placement="top" title="">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100">
+                                <!--60%-->
+                            </div>
+                        </div>
+                        <p class="scale_next_p">LV.<span class="scale_next"></span></p>
+                    </div>
+
+                    <div class="group_person_num padding_bottom_20">
+                        <ul class="flex align-items-center justify-content-space-around">
+                            <li>
+                                <p>群成员数量</p>
+                                <h4 class="group_member_number"></h4>
+                            </li>
+                            <li>
+                                <p>绑定人数</p>
+                                <h4 class="bind_count"></h4>
+                            </li>
+                            <li>
+                                <p>新增人数</p>
+                                <h4 class="this_day_in"></h4>
+                            </li>
+                            <li>
+                                <p class="look_chat_recode">查看聊天记录</p>
+                                <h4 class=""></h4>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="lord_box padding_top_bottom_20 margin_bottom_20 flex align-items-center justify-content-space-between">
+                            <p>管理员：<span class="group_lord"></span></p>
+                            <p class="group_type type_name"></p>
+                        </div>
+                        <div>
+                            <dl>
+                                <dt>介绍</dt>
+                                <dd class="group_introduction">
+
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="qr_box">
+                            <p class="applicationAdd">扫码申请加入</p>
+                            <div class="qr_box_img">
+                                <img src="img/default.jpeg" class="qr_img" alt="">
+                            </div>
                         </div>
                     </div>
-                    <p class="scale_next_p">LV.<span class="scale_next"></span></p>
-                </div>
 
-                <div class="group_person_num padding_bottom_20">
-                    <ul class="flex align-items-center justify-content-space-around">
-                        <li>
-                            <p>群成员数量</p>
-                            <h4 class="group_member_number"></h4>
-                        </li>
-                        <li>
-                            <p>绑定人数</p>
-                            <h4 class="bind_count"></h4>
-                        </li>
-                        <li>
-                            <p>新增人数</p>
-                            <h4 class="this_day_in"></h4>
-                        </li>
-                        <li>
-                            <p class="look_chat_recode">查看聊天记录</p>
-                            <h4 class=""></h4>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <div class="lord_box padding_top_bottom_20 margin_bottom_20 flex align-items-center justify-content-space-between">
-                        <p>管理员：<span class="group_lord"></span></p>
-                        <p class="group_type type_name"></p>
-                    </div>
                     <div>
-                        <dl>
-                            <dt>介绍</dt>
-                            <dd class="group_introduction">
-
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="qr_box">
-                        <p class="applicationAdd">扫码申请加入</p>
-                        <div class="qr_box_img">
-                            <img src="img/default.jpeg" class="qr_img" alt="">
+                        <div>
+                            <canvas id="canvas"></canvas>
                         </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div>
-                        <canvas id="canvas"></canvas>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </section>
 
