@@ -28,16 +28,23 @@ $account = get_arg_str('GET', 'account');
 //识别码(邀请码)
 $code = get_arg_str('GET', 'code');
 
+if (!$account && !$code){
+    exit_error("150","传值错误");
+}
+
 // 验证token
 $us_id = check_token($token);
 // 通过id获取用户基本信息
 $row = transfer_sel_info($account,$code);
+if (!$row){
+    exit_error("150","用户不存在");
+}
 
 
 // 返回数据做成
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['rows'] =$row;
+$rtn_ary['result'] =$row['result'];
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);

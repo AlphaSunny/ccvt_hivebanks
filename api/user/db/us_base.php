@@ -934,17 +934,16 @@ function transfer_sel_info($account,$code)
     $sql = "select ";
     if ($account){
         $sql .= "us_nm";
-        $where = " us_account='{$account}'";
+        $where = "us_account='{$account}'";
     }
     if ($code){
         $sql .= "us_account";
-        $where = " us_nm='{$code}'";
+        $where = "us_nm='{$code}'";
     }
-    $sql .= " from us_base where ".$where;
-    echo $sql;die;
+    $sql .= " as result from us_base where ".$where;
     $db -> query($sql);
     $row = $db -> fetchRow();
-    return true;
+    return $row;
 }
 
 //======================================
