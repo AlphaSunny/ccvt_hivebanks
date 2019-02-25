@@ -45,7 +45,8 @@
                     <a href="../user/login.html" class="usRegister font-weight-400 nav_a" name="register">注册</a>
                 </li>
                 <li>
-                    <a href="../user/account.html" class=" nav_a none accountNone font-weight-400 toAccountBtn alreadyLogin" name="account">账户中心</a>
+                    <a href="../user/account.html"
+                       class=" nav_a none accountNone font-weight-400 toAccountBtn alreadyLogin" name="account">账户中心</a>
                 </li>
             </ul>
         </div>
@@ -67,7 +68,8 @@
                 <div class="flex align-items-center level margin_top_bottom_20">
                     <p><span>领域等级:</span>LV.<span class="scale"></span></p>
                     <div class="progress up_tips" data-toggle="tooltip" data-placement="top" title="">
-                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80"
+                             aria-valuemin="0"
                              aria-valuemax="100">
                             <!--60%-->
                         </div>
@@ -128,16 +130,82 @@
 </section>
 
 
+<!--chat_person-->
+<div id="chat_box">
+    <div class="mask"></div>
+    <div class="chat_title_box">
+        <div class="title_search_box">
+            <p>
+                <svg class='icon chat_search_icon' aria-hidden='true'>
+                    <use xlink:href='#icon-search-black'></use>
+                </svg>
+            </p>
+            <h1><span class="person_name"></span>-聊天内容</h1>
+            <p class="close_page_box">
+                <svg class='icon close_page' aria-hidden='true'>
+                    <use xlink:href='#icon-close-black'></use>
+                </svg>
+            </p>
+        </div>
+
+        <!--搜索-->
+        <div class="chat_search_box none">
+            <div class="input_box">
+                <input type="text" class="chat_search_input" autofocus="autofocus" placeholder="请输入关键字/词搜索">
+                <svg class='icon close_icon' aria-hidden='true'>
+                    <use xlink:href='#icon-close-black'></use>
+                </svg>
+                <!--<button class="chat_search_btn">搜索</button>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="chat_content" id="chat_content">
+        <h1 class="no_more_chat" style='text-align: center;color:#000000'>暂无聊天内容</h1>
+        <a href="javascript:;" class="none_weChat"></a>
+        <ul class="chat_item_ul" id="chat_item_ul">
+        </ul>
+    </div>
+</div>
+
+<!--zan_cai_modal-->
+<div id="customize_modal" class="customize_modal">
+    <div class="customize_modal_mask"></div>
+    <div class="customize_modal_content">
+        <div class="customize_modal_content_head padding-bottom-2">
+            <h3 class="font-weight-400 zan_h3">点👍赞</h3>
+            <h3 class="font-weight-400 cai_h3">踩👎踩</h3>
+        </div>
+        <div class="customize_modal_content_body">
+            <input type="text" class="form-control zan_cai_input" placeholder="请输入数量">
+            <div class="zan_text_box">
+                <p class="zan_text">点赞功能将扣除对应数量的ccvt,对方将增加荣耀积分</p>
+                <p class="already_zan_text">
+                    <span>每日上线</span>:<span class="black"><span class="max_give_like"></span> CCVT</span>
+                    <span>已赞</span>:<span class="black"><span class="all_zan"></span> CCVT</span>
+                </p>
+            </div>
+            <div class="cai_text_box">
+                <p class="cai_text">踩功能将扣除对应数量的ccvt,对方将减少荣耀积分</p>
+                <p class="already_cai_text">
+                    <span>每日上线</span>:<span class="black"><span class="max_give_no_like"></span> CCVT</span>
+                    <span>已踩</span>:<span class="black"><span class="all_cai"></span> CCVT</span>
+                </p>
+            </div>
+
+        </div>
+        <div class="customize_modal_content_footer margin-top-5">
+            <button class="btn btn-danger customize_modal_cancel_btn">取消</button>
+            <button class="btn btn-success customize_modal_confirm_btn">确定</button>
+        </div>
+    </div>
+</div>
+
+
 <!--footer-->
 <div class="">
     <p class="text-center footer_text">©2018-2019 Powered by <a href="https://www.hivebanks.com">HiveBanks</a></p>
-    <!--<iframe src="../user/footer.html" frameborder="0" height="100%" width="100%"></iframe>-->
 </div>
-
-<!--Back to top-->
-<!--<div class="scrollup">-->
-    <!--<a href="#"><i class="iconfont icon-top"></i></a>-->
-<!--</div>-->
 
 <!--loading-->
 <div class="loading">
