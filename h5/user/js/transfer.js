@@ -25,7 +25,7 @@ $(function () {
     });
 
     $("#payee").blur(() => {
-        let account = $(this).val();
+        let account = $("#payee").val();
         console.log(account);
         let code = "";
         if (account.length <= 0) {
@@ -37,7 +37,7 @@ $(function () {
     });
 
     $("#invite_code").blur(() => {
-        let code = $(this).val();
+        let code = $("#invite_code").val();
         console.log(code);
         let account = "";
         if (code.length <= 0) {
