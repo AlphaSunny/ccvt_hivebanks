@@ -12,6 +12,7 @@ $(function () {
 
     //显示群聊内容
     $(document).on("click", ".look_chat_recode", function () {
+        alert("1");
         wechat = null;
         group_id = $(this).attr("name");
         group_name = $(this).text();
