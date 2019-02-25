@@ -171,9 +171,6 @@ function get_chat_list($data,$offset,$limit)
 // 返回: row           最新信息数组
 //======================================
 function get_ranking($give_us_id,$give_num){
-    echo $give_us_id."<br />";
-    echo $give_num;
-    die;
     $db = new DB_COM();
     $unit = get_la_base_unit();
     $sql = "select base_amount/'$unit' as base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
