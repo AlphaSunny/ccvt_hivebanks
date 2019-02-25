@@ -64,6 +64,36 @@ function CallApi(api_url, post_data, suc_func, error_func) {
     });
 }
 
+// Call the API honor
+function CallLeaderBoardsApi(api_url, post_data, suc_func, error_func) {
+    var api_site = config_api_url + '/api/leaderBoard/';
+    post_data = post_data || {};
+    suc_func = suc_func || function () {
+    };
+    error_func = error_func || function () {
+    };
+    $.ajax({
+        url: api_site + api_url,
+        dataType: "jsonp",
+        data: post_data,
+        success: function (response) {
+            // API return failed
+            if (response.errcode != 0) {
+                error_func(response);
+            } else {
+                // Successfully process data
+                suc_func(response);
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            // API error exception
+            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            // Exception handling
+            error_func(response);
+        }
+    });
+}
+
 function _GetGroupList(limit, offset, search_name, scale, type_id, suc_func, error_func) {
     let api_url = "group_list.php";
     let post_data = {
