@@ -78,9 +78,9 @@ $(function () {
                         "<span>" + data[i].bot_send_time + "</span>" +
                         "<span class='none us_id'>" + data[i].us_id + "</span>&nbsp;&nbsp;" +
                         "<svg class='icon zan_icon' aria-hidden='true'><use xlink:href='#icon-zan'></use></svg>" +
-                        "<span class='zan_num'>122</span>&nbsp;|&nbsp;" +
+                        "<span class='zan_num'>0</span>&nbsp;|&nbsp;" +
                         "<svg class='icon cai_icon' aria-hidden='true'><use xlink:href='#icon-cai'></use></svg>" +
-                        "<span class='cai_num'>12</span>" +
+                        "<span class='cai_num'>0</span>" +
                         "</p>" +
                         "<div class='chat_item_content'>" + bot_content + "</div>" +
                         "</div>" +
