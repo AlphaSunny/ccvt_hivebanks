@@ -28,7 +28,7 @@ function check_us_group($us_id,$group_id)
 function get_group_list($us_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT g.id,g.name,g.us_id,g.is_del,g.is_flirt,g.is_audit,g.why,g.scale,g.is_give_ccvt,g.group_type,g.is_admin_del,g.send_address,g.bind_account_notice,g.is_welcome,g.welcome,g.exclusive_switch,g.ranking_change_switch,g.dis,g.qr_code_address,t.name as group_type_name,g.key_words_switch FROM bot_group as g LEFT JOIN bot_group_type as t on g.group_type=t.id WHERE g.us_id = '{$us_id}' AND g.is_test=1 ORDER BY g.intime ASC ";
+    $sql = "SELECT g.id,g.name,g.us_id,g.is_del,g.is_flirt,g.is_audit,g.why,g.scale,g.is_give_ccvt,g.group_type,g.is_admin_del,g.send_address,g.bind_account_notice,g.is_welcome,g.welcome,g.exclusive_switch,g.ranking_change_switch,g.dis,g.qr_code_address,t.name as group_type_name,g.key_words_switch,g.news_switch FROM bot_group as g LEFT JOIN bot_group_type as t on g.group_type=t.id WHERE g.us_id = '{$us_id}' AND g.is_test=1 ORDER BY g.intime ASC ";
     $db -> query($sql);
     $row = $db -> fetchAll();
     if ($row){
