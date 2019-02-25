@@ -47,7 +47,9 @@ $(function () {
     });
 
     function UsTransferSelInfoFun(account, code) {
+        ShowLoading("show");
         UsTransferSelInfo(token, account, code, function (response) {
+            ShowLoading("hide");
             if (response.errcode == "0") {
                 if (account.length > 0) {
                     $("#invite_code").val(response.result);
@@ -57,6 +59,7 @@ $(function () {
                 }
             }
         }, function (response) {
+            ShowLoading("hide");
             ErrorPrompt(response.errmsg);
         })
     }
