@@ -218,8 +218,8 @@ $ba_info = get_ba_base_info();
 //}
 
 //给群主反40%
-$start = strtotime(date('2019-02-24 00:00:00'));
-$end = strtotime(date('2019-02-24 23:59:59'));
+$start = strtotime(date('2019-02-25 00:00:00'));
+$end = strtotime(date('2019-02-25 23:59:59'));
 
 $sql = "select sum(amount)/'{$unit}' as all_amount,bot_us_id from bot_Iss_records WHERE bot_create_time BETWEEN '{$start}' AND '{$end}' GROUP BY bot_us_id";
 $db->query($sql);
@@ -486,8 +486,8 @@ function get_ba_account($ba_id){
 //判断是否今日群主已经返现
 function check_is_return($us_id){
     $db = new DB_COM();
-    $start = strtotime(date('2019-02-24 00:00:00'));
-    $end = strtotime(date('2019-02-24 23:59:59'));
+    $start = strtotime(date('2019-02-25 18:00:00'));
+    $end = strtotime(date('2019-02-25 23:59:59'));
     $sql = "select * from com_base_balance WHERE credit_id='{$us_id}' AND tx_type='group_cashback' AND utime BETWEEN '{$start}' AND '{$end}' limit 1";
     $db->query($sql);
     $rows = $db->fetchRow();
