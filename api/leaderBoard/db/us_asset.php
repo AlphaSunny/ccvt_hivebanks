@@ -110,7 +110,7 @@ function  get_chat_total($data)
         $sql .= " and wechat='{$data['wechat']}'";
     }
     if ($data['search_content']!=''){
-        $sql .= " and bot_content like '{$data['search_content']}%'";
+        $sql .= " and bot_content like '%{$data['search_content']}%'";
     }
     if (intval($data['group_id'])!=''){
         $sql .= " and group_id='{$data['group_id']}'";
