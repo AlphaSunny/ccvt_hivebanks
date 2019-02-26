@@ -36,7 +36,7 @@ function get_group_list($us_id)
         $day_end = strtotime(date('Y-m-d 23:59:59'));
         foreach ($row as $k=>$v){
             //新增人数
-            $sql = "select count(*) as count from bot_memeber_change_record WHERE group_id='{$v['id']}' AND type=1 AND ctime BETWEEN '{$day_start}' AND '{$day_end}'";
+            $sql = "select count(*) as count from bot_memeber_change_record WHERE group_id='{$v['id']}' AND type=1 AND to_days(ctime) = to_days(now())";
             $db->query($sql);
             $row[$k]['new_number'] = $db->getField($sql,'count');
             //消息数量
