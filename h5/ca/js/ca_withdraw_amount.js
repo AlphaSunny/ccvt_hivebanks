@@ -26,8 +26,8 @@ $(function () {
 
     //fullWithdrawal
     $('.allWithdraw').click(function () {
-        $('.base_amount_input').val(us_base_amount);
-        $('.bit_amount_input').val(us_base_amount * rate);
+        $('.base_amount_input').val(parseInt(us_base_amount) - 500);
+        $('.bit_amount_input').val((parseInt(us_base_amount) - 500) * rate);
     });
 
     //Get recharge channels
