@@ -8,11 +8,11 @@ error_reporting(E_ALL | E_STRICT);
 for($i=0;$i<1;$i++){
     $data['id'] = get_guid();
     $data['coupon_code'] = "ccvt-".randomkeys(8);
-    $data['amount'] = 2000;
+    $data['amount'] = 2216;
     $data['ctime'] = date('Y-m-d H:i:s');
     $data['utime'] = time();
     $data['effective_date'] = date('Y-m-d H:i:s');
-    $data['expiry_date'] = '2019-02-28 23:59:59';
+    $data['expiry_date'] = '2019-03-28 23:59:59';
     $db = new DB_COM();
     $sql = $db->sqlInsert("us_voucher", $data);
     $id = $db->query($sql);
