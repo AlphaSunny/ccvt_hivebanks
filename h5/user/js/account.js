@@ -395,20 +395,35 @@ $(function () {
         })
     });
 
-    //show help_img
-    $(".help_icon").mouseenter(function () {
-        $(".help_img_box").slideDown();
-    });
-    $(".help_icon").mouseleave(function () {
-        $(".help_img_box").slideUp();
+    //上传个人二维码
+    //get key_code
+    let key_code = "";
+    GetKeyCode(token, function (response) {
+        if (response.errcode == '0') {
+            key_code = response.key_code;
+        }
+    }, function (response) {
+        ErrorPrompt(response.errmsg);
     });
 
-    //application robot group
-    // $(".to_application").click(function () {
-    //     WarnPrompt("即将开启");
-    //     return;
-    // });
+    $(".upload_qr_btn").click(function () {
+        $("#qr_modal").removeClass("none");
+    });
 
+    $("#upload_qr").on("change", function () {
+        let objUrl = getObjectURL(this.files[0]);
+        if (objUrl) {
+            // show img
+            $("#person_qr_img").attr("src", objUrl);
+        }
+        let formData = new FormData($("#form_qr")[0]);
+        formData.append("file", this.files[0]);
+        formData.append("key_code", key_code);
+        console.log(formData);
+    });
+
+
+    //修改申请
     $(".modify_application_btn").click(function () {
         let group_name = $(".application_group").text();
         window.location.href = "application.html?group_name=" + encodeURI(encodeURI(group_name));
