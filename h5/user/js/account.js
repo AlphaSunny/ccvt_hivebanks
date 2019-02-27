@@ -428,6 +428,7 @@ $(function () {
        let img_val = $("#upload_qr").val();
        console.log(img_val);
        console.log($("#upload_qr")[0].files);
+       console.log(new FormData($("#upload_qr")[0].files));
     });
 
 
