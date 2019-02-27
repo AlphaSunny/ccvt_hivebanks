@@ -410,6 +410,7 @@ $(function () {
         $("#qr_modal").removeClass("none");
     });
 
+    let qr_src = "";
     $("#upload_qr").on("change", function () {
         let objUrl = getObjectURL(this.files[0]);
         if (objUrl) {
@@ -420,6 +421,8 @@ $(function () {
         formData.append("file", this.files[0]);
         formData.append("key_code", key_code);
         console.log(formData);
+        qr_src = UpLoadImg(formData);
+        console.log(qr_src);
     });
 
 

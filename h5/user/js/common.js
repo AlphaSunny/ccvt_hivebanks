@@ -876,6 +876,29 @@ function getObjectURL(file) {
     return url;
 }
 
+function UpLoadImg(formData) {
+    let src = '';
+    $.ajax({
+        url: url + '/api/plugin/upload_file.php',
+        type: 'POST',
+        data: formData,
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            let data = JSON.parse(response);
+            if (data.errcode == '0') {
+                src = data.url;
+            }
+        },
+        error: function (response) {
+            ErrorPrompt(response.errmsg);
+        }
+    });
+    return src;
+}
+
 /**
  * Activation button
  * @param $this Button object
