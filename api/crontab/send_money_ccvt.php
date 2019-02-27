@@ -235,7 +235,7 @@ if ($grous){
             //判断今日已经返现过
             $check_return = check_is_return($u_id);
             if ($check_return){
-                $db->Rollback($pInTrans);
+//                $db->Rollback($pInTrans);
                 echo "已经返现过";
                 continue;
             }
@@ -243,7 +243,7 @@ if ($grous){
             //修改余额
             $give_account = round($v['all_amount']*0.4)*$unit;
             if ($give_account<=0){
-                $db->Rollback($pInTrans);
+//                $db->Rollback($pInTrans);
                 echo "金额为0";
                 continue;
             }
