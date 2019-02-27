@@ -565,15 +565,35 @@
 </div>
 
 <!--上传查看个人二维码-->
-<div class="person_qr_box">
-    <div>
-        <label for="upload_qr">设置扫码费用</label>
-        <div class="input-group">
-            <input type="text" id="upload_qr">
-            <span class="input-group-addon base_type" id="basic-addon1"></span>
+
+<div id="qr_modal" class="customize_modal">
+    <div class="customize_modal_mask"></div>
+    <div class="customize_modal_content">
+        <div class="customize_modal_content_head padding-bottom-2">
+            <h3 class="font-weight-400" name="redemptionCode">个人二维码</h3>
+            <span class="i18n close_customize closeBtn" name="close"></span>
+        </div>
+        <div class="customize_modal_content_body">
+            <div class="form-group">
+                <input type="text" class="form-control voucher_input">
+            </div>
+        </div>
+        <div class="customize_modal_content_footer margin-top-5">
+            <button class="btn btn-danger i18n qr_cancel_btn customize_modal_cancel_btn" name="cancel"></button>
+            <button class="btn btn-success i18n qr_confirm_btn" name="confirm"></button>
         </div>
     </div>
 </div>
+
+<!--<div class="person_qr_box">-->
+    <!--<div>-->
+        <!--<label for="upload_qr">设置扫码费用</label>-->
+        <!--<div class="input-group">-->
+            <!--<input type="text" id="upload_qr">-->
+            <!--<span class="input-group-addon base_type" id="basic-addon1"></span>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
 <!--ccvt to gloryPoints-->
 <div id="transform_ccvt" class="customize_modal none">
