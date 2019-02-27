@@ -425,8 +425,15 @@ $(function () {
     });
 
     $(".qr_confirm_btn").click(function () {
-       let img_val = $("#upload_qr")[0].files;
-       console.log(img_val.length);
+        let img_val = $("#upload_qr")[0].files;
+        let upload_qr_fee = $("#upload_qr_fee").val();
+        console.log(img_val.length);
+        console.log(img_val.name);
+        console.log(img_val.size);
+        if (img_val.length <= 0) {
+            WarnPrompt("请上传二维码图片");
+            return;
+        }
     });
 
 
