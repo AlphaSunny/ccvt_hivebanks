@@ -434,6 +434,8 @@ $(function () {
             WarnPrompt("请上传二维码图片");
             return;
         }
+        WarnPrompt("即将开放");
+        return;
     });
 
 
