@@ -409,6 +409,9 @@ $(function () {
     $(".upload_qr_btn").click(function () {
         $("#qr_modal").removeClass("none");
     });
+    $(".qr_cancel_btn").click(function () {
+        $("#qr_modal").addClass("none");
+    });
 
     let qr_src = "";
     $("#upload_qr").on("change", function () {
