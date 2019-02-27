@@ -425,8 +425,11 @@ $(function () {
     });
 
     $(".qr_confirm_btn").click(function () {
-       let length = $("#upload_qr").val();
-       console.log(length);
+       let img_val = $("#upload_qr").val();
+       console.log(img_val);
+       console.log(img_val.name);
+       console.log(img_val.size);
+       console.log(img_val.length);
     });
 
 
