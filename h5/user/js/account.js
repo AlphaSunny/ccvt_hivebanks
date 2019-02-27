@@ -422,7 +422,11 @@ $(function () {
         formData.append("key_code", key_code);
         console.log(formData);
         qr_src = UpLoadImg(formData);
-        console.log(qr_src);
+    });
+
+    $(".qr_confirm_btn").click(function () {
+       let length = $("#upload_qr").val();
+       console.log(length);
     });
 
 
