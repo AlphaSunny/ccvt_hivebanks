@@ -427,9 +427,7 @@ $(function () {
     $(".qr_confirm_btn").click(function () {
        let img_val = $("#upload_qr").val();
        console.log(img_val);
-       console.log(img_val.name);
-       console.log(img_val.size);
-       console.log(img_val.length);
+       console.log($("#upload_qr")[0].files);
     });
 
 
