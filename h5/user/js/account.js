@@ -452,7 +452,7 @@ $(function () {
     });
 
     //修改已经绑定的
-    $(".look_qr_btn").click(function () {
+    $(document).on("click",".look_qr_btn",function () {
         wechat_qrcode = $("#person_qr_img").attr("src");
         let price = $("#upload_qr_fee").val();
         if (price <= 0) {
