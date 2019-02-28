@@ -49,8 +49,11 @@ $src = get_arg_str('GET', 'src');
 // 积分排名变化的通知  1:通知   2：不通知
 $ranking_change_switch = get_arg_str('GET', 'ranking_change_switch');
 
-// 新闻推送
+// 新闻推送开关
 $news_switch = get_arg_str('GET', 'news_switch');
+
+// 新闻推送时间间隔
+$chat_time = get_arg_str('GET', 'chat_time');
 
 //验证token
 $us_id = check_token($token);
@@ -60,6 +63,12 @@ $vail = 'edit';
 $is_name = check_group_name($group_name,$vail,$group_id);
 if ($is_name){
     exit_error('109','名称已存在');
+}
+
+
+if ($chat_time){
+    if (!($chat_time%10) && $chat_time)
+        exit_error('109','间隔时间只能传10的倍数');
 }
 
 $date['group_id'] = $group_id;
