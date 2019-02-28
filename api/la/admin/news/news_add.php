@@ -29,6 +29,7 @@ $data['news_id']  = get_guid();
 $data['title']  = get_arg_str('POST', 'title', 128);
 $data['content']  = get_arg_str('POST', 'content', 999999999);
 $data['author']  = get_arg_str('POST', 'author', 128);
+$data['overdue_time']  = get_arg_str('POST', 'overdue_time', 128);
 
 la_user_check($token);
 

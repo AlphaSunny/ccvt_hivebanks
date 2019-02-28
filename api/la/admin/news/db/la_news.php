@@ -37,7 +37,7 @@ function news_edit($data){
 
     $utime = date('Y-m-d H:i:s',time());
     $db = new DB_COM();
-    $sql = "UPDATE la_news SET utime = '{$utime}',title = '{$title}', content = '{$content}',author = '{$author}'  where news_id = '{$news_id}' ";
+    $sql = "UPDATE la_news SET utime = '{$utime}',title = '{$title}', content = '{$content}',author = '{$author}',overdue_time='{$data['overdue_time']}'  where news_id = '{$news_id}' ";
     $db->query($sql);
     $count = $db->affectedRows();
     return  $count;
@@ -83,7 +83,7 @@ function news_overdue($news_id,$overdue){
  */
 function news_list(){
     $db = new DB_COM();
-    $sql = "select title,author,utime,ctime,news_id,is_overdue from la_news where status = 1 order by ctime desc";
+    $sql = "select title,author,utime,ctime,news_id,overdue_time from la_news where status = 1 order by ctime desc";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
