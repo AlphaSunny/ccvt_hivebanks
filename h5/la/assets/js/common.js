@@ -816,7 +816,7 @@ function GetAssetsReport(token, suc_func, error_func) {
 }
 
 //获取荣耀积分排名
-function GloryPoints(token,suc_func, error_func) {
+function GloryPoints(token, suc_func, error_func) {
     var api_url = 'honor_score_ranking.php',
         post_data = {
             'token': token
@@ -875,26 +875,28 @@ function OpenSms(token, key_code, suc_func, error_func) {
 }
 
 //Distribute news
-function Distribute(token, title, content, author, suc_func, error_func) {
+function Distribute(token, title, content, author, overdue_time, suc_func, error_func) {
     var api_url = 'news_add.php',
         post_data = {
             'token': token,
             'title': title,
             'content': content,
-            'author': author
+            'author': author,
+            'overdue_time': overdue_time
         };
     CallNewsApi(api_url, post_data, suc_func, error_func);
 }
 
 //modify news
-function ModifyNews(token, title, content, author, news_id, suc_func, error_func) {
+function ModifyNews(token, title, content, author, news_id, overdue_time, suc_func, error_func) {
     var api_url = 'news_edit.php',
         post_data = {
             'token': token,
             'title': title,
             'content': content,
             'author': author,
-            'news_id': news_id
+            'news_id': news_id,
+            'overdue_time': overdue_time
         };
     CallNewsApi(api_url, post_data, suc_func, error_func);
 }

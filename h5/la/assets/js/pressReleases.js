@@ -70,7 +70,6 @@ $(function () {
             content = $(".summernote").summernote("code"),
             overdue_time = $("#overdue_time").val().replace(/\//g,"-"),
             author = $("#author").val();
-            console.log(overdue_time);
         return;
         if (title.length <= 0) {
             LayerFun("pleaseInputNewsTitle");
@@ -85,7 +84,7 @@ $(function () {
             return;
         }
         $(".preloader-wrapper").addClass("active");
-        Distribute(token, title, content, author, function (response) {
+        Distribute(token, title, content, author,overdue_time, function (response) {
             if (response.errcode == "0") {
                 $(".preloader-wrapper").removeClass("active");
                 LayerFun("submitSuccess");
@@ -105,6 +104,7 @@ $(function () {
     $(".modifyBtn").click(function () {
         var title = $("#title").val(),
             content = $(".summernote").summernote("code"),
+            overdue_time = $("#overdue_time").val().replace(/\//g,"-"),
             author = $("#author").val();
         if (title.length <= 0) {
             LayerFun("pleaseInputNewsTitle");
@@ -119,7 +119,7 @@ $(function () {
             return;
         }
         $(".preloader-wrapper").addClass("active");
-        ModifyNews(token, title, content, author, news_id, function (response) {
+        ModifyNews(token, title, content, author, news_id,overdue_time, function (response) {
             if (response.errcode == "0") {
                 $(".preloader-wrapper").removeClass("active");
                 LayerFun("submitSuccess");
