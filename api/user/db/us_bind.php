@@ -516,3 +516,68 @@ function application_group($us_id,$group_name,$group_type_id,$group_introduction
     }
     return true;
 }
+
+//======================================
+// 函数: 上传个人微信二维码和价格
+//
+// 返回: rows          最新信息数组
+//======================================
+function upload_wechat_qrcode($us_id,$wechat_qrcode,$price)
+{
+    $db = new DB_COM();
+    $sql = "select * from us_bind where us_id='{$us_id}' AND bind_name='wechat_qrcode' limit 1";
+    $db->query($sql);
+    $row = $db->fetchRow();
+    if ($row){
+        $time = time();
+        $sql = "update us_bind set bind_info='{$wechat_qrcode}',utime='{$time}' WHERE bind_id='{$row['bind_id']}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            return false;
+        }
+    }else{
+        //设置开关
+        $vail = 'wechat_qrcode';
+        $data['bind_id'] = get_guid();
+        $data['us_id'] = $us_id;
+        $data['bind_type'] = 'text';
+        $data['bind_name'] = $vail;
+        $data['bind_info'] = $wechat_qrcode;
+        $data['bind_flag'] = 1;
+        $data['utime'] = time();
+        $data['ctime'] = date('Y-m-d H:i:s');
+        $sql = $db->sqlInsert("us_bind", $data);
+        $q_id = $db->query($sql);
+        if ($q_id == 0){
+            return false;
+        }
+    }
+    $sql = "select * from us_bind WHERE us_id='{$us_id}' AND bind_name='wechat_qrcode_price' limit 1";
+    $db->query($sql);
+    $tread_num = $db->fetchRow();
+    if ($tread_num){
+        $time = time();
+        $sql = "update us_bind set bind_info='{$price}',utime='{$time}' WHERE bind_id='{$tread_num['bind_id']}'";
+        $db -> query($sql);
+        if (!$db->affectedRows()){
+            return false;
+        }
+    }else{
+        //设置开关
+        $vail = 'wechat_qrcode_price';
+        $data['bind_id'] = get_guid();
+        $data['us_id'] = $us_id;
+        $data['bind_type'] = 'text';
+        $data['bind_name'] = $vail;
+        $data['bind_info'] = $price;
+        $data['bind_flag'] = 1;
+        $data['utime'] = time();
+        $data['ctime'] = date('Y-m-d H:i:s');
+        $sql = $db->sqlInsert("us_bind", $data);
+        $q_id = $db->query($sql);
+        if ($q_id == 0){
+            return false;
+        }
+    }
+    return true;
+}
