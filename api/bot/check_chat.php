@@ -19,13 +19,13 @@ GET参数
 
 php_begin();
 
-$args = array('group_name');
+$args = array('group_id');
 chk_empty_args('GET', $args);
 
 //群组
-$group_name = get_arg_str('GET', 'group_name');
+$group_id = get_arg_str('GET', 'group_id');
 
-$row = check_chat_time($group_name);
+$row = check_chat_time($group_id);
 if ($row){
     $is_hive = 1;
 }else{

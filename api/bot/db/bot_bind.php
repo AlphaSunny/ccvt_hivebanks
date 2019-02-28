@@ -473,16 +473,16 @@ function del_storage_members($group_id)
 //
 // 返回: row           最新信息数组
 //======================================
-function check_chat_time($group_name)
+function check_chat_time($group_id)
 {
     $db = new DB_COM();
-    $sql = "select check_chat_time from bot_status limit 1";
+    $sql = "select chat_time from bot_group WHERE id='{$group_id}'";
     $db->query($sql);
-    $time = $db->getField($sql,'check_chat_time');
+    $time = $db->getField($sql,'chat_time');
 
     $start = time()-($time*60);
     $end = time();
-    $sql = "select count(bot_message_id) as count from bot_message WHERE group_name='{$group_name}' AND bot_create_time BETWEEN '{$start}' AND '{$end}'";
+    $sql = "select count(bot_message_id) as count from bot_message WHERE group_id='{$group_id}' AND bot_create_time BETWEEN '{$start}' AND '{$end}'";
     $db->query($sql);
     $count = $db->getField($sql,'count');
     return $count;
@@ -546,21 +546,24 @@ function notice_records($data)
 function get_news()
 {
     $db = new DB_COM();
-    $sql = "select news_id,title from la_news WHERE is_hive_been=1 AND category=1 AND status=1 ORDER BY ctime DESC limit 1";
+    $sql = "select news_id,title from la_news WHERE category=1 AND status=1 AND is_overdue=1 ORDER BY rand() limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
-    if ($row){
-        $sql = "update la_news set is_hive_been=2 WHERE news_id='{$row['news_id']}'";
-        $db->query($sql);
-    }else{
-        $sql = "select news_id,title from la_news WHERE is_hive_been=1 AND category=2 AND status=1 ORDER BY ctime DESC limit 1";
-        $db->query($sql);
-        $row = $db->fetchRow();
-        if ($row){
-            $sql = "update la_news set is_hive_been=2 WHERE news_id='{$row['news_id']}'";
-            $db->query($sql);
-        }
+    if (!$row){
+        $row =array();
     }
+//    if ($row){
+//        $sql = "update la_news set is_hive_been=2 WHERE news_id='{$row['news_id']}'";
+//        $db->query($sql);
+//    }else{
+//        $sql = "select news_id,title from la_news WHERE is_hive_been=1 AND category=2 AND status=1 ORDER BY ctime DESC limit 1";
+//        $db->query($sql);
+//        $row = $db->fetchRow();
+//        if ($row){
+//            $sql = "update la_news set is_hive_been=2 WHERE news_id='{$row['news_id']}'";
+//            $db->query($sql);
+//        }
+//    }
     return $row;
 }
 
