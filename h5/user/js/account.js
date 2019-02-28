@@ -28,6 +28,8 @@ $(function () {
 
             if (data.wechat_qrcode) {
                 $(".upload_qr_btn").text("查看");
+                $("#person_qr_img").attr("src",data.wechat_qrcode);
+                $("#upload_qr_fee").val(data.wechat_qrcode_price);
             }
 
             if (parseInt(data.next_scale_poor) > 0) {
