@@ -26,7 +26,7 @@ $(function () {
             $('.glory_of_integral').text(data.glory_of_integral);
             $('.scale').text(data.scale);
 
-            if(!data.wechat_qrcode){
+            if (!data.wechat_qrcode) {
                 $(".upload_qr_btn").text("查看");
             }
 
@@ -418,7 +418,7 @@ $(function () {
         $("#qr_modal").addClass("none");
     });
 
-    let qr_src = "";
+    let wechat_qrcode = "";
     $("#upload_qr").on("change", function () {
         let objUrl = getObjectURL(this.files[0]);
         if (objUrl) {
@@ -428,23 +428,36 @@ $(function () {
         let formData = new FormData($("#form_qr")[0]);
         formData.append("file", this.files[0]);
         formData.append("key_code", key_code);
-        console.log(formData);
-        qr_src = UpLoadImg(formData);
+        wechat_qrcode = UpLoadImg(formData);
     });
 
     $(".qr_confirm_btn").click(function () {
         let img_val = $("#upload_qr")[0].files;
-        let upload_qr_fee = $("#upload_qr_fee").val();
-        console.log(img_val.length);
-        console.log(img_val.name);
-        console.log(img_val.size);
+        let price = $("#upload_qr_fee").val();
+
         if (img_val.length <= 0) {
             WarnPrompt("请上传二维码图片");
             return;
         }
-        WarnPrompt("即将开放");
-        return;
+
+        if (price <= 0) {
+            WarnPrompt("请输入正确的费用");
+            return;
+        }
+        upload_qr_img_fun(token, wechat_qrcode, price);
     });
+
+    function upload_qr_img_fun(token, wechat_qrcode, price) {
+        upload_qr_img(token, wechat_qrcode, price, function (response) {
+            if (response.errcode == "0") {
+                ShowLoading("hide");
+                SuccessPrompt("提交成功");
+            }
+        }, function (response) {
+            ShowLoading("hide");
+            ErrorPrompt(response.errmsg);
+        });
+    }
 
 
     //修改申请

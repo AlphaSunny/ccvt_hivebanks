@@ -473,6 +473,17 @@ function BindWeChatGroup(token, group_id, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//上传个人二维码
+function upload_qr_img(token, wechat_qrcode, price, suc_func, error_func) {
+    let api_url = 'us_upload_wechat_qrcode.php',
+        post_data = {
+            'token': token,
+            'wechat_qrcode': wechat_qrcode,
+            'price': price
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 // User Change Record - Login Record - Transfer - BA / CA - Recharge / Withdrawal - Record
 function AllRecord(token, limit, offset, api_url, suc_func, error_func) {
     let post_data = {
