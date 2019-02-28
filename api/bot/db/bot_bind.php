@@ -546,7 +546,8 @@ function notice_records($data)
 function get_news()
 {
     $db = new DB_COM();
-    $sql = "select news_id,title from la_news WHERE category=1 AND status=1 AND is_overdue=1 ORDER BY rand() limit 1";
+    $time = date("Y-m-d H:i:s");
+    $sql = "select news_id,title from la_news WHERE category=1 AND status=1 AND overdue_time<'{$time}' ORDER BY rand() limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
     if (!$row){
