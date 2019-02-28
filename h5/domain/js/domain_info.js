@@ -153,6 +153,7 @@ $(function () {
         start_time = $("#start_time").val().replace(/\//, "-");
         end_time = $("#end_time").val().replace(/\//, "-");
         nickname = $("#name").val();
+        ShowLoading("show");
         GetCCVTListFun(group_id, start_time, end_time, nickname, c_limit, c_offset);
     });
 
