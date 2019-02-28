@@ -61,12 +61,29 @@ function news_delete($news_id){
 }
 
 /**
+ * @param $data
+ * @return int
+ * la后台新闻过期
+ */
+function news_overdue($news_id,$overdue){
+
+
+    $utime = date('Y-m-d H:i:s',time());
+    $db = new DB_COM();
+    $sql = "UPDATE la_news SET utime = '{$utime}',is_overdue='{$overdue}' where news_id = '{$news_id}' ";
+    $db->query($sql);
+    $count = $db->affectedRows();
+    return  $count;
+
+}
+
+/**
  * @return array
  * la后台新闻列表@todo 分页
  */
 function news_list(){
     $db = new DB_COM();
-    $sql = "select title,author,utime,ctime,news_id from la_news where status = 1 order by ctime desc";
+    $sql = "select title,author,utime,ctime,news_id,is_overdue from la_news where status = 1 order by ctime desc";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
