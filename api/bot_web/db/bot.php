@@ -329,7 +329,7 @@ function  get_iss_record_total($da)
 
     if ($da['nickname']){
         $nickname = $da['nickname'];
-        $sql .=" and wechat LIKE '$nickname%'";
+        $sql .=" and wechat LIKE '%$nickname%'";
     }
     $db -> query($sql);
     $count = $db -> affectedRows();

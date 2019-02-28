@@ -180,3 +180,58 @@ function bnd_list($group_id,$offset,$limit)
     $row = $db -> fetchAll();
     return $row;
 }
+
+
+//======================================
+// 函数: 群成员奖励列表总数
+// 参数:
+// 返回: count        记录总数
+//======================================
+function  get_group_reward_total($da)
+{
+    $db = new DB_COM();
+    $sql = "SELECT bot_ls_id FROM bot_Iss_records as a left join us_base as b on a.us_id=b.us_id WHERE a.group_id = '{$da['group_id']}'";
+    if ($da['start_time'] && !$da['end_time']){
+        $sql .= " and a.send_time>'{$da['start_time']}'";
+    }elseif (!$da['start_time'] && $da['end_time']){
+        $sql .= " and a.send_time<'{$da['end_time']}'";
+    }elseif ($da['start_time'] && $da['end_time']){
+        $sql .= " and a.send_time between '{$da['start_time']}' and '{$da['end_time']}'";
+    }
+
+    if ($da['nickname']){
+        $nickname = $da['nickname'];
+        $sql .=" and b.wechat LIKE '%$nickname%'";
+    }
+    $db -> query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+//======================================
+// 函数: 群成员奖励列表
+// 参数: account      账号
+//      variable      绑定name
+// 返回: row           最新信息数组
+//======================================
+function get_group_reward_list($offset,$limit,$da)
+{
+    $db = new DB_COM();
+    $unit = get_la_base_unit();
+    $sql = "select a.num,a.amount/'{$unit}' as amount,a.send_time,b.wechat from bot_Iss_records as a left JOIN us_base as b on a.us_id=b.us_id WHERE a.group_id='{$da['group_id']}'";
+    if ($da['start_time'] && !$da['end_time']){
+        $sql .= " and a.send_time>'{$da['start_time']}'";
+    }elseif (!$da['start_time'] && $da['end_time']){
+        $sql .= " and a.send_time<'{$da['end_time']}'";
+    }elseif ($da['start_time'] && $da['end_time']){
+        $sql .= " and a.send_time between '{$da['start_time']}' and '{$da['end_time']}'";
+    }
+
+    if ($da['nickname']){
+        $nickname = $da['nickname'];
+        $sql .=" and b.wechat LIKE '%$nickname%'";
+    }
+    $sql .= " order by bot_create_time desc limit $offset , $limit";
+    $db -> query($sql);
+    $row = $db -> fetchAll();
+    return $row;
+}
