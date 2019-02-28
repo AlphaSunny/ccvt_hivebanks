@@ -177,7 +177,9 @@ $(function () {
 
                 $.each(data, function (i, val) {
                     tr+="<tr>" +
-                        "<td></td>" +
+                        "<td>"+ data[i].wechat +"</td>" +
+                        "<td>"+ data[i].amount +"</td>" +
+                        "<td>"+ data[i].send_time +"</td>" +
                         "</tr>"
                 });
                 $("#CCVTList").html(tr);
