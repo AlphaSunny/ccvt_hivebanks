@@ -30,6 +30,14 @@ $wechat_qrcode = get_arg_str('GET','wechat_qrcode');
 $price = get_arg_str('GET','price');
 
 
+if ($price<=0){
+    exit_error("150","金额错误");
+}
+if (!(is_numeric($price)) || strpos($price, '.')) {
+    exit_error("150","金额错误");
+}
+
+
 //验证token
 $us_id = check_token($token);
 

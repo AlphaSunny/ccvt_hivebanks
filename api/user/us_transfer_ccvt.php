@@ -35,6 +35,9 @@ $code = get_arg_str('GET', 'code');
 //验证token
 $us_id = check_token($token);
 
+if ($ccvt_num<=0){
+    exit_error("150","金额错误");
+}
 
 if (!(is_numeric($ccvt_num)) || strpos($ccvt_num, '.')) {
     exit_error("150","金额错误");
