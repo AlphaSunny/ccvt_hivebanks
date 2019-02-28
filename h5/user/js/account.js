@@ -434,6 +434,7 @@ $(function () {
         wechat_qrcode = UpLoadImg(formData);
     });
 
+    //确定上传
     $(".qr_confirm_btn").click(function () {
         let img_val = $("#upload_qr")[0].files;
         let price = $("#upload_qr_fee").val();
@@ -450,7 +451,7 @@ $(function () {
         upload_qr_img_fun(token, wechat_qrcode, price);
     });
 
-    //查看已经绑定的
+    //修改已经绑定的
     $(".look_qr_btn").click(function () {
         wechat_qrcode = $("#person_qr_img").attr("src");
         let price = $("#upload_qr_fee").val();
