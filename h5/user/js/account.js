@@ -26,7 +26,7 @@ $(function () {
             $('.glory_of_integral').text(data.glory_of_integral);
             $('.scale').text(data.scale);
 
-            if (!data.wechat_qrcode) {
+            if (data.wechat_qrcode) {
                 $(".upload_qr_btn").text("查看");
             }
 
