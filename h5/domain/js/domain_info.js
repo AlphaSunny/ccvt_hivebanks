@@ -278,6 +278,7 @@ $(function () {
     //选择时间
     function SetTime(type) {
         if(type == "start_time"){
+            console.log("开始时间");
             $('#start_time').datetimepicker({
                 initTime: new Date(),
                 format: 'Y/m/d H:i',
@@ -288,7 +289,8 @@ $(function () {
                 yearEnd: 2050 //Set the maximum year
             });
         }else{
-            $('.timeInput').datetimepicker({
+            console.log("结束时间");
+            $('#end_time').datetimepicker({
                 initTime: new Date(),
                 format: 'Y/m/d H:i',
                 value: new Date(),
