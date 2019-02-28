@@ -14,6 +14,8 @@
     <link href="dist/summernote.css" rel="stylesheet">
     <!-- FontAwesome Styles-->
     <link href="assets/css/font-awesome.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="../assets/css/jquery.datetimepicker.css">
     <!-- Custom Styles-->
     <link href="assets/css/common.css" rel="stylesheet"/>
     <!--config css-->
@@ -208,6 +210,10 @@
                                 <p class="i18n" name="author"></p>
                                 <input id="author" type="text">
                             </div>
+                            <div class="">
+                                <p class="" name="">过期时间</p>
+                                <input type="text" class="timeInput" id="time_out"/>
+                            </div>
                             <div>
                                 <button class="btn btn-success distributeBtn i18n" name="distribute"></button>
                                 <button class="btn btn-success modifyBtn i18n none" name="modify"></button>
@@ -259,6 +265,7 @@
 <!-- sha Js -->
 <script src="assets/js/sha.js"></script>
 
+<script src="../assets/js/jquery.datetimepicker.full.js"></script>
 <!-- common Js -->
 <script src="assets/js/common.js"></script>
 
