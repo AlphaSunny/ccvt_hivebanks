@@ -276,20 +276,35 @@ $(function () {
     });
 
     //选择时间
-    function SetTime() {
-        $('.timeInput').datetimepicker({
-            initTime: new Date(),
-            format: 'Y/m/d H:i',
-            value: new Date(),
-            minDate: new Date(),//Set minimum date
-            minTime: new Date(),//Set minimum time
-            yearStart: 2018,//Set the minimum year
-            yearEnd: 2050 //Set the maximum year
-        });
+    function SetTime(type) {
+        if(type == "start_time"){
+            $('#start_time').datetimepicker({
+                initTime: new Date(),
+                format: 'Y/m/d H:i',
+                value: new Date(),
+                // minDate: new Date(),//Set minimum date
+                // minTime: new Date(),//Set minimum time
+                yearStart: 2000,//Set the minimum year
+                yearEnd: 2050 //Set the maximum year
+            });
+        }else{
+            $('.timeInput').datetimepicker({
+                initTime: new Date(),
+                format: 'Y/m/d H:i',
+                value: new Date(),
+                minDate: new Date(),//Set minimum date
+                minTime: new Date(),//Set minimum time
+                yearStart: 2018,//Set the minimum year
+                yearEnd: 2050 //Set the maximum year
+            });
+        }
     }
 
-    $(document).on('click, focus', '.timeInput', function () {
-        SetTime();
+    $(document).on('click, focus', '#start_time', function () {
+        SetTime("start_time");
+    });
+    $(document).on('click, focus', '#end_time', function () {
+        SetTime("end_time");
     })
 });
 
