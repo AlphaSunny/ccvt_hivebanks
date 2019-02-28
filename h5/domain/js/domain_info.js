@@ -160,6 +160,7 @@ $(function () {
         let tr = "", total = "", totalPage = "", count = "";
         GetCCVTList(group_id, start_time, end_time, nickname, c_limit, c_offset, function (response) {
             if (response.errcode == "0") {
+                ShowLoading("hide");
                 let data = response.rows;
                 console.log(data);
                 if (data.length <= 0) {
@@ -194,13 +195,15 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
+                        ShowLoading("show");
                         GetCCVTListFun(group_id, start_time, end_time, nickname, c_limit, (current - 1) * c_limit);
                     }
                 });
 
             }
         }, function (response) {
-
+            ShowLoading("hide");
+            ErrorPrompt(response.errmsg);
         });
     }
 
