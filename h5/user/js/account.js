@@ -25,6 +25,11 @@ $(function () {
             $('.levelNum').text(security_level);
             $('.glory_of_integral').text(data.glory_of_integral);
             $('.scale').text(data.scale);
+
+            if(!data.wechat_qrcode){
+                $(".upload_qr_btn").text("查看");
+            }
+
             if (parseInt(data.next_scale_poor) > 0) {
                 $('.help_icon').attr("data-original-title", "距离下一级还需" + data.next_scale_poor + "荣耀积分");
             } else {
