@@ -146,11 +146,13 @@ $(function () {
 
     //获取分配情况
     let c_limit = 30, c_offset = 0;
-
-    $("#search_btn").click(() => {
-        let start_time = $("#start_time").val().replace(/\//, "-"),
-            end_time = $("#end_time").val().replace(/\//, "-"),
-            nickname = $("#name").val();
+    let start_time = "",
+        end_time = "",
+        nickname = "";
+    ("#search_btn").click(() => {
+        start_time = $("#start_time").val().replace(/\//, "-");
+        end_time = $("#end_time").val().replace(/\//, "-");
+        nickname = $("#name").val();
         GetCCVTListFun(group_id, start_time, end_time, nickname, c_limit, c_offset);
     });
 
@@ -176,10 +178,10 @@ $(function () {
                 }
 
                 $.each(data, function (i, val) {
-                    tr+="<tr>" +
-                        "<td>"+ data[i].wechat +"</td>" +
-                        "<td>"+ data[i].amount +"</td>" +
-                        "<td>"+ data[i].send_time +"</td>" +
+                    tr += "<tr>" +
+                        "<td>" + data[i].wechat + "</td>" +
+                        "<td>" + data[i].amount + "</td>" +
+                        "<td>" + data[i].send_time + "</td>" +
                         "</tr>"
                 });
                 $("#CCVTList").html(tr);
@@ -201,6 +203,8 @@ $(function () {
 
         });
     }
+
+    GetCCVTListFun(group_id, start_time, end_time, nickname, c_limit, c_offset);
 
     //绑定人数
     let limit = 30, offset = 0;
