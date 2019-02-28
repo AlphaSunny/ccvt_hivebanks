@@ -188,7 +188,7 @@ $(function () {
                 $("#CCVTList").html(tr);
 
                 $("#c_pagination").pagination({
-                    currentPage: (c_limit + c_offset) / limit,
+                    currentPage: (c_limit + c_offset) / c_limit,
                     totalPage: totalPage,
                     isShow: false,
                     count: count,
