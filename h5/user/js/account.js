@@ -28,9 +28,9 @@ $(function () {
 
             if (data.wechat_qrcode) {
                 $(".upload_qr_btn").text("查看");
-                $("#person_qr_img").attr("src",data.wechat_qrcode);
+                $("#person_qr_img").attr("src", data.wechat_qrcode);
                 $("#upload_qr_fee").val(data.wechat_qrcode_price);
-                $(".qr_confirm_btn").removeClass("i18n").text("修改");
+                $(".qr_confirm_btn").removeClass("i18n qr_confirm_btn").addClass("look_qr_btn").text("修改");
             }
 
             if (parseInt(data.next_scale_poor) > 0) {
@@ -443,6 +443,17 @@ $(function () {
             return;
         }
 
+        if (price <= 0) {
+            WarnPrompt("请输入正确的费用");
+            return;
+        }
+        upload_qr_img_fun(token, wechat_qrcode, price);
+    });
+
+    //查看已经绑定的
+    $(".look_qr_btn").click(function () {
+        wechat_qrcode = $("#person_qr_img").attr("src");
+        let price = $("#upload_qr_fee").val();
         if (price <= 0) {
             WarnPrompt("请输入正确的费用");
             return;
