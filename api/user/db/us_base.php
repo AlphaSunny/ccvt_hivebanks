@@ -323,6 +323,16 @@ function get_us_base_info_by_token($us_id)
     $next_scale_poor = $next-$glory_of_integral/get_la_base_unit();
     $row['next_scale_poor'] = $next_scale_poor >=0 ? $next_scale_poor : 0;
 
+    //个人微信二维码
+    $sql = "select bind_info from us_bind WHERE bind_name='wechat_qrcode' AND us_id='{$us_id}'";
+    $db->query($sql);
+    $wechat_qrcode = $db->getField($sql,'bind_info');
+    $row['wechat_qrcode'] = $wechat_qrcode ? $wechat_qrcode : '';
+    //个人微信二维码价格
+    $sql = "select bind_info from us_bind WHERE bind_name='wechat_qrcode_price' AND us_id='{$us_id}'";
+    $db->query($sql);
+    $wechat_qrcode_price = $db->getField($sql,'bind_info');
+    $row['wechat_qrcode_price'] = $wechat_qrcode_price ? $wechat_qrcode_price : '';
 
     return $row;
 }
