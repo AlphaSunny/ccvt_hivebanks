@@ -180,8 +180,8 @@ $(function () {
                 $.each(data, function (i, val) {
                     tr += "<tr>" +
                         "<td>" + data[i].wechat + "</td>" +
-                        "<td>" + data[i].amount + "</td>" +
-                        "<td>" + data[i].send_time + "</td>" +
+                        "<td class='text-center'>" + data[i].amount + "</td>" +
+                        "<td class='text-center'>" + data[i].send_time + "</td>" +
                         "</tr>"
                 });
                 $("#CCVTList").html(tr);
@@ -223,6 +223,8 @@ $(function () {
                 if (data.length <= 0) {
                     li = "<li><td class='text-center'>暂无数据</td></li>"
                 }
+                total = response.total;
+                totalPage = Math.ceil(total / limit);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (totalPage > 1 && totalPage <= 6) {
@@ -230,11 +232,6 @@ $(function () {
                 } else {
                     count = 6;
                 }
-
-                total = response.total;
-                totalPage = Math.ceil(total / limit);
-
-
                 $.each(data, function (i, val) {
                     if (parseInt(data[i].scale) != 0) {
                         scale = "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + data[i].scale + "'></use></svg>";
