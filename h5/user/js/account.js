@@ -452,6 +452,8 @@ $(function () {
             if (response.errcode == "0") {
                 ShowLoading("hide");
                 SuccessPrompt("提交成功");
+                $("#qr_modal").addClass("none");
+                $(".upload_qr_btn").text("查看");
             }
         }, function (response) {
             ShowLoading("hide");
