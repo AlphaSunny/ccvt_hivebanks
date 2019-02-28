@@ -448,6 +448,7 @@ $(function () {
     });
 
     function upload_qr_img_fun(token, wechat_qrcode, price) {
+        ShowLoading("show");
         upload_qr_img(token, wechat_qrcode, price, function (response) {
             if (response.errcode == "0") {
                 ShowLoading("hide");
