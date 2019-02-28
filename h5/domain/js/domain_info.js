@@ -149,7 +149,7 @@ $(function () {
     let start_time = "",
         end_time = "",
         nickname = "";
-    ("#search_btn").click(() => {
+    $("#search_btn").click(() => {
         start_time = $("#start_time").val().replace(/\//, "-");
         end_time = $("#end_time").val().replace(/\//, "-");
         nickname = $("#name").val();
