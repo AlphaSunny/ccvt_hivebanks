@@ -68,7 +68,10 @@ $(function () {
     $(".distributeBtn").click(function () {
         var title = $("#title").val(),
             content = $(".summernote").summernote("code"),
+            overdue_time = $("#overdue_time").val(),
             author = $("#author").val();
+        console.log(overdue_time);
+        return;
         if (title.length <= 0) {
             LayerFun("pleaseInputNewsTitle");
             return;
