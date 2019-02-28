@@ -145,7 +145,7 @@ $(function () {
     GetGroupInfo(group_id);
 
     //获取分配情况
-    let c_limit = 30, c_offset = 0;
+    let c_limit = 10, c_offset = 0;
     let start_time = "",
         end_time = "",
         nickname = "";
@@ -194,7 +194,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        BindNumFun(group_id, limit, (current - 1) * limit);
+                        GetCCVTListFun(group_id, start_time, end_time, nickname, c_limit, (current - 1) * c_limit);
                     }
                 });
 
