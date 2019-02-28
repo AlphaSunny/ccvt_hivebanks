@@ -144,6 +144,62 @@ $(function () {
 
     GetGroupInfo(group_id);
 
+    //获取分配情况
+    let c_limit = 30, c_offset = 0;
+
+    $("#search_btn").click(() => {
+        let start_time = $("#start_time").val().replace(/\//, "-"),
+            end_time = $("#end_time").val().replace(/\//, "-"),
+            nickname = $("#name").val();
+        GetCCVTListFun(group_id, start_time, end_time, nickname, c_limit, c_offset);
+    });
+
+    function GetCCVTListFun(group_id, start_time, end_time, nickname, c_limit, c_offset) {
+        let tr = "", total = "", totalPage = "", count = "";
+        GetCCVTList(group_id, start_time, end_time, nickname, c_limit, c_offset, function (response) {
+            if (response.errcode == "0") {
+                let data = response.rows;
+                console.log(data);
+                if (data.length <= 0) {
+                    tr = "<tr><td class='text-center' colspan='3'>暂无数据</td></tr>"
+                }
+
+                total = response.total;
+                totalPage = Math.ceil(total / c_limit);
+
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (totalPage > 1 && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+
+                $.each(data, function (i, val) {
+                    tr+="<tr>" +
+                        "<td></td>" +
+                        "</tr>"
+                });
+                $("#CCVTList").html(tr);
+
+                $("#c_pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        BindNumFun(group_id, limit, (current - 1) * limit);
+                    }
+                });
+
+            }
+        }, function (response) {
+
+        });
+    }
+
     //绑定人数
     let limit = 30, offset = 0;
     $(".bind_count_box").click(function () {
@@ -161,9 +217,6 @@ $(function () {
                 if (data.length <= 0) {
                     li = "<li><td class='text-center'>暂无数据</td></li>"
                 }
-
-                total = response.total;
-                totalPage = Math.ceil(total / limit);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (totalPage > 1 && totalPage <= 6) {
@@ -171,6 +224,10 @@ $(function () {
                 } else {
                     count = 6;
                 }
+
+                total = response.total;
+                totalPage = Math.ceil(total / limit);
+
 
                 $.each(data, function (i, val) {
                     if (parseInt(data[i].scale) != 0) {

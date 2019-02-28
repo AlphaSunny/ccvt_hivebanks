@@ -176,6 +176,20 @@ function GetDoMainInfo(group_id, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//奖励分配
+function GetCCVTList(group_id, start_time, end_time, nickname, c_limit, c_offset,suc_func, error_func) {
+    let api_url = "group_reward_list.php";
+    let post_data = {
+        "group_id": group_id,
+        "start_time": start_time,
+        "end_time": end_time,
+        "nickname": nickname,
+        "limit": c_limit,
+        "offset": c_offset
+    };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //绑定人数
 function BindNum(group_id, limit, offset, suc_func, error_func) {
     let api_url = "bnd_list.php";
