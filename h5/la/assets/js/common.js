@@ -549,11 +549,13 @@ function GetBlackList(us_id, suc_func, error_func) {
 }
 
 //get reward list
-function GetRewardList(token, type, suc_func, error_func) {
+function GetRewardList(token, type, limit, offset, suc_func, error_func) {
     var api_url = 'ba_gift.php',
         post_data = {
             'token': token,
-            'type': type
+            'type': type,
+            'limit': limit,
+            'offset': offset
         };
     CallTransactionApi(api_url, post_data, suc_func, error_func);
 }
