@@ -26,13 +26,20 @@ $token = get_arg_str('POST', 'token', 128);
 
 la_user_check($token);
 
-$list = news_list();
+// 取得分页参数
+list($limit, $offset) = get_paging_arg('GET');
+
+// 获取当前总记录
+$total = news_list_total();
+
+$list = news_list($offset,$limit);
 if($list){
 
     $rtn_ary = array();
     $rtn_ary['errcode'] = '0';
     $rtn_ary['errmsg'] = '';
     $rtn_ary['rows'] = $list;
+    $rtn_ary['total'] = $total;
     $rtn_str = json_encode($rtn_ary);
     php_end($rtn_str);
 }

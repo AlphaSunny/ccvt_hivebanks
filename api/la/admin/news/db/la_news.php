@@ -77,13 +77,27 @@ function news_overdue($news_id,$overdue){
 
 }
 
+//======================================
+// 函数: la后台新闻列表总数
+// 参数:
+// 返回: count        记录总数
+//======================================
+function  news_list_total()
+{
+    $db = new DB_COM();
+    $sql = "select news_id from la_news where status = 1";
+    $db -> query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+
 /**
  * @return array
  * la后台新闻列表@todo 分页
  */
-function news_list(){
+function news_list($offset,$limit){
     $db = new DB_COM();
-    $sql = "select title,author,utime,ctime,news_id,overdue_time from la_news where status = 1 order by ctime desc";
+    $sql = "select title,author,utime,ctime,news_id,overdue_time from la_news where status = 1 order by ctime desc  limit $offset , $limit ";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
