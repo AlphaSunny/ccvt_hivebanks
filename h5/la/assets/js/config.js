@@ -70,6 +70,7 @@ $(function () {
         $.get(getOpenServerUrl, getOpenServerData, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows[0];
+                console.log(data);
                 if (data.email_service == "1" && data.flag == "1") {
                     $(".noOpenEmail").remove();
                     $(".alreadyOpenEmail").removeClass("none");
