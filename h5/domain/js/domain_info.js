@@ -33,7 +33,7 @@ $(function () {
                 // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                 labels: x_arr,
                 datasets: [{
-                    label: '成员增长趋势图',
+                    label: 'CCVT发放趋势图',
                     // data: [12, 19, 3, 5, 2, 3],
                     data: y_arr,
                     backgroundColor: [
