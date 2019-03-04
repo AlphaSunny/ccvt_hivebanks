@@ -29,17 +29,35 @@ function get_ba_base_info()
  * @return array
  * 1：注册赠送  2：邀请赠送  3：ba调账赠送   4:群聊奖励 5:全部
  */
-function ba_gift($flag)
+function  ba_gift_total($flag)
+{
+    $db = new DB_COM();
+    if($flag!=5) {
+        $sql = "select a.tx_amount/(select unit from la_base limit 1) as amount from com_transfer_request a ,us_base b where a.credit_id=b.us_id and a.flag='{$flag}'  order by a.ctime desc ;";
+    }else{
+        $sql = "select a.tx_amount/(select unit from la_base limit 1) as amount from com_transfer_request a ,us_base b where a.credit_id=b.us_id  order by a.ctime desc ;";
+    }
+    $db->query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+
+/**
+ * @param $flag
+ * @return array
+ * 1：注册赠送  2：邀请赠送  3：ba调账赠送   4:群聊奖励 5:全部
+ */
+function ba_gift($offset,$limit,$flag)
 {
     $db = new DB_COM();
     if($flag!=5) {
         $sql = "select a.tx_amount/(select unit from la_base limit 1) as amount,a.tx_detail,
         b.us_account,b.wechat,DATE_FORMAT(FROM_UNIXTIME(a.ctime), '%Y-%m-%d %H:%i:%s') AS gift_time
-      from com_transfer_request a ,us_base b where a.credit_id=b.us_id and a.flag='{$flag}'  order by a.ctime desc ;";
+      from com_transfer_request a ,us_base b where a.credit_id=b.us_id and a.flag='{$flag}'  order by a.ctime desc limit $offset , $limit";
     }else{
         $sql = "select a.tx_amount/(select unit from la_base limit 1) as amount,a.tx_detail,
         b.us_account,b.wechat,DATE_FORMAT(FROM_UNIXTIME(a.ctime), '%Y-%m-%d %H:%i:%s') AS gift_time
-      from com_transfer_request a ,us_base b where a.credit_id=b.us_id  order by a.ctime desc ;";
+      from com_transfer_request a ,us_base b where a.credit_id=b.us_id  order by a.ctime desc limit $offset , $limit";
     }
     $db->query($sql);
     return $db->fetchAll();

@@ -57,13 +57,20 @@ if(!$row){
     exit_error('120','用户不存在');
 }
 
+// 取得分页参数
+list($limit, $offset) = get_paging_arg('GET');
+
+// 获取当前总记录
+$total = ba_gift_total($type);
+
 // 获取ba的赠送记录
-$gift_rows = ba_gift($type);
+$gift_rows = ba_gift($offset,$limit,$type);
 
 //成功后返回数据
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
+$rtn_ary['total'] = $total;
 $rtn_ary['rows'] = $gift_rows;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
