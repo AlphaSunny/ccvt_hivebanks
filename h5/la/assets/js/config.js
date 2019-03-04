@@ -67,37 +67,78 @@ $(function () {
     function GetOpenServerFun(key_code) {
         var getOpenServerUrl = "https://ccvt.io/api/plugin/get_common_config.php",
             getOpenServerData = {"key_code": key_code};
-        $.get(getOpenServerUrl, getOpenServerData, function (response) {
-            if (response.errcode == "0") {
-                var data = response.rows[0];
-                console.log(data);
-                if (data.email_service == "1" && data.flag == "1") {
-                    $(".noOpenEmail").remove();
-                    $(".alreadyOpenEmail").removeClass("none");
-                    $(".iconEmail").removeClass("color-red").addClass("color-green");
-                    $(".iconEmail").removeClass("icon-gantanhao").addClass("icon-duihao");
-                    $(".radioEmail").attr("disabled", true);
+        $.ajax({
+            type: "get",
+            url: getOpenServerUrl,
+            data: getOpenServerData,
+            dataType: "jsonp",
+            success:function (response) {
+                if(response.errcode == "0"){
+                    var data = response.rows[0];
+                    console.log(data);
+                    if (data.email_service == "1" && data.flag == "1") {
+                        $(".noOpenEmail").remove();
+                        $(".alreadyOpenEmail").removeClass("none");
+                        $(".iconEmail").removeClass("color-red").addClass("color-green");
+                        $(".iconEmail").removeClass("icon-gantanhao").addClass("icon-duihao");
+                        $(".radioEmail").attr("disabled", true);
+                    }
+                    if (data.sms_service == "1" && data.flag == "1") {
+                        $(".noOpenSms").remove();
+                        $(".alreadyOpenSms").removeClass("none");
+                        $(".iconSms").removeClass("color-red").addClass("color-green");
+                        $(".iconSms").removeClass("icon-gantanhao").addClass("icon-duihao");
+                        $(".radioSms").attr("disabled", true);
+                    }
+                    if (data.upload_file_service == "1" && data.flag == "1") {
+                        $(".noOpenFile").remove();
+                        $(".alreadyOpenFile").removeClass("none");
+                        $(".iconFile").removeClass("color-red").addClass("color-green");
+                        $(".iconFile").removeClass("icon-gantanhao").addClass("icon-duihao");
+                        $(".radioFile").attr("disabled", true);
+                    }
+                    if (data.email_service == "1" && data.sms_service == "1" &&
+                        data.upload_file_service == "1" && data.flag == "1") {
+                        $(".configServeBtn").remove();
+                    }
                 }
-                if (data.sms_service == "1" && data.flag == "1") {
-                    $(".noOpenSms").remove();
-                    $(".alreadyOpenSms").removeClass("none");
-                    $(".iconSms").removeClass("color-red").addClass("color-green");
-                    $(".iconSms").removeClass("icon-gantanhao").addClass("icon-duihao");
-                    $(".radioSms").attr("disabled", true);
-                }
-                if (data.upload_file_service == "1" && data.flag == "1") {
-                    $(".noOpenFile").remove();
-                    $(".alreadyOpenFile").removeClass("none");
-                    $(".iconFile").removeClass("color-red").addClass("color-green");
-                    $(".iconFile").removeClass("icon-gantanhao").addClass("icon-duihao");
-                    $(".radioFile").attr("disabled", true);
-                }
-                if (data.email_service == "1" && data.sms_service == "1" &&
-                    data.upload_file_service == "1" && data.flag == "1") {
-                    $(".configServeBtn").remove();
-                }
+            },
+            error:function (response) {
+
             }
-        }, "jsonp");
+        });
+
+        // $.get(getOpenServerUrl, getOpenServerData, function (response) {
+        //     if (response.errcode == "0") {
+        //         var data = response.rows[0];
+        //         console.log(data);
+        //         if (data.email_service == "1" && data.flag == "1") {
+        //             $(".noOpenEmail").remove();
+        //             $(".alreadyOpenEmail").removeClass("none");
+        //             $(".iconEmail").removeClass("color-red").addClass("color-green");
+        //             $(".iconEmail").removeClass("icon-gantanhao").addClass("icon-duihao");
+        //             $(".radioEmail").attr("disabled", true);
+        //         }
+        //         if (data.sms_service == "1" && data.flag == "1") {
+        //             $(".noOpenSms").remove();
+        //             $(".alreadyOpenSms").removeClass("none");
+        //             $(".iconSms").removeClass("color-red").addClass("color-green");
+        //             $(".iconSms").removeClass("icon-gantanhao").addClass("icon-duihao");
+        //             $(".radioSms").attr("disabled", true);
+        //         }
+        //         if (data.upload_file_service == "1" && data.flag == "1") {
+        //             $(".noOpenFile").remove();
+        //             $(".alreadyOpenFile").removeClass("none");
+        //             $(".iconFile").removeClass("color-red").addClass("color-green");
+        //             $(".iconFile").removeClass("icon-gantanhao").addClass("icon-duihao");
+        //             $(".radioFile").attr("disabled", true);
+        //         }
+        //         if (data.email_service == "1" && data.sms_service == "1" &&
+        //             data.upload_file_service == "1" && data.flag == "1") {
+        //             $(".configServeBtn").remove();
+        //         }
+        //     }
+        // }, "jsonp");
     }
 
     //select input
@@ -456,7 +497,7 @@ $(function () {
     $('.baseCaTypeBtn').click(function () {
         if (name == "") {
             option_key = $(".baseCaTypeInput").val();
-        }else {
+        } else {
             option_key = name;
         }
         option_value = $('.baseCaTypeInput').val();
@@ -548,9 +589,9 @@ $(function () {
 
     //set ca recharge type
     $(".setCaRechargeTypeBtn").click(function () {
-        if(ca_recharge_name == ""){
+        if (ca_recharge_name == "") {
             option_key = $(".setCaRechargeType").val();
-        }else {
+        } else {
             option_key = ca_recharge_name;
         }
         option_value = $('.setCaRechargeType').val();
