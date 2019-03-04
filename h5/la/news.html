@@ -14,6 +14,7 @@
     <!-- FontAwesome Styles-->
     <link href="assets/css/font-awesome.css" rel="stylesheet"/>
     <!-- Custom Styles-->
+    <link rel="stylesheet" href="../assets/css/jquery.pagination.css">
     <link href="assets/css/common.css" rel="stylesheet"/>
     <!--config css-->
     <link rel="stylesheet" href="assets/css/news.css">
@@ -208,9 +209,11 @@
                                 </thead>
                                 <tbody id="newsList">
                                 <td colspan="4"><span class="i18n" name="loading"></span></td>
-
                                 </tbody>
                             </table>
+                            <div class="box text-right">
+                                <div id="pagination" class="page"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -287,6 +290,8 @@
 
 <!-- layer Js -->
 <script src="assets/js/layer/layer.js"></script>
+
+<script src="../assets/js/jquery.pagination.min.js"></script>
 
 <!-- sha Js -->
 <script src="assets/js/sha.js"></script>

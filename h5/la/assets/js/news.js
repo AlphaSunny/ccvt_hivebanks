@@ -4,35 +4,68 @@ $(function () {
 
     //get news list
     $(".preloader-wrapper").addClass("active");
-    GetNewsList(token, function (response) {
-        if (response.errcode == "0") {
-            $(".preloader-wrapper").removeClass("active");
-            var data = response.rows, tr = "";
-            if (data == null) {
-                GetDataEmpty("newsList", "4");
-                return;
-            }
-            $.each(data, function (i, val) {
-                tr += "<tr class='newsItem'>" +
-                    "<td><a href='newsDetail.html?news_id=" + data[i].news_id + "' class='newsTitleClick'>" + data[i].title + "</a></td>" +
-                    "<td><span>" + data[i].author + "</span></td>" +
-                    "<td><span>" + data[i].utime + "</span></td>" +
-                    "<td>" +
-                    "<span class='news_id none'>" + data[i].news_id + "</span>" +
-                    "<button class='btn btn-success modifyNewsBtn i18n' name='modify'>modify</button>" +
-                    "<button class='btn btn-danger margin-left-2 deleteNewsBtn i18n' name='delete'>delete</button>" +
-                    "</td>" +
-                    "</tr>"
-            });
-            $("#newsList").html(tr);
-            execI18n();
-        }
 
-    }, function (response) {
-        $(".preloader-wrapper").removeClass("active");
-        GetDataFail("newsList", "4");
-        LayerFun(response.errcode);
-    });
+    let limit = 50, offset = 0;
+
+    function GetNewsListFun(token, limit, offset) {
+        let total = "", totalPage = "", count = "", tr = "";
+        GetNewsList(token, function (response) {
+            if (response.errcode == "0") {
+                $(".preloader-wrapper").removeClass("active");
+                var data = response.rows;
+                if (data == null) {
+                    GetDataEmpty("newsList", "4");
+                    return;
+                }
+
+                total = response.total;
+                totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (totalPage > 1 && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+
+                $.each(data, function (i, val) {
+                    tr += "<tr class='newsItem'>" +
+                        "<td><a href='newsDetail.html?news_id=" + data[i].news_id + "' class='newsTitleClick'>" + data[i].title + "</a></td>" +
+                        "<td><span>" + data[i].author + "</span></td>" +
+                        "<td><span>" + data[i].utime + "</span></td>" +
+                        "<td>" +
+                        "<span class='news_id none'>" + data[i].news_id + "</span>" +
+                        "<button class='btn btn-success modifyNewsBtn i18n' name='modify'>modify</button>" +
+                        "<button class='btn btn-danger margin-left-2 deleteNewsBtn i18n' name='delete'>delete</button>" +
+                        "</td>" +
+                        "</tr>"
+                });
+                $("#newsList").html(tr);
+                execI18n();
+                //显示页码
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        ShowLoading("show");
+                        GetNewsListFun(type, limit, (current - 1) * limit);
+                    }
+                });
+            }
+
+        }, function (response) {
+            $(".preloader-wrapper").removeClass("active");
+            GetDataFail("newsList", "4");
+            LayerFun(response.errcode);
+        });
+    }
+
+    GetNewsListFun(token, limit, offset);
+
 
     //delete news
     $(document).on("click", ".deleteNewsBtn", function () {
