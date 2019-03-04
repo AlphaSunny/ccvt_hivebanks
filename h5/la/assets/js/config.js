@@ -65,14 +65,13 @@ $(function () {
 
     //get open server
     function GetOpenServerFun(key_code) {
-        var getOpenServerUrl = "https://ccvt.io/api/plugin/get_common_config.php",
-            getOpenServerData = {"key_code": key_code};
+        var getOpenServerUrl = "https://ccvt.io/api/plugin/get_common_config.php?key_code=" + key_code;
+        // getOpenServerData = {"key_code": key_code};
         $.ajax({
             type: "get",
             url: getOpenServerUrl,
-            data: getOpenServerData,
             dataType: "jsonp",
-            success:function (response) {
+            success: function (response) {
                 console.log(response);
                 // if(response.errcode == "0"){
                 //     console.log(response);
@@ -105,7 +104,7 @@ $(function () {
                 //     }
                 // }
             },
-            error:function (response) {
+            error: function (response) {
 
             }
         });
