@@ -33,9 +33,9 @@ function  ba_gift_total($flag)
 {
     $db = new DB_COM();
     if($flag!=5) {
-        $sql = "select a.tx_amount/(select unit from la_base limit 1) as amount from com_transfer_request a ,us_base b where a.credit_id=b.us_id and a.flag='{$flag}'  order by a.ctime desc ;";
+        $sql = "select a.tx_amount from com_transfer_request a ,us_base b where a.credit_id=b.us_id and a.flag='{$flag}'  order by a.ctime desc ;";
     }else{
-        $sql = "select a.tx_amount/(select unit from la_base limit 1) as amount from com_transfer_request a ,us_base b where a.credit_id=b.us_id  order by a.ctime desc ;";
+        $sql = "select a.tx_amount from com_transfer_request a ,us_base b where a.credit_id=b.us_id  order by a.ctime desc ;";
     }
     $db->query($sql);
     $count = $db -> affectedRows();
