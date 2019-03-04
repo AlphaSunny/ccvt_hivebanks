@@ -29,7 +29,7 @@ $(function () {
                 },
                 data:data,
                 columns:[
-                    {"data":"us_id", className:"us_id jump"},
+                    {"data":"us_account", className:"us_id jump"},
                     {"data":"us_level"},
                     {"data":"security_level"},
                     {"data":"ctime"},
