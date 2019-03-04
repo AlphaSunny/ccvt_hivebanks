@@ -8,6 +8,7 @@ $(function () {
     function GetRewardFun(type, limit, offset) {
         let total = "", totalPage = "", count = "", tr = "";
         GetRewardList(token, type,limit,offset, function (response) {
+            ShowLoading("hide");
             if (response.errcode == "0") {
                 let data = response.rows;
                 if (data.length <= 0) {
@@ -52,12 +53,13 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
+                        ShowLoading("show");
                         GetRewardFun(type, limit, (current - 1) * limit);
                     }
                 });
             }
         }, function (response) {
-
+            ShowLoading("hide");
         })
     }
 

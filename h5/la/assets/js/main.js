@@ -116,3 +116,16 @@ $('.logOut').click(function () {
     DelCookie('la_token');
     window.location.href = 'login.html';
 });
+
+//show loading
+let index_loading = "";
+
+function ShowLoading(type) {
+    if (type == "show") {
+        index_loading = layer.load(1, {
+            shade: [0.1, '#fff']
+        });
+    } else if (type == "hide") {
+        layer.close(index_loading);
+    }
+}
