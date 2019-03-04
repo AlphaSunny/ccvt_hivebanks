@@ -70,7 +70,7 @@ $(function () {
         $.ajax({
             type: "get",
             url: getOpenServerUrl,
-            dataType: "jsonp",
+            dataType: "json",
             success: function (response) {
                 console.log(response);
                 // if(response.errcode == "0"){
