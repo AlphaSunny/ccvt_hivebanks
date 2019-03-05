@@ -181,9 +181,9 @@ $(function () {
     //选择所有群
     $("#checkbox").on("change", function () {
         if ($("#checkbox").is(':checked')) {
-            console.log("checked");
+            $("#selectGroupName").attr("disabled", true);
         } else {
-            console.log("no checked");
+            $("#selectGroupName").attr("disabled", false);
         }
     });
 
