@@ -178,6 +178,15 @@ $(function () {
     //     })
     // });
 
+    //选择所有群
+    $("#checkbox").on("change", function () {
+        if ($("#checkbox").is(':checked')) {
+            console.log("checked");
+        } else {
+            console.log("no checked");
+        }
+    });
+
     //添加信息
     $(".addTaskBtn").click(function () {
         let is_audit = "";
