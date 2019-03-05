@@ -183,7 +183,7 @@ $(function () {
         let is_audit = "2";
         GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
-                var data = response.data, option = "";
+                var data = response.rows, option = "";
                 $.each(data, function (i, val) {
                     option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
                 });
