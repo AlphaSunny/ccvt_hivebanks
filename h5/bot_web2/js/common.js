@@ -12,7 +12,7 @@ function SetCookie(name, value) {
 function GetCookie(name) {
     let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]);
-    if (arr == null) {
+    if (arr == null && name == "user_token") {
         window.location.href = "login.html";
         return;
     }
@@ -207,7 +207,7 @@ function SubmitAddGroup(token, group_id, group_type_id, suc_func, error_func) {
 //==========
 
 //编辑群主信息
-function EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src, group_introduction,news_notice, suc_func, error_func) {
+function EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src, group_introduction, news_notice, suc_func, error_func) {
     let api_url = "group_edit.php",
         post_data = {
             "token": token,
