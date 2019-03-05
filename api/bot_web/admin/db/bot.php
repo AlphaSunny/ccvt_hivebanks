@@ -185,7 +185,7 @@ function get_timer_list()
     $row = $db -> fetchAll();
     if ($row){
         foreach ($row as $k=>$v){
-            if ($v['group_id']==0){
+            if ($v['group_id']<=0){
                 $row[$k]['name'] = "全部";
             }
         }
