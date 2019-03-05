@@ -87,9 +87,10 @@ $(function () {
                         }
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
+                            "<td class='group_id none'>" + data[i].group_id + "</td>" +
                             // "<td class='time'>" + data[i].tx_content + data[i].time + "</td>" +
                             "<td class='time'>" + one_arr.join("#") + data[i].time + "</td>" +
-                            "<td class='content'>" + content + "</td>" +
+                            "<td class='content' name=" + data[i].id + ">" + content + "</td>" +
                             "<td class='name'>" + data[i].name + "</td>" +
                             "<td>" +
                             "<span class='none type'>" + data[i].type + "</span><span class='none send_type'>" + data[i].send_type + "</span><span class='none tx_content'>" + data[i].tx_content + "</span>" +
@@ -142,6 +143,7 @@ $(function () {
         timer_id = $(this).parents("tr").find(".content").attr("name");
         let type = $(this).parents("tr").find(".type").text();
         let tx_content = $(this).parents("tr").find(".tx_content").text();
+        let group_id = $(this).parents("tr").find(".group_id").text();
         if (type == 1) {
             $("input[type='checkbox']").prop("checked", true);
         } else {
@@ -166,6 +168,12 @@ $(function () {
             $(".content_image").fadeIn(300);
             $(".upload_img_box").fadeIn(300);
             $("#upload_img").attr("src", $(this).parents("tr").find(".task_img").attr("src"));
+        }
+
+        if(group_id == "-1"){
+            $("#checkbox").attr("checked",true);
+        }else {
+            $("#checkbox").attr("checked",false);
         }
 
         $("#selectGroupName").fadeOut("fast");
