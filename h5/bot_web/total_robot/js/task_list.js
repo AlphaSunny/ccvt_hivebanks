@@ -89,7 +89,8 @@ $(function () {
                             "<td class='id none'>" + data[i].id + "</td>" +
                             "<td class='group_id none'>" + data[i].group_id + "</td>" +
                             // "<td class='time'>" + data[i].tx_content + data[i].time + "</td>" +
-                            "<td class='time'>" + one_arr.join("#") + data[i].time + "</td>" +
+                            "<td class=''>" + one_arr.join("#") +"</td>" +
+                            "<td class='time'>"+ data[i].time + "</td>" +
                             "<td class='content' name=" + data[i].id + ">" + content + "</td>" +
                             "<td class='name'>" + data[i].name + "</td>" +
                             "<td>" +
