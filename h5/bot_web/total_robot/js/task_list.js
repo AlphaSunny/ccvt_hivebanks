@@ -141,7 +141,7 @@ $(function () {
         let task_id = $(this).parents("tr").find(".content").attr("name");
         send_type = $(this).parents("tr").find(".send_type").text();
         timer_id = $(this).parents("tr").find(".content").attr("name");
-        let type = $(this).parents("tr").find(".type").text();
+        type = $(this).parents("tr").find(".type").text();
         let tx_content = $(this).parents("tr").find(".tx_content").text();
         let group_id = $(this).parents("tr").find(".group_id").text();
         if (type == 1) {

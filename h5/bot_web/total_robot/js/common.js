@@ -238,13 +238,16 @@ function AddTask(token, time, group_id, content, send_type, tx_content, type, su
 }
 
 //编辑任务信息
-function EditTask(token, timer_id, time, content, suc_func, error_func) {
+function EditTask(token, timer_id, time, content, send_type, tx_content, type, suc_func, error_func) {
     var api_url = "timer_edit.php",
         post_data = {
             "token": token,
             "timer_id": timer_id,
             "time": time,
-            "content": content
+            "content": content,
+            "send_type": send_type,
+            "tx_content": tx_content,
+            "type": type
         };
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
