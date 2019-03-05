@@ -46,7 +46,7 @@ $(function () {
 
     //获取定时任务
     function GetTaskListFun() {
-        var tr = "",content = "";
+        var tr = "", content = "";
         GetTaskList(token, function (response) {
             if (response.errcode == "0") {
                 var data = response.rows;
@@ -80,10 +80,10 @@ $(function () {
                             one_arr[one_arr.indexOf("saturday")] = "星期六";
                         }
 
-                        if(data[i].send_type == 1){
-                            content = "<span>"+ data[i].content +"</span>";
-                        }else {
-                            content = "<img class='task_img' src='"+ data[i].content +"'/>";
+                        if (data[i].send_type == 1) {
+                            content = "<span>" + data[i].content + "</span>";
+                        } else {
+                            content = "<img class='task_img' src='" + data[i].content + "'/>";
                         }
                         tr += "<tr>" +
                             "<td class='id none'>" + data[i].id + "</td>" +
@@ -92,7 +92,7 @@ $(function () {
                             "<td class='content'>" + content + "</td>" +
                             "<td class='name'>" + data[i].name + "</td>" +
                             "<td>" +
-                            // "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
+                            "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                             "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
                             "</td>" +
                             "</tr>"
@@ -196,36 +196,34 @@ $(function () {
             layer.msg(response.errmsg, {icon: 2});
         });
     });
-    //
+
     // //确认添加信息
-    // $(".addSubBtn").click(function () {
-    //     var time = $("#time").val();
-    //     var content = $("#content").val();
-    //     var group_id = $("#selectGroupName").val();
-    //     if (time.length <= 0) {
-    //         layer.msg("请输入时间");
-    //         return;
-    //     }
-    //     if (content.length <= 0) {
-    //         layer.msg("请输入内容");
-    //         return;
-    //     }
-    //     //loading
-    //     var loading = layer.load(1, {
-    //         shade: [0.1, '#fff'] //0.1透明度的白色背景
-    //     });
-    //     AddTask(token, time, group_id, content, function (response) {
-    //         if (response.errcode == "0") {
-    //             layer.close(loading);
-    //             $("#editTaskModal").modal("hide");
-    //             GetTaskListFun();
-    //         }
-    //     }, function (response) {
-    //         layer.close(loading);
-    //         $("#editTaskModal").modal("hide");
-    //         layer.msg(response.errmsg);
-    //     })
-    // });
-
-
+    $(".addSubBtn").click(function () {
+        var time = $("#time").val();
+        var content = $("#content").val();
+        var group_id = $("#selectGroupName").val();
+        if (time.length <= 0) {
+            layer.msg("请输入时间");
+            return;
+        }
+        if (content.length <= 0) {
+            layer.msg("请输入内容");
+            return;
+        }
+        //loading
+        var loading = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+        AddTask(token, time, group_id, content, function (response) {
+            if (response.errcode == "0") {
+                layer.close(loading);
+                $("#editTaskModal").modal("hide");
+                GetTaskListFun();
+            }
+        }, function (response) {
+            layer.close(loading);
+            $("#editTaskModal").modal("hide");
+            layer.msg(response.errmsg);
+        })
+    });
 });
