@@ -92,6 +92,7 @@ $(function () {
                             "<td class='content'>" + content + "</td>" +
                             "<td class='name'>" + data[i].name + "</td>" +
                             "<td>" +
+                            "<span class='none type'>" + data[i].type + "</span><span class='none send_type'>" + data[i].send_type + "</span><span class='none tx_content'>" + data[i].tx_content + "</span>" +
                             "<button class='btn-success btn-sm editBtn'><i class='fa fa-pencil' aria-hidden='true'></i>编辑</button>" +
                             "<button class='btn-sm btn-danger delBtn margin-left-5'><i class='fa fa-trash' aria-hidden='true'></i>删除</button>" +
                             "</td>" +
