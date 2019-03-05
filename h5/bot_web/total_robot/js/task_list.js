@@ -131,52 +131,114 @@ $(function () {
     }
 
     //编辑任务
-    // $(document).on("click", ".editBtn", function () {
-    //     var group_name = $(this).parents("tr").find(".name").text();
-    //     var time = $(this).parents("tr").find(".time").text();
-    //     var content = $(this).parents("tr").find(".content").text();
-    //     var task_id = $(this).parents("tr").find(".id").text();
-    //     $("#selectGroupName").fadeOut("fast");
-    //     $("#timer_id").val(task_id);
-    //     $("#groupName").val(group_name);
-    //     $("#time").val(time);
-    //     $("#content").val(content);
-    //     $(".addSubBtn").addClass("none");
-    //     $(".editSubBtn").removeClass("none");
-    //     $("#editTaskModal").modal("show");
-    // });
-    //
-    // //确认编辑
-    // $(".editSubBtn").click(function () {
-    //     var timer_id = $("#timer_id").val();
-    //     var time = $("#time").val();
-    //     var content = $("#content").val();
-    //     if (time.length <= 0) {
-    //         layer.msg("请输入时间");
-    //         return;
-    //     }
-    //     if (content.length <= 0) {
-    //         layer.msg("请输入内容");
-    //         return;
-    //     }
-    //     //loading
-    //     var loading = layer.load(1, {
-    //         shade: [0.1, '#fff'] //0.1透明度的白色背景
-    //     });
-    //     EditTask(token, timer_id, time, content, function (response) {
-    //         if (response.errcode == "0") {
-    //             layer.close(loading);
-    //             // GetTaskListFun();
-    //             $("#editTaskModal").modal("hide");
-    //             // window.location.reload();
-    //             table.ajax.reload();
-    //         }
-    //     }, function (response) {
-    //         layer.close(loading);
-    //         $("#editTaskModal").modal("hide");
-    //         layer.msg(response.errmsg);
-    //     })
-    // });
+    let type = "", tx_content_arr = [];
+    $(document).on("click", ".editBtn", function () {
+        let group_name = $(this).parents("tr").find(".name").text();
+        let time = $(this).parents("tr").find(".time").text();
+        let content = $(this).parents("tr").find(".content").text();
+        let task_id = $(this).parents("tr").find(".content").attr("name");
+        send_type = $(this).parents("tr").find(".send_type").text();
+        timer_id = $(this).parents("tr").find(".content").attr("name");
+        let type = $(this).parents("tr").find(".type").text();
+        let tx_content = $(this).parents("tr").find(".tx_content").text();
+        if (type == 1) {
+            $("input[type='checkbox']").prop("checked", true);
+        } else {
+            tx_content_arr = tx_content.split("-");
+            $.each(tx_content_arr, function (i, val) {
+                $("#" + tx_content_arr[i]).prop("checked", true);
+            });
+        }
+
+        if (send_type == 1) {//文本
+            $("#text").prop("checked", true);
+            $(this).attr("checked", true);
+            $("#image").attr("checked", false);
+            $(".content_image").fadeOut(300);
+            $(".upload_img_box").fadeOut(300);
+            $(".content_text").fadeIn(300);
+        } else {//图片
+            $("#image").prop("checked", true);
+            $(this).attr("checked", true);
+            $("#text").attr("checked", false);
+            $(".content_text").fadeOut(300);
+            $(".content_image").fadeIn(300);
+            $(".upload_img_box").fadeIn(300);
+            $("#upload_img").attr("src", content);
+        }
+
+        $("#selectGroupName").fadeOut("fast");
+        $("#timer_id").val(task_id);
+        $("#groupName").val(group_name);
+        $("#time").val(time);
+        $("#content").val(content);
+        $(".addSubBtn").addClass("none");
+        $(".editSubBtn").removeClass("none");
+        $("#editTaskModal").modal("show");
+    });
+
+    //确认编辑
+    $(".editSubBtn").click(function () {
+        // let timer_id = $("#timer_id").val();
+        let content = "", tx_content = "", tx_content_arr = [];
+        let time = $("#time").val();
+        let tx_content_list = $(".checkbox_input:checked");
+        $.each(tx_content_list, function (i, val) {
+            tx_content_arr.push($(this).val());
+        });
+        if (tx_content_arr.length == 1) {
+            tx_content = tx_content_arr[0];
+        } else {
+            tx_content = tx_content_arr.join("-");
+        }
+        if (tx_content_arr.length <= 6) {
+            type = 2;
+        } else {
+            type = 1;
+        }
+        if (tx_content_arr.length <= 0) {
+            layer.msg("请选择日期", {icon: 0});
+            return;
+        }
+
+        if (time.length <= 0) {
+            layer.msg("请输入时间", {icon: 0});
+            return;
+        }
+        //文本内容判断
+        if (send_type == 1) {
+            content = $("#content").val();
+            if (content.length <= 0) {
+                layer.msg("请输入内容", {icon: 0});
+                return;
+            }
+        }
+
+        //图片内容判断
+        if (send_type == 2) {
+            content = src;
+            if (!src) {
+                layer.msg("请选择图片", {icon: 0});
+                return;
+            }
+        }
+        //loading
+        let loading = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+        EditTask(token, timer_id, time, content, send_type, tx_content, type, function (response) {
+            if (response.errcode == "0") {
+                layer.close(loading);
+                $("#editTaskModal").modal("hide");
+                layer.msg("修改成功", {icon: 1});
+                GetTaskListFun();
+            }
+        }, function (response) {
+            layer.close(loading);
+            $("#editTaskModal").modal("hide");
+            layer.msg(response.errmsg, {icon: 2});
+        })
+    });
 
     //选择所有群
     $("#checkbox").on("change", function () {
@@ -311,23 +373,62 @@ $(function () {
     });
 
     // //确认添加信息
+    let group_id = "";
     $(".addSubBtn").click(function () {
-        var time = $("#time").val();
-        var content = $("#content").val();
-        var group_id = $("#selectGroupName").val();
-        if (time.length <= 0) {
-            layer.msg("请输入时间");
+        let content = "", tx_content = "", tx_content_arr = [];
+        let time = $("#time").val();
+        let tx_content_list = $(".checkbox_input:checked");
+        if ($("#checkbox").is(':checked')) {
+            group_id = "-1";
+        } else {
+            group_id = $("#selectGroupName").val();
+        }
+        $.each(tx_content_list, function (i, val) {
+            tx_content_arr.push($(this).val());
+        });
+        if (tx_content_arr.length == 1) {
+            tx_content = tx_content_arr[0];
+        } else {
+            tx_content = tx_content_arr.join("-");
+        }
+
+        if (tx_content_arr.length <= 6) {
+            type = 2;
+        } else {
+            type = 1;
+        }
+
+        if (tx_content_arr.length <= 0) {
+            layer.msg("请选择日期", {icon: 0});
             return;
         }
-        if (content.length <= 0) {
-            layer.msg("请输入内容");
+        if (time.length <= 0) {
+            layer.msg("请输入时间", {icon: 0});
             return;
+        }
+
+        //文本内容判断
+        if (send_type == 1) {
+            content = $("#content").val();
+            if (content.length <= 0) {
+                layer.msg("请输入内容", {icon: 0});
+                return;
+            }
+        }
+
+        //图片内容判断
+        if (send_type == 2) {
+            content = src;
+            if (!src) {
+                layer.msg("请选择图片", {icon: 0});
+                return;
+            }
         }
         //loading
         var loading = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
-        AddTask(token, time, group_id, content, function (response) {
+        AddTask(token, time, group_id, content, send_type, tx_content, type, function (response) {
             if (response.errcode == "0") {
                 layer.close(loading);
                 $("#editTaskModal").modal("hide");
