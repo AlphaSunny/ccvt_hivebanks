@@ -207,6 +207,19 @@ $(function () {
         });
     });
 
+    //选择日期
+    //选择日期
+    let is_checked = 0;
+    $("#allday").on("change", function () {
+        if (is_checked == 0) {
+            $(".checkbox_input").prop("checked", true);
+            is_checked = 1;
+        } else {
+            $(".checkbox_input").prop("checked", false);
+            is_checked = 0;
+        }
+    });
+
     // //确认添加信息
     $(".addSubBtn").click(function () {
         var time = $("#time").val();
