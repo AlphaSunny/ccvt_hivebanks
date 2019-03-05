@@ -222,6 +222,21 @@ function GetTaskList(token, suc_func, error_func) {
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//添加任务信息
+function AddTask(token, time, group_id, content, send_type, tx_content, type, suc_func, error_func) {
+    let api_url = "timer_add.php",
+        post_data = {
+            "token": token,
+            "time": time,
+            "group_id": group_id,
+            "content": content,
+            "send_type": send_type,
+            "tx_content": tx_content,
+            "type": type
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 //编辑任务信息
 function EditTask(token, timer_id, time, content, suc_func, error_func) {
     var api_url = "timer_edit.php",
