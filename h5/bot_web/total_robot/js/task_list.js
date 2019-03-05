@@ -145,7 +145,7 @@ $(function () {
         type = $(this).parents("tr").find(".type").text();
         let tx_content = $(this).parents("tr").find(".tx_content").text();
         let group_id = $(this).parents("tr").find(".group_id").text();
-        console.log(group_id);
+
         if (type == 1) {
             $("input[type='checkbox']").prop("checked", true);
         } else {
@@ -174,7 +174,9 @@ $(function () {
 
         if(group_id == "-1"){
             $("#checkbox").attr("checked",true);
+            console.log(group_id);
         }else {
+            console.log(group_id);
             $("#checkbox").attr("checked",false);
         }
 
