@@ -180,9 +180,16 @@ function audit_group($date)
 function get_timer_list()
 {
     $db = new DB_COM();
-    $sql = "SELECT t.id,t.time,t.content,t.is_del,t.send_type,t.tx_content,t.type,g.name FROM bot_timer as t LEFT JOIN bot_group as g on t.group_id=g.id WHERE t.is_del=0  ORDER BY t.intime ASC ";
+    $sql = "SELECT t.id,t.time,t.content,t.is_del,t.send_type,t.tx_content,t.type,g.name,t.group_id FROM bot_timer as t LEFT JOIN bot_group as g on t.group_id=g.id WHERE t.is_del=0  ORDER BY t.intime ASC ";
     $db -> query($sql);
     $row = $db -> fetchAll();
+    if ($row){
+        foreach ($row as $k=>$v){
+            if ($v['group_id']==0){
+                $row[$k]['name'] = "全部";
+            }
+        }
+    }
     return $row;
 }
 //======================================
