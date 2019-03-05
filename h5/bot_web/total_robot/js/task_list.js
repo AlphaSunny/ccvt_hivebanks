@@ -165,7 +165,7 @@ $(function () {
             $(".content_text").fadeOut(300);
             $(".content_image").fadeIn(300);
             $(".upload_img_box").fadeIn(300);
-            $("#upload_img").attr("src", content);
+            $("#upload_img").attr("src", $(this).parents("tr").find(".task_img").attr("src"));
         }
 
         $("#selectGroupName").fadeOut("fast");
