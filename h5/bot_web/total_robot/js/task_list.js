@@ -180,7 +180,8 @@ $(function () {
 
     //添加信息
     $(".addTaskBtn").click(function () {
-        GetGroupList(token, function (response) {
+        let is_audit = "2";
+        GetGroupList(token, is_audit, function (response) {
             if (response.errcode == "0") {
                 var data = response.data, option = "";
                 $.each(data, function (i, val) {
