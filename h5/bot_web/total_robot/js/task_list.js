@@ -240,6 +240,76 @@ $(function () {
         }
     });
 
+    //上传文件到服务器
+    function UpLoadImg(formData) {
+        ShowLoading("show");
+        let src = '';
+        $.ajax({
+            url: url + '/api/plugin/upload_file.php',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                ShowLoading("hide");
+                let data = JSON.parse(response);
+                if (data.errcode == '0') {
+                    src = data.url;
+                }
+            },
+            error: function (response) {
+                ShowLoading("hide");
+                layer.msg(response.msg, {icon: 2});
+            }
+        });
+        return src;
+    }
+
+    //get key_code
+    let key_code = "";
+    GetKeyCode(token, function (response) {
+        if (response.errcode == '0') {
+            key_code = response.key_code;
+        }
+    }, function (response) {
+        LayerFun(response.errcode);
+    });
+
+    //获取本地图片地址并显示
+    function getObjectURL(file) {
+        let url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+
+    //选择图片
+    let src = "";
+    $("#file").on("change", function () {
+        let formData = new FormData($("#upload_image")[0]);
+        let objUrl = getObjectURL(this.files[0]);
+        formData.append("file", this.files[0]);
+        formData.append("key_code", key_code);
+        let _this_size = this.files[0].size;
+        if (_this_size > 500000) {
+            layer.msg("图片不能大于500KB", {icon: 0});
+            return;
+        }
+
+        if (objUrl) {
+            // show img
+            $("#upload_img").attr("src", objUrl);
+        }
+        src = UpLoadImg(formData);
+    });
+
     // //确认添加信息
     $(".addSubBtn").click(function () {
         var time = $("#time").val();
