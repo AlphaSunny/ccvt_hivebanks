@@ -179,23 +179,23 @@ $(function () {
     // });
 
     //添加信息
-    // $(".addTaskBtn").click(function () {
-    //     GetGroupList(token, function (response) {
-    //         if (response.errcode == "0") {
-    //             var data = response.data, option = "";
-    //             $.each(data, function (i, val) {
-    //                 option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
-    //             });
-    //             $("#selectGroupName").html(option);
-    //             $(".addSubBtn").removeClass("none");
-    //             $(".editSubBtn").addClass("none");
-    //             $("#groupName").fadeOut("fast");
-    //             $("#editTaskModal").modal("show");
-    //         }
-    //     }, function (response) {
-    //         layer.msg(response.errmsg, {icon: 2});
-    //     });
-    // });
+    $(".addTaskBtn").click(function () {
+        GetGroupList(token, function (response) {
+            if (response.errcode == "0") {
+                var data = response.data, option = "";
+                $.each(data, function (i, val) {
+                    option += "<option class='groupItem' value=" + data[i].id + ">" + data[i].name + "</option>"
+                });
+                $("#selectGroupName").html(option);
+                $(".addSubBtn").removeClass("none");
+                $(".editSubBtn").addClass("none");
+                $("#groupName").fadeOut("fast");
+                $("#editTaskModal").modal("show");
+            }
+        }, function (response) {
+            layer.msg(response.errmsg, {icon: 2});
+        });
+    });
     //
     // //确认添加信息
     // $(".addSubBtn").click(function () {
