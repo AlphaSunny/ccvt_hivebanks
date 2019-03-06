@@ -40,6 +40,7 @@ $(function () {
             $('.h5_url').text(data.h5_url);
             $('.api_url').text(data.api_url);
             $('.api_key_value').text(data.api_key);
+            $('.base_amount').text(data.base_amount);
         }
     }, function (response) {
         // LayerFun(response.errcode);
