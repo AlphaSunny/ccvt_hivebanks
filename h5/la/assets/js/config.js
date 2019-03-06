@@ -41,6 +41,7 @@ $(function () {
             $('.api_url').text(data.api_url);
             $('.api_key_value').text(data.api_key);
             $('.base_amount').text(data.base_amount);
+            $('.ctime').text(data.ctime);
         }
     }, function (response) {
         // LayerFun(response.errcode);
