@@ -28,6 +28,10 @@ if ($datetime){
 }else{
     $datetime = date('Y-m-d',strtotime("-1 day"));
 }
+
+//查询昨日有没有奖励
+$statistical = search_statistical(get_arg_str('GET', 'group_name'));
+
 $group_name = urlencode(base64_encode(get_arg_str('GET', 'group_name')));
 
 $json_string = file_get_contents('../../h5/assets/json/config_url.json');
@@ -39,6 +43,7 @@ $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
 $rtn_ary['url'] = $url;
+$rtn_ary['is_statistical'] = $statistical ? '1' : '2';
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 

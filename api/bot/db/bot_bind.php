@@ -1625,4 +1625,25 @@ function glory_number($group_id){
     return $all_glory;
 }
 
+//======================================
+// 函数: 查询当日有没有聊天
+//======================================
+function search_chat($group_name){
+    $db = new DB_COM();
+    $sql = "select bot_message_id from bot_message where group_name='{$group_name}' and (to_days(bot_send_time) = to_days(now()))";
+    $db->query($sql);
+    $row = $db->fetchAll();
+    return $row;
+}
+
+//======================================
+// 函数: 查询昨日有没有奖励
+//======================================
+function search_statistical($group_name){
+    $db = new DB_COM();
+    $sql = "SELECT * FROM bot_Iss_records WHERE group_name='{$group_name}' and (TO_DAYS(NOW())-TO_DAYS(send_time)) = 1";
+    $db->query($sql);
+    $row = $db->fetchAll();
+    return $row;
+}
 ?>
