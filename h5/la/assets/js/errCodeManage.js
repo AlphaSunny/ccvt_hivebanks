@@ -28,6 +28,7 @@ $(function () {
                     "</tr>";
             });
             $('#errorCodeTable').html(tr);
+            execI18n();
         }
     }, function (response) {
         GetDataFail();

@@ -174,9 +174,7 @@ $(function () {
 
         if(group_id == "-1"){
             $("#checkbox").attr("checked",true);
-            console.log(group_id);
         }else {
-            console.log(group_id);
             $("#checkbox").attr("checked",false);
         }
 
