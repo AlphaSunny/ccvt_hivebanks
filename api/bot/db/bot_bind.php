@@ -153,6 +153,19 @@ function search_timer($group_id)
     return $rows;
 }
 //======================================
+// 函数:微信机器人定时任务返回接口
+// 参数: $data
+//返回： rows               数据
+//======================================
+function search_timer_all()
+{
+    $db = new DB_COM();
+    $sql = "SELECT a.id,a.time,a.content,a.group_id,a.tx_content,a.send_type,a.type,a.is_change_img FROM bot_timer as a LEFT JOIN bot_group as b on a.group_id=b.id WHERE a.is_del=0 AND a.group_id='-1' ORDER BY a.intime asc";
+    $db -> query($sql);
+    $rows = $db -> fetchAll();
+    return $rows;
+}
+//======================================
 // 函数:修改定时任务里面图片下载完成的定时任务
 // 参数: $data
 //返回： rows               数据
