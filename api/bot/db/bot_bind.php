@@ -1646,4 +1646,27 @@ function search_statistical($group_name){
     $row = $db->fetchAll();
     return $row;
 }
+
+//======================================
+// 函数: 检查群聊是否一段时间内如果没人聊天,删除群
+//======================================
+function check_chat_to_group(){
+    $db = new DB_COM();
+    $sql = "select * from bot_group WHERE is_del=1 AND is_admin_del=1";
+    $db->query($sql);
+    $list = $db->fetchAll();
+    if ($list){
+        foreach ($list as $k=>$v){
+            $beginTime = strtotime('-3 day', time());
+            $endTime = time();
+            $sql = "select count(bot_message_id) as count from bot_message WHERE group_id='{$v['id']}' AND bot_create_time BETWEEN '{$beginTime}' AND '{$endTime}'";
+            $db->query($sql);
+            $count = $db->getField($sql,'count');
+            if ($count==0){
+                $sql = "update bot_group set is_del=2,uptime='{$endTime}' WHERE id='{$v['id']}'";
+                $db->query($sql);
+            }
+        }
+    }
+}
 ?>
