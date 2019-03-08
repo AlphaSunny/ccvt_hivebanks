@@ -164,7 +164,7 @@ function glory_number($group_id){
 function  get_bnd_total($group_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT us_id FROM us_bind WHERE bind_name='group' AND bind_info='{$group_id}'";
+    $sql = "SELECT b.wechat,b.scale FROM us_bind as a left join us_base as b on a.us_id=b.us_id WHERE a.bind_name='group' AND b.wechat!='null' AND bind_info='{$group_id}'";
     $db -> query($sql);
     $count = $db -> affectedRows();
     return $count;
@@ -178,7 +178,7 @@ function  get_bnd_total($group_id)
 function bnd_list($group_id,$offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "SELECT b.wechat,b.scale FROM us_bind as a left join us_base as b on a.us_id=b.us_id WHERE a.bind_name='group' AND bind_info='{$group_id}' ORDER by a.ctime DESC limit $offset,$limit";
+    $sql = "SELECT b.wechat,b.scale FROM us_bind as a left join us_base as b on a.us_id=b.us_id WHERE a.bind_name='group' AND b.wechat!='null' AND bind_info='{$group_id}' ORDER by a.ctime DESC limit $offset,$limit";
     $db -> query($sql);
     $row = $db -> fetchAll();
     return $row;
