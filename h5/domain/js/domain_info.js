@@ -245,6 +245,8 @@ $(function () {
 
                     if (data[i].wechat != null) {
                         wechat = "<span class='wechat'>" + data[i].wechat + "</span>";
+                    }else{
+                        wechat = "<span class='wechat'></span>";
                     }
                     li += "<li>" +
                         scale +
