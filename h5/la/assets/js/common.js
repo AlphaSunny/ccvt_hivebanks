@@ -601,9 +601,9 @@ function SearchBaTransaction(token, search_api_url, from_time, to_time, tx_time,
 }
 
 //Screening ca transaction records
-function SearchCaTransaction(token, from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
-                             base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, type, suc_func, error_func) {
-    var api_url = 'transaction_select_ca.php',
+function SearchCaTransaction(token,search_api_url, from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
+                             base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, limit,offset, suc_func, error_func) {
+    var api_url = search_api_url,
         post_data = {
             'token': token,
             'from_time': from_time,
@@ -628,11 +628,9 @@ function SearchCaTransaction(token, from_time, to_time, tx_time, qa_id, us_id, u
 }
 
 //Get ca transaction history
-function GetCaTransaction(token, type, limit, offset, suc_func, error_func) {
-    var api_url = 'ca_transaction.php',
-        post_data = {
+function GetCaTransaction(token, api_url, limit, offset, suc_func, error_func) {
+    var post_data = {
             'token': token,
-            'type': type,
             'limit': limit,
             'offset': offset,
         };
