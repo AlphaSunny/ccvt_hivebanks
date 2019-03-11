@@ -163,8 +163,8 @@ $(function () {
         let totalPage = "", count = "";
         SearchBaTransaction(token, search_api_url, from_time, to_time, tx_time, qa_id, _us_id, us_account_id, asset_id, ba_account_id, tx_hash,
             base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, _limit, _offset, function (response) {
+            ShowLoading("hide");
                 if (response.errcode == '0') {
-                    $(".preloader-wrapper").removeClass("active");
                     let withdrawList = response.rows.recharge;
                     if (withdrawList == false) {
                         GetDataEmpty('baWithdraw', '8');
@@ -183,7 +183,7 @@ $(function () {
                     ShowDataFun(withdrawList, totalPage, count, show_type);
                 }
             }, function (response) {
-                $(".preloader-wrapper").removeClass("active");
+                ShowLoading("hide");
                 LayerFun(response.errcode);
                 return;
             })
