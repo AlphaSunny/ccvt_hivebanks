@@ -4,8 +4,9 @@ $(function () {
 
     //Get ca transaction history
     let limit = 10, offset = 0;
+    let _limit = 10, _offset = 0;
 
-    function ShowDataFun(withdrawList, totalPage, count) {
+    function ShowDataFun(withdrawList, totalPage, count, limit, offset, show_type) {
         let tr = '', ca_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
         $.each(withdrawList, function (i, val) {
             ca_id_arr.push(withdrawList[i].ca_id.substring(0, 10) + '...');
@@ -39,17 +40,22 @@ $(function () {
             prevPageText: "<<",
             nextPageText: ">>",
             callback: function (current) {
-                GetCaTransactionFun(limit, (current - 1) * limit);
+                if (show_type == "1") {
+                    GetBaTransactionFun(limit, (current - 1) * limit);
+                } else {
+                    GetSearchListFun(limit, (current - 1) * limit);
+                }
                 ShowLoading("show");
             }
         });
     }
 
     function GetCaTransactionFun(limit, offset) {
-        let totalPage = "", count = "", type = "2";
-        GetCaTransaction(token, type, limit, offset, function (response) {
+        let totalPage = "", count = "", api_url = "ca_withdraw_transaction.php";
+        GetCaTransaction(token, api_url, limit, offset, function (response) {
+            ShowLoading("hide");
             if (response.errcode == '0') {
-                let withdrawList = response.rows.withdraw;
+                let withdrawList = response.rows;
                 if (withdrawList == false) {
                     GetDataEmpty('caWithdraw', '6');
                     return;
@@ -64,11 +70,12 @@ $(function () {
                     count = 6;
                 }
                 if (data == false) {
-                    GetDataEmpty('userList', '4');
+                    GetDataEmpty('caWithdraw', '6');
                 }
-                ShowDataFun(withdrawList, totalPage, count);
+                ShowDataFun(withdrawList, totalPage, count, limit, offset, show_type);
             }
         }, function (response) {
+            ShowLoading("hide");
             LayerFun(response.errcode);
             return;
         });
@@ -99,43 +106,46 @@ $(function () {
     });
 
     //Click the search button to filter
+    let from_time = "", to_time = "", tx_time = "",
+        qa_id = "", _us_id = "", us_account_id = "",
+        tx_hash = "", asset_id = "", ba_account_id = "",
+        base_amount = "", bit_amount = "", tx_detail = "",
+        tx_fee = "", tx_type = "", qa_flag = "", ba_id = "";
+    let search_api_url = "transaction_select_ba_withdraw.php";
     $('.searchBtn').click(function () {
-        let from_time = "", to_time = "", tx_time = "";
-        let totalPage = "",count = "",limit = 10,offset = 0,type = "2";
+        from_time = $('#from_time').val();
+        to_time = $('#to_time').val();
+        tx_time = $('#tx_time').val();
+        qa_id = $('#qa_id').val();
+        _us_id = $('#us_id').val();
+        us_account_id = $('#us_account_id').val();
+        asset_id = $('#asset_id').val();
+        ba_account_id = $('#ba_account_id').val();
+        tx_hash = $('#tx_hash').val();
+        base_amount = $('#base_amount').val();
+        bit_amount = $('#bit_amount').val();
+        tx_detail = $('#tx_detail').val();
+        tx_fee = $('#tx_fee').val();
+        tx_type = $('#tx_type').val();
+        qa_flag = $('#qa_flag').val();
+        ba_id = $('#ba_id').val();
+        ShowLoading("show");
+        GetSearchListFun(_limit, _offset);
+    });
 
-        if ($('.from_time').hasClass('none')) {
-            from_time = "";
-        } else {
-            from_time = $('#from_time').val()
-        }
-        if ($('.to_time').hasClass('none')) {
-            to_time = "";
-        } else {
-            to_time = $('#to_time').val()
-        }
-        if ($('.tx_time').hasClass('none')) {
-            tx_time = "";
-        } else {
-            tx_time = $('#tx_time').val()
-        }
-        let qa_id = $('#qa_id').val(), us_id = $('#us_id').val(), us_account_id = $('#us_account_id').val(),
-            asset_id = $('#asset_id').val(), ba_account_id = $('#ba_account_id').val(), tx_hash = $('#tx_hash').val(),
-            base_amount = $('#base_amount').val(), bit_amount = $('#bit_amount').val(),
-            tx_detail = $('#tx_detail').val(),
-            tx_fee = $('#tx_fee').val(), tx_type = $('#tx_type').val(), qa_flag = $('#qa_flag').val(),
-            ba_id = $('#ba_id').val();
-        $(".preloader-wrapper").addClass("active");
-        SearchBaTransaction(token,from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
-            base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id,type,limit,offset, function (response) {
+    function GetSearchListFun(_limit, _offset) {
+        let totalPage = "", count = "";
+        SearchBaTransaction(token, search_api_url, from_time, to_time, tx_time, qa_id, _us_id, us_account_id, asset_id, ba_account_id, tx_hash,
+            base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, _limit, _offset, function (response) {
+                ShowLoading("hide");
                 if (response.errcode == '0') {
-                    $(".preloader-wrapper").removeClass("active");
-                    let withdrawList = response.rows.withdraw;
+                    let withdrawList = response.rows;
                     if (withdrawList == false) {
-                        GetDataEmpty('baWithdraw', '8');
+                        GetDataEmpty('caWithdraw', '6');
                         return;
                     }
                     let total = response.total;
-                    totalPage = Math.ceil(total / limit);
+                    totalPage = Math.ceil(total / _limit);
                     if (totalPage <= 1) {
                         count = 1;
                     } else if (1 < totalPage && totalPage <= 6) {
@@ -143,32 +153,48 @@ $(function () {
                     } else {
                         count = 6;
                     }
-                    ShowDataFun(withdrawList,totalPage,count);
+                    let show_type = "2";
+                    ShowDataFun(withdrawList, totalPage, count, _limit, _offset, show_type);
                 }
             }, function (response) {
-                $(".preloader-wrapper").removeClass("active");
+                ShowLoading("hide");
                 LayerFun(response.errcode);
                 return;
             })
-    });
+    }
 
     //Set start time
-    $('#from_time').datetimepicker({
-        format: 'Y/m/d H:i',
-        value: new Date(),
-        // minDate: new Date(),//Set minimum date
-        // minTime: new Date(),//Set minimum time
-        // yearStart: 2018,//Set the minimum year
-        yearEnd: 3000 //Set the maximum year
+    function activeTimeInput() {
+        $('#from_time').datetimepicker({
+            format: 'Y/m/d H:i',
+            value: new Date(),
+            // minDate: new Date(),//Set minimum date
+            // minTime: new Date(),//Set minimum time
+            // yearStart: 2018,//Set the minimum year
+            yearEnd: 3000 //Set the maximum year
+        });
+    }
+
+    $("#from_time").focus(function () {
+        activeTimeInput();
     });
 
     //Set end time
-    $('#to_time, #tx_time').datetimepicker({
-        format: 'Y/m/d H:i',
-        value: new Date(),
-        // minDate: new Date(),//Set minimum date
-        // minTime: new Date(),//Set minimum time
-        // yearStart: 2018,//Set the minimum year
-        yearEnd: 3000 //Set the maximum year
+    function otherTimeInput(type) {
+        $('#' + type + '').datetimepicker({
+            format: 'Y/m/d H:i',
+            value: new Date(),
+            // minDate: new Date(),//Set minimum date
+            // minTime: new Date(),//Set minimum time
+            // yearStart: 2018,//Set the minimum year
+            yearEnd: 3000 //Set the maximum year
+        });
+    }
+
+    $("#to_time").focus(function () {
+        otherTimeInput("to_time");
+    });
+    $("#tx_time").focus(function () {
+        otherTimeInput("tx_time");
     });
 });
