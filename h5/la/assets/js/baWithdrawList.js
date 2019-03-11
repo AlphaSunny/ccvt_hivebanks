@@ -128,16 +128,16 @@ $(function () {
         tx_fee = "", tx_type = "", qa_flag = "", ba_id = "";
     let search_api_url = "transaction_select_ba_withdraw.php";
     $('.searchBtn').click(function () {
-        if ($('.from_time').hasClass('none')) {
-            from_time = "";
-        } else {
-            from_time = $('#from_time').val()
-        }
-        if ($('.to_time').hasClass('none')) {
-            to_time = "";
-        } else {
-            to_time = $('#to_time').val()
-        }
+        // if ($('.from_time').hasClass('none')) {
+        //     from_time = "";
+        // } else {
+            from_time = $('#from_time').val();
+        // }
+        // if ($('.to_time').hasClass('none')) {
+        //     to_time = "";
+        // } else {
+            to_time = $('#to_time').val();
+        // }
         if ($('.tx_time').hasClass('none')) {
             tx_time = "";
         } else {
