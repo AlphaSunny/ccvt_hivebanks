@@ -15,10 +15,33 @@
 //         tx_detail                交易明细（JSON）
 //         ba_account_id            代理商账号ID（Hash）
 //======================================
-function  get_ba_withdraw_log_balance()
+function  get_ba_withdraw_log_balance_total()
 {
     $db = new DB_COM();
     $sql = "SELECT * FROM us_ba_withdraw_request";
+    $db -> query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+//======================================
+// 函数: 获取us_ba_withdraw_request基本信息
+// 参数: $ba_id                      用户ba_id
+// 返回: $row                        基本信息数组
+//         asset_id                 充值资产ID
+//         bit_amount               数字货币金额
+//         base_amount              充值资产金额
+//         tx_time                  请求时间戳
+//         tx_hash                  交易HASH
+//         us_id                    用户ID
+//         qa_id                    请求ID
+//         ba_id                    代理商ID
+//         tx_detail                交易明细（JSON）
+//         ba_account_id            代理商账号ID（Hash）
+//======================================
+function  get_ba_withdraw_log_balance($offset,$limit)
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM us_ba_withdraw_request limit $offset,$limit";
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
