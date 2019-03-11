@@ -3,11 +3,12 @@ $(function () {
     let token = GetCookie('la_token');
 
     //get user list
-    let api_url = 'user_list.php', limit = 10, offset = 0, count = "", tr = "";
+    let api_url = 'user_list.php', limit = 10, offset = 0, count = "";
 
     function GetUserListFun(token, limit, offset) {
-        let totalPage = "";
+        let totalPage = "",tr = "";
         GetUserList(token, api_url, limit, offset, function (response) {
+            ShowLoading("hide");
             if (response.errcode == '0') {
                 let data = response.rows;
                 let total = response.total;
@@ -46,6 +47,7 @@ $(function () {
                 });
             }
         }, function (response) {
+            ShowLoading("hide");
             GetDataFail('userList', '4');
             LayerFun(response.errcode);
         });
