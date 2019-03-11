@@ -318,6 +318,7 @@ function  get_us_ba_withdraw_log_balance_limt($from_time,
         $sql = "SELECT * FROM us_ba_withdraw_request";
     }
     $sql .= " limit $offset,$limit";
+    echo $sql;die;
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
