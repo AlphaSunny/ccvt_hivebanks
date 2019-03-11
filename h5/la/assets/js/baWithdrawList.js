@@ -35,34 +35,53 @@ $(function () {
         });
         $('#baWithdraw').html(tr);
         execI18n();
-
-        if (show_type == "1") {
-            $("#pagination").pagination({
-                currentPage: (limit + offset) / limit,
-                totalPage: totalPage,
-                isShow: false,
-                count: count,
-                prevPageText: "<<",
-                nextPageText: ">>",
-                callback: function (current) {
+        $("#pagination").pagination({
+            currentPage: (limit + offset) / limit,
+            totalPage: totalPage,
+            isShow: false,
+            count: count,
+            prevPageText: "<<",
+            nextPageText: ">>",
+            callback: function (current) {
+                if(show_type=="1"){
                     GetBaTransactionFun(limit, (current - 1) * limit);
-                    ShowLoading("show");
-                }
-            });
-        } else {
-            $("#pagination").pagination({
-                currentPage: (limit + offset) / limit,
-                totalPage: totalPage,
-                isShow: false,
-                count: count,
-                prevPageText: "<<",
-                nextPageText: ">>",
-                callback: function (current) {
+                }else{
                     GetSearchListFun(limit, (current - 1) * limit);
-                    ShowLoading("show");
                 }
-            });
-        }
+                ShowLoading("show");
+            }
+        });
+
+        // if (show_type == "1") {
+        //     $("#pagination").pagination({
+        //         currentPage: (limit + offset) / limit,
+        //         totalPage: totalPage,
+        //         isShow: false,
+        //         count: count,
+        //         prevPageText: "<<",
+        //         nextPageText: ">>",
+        //         callback: function (current) {
+        //             if(show_type=="1"){
+        //                 GetBaTransactionFun(limit, (current - 1) * limit);
+        //             }
+        //
+        //             ShowLoading("show");
+        //         }
+        //     });
+        // } else {
+        //     $("#pagination").pagination({
+        //         currentPage: (limit + offset) / limit,
+        //         totalPage: totalPage,
+        //         isShow: false,
+        //         count: count,
+        //         prevPageText: "<<",
+        //         nextPageText: ">>",
+        //         callback: function (current) {
+        //             GetSearchListFun(limit, (current - 1) * limit);
+        //             ShowLoading("show");
+        //         }
+        //     });
+        // }
 
     }
 
