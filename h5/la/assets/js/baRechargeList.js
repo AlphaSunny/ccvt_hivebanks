@@ -8,7 +8,7 @@ $(function () {
     let limit = 10, offset = 0;
     let _limit = 10, _offset = 0;
 
-    function ShowDataFun(withdrawList, totalPage, count, limit, offset, show_type) {
+    function ShowDataFun(rechargeList, totalPage, count, limit, offset, show_type) {
         let tr = "", ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
         $.each(rechargeList, function (i, val) {
             ba_id_arr.push(rechargeList[i].ba_id.substring(0, 10) + '...');
