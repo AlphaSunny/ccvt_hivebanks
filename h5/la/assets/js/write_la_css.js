@@ -9,8 +9,8 @@
 
     let cssHeaderLess = "<link rel='stylesheet' type='text/css' href='" + appRootPath + "/";
     let cssFooter = "'></link>";
-    document.write(cssHeaderLess + "https://fonts.googleapis.com/icon?family=Material+Icons" + cssFooter);
-    document.write(cssHeaderLess + "https://fonts.googleapis.com/css?family=Open+Sans" + cssFooter);
+    document.write( "<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>");
+    document.write( "<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>");
     document.write(cssHeaderLess + "la/assets/materialize/css/materialize.min.css" + cssFooter);
     document.write(cssHeaderLess + "la/assets/css/bootstrap.css" + cssFooter);
     document.write(cssHeaderLess + "la/assets/css/jquery.pagination.css" + cssFooter);
