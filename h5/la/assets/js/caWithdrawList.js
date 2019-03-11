@@ -69,9 +69,7 @@ $(function () {
                 } else {
                     count = 6;
                 }
-                if (data == false) {
-                    GetDataEmpty('caWithdraw', '6');
-                }
+                let show_type = "1";
                 ShowDataFun(withdrawList, totalPage, count, limit, offset, show_type);
             }
         }, function (response) {
