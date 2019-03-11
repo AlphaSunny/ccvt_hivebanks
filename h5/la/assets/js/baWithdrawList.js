@@ -1,10 +1,12 @@
 $(function () {
     //Get token
-    var token = GetCookie('la_token');
+    let token = GetCookie('la_token');
 
     //Get ba transaction history
-    var tr = '', ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
-    function ShowDataFun (withdrawList){
+    let tr = '', ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
+    let limit = 10, offset = 0;
+
+    function ShowDataFun(withdrawList) {
         $.each(withdrawList, function (i, val) {
             ba_id_arr.push(withdrawList[i].ba_id.substring(0, 10) + '...');
             us_id_arr.push(withdrawList[i].us_id.substring(0, 10) + '...');
@@ -31,35 +33,64 @@ $(function () {
         });
         $('#baWithdraw').html(tr);
         execI18n();
-    }
-    GetBaTransaction(token, function (response) {
-        if (response.errcode == '0') {
-            var withdrawList = response.rows.withdraw;
-            if (withdrawList == false) {
-                GetDataEmpty('baWithdraw', '8');
-                return;
+        $("#pagination").pagination({
+            currentPage: (limit + offset) / limit,
+            totalPage: totalPage,
+            isShow: false,
+            count: count,
+            prevPageText: "<<",
+            nextPageText: ">>",
+            callback: function (current) {
+                GetBaTransactionFun(limit, (current - 1) * limit);
+                ShowLoading("show");
             }
-            ShowDataFun(withdrawList);
-        }
-    }, function (response) {
-        LayerFun(response.errcode);
-        return;
-    });
+        });
+    }
+
+    function GetBaTransactionFun(limit, offset) {
+        let totalPage = "", count = "";
+        GetBaTransaction(token, limit, offset, function (response) {
+            ShowLoading("hide");
+            if (response.errcode == '0') {
+                let withdrawList = response.rows.withdraw;
+                if (withdrawList == false) {
+                    GetDataEmpty('baWithdraw', '8');
+                    return;
+                }
+                let total = response.total;
+                totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+                ShowDataFun(withdrawList, totalPage, count);
+            }
+        }, function (response) {
+            ShowLoading("hide");
+            LayerFun(response.errcode);
+            return;
+        });
+    }
+
+    GetBaTransactionFun(limit, offset);
 
     //Jump ba details
     $(document).on('click', '.ba_id', function () {
-        var ba_id = $(this).attr('title');
+        let ba_id = $(this).attr('title');
         window.location.href = 'baInfo.html?ba_id=' + ba_id;
     });
     //Jump user details
     $(document).on('click', '.us_id', function () {
-        var us_id = $(this).attr('title');
+        let us_id = $(this).attr('title');
         window.location.href = 'userInfo.html?us_id=' + us_id;
     });
 
     //Conditional screening
     $("input[type=checkbox]").click(function () {
-        var className = $(this).val();
+        let className = $(this).val();
         if ($(this).prop('checked')) {
             $('.' + className).fadeIn();
             $('.' + className).children('div').css('display', 'flex');
@@ -70,7 +101,7 @@ $(function () {
 
     //Click the search button to filter
     $('.searchBtn').click(function () {
-        var from_time = "", to_time = "", tx_time = "";
+        let from_time = "", to_time = "", tx_time = "";
 
         if ($('.from_time').hasClass('none')) {
             from_time = "";
@@ -87,7 +118,7 @@ $(function () {
         } else {
             tx_time = $('#tx_time').val()
         }
-        var qa_id = $('#qa_id').val(), us_id = $('#us_id').val(), us_account_id = $('#us_account_id').val(),
+        let qa_id = $('#qa_id').val(), us_id = $('#us_id').val(), us_account_id = $('#us_account_id').val(),
             asset_id = $('#asset_id').val(), ba_account_id = $('#ba_account_id').val(), tx_hash = $('#tx_hash').val(),
             base_amount = $('#base_amount').val(), bit_amount = $('#bit_amount').val(),
             tx_detail = $('#tx_detail').val(),
@@ -98,7 +129,7 @@ $(function () {
             base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, function (response) {
                 if (response.errcode == '0') {
                     $(".preloader-wrapper").removeClass("active");
-                    var withdrawList = response.rows.recharge;
+                    let withdrawList = response.rows.recharge;
                     if (withdrawList == false) {
                         GetDataEmpty('baWithdraw', '8');
                         return;
