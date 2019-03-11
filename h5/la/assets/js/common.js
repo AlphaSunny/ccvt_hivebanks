@@ -609,9 +609,11 @@ function GetCaTransaction(token, suc_func, error_func) {
 }
 
 // user/ba/ca KYC Bind audit list
-function KycList(api_url, token, suc_func, error_func) {
+function KycList(api_url, token, limit, offset, suc_func, error_func) {
     var post_data = {
-        'token': token
+        'token': token,
+        'limit': limit,
+        'offset': offset,
     };
     CallKycApi(api_url, post_data, suc_func, error_func);
 }
@@ -712,7 +714,7 @@ function RegisterRef(api_url, token, bind_id, suc_func, error_func) {
 }
 
 //Get general ba/ca withdrawal address review list
-function GetWithdrawAddressKyc(api_url, token,limit,offset, suc_func, error_func) {
+function GetWithdrawAddressKyc(api_url, token, limit, offset, suc_func, error_func) {
     var post_data = {
         'token': token,
         'limit': limit,
