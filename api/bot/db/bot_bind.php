@@ -560,12 +560,13 @@ function get_news()
 {
     $db = new DB_COM();
     $time = date("Y-m-d H:i:s");
-    $sql = "select news_id,title from la_news WHERE category=1 AND status=1 AND overdue_time<'{$time}' ORDER BY rand() limit 1";
-    echo $sql;die;
+    $sql = "select news_id,title from la_news WHERE category=1 AND status=1 ORDER BY rand() limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
-    if (!$row){
-        $row =array();
+    if ($row['overdue_time']<$time){
+        $sql = "select news_id,title from la_news WHERE category=1 AND status=1 AND overdue_time=0 ORDER BY rand() limit 1";
+        $db->query($sql);
+        $row = $db->fetchRow();
     }
 //    if ($row){
 //        $sql = "update la_news set is_hive_been=2 WHERE news_id='{$row['news_id']}'";
