@@ -58,8 +58,6 @@ $(function () {
     //Jump user details
     $(document).on('click', '.to_us', function () {
         let us_id = $(this).siblings(".us_id").text();
-        console.log(us_id);
-        return;
         window.location.href = 'userInfo.html?us_id=' + us_id;
     })
 });
