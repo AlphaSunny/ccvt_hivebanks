@@ -128,16 +128,8 @@ $(function () {
         tx_fee = "", tx_type = "", qa_flag = "", ba_id = "";
     let search_api_url = "transaction_select_ba_withdraw.php";
     $('.searchBtn').click(function () {
-        // if ($('.from_time').hasClass('none')) {
-        //     from_time = "";
-        // } else {
-            from_time = $('#from_time').val();
-        // }
-        // if ($('.to_time').hasClass('none')) {
-        //     to_time = "";
-        // } else {
-            to_time = $('#to_time').val();
-        // }
+        from_time = $('#from_time').val();
+        to_time = $('#to_time').val();
         if ($('.tx_time').hasClass('none')) {
             tx_time = "";
         } else {
@@ -156,7 +148,6 @@ $(function () {
         tx_type = $('#tx_type').val();
         qa_flag = $('#qa_flag').val();
         ba_id = $('#ba_id').val();
-        $(".preloader-wrapper").addClass("active");
         GetSearchListFun(_limit, _offset);
     });
 
@@ -166,7 +157,7 @@ $(function () {
             base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, _limit, _offset, function (response) {
                 ShowLoading("hide");
                 if (response.errcode == '0') {
-                    let withdrawList = response.rows.recharge;
+                    let withdrawList = response.rows;
                     if (withdrawList == false) {
                         GetDataEmpty('baWithdraw', '8');
                         return;
