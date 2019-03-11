@@ -170,22 +170,37 @@ $(function () {
     }
 
     //Set start time
-    $('#from_time').datetimepicker({
-        format: 'Y/m/d H:i',
-        value: new Date(),
-        // minDate: new Date(),//Set minimum date
-        // minTime: new Date(),//Set minimum time
-        // yearStart: 2018,//Set the minimum year
-        yearEnd: 3000 //Set the maximum year
+    function activeTimeInput() {
+        $('#from_time').datetimepicker({
+            format: 'Y/m/d H:i',
+            value: new Date(),
+            // minDate: new Date(),//Set minimum date
+            // minTime: new Date(),//Set minimum time
+            // yearStart: 2018,//Set the minimum year
+            yearEnd: 3000 //Set the maximum year
+        });
+    }
+
+    $("#from_time").focus(function () {
+        activeTimeInput();
     });
 
     //Set end time
-    $('#to_time, #tx_time').datetimepicker({
-        format: 'Y/m/d H:i',
-        value: new Date(),
-        // minDate: new Date(),//Set minimum date
-        // minTime: new Date(),//Set minimum time
-        // yearStart: 2018,//Set the minimum year
-        yearEnd: 3000 //Set the maximum year
+    function otherTimeInput(type) {
+        $('#' + type + '').datetimepicker({
+            format: 'Y/m/d H:i',
+            value: new Date(),
+            // minDate: new Date(),//Set minimum date
+            // minTime: new Date(),//Set minimum time
+            // yearStart: 2018,//Set the minimum year
+            yearEnd: 3000 //Set the maximum year
+        });
+    }
+
+    $("#to_time").focus(function () {
+        otherTimeInput("to_time");
+    });
+    $("#tx_time").focus(function () {
+        otherTimeInput("tx_time");
     });
 });
