@@ -25,7 +25,7 @@ $(function () {
                 }
                 $.each(data, function (i, val) {
                     tr += '<tr>' +
-                        '<td><a href="javascript:;" class="us_id">' + data[i].us_account + '</a></td>' +
+                        '<td><a href="javascript:;" class="to_us">' + data[i].us_account + '</a></td>' +
                         '<td class="none us_id">' + data[i].us_id + '</td>' +
                         '<td>' + data[i].us_level + '</td>' +
                         '<td>' + data[i].security_level + '</td>' +
@@ -57,7 +57,7 @@ $(function () {
 
 
     //Jump user details
-    $(document).on('click', '.us_id', function () {
+    $(document).on('click', '.to_us', function () {
         let us_id = $(this).siblings(".us_id").text();
         window.location.href = 'userInfo.html?us_id=' + us_id;
     })
