@@ -560,7 +560,7 @@ function get_news()
 {
     $db = new DB_COM();
     $time = date("Y-m-d H:i:s");
-    $sql = "select news_id,title from la_news WHERE category=1 AND status=1 ORDER BY rand() limit 1";
+    $sql = "select news_id,title,overdue_time from la_news WHERE category=1 AND status=1 ORDER BY rand() limit 1";
     $db->query($sql);
     $row = $db->fetchRow();
     if ($row['overdue_time']<$time){
