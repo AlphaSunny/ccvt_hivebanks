@@ -26,7 +26,7 @@ $(function () {
 
                 $.each(data, function (i, val) {
                     tr += '<tr class="baListItem">' +
-                        '<td><a href="javascript:;" class="ba_id">' + data[i].ba_id + '</a></td>' +
+                        '<td><a href="javascript:;" class="ba_account">' + data[i].ba_account + '</a><span class="ba_id">' + data[i].ba_id + '</span></td>' +
                         '<td><a href="javascript:;" class="ba_type">' + data[i].ba_type + '</a></td>' +
                         '<td>' + data[i].ba_level + '</td>' +
                         '<td>' + data[i].security_level + '</td>' +
@@ -58,8 +58,8 @@ $(function () {
     GetUserListFun(limit, offset);
 
     //Jump user details
-    $(document).on('click', '.ba_id', function () {
-        let ba_id = $(this).text(), ba_type = $(this).parents('tr').find('.ba_type').text();
+    $(document).on('click', '.ba_account', function () {
+        let ba_id = $(this).siblings("ba_id").text(), ba_type = $(this).parents('tr').find('.ba_type').text();
         window.location.href = 'baInfo.html?ba_id=' + ba_id + '&ba_type=' + ba_type;
     })
 });
