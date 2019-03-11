@@ -41,8 +41,13 @@ $token = get_arg_str('GET', 'token', 128);
 //检查la用户
 la_user_check($token);
 
+// 取得分页参数
+list($limit, $offset) = get_paging_arg('GET');
+
+// 记录数组总数
+$total = get_ba_reg_table_total();
 //获取ba注册列表
-$ba_reg_table = ba_reg_table();
+$ba_reg_table = ba_reg_table($offset,$limit);
 if(!$ba_reg_table)
     exit_error('101','没有ba注册记录');
 
@@ -50,6 +55,7 @@ if(!$ba_reg_table)
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
+$rtn_ary['total'] = $total;
 $rtn_ary['rows'] = $ba_reg_table ;
 
 $rtn_str = json_encode($rtn_ary);

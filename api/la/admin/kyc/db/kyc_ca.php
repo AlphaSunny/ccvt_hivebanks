@@ -1,5 +1,35 @@
 <?php
 
+
+//======================================
+//  获取ca身份认证的信息列表总数
+// 参数:
+// 返回: rows            列表数组
+//    log_id        绑定日志id
+//    ca_id          caid
+//    bind_type      绑定类型
+//    bind_name      绑定名称
+//    bind_info      绑定内容
+//    bind_salt      绑定的盐
+//    count_error    错误次数
+//    limt_time      限定时间戳
+//    ctime          创建时间
+//======================================
+function get_kyc_ca_bind_idcard_list_total()
+{
+
+    $db = new DB_COM();
+
+    $sql = "select * from ca_log_bind where ((bind_type = 'text' and bind_name = 'name') or (bind_type='file' and bind_name='idPhoto')  
+            or (bind_type='text' and bind_name='idNum')) and count_error = 0
+        order by ctime desc ,ca_id desc ";
+
+    $db->query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+
+
 //======================================
 //  获取ca身份认证的信息列表
 // 参数:
@@ -14,14 +44,14 @@
 //    limt_time      限定时间戳
 //    ctime          创建时间
 //======================================
-function kyc_ca_bind_idcard_list()
+function kyc_ca_bind_idcard_list($offset,$limit)
 {
 
     $db = new DB_COM();
 
     $sql = "select * from ca_log_bind where ((bind_type = 'text' and bind_name = 'name') or (bind_type='file' and bind_name='idPhoto')  
             or (bind_type='text' and bind_name='idNum')) and count_error = 0
-        order by ctime desc ,ca_id desc ";
+        order by ctime desc ,ca_id desc limit $offset,$limit";
 
     $db->query($sql);
     $rows = $db->fetchAll();

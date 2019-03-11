@@ -96,13 +96,25 @@ function check_ba_info($ba_id,$data_bind){
     return $rows;
 }
 //======================================
+// 函数: 获取ba注册列表总数
+// 参数:
+// 返回: $rows         ba注册信息数组
+//======================================
+function get_ba_reg_table_total(){
+    $db = new DB_COM();
+    $sql = "select * from ba_bind where (bind_flag=2 and bind_name = 'email') or (bind_flag=2 and bind_name = 'cellphone') order by ctime desc";
+    $db->query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+//======================================
 // 函数: 获取ba注册列表
 // 参数:
 // 返回: $rows         ba注册信息数组
 //======================================
-function ba_reg_table(){
+function ba_reg_table($offset,$limit){
     $db = new DB_COM();
-    $sql = "select * from ba_bind where (bind_flag=2 and bind_name = 'email') or (bind_flag=2 and bind_name = 'cellphone') order by ctime desc";
+    $sql = "select * from ba_bind where (bind_flag=2 and bind_name = 'email') or (bind_flag=2 and bind_name = 'cellphone') order by ctime desc limit $offset,$limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
@@ -189,14 +201,27 @@ function ba_bind_insert($data){
 
 }
 //======================================
+// 函数: 获取ba待审核的地址列表总数
+// 参数:
+// 返回: rows          信息数组
+//======================================
+function get_ba_address_list_total()
+{
+    $db = new DB_COM();
+    $sql = "select * from ba_bind where bind_flag = 0 and bind_name = 'bit_address' order by ctime asc";
+    $db->query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+//======================================
 // 函数: 获取ba待审核的地址列表
 // 参数:
 // 返回: rows          信息数组
 //======================================
-function ba_address_list()
+function ba_address_list($offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "select * from ba_bind where bind_flag = 0 and bind_name = 'bit_address' order by ctime asc";
+    $sql = "select * from ba_bind where bind_flag = 0 and bind_name = 'bit_address' order by ctime asc limit $offset,$limit";
     $db->query($sql);
     $rows= $db->fetchAll();
     return $rows;

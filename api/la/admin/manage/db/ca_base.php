@@ -1,6 +1,29 @@
 <?php
 
 //======================================
+//  获取ca的列表总数
+// 参数:
+// 返回: rows          ca信息数组
+//       ca_id         caID
+//       ca_nm         代理商编号（内部唯一）
+//       ca_account    代理商表示账号（内部唯一）
+//       base_amount   基准资产余额
+//       lock_amount   锁定余额
+//       ca_type       代理商类型
+//       ca_level      代理商等级
+//       security_level安全等级
+//       utime         更新时间
+//       ctime         创建时间
+//======================================
+function get_get_ca_base_info_total()
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM ca_base";
+    $db->query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+//======================================
 //  获取ca的列表
 // 参数:
 // 返回: rows          ca信息数组
@@ -15,10 +38,10 @@
 //       utime         更新时间
 //       ctime         创建时间
 //======================================
-function get_ca_base_info()
+function get_ca_base_info($offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM ca_base";
+    $sql = "SELECT * FROM ca_base limit $offset,$limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;

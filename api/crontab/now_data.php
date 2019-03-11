@@ -1,4 +1,6 @@
 <?php
+
+//ba_in,ba_out,ca_out,us_us_transfer_cancel,us_us_transfer_in,us_us_transfer_out
 //require_once "../inc/common.php";
 die('done');
 require_once "/alidata/www/ccvt/api/inc/common.php";
