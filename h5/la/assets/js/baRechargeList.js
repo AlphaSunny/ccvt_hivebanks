@@ -108,6 +108,7 @@ $(function () {
     //Click the search button to filter
     $('.searchBtn').click(function () {
         let from_time = "", to_time = "", tx_time = "";
+        let totalPage = "",count = "",type = "1";
 
         if ($('.from_time').hasClass('none')) {
             from_time = "";
@@ -132,8 +133,10 @@ $(function () {
             tx_fee = $('#tx_fee').val(), tx_type = $('#tx_type').val(), qa_flag = $('#qa_flag').val(),
             ba_id = $('#ba_id').val();
         $(".preloader-wrapper").addClass("active");
+        ShowLoading("show");
         SearchBaTransaction(token, from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
-            base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, function (response) {
+            base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id,type, function (response) {
+                ShowLoading("hide");
                 if (response.errcode == '0') {
                     $(".preloader-wrapper").removeClass("active");
                     let rechargeList = response.rows.recharge;
@@ -141,9 +144,23 @@ $(function () {
                         GetDataEmpty('baRecharge', '8');
                         return;
                     }
-                    ShowDataFun(rechargeList);
+                    let total = response.total;
+                    totalPage = Math.ceil(total / limit);
+                    if (totalPage <= 1) {
+                        count = 1;
+                    } else if (1 < totalPage && totalPage <= 6) {
+                        count = totalPage;
+                    } else {
+                        count = 6;
+                    }
+                    if (rechargeList == false) {
+                        GetDataEmpty('baRecharge', '8');
+                        return;
+                    }
+                    ShowDataFun(rechargeList,totalPage,count);
                 }
             }, function (response) {
+                ShowLoading("hide");
                 $(".preloader-wrapper").removeClass("active");
                 LayerFun(response.errcode);
                 GetDataFail('baRecharge', '8');

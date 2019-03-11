@@ -102,6 +102,7 @@ $(function () {
     //Click the search button to filter
     $('.searchBtn').click(function () {
         let from_time = "", to_time = "", tx_time = "";
+        let totalPage = "",count = "",type = "2";
 
         if ($('.from_time').hasClass('none')) {
             from_time = "";
@@ -125,8 +126,8 @@ $(function () {
             tx_fee = $('#tx_fee').val(), tx_type = $('#tx_type').val(), qa_flag = $('#qa_flag').val(),
             ba_id = $('#ba_id').val();
         $(".preloader-wrapper").addClass("active");
-        SearchBaTransaction(from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
-            base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, function (response) {
+        SearchBaTransaction(token,from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
+            base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id,type, function (response) {
                 if (response.errcode == '0') {
                     $(".preloader-wrapper").removeClass("active");
                     let withdrawList = response.rows.recharge;
@@ -134,7 +135,16 @@ $(function () {
                         GetDataEmpty('baWithdraw', '8');
                         return;
                     }
-                    ShowDataFun(withdrawList);
+                    let total = response.total;
+                    totalPage = Math.ceil(total / limit);
+                    if (totalPage <= 1) {
+                        count = 1;
+                    } else if (1 < totalPage && totalPage <= 6) {
+                        count = totalPage;
+                    } else {
+                        count = 6;
+                    }
+                    ShowDataFun(withdrawList,totalPage,count);
                 }
             }, function (response) {
                 $(".preloader-wrapper").removeClass("active");
