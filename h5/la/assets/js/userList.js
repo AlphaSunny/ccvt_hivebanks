@@ -6,11 +6,12 @@ $(function () {
     let api_url = 'user_list.php', limit = 10, offset = 0, count = "", tr = "";
 
     function GetUserListFun(token, limit, offset) {
+        let totalPage = "";
         GetUserList(token, api_url, limit, offset, function (response) {
             if (response.errcode == '0') {
                 let data = response.rows;
                 let total = response.total;
-                let totalPage = Math.ceil(total / limit);
+                totalPage = Math.ceil(total / limit);
                 if (totalPage <= 1) {
                     count = 1;
                 } else if (1 < totalPage && totalPage <= 6) {
