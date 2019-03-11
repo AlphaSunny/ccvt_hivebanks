@@ -41,7 +41,7 @@ $(function () {
             nextPageText: ">>",
             callback: function (current) {
                 if (show_type == "1") {
-                    GetBaTransactionFun(limit, (current - 1) * limit);
+                    GetCaTransactionFun(limit, (current - 1) * limit);
                 } else {
                     GetSearchListFun(limit, (current - 1) * limit);
                 }
