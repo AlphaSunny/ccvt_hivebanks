@@ -74,8 +74,8 @@ $(function () {
                 } else {
                     count = 6;
                 }
-
-                ShowDataFun(rechargeList, totalPage, count, limit, offset);
+                let show_type = "1";
+                ShowDataFun(rechargeList, totalPage, count, limit, offset,show_type);
             }
         }, function (response) {
             ShowLoading("hide");
