@@ -26,7 +26,7 @@ $(function () {
 
                 $.each(data, function (i, val) {
                     tr += '<tr class="baListItem">' +
-                        '<td><a href="javascript:;" class="ba_account">' + data[i].ba_account + '</a><span class="ba_id">' + data[i].ba_id + '</span></td>' +
+                        '<td><a href="javascript:;" class="ba_account">' + data[i].ba_account + '</a><span class="ba_id none">' + data[i].ba_id + '</span></td>' +
                         '<td><a href="javascript:;" class="ba_type">' + data[i].ba_type + '</a></td>' +
                         '<td>' + data[i].ba_level + '</td>' +
                         '<td>' + data[i].security_level + '</td>' +
