@@ -519,10 +519,12 @@ function ReviseCaAmount(token, ca_id, base_amount, pass_word_hash, suc_func, err
 }
 
 //get ca base information
-function GetCaInfo(ca_id, suc_func, error_func) {
+function GetCaInfo(ca_id,limit,offset, suc_func, error_func) {
     var api_url = 'ca_list_detail_message.php',
         post_data = {
-            'ca_id': ca_id
+            'ca_id': ca_id,
+            'limit': limit,
+            'offset': offset,
         };
     CallApi(api_url, post_data, suc_func, error_func);
 }
