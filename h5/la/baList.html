@@ -9,19 +9,20 @@
     <title>HiveBanks</title>
 
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection"/>
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection"/>-->
     <!-- Bootstrap Styles-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <!--<link href="assets/css/bootstrap.css" rel="stylesheet"/>-->
 
     <!-- FontAwesome Styles-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet"/>
+    <!--<link href="assets/css/font-awesome.css" rel="stylesheet"/>-->
     <!-- Custom Styles-->
-    <link href="assets/css/common.css" rel="stylesheet"/>
+    <!--<link href="assets/css/common.css" rel="stylesheet"/>-->
     <!-- Google Fonts-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <!--<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>-->
     <!--pagination-->
     <!--<link rel="stylesheet" href="assets/css/pagination.css">-->
+    <script src="assets/js/write_la_css.js"></script>
     <link rel="stylesheet" media="only screen and (max-width:767px)" href="assets/css/common_mobile.css">
     <link rel="shortcut icon" href="../favicon.ico">
 </head>
@@ -208,9 +209,12 @@
                                 </tr>
                             </thead>
                             <tbody id="baList">
-                            <tr><td colspan="6"><span class="i18n" name="loading"> </span></td></tr>
+                            <tr><td colspan="6"><img src="../assets/img/loading.gif" alt=""></td></tr>
                             </tbody>
                         </table>
+                        <div class="text-right">
+                            <div id="pagination" class="page"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -232,37 +236,7 @@
 </div>
 
 <!-- JS Scripts-->
-<!-- jQuery Js -->
-<script src="assets/js/jquery-3.2.1.min.js"></script>
-
-<!-- Bootstrap Js -->
-<script src="assets/js/bootstrap.min.js"></script>
-
-<!--language-->
-<script src="assets/language/jquery.i18n.properties.js"></script>
-<script src="assets/language/language.js"></script>
-
-<!-- Bootstrap-table Js -->
-<script src="assets/js/dataTables/jquery.dataTables.js"></script>
-<script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-
-<script src="assets/materialize/js/materialize.min.js"></script>
-
-<!-- Metis Menu Js -->
-<script src="assets/js/jquery.metisMenu.js"></script>
-
-
-<!--layer-->
-<script src="assets/js/layer/layer.js"></script>
-
-<!--common-->
-<script src="assets/js/common.js"></script>
-
-<!-- main Js -->
-<script src="assets/js/main.js"></script>
-
-<!--userList-->
+<script src="assets/js/write_la_js.js"></script>
 <script src="assets/js/baList.js"></script>
-
 </body>
 </html>
