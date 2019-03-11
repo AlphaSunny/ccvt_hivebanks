@@ -51,12 +51,20 @@ $row = get_la_by_user($user);
 if(!$row){
     exit_error('112','用户不存在');
 }
-$rows = get_us_base_info();
+
+// 取得分页参数
+list($limit, $offset) = get_paging_arg('GET');
+
+// 记录数组总数
+$total = get_us_base_info_total();
+
+$rows = get_us_base_info($offset,$limit);
 
 //成功后返回数据
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
+$rtn_ary['total'] = $total;
 $rtn_ary['rows'] = $rows;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);

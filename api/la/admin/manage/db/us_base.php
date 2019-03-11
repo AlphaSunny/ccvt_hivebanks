@@ -1,5 +1,16 @@
 <?php
-
+//======================================
+//  获取用户的列表总数
+// 参数:
+//======================================
+function get_us_base_info_total()
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM us_base";
+    $db->query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
 //======================================
 //  获取用户的列表
 // 参数:
@@ -15,10 +26,10 @@
 //        utime         更新时间
 //        ctime         创建时间
 //======================================
-function get_us_base_info()
+function get_us_base_info($offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM us_base";
+    $sql = "SELECT * FROM us_base limit $offset,$limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
