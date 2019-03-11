@@ -563,7 +563,7 @@ function GetRewardList(token, type, limit, offset, suc_func, error_func) {
 }
 
 //Get ba ALL transaction history
-function GetBaTransaction(token, limit, api_url, offset, suc_func, error_func) {
+function GetBaTransaction(token, api_url,limit, offset, suc_func, error_func) {
     var post_data = {
         'token': token,
         'limit': limit,
