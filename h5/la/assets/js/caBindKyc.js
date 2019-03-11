@@ -9,6 +9,7 @@ $(function () {
     function KycListFun(limit, offset) {
         let totalPage = "", count = "", tr = "", bind_name = '', bind_info = '', bind_type = '';
         KycList(api_url, token, limit, offset, function (response) {
+            ShowLoading("hide");
             if (response.errcode == '0') {
                 let data = response.rows;
                 if (data == false) {
@@ -73,7 +74,7 @@ $(function () {
         }, function (response) {
             GetDataFail('caKyc', '5');
             LayerFun(response.errcode);
-            return;
+            ShowLoading("hide");
         });
     }
 
