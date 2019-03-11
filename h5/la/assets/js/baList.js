@@ -44,7 +44,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        GetUserListFun(token, limit, (current - 1) * limit);
+                        GetUserListFun(limit, (current - 1) * limit);
                         ShowLoading("show");
                     }
                 });

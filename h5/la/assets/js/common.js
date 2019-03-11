@@ -561,10 +561,13 @@ function GetRewardList(token, type, limit, offset, suc_func, error_func) {
 }
 
 //Get ba ALL transaction history
-function GetBaTransaction(token, suc_func, error_func) {
+function GetBaTransaction(token, type, limit, offset, suc_func, error_func) {
     var api_url = 'ba_transaction.php',
         post_data = {
-            'token': token
+            'token': token,
+            'type': type,
+            'limit': limit,
+            'offset': offset
         };
     CallTransactionApi(api_url, post_data, suc_func, error_func);
 }
@@ -681,9 +684,11 @@ function ConfirmKycBa(token, log_id, suc_func, error_func) {
 }
 
 //Get ba/ca registration review list
-function RegisterKyc(api_url, token, suc_func, error_func) {
+function RegisterKyc(api_url, token, limit, offset, suc_func, error_func) {
     var post_data = {
-        'token': token
+        'token': token,
+        'limit': limit,
+        'offset': offset
     };
     CallKycApi(api_url, post_data, suc_func, error_func);
 }

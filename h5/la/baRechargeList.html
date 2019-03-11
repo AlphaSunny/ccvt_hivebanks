@@ -7,20 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>LA后台管理</title>
-
-    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
-    <!--<link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection"/>-->
-    <!-- Bootstrap Styles-->
-    <!--<link href="assets/css/bootstrap.css" rel="stylesheet"/>-->
-    <!-- FontAwesome Styles-->
-    <!--<link href="assets/css/font-awesome.css" rel="stylesheet"/>-->
-    <!-- Google Fonts-->
-    <!--<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>-->
-    <!-- Custom Styles-->
-    <!--<link href="assets/css/common.css" rel="stylesheet"/>-->
-    <!--pagination-->
-    <!--<link rel="stylesheet" href="assets/css/pagination.css">-->
-    <!--jquery.datetimepicker.css-->
     <script src="assets/js/write_la_css.js"></script>
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.css">
     <link rel="stylesheet" href="assets/css/baRechargeList.css">
@@ -112,7 +98,8 @@
                             <a href="userTransferList.html" class="i18n" name="userTransactionRecode"></a>
                         </li>
                         <li>
-                            <a href="baRechargeList.html" class="active-menu i18n" name="bitCoinAgencyRechargeRecord"></a>
+                            <a href="baRechargeList.html" class="active-menu i18n"
+                               name="bitCoinAgencyRechargeRecord"></a>
                         </li>
                         <li>
                             <a href="baWithdrawList.html" class="i18n" name="bitCoinAgencyWithdrawRecord"></a>
@@ -147,7 +134,8 @@
                                     <a href="baRegisterKyc.html" class="i18n" name="registrationReviewList"></a>
                                 </li>
                                 <li>
-                                    <a href="baWithdrawAddressKyc.html" class="i18n" name="withdrawAddressReviewList"></a>
+                                    <a href="baWithdrawAddressKyc.html" class="i18n"
+                                       name="withdrawAddressReviewList"></a>
                                 </li>
                             </ul>
                         </li>
@@ -164,7 +152,8 @@
                                     <a href="caRegisterKyc.html" class="i18n" name="registrationReviewList"></a>
                                 </li>
                                 <li>
-                                    <a href="caWithdrawAddressKyc.html" class="i18n" name="withdrawAddressReviewList"></a>
+                                    <a href="caWithdrawAddressKyc.html" class="i18n"
+                                       name="withdrawAddressReviewList"></a>
                                 </li>
                             </ul>
                         </li>
@@ -421,22 +410,25 @@
                             <table class="bordered striped centered highlight" id="baRechargeTable">
                                 <thead>
                                 <tr>
-                                    <th><span class="i18n" name="ba_id">ba_id</span></th>
-                                    <th><span class="i18n" name="us_id">us_id</span></th>
-                                    <th><span class="i18n" name="asset_id">asset_id</span></th>
-                                    <th><span class="i18n" name="base_amount">base_amount</span></th>
-                                    <th><span class="i18n" name="re_bit_amount">bit_amount</span></th>
-                                    <th><span class="i18n" name="tx_hash">tx_hash</span></th>
-                                    <th><span class="i18n" name="tx_time">tx_time</span></th>
-                                    <th><span class="i18n" name="qa_flag">qa_flag</span></th>
+                                    <th><span class="i18n" name="ba_id"></span></th>
+                                    <th><span class="i18n" name="us_id"></span></th>
+                                    <th><span class="i18n" name="asset_id"></span></th>
+                                    <th><span class="i18n" name="base_amount"></span></th>
+                                    <th><span class="i18n" name="re_bit_amount"></span></th>
+                                    <th><span class="i18n" name="tx_hash"></span></th>
+                                    <th><span class="i18n" name="tx_time"></span></th>
+                                    <th><span class="i18n" name="qa_flag"></span></th>
                                 </tr>
                                 </thead>
                                 <tbody id="baRecharge">
                                 <tr>
-                                    <td colspan="8"><span class="i18n" name="loading"> </span></td>
+                                    <td colspan="8"><img src="../assets/img/loading.gif" alt=""></td>
                                 </tr>
                                 </tbody>
                             </table>
+                            <div class="text-right">
+                                <div id="pagination" class="page"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -444,8 +436,6 @@
         </div>
     </div>
 </div>
-</div>
-
 
 <!--loading-->
 <div class="preloader-wrapper active">
@@ -462,43 +452,8 @@
     </div>
 </div>
 <!-- JS Scripts-->
-<!-- jQuery Js -->
-<!--<script src="assets/js/jquery-1.10.2.js"></script>-->
-
-<!-- Bootstrap Js -->
-<!--<script src="assets/js/bootstrap.min.js"></script>-->
-
-<!--<script src="assets/materialize/js/materialize.min.js"></script>-->
-
-<!-- Metis Menu Js -->
-<!--<script src="assets/js/jquery.metisMenu.js"></script>-->
-
-<!--datetimepicker.full.js-->
 <script src="assets/js/write_la_js.js"></script>
 <script src="assets/js/jquery.datetimepicker.full.js"></script>
-
-<!--pagination-->
-<!--<script src="assets/js/pagination.js"></script>-->
-
-<!--layer-->
-<!--<script src="assets/js/layer/layer.js"></script>-->
-
-<!--language-->
-<!--<script src="assets/language/jquery.i18n.properties.js"></script>-->
-<!--<script src="assets/language/language.js"></script>-->
-
-<!--common-->
-<!--<script src="assets/js/common.js"></script>-->
-
-<!-- Custom Js -->
-<!--<script src="assets/js/main.js"></script>-->
-
-<!--baRecharge.js-->
-
 <script src="assets/js/baRechargeList.js"></script>
-<!--<script src="assets/js/custom-scripts.js"></script>-->
-
-
 </body>
-
 </html>

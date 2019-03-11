@@ -2,60 +2,14 @@ $(function () {
     $('select').material_select();
 
     //Get token
-    var token = GetCookie('la_token');
+    let token = GetCookie('la_token');
 
     //show ba recharge list
-    var tr = '', ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
+    let tr = '', ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
+    let limit = 10, offset = 0;
 
-    function ShowDataFun(rechargeList) {
-        // $("#baRechargeTable").DataTable({
-        //     destroy: true,
-        //     deferRender: true,
-        //     lengthMenu: [10, 20, 50, 70, 100],
-        //     searching: false,//是否显示搜索框
-        //     info: false,//是否显示表左下角文字
-        //     language: {
-        //         paginate: {
-        //             url: "dataTables.german.lang",
-        //             first: "<<",
-        //             previous: "<",
-        //             next: ">",
-        //             last: ">>",
-        //             loadingRecords: "Please wait - loading..",
-        //         }
-        //     },
-        //     data: rechargeList,
-        //     columns: [
-        //         {
-        //             "data": "ba_id",
-        //             className: "ba_id jump",
-        //         },
-        //         {
-        //             "data": "us_id",
-        //             className: "us_id jump",
-        //         },
-        //         {
-        //             "data": "asset_id",
-        //             className: "asset_id",
-        //         },
-        //         {
-        //             "data": "base_amount",
-        //             className: "base_amount",
-        //         },
-        //         {
-        //             "data": "bit_amount",
-        //             className: "bit_amount",
-        //         },
-        //         {
-        //             "data": "tx_hash",
-        //             className: "tx_hash",
-        //         },
-        //         {
-        //             "data": "tx_time",
-        //             className: "tx_time",
-        //         },
-        //     ],
-        // });
+    function ShowDataFun(rechargeList, totalPage, count) {
+
         $.each(rechargeList, function (i, val) {
             ba_id_arr.push(rechargeList[i].ba_id.substring(0, 10) + '...');
             us_id_arr.push(rechargeList[i].us_id.substring(0, 10) + '...');
@@ -82,39 +36,66 @@ $(function () {
         });
         $('#baRecharge').html(tr);
         execI18n();
+        $("#pagination").pagination({
+            currentPage: (limit + offset) / limit,
+            totalPage: totalPage,
+            isShow: false,
+            count: count,
+            prevPageText: "<<",
+            nextPageText: ">>",
+            callback: function (current) {
+                GetBaTransactionFun(limit, (current - 1) * limit);
+                ShowLoading("show");
+            }
+        });
     }
 
     //Get ba transaction history
-    GetBaTransaction(token, function (response) {
-        if (response.errcode == '0') {
-            var rechargeList = response.rows.recharge;
-            if (rechargeList == false) {
-                GetDataEmpty('baRecharge', '8');
-                return;
+    function GetBaTransactionFun(limit, offset) {
+        let totalPage = "", count = "", type = "1";
+        GetBaTransaction(token, type, limit, offset, function (response) {
+            if (response.errcode == '0') {
+                let rechargeList = response.rows.recharge;
+                let total = response.total;
+                totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+                if (rechargeList == false) {
+                    GetDataEmpty('baRecharge', '8');
+                    return;
+                }
+                ShowDataFun(rechargeList, totalPage, count);
             }
-            ShowDataFun(rechargeList);
-        }
-    }, function (response) {
-        GetDataFail('baRecharge', '8');
-        LayerFun(response.errcode);
-        return;
-    });
+        }, function (response) {
+            GetDataFail('baRecharge', '8');
+            LayerFun(response.errcode);
+            return;
+        });
+    }
+
+    GetBaTransactionFun(limit, offset);
+
 
     //Jump ba details
     $(document).on('click', '.ba_id', function () {
-        var ba_id = $(this).attr('title');
+        let ba_id = $(this).attr('title');
         window.location.href = 'baInfo.html?ba_id=' + ba_id;
     });
 
     //Jump user details
     $(document).on('click', '.us_id', function () {
-        var us_id = $(this).attr('title');
+        let us_id = $(this).attr('title');
         window.location.href = 'userInfo.html?us_id=' + us_id;
     });
 
     //Conditional screening
     $("input[type=checkbox]").click(function () {
-        var className = $(this).val();
+        let className = $(this).val();
         if ($(this).prop('checked')) {
             $('.' + className).removeClass('none');
             $('.' + className).children('div').css('display', 'flex');
@@ -125,7 +106,7 @@ $(function () {
 
     //Click the search button to filter
     $('.searchBtn').click(function () {
-        var from_time = "", to_time = "", tx_time = "";
+        let from_time = "", to_time = "", tx_time = "";
 
         if ($('.from_time').hasClass('none')) {
             from_time = "";
@@ -143,7 +124,7 @@ $(function () {
             tx_time = $('#tx_time').val()
         }
 
-        var qa_id = $('#qa_id').val(), us_id = $('#us_id').val(), us_account_id = $('#us_account_id').val(),
+        let qa_id = $('#qa_id').val(), us_id = $('#us_id').val(), us_account_id = $('#us_account_id').val(),
             asset_id = $('#asset_id').val(), ba_account_id = $('#ba_account_id').val(), tx_hash = $('#tx_hash').val(),
             base_amount = $('#base_amount').val(), bit_amount = $('#bit_amount').val(),
             tx_detail = $('#tx_detail').val(),
@@ -154,7 +135,7 @@ $(function () {
             base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, function (response) {
                 if (response.errcode == '0') {
                     $(".preloader-wrapper").removeClass("active");
-                    var rechargeList = response.rows.recharge;
+                    let rechargeList = response.rows.recharge;
                     if (rechargeList == false) {
                         GetDataEmpty('baRecharge', '8');
                         return;
