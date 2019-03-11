@@ -621,8 +621,7 @@ function SearchCaTransaction(token,search_api_url, from_time, to_time, tx_time, 
             'tx_fee': tx_fee,
             'tx_type': tx_type,
             'qa_flag': qa_flag,
-            'ba_id': ba_id,
-            'type': type
+            'ba_id': ba_id
         };
     CallTransactionApi(api_url, post_data, suc_func, error_func);
 }
