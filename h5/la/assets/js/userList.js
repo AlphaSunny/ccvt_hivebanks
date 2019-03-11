@@ -5,7 +5,7 @@ $(function () {
     //get user list
     let api_url = 'user_list.php', limit = 10, offset = 0, count = "";
 
-    function GetUserListFun(token, limit, offset) {
+    function GetUserListFun(limit, offset) {
         let totalPage = "",tr = "";
         GetUserList(token, api_url, limit, offset, function (response) {
             ShowLoading("hide");
@@ -40,7 +40,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        GetUserListFun(token, limit, (current - 1) * limit);
+                        GetUserListFun(limit, (current - 1) * limit);
                         ShowLoading("show");
                     }
                 });
@@ -52,7 +52,7 @@ $(function () {
         });
     }
 
-    GetUserListFun(token, limit, offset);
+    GetUserListFun(limit, offset);
 
 
     //Jump user details
