@@ -13,6 +13,7 @@ php_begin();
 
 //获取最新文章
 $rows = get_news();
+$content = '';
 if ($rows){
     $json_string = file_get_contents('../../h5/assets/json/config_url.json');
     $data = json_decode($json_string, true);
