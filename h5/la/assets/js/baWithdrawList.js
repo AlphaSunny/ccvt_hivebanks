@@ -51,7 +51,7 @@ $(function () {
             });
         } else {
             $("#pagination").pagination({
-                currentPage: (limit + _offset) / limit,
+                currentPage: (limit + offset) / limit,
                 totalPage: totalPage,
                 isShow: false,
                 count: count,
