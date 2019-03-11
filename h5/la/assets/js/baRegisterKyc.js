@@ -23,6 +23,7 @@ $(function () {
                 } else {
                     count = 6;
                 }
+                
                 if (data == false) {
                     GetDataEmpty('userList', '4');
                 }
