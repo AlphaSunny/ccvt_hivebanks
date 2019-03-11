@@ -43,9 +43,9 @@ $(function () {
             prevPageText: "<<",
             nextPageText: ">>",
             callback: function (current) {
-                if(show_type=="1"){
+                if (show_type == "1") {
                     GetBaTransactionFun(limit, (current - 1) * limit);
-                }else{
+                } else {
                     GetSearchListFun(limit, (current - 1) * limit);
                 }
                 ShowLoading("show");
@@ -110,6 +110,7 @@ $(function () {
             }
         }, function (response) {
             ShowLoading("hide");
+            GetDataFail('baRecharge', '8');
             LayerFun(response.errcode);
             return;
         });
@@ -149,11 +150,7 @@ $(function () {
     $('.searchBtn').click(function () {
         from_time = $('#from_time').val();
         to_time = $('#to_time').val();
-        if ($('.tx_time').hasClass('none')) {
-            tx_time = "";
-        } else {
-            tx_time = $('#tx_time').val()
-        }
+        tx_time = $('#tx_time').val();
         qa_id = $('#qa_id').val();
         _us_id = $('#us_id').val();
         us_account_id = $('#us_account_id').val();
