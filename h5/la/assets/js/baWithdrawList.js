@@ -7,7 +7,7 @@ $(function () {
     let _limit = 10, _offset = 0;
 
     //渲染ba提现记录
-    function ShowDataFun(withdrawList, totalPage, count,limit,offset, show_type) {
+    function ShowDataFun(withdrawList, totalPage, count, limit, offset, show_type) {
         let tr = "", ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
         $.each(withdrawList, function (i, val) {
             ba_id_arr.push(withdrawList[i].ba_id.substring(0, 10) + '...');
@@ -87,7 +87,7 @@ $(function () {
                     count = 6;
                 }
                 let show_type = "1";
-                ShowDataFun(withdrawList, totalPage, count,limit,offset, show_type);
+                ShowDataFun(withdrawList, totalPage, count, limit, offset, show_type);
             }
         }, function (response) {
             ShowLoading("hide");
@@ -157,14 +157,14 @@ $(function () {
         qa_flag = $('#qa_flag').val();
         ba_id = $('#ba_id').val();
         $(".preloader-wrapper").addClass("active");
-        GetSearchListFun(_limit,_offset);
+        GetSearchListFun(_limit, _offset);
     });
 
-    function GetSearchListFun(_limit,_offset) {
+    function GetSearchListFun(_limit, _offset) {
         let totalPage = "", count = "";
         SearchBaTransaction(token, search_api_url, from_time, to_time, tx_time, qa_id, _us_id, us_account_id, asset_id, ba_account_id, tx_hash,
             base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, _limit, _offset, function (response) {
-            ShowLoading("hide");
+                ShowLoading("hide");
                 if (response.errcode == '0') {
                     let withdrawList = response.rows.recharge;
                     if (withdrawList == false) {
@@ -191,22 +191,37 @@ $(function () {
     }
 
     //Set start time
-    $('#from_time').datetimepicker({
-        format: 'Y/m/d H:i',
-        value: new Date(),
-        // minDate: new Date(),//Set minimum date
-        // minTime: new Date(),//Set minimum time
-        // yearStart: 2018,//Set the minimum year
-        yearEnd: 3000 //Set the maximum year
+    function activeTimeInput() {
+        $('#from_time').datetimepicker({
+            format: 'Y/m/d H:i',
+            value: new Date(),
+            // minDate: new Date(),//Set minimum date
+            // minTime: new Date(),//Set minimum time
+            // yearStart: 2018,//Set the minimum year
+            yearEnd: 3000 //Set the maximum year
+        });
+    }
+
+    $("#from_time").focus(function () {
+        activeTimeInput();
     });
 
     //Set end time
-    $('#to_time, #tx_time').datetimepicker({
-        format: 'Y/m/d H:i',
-        value: new Date(),
-        // minDate: new Date(),//Set minimum date
-        // minTime: new Date(),//Set minimum time
-        // yearStart: 2018,//Set the minimum year
-        yearEnd: 3000 //Set the maximum year
+    function otherTimeInput(type) {
+        $('#' + type + '').datetimepicker({
+            format: 'Y/m/d H:i',
+            value: new Date(),
+            // minDate: new Date(),//Set minimum date
+            // minTime: new Date(),//Set minimum time
+            // yearStart: 2018,//Set the minimum year
+            yearEnd: 3000 //Set the maximum year
+        });
+    }
+
+    $("#to_time").focus(function () {
+        otherTimeInput("to_time");
+    });
+    $("#tx_time").focus(function () {
+        otherTimeInput("tx_time");
     });
 });
