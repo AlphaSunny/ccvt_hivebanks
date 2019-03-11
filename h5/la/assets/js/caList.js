@@ -22,7 +22,7 @@ $(function () {
                 }
                 $.each(data, function (i, val) {
                     tr += '<tr>' +
-                        '<td><a href="javascript:;" class="ca_account">' + data[i].ca_account + '</a><span class="ca_id">' + data[i].ca_id + '</span></td>' +
+                        '<td><a href="javascript:;" class="ca_account">' + data[i].ca_account + '</a><span class="ca_id none">' + data[i].ca_id + '</span></td>' +
                         '<td>' + data[i].ca_level + '</td>' +
                         '<td>' + data[i].security_level + '</td>' +
                         '<td>' + data[i].ctime + '</td>' +
