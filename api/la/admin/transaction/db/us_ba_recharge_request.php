@@ -318,7 +318,7 @@ function get_us_ba_recharge_log_balance_limt($from_time,
         $sql = "SELECT * FROM us_ba_recharge_request";
     }
     $sql .= " limit $offset,$limit";
-
+    echo $sql;die;
 
     $db -> query($sql);
     $rows = $db -> fetchAll();

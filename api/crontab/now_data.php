@@ -254,6 +254,14 @@ foreach ($gone_staff as $k=>$v){
     $gone_staff[$k]['transfer_us_id'] = "0";
 }
 
+//ba_in,数字货币充值(com_transfer_request不存)
+$sql = "select us_id,base_amount as send_money,tx_time as ctime from us_ba_recharge_request where qa_flag=1";
+$db->query($sql);
+$ba_in = $db->fetchAll();
+foreach ($ba_in as $k=>$v){
+    $ba_in[$k]['flag'] = '0';
+}
+
 //ca_in,ca_out
 //$sql = "select credit_id as us_id,tx_amount as send_money,ctime from com_base_balance2 WHERE tx_type='ca_out' AND debit_id='0F685EB8-1FA1-5C89-2C2A-5B2136031131'";
 //$db->query($sql);
