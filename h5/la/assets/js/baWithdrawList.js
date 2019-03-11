@@ -51,14 +51,14 @@ $(function () {
             });
         } else {
             $("#pagination").pagination({
-                currentPage: (_limit + _offset) / _limit,
+                currentPage: (limit + _offset) / limit,
                 totalPage: totalPage,
                 isShow: false,
                 count: count,
                 prevPageText: "<<",
                 nextPageText: ">>",
                 callback: function (current) {
-                    GetSearchListFun(_limit, (current - 1) * _limit);
+                    GetSearchListFun(limit, (current - 1) * limit);
                     ShowLoading("show");
                 }
             });
@@ -148,6 +148,7 @@ $(function () {
         tx_type = $('#tx_type').val();
         qa_flag = $('#qa_flag').val();
         ba_id = $('#ba_id').val();
+        ShowLoading("show");
         GetSearchListFun(_limit, _offset);
     });
 
@@ -172,7 +173,7 @@ $(function () {
                         count = 6;
                     }
                     let show_type = "2";
-                    ShowDataFun(withdrawList, totalPage, count, show_type);
+                    ShowDataFun(withdrawList, totalPage, count, _limit, _offset, show_type);
                 }
             }, function (response) {
                 ShowLoading("hide");
