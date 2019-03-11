@@ -54,6 +54,7 @@ $(function () {
     function GetBaTransactionFun(limit, offset) {
         let totalPage = "", count = "", type = "1";
         GetBaTransaction(token, type, limit, offset, function (response) {
+            ShowLoading("hide");
             if (response.errcode == '0') {
                 let rechargeList = response.rows.recharge;
                 let total = response.total;
@@ -72,6 +73,7 @@ $(function () {
                 ShowDataFun(rechargeList, totalPage, count);
             }
         }, function (response) {
+            ShowLoading("hide");
             GetDataFail('baRecharge', '8');
             LayerFun(response.errcode);
             return;

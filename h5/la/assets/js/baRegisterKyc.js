@@ -9,6 +9,7 @@ $(function () {
     function RegisterKycFun(limit, offset) {
         RegisterKyc(api_url, token, limit, offset, function (response) {
             let totalPage = "", count = "";
+            ShowLoading("hide");
             if (response.errcode == '0') {
                 let data = response.rows, bind_flag = '';
                 if (data == false) {
@@ -23,7 +24,7 @@ $(function () {
                 } else {
                     count = 6;
                 }
-                
+
                 if (data == false) {
                     GetDataEmpty('userList', '4');
                 }
@@ -60,6 +61,7 @@ $(function () {
                 });
             }
         }, function (response) {
+            ShowLoading("hide");
             if (response.errcode == '101') {
                 GetDataEmpty('baRegisterKyc', '5');
             }
