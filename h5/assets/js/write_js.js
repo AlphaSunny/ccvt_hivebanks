@@ -22,6 +22,4 @@
     document.write(jsHeader + "assets/js/prompt.js" + jsFooter);
     document.write(jsHeader + "assets/js/get_sms_count.js" + jsFooter);
     document.write("<script src='https://at.alicdn.com/t/font_1045318_p7pthod763a.js'></script>");
-    // document.write("<script src='https://at.alicdn.com/t/font_626151_t6n32vq6jjq.js'></script>");
-    // document.write("<script type='text/javascript'>less.watch();</script>");
 })();
