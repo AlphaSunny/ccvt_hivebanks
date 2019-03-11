@@ -10,20 +10,13 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection"/>
-    <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet"/>
-    <!-- bootStrop-table.css -->
-    <!--<link rel="stylesheet" href="assets/css/bootstrap-table.css">-->
-    <!--<link rel="stylesheet" href="assets/js/dataTables/dataTables.bootstrap.css">-->
-    <!-- FontAwesome Styles-->
+    <link rel="stylesheet" href="../assets/css/jquery.pagination.css">
     <link href="assets/css/font-awesome.css" rel="stylesheet"/>
-    <!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
-    <!-- Custom Styles-->
     <link href="assets/css/common.css" rel="stylesheet"/>
-    <!--pagination-->
-    <!--<link rel="stylesheet" href="assets/css/pagination.css">-->
     <link rel="stylesheet" media="only screen and (max-width:767px)" href="assets/css/common_mobile.css">
+    <link rel="shortcut icon" href="../favicon.ico">
 </head>
 <body>
 <div id="wrapper">
@@ -145,7 +138,8 @@
                                     <a href="baRegisterKyc.html" class="i18n" name="registrationReviewList"></a>
                                 </li>
                                 <li>
-                                    <a href="baWithdrawAddressKyc.html" class="i18n" name="withdrawAddressReviewList"></a>
+                                    <a href="baWithdrawAddressKyc.html" class="i18n"
+                                       name="withdrawAddressReviewList"></a>
                                 </li>
                             </ul>
                         </li>
@@ -162,7 +156,8 @@
                                     <a href="caRegisterKyc.html" class="i18n" name="registrationReviewList"></a>
                                 </li>
                                 <li>
-                                    <a href="caWithdrawAddressKyc.html" class="i18n" name="withdrawAddressReviewList"></a>
+                                    <a href="caWithdrawAddressKyc.html" class="i18n"
+                                       name="withdrawAddressReviewList"></a>
                                 </li>
                             </ul>
                         </li>
@@ -202,17 +197,20 @@
                     <div class="table-responsive card-content">
                         <table class="bordered striped centered highlight" id="userListTable">
                             <thead>
-                                <tr>
-                                    <th><span class="us_id i18n" name="us_id"></span></th>
-                                    <th><span class="us_level i18n" name="us_level"></span></th>
-                                    <th><span class="security_level i18n" name="security_level"></span></th>
-                                    <th><span class="ctime i18n" name="ctime"></span></th>
-                                </tr>
+                            <tr>
+                                <th><span class="us_id i18n" name="us_id"></span></th>
+                                <th><span class="us_level i18n" name="us_level"></span></th>
+                                <th><span class="security_level i18n" name="security_level"></span></th>
+                                <th><span class="ctime i18n" name="ctime"></span></th>
+                            </tr>
                             </thead>
                             <tbody id="userList">
-                                <!--<tr><td colspan="4"><span class="i18n" name="loading"></span></td></tr>-->
+                            <tr><td colspan="4"><img src="../assets/img/loading.gif" alt=""></td></tr>
                             </tbody>
                         </table>
+                        <div class="text-right">
+                            <div id="pagination" class="page"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -225,47 +223,27 @@
     <div class="spinner-layer spinner-red-only">
         <div class="circle-clipper left">
             <div class="circle"></div>
-        </div><div class="gap-patch">
-        <div class="circle"></div>
-    </div><div class="circle-clipper right">
-        <div class="circle"></div>
-    </div>
+        </div>
+        <div class="gap-patch">
+            <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+            <div class="circle"></div>
+        </div>
     </div>
 </div>
 
 <!-- JS Scripts-->
-<!-- jQuery Js -->
 <script src="assets/js/jquery-3.2.1.min.js"></script>
-
-<!-- Bootstrap Js -->
 <script src="assets/js/bootstrap.min.js"></script>
-<!-- Bootstrap-table Js -->
-
-<script src="assets/js/dataTables/jquery.dataTables.js"></script>
-<script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-
-<!--language-->
+<script src="../assets/js/jquery.pagination.min.js"></script>
 <script src="assets/language/jquery.i18n.properties.js"></script>
 <script src="assets/language/language.js"></script>
-
 <script src="assets/materialize/js/materialize.min.js"></script>
-
-<!-- Metis Menu Js -->
 <script src="assets/js/jquery.metisMenu.js"></script>
-
-<!--pagination-->
-<!--<script src="assets/js/pagination.js"></script>-->
-
-<!--layer-->
 <script src="assets/js/layer/layer.js"></script>
-
-<!--common-->
 <script src="assets/js/common.js"></script>
-
-<!-- main Js -->
 <script src="assets/js/main.js"></script>
-
-<!--userList-->
 <script src="assets/js/userList.js"></script>
 </body>
 </html>
