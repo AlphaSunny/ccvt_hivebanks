@@ -3,10 +3,10 @@ $(function () {
     let token = GetCookie('la_token');
 
     //Get ba transaction history
-    let tr = '', ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
     let limit = 10, offset = 0;
 
-    function ShowDataFun(withdrawList,totalPage, count) {
+    function ShowDataFun(withdrawList, totalPage, count) {
+        let tr = "", ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
         $.each(withdrawList, function (i, val) {
             ba_id_arr.push(withdrawList[i].ba_id.substring(0, 10) + '...');
             us_id_arr.push(withdrawList[i].us_id.substring(0, 10) + '...');
@@ -49,7 +49,7 @@ $(function () {
 
     function GetBaTransactionFun(limit, offset) {
         let totalPage = "", count = "", type = "2";
-        GetBaTransaction(token,type, limit, offset, function (response) {
+        GetBaTransaction(token, type, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
                 let withdrawList = response.rows.withdraw;

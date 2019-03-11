@@ -5,11 +5,10 @@ $(function () {
     let token = GetCookie('la_token');
 
     //show ba recharge list
-    let ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
     let limit = 10, offset = 0;
 
     function ShowDataFun(rechargeList, totalPage, count) {
-        let tr = "";
+        let tr = "", ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
         $.each(rechargeList, function (i, val) {
             ba_id_arr.push(rechargeList[i].ba_id.substring(0, 10) + '...');
             us_id_arr.push(rechargeList[i].us_id.substring(0, 10) + '...');
