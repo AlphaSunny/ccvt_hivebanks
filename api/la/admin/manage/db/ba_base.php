@@ -1,6 +1,18 @@
 <?php
 
 //======================================
+//  获取ba的列表总数
+// 参数:
+//======================================
+function get_ba_base_info_total()
+{
+    $db = new DB_COM();
+    $sql = "SELECT * FROM ba_base";
+    $db->query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
+//======================================
 //  获取ba的列表
 // 参数:
 // 返回: rows          ba信息数组
@@ -15,10 +27,10 @@
 //       utime         更新时间
 //       ctime         创建时间
 //======================================
-function get_ba_base_info()
+function get_ba_base_info($offset,$limit)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM ba_base";
+    $sql = "SELECT * FROM ba_base limit $offset,$limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
