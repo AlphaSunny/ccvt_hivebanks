@@ -17,6 +17,6 @@
     document.write(jsHeader + "la/assets/materialize/js/materialize.min.js" + jsFooter);
     document.write(jsHeader + "la/assets/js/jquery.metisMenu.js" + jsFooter);
     document.write(jsHeader + "la/assets/js/layer/layer.js" + jsFooter);
-    document.write(jsHeader + "la/assets/js/layer/common.js" + jsFooter);
-    document.write(jsHeader + "la/assets/js/layer/main.js" + jsFooter);
+    document.write(jsHeader + "la/assets/js/common.js" + jsFooter);
+    document.write(jsHeader + "la/assets/js/main.js" + jsFooter);
 })();
