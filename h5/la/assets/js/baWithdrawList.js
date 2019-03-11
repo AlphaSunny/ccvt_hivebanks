@@ -71,7 +71,7 @@ $(function () {
         GetBaTransaction(token, api_url, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
-                let withdrawList = response.rows.withdraw;
+                let withdrawList = response.rows;
                 if (withdrawList == false) {
                     GetDataEmpty('baWithdraw', '8');
                     return;
