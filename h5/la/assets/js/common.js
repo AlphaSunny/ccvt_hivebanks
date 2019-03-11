@@ -594,7 +594,6 @@ function SearchBaTransaction(token, search_api_url, from_time, to_time, tx_time,
             'tx_type': tx_type,
             'qa_flag': qa_flag,
             'ba_id': ba_id,
-            'type': type,
             'limit': limit,
             'offset': offset
         };
