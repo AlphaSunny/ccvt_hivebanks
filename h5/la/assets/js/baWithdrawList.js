@@ -48,8 +48,8 @@ $(function () {
     }
 
     function GetBaTransactionFun(limit, offset) {
-        let totalPage = "", count = "";
-        GetBaTransaction(token, limit, offset, function (response) {
+        let totalPage = "", count = "", type = "2";
+        GetBaTransaction(token,type, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
                 let withdrawList = response.rows.withdraw;
