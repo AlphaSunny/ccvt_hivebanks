@@ -88,9 +88,11 @@ function  get_us_ba_withdraw_log_balance_limt_total($from_time,
 {
     $where = '';
     if($from_time){
+        $from_time = strtotime($from_time);
         $where .= "tx_time >= '{$from_time}'";
     }
     if($to_time){
+        $to_time = strtotime($to_time);
         if($where){
             $where .= "AND tx_time <= '{$to_time}'";
         }else{
@@ -318,7 +320,6 @@ function  get_us_ba_withdraw_log_balance_limt($from_time,
         $sql = "SELECT * FROM us_ba_withdraw_request";
     }
     $sql .= " limit $offset,$limit";
-    echo $sql;die;
     $db -> query($sql);
     $rows = $db -> fetchAll();
     return $rows;
