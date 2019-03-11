@@ -9,6 +9,7 @@ $(function () {
     function GetWithdrawAddressKycFun(limit, offset) {
         let totalPage = "", count = "", tr = "", bind_flag = "";
         GetWithdrawAddressKyc(api_url, token, limit, offset, function (response) {
+            ShowLoading("hide");
             if (response.errcode == '0') {
                 let data = response.rows;
                 if (data == false) {
@@ -61,6 +62,7 @@ $(function () {
                 });
             }
         }, function (response) {
+            ShowLoading("hide");
             GetDataFail('baWithdrawAddressKyc', '5');
             LayerFun(response.errcode);
             return;
