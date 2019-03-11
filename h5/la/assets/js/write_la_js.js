@@ -11,6 +11,7 @@
     let jsFooter = "'></script>";
     document.write(jsHeader + "la/assets/js/jquery-3.2.1.min.js" + jsFooter);
     document.write(jsHeader + "la/assets/js/bootstrap.min.js" + jsFooter);
+    document.write(jsHeader + "la/assets/js/cnt.js" + jsFooter);
     document.write(jsHeader + "la/assets/js/jquery.pagination.min.js" + jsFooter);
     document.write(jsHeader + "la/assets/language/jquery.i18n.properties.js" + jsFooter);
     document.write(jsHeader + "la/assets/language/language.js" + jsFooter);
