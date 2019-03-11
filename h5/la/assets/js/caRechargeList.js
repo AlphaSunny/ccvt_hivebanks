@@ -69,9 +69,6 @@ $(function () {
                 } else {
                     count = 6;
                 }
-                if (data == false) {
-                    GetDataEmpty('caRecharge', '8');
-                }
 
                 ShowDataFun(rechargeList, totalPage, count);
             }
@@ -144,7 +141,7 @@ $(function () {
                 if (response.errcode == '0') {
                     let withdrawList = response.rows;
                     if (withdrawList == false) {
-                        GetDataEmpty('caRecharge', '8');
+                        GetDataEmpty('caRecharge', '6');
                         return;
                     }
                     let total = response.total;
