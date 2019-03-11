@@ -6,7 +6,7 @@ $(function () {
     let tr = '', ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
     let limit = 10, offset = 0;
 
-    function ShowDataFun(withdrawList) {
+    function ShowDataFun(withdrawList,totalPage, count) {
         $.each(withdrawList, function (i, val) {
             ba_id_arr.push(withdrawList[i].ba_id.substring(0, 10) + '...');
             us_id_arr.push(withdrawList[i].us_id.substring(0, 10) + '...');
