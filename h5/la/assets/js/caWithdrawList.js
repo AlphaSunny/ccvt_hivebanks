@@ -109,7 +109,7 @@ $(function () {
         tx_hash = "", asset_id = "", ba_account_id = "",
         base_amount = "", bit_amount = "", tx_detail = "",
         tx_fee = "", tx_type = "", qa_flag = "", ba_id = "";
-    let search_api_url = "transaction_select_ba_withdraw.php";
+    let search_api_url = "transaction_select_ca_withdraw.php";
     $('.searchBtn').click(function () {
         from_time = $('#from_time').val();
         to_time = $('#to_time').val();
