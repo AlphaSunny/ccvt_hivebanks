@@ -7,7 +7,7 @@ $(function () {
     let _limit = 10, _offset = 0;
 
     //渲染ba提现记录
-    function ShowDataFun(withdrawList, totalPage, count, show_type) {
+    function ShowDataFun(withdrawList, totalPage, count,limit,offset, show_type) {
         let tr = "", ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
         $.each(withdrawList, function (i, val) {
             ba_id_arr.push(withdrawList[i].ba_id.substring(0, 10) + '...');
@@ -98,7 +98,7 @@ $(function () {
                     count = 6;
                 }
                 let show_type = "1";
-                ShowDataFun(withdrawList, totalPage, count, show_type);
+                ShowDataFun(withdrawList, totalPage, count,limit,offset, show_type);
             }
         }, function (response) {
             ShowLoading("hide");
