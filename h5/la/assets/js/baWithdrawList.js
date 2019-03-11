@@ -4,8 +4,10 @@ $(function () {
 
     //Get ba transaction history
     let limit = 10, offset = 0;
+    let _limit = 10, _offset = 0;
 
-    function ShowDataFun(withdrawList, totalPage, count) {
+    //渲染ba提现记录
+    function ShowDataFun(withdrawList, totalPage, count, show_type) {
         let tr = "", ba_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
         $.each(withdrawList, function (i, val) {
             ba_id_arr.push(withdrawList[i].ba_id.substring(0, 10) + '...');
@@ -33,23 +35,40 @@ $(function () {
         });
         $('#baWithdraw').html(tr);
         execI18n();
-        $("#pagination").pagination({
-            currentPage: (limit + offset) / limit,
-            totalPage: totalPage,
-            isShow: false,
-            count: count,
-            prevPageText: "<<",
-            nextPageText: ">>",
-            callback: function (current) {
-                GetBaTransactionFun(limit, (current - 1) * limit);
-                ShowLoading("show");
-            }
-        });
+        if (show_type == "1") {
+            $("#pagination").pagination({
+                currentPage: (limit + offset) / limit,
+                totalPage: totalPage,
+                isShow: false,
+                count: count,
+                prevPageText: "<<",
+                nextPageText: ">>",
+                callback: function (current) {
+                    GetBaTransactionFun(limit, (current - 1) * limit);
+                    ShowLoading("show");
+                }
+            });
+        } else {
+            $("#pagination").pagination({
+                currentPage: (_limit + _offset) / _limit,
+                totalPage: totalPage,
+                isShow: false,
+                count: count,
+                prevPageText: "<<",
+                nextPageText: ">>",
+                callback: function (current) {
+                    GetSearchListFun(_limit, (current - 1) * _limit);
+                    ShowLoading("show");
+                }
+            });
+        }
+
     }
 
+    //ba提现记录
     function GetBaTransactionFun(limit, offset) {
-        let totalPage = "", count = "", type = "2";
-        GetBaTransaction(token, type, limit, offset, function (response) {
+        let totalPage = "", count = "", api_url = "ba_withdraw_transaction.php";
+        GetBaTransaction(token, api_url, limit, offset, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
                 let withdrawList = response.rows.withdraw;
@@ -66,7 +85,8 @@ $(function () {
                 } else {
                     count = 6;
                 }
-                ShowDataFun(withdrawList, totalPage, count);
+                let show_type = "1";
+                ShowDataFun(withdrawList, totalPage, count, show_type);
             }
         }, function (response) {
             ShowLoading("hide");
@@ -100,10 +120,13 @@ $(function () {
     });
 
     //Click the search button to filter
+    let from_time = "", to_time = "", tx_time = "",
+        qa_id = "", _us_id = "", us_account_id = "",
+        tx_hash = "", asset_id = "", ba_account_id = "",
+        base_amount = "", bit_amount = "", tx_detail = "",
+        tx_fee = "", tx_type = "", qa_flag = "", ba_id = "";
+    let search_api_url = "transaction_select_ba_withdraw.php";
     $('.searchBtn').click(function () {
-        let from_time = "", to_time = "", tx_time = "";
-        let totalPage = "",count = "",type = "2";
-
         if ($('.from_time').hasClass('none')) {
             from_time = "";
         } else {
@@ -119,15 +142,27 @@ $(function () {
         } else {
             tx_time = $('#tx_time').val()
         }
-        let qa_id = $('#qa_id').val(), us_id = $('#us_id').val(), us_account_id = $('#us_account_id').val(),
-            asset_id = $('#asset_id').val(), ba_account_id = $('#ba_account_id').val(), tx_hash = $('#tx_hash').val(),
-            base_amount = $('#base_amount').val(), bit_amount = $('#bit_amount').val(),
-            tx_detail = $('#tx_detail').val(),
-            tx_fee = $('#tx_fee').val(), tx_type = $('#tx_type').val(), qa_flag = $('#qa_flag').val(),
-            ba_id = $('#ba_id').val();
+        qa_id = $('#qa_id').val();
+        _us_id = $('#us_id').val();
+        us_account_id = $('#us_account_id').val();
+        asset_id = $('#asset_id').val();
+        ba_account_id = $('#ba_account_id').val();
+        tx_hash = $('#tx_hash').val();
+        base_amount = $('#base_amount').val();
+        bit_amount = $('#bit_amount').val();
+        tx_detail = $('#tx_detail').val();
+        tx_fee = $('#tx_fee').val();
+        tx_type = $('#tx_type').val();
+        qa_flag = $('#qa_flag').val();
+        ba_id = $('#ba_id').val();
         $(".preloader-wrapper").addClass("active");
-        SearchBaTransaction(token,from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
-            base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id,type, function (response) {
+        GetSearchListFun(_limit,_offset);
+    });
+
+    function GetSearchListFun(_limit,_offset) {
+        let totalPage = "", count = "";
+        SearchBaTransaction(token, search_api_url, from_time, to_time, tx_time, qa_id, _us_id, us_account_id, asset_id, ba_account_id, tx_hash,
+            base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, _limit, _offset, function (response) {
                 if (response.errcode == '0') {
                     $(".preloader-wrapper").removeClass("active");
                     let withdrawList = response.rows.recharge;
@@ -136,7 +171,7 @@ $(function () {
                         return;
                     }
                     let total = response.total;
-                    totalPage = Math.ceil(total / limit);
+                    totalPage = Math.ceil(total / _limit);
                     if (totalPage <= 1) {
                         count = 1;
                     } else if (1 < totalPage && totalPage <= 6) {
@@ -144,14 +179,15 @@ $(function () {
                     } else {
                         count = 6;
                     }
-                    ShowDataFun(withdrawList,totalPage,count);
+                    let show_type = "2";
+                    ShowDataFun(withdrawList, totalPage, count, show_type);
                 }
             }, function (response) {
                 $(".preloader-wrapper").removeClass("active");
                 LayerFun(response.errcode);
                 return;
             })
-    });
+    }
 
     //Set start time
     $('#from_time').datetimepicker({

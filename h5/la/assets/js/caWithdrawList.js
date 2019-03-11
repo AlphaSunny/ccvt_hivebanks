@@ -1,10 +1,12 @@
 $(function () {
     //Get token
-    var token = GetCookie('la_token');
+    let token = GetCookie('la_token');
 
     //Get ca transaction history
-    var tr = '', ca_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
-    function ShowDataFun (withdrawList){
+    let limit = 10, offset = 0;
+
+    function ShowDataFun(withdrawList, totalPage, count) {
+        let tr = '', ca_id_arr = [], us_id_arr = [], tx_hash_arr = [], qa_flag_span = '';
         $.each(withdrawList, function (i, val) {
             ca_id_arr.push(withdrawList[i].ca_id.substring(0, 10) + '...');
             us_id_arr.push(withdrawList[i].us_id.substring(0, 10) + '...');
@@ -21,9 +23,7 @@ $(function () {
             tr += '<tr>' +
                 '<td><a href="javascript:;" class="ca_id" title="' + withdrawList[i].ca_id + '">' + ca_id_arr[i] + '</a></td>' +
                 '<td><a href="javascript:;" class="us_id" title="' + withdrawList[i].us_id + '">' + us_id_arr[i] + '</a></td>' +
-                // '<td><span class="asset_id">'+ withdrawList[i].asset_id +'</span></td>' +
                 '<td><span class="base_amount">' + withdrawList[i].base_amount + '</span></td>' +
-                // '<td><span class="bit_amount">'+ withdrawList[i].bit_amount +'</span></td>' +
                 '<td><span class="tx_hash" title="' + withdrawList[i].tx_hash + '">' + tx_hash_arr[i] + '</span></td>' +
                 '<td><span class="tx_time">' + withdrawList[i].tx_time + '</span></td>' +
                 '<td><span class="qa_flag">' + qa_flag_span + '</span></td>' +
@@ -31,35 +31,65 @@ $(function () {
         });
         $('#caWithdraw').html(tr);
         execI18n();
-    }
-    GetCaTransaction(token, function (response) {
-        if (response.errcode == '0') {
-            var withdrawList = response.rows.withdraw;
-            if (withdrawList == false) {
-                GetDataEmpty('caWithdraw', '6');
-                return;
+        $("#pagination").pagination({
+            currentPage: (limit + offset) / limit,
+            totalPage: totalPage,
+            isShow: false,
+            count: count,
+            prevPageText: "<<",
+            nextPageText: ">>",
+            callback: function (current) {
+                GetCaTransactionFun(limit, (current - 1) * limit);
+                ShowLoading("show");
             }
-            ShowDataFun(withdrawList);
-        }
-    }, function (response) {
-        LayerFun(response.errcode);
-        return;
-    });
+        });
+    }
+
+    function GetCaTransactionFun(limit, offset) {
+        let totalPage = "", count = "", type = "2";
+        GetCaTransaction(token, type, limit, offset, function (response) {
+            if (response.errcode == '0') {
+                let withdrawList = response.rows.withdraw;
+                if (withdrawList == false) {
+                    GetDataEmpty('caWithdraw', '6');
+                    return;
+                }
+                let total = response.total;
+                totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+                if (data == false) {
+                    GetDataEmpty('userList', '4');
+                }
+                ShowDataFun(withdrawList, totalPage, count);
+            }
+        }, function (response) {
+            LayerFun(response.errcode);
+            return;
+        });
+    }
+
+    GetCaTransactionFun(limit, offset);
 
     //Jump ca details
     $(document).on('click', '.ca_id', function () {
-        var ca_id = $(this).attr('title');
+        let ca_id = $(this).attr('title');
         window.location.href = 'caInfo.html?ca_id=' + ca_id;
     });
     //Jump user details
     $(document).on('click', '.us_id', function () {
-        var us_id = $(this).attr('title');
+        let us_id = $(this).attr('title');
         window.location.href = 'userInfo.html?us_id=' + us_id;
     });
 
     //Conditional screening
     $("input[type=checkbox]").click(function () {
-        var className = $(this).val();
+        let className = $(this).val();
         if ($(this).prop('checked')) {
             $('.' + className).fadeIn();
             $('.' + className).children('div').css('display', 'flex');
@@ -70,7 +100,8 @@ $(function () {
 
     //Click the search button to filter
     $('.searchBtn').click(function () {
-        var from_time = "", to_time = "", tx_time = "";
+        let from_time = "", to_time = "", tx_time = "";
+        let totalPage = "",count = "",limit = 10,offset = 0,type = "2";
 
         if ($('.from_time').hasClass('none')) {
             from_time = "";
@@ -87,23 +118,32 @@ $(function () {
         } else {
             tx_time = $('#tx_time').val()
         }
-        var qa_id = $('#qa_id').val(), us_id = $('#us_id').val(), us_account_id = $('#us_account_id').val(),
+        let qa_id = $('#qa_id').val(), us_id = $('#us_id').val(), us_account_id = $('#us_account_id').val(),
             asset_id = $('#asset_id').val(), ba_account_id = $('#ba_account_id').val(), tx_hash = $('#tx_hash').val(),
             base_amount = $('#base_amount').val(), bit_amount = $('#bit_amount').val(),
             tx_detail = $('#tx_detail').val(),
             tx_fee = $('#tx_fee').val(), tx_type = $('#tx_type').val(), qa_flag = $('#qa_flag').val(),
             ba_id = $('#ba_id').val();
         $(".preloader-wrapper").addClass("active");
-        SearchBaTransaction(from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
-            base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, function (response) {
+        SearchBaTransaction(token,from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
+            base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id,type,limit,offset, function (response) {
                 if (response.errcode == '0') {
                     $(".preloader-wrapper").removeClass("active");
-                    var withdrawList = response.rows.withdraw;
+                    let withdrawList = response.rows.withdraw;
                     if (withdrawList == false) {
                         GetDataEmpty('baWithdraw', '8');
                         return;
                     }
-                    ShowDataFun(withdrawList);
+                    let total = response.total;
+                    totalPage = Math.ceil(total / limit);
+                    if (totalPage <= 1) {
+                        count = 1;
+                    } else if (1 < totalPage && totalPage <= 6) {
+                        count = totalPage;
+                    } else {
+                        count = 6;
+                    }
+                    ShowDataFun(withdrawList,totalPage,count);
                 }
             }, function (response) {
                 $(".preloader-wrapper").removeClass("active");

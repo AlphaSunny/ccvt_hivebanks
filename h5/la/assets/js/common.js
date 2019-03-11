@@ -563,27 +563,40 @@ function GetRewardList(token, type, limit, offset, suc_func, error_func) {
 }
 
 //Get ba ALL transaction history
-function GetBaTransaction(token, type, limit, offset, suc_func, error_func) {
-    var api_url = 'ba_transaction.php',
-        post_data = {
-            'token': token,
-            'type': type,
-            'limit': limit,
-            'offset': offset
-        };
+function GetBaTransaction(token, limit, api_url, offset, suc_func, error_func) {
+    var post_data = {
+        'token': token,
+        'limit': limit,
+        'offset': offset
+    };
     CallTransactionApi(api_url, post_data, suc_func, error_func);
 }
 
 //Screening ba transaction records
-function SearchBaTransaction(token, from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
-                             base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, type, suc_func, error_func) {
-    var api_url = 'transaction_select_ba.php',
+function SearchBaTransaction(token, search_api_url, from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
+                             base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, limit, offset, suc_func, error_func) {
+    var api_url = search_api_url,
         post_data = {
             'token': token,
-            'from_time': from_time, 'to_time': to_time, 'tx_time': tx_time, 'qa_id': qa_id, 'us_id': us_id,
-            'us_account_id': us_account_id, 'asset_id': asset_id, 'ba_account_id': ba_account_id,
-            'tx_hash': tx_hash, 'base_amount': base_amount, 'bit_amount': bit_amount, 'tx_detail': tx_detail,
-            'tx_fee': tx_fee, 'tx_type': tx_type, 'qa_flag': qa_flag, 'ba_id': ba_id, 'type': type
+            'from_time': from_time,
+            'to_time': to_time,
+            'tx_time': tx_time,
+            'qa_id': qa_id,
+            'us_id': us_id,
+            'us_account_id': us_account_id,
+            'asset_id': asset_id,
+            'ba_account_id': ba_account_id,
+            'tx_hash': tx_hash,
+            'base_amount': base_amount,
+            'bit_amount': bit_amount,
+            'tx_detail': tx_detail,
+            'tx_fee': tx_fee,
+            'tx_type': tx_type,
+            'qa_flag': qa_flag,
+            'ba_id': ba_id,
+            'type': type,
+            'limit': limit,
+            'offset': offset
         };
     CallTransactionApi(api_url, post_data, suc_func, error_func);
 }
