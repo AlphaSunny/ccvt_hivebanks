@@ -35,7 +35,7 @@ foreach ($reg_user as $k=>$v){
     $reg_user[$k]['transfer_us_id'] = "0";
     $reg_user[$k]['qa_flag'] = "0";
 }
-//echo "注册:".count($reg_user)."<br />";
+echo "注册:".count($reg_user)."<br />";
 
 
 //邀请
@@ -51,7 +51,7 @@ foreach ($invite_rows as $k=>$v){
     $invite_rows[$k]['transfer_us_id'] = "0";
     $invite_rows[$k]['qa_flag'] = "0";
 }
-//echo "邀请:".count($invite_rows)."<br />";
+echo "邀请:".count($invite_rows)."<br />";
 
 
 //二级邀请奖励
@@ -76,7 +76,7 @@ foreach ($two_invite_send as $k=>$v){
     }
 }
 
-//echo "二级邀请:".count($two_invite_send)."<br />";
+echo "二级邀请:".count($two_invite_send)."<br />";
 
 //群聊奖励
 $sql = "select us_id,send_time as ctime,amount as send_money from bot_Iss_records where 1";
@@ -91,7 +91,7 @@ foreach ($bot_rows as $k=>$v){
     $bot_rows[$k]['qa_flag'] = "0";
 }
 
-//echo "群聊奖励:".count($bot_rows)."<br />";
+echo "群聊奖励:".count($bot_rows)."<br />";
 
 //兑换码兑换
 $sql = "select us_id,amount as send_money,exchange_time as ctime from us_voucher WHERE is_effective=2 and exchange_time!=''";
@@ -107,7 +107,7 @@ foreach ($voucher as $k=>$v){
     $voucher[$k]['qa_flag'] = "0";
 }
 
-//echo "兑换码兑换:".count($voucher)."<br />";
+echo "兑换码兑换:".count($voucher)."<br />";
 
 
 //ba调账(活动奖励啥的)
@@ -121,7 +121,7 @@ foreach ($tiaozhang as $k=>$v){
     $tiaozhang[$k]['qa_flag'] = "0";
 }
 
-//echo "ba调账(活动奖励啥的):".count($tiaozhang)."<br />";
+echo "ba调账(活动奖励啥的):".count($tiaozhang)."<br />";
 
 //升级返还
 $sql = "select us_id,ctime from us_scale_changes WHERE ctime<'2018-12-01 19:50:02'";
@@ -137,7 +137,7 @@ foreach ($scale_changes as $k=>$v){
     $scale_changes[$k]['qa_flag'] = "0";
 }
 
-//echo "升级返还:".count($scale_changes)."<br />";
+echo "升级返还:".count($scale_changes)."<br />";
 
 //ba_in,数字货币充值(com_transfer_request不存)
 $sql = "select us_id,base_amount as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ba_recharge_request where qa_flag=1";
@@ -152,7 +152,7 @@ foreach ($ba_in as $k=>$v){
     $ba_in[$k]['qa_flag'] = "0";
 }
 
-//echo "用户提现:".count($ba_in)."<br />";
+echo "用户提现:".count($ba_in)."<br />";
 
 
 //群主返现
@@ -166,7 +166,7 @@ foreach ($group_cashback as $k=>$v){
     $group_cashback[$k]['qa_flag'] = "0";
 }
 
-//echo "群主返现:".count($group_cashback)."<br />";
+echo "群主返现:".count($group_cashback)."<br />";
 
 //踩赞返还
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=14 AND give_or_receive=2";
@@ -179,7 +179,7 @@ foreach ($give_like_back as $k=>$v){
     $give_like_back[$k]['qa_flag'] = "0";
 }
 
-//echo "踩赞返还:".count($give_like_back)."<br />";
+echo "踩赞返还:".count($give_like_back)."<br />";
 
 
 
@@ -194,7 +194,7 @@ foreach ($suocang as $k=>$v){
     $suocang[$k]['qa_flag'] = "0";
 }
 
-//echo "锁仓(锁仓余额):".count($suocang)."<br />";
+echo "锁仓(锁仓余额):".count($suocang)."<br />";
 
 //锁仓利息
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=11 AND give_or_receive=2";
@@ -207,7 +207,7 @@ foreach ($big_us_interest as $k=>$v){
     $big_us_interest[$k]['qa_flag'] = "0";
 }
 
-//echo "锁仓利息:".count($big_us_interest)."<br />";
+echo "锁仓利息:".count($big_us_interest)."<br />";
 
 //员工动态调整(ba-us加锁定余额)
 $sql = "select credit_id as us_id,tx_amount as send_money,ctime from com_base_balance2 WHERE tx_type='dynamic_tuning' AND debit_id='6C69520E-E454-127B-F474-452E65A3EE75'";
@@ -222,7 +222,7 @@ foreach ($dynamic_tuning as $k=>$v){
     $dynamic_tuning[$k]['qa_flag'] = "0";
 }
 
-//echo "员工动态调整:".count($dynamic_tuning)."<br />";
+echo "员工动态调整:".count($dynamic_tuning)."<br />";
 
 
 
@@ -252,7 +252,7 @@ foreach ($glory as $k=>$v){
 
 }
 
-//echo "点赞(点踩)(ccvt兑换积分):".count($glory)."<br />";
+echo "点赞(点踩)(ccvt兑换积分):".count($glory)."<br />";
 
 
 //*****************************************US -> CA************************************************//
@@ -272,6 +272,8 @@ if ($us_ca_withdraw_request){
     }
 }
 
+echo "用户提现(ca_out):".count($us_ca_withdraw_request)."<br />";
+
 //*****************************************US -> BA************************************************//
 
 //用户提现(com_transfer_request不存)
@@ -289,7 +291,7 @@ if ($us_ba_withdraw_request){
     }
 }
 
-
+echo "用户提现(ba_out):".count($us_ba_withdraw_request)."<br />";
 
 
 //离职回收(us锁定金额给ba)
@@ -303,7 +305,7 @@ foreach ($gone_staff as $k=>$v){
     $gone_staff[$k]['qa_flag'] = "0";
 }
 
-//echo "离职回收(us锁定金额给ba):".count($gone_staff)."<br />";
+echo "离职回收(us锁定金额给ba):".count($gone_staff)."<br />";
 
 
 //*****************************************US -> US************************************************//
@@ -321,7 +323,7 @@ foreach ($us_us_transfer as $k=>$v){
 }
 
 
-//echo "用户转账:".count($us_us_transfer)."<br />";
+echo "用户转账:".count($us_us_transfer)."<br />";
 
 $sql = "select us_id as transfer_us_id,transfer_id as us_id,tx_amount as send_money,tx_time as ctime,qa_flag from us_us_transfer_request WHERE qa_flag=2";
 $db->query($sql);
@@ -333,7 +335,7 @@ foreach ($us_us_transfer_cancel as $k=>$v){
     $us_us_transfer_cancel[$k]['transfer_type'] = "us-us";
 }
 
-
+echo "转账撤回:".count($us_us_transfer_cancel)."<br />";
 
 
 $list = array_merge(
