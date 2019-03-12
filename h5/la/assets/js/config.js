@@ -1,10 +1,10 @@
 $(function () {
     //Get token
-    var token = GetCookie('la_token');
+    let token = GetCookie('la_token');
 
     // Config url
     $('.setApiBtn').click(function () {
-        var api_key = $('#api_key').val();
+        let api_key = $('#api_key').val();
         if (api_key.length <= 0) {
             // LayerFun('inputCannotBeEmpty');
             WarnPrompt("请输入内容");
@@ -33,7 +33,7 @@ $(function () {
     //Get la base information
     GetLaBaseInfo(token, function (response) {
         if (response.errcode == '0') {
-            var data = response.row;
+            let data = response.row;
             $('.base_currency').text(data.base_currency);
             SetCookie('base_currency', data.base_currency);
             $('.unit').text(data.unit);
@@ -54,7 +54,7 @@ $(function () {
     });
 
     //get key_code
-    var key_code = "";
+    let key_code = "";
     GetKeyCode(token, function (response) {
         if (response.errcode == '0') {
             key_code = response.key_code;
@@ -67,7 +67,7 @@ $(function () {
 
     //get open server
     function GetOpenServerFun(key_code) {
-        var getOpenServerUrl = "https://ccvt.io/api/plugin/get_common_config.php?key_code=" + key_code;
+        let getOpenServerUrl = "https://ccvt.io/api/plugin/get_common_config.php?key_code=" + key_code;
         // getOpenServerData = {"key_code": key_code};
         $.ajax({
             type: "get",
@@ -76,7 +76,7 @@ $(function () {
             success: function (response) {
                 console.log(response);
                 if(response.errcode == "0"){
-                    var data = response.rows[0];
+                    let data = response.rows[0];
                     if (data.email_service == "1" && data.flag == "1") {
                         $(".noOpenEmail").remove();
                         $(".alreadyOpenEmail").removeClass("none");
@@ -111,7 +111,7 @@ $(function () {
 
         // $.get(getOpenServerUrl, getOpenServerData, function (response) {
         //     if (response.errcode == "0") {
-        //         var data = response.rows[0];
+        //         let data = response.rows[0];
         //         console.log(data);
         //         if (data.email_service == "1" && data.flag == "1") {
         //             $(".noOpenEmail").remove();
@@ -150,8 +150,8 @@ $(function () {
 
     //set config serve
     $('.configServeBtn').click(function () {
-        var type = $("input[type='radio']:checked").val(), url = '';
-        var key_code = $("input[type='radio']:checked").parent().siblings().children("input[type='text']").val();
+        let type = $("input[type='radio']:checked").val(), url = '';
+        let key_code = $("input[type='radio']:checked").parent().siblings().children("input[type='text']").val();
         if (type == false) {
             LayerFun("pleaseSelectOpenServer");
             WarnPrompt("请选择需要开通的服务");
@@ -218,7 +218,7 @@ $(function () {
     //Get us/ba/ca registration permission
     GetSwitch(token, function (response) {
         if (response.errcode == '0') {
-            var data = response.rows, _switch = '';
+            let data = response.rows, _switch = '';
             $.each(data, function (i, val) {
                 if (data[i].option_name == 'ba_lock' && data[i].is_open == '1') {
                     _switch = '1';
@@ -300,7 +300,7 @@ $(function () {
 
     //Set to allow ba registration
     $('.bitRegister').change(function () {
-        var _this = $(this), type = '', status = '', typeSwitch = '';
+        let _this = $(this), type = '', status = '', typeSwitch = '';
         if ($(this).is(':checked') == true) {
             type = 'ba';
             status = 1;
@@ -316,7 +316,7 @@ $(function () {
 
     //Set to allow ca registration
     $('.cashRegister').change(function () {
-        var _this = $(this), type = '', status = '', typeSwitch = '';
+        let _this = $(this), type = '', status = '', typeSwitch = '';
         if ($(this).is(':checked') == true) {
             type = 'ca';
             status = 1;
@@ -332,7 +332,7 @@ $(function () {
 
     //Set to allow user registration
     $('.userRegister').change(function () {
-        var _this = $(this), type = '', status = '', typeSwitch = '';
+        let _this = $(this), type = '', status = '', typeSwitch = '';
         if ($(this).is(':checked') == true) {
             type = 'us';
             status = 1;
@@ -348,12 +348,12 @@ $(function () {
 
     //Setup administrator
     $('.permissionBtn').click(function () {
-        var pinList = '', checkedArr = $("input[type='checkbox']:checked");
+        let pinList = '', checkedArr = $("input[type='checkbox']:checked");
         $.each(checkedArr, function (i, val) {
             pinList += $(this).next('label').text() + ',';
         });
-        var length = pinList.length - 1, pid = pinList.substring(0, length);
-        var real_name = $('#name').val(), pass_word_hash = hex_sha1($('#password').val()), user = $('#userName').val();
+        let length = pinList.length - 1, pid = pinList.substring(0, length);
+        let real_name = $('#name').val(), pass_word_hash = hex_sha1($('#password').val()), user = $('#userName').val();
         $(".preloader-wrapper").addClass("active");
         SetPermission(token, pid, real_name, pass_word_hash, user, function (response) {
             if (response.errcode == '0') {
@@ -373,10 +373,10 @@ $(function () {
 
     //Get the BA proxy type that has been set
     function GetBaTypeFun() {
-        var api_url = 'get_ba_bit_type.php', li = '';
+        let api_url = 'get_ba_bit_type.php', li = '';
         GetAgentType(api_url, token, function (response) {
             if (response.errcode == '0') {
-                var data = response.rows;
+                let data = response.rows;
                 if (data.length <= 0) {
                     return;
                 }
@@ -403,13 +403,13 @@ $(function () {
 
     //Select Ba proxy type
     $('.baseBaTypeBox li').click(function () {
-        var liVal = $(this).text();
+        let liVal = $(this).text();
         $('.baseBaTypeInput').val(liVal);
         $(this).addClass('baseLiActive').siblings().removeClass('baseLiActive');
     });
 
     //Set the BA proxy type
-    var option_key = '', option_value = '', option_src = '';
+    let option_key = '', option_value = '', option_src = '';
     $('.baseBaTypeBtn').click(function () {
         option_key = $('.baseBaTypeInput').val();
         option_value = $('.baseBaTypeInput').val();
@@ -418,7 +418,7 @@ $(function () {
             WarnPrompt("请选择或者手动输入允许的代理类型");
             return;
         }
-        var api_url = 'set_ba_bit_type.php';
+        let api_url = 'set_ba_bit_type.php';
         SetAgentType(api_url, token, option_key, option_value, function (response) {
             if (response.errcode == '0') {
                 // $('#uploadImgModal').modal('close');
@@ -437,9 +437,9 @@ $(function () {
 
     //Delete BA proxy type
     $(document).on('click', ' .ba_bit_type', function () {
-        var _this = $(this);
-        var api_url = 'del_ba_bit_type.php';
-        var option_key = $(this).children('.option_key').text();
+        let _this = $(this);
+        let api_url = 'del_ba_bit_type.php';
+        let option_key = $(this).children('.option_key').text();
         DeleteAgentType(api_url, token, option_key, function (response) {
             if (response.errcode == '0') {
                 _this.remove();
@@ -457,10 +457,10 @@ $(function () {
 
     //Get the CA proxy type that has been set
     function GetCaTypeFun() {
-        var api_url = 'get_ca_type.php', li = '';
+        let api_url = 'get_ca_type.php', li = '';
         GetAgentType(api_url, token, function (response) {
             if (response.errcode == '0') {
-                var data = response.rows;
+                let data = response.rows;
                 if (data.length <= 0) {
                     return;
                 }
@@ -485,9 +485,9 @@ $(function () {
     GetCaTypeFun();
 
     //Select CA proxy type
-    var name = "";
+    let name = "";
     $('.baseCaTypeBox li').click(function () {
-        var liVal = $(this).text();
+        let liVal = $(this).text();
         name = $(this).attr('title');
         $('.baseCaTypeInput').val(liVal);
         $('.baseCaTypeInput').attr('name', name);
@@ -508,7 +508,7 @@ $(function () {
             WarnPrompt("请选择或者手动输入允许的代理类型");
             return;
         }
-        var api_url = 'set_ca_type.php';
+        let api_url = 'set_ca_type.php';
         SetAgentType(api_url, token, option_key, option_value, function (response) {
             if (response.errcode == '0') {
                 // $('#uploadImgModal').modal('close');
@@ -531,9 +531,9 @@ $(function () {
 
     //Delete the CA proxy type
     $(document).on('click', '.alreadyAddCaTypeBox .ca_bit_type', function () {
-        var _this = $(this);
-        var api_url = 'del_ca_type.php';
-        var option_key = $(this).children('.option_key').text();
+        let _this = $(this);
+        let api_url = 'del_ca_type.php';
+        let option_key = $(this).children('.option_key').text();
         DeleteAgentType(api_url, token, option_key, function (response) {
             if (response.errcode == '0') {
                 _this.remove();
@@ -551,10 +551,10 @@ $(function () {
 
     //Get the CA recharge type that has been set
     function GetCaRechargeFun() {
-        var api_url = 'get_ca_channel.php', li = '';
+        let api_url = 'get_ca_channel.php', li = '';
         GetAgentType(api_url, token, function (response) {
             if (response.errcode == '0') {
-                var data = response.rows;
+                let data = response.rows;
                 if (data.length <= 0) {
                     return;
                 }
@@ -579,9 +579,9 @@ $(function () {
     GetCaRechargeFun();
 
     //Select CA recharge type
-    var ca_recharge_name = "";
+    let ca_recharge_name = "";
     $('.caRechargeTypeBox li').click(function () {
-        var liVal = $(this).text();
+        let liVal = $(this).text();
         ca_recharge_name = $(this).attr('title');
         $('.setCaRechargeType').val(liVal);
         $('.setCaRechargeType').attr('name', ca_recharge_name);
@@ -600,7 +600,7 @@ $(function () {
             WarnPrompt("请选择或者手动输入允许的充值方式");
             return;
         }
-        var api_url = 'set_ca_channel.php';
+        let api_url = 'set_ca_channel.php';
         SetAgentType(api_url, token, option_key, option_value, function (response) {
             if (response.errcode == '0') {
                 $('.setCaRechargeType').val("");
@@ -617,9 +617,9 @@ $(function () {
 
     //Delete the CA recharge type
     $(document).on('click', '.alreadyAddCaRechargeTypeBox .ca_recharge_type', function () {
-        var _this = $(this);
-        var api_url = 'del_ca_channel.php';
-        var option_key = $(this).children('.option_key').text();
+        let _this = $(this);
+        let api_url = 'del_ca_channel.php';
+        let option_key = $(this).children('.option_key').text();
         DeleteAgentType(api_url, token, option_key, function (response) {
             if (response.errcode == '0') {
                 _this.remove();
@@ -637,7 +637,7 @@ $(function () {
 
     //Upload image to determine BA/CA
     // $('.baseBaTypeBtnConfirm').click(function () {
-    //     var api_url = '';
+    //     let api_url = '';
     // if (option_src == '') {
     //     LayerFun('pleaseUploadAnImageOfTheSelectedType');
     //     return;
@@ -676,20 +676,20 @@ $(function () {
 
     //Upload image
     // $('#uploadFile').on('change', function () {
-    //     var objUrl = getObjectURL(this.files[0]);
+    //     let objUrl = getObjectURL(this.files[0]);
     //     if (objUrl) {
     //         // Modify the address attribute of the picture here
     //         $(".uploadImgSrc").attr("src", objUrl);
     //     }
     //
-    //     var formData = new FormData($("#uploadForm")[0]);
+    //     let formData = new FormData($("#uploadForm")[0]);
     //     formData.append("key_code", key_code);
     //     option_src = UpLoadImg(formData);
     // });
 
     //Select an image to display
     // function getObjectURL(file) {
-    //     var url = null;
+    //     let url = null;
     //     if (window.createObjectURL != undefined) { // basic
     //         url = window.createObjectURL(file);
     //     } else if (window.URL != undefined) { // mozilla(firefox)
@@ -701,7 +701,7 @@ $(function () {
     // }
 
     // function UpLoadImg(formData) {
-    //     var src = '';
+    //     let src = '';
     //     $.ajax({
     //         url: 'http://agent_service.fnying.com/upload_file/upload.php',
     //         type: 'POST',
@@ -711,7 +711,7 @@ $(function () {
     //         contentType: false,
     //         processData: false,
     //         success: function (response) {
-    //             var data = JSON.parse(response);
+    //             let data = JSON.parse(response);
     //             if (data.errcode == '0') {
     //                 src = data.url;
     //             }
