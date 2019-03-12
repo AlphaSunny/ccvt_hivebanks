@@ -854,6 +854,17 @@ function GetAssetsReport(token, suc_func, error_func) {
     CallReportApi(api_url, post_data, suc_func, error_func);
 }
 
+//邀请排名
+function GiftDetail(token,limit,offset, suc_func, error_func) {
+    var api_url = 'gift_detail.php',
+        post_data = {
+            'token': token,
+            'limit': limit,
+            'offset': offset,
+        };
+    CallReportApi(api_url, post_data, suc_func, error_func);
+}
+
 //获取荣耀积分排名
 function GloryPoints(token,limit,offset, suc_func, error_func) {
     var api_url = 'honor_score_ranking.php',

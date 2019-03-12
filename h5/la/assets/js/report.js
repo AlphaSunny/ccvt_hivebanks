@@ -233,6 +233,53 @@ $(function () {
         });
     }
 
+    //邀请排名
+    let _limit = 10,_offset = 0;
+    function GiftDetailFun(_limit,_offset){
+        let tr = "",totalPage = "", count = "";
+        GiftDetail(token,_limit,_offset,function (response) {
+            ShowLoading("hide");
+            if(response.errcode == "0"){
+                let data = response.rows;
+                if(!data){
+                    GetDataEmpty('ranking', '6');
+                    return;
+                }
+                let total = response.total;
+                totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+                $.each(data,function (i,va) {
+                   tr+="<tr>" +
+                       "<td></td>" +
+                       "</tr>"
+                });
+
+                $("#rankingPage").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        GloryPointsFun(limit, (current - 1) * limit);
+                        ShowLoading("show");
+                    }
+                });
+            }
+        },function (response) {
+            ShowLoading("hide");
+            layer.msg(response.errmsg);
+        });
+    }
+    GiftDetailFun(_limit,_offset);
+
     //荣耀积分
     let limit = 10, offset = 0;
 
