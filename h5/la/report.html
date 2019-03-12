@@ -6,20 +6,21 @@
     <meta id="i18n_pagename" content="index-common">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>HiveBanks</title>
+    <title>LA后台管理</title>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection"/>
-    <!-- Bootstrap Styles-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
-    <!-- FontAwesome Styles-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet"/>
-    <!-- Google Fonts-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
-    <!-- common Styles-->
-    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet"/>
-    <!-- common Styles-->
-    <link href="assets/css/common.css" rel="stylesheet"/>
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection"/>-->
+    <!--&lt;!&ndash; Bootstrap Styles&ndash;&gt;-->
+    <!--<link href="assets/css/bootstrap.css" rel="stylesheet"/>-->
+    <!--&lt;!&ndash; FontAwesome Styles&ndash;&gt;-->
+    <!--<link href="assets/css/font-awesome.css" rel="stylesheet"/>-->
+    <!--&lt;!&ndash; Google Fonts&ndash;&gt;-->
+    <!--<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>-->
+    <!--&lt;!&ndash; common Styles&ndash;&gt;-->
+    <!--<link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet"/>-->
+    <!--&lt;!&ndash; common Styles&ndash;&gt;-->
+    <!--<link href="assets/css/common.css" rel="stylesheet"/>-->
+    <script src="assets/js/write_la_css.js"></script>
     <link rel="stylesheet" media="only screen and (max-width:767px)" href="assets/css/common_mobile.css">
     <link rel="shortcut icon" href="../favicon.ico">
     <style>
@@ -349,13 +350,16 @@
                                 <table class="table bordered striped centered highlight" id="gloryPointsTable">
                                     <thead>
                                     <tr>
-                                        <th><span class="i18n" name="rank">排名</span></th>
-                                        <th><span class="i18n" name="weChatNickName">微信昵称</span></th>
-                                        <th><span class="i18n" name="gloryPoints">荣耀积分</span></th>
+                                        <th><span class="i18n" name="rank"></span></th>
+                                        <th><span class="i18n" name="weChatNickName"></span></th>
+                                        <th><span class="i18n" name="gloryPoints"></span></th>
                                     </tr>
                                     </thead>
                                     <tbody id="gloryPoints"></tbody>
                                 </table>
+                                <div class="text-right">
+                                    <div id="gloryPointsRanking" class="page"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -383,39 +387,40 @@
 </div>
 <!-- JS Scripts-->
 <!-- jQuery Js -->
-<script src="assets/js/jquery-1.10.2.js"></script>
+<!--<script src="assets/js/jquery-1.10.2.js"></script>-->
 
-<!--language-->
-<script src="assets/language/jquery.i18n.properties.js"></script>
-<script src="assets/language/language.js"></script>
+<!--&lt;!&ndash;language&ndash;&gt;-->
+<!--<script src="assets/language/jquery.i18n.properties.js"></script>-->
+<!--<script src="assets/language/language.js"></script>-->
 
-<!-- Bootstrap Js -->
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/dataTables/jquery.dataTables.js"></script>
-<script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+<!--&lt;!&ndash; Bootstrap Js &ndash;&gt;-->
+<!--<script src="assets/js/bootstrap.min.js"></script>-->
+<!--<script src="assets/js/dataTables/jquery.dataTables.js"></script>-->
+<!--<script src="assets/js/dataTables/dataTables.bootstrap.js"></script>-->
 
-<script src="assets/materialize/js/materialize.min.js"></script>
+<!--<script src="assets/materialize/js/materialize.min.js"></script>-->
 
-<!-- Metis Menu Js -->
-<script src="assets/js/jquery.metisMenu.js"></script>
+<!--&lt;!&ndash; Metis Menu Js &ndash;&gt;-->
+<!--<script src="assets/js/jquery.metisMenu.js"></script>-->
 
 <!-- raphael Js -->
-<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+<!--<script src="assets/js/morris/raphael-2.1.0.min.js"></script>-->
 
 <!-- morris Js -->
-<script src="assets/js/morris/morris.js"></script>
+<!--<script src="assets/js/morris/morris.js"></script>-->
 
-<!--<script src="assets/js/chart.min.js"></script>-->
-<!-- layer Js -->
-<script src="assets/js/layer/layer.js"></script>
+<!--&lt;!&ndash;<script src="assets/js/chart.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash; layer Js &ndash;&gt;-->
+<!--<script src="assets/js/layer/layer.js"></script>-->
 
-<!-- common Js -->
-<script src="assets/js/common.js"></script>
+<!--&lt;!&ndash; common Js &ndash;&gt;-->
+<!--<script src="assets/js/common.js"></script>-->
 
-<!-- main Js -->
-<script src="assets/js/main.js"></script>
+<!--&lt;!&ndash; main Js &ndash;&gt;-->
+<!--<script src="assets/js/main.js"></script>-->
 
 <!-- chart Js -->
+<script src="assets/js/write_la_js.js"></script>
 <script src="assets/js/report.js"></script>
 </body>
 </html>

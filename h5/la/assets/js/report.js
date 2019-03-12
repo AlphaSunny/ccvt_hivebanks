@@ -22,8 +22,6 @@ $(function () {
     };
 
     //Get Asset Balance Report
-    // var sum_la_base_amount = '', sum_us_base_amount = '', sum_ba_base_amount = '', sum_ca_base_amount = '',
-    //     ba_register_count, ca_register_count, us_register_count, tr = '';
     function GetAssetsReportFun() {
         var sum_la_base_amount = '', sum_us_base_amount = '', sum_ba_base_amount = '', sum_ca_base_amount = '',
             ba_register_count, ca_register_count, us_register_count, tr = '';
@@ -229,9 +227,9 @@ $(function () {
     });
 
     //获取user ba ca每天资产变动
-    function GetAmountLineFun(day){
+    function GetAmountLineFun(day) {
         GetAmountLine(token, day, function (response) {
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 var data = response.rows;
                 LineFun(data);
             }
@@ -239,6 +237,7 @@ $(function () {
             LayerFun(response.errcode);
         });
     }
+
     GetAmountLineFun(day);
 
     /* MORRIS DONUT CHART
@@ -279,34 +278,53 @@ $(function () {
     }
 
     //荣耀积分
-    GloryPoints(token, function (response) {
-        if(response.errcode == "0"){
-            $('#gloryPointsTable').DataTable({
-                order: [[2, "desc"]],
-                destroy: true,
-                deferRender: true,
-                lengthMenu: [10, 20, 50, 70, 100],
-                searching: false,//是否显示搜索框
-                info: false,//是否显示表左下角文字
-                language: {
-                    paginate: {
-                        url: "dataTables.german.lang",
-                        first: "<<",
-                        previous: "<",
-                        next: ">",
-                        last: ">>",
-                        loadingRecords: "Please wait - loading..",
-                    }
-                },
-                data: response.rows,
-                columns: [
-                    {"data": "ranking"},
-                    {"data": "wechat"},
-                    {"data": "base_amount"}
-                ],
-            });
-        }
-    }, function (response) {
+    let limit = 10, offset = 0;
 
-    })
+    function GloryPointsFun(limit, offset) {
+        let tr = "", totalPage = "", count = "";
+        GloryPoints(token, limit, offset, function (response) {
+            ShowLoading("hide");
+            if (response.errcode == "0") {
+                let data = response.rows;
+                if(!data){
+                    GetDataEmpty('gloryPoints', '3');
+                    return;
+                }
+                let total = response.total;
+                totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+                $.each(data,function (i,val) {
+                    tr+="<tr>" +
+                        "<td>"+ data[i].ranking +"</td>" +
+                        "<td>"+ data[i].wechat +"</td>" +
+                        "<td>"+ data[i].base_amount +"</td>" +
+                        "</tr>"
+                });
+                $("#gloryPoints").html(tr);
+                $("#gloryPointsRanking").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        GloryPointsFun(limit, (current - 1) * limit);
+                        ShowLoading("show");
+                    }
+                });
+            }
+        }, function (response) {
+            ShowLoading("hide");
+            layer.msg(response.errmsg);
+        })
+    }
+
+    GloryPointsFun(limit, offset)
 });
