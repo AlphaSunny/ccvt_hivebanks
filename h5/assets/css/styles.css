@@ -86,38 +86,6 @@ body {
     cursor: pointer;
     color: forestgreen;
 }
-
-/*.float_qrImg_box:before {*/
-/*content: "";*/
-/*position: absolute;*/
-/*width: 2rem;*/
-/*height: 2rem;*/
-/*border-radius: 5px;*/
-/*left: -26%;*/
-/*top: 0;*/
-/*cursor: pointer;*/
-/*border-top-color: transparent;*/
-/*border-right-color: transparent;*/
-/*background: rgba(255, 255, 255, 0.3);*/
-/*display: none;*/
-/*}*/
-
-/*.float_qrImg_box:after {*/
-/*content: "";*/
-/*position: absolute;*/
-/*top: 6%;*/
-/*left: -20%;*/
-/*width: 1rem;*/
-/*cursor: pointer;*/
-/*height: 1rem;*/
-/*padding: 3%;*/
-/*background: transparent;*/
-/*border: 3px solid;*/
-/*transform: rotate(45deg);*/
-/*border-top-color: transparent;*/
-/*border-right-color: transparent;*/
-/*}*/
-
 .float_qrImg_box img {
     width: 100%;
 }
@@ -344,7 +312,7 @@ header {
     text-align: center;
     color: #fff;
     width: 100%;
-    background-image: url('../img/low_img/low_banner_new2.jpg');
+    background-image: url('../img/low_img/low_banner_new3.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
