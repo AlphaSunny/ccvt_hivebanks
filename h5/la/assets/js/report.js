@@ -274,7 +274,7 @@ $(function () {
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        GloryPointsFun(limit, (current - 1) * limit);
+                        GiftDetailFun(limit, (current - 1) * limit);
                         ShowLoading("show");
                     }
                 });
