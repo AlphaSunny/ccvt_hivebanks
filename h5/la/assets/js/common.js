@@ -941,10 +941,12 @@ function ModifyNews(token, title, content, author, news_id, overdue_time, suc_fu
 }
 
 //get news list
-function GetNewsList(token, suc_func, error_func) {
+function GetNewsList(token,limit, offset, suc_func, error_func) {
     var api_url = 'news_list.php',
         post_data = {
-            'token': token
+            'token': token,
+            'limit': limit,
+            'offset': offset,
         };
     CallNewsApi(api_url, post_data, suc_func, error_func);
 }

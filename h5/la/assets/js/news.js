@@ -7,9 +7,9 @@ $(function () {
 
     let limit = 50, offset = 0;
 
-    function GetNewsListFun(token, limit, offset) {
+    function GetNewsListFun(limit, offset) {
         let total = "", totalPage = "", count = "", tr = "";
-        GetNewsList(token, function (response) {
+        GetNewsList(token,limit, offset, function (response) {
             if (response.errcode == "0") {
                 $(".preloader-wrapper").removeClass("active");
                 var data = response.rows;
@@ -52,7 +52,7 @@ $(function () {
                     nextPageText: ">>",
                     callback: function (current) {
                         ShowLoading("show");
-                        GetNewsListFun(type, limit, (current - 1) * limit);
+                        GetNewsListFun(limit, (current - 1) * limit);
                     }
                 });
             }
@@ -64,7 +64,7 @@ $(function () {
         });
     }
 
-    GetNewsListFun(token, limit, offset);
+    GetNewsListFun(limit, offset);
 
 
     //delete news
