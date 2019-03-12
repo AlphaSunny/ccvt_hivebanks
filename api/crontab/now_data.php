@@ -12,6 +12,12 @@ $db = new DB_COM();
 $unit = get_la_base_unit();
 
 
+
+
+//**********************************************CA->US*******************************************//
+
+//**********************************************BA -> US*******************************************//
+
 //注册
 $sql = "select us_id,ctime from us_base WHERE 1";
 $db->query($sql);
@@ -33,6 +39,7 @@ foreach ($reg_user as $k=>$v){
 }
 //echo "注册:".count($reg_user)."<br />";
 
+
 //邀请
 $sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0";
 $db->query($sql);
@@ -46,6 +53,7 @@ foreach ($invite_rows as $k=>$v){
     $invite_rows[$k]['transfer_us_id'] = "0";
 }
 //echo "邀请:".count($invite_rows)."<br />";
+
 
 //二级邀请奖励
 $sql = "select us_id,ctime from us_base WHERE 1";
@@ -84,33 +92,6 @@ foreach ($bot_rows as $k=>$v){
 
 //echo "群聊奖励:".count($bot_rows)."<br />";
 
-
-//点赞(点踩)(ccvt兑换积分)
-$sql = "select credit_id as us_id,utime as ctime,tx_amount as send_money,tx_detail as detail,state as flag from us_glory_integral_change_log WHERE 1";
-$db->query($sql);
-$glory = $db->fetchAll();
-foreach ($glory as $k=>$v){
-    if ($v['flag']==1 && $v['detail']=="点赞"){
-        $flag = 5;
-        $type = "give_like";
-    }elseif ($v['flag']==1 && $v['detail']=="ccvt兑换积分"){
-        $flag = 8;
-        $type = "ccvt_inte";
-    }elseif ($v['flag']==2){
-        $flag = 6;
-        $type = "give_like";
-    }
-    $glory[$k]['flag'] = $flag;
-    $glory[$k]['type'] = $type;
-    $glory[$k]['transfer_type'] = "us-la";
-    $glory[$k]['transfer_us_id'] = "0";
-}
-
-//echo "点赞(点踩)(ccvt兑换积分):".count($glory)."<br />";
-
-
-
-
 //兑换码兑换
 $sql = "select us_id,amount as send_money,exchange_time as ctime from us_voucher WHERE is_effective=2 and exchange_time!=''";
 $db->query($sql);
@@ -125,6 +106,7 @@ foreach ($voucher as $k=>$v){
 }
 
 //echo "兑换码兑换:".count($voucher)."<br />";
+
 
 //ba调账(活动奖励啥的)
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=3 AND give_or_receive=2";
@@ -153,34 +135,6 @@ foreach ($scale_changes as $k=>$v){
 
 //echo "升级返还:".count($scale_changes)."<br />";
 
-//用户提现(com_transfer_request不存)
-$sql = "select us_id,base_amount as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ba_withdraw_request WHERE qa_flag=1";
-$db->query($sql);
-$us_ba_withdraw_request = $db->fetchAll();
-if ($us_ba_withdraw_request){
-    foreach ($us_ba_withdraw_request as $k=>$v){
-        $us_ba_withdraw_request[$k]['flag'] = 0;
-        $us_ba_withdraw_request[$k]['detail'] = "用户提现";
-        $us_ba_withdraw_request[$k]['type'] = "ba_out";
-        $us_ba_withdraw_request[$k]['transfer_type'] = "us-ba";
-        $us_ba_withdraw_request[$k]['transfer_us_id'] = "0";
-    }
-}
-
-//用户提现(com_transfer_request不存)
-$sql = "select us_id,(base_amount+tx_fee) as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ca_withdraw_request WHERE qa_flag=1";
-$db->query($sql);
-$us_ca_withdraw_request = $db->fetchAll();
-if ($us_ca_withdraw_request){
-    foreach ($us_ca_withdraw_request as $k=>$v){
-        $us_ca_withdraw_request[$k]['flag'] = 0;
-        $us_ca_withdraw_request[$k]['detail'] = "用户提现";
-        $us_ca_withdraw_request[$k]['type'] = "ca_out";
-        $us_ca_withdraw_request[$k]['transfer_type'] = "us-ca";
-        $us_ca_withdraw_request[$k]['transfer_us_id'] = "0";
-    }
-}
-
 //ba_in,数字货币充值(com_transfer_request不存)
 $sql = "select us_id,base_amount as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ba_recharge_request where qa_flag=1";
 $db->query($sql);
@@ -193,7 +147,8 @@ foreach ($ba_in as $k=>$v){
     $ba_in[$k]['transfer_us_id'] = "0";
 }
 
-//echo "用户提现:".count($us_ba_withdraw_request)."<br />";
+//echo "用户提现:".count($ba_in)."<br />";
+
 
 //群主返现
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=12 AND give_or_receive=2";
@@ -207,21 +162,6 @@ foreach ($group_cashback as $k=>$v){
 
 //echo "群主返现:".count($group_cashback)."<br />";
 
-//用户转账
-$sql = "select credit_id as us_id,debit_id as transfer_us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=13 AND give_or_receive=1";
-$db->query($sql);
-$us_us_transfer = $db->fetchAll();
-foreach ($us_us_transfer as $k=>$v){
-    $us_us_transfer[$k]['type'] = "us_us_transfer";
-    $us_us_transfer[$k]['transfer_type'] = "us-us";
-}
-
-//echo "用户转账:".count($us_us_transfer)."<br />";
-
-
-//用户之前转账撤回
-
-
 //踩赞返还
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=14 AND give_or_receive=2";
 $db->query($sql);
@@ -233,6 +173,7 @@ foreach ($give_like_back as $k=>$v){
 }
 
 //echo "踩赞返还:".count($give_like_back)."<br />";
+
 
 
 //锁仓(锁仓余额)
@@ -273,20 +214,109 @@ foreach ($dynamic_tuning as $k=>$v){
 
 //echo "员工动态调整:".count($dynamic_tuning)."<br />";
 
+
+
+
+//*****************************************US -> LA************************************************//
+
+//点赞(点踩)(ccvt兑换积分)
+$sql = "select credit_id as us_id,utime as ctime,tx_amount as send_money,tx_detail as detail,state as flag from us_glory_integral_change_log WHERE 1";
+$db->query($sql);
+$glory = $db->fetchAll();
+foreach ($glory as $k=>$v){
+    if ($v['flag']==1 && $v['detail']=="点赞"){
+        $flag = 5;
+        $type = "give_like";
+    }elseif ($v['flag']==1 && $v['detail']=="ccvt兑换积分"){
+        $flag = 8;
+        $type = "ccvt_inte";
+    }elseif ($v['flag']==2){
+        $flag = 6;
+        $type = "give_like";
+    }
+    $glory[$k]['flag'] = $flag;
+    $glory[$k]['type'] = $type;
+    $glory[$k]['transfer_type'] = "us-la";
+    $glory[$k]['transfer_us_id'] = "0";
+}
+
+//echo "点赞(点踩)(ccvt兑换积分):".count($glory)."<br />";
+
+
+//*****************************************US -> CA************************************************//
+
+//用户提现(com_transfer_request不存)
+$sql = "select us_id,(base_amount+tx_fee) as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ca_withdraw_request WHERE qa_flag=1";
+$db->query($sql);
+$us_ca_withdraw_request = $db->fetchAll();
+if ($us_ca_withdraw_request){
+    foreach ($us_ca_withdraw_request as $k=>$v){
+        $us_ca_withdraw_request[$k]['flag'] = 0;
+        $us_ca_withdraw_request[$k]['detail'] = "用户提现";
+        $us_ca_withdraw_request[$k]['type'] = "ca_out";
+        $us_ca_withdraw_request[$k]['transfer_type'] = "us-ca";
+        $us_ca_withdraw_request[$k]['transfer_us_id'] = "0";
+    }
+}
+
+//*****************************************US -> BA************************************************//
+
+//用户提现(com_transfer_request不存)
+$sql = "select us_id,base_amount as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ba_withdraw_request WHERE qa_flag=1";
+$db->query($sql);
+$us_ba_withdraw_request = $db->fetchAll();
+if ($us_ba_withdraw_request){
+    foreach ($us_ba_withdraw_request as $k=>$v){
+        $us_ba_withdraw_request[$k]['flag'] = 0;
+        $us_ba_withdraw_request[$k]['detail'] = "用户提现";
+        $us_ba_withdraw_request[$k]['type'] = "ba_out";
+        $us_ba_withdraw_request[$k]['transfer_type'] = "us-ba";
+        $us_ba_withdraw_request[$k]['transfer_us_id'] = "0";
+    }
+}
+
+
+
+
 //离职回收(us锁定金额给ba)
-$sql = "select credit_id as us_id,tx_amount as send_money,ctime from com_base_balance2 WHERE tx_type='gone_staff' AND debit_id='6C69520E-E454-127B-F474-452E65A3EE75'";
+$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=15 AND tx_detail='离职回收'  AND give_or_receive=1";
 $db->query($sql);
 $gone_staff = $db->fetchAll();
 foreach ($gone_staff as $k=>$v){
-    $gone_staff[$k]['flag'] = 15;
-    $gone_staff[$k]['detail'] = "离职回收";
     $gone_staff[$k]['type'] = "gone_staff";
     $gone_staff[$k]['transfer_type'] = "us-ba";
     $gone_staff[$k]['transfer_us_id'] = "0";
 }
 
-
 //echo "离职回收(us锁定金额给ba):".count($gone_staff)."<br />";
+
+
+//*****************************************US -> US************************************************//
+
+
+//用户转账
+$sql = "select credit_id as us_id,debit_id as transfer_us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=13 AND give_or_receive=1";
+$db->query($sql);
+$us_us_transfer = $db->fetchAll();
+foreach ($us_us_transfer as $k=>$v){
+    $us_us_transfer[$k]['type'] = "us_us_transfer";
+    $us_us_transfer[$k]['transfer_type'] = "us-us";
+}
+
+//echo "用户转账:".count($us_us_transfer)."<br />";
+
+
+//用户之前转账撤回
+$sql = "select credit_id as us_id,debit_id as transfer_us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=16 AND give_or_receive=1";
+$db->query($sql);
+$us_us_transfer_cancel = $db->fetchAll();
+foreach ($us_us_transfer_cancel as $k=>$v){
+    $us_us_transfer_cancel[$k]['type'] = "us_us_transfer_cancel";
+    $us_us_transfer_cancel[$k]['transfer_type'] = "us-us";
+}
+
+
+
 
 $list = array_merge(
     $reg_user,
@@ -300,12 +330,15 @@ $list = array_merge(
     $us_ba_withdraw_request,
     $group_cashback,
     $us_us_transfer,
+    $us_us_transfer_cancel,
     $give_like_back,
     $suocang,
     $big_us_interest,
     $dynamic_tuning,
     $gone_staff,
-    $withdrawal
+    $withdrawal,
+    $ba_in,
+    $us_ca_withdraw_request
 );
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
@@ -315,6 +348,7 @@ echo count($list);
 
 $ba_id = get_ba_id();
 $la_id = get_la_id();
+$ca_id = get_ca_id();
 foreach ($list as $k=>$v){
     set_time_limit(0);
     into_transfer($v['us_id'],$v['send_money'],$v['ctime'],$v['flag'],$v['detail'],$v['type'],$v['transfer_type'],$ba_id,$la_id,$v['transfer_us_id']);
@@ -843,6 +877,25 @@ function get_la_id(){
 function get_la_base_amount($la_id){
     $db = new DB_COM();
     $sql = "select base_amount from la_base WHERE id='{$la_id}'";
+    $db->query($sql);
+    $amount = $db->getField($sql,'base_amount');
+    return $amount;
+}
+
+//获取ca id
+function get_ca_id()
+{
+    $db = new DB_COM();
+    $sql = "select ca_id from ca_base limit 1";
+    $db->query($sql);
+    $id = $db->getField($sql,'ca_id');
+    return $id;
+}
+
+//获取ca余额
+function get_ca_base_amount($ca_id){
+    $db = new DB_COM();
+    $sql = "select base_amount from ca_base WHERE ca_id='{$ca_id}'";
     $db->query($sql);
     $amount = $db->getField($sql,'base_amount');
     return $amount;
