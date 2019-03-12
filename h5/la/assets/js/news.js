@@ -11,7 +11,7 @@ $(function () {
         let total = "", totalPage = "", count = "", tr = "";
         GetNewsList(token,limit, offset, function (response) {
             if (response.errcode == "0") {
-                $(".preloader-wrapper").removeClass("active");
+                ShowLoading("hide");
                 var data = response.rows;
                 if (data == null) {
                     GetDataEmpty("newsList", "4");
@@ -58,7 +58,7 @@ $(function () {
             }
 
         }, function (response) {
-            $(".preloader-wrapper").removeClass("active");
+            ShowLoading("hide");
             GetDataFail("newsList", "4");
             LayerFun(response.errcode);
         });
