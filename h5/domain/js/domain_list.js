@@ -56,7 +56,7 @@ $(function () {
 
                         "<td>🌟" + data[i].glory_number + "</td>" +
                         "<td>" + data[i].type_name + "</td>" +
-                        "<td>"+ data[i].send_amount +"</td>" +
+                        "<td data-toggle='tooltip' data-placement='bottom' title='24小时内CCVT发放数量'>"+ data[i].send_amount +"</td>" +
                         "</tr>";
                 });
                 $("#group_list").html(tr);
