@@ -152,7 +152,7 @@ foreach ($ba_in as $k=>$v){
     $ba_in[$k]['qa_flag'] = "0";
 }
 
-echo "用户提现:".count($ba_in)."<br />";
+echo "数字货币充值:".count($ba_in)."<br />";
 
 
 //群主返现
