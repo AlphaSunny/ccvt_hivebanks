@@ -11,6 +11,7 @@ $db = new DB_COM();
 
 $unit = get_la_base_unit();
 
+
 //注册
 $sql = "select us_id,ctime from us_base WHERE 1";
 $db->query($sql);
@@ -166,13 +167,26 @@ if ($us_ba_withdraw_request){
     }
 }
 
+//用户提现(com_transfer_request不存)
+$sql = "select us_id,(base_amount+tx_fee) as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ca_withdraw_request WHERE qa_flag=1";
+$db->query($sql);
+$us_ca_withdraw_request = $db->fetchAll();
+if ($us_ca_withdraw_request){
+    foreach ($us_ca_withdraw_request as $k=>$v){
+        $us_ca_withdraw_request[$k]['flag'] = 0;
+        $us_ca_withdraw_request[$k]['detail'] = "用户提现";
+        $us_ca_withdraw_request[$k]['type'] = "ca_out";
+        $us_ca_withdraw_request[$k]['transfer_type'] = "us-ca";
+        $us_ca_withdraw_request[$k]['transfer_us_id'] = "0";
+    }
+}
+
 //ba_in,数字货币充值(com_transfer_request不存)
-$sql = "select us_id,base_amount as send_money,tx_time as ctime from us_ba_recharge_request where qa_flag=1";
+$sql = "select us_id,base_amount as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ba_recharge_request where qa_flag=1";
 $db->query($sql);
 $ba_in = $db->fetchAll();
 foreach ($ba_in as $k=>$v){
     $ba_in[$k]['flag'] = '0';
-    $ba_in[$k]['ctime'] = date('Y-m-d H:i:s',$v['ctime']);
     $ba_in[$k]['detail'] = "数字货币充值";
     $ba_in[$k]['type'] = "ba_in";
     $ba_in[$k]['transfer_type'] = "ba-us";
@@ -203,6 +217,10 @@ foreach ($us_us_transfer as $k=>$v){
 }
 
 //echo "用户转账:".count($us_us_transfer)."<br />";
+
+
+//用户之前转账撤回
+
 
 //踩赞返还
 $sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=14 AND give_or_receive=2";
@@ -267,17 +285,6 @@ foreach ($gone_staff as $k=>$v){
     $gone_staff[$k]['transfer_us_id'] = "0";
 }
 
-//ca_in,ca_out
-//$sql = "select credit_id as us_id,tx_amount as send_money,ctime from com_base_balance2 WHERE tx_type='ca_out' AND debit_id='0F685EB8-1FA1-5C89-2C2A-5B2136031131'";
-//$db->query($sql);
-//$withdrawal = $db->fetchAll();
-//foreach ($withdrawal as $k=>$v){
-//    $withdrawal[$k]['flag'] = 15;
-//    $withdrawal[$k]['detail'] = "ca提现";
-//    $withdrawal[$k]['type'] = "ca_out";
-//    $withdrawal[$k]['transfer_type'] = "us-ba";
-//    $withdrawal[$k]['transfer_us_id'] = "0";
-//}
 
 //echo "离职回收(us锁定金额给ba):".count($gone_staff)."<br />";
 
