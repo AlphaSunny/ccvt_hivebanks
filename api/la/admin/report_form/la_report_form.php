@@ -147,8 +147,8 @@ $rows["sum_bit_type_withdraw_row"] = $new_rows_withdraw;
 $gift = gift_data();
 $rows['gift_row'] = $gift;
 //ba赠送明细
-$gift_detail = gift_detail();
-$rows['gift_detail'] = $gift_detail;
+//$gift_detail = gift_detail();
+//$rows['gift_detail'] = $gift_detail;
 
 //成功后返回数据
 $rtn_ary = array();

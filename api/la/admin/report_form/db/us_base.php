@@ -86,22 +86,35 @@ function gift_data(){
  * @return array
  * gift ccvt of register invite
  */
-function gift_detail(){
+function gift_detail_total(){
 
     $db = new DB_COM();
     $sql_origin = "select sum(tx_amount)/100000000 as base_amount,credit_id as id
 from com_base_balance  where tx_type in ('two_invite_send','invite_send') and debit_id = '6C69520E-E454-127B-F474-452E65A3EE75' 
-and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
-    $res_origin  = $db->query($sql_origin);
+and ctime>'2018-11-26' group by credit_id ";
+    $db->query($sql_origin);
+    $count = $db -> affectedRows();
+    return $count;
+
+}
+/**
+ * @return array
+ * gift ccvt of register invite
+ */
+function gift_detail($offset,$limit){
+
+    $db = new DB_COM();
+    $sql_origin = "select sum(tx_amount)/100000000 as base_amount,credit_id as id
+from com_base_balance  where tx_type in ('two_invite_send','invite_send') and debit_id = '6C69520E-E454-127B-F474-452E65A3EE75' 
+and ctime>'2018-11-26' group by credit_id  order by base_amount desc limit $offset,$limit;";
+    $db->query($sql_origin);
     $res_origin  = $db->fetchAll();
-//    var_dump(count($res_origin));
-//    die;
     foreach ($res_origin as $key=>$value)
     {
         $us_id = $value['id'];
 
         $sql = "select a.bind_info,a.bind_name from us_bind a   where a.us_id = '{$us_id}'";
-        $res = $db->query($sql);
+        $db->query($sql);
         $res = $db->fetchAll();
 
         foreach ($res as $k=>$v)
@@ -123,25 +136,18 @@ and ctime>'2018-11-26' group by credit_id  order by base_amount desc;";
 
         $res_origin[$key]['rank'] = $key+1;
         $sql_base = "select us_account,us_nm as invite_code from us_base where us_id='{$us_id}'";
-        $res_base = $db->query($sql_base);
+        $db->query($sql_base);
         $res_base = $db->fetchRow();
         $res_origin[$key]['us_account'] = $res_base['us_account'];
         $res_origin[$key]['base_amount'] = intval($res_origin[$key]['base_amount']);
         $res_origin[$key]['invite_code'] = $res_base['invite_code'];
         $invite_code = $res_origin[$key]['invite_code'];
         $sql_num = "select count(us_id) as count from us_base where invite_code = '{$invite_code}' and ctime>'2018-11-26'";
-        $res_num = $db->query($sql_num);
+        $db->query($sql_num);
         $res_num = $db->fetchRow();
         $res_sub_invite = (intval($res_origin[$key]['base_amount'])-($res_num['count']*50))/20;
         $res_origin[$key]['count'] = $res_num['count'];
         $res_origin[$key]['sub_count'] = $res_sub_invite;
-
-//        if(in_black_list($us_id)){
-//            $res_origin[$key]['wechat'] = 'SB';
-////            unset($res_origin[$key]);
-////            var_dump($res_origin);
-//
-//        }
 
     }
 //    var_dump(count($res_origin));
