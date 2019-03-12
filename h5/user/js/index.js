@@ -165,7 +165,7 @@ $(function () {
     });
 
     setInterval(function () {
-        $("header").css("background-image","url('asset/img/low_img/low_banner_new2.jpg')")
+        $("header").css("background-image","url('assets/img/low_img/low_banner_new2.jpg')")
     },5000)
 
 })(jQuery);
