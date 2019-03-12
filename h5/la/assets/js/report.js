@@ -256,7 +256,12 @@ $(function () {
                 }
                 $.each(data,function (i,va) {
                    tr+="<tr>" +
-                       "<td></td>" +
+                       "<td>"+ data[i].rank +"</td>" +
+                       "<td>"+ data[i].us_account +"</td>" +
+                       "<td>"+ data[i].wechat +"</td>" +
+                       "<td>"+ data[i].count +"</td>" +
+                       "<td>"+ data[i].sub_count +"</td>" +
+                       "<td>"+ data[i].base_amount +"</td>" +
                        "</tr>"
                 });
 
