@@ -114,52 +114,8 @@ $(function () {
                     '<td><span class="sum_us_withdraw_base_amount">' + IG + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
                     '<td><span class="sum_us_recharge_base_amount">' + giftRegister + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
 
-                    // '<td><span class="sum_ba_recharge_base_amount">' + NDG + '</span><span class="base_type">BTC</span></td>' +
-                    // '<td><span class="sum_ba_withdraw_base_amount">' + NDBG + '</span><span class="base_type">BTC</span></td>' +
-                    // '<td><span class="sum_ca_recharge_base_amount">' + NDAG + '</span><span class="base_type">BTC</span></td>' +
                     '</tr>';
                 $('#amount_gift').html(trGift);
-
-                //邀请排名表
-                $('#rankingTable').DataTable({
-                    order: [[4, "desc"]],
-                    destroy: true,
-                    deferRender: true,
-                    lengthMenu: [10, 20, 50, 70, 100],
-                    searching: false,//是否显示搜索框
-                    info: false,//是否显示表左下角文字
-                    language: {
-                        paginate: {
-                            url: "dataTables.german.lang",
-                            first: "<<",
-                            previous: "<",
-                            next: ">",
-                            last: ">>",
-                            loadingRecords: "Please wait - loading..",
-                        }
-                    },
-                    data: response.rows.gift_detail,
-                    columns: [
-                        {"data": "rank"},
-                        {"data": "us_account"},
-                        {
-                            "data": "wechat",
-                            render: function (data) {
-                                if (data == null) {
-                                    data = "--";
-                                    return data;
-                                } else {
-                                    data = data;
-                                    return data;
-                                }
-                            },
-                            target: 1
-                        },
-                        {"data": "count"},
-                        {"data": "sub_count"},
-                        {"data": "base_amount"}
-                    ],
-                });
 
                 //邀请排名海报
                 var data = response.rows.gift_detail;
