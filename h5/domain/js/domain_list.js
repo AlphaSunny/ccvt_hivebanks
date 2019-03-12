@@ -1,4 +1,5 @@
 $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
     function GetIndexCookie(name) {
         let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) {
