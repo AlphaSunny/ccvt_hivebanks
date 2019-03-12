@@ -25,6 +25,7 @@ $(function () {
             $('.levelNum').text(security_level);
             $('.glory_of_integral').text(data.glory_of_integral);
             $('.scale').text(data.scale);
+            SetCookie("glory_level", data.scale);
 
             if (data.wechat_qrcode) {
                 $(".upload_qr_btn").text("查看");
@@ -452,7 +453,7 @@ $(function () {
     });
 
     //修改已经绑定的
-    $(document).on("click",".look_qr_btn",function () {
+    $(document).on("click", ".look_qr_btn", function () {
         wechat_qrcode = $("#person_qr_img").attr("src");
         let price = $("#upload_qr_fee").val();
         if (price <= 0) {
