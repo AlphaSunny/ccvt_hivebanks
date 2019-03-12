@@ -30,9 +30,9 @@ $(function () {
                 $.each(data, function (i, val) {
                     tr += "<tr class='newsItem'>" +
                         "<td><a href='newsDetail.html?news_id=" + data[i].news_id + "' class='newsTitleClick'>" + data[i].title + "</a></td>" +
-                        "<td><span>" + data[i].author + "</span></td>" +
-                        "<td><span>" + data[i].utime + "</span></td>" +
-                        "<td>" +
+                        "<td class='text-center'><span>" + data[i].author + "</span></td>" +
+                        "<td class='text-center'><span>" + data[i].utime + "</span></td>" +
+                        "<td class='text-center'>" +
                         "<span class='news_id none'>" + data[i].news_id + "</span>" +
                         "<button class='btn btn-success modifyNewsBtn i18n' name='modify'>modify</button>" +
                         "<button class='btn btn-danger margin-left-2 deleteNewsBtn i18n' name='delete'>delete</button>" +
