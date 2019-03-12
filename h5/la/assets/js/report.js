@@ -262,7 +262,8 @@ $(function () {
                        "<td>"+ data[i].count +"</td>" +
                        "<td>"+ data[i].sub_count +"</td>" +
                        "<td>"+ data[i].base_amount +"</td>" +
-                       "</tr>"
+                       "</tr>";
+                    $("#ranking").html(tr);
                 });
 
                 $("#rankingPage").pagination({
