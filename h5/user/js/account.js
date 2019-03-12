@@ -42,6 +42,7 @@ $(function () {
 
             if (parseInt(scale) < 2) {
                 $(".transfer_box").remove();
+
             }
 
             // $('.userLevelNum').text(us_level);

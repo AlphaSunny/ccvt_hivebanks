@@ -7,7 +7,6 @@ $(function () {
                 let base_amount = response.rows.base_amount;
                 let scale = parseInt(response.rows.scale);
                 if (base_amount <= 0) {
-                    // $('#noBalanceModal').modal('show');
                     WarnPrompt("账户余额不足，无法进行提现");
                     return;
                 }
@@ -33,8 +32,6 @@ $(function () {
         verifyWithdraw("ba_withdraw");
     });
     $('.nav_ca_withdraw').click(function () {
-        // WarnPrompt("Ca提现功能暂未开通");
-        // return;
         verifyWithdraw("ca_withdraw");
     });
 });
