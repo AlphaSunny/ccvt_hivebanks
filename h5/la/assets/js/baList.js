@@ -59,7 +59,7 @@ $(function () {
 
     //Jump user details
     $(document).on('click', '.ba_account', function () {
-        let ba_id = $(this).siblings("ba_id").text(), ba_type = $(this).parents('tr').find('.ba_type').text();
+        let ba_id = $(this).siblings(".ba_id").text(), ba_type = $(this).parents('tr').find('.ba_type').text();
         window.location.href = 'baInfo.html?ba_id=' + ba_id + '&ba_type=' + ba_type;
     })
 });
