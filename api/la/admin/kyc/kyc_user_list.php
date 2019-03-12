@@ -43,8 +43,14 @@ $token = get_arg_str('GET', 'token', 128);
 //检查la用户
 la_user_check($token);
 
+
+// 取得分页参数
+list($limit, $offset) = get_paging_arg('GET');
+
+// 记录数组总数
+$total = kyc_user_bind_idcard_list_total();
 //获取绑定列表  name&&idNum&&idPhoto
-$data_idcard = kyc_user_bind_idcard_list();
+$data_idcard = kyc_user_bind_idcard_list($offset,$limit);
 $rows = array();
 $us_list = array();
 
@@ -53,6 +59,7 @@ $rtn_ary = array();
 if($data_idcard) {
     $rtn_ary['errcode'] = '0';
     $rtn_ary['errmsg'] = '';
+    $rtn_ary['total'] = $total;
     $rtn_ary['rows'] = $data_idcard;
     $rtn_str = json_encode($rtn_ary);
 }else{

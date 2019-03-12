@@ -166,6 +166,19 @@ if ($us_ba_withdraw_request){
     }
 }
 
+//ba_in,数字货币充值(com_transfer_request不存)
+$sql = "select us_id,base_amount as send_money,tx_time as ctime from us_ba_recharge_request where qa_flag=1";
+$db->query($sql);
+$ba_in = $db->fetchAll();
+foreach ($ba_in as $k=>$v){
+    $ba_in[$k]['flag'] = '0';
+    $ba_in[$k]['ctime'] = date('Y-m-d H:i:s',$v['ctime']);
+    $ba_in[$k]['detail'] = "数字货币充值";
+    $ba_in[$k]['type'] = "ba_in";
+    $ba_in[$k]['transfer_type'] = "ba-us";
+    $ba_in[$k]['transfer_us_id'] = "0";
+}
+
 //echo "用户提现:".count($us_ba_withdraw_request)."<br />";
 
 //群主返现
@@ -252,14 +265,6 @@ foreach ($gone_staff as $k=>$v){
     $gone_staff[$k]['type'] = "gone_staff";
     $gone_staff[$k]['transfer_type'] = "us-ba";
     $gone_staff[$k]['transfer_us_id'] = "0";
-}
-
-//ba_in,数字货币充值(com_transfer_request不存)
-$sql = "select us_id,base_amount as send_money,tx_time as ctime from us_ba_recharge_request where qa_flag=1";
-$db->query($sql);
-$ba_in = $db->fetchAll();
-foreach ($ba_in as $k=>$v){
-    $ba_in[$k]['flag'] = '0';
 }
 
 //ca_in,ca_out
