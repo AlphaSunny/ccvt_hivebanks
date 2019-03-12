@@ -23,7 +23,7 @@ function  get_search_list()
 function  get_group_list_total($search_name,$scale,$type_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT a.id FROM bot_group as a left JOIN bot_group_type as b ON a.group_type=b.id WHERE a.is_test=1 AND a.is_audit=2 AND a.is_admin_del=1";
+    $sql = "SELECT a.id FROM bot_group as a left JOIN bot_group_type as b ON a.group_type=b.id WHERE a.is_test=1 AND a.is_audit=2 AND a.is_admin_del=1  AND a.is_del=1";
     if ($search_name){
         $sql .= " and a.name like '%{$search_name}%'";
     }
@@ -46,7 +46,7 @@ function  get_group_list_total($search_name,$scale,$type_id)
 function get_group_list($offset,$limit,$search_name,$scale,$type_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT a.id,a.qr_code_address,a.name,a.scale,b.name as type_name,(select count(*) from us_bind where bind_name='group' and bind_info=a.id) as bind_count FROM bot_group as a left JOIN bot_group_type as b ON a.group_type=b.id WHERE a.is_test=1 AND a.is_audit=2 AND a.is_admin_del=1";
+    $sql = "SELECT a.id,a.qr_code_address,a.name,a.scale,b.name as type_name,(select count(*) from us_bind where bind_name='group' and bind_info=a.id) as bind_count FROM bot_group as a left JOIN bot_group_type as b ON a.group_type=b.id WHERE a.is_test=1 AND a.is_audit=2 AND a.is_admin_del=1 AND a.is_del=1";
     if ($search_name){
         $sql .= " and a.name like '%{$search_name}%'";
     }
@@ -60,8 +60,14 @@ function get_group_list($offset,$limit,$search_name,$scale,$type_id)
     $db -> query($sql);
     $row = $db -> fetchAll();
     if ($row){
+        $unit = get_la_base_unit();
         foreach ($row as $k=>$v){
             $row[$k]['glory_number'] = glory_number($v['id']);
+            //24小时内聊天奖励
+            $sql = "select sum(amount)/'$unit' as send_amount from bot_Iss_records WHERE group_id='{$v['id']}' AND send_time >=(NOW() - interval 24 hour)";
+            $db->query($sql);
+            $send_amount = $db->getField($sql,'send_amount');
+            $row[$k]['send_amount'] = $send_amount ? $send_amount : 0;
         }
     }
     return $row;
