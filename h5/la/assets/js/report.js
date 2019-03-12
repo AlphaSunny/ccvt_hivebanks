@@ -267,14 +267,14 @@ $(function () {
                 });
 
                 $("#rankingPage").pagination({
-                    currentPage: (limit + offset) / limit,
+                    currentPage: (_limit + _offset) / _limit,
                     totalPage: totalPage,
                     isShow: false,
                     count: count,
                     prevPageText: "<<",
                     nextPageText: ">>",
                     callback: function (current) {
-                        GiftDetailFun(limit, (current - 1) * limit);
+                        GiftDetailFun(_limit, (current - 1) * _limit);
                         ShowLoading("show");
                     }
                 });
