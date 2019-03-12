@@ -1,6 +1,8 @@
 <?php
 
 //ba_in,ba_out,ca_out,us_us_transfer_cancel,us_us_transfer_in,us_us_transfer_out
+$haxs = hash('sha256', '50D2910C-6C38-344F-9D30-3289F945C2A6' . 10 . '127.0.0.1' . '2019-03-12 18:20:39' . rand(1000, 9999) . microtime());
+echo $haxs;
 die('done');
 require_once "../inc/common.php";
 //require_once "/alidata/www/ccvt/api/inc/common.php";
