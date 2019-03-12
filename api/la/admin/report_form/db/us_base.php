@@ -220,16 +220,29 @@ function total_daily($day){
     }
     return $data;
 }
+/**
+ * @param
+ * @return array
+ * 荣耀积分排行
+ */
+function score_ranking_total(){
+
+    $db = new DB_COM();
+    $sql = "select a.base_amount,(SELECT wechat from us_base WHERE us_id=a.us_id) as wechat from us_asset as a WHERE a.asset_id='GLOP' ORDER BY a.base_amount DESC";
+    $db->query($sql);
+    $count = $db -> affectedRows();
+    return $count;
+}
 
 /**
  * @param
  * @return array
  * 荣耀积分排行
  */
-function score_ranking(){
+function score_ranking($offset,$limit){
 
     $db = new DB_COM();
-    $sql = "select a.base_amount,(SELECT wechat from us_base WHERE us_id=a.us_id) as wechat from us_asset as a WHERE a.asset_id='GLOP' ORDER BY a.base_amount DESC";
+    $sql = "select a.base_amount,(SELECT wechat from us_base WHERE us_id=a.us_id) as wechat from us_asset as a WHERE a.asset_id='GLOP' ORDER BY a.base_amount DESC  limit $offset,$limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;

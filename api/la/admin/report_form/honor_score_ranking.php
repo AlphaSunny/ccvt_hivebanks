@@ -30,8 +30,14 @@ $token = get_arg_str('GET', 'token', 128);
 
 la_user_check($token);
 
+
+// 取得分页参数
+list($limit, $offset) = get_paging_arg('GET');
+
+// 记录数组总数
+$total = score_ranking_total();
 //荣耀积分排行榜
-$score_ranking = score_ranking();
+$score_ranking = score_ranking($offset,$limit);
 if ($score_ranking){
     foreach ($score_ranking as $k=>$v){
         $score_ranking[$k]['ranking'] = $k+1;
@@ -43,6 +49,7 @@ if ($score_ranking){
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
+$rtn_ary['total'] = $total;
 $rtn_ary['rows'] = $score_ranking;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
