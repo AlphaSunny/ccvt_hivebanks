@@ -163,9 +163,4 @@ $(function () {
     $('#galleryModal').on('show.bs.modal', function (e) {
         $('#galleryImage').attr("src", $(e.relatedTarget).data("src"));
     });
-
-    setInterval(function () {
-        $("header").css("background-image","url('assets/img/low_img/low_banner_new3.jpg')")
-    },5000)
-
 })(jQuery);
