@@ -32,6 +32,7 @@ $(function () {
                         "<td><a href='newsDetail.html?news_id=" + data[i].news_id + "' class='newsTitleClick'>" + data[i].title + "</a></td>" +
                         "<td class='text-center'><span>" + data[i].author + "</span></td>" +
                         "<td class='text-center'><span>" + data[i].utime + "</span></td>" +
+                        // "<td class='text-center'><span>" + data[i].utime + "</span></td>" +
                         "<td class='text-center'>" +
                         "<span class='news_id none'>" + data[i].news_id + "</span>" +
                         "<button class='btn btn-success modifyNewsBtn i18n' name='modify'>modify</button>" +
