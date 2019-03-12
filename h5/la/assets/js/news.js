@@ -3,7 +3,6 @@ $(function () {
     var token = GetCookie("la_token");
 
     //get news list
-    $(".preloader-wrapper").addClass("active");
 
     let limit = 50, offset = 0;
 
