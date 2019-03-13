@@ -1,5 +1,4 @@
 .custom_card {
-    background: #fff;
     text-align: center;
     padding: 20px;
     border-radius: 10px;
@@ -8,14 +7,27 @@
     transition: all 0.3s;
 }
 
+.custom_card.to_user {
+    background: #fbad4c;
+}
+
+.custom_card.to_ba {
+    background: #59d05d;
+}
+
+.custom_card.to_ca {
+    background: #ff646d;
+}
+
 .custom_card:hover {
     background: #c9d9f1;
 }
 
 .custom_card h2 {
     margin-bottom: 10px;
+    color: #ffffff;
 }
 
 .custom_card h3 {
-    color: #99abb4;
+    color: #ffffff;
 }
