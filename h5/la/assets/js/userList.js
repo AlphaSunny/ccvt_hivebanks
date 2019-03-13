@@ -4,10 +4,11 @@ $(function () {
 
     //get user list
     let api_url = 'user_list.php', limit = 10, offset = 0, count = "";
+    let filter = "desc";
 
     function GetUserListFun(limit, offset) {
-        let totalPage = "",tr = "";
-        GetUserList(token, api_url, limit, offset, function (response) {
+        let totalPage = "", tr = "";
+        GetUserList(token, api_url, limit, offset, filter, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
                 let data = response.rows;
@@ -25,7 +26,7 @@ $(function () {
                 }
                 $.each(data, function (i, val) {
                     tr += '<tr>' +
-                        '<td><a href="javascript:;" class="to_us">' + data[i].us_account + '</a><span class="none us_id">'+ data[i].us_id +'</span></td>' +
+                        '<td><a href="javascript:;" class="to_us">' + data[i].us_account + '</a><span class="none us_id">' + data[i].us_id + '</span></td>' +
                         '<td>' + data[i].us_level + '</td>' +
                         '<td>' + data[i].security_level + '</td>' +
                         '<td>' + data[i].ctime + '</td>' +
@@ -56,8 +57,10 @@ $(function () {
 
     //资金筛选
     $("#funds_filter").change(function () {
-        let ot = $("#funds_filter").val();
-        console.log(ot);
+        filter = $("#funds_filter").val();
+        limit = 10;
+        offset = 0;
+        GetUserListFun(limit, offset);
     });
 
     //Jump user details

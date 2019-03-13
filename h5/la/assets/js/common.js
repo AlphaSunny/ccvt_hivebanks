@@ -467,11 +467,12 @@ function GetLaBaseInfo(token, suc_func, error_func) {
 }
 
 //Get the list of user/ba/ca
-function GetUserList(token, api_url, limit, offset, suc_func, error_func) {
+function GetUserList(token, api_url, limit, offset,filter, suc_func, error_func) {
     var post_data = {
         'token': token,
         'limit': limit,
-        'offset': offset
+        'offset': offset,
+        'filter': filter
     };
     CallApi(api_url, post_data, suc_func, error_func);
 }
