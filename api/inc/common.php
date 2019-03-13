@@ -1,6 +1,6 @@
 <?php
 
-//die('hold on');
+die('hold on');
 
 ini_set('date.timezone','Asia/Shanghai');
 ini_set("display_errors", "On");
