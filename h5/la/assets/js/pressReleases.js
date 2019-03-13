@@ -70,7 +70,6 @@ $(function () {
             content = $(".summernote").summernote("code"),
             overdue_time = $("#overdue_time").val().replace(/\//g,"-"),
             author = $("#author").val();
-        return;
         if (title.length <= 0) {
             LayerFun("pleaseInputNewsTitle");
             return;
