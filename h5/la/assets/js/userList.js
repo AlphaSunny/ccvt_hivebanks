@@ -54,6 +54,11 @@ $(function () {
 
     GetUserListFun(limit, offset);
 
+    //资金筛选
+    $("#funds_filter").change(function () {
+        let ot = $("#funds_filter").val();
+        console.log(ot);
+    });
 
     //Jump user details
     $(document).on('click', '.to_us', function () {
