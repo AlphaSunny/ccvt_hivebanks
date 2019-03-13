@@ -29,7 +29,7 @@ function get_us_base_info_total()
 function get_us_base_info($offset,$limit,$filter)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM us_base limit $offset,$limit order BY base_amount {$filter}";
+    $sql = "SELECT * FROM us_base limit $offset,$limit order BY base_amount $filter";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
