@@ -113,7 +113,7 @@ var execI18n = function () {
      */
     jQuery.i18n.properties({
         name: sourceName, //Resource file name
-        path: 'language/i18n/' + i18nLanguage + '/', //Resource file path
+        path: 'user/language/i18n/' + i18nLanguage + '/', //Resource file path
         mode: 'map', //Use the value in the resource file as a Map
         language: i18nLanguage,
         checkAvailableLanguages: true,
