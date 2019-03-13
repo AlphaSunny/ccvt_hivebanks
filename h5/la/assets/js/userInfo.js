@@ -197,14 +197,15 @@ $(function () {
 
                 $.each(data, function (i, val) {
                     tr += "<tr>" +
-                        "<td>" + data[i].time + "</td>" +
-                        "<td>" + data[i].time + "</td>" +
-                        "<td>" + data[i].time + "</td>" +
-                        "<td>" + data[i].time + "</td>" +
+                        "<td>" + data[i].ctime + "</td>" +
+                        "<td>" + data[i].tx_amount + "</td>" +
+                        "<td>" + data[i].credit_balance + "</td>" +
+                        "<td><span class='i18n' name='" + data[i].tx_type + "'></span></td>" +
                         "</tr>"
                 });
-
                 $("#capitalChangeList").html(tr);
+                execI18n();
+
                 $("#pagination").pagination({
                     currentPage: (limit + offset) / limit,
                     totalPage: totalPage,
