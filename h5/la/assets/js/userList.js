@@ -61,6 +61,7 @@ $(function () {
         limit = 10;
         offset = 0;
         GetUserListFun(limit, offset);
+        ShowLoading("show");
     });
 
     //Jump user details
