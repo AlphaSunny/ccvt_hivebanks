@@ -1217,6 +1217,14 @@ tr {
     cursor: pointer;
 }
 
+.custom_card{
+    background: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+}
+
 @media (max-width: 768px) {
 
     .navbar-header {
