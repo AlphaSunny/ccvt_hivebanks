@@ -3,6 +3,7 @@ $(function () {
     //获取用户 ba ca注册人数
     GetAssetsReport(token, function (response) {
         if (response.errcode == '0') {
+            let data = response.rows;
             let ba_register_count = data.ba_register_count;
             let ca_register_count = data.ca_register_count;
             let us_register_count = data.us_register_count;
