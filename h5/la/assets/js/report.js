@@ -213,8 +213,6 @@ $(function () {
     }
 
     //折线图
-    // var user = 2000, ba = 3000, ca = 4000;
-    //     var dataChart = [{ y: '2018', u: user,  b: ba, c: ca}];
     function LineFun(data) {
         Morris.Line({
             element: 'morris-line-chart',

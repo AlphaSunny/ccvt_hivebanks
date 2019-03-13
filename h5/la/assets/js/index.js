@@ -1,7 +1,7 @@
 $(function () {
-    var token = GetCookie('la_token');
+    let token = GetCookie('la_token');
     //获取每天用户增长趋势图
-    var day = "7", user_data = "";
+    let day = "7", user_data = "";
 
     function GetDayUserFun(day) {
         GetDayUserUp(token, day, function (response) {
@@ -49,4 +49,38 @@ $(function () {
         day = 30;
         GetDayUserFun(day);
     });
+
+    //资产变动
+    //获取user ba ca每天资产变动
+    function GetAmountLineFun(day) {
+        GetAmountLine(token, day, function (response) {
+            if (response.errcode == "0") {
+                var data = response.rows;
+                LineFun(data);
+            }
+        }, function (response) {
+            LayerFun(response.errcode);
+        });
+    }
+
+    GetAmountLineFun(day);
+
+    //折线图
+    function LineFun(data) {
+        Morris.Line({
+            element: 'morris-line-chart',
+            data: data,
+            xkey: 'day',
+            ykeys: ['us_sum', 'ba_rest', 'ca_rest'],
+            labels: ['User 资产', 'Ba 资产', 'Ca 资产'],
+            fillOpacity: 0.6,
+            hideHover: 'auto',
+            smooth: true,
+            behaveLikeLine: true,
+            resize: true,
+            pointFillColors: ['#ffffff'],
+            pointStrokeColors: ['black'],
+            lineColors: ['green', 'red', 'blue']
+        });
+    }
 });
