@@ -22,7 +22,7 @@ $(function () {
                     count = 6;
                 }
                 if (data == false) {
-                    GetDataEmpty('userList', '4');
+                    GetDataEmpty('userList', '5');
                 }
                 $.each(data, function (i, val) {
                     tr += '<tr>' +
@@ -49,7 +49,7 @@ $(function () {
             }
         }, function (response) {
             ShowLoading("hide");
-            GetDataFail('userList', '4');
+            GetDataFail('userList', '5');
             LayerFun(response.errcode);
         });
     }
