@@ -6,6 +6,9 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
     cursor: pointer;
 }
+.custom_card:hover{
+    background: #c9d9f1;
+}
 .custom_card h2{
     margin-bottom: 10px;
 }
