@@ -1,4 +1,5 @@
 $(function () {
+    var token = GetCookie('la_token');
     //获取每天用户增长趋势图
     var day = "7", user_data = "";
 
