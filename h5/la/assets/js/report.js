@@ -23,7 +23,8 @@ $(function () {
 
     //Get Asset Balance Report
     function GetAssetsReportFun() {
-        var sum_la_base_amount = '', sum_us_base_amount = '', sum_ba_base_amount = '', sum_ca_base_amount = '',
+        var sum_total_base_amount = "", sum_la_base_amount = '', sum_us_base_amount = '', sum_ba_base_amount = '',
+            sum_ca_base_amount = '',
             ba_register_count, ca_register_count, us_register_count, tr = '';
         GetAssetsReport(token, function (response) {
             if (response.errcode == '0') {
@@ -31,7 +32,8 @@ $(function () {
                 sum_us_base_amount = data.sum_us_base_amount + data.sum_us_lock_amount;
                 sum_ba_base_amount = data.sum_ba_base_amount;
                 sum_ca_base_amount = data.sum_ca_base_amount;
-                sum_la_base_amount = Number(sum_us_base_amount) + Number(sum_ba_base_amount) + Number(sum_ca_base_amount);
+                sum_la_base_amount = data.sum_la_base_amount;
+                sum_total_base_amount = Number(sum_us_base_amount) + Number(sum_ba_base_amount) + Number(sum_ca_base_amount) + Number(sum_la_base_amount);
                 ba_register_count = data.ba_register_count;
                 ca_register_count = data.ca_register_count;
                 us_register_count = data.us_register_count;
@@ -47,6 +49,9 @@ $(function () {
                 if (sum_la_base_amount == null) {
                     sum_la_base_amount = 0;
                 }
+                if (sum_total_base_amount == null) {
+                    sum_total_base_amount = 0;
+                }
                 if (ba_register_count == 0) {
                     ba_register_count = 0;
                 }
@@ -57,10 +62,11 @@ $(function () {
                     us_register_count = 0;
                 }
                 tr += '<tr>' +
+                    '<td><span class="sum_total_base_amount">' + sum_total_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
                     '<td><span class="sum_la_base_amount">' + sum_la_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
-                    '<td><span class="sum_la_base_amount">' + sum_us_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
-                    '<td><span class="sum_la_base_amount">' + sum_ba_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
-                    '<td><span class="sum_la_base_amount">' + sum_ca_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_us_base_amount">' + sum_us_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_ba_base_amount">' + sum_ba_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
+                    '<td><span class="sum_ca_base_amount">' + sum_ca_base_amount + '</span><span class="base_type">' + benchmark_type + '</span></td>' +
                     '</tr>';
                 $('#amount_report').html(tr);
                 var trInfo = '';
@@ -228,14 +234,15 @@ $(function () {
     }
 
     //邀请排名
-    let _limit = 10,_offset = 0;
-    function GiftDetailFun(_limit,_offset){
-        let tr = "",totalPage = "", count = "";
-        GiftDetail(token,_limit,_offset,function (response) {
+    let _limit = 10, _offset = 0;
+
+    function GiftDetailFun(_limit, _offset) {
+        let tr = "", totalPage = "", count = "";
+        GiftDetail(token, _limit, _offset, function (response) {
             ShowLoading("hide");
-            if(response.errcode == "0"){
+            if (response.errcode == "0") {
                 let data = response.rows;
-                if(!data){
+                if (!data) {
                     GetDataEmpty('ranking', '6');
                     return;
                 }
@@ -248,15 +255,15 @@ $(function () {
                 } else {
                     count = 6;
                 }
-                $.each(data,function (i,va) {
-                   tr+="<tr>" +
-                       "<td>"+ data[i].rank +"</td>" +
-                       "<td>"+ data[i].us_account +"</td>" +
-                       "<td>"+ data[i].wechat +"</td>" +
-                       "<td>"+ data[i].count +"</td>" +
-                       "<td>"+ data[i].sub_count +"</td>" +
-                       "<td>"+ data[i].base_amount +"</td>" +
-                       "</tr>";
+                $.each(data, function (i, va) {
+                    tr += "<tr>" +
+                        "<td>" + data[i].rank + "</td>" +
+                        "<td>" + data[i].us_account + "</td>" +
+                        "<td>" + data[i].wechat + "</td>" +
+                        "<td>" + data[i].count + "</td>" +
+                        "<td>" + data[i].sub_count + "</td>" +
+                        "<td>" + data[i].base_amount + "</td>" +
+                        "</tr>";
                     $("#ranking").html(tr);
                 });
 
@@ -273,12 +280,13 @@ $(function () {
                     }
                 });
             }
-        },function (response) {
+        }, function (response) {
             ShowLoading("hide");
             layer.msg(response.errmsg);
         });
     }
-    GiftDetailFun(_limit,_offset);
+
+    GiftDetailFun(_limit, _offset);
 
     //荣耀积分
     let limit = 10, offset = 0;
@@ -289,7 +297,7 @@ $(function () {
             ShowLoading("hide");
             if (response.errcode == "0") {
                 let data = response.rows;
-                if(!data){
+                if (!data) {
                     GetDataEmpty('gloryPoints', '3');
                     return;
                 }
@@ -302,11 +310,11 @@ $(function () {
                 } else {
                     count = 6;
                 }
-                $.each(data,function (i,val) {
-                    tr+="<tr>" +
-                        "<td>"+ data[i].ranking +"</td>" +
-                        "<td>"+ data[i].wechat +"</td>" +
-                        "<td>"+ data[i].base_amount +"</td>" +
+                $.each(data, function (i, val) {
+                    tr += "<tr>" +
+                        "<td>" + data[i].ranking + "</td>" +
+                        "<td>" + data[i].wechat + "</td>" +
+                        "<td>" + data[i].base_amount + "</td>" +
                         "</tr>"
                 });
                 $("#gloryPoints").html(tr);
