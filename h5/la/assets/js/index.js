@@ -1,5 +1,25 @@
 $(function () {
     let token = GetCookie('la_token');
+    //获取用户 ba ca注册人数
+    GetAssetsReport(token, function (response) {
+        if (response.errcode == '0') {
+            let ba_register_count = data.ba_register_count;
+            let ca_register_count = data.ca_register_count;
+            let us_register_count = data.us_register_count;
+            if (ba_register_count == 0) {
+                ba_register_count = 0;
+            }
+            if (ca_register_count == 0) {
+                ca_register_count = 0;
+            }
+            if (us_register_count == 0) {
+                us_register_count = 0;
+            }
+            $(".us_register_count").text(us_register_count);
+            $(".ba_register_count").text(ba_register_count);
+            $(".ca_register_count").text(ca_register_count);
+        }
+    });
     //获取每天用户增长趋势图
     let day = "7", user_data = "";
 
