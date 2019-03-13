@@ -140,11 +140,12 @@ foreach ($scale_changes as $k=>$v){
 //echo "升级返还:".count($scale_changes)."<br />";
 
 //ba_in,数字货币充值(com_transfer_request不存)
-$sql = "select us_id,base_amount as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ba_recharge_request where qa_flag=1";
+$sql = "select us_id,base_amount as send_money,tx_time as ctime from us_ba_recharge_request where qa_flag=1";
 $db->query($sql);
 $ba_in = $db->fetchAll();
 foreach ($ba_in as $k=>$v){
     $ba_in[$k]['flag'] = '0';
+    $ba_in[$k]['ctime'] = date('Y-m-d H:i:s',$v['ctime']);
     $ba_in[$k]['detail'] = "数字货币充值";
     $ba_in[$k]['type'] = "ba_in";
     $ba_in[$k]['transfer_type'] = "ba-us";
@@ -258,12 +259,13 @@ foreach ($glory as $k=>$v){
 //*****************************************US -> CA************************************************//
 
 //用户提现(com_transfer_request不存)
-$sql = "select us_id,(base_amount+tx_fee) as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ca_withdraw_request WHERE qa_flag=1";
+$sql = "select us_id,(base_amount+tx_fee) as send_money,tx_time as ctime from us_ca_withdraw_request WHERE qa_flag=1";
 $db->query($sql);
 $us_ca_withdraw_request = $db->fetchAll();
 if ($us_ca_withdraw_request){
     foreach ($us_ca_withdraw_request as $k=>$v){
         $us_ca_withdraw_request[$k]['flag'] = 0;
+        $us_ca_withdraw_request[$k]['ctime'] = date('Y-m-d H:i:s',$v['ctime']);
         $us_ca_withdraw_request[$k]['detail'] = "用户提现";
         $us_ca_withdraw_request[$k]['type'] = "ca_out";
         $us_ca_withdraw_request[$k]['transfer_type'] = "us-ca";
@@ -277,12 +279,13 @@ if ($us_ca_withdraw_request){
 //*****************************************US -> BA************************************************//
 
 //用户提现(com_transfer_request不存)
-$sql = "select us_id,base_amount as send_money,FROM_UNIXTIME(tx_time,'%Y-%m-%d %H:%i:%s') as ctime from us_ba_withdraw_request WHERE qa_flag=1";
+$sql = "select us_id,base_amount as send_money,tx_time as ctime from us_ba_withdraw_request WHERE qa_flag=1";
 $db->query($sql);
 $us_ba_withdraw_request = $db->fetchAll();
 if ($us_ba_withdraw_request){
     foreach ($us_ba_withdraw_request as $k=>$v){
         $us_ba_withdraw_request[$k]['flag'] = 0;
+        $us_ba_withdraw_request[$k]['ctime'] = date('Y-m-d H:i:s',$v['ctime']);
         $us_ba_withdraw_request[$k]['detail'] = "用户提现";
         $us_ba_withdraw_request[$k]['type'] = "ba_out";
         $us_ba_withdraw_request[$k]['transfer_type'] = "us-ba";
