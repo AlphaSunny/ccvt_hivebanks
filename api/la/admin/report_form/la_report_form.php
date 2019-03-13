@@ -4,6 +4,7 @@ require_once "../../../inc/common.php";
 require_once "db/us_base.php";
 require_once "db/ba_base.php";
 require_once "db/ca_base.php";
+require_once "db/la_base.php";
 require_once "db/us_ba_recharge_request.php";
 require_once "db/us_ba_withdraw_request.php";
 require_once "db/us_ca_withdraw_request.php";
@@ -70,6 +71,11 @@ $rows["sum_ba_lock_amount"] =  $row['sum(lock_amount)'] / $unit;
 $row = get_ca_sum_amout_info();
 $rows["sum_ca_base_amount"] =  $row['sum(base_amount)'] / $unit;
 $rows["sum_ca_lock_amount"] =  $row['sum(lock_amount)'] / $unit;
+
+//la的总账
+$row = get_la_sum_amout_info();
+$rows["sum_la_base_amount"] =  $row['sum(base_amount)'] / $unit;
+$rows["sum_la_lock_amount"] =  0;
 
 
 $rows["sum_ba_recharge_base_amount"] = get_ba_sum_us_ba_recharge_request_info($begin_limit_time,$end_limit_time)["sum(base_amount)"] / $unit;
