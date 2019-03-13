@@ -360,9 +360,9 @@ $list = array_merge(
 );
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
-print_r(json_encode($list));
-die;
-echo count($list);
+//print_r(json_encode($list));
+//die;
+//echo count($list);
 
 
 $ba_id = get_ba_id();
@@ -448,7 +448,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
 
             //用户加钱
             $sql = "update us_base set";
-            if ($qa_flag==2 || $qa_flag==1) {
+            if ($qa_flag==2 && $qa_flag==1) {
                 $sql .= " base_amount=base_amount+'{$send_money}'";
             }else{
                 $sql .= " lock_amount=lock_amount+'{$send_money}'";
@@ -599,7 +599,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     $com_balance_us['prvs_hash'] = $prvs_hash===0 ? hash('md5',$credit_id) : $prvs_hash;
     $com_balance_us["credit_id"] = $credit_id;
     $com_balance_us["debit_id"] = $debit_id;
-    $com_balance_us["tx_type"] = $type=='us_us_transfer' ? $type."_out" : $type;
+    $com_balance_us["tx_type"] = $type=="us_us_transfer" ? $type."_out" : $type;
     $com_balance_us["tx_amount"] = -$send_money;
     $com_balance_us["credit_balance"] = $transfer_credit_balance;
     $com_balance_us["utime"] = strtotime($time);
@@ -617,7 +617,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     $com_balance_ba['prvs_hash'] = $prvs_hash===0 ? hash('md5',$debit_id) : $prvs_hash;
     $com_balance_ba["credit_id"] = $debit_id;
     $com_balance_ba["debit_id"] = $credit_id;
-    $com_balance_ba["tx_type"] = $type=='us_us_transfer' ? $type."_in" : $type;
+    $com_balance_ba["tx_type"] = $type=="us_us_transfer" ? $type."_in" : $type;
     $com_balance_ba["tx_amount"] = $send_money;
     $com_balance_ba["credit_balance"] = $dat_credit_balance;
     $com_balance_ba["utime"] = strtotime($time);
