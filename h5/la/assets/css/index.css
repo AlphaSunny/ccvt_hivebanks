@@ -7,7 +7,7 @@
     transition: all 0.3s;
 }
 
-.custom_card:not(.custom_card:last-child) {
+.custom_card:not(:last-child) {
     margin-bottom: 10px;
 }
 
