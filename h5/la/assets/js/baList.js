@@ -4,9 +4,11 @@ $(function () {
 
     //get ba list
     let api_url = 'ba_list.php', limit = 10, offset = 0;
-    function GetUserListFun (limit, offset){
+    let filter = "desc";
+
+    function GetUserListFun(limit, offset) {
         let totalPage = "", count = "", tr = "";
-        GetUserList(token, api_url, limit, offset, function (response) {
+        GetUserList(token, api_url, limit, offset, filter, function (response) {
             if (response.errcode == '0') {
                 let data = response.rows;
                 if (data == false) {
@@ -55,6 +57,7 @@ $(function () {
             return;
         });
     }
+
     GetUserListFun(limit, offset);
 
     //Jump user details
