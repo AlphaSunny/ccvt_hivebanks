@@ -1,19 +1,21 @@
-/*.register_row{*/
-    /*padding-left: 15px;*/
-    /*padding-right: 15px;*/
-/*}*/
 .custom_card {
     text-align: center;
-    padding: 20px;
+    padding: 5px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
     cursor: pointer;
     transition: all 0.3s;
 }
-.custom_card i{
+
+.custom_card:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.custom_card i {
     font-size: 4rem;
     color: #fff;
 }
+
 .custom_card.to_user {
     background: #fbad4c;
 }
