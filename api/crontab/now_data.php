@@ -315,8 +315,7 @@ foreach ($gone_staff as $k=>$v){
 
 
 //用户转账
-//$sql = "select us_id,transfer_id as transfer_us_id,tx_amount as send_money,tx_time as ctime,qa_flag from us_us_transfer_request WHERE qa_flag in (0,1)";
-$sql = "select us_id,transfer_id as transfer_us_id,tx_amount as send_money,tx_time as ctime,qa_flag from us_us_transfer_request";
+$sql = "select us_id,transfer_id as transfer_us_id,tx_amount as send_money,tx_time as ctime,qa_flag from us_us_transfer_request WHERE qa_flag in (0,1)";
 $db->query($sql);
 $us_us_transfer = $db->fetchAll();
 foreach ($us_us_transfer as $k=>$v){
@@ -328,16 +327,15 @@ foreach ($us_us_transfer as $k=>$v){
 
 //echo "用户转账:".count($us_us_transfer)."<br />";
 
-$sql = "select us_id as transfer_us_id,transfer_id as us_id,tx_amount as send_money,tx_time as ctime,qa_flag from us_us_transfer_request WHERE qa_flag=2";
-$db->query($sql);
-$us_us_transfer_cancel = $db->fetchAll();
-foreach ($us_us_transfer_cancel as $k=>$v){
-    $us_us_transfer_cancel[$k]['qa_flag'] = 3;
-    $us_us_transfer_cancel[$k]['flag'] = 16;
-    $us_us_transfer_cancel[$k]['detail'] = "转账撤回";
-    $us_us_transfer_cancel[$k]['type'] = "us_us_transfer_cancel";
-    $us_us_transfer_cancel[$k]['transfer_type'] = "us-us";
-}
+//$sql = "select us_id as transfer_us_id,transfer_id as us_id,tx_amount as send_money,tx_time as ctime,qa_flag from us_us_transfer_request WHERE qa_flag=2";
+//$db->query($sql);
+//$us_us_transfer_cancel = $db->fetchAll();
+//foreach ($us_us_transfer_cancel as $k=>$v){
+//    $us_us_transfer_cancel[$k]['flag'] = 16;
+//    $us_us_transfer_cancel[$k]['detail'] = "转账撤回";
+//    $us_us_transfer_cancel[$k]['type'] = "us_us_transfer_cancel";
+//    $us_us_transfer_cancel[$k]['transfer_type'] = "us-us";
+//}
 
 //echo "转账撤回:".count($us_us_transfer_cancel)."<br />";
 
@@ -354,7 +352,7 @@ $list = array_merge(
     $us_ba_withdraw_request,
     $group_cashback,
     $us_us_transfer,
-    $us_us_transfer_cancel,
+    //$us_us_transfer_cancel,
     $give_like_back,
     $suocang,
     $big_us_interest,
@@ -439,11 +437,11 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         case "us-us":
             //用户减钱
             $sql = "update us_base set";
-            if ($qa_flag==3) {
-                $sql .= " lock_amount=lock_amount-'{$send_money}'";
-            }else{
-                $sql .= " base_amount=base_amount-'{$send_money}'";
-            }
+//            if ($qa_flag==2) {
+//                $sql .= " lock_amount=lock_amount-'{$send_money}'";
+//            }else{
+            $sql .= " base_amount=base_amount-'{$send_money}'";
+//            }
             $sql .= " WHERE us_id='{$us_id}'";
             echo $sql."1"."<br />";
             $db -> query($sql);
@@ -453,7 +451,10 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
 
             //用户加钱
             $sql = "update us_base set";
-            if ($qa_flag>0) {
+//            if ($qa_flag==2) {
+//                $sql .= " base_amount=base_amount+'{$send_money}'";
+//            }else
+            if ($qa_flag==1){
                 $sql .= " base_amount=base_amount+'{$send_money}'";
             }else{
                 $sql .= " lock_amount=lock_amount+'{$send_money}'";
