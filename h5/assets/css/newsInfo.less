@@ -1,101 +1,114 @@
 .leftNewsTitle.activeNews, .leftNewsTitle:hover {
-    background: #021f4e;
-    color: #fff;
+  background: #021f4e;
+  color: #fff;
 }
 
 .newsInfo_nav {
-    max-height: 20rem;
-    overflow: auto;
-    background: #eeeeee;
+  max-height: 20rem;
+  overflow: auto;
+  background: #eeeeee;
 }
 
 .leftNewsTitle {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    padding: 3%;
-    border-radius: 5px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    font-weight: 400;
-    border-bottom: 1px dashed #9e9e9e;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 3%;
+  border-radius: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 400;
+  border-bottom: 1px dashed #9e9e9e;
 }
 
 h1.title {
-    font-size: 32px;
+  font-size: 32px;
 }
 
 .contentInfo_text {
-    font-size: 15px;
-    line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .newsInfo_content {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
 .contentInfo_time {
-    color: #4f6d8c;
+  color: #4f6d8c;
 }
 
 .newsInfo_row {
-    border-top: 1px solid #eeeeee;
-    padding-top: 2%;
+  border-top: 1px solid #eeeeee;
+  padding-top: 2%;
 }
 
 .accountNone {
-    display: none !important;
+  display: none !important;
 }
 
 @media screen and (max-width: 768px) {
-    .leftNewsTitle {
-        padding: 2%;
-    }
+  .leftNewsTitle {
+    padding: 2%;
+  }
 }
 
-/*footer*/
+//nav
+.navbar-default {
+  height: 64px !important;
+}
+
+//footer
 a {
+  text-decoration: none;
+
+  &:hover {
     text-decoration: none;
-&:hover {
-     text-decoration: none;
- }
+  }
 }
 
 .footer {
-    padding: 40px 0;
-    background: hsla(0, 0%, 85%, .3);
-.logo_img {
+  padding: 40px 0;
+  background: hsla(0, 0%, 85%, .3);
+
+  .logo_img {
     width: 16%;
-}
-.footer_text {
+  }
+
+  .footer_text {
     margin: 16px 0;
-}
-.icon_box {
-a:extend(a all){};
-}
-i {
+  }
+
+  .icon_box {
+    a:extend(a all) {
+    }
+  ;
+  }
+
+  i {
     font-size: 26px;
-}
-.footer_title {
+  }
+
+  .footer_title {
     margin-bottom: 16px;
     color: #999999;
-}
+  }
 }
 
 .footer_bottom {
-    padding-top: 32px;
-    margin-top: 32px;
-    border-top: 1px solid #d9d9d9;
+  padding-top: 32px;
+  margin-top: 32px;
+  border-top: 1px solid #d9d9d9;
 }
 
 ul, p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 li {
-    list-style: none;
-    line-height: 26px;
+  list-style: none;
+  line-height: 26px;
 }
