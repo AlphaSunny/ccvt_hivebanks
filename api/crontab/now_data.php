@@ -448,7 +448,9 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
 
             //用户加钱
             $sql = "update us_base set";
-            if ($qa_flag==2 && $qa_flag==1) {
+            if ($qa_flag==2) {
+                $sql .= " base_amount=base_amount+'{$send_money}'";
+            }elseif ($qa_flag==1){
                 $sql .= " base_amount=base_amount+'{$send_money}'";
             }else{
                 $sql .= " lock_amount=lock_amount+'{$send_money}'";
