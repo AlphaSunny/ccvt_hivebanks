@@ -1,0 +1,13 @@
+.custom_card{
+    background: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+}
+.custom_card h2{
+    margin-bottom: 10px;
+}
+.custom_card h3{
+    color: #99abb4;
+}
