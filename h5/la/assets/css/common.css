@@ -112,6 +112,10 @@ label {
     font-size: 14px;
 }
 
+.nav_logo {
+    height: 100% !important;
+}
+
 .top-navbar {
     position: fixed;
     width: 100%;
