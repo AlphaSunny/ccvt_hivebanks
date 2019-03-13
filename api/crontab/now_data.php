@@ -39,7 +39,7 @@ foreach ($reg_user as $k=>$v){
 
 
 //邀请
-$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0 AND a.us_id='28EBFAE0-C750-C811-E6E0-6B89DFAA2A53'";
+$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0 AND b.us_id='28EBFAE0-C750-C811-E6E0-6B89DFAA2A53'";
 $db->query($sql);
 $invite_rows = $db->fetchAll();
 foreach ($invite_rows as $k=>$v){
@@ -363,8 +363,8 @@ $list = array_merge(
 );
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
-//print_r(json_encode($list));
-//die;
+print_r(json_encode($list));
+die;
 //echo count($list);
 
 
