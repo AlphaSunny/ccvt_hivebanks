@@ -517,9 +517,6 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             $debit_id = $us_id;
             $transfer_credit_balance = get_ba_base_amount($credit_id);
             $dat_credit_balance = get_us_base_amount($debit_id);
-            echo $debit_id."<br />";
-            echo $send_money."<br />";
-            echo $dat_credit_balance;die;
             break;
         case "us-la":
             $credit_id = $us_id;
@@ -593,7 +590,6 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $dat['tx_count'] = transfer_get_pre_count($debit_id);
 
         $sql = $db->sqlInsert("com_transfer_request", $dat);
-        echo $sql;die;
         $id = $db->query($sql);
         if (!$id){
             echo $us_id."转账记录表1错误";
