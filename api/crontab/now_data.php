@@ -315,7 +315,7 @@ foreach ($gone_staff as $k=>$v){
 
 
 //用户转账
-$sql = "select us_id,transfer_id as transfer_us_id,tx_amount as send_money,tx_time as ctime,qa_flag from us_us_transfer_request WHERE qa_flag in (0,1) AND us_id='28EBFAE0-C750-C811-E6E0-6B89DFAA2A53'";
+$sql = "select us_id,transfer_id as transfer_us_id,tx_amount as send_money,tx_time as ctime,qa_flag from us_us_transfer_request WHERE qa_flag in (0,1) AND transfer_id='28EBFAE0-C750-C811-E6E0-6B89DFAA2A53'";
 $db->query($sql);
 $us_us_transfer = $db->fetchAll();
 foreach ($us_us_transfer as $k=>$v){
