@@ -41,12 +41,11 @@ $(function () {
         lang: 'zh-CN',
         focus: true,
         callbacks: {
-            onImageUpload: function (files, editor, $editable) {
+            onImageUpload: function (files) {
                 var formData = new FormData();
                 formData.append('file', files[0]);
                 formData.append('key_code', key_code);
                 $.ajax({
-                    // url: 'http://agent_service.fnying.com/upload_file/upload.php',
                     url: url + '/api/plugin/upload_file.php',
                     type: 'POST',
                     data: formData,

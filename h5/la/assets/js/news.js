@@ -2,13 +2,11 @@ $(function () {
     //get token
     var token = GetCookie("la_token");
 
-    //get news list
-
     let limit = 50, offset = 0;
 
     function GetNewsListFun(limit, offset) {
         let total = "", totalPage = "", count = "", tr = "";
-        GetNewsList(token,limit, offset, function (response) {
+        GetNewsList(token, limit, offset, function (response) {
             if (response.errcode == "0") {
                 ShowLoading("hide");
                 var data = response.rows;
