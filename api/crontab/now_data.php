@@ -322,6 +322,7 @@ foreach ($us_us_transfer as $k=>$v){
     $us_us_transfer[$k]['transfer_type'] = "us-us";
 }
 
+print_r($us_us_transfer);die;
 
 echo "用户转账:".count($us_us_transfer)."<br />";
 
