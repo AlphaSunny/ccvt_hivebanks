@@ -117,10 +117,7 @@ $(function () {
                     '</tr>';
                 $('#amount_gift').html(trGift);
 
-                //邀请排名海报
-                var data = response.rows.gift_detail;
-
-                DonutFun(us_register_count, ba_register_count, ca_register_count);
+                // DonutFun(us_register_count, ba_register_count, ca_register_count);
 
             }
         }, function (response) {
@@ -133,84 +130,83 @@ $(function () {
     // setInterval(GetAssetsReportFun, 5000);
 
     //获取每天用户增长趋势图
-    var day = "7", user_data = "";
+    // var day = "7", user_data = "";
 
-    function GetDayUserFun(day) {
-        GetDayUserUp(token, day, function (response) {
-            if (response.errcode == "0") {
-                user_data = response.rows;
-                //用户增长趋势图
-                Morris.Line({
-                    element: 'user-line-chart',
-                    data: response.rows,
-                    xkey: "date",
-                    ykeys: ["num"],
-                    labels: ['注册数'],
-                    xLabels: "day",
-                    fillOpacity: 0.6,
-                    hideHover: 'auto',
-                    smooth: true,// 是否平滑显示
-                    parseTime: false,
-                    behaveLikeLine: true,
-                    resize: true,
-                    pointFillColors: ['#ffffff'],
-                    pointStrokeColors: ['black'],
-                    lineColors: ['green']
-                });
-            }
-        }, function (response) {
-            LayerFun(response.errcode);
-        });
-    }
+    // function GetDayUserFun(day) {
+    //     GetDayUserUp(token, day, function (response) {
+    //         if (response.errcode == "0") {
+    //             user_data = response.rows;
+    //             //用户增长趋势图
+    //             Morris.Line({
+    //                 element: 'user-line-chart',
+    //                 data: response.rows,
+    //                 xkey: "date",
+    //                 ykeys: ["num"],
+    //                 labels: ['注册数'],
+    //                 xLabels: "day",
+    //                 fillOpacity: 0.6,
+    //                 hideHover: 'auto',
+    //                 smooth: true,// 是否平滑显示
+    //                 parseTime: false,
+    //                 behaveLikeLine: true,
+    //                 resize: true,
+    //                 pointFillColors: ['#ffffff'],
+    //                 pointStrokeColors: ['black'],
+    //                 lineColors: ['green']
+    //             });
+    //         }
+    //     }, function (response) {
+    //         LayerFun(response.errcode);
+    //     });
+    // }
+    // GetDayUserFun(day);
 
-    GetDayUserFun(day);
-
-    $(".day_7").click(function () {
-        $("#user-line-chart").empty();
-        day = 7;
-        GetDayUserFun(day);
-    });
-
-    $(".day_15").click(function () {
-        $("#user-line-chart").empty();
-        day = 15;
-        GetDayUserFun(day);
-    });
-    $(".day_30").click(function () {
-        $("#user-line-chart").empty();
-        day = 30;
-        GetDayUserFun(day);
-    });
+    // $(".day_7").click(function () {
+    //     $("#user-line-chart").empty();
+    //     day = 7;
+    //     GetDayUserFun(day);
+    // });
+    //
+    // $(".day_15").click(function () {
+    //     $("#user-line-chart").empty();
+    //     day = 15;
+    //     GetDayUserFun(day);
+    // });
+    // $(".day_30").click(function () {
+    //     $("#user-line-chart").empty();
+    //     day = 30;
+    //     GetDayUserFun(day);
+    // });
 
     //获取user ba ca每天资产变动
-    function GetAmountLineFun(day) {
-        GetAmountLine(token, day, function (response) {
-            if (response.errcode == "0") {
-                var data = response.rows;
-                LineFun(data);
-            }
-        }, function (response) {
-            LayerFun(response.errcode);
-        });
-    }
-
-    GetAmountLineFun(day);
+    // function GetAmountLineFun(day) {
+    //     GetAmountLine(token, day, function (response) {
+    //         if (response.errcode == "0") {
+    //             var data = response.rows;
+    //             LineFun(data);
+    //         }
+    //     }, function (response) {
+    //         LayerFun(response.errcode);
+    //     });
+    // }
+    //
+    // GetAmountLineFun(day);
 
     /* MORRIS DONUT CHART
 			----------------------------------------*/
 
-    //扇形图
-    function DonutFun(us_register_count, ba_register_count, ca_register_count) {
-        Morris.Donut({
-            element: 'morris-donut-chart',
-            data: [{label: "Users", value: us_register_count},
-                {label: "Digital Currency Agents", value: ba_register_count},
-                {label: "Legal Currency Agents", value: ca_register_count}],
-            colors: ['#A6A6A6', '#414e63', '#e96562'],
-            resize: true
-            // formatter: function (y) { return y + "%" }
-        });
-    }
+    //扇形图-用户 ba ca注册人数
+    // function DonutFun(us_register_count, ba_register_count, ca_register_count) {
+    //     Morris.Donut({
+    //         element: 'morris-donut-chart',
+    //         data: [{label: "Users", value: us_register_count},
+    //             {label: "Digital Currency Agents", value: ba_register_count},
+    //             {label: "Legal Currency Agents", value: ca_register_count}],
+    //         colors: ['#A6A6A6', '#414e63', '#e96562'],
+    //         resize: true
+    //         // formatter: function (y) { return y + "%" }
+    //     });
+    // }
 
     //折线图
     function LineFun(data) {
