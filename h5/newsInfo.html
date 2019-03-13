@@ -8,7 +8,7 @@
           content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title class="title">CCVT新闻详情</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="user/css/common.css">
+    <link rel="stylesheet/less" href="user/css/common_user.less">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_626151_unhf9sd8sf.css">
     <link rel="stylesheet" media="only screen and (max-device-width:767px)" href="user/mobile-css/common.css">
     <link rel="stylesheet" href="assets/css/spin.css">
@@ -25,31 +25,83 @@
         marginwidth="0"
         scrolling="no"></iframe>
 <!--nav-->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/img/ccvt_logo.png" alt="">
+            <a class="navbar-brand toIndexBtn nav_a" href="../index.html">
+                <img src="../assets/img/ccvt_logo.png" alt="">
             </a>
         </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <!--<li><a href="javascript:;" class="i18n caLogin font-weight-400" name="ca_enter"></a></li>-->
-                <!--<li><a href="javascript:;" class="i18n baLogin font-weight-400" name="ba_enter"></a></li>-->
-                <li><a href="user/login.html" class="i18n usLogin font-weight-400" name="login">login</a></li>
-                <li class=""><a href="javascript:;" class="i18n accountNone toAccountBtn alreadyLogin" name="account">Account</a>
+                <li>
+                    <div class="dropdown">
+                        <a class="nav_a" id="dLabel" type="button" data-toggle="dropdown">
+                            <svg class="icon current_icon" aria-hidden="true">
+                                <use xlink:href="#icon-china"></use>
+                            </svg>
+                            <span class="curr_language"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="language">
+                            <li class="flex align-items-center toggle_language_li">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-china"></use>
+                                </svg>
+                                <a href="javascript:;" class="toggleLanguage" title="zh-CN">简体中文</a>
+                            </li>
+                            <li class="flex align-items-center toggle_language_li">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-english"></use>
+                                </svg>
+                                <a href="javascript:;" class="toggleLanguage" title="en">English</a>
+                            </li>
+                            <li class="flex align-items-center toggle_language_li">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-japanese"></use>
+                                </svg>
+                                <a href="javascript:;" class="toggleLanguage" title="ja">Japanese</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+                <li class="active"><a href="login.html" class="i18n nav_a" name="login">Login</a></li>
+                <li><a href="register.html" class="i18n nav_a" name="register">Register</a></li>
             </ul>
         </div>
     </div>
 </nav>
+<!--<nav class="navbar navbar-default">-->
+    <!--<div class="container">-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
+                    <!--data-target="#bs-example-navbar-collapse-1">-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <!--<a class="navbar-brand" href="index.html">-->
+                <!--<img src="assets/img/ccvt_logo.png" alt="">-->
+            <!--</a>-->
+        <!--</div>-->
+
+        <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--&lt;!&ndash;<li><a href="javascript:;" class="i18n caLogin font-weight-400" name="ca_enter"></a></li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li><a href="javascript:;" class="i18n baLogin font-weight-400" name="ba_enter"></a></li>&ndash;&gt;-->
+                <!--<li><a href="user/login.html" class="i18n usLogin font-weight-400" name="login">login</a></li>-->
+                <!--<li class=""><a href="javascript:;" class="i18n accountNone toAccountBtn alreadyLogin" name="account">Account</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
 
 <!--news-->
 <section id="newsTitle" class="content">
@@ -101,51 +153,97 @@
 </section>
 
 <!--footer-->
-<section class="sections footer">
+<div class="footer">
     <div class="container">
-        <div class="row left-row">
-            <div class="col-md-12 col-sm-12">
-                <div class="footerTR flex space-between center">
-                    <div class="footerIconBox">
-                        <a href="https://twitter.com/Hivebanks " data-toggle="tooltip" data-placement="top"
-                           title="hivebanks"><i class="iconfont icon-twitter"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i
-                                class="iconfont icon-telegram"></i></a>
-                        <a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top"
-                           title="ccvt.io"><i class="iconfont icon-weibo"></i></a>
-                        <a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top"
-                           title="Hivebanks"><i class="iconfont icon-weixin"></i></a>
-                    </div>
-                    <div>
-                        <select class="form-control input-sm" id="language">
-                            <option value="en">English</option>
-                            <option value="zh-CN">中文简体</option>
-                            <option value="ja">Japanese</option>
-                        </select>
-                    </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div><img src="../assets/img/ccvt_logo_b.png" class="logo_img" alt=""></div>
+                <div class="footer_text i18n" name="ccvt"></div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <p class="footer_title i18n" name="support"></p>
+                <ul>
+                    <li><a href="http://www.fnying.com/h5/ccvt/index.html" target="_blank" class="i18n" name="documentCenter"></a></li>
+                    <li><a href="https://ccvt.io/CCVT.pdf" class="i18n" target="_blank" name="whitePaper"></a></li>
+                    <li><a href="http://www.fnying.com/h5/ccvt/Q&A/index.html" target="_blank" class="i18n" name="commonProblem"></a></li>
+                    <li><a href="http://www.fnying.com/h5/ccvt/beginner/index.html" target="_blank" class="i18n" name="newHandsHelping"></a></li>
+                    <li><a href="faultReport.html" target="_blank" class="i18n" name="failureReport"></a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <p class="footer_title i18n" name="links"></p>
+                <div class="icon_box">
+                    <a href="https://twitter.com/Hivebanks " data-toggle="tooltip" data-placement="top"
+                       title="hivebanks"><i class="iconfont icon-twitter"></i>
+                    </a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i
+                            class="iconfont icon-telegram"></i>
+                    </a>
+                    <a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top"
+                       title="ccvt.io"><i class="iconfont icon-weibo"></i>
+                    </a>
+                    <a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top"
+                       title="Hivebanks"><i class="iconfont icon-weixin"></i>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="row footer-copyright">
-            <span>
-                <span class="i18n" name="version">©2018-2019 Powered by</span>
-                <a href="http://www.hivebanks.com">hivebanks</a>
-            </span>
+        <div class="row footer_bottom text-center">
+            <div class="col-md-12">
+                <p>
+                    <span class="i18n" name="version">©2018-2019 Powered by</span>
+                    <a href="https://www.hivebanks.com">HiveBanks</a>
+                </p>
+            </div>
         </div>
     </div>
-</section>
+</div>
+<!--<section class="sections footer">-->
+    <!--<div class="container">-->
+        <!--<div class="row left-row">-->
+            <!--<div class="col-md-12 col-sm-12">-->
+                <!--<div class="footerTR flex space-between center">-->
+                    <!--<div class="footerIconBox">-->
+                        <!--<a href="https://twitter.com/Hivebanks " data-toggle="tooltip" data-placement="top"-->
+                           <!--title="hivebanks"><i class="iconfont icon-twitter"></i></a>-->
+                        <!--<a href="#" data-toggle="tooltip" data-placement="top" title="Telegram：windwin"><i-->
+                                <!--class="iconfont icon-telegram"></i></a>-->
+                        <!--<a href="https://weibo.com/joybtc" data-toggle="tooltip" data-placement="top"-->
+                           <!--title="ccvt.io"><i class="iconfont icon-weibo"></i></a>-->
+                        <!--<a href="https://twitter.com/Hivebanks" data-toggle="tooltip" data-placement="top"-->
+                           <!--title="Hivebanks"><i class="iconfont icon-weixin"></i></a>-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--<select class="form-control input-sm" id="language">-->
+                            <!--<option value="en">English</option>-->
+                            <!--<option value="zh-CN">中文简体</option>-->
+                            <!--<option value="ja">Japanese</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row footer-copyright">-->
+            <!--<span>-->
+                <!--<span class="i18n" name="version">©2018-2019 Powered by</span>-->
+                <!--<a href="http://www.hivebanks.com">hivebanks</a>-->
+            <!--</span>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</section>-->
 <!--Back to top-->
-<div class="scrollup">
-    <a href="#"><i class="iconfont icon-top"></i></a>
+<!--<div id='mySpin'></div>-->
+<!--loading-->
+<div class="loading">
+    <img src="assets/img/loading2.gif" alt="">
 </div>
 
-<div id='mySpin'></div>
-
 <script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/less.min.js"></script>
 <script src="assets/js/cnt.js"></script>
 <script src="assets/language/jquery.i18n.properties.js"></script>
 <script src="assets/language/language.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/layer/layer.js"></script>
 <!--<script src="assets/js/spin.min.js"></script>-->
 <script src="user/js/common.js"></script>

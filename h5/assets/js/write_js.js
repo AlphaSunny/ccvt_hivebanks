@@ -11,12 +11,12 @@
     let jsFooter = "'></script>";
     document.write(jsHeader + "assets/js/jquery.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/bootstrap.min.js" + jsFooter);
+    document.write(jsHeader + "assets/js/less.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/cnt.js" + jsFooter);
     document.write(jsHeader + "assets/js/jquery.pagination.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/intlTelInput.js" + jsFooter);
     document.write(jsHeader + "assets/js/layer/layer.js" + jsFooter);
     document.write(jsHeader + "assets/js/sha.js" + jsFooter);
-    document.write(jsHeader + "assets/js/less.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/clipboard.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/jquery.qrcode.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/prompt.js" + jsFooter);
