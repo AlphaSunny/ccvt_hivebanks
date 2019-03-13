@@ -360,8 +360,8 @@ $list = array_merge(
 );
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
-print_r(json_encode($list));
-die;
+//print_r(json_encode($list));
+//die;
 //echo count($list);
 
 
@@ -399,7 +399,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             }else{
                 $sql .= " base_amount=base_amount+'{$send_money}'";
             }
-            $sql .= "WHERE us_id='{$us_id}'";
+            $sql .= " WHERE us_id='{$us_id}'";
             echo $sql."1"."<br />";
             $db -> query($sql);
             if (!$db->affectedRows()){
@@ -439,7 +439,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             }else{
                 $sql .= " base_amount=base_amount-'{$send_money}'";
             }
-            $sql .= "WHERE us_id='{$us_id}'";
+            $sql .= " WHERE us_id='{$us_id}'";
             echo $sql."1"."<br />";
             $db -> query($sql);
             if (!$db->affectedRows()){
@@ -455,7 +455,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             }else{
                 $sql .= " lock_amount=lock_amount+'{$send_money}'";
             }
-            $sql .= "WHERE us_id='{$transfer_us_id}'";
+            $sql .= " WHERE us_id='{$transfer_us_id}'";
             echo $sql."1"."<br />";
             $db -> query($sql);
             if (!$db->affectedRows()){
