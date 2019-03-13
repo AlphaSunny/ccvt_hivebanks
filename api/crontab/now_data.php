@@ -590,6 +590,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         $dat['tx_count'] = transfer_get_pre_count($debit_id);
 
         $sql = $db->sqlInsert("com_transfer_request", $dat);
+        echo $sql;die;
         $id = $db->query($sql);
         if (!$id){
             echo $us_id."转账记录表1错误";
