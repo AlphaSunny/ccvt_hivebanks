@@ -467,7 +467,7 @@ function GetLaBaseInfo(token, suc_func, error_func) {
 }
 
 //Get the list of user/ba/ca
-function GetUserList(token, api_url, limit, offset,filter, suc_func, error_func) {
+function GetUserList(token, api_url, limit, offset, filter, suc_func, error_func) {
     var post_data = {
         'token': token,
         'limit': limit,
@@ -551,6 +551,18 @@ function GetBlackList(us_id, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//获取资金变动记录
+function capitalChangeList(token, us_id, limit, offset, suc_func, error_func) {
+    var api_url = 'get_black_list_info.php',
+        post_data = {
+            'token': token,
+            'us_id': us_id,
+            'limit': limit,
+            'offset': offset,
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 //get reward list
 function GetRewardList(token, type, limit, offset, suc_func, error_func) {
     var api_url = 'ba_gift.php',
@@ -564,7 +576,7 @@ function GetRewardList(token, type, limit, offset, suc_func, error_func) {
 }
 
 //Get ba ALL transaction history
-function GetBaTransaction(token, api_url,limit, offset, suc_func, error_func) {
+function GetBaTransaction(token, api_url, limit, offset, suc_func, error_func) {
     var post_data = {
         'token': token,
         'limit': limit,
@@ -602,8 +614,8 @@ function SearchBaTransaction(token, search_api_url, from_time, to_time, tx_time,
 }
 
 //Screening ca transaction records
-function SearchCaTransaction(token,search_api_url, from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
-                             base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, limit,offset, suc_func, error_func) {
+function SearchCaTransaction(token, search_api_url, from_time, to_time, tx_time, qa_id, us_id, us_account_id, asset_id, ba_account_id, tx_hash,
+                             base_amount, bit_amount, tx_detail, tx_fee, tx_type, qa_flag, ba_id, limit, offset, suc_func, error_func) {
     var api_url = search_api_url,
         post_data = {
             'token': token,
@@ -630,10 +642,10 @@ function SearchCaTransaction(token,search_api_url, from_time, to_time, tx_time, 
 //Get ca transaction history
 function GetCaTransaction(token, api_url, limit, offset, suc_func, error_func) {
     var post_data = {
-            'token': token,
-            'limit': limit,
-            'offset': offset,
-        };
+        'token': token,
+        'limit': limit,
+        'offset': offset,
+    };
     CallTransactionApi(api_url, post_data, suc_func, error_func);
 }
 
@@ -856,7 +868,7 @@ function GetAssetsReport(token, suc_func, error_func) {
 }
 
 //邀请排名
-function GiftDetail(token,limit,offset, suc_func, error_func) {
+function GiftDetail(token, limit, offset, suc_func, error_func) {
     var api_url = 'gift_detail.php',
         post_data = {
             'token': token,
@@ -867,7 +879,7 @@ function GiftDetail(token,limit,offset, suc_func, error_func) {
 }
 
 //获取荣耀积分排名
-function GloryPoints(token,limit,offset, suc_func, error_func) {
+function GloryPoints(token, limit, offset, suc_func, error_func) {
     var api_url = 'honor_score_ranking.php',
         post_data = {
             'token': token,
@@ -955,7 +967,7 @@ function ModifyNews(token, title, content, author, news_id, overdue_time, suc_fu
 }
 
 //get news list
-function GetNewsList(token,limit, offset, suc_func, error_func) {
+function GetNewsList(token, limit, offset, suc_func, error_func) {
     var api_url = 'news_list.php',
         post_data = {
             'token': token,

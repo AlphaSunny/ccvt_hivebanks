@@ -1,12 +1,12 @@
 $(function () {
     $('select').material_select();
     //get user info
-    var limit = 10, offset = 0, n = 0;
-    var us_id = GetQueryString('us_id'), tr = '';
+    let limit = 10, offset = 0;
+    let us_id = GetQueryString('us_id'), tr = '';
     $('.us_id').text(us_id);
     GetUserInfo(us_id, function (response) {
         if (response.errcode == '0') {
-            var data = response.rows, bind_name = '', bind_type = '';
+            let data = response.rows, bind_name = '', bind_type = '';
             if (data == false) {
                 GetDataEmpty('userBindInfo', '5')
             }
@@ -77,10 +77,10 @@ $(function () {
 
     //Get the list of added blacklists
     function GetBlackListFun() {
-        var ul = '';
+        let ul = '';
         GetBlackList(us_id, function (response) {
             if (response.errcode == '0') {
-                var data = response.rows;
+                let data = response.rows;
                 if (data.length <= 0) {
                     ul += '<ul class="padding-1">' +
                         '<li><span class="i18n" name="noData">no Data</span></li>' +
@@ -89,7 +89,7 @@ $(function () {
                     execI18n();
                     return;
                 }
-                var black_type = '';
+                let black_type = '';
                 $.each(data, function (i, val) {
                     if (data[i].black_type == '1') {
                         black_type = 'loginIsProhibited';
@@ -134,7 +134,7 @@ $(function () {
 
     //Set add blacklist
     $('.blacklistBtn').click(function () {
-        var limt_time = $('.limt_time').val(),
+        let limt_time = $('.limt_time').val(),
             black_info = $('.black_info').val(),
             type = $('.blacklist').val();
 
@@ -173,4 +173,54 @@ $(function () {
         yearStart: 2018,//Set the minimum year
         yearEnd: 2050 //Set the maximum year
     });
+
+    //获取资金变动记录
+    function capitalChangeListFun(limit, offset) {
+        let totalPage = "", count = "", tr = "";
+        capitalChangeList(token, us_id, limit, offset, function (response) {
+            if (response.errcode == "0") {
+                let data = response.rows;
+                if (!data) {
+                    GetDataEmpty("capitalChangeList", 4);
+                    return;
+                }
+                let total = response.total;
+                totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+
+                // $.each(data, function (i, val) {
+                //     tr += "<tr>" +
+                //         "<td>" + data[i].time + "</td>" +
+                //         "<td>" + data[i].time + "</td>" +
+                //         "<td>" + data[i].time + "</td>" +
+                //         "<td>" + data[i].time + "</td>" +
+                //         "</tr>"
+                // })
+
+                $("#capitalChangeList").html(tr);
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        capitalChangeListFun(limit, (current - 1) * limit);
+                        ShowLoading("show");
+                    }
+                });
+            }
+        }, function (response) {
+            GetDataFail("capitalChangeList", 4);
+        })
+    }
+
+    // capitalChangeListFun(limit, offset);
 });
