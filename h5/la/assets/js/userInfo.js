@@ -194,14 +194,14 @@ $(function () {
                     count = 6;
                 }
 
-                // $.each(data, function (i, val) {
-                //     tr += "<tr>" +
-                //         "<td>" + data[i].time + "</td>" +
-                //         "<td>" + data[i].time + "</td>" +
-                //         "<td>" + data[i].time + "</td>" +
-                //         "<td>" + data[i].time + "</td>" +
-                //         "</tr>"
-                // })
+                $.each(data, function (i, val) {
+                    tr += "<tr>" +
+                        "<td>" + data[i].time + "</td>" +
+                        "<td>" + data[i].time + "</td>" +
+                        "<td>" + data[i].time + "</td>" +
+                        "<td>" + data[i].time + "</td>" +
+                        "</tr>"
+                })
 
                 $("#capitalChangeList").html(tr);
                 $("#pagination").pagination({
@@ -222,5 +222,5 @@ $(function () {
         })
     }
 
-    // capitalChangeListFun(limit, offset);
+    capitalChangeListFun(limit, offset);
 });

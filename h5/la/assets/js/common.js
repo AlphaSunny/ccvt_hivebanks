@@ -553,7 +553,7 @@ function GetBlackList(us_id, suc_func, error_func) {
 
 //获取资金变动记录
 function capitalChangeList(token, us_id, limit, offset, suc_func, error_func) {
-    var api_url = 'get_black_list_info.php',
+    var api_url = 'user_balance_list.php',
         post_data = {
             'token': token,
             'us_id': us_id,
