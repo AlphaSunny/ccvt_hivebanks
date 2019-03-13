@@ -1,5 +1,15 @@
 $(function () {
     let token = GetCookie('la_token');
+    //转到user ba ca列表
+    $(".to_user").click(function () {
+        window.location.href = "userList.html";
+    });
+    $(".to_ba").click(function () {
+        window.location.href = "baList.html";
+    });
+    $(".to_ca").click(function () {
+        window.location.href = "caList.html";
+    });
     //获取用户 ba ca注册人数
     GetAssetsReport(token, function (response) {
         if (response.errcode == '0') {
