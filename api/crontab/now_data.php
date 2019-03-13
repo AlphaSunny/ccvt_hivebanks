@@ -315,7 +315,8 @@ foreach ($gone_staff as $k=>$v){
 
 
 //用户转账
-$sql = "select us_id,transfer_id as transfer_us_id,tx_amount as send_money,tx_time as ctime,qa_flag from us_us_transfer_request WHERE qa_flag in (0,1)";
+//$sql = "select us_id,transfer_id as transfer_us_id,tx_amount as send_money,tx_time as ctime,qa_flag from us_us_transfer_request WHERE qa_flag in (0,1)";
+$sql = "select us_id,transfer_id as transfer_us_id,tx_amount as send_money,tx_time as ctime,qa_flag from us_us_transfer_request";
 $db->query($sql);
 $us_us_transfer = $db->fetchAll();
 foreach ($us_us_transfer as $k=>$v){
@@ -331,6 +332,7 @@ $sql = "select us_id as transfer_us_id,transfer_id as us_id,tx_amount as send_mo
 $db->query($sql);
 $us_us_transfer_cancel = $db->fetchAll();
 foreach ($us_us_transfer_cancel as $k=>$v){
+    $us_us_transfer_cancel[$k]['qa_flag'] = 3;
     $us_us_transfer_cancel[$k]['flag'] = 16;
     $us_us_transfer_cancel[$k]['detail'] = "转账撤回";
     $us_us_transfer_cancel[$k]['type'] = "us_us_transfer_cancel";
@@ -437,7 +439,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         case "us-us":
             //用户减钱
             $sql = "update us_base set";
-            if ($qa_flag==2) {
+            if ($qa_flag==3) {
                 $sql .= " lock_amount=lock_amount-'{$send_money}'";
             }else{
                 $sql .= " base_amount=base_amount-'{$send_money}'";
@@ -451,9 +453,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
 
             //用户加钱
             $sql = "update us_base set";
-            if ($qa_flag==2) {
-                $sql .= " base_amount=base_amount+'{$send_money}'";
-            }elseif ($qa_flag==1){
+            if ($qa_flag>0) {
                 $sql .= " base_amount=base_amount+'{$send_money}'";
             }else{
                 $sql .= " lock_amount=lock_amount+'{$send_money}'";
