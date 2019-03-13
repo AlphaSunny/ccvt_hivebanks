@@ -515,8 +515,8 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         case "ba-us":
             $credit_id = $ba_id;
             $debit_id = $us_id;
-            $transfer_credit_balance = get_ba_base_amount($credit_id)-$send_money;
-            $dat_credit_balance = get_us_base_amount($debit_id)+$send_money;
+            $transfer_credit_balance = get_ba_base_amount($credit_id);
+            $dat_credit_balance = get_us_base_amount($debit_id);
             echo $debit_id."<br />";
             echo $send_money."<br />";
             echo $dat_credit_balance;die;
@@ -524,26 +524,26 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         case "us-la":
             $credit_id = $us_id;
             $debit_id = $la_id;
-            $transfer_credit_balance = get_us_base_amount($credit_id)-$send_money;
-            $dat_credit_balance = get_la_base_amount($debit_id)+$send_money;
+            $transfer_credit_balance = get_us_base_amount($credit_id);
+            $dat_credit_balance = get_la_base_amount($debit_id);
             break;
         case "us-us":
             $credit_id = $us_id;
             $debit_id = $transfer_us_id;
-            $transfer_credit_balance = get_us_base_amount($credit_id)-$send_money;
-            $dat_credit_balance = get_us_base_amount($debit_id)+$send_money;
+            $transfer_credit_balance = get_us_base_amount($credit_id);
+            $dat_credit_balance = get_us_base_amount($debit_id);
             break;
         case "us-ba":
             $credit_id = $us_id;
             $debit_id = $ba_id;
-            $transfer_credit_balance = get_us_base_amount($credit_id)-$send_money;
-            $dat_credit_balance = get_ba_base_amount($debit_id)+$send_money;
+            $transfer_credit_balance = get_us_base_amount($credit_id);
+            $dat_credit_balance = get_ba_base_amount($debit_id);
             break;
         case "us-ca":
             $credit_id = $us_id;
             $debit_id = $ca_id;
-            $transfer_credit_balance = get_us_base_amount($credit_id)-$send_money;
-            $dat_credit_balance = get_ca_base_amount($debit_id)+$send_money;
+            $transfer_credit_balance = get_us_base_amount($credit_id);
+            $dat_credit_balance = get_ca_base_amount($debit_id);
             break;
     }
 
