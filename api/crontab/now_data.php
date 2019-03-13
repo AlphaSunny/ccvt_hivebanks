@@ -363,8 +363,8 @@ $list = array_merge(
 );
 array_multisort(array_column($list,'ctime'),SORT_ASC,$list);
 
-print_r(json_encode($list));
-die;
+//print_r(json_encode($list));
+//die;
 //echo count($list);
 
 
