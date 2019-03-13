@@ -39,7 +39,7 @@ foreach ($reg_user as $k=>$v){
 
 
 //邀请
-$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0 AND us_id='28EBFAE0-C750-C811-E6E0-6B89DFAA2A53'";
+$sql = "select b.us_id,a.ctime from us_base as a LEFT JOIN us_base as b on a.invite_code=b.us_nm WHERE a.invite_code!=0 AND a.us_id='28EBFAE0-C750-C811-E6E0-6B89DFAA2A53'";
 $db->query($sql);
 $invite_rows = $db->fetchAll();
 foreach ($invite_rows as $k=>$v){
