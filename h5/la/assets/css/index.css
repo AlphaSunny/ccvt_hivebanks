@@ -40,3 +40,10 @@
 .custom_card h3 {
     color: #ffffff;
 }
+
+.dashboard-cards .card-action strong{
+    color: rgba(255, 255, 255, 0.65)!important;
+}
+.card-content h3{
+    color: #ffffff!important;
+}
