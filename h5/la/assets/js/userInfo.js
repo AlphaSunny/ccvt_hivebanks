@@ -179,6 +179,7 @@ $(function () {
     function capitalChangeListFun(limit, offset) {
         let totalPage = "", count = "", tr = "";
         capitalChangeList(token, us_id, limit, offset, function (response) {
+            ShowLoading("hide");
             if (response.errcode == "0") {
                 let data = response.rows;
                 if (!data) {
@@ -220,6 +221,7 @@ $(function () {
                 });
             }
         }, function (response) {
+            ShowLoading("hide");
             GetDataFail("capitalChangeList", 4);
         })
     }
