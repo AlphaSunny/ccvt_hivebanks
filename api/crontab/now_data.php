@@ -517,6 +517,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             $debit_id = $us_id;
             $transfer_credit_balance = get_ba_base_amount($credit_id)-$send_money;
             $dat_credit_balance = get_us_base_amount($debit_id)+$send_money;
+            echo $dat_credit_balance;die;
             break;
         case "us-la":
             $credit_id = $us_id;
