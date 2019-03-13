@@ -1,5 +1,6 @@
 $(function () {
     $('select').material_select();
+    let token = GetCookie('la_token');
     //get user info
     let limit = 10, offset = 0;
     let us_id = GetQueryString('us_id'), tr = '';
@@ -201,7 +202,7 @@ $(function () {
                         "<td>" + data[i].time + "</td>" +
                         "<td>" + data[i].time + "</td>" +
                         "</tr>"
-                })
+                });
 
                 $("#capitalChangeList").html(tr);
                 $("#pagination").pagination({
