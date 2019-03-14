@@ -4,13 +4,13 @@
 //die('done');
 
 require_once "../inc/common.php";
-$md5 = hash('md5', '6C69520E-E454-127B-F474-452E65A3EE75' . 1 . get_ip() . '2019-03-14 14:35:11' . rand(1000, 9999) . microtime());
-echo $md5."<br />";
-echo strlen($md5)."<br />";
-$sha = hash('sha256', '6C69520E-E454-127B-F474-452E65A3EE75' . 1 . get_ip() . '2019-03-14 14:35:11' . rand(1000, 9999) . microtime());
-echo $sha."<br />";
-echo strlen($sha)."<br />";
-die;
+//$md5 = hash('md5', '6C69520E-E454-127B-F474-452E65A3EE75' . 1 . get_ip() . '2019-03-14 14:35:11' . rand(1000, 9999) . microtime());
+//echo $md5."<br />";
+//echo strlen($md5)."<br />";
+//$sha = hash('sha256', '6C69520E-E454-127B-F474-452E65A3EE75' . 1 . get_ip() . '2019-03-14 14:35:11' . rand(1000, 9999) . microtime());
+//echo $sha."<br />";
+//echo strlen($sha)."<br />";
+//die;
 //require_once "/alidata/www/ccvt/api/inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
@@ -557,14 +557,14 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     /******************************转账记录表(ba_out、ca_out、ba_in不存)***************************************************/
     if ($type!='ba_out' && $type!='ca_out' && $type!='ba_in'){
         //赠送者
-        $transfer['hash_id'] = hash('md5', $credit_id . $flag . get_ip() . $time . rand(1000, 9999) . microtime());
+        $transfer['hash_id'] = hash('sha256', $credit_id . $flag . get_ip() . $time . rand(1000, 9999) . microtime());
         $prvs_hash = get_pre_hash($credit_id);
-        $transfer['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$credit_id) : $prvs_hash;
+        $transfer['prvs_hash'] = $prvs_hash === 0 ? hash('sha256',$credit_id) : $prvs_hash;
         $transfer['credit_id'] = $credit_id;
         $transfer['debit_id'] = $debit_id;
         $transfer['tx_amount'] = -$send_money;
         $transfer['credit_balance'] = $transfer_credit_balance;
-        $transfer['tx_hash'] = hash('md5', $credit_id . $flag . get_ip() . $time . microtime());
+        $transfer['tx_hash'] = hash('sha256', $credit_id . $flag . get_ip() . $time . microtime());
         $transfer['flag'] = $flag;
         $transfer['transfer_type'] = $transfer_type;
         $transfer['transfer_state'] = 1;
@@ -580,14 +580,14 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
         }
 
         //接收者
-        $dat['hash_id'] = hash('md5', $debit_id . $flag . get_ip() . $time . rand(1000, 9999) . microtime());
+        $dat['hash_id'] = hash('sha256', $debit_id . $flag . get_ip() . $time . rand(1000, 9999) . microtime());
         $prvs_hash = get_pre_hash($debit_id);
-        $dat['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$debit_id) : $prvs_hash;
+        $dat['prvs_hash'] = $prvs_hash === 0 ? hash('sha256',$debit_id) : $prvs_hash;
         $dat['credit_id'] = $debit_id;
         $dat['debit_id'] = $credit_id;
         $dat['tx_amount'] = $send_money;
         $dat['credit_balance'] = $dat_credit_balance;
-        $dat['tx_hash'] = hash('md5', $debit_id . $flag . get_ip() . $time . microtime());
+        $dat['tx_hash'] = hash('sha256', $debit_id . $flag . get_ip() . $time . microtime());
         $dat['flag'] = $flag;
         $dat['transfer_type'] = $transfer_type;
         $dat['transfer_state'] = 1;
@@ -606,11 +606,11 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
 
     /***********************资金变动记录表***********************************/
     //减钱记录
-    $tx_id = hash('md5', $credit_id . $debit_id . $flag . get_ip() . $time . microtime());
-    $com_balance_us['hash_id'] = hash('md5', $credit_id . $type . get_ip() . $time . rand(1000, 9999) . microtime());
+    $tx_id = hash('sha256', $credit_id . $debit_id . $flag . get_ip() . $time . microtime());
+    $com_balance_us['hash_id'] = hash('sha256', $credit_id . $type . get_ip() . $time . rand(1000, 9999) . microtime());
     $com_balance_us['tx_id'] = $tx_id;
     $prvs_hash = get_recharge_pre_hash($credit_id);
-    $com_balance_us['prvs_hash'] = $prvs_hash===0 ? hash('md5',$credit_id) : $prvs_hash;
+    $com_balance_us['prvs_hash'] = $prvs_hash===0 ? hash('sha256',$credit_id) : $prvs_hash;
     $com_balance_us["credit_id"] = $credit_id;
     $com_balance_us["debit_id"] = $debit_id;
     $com_balance_us["tx_type"] = $type=="us_us_transfer" ? $type."_out" : $type;
@@ -625,10 +625,10 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     }
 
     //加钱记录
-    $com_balance_ba['hash_id'] = hash('md5', $debit_id. $type . get_ip() . $time . rand(1000, 9999) . microtime());
+    $com_balance_ba['hash_id'] = hash('sha256', $debit_id. $type . get_ip() . $time . rand(1000, 9999) . microtime());
     $com_balance_ba['tx_id'] = $tx_id;
     $prvs_hash = get_recharge_pre_hash($debit_id);
-    $com_balance_ba['prvs_hash'] = $prvs_hash===0 ? hash('md5',$debit_id) : $prvs_hash;
+    $com_balance_ba['prvs_hash'] = $prvs_hash===0 ? hash('sha256',$debit_id) : $prvs_hash;
     $com_balance_ba["credit_id"] = $debit_id;
     $com_balance_ba["debit_id"] = $credit_id;
     $com_balance_ba["tx_type"] = $type=="us_us_transfer" ? $type."_in" : $type;
