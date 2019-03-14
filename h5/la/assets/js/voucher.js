@@ -12,7 +12,7 @@ $(function () {
             if (response.errcode == "0") {
                 let data = response.rows;
                 if (!data) {
-                    GetDataEmpty("voucherList", 5);
+                    GetDataEmpty("voucherList", 7);
                     return;
                 }
 
@@ -56,7 +56,7 @@ $(function () {
                         "<td>" + exchange_time + "</td>" +
                         "<td>" + data[i].ctime + "</td>" +
                         "<td>" + data[i].expiry_date + "</td>" +
-                        "</tr>"
+                        "</tr>";
                 });
                 $("#voucherList").html(tr);
 
@@ -75,6 +75,7 @@ $(function () {
             }
         }, function (response) {
             ShowLoading("hide");
+            GetDataEmpty("voucherList", 7);
             ErrorPrompt(response.errmsg);
         });
     }
