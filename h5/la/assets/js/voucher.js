@@ -42,7 +42,7 @@ $(function () {
                     }
 
                     //是否有兑换者
-                    if (!data[i].redeemer) {
+                    if (!data[i].us_account) {
                         redeemer = "--";
                     } else {
                         redeemer = "<a href='userInfo.html?us_id=" + data[i].us_id + ">" + data[i].us_account + "</a>"
