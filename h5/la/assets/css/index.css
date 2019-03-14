@@ -61,3 +61,6 @@
 .total_amount_box {
     font-size: 1.8rem;
 }
+#page-inner .waves-effect{
+    cursor: unset!important;
+}
