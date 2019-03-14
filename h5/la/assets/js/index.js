@@ -52,8 +52,8 @@ $(function () {
         Morris.Donut({
             element: 'morris-donut-chart',
             data: [{label: "Users", value: us_register_count},
-                {label: "Digital Currency Agents", value: ba_register_count},
-                {label: "Legal Currency Agents", value: ca_register_count}],
+                {label: "BA", value: ba_register_count},
+                {label: "CS", value: ca_register_count}],
             colors: ['#A6A6A6', '#414e63', '#e96562'],
             resize: true
             // formatter: function (y) { return y + "%" }
