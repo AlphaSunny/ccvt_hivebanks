@@ -122,6 +122,36 @@ function CallLaConfigApi(api_url, post_data, suc_func, error_func) {
     });
 }
 
+//生成兑换码
+function CallVoucherApi(api_url, post_data, suc_func, error_func) {
+    var api_site = config_api_url + '/api/la/admin/voucher/';
+    post_data = post_data || {};
+    suc_func = suc_func || function () {
+    };
+    error_func = error_func || function () {
+    };
+    $.ajax({
+        url: api_site + api_url,
+        dataType: "jsonp",
+        data: post_data,
+        success: function (response) {
+            // API return failed
+            if (response.errcode != 0) {
+                error_func(response);
+            } else {
+                // Successfully process data
+                suc_func(response);
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            // API error exception
+            var response = {"errcode": -1, "errmsg": '系统异常，请稍候再试'};
+            // Exception handling
+            error_func(response);
+        }
+    });
+}
+
 // Call the API LA function
 function CallLaInfoApi(api_url, post_data, suc_func, error_func) {
     var api_site = config_api_url + '/api/la/';
@@ -331,6 +361,18 @@ function CallNewsApi(api_url, post_data, suc_func, error_func) {
             error_func(response);
         }
     });
+}
+
+//生成兑换码
+function Generate(token, num, price, expiry_date, suc_func, error_func) {
+    var api_url = 'voucher_add.php',
+        post_data = {
+            'token': token,
+            'num': num,
+            'price': price,
+            'expiry_date': expiry_date
+        };
+    CallVoucherApi(api_url, post_data, suc_func, error_func);
 }
 
 //Get us/ba/ca registration permission

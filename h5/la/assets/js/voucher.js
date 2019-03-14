@@ -1,5 +1,37 @@
 $(function () {
+    //token
+    let token = GetCookie('la_token');
 
+    //生成
+    $(".generate_btn").click(function () {
+        let num = $(".num").val();
+        let price = $(".price").val();
+        let expiry_date = $(".expiry_date").val();
+        if (num.length <= 0) {
+            WarnPrompt("请输入兑换数量");
+            return;
+        }
+        if (price.length <= 0) {
+            WarnPrompt("请输入兑换额度");
+            return;
+        }
+        if (expiry_date.length <= 0) {
+            WarnPrompt("请输入过期时间");
+            return;
+        }
+        generateFun(num, price, expiry_date);
+    });
+
+    //生成fun
+    function generateFun(num, price, expiry_date) {
+        Generate(token, num, price, expiry_date, function (response) {
+            if (response.errcode == "0") {
+                SuccessPrompt("提交成功");
+            }
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        })
+    }
 
     //时间输入框
     $("#expireDate").focus(function () {
