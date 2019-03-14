@@ -40,12 +40,15 @@ $(function () {
 
     //生成fun
     function generateFun(num, price, expiry_date) {
+        ShowLoading("show");
         Generate(token, num, price, expiry_date, function (response) {
+            ShowLoading("hide");
             if (response.errcode == "0") {
                 SuccessPrompt("提交成功");
                 GetVoucherFun(limit, offset);
             }
         }, function (response) {
+            ShowLoading("hide");
             ErrorPrompt(response.errmsg);
         })
     }
