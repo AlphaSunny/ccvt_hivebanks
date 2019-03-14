@@ -6,12 +6,62 @@ $(function () {
     let limit = 10, offset = 0, is_effective = "";
 
     function GetVoucherFun(limit, offset) {
+        let totalPage = "", count = "", tr = "", is_effective = "", exchange_time = "";
         GetVoucher(token, limit, offset, is_effective, function (response) {
+            ShowLoading("hide");
             if (response.errcode == "0") {
                 let data = response.rows;
-                console.log(data);
+                if (!data) {
+                    GetDataEmpty("voucherList", 5);
+                    return;
+                }
+
+                let total = response.total;
+                totalPage = Math.ceil(total / limit);
+                if (totalPage <= 1) {
+                    count = 1;
+                } else if (1 < totalPage && totalPage <= 6) {
+                    count = totalPage;
+                } else {
+                    count = 6;
+                }
+
+                $.each(data, function (i, val) {
+                    if (data[i].is_effective == "1") {
+                        is_effective = "有效";
+                    } else {
+                        is_effective = "无效";
+                    }
+                    if (!data[i].exchange_time) {
+                        exchange_time = "--";
+                    } else {
+                        exchange_time = data[i].exchange_time
+                    }
+                    tr += "<tr>" +
+                        "<td>" + data[i].coupon_code + "</td>" +
+                        "<td>" + data[i].amount + "</td>" +
+                        "<td>" + is_effective + "</td>" +
+                        "<td>" + data[i].ctime + "</td>" +
+                        "<td>" + data[i].expiry_date + "</td>" +
+                        "</tr>"
+                });
+                $("#voucherList").html(tr);
+
+                $("#pagination").pagination({
+                    currentPage: (limit + offset) / limit,
+                    totalPage: totalPage,
+                    isShow: false,
+                    count: count,
+                    prevPageText: "<<",
+                    nextPageText: ">>",
+                    callback: function (current) {
+                        GetVoucherFun(limit, (current - 1) * limit);
+                        ShowLoading("show");
+                    }
+                });
             }
         }, function (response) {
+            ShowLoading("hide");
             ErrorPrompt(response.errmsg);
         });
     }
@@ -22,10 +72,7 @@ $(function () {
     $(".generate_btn").click(function () {
         let num = $(".num").val();
         let price = $(".price").val();
-        let expiry_date = $("#expireDate").val().replace(/\//g,"-");
-        console.log(num);
-        console.log(price);
-        console.log(expiry_date);
+        let expiry_date = $("#expireDate").val().replace(/\//g, "-");
         if (num.length <= 0) {
             WarnPrompt("请输入兑换数量");
             return;
