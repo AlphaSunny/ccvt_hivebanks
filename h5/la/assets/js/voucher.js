@@ -96,6 +96,7 @@ $(function () {
             if (response.errcode == "0") {
                 SuccessPrompt("提交成功");
                 GetVoucherFun(limit, offset);
+                ShowLoading("show");
             }
         }, function (response) {
             ShowLoading("hide");
