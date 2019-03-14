@@ -201,7 +201,7 @@ $(function () {
     /* MORRIS DONUT CHART
 			----------------------------------------*/
 
-    //扇形图-用户 ba ca注册人数
+    // 扇形图-用户 ba ca注册人数
     // function DonutFun(us_register_count, ba_register_count, ca_register_count) {
     //     Morris.Donut({
     //         element: 'morris-donut-chart',

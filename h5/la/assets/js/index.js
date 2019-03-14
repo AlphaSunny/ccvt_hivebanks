@@ -15,6 +15,7 @@ $(function () {
     //获取user ba ca la资金
     let sum_us_base_amount = "", sum_ba_base_amount = "", sum_ca_base_amount = "", sum_la_base_amount = "",
         sum_total_base_amount = "";
+    let ba_register_count = "", ca_register_count = "", us_register_count = "";
     GetAssetsReport(token, function (response) {
         let data = response.rows;
         sum_us_base_amount = data.sum_us_base_amount + data.sum_us_lock_amount;
@@ -27,11 +28,38 @@ $(function () {
         $(".ca_sum_amount").text(sum_ca_base_amount);
         $(".la_sum_amount").text(sum_la_base_amount);
         $(".sum_total_base_amount").text(sum_total_base_amount);
+
+        ba_register_count = data.ba_register_count;
+        ca_register_count = data.ca_register_count;
+        us_register_count = data.us_register_count;
+        if (ba_register_count == 0) {
+            ba_register_count = 0;
+        }
+        if (ca_register_count == 0) {
+            ca_register_count = 0;
+        }
+        if (us_register_count == 0) {
+            us_register_count = 0;
+        }
+        DonutFun(us_register_count, ba_register_count, ca_register_count);
     }, function (response) {
         ErrorPrompt(response.errmsg);
     });
 
     //获取用户 ba ca注册人数
+    // 扇形图-用户 ba ca注册人数
+    function DonutFun(us_register_count, ba_register_count, ca_register_count) {
+        Morris.Donut({
+            element: 'morris-donut-chart',
+            data: [{label: "Users", value: us_register_count},
+                {label: "Digital Currency Agents", value: ba_register_count},
+                {label: "Legal Currency Agents", value: ca_register_count}],
+            colors: ['#A6A6A6', '#414e63', '#e96562'],
+            resize: true
+            // formatter: function (y) { return y + "%" }
+        });
+    }
+
     GetAssetsReport(token, function (response) {
         if (response.errcode == '0') {
             let data = response.rows;
