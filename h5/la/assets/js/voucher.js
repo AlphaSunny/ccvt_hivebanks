@@ -6,7 +6,7 @@ $(function () {
     let limit = 10, offset = 0, is_effective = "";
 
     function GetVoucherFun(limit, offset) {
-        let totalPage = "", count = "", tr = "", is_effective = "", exchange_time = "";
+        let totalPage = "", count = "", tr = "", is_effective = "", exchange_time = "", redeemer = "";
         GetVoucher(token, limit, offset, is_effective, function (response) {
             ShowLoading("hide");
             if (response.errcode == "0") {
@@ -27,21 +27,31 @@ $(function () {
                 }
 
                 $.each(data, function (i, val) {
+                    //是否有效
                     if (data[i].is_effective == "1") {
                         is_effective = "有效";
                     } else {
                         is_effective = "无效";
                     }
+
+                    //是否有兑换时间
                     if (!data[i].exchange_time) {
                         exchange_time = "--";
                     } else {
                         exchange_time = data[i].exchange_time
                     }
+
+                    //是否有兑换者
+                    if (!data[i].redeemer) {
+                        redeemer = "--";
+                    } else {
+                        redeemer = "<a href='userInfo.html?us_id=" + data[i].us_id + ">" + data[i].us_account + "</a>"
+                    }
                     tr += "<tr>" +
                         "<td>" + data[i].coupon_code + "</td>" +
                         "<td>" + data[i].amount + "</td>" +
                         "<td>" + is_effective + "</td>" +
-                        "<td><span name='"+ data[i].us_id +"'>"+ data[i].us_account +"</span></td>" +
+                        "<td>+ redeemer +</td>" +
                         "<td>" + exchange_time + "</td>" +
                         "<td>" + data[i].ctime + "</td>" +
                         "<td>" + data[i].expiry_date + "</td>" +
