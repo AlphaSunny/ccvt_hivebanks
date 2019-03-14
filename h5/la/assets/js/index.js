@@ -1,15 +1,35 @@
 $(function () {
     let token = GetCookie('la_token');
+
     //转到user ba ca列表
-    $(".to_user").click(function () {
-        window.location.href = "userList.html";
+    // $(".to_user").click(function () {
+    //     window.location.href = "userList.html";
+    // });
+    // $(".to_ba").click(function () {
+    //     window.location.href = "baList.html";
+    // });
+    // $(".to_ca").click(function () {
+    //     window.location.href = "caList.html";
+    // });
+
+    //获取user ba ca la资金
+    let sum_us_base_amount = "", sum_ba_base_amount = "", sum_ca_base_amount = "", sum_la_base_amount = "",
+        sum_total_base_amount = "";
+    GetAssetsReport(token, function (response) {
+        let data = response.rows;
+        sum_us_base_amount = data.sum_us_base_amount + data.sum_us_lock_amount;
+        sum_ba_base_amount = data.sum_ba_base_amount;
+        sum_ca_base_amount = data.sum_ca_base_amount;
+        sum_la_base_amount = data.sum_la_base_amount;
+        sum_total_base_amount = Number(sum_us_base_amount) + Number(sum_ba_base_amount) + Number(sum_ca_base_amount) + Number(sum_la_base_amount);
+        $(".user_sum_amount").text(sum_us_base_amount);
+        $(".ba_sum_amount").text(sum_ba_base_amount);
+        $(".ca_sum_amount").text(sum_ca_base_amount);
+        $(".la_sum_amount").text(sum_la_base_amount);
+    }, function (response) {
+        ErrorPrompt(response.errmsg);
     });
-    $(".to_ba").click(function () {
-        window.location.href = "baList.html";
-    });
-    $(".to_ca").click(function () {
-        window.location.href = "caList.html";
-    });
+
     //获取用户 ba ca注册人数
     GetAssetsReport(token, function (response) {
         if (response.errcode == '0') {
