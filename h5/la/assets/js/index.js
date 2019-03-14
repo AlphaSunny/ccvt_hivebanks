@@ -38,6 +38,9 @@ $(function () {
         $('#ca_percent .percent').text((sum_ca_base_amount / sum_total_base_amount).toFixed(2) * 100 + "%");
         $('#la_percent .percent').text((sum_la_base_amount / sum_total_base_amount).toFixed(2) * 100 + "%");
 
+        // chart1.update(Math.round(num/all));
+        $("#user_percent").update();
+
         console.log(Math.floor(sum_us_base_amount / sum_total_base_amount));
         console.log(Math.ceil(sum_us_base_amount / sum_total_base_amount));
         console.log((sum_us_base_amount / sum_total_base_amount).toFixed(2));
