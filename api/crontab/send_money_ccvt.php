@@ -120,13 +120,13 @@ if ($groups){
                     $transfer_get_pre_count = $transfer_get_pre_count+1;
                 }
                 //赠送者
-                $data['hash_id'] = hash('md5', $ba_info['ba_id'] . 4 . get_ip() . time() . rand(1000, 9999) . microtime());
+                $data['hash_id'] = hash('sha256', $ba_info['ba_id'] . 4 . get_ip() . time() . rand(1000, 9999) . microtime());
                 $data['prvs_hash'] = get_pre_hash($ba_info['ba_id']);
                 $data['credit_id'] = $ba_info['ba_id'];
                 $data['debit_id'] = $u_id;
                 $data['tx_amount'] = -($give_account*$unit);
                 $data['credit_balance'] = $ba_account;
-                $data['tx_hash'] = hash('md5', $ba_info['ba_id'] . 4 . get_ip() . time() . microtime());
+                $data['tx_hash'] = hash('sha256', $ba_info['ba_id'] . 4 . get_ip() . time() . microtime());
                 $data['flag'] = 4;
                 $data['transfer_type'] = 'ba-us';
                 $data['transfer_state'] = 1;
@@ -142,14 +142,14 @@ if ($groups){
                     break;
                 }
                 //接收者
-                $dat['hash_id'] = hash('md5', $u_id . 4 . get_ip() . time() . rand(1000, 9999) . microtime());
+                $dat['hash_id'] = hash('sha256', $u_id . 4 . get_ip() . time() . rand(1000, 9999) . microtime());
                 $prvs_hash = get_pre_hash($u_id);
                 $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
                 $dat['credit_id'] = $u_id;
                 $dat['debit_id'] = $ba_info['ba_id'];
                 $dat['tx_amount'] = $give_account*$unit;
                 $dat['credit_balance'] = get_us_account($u_id)+($give_account*$unit);
-                $dat['tx_hash'] = hash('md5', $u_id . 4 . get_ip() . time() . microtime());
+                $dat['tx_hash'] = hash('sha256', $u_id . 4 . get_ip() . time() . microtime());
                 $dat['flag'] = 4;
                 $dat['transfer_type'] = 'ba-us';
                 $dat['transfer_state'] = 1;
@@ -169,8 +169,9 @@ if ($groups){
                 //us添加基准资产变动记录
                 $us_type = 'us_send_balance';
                 $ctime = date('Y-m-d H:i:s');
-                $com_balance_us['hash_id'] = hash('md5', $u_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
-                $com_balance_us['tx_id'] = $d['tx_hash'];
+                $tx_id = hash('sha256', $u_id . $ba_info['ba_id'] . get_ip() . time() . microtime());
+                $com_balance_us['hash_id'] = hash('sha256', $u_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
+                $com_balance_us['tx_id'] = $tx_id;
                 $com_balance_us['prvs_hash'] = get_recharge_pre_hash($u_id);
                 $com_balance_us["credit_id"] = $u_id;
                 $com_balance_us["debit_id"] = $ba_info['ba_id'];
@@ -193,8 +194,8 @@ if ($groups){
                 }
                 //ba添加基准资产变动记录
                 $us_type = 'ba_send_balance';
-                $com_balance_ba['hash_id'] = hash('md5', $ba_info['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
-                $com_balance_ba['tx_id'] = $d['tx_hash'];
+                $com_balance_ba['hash_id'] = hash('sha256', $ba_info['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
+                $com_balance_ba['tx_id'] = $tx_id;
                 $com_balance_ba['prvs_hash'] = get_recharge_pre_hash($ba_info['ba_id']);
                 $com_balance_ba["credit_id"] = $ba_info['ba_id'];
                 $com_balance_ba["debit_id"] = $u_id;
@@ -274,13 +275,13 @@ if ($grous){
             }else{
                 $transfer_get_pre_count = $transfer_get_pre_count+1;
             }
-            $data['hash_id'] = hash('md5', $ba_info['ba_id'] . 12 . get_ip() . time() . rand(1000, 9999) . microtime());
+            $data['hash_id'] = hash('sha256', $ba_info['ba_id'] . 12 . get_ip() . time() . rand(1000, 9999) . microtime());
             $data['prvs_hash'] = get_pre_hash($ba_info['ba_id']);
             $data['credit_id'] = $ba_info['ba_id'];
             $data['debit_id'] = $u_id;
             $data['tx_amount'] = -$give_account;
             $data['credit_balance'] = $ba_account;
-            $data['tx_hash'] = hash('md5', $ba_info['ba_id'] . 12 . get_ip() . time() . microtime());
+            $data['tx_hash'] = hash('sha256', $ba_info['ba_id'] . 12 . get_ip() . time() . microtime());
             $data['flag'] = 12;
             $data['transfer_type'] = 'ba-us';
             $data['transfer_state'] = 1;
@@ -296,14 +297,14 @@ if ($grous){
                 break;
             }
             //接收者
-            $dat['hash_id'] = hash('md5', $u_id . 12 . get_ip() . time() . rand(1000, 9999) . microtime());
+            $dat['hash_id'] = hash('sha256', $u_id . 12 . get_ip() . time() . rand(1000, 9999) . microtime());
             $prvs_hash = get_pre_hash($u_id);
             $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
             $dat['credit_id'] = $u_id;
             $dat['debit_id'] = $ba_info['ba_id'];
             $dat['tx_amount'] = $give_account;
             $dat['credit_balance'] = get_us_account($u_id)+($give_account);
-            $dat['tx_hash'] = hash('md5', $u_id . 12 . get_ip() . time() . microtime());
+            $dat['tx_hash'] = hash('sha256', $u_id . 12 . get_ip() . time() . microtime());
             $dat['flag'] = 12;
             $dat['transfer_type'] = 'ba-us';
             $dat['transfer_state'] = 1;
@@ -323,8 +324,9 @@ if ($grous){
             //us添加基准资产变动记录
             $us_type = 'us_send_balance';
             $ctime = date('Y-m-d H:i:s');
-            $com_balance_us['hash_id'] = hash('md5', $u_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
-            $com_balance_us['tx_id'] = $com_balance_us['hash_id'];
+            $tx_id = hash('sha256', $u_id . $ba_info['ba_id'] . get_ip() . time() . microtime());
+            $com_balance_us['hash_id'] = hash('sha256', $u_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
+            $com_balance_us['tx_id'] = $tx_id;
             $com_balance_us['prvs_hash'] = get_recharge_pre_hash($u_id);
             $com_balance_us["credit_id"] = $u_id;
             $com_balance_us["debit_id"] = $ba_info['ba_id'];
@@ -347,8 +349,8 @@ if ($grous){
             }
             //ba添加基准资产变动记录
             $us_type = 'ba_send_balance';
-            $com_balance_ba['hash_id'] = hash('md5', $ba_info['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
-            $com_balance_ba['tx_id'] = $com_balance_ba['hash_id'];
+            $com_balance_ba['hash_id'] = hash('sha256', $ba_info['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
+            $com_balance_ba['tx_id'] = $tx_id;
             $com_balance_ba['prvs_hash'] = get_recharge_pre_hash($ba_info['ba_id']);
             $com_balance_ba["credit_id"] = $ba_info['ba_id'];
             $com_balance_ba["debit_id"] = $u_id;

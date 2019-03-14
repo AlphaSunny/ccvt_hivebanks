@@ -161,14 +161,14 @@ function give_like_us($data)
     $la_id = get_la_id();
     //赠送者
     $flag = $data['state'] == 1 ? 5 : 6;
-    $transfer['hash_id'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $transfer['hash_id'] = hash('sha256', $data['us_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_pre_hash($data['us_id']);
     $transfer['prvs_hash'] = $prvs_hash === 0 ? $transfer['hash_id'] : $prvs_hash;
     $transfer['credit_id'] = $data['us_id'];
     $transfer['debit_id'] = $la_id;
     $transfer['tx_amount'] = -($data['give_num']*$unit);
     $transfer['credit_balance'] = get_us_base_amount($transfer['credit_id'])-($data['give_num']*$unit);
-    $transfer['tx_hash'] = hash('md5', $data['us_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+    $transfer['tx_hash'] = hash('sha256', $data['us_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $transfer['flag'] = $flag;
     $transfer['transfer_type'] = 'us-la';
     $transfer['transfer_state'] = 1;
@@ -185,14 +185,14 @@ function give_like_us($data)
     }
 
     //接收者(la)
-    $dat['hash_id'] = hash('md5', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $dat['hash_id'] = hash('sha256', $la_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_pre_hash($la_id);
     $dat['prvs_hash'] = $prvs_hash === 0 ? $dat['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $la_id;
     $dat['debit_id'] = $data['us_id'];
     $dat['tx_amount'] = $data['give_num']*$unit;
     $dat['credit_balance'] = get_la_base_amount($la_id)+$dat['tx_amount'];
-    $dat['tx_hash'] = hash('md5', $la_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+    $dat['tx_hash'] = hash('sha256', $la_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $dat['flag'] = $flag;
     $dat['transfer_type'] = 'us-la';
     $dat['transfer_state'] = 1;
@@ -213,8 +213,9 @@ function give_like_us($data)
     //us添加基准资产变动记录
     $us_type = 'us_get_balance';
     $ctime = date('Y-m-d H:i:s');
-    $com_balance_us['hash_id'] = hash('md5', $data['us_id'] . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
-    $com_balance_us['tx_id'] = $transfer['tx_hash'];
+    $tx_id = hash('sha256', $data['us_id'] . $la_id . get_ip() . time() . microtime());
+    $com_balance_us['hash_id'] = hash('sha256', $data['us_id'] . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+    $com_balance_us['tx_id'] = $tx_id;
     $prvs_hash = get_recharge_pre_hash($data['us_id']);
     $com_balance_us['prvs_hash'] = $prvs_hash===0 ? $com_balance_us['hash_id'] : $prvs_hash;
     $com_balance_us["credit_id"] = $data['us_id'];
@@ -234,8 +235,8 @@ function give_like_us($data)
 
     //la添加基准资产变动记录
     $us_type = 'la_get_balance';
-    $com_balance_ba['hash_id'] = hash('md5', $la_id. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
-    $com_balance_ba['tx_id'] = $dat['tx_hash'];
+    $com_balance_ba['hash_id'] = hash('sha256', $la_id. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+    $com_balance_ba['tx_id'] = $tx_id;
     $prvs_hash = get_recharge_pre_hash($la_id);
     $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? $com_balance_ba['hash_id'] : $prvs_hash;
     $com_balance_ba["credit_id"] = $la_id;

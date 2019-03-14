@@ -234,14 +234,14 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
 
     /******************************转账记录表***************************************************/
     //增币记录  赠送者
-    $data['hash_id'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $data['hash_id'] = hash('sha256', $rows['ba_id'] . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($rows['ba_id']);
     $data['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $data['credit_id'] = $rows['ba_id'];
     $data['debit_id'] = $us_id;
     $data['tx_amount'] = $money*$unit;
     $data['credit_balance'] = get_ba_account($rows['ba_id'])-$data['tx_amount'];
-    $data['tx_hash'] = hash('md5', $rows['ba_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+    $data['tx_hash'] = hash('sha256', $rows['ba_id'] . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $data['flag'] = $flag;
     $data['transfer_type'] = 'ba-us';
     $data['transfer_state'] = 1;
@@ -257,14 +257,14 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     }
 
     //接收者
-    $dat['hash_id'] = hash('md5', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $dat['hash_id'] = hash('sha256', $us_id . $flag . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($us_id);
     $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
     $dat['credit_id'] = $us_id;
     $dat['debit_id'] = $rows['ba_id'];
     $dat['tx_amount'] = $money*$unit;
     $dat['credit_balance'] = get_us_account($us_id)+$dat['tx_amount'];
-    $dat['tx_hash'] = hash('md5', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
+    $dat['tx_hash'] = hash('sha256', $us_id . $flag . get_ip() . time() . date('Y-m-d H:i:s'));
     $dat['flag'] = $flag;
     $dat['transfer_type'] = 'ba-us';
     $dat['transfer_state'] = 1;
@@ -283,8 +283,9 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
     //us添加基准资产变动记录
     $us_type = 'us_reg_send_balance';
     $ctime = date('Y-m-d H:i:s');
-    $com_balance_us['hash_id'] = hash('md5', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
-    $com_balance_us['tx_id'] = $data['tx_hash'];
+    $tx_id = hash('sha256', $us_id . $rows['ba_id'] . get_ip() . time() . microtime());
+    $com_balance_us['hash_id'] = hash('sha256', $us_id . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+    $com_balance_us['tx_id'] = $tx_id;
     $prvs_hash = get_recharge_pre_hash_ba($us_id);
     $com_balance_us['prvs_hash'] = $prvs_hash == 0 ? $com_balance_us['hash_id'] : $prvs_hash;
     $com_balance_us["credit_id"] = $us_id;
@@ -303,8 +304,8 @@ function send_to_us_ccvt($us_id,$type,$money,$flag,$why)
 
     //ba添加基准资产变动记录
     $us_type = 'ba_reg_send_balance';
-    $com_balance_ba['hash_id'] = hash('md5', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
-    $com_balance_ba['tx_id'] = $data['tx_hash'];
+    $com_balance_ba['hash_id'] = hash('sha256', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+    $com_balance_ba['tx_id'] = $tx_id;
     $prvs_hash = get_recharge_pre_hash_ba($rows['ba_id']);
     $com_balance_ba['prvs_hash'] = $prvs_hash == 0 ? $com_balance_ba['hash_id'] : $prvs_hash;
     $com_balance_ba["credit_id"] = $rows['ba_id'];

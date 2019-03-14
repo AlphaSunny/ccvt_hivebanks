@@ -74,8 +74,9 @@ function base_ba_withdraw_confirm($rows,$transfer_tx_hash){
     $us_type = 'base_withdraw_balance';
     $ctime = date('Y-m-d H:i:s');
     $us_ip = get_ip();
-    $com_balance_us['hash_id'] = hash('md5', $rows["agent_id"] . $us_type . $us_ip . time().rand(1000,9999) . $ctime);
-    $com_balance_us['tx_id'] = $rows["tx_hash"];
+    $tx_id = hash('sha256', $rows["agent_id"] . $rows["base_id"] . $us_ip . time() . microtime());
+    $com_balance_us['hash_id'] = hash('sha256', $rows["agent_id"] . $us_type . $us_ip . time().rand(1000,9999) . $ctime);
+    $com_balance_us['tx_id'] = $tx_id;
     $com_balance_us["credit_id"] = $rows["agent_id"];
     $com_balance_us['prvs_hash'] = get_withdraw_pre_hash($rows["agent_id"]);
     $com_balance_us["debit_id"] = $rows["base_id"];
@@ -94,8 +95,8 @@ function base_ba_withdraw_confirm($rows,$transfer_tx_hash){
     }
 
     $us_type = 'ba_withdraw_balance';
-    $com_balance_ba['hash_id'] = hash('md5', $rows["base_id"] . $us_type . $us_ip . time().rand(1000,9999) . $ctime);
-    $com_balance_ba['tx_id'] = $rows["tx_hash"];
+    $com_balance_ba['hash_id'] = hash('sha256', $rows["base_id"] . $us_type . $us_ip . time().rand(1000,9999) . $ctime);
+    $com_balance_ba['tx_id'] = $tx_id;
     $com_balance_ba['prvs_hash'] = get_withdraw_pre_hash($rows["base_id"]);
     $com_balance_ba["credit_id"] = $rows["base_id"];
     $com_balance_ba["debit_id"] = $rows["agent_id"];

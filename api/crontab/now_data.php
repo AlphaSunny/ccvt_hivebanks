@@ -603,7 +603,6 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
             echo $us_id."转账记录表1错误";
         }
     }
-
     /***********************资金变动记录表***********************************/
     //减钱记录
     $tx_id = hash('sha256', $credit_id . $debit_id . $flag . get_ip() . $time . microtime());

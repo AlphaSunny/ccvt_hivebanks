@@ -69,7 +69,7 @@ function recharge_confirm($rows)
     $us_type = 'us_recharge_balance';
     $ctime = date('Y-m-d H:i:s');
     $us_ip = get_ip();
-    $com_balance_us['hash_id'] = hash('md5', $rows["us_id"] . $us_type . $us_ip . time() . rand(1000, 9999) . $ctime);
+    $com_balance_us['hash_id'] = hash('sha256', $rows["us_id"] . $us_type . $us_ip . time() . rand(1000, 9999) . $ctime);
     $com_balance_us['tx_id'] = $rows["tx_hash"];
     $com_balance_us['prvs_hash'] = get_ca_recharge_pre_hash($rows["us_id"]);
     $com_balance_us["credit_id"] = $rows["us_id"];
@@ -88,7 +88,7 @@ function recharge_confirm($rows)
     }
 
     $us_type = 'ca_recharge_balance';
-    $com_balance_ba['hash_id'] = hash('md5', $rows["ca_id"] . $us_type . $us_ip . time() . rand(1000, 9999) . $ctime);
+    $com_balance_ba['hash_id'] = hash('sha256', $rows["ca_id"] . $us_type . $us_ip . time() . rand(1000, 9999) . $ctime);
     $com_balance_ba['tx_id'] = $rows["tx_hash"];
     $com_balance_ba['prvs_hash'] = get_ca_recharge_pre_hash($rows["ca_id"]);
     $com_balance_ba["credit_id"] = $rows["ca_id"];
