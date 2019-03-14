@@ -29,6 +29,7 @@ $(function () {
         $(".la_sum_amount").text(sum_la_base_amount);
         $(".sum_total_base_amount").text(sum_total_base_amount);
 
+        //user ba ca la资产比例
         let user_scale = (sum_us_base_amount / sum_total_base_amount).toFixed(3) * 100;
         let ba_scale = (sum_ba_base_amount / sum_total_base_amount).toFixed(3) * 100;
         let ca_scale = (sum_ca_base_amount / sum_total_base_amount).toFixed(3) * 100;
@@ -43,20 +44,11 @@ $(function () {
         $('#ca_percent .percent').text(ca_scale + "%");
         $('#la_percent .percent').text(la_scale + "%");
 
-        // chart1.update(Math.round(num/all));
         $("#user_percent").data('easyPieChart').update(user_scale);
         $("#ba_percent").data('easyPieChart').update(ba_scale);
         $("#ca_percent").data('easyPieChart').update(ca_scale);
         $("#la_percent").data('easyPieChart').update(la_scale);
-
-        console.log(Math.floor(sum_us_base_amount / sum_total_base_amount));
-        console.log(Math.ceil(sum_us_base_amount / sum_total_base_amount));
-        console.log((sum_us_base_amount / sum_total_base_amount).toFixed(2));
-        console.log((sum_us_base_amount / sum_total_base_amount).toFixed(2) * 100);
-        console.log((sum_us_base_amount / sum_total_base_amount));
-        console.log(sum_ba_base_amount / sum_total_base_amount);
-        console.log(sum_ca_base_amount / sum_total_base_amount);
-        console.log(sum_la_base_amount / sum_total_base_amount);
+        //user ba ca la资产比例--结束
 
         ba_register_count = data.ba_register_count;
         ca_register_count = data.ca_register_count;
