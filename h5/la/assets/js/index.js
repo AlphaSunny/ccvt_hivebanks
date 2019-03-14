@@ -29,17 +29,25 @@ $(function () {
         $(".la_sum_amount").text(sum_la_base_amount);
         $(".sum_total_base_amount").text(sum_total_base_amount);
 
-        $('#user_percent').attr('data-percent', (sum_us_base_amount / sum_total_base_amount).toFixed(2) * 100);
-        $('#ba_percent').attr('data-percent', (sum_ba_base_amount / sum_total_base_amount).toFixed(2) * 100);
-        $('#ca_percent').attr('data-percent', (sum_ca_base_amount / sum_total_base_amount).toFixed(2) * 100);
-        $('#la_percent').attr('data-percent', (sum_la_base_amount / sum_total_base_amount).toFixed(2) * 100);
-        $('#user_percent .percent').text((sum_us_base_amount / sum_total_base_amount).toFixed(2) * 100 + "%");
-        $('#ba_percent .percent').text((sum_ba_base_amount / sum_total_base_amount).toFixed(2) * 100 + "%");
-        $('#ca_percent .percent').text((sum_ca_base_amount / sum_total_base_amount).toFixed(2) * 100 + "%");
-        $('#la_percent .percent').text((sum_la_base_amount / sum_total_base_amount).toFixed(2) * 100 + "%");
+        let user_scale = (sum_us_base_amount / sum_total_base_amount).toFixed(3) * 100;
+        let ba_scale = (sum_ba_base_amount / sum_total_base_amount).toFixed(3) * 100;
+        let ca_scale = (sum_ca_base_amount / sum_total_base_amount).toFixed(3) * 100;
+        let la_scale = (sum_la_base_amount / sum_total_base_amount).toFixed(3) * 100;
+
+        $('#user_percent').attr('data-percent', user_scale);
+        $('#ba_percent').attr('data-percent', ba_scale);
+        $('#ca_percent').attr('data-percent', ca_scale);
+        $('#la_percent').attr('data-percent', la_scale);
+        $('#user_percent .percent').text(user_scale + "%");
+        $('#ba_percent .percent').text(ba_scale + "%");
+        $('#ca_percent .percent').text(ca_scale + "%");
+        $('#la_percent .percent').text(la_scale + "%");
 
         // chart1.update(Math.round(num/all));
-        $("#user_percent").data('easyPieChart').update(61);
+        $("#user_percent").data('easyPieChart').update(user_scale);
+        $("#ba_percent").data('easyPieChart').update(ba_scale);
+        $("#ca_percent").data('easyPieChart').update(ca_scale);
+        $("#la_percent").data('easyPieChart').update(la_scale);
 
         console.log(Math.floor(sum_us_base_amount / sum_total_base_amount));
         console.log(Math.ceil(sum_us_base_amount / sum_total_base_amount));
