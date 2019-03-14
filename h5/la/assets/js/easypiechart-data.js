@@ -1,26 +1,26 @@
 $(function() {
-    $('#easypiechart-teal').easyPieChart({
+    $('#la_percent').easyPieChart({
         scaleColor: false,
         barColor: '#1ebfae'
     });
 });
 
 $(function() {
-    $('#easypiechart-orange').easyPieChart({
+    $('#ca_percent').easyPieChart({
         scaleColor: false,
         barColor: '#ffb53e'
     });
 });
 
 $(function() {
-    $('#easypiechart-red').easyPieChart({
+    $('#ba_percent').easyPieChart({
         scaleColor: false,
         barColor: '#f9243f'
     });
 });
 
 $(function() {
-   $('#easypiechart-blue').easyPieChart({
+   $('#user_percent').easyPieChart({
        scaleColor: false,
        barColor: '#30a5ff'
    });

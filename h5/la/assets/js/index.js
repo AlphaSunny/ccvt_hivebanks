@@ -29,6 +29,15 @@ $(function () {
         $(".la_sum_amount").text(sum_la_base_amount);
         $(".sum_total_base_amount").text(sum_total_base_amount);
 
+        $('#user_percent').attr('data-percent',Math.round(sum_us_base_amount/sum_total_base_amount));
+        $('#ba_percent').attr('data-percent',Math.round(sum_ba_base_amount/sum_total_base_amount));
+        $('#ca_percent').attr('data-percent',Math.round(sum_ca_base_amount/sum_total_base_amount));
+        $('#la_percent').attr('data-percent',Math.round(sum_la_base_amount/sum_total_base_amount));
+        $('#user_percent .percent').text(Math.round(sum_us_base_amount/sum_total_base_amount)+"%");
+        $('#ba_percent .percent').text(Math.round(sum_ba_base_amount/sum_total_base_amount)+"%");
+        $('#ca_percent .percent').text(Math.round(sum_ca_base_amount/sum_total_base_amount)+"%");
+        $('#la_percent .percent').text(Math.round(sum_la_base_amount/sum_total_base_amount)+"%");
+
         ba_register_count = data.ba_register_count;
         ca_register_count = data.ca_register_count;
         us_register_count = data.us_register_count;
