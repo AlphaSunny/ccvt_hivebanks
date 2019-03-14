@@ -39,14 +39,14 @@ $(function () {
                     if (!data[i].exchange_time) {
                         exchange_time = "--";
                     } else {
-                        exchange_time = data[i].exchange_time
+                        exchange_time = data[i].exchange_time;
                     }
 
                     //是否有兑换者
                     if (!data[i].us_account) {
                         redeemer = "--";
                     } else {
-                        redeemer = "<a href='userInfo.html?us_id=" + data[i].us_id + ">" + data[i].us_account + "</a>"
+                        redeemer = "<a href='userInfo.html?us_id=" + data[i].us_id + "'>" + data[i].us_account + "</a>";
                     }
                     tr += "<tr>" +
                         "<td>" + data[i].coupon_code + "</td>" +
