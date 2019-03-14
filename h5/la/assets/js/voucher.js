@@ -3,7 +3,7 @@ $(function () {
     let token = GetCookie('la_token');
 
 //获取兑换码
-    let limit = 10, offset = 0, is_effective = "";
+    let limit = 10, offset = 0;
 
     function GetVoucherFun(limit, offset) {
         let totalPage = "", count = "", tr = "", is_effective = "", exchange_time = "", redeemer = "";
