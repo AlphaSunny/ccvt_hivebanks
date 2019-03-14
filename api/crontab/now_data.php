@@ -6,8 +6,10 @@
 require_once "../inc/common.php";
 $md5 = hash('md5', '6C69520E-E454-127B-F474-452E65A3EE75' . 1 . get_ip() . '2019-03-14 14:35:11' . rand(1000, 9999) . microtime());
 echo $md5."<br />";
+echo strlen($md5)."<br />";
 $sha = hash('sha256', '6C69520E-E454-127B-F474-452E65A3EE75' . 1 . get_ip() . '2019-03-14 14:35:11' . rand(1000, 9999) . microtime());
 echo $sha."<br />";
+echo strlen($sha)."<br />";
 die;
 //require_once "/alidata/www/ccvt/api/inc/common.php";
 ini_set("display_errors", "On");
