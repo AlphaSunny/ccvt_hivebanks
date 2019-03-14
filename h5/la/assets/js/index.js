@@ -40,6 +40,7 @@ $(function () {
 
         console.log(Math.floor(sum_us_base_amount/sum_total_base_amount));
         console.log(Math.ceil(sum_us_base_amount/sum_total_base_amount));
+        console.log((sum_us_base_amount/sum_total_base_amount).toFixed(2));
         console.log(sum_ba_base_amount/sum_total_base_amount);
         console.log(sum_ca_base_amount/sum_total_base_amount);
         console.log(sum_la_base_amount/sum_total_base_amount);
