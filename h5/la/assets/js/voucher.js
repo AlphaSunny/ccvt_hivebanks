@@ -22,7 +22,7 @@ $(function () {
     $(".generate_btn").click(function () {
         let num = $(".num").val();
         let price = $(".price").val();
-        let expiry_date = $("#expireDate").val();
+        let expiry_date = $("#expireDate").val().replace(/\//g,"-");
         console.log(num);
         console.log(price);
         console.log(expiry_date);
