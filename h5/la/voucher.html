@@ -37,7 +37,8 @@
     </nav>
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
-        <li><a href="javascript:;" class="logOut"><i class="fa fa-sign-out fa-fw"></i><span class="i18n" name="logout"></span></a>
+        <li><a href="javascript:;" class="logOut"><i class="fa fa-sign-out fa-fw"></i><span class="i18n"
+                                                                                            name="logout"></span></a>
         </li>
     </ul>
 
@@ -128,7 +129,8 @@
                                     <a href="baRegisterKyc.html" class="i18n" name="registrationReviewList"></a>
                                 </li>
                                 <li>
-                                    <a href="baWithdrawAddressKyc.html" class="i18n" name="withdrawAddressReviewList"></a>
+                                    <a href="baWithdrawAddressKyc.html" class="i18n"
+                                       name="withdrawAddressReviewList"></a>
                                 </li>
                             </ul>
                         </li>
@@ -145,7 +147,8 @@
                                     <a href="caRegisterKyc.html" class="i18n" name="registrationReviewList"></a>
                                 </li>
                                 <li>
-                                    <a href="caWithdrawAddressKyc.html" class="i18n" name="withdrawAddressReviewList"></a>
+                                    <a href="caWithdrawAddressKyc.html" class="i18n"
+                                       name="withdrawAddressReviewList"></a>
                                 </li>
                             </ul>
                         </li>
@@ -186,36 +189,35 @@
                         <div>
                             <button class="btn btn-success">生成兑换码</button>
                             <div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <label for="exchangeQuota">兑换数量</label>
-                                        <input type="text" class="form-control num" id="exchangeNum">
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="exchangeQuota">兑换额度</label>
-                                        <input type="text" class="form-control price" id="exchangeQuota">
-                                        <span class="input-group-addon base_currency expiry_date" id="basic-addon2"></span>
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="expireDate">过期时间</label>
-                                        <input type="text" class="form-control expiry_date" id="expireDate">
-                                    </div>
-                                    <button class="btn btn-success generate_btn">一键生成</button>
+                                <div class="input-field">
+                                    <input type="text" class="form-control num" id="exchangeNum">
+                                    <label for="exchangeNum">兑换数量</label>
                                 </div>
+                                <div class="input-field">
+                                    <input type="text" class="form-control price" id="exchangeQuota">
+                                    <label for="exchangeQuota">兑换额度</label>
+                                </div>
+                                <div class="input-field">
+                                    <input type="text" class="form-control expiry_date" id="expireDate">
+                                    <label for="expireDate">过期时间</label>
+                                </div>
+                                <button class="btn btn-success generate_btn">一键生成</button>
                             </div>
                         </div>
                         <table class="bordered striped centered highlight" id="voucherTable">
                             <thead>
-                                <tr>
-                                    <th>兑换码</th>
-                                    <th>额度</th>
-                                    <th>状态</th>
-                                    <th>创建时间</th>
-                                    <th>过期时间</th>
-                                </tr>
+                            <tr>
+                                <th>兑换码</th>
+                                <th>额度</th>
+                                <th>状态</th>
+                                <th>创建时间</th>
+                                <th>过期时间</th>
+                            </tr>
                             </thead>
                             <tbody id="baList">
-                            <tr><td colspan="6"><img src="../assets/img/loading.gif" alt=""></td></tr>
+                            <tr>
+                                <td colspan="6"><img src="../assets/img/loading.gif" alt=""></td>
+                            </tr>
                             </tbody>
                         </table>
                         <div class="text-right">
@@ -233,11 +235,13 @@
     <div class="spinner-layer spinner-red-only">
         <div class="circle-clipper left">
             <div class="circle"></div>
-        </div><div class="gap-patch">
-        <div class="circle"></div>
-    </div><div class="circle-clipper right">
-        <div class="circle"></div>
-    </div>
+        </div>
+        <div class="gap-patch">
+            <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+            <div class="circle"></div>
+        </div>
     </div>
 </div>
 
