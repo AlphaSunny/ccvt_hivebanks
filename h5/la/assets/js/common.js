@@ -363,6 +363,18 @@ function CallNewsApi(api_url, post_data, suc_func, error_func) {
     });
 }
 
+//获取兑换码
+function GetVoucher(token, limit, offset, is_effective, suc_func, error_func) {
+    var api_url = 'voucher_list.php',
+        post_data = {
+            'token': token,
+            'limit': limit,
+            'offset': offset,
+            'is_effective': is_effective
+        };
+    CallVoucherApi(api_url, post_data, suc_func, error_func);
+}
+
 //生成兑换码
 function Generate(token, num, price, expiry_date, suc_func, error_func) {
     var api_url = 'voucher_add.php',

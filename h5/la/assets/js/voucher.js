@@ -2,6 +2,22 @@ $(function () {
     //token
     let token = GetCookie('la_token');
 
+//获取兑换码
+    let limit = 10, offset = 0, is_effective = "";
+
+    function GetVoucherFun(limit, offset) {
+        GetVoucher(token, limit, offset, is_effective, function (response) {
+            if (response.errcode == "0") {
+                let data = response.rows;
+                console.log(data);
+            }
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        });
+    }
+
+    GetVoucherFun(limit, offset);
+
     //生成
     $(".generate_btn").click(function () {
         let num = $(".num").val();
@@ -27,6 +43,7 @@ $(function () {
         Generate(token, num, price, expiry_date, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("提交成功");
+                GetVoucherFun(limit, offset);
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
