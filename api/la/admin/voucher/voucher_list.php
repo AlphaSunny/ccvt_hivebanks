@@ -36,6 +36,9 @@ chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token', 128);
+
+// 用户token
+$is_effective = get_arg_str('GET', 'is_effective');
 //la用户检查
 la_user_check($token);
 
@@ -43,9 +46,9 @@ la_user_check($token);
 list($limit, $offset) = get_paging_arg('GET');
 
 // 记录数组总数
-$total = get_voucher_list_total();
+$total = get_voucher_list_total($is_effective);
 
-$rows = get_voucher_list($offset,$limit);
+$rows = get_voucher_list($offset,$limit,$is_effective);
 
 //成功后返回数据
 $rtn_ary = array();
