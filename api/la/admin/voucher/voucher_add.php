@@ -14,38 +14,36 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:application/json;charset=utf-8");
 
 /*
-========================== 获取兑换码列表 ==========================
+========================== 生成兑换码 ==========================
 GET参数
 token                用户token
+
 
 */
 
 php_begin();
-$args = array('token');
+$args = array('token','num','price','expiry_date');
 chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token', 128);
 
-
-$is_effective = get_arg_str('GET', 'is_effective');
+$num = get_arg_str('GET', 'num');
+$price = get_arg_str('GET', 'price');
+$expiry_date = get_arg_str('GET', 'expiry_date');
 //la用户检查
 la_user_check($token);
 
-// 取得分页参数
-list($limit, $offset) = get_paging_arg('GET');
 
-// 记录数组总数
-$total = get_voucher_list_total($is_effective);
-
-$rows = get_voucher_list($offset,$limit,$is_effective);
+$rows = voucher_add($num,$price,$expiry_date);
+if (!$rows){
+    exit_error('190','失败');
+}
 
 //成功后返回数据
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['total'] = $total;
-$rtn_ary['rows'] = $rows;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 

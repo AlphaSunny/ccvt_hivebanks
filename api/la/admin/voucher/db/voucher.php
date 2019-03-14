@@ -17,14 +17,7 @@ function  get_voucher_list_total($is_effective)
 
 
 //======================================
-// 函数: 获取账户变动记录
-// 参数: us_id            用户id
-// 返回: rows             用户登录信息数组
-//        chg_type           变动类型(ca_in/out:CA充值提现，ba_in/out:BA充值提现，us_in/out:用户转入转出)
-//        chg_amount         变动金额
-//        chg_balance        变动后账户余额
-//        prvs_hash          交易HASH
-//        ctime              变动时间
+// 函数: 获取兑换码记录记录
 //======================================
 function get_voucher_list($offset,$limit,$is_effective)
 {
@@ -45,4 +38,35 @@ function get_voucher_list($offset,$limit,$is_effective)
         }
     }
     return $rows;
+}
+
+
+//======================================
+// 函数: 生成兑换码
+//======================================
+function voucher_add($num,$price,$expiry_date)
+{
+    $db = new DB_COM();
+    for($i=0;$i<$num;$i++){
+        $data['id'] = get_guid();
+        $data['coupon_code'] = "ccvt-".randomkeys(8);
+        $data['amount'] = $price;
+        $data['ctime'] = date('Y-m-d H:i:s');
+        $data['utime'] = time();
+        $data['effective_date'] = date('Y-m-d H:i:s');
+        $data['expiry_date'] = $expiry_date;
+        $sql = $db->sqlInsert("us_voucher", $data);
+        $db->query($sql);
+    }
+    return true;
+}
+function randomkeys($length)
+{
+    $key= '';
+    $pattern = '123456789abcdefghjklmnpqrstuvwxyz';
+    for($i=0;$i<$length;$i++)
+    {
+        $key .= $pattern{mt_rand(0,30)};    //生成php随机数
+    }
+    return $key;
 }
