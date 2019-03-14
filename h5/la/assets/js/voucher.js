@@ -23,6 +23,9 @@ $(function () {
         let num = $(".num").val();
         let price = $(".price").val();
         let expiry_date = $(".expiry_date").val();
+        console.log(num);
+        console.log(price);
+        console.log(expiry_date);
         if (num.length <= 0) {
             WarnPrompt("请输入兑换数量");
             return;
