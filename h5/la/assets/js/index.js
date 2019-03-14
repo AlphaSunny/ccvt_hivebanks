@@ -26,6 +26,7 @@ $(function () {
         $(".ba_sum_amount").text(sum_ba_base_amount);
         $(".ca_sum_amount").text(sum_ca_base_amount);
         $(".la_sum_amount").text(sum_la_base_amount);
+        $(".sum_total_base_amount").text(sum_total_base_amount);
     }, function (response) {
         ErrorPrompt(response.errmsg);
     });
