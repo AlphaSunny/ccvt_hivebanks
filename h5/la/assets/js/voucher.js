@@ -41,6 +41,8 @@ $(function () {
                         "<td>" + data[i].coupon_code + "</td>" +
                         "<td>" + data[i].amount + "</td>" +
                         "<td>" + is_effective + "</td>" +
+                        "<td><span name='"+ data[i].us_id +"'>"+ data[i].us_account +"</span></td>" +
+                        "<td>" + exchange_time + "</td>" +
                         "<td>" + data[i].ctime + "</td>" +
                         "<td>" + data[i].expiry_date + "</td>" +
                         "</tr>"
