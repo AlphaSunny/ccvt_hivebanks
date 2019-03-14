@@ -283,31 +283,62 @@
                 </div>
 
                 <div class="col-md-7 col-sm-12 col-xs-12">
-            </div>
-
-            <!--用户增长趋势图-->
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-action"><h5 class="i18n" name="userGrowthTrendChart">用户增长趋势图</h5></div>
-                        <div class="card-content" style="overflow-x: auto">
-                            <div class="filter_btn_box">
-                                <button class="btn btn-success day_7">近7日</button>
-                                <button class="btn btn-success day_15">近15日</button>
-                                <button class="btn btn-success day_30">近30日</button>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="card-panel text-center">
+                                <h4>Profit</h4>
+                                <div class="easypiechart" id="easypiechart-blue" data-percent="82" ><span class="percent">82%</span>
+                                </div>
                             </div>
-                            <div id="user-line-chart"></div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="card-panel text-center">
+                                <h4>No. of Visits</h4>
+                                <div class="easypiechart" id="easypiechart-red" data-percent="46" ><span class="percent">46%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="card-panel text-center">
+                                <h4>Customers</h4>
+                                <div class="easypiechart" id="easypiechart-teal" data-percent="84" ><span class="percent">84%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="card-panel text-center">
+                                <h4>Sales</h4>
+                                <div class="easypiechart" id="easypiechart-orange" data-percent="55" ><span class="percent">55%</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--资产变动表-->
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="card-action"><h5 class="i18n" name="assetChangeSheet"></h5></div>
-                        <div class="card-content">
-                            <div id="morris-line-chart"></div>
+
+                <!--用户增长趋势图-->
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-action"><h5 class="i18n" name="userGrowthTrendChart">用户增长趋势图</h5></div>
+                            <div class="card-content" style="overflow-x: auto">
+                                <div class="filter_btn_box">
+                                    <button class="btn btn-success day_7">近7日</button>
+                                    <button class="btn btn-success day_15">近15日</button>
+                                    <button class="btn btn-success day_30">近30日</button>
+                                </div>
+                                <div id="user-line-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--资产变动表-->
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="card-action"><h5 class="i18n" name="assetChangeSheet"></h5></div>
+                            <div class="card-content">
+                                <div id="morris-line-chart"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -335,6 +366,8 @@
 <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
 <script src="assets/js/morris/morris.js"></script>
 <script src="assets/js/chart.min.js"></script>
+<script src="assets/js/easypiechart.js"></script>
+<script src="assets/js/easypiechart-data.js"></script>
 <script src="assets/js/sha.js"></script>
 <script src="assets/js/prompt.js"></script>
 <script src="assets/js/index.js"></script>
