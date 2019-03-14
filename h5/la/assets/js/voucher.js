@@ -27,7 +27,7 @@ $(function () {
                 }
 
                 $.each(data, function (i, val) {
-                    console.log(data);
+                    console.log(val);
                     //是否有效
                     if (data[i].is_effective == "1") {
                         is_effective = "有效";
