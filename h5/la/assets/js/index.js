@@ -39,7 +39,7 @@ $(function () {
         $('#la_percent .percent').text((sum_la_base_amount / sum_total_base_amount).toFixed(2) * 100 + "%");
 
         // chart1.update(Math.round(num/all));
-        $("#user_percent").data('easyPieChart').update(0);
+        $("#user_percent").data('easyPieChart').update(61);
 
         console.log(Math.floor(sum_us_base_amount / sum_total_base_amount));
         console.log(Math.ceil(sum_us_base_amount / sum_total_base_amount));
