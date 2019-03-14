@@ -7,6 +7,7 @@
 
 require_once  "../../../inc/common.php";
 require_once  "db/voucher.php";
+require_once  "db/la_admin.php";
 require_once "../../db/la_func_common.php";
 
 
