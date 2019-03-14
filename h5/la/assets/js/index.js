@@ -29,23 +29,23 @@ $(function () {
         $(".la_sum_amount").text(sum_la_base_amount);
         $(".sum_total_base_amount").text(sum_total_base_amount);
 
-        $('#user_percent').attr('data-percent',Math.round(sum_us_base_amount/sum_total_base_amount));
-        $('#ba_percent').attr('data-percent',Math.round(sum_ba_base_amount/sum_total_base_amount));
-        $('#ca_percent').attr('data-percent',Math.round(sum_ca_base_amount/sum_total_base_amount));
-        $('#la_percent').attr('data-percent',Math.round(sum_la_base_amount/sum_total_base_amount));
-        $('#user_percent .percent').text(Math.round(sum_us_base_amount/sum_total_base_amount)+"%");
-        $('#ba_percent .percent').text(Math.round(sum_ba_base_amount/sum_total_base_amount)+"%");
-        $('#ca_percent .percent').text(Math.round(sum_ca_base_amount/sum_total_base_amount)+"%");
-        $('#la_percent .percent').text(Math.round(sum_la_base_amount/sum_total_base_amount)+"%");
+        $('#user_percent').attr('data-percent', (sum_us_base_amount / sum_total_base_amount).toFixed(2) * 100);
+        $('#ba_percent').attr('data-percent', (sum_ba_base_amount / sum_total_base_amount).toFixed(2) * 100);
+        $('#ca_percent').attr('data-percent', (sum_ca_base_amount / sum_total_base_amount).toFixed(2) * 100);
+        $('#la_percent').attr('data-percent', (sum_la_base_amount / sum_total_base_amount).toFixed(2) * 100);
+        $('#user_percent .percent').text((sum_us_base_amount / sum_total_base_amount).toFixed(2) * 100 + "%");
+        $('#ba_percent .percent').text((sum_ba_base_amount / sum_total_base_amount).toFixed(2) * 100 + "%");
+        $('#ca_percent .percent').text((sum_ca_base_amount / sum_total_base_amount).toFixed(2) * 100 + "%");
+        $('#la_percent .percent').text((sum_la_base_amount / sum_total_base_amount).toFixed(2) * 100 + "%");
 
-        console.log(Math.floor(sum_us_base_amount/sum_total_base_amount));
-        console.log(Math.ceil(sum_us_base_amount/sum_total_base_amount));
-        console.log((sum_us_base_amount/sum_total_base_amount).toFixed(2));
-        console.log((sum_us_base_amount/sum_total_base_amount).toFixed(2) * 100);
-        console.log((sum_us_base_amount/sum_total_base_amount));
-        console.log(sum_ba_base_amount/sum_total_base_amount);
-        console.log(sum_ca_base_amount/sum_total_base_amount);
-        console.log(sum_la_base_amount/sum_total_base_amount);
+        console.log(Math.floor(sum_us_base_amount / sum_total_base_amount));
+        console.log(Math.ceil(sum_us_base_amount / sum_total_base_amount));
+        console.log((sum_us_base_amount / sum_total_base_amount).toFixed(2));
+        console.log((sum_us_base_amount / sum_total_base_amount).toFixed(2) * 100);
+        console.log((sum_us_base_amount / sum_total_base_amount));
+        console.log(sum_ba_base_amount / sum_total_base_amount);
+        console.log(sum_ca_base_amount / sum_total_base_amount);
+        console.log(sum_la_base_amount / sum_total_base_amount);
 
         ba_register_count = data.ba_register_count;
         ca_register_count = data.ca_register_count;
