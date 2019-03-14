@@ -41,7 +41,7 @@
     color: #ffffff;
 }
 
-.dashboard-cards .card-content .card-action strong{
+#page-wrapper .dashboard-cards .card-content .card-action strong{
     color: rgba(255, 255, 255, 0.65)!important;
 }
 .card-content h3{
