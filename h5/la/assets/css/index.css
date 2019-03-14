@@ -41,9 +41,15 @@
     color: #ffffff;
 }
 
-#page-wrapper .card .card-action strong{
-    color: rgba(255, 255, 255, 0.65)!important;
+#page-wrapper .card .card-action strong {
+    color: rgba(255, 255, 255, 0.65) !important;
 }
-.card-content h3{
-    color: #ffffff!important;
+
+.card-content h3 {
+    color: #ffffff !important;
+}
+
+.card-stacked {
+    color: #fff;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
 }
