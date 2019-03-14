@@ -38,6 +38,11 @@ $(function () {
         $('#ca_percent .percent').text(Math.round(sum_ca_base_amount/sum_total_base_amount)+"%");
         $('#la_percent .percent').text(Math.round(sum_la_base_amount/sum_total_base_amount)+"%");
 
+        console.log(sum_us_base_amount/sum_total_base_amount);
+        console.log(sum_ba_base_amount/sum_total_base_amount);
+        console.log(sum_ca_base_amount/sum_total_base_amount);
+        console.log(sum_la_base_amount/sum_total_base_amount);
+
         ba_register_count = data.ba_register_count;
         ca_register_count = data.ca_register_count;
         us_register_count = data.us_register_count;
