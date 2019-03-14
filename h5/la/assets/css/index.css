@@ -53,6 +53,11 @@
     color: #fff;
     border-left: 1px solid rgba(255, 255, 255, 0.18);
 }
+
 .card-content {
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.total_amount_box {
+    font-size: 1.8rem;
 }
