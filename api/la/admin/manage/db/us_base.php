@@ -26,10 +26,17 @@ function get_us_base_info_total()
 //        utime         更新时间
 //        ctime         创建时间
 //======================================
-function get_us_base_info($offset,$limit,$filter)
+function get_us_base_info($offset,$limit,$filter,$time_filter)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM us_base order BY base_amount $filter limit $offset,$limit";
+    $sql = "SELECT * FROM us_base order BY";
+    if ($filter){
+        $sql .= " base_amount $filter";
+    }
+    if ($time_filter){
+        $sql .= " ctime $time_filter";
+    }
+    $sql .= " limit $offset,$limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;

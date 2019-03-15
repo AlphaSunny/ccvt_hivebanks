@@ -30,13 +30,15 @@ rows            信息数组
 */
 
 php_begin();
-$args = array('token','filter');
+$args = array('token','funds_filter','time_filter');
 chk_empty_args('GET', $args);
 
 // 用户token
 $token = get_arg_str('GET', 'token', 128);
 
-$filter = get_arg_str('GET', 'filter', 128);
+$filter = get_arg_str('GET', 'funds_filter', 128);
+
+$time_filter = get_arg_str('GET', 'time_filter', 128);
 
 $user_id = la_user_check($token);
 
@@ -46,7 +48,7 @@ list($limit, $offset) = get_paging_arg('GET');
 // 记录数组总数
 $total = get_us_base_info_total();
 
-$rows = get_us_base_info($offset,$limit,$filter);
+$rows = get_us_base_info($offset,$limit,$filter,$time_filter);
 
 //成功后返回数据
 $rtn_ary = array();
