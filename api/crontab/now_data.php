@@ -14,8 +14,6 @@
 require_once "/alidata/www/ccvt/api/inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
-echo msectime();
-die;
 $db = new DB_COM();
 
 $unit = get_la_base_unit();
@@ -618,10 +616,9 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     $com_balance_us["credit_balance"] = $transfer_credit_balance;
     $com_balance_us["utime"] = strtotime($time);
     $com_balance_us["ctime"] = $time;
-    $com_balance_us['intime'] = microtime();
+    $com_balance_us['intime'] = msectime();
     $com_balance_us['tx_count'] = base_get_pre_count($credit_id);
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
-    echo $sql;die;
     if (!$db->query($sql)) {
         echo "资金变动记录表错误";
     }
@@ -638,7 +635,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     $com_balance_ba["credit_balance"] = $dat_credit_balance;
     $com_balance_ba["utime"] = strtotime($time);
     $com_balance_ba["ctime"] = $time;
-    $com_balance_ba["intime"] = microtime();
+    $com_balance_ba["intime"] = msectime();
     $com_balance_ba['tx_count'] = base_get_pre_count($debit_id);
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
     if (!$db->query($sql)) {
