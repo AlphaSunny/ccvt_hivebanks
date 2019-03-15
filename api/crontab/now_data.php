@@ -617,6 +617,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     $com_balance_us["credit_balance"] = $transfer_credit_balance;
     $com_balance_us["utime"] = strtotime($time);
     $com_balance_us["ctime"] = $time;
+    $com_balance_us['intime'] = microtime();
     $com_balance_us['tx_count'] = base_get_pre_count($credit_id);
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
     if (!$db->query($sql)) {
@@ -635,6 +636,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     $com_balance_ba["credit_balance"] = $dat_credit_balance;
     $com_balance_ba["utime"] = strtotime($time);
     $com_balance_ba["ctime"] = $time;
+    $com_balance_ba["intime"] = microtime();
     $com_balance_ba['tx_count'] = base_get_pre_count($debit_id);
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
     if (!$db->query($sql)) {
@@ -756,7 +758,7 @@ function get_us_id($invite_code){
 function base_get_pre_count($credit_id)
 {
     $db = new DB_COM();
-    $sql = "select tx_count from com_base_balance where credit_id = '{$credit_id}' order by ctime desc limit 1";
+    $sql = "select tx_count from com_base_balance where credit_id = '{$credit_id}' order by intime desc limit 1";
     $tx_count = $db->getField($sql, 'tx_count');
     if($tx_count == null)
         return 1;
