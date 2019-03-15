@@ -33,7 +33,7 @@ $(function () {
                 LayerFun('loginSuccessful');
                 SetCookie('la_token', response.token);
                 SetCookie('la_name', response.rows.user_info.user);
-                window.location.href = 'config.html';
+                window.location.href = 'index.html';
             }
         }, function (response) {
             ActiveClick(_this, _text);
