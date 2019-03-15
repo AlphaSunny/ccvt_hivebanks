@@ -18,6 +18,7 @@ $(function () {
                 $("#title").val(data[0].title);
                 $(".summernote").summernote("code", data[0].content);
                 $("#author").val(data[0].author);
+                $("#overdue_time").val(data[0].overdue_time);
             }
         }, function (response) {
             LayerFun(response.errcode);
