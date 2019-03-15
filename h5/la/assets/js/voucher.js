@@ -4,14 +4,14 @@ $(function () {
 
     //显示隐藏兑换码
     $(".show_voucher_box_btn").click(function () {
-       $(".voucher_box").slideToggle();
+        $(".voucher_box").slideToggle();
     });
 
 //获取兑换码
-    let limit = 10, offset = 0;
+    let limit = 10, offset = 0, is_effective = "";
 
     function GetVoucherFun(limit, offset) {
-        let totalPage = "", count = "", tr = "", is_effective = "", exchange_time = "", redeemer = "";
+        let totalPage = "", count = "", tr = "", exchange_time = "", redeemer = "";
         GetVoucher(token, limit, offset, is_effective, function (response) {
             ShowLoading("hide");
             if (response.errcode == "0") {
@@ -57,7 +57,7 @@ $(function () {
                         "<td>" + data[i].coupon_code + "</td>" +
                         "<td>" + data[i].amount + "</td>" +
                         "<td>" + is_effective + "</td>" +
-                        "<td>"+ redeemer +"</td>" +
+                        "<td>" + redeemer + "</td>" +
                         "<td>" + exchange_time + "</td>" +
                         "<td>" + data[i].ctime + "</td>" +
                         "<td>" + data[i].expiry_date + "</td>" +
@@ -86,6 +86,13 @@ $(function () {
     }
 
     GetVoucherFun(limit, offset);
+
+    //筛选有效和无效
+    $("#voucherFilter").change(function () {
+        is_effective = $("#voucherFilter").val();
+        ShowLoading("show");
+        GetVoucherFun(limit, offset);
+    });
 
     //生成
     $(".generate_btn").click(function () {
