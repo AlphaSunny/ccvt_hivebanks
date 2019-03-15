@@ -29,15 +29,14 @@ function get_us_base_info_total()
 function get_us_base_info($offset,$limit,$filter,$time_filter)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM us_base order BY";
+    $sql = "SELECT * FROM us_base";
     if ($filter){
-        $sql .= " base_amount $filter";
+        $sql .= " order BY base_amount $filter";
     }
     if ($time_filter){
-        $sql .= " ctime $time_filter";
+        $sql .= " order BY ctime $time_filter";
     }
     $sql .= " limit $offset,$limit";
-    echo $sql;die;
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
