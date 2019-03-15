@@ -1,4 +1,4 @@
-phone$(function () {
+$(function () {
     //get token
     let token = GetCookie('user_token');
     GetUsAccount();
