@@ -37,6 +37,7 @@ function get_us_base_info($offset,$limit,$filter,$time_filter)
         $sql .= " ctime $time_filter";
     }
     $sql .= " limit $offset,$limit";
+    echo $sql;die;
     $db->query($sql);
     $rows = $db->fetchAll();
     return $rows;
