@@ -14,7 +14,7 @@
 require_once "/alidata/www/ccvt/api/inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
-echo microtime();
+echo msectime();
 die;
 $db = new DB_COM();
 
@@ -781,4 +781,10 @@ function transfer_get_pre_count($credit_id)
     if($tx_count == null)
         return 1;
     return $tx_count+1;
+}
+//获取毫秒值
+function msectime() {
+    list($msec, $sec) = explode(' ', microtime());
+    $msectime = (float)sprintf('%.0f', (floatval($msec) + floatval($sec)) * 1000);
+    return $msectime;
 }
