@@ -27,7 +27,7 @@ $(function () {
 
                 $.each(data, function (i, val) {
                     if(data[i].overdue_time == "0"){
-                        overdue_time = "";
+                        overdue_time = "--";
                     }else{
                         overdue_time = data[i].overdue_time;
                     }
