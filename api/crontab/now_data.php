@@ -305,7 +305,7 @@ if ($us_ba_withdraw_request){
 
 
 //离职回收(us锁定金额给ba)
-$sql = "select credit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=15 AND tx_detail='离职回收'  AND give_or_receive=1";
+$sql = "select debit_id as us_id,flag,tx_amount as send_money,utime as ctime,tx_detail as detail from com_transfer_request2 WHERE flag=15 AND tx_detail='离职回收'  AND give_or_receive=2";
 $db->query($sql);
 $gone_staff = $db->fetchAll();
 foreach ($gone_staff as $k=>$v){
