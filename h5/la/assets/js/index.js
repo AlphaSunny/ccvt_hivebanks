@@ -84,7 +84,9 @@ $(function () {
         let ca_scale = (Math.round((sum_ca_base_amount / sum_total_base_amount).toFixed(3)* 100));
         let la_scale = (Math.round((sum_la_base_amount / sum_total_base_amount).toFixed(3)* 100));
 
+        console.log((sum_us_base_amount / sum_total_base_amount).toFixed(3));
         console.log((sum_us_base_amount / sum_total_base_amount).toFixed(3) * 100);
+        console.log(((sum_us_base_amount / sum_total_base_amount).toFixed(3) * 100).toFixed(1));
         console.log(parseInt((sum_us_base_amount / sum_total_base_amount).toFixed(3) * 100));
 
 
