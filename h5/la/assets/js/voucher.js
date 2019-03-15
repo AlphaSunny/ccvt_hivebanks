@@ -2,6 +2,11 @@ $(function () {
     //token
     let token = GetCookie('la_token');
 
+    //显示隐藏兑换码
+    $(".show_voucher_box_btn").click(function () {
+       $(".voucher_box").slideToggle();
+    });
+
 //获取兑换码
     let limit = 10, offset = 0;
 
