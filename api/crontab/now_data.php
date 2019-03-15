@@ -3,7 +3,7 @@
 //ba_in,ba_out,ca_out,us_us_transfer_cancel,us_us_transfer_in,us_us_transfer_out
 //die('done');
 
-require_once "../inc/common.php";
+//require_once "../inc/common.php";
 //$md5 = hash('md5', '6C69520E-E454-127B-F474-452E65A3EE75' . 1 . get_ip() . '2019-03-14 14:35:11' . rand(1000, 9999) . microtime());
 //echo $md5."<br />";
 //echo strlen($md5)."<br />";
@@ -11,7 +11,7 @@ require_once "../inc/common.php";
 //echo $sha."<br />";
 //echo strlen($sha)."<br />";
 //die;
-//require_once "/alidata/www/ccvt/api/inc/common.php";
+require_once "/alidata/www/ccvt/api/inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
 
