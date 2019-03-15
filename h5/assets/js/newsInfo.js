@@ -13,8 +13,10 @@ $(function () {
     var user_token = GetIndexCookie('user_token');
 
     if (user_token || login_us) {
-        $('.usLogin').remove();
+        $('.usLogin,.usRegister').remove();
         $('.accountNone').removeClass('accountNone');
+    }else{
+        $(".accountNone").remove();
     }
 
 
@@ -68,7 +70,7 @@ $(function () {
     //get news info
     function GetNewsInfoFun(news_id) {
         var index = layer.load(1, {
-            shade: [0.1,'#fff'] //0.1透明度的白色背景
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
         GetNewsInfo(news_id, function (response) {
             layer.close(index);
@@ -78,9 +80,9 @@ $(function () {
                 $(".ctime").text(data[0].utime);
                 $(".author").text(data[0].author);
                 $(".news_content").html(data[0].content);
-                if(data[0].category == "1"){
+                if (data[0].category == "1") {
                     $(".titles").text("CCVT 官方新闻");
-                }else {
+                } else {
                     $(".titles").text("CCVT 行业新闻");
                 }
             }
