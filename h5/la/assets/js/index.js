@@ -86,6 +86,7 @@ $(function () {
 
         console.log(sum_us_base_amount / sum_total_base_amount);
         console.log((sum_us_base_amount / sum_total_base_amount).toFixed(3));
+        console.log(((sum_us_base_amount / sum_total_base_amount).toFixed(3)) * 100);
 
 
         $('#user_percent').attr('data-percent', user_scale);
