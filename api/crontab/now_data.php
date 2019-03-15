@@ -13,7 +13,8 @@
 //die;
 require_once "/alidata/www/ccvt/api/inc/common.php";
 ini_set("display_errors", "off");
-error_reporting(E_ALL | E_STRICT);
+error_reporting(0);
+//error_reporting(E_ALL | E_STRICT);
 
 $db = new DB_COM();
 
