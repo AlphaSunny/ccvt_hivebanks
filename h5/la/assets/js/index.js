@@ -84,6 +84,10 @@ $(function () {
         let ca_scale = (Math.round((sum_ca_base_amount / sum_total_base_amount).toFixed(3)* 100));
         let la_scale = (Math.round((sum_la_base_amount / sum_total_base_amount).toFixed(3)* 100));
 
+        console.log((sum_us_base_amount / sum_total_base_amount).toFixed(3) * 100);
+        console.log(parseInt((sum_us_base_amount / sum_total_base_amount).toFixed(3) * 100));
+
+
         $('#user_percent').attr('data-percent', user_scale);
         $('#ba_percent').attr('data-percent', ba_scale);
         $('#ca_percent').attr('data-percent', ca_scale);
