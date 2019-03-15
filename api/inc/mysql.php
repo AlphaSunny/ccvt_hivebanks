@@ -40,7 +40,7 @@ class Mysql {
     $user = $user ? $user : $this->user;
     $password = $password ? $password : $this->password;
     $database = $database ? $database : $this->database;
-    @$this->link_id = $this->linkMode ? mysql_pconnect ($server, $user, $password, $database ) : mysql_connect ($server, $user, $password, $database );
+    @$this->link_id = $this->linkMode ? mysqli_connect ($server, $user, $password, $database ) : mysqli_connect ($server, $user, $password, $database );
     if (!$this->link_id) {
       //数据库连接失败！请检查各项参数！
       $this->halt ($server . "Db Connect error, pls check palameta!");
