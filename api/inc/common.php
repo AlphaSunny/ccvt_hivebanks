@@ -14,11 +14,11 @@ header('Access-Control-Allow-Methods:POST');
 header('Access-Control-Allow-Headers:x-requested-with,content-type');
 
 
-require_once('config.php');
-require_once('log.php');
-require_once('mysql.php');
-require_once('db_connect.php');
-require_once('des.php');
+require_once('/alidata/www/ccvt/api/inc/config.php');
+require_once('/alidata/www/ccvt/api/inc/log.php');
+require_once('/alidata/www/ccvt/api/inc/mysql.php');
+require_once('/alidata/www/ccvt/api/inc/db_connect.php');
+require_once('/alidata/www/ccvt/api/inc/des.php');
 //======================================
 // 函数: GET/POST必须参数是否为空检查
 // 参数: $type          GET或POST
