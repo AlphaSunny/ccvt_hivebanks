@@ -350,7 +350,7 @@ li.none {
     top: 10%;
 }
 
-.title_box{
+.title_box {
     display: flex;
     display: -moz-flex;
     display: -ms-flex;
@@ -361,6 +361,10 @@ li.none {
 .title_h1 {
     /*display: inline-block;*/
     margin: 0;
+}
+
+.title_pm {
+    margin: 10px 0;
 }
 
 @media only screen and (max-width: 768px) {
@@ -526,7 +530,7 @@ p {
 
 .to_domain {
     color: #ffffff;
-    margin-left: 2%;
+    margin-left: 10px;
 }
 
 .to_domain:hover {
