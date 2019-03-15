@@ -14,34 +14,17 @@ $(function () {
         GetImgCode();
     });
 
-    //Get phone verification code
-    $('.phoneCodeBtn').click(function () {
-        let country_code = $('.selected-dial-code').text().split("+")[1];
-        let cellphone = $('#phone').val();
-        let bind_type = '2', cfm_code = $('#phoneCfmCode').val();
-
-        if (cellphone == '') {
-            // LayerFun('phoneNotEmpty');
-            WarnPrompt("请输入手机号码");
-            return;
-        }
-
-        if (cfm_code <= 0) {
-            // LayerFun('pleaseImgCode');
-            WarnPrompt("请输入图形验证码");
-            return;
-        }
-        ShowLoading("show");
-        GetSmsCodeFun(cellphone, country_code, bind_type, cfm_code);
-    });
-
-//Get binding information
+    //Get binding information获取绑定信息手机号码
+    let phone_info = "", phone_num = "";
     BindingInformation(token, function (response) {
         if (response.errcode == '0') {
             let data = response.rows, cellphone = "";
             $.each(data, function (i, val) {
                 if (data[i].bind_name == 'cellphone' && data[i].bind_flag == '1') {
                     cellphone = data[i].bind_name;
+                    phone_info = data[i].bind_info;
+                    phone_num = data[i].bind_info.split("-")[1];
+                    $("#phone").val(PhoneReplace(phone_num)).attr("readonly", true);
                     return;
                 }
             });
@@ -54,12 +37,28 @@ $(function () {
         return;
     });
 
+    //Get phone verification code
+    $('.phoneCodeBtn').click(function () {
+        let country_code = $('.selected-dial-code').text().split("+")[1];
+        let cellphone = phone_num;
+        let bind_type = '2', cfm_code = $('#phoneCfmCode').val();
+
+        if (cfm_code <= 0) {
+            // LayerFun('pleaseImgCode');
+            WarnPrompt("请输入图形验证码");
+            return;
+        }
+        ShowLoading("show");
+        GetSmsCodeFun(cellphone, country_code, bind_type, cfm_code);
+    });
+
     //Binding fund password
     $('.fundPasswordEnable').click(function () {
         let hash_type = 'pass_hash',
             // Get country code
-            country_code = $('.selected-dial-code').text().split("+")[1],
-            phone = country_code + '-' + $('#phone').val(),
+            // country_code = $('.selected-dial-code').text().split("+")[1],
+            // phone = country_code + '-' + $('#phone').val(),
+            phone = phone_info,
             phoneCode = $('#phoneCode').val(),
             hash = hex_sha1($('#fundPassword').val()),
             password = $('#password').val(),
@@ -73,12 +72,6 @@ $(function () {
 
         if ($('#confirmPassword').val().length <= 0) {
             WarnPrompt("请输入确认资金密码");
-            return;
-        }
-
-        if ($('#phone').val().length <= 0) {
-            // LayerFun('phoneNotEmpty');
-            WarnPrompt("请输入手机号码");
             return;
         }
 
