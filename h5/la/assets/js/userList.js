@@ -57,9 +57,9 @@ $(function () {
     GetUserListFun(limit, offset);
 
     //资金筛选
-    $("#funds_filter").change(function () {
+    $("#funds_filter,#time_filter").change(function () {
         filter = $("#funds_filter").val();
-        if(filter == "0"){
+        if (filter == "0") {
             return;
         }
         limit = 10;
