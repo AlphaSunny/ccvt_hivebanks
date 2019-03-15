@@ -30,7 +30,7 @@ rows            信息数组
 */
 
 php_begin();
-$args = array('token','funds_filter','time_filter');
+$args = array('token');
 chk_empty_args('GET', $args);
 
 // 用户token
