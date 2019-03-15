@@ -245,7 +245,7 @@ $(function () {
         //设置邀请图片
         let qrImg = new Image();
         qrImg.crossOrigin = "*";
-        qrImg.src = "img/inviteImg.jpg?t=" + Math.random();
+        qrImg.src = "img/2inviteImg.jpg?t=" + Math.random();
         //找到画布
         let canvas = $("#inviteImg")[0];
         let ctx = canvas.getContext("2d");
