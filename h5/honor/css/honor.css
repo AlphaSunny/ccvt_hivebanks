@@ -350,8 +350,17 @@ li.none {
     top: 10%;
 }
 
+.title_box{
+    display: flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .title_h1 {
-    display: inline-block;
+    /*display: inline-block;*/
+    margin: 0;
 }
 
 @media only screen and (max-width: 768px) {
