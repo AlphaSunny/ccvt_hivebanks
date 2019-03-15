@@ -1,4 +1,4 @@
-$(function () {
+phone$(function () {
     //get token
     let token = GetCookie('user_token');
     GetUsAccount();
@@ -16,7 +16,7 @@ $(function () {
         $.each(data, function (i, val) {
             if (data[i].bind_name == 'cellphone' && data[i].bind_flag == '1') {
                 let phone = data[i].bind_info.split("-")[1];
-                $("#phone").val(phone);
+                $("#phone").val(PhoneReplace(phone)).attr("readonly", true);
             }
         })
     }, function (response) {

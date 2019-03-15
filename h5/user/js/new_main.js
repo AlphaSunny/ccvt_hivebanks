@@ -11,7 +11,7 @@ $(function () {
     });
 
     $(".close_customize").click(function () {
-       $(".customize_modal").addClass("none");
+        $(".customize_modal").addClass("none");
     });
 
 // scroll Up
@@ -27,6 +27,14 @@ $(function () {
         return false;
     });
 });
+
+//匹配手机号换成*号
+function PhoneReplace(phone) {
+    let reg = /^(\d{3})\d*(\d{4})$/;
+    let rep_phone = phone.replace(reg, "$1****$2");
+    return rep_phone;
+
+}
 
 //Get User Account
 function GetUsAccount() {
