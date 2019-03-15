@@ -14,7 +14,8 @@
 require_once "/alidata/www/ccvt/api/inc/common.php";
 ini_set("display_errors", "On");
 error_reporting(E_ALL | E_STRICT);
-
+echo microtime();
+die;
 $db = new DB_COM();
 
 $unit = get_la_base_unit();
