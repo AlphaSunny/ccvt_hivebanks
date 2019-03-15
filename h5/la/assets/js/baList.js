@@ -4,11 +4,11 @@ $(function () {
 
     //get ba list
     let api_url = 'ba_list.php', limit = 10, offset = 0;
-    let filter = "desc";
+    let funds_filter = "", time_filter = "";
 
     function GetUserListFun(limit, offset) {
         let totalPage = "", count = "", tr = "";
-        GetUserList(token, api_url, limit, offset, filter, function (response) {
+        GetUserList(token, api_url, limit, offset, funds_filter,time_filter, function (response) {
             if (response.errcode == '0') {
                 let data = response.rows;
                 if (data == false) {

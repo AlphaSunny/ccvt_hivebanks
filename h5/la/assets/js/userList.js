@@ -4,11 +4,11 @@ $(function () {
 
     //get user list
     let api_url = 'user_list.php', limit = 10, offset = 0, count = "";
-    let filter = "desc";
+    let funds_filter = "", time_filter = "";
 
     function GetUserListFun(limit, offset) {
         let totalPage = "", tr = "";
-        GetUserList(token, api_url, limit, offset, filter, function (response) {
+        GetUserList(token, api_url, limit, offset, funds_filter,time_filter, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
                 let data = response.rows;
@@ -57,9 +57,20 @@ $(function () {
     GetUserListFun(limit, offset);
 
     //资金筛选
-    $("#funds_filter,#time_filter").change(function () {
-        filter = $("#funds_filter").val();
-        if (filter == "0") {
+    $("#funds_filter").change(function () {
+        funds_filter = $("#funds_filter").val();
+        if (funds_filter == "0") {
+            return;
+        }
+        limit = 10;
+        offset = 0;
+        GetUserListFun(limit, offset);
+        ShowLoading("show");
+    });
+
+    $("#time_filter").change(function () {
+        time_filter = $("#time_filter").val();
+        if (time_filter == "0") {
             return;
         }
         limit = 10;
