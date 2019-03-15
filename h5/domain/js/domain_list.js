@@ -56,8 +56,8 @@ $(function () {
 
                         "<td>🌟" + data[i].glory_number + "</td>" +
                         "<td>" + data[i].type_name + "</td>" +
-                        "<td data-toggle='tooltip' data-placement='bottom' data-original-title='24小时内CCVT发放数量'>"+ data[i].send_amount +"</td>" +
-                        "<td data-toggle='tooltip' data-placement='bottom' data-original-title='24小时内的聊天数量'>"+ data[i].all_num +"</td>" +
+                        "<td class='text-center' data-toggle='tooltip' data-placement='bottom' data-original-title='24小时内CCVT发放数量'>"+ data[i].send_amount +"</td>" +
+                        "<td class='text-center' data-toggle='tooltip' data-placement='bottom' data-original-title='24小时内的聊天数量'>"+ data[i].all_num +"</td>" +
                         "</tr>";
                 });
                 $("#group_list").html(tr);
