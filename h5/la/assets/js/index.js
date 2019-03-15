@@ -79,10 +79,10 @@ $(function () {
         $(".sum_total_base_amount").text(sum_total_base_amount);
 
         //user ba ca la资产比例
-        let user_scale = (Math.round((sum_us_base_amount / sum_total_base_amount).toFixed(3) * 100));
-        let ba_scale = (Math.round((sum_ba_base_amount / sum_total_base_amount).toFixed(3) * 100));
-        let ca_scale = (Math.round((sum_ca_base_amount / sum_total_base_amount).toFixed(3)* 100));
-        let la_scale = (Math.round((sum_la_base_amount / sum_total_base_amount).toFixed(3)* 100));
+        let user_scale = (((sum_us_base_amount / sum_total_base_amount).toFixed(3) * 100).toFixed(1));
+        let ba_scale = (((sum_ba_base_amount / sum_total_base_amount).toFixed(3) * 100).toFixed(1));
+        let ca_scale = (((sum_ca_base_amount / sum_total_base_amount).toFixed(3)* 100).toFixed(1));
+        let la_scale = (((sum_la_base_amount / sum_total_base_amount).toFixed(3)* 100).toFixed(1));
 
         console.log((sum_us_base_amount / sum_total_base_amount).toFixed(3));
         console.log((sum_us_base_amount / sum_total_base_amount).toFixed(3) * 100);
