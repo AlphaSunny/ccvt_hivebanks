@@ -11,12 +11,15 @@ $(function () {
         GetImgCode();
     });
 
+    //获取绑定信息的手机号
+    let phone_info = "", phone_num = "";
     BindingInformation(token, function (response) {
         let data = response.rows;
         $.each(data, function (i, val) {
             if (data[i].bind_name == 'cellphone' && data[i].bind_flag == '1') {
-                let phone = data[i].bind_info.split("-")[1];
-                $("#phone").val(PhoneReplace(phone)).attr("readonly", true);
+                phone_info = data[i].bind_info;
+                phone_num = data[i].bind_info.split("-")[1];
+                $("#phone").val(PhoneReplace(phone_num)).attr("readonly", true);
             }
         })
     }, function (response) {
@@ -26,14 +29,8 @@ $(function () {
     //Get phone verification code
     $('.phoneCodeBtn').click(function () {
         let country_code = $('.selected-dial-code').text().split("+")[1];
-        let cellphone = $('#phone').val();
+        let cellphone = phone_num;
         let bind_type = '2', cfm_code = $('#phoneCfmCode').val();
-
-        if (cellphone == '') {
-            // LayerFun('phoneNotEmpty');
-            WarnPrompt("请输入手机号码");
-            return;
-        }
 
         if (cfm_code <= 0) {
             // LayerFun('pleaseImgCode');
@@ -48,13 +45,14 @@ $(function () {
     $('.fundPasswordEnable').click(function () {
         let hash_type = 'pass_hash',
             // Get country code
-            country_code = $(".selected-flag").attr("title").split("+")[1],
-            phone = country_code + '-' + $('#phone').val(),
+            // country_code = $(".selected-flag").attr("title").split("+")[1],
+            // phone = country_code + '-' + $('#phone').val(),
             phoneCode = $('#phoneCode').val(),
             hash = hex_sha1($('#fundPassword').val()),
             password = $('#password').val(),
             pass_word_hash = hex_sha1(password),
             confirm_pass_hash = hex_sha1($('#confirmPassword').val());
+        let phone = phone_info;
         if ($('#fundPassword').val().length <= 0) {
             // LayerFun('funPassNotEmpty');
             WarnPrompt("请输入资金密码");
@@ -63,12 +61,6 @@ $(function () {
 
         if ($('#confirmPassword').val().length <= 0) {
             WarnPrompt("请输入确认资金密码");
-            return;
-        }
-
-        if ($('#phone').val().length <= 0) {
-            // LayerFun('phoneNotEmpty');
-            WarnPrompt("请输入手机号码");
             return;
         }
 
