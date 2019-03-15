@@ -620,6 +620,7 @@ function into_transfer($us_id,$send_money,$time,$flag,$detail,$type,$transfer_ty
     $com_balance_us['intime'] = microtime();
     $com_balance_us['tx_count'] = base_get_pre_count($credit_id);
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
+    echo $sql;die;
     if (!$db->query($sql)) {
         echo "资金变动记录表错误";
     }
