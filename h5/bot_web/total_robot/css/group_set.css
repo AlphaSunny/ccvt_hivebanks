@@ -16,6 +16,9 @@
     width: 30%;
     position: relative;
 }
+.upload_qr_box img{
+    width: 100%;
+}
 
 .qr_img_box #file {
     width: 100%;
