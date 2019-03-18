@@ -57,15 +57,15 @@ $(function () {
                 let prev = data.prev;
                 let next = data.next;
                 if (!prev) {
-                    $(".pre_news").remove();
+                    $(".pre_news").fadeOut();
                 } else {
-                    $(".pre_news").attr("name", prev.news_id);
+                    $(".pre_news").attr({"name": prev.news_id, "title": prev.title});
                     $(".pre_news_title").text(prev.title);
                 }
                 if (!next) {
-                    $(".next_news").remove();
+                    $(".next_news").fadeOut();
                 } else {
-                    $(".next_news").attr({"name": next.news_id,"title":next.title});
+                    $(".next_news").attr({"name": next.news_id, "title": next.title});
                     $(".next_news_title").text(next.title);
                 }
             }
