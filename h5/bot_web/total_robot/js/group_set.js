@@ -1,5 +1,5 @@
 $(function () {
-    let token = GetCookie("user_token");
+    let token = GetCookie("total_robot_token");
     let group_id = GetQueryString("group_id");
 
     //获取群状态信息
