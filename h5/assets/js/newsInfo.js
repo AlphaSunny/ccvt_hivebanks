@@ -56,6 +56,7 @@ $(function () {
 
                 let prev = data.prev;
                 let next = data.next;
+                console.log(prev);
                 $(".pre_news").attr(name, prev.news_id);
                 $(".pre_news_title").text(prev.title);
                 $(".next_news").attr(name, next.news_id);
