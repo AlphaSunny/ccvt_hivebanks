@@ -160,6 +160,7 @@ function get_chat_list($data,$offset,$limit)
         }
         $rows[$k]['all_point_on'] = $all_cai;
     }
+    array_multisort(array_column($rows,'bot_send_time'),SORT_ASC,$rows);
     return $rows;
 }
 
