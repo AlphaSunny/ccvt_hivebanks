@@ -1,6 +1,12 @@
 $(function () {
     let token = GetCookie("user_token");
 
+    $(".leave_message_link").click(function () {
+        $("#leave_message").modal("show");
+        let length = $(this).val().length;
+        $(".input_num").text(length);
+    });
+
     $("#leave_message_text").bind("input", "propertychange", function () {
         let length = $(this).val().length;
         $(".input_num").text(length);
