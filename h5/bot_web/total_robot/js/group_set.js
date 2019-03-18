@@ -30,9 +30,9 @@ $(function () {
     function EditGroupFun() {
         EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src, group_introduction,news_notice, function (response) {
             if (response.errcode == "0") {
-                SuccessPrompt("设置成功");
+                layer.msg("设置成功");
                 $(".welcome_text_box,.input_box,.group_introduction_box").addClass("none");
-                GetGroupListNav();
+                // GetGroupListNav();
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
