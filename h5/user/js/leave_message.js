@@ -3,7 +3,7 @@ $(function () {
 
     $(".leave_message_link").click(function () {
         $("#leave_message").modal("show");
-        let length = $(this).val().length;
+        let length = $("#leave_message_text").val().length;
         $(".input_num").text(length);
     });
 
