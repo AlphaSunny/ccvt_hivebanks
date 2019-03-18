@@ -36,8 +36,8 @@ $(function () {
         $(".group_introduction_box").addClass("none");
     });
 
-    // let group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "", news_notice = "",
-    //     is_welcome = "", welcome = "", ranking_change_switch = "", src = "", group_introduction = "";
+    let group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "", news_notice = "",
+        is_welcome = "", welcome = "", ranking_change_switch = "", src = "", group_introduction = "";
     // let group_id = GetCookie("group_id");
 
     function EditGroupFun() {
