@@ -18,7 +18,7 @@ GET参数
 */
 
 php_begin();
-$args = array('token','group_name','del','flirt','group_id','send_address','bind_account_notice','is_welcome','group_introduction','src','ranking_change_switch');
+$args = array('token','group_name','del','flirt','group_id','send_address','bind_account_notice','is_welcome','src','ranking_change_switch');
 chk_empty_args('GET', $args);
 
 // 用户token
