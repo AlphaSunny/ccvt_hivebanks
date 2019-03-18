@@ -44,18 +44,18 @@ $(function () {
             layer.close(index);
             if (response.errcode == "0") {
                 let data = response.rows;
-                $(".title").text(data[0].title);
-                $(".ctime").text(data[0].utime);
-                $(".author").text(data[0].author);
-                $(".news_content").html(data[0].content);
-                if (data[0].category == "1") {
+                $(".title").text(data.title);
+                $(".ctime").text(data.utime);
+                $(".author").text(data.author);
+                $(".news_content").html(data.content);
+                if (data.category == "1") {
                     $(".titles").text("CCVT 官方新闻");
                 } else {
                     $(".titles").text("CCVT 行业新闻");
                 }
 
-                let prev = data[0].prev;
-                let next = data[0].next;
+                let prev = data.prev;
+                let next = data.next;
                 $(".pre_news").attr(name, prev.news_id);
                 $(".pre_news_title").text(prev.title);
                 $(".next_news").attr(name, next.news_id);
