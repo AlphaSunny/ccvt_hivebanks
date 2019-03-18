@@ -1,3 +1,3 @@
-.group_set_item{
-    display: flex;
+.group_set_item p {
+    margin: 0 !important;
 }
