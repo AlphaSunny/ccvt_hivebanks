@@ -1,13 +1,21 @@
 $(function () {
     let token = GetCookie("user_token");
-    console.log(token);
+
     $("#leave_message_text").bind("input", "propertychange", function () {
         let length = $(this).val().length;
-        console.log(length);
         $(".input_num").text(length);
-        if (length > 140) {
-            WarnPrompt("最多输入140个字符");
-            return;
-        }
     });
+
+    $(".confirm_leave_message_btn").click(function () {
+        let leave_message = $("#leave_message_text").val();
+        LeaveMessage(token, leave_message, function (response) {
+            if(response.errcode == "0"){
+                SuccessPrompt("提交成功");
+                $("#leave_message_text").val("");
+                $("#leave_message").modal("hide");
+            }
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        })
+    })
 });

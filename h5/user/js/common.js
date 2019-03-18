@@ -484,6 +484,16 @@ function upload_qr_img(token, wechat_qrcode, price, suc_func, error_func) {
     CallApi(api_url, post_data, suc_func, error_func);
 }
 
+//留言
+function LeaveMessage(token, leave_message, suc_func, error_func) {
+    let api_url = 'bnd_leave_message.php',
+        post_data = {
+            'token': token,
+            'leave_message': leave_message
+        };
+    CallApi(api_url, post_data, suc_func, error_func);
+}
+
 // User Change Record - Login Record - Transfer - BA / CA - Recharge / Withdrawal - Record
 function AllRecord(token, limit, offset, api_url, suc_func, error_func) {
     let post_data = {
