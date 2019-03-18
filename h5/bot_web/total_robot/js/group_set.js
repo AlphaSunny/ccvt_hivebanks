@@ -2,17 +2,6 @@ $(function () {
     let token = GetCookie("total_robot_token");
     let group_id = GetQueryString("group_id");
 
-    //获取群状态信息
-    function GetGroupInfoFun() {
-        GetGroupInfo(token, group_id, function (response) {
-            console.log(response);
-        }, function (response) {
-            ErrorPrompt(response.errmsg);
-        })
-    }
-
-    GetGroupInfoFun();
-
     //编辑群名字
     $(".edit_group_name").click(function () {
         $(".input_box").removeClass("none");
