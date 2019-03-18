@@ -335,6 +335,12 @@ function get_us_base_info_by_token($us_id)
     $wechat_qrcode_price = $db->getField($sql,'bind_info');
     $row['wechat_qrcode_price'] = $wechat_qrcode_price ? $wechat_qrcode_price : '';
 
+    //留言
+    $sql = "select bind_info from us_bind WHERE bind_name='leave_message' AND us_id='{$us_id}'";
+    $db->query($sql);
+    $leave_message = $db->getField($sql,'bind_info');
+    $row['leave_message'] = $leave_message ? $leave_message : '';
+
     return $row;
 }
 //======================================
