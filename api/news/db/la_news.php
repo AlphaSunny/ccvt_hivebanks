@@ -28,7 +28,18 @@ function news_detail($news_id){
     $db = new DB_COM();
     $sql = "select * from la_news where status = 1 and  news_id = '{$news_id}' ";
     $db->query($sql);
-    $rows = $db->fetchAll();
+    $rows = $db->fetchRow();
+    if ($rows){
+        //上一条
+        $sql = "select news_id,title from la_news WHERE status = 1 AND ctime>'{$rows['ctime']}' limit 1";
+        $db->query($sql);
+        $rows['prev'] = $db->fetchRow();
+
+        //下一条
+        $sql = "select news_id,title from la_news WHERE status = 1 AND ctime<'{$rows['ctime']}' limit 1";
+        $db->query($sql);
+        $rows['next'] = $db->fetchRow();
+    }
     return $rows;
 }
 
