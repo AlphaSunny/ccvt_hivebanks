@@ -8,13 +8,16 @@ $(function () {
 
     $(".confirm_leave_message_btn").click(function () {
         let leave_message = $("#leave_message_text").val();
+        ShowLoading("show");
         LeaveMessage(token, leave_message, function (response) {
-            if(response.errcode == "0"){
+            ShowLoading("hide");
+            if (response.errcode == "0") {
                 SuccessPrompt("提交成功");
                 $("#leave_message_text").val("");
                 $("#leave_message").modal("hide");
             }
         }, function (response) {
+            ShowLoading("hide");
             ErrorPrompt(response.errmsg);
         })
     })
