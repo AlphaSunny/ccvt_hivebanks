@@ -28,5 +28,10 @@
     "name": "AI关键字管理",
     "href": "key_word.html",
     "fa_icon": "fa-file-word-o"
+  },
+  {
+    "name": "群设置",
+    "href": "group_set.html",
+    "fa_icon": "fa-file-word-o"
   }
 ]
