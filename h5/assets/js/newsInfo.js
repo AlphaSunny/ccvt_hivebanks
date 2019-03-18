@@ -1,8 +1,8 @@
 $(function () {
-    var login_us = GetQueryString('user');
+    let login_us = GetQueryString('user');
 
     function GetIndexCookie(name) {
-        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
         if (arr != null) {
             return unescape(arr[2]);
         } else {
@@ -10,7 +10,7 @@ $(function () {
         }
     }
 
-    var user_token = GetIndexCookie('user_token');
+    let user_token = GetIndexCookie('user_token');
 
     if (user_token || login_us) {
         $('.usLogin,.usRegister').remove();
@@ -26,38 +26,6 @@ $(function () {
         }
     });
 
-//     var opts = {
-//         lines: 8, // The number of lines to draw
-//         length: 10, // The length of each line
-//         width: 2, // The line thickness
-//         radius: 10, // The radius of the inner circle
-//         scale: 1, // Scales overall size of the spinner
-//         corners: 1, // Corner roundness (0..1)
-//         color: '#ffffff', // CSS color or array of colors
-//         fadeColor: 'transparent', // CSS color or array of colors
-//         speed: 1, // Rounds per second
-//         rotate: 0, // The rotation offset
-//         animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
-//         direction: 1, // 1: clockwise, -1: counterclockwise
-//         zIndex: 2e9, // The z-index (defaults to 2000000000)
-//         className: 'spinner', // The CSS class to assign to the spinner
-//         top: '50%', // Top position relative to parent
-//         left: '50%', // Left position relative to parent
-//         shadow: '0 0 1px transparent', // Box-shadow for the lines
-//         position: 'absolute' // Element positioning
-//     };
-//     var target = document.getElementById("mySpin");
-//     var spinner = new Spinner(opts);
-//
-// //show loading
-//     function ShowLoading(type) {
-//         if (type == "show") {
-//             spinner.spin(target);
-//         }
-//         if (type == "hide") {
-//             spinner.spin();
-//         }
-//     }
 
     //click toggle
     $(document).on("click", ".leftNewsTitle", function () {
@@ -65,17 +33,17 @@ $(function () {
     });
 
     //get news_id
-    var news_id = GetQueryString("news_id");
+    let news_id = GetQueryString("news_id");
 
     //get news info
     function GetNewsInfoFun(news_id) {
-        var index = layer.load(1, {
+        let index = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
         GetNewsInfo(news_id, function (response) {
             layer.close(index);
             if (response.errcode == "0") {
-                var data = response.rows;
+                let data = response.rows;
                 $(".title").text(data[0].title);
                 $(".ctime").text(data[0].utime);
                 $(".author").text(data[0].author);
@@ -95,12 +63,12 @@ $(function () {
     GetNewsInfoFun(news_id);
 
     $(document).on("click", ".leftNewsTitle", function () {
-        var news_id = $(this).attr("name");
+        let news_id = $(this).attr("name");
         GetNewsInfoFun(news_id);
     });
 
     function eachNewList(new_list) {
-        var li = "";
+        let li = "";
         $.each(new_list, function (i, val) {
             li += "<li class='leftNewsTitle' title='" + new_list[i].title + "' name='" + new_list[i].news_id + "'>" + new_list[i].title + "</li>";
         });
@@ -110,10 +78,10 @@ $(function () {
     //get news list
     Get_News_List(function (response) {
         if (response.errcode == "0") {
-            var data = response.rows, div = "";
+            let data = response.rows, div = "";
             $.each(data, function (i, val) {
-                var new_list = data[i].list;
-                var li = eachNewList(new_list);
+                let new_list = data[i].list;
+                let li = eachNewList(new_list);
                 div += "<div class='dropdown margin-bottom-5'>" +
                     "<button class='btn btn-success dropdown-toggle width-100 flex center space-between' type='button' id=" + data[i].category + " data-toggle='dropdown'>" + data[i].category_name + "<span class='caret'></span></button>" +
                     "<ul class='dropdown-menu width-100 newsInfo_nav'>" +
