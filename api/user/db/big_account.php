@@ -228,7 +228,7 @@ function get_pwd($length){
 //======================================
 function get_transfer_pre_hash($credit_id){
     $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
+    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  tx_count DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;
@@ -271,7 +271,7 @@ function get_us_account($us_id){
 function  get_recharge_pre_hash($ba_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}' ORDER BY  ctime DESC LIMIT 1";
+    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}' ORDER BY  tx_count DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;

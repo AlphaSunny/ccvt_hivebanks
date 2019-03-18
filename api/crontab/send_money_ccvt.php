@@ -504,7 +504,7 @@ function check_is_return($us_id){
 function  get_recharge_pre_hash($ba_id)
 {
     $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}'  ORDER BY  ctime DESC LIMIT 1";
+    $sql = "SELECT hash_id FROM com_base_balance WHERE credit_id = '{$ba_id}'  ORDER BY  tx_count DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;
@@ -516,7 +516,7 @@ function  get_recharge_pre_hash($ba_id)
 //======================================
 function get_pre_hash($credit_id){
     $db = new DB_COM();
-    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  ctime DESC LIMIT 1";
+    $sql = "SELECT hash_id FROM com_transfer_request WHERE credit_id = '{$credit_id}' ORDER BY  tx_count DESC LIMIT 1";
     $hash_id = $db->getField($sql, 'hash_id');
     if($hash_id == null)
         return 0;
@@ -531,7 +531,7 @@ function get_pre_hash($credit_id){
 function base_get_pre_count($credit_id)
 {
     $db = new DB_COM();
-    $sql = "select tx_count from com_base_balance where credit_id = '{$credit_id}' order by ctime desc limit 1";
+    $sql = "select tx_count from com_base_balance where credit_id = '{$credit_id}' order by tx_count desc limit 1";
     $tx_count = $db->getField($sql, 'tx_count');
     if($tx_count == null)
         return 1;
@@ -547,7 +547,7 @@ function base_get_pre_count($credit_id)
 function transfer_get_pre_count($credit_id)
 {
     $db = new DB_COM();
-    $sql = "select tx_count from com_transfer_request where credit_id = '{$credit_id}' order by ctime desc limit 1";
+    $sql = "select tx_count from com_transfer_request where credit_id = '{$credit_id}' order by tx_count desc limit 1";
     $tx_count = $db->getField($sql, 'tx_count');
     if($tx_count == null)
         return 1;
