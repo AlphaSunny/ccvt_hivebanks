@@ -15,7 +15,7 @@ $(function () {
     if (user_token || login_us) {
         $('.usLogin,.usRegister').remove();
         $('.accountNone').removeClass('accountNone');
-    }else{
+    } else {
         $(".accountNone").remove();
     }
 
@@ -62,7 +62,7 @@ $(function () {
 
     GetNewsInfoFun(news_id);
 
-    $(document).on("click", ".leftNewsTitle", function () {
+    $(document).on("click", ".leftNewsTitle,.pre_next_news", function () {
         let news_id = $(this).attr("name");
         GetNewsInfoFun(news_id);
     });
