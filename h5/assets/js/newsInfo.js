@@ -53,6 +53,13 @@ $(function () {
                 } else {
                     $(".titles").text("CCVT 行业新闻");
                 }
+
+                let prev = data[0].prev;
+                let next = data[0].next;
+                $(".pre_news").attr(name, prev.news_id);
+                $(".pre_news_title").text(prev.title);
+                $(".next_news").attr(name, next.news_id);
+                $(".next_news_title").text(next.title);
             }
         }, function (response) {
             layer.close(index);
