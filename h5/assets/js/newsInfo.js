@@ -59,13 +59,13 @@ $(function () {
                 if (!prev) {
                     $(".pre_news").remove();
                 } else {
-                    $(".pre_news").attr(name, prev.news_id);
+                    $(".pre_news").attr("name", prev.news_id);
                     $(".pre_news_title").text(prev.title);
                 }
                 if (!next) {
                     $(".next_news").remove();
                 } else {
-                    $(".next_news").attr(name, next.news_id);
+                    $(".next_news").attr("name", next.news_id);
                     $(".next_news_title").text(next.title);
                 }
             }
