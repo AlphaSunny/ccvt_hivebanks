@@ -222,7 +222,7 @@ table .option_a {
 }
 
 .switch.active:before {
-    left: 30px;
+    left: 26px;
     transition: left 0.3s;
 }
 
