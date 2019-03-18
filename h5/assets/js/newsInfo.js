@@ -44,7 +44,6 @@ $(function () {
             layer.close(index);
             if (response.errcode == "0") {
                 let data = response.rows;
-                console.log(data);
                 $(".title").text(data.title);
                 $(".ctime").text(data.utime);
                 $(".author").text(data.author);
@@ -57,11 +56,18 @@ $(function () {
 
                 let prev = data.prev;
                 let next = data.next;
-                console.log(prev);
-                $(".pre_news").attr(name, prev.news_id);
-                $(".pre_news_title").text(prev.title);
-                $(".next_news").attr(name, next.news_id);
-                $(".next_news_title").text(next.title);
+                if (!prev) {
+                    $(".pre_news").remove();
+                } else {
+                    $(".pre_news").attr(name, prev.news_id);
+                    $(".pre_news_title").text(prev.title);
+                }
+                if (!next) {
+                    $(".next_news").remove();
+                } else {
+                    $(".next_news").attr(name, next.news_id);
+                    $(".next_news_title").text(next.title);
+                }
             }
         }, function (response) {
             layer.close(index);
