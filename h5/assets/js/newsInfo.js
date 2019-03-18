@@ -44,6 +44,7 @@ $(function () {
             layer.close(index);
             if (response.errcode == "0") {
                 let data = response.rows;
+                console.log(data);
                 $(".title").text(data.title);
                 $(".ctime").text(data.utime);
                 $(".author").text(data.author);
