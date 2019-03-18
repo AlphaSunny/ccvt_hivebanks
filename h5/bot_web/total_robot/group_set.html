@@ -13,7 +13,8 @@
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="./favicon.ico">
 </head>
 <body class="app sidebar-mini rtl">
@@ -102,13 +103,37 @@
                                type="checkbox" value="2">
                         <span>开</span>
                     </div>
-                </div><div class="group_set_item flex center space-between">
-                    <p>群名称</p>
-                    <p>CCVT</p>
-                </div><div class="group_set_item flex center space-between">
-                    <p>群名称</p>
-                    <p>CCVT</p>
-                </div><div class="group_set_item flex center space-between">
+                </div>
+                <div class="group_set_item flex center space-between">
+                    <p>未绑定通知</p>
+                    <div class="flex center space-center desktop_panel_inner_top">
+                        <span>关</span>
+                        <input id="bindSwitch"
+                               class="switch bind_account_notice bindSwitch switch-anim margin-left-2"
+                               type="checkbox" value="2">
+                        <span>开</span>
+                    </div>
+                </div>
+                <div class="group_set_item">
+                    <div class="flex center space-between">
+                        <p>欢迎新人</p>
+                        <div class="flex center space-center desktop_panel_inner_top">
+                            <span>关</span>
+                            <input id="welcomeSwitch"
+                                   class="switch is_welcome welcomeSwitch switch-anim margin-left-2"
+                                   type="checkbox" value="2">
+                            <span>开</span>
+                        </div>
+                    </div>
+                    <div>
+                        <textarea name="welcome_text" id="welcome_text" cols="30" rows="5"></textarea>
+                        <div class="margin-top-5px">
+                            <button class="btn btn-success confirm_edit_welcome_text">保存</button>
+                            <button class="btn btn-danger cancel_edit_welcome_text">取消</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="group_set_item flex center space-between">
                     <p>群名称</p>
                     <p>CCVT</p>
                 </div>
