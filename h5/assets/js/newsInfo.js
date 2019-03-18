@@ -65,7 +65,7 @@ $(function () {
                 if (!next) {
                     $(".next_news").remove();
                 } else {
-                    $(".next_news").attr("name", next.news_id);
+                    $(".next_news").attr({"name": next.news_id,"title":next.news_id});
                     $(".next_news_title").text(next.title);
                 }
             }
