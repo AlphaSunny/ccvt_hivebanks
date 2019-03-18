@@ -138,7 +138,7 @@ function get_chat_list($data,$offset,$limit)
     if (intval($data['group_id'])!=''){
         $sql .= " and b.group_id='{$data['group_id']}'";
     }
-    $sql .= " ORDER BY b.bot_send_time asc limit $offset , $limit";
+    $sql .= " ORDER BY b.bot_send_time desc limit $offset , $limit";
     $db->query($sql);
     $rows = $db->fetchAll();
     foreach ($rows as $k=>$v){
