@@ -47,3 +47,7 @@
     align-items: center;
     justify-content: center;
 }
+.qr_img_box:hover .mask {
+    display: flex;
+    cursor: pointer;
+}
