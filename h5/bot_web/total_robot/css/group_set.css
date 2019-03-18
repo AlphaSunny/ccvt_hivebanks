@@ -11,3 +11,11 @@
 .group_set_item p {
     margin: 0 !important;
 }
+
+.qr_img_box #file {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    opacity: 0;
+    z-index: 123;
+}
