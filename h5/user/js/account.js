@@ -75,6 +75,16 @@ $(function () {
             } else {
                 $(".application_group,.modify_application_btn").remove();
             }
+
+            //留言
+            if (data.leave_message) {
+                $(".leave_message_show_title").attr("data-original-title", data.leave_message);
+                $("#leave_message_text").val(data.leave_message);
+            } else {
+                $(".leave_message_show_title").attr("data-original-title", "暂无留言");
+                $("#leave_message_text").val("");
+            }
+
         }
     }, function (response) {
         ErrorPrompt(response.errmsg);
@@ -254,7 +264,7 @@ $(function () {
         //图片加载完成时
         qrImg.onload = function () {
             ctx.drawImage(qrImg, 0, 0, 533, 800);
-            ctx.drawImage(qr, 65, 643,130,110);//dx:x轴坐标 dy:y轴坐标 dw:宽度 dh:高度
+            ctx.drawImage(qr, 65, 643, 130, 110);//dx:x轴坐标 dy:y轴坐标 dw:宽度 dh:高度
             let base64 = canvas.toDataURL("images/png");//转换URL
             $("#base64Img").attr("src", base64);
             $(".inviteImgBox").remove();
