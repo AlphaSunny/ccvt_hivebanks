@@ -34,7 +34,7 @@ $(function () {
             if (response.errcode == "0") {
                 SuccessPrompt("设置成功");
                 $(".welcome_text_box,.input_box,.group_introduction_box").addClass("none");
-                // GetGroupListNav();
+                GetGroupInfoFun();
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
