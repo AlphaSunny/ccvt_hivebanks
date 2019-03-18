@@ -139,6 +139,7 @@ function get_chat_list($data,$offset,$limit)
         $sql .= " and b.group_id='{$data['group_id']}'";
     }
     $sql .= " ORDER BY b.bot_send_time desc limit $offset , $limit";
+    echo $sql;die;
     $db->query($sql);
     $rows = $db->fetchAll();
     foreach ($rows as $k=>$v){
