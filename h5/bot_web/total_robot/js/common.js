@@ -176,6 +176,16 @@ function ReviewGroup(token, review_group_id, is_audit, why, suc_func, error_func
     CallRobotApi(api_url, post_data, suc_func, error_func);
 }
 
+//获取群信息状态
+function GetGroupInfo(token, group_id, suc_func, error_func) {
+    var api_url = 'group_info.php',
+        post_data = {
+            'token': token,
+            'group_id': group_id
+        };
+    CallRobotApi(api_url, post_data, suc_func, error_func);
+}
+
 //编辑群信息
 function EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src, group_introduction, news_notice, suc_func, error_func) {
     let api_url = "group_edit.php",

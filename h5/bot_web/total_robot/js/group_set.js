@@ -1,5 +1,18 @@
 $(function () {
     let token = GetCookie("user_token");
+    let group_id = GetQueryString("group_id");
+
+    //获取群状态信息
+    function GetGroupInfoFun() {
+        GetGroupInfo(token, group_id, function (response) {
+            console.log(response);
+        }, function (response) {
+            ErrorPrompt(response.errmsg);
+        })
+    }
+
+    GetGroupInfoFun();
+
     //编辑群名字
     $(".edit_group_name").click(function () {
         $(".input_box").removeClass("none");
@@ -23,12 +36,12 @@ $(function () {
         $(".group_introduction_box").addClass("none");
     });
 
-    let group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "",news_notice = "",
-        is_welcome = "", welcome = "", ranking_change_switch = "", src = "", group_introduction = "";
-    let group_id = GetCookie("group_id");
+    // let group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "", news_notice = "",
+    //     is_welcome = "", welcome = "", ranking_change_switch = "", src = "", group_introduction = "";
+    // let group_id = GetCookie("group_id");
 
     function EditGroupFun() {
-        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src, group_introduction,news_notice, function (response) {
+        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src, group_introduction, news_notice, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("设置成功");
                 $(".welcome_text_box,.input_box,.group_introduction_box").addClass("none");
