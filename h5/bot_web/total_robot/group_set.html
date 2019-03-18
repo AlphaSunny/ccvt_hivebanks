@@ -126,16 +126,48 @@
                         </div>
                     </div>
                     <div>
-                        <textarea name="welcome_text" id="welcome_text" cols="30" rows="5"></textarea>
-                        <div class="margin-top-5px">
+                        <textarea name="welcome_text" class="form-control" id="welcome_text" cols="30"
+                                  rows="5"></textarea>
+                        <div class="margin-top-5px text-right">
                             <button class="btn btn-success confirm_edit_welcome_text">保存</button>
                             <button class="btn btn-danger cancel_edit_welcome_text">取消</button>
                         </div>
                     </div>
                 </div>
                 <div class="group_set_item flex center space-between">
-                    <p>群名称</p>
-                    <p>CCVT</p>
+                    <p>荣耀积分变动通知</p>
+                    <div class="flex center space-center desktop_panel_inner_top">
+                        <span>关</span>
+                        <input id="ranking_change_switch"
+                               class="switch ranking_change_switch switch-anim margin-left-2"
+                               type="checkbox" value="2">
+                        <span>开</span>
+                    </div>
+                </div>
+                <div class="group_set_item">
+                    <div class="flex center space-between">
+                        <p>群介绍</p>
+                        <a href="javascript:;" class="edit_group_introduction">编辑</a>
+                    </div>
+
+                    <div class="none group_introduction_box margin-top-5px">
+                        <textarea name="group_introduction" class="form-control" id="group_introduction" cols="30"
+                                  rows="8"></textarea>
+                        <div class="text-right margin-top-5px">
+                            <button class="btn btn-success btn-sm confirm_edit_group_introduction_btn">保存</button>
+                            <button class="btn btn-danger btn-sm cancel_edit_group_introduction_btn">取消</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="group_set_item flex center space-between">
+                    <p>新闻推送</p>
+                    <div class="flex center space-center desktop_panel_inner_top">
+                        <span>关</span>
+                        <input id="newsSwitch"
+                               class="switch news_notice newsSwitch switch-anim margin-left-2"
+                               type="checkbox" value="2">
+                        <span>开</span>
+                    </div>
                 </div>
                 <div class="group_set_item flex center space-between">
                     <p>群名称</p>
