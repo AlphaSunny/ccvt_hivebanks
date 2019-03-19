@@ -1702,5 +1702,6 @@ function get_leave_message(){
             $list[$k]['leave_message'] = $db->getField($sql,'bind_info');
         }
     }
+    return $list;
 }
 ?>
