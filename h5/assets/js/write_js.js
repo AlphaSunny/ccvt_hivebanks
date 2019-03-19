@@ -10,7 +10,7 @@
     let jsHeader = "<script type='text/javascript' src='" + appRootPath + "/";
     let jsFooter = "'></script>";
     // document.write(jsHeader + "assets/js/jquery.min.js" + jsFooter);
-    document.write(jsHeader + "https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js" + jsFooter);
+    document.write(jsHeader + "https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/bootstrap.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/less.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/cnt.js" + jsFooter);
