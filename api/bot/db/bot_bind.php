@@ -1692,7 +1692,7 @@ function check_chat_to_group(){
 //======================================
 function get_leave_message(){
     $db = new DB_COM();
-    $sql = "SELECT b.us_account,b.wechat,b.scale,b.us_id FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id LEFT JOIN us_bind as bind ON b.us_id=bind.us_id WHERE a.asset_id = 'GLOP' AND a.base_amount>=0 and bind.bind_name='group' order by a.base_amount desc limit 0 , 10";
+    $sql = "SELECT b.wechat,b.scale,b.us_id FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id LEFT JOIN us_bind as bind ON b.us_id=bind.us_id WHERE a.asset_id = 'GLOP' AND a.base_amount>=0 and bind.bind_name='group' order by a.base_amount desc limit 0 , 10";
     $db->query($sql);
     $list = $db->fetchAll();
     if ($list){
