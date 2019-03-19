@@ -27,6 +27,10 @@ $token = get_arg_str('GET', 'token',128);
 // 用于绑定的group_id
 $leave_message = get_arg_str('GET', 'leave_message',300);
 
+if (mb_strlen($leave_message,'UTF8')>140){
+    exit_error('129','长度错误!');
+}
+
 //验证token
 $us_id = check_token($token);
 
