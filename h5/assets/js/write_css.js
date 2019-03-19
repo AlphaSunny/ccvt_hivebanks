@@ -11,7 +11,8 @@
     let cssHeaderLess = "<link rel='stylesheet/less' type='text/css' href='" + appRootPath + "/";
     let cssHeaderIco = "<link rel='shortcut icon' type='text/css' href='" + appRootPath + "/";
     let cssFooter = "'></link>";
-    document.write(cssHeader + "assets/css/bootstrap.min.css" + cssFooter);
+    // document.write(cssHeader + "assets/css/bootstrap.min.css" + cssFooter);
+    document.write('<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">');
     document.write(cssHeader + "assets/css/jquery.pagination.css" + cssFooter);
     document.write(cssHeader + "assets/css/intlTelInput.css" + cssFooter);
     document.write(cssHeader + "assets/css/animate.css" + cssFooter);

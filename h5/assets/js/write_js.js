@@ -11,7 +11,8 @@
     let jsFooter = "'></script>";
     // document.write(jsHeader + "assets/js/jquery.min.js" + jsFooter);
     document.write("<script src='https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js'></script>");
-    document.write(jsHeader + "assets/js/bootstrap.min.js" + jsFooter);
+    // document.write(jsHeader + "assets/js/bootstrap.min.js" + jsFooter);
+    document.write('<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>');
     document.write(jsHeader + "assets/js/less.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/cnt.js" + jsFooter);
     document.write(jsHeader + "assets/js/jquery.pagination.min.js" + jsFooter);
