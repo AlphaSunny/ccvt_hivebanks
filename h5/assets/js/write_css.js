@@ -15,7 +15,8 @@
     document.write('<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">');
     document.write(cssHeader + "assets/css/jquery.pagination.css" + cssFooter);
     document.write(cssHeader + "assets/css/intlTelInput.css" + cssFooter);
-    document.write(cssHeader + "assets/css/animate.css" + cssFooter);
+    // document.write(cssHeader + "assets/css/animate.css" + cssFooter);
+    document.write('<link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css">');
     document.write(cssHeaderIco + "favicon.ico" + cssFooter);
     document.write(cssHeaderLess + "assets/css/common.less" + cssFooter);
     document.write('<link rel="stylesheet" href="//at.alicdn.com/t/font_1045318_ektzfreht57.css">');
