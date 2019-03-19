@@ -23,8 +23,8 @@ function us_withdraw_quest($data) {
         $db->Rollback($pInTrans);
         exit_error("132","无法达成交易，您的保证金不足");
     }
-    $new_base_amount = $rows["base_amount"] - $data["base_amount"];
-    $new_lock_amount = $rows["lock_amount"] + $data["base_amount"];
+    $new_base_amount = $rows["base_amount"] - $data["base_amount"] - $data['tx_fee'];
+    $new_lock_amount = $rows["lock_amount"] + $data["base_amount"] + $data['tx_fee'];
     $sql = "UPDATE us_base SET base_amount = '{$new_base_amount}', lock_amount = '{$new_lock_amount}' WHERE us_id = '{$data["us_id"]}'";
     $db->query($sql);
     $count = $db->affectedRows($sql);
