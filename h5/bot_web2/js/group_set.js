@@ -130,6 +130,7 @@ $(function () {
         welcome = $("#welcome_text").val();
         ranking_change_switch = $(".ranking_change_switch").val();
         group_introduction = $("#group_introduction").val();
+        chat_time = $(".chat_time_input").val();
         if (type) {
             src = type;
         } else {
@@ -150,12 +151,17 @@ $(function () {
             if (id == "welcomeSwitch") {
                 $(".welcome_text_box").addClass("none");
             }
+            if(id == "newsSwitch"){
+                $(".news_chat_time_box").addClass("none");
+            }
             GetVal();
         } else {
             $("#" + id).addClass("active").val("1");
             if (id == "welcomeSwitch") {
                 $(".welcome_text_box").removeClass("none");
-                return;
+            }
+            if(id == "newsSwitch"){
+                $(".news_chat_time_box").removeClass("none");
             }
             GetVal();
         }
