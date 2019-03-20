@@ -164,7 +164,7 @@ $(function () {
     //新闻推送的时间
     $(".time_item").click(function () {
         let val = $(this).text();
-        let reg = /^[\d]([0]+$)/g;
+        let reg = /^[\d](0+)$/g;
         chat_time = val.match(reg);
 
         console.log(chat_time);
