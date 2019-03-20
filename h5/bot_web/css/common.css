@@ -170,6 +170,10 @@ table .option_a {
     justify-content: space-between;
 }
 
+.flex.space-around {
+    justify-content: space-around;
+}
+
 .flex.space-center {
     justify-content: center;
 }

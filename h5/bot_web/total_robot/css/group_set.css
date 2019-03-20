@@ -16,7 +16,8 @@
     width: 30%;
     position: relative;
 }
-.upload_qr_box img{
+
+.upload_qr_box img {
     width: 100%;
 }
 
@@ -26,6 +27,30 @@
     height: 100%;
     opacity: 0;
     z-index: 123;
+}
+
+.news_chat_time_box {
+    margin-top: 10px;
+    border: 1px solid #999;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.news_chat_time_box ul {
+    margin-top: 10px;
+}
+
+.news_chat_time_box li {
+    list-style: none;
+    border: 1px solid #009988;
+    padding: 5px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.news_chat_time_box li:hover {
+    background: #009988;
+    color: #fff;
 }
 
 @media only screen and (max-width: 768px) {
@@ -47,6 +72,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .qr_img_box:hover .mask {
     display: flex;
     cursor: pointer;
