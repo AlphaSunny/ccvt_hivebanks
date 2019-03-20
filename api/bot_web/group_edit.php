@@ -81,6 +81,7 @@ $date['is_welcome'] = $is_welcome;
 $date['welcome'] = $welcome;
 $date['dis'] = $group_introduction;
 $date['qr_code_address'] = $src;
+$date['chat_time'] = $chat_time;
 $date['ranking_change_switch'] = $ranking_change_switch;
 $date['news_switch'] = $news_switch;
 //修改群组
