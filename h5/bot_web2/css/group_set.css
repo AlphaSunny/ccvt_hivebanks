@@ -47,4 +47,12 @@
 
 .news_chat_time_box li {
     list-style: none;
+    border: 1px solid #009988;
+    padding: 5px 8px;
+    border-radius: 2px;
+}
+
+.news_chat_time_box li:hover {
+    background: #009988;
+    color: #fff;
 }
