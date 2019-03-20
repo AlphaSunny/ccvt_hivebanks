@@ -40,6 +40,11 @@
 .news_chat_time_box {
     margin-top: 10px;
 }
-.news_chat_time_box li{
+
+.news_chat_time_box ul {
+    margin-top: 10px;
+}
+
+.news_chat_time_box li {
     list-style: none;
 }
