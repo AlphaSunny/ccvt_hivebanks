@@ -50,6 +50,7 @@
     border: 1px solid #009988;
     padding: 5px 8px;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 .news_chat_time_box li:hover {
