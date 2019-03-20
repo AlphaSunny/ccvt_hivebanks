@@ -166,6 +166,7 @@ $(function () {
         let val = $(this).text();
         let reg = /(^[\d]*)(0+)/g;
         chat_time = val.match(reg)[0];
+        $(".chat_time_input").val(chat_time);
     });
 
     //Display when selecting a picture
