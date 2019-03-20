@@ -166,7 +166,7 @@ $(function () {
         let val = $(this).text();
         console.log(val);
         let reg = /(^[\d]*)(0+)/g;
-        chat_time = val.match(reg);
+        chat_time = reg.exec(val);
 
         console.log(chat_time);
     });
