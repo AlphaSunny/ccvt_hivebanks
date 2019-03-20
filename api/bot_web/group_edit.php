@@ -67,7 +67,7 @@ if ($is_name){
 
 
 if ($chat_time){
-    if ($chat_time % 10 != 0)
+    if ($chat_time % 10 != 0 || $chat_time<0)
         exit_error('109','间隔时间只能传10的倍数');
 }
 
