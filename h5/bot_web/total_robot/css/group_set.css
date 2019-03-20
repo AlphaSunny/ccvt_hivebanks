@@ -37,7 +37,7 @@
 }
 
 .news_chat_time_box ul {
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 .news_chat_time_box li {
@@ -46,6 +46,7 @@
     padding: 5px 8px;
     border-radius: 2px;
     cursor: pointer;
+    line-height: normal;
 }
 
 .news_chat_time_box li:hover {
