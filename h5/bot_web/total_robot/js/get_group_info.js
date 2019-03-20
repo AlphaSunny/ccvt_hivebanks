@@ -16,6 +16,7 @@ function GetGroupInfoFun() {
             $(".members_number").text(data.members_number);
             $(".qr_code_address").attr("src", data.qr_code_address);
             $("#group_introduction").val(data.dis);
+            $(".chat_time_input").val(data.chat_time);
             if (data.is_admin_del == "1") {
                 $(".is_admin_del").val("1").addClass("active");
             } else {
@@ -28,8 +29,10 @@ function GetGroupInfoFun() {
             }
             if (data.news_switch == "1") {
                 $(".newsSwitch").val("1").addClass("active");
+                $(".news_chat_time_box").addClass("none");
             } else {
                 $(".newsSwitch").val("2").removeClass("active");
+                $(".news_chat_time_box").addClass("none");
             }
             if (data.send_address == "1") {
                 $(".send_address").val("1").addClass("active");

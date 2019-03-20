@@ -26,11 +26,12 @@ $(function () {
     });
 
     let group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "", news_notice = "",
-        is_welcome = "", welcome = "", ranking_change_switch = "", src = "", group_introduction = "";
+        is_welcome = "", welcome = "", ranking_change_switch = "", src = "", group_introduction = "", chat_time = "";
+
     // let group_id = GetCookie("group_id");
 
     function EditGroupFun() {
-        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src, group_introduction, news_notice, function (response) {
+        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src, group_introduction, news_notice,chat_time, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("设置成功");
                 $(".welcome_text_box,.input_box,.group_introduction_box").addClass("none");
@@ -132,6 +133,7 @@ $(function () {
         welcome = $("#welcome_text").val();
         ranking_change_switch = $(".ranking_change_switch").val();
         group_introduction = $("#group_introduction").val();
+        chat_time = $(".chat_time_input").val();
         if (type) {
             src = type;
         } else {
@@ -152,6 +154,9 @@ $(function () {
             if (id == "welcomeSwitch") {
                 $(".welcome_text_box").addClass("none");
             }
+            if (id == "newsSwitch") {
+                $(".news_chat_time_box").addClass("none");
+            }
             GetVal();
         } else {
             $("#" + id).addClass("active").val("1");
@@ -159,9 +164,30 @@ $(function () {
                 $(".welcome_text_box").removeClass("none");
                 return;
             }
+            if (id == "newsSwitch") {
+                $(".news_chat_time_box").removeClass("none");
+                return;
+            }
             GetVal();
         }
     }
+
+    //新闻推送的时间
+    $(".time_item").click(function () {
+        let val = $(this).text();
+        let reg = /(^[\d]*)(0+)/g;
+        chat_time = val.match(reg)[0];
+        $(".chat_time_input").val(chat_time);
+    });
+
+    //提交新闻间隔时间
+    $(".chat_time_btn").click(function () {
+        if ($(".chat_time_input").val().length <= 0) {
+            WarnPrompt("请选择或输入间隔时间");
+            return;
+        }
+        GetVal();
+    });
 
     //Display when selecting a picture
     function getObjectURL(file) {
