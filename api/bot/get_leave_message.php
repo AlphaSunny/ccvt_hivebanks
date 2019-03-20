@@ -13,14 +13,17 @@ php_begin();
 
 //获取最新文章
 $rows = get_leave_message();
-//$content = '';
-//if ($rows){
-//    $content = $rows['title'].$data['api_url']."/h5/newsInfo.html?news_id=".$rows['news_id'];
-//}
+$content = '';
+if ($rows){
+    $content = "TOP10:</<br>>";
+    foreach ($rows as $k=>$v){
+        $content = $content.$v[$k+1]."、".$v['wechat'].":".$v['leave_message'] == null ? "未设置" : $v['leave_message'];
+    }
+}
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['content'] = $rows;
+$rtn_ary['content'] = $content;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
