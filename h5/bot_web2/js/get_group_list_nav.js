@@ -28,8 +28,10 @@ function GetGroupListNav() {
             }
             if (data.news_switch == "1") {
                 $(".newsSwitch").val("1").addClass("active");
+                $(".news_chat_time_box").addClass("none");
             } else {
                 $(".newsSwitch").val("2").removeClass("active");
+                $(".news_chat_time_box").addClass("none");
             }
             if (data.send_address == "1") {
                 $(".send_address").val("1").addClass("active");
