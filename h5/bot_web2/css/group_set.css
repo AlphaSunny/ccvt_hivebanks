@@ -39,6 +39,9 @@
 
 .news_chat_time_box {
     margin-top: 10px;
+    border: 1px solid #999;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .news_chat_time_box ul {
