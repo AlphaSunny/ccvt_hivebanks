@@ -1697,7 +1697,7 @@ function get_leave_message(){
     $list = $db->fetchAll();
     if ($list){
         foreach ($list as $k=>$v){
-            $sql = "select bind_info from us_bind WHERE bind_type='text' AND us_id='{$v['us_id']}'";
+            $sql = "select bind_info from us_bind WHERE bind_type='text' AND bind_name='leave_message' AND us_id='{$v['us_id']}'";
             $db->query($sql);
             $list[$k]['leave_message'] = $db->getField($sql,'bind_info');
         }
