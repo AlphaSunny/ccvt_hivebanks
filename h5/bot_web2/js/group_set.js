@@ -159,9 +159,11 @@ $(function () {
             $("#" + id).addClass("active").val("1");
             if (id == "welcomeSwitch") {
                 $(".welcome_text_box").removeClass("none");
+                return
             }
             if(id == "newsSwitch"){
                 $(".news_chat_time_box").removeClass("none");
+                return
             }
             GetVal();
         }
@@ -173,6 +175,15 @@ $(function () {
         let reg = /(^[\d]*)(0+)/g;
         chat_time = val.match(reg)[0];
         $(".chat_time_input").val(chat_time);
+    });
+
+    //提交新闻间隔时间
+    $(".chat_time_btn").click(function () {
+        if ($(".chat_time_input").val().length <= 0) {
+            WarnPrompt("请选择或输入间隔时间");
+            return;
+        }
+        GetVal();
     });
 
     //Display when selecting a picture
