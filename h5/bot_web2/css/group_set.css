@@ -24,15 +24,22 @@
     justify-content: center;
 }
 
-.qr_img_box:hover .mask{
+.qr_img_box:hover .mask {
     display: flex;
     cursor: pointer;
 }
 
-.qr_img_box #file{
+.qr_img_box #file {
     width: 100%;
     position: absolute;
     height: 100%;
     opacity: 0;
     z-index: 123;
+}
+
+.news_chat_time_box {
+    margin-top: 10px;
+}
+.news_chat_time_box li{
+    list-style: none;
 }
