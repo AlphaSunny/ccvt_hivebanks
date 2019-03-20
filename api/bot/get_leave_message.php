@@ -19,6 +19,7 @@ if ($rows){
         $content = $content.($k+1)."、".$v['wechat'].":".($v['leave_message'] == null ? "未设置" : $v['leave_message'])." \n";
     }
 }
+print_r($content);die;
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
