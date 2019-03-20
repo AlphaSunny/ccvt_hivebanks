@@ -13,11 +13,10 @@ php_begin();
 
 //获取最新文章
 $rows = get_leave_message();
-$content = '';
+$content = "TOP10:";
 if ($rows){
-    $content = "TOP10:";
     foreach ($rows as $k=>$v){
-        $content += ($k+1)."、".$v['wechat'].":".$v['leave_message'] == null ? "未设置" : $v['leave_message'];
+        $content = $content.($k+1)."、".$v['wechat'].":".$v['leave_message'] == null ? "未设置" : $v['leave_message'];
     }
 }
 $rtn_ary = array();
