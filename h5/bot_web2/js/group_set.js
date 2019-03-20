@@ -165,7 +165,7 @@ $(function () {
     $(".time_item").click(function () {
         let val = $(this).text();
         console.log(val);
-        let reg = /(^[\d])(0+)$/g;
+        let reg = /(^[\d])(0+)/g;
         chat_time = val.match(reg);
 
         console.log(chat_time);
