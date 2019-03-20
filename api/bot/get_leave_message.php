@@ -17,7 +17,7 @@ $content = '';
 if ($rows){
     $content = "TOP10:";
     foreach ($rows as $k=>$v){
-        $content = $content.$v[$k+1]."、".$v['wechat'].":".$v['leave_message'] == null ? "未设置" : $v['leave_message'];
+        $content = $content.$v[$k+1];
     }
 }
 $rtn_ary = array();
