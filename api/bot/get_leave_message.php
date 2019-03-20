@@ -17,7 +17,7 @@ $content = '';
 if ($rows){
     $content = "TOP10:";
     foreach ($rows as $k=>$v){
-        $content = $content.$v[$k+1];
+        $content = $content.$v[$k];
     }
 }
 $rtn_ary = array();
