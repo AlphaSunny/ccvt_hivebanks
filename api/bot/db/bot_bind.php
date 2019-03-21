@@ -1704,4 +1704,28 @@ function get_leave_message(){
     }
     return $list;
 }
+//======================================
+// 函数:  随机奖励
+//======================================
+function random_reward($group_id){
+    $db = new DB_COM();
+    $h = date("H");
+    //判断是时间
+    if ($h>9 && $h<22){
+        //判断群前一个小时是否有随机奖励过
+        $random_start_time = time()-(40*60);
+        $time = time();
+        $sql = "select * from bot_random_reward WHERE group_id='{$group_id}' AND utime BETWEEN '{$random_start_time}' AND '{$time}'";
+        $db->query($sql);
+        if ($db->fetchRow()){
+            //前一个小时已经随机奖励过
+            return 1;
+        }else{
+            //判断群前一个小时聊天
+            $bot_start_time = time()-(60*60);
+            $sql = "select * from bot_message WHERE group_id='{$group_id}' AND bot_create_time BETWEEN '{$bot_start_time}' AND '{$time}'";
+            echo $sql;
+        }
+    }
+}
 ?>
