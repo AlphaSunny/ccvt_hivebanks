@@ -1788,7 +1788,6 @@ function to_random_reward($data)
         $db->Rollback($pInTrans);
         return false;
     }
-    echo 1;
 
     //记录表
     $d['group_id'] = $data['group_id'];
@@ -1800,7 +1799,6 @@ function to_random_reward($data)
     $d['utime'] = time();
     $sql = $db->sqlInsert("bot_random_reward", $d);
     $id = $db->query($sql);
-    echo 2;
     if (!$id){
         $db->Rollback($pInTrans);
         return 0;
@@ -1826,6 +1824,7 @@ function to_random_reward($data)
     $data["tx_count"] = transfer_get_pre_count($rows['ba_id']);
     $sql = $db->sqlInsert("com_transfer_request", $data);
     $id = $db->query($sql);
+    echo 3;
     if (!$id){
         $db->Rollback($pInTrans);
         return false;
@@ -1850,6 +1849,7 @@ function to_random_reward($data)
     $dat["tx_count"] = transfer_get_pre_count($data['us_id']);
     $sql = $db->sqlInsert("com_transfer_request", $dat);
     $id = $db->query($sql);
+    echo 4;
     if (!$id){
         $db->Rollback($pInTrans);
         return false;
@@ -1872,8 +1872,8 @@ function to_random_reward($data)
     $com_balance_us["utime"] = time();
     $com_balance_us["ctime"] = $ctime;
     $com_balance_us["tx_count"] = base_get_pre_count($data['us_id']);
-
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
+    echo 5;
     if (!$db->query($sql)) {
         $db->Rollback($pInTrans);
         return false;
@@ -1893,8 +1893,8 @@ function to_random_reward($data)
     $com_balance_ba["utime"] = time();
     $com_balance_ba["ctime"] = $ctime;
     $com_balance_ba["tx_count"] = base_get_pre_count($rows['ba_id']);
-
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
+    echo 6;
     if (!$db->query($sql)) {
         $db->Rollback($pInTrans);
         return false;
