@@ -426,11 +426,15 @@ li.none {
         width: 100%;
     }
 
+    .leave_message_list{
+        margin-bottom: 20px;
+    }
+
     .nick_name_search {
-        font-size: 2rem;
-        top: 25%;
-        left: 90%;
         position: absolute;
+        font-size: 2rem;
+        top: 8%;
+        left: 88%;
     }
 
     .index_search_box {
