@@ -4,7 +4,7 @@ $(function () {
         let data = response.rows;
         console.log(data);
         $.each(data, function (i, val) {
-            console.log(i);
+            console.log(val);
         });
     }, function (response) {
         layer.msg("留言获取失败");
