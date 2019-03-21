@@ -426,8 +426,8 @@ li.none {
         width: 100%;
     }
 
-    .leave_message_list{
-        margin-bottom: 20px!important;
+    .leave_message_list {
+        margin-bottom: 20px !important;
     }
 
     .nick_name_search {
@@ -553,4 +553,10 @@ p {
     overflow: hidden;
     margin: 0;
     padding: 0 15px;
+}
+
+.leave_message_list li {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
