@@ -1,13 +1,23 @@
 $(function () {
+    let new_arr = [];
     LeaveMessageList(function (response) {
-        let li = "", name = "", text = "", new_arr = [];
         let data = response.rows;
         $.each(data, function (index, item) {
             if (item.leave_message) {
                 new_arr.push(item);
-                console.log(new_arr.length);
+                leaveList();
             }
         });
+
+    }, function (response) {
+        layer.msg("留言获取失败");
+    });
+
+    //留言列表
+    function leaveList() {
+        console.log(new_arr);
+        console.log(new_arr.length);
+        let li = "";
         $.each(new_arr, function (index, item) {
             li += "<li>" +
                 "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + item.scale + "'></use></svg>&nbsp;" +
@@ -17,9 +27,7 @@ $(function () {
         });
         $(".leave_message_list").html(li);
         leaveInterval();
-    }, function (response) {
-        layer.msg("留言获取失败");
-    });
+    }
 
     //定时滚动留言
     function leaveInterval() {
