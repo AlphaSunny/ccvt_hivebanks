@@ -1823,6 +1823,7 @@ function to_random_reward($data)
     $data['utime'] = date('Y-m-d H:i:s',time());
     $data["tx_count"] = transfer_get_pre_count($rows['ba_id']);
     $sql = $db->sqlInsert("com_transfer_request", $data);
+    echo $sql;die;
     $id = $db->query($sql);
     echo 3;
     if (!$id){
