@@ -1733,7 +1733,8 @@ function random_reward($group_id){
                 $sql = "select scale from bot_group WHERE id='{$group_id}'";
                 $db->query($sql);
                 $group_scale = $db->getField($sql,'scale');
-                $rand_reward_num = rand($group_scale,$group_scale*10);
+                echo $group_scale;
+                $rand_reward_num = rand($group_scale,($group_scale*10));
                 echo $rand_reward_num;
             }
             die;
