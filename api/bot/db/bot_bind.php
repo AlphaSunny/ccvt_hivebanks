@@ -1726,6 +1726,7 @@ function random_reward($group_id){
             $sql = "select wechat from bot_message WHERE group_id='81'  and wechat in (select wechat from us_base where 1) group by wechat";
             $db->query($sql);
             $wechat_array = $db->fetchAll();
+            $wechat_array = array_map(function($val){return $val['wechat'];}, $wechat_array);
             print_r($wechat_array);die;
         }
     }
