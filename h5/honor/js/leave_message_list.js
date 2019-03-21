@@ -52,7 +52,7 @@ $(function () {
     function startScroll() {
         let height = $(".leave_message_list").height();
         let margin_top_0 = 0;
-        $(".leave_message_list").find("li").animate({
+        $(".leave_message_list").animate({
             marginTop: -height,
         }, 2000, "linear", function () {
             $(this).css({marginTop: margin_top_0}).find("li:first").appendTo(this);
