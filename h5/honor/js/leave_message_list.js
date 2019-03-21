@@ -46,7 +46,7 @@ $(function () {
     function leaveInterval() {
         setInterval(function () {
             startScroll();
-        }, 3000);
+        }, 5000);
     }
 
     function startScroll() {
