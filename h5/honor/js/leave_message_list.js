@@ -23,13 +23,13 @@ $(function () {
             },
         ];
         let data = response.rows;
-        console.log(data);
         $.each(data, function (index, item) {
             if (item.leave_message) {
                 new_arr.push(item);
             }
         });
         $.each(new_arr, function (index, item) {
+            console.log(new_arr.length);
             li += "<li>" +
                 "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + item.scale + "'></use></svg>&nbsp;" +
                 "<span>" + item.wechat + "</span>:&nbsp;&nbsp;" +
