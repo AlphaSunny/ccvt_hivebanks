@@ -427,7 +427,7 @@ li.none {
     }
 
     .leave_message_list{
-        margin-bottom: 20px;
+        margin-bottom: 20px!important;
     }
 
     .nick_name_search {
@@ -552,4 +552,5 @@ p {
     background: rgba(255, 255, 255, 0.1);
     overflow: hidden;
     margin: 0;
+    padding: 0;
 }
