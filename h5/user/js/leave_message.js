@@ -20,6 +20,7 @@ $(function () {
             if (response.errcode == "0") {
                 SuccessPrompt("提交成功");
                 $("#leave_message_text").val("");
+                $(".leave_message_info").text(response.leave_message);
                 $("#leave_message").modal("hide");
             }
         }, function (response) {

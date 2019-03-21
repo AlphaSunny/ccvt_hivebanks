@@ -78,11 +78,13 @@ $(function () {
 
             //留言
             if (data.leave_message) {
-                $(".leave_message_show_title").attr("data-original-title", data.leave_message);
-                $("#leave_message_text").val(data.leave_message);
+                $(".leave_message_info").text(data.leave_message);
+                // $(".leave_message_show_title").attr("data-original-title", data.leave_message);
+                // $("#leave_message_text").val(data.leave_message);
             } else {
-                $(".leave_message_show_title").attr("data-original-title", "暂无留言");
-                $("#leave_message_text").val("");
+                // $(".leave_message_show_title").attr("data-original-title", "暂无留言");
+                // $("#leave_message_text").val("");
+                $(".leave_message_info").text("暂无留言");
             }
 
         }
