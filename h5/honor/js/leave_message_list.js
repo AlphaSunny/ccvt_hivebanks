@@ -35,7 +35,8 @@ $(function () {
                 "<span class='name'>" + item.wechat + "</span>:&nbsp;&nbsp;" +
                 "<span class='message'>" + item.leave_message + "</span>" +
                 "</li>";
-        })
+        });
+        $(".leave_message_list").html(li);
     }, function (response) {
         layer.msg("留言获取失败");
     })
