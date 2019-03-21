@@ -12,7 +12,7 @@
 </head>
 <body id="first_box">
 <!--<h1 class="count_down_text">CCVT第四次解锁倒计时</h1>-->
-<h1 class="count_down_text">4th用户荣耀升级倒计时</h1>
+<h1 class="count_down_text">5th用户荣耀升级倒计时</h1>
 <div class="count_box">
     <h1 class="days"></h1>
     <h1 class="hours"></h1>
@@ -37,7 +37,7 @@
         window.location.href = "glory_up.html?ok=ok";
     } else {
         count_timer = setInterval(function () {
-            TimeDown("2019/2/22 20:00");
+            TimeDown("2019/3/22 20:00");
         }, 1000);
     }
 
@@ -124,7 +124,7 @@
 
     //二次解锁成功
     function twoSuccess() {
-        let i = 0, str = "第四次解锁成功";
+        let i = 0, str = "第五次解锁成功";
         $("h1").remove();
         let textTimer = setInterval(function () {
             if ($(".text_h2").text() == str) {
@@ -142,7 +142,7 @@
     function TwoUp() {
         setTimeout(function () {
             $(".text_h2").remove();
-            $(".text_h3").css("font-size", "5rem").text("即将进行第四次荣耀等级升级");
+            $(".text_h3").css("font-size", "5rem").text("即将进行第五次荣耀等级升级");
             JumpUp();
         }, 3000);
     }
@@ -156,7 +156,7 @@
 
     //一分钟//
     function oneMinCountDown() {
-        let one_end_time = new Date("2019/2/22 20:02");//setTime
+        let one_end_time = new Date("2019/3/22 20:02");//setTime
         let one_now_time = new Date();
         let curr_num = parseInt((one_end_time - one_now_time) / 1000);
 
