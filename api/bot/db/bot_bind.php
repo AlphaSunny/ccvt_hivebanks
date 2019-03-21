@@ -1788,6 +1788,7 @@ function to_random_reward($data)
         $db->Rollback($pInTrans);
         return false;
     }
+    echo 1;
 
     //记录表
     $d['group_id'] = $data['group_id'];
@@ -1799,6 +1800,7 @@ function to_random_reward($data)
     $d['utime'] = time();
     $sql = $db->sqlInsert("bot_random_reward", $d);
     $id = $db->query($sql);
+    echo 2;
     if (!$id){
         $db->Rollback($pInTrans);
         return 0;
