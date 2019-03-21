@@ -1,8 +1,8 @@
 $(function () {
     LeaveMessageList(function (response) {
-        console.log(response);
         let li = "", name = "", text = "",new_arr = [];
         let data = response.rows;
+        console.log(data);
         $.each(data, function (i, val) {
             if (data[i].leave_message) {
                 console.log(data[i]);
