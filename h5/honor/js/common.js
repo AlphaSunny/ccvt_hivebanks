@@ -150,6 +150,13 @@ function GetLeaderBoard(limit, offset, search_content, group_id, suc_func, error
     CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
 }
 
+//获取留言
+function LeaveMessageList(suc_func, error_func) {
+    var api_url = 'leave_message_list.php',
+        post_data = {};
+    CallLeaderBoardsApi(api_url, post_data, suc_func, error_func);
+}
+
 //get GetChatPerson
 function GetChatPerson(wechat, group_id, search_content, limit, offset, suc_func, error_func) {
     var api_url = 'chat_person.php',
