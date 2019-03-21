@@ -3,22 +3,22 @@ $(function () {
         let li = "", name = "", text = "", new_arr = [
             {
                 scale: 3,
-                wechat: "3范德萨发发",
+                wechat: "范德萨发发3",
                 leave_message: "范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发"
             },
             {
                 scale: 2,
-                wechat: "2范德萨发发",
+                wechat: "范德萨发发2",
                 leave_message: "范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发"
             },
             {
                 scale: 1,
-                wechat: "1范德萨发发",
+                wechat: "范德萨发发1",
                 leave_message: "范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发"
             },
             {
                 scale: 4,
-                wechat: "4范德萨发发",
+                wechat: "范德萨发发4",
                 leave_message: "范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发"
             },
         ];
