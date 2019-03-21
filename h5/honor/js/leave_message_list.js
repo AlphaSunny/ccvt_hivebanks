@@ -4,10 +4,7 @@ $(function () {
         let data = response.rows;
         console.log(data);
         $.each(data, function (i, val) {
-            if (data[i].leave_message) {
-                console.log(data[i]);
-                // new_arr.push(data[i]);
-            }
+            console.log(i);
         });
     }, function (response) {
         layer.msg("留言获取失败");
