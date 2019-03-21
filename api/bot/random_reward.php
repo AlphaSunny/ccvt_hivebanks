@@ -21,7 +21,7 @@ header("Content-Type:application/json;charset=utf-8");
 若上一小时无人发言则不奖励。 ==========================
 
 */
-
+die;
 php_begin();
 
 $args = array('group_id');
