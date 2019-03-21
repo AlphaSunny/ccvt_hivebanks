@@ -233,6 +233,20 @@ foreach ($dynamic_tuning as $k=>$v){
 //echo "员工动态调整:".count($dynamic_tuning)."<br />";
 
 
+//聊天随机奖励
+$sql = "select us_id,base_amount as send_money,ctime from bot_random_reward WHERE 1";
+$db->query($sql);
+$random_reward = $db->fetchAll();
+foreach ($random_reward as $k=>$v){
+    $random_reward[$k]['flag'] = 17;
+    $random_reward[$k]['detail'] = "聊天随机奖励";
+    $random_reward[$k]['type'] = "random_reward";
+    $random_reward[$k]['transfer_type'] = "ba-us";
+    $random_reward[$k]['transfer_us_id'] = "0";
+    $random_reward[$k]['qa_flag'] = "0";
+}
+
+//echo "聊天随机奖励:".count($dynamic_tuning)."<br />";
 
 
 //*****************************************US -> LA************************************************//
