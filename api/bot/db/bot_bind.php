@@ -1806,7 +1806,7 @@ function to_random_reward($data)
 
     /******************************转账记录表***************************************************/
     //增币记录   赠送者
-    $data['hash_id'] = hash('sha256', $rows['ba_id'] . 17 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $da['hash_id'] = hash('sha256', $rows['ba_id'] . 17 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($rows['ba_id']);
     $da['prvs_hash'] = $prvs_hash === 0 ? hash('sha256',$rows['ba_id']) : $prvs_hash;
     $da['credit_id'] = $rows['ba_id'];
