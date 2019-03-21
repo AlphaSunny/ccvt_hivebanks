@@ -24,6 +24,8 @@ header("Content-Type:application/json;charset=utf-8");
 
 php_begin();
 
+$args = array('group_id');
+chk_empty_args('GET', $args);
 //群名
 $group_id = get_arg_str('GET','group_id');
 
