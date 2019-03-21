@@ -1723,8 +1723,10 @@ function random_reward($group_id){
         }else{
             //判断群前一个小时聊天
             $bot_start_time = time()-(60*60);
-            $sql = "select * from bot_message WHERE group_id='{$group_id}' AND bot_create_time BETWEEN '{$bot_start_time}' AND '{$time}'";
-            echo $sql;
+            $sql = "select wechat from bot_message WHERE group_id='81' AND bot_create_time BETWEEN '{$bot_start_time}' AND '{$time}' and wechat in (select wechat from us_base where 1) group by wechat";
+            $db->query($sql);
+            $wechat_array = $db->fetchRow();
+            print_r($wechat_array);
         }
     }
 }
