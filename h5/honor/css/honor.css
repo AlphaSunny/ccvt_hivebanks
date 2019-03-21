@@ -340,7 +340,7 @@ li.none {
 .nick_name_search_icon {
     position: relative;
     text-align: right;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 .nick_name_search {
@@ -489,6 +489,7 @@ li.none {
     .phone_none {
         display: none !important;
     }
+
     .to_domain {
         font-size: 1.5rem;
     }
@@ -537,4 +538,10 @@ p {
 
 .footer_text {
     padding: 30px 0;
+}
+
+.leave_message_list {
+    height: 3rem;
+    line-height: 3rem;
+    background: rgba(255, 255, 255, 0.1);
 }
