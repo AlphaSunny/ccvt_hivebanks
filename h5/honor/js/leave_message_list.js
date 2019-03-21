@@ -50,7 +50,7 @@ $(function () {
     }
 
     function startScroll() {
-        let height = $(".leave_message_list").height();
+        let height = $(".leave_message_list").find("ul>li").height();
         let margin_top_0 = 0;
         $(".leave_message_list_box").find("ul:first").animate({
             marginTop: -height,
