@@ -416,10 +416,6 @@ li.none {
         line-height: 1rem;
     }
 
-    button {
-        /*padding: 3% 6%;*/
-    }
-
     .table_top {
         padding-left: 15px;
     }
@@ -473,8 +469,6 @@ li.none {
     .title_h1 {
         font-size: 2rem;
         display: inline-block;
-        /*width: 100%;*/
-        /*margin-top: 3%;*/
     }
 
     .title_pm {
@@ -494,6 +488,9 @@ li.none {
 
     .phone_none {
         display: none !important;
+    }
+    .to_domain {
+        font-size: 1.5rem;
     }
 }
 
