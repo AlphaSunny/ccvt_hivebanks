@@ -34,7 +34,7 @@ $group_id = get_arg_str('GET','group_id');
 $rows = random_reward($group_id);
 $content = '';
 if ($rows['result']==2){
-    $content = "恭喜 ".$rows['wechat']." 获得聊天随机奖励".$rows['money']."CCVT";
+    $content = "恭喜 ".$rows['wechat']." 获得聊天随机奖励".$rows['money']."个CCVT";
 }
 
 $rtn_ary = array();
