@@ -15,8 +15,6 @@ $(function () {
 
     //留言列表
     function leaveList() {
-        console.log(new_arr);
-        console.log(new_arr.length);
         let li = "";
         $.each(new_arr, function (index, item) {
             li += "<li>" +
