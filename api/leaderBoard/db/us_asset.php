@@ -619,3 +619,20 @@ function transfer_get_pre_count($credit_id)
 }
 
 
+//======================================
+// 函数: 获取前十的留言
+//======================================
+function get_leave_message(){
+    $db = new DB_COM();
+    $sql = "SELECT b.wechat,b.scale,b.us_id FROM us_asset as a LEFT JOIN us_base as b on a.us_id=b.us_id LEFT JOIN us_bind as bind ON b.us_id=bind.us_id WHERE a.asset_id = 'GLOP' AND a.base_amount>=0 and bind.bind_name='group' order by a.base_amount desc limit 0 , 10";
+    $db->query($sql);
+    $list = $db->fetchAll();
+    if ($list){
+        foreach ($list as $k=>$v){
+            $sql = "select bind_info from us_bind WHERE bind_type='text' AND bind_name='leave_message' AND us_id='{$v['us_id']}'";
+            $db->query($sql);
+            $list[$k]['leave_message'] = $db->getField($sql,'bind_info');
+        }
+    }
+    return $list;
+}
