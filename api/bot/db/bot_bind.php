@@ -1723,15 +1723,19 @@ function random_reward($group_id){
         }else{
             //判断群前一个小时聊天
             $bot_start_time = time()-(60*60);
-            $sql = "select wechat from bot_message WHERE group_id='81'  and wechat in (select wechat from us_base where 1) group by wechat";
+            $sql = "select wechat from bot_message WHERE group_id='{$group_id}' and wechat in (select wechat from us_base where 1) group by wechat";
             $db->query($sql);
-            $wechat_array = $db->fetchAll();
-            $wechat_array = array_map(function($val){return $val['wechat'];}, $wechat_array);
-            print_r($wechat_array);
-            $rand_num = array_rand($wechat_array,1);
-            print_r($rand_num);
-            echo $wechat_array[$rand_num];
-
+            $array = $db->fetchAll();
+            $wechat_array = array_map(function($val){return $val['wechat'];}, $array);
+            if (count($wechat_array)>0){
+                $rand_num = array_rand($wechat_array,1);
+                //获取金额随机数奖励数额：最小值=领域等级  最大值= 领域等级*10
+                $sql = "select scale from bot_group WHERE id='{$group_id}'";
+                $db->query($sql);
+                $group_scale = $db->getField($sql,'scale');
+                $rand_reward_num = rand($group_scale,$group_scale*10);
+                echo $rand_reward_num;
+            }
             die;
         }
     }
