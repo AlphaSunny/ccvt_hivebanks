@@ -1719,7 +1719,7 @@ function random_reward($group_id){
         $db->query($sql);
         if ($db->fetchRow()){
             //前一个小时已经随机奖励过
-            return 1;
+            $row['result'] = 1;
         }else{
             //判断群前一个小时聊天
             $bot_start_time = time()-(60*60);
@@ -1733,12 +1733,172 @@ function random_reward($group_id){
                 $sql = "select scale from bot_group WHERE id='{$group_id}'";
                 $db->query($sql);
                 $group_scale = $db->getField($sql,'scale');
-                echo $group_scale;
                 $rand_reward_num = rand($group_scale,($group_scale*10));
-                echo $rand_reward_num;
+                //获取用id
+                $sql = "select us_id from us_base WHERE wechat='{$wechat_array[$rand_num]}'";
+                $db->query($sql);
+                $us_id = $db->getField($sql,'us_id');
+
+                $data['give_num'] = $rand_reward_num;
+                $data['us_id'] = $us_id;
+                $data['group_id'] = $group_id;
+                $data['group_scale'] = $group_scale;
+                $data['num'] = count($wechat_array);
+                $result = to_random_reward($data);
+                if($result){
+                    $row['result'] = 2;
+                    $row['wechat'] =$wechat_array[$rand_num];
+                    $row['money'] = $rand_reward_num;
+                }else{
+                    $row['result'] = 3;
+                }
+            }else{
+                $row['result'] = 4;
             }
-            die;
         }
+    }else{
+        $row['result'] = 5;
     }
+    return $row;
+}
+//======================================
+// 函数: 随机奖励
+// 参数:
+//======================================
+function to_random_reward($data)
+{
+    $db = new DB_COM();
+    $pInTrans = $db->StartTrans();  //开启事务
+    //送币
+    $unit = get_la_base_unit();
+    $sql = "update us_base set base_amount=base_amount+'{$data['give_num']}'*'{$unit}' WHERE us_id='{$data['us_id']}'";
+    $db -> query($sql);
+    if (!$db->affectedRows()){
+        $db->Rollback($pInTrans);
+        return false;
+    }
+
+    //ba减钱
+    $sql = "select * from ba_base ORDER BY ctime asc limit 1";
+    $db->query($sql);
+    $rows = $db->fetchRow();
+    $sql = "update ba_base set base_amount=base_amount-'{$data['give_num']}'*'{$unit}' WHERE ba_id='{$rows['ba_id']}'";
+    $db -> query($sql);
+    if (!$db->affectedRows()){
+        $db->Rollback($pInTrans);
+        return false;
+    }
+
+    //记录表
+    $d['group_id'] = $data['group_id'];
+    $d['group_scale'] = $data['group_scale'];
+    $d['us_id'] = $data['us_id'];
+    $d['base_amount'] = $data['give_num']*$unit;
+    $d['num'] = $data['num'];
+    $d['ctime'] = date('Y-m-d H:i:s');
+    $d['utime'] = time();
+    $sql = $db->sqlInsert("bot_random_reward", $d);
+    $id = $db->query($sql);
+    if (!$id){
+        $db->Rollback($pInTrans);
+        return 0;
+    }
+
+    /******************************转账记录表***************************************************/
+    //增币记录   赠送者
+    $data['hash_id'] = hash('sha256', $rows['ba_id'] . 17 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $prvs_hash = get_transfer_pre_hash($rows['ba_id']);
+    $data['prvs_hash'] = $prvs_hash === 0 ? hash('sha256',$rows['ba_id']) : $prvs_hash;
+    $data['credit_id'] = $rows['ba_id'];
+    $data['debit_id'] = $data['us_id'];
+    $data['tx_amount'] = -($data['give_num']*$unit);
+    $data['credit_balance'] = get_ba_account($rows['ba_id'])-($data['give_num']*$unit);
+    $data['tx_hash'] = hash('sha256', $rows['ba_id'] . 17 . get_ip() . time() . date('Y-m-d H:i:s'));
+    $data['flag'] = 17;
+    $data['transfer_type'] = 'ba-us';
+    $data['transfer_state'] = 1;
+    $data['tx_detail'] = "群聊随机奖励";
+    $data['give_or_receive'] = 1;
+    $data['ctime'] = time();
+    $data['utime'] = date('Y-m-d H:i:s',time());
+    $data["tx_count"] = transfer_get_pre_count($rows['ba_id']);
+    $sql = $db->sqlInsert("com_transfer_request", $data);
+    $id = $db->query($sql);
+    if (!$id){
+        $db->Rollback($pInTrans);
+        return false;
+    }
+
+    //接收者
+    $dat['hash_id'] = hash('sha256', $data['us_id'] . 17 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
+    $prvs_hash = get_transfer_pre_hash($data['us_id']);
+    $dat['prvs_hash'] = $prvs_hash === 0 ? hash('sha256',$data['us_id']) : $prvs_hash;
+    $dat['credit_id'] = $data['us_id'];
+    $dat['debit_id'] = $rows['ba_id'];
+    $dat['tx_amount'] = $data['give_num']*$unit;
+    $dat['credit_balance'] = get_us_account($data['us_id'])+$dat['tx_amount'];
+    $dat['tx_hash'] = hash('sha256', $data['us_id'] . 17 . get_ip() . time() . date('Y-m-d H:i:s'));
+    $dat['flag'] = 17;
+    $dat['transfer_type'] = 'ba-us';
+    $dat['transfer_state'] = 1;
+    $dat['tx_detail'] = "群聊随机奖励";
+    $dat['give_or_receive'] = 2;
+    $dat['ctime'] = time();
+    $dat['utime'] = date('Y-m-d H:i:s',time());;
+    $dat["tx_count"] = transfer_get_pre_count($data['us_id']);
+    $sql = $db->sqlInsert("com_transfer_request", $dat);
+    $id = $db->query($sql);
+    if (!$id){
+        $db->Rollback($pInTrans);
+        return false;
+    }
+
+    /***********************资金变动记录表***********************************/
+    //us添加基准资产变动记录
+    $us_type = 'us_random_reward_balance';
+    $ctime = date('Y-m-d H:i:s');
+    $tx_id = hash('sha256', $data['us_id'] . $rows['ba_id'] . get_ip() . time() . microtime());
+    $com_balance_us['hash_id'] = hash('sha256', $data['us_id'] . $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+    $com_balance_us['tx_id'] = $tx_id;
+    $prvs_hash = get_recharge_pre_hash($data['us_id']);
+    $com_balance_us['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$data['us_id']) : $prvs_hash;
+    $com_balance_us["credit_id"] = $data['us_id'];
+    $com_balance_us["debit_id"] = $rows['ba_id'];
+    $com_balance_us["tx_type"] = "random_reward";
+    $com_balance_us["tx_amount"] = $data['give_num']*$unit;
+    $com_balance_us["credit_balance"] = get_us_account($data['us_id'])+$com_balance_us["tx_amount"];
+    $com_balance_us["utime"] = time();
+    $com_balance_us["ctime"] = $ctime;
+    $com_balance_us["tx_count"] = base_get_pre_count($data['us_id']);
+
+    $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
+    if (!$db->query($sql)) {
+        $db->Rollback($pInTrans);
+        return false;
+    }
+
+    //ba添加基准资产变动记录
+    $us_type = 'ba_random_reward_balance';
+    $com_balance_ba['hash_id'] = hash('sha256', $rows['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . $ctime);
+    $com_balance_ba['tx_id'] = $tx_id;
+    $prvs_hash = get_recharge_pre_hash($rows['ba_id']);
+    $com_balance_ba['prvs_hash'] = $prvs_hash === 0 ? hash('md5',$rows['ba_id']) : $prvs_hash;
+    $com_balance_ba["credit_id"] = $rows['ba_id'];
+    $com_balance_ba["debit_id"] = $data['us_id'];
+    $com_balance_ba["tx_type"] = "random_reward";
+    $com_balance_ba["tx_amount"] = -($data['give_num']*$unit);
+    $com_balance_ba["credit_balance"] = get_ba_account($rows['ba_id'])-($data['give_num']*$unit);
+    $com_balance_ba["utime"] = time();
+    $com_balance_ba["ctime"] = $ctime;
+    $com_balance_ba["tx_count"] = base_get_pre_count($rows['ba_id']);
+
+    $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
+    if (!$db->query($sql)) {
+        $db->Rollback($pInTrans);
+        return false;
+    }
+
+    $db->Commit($pInTrans);
+    return true;
 }
 ?>

@@ -36,7 +36,7 @@ $rows = random_reward($group_id);
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['content'] = $rows['name'];
+$rtn_ary['content'] = $rows;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
