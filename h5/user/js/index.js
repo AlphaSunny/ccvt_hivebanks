@@ -35,7 +35,7 @@ $(function () {
     $(".to_doc").click(function () {
         if (user_token) {
             window.location.href = 'http://www.fnying.com/h5/ccvt/index.html?t=' + decodeURI(user_token);
-        }else {
+        } else {
             window.location.href = 'http://www.fnying.com/h5/ccvt/index.html?';
         }
     });
@@ -65,7 +65,7 @@ $(function () {
         margin_top = "0px";
         $(obj).find("ul:first").animate({
             marginTop: -item_height
-        }, 2000, function () {
+        }, 2000, "linear", function () {
             $(this).css({
                 marginTop: margin_top
             }).find("li:first").appendTo(this);

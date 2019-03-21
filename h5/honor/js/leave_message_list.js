@@ -44,10 +44,18 @@ $(function () {
 
     //定时滚动留言
     function leaveInterval() {
+        setInterval(function () {
+            startScroll();
+        }, 3000);
+    }
+
+    function startScroll() {
         let height = $(".leave_message_list").height();
-        console.log(height);
-        // setInterval(function () {
-        //
-        // }, 3000);
+        let margin_top_0 = 0;
+        $(".leave_message_list").find("li").animate({
+            marginTop: -height,
+        }, 2000, "linear", function () {
+            $(this).css({marginTop: margin_top_0}).find("li:first").appendTo(this);
+        })
     }
 });
