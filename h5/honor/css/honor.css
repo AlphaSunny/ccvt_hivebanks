@@ -239,7 +239,7 @@ li.none {
     box-shadow: none;
     height: 2.5rem;
     border-radius: 2rem;
-    width: 20%;
+    width: 100%;
     caret-color: #ffffff;
     padding: 10px;
     color: #ffffff;
@@ -346,8 +346,9 @@ li.none {
 .nick_name_search {
     font-size: 2rem;
     position: absolute;
-    right: 1%;
-    top: 10%;
+    right: 7%;
+    top: 14%;
+    cursor: pointer;
 }
 
 .title_box {
