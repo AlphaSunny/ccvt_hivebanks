@@ -433,8 +433,8 @@ li.none {
     .nick_name_search {
         position: absolute;
         font-size: 2rem;
-        top: 8%;
-        left: 88%;
+        top: 60%;
+        left: 86%;
     }
 
     .index_search_box {
