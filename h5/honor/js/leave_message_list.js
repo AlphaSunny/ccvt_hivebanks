@@ -31,7 +31,7 @@ $(function () {
         });
         $.each(new_arr, function (index, item) {
             li += "<li>" +
-                "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + item.scale + "'></use></svg>" +
+                "<svg class='icon icon_grade' aria-hidden='true'><use xlink:href='#icon-v" + item.scale + "'></use></svg>&nbsp;&nbsp;" +
                 "<span>" + item.wechat + "</span>:&nbsp;&nbsp;" +
                 "<span class='message'>" + item.leave_message + "</span>" +
                 "</li>";
