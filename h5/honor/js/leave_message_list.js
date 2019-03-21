@@ -37,7 +37,17 @@ $(function () {
                 "</li>";
         });
         $(".leave_message_list").html(li);
+        leaveInterval();
     }, function (response) {
         layer.msg("留言获取失败");
-    })
+    });
+
+    //定时滚动留言
+    function leaveInterval() {
+        let height = $(".leave_message_list").height();
+        console.log(height);
+        // setInterval(function () {
+        //
+        // }, 3000);
+    }
 });
