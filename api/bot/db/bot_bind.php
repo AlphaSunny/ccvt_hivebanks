@@ -1727,7 +1727,8 @@ function random_reward($group_id){
             $db->query($sql);
             $wechat_array = $db->fetchAll();
             $wechat_array = array_map(function($val){return $val['wechat'];}, $wechat_array);
-            print_r($wechat_array);die;
+            print_r($wechat_array);
+            print_r(array_rand($wechat_array,1));
         }
     }
 }
