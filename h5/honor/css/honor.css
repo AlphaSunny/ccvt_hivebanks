@@ -197,7 +197,8 @@ li.none {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
+    margin-bottom: 20px;
 }
 
 .select_box {
@@ -546,4 +547,5 @@ p {
     line-height: 3rem;
     background: rgba(255, 255, 255, 0.1);
     overflow: hidden;
+    margin: 0;
 }
