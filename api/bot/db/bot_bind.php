@@ -1728,8 +1728,10 @@ function random_reward($group_id){
             $wechat_array = $db->fetchAll();
             $wechat_array = array_map(function($val){return $val['wechat'];}, $wechat_array);
             print_r($wechat_array);
-            print_r(array_rand($wechat_array,1));
-            echo count($wechat_array);
+            $rand_num = array_rand($wechat_array,1);
+            print_r($rand_num);
+            echo $wechat_array[$rand_num];
+
             die;
         }
     }
