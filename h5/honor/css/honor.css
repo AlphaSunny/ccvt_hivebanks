@@ -545,4 +545,5 @@ p {
     height: 3rem;
     line-height: 3rem;
     background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
 }
