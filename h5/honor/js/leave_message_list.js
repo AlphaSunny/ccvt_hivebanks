@@ -5,7 +5,7 @@ $(function () {
         let data = response.rows;
         $.each(data, function (i, val) {
             if (data[i].leave_message) {
-                console.log(val);
+                console.log(data[i]);
                 // new_arr.push(data[i]);
             }
         });
