@@ -1,27 +1,6 @@
 $(function () {
     LeaveMessageList(function (response) {
-        let li = "", name = "", text = "", new_arr = [
-            {
-                scale: 3,
-                wechat: "范德萨发发3",
-                leave_message: "范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发"
-            },
-            {
-                scale: 2,
-                wechat: "范德萨发发2",
-                leave_message: "范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发"
-            },
-            {
-                scale: 1,
-                wechat: "范德萨发发1",
-                leave_message: "范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发"
-            },
-            {
-                scale: 4,
-                wechat: "范德萨发发4",
-                leave_message: "范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发范德萨发发"
-            },
-        ];
+        let li = "", name = "", text = "", new_arr = [];
         let data = response.rows;
         $.each(data, function (index, item) {
             if (item.leave_message) {
