@@ -1808,24 +1808,22 @@ function to_random_reward($data)
     //增币记录   赠送者
     $data['hash_id'] = hash('sha256', $rows['ba_id'] . 17 . get_ip() . time() . rand(1000, 9999) . date('Y-m-d H:i:s'));
     $prvs_hash = get_transfer_pre_hash($rows['ba_id']);
-    $data['prvs_hash'] = $prvs_hash === 0 ? hash('sha256',$rows['ba_id']) : $prvs_hash;
-    $data['credit_id'] = $rows['ba_id'];
-    $data['debit_id'] = $data['us_id'];
-    $data['tx_amount'] = -($data['give_num']*$unit);
-    $data['credit_balance'] = get_ba_account($rows['ba_id'])-($data['give_num']*$unit);
-    $data['tx_hash'] = hash('sha256', $rows['ba_id'] . 17 . get_ip() . time() . date('Y-m-d H:i:s'));
-    $data['flag'] = 17;
-    $data['transfer_type'] = 'ba-us';
-    $data['transfer_state'] = 1;
-    $data['tx_detail'] = "群聊随机奖励";
-    $data['give_or_receive'] = 1;
-    $data['ctime'] = time();
-    $data['utime'] = date('Y-m-d H:i:s',time());
-    $data["tx_count"] = transfer_get_pre_count($rows['ba_id']);
-    $sql = $db->sqlInsert("com_transfer_request", $data);
-    echo $sql;die;
+    $da['prvs_hash'] = $prvs_hash === 0 ? hash('sha256',$rows['ba_id']) : $prvs_hash;
+    $da['credit_id'] = $rows['ba_id'];
+    $da['debit_id'] = $data['us_id'];
+    $da['tx_amount'] = -($data['give_num']*$unit);
+    $da['credit_balance'] = get_ba_account($rows['ba_id'])-($data['give_num']*$unit);
+    $da['tx_hash'] = hash('sha256', $rows['ba_id'] . 17 . get_ip() . time() . date('Y-m-d H:i:s'));
+    $da['flag'] = 17;
+    $da['transfer_type'] = 'ba-us';
+    $da['transfer_state'] = 1;
+    $da['tx_detail'] = "群聊随机奖励";
+    $da['give_or_receive'] = 1;
+    $da['ctime'] = time();
+    $da['utime'] = date('Y-m-d H:i:s',time());
+    $da["tx_count"] = transfer_get_pre_count($rows['ba_id']);
+    $sql = $db->sqlInsert("com_transfer_request", $da);
     $id = $db->query($sql);
-    echo 3;
     if (!$id){
         $db->Rollback($pInTrans);
         return false;
@@ -1850,7 +1848,6 @@ function to_random_reward($data)
     $dat["tx_count"] = transfer_get_pre_count($data['us_id']);
     $sql = $db->sqlInsert("com_transfer_request", $dat);
     $id = $db->query($sql);
-    echo 4;
     if (!$id){
         $db->Rollback($pInTrans);
         return false;
@@ -1874,7 +1871,6 @@ function to_random_reward($data)
     $com_balance_us["ctime"] = $ctime;
     $com_balance_us["tx_count"] = base_get_pre_count($data['us_id']);
     $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
-    echo 5;
     if (!$db->query($sql)) {
         $db->Rollback($pInTrans);
         return false;
@@ -1895,7 +1891,6 @@ function to_random_reward($data)
     $com_balance_ba["ctime"] = $ctime;
     $com_balance_ba["tx_count"] = base_get_pre_count($rows['ba_id']);
     $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
-    echo 6;
     if (!$db->query($sql)) {
         $db->Rollback($pInTrans);
         return false;
