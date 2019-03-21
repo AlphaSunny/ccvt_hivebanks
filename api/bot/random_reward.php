@@ -32,11 +32,15 @@ $group_id = get_arg_str('GET','group_id');
 
 //获取最新文章
 $rows = random_reward($group_id);
+$content = '';
+if ($rows['result']==2){
+    $content = "恭喜 ".$rows['wechat']." 获得聊天随机奖励".$rows['money']."CCVT";
+}
 
 $rtn_ary = array();
 $rtn_ary['errcode'] = '0';
 $rtn_ary['errmsg'] = '';
-$rtn_ary['content'] = $rows;
+$rtn_ary['content'] = $content;
 $rtn_str = json_encode($rtn_ary);
 php_end($rtn_str);
 
