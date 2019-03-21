@@ -531,6 +531,7 @@ p {
 .to_domain {
     color: #ffffff;
     margin-left: 10px;
+    font-size: 1.8rem;
 }
 
 .to_domain:hover {
