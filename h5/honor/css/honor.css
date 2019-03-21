@@ -546,7 +546,7 @@ p {
     padding: 30px 0;
 }
 
-.leave_message_list {
+.leave_message_list_box {
     height: 3rem;
     line-height: 3rem;
     background: rgba(255, 255, 255, 0.1);
