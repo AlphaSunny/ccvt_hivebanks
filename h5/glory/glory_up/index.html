@@ -37,7 +37,7 @@
         window.location.href = "glory_up.html?ok=ok";
     } else {
         count_timer = setInterval(function () {
-            TimeDown("2019/3/22 18:57");
+            TimeDown("2019/3/22 18:59");
         }, 1000);
     }
 
@@ -143,6 +143,7 @@
         setTimeout(function () {
             $(".text_h2").remove();
             $(".text_h3").css("font-size", "5rem").text("即将进行第五次荣耀等级升级");
+            return;
             JumpUp();
         }, 3000);
     }
