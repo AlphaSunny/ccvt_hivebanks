@@ -21,6 +21,7 @@ $(function () {
                 SuccessPrompt("提交成功");
                 $("#leave_message_text").val("");
                 $(".leave_message_info").text(response.leave_message);
+                $(".leave_message_info").attr('title', response.leave_message);
                 $("#leave_message").modal("hide");
             }
         }, function (response) {
