@@ -22,7 +22,7 @@ $(function () {
     //判断当前时间
     function timeIsOk() {
         let curr_time = new Date();
-        let end_time = new Date("2019/3/22 18:15");//setTime
+        let end_time = new Date("2019/3/22 20:02");//setTime
         let num = parseInt((end_time - curr_time) / 1000);
 
         console.log(num);
