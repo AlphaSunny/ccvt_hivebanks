@@ -5,7 +5,7 @@ $(function () {
     let limit = 50, offset = 0;
 
     function GetNewsListFun(limit, offset) {
-        let total = "", totalPage = "", count = "", tr = "",overdue_time = "";
+        let total = "", totalPage = "", count = "", tr = "", overdue_time = "";
         GetNewsList(token, limit, offset, function (response) {
             if (response.errcode == "0") {
                 ShowLoading("hide");
@@ -25,19 +25,26 @@ $(function () {
                     count = 6;
                 }
 
+                let now_time = "", out_time = "", is_out_news = "";
                 $.each(data, function (i, val) {
-                    if(data[i].overdue_time == "0"){
+                    if (data[i].overdue_time == "0") {
                         overdue_time = "--";
-                    }else{
+                    } else {
                         overdue_time = data[i].overdue_time;
                     }
-                    let now_time = new Date();
-                    let out_time = new Date(data[i].overdue_time.replace(/-/g,"/"));
-                    console.log(now_time);
-                    console.log(out_time);
-                    console.log(out_time - now_time);
+                    now_time = new Date();
+                    out_time = new Date(data[i].overdue_time.replace(/-/g, "/"));
+                    if (out_time - now_time <= 0) {
+                        is_out_news = "<td>" +
+                            "<img src='../img/out_time.svg'/>" +
+                            "<a href='newsDetail.html?news_id=" + data[i].news_id + "' class='newsTitleClick'>" + data[i].title + "</a>" +
+                            "</td>"
+                    }
                     tr += "<tr class='newsItem'>" +
-                        "<td><a href='newsDetail.html?news_id=" + data[i].news_id + "' class='newsTitleClick'>" + data[i].title + "</a></td>" +
+                        // "<td>" +
+                        // "<a href='newsDetail.html?news_id=" + data[i].news_id + "' class='newsTitleClick'>" + data[i].title + "</a>" +
+                        // "</td>" +
+                        is_out_news +
                         "<td class='text-center'><span>" + data[i].author + "</span></td>" +
                         "<td class='text-center'><span>" + data[i].ctime + "</span></td>" +
                         "<td class='text-center'><span>" + overdue_time + "</span></td>" +
