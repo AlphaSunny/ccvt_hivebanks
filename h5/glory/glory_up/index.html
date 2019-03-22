@@ -129,7 +129,6 @@
         let textTimer = setInterval(function () {
             if ($(".text_h2").text() == str) {
                 clearInterval(textTimer);
-                return;
                 $(".text_h2").addClass("active");
                 $("#three-container").css("display", "block");
                 TwoUp();
