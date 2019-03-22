@@ -177,7 +177,6 @@ function get_ranking($give_us_id,$give_num){
     $sql = "select base_amount/'$unit' as base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
     $db->query($sql);
     $num_first = $db->getField($sql,'base_amount');
-    //$result = array();
     $num_first = $num_first ? $num_first : "0";
 //    if ($num_first!=''){
     $result = array();

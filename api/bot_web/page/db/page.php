@@ -12,29 +12,30 @@ function get_ranking($give_us_id,$give_num){
     $sql = "select base_amount/'$unit' as base_amount from us_asset WHERE asset_id='GLOP' AND us_id='{$give_us_id}'";
     $db->query($sql);
     $num_first = $db->getField($sql,'base_amount');
-    if ($num_first!=''){
-        $result = array();
-        $num = $num_first+$give_num;
-        $sql = "select base_amount/'$unit' as base_amount from us_asset WHERE base_amount>=0 ORDER by base_amount DESC ";
-        $db->query($sql);
-        $rows = $db->fetchAll();
-        if ($rows){
-            $base_amount_list = array_map(function($val){return $val['base_amount'];}, $rows);
-        }
-        $now_rand = '';
-        foreach ($base_amount_list as $k=>$v){
-            if ($num_first==$v){
-                $now_rand = $k;
-                break;
-            }
-        }
-        $result['now_rand'] = $now_rand;
-        $afert_rand = '';
-        if ($now_rand){
-            $afert_rand = for_key($now_rand,$num,$base_amount_list);
-        }
-        $result['afert_rand'] = $afert_rand;
+    $num_first = $num_first ? $num_first : "0";
+//    if ($num_first!=''){
+    $result = array();
+    $num = $num_first+$give_num;
+    $sql = "select base_amount/'$unit' as base_amount from us_asset WHERE base_amount>=0 ORDER by base_amount DESC ";
+    $db->query($sql);
+    $rows = $db->fetchAll();
+    if ($rows){
+        $base_amount_list = array_map(function($val){return $val['base_amount'];}, $rows);
     }
+    $now_rand = '';
+    foreach ($base_amount_list as $k=>$v){
+        if ($num_first==$v){
+            $now_rand = $k;
+            break;
+        }
+    }
+    $result['now_rand'] = $now_rand;
+    $afert_rand = '';
+    if ($now_rand){
+        $afert_rand = for_key($now_rand,$num,$base_amount_list);
+    }
+    $result['afert_rand'] = $afert_rand;
+//    }
     return $result;
 }
 function for_key($key,$v,$arr){
