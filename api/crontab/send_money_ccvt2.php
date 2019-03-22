@@ -18,8 +18,6 @@ $sql = "select * from bot_group WHERE is_audit=2 AND is_test=1 AND is_give_ccvt=
 $db->query($sql);
 $groups = $db->fetchAll();
 if ($groups){
-    $pInTrans = $db->StartTrans();  //开启事务
-    $ba_account = 0;
     foreach ($groups as $a=>$b){
         set_time_limit(0);
         //查询机器人昵称
@@ -52,7 +50,6 @@ if ($groups){
                 //判断今日是否已经增过币
                 $send = send_money_if($ba_info['ba_id'],$v['wechat']);
                 if ($send){
-                    $db->Rollback($pInTrans);
                     echo $v['wechat']."已增过币";
                     continue;
                 }
@@ -66,20 +63,18 @@ if ($groups){
                 $s = $db->fetchRow();
 
                 $give_account = $v['count'] >=5 ? $s['max_send'] : $v['count']*$s['one_send'];
-
-                $sql = "update us_base set base_amount=base_amount+'{$give_account}'*'{$unit}' WHERE us_id='{$u_id}'";
+                $give_money = $give_account*$unit;
+                $sql = "update us_base set base_amount=base_amount+'{$give_money}' WHERE us_id='{$u_id}'";
                 $db -> query($sql);
                 if (!$db->affectedRows()){
-                    $db->Rollback($pInTrans);
                     echo "us修改余额失败";
                     break;
                 }
 
                 //ba减钱
-                $sql = "update ba_base set base_amount=base_amount-'{$give_account}'*'{$unit}' WHERE ba_id='{$ba_info['ba_id']}'";
+                $sql = "update ba_base set base_amount=base_amount-'{$give_money}' WHERE ba_id='{$ba_info['ba_id']}'";
                 $db -> query($sql);
                 if (!$db->affectedRows()){
-                    $db->Rollback($pInTrans);
                     echo "ba修改余额失败";
                     break;
                 }
@@ -89,7 +84,7 @@ if ($groups){
                 $d['ba_id'] = $ba_info['ba_id'];
                 $d['wechat'] = $v['wechat'];
                 $d['num'] = $v['count'];
-                $d['amount'] = $give_account*$unit;
+                $d['amount'] = $give_money;
                 $d['is_replacement'] = 0;
                 $d['send_time'] = date('Y-m-d H:i:s',time());
                 $d['bot_create_time'] = time();
@@ -102,30 +97,19 @@ if ($groups){
                 $sql = $db->sqlInsert("bot_Iss_records", $d);
                 $id = $db->query($sql);
                 if (!$id){
-                    $db->Rollback($pInTrans);
                     echo "添加记录失败";
                     break;
                 }
 
-                if ($ba_account==0){
-                    $ba_account = $ba_info['base_amount']-($give_account*$unit);
-                }else{
-                    $ba_account = $ba_account-($give_account*$unit);
-                }
 
                 /******************************转账记录表***************************************************/
-                if ($k==0){
-                    $transfer_get_pre_count = transfer_get_pre_count($ba_info['ba_id']);
-                }else{
-                    $transfer_get_pre_count = $transfer_get_pre_count+1;
-                }
                 //赠送者
                 $data['hash_id'] = hash('sha256', $ba_info['ba_id'] . 4 . get_ip() . time() . rand(1000, 9999) . microtime());
                 $data['prvs_hash'] = get_pre_hash($ba_info['ba_id']);
                 $data['credit_id'] = $ba_info['ba_id'];
                 $data['debit_id'] = $u_id;
-                $data['tx_amount'] = -($give_account*$unit);
-                $data['credit_balance'] = $ba_account;
+                $data['tx_amount'] = -$give_money;
+                $data['credit_balance'] = get_ba_base_info()['base_amount']-$give_money;
                 $data['tx_hash'] = hash('sha256', $ba_info['ba_id'] . 4 . get_ip() . time() . microtime());
                 $data['flag'] = 4;
                 $data['transfer_type'] = 'ba-us';
@@ -134,12 +118,12 @@ if ($groups){
                 $data['give_or_receive'] = 1;
                 $data['ctime'] = time();
                 $data['utime'] = date('Y-m-d H:i:s',time());
-                $data['tx_count'] = $transfer_get_pre_count;
+                $data['tx_count'] = transfer_get_pre_count($ba_info['ba_id']);
                 $sql = $db->sqlInsert("com_transfer_request", $data);
                 $id = $db->query($sql);
                 if (!$id){
-                    $db->Rollback($pInTrans);
-                    break;
+                    echo "ba添加转账记录表错误";
+                    continue;
                 }
                 //接收者
                 $dat['hash_id'] = hash('sha256', $u_id . 4 . get_ip() . time() . rand(1000, 9999) . microtime());
@@ -147,8 +131,8 @@ if ($groups){
                 $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
                 $dat['credit_id'] = $u_id;
                 $dat['debit_id'] = $ba_info['ba_id'];
-                $dat['tx_amount'] = $give_account*$unit;
-                $dat['credit_balance'] = get_us_account($u_id)+($give_account*$unit);
+                $dat['tx_amount'] = $give_money;
+                $dat['credit_balance'] = get_us_account($u_id)+$give_money;
                 $dat['tx_hash'] = hash('sha256', $u_id . 4 . get_ip() . time() . microtime());
                 $dat['flag'] = 4;
                 $dat['transfer_type'] = 'ba-us';
@@ -161,8 +145,8 @@ if ($groups){
                 $sql = $db->sqlInsert("com_transfer_request", $dat);
                 $id = $db->query($sql);
                 if (!$id){
-                    $db->Rollback($pInTrans);
-                    break;
+                    echo "us添加转账记录表错误";
+                    continue;
                 }
 
                 /***********************资金变动记录表***********************************/
@@ -176,21 +160,15 @@ if ($groups){
                 $com_balance_us["credit_id"] = $u_id;
                 $com_balance_us["debit_id"] = $ba_info['ba_id'];
                 $com_balance_us["tx_type"] = "ba_send";
-                $com_balance_us["tx_amount"] = $give_account*$unit;
-                $com_balance_us["credit_balance"] = get_us_account($u_id)+($give_account*$unit);
+                $com_balance_us["tx_amount"] = $give_money;
+                $com_balance_us["credit_balance"] = get_us_account($u_id)+$give_money;
                 $com_balance_us["utime"] = time();
                 $com_balance_us["ctime"] = $ctime;
                 $com_balance_us['tx_count'] = base_get_pre_count($u_id);
-
                 $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
                 if (!$db->query($sql)) {
-                    $db->Rollback($pInTrans);
-                    break;
-                }
-                if ($k==0){
-                    $base_get_pre_count = base_get_pre_count($ba_info['ba_id']);
-                }else{
-                    $base_get_pre_count = $base_get_pre_count+1;
+                    echo "us添加基准资产变动记录错误";
+                    continue;
                 }
                 //ba添加基准资产变动记录
                 $us_type = 'ba_send_balance';
@@ -200,175 +178,20 @@ if ($groups){
                 $com_balance_ba["credit_id"] = $ba_info['ba_id'];
                 $com_balance_ba["debit_id"] = $u_id;
                 $com_balance_ba["tx_type"] = "ba_send";
-                $com_balance_ba["tx_amount"] = -($give_account*$unit);
-                $com_balance_ba["credit_balance"] = $ba_account;
+                $com_balance_ba["tx_amount"] = -$give_money;
+                $com_balance_ba["credit_balance"] = get_ba_base_info()['base_amount']-$give_money;
                 $com_balance_ba["utime"] = time();
                 $com_balance_ba["ctime"] = $ctime;
-                $com_balance_ba['tx_count'] = $base_get_pre_count;
-
+                $com_balance_ba['tx_count'] = base_get_pre_count($ba_info['ba_id']);
                 $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
                 if (!$db->query($sql)) {
-                    $db->Rollback($pInTrans);
-                    break;
+                    echo "ba添加基准资产变动记录错误";
+                    continue;
                 }
 
             }
         }
     }
-    $db->Commit($pInTrans);
-}
-
-//给群主反40%
-$start = strtotime(date('Y-m-d 00:00:00'));
-$end = strtotime(date('Y-m-d 23:59:59'));
-
-$sql = "select sum(amount)/'{$unit}' as all_amount,bot_us_id from bot_Iss_records WHERE bot_create_time BETWEEN '{$start}' AND '{$end}' GROUP BY bot_us_id";
-$db->query($sql);
-$grous = $db->fetchAll();
-if ($grous){
-    $pInTrans = $db->StartTrans();  //开启事务
-    $ba_account = 0;
-    foreach ($grous as $k=>$v){
-        set_time_limit(0);
-        if ($v['bot_us_id']!='' || $v['bot_us_id']!=NULL){
-            $u_id = $v['bot_us_id'];
-
-            //判断今日已经返现过
-            $check_return = check_is_return($u_id);
-            if ($check_return){
-//                $db->Rollback($pInTrans);
-                echo "已经返现过";
-                continue;
-            }
-
-            //修改余额
-            $give_account = round($v['all_amount']*0.4)*$unit;
-            if ($give_account<=0){
-//                $db->Rollback($pInTrans);
-                echo "金额为0";
-                continue;
-            }
-            $sql = "update us_base set base_amount=base_amount+'{$give_account}' WHERE us_id='{$u_id}'";
-            $db -> query($sql);
-            if (!$db->affectedRows()){
-                $db->Rollback($pInTrans);
-                echo "us修改余额失败";
-                break;
-            }
-            //ba减钱
-            $sql = "update ba_base set base_amount=base_amount-'{$give_account}' WHERE ba_id='{$ba_info['ba_id']}'";
-            $db -> query($sql);
-            if (!$db->affectedRows()){
-                $db->Rollback($pInTrans);
-                echo "ba修改余额失败";
-                break;
-            }
-            if ($ba_account==0){
-                $ba_account = $ba_info['base_amount']-($give_account);
-            }else{
-                $ba_account = $ba_account-($give_account);
-            }
-            /******************************转账记录表***************************************************/
-            //赠送者
-            if ($k==0){
-                $transfer_get_pre_count = transfer_get_pre_count($ba_info['ba_id']);
-            }else{
-                $transfer_get_pre_count = $transfer_get_pre_count+1;
-            }
-            $data['hash_id'] = hash('sha256', $ba_info['ba_id'] . 12 . get_ip() . time() . rand(1000, 9999) . microtime());
-            $data['prvs_hash'] = get_pre_hash($ba_info['ba_id']);
-            $data['credit_id'] = $ba_info['ba_id'];
-            $data['debit_id'] = $u_id;
-            $data['tx_amount'] = -$give_account;
-            $data['credit_balance'] = $ba_account;
-            $data['tx_hash'] = hash('sha256', $ba_info['ba_id'] . 12 . get_ip() . time() . microtime());
-            $data['flag'] = 12;
-            $data['transfer_type'] = 'ba-us';
-            $data['transfer_state'] = 1;
-            $data['tx_detail'] = "群主返现";
-            $data['give_or_receive'] = 1;
-            $data['ctime'] = time();
-            $data['utime'] = date('Y-m-d H:i:s',time());
-            $data['tx_count'] = $transfer_get_pre_count;
-            $sql = $db->sqlInsert("com_transfer_request", $data);
-            $id = $db->query($sql);
-            if (!$id){
-                $db->Rollback($pInTrans);
-                break;
-            }
-            //接收者
-            $dat['hash_id'] = hash('sha256', $u_id . 12 . get_ip() . time() . rand(1000, 9999) . microtime());
-            $prvs_hash = get_pre_hash($u_id);
-            $dat['prvs_hash'] = $prvs_hash == 0 ? $data['hash_id'] : $prvs_hash;
-            $dat['credit_id'] = $u_id;
-            $dat['debit_id'] = $ba_info['ba_id'];
-            $dat['tx_amount'] = $give_account;
-            $dat['credit_balance'] = get_us_account($u_id)+($give_account);
-            $dat['tx_hash'] = hash('sha256', $u_id . 12 . get_ip() . time() . microtime());
-            $dat['flag'] = 12;
-            $dat['transfer_type'] = 'ba-us';
-            $dat['transfer_state'] = 1;
-            $dat['tx_detail'] = "群主返现";
-            $dat['give_or_receive'] = 2;
-            $dat['ctime'] = time();
-            $dat['utime'] = date('Y-m-d H:i:s',time());
-            $dat['tx_count'] = transfer_get_pre_count($u_id);
-            $sql = $db->sqlInsert("com_transfer_request", $dat);
-            $id = $db->query($sql);
-            if (!$id){
-                $db->Rollback($pInTrans);
-                break;
-            }
-
-            /***********************资金变动记录表***********************************/
-            //us添加基准资产变动记录
-            $us_type = 'us_send_balance';
-            $ctime = date('Y-m-d H:i:s');
-            $tx_id = hash('sha256', $u_id . $ba_info['ba_id'] . get_ip() . time() . microtime());
-            $com_balance_us['hash_id'] = hash('sha256', $u_id . $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
-            $com_balance_us['tx_id'] = $tx_id;
-            $com_balance_us['prvs_hash'] = get_recharge_pre_hash($u_id);
-            $com_balance_us["credit_id"] = $u_id;
-            $com_balance_us["debit_id"] = $ba_info['ba_id'];
-            $com_balance_us["tx_type"] = "group_cashback";
-            $com_balance_us["tx_amount"] = $give_account;
-            $com_balance_us["credit_balance"] = get_us_account($u_id)+($give_account);
-            $com_balance_us["utime"] = time();
-            $com_balance_us["ctime"] = $ctime;
-            $com_balance_us['tx_count'] = base_get_pre_count($u_id);
-
-            $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
-            if (!$db->query($sql)) {
-                $db->Rollback($pInTrans);
-                break;
-            }
-            if ($k==0){
-                $base_get_pre_count = base_get_pre_count($ba_info['ba_id']);
-            }else{
-                $base_get_pre_count = $base_get_pre_count+1;
-            }
-            //ba添加基准资产变动记录
-            $us_type = 'ba_send_balance';
-            $com_balance_ba['hash_id'] = hash('sha256', $ba_info['ba_id']. $us_type . get_ip() . time() . rand(1000, 9999) . microtime());
-            $com_balance_ba['tx_id'] = $tx_id;
-            $com_balance_ba['prvs_hash'] = get_recharge_pre_hash($ba_info['ba_id']);
-            $com_balance_ba["credit_id"] = $ba_info['ba_id'];
-            $com_balance_ba["debit_id"] = $u_id;
-            $com_balance_ba["tx_type"] = "group_cashback";
-            $com_balance_ba["tx_amount"] = -$give_account;
-            $com_balance_ba["credit_balance"] = $ba_account;
-            $com_balance_ba["utime"] = time();
-            $com_balance_ba["ctime"] = $ctime;
-            $com_balance_ba['tx_count'] = $base_get_pre_count;
-
-            $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
-            if (!$db->query($sql)) {
-                $db->Rollback($pInTrans);
-                break;
-            }
-        }
-    }
-    $db->Commit($pInTrans);
 }
 
 
