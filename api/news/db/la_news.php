@@ -96,7 +96,8 @@ function get_news_list($category){
  */
 function get_new_five_news(){
     $db = new DB_COM();
-    $sql = "select title,author,utime,ctime,news_id from la_news WHERE  status = 1 order by ctime desc limit 5";
+    $time = date("Y-m-d H:i:s");
+    $sql = "select title,author,utime,ctime,news_id from la_news WHERE  status = 1 AND overdue_time>'{$time}' order by ctime desc limit 5";
     $db->query($sql);
     $rows= $db->fetchAll();
     return $rows;
