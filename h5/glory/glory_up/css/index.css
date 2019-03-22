@@ -45,15 +45,12 @@ body {
 @keyframes seconds_move {
     0% {
         transform: scale(0.3);
-        /*transform: rotateX(0deg);*/
     }
     50% {
         transform: scale(0.6);
-        /*transform: rotateX(180deg);*/
     }
     100% {
         transform: scale(1.2);
-        /*transform: rotateX(360deg);*/
     }
 }
 
@@ -122,24 +119,22 @@ h2.active {
         display: block;
         height: unset;
         top: 35%;
-        /*position: absolute;*/
-        /*color: #fff;*/
-        /*width: 90%;*/
-        /*left: 50%;*/
-        /*margin-left: -45%;*/
-        /*top: 35%;*/
-        /*margin-top: -8rem;*/
     }
 
     .count_box h1 {
         display: block;
         font-size: 6rem;
-        /*border: 1px solid #ffffff;*/
-        /*border-radius: 10px;*/
-        /*font-size: 6rem;*/
-        /*margin: 0;*/
-        /*text-align: center;*/
-        /*transition: all 2s;*/
-        /*text-shadow: 1px 1px rgba(197, 223, 248, 0.8), 2px 2px rgba(197, 223, 248, 0.8), 3px 3px rgba(197, 223, 248, 0.8), 4px 4px rgba(197, 223, 248, 0.8), 5px 5px rgba(197, 223, 248, 0.8);*/
+    }
+
+    @keyframes seconds_move {
+        0% {
+            transform: scale(0.3);
+        }
+        50% {
+            transform: scale(0.6);
+        }
+        100% {
+            transform: scale(1);
+        }
     }
 }
