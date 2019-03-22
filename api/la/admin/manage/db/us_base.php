@@ -39,6 +39,12 @@ function get_us_base_info($offset,$limit,$filter,$time_filter)
     $sql .= " limit $offset,$limit";
     $db->query($sql);
     $rows = $db->fetchAll();
+    if ($rows){
+        foreach ($rows as $k=>$v){
+            $rows[$k]['base_amount'] = $v['base_amount']/get_la_base_unit();
+            $rows[$k]['lock_amount'] = $v['lock_amount']/get_la_base_unit();
+        }
+    }
     return $rows;
 }
 //======================================
