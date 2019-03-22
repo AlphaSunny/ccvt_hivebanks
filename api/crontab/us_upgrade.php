@@ -29,7 +29,7 @@ if ($scale_list){
             //判断等级提升
             $us_scale = get_us_base($b['us_id'])['scale'];
             if ($us_scale!=($v['scale']+1)){
-             //   scale_upgrade($b['us_id'],$v['scale'],$v['scale']+1,$b['base_amount']);
+                scale_upgrade($b['us_id'],$v['scale'],$v['scale']+1,$b['base_amount']);
             }
         }
     }
