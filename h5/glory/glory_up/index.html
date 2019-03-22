@@ -122,9 +122,10 @@
         }
     }
 
-    //二次解锁成功
+    //解锁成功
     function twoSuccess() {
         let i = 0, str = "第五次解锁成功";
+        return
         $("h1").remove();
         let textTimer = setInterval(function () {
             if ($(".text_h2").text() == str) {
@@ -143,7 +144,6 @@
         setTimeout(function () {
             $(".text_h2").remove();
             $(".text_h3").css("font-size", "5rem").text("即将进行第五次荣耀等级升级");
-            return;
             JumpUp();
         }, 3000);
     }
