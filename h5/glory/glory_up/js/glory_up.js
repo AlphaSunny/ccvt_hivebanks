@@ -65,6 +65,7 @@ $(function () {
                     particleAlphabetFun(max);
                 } else {
                     $("#text,.show_name").remove();
+                    $(".name_title").removeClass('none');
                     upItemFun();
                 }
             }
@@ -150,6 +151,7 @@ $(function () {
                     clearInterval(text_timer);
                     setTimeout(function () {
                         $("#text,.show_name").remove();
+                        $(".name_title").removeClass('none');
                         upItemFun();
                     }, 1000);
 
