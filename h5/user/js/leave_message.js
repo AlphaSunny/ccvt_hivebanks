@@ -14,6 +14,10 @@ $(function () {
 
     $(".confirm_leave_message_btn").click(function () {
         let leave_message = $("#leave_message_text").val();
+        if (leave_message.length <= 0) {
+            WarnPrompt("请输入留言内容！");
+            return
+        }
         ShowLoading("show");
         LeaveMessage(token, leave_message, function (response) {
             ShowLoading("hide");
