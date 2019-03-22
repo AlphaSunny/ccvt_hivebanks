@@ -37,7 +37,7 @@
         window.location.href = "glory_up.html?ok=ok";
     } else {
         count_timer = setInterval(function () {
-            TimeDown("2019/3/22 20:00");
+            TimeDown("2019/3/22 15:00");
         }, 1000);
     }
 
@@ -156,15 +156,9 @@
 
     //一分钟//
     function oneMinCountDown() {
-        let one_end_time = new Date("2019/3/22 20:02");//setTime
+        let one_end_time = new Date("2019/3/22 15:02");//setTime
         let one_now_time = new Date();
         let curr_num = parseInt((one_end_time - one_now_time) / 1000);
-
-        // console.log(one_end_time);
-        // console.log(one_now_time);
-        // console.log(parseInt((one_end_time - one_now_time) / 1000));
-        // console.log(typeof curr_num);
-        // console.log(curr_num);
         if (curr_num <= 0) {
             return true;
         } else {
