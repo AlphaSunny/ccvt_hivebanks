@@ -498,7 +498,30 @@ function check_chat_time($group_id)
     $sql = "select count(bot_message_id) as count from bot_message WHERE group_id='{$group_id}' AND bot_create_time BETWEEN '{$start}' AND '{$end}'";
     $db->query($sql);
     $count = $db->getField($sql,'count');
-    return $count;
+    if (!$count){
+        $data['group_id'] = $group_id;
+        $data['ctime'] = date('Y-m-d H:i:s');
+        $data['utime'] = time();
+        $sql = "select utime from bot_news_notice_record WHERE group_id='{$group_id}' ORDER BY ctime DESC limit 1";
+        $db->query($sql);
+        $last_time = $db->getField($sql,'utime');
+        if ($last_time){
+            if (($last_time+($time*60))>=(time()-120)){
+                $result = 1;
+                $sql = $db->sqlInsert("bot_news_notice_record", $data);
+                $db->query($sql);
+            }else{
+                $result = 0;
+            }
+        }else{
+            $sql = $db->sqlInsert("bot_news_notice_record", $data);
+            $db->query($sql);
+            $result = 1;
+        }
+    }else{
+        $result = 0;
+    }
+    return $result;
 }
 
 
