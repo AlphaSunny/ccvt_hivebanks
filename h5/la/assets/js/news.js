@@ -36,7 +36,7 @@ $(function () {
                     out_time = new Date(data[i].overdue_time.replace(/-/g, "/"));
                     if (out_time - now_time <= 0) {
                         is_out_news = "<td>" +
-                            "<img src='assets/img/out_time.svg'/>" +
+                            "<img class='out_time_img' style='width: 5rem' src='assets/img/out_time.svg'/>" +
                             "<a href='newsDetail.html?news_id=" + data[i].news_id + "' class='newsTitleClick'>" + data[i].title + "</a>" +
                             "</td>"
                     }
