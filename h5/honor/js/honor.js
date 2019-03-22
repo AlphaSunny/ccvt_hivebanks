@@ -273,6 +273,7 @@ $(function () {
                 }
             }
         }, function (response) {
+            layer.close(index);
             layer.msg(response.errmsg);
         });
     }
