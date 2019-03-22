@@ -50,11 +50,6 @@ if ($grous){
             }
             /******************************转账记录表***************************************************/
             //赠送者
-            if ($k==0){
-                $transfer_get_pre_count = transfer_get_pre_count($ba_info['ba_id']);
-            }else{
-                $transfer_get_pre_count = $transfer_get_pre_count+1;
-            }
             $data['hash_id'] = hash('sha256', $ba_info['ba_id'] . 12 . get_ip() . time() . rand(1000, 9999) . microtime());
             $data['prvs_hash'] = get_pre_hash($ba_info['ba_id']);
             $data['credit_id'] = $ba_info['ba_id'];
@@ -69,7 +64,7 @@ if ($grous){
             $data['give_or_receive'] = 1;
             $data['ctime'] = time();
             $data['utime'] = date('Y-m-d H:i:s',time());
-            $data['tx_count'] = $transfer_get_pre_count;
+            $data['tx_count'] = transfer_get_pre_count($ba_info['ba_id']);
             $sql = $db->sqlInsert("com_transfer_request", $data);
             $id = $db->query($sql);
             if (!$id){
@@ -82,7 +77,7 @@ if ($grous){
             $dat['credit_id'] = $u_id;
             $dat['debit_id'] = $ba_info['ba_id'];
             $dat['tx_amount'] = $give_account;
-            $dat['credit_balance'] = get_us_account($u_id)+($give_account);
+            $dat['credit_balance'] = get_us_account($u_id);
             $dat['tx_hash'] = hash('sha256', $u_id . 12 . get_ip() . time() . microtime());
             $dat['flag'] = 12;
             $dat['transfer_type'] = 'ba-us';
@@ -110,18 +105,13 @@ if ($grous){
             $com_balance_us["debit_id"] = $ba_info['ba_id'];
             $com_balance_us["tx_type"] = "group_cashback";
             $com_balance_us["tx_amount"] = $give_account;
-            $com_balance_us["credit_balance"] = get_us_account($u_id)+($give_account);
+            $com_balance_us["credit_balance"] = get_us_account($u_id);
             $com_balance_us["utime"] = time();
             $com_balance_us["ctime"] = $ctime;
             $com_balance_us['tx_count'] = base_get_pre_count($u_id);
             $sql = $db->sqlInsert("com_base_balance", $com_balance_us);
             if (!$db->query($sql)) {
                 continue;
-            }
-            if ($k==0){
-                $base_get_pre_count = base_get_pre_count($ba_info['ba_id']);
-            }else{
-                $base_get_pre_count = $base_get_pre_count+1;
             }
             //ba添加基准资产变动记录
             $us_type = 'ba_send_balance';
@@ -132,10 +122,10 @@ if ($grous){
             $com_balance_ba["debit_id"] = $u_id;
             $com_balance_ba["tx_type"] = "group_cashback";
             $com_balance_ba["tx_amount"] = -$give_account;
-            $com_balance_ba["credit_balance"] = $ba_account;
+            $com_balance_ba["credit_balance"] = get_ba_base_info()['base_amount'];
             $com_balance_ba["utime"] = time();
             $com_balance_ba["ctime"] = $ctime;
-            $com_balance_ba['tx_count'] = $base_get_pre_count;
+            $com_balance_ba['tx_count'] = base_get_pre_count($ba_info['ba_id']);
             $sql = $db->sqlInsert("com_base_balance", $com_balance_ba);
             if (!$db->query($sql)) {
                 continue;
