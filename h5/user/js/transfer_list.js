@@ -142,6 +142,7 @@ $(function () {
                         "<td>" + type + "</td>" +
                         "<td>" + data[i].tx_amount + "</td>" +
                         "<td>" + data[i].us_account + "</td>" +
+                        "<td>" + data[i].us_nm + "</td>" +
                         "<td>" + data[i].tx_time + "</td>" +
                         "<td>" + status + "</td>" +
                         "</tr>"
