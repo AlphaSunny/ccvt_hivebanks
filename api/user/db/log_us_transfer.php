@@ -33,21 +33,21 @@ function get_transfer_ccvt_list($us_id,$offset,$limit,$type)
     $db = new DB_COM();
     $unit = get_la_base_unit();
     if ($type==1){
-        $sql = "select qa_id,tx_amount/'{$unit}' as tx_amount,tx_time,qa_flag,b.us_account from us_us_transfer_request as a LEFT JOIN us_base as b ON a.transfer_id=b.us_id WHERE a.us_id='{$us_id}' AND qa_flag=0 order by a.tx_time limit $offset,$limit";
+        $sql = "select qa_id,tx_amount/'{$unit}' as tx_amount,tx_time,qa_flag,b.us_account,b.us_nm from us_us_transfer_request as a LEFT JOIN us_base as b ON a.transfer_id=b.us_id WHERE a.us_id='{$us_id}' AND qa_flag=0 order by a.tx_time limit $offset,$limit";
         $db->query($sql);
         $rows = $db->fetchAll();
         foreach ($rows as $k=>$v){
             $rows[$k]['tx_amount'] = -$v['tx_amount'];
         }
     }else{
-        $sql = "select qa_id,tx_amount/'{$unit}' as tx_amount,tx_time,qa_flag,b.us_account from us_us_transfer_request as a LEFT JOIN us_base as b ON a.transfer_id=b.us_id WHERE a.us_id='{$us_id}' AND qa_flag!=0";
+        $sql = "select qa_id,tx_amount/'{$unit}' as tx_amount,tx_time,qa_flag,b.us_account,b.us_nm from us_us_transfer_request as a LEFT JOIN us_base as b ON a.transfer_id=b.us_id WHERE a.us_id='{$us_id}' AND qa_flag!=0";
         $db->query($sql);
         $row1 = $db->fetchAll();
         foreach ($row1 as $k=>$v){
             $row1[$k]['in_or_out'] = 'out';
             $row1[$k]['tx_amount'] = -$v['tx_amount'];
         }
-        $sql = "select qa_id,tx_amount/'{$unit}' as tx_amount,tx_time,qa_flag,b.us_account from us_us_transfer_request as a LEFT JOIN us_base as b ON a.us_id=b.us_id WHERE a.transfer_id='{$us_id}' AND qa_flag!=0";
+        $sql = "select qa_id,tx_amount/'{$unit}' as tx_amount,tx_time,qa_flag,b.us_account,b.us_nm from us_us_transfer_request as a LEFT JOIN us_base as b ON a.us_id=b.us_id WHERE a.transfer_id='{$us_id}' AND qa_flag!=0";
         $db->query($sql);
         $row2 = $db->fetchAll();
         foreach ($row2 as $k=>$v){
