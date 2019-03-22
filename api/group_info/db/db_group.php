@@ -70,7 +70,7 @@ function get_group_list($offset,$limit,$search_name,$scale,$type_id)
             $row[$k]['send_amount'] = $send_amount ? $send_amount : 0;
 
             //24小时内聊天数量
-            $sql = "select sum(num) as all_num from bot_Iss_records WHERE group_id='{$v['id']}' AND send_time >=(NOW() - interval 24 hour)";
+            $sql = "select count(*) as all_num from bot_message WHERE group_id='{$v['id']}' AND bot_send_time >=(NOW() - interval 24 hour)";
             $db->query($sql);
             $all_num = $db->getField($sql,'all_num');
             $row[$k]['all_num'] = $all_num ? $all_num : 0;
