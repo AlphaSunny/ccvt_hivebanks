@@ -68,7 +68,7 @@ if ($groups){
                 $db -> query($sql);
                 if (!$db->affectedRows()){
                     echo "us修改余额失败";
-                    break;
+                    continue;
                 }
 
                 //ba减钱
@@ -76,7 +76,7 @@ if ($groups){
                 $db -> query($sql);
                 if (!$db->affectedRows()){
                     echo "ba修改余额失败";
-                    break;
+                    continue;
                 }
 
                 //增币记录
@@ -98,7 +98,7 @@ if ($groups){
                 $id = $db->query($sql);
                 if (!$id){
                     echo "添加记录失败";
-                    break;
+                    continue;
                 }
 
 
@@ -109,7 +109,7 @@ if ($groups){
                 $data['credit_id'] = $ba_info['ba_id'];
                 $data['debit_id'] = $u_id;
                 $data['tx_amount'] = -$give_money;
-                $data['credit_balance'] = get_ba_base_info()['base_amount']-$give_money;
+                $data['credit_balance'] = get_ba_base_info()['base_amount'];
                 $data['tx_hash'] = hash('sha256', $ba_info['ba_id'] . 4 . get_ip() . time() . microtime());
                 $data['flag'] = 4;
                 $data['transfer_type'] = 'ba-us';
@@ -132,7 +132,7 @@ if ($groups){
                 $dat['credit_id'] = $u_id;
                 $dat['debit_id'] = $ba_info['ba_id'];
                 $dat['tx_amount'] = $give_money;
-                $dat['credit_balance'] = get_us_account($u_id)+$give_money;
+                $dat['credit_balance'] = get_us_account($u_id);
                 $dat['tx_hash'] = hash('sha256', $u_id . 4 . get_ip() . time() . microtime());
                 $dat['flag'] = 4;
                 $dat['transfer_type'] = 'ba-us';
@@ -161,7 +161,7 @@ if ($groups){
                 $com_balance_us["debit_id"] = $ba_info['ba_id'];
                 $com_balance_us["tx_type"] = "ba_send";
                 $com_balance_us["tx_amount"] = $give_money;
-                $com_balance_us["credit_balance"] = get_us_account($u_id)+$give_money;
+                $com_balance_us["credit_balance"] = get_us_account($u_id);
                 $com_balance_us["utime"] = time();
                 $com_balance_us["ctime"] = $ctime;
                 $com_balance_us['tx_count'] = base_get_pre_count($u_id);
@@ -179,7 +179,7 @@ if ($groups){
                 $com_balance_ba["debit_id"] = $u_id;
                 $com_balance_ba["tx_type"] = "ba_send";
                 $com_balance_ba["tx_amount"] = -$give_money;
-                $com_balance_ba["credit_balance"] = get_ba_base_info()['base_amount']-$give_money;
+                $com_balance_ba["credit_balance"] = get_ba_base_info()['base_amount'];
                 $com_balance_ba["utime"] = time();
                 $com_balance_ba["ctime"] = $ctime;
                 $com_balance_ba['tx_count'] = base_get_pre_count($ba_info['ba_id']);
