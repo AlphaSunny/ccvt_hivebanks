@@ -66,4 +66,8 @@ li {
     ul.item_ul li {
         width: 45%;
     }
+    .show_name_ul{
+        height: 8rem;
+        overflow: hidden;
+    }
 }
