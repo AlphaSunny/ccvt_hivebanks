@@ -39,6 +39,10 @@ $(function () {
                             "<img class='out_time_img' style='width: 5rem' src='assets/img/out_time.svg'/>" +
                             "<a href='newsDetail.html?news_id=" + data[i].news_id + "' class='newsTitleClick'>" + data[i].title + "</a>" +
                             "</td>"
+                    } else {
+                        is_out_news = "<td>" +
+                            "<a href='newsDetail.html?news_id=" + data[i].news_id + "' class='newsTitleClick'>" + data[i].title + "</a>" +
+                            "</td>"
                     }
                     tr += "<tr class='newsItem'>" +
                         // "<td>" +
