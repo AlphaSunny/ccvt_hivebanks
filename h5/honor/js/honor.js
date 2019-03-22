@@ -169,7 +169,7 @@ $(function () {
 
     //登录
     $(".usLogin").click(function () {
-        window.location.href = "../user/login.html?honor=honor";
+        window.location.href = "../user/login.html?honor=1";
     });
 
     //关闭聊天内容close_page

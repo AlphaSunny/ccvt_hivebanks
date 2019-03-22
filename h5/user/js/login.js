@@ -17,6 +17,8 @@ $(document).ready(function () {
     let leaderBoard = GetQueryString("honor");
     if(!leaderBoard){
         console.log("0");
+    }else{
+        console.log("1");
     }
     let domain_list = GetQueryString("domain_list");
     let domain_info = GetQueryString("domain_info");
