@@ -26,7 +26,7 @@ chk_empty_args('GET', $args);
 $group_id = get_arg_str('GET', 'group_id');
 
 $row = check_chat_time($group_id);
-if ($row){
+if (!$row){
     $is_hive = 1;
 }else{
     $is_hive = 2;
