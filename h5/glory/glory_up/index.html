@@ -125,11 +125,11 @@
     //解锁成功
     function twoSuccess() {
         let i = 0, str = "第五次解锁成功";
-        return
         $("h1").remove();
         let textTimer = setInterval(function () {
             if ($(".text_h2").text() == str) {
                 clearInterval(textTimer);
+                return;
                 $(".text_h2").addClass("active");
                 $("#three-container").css("display", "block");
                 TwoUp();
