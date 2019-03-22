@@ -506,7 +506,7 @@ function check_chat_time($group_id)
         $db->query($sql);
         $last_time = $db->getField($sql,'utime');
         if ($last_time){
-            if (($last_time+($time*60))>=(time()-120)){
+            if (($last_time+120)<=(time()-($time*60))){
                 $result = 1;
                 $sql = $db->sqlInsert("bot_news_notice_record", $data);
                 $db->query($sql);
