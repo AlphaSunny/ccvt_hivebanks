@@ -337,8 +337,12 @@ $(document).ready(function () {
                 SetCookie('account_cellphone', cellphone);
                 IsRememberPassword(phonePassword, "phone");
                 if (!leaderBoard) {
+                    console.log("account"+leaderBoard);
+                    return;
                     window.location.href = 'account.html';
                 } else {
+                    console.log("account"+leaderBoard);
+                    return;
                     window.location.href = "../honor/honor.html";
                 }
 
