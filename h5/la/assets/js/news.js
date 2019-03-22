@@ -31,6 +31,9 @@ $(function () {
                     }else{
                         overdue_time = data[i].overdue_time;
                     }
+                    let now_time = new Date();
+                    let out_time = new Date(data[i].overdue_time);
+                    console.log(out_time - now_time);
                     tr += "<tr class='newsItem'>" +
                         "<td><a href='newsDetail.html?news_id=" + data[i].news_id + "' class='newsTitleClick'>" + data[i].title + "</a></td>" +
                         "<td class='text-center'><span>" + data[i].author + "</span></td>" +
