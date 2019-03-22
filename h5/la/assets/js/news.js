@@ -32,7 +32,7 @@ $(function () {
                         overdue_time = data[i].overdue_time;
                     }
                     let now_time = new Date();
-                    let out_time = new Date("2019/03/30 16:04");
+                    let out_time = new Date(data[i].overdue_time.replace(/-/g,"/"));
                     console.log(now_time);
                     console.log(out_time);
                     console.log(out_time - now_time);
