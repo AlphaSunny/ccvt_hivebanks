@@ -115,7 +115,7 @@ $(function () {
         ApplicationGroup(token, group_name, group_type_id, group_introduction, src, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("申请成功");
-                window.location.href = getRootPath() + "/bot_web2/home.html?scan=1";
+                window.location.href = getRootPath() + "/h5/bot_web2/home.html?scan=1";
             }
         }, function (response) {
             ErrorPrompt(response.errmsg);
