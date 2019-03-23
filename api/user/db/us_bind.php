@@ -509,6 +509,7 @@ function application_group($us_id,$group_name,$group_type_id,$group_introduction
         $date['dis'] = $group_introduction;
         $date['qr_code_address'] = $src;
         $sql = $db->sqlInsert("bot_group", $date);
+        echo $sql;die;
         $q_id = $db->query($sql);
         if (!$q_id){
             return false;
