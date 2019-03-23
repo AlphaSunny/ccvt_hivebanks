@@ -492,7 +492,6 @@ function application_group($us_id,$group_name,$group_type_id,$group_introduction
     if ($row){
         $time = time();
         $sql = "update bot_group set name='{$group_name}',dis='{$group_introduction}',qr_code_address='{$src}',uptime='{$time}' WHERE id='{$row['id']}'";
-        echo $sql;die;
         $db->query($sql);
         if (!$db->affectedRows()){
             return false;
@@ -510,7 +509,6 @@ function application_group($us_id,$group_name,$group_type_id,$group_introduction
         $date['dis'] = $group_introduction;
         $date['qr_code_address'] = $src;
         $sql = $db->sqlInsert("bot_group", $date);
-        echo $sql;die;
         $q_id = $db->query($sql);
         if (!$q_id){
             return false;
