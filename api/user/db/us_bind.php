@@ -491,7 +491,7 @@ function application_group($us_id,$group_name,$group_type_id,$group_introduction
     $row = $db->fetchRow();
     if ($row){
         $time = time();
-        $sql = "update bot_group set name='{$group_name}',dis='{$group_introduction}',qr_code_address=>'{$src}',uptime='{$time}' WHERE id='{$row['id']}'";
+        $sql = "update bot_group set name='{$group_name}',dis='{$group_introduction}',qr_code_address='{$src}',uptime='{$time}' WHERE id='{$row['id']}'";
         echo $sql;die;
         $db->query($sql);
         if (!$db->affectedRows()){
