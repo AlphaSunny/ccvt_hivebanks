@@ -55,6 +55,7 @@ function get_us_base_info($offset,$limit,$filter,$time_filter,$us_nm,$phone_emai
         $sql .= " order BY ctime $time_filter";
     }
     $sql .= " limit $offset,$limit";
+    echo $sql;;die;
     $db->query($sql);
     $rows = $db->fetchAll();
     if ($rows){
