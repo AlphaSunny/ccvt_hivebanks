@@ -30,7 +30,7 @@ $(function () {
                         '<td class="text-left"><a href="javascript:;" class="to_us">' + data[i].us_account + '</a><span class="none us_id">' + data[i].us_id + '</span></td>' +
                         '<td>' + data[i].us_nm + '</td>' +
                         '<td>' + data[i].base_amount + '</td>' +
-                        '<td>' + data[i].us_level + '</td>' +
+                        '<td>' + data[i].bind_info + '</td>' +
                         '<td>' + data[i].security_level + '</td>' +
                         '<td>' + data[i].ctime + '</td>' +
                         '</tr>'
