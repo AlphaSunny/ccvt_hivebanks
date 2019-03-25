@@ -3,12 +3,11 @@ $(function () {
     let scale = GetCookie('scale');
     if (!scale) {
         verifyWithdraw("show_none");
-    }else{
+    } else {
         if (scale < 2) {
-            $("#withdraw_dropdown").remove();
-            $("#withdraw_menu").remove();
-        }else {
-            $("#withdraw_dropdown").css("display","block");
+            $(".withdraw_content_nav").remove();
+        } else {
+            $(".withdraw_content_nav").removeClass("none");
         }
     }
 
@@ -22,11 +21,11 @@ $(function () {
                     return;
                 }
                 if (scale < 2) {
-                    $("#withdraw_dropdown").remove();
-                    $("#withdraw_menu").remove();
-                }else {
-                    $("#withdraw_dropdown").css("display","block");
+                    $(".withdraw_content_nav").remove();
+                } else {
+                    $(".withdraw_content_nav").removeClass("none");
                 }
+
                 if (type == "ba_withdraw") {
                     window.location.href = getRootPath() + "/h5/user/bit_withdraw.html";
                 }
