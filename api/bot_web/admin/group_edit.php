@@ -52,6 +52,12 @@ $ranking_change_switch = get_arg_str('GET', 'ranking_change_switch');
 // 新闻推送开关
 $news_switch = get_arg_str('GET', 'news_switch');
 
+// top10留言推送开关
+$leave_message_switch = get_arg_str('GET', 'leave_message_switch');
+
+// 随机奖励开关
+$random_reward_switch = get_arg_str('GET', 'random_reward_switch');
+
 // 新闻推送时间间隔
 $chat_time = get_arg_str('GET', 'chat_time');
 //验证token
@@ -84,6 +90,8 @@ $date['qr_code_address'] = $src;
 $date['chat_time'] = $chat_time;
 $date['ranking_change_switch'] = $ranking_change_switch;
 $date['news_switch'] = $news_switch;
+$date['leave_message_switch'] = $leave_message_switch;
+$date['random_reward_switch'] = $random_reward_switch;
 //修改群组
 $row = save_group($date);
 if (!$row){

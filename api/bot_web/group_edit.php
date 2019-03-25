@@ -55,6 +55,9 @@ $news_switch = get_arg_str('GET', 'news_switch');
 // 新闻推送时间间隔
 $chat_time = get_arg_str('GET', 'chat_time');
 
+// top10留言推送开关
+$leave_message_switch = get_arg_str('GET', 'leave_message_switch');
+
 //验证token
 $us_id = check_token($token);
 
@@ -84,6 +87,7 @@ $date['qr_code_address'] = $src;
 $date['chat_time'] = $chat_time;
 $date['ranking_change_switch'] = $ranking_change_switch;
 $date['news_switch'] = $news_switch;
+$date['leave_message_switch'] = $leave_message_switch;
 //修改群组
 $row = save_group($date);
 if (!$row){
