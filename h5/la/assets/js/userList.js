@@ -65,6 +65,7 @@ $(function () {
             funds_filter = "";
             return;
         }
+        time_filter = "";
         limit = 10;
         offset = 0;
         GetUserListFun(limit, offset);
@@ -78,6 +79,7 @@ $(function () {
             time_filter = "";
             return;
         }
+        funds_filter = "";
         limit = 10;
         offset = 0;
         GetUserListFun(limit, offset);
