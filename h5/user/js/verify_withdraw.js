@@ -7,6 +7,8 @@ $(function () {
         if (scale < 2) {
             $("#withdraw_dropdown").remove();
             $("#withdraw_menu").remove();
+        }else {
+            $("#withdraw_dropdown,#withdraw_menu").css("display","block");
         }
     }
 
