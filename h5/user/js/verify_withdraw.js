@@ -11,8 +11,10 @@ $(function () {
                     return;
                 }
                 if (scale < 2) {
-                    WarnPrompt("荣耀等级不足2级，无法进行提现");
-                    return;
+                    //     WarnPrompt("荣耀等级不足2级，无法进行提现");
+                    //     return;
+                    $("#withdraw_dropdown").remove();
+                    $("#withdraw_menu").remove();
                 }
                 if (type == "ba_withdraw") {
                     window.location.href = getRootPath() + "/h5/user/bit_withdraw.html";
@@ -26,6 +28,8 @@ $(function () {
             ErrorPrompt(response);
         });
     }
+
+    verifyWithdraw("show_none");
 
 //withdraw
     $('.nav_ba_withdraw').click(function () {
