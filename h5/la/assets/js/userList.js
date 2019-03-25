@@ -9,7 +9,7 @@ $(function () {
 
     function GetUserListFun(limit, offset) {
         let totalPage = "", tr = "";
-        GetUserList(token, api_url, limit, offset, funds_filter, time_filter, function (response) {
+        GetUserList(token, api_url, limit, offset, funds_filter, time_filter,us_nm,phone_email, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
                 let data = response.rows;

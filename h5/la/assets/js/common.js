@@ -521,13 +521,15 @@ function GetLaBaseInfo(token, suc_func, error_func) {
 }
 
 //Get the list of user/ba/ca
-function GetUserList(token, api_url, limit, offset, funds_filter, time_filter, suc_func, error_func) {
+function GetUserList(token, api_url, limit, offset, funds_filter, time_filter, us_nm, phone_email, suc_func, error_func) {
     var post_data = {
         'token': token,
         'limit': limit,
         'offset': offset,
         'funds_filter': funds_filter,
-        'time_filter': time_filter
+        'time_filter': time_filter,
+        'us_nm': us_nm,
+        'phone_email': phone_email
     };
     CallApi(api_url, post_data, suc_func, error_func);
 }
