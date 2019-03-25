@@ -6,7 +6,7 @@
 function get_us_base_info_total($us_nm,$phone_email)
 {
     $db = new DB_COM();
-    $sql = "a.*,b.bind_info FROM us_base as a left join us_bind as b on a.us_id=b.us_id where";
+    $sql = "SELECT a.*,b.bind_info FROM us_base as a left join us_bind as b on a.us_id=b.us_id where";
     if ($us_nm){
         $sql .= " b.bind_name='cellphone' and a.us_nm like '%{$us_nm}%'";
     }
@@ -16,7 +16,6 @@ function get_us_base_info_total($us_nm,$phone_email)
     if (!$phone_email && !$us_nm){
         $sql .= " b.bind_name='cellphone'";
     }
-    echo $sql;die;
     $db->query($sql);
     $count = $db -> affectedRows();
     return $count;
@@ -39,7 +38,7 @@ function get_us_base_info_total($us_nm,$phone_email)
 function get_us_base_info($offset,$limit,$filter,$time_filter,$us_nm,$phone_email)
 {
     $db = new DB_COM();
-    $sql = "a.*,b.bind_info FROM us_base as a left join us_bind as b on a.us_id=b.us_id where";
+    $sql = "SELECT a.*,b.bind_info FROM us_base as a left join us_bind as b on a.us_id=b.us_id where";
     if ($us_nm){
         $sql .= " b.bind_name='cellphone' and a.us_nm like '%{$us_nm}%'";
     }
