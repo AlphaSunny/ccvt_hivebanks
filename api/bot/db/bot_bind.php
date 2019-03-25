@@ -1747,21 +1747,20 @@ function random_reward($group_id){
         }else{
             //判断群前一个小时聊天
             $bot_start_time = time()-(60*60);
-            $sql = "select a.wechat,count(a.bot_message_id) as count from bot_message as a left join us_base as b on a.wechat=b.wechat WHERE group_id='81' and a.wechat!='AI大白'  and a.wechat in (select wechat from us_base where 1) and b.us_id in (select us_id from us_bind where bind_name='group' and bind_info='81') group by a.wechat order  by count(a.bot_message_id) asc;";
+            $sql = "select a.wechat,count(a.bot_message_id) as count from bot_message as a left join us_base as b on a.wechat=b.wechat WHERE group_id='{$group_id}' and a.wechat!='AI大白' AND bot_create_time BETWEEN '{$bot_start_time}' AND '{$time}' and a.wechat in (select wechat from us_base where 1) and b.us_id in (select us_id from us_bind where bind_name='group' and bind_info='{$group_id}') group by a.wechat order  by count(a.bot_message_id) asc;";
             //$sql ="select a.wechat from bot_message as a left join us_base as b on a.wechat=b.wechat WHERE group_id='{$group_id}' and a.wechat!='AI大白' AND bot_create_time BETWEEN '{$bot_start_time}' AND '{$time}'  and a.wechat in (select wechat from us_base where 1) and b.us_id in (select us_id from us_bind where bind_name='group' and bind_info='{$group_id}') group by a.wechat,b.us_id";
             $db->query($sql);
             $array = $db->fetchAll();
             $wechat_array = array_map(function($val){return $val['wechat'];}, $array);
             if (count($wechat_array)>0){
-                $rand_num = array_rand($wechat_array,1);
-                print_r($wechat_array[0]);die;
+                //$rand_num = array_rand($wechat_array,1);
                 //获取金额随机数奖励数额：最小值=领域等级  最大值= 领域等级*10
                 $sql = "select scale from bot_group WHERE id='{$group_id}'";
                 $db->query($sql);
                 $group_scale = $db->getField($sql,'scale');
                 $rand_reward_num = rand($group_scale,($group_scale*10));
                 //获取用id
-                $sql = "select us_id from us_base WHERE wechat='{$wechat_array[$rand_num]}'";
+                $sql = "select us_id from us_base WHERE wechat='{$wechat_array[0]}'";
                 $db->query($sql);
                 $us_id = $db->getField($sql,'us_id');
 
@@ -1773,7 +1772,7 @@ function random_reward($group_id){
                 $result = to_random_reward($data);
                 if($result){
                     $row['result'] = 2;
-                    $row['wechat'] =$wechat_array[$rand_num];
+                    $row['wechat'] =$wechat_array[0];
                     $row['money'] = $rand_reward_num;
                 }else{
                     $row['result'] = 3;
