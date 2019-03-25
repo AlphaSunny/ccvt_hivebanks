@@ -124,11 +124,11 @@ $(function () {
                 }
                 $.each(data, function (i, val) {
                     if (data[i].in_or_out == "in") {
-                        type = "<p><i class='iconfont icon-transfer_in'></i><span class='i18n' name='us_us_transfer_in'></span></p>"
+                        type = "<p><i class='iconfont icon-transfer_in'></i>&nbsp;<span class='i18n' name='us_us_transfer_in'></span></p>"
                     } else if (data[i].in_or_out == "out") {
-                        type = "<p><i class='iconfont icon-transfer_out'></i><span class='i18n' name='us_us_transfer_out'></span></p>"
+                        type = "<p><i class='iconfont icon-transfer_out'></i>&nbsp;<span class='i18n' name='us_us_transfer_out'></span></p>"
                     } else {
-                        type = "<p><i class='iconfont icon-invalid'></i><span class='i18n' name='invalidOrder'></span></p>"
+                        type = "<p><i class='iconfont icon-invalid'></i>&nbsp;<span class='i18n' name='invalidOrder'></span></p>"
                     }
 
                     if (data[i].qa_flag == "1") {
