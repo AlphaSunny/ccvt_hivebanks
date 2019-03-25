@@ -39,6 +39,12 @@ $token = get_arg_str('GET', 'token', 128);
 $filter = get_arg_str('GET', 'funds_filter', 128);
 
 $time_filter = get_arg_str('GET', 'time_filter', 128);
+//用户编号（内部唯一）
+$us_nm = get_arg_str('GET', 'us_nm', 128);
+
+//手机号或邮箱
+$phone_email = get_arg_str('GET', 'phone_email', 128);
+
 
 $user_id = la_user_check($token);
 
@@ -46,9 +52,9 @@ $user_id = la_user_check($token);
 list($limit, $offset) = get_paging_arg('GET');
 
 // 记录数组总数
-$total = get_us_base_info_total();
+$total = get_us_base_info_total($us_nm,$phone_email);
 
-$rows = get_us_base_info($offset,$limit,$filter,$time_filter);
+$rows = get_us_base_info($offset,$limit,$filter,$time_filter,$us_nm,$phone_email);
 
 //成功后返回数据
 $rtn_ary = array();

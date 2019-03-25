@@ -3,10 +3,19 @@
 //  获取用户的列表总数
 // 参数:
 //======================================
-function get_us_base_info_total()
+function get_us_base_info_total($us_nm,$phone_email)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM us_base";
+    $sql = "a.*,b.bind_info FROM us_base as a left join us_bind as b on a.us_id=b.us_id where";
+    if ($us_nm){
+        $sql .= " b.bind_name='cellphone' and a.us_nm like '%{$us_nm}%'";
+    }
+    if ($phone_email){
+        $sql .= " (b.bind_name='cellphone' or b.bind_name='email') and replace(b.bind_info,'86-','') like '%{$phone_email}%'";
+    }
+    if (!$phone_email && !$us_nm){
+        $sql .= " b.bind_name='cellphone'";
+    }
     $db->query($sql);
     $count = $db -> affectedRows();
     return $count;
@@ -26,10 +35,19 @@ function get_us_base_info_total()
 //        utime         更新时间
 //        ctime         创建时间
 //======================================
-function get_us_base_info($offset,$limit,$filter,$time_filter)
+function get_us_base_info($offset,$limit,$filter,$time_filter,$us_nm,$phone_email)
 {
     $db = new DB_COM();
-    $sql = "SELECT * FROM us_base";
+    $sql = "a.*,b.bind_info FROM us_base as a left join us_bind as b on a.us_id=b.us_id where";
+    if ($us_nm){
+        $sql .= " b.bind_name='cellphone' and a.us_nm like '%{$us_nm}%'";
+    }
+    if ($phone_email){
+        $sql .= " (b.bind_name='cellphone' or b.bind_name='email') and replace(b.bind_info,'86-','') like '%{$phone_email}%'";
+    }
+    if (!$phone_email && !$us_nm){
+        $sql .= " b.bind_name='cellphone'";
+    }
     if ($filter){
         $sql .= " order BY base_amount $filter";
     }
