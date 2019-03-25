@@ -124,9 +124,9 @@ $(function () {
                 }
                 $.each(data, function (i, val) {
                     if (data[i].in_or_out == "in") {
-                        type = "<span class='i18n' name='us_us_transfer_in'></span>"
+                        type = "<span class='' name='us_us_transfer_in'><i class='iconfont icon-transfer_in'></i></span>"
                     } else if (data[i].in_or_out == "out") {
-                        type = "<span class='i18n' name='us_us_transfer_out'></span>"
+                        type = "<span class='' name='us_us_transfer_out'><i class='iconfont icon-transfer_out'></i></span>"
                     } else {
                         type = "<span class='i18n' name='invalidOrder'></span>"
                     }
