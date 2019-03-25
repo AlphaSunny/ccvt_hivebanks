@@ -5,10 +5,11 @@ $(function () {
     //get user list
     let api_url = 'user_list.php', limit = 10, offset = 0, count = "";
     let funds_filter = "", time_filter = "";
+    let us_nm = "", phone_email = "";
 
     function GetUserListFun(limit, offset) {
         let totalPage = "", tr = "";
-        GetUserList(token, api_url, limit, offset, funds_filter,time_filter, function (response) {
+        GetUserList(token, api_url, limit, offset, funds_filter, time_filter, function (response) {
             ShowLoading("hide");
             if (response.errcode == '0') {
                 let data = response.rows;
@@ -70,10 +71,25 @@ $(function () {
         ShowLoading("show");
     });
 
+    //时间筛选
     $("#time_filter").change(function () {
         time_filter = $("#time_filter").val();
         if (time_filter == "0") {
             time_filter = "";
+            return;
+        }
+        limit = 10;
+        offset = 0;
+        GetUserListFun(limit, offset);
+        ShowLoading("show");
+    });
+
+    //ID，手机号码，邮箱筛选
+    $(".search_btn").click(function () {
+        us_nm = $("#us_nm").val();
+        phone_email = $("#phone_email").val();
+        if (us_nm.length <= 0 && phone_email.length <= 0) {
+            WarnPrompt("请输入要搜索的内容");
             return;
         }
         limit = 10;
