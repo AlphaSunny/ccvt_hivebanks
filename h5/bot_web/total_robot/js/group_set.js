@@ -26,12 +26,13 @@ $(function () {
     });
 
     let group_name = "", del = "", flirt = "", send_address = "", bind_account_notice = "", news_notice = "",
-        is_welcome = "", welcome = "", ranking_change_switch = "", src = "", group_introduction = "", chat_time = "";
+        is_welcome = "", welcome = "", ranking_change_switch = "", src = "", group_introduction = "", chat_time = "",
+        leave_message_switch = "",random_reward_switch = "";
 
     // let group_id = GetCookie("group_id");
 
     function EditGroupFun() {
-        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src, group_introduction, news_notice,chat_time, function (response) {
+        EditGroup(token, group_name, del, flirt, group_id, send_address, bind_account_notice, is_welcome, welcome, ranking_change_switch, src, group_introduction, news_notice, chat_time, leave_message_switch,random_reward_switch, function (response) {
             if (response.errcode == "0") {
                 SuccessPrompt("设置成功");
                 $(".welcome_text_box,.input_box,.group_introduction_box").addClass("none");
@@ -133,6 +134,8 @@ $(function () {
         welcome = $("#welcome_text").val();
         ranking_change_switch = $(".ranking_change_switch").val();
         group_introduction = $("#group_introduction").val();
+        leave_message_switch = $("#leave_message_switch").val();
+        random_reward_switch = $("#random_reward_switch").val();
         chat_time = $(".chat_time_input").val();
         if (type) {
             src = type;
