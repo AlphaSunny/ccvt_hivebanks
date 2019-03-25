@@ -21,5 +21,5 @@
     document.write(jsHeader + "assets/js/jquery.qrcode.min.js" + jsFooter);
     document.write(jsHeader + "assets/js/prompt.js" + jsFooter);
     document.write(jsHeader + "assets/js/get_sms_count.js" + jsFooter);
-    document.write("<script src='https://at.alicdn.com/t/font_1045318_y4qnii5x2zs.js'></script>");
+    document.write("<script src='https://at.alicdn.com/t/font_1045318_uege1o6pkfg.js'></script>");
 })();
