@@ -24,8 +24,8 @@ $(function () {
             $('.lockBalance').text(data.lock_amount);
             $('.levelNum').text(security_level);
             $('.glory_of_integral').text(data.glory_of_integral);
-            $('.scale').text(data.scale);
-            SetCookie("glory_level", data.scale);
+            $('.scale').text(scale);
+            SetCookie("glory_level", scale);
 
             if (data.wechat_qrcode) {
                 $(".upload_qr_btn").text("查看");
