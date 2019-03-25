@@ -16,8 +16,8 @@ function get_us_base_info_total($us_nm,$phone_email)
     if (!$phone_email && !$us_nm){
         $sql .= " b.bind_name='cellphone'";
     }
-    $db->query($sql);
     echo $sql;die;
+    $db->query($sql);
     $count = $db -> affectedRows();
     return $count;
 }
